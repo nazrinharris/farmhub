@@ -1,4 +1,4 @@
-package com.example.farmhub
+package com.farmhub.app
 
 import io.flutter.embedding.android.FlutterActivity
 

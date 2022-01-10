@@ -1,15 +1,16 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_const_declarations
 
 import 'package:farmhub/core/auth/data/datasources/auth_local_datasource.dart';
 import 'package:farmhub/core/auth/data/datasources/auth_remote_datasource.dart';
 import 'package:farmhub/core/auth/data/repository/auth_repository.dart';
 import 'package:farmhub/core/auth/domain/entities/farmhub_user/farmhub_user.dart';
-import 'package:farmhub/core/errors/failures.dart';
 import 'package:farmhub/core/network/network_info.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:mocktail/mocktail.dart';
+
+import '../../../../presets/entities_presets.dart';
+import '../../../../presets/failures_exceptions_presets.dart';
 
 class MockAuthRemoteDataSource extends Mock implements IAuthRemoteDataSource {}
 
@@ -19,44 +20,25 @@ class MockNetworkInfo extends Mock implements INetworkInfo {}
 
 class FakeFarmhubUser extends Fake implements FarmhubUser {}
 
-final FarmhubUser tFarmhubUser = FarmhubUser(
-  uid: 'tuid',
-  email: 'temail@temail.temail',
-  createdAt: '11/11/1111',
-);
-
-final FirebaseAuthException tFirebaseAuthException = FirebaseAuthException(
-  code: 'tcode',
-  message: 'tmessage',
-);
-
-final FirebaseAuthFailure tFirebaseAuthFailure = FirebaseAuthFailure(
-  code: 'tcode',
-  message: 'tmessage',
-);
-
-final InternetConnectionFailure tInternetConnectionFailure =
-    InternetConnectionFailure(
-  code: 'tcode',
-  message: 'tmessage',
-);
-
 void main() {
   late AuthRepository authRepository;
-  late MockAuthRemoteDataSource authRemoteDataSource;
-  late MockAuthLocalDataSource authLocalDataSource;
-  late MockNetworkInfo networkInfo;
+  late MockAuthRemoteDataSource mockAuthRemoteDataSource;
+  late MockAuthLocalDataSource mockAuthLocalDataSource;
+  late MockNetworkInfo mockNetworkInfo;
 
   setUp(() {
-    authRemoteDataSource = MockAuthRemoteDataSource();
-    authLocalDataSource = MockAuthLocalDataSource();
-    networkInfo = MockNetworkInfo();
+    mockAuthRemoteDataSource = MockAuthRemoteDataSource();
+    mockAuthLocalDataSource = MockAuthLocalDataSource();
+    mockNetworkInfo = MockNetworkInfo();
     authRepository = AuthRepository(
-      networkInfo: networkInfo,
-      authRemoteDataSource: authRemoteDataSource,
-      authLocalDataSource: authLocalDataSource,
+      networkInfo: mockNetworkInfo,
+      authRemoteDataSource: mockAuthRemoteDataSource,
+      authLocalDataSource: mockAuthLocalDataSource,
     );
     registerFallbackValue(FakeFarmhubUser());
+
+    when(() => mockAuthLocalDataSource.storeFarmhubUser(any()))
+        .thenAnswer((_) async => unit);
   });
 
   group('AuthRepository', () {
@@ -64,19 +46,24 @@ void main() {
     group('loginWithEmailAndPassword() ->', () {
       group('[online]', () {
         setUp(() {
-          when(() => networkInfo.isConnected).thenAnswer((_) async => true);
+          when(() => mockNetworkInfo.isConnected).thenAnswer((_) async => true);
         });
 
         test(
           'should check device is online',
           () async {
+            // arrange
+            when(() => mockAuthRemoteDataSource.loginWithEmailAndPassword(
+                  email: any(named: 'email'),
+                  password: any(named: 'password'),
+                )).thenAnswer((_) async => tFarmhubUser);
             // act
             await authRepository.loginWithEmailAndPassword(
-              email: any(named: 'email'),
-              password: any(named: 'password'),
+              email: tEmail,
+              password: tPassword,
             );
             // assert
-            verify(() => networkInfo.isConnected);
+            verify(() => mockNetworkInfo.isConnected);
           },
         );
 
@@ -84,17 +71,17 @@ void main() {
           'should return FarmhubUser when login is successfull',
           () async {
             // arrange
-            when(() => authRemoteDataSource.loginWithEmailAndPassword(
+            when(() => mockAuthRemoteDataSource.loginWithEmailAndPassword(
                   email: any(named: 'email'),
                   password: any(named: 'password'),
                 )).thenAnswer((_) async => tFarmhubUser);
             // act
             final result = await authRepository.loginWithEmailAndPassword(
-              email: any(named: 'email'),
-              password: any(named: 'password'),
+              email: tEmail,
+              password: tPassword,
             );
             // assert
-            verify(() => authRemoteDataSource.loginWithEmailAndPassword(
+            verify(() => mockAuthRemoteDataSource.loginWithEmailAndPassword(
                   email: any(named: 'email'),
                   password: any(named: 'password'),
                 ));
@@ -106,15 +93,19 @@ void main() {
           'should store FarmhubUser when successfull login',
           () async {
             // arrange
-            when(() => authLocalDataSource.storeFarmhubUser())
-                .thenAnswer((_) async => unit);
+
+            when(() => mockAuthRemoteDataSource.loginWithEmailAndPassword(
+                  email: any(named: 'email'),
+                  password: any(named: 'password'),
+                )).thenAnswer((_) async => tFarmhubUser);
             // act
             await authRepository.loginWithEmailAndPassword(
-              email: any(named: 'email'),
-              password: any(named: 'password'),
+              email: tEmail,
+              password: tPassword,
             );
             // assert
-            verify(() => authLocalDataSource.storeFarmhubUser());
+            verify(
+                () => mockAuthLocalDataSource.storeFarmhubUser(tFarmhubUser));
           },
         );
 
@@ -122,14 +113,14 @@ void main() {
           'should return FirebaseAuthFailure when login fails',
           () async {
             // arrange
-            when(() => authRemoteDataSource.loginWithEmailAndPassword(
+            when(() => mockAuthRemoteDataSource.loginWithEmailAndPassword(
                   email: any(named: 'email'),
                   password: any(named: 'password'),
                 )).thenThrow(tFirebaseAuthException);
             // act
             final result = await authRepository.loginWithEmailAndPassword(
-              email: any(named: 'email'),
-              password: any(named: 'password'),
+              email: tEmail,
+              password: tPassword,
             );
             // assert
             expect(result, Left(tFirebaseAuthFailure));
@@ -139,7 +130,8 @@ void main() {
 
       group('[offline]', () {
         setUp(() {
-          when(() => networkInfo.isConnected).thenAnswer((_) async => false);
+          when(() => mockNetworkInfo.isConnected)
+              .thenAnswer((_) async => false);
         });
 
         test(
@@ -147,11 +139,11 @@ void main() {
           () async {
             // act
             await authRepository.loginWithEmailAndPassword(
-              email: any(named: 'email'),
-              password: any(named: 'password'),
+              email: tEmail,
+              password: tPassword,
             );
             // assert
-            verify(() => networkInfo.isConnected);
+            verify(() => mockNetworkInfo.isConnected);
           },
         );
 
@@ -160,14 +152,144 @@ void main() {
           () async {
             // act
             final result = await authRepository.loginWithEmailAndPassword(
-              email: any(named: 'email'),
-              password: any(named: 'password'),
+              email: tEmail,
+              password: tPassword,
             );
             // assert
-            expect(result, tInternetConnectionFailure);
+            expect(result, Left(tInternetConnectionFailure));
           },
         );
       });
     });
+
+    group('loginWithGoogleAccount() ->', () {
+      group('[online]', () {
+        setUp(() {
+          when(() => mockNetworkInfo.isConnected).thenAnswer((_) async => true);
+        });
+      });
+
+      group('[offline]', () {
+        setUp(() {
+          when(() => mockNetworkInfo.isConnected)
+              .thenAnswer((_) async => false);
+        });
+      });
+    });
+
+    group('registerWithEmailAndPassword() ->', () {
+      group('[online]', () {
+        setUp(() {
+          when(() => mockNetworkInfo.isConnected).thenAnswer((_) async => true);
+        });
+
+        test(
+          'should check if device is online',
+          () async {
+            // arrange
+            when(() => mockNetworkInfo.isConnected)
+                .thenAnswer((_) async => true);
+            when(() => mockAuthRemoteDataSource.registerWithEmailAndPassword(
+                  email: any(named: 'email'),
+                  password: any(named: 'password'),
+                  username: any(named: 'username'),
+                )).thenAnswer((_) async => tFarmhubUser);
+            // act
+            authRepository.registerWithEmailAndPassword(
+              email: tEmail,
+              password: tPassword,
+              username: tUsername,
+            );
+            // assert
+            verify(() => mockNetworkInfo.isConnected);
+          },
+        );
+
+        test(
+          'should return FarmhubUser with current user details when succesfull register',
+          () async {
+            // arrange
+            when(() => mockAuthRemoteDataSource.registerWithEmailAndPassword(
+                  email: any(named: 'email'),
+                  password: any(named: 'password'),
+                  username: any(named: 'username'),
+                )).thenAnswer((_) async => tFarmhubUser);
+            // act
+            final result = await authRepository.registerWithEmailAndPassword(
+              email: tEmail,
+              password: tPassword,
+              username: tUsername,
+            );
+            // assert
+            expect(result, equals(Right(tFarmhubUser)));
+          },
+        );
+
+        test(
+          'should cache FarmhubUser with current user details when succesfull register',
+          () async {
+            // arrange
+            when(() => mockAuthRemoteDataSource.registerWithEmailAndPassword(
+                  email: any(named: 'email'),
+                  password: any(named: 'password'),
+                  username: any(named: 'username'),
+                )).thenAnswer((_) async => tFarmhubUser);
+            // act
+            await authRepository.registerWithEmailAndPassword(
+              email: tEmail,
+              password: tPassword,
+              username: tUsername,
+            );
+            // assert
+            verify(
+                () => mockAuthLocalDataSource.storeFarmhubUser(tFarmhubUser));
+          },
+        );
+
+        test(
+          'should return FirebaseAuthFailure when registration fails',
+          () async {
+            // arrange
+            when(() => mockAuthRemoteDataSource.registerWithEmailAndPassword(
+                  email: any(named: 'email'),
+                  password: any(named: 'password'),
+                  username: any(named: 'username'),
+                )).thenThrow(tFirebaseAuthException);
+            // act
+            final result = await authRepository.registerWithEmailAndPassword(
+              email: tEmail,
+              password: tPassword,
+              username: tUsername,
+            );
+            // assert
+            expect(result, equals(Left(tFirebaseAuthFailure)));
+          },
+        );
+      });
+
+      group('[offline]', () {
+        setUp(() {
+          when(() => mockNetworkInfo.isConnected)
+              .thenAnswer((_) async => false);
+        });
+      });
+    });
+
+    group('registerWithGoogleAccount() ->', () {
+      group('[online]', () {
+        setUp(() {
+          when(() => mockNetworkInfo.isConnected).thenAnswer((_) async => true);
+        });
+      });
+
+      group('[offline]', () {
+        setUp(() {
+          when(() => mockNetworkInfo.isConnected)
+              .thenAnswer((_) async => false);
+        });
+      });
+    });
+
+    group('signOut() ->', () {});
   });
 }

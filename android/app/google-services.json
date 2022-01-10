@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "402773896503",
+    "project_id": "farmhub-23c2b",
+    "storage_bucket": "farmhub-23c2b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:402773896503:android:c85621302579bdd66a3eb2",
+        "android_client_info": {
+          "package_name": "com.farmhub.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "402773896503-86e0dofo2tra0sik81n3fdt8jpdb7253.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAC2C5aPMzjJjnGAAMinytamna_ee6HsMU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "402773896503-86e0dofo2tra0sik81n3fdt8jpdb7253.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "402773896503-46ccalimkquj4jumg4qopkj9626jpiic.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.farmhub.app"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

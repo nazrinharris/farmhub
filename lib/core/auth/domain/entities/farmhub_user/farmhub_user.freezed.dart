@@ -22,10 +22,14 @@ class _$FarmhubUserTearOff {
   const _$FarmhubUserTearOff();
 
   _FarmhubUser call(
-      {required String uid, required String email, required String createdAt}) {
+      {required String uid,
+      required String email,
+      required String username,
+      required String createdAt}) {
     return _FarmhubUser(
       uid: uid,
       email: email,
+      username: username,
       createdAt: createdAt,
     );
   }
@@ -42,6 +46,7 @@ const $FarmhubUser = _$FarmhubUserTearOff();
 mixin _$FarmhubUser {
   String get uid => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
+  String get username => throw _privateConstructorUsedError;
   String get createdAt => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -55,7 +60,7 @@ abstract class $FarmhubUserCopyWith<$Res> {
   factory $FarmhubUserCopyWith(
           FarmhubUser value, $Res Function(FarmhubUser) then) =
       _$FarmhubUserCopyWithImpl<$Res>;
-  $Res call({String uid, String email, String createdAt});
+  $Res call({String uid, String email, String username, String createdAt});
 }
 
 /// @nodoc
@@ -70,6 +75,7 @@ class _$FarmhubUserCopyWithImpl<$Res> implements $FarmhubUserCopyWith<$Res> {
   $Res call({
     Object? uid = freezed,
     Object? email = freezed,
+    Object? username = freezed,
     Object? createdAt = freezed,
   }) {
     return _then(_value.copyWith(
@@ -80,6 +86,10 @@ class _$FarmhubUserCopyWithImpl<$Res> implements $FarmhubUserCopyWith<$Res> {
       email: email == freezed
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      username: username == freezed
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
               as String,
       createdAt: createdAt == freezed
           ? _value.createdAt
@@ -96,7 +106,7 @@ abstract class _$FarmhubUserCopyWith<$Res>
           _FarmhubUser value, $Res Function(_FarmhubUser) then) =
       __$FarmhubUserCopyWithImpl<$Res>;
   @override
-  $Res call({String uid, String email, String createdAt});
+  $Res call({String uid, String email, String username, String createdAt});
 }
 
 /// @nodoc
@@ -113,6 +123,7 @@ class __$FarmhubUserCopyWithImpl<$Res> extends _$FarmhubUserCopyWithImpl<$Res>
   $Res call({
     Object? uid = freezed,
     Object? email = freezed,
+    Object? username = freezed,
     Object? createdAt = freezed,
   }) {
     return _then(_FarmhubUser(
@@ -123,6 +134,10 @@ class __$FarmhubUserCopyWithImpl<$Res> extends _$FarmhubUserCopyWithImpl<$Res>
       email: email == freezed
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      username: username == freezed
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
               as String,
       createdAt: createdAt == freezed
           ? _value.createdAt
@@ -136,7 +151,10 @@ class __$FarmhubUserCopyWithImpl<$Res> extends _$FarmhubUserCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_FarmhubUser implements _FarmhubUser {
   _$_FarmhubUser(
-      {required this.uid, required this.email, required this.createdAt});
+      {required this.uid,
+      required this.email,
+      required this.username,
+      required this.createdAt});
 
   factory _$_FarmhubUser.fromJson(Map<String, dynamic> json) =>
       _$$_FarmhubUserFromJson(json);
@@ -146,11 +164,13 @@ class _$_FarmhubUser implements _FarmhubUser {
   @override
   final String email;
   @override
+  final String username;
+  @override
   final String createdAt;
 
   @override
   String toString() {
-    return 'FarmhubUser(uid: $uid, email: $email, createdAt: $createdAt)';
+    return 'FarmhubUser(uid: $uid, email: $email, username: $username, createdAt: $createdAt)';
   }
 
   @override
@@ -160,12 +180,14 @@ class _$_FarmhubUser implements _FarmhubUser {
             other is _FarmhubUser &&
             (identical(other.uid, uid) || other.uid == uid) &&
             (identical(other.email, email) || other.email == email) &&
+            (identical(other.username, username) ||
+                other.username == username) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, uid, email, createdAt);
+  int get hashCode => Object.hash(runtimeType, uid, email, username, createdAt);
 
   @JsonKey(ignore: true)
   @override
@@ -182,6 +204,7 @@ abstract class _FarmhubUser implements FarmhubUser {
   factory _FarmhubUser(
       {required String uid,
       required String email,
+      required String username,
       required String createdAt}) = _$_FarmhubUser;
 
   factory _FarmhubUser.fromJson(Map<String, dynamic> json) =
@@ -191,6 +214,8 @@ abstract class _FarmhubUser implements FarmhubUser {
   String get uid;
   @override
   String get email;
+  @override
+  String get username;
   @override
   String get createdAt;
   @override

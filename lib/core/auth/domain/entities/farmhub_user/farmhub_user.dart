@@ -5,11 +5,11 @@ part 'farmhub_user.freezed.dart';
 part 'farmhub_user.g.dart';
 
 @freezed
-@JsonSerializable(explicitToJson: true)
 class FarmhubUser with _$FarmhubUser {
   factory FarmhubUser({
     required String uid,
     required String email,
+    required String username,
     required String createdAt,
   }) = _FarmhubUser;
 
