@@ -19,7 +19,7 @@ final FirebaseAuthException tFirebaseAuthException = FirebaseAuthException(
 final FirebaseException tFirebaseFirestoreException = FirebaseException(
   code: 'CODE',
   message: 'tmessage',
-  plugin: FIRESTORE_PLUGIN,
+  plugin: FS_PLUGIN,
 );
 
 final FirebaseException tFirebaseException = FirebaseException(

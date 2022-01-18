@@ -20,3 +20,4 @@ final InternetConnectionFailure tInternetConnectionFailure =
 const String tEmail = 'temail@temail.temail';
 const String tPassword = 'tpassword';
 const String tUsername = 'tusername';
+const String tUid = 'tuid';

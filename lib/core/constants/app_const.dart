@@ -25,5 +25,15 @@ const String MESSAGE_EMAIL_ALREADY_IN_USE =
 /// throughout the Firebase Suite and it's generic.
 ///
 /// Do not change.
-const String FIRESTORE_PLUGIN = 'FIRESTORE_PLUGIN';
+const String FS_PLUGIN = 'FS_PLUGIN';
 const String UNSPECIFIED_PLUGIN = 'UNSPECIFIED_PLUGIN';
+
+/// Firestore Permanent [CollectionPaths]
+///
+/// Do not change.
+const String FS_USER_COLLECTION = 'users';
+
+/// Firestore Error Codes [FirestoreCode]
+///
+/// Do not change.
+const String FS_ERRCODE_JSON_NOT_FOUND = '';

@@ -4,10 +4,12 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:farmhub/core/auth/data/datasources/auth_remote_datasource.dart';
+import 'package:farmhub/core/constants/app_const.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
+import '../../../../presets/entities_presets.dart';
 import '../../../../presets/failures_exceptions_presets.dart';
 
 class MockFirebaseFirestore extends Mock implements FirebaseFirestore {}
@@ -76,6 +78,87 @@ void main() {
         // when(() => mockDocumentSnapshot.data())
         //     .thenAnswer((_) => tStoraygeUserJSON);
       }
+
+      void setupNoDocumentQuery() {
+        when(() => mockFirebaseFirestore.collection(any()))
+            .thenAnswer((_) => mockCollectionReference);
+        when(() => mockCollectionReference.doc(any()))
+            .thenAnswer((_) => mockDocumentReference);
+        when(() => mockDocumentReference.get())
+            .thenAnswer((_) async => Future.value());
+        // when(() => mockDocumentSnapshot.data())
+        //     .thenAnswer((_) => tStoraygeUserJSON);
+      }
+
+      test(
+        'should request account info to CloudFirestore with the passed in uid',
+        () async {
+          //arrange
+          setupSuccesfullQuery();
+          // act
+          await authRemoteDataSource.loginWithEmailAndPassword(
+            email: tEmail,
+            password: tPassword,
+          );
+          // assert
+          verifyInOrder([
+            () => mockFirebaseFirestore.collection(FS_USER_COLLECTION),
+            () => mockCollectionReference.doc(tUid),
+            () => mockDocumentReference.get(),
+          ]);
+        },
+      );
+
+      test(
+        'should return FarmhubUser when the request is succesfull',
+        () async {
+          //arrange
+          setupSuccesfullQuery();
+          // act
+          final result = await authRemoteDataSource.loginWithEmailAndPassword(
+            email: tEmail,
+            password: tPassword,
+          );
+          // assert
+          expect(result, equals(tFarmhubUser));
+        },
+      );
+
+      test(
+        'should throw a FirebaseException with FIRESTORE_PLUGIN and FS_ERRCODE_JSON_NOT_FOUND when the uid-specific document is not found',
+        () async {
+          // arrange
+          setupFailureQuery();
+          // act
+          final call = authRemoteDataSource.loginWithEmailAndPassword;
+          // assert
+          expect(
+              () => call(email: tEmail, password: tPassword),
+              throwsA(predicate((e) =>
+                  e is FirebaseException &&
+                  e.code == FS_ERRCODE_JSON_NOT_FOUND &&
+                  e.plugin == FS_PLUGIN &&
+                  e.message == 'tmessage')));
+        },
+      );
+
+      test(
+        'should throw a FirebaseException with FIRESTORE_PLUGIN when an error occurs',
+        () async {
+          // arrange
+          setupFailureQuery();
+          // act
+          final call = authRemoteDataSource.loginWithEmailAndPassword;
+          // assert
+          expect(
+              () => call(email: tEmail, password: tPassword),
+              throwsA(predicate((e) =>
+                  e is FirebaseException &&
+                  e.code == 'CODE' &&
+                  e.plugin == FS_PLUGIN &&
+                  e.message == 'tmessage')));
+        },
+      );
     });
   });
 }

@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:farmhub/core/auth/domain/entities/farmhub_user/farmhub_user.dart';
+import 'package:farmhub/core/constants/app_const.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 abstract class IAuthRemoteDataSource {
@@ -31,10 +32,30 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
   @override
   Future<FarmhubUser> loginWithEmailAndPassword(
       {required String email, required String password}) async {
-    // TODO: implement loginWithEmailAndPassword
-    await firebaseAuth.signInWithEmailAndPassword(
-        email: email, password: password);
-    throw (UnimplementedError());
+    final resultUid = await firebaseAuth
+        .signInWithEmailAndPassword(
+          email: email,
+          password: password,
+        )
+        .then((user) => user.user!.uid);
+    final farmhubUser = await firebaseFirestore
+        .collection(FS_USER_COLLECTION)
+        .doc(resultUid)
+        .get()
+        .then((snapshot) => snapshot.data())
+        .then((json) {
+      if (json != null) {
+        FarmhubUser.fromJson(json);
+      } else {
+        throw FirebaseException(
+          plugin: FS_PLUGIN,
+          code: FS_ERRCODE_JSON_NOT_FOUND,
+          message: '',
+          stackTrace: StackTrace.current,
+        );
+      }
+    });
+    return farmhubUser;
   }
 
   @override
