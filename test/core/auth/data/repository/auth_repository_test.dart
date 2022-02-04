@@ -226,7 +226,7 @@ void main() {
         );
 
         test(
-          'should cache FarmhubUser with current user details when succesfull register',
+          'should store FarmhubUser with current user details when succesfull register',
           () async {
             // arrange
             when(() => mockAuthRemoteDataSource.registerWithEmailAndPassword(
@@ -272,6 +272,32 @@ void main() {
           when(() => mockNetworkInfo.isConnected)
               .thenAnswer((_) async => false);
         });
+
+        test(
+          'should check device is offline',
+          () async {
+            // act
+            await authRepository.loginWithEmailAndPassword(
+              email: tEmail,
+              password: tPassword,
+            );
+            // assert
+            verify(() => mockNetworkInfo.isConnected);
+          },
+        );
+
+        test(
+          'should return InternetConnectionFailure when there is no internet connection',
+          () async {
+            // act
+            final result = await authRepository.loginWithEmailAndPassword(
+              email: tEmail,
+              password: tPassword,
+            );
+            // assert
+            expect(result, Left(tInternetConnectionFailure));
+          },
+        );
       });
     });
 

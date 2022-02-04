@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 enum FarmhubThemeVariants {
   light,
-  dark,
 }
 
 /// Farmhub's Light [ColorScheme]
@@ -49,7 +48,7 @@ TextTheme _farmhubTextThemeLight = const TextTheme(
   bodyText1: TextStyle(
     fontSize: 14,
     fontFamily: 'Montserrat',
-    fontWeight: FontWeight.w800,
+    fontWeight: FontWeight.w600,
   ),
 );
 
@@ -72,4 +71,28 @@ class FarmhubTheme {
       elevatedButtonTheme: _farmhubElevatedButtonThemeDataLight,
     ),
   };
+}
+
+InputDecoration kInputDecoration({
+  String? labelText,
+  required String hintText,
+  required BuildContext context,
+}) {
+  return InputDecoration(
+      focusColor: Theme.of(context).focusColor,
+      labelText: labelText,
+      labelStyle: Theme.of(context).textTheme.bodyText1,
+      hintText: hintText,
+      // TODO: Update to use a proper TextTheme [Caption]
+      hintStyle: Theme.of(context)
+          .textTheme
+          .bodyText1!
+          .copyWith(color: Colors.black.withOpacity(0.2)),
+      enabledBorder: UnderlineInputBorder(
+        borderSide:
+            BorderSide(color: Theme.of(context).accentColor.withOpacity(0.5)),
+      ),
+      focusedBorder: UnderlineInputBorder(
+        borderSide: BorderSide(width: 2, color: Theme.of(context).primaryColor),
+      ));
 }

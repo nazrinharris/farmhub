@@ -3,12 +3,16 @@
 import 'package:farmhub/core/auth/domain/entities/farmhub_user/farmhub_user.dart';
 import 'package:farmhub/core/constants/app_const.dart';
 import 'package:farmhub/core/errors/failures.dart';
+import 'package:intl/intl.dart';
+import 'dart:convert';
+
+import '../fixtures/fixture_reader.dart';
 
 final FarmhubUser tFarmhubUser = FarmhubUser(
   username: tUsername,
   uid: 'tuid',
   email: 'temail@temail.temail',
-  createdAt: '11/11/1111',
+  createdAt: '2021-11-28',
 );
 
 final InternetConnectionFailure tInternetConnectionFailure =
@@ -21,3 +25,11 @@ const String tEmail = 'temail@temail.temail';
 const String tPassword = 'tpassword';
 const String tUsername = 'tusername';
 const String tUid = 'tuid';
+const String tCreatedAt = '2021-11-28';
+String todayCreatedAt = DateFormat('yyyy-MM-dd').format(DateTime.now());
+DateTime tCurrentDate = DateTime.parse('2021-11-28');
+
+Map<String, dynamic> tFarmhubUserJSON =
+    json.decode(fixture('farmhub_user.json'));
+
+Map<String, dynamic>? tnullMap;

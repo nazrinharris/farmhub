@@ -23,7 +23,10 @@ class NavigateView extends StatelessWidget {
               width: 200,
               child: Text(
                 'To Login',
-                //style: appTextTheme(context).headline6,
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyText1!
+                    .copyWith(color: Colors.white),
               ),
             ),
             const UIVerticalSpace14(),
@@ -34,7 +37,10 @@ class NavigateView extends StatelessWidget {
               width: 200,
               child: Text(
                 'To Register',
-                //style: appTextTheme(context).headline6,
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyText1!
+                    .copyWith(color: Colors.white),
               ),
             ),
             const UIVerticalSpace14(),

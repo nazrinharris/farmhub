@@ -36,4 +36,4 @@ const String FS_USER_COLLECTION = 'users';
 /// Firestore Error Codes [FirestoreCode]
 ///
 /// Do not change.
-const String FS_ERRCODE_JSON_NOT_FOUND = '';
+const String FS_ERRCODE_JSON_NOT_FOUND = 'JSON_NOT_FOUND';
