@@ -1,4 +1,4 @@
-import 'package:farmhub/presentation/views/debug/tempnav_screen.dart';
+import 'package:farmhub/presentation/views/debug/navigate_view.dart';
 import 'package:farmhub/presentation/views/login_screen/login_screen.dart';
 import 'package:farmhub/presentation/views/register_screen/register_screen.dart';
 import 'package:flutter/cupertino.dart';

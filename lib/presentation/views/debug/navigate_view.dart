@@ -21,13 +21,7 @@ class NavigateView extends StatelessWidget {
                 Navigator.of(context).pushNamed('/login');
               },
               width: 200,
-              child: Text(
-                'To Login',
-                style: Theme.of(context)
-                    .textTheme
-                    .bodyText1!
-                    .copyWith(color: Colors.white),
-              ),
+              content: "To Login",
             ),
             const UIVerticalSpace14(),
             PrimaryButton(

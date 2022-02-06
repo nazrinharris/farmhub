@@ -1,3 +1,4 @@
+import 'package:farmhub/presentation/shared_widgets/appbars.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -6,10 +7,14 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: DefaultAppBar(
+        trailingIcon: const Icon(Icons.arrow_back),
+        trailingOnPressed: () {
+          Navigator.of(context).pop();
+        },
+      ),
       body: Center(
-        child: Column(
-          children: [],
-        ),
+        child: Text('Login Screen'),
       ),
     );
   }
