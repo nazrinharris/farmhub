@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 ///
 /// Don'ts
 ///
-/// 1. Do not use specify both a content and a child, choose either.
+/// 1. Do not specify both a content and a child, choose either.
 ///
 class PrimaryButton extends StatelessWidget {
   final String? content;
@@ -15,6 +15,7 @@ class PrimaryButton extends StatelessWidget {
   final Icon? buttonIcon;
   final double? horizontalPadding;
   final double? verticalPadding;
+  final Color? backgroundColor;
 
   const PrimaryButton({
     Key? key,
@@ -25,6 +26,7 @@ class PrimaryButton extends StatelessWidget {
     this.width,
     this.horizontalPadding,
     this.verticalPadding,
+    this.backgroundColor,
   })  : assert(content == null || child == null,
             "You cannot specify both a [content] and a [child], choose either."),
         assert(content != null || child != null,
@@ -82,11 +84,21 @@ class PrimaryButton extends StatelessWidget {
     }
   }
 
+  Color? _resolveBackgroundColor(BuildContext context) {
+    if (backgroundColor != null) {
+      return backgroundColor;
+    } else {
+      return null;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: onPressed,
       style: ButtonStyle(
+        backgroundColor:
+            MaterialStateProperty.all(_resolveBackgroundColor(context)),
         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
           RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(16),
@@ -101,6 +113,58 @@ class PrimaryButton extends StatelessWidget {
         alignment: Alignment.center,
         width: width,
         child: _resolveChild(context),
+      ),
+    );
+  }
+}
+
+class ThirdPartySignUpButton extends StatelessWidget {
+  final Function()? onPressed;
+  final String content;
+  final double width;
+
+  const ThirdPartySignUpButton({
+    Key? key,
+    required this.content,
+    required this.onPressed,
+    required this.width,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all(Colors.white),
+          overlayColor: MaterialStateProperty.all(
+              const Color(0xff707070).withOpacity(0.5)),
+          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+              RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(6.0)))),
+      onPressed: onPressed,
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 8),
+        alignment: Alignment.center,
+        height: 36,
+        width: width,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Icon(
+              Icons.golf_course,
+              color: Colors.blue,
+              size: 16,
+            ),
+            const UIHorizontalSpace14(),
+            Text(
+              content,
+              style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                    fontSize: 13,
+                    fontWeight: FontWeight.bold,
+                    color: const Color(0xff707070),
+                  ),
+            ),
+          ],
+        ),
       ),
     );
   }

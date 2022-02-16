@@ -23,10 +23,21 @@ mixin FirstTwoFieldsFormBloc on Bloc<TwoFieldsFormEvent, TwoFieldsFormState> {}
 
 mixin SecondTwoFieldsFormBloc on Bloc<TwoFieldsFormEvent, TwoFieldsFormState> {}
 
+/// Some info on [TwoFieldsFormBloc]
+///
+/// The [SecondTwoFieldsFormBloc] is not required, but it can be provided to be used
+/// in conjuction with another [TwoFieldsForm].
+///
+/// For this conjunction to work, [isWithAnotherTwoFields] must be [true]
 class TwoFieldsFormBloc extends Bloc<TwoFieldsFormEvent, TwoFieldsFormState>
     with FirstTwoFieldsFormBloc, SecondTwoFieldsFormBloc {
-  TwoFieldsFormBloc()
-      : super(
+  final SecondTwoFieldsFormBloc? secondTwoFieldsFormBloc;
+  final bool isWithAnotherTwoFields;
+
+  TwoFieldsFormBloc({
+    this.secondTwoFieldsFormBloc,
+    required this.isWithAnotherTwoFields,
+  }) : super(
           TwoFieldsFormState.initial(
             props: TwoFieldsFormProperties(
               autovalidateModeFirstField: AutovalidateMode.disabled,

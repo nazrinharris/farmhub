@@ -71,6 +71,8 @@ class AuthRepository implements IAuthRepository {
           code: e.code,
           message: e.message,
         ));
+      } catch (e) {
+        return Left(UnexpectedFailure(message: e.toString()));
       }
     } else {
       return const Left(InternetConnectionFailure(
@@ -81,10 +83,20 @@ class AuthRepository implements IAuthRepository {
   }
 
   @override
-  Future<Either<Failure, Unit>> signOut() {
+  Future<Either<Failure, Unit>> signOut() async {
     // TODO: implement signOut
     // TODO: tests signOut
-    throw UnimplementedError();
+    try {
+      await authRemoteDataSource.signOut();
+      print("Sign Out Requested");
+      return const Right(unit);
+    } on FirebaseAuthException catch (e) {
+      print("Sign Out Error Occurred");
+      return Left(FirebaseAuthFailure(
+        code: e.code,
+        message: e.message,
+      ));
+    }
   }
 
   @override

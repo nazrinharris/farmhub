@@ -12,7 +12,7 @@ import 'package:internet_connection_checker/internet_connection_checker.dart';
 
 final GetIt locator = GetIt.instance;
 
-Future<void>? setupLocator() {
+void setupLocator() {
   //! Core
   //* Auth
   // Blocs & Cubits

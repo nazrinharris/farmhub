@@ -7,8 +7,8 @@ abstract class IAuthLocalDataSource {
 
 class AuthLocalDataSource implements IAuthLocalDataSource {
   @override
-  Future<Unit> storeFarmhubUser(FarmhubUser farmhubUser) {
+  Future<Unit> storeFarmhubUser(FarmhubUser farmhubUser) async {
     // TODO: implement storeFarmhubUser
-    throw UnimplementedError();
+    return unit;
   }
 }

@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'two_fields_form_bloc.dart';
 
@@ -68,6 +69,17 @@ mixin _$TwoFieldsFormEvent {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? unfocusAllNodes,
+    TResult Function(String input)? firstFieldValueChanged,
+    TResult Function(String input)? secondFieldValueChanged,
+    TResult Function()? firstFieldSubmitted,
+    TResult Function()? secondFieldSubmitted,
+    TResult Function()? enableAlwaysValidation,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? unfocusAllNodes,
@@ -93,6 +105,22 @@ mixin _$TwoFieldsFormEvent {
     required TResult Function(_TwoFieldsFormSecondFieldSubmitted value)
         secondFieldSubmitted,
     required TResult Function(_TwoFieldsFormEnableAlwaysValidation value)
+        enableAlwaysValidation,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_TwoFieldsFormStarted value)? started,
+    TResult Function(_TwoFieldsFormUnfocusAllNodes value)? unfocusAllNodes,
+    TResult Function(_TwoFieldsFormFirstFieldValueChanged value)?
+        firstFieldValueChanged,
+    TResult Function(_TwoFieldsFormSecondFieldValueChanged value)?
+        secondFieldValueChanged,
+    TResult Function(_TwoFieldsFormFirstFieldSubmitted value)?
+        firstFieldSubmitted,
+    TResult Function(_TwoFieldsFormSecondFieldSubmitted value)?
+        secondFieldSubmitted,
+    TResult Function(_TwoFieldsFormEnableAlwaysValidation value)?
         enableAlwaysValidation,
   }) =>
       throw _privateConstructorUsedError;
@@ -163,7 +191,8 @@ class _$_TwoFieldsFormStarted implements _TwoFieldsFormStarted {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _TwoFieldsFormStarted);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _TwoFieldsFormStarted);
   }
 
   @override
@@ -181,6 +210,20 @@ class _$_TwoFieldsFormStarted implements _TwoFieldsFormStarted {
     required TResult Function() enableAlwaysValidation,
   }) {
     return started();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? unfocusAllNodes,
+    TResult Function(String input)? firstFieldValueChanged,
+    TResult Function(String input)? secondFieldValueChanged,
+    TResult Function()? firstFieldSubmitted,
+    TResult Function()? secondFieldSubmitted,
+    TResult Function()? enableAlwaysValidation,
+  }) {
+    return started?.call();
   }
 
   @override
@@ -219,6 +262,25 @@ class _$_TwoFieldsFormStarted implements _TwoFieldsFormStarted {
         enableAlwaysValidation,
   }) {
     return started(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_TwoFieldsFormStarted value)? started,
+    TResult Function(_TwoFieldsFormUnfocusAllNodes value)? unfocusAllNodes,
+    TResult Function(_TwoFieldsFormFirstFieldValueChanged value)?
+        firstFieldValueChanged,
+    TResult Function(_TwoFieldsFormSecondFieldValueChanged value)?
+        secondFieldValueChanged,
+    TResult Function(_TwoFieldsFormFirstFieldSubmitted value)?
+        firstFieldSubmitted,
+    TResult Function(_TwoFieldsFormSecondFieldSubmitted value)?
+        secondFieldSubmitted,
+    TResult Function(_TwoFieldsFormEnableAlwaysValidation value)?
+        enableAlwaysValidation,
+  }) {
+    return started?.call(this);
   }
 
   @override
@@ -283,7 +345,9 @@ class _$_TwoFieldsFormUnfocusAllNodes implements _TwoFieldsFormUnfocusAllNodes {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _TwoFieldsFormUnfocusAllNodes);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _TwoFieldsFormUnfocusAllNodes);
   }
 
   @override
@@ -301,6 +365,20 @@ class _$_TwoFieldsFormUnfocusAllNodes implements _TwoFieldsFormUnfocusAllNodes {
     required TResult Function() enableAlwaysValidation,
   }) {
     return unfocusAllNodes();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? unfocusAllNodes,
+    TResult Function(String input)? firstFieldValueChanged,
+    TResult Function(String input)? secondFieldValueChanged,
+    TResult Function()? firstFieldSubmitted,
+    TResult Function()? secondFieldSubmitted,
+    TResult Function()? enableAlwaysValidation,
+  }) {
+    return unfocusAllNodes?.call();
   }
 
   @override
@@ -339,6 +417,25 @@ class _$_TwoFieldsFormUnfocusAllNodes implements _TwoFieldsFormUnfocusAllNodes {
         enableAlwaysValidation,
   }) {
     return unfocusAllNodes(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_TwoFieldsFormStarted value)? started,
+    TResult Function(_TwoFieldsFormUnfocusAllNodes value)? unfocusAllNodes,
+    TResult Function(_TwoFieldsFormFirstFieldValueChanged value)?
+        firstFieldValueChanged,
+    TResult Function(_TwoFieldsFormSecondFieldValueChanged value)?
+        secondFieldValueChanged,
+    TResult Function(_TwoFieldsFormFirstFieldSubmitted value)?
+        firstFieldSubmitted,
+    TResult Function(_TwoFieldsFormSecondFieldSubmitted value)?
+        secondFieldSubmitted,
+    TResult Function(_TwoFieldsFormEnableAlwaysValidation value)?
+        enableAlwaysValidation,
+  }) {
+    return unfocusAllNodes?.call(this);
   }
 
   @override
@@ -422,14 +519,13 @@ class _$_TwoFieldsFormFirstFieldValueChanged
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _TwoFieldsFormFirstFieldValueChanged &&
-            (identical(other.input, input) ||
-                const DeepCollectionEquality().equals(other.input, input)));
+        (other.runtimeType == runtimeType &&
+            other is _TwoFieldsFormFirstFieldValueChanged &&
+            (identical(other.input, input) || other.input == input));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(input);
+  int get hashCode => Object.hash(runtimeType, input);
 
   @JsonKey(ignore: true)
   @override
@@ -450,6 +546,20 @@ class _$_TwoFieldsFormFirstFieldValueChanged
     required TResult Function() enableAlwaysValidation,
   }) {
     return firstFieldValueChanged(input);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? unfocusAllNodes,
+    TResult Function(String input)? firstFieldValueChanged,
+    TResult Function(String input)? secondFieldValueChanged,
+    TResult Function()? firstFieldSubmitted,
+    TResult Function()? secondFieldSubmitted,
+    TResult Function()? enableAlwaysValidation,
+  }) {
+    return firstFieldValueChanged?.call(input);
   }
 
   @override
@@ -492,6 +602,25 @@ class _$_TwoFieldsFormFirstFieldValueChanged
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_TwoFieldsFormStarted value)? started,
+    TResult Function(_TwoFieldsFormUnfocusAllNodes value)? unfocusAllNodes,
+    TResult Function(_TwoFieldsFormFirstFieldValueChanged value)?
+        firstFieldValueChanged,
+    TResult Function(_TwoFieldsFormSecondFieldValueChanged value)?
+        secondFieldValueChanged,
+    TResult Function(_TwoFieldsFormFirstFieldSubmitted value)?
+        firstFieldSubmitted,
+    TResult Function(_TwoFieldsFormSecondFieldSubmitted value)?
+        secondFieldSubmitted,
+    TResult Function(_TwoFieldsFormEnableAlwaysValidation value)?
+        enableAlwaysValidation,
+  }) {
+    return firstFieldValueChanged?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_TwoFieldsFormStarted value)? started,
     TResult Function(_TwoFieldsFormUnfocusAllNodes value)? unfocusAllNodes,
@@ -519,7 +648,7 @@ abstract class _TwoFieldsFormFirstFieldValueChanged
   const factory _TwoFieldsFormFirstFieldValueChanged({required String input}) =
       _$_TwoFieldsFormFirstFieldValueChanged;
 
-  String get input => throw _privateConstructorUsedError;
+  String get input;
   @JsonKey(ignore: true)
   _$TwoFieldsFormFirstFieldValueChangedCopyWith<
           _TwoFieldsFormFirstFieldValueChanged>
@@ -578,14 +707,13 @@ class _$_TwoFieldsFormSecondFieldValueChanged
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _TwoFieldsFormSecondFieldValueChanged &&
-            (identical(other.input, input) ||
-                const DeepCollectionEquality().equals(other.input, input)));
+        (other.runtimeType == runtimeType &&
+            other is _TwoFieldsFormSecondFieldValueChanged &&
+            (identical(other.input, input) || other.input == input));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(input);
+  int get hashCode => Object.hash(runtimeType, input);
 
   @JsonKey(ignore: true)
   @override
@@ -606,6 +734,20 @@ class _$_TwoFieldsFormSecondFieldValueChanged
     required TResult Function() enableAlwaysValidation,
   }) {
     return secondFieldValueChanged(input);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? unfocusAllNodes,
+    TResult Function(String input)? firstFieldValueChanged,
+    TResult Function(String input)? secondFieldValueChanged,
+    TResult Function()? firstFieldSubmitted,
+    TResult Function()? secondFieldSubmitted,
+    TResult Function()? enableAlwaysValidation,
+  }) {
+    return secondFieldValueChanged?.call(input);
   }
 
   @override
@@ -648,6 +790,25 @@ class _$_TwoFieldsFormSecondFieldValueChanged
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_TwoFieldsFormStarted value)? started,
+    TResult Function(_TwoFieldsFormUnfocusAllNodes value)? unfocusAllNodes,
+    TResult Function(_TwoFieldsFormFirstFieldValueChanged value)?
+        firstFieldValueChanged,
+    TResult Function(_TwoFieldsFormSecondFieldValueChanged value)?
+        secondFieldValueChanged,
+    TResult Function(_TwoFieldsFormFirstFieldSubmitted value)?
+        firstFieldSubmitted,
+    TResult Function(_TwoFieldsFormSecondFieldSubmitted value)?
+        secondFieldSubmitted,
+    TResult Function(_TwoFieldsFormEnableAlwaysValidation value)?
+        enableAlwaysValidation,
+  }) {
+    return secondFieldValueChanged?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_TwoFieldsFormStarted value)? started,
     TResult Function(_TwoFieldsFormUnfocusAllNodes value)? unfocusAllNodes,
@@ -675,7 +836,7 @@ abstract class _TwoFieldsFormSecondFieldValueChanged
   const factory _TwoFieldsFormSecondFieldValueChanged({required String input}) =
       _$_TwoFieldsFormSecondFieldValueChanged;
 
-  String get input => throw _privateConstructorUsedError;
+  String get input;
   @JsonKey(ignore: true)
   _$TwoFieldsFormSecondFieldValueChangedCopyWith<
           _TwoFieldsFormSecondFieldValueChanged>
@@ -718,7 +879,8 @@ class _$_TwoFieldsFormFirstFieldSubmitted
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _TwoFieldsFormFirstFieldSubmitted);
+        (other.runtimeType == runtimeType &&
+            other is _TwoFieldsFormFirstFieldSubmitted);
   }
 
   @override
@@ -736,6 +898,20 @@ class _$_TwoFieldsFormFirstFieldSubmitted
     required TResult Function() enableAlwaysValidation,
   }) {
     return firstFieldSubmitted();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? unfocusAllNodes,
+    TResult Function(String input)? firstFieldValueChanged,
+    TResult Function(String input)? secondFieldValueChanged,
+    TResult Function()? firstFieldSubmitted,
+    TResult Function()? secondFieldSubmitted,
+    TResult Function()? enableAlwaysValidation,
+  }) {
+    return firstFieldSubmitted?.call();
   }
 
   @override
@@ -774,6 +950,25 @@ class _$_TwoFieldsFormFirstFieldSubmitted
         enableAlwaysValidation,
   }) {
     return firstFieldSubmitted(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_TwoFieldsFormStarted value)? started,
+    TResult Function(_TwoFieldsFormUnfocusAllNodes value)? unfocusAllNodes,
+    TResult Function(_TwoFieldsFormFirstFieldValueChanged value)?
+        firstFieldValueChanged,
+    TResult Function(_TwoFieldsFormSecondFieldValueChanged value)?
+        secondFieldValueChanged,
+    TResult Function(_TwoFieldsFormFirstFieldSubmitted value)?
+        firstFieldSubmitted,
+    TResult Function(_TwoFieldsFormSecondFieldSubmitted value)?
+        secondFieldSubmitted,
+    TResult Function(_TwoFieldsFormEnableAlwaysValidation value)?
+        enableAlwaysValidation,
+  }) {
+    return firstFieldSubmitted?.call(this);
   }
 
   @override
@@ -841,7 +1036,8 @@ class _$_TwoFieldsFormSecondFieldSubmitted
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _TwoFieldsFormSecondFieldSubmitted);
+        (other.runtimeType == runtimeType &&
+            other is _TwoFieldsFormSecondFieldSubmitted);
   }
 
   @override
@@ -859,6 +1055,20 @@ class _$_TwoFieldsFormSecondFieldSubmitted
     required TResult Function() enableAlwaysValidation,
   }) {
     return secondFieldSubmitted();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? unfocusAllNodes,
+    TResult Function(String input)? firstFieldValueChanged,
+    TResult Function(String input)? secondFieldValueChanged,
+    TResult Function()? firstFieldSubmitted,
+    TResult Function()? secondFieldSubmitted,
+    TResult Function()? enableAlwaysValidation,
+  }) {
+    return secondFieldSubmitted?.call();
   }
 
   @override
@@ -897,6 +1107,25 @@ class _$_TwoFieldsFormSecondFieldSubmitted
         enableAlwaysValidation,
   }) {
     return secondFieldSubmitted(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_TwoFieldsFormStarted value)? started,
+    TResult Function(_TwoFieldsFormUnfocusAllNodes value)? unfocusAllNodes,
+    TResult Function(_TwoFieldsFormFirstFieldValueChanged value)?
+        firstFieldValueChanged,
+    TResult Function(_TwoFieldsFormSecondFieldValueChanged value)?
+        secondFieldValueChanged,
+    TResult Function(_TwoFieldsFormFirstFieldSubmitted value)?
+        firstFieldSubmitted,
+    TResult Function(_TwoFieldsFormSecondFieldSubmitted value)?
+        secondFieldSubmitted,
+    TResult Function(_TwoFieldsFormEnableAlwaysValidation value)?
+        enableAlwaysValidation,
+  }) {
+    return secondFieldSubmitted?.call(this);
   }
 
   @override
@@ -965,7 +1194,8 @@ class _$_TwoFieldsFormEnableAlwaysValidation
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _TwoFieldsFormEnableAlwaysValidation);
+        (other.runtimeType == runtimeType &&
+            other is _TwoFieldsFormEnableAlwaysValidation);
   }
 
   @override
@@ -983,6 +1213,20 @@ class _$_TwoFieldsFormEnableAlwaysValidation
     required TResult Function() enableAlwaysValidation,
   }) {
     return enableAlwaysValidation();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? unfocusAllNodes,
+    TResult Function(String input)? firstFieldValueChanged,
+    TResult Function(String input)? secondFieldValueChanged,
+    TResult Function()? firstFieldSubmitted,
+    TResult Function()? secondFieldSubmitted,
+    TResult Function()? enableAlwaysValidation,
+  }) {
+    return enableAlwaysValidation?.call();
   }
 
   @override
@@ -1021,6 +1265,25 @@ class _$_TwoFieldsFormEnableAlwaysValidation
         enableAlwaysValidation,
   }) {
     return enableAlwaysValidation(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_TwoFieldsFormStarted value)? started,
+    TResult Function(_TwoFieldsFormUnfocusAllNodes value)? unfocusAllNodes,
+    TResult Function(_TwoFieldsFormFirstFieldValueChanged value)?
+        firstFieldValueChanged,
+    TResult Function(_TwoFieldsFormSecondFieldValueChanged value)?
+        secondFieldValueChanged,
+    TResult Function(_TwoFieldsFormFirstFieldSubmitted value)?
+        firstFieldSubmitted,
+    TResult Function(_TwoFieldsFormSecondFieldSubmitted value)?
+        secondFieldSubmitted,
+    TResult Function(_TwoFieldsFormEnableAlwaysValidation value)?
+        enableAlwaysValidation,
+  }) {
+    return enableAlwaysValidation?.call(this);
   }
 
   @override
@@ -1086,6 +1349,12 @@ mixin _$TwoFieldsFormState {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(TwoFieldsFormProperties props)? initial,
+    TResult Function(TwoFieldsFormProperties props)? formValidationSuccess,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(TwoFieldsFormProperties props)? initial,
     TResult Function(TwoFieldsFormProperties props)? formValidationSuccess,
@@ -1097,6 +1366,12 @@ mixin _$TwoFieldsFormState {
     required TResult Function(_FormInitial value) initial,
     required TResult Function(_FormValidationSuccess value)
         formValidationSuccess,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_FormInitial value)? initial,
+    TResult Function(_FormValidationSuccess value)? formValidationSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -1204,14 +1479,13 @@ class _$_FormInitial implements _FormInitial {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _FormInitial &&
-            (identical(other.props, props) ||
-                const DeepCollectionEquality().equals(other.props, props)));
+        (other.runtimeType == runtimeType &&
+            other is _FormInitial &&
+            (identical(other.props, props) || other.props == props));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(props);
+  int get hashCode => Object.hash(runtimeType, props);
 
   @JsonKey(ignore: true)
   @override
@@ -1226,6 +1500,15 @@ class _$_FormInitial implements _FormInitial {
         formValidationSuccess,
   }) {
     return initial(props);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(TwoFieldsFormProperties props)? initial,
+    TResult Function(TwoFieldsFormProperties props)? formValidationSuccess,
+  }) {
+    return initial?.call(props);
   }
 
   @override
@@ -1253,6 +1536,15 @@ class _$_FormInitial implements _FormInitial {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_FormInitial value)? initial,
+    TResult Function(_FormValidationSuccess value)? formValidationSuccess,
+  }) {
+    return initial?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_FormInitial value)? initial,
     TResult Function(_FormValidationSuccess value)? formValidationSuccess,
@@ -1270,7 +1562,7 @@ abstract class _FormInitial implements TwoFieldsFormState {
       _$_FormInitial;
 
   @override
-  TwoFieldsFormProperties get props => throw _privateConstructorUsedError;
+  TwoFieldsFormProperties get props;
   @override
   @JsonKey(ignore: true)
   _$FormInitialCopyWith<_FormInitial> get copyWith =>
@@ -1330,14 +1622,13 @@ class _$_FormValidationSuccess implements _FormValidationSuccess {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _FormValidationSuccess &&
-            (identical(other.props, props) ||
-                const DeepCollectionEquality().equals(other.props, props)));
+        (other.runtimeType == runtimeType &&
+            other is _FormValidationSuccess &&
+            (identical(other.props, props) || other.props == props));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(props);
+  int get hashCode => Object.hash(runtimeType, props);
 
   @JsonKey(ignore: true)
   @override
@@ -1353,6 +1644,15 @@ class _$_FormValidationSuccess implements _FormValidationSuccess {
         formValidationSuccess,
   }) {
     return formValidationSuccess(props);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(TwoFieldsFormProperties props)? initial,
+    TResult Function(TwoFieldsFormProperties props)? formValidationSuccess,
+  }) {
+    return formValidationSuccess?.call(props);
   }
 
   @override
@@ -1380,6 +1680,15 @@ class _$_FormValidationSuccess implements _FormValidationSuccess {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_FormInitial value)? initial,
+    TResult Function(_FormValidationSuccess value)? formValidationSuccess,
+  }) {
+    return formValidationSuccess?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_FormInitial value)? initial,
     TResult Function(_FormValidationSuccess value)? formValidationSuccess,
@@ -1397,7 +1706,7 @@ abstract class _FormValidationSuccess implements TwoFieldsFormState {
       {required TwoFieldsFormProperties props}) = _$_FormValidationSuccess;
 
   @override
-  TwoFieldsFormProperties get props => throw _privateConstructorUsedError;
+  TwoFieldsFormProperties get props;
   @override
   @JsonKey(ignore: true)
   _$FormValidationSuccessCopyWith<_FormValidationSuccess> get copyWith =>
@@ -1622,43 +1931,37 @@ class _$_TwoFieldsFormProperties implements _TwoFieldsFormProperties {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _TwoFieldsFormProperties &&
+        (other.runtimeType == runtimeType &&
+            other is _TwoFieldsFormProperties &&
             (identical(other.autovalidateModeFirstField,
                     autovalidateModeFirstField) ||
-                const DeepCollectionEquality().equals(
-                    other.autovalidateModeFirstField,
-                    autovalidateModeFirstField)) &&
+                other.autovalidateModeFirstField ==
+                    autovalidateModeFirstField) &&
             (identical(other.autovalidateModeSecondField,
                     autovalidateModeSecondField) ||
-                const DeepCollectionEquality().equals(
-                    other.autovalidateModeSecondField,
-                    autovalidateModeSecondField)) &&
+                other.autovalidateModeSecondField ==
+                    autovalidateModeSecondField) &&
             (identical(other.firstFieldFocusNode, firstFieldFocusNode) ||
-                const DeepCollectionEquality()
-                    .equals(other.firstFieldFocusNode, firstFieldFocusNode)) &&
+                other.firstFieldFocusNode == firstFieldFocusNode) &&
             (identical(other.secondFieldFocusNode, secondFieldFocusNode) ||
-                const DeepCollectionEquality().equals(
-                    other.secondFieldFocusNode, secondFieldFocusNode)) &&
+                other.secondFieldFocusNode == secondFieldFocusNode) &&
             (identical(other.firstFieldValue, firstFieldValue) ||
-                const DeepCollectionEquality()
-                    .equals(other.firstFieldValue, firstFieldValue)) &&
+                other.firstFieldValue == firstFieldValue) &&
             (identical(other.secondFieldValue, secondFieldValue) ||
-                const DeepCollectionEquality()
-                    .equals(other.secondFieldValue, secondFieldValue)) &&
-            (identical(other.formKey, formKey) ||
-                const DeepCollectionEquality().equals(other.formKey, formKey)));
+                other.secondFieldValue == secondFieldValue) &&
+            (identical(other.formKey, formKey) || other.formKey == formKey));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(autovalidateModeFirstField) ^
-      const DeepCollectionEquality().hash(autovalidateModeSecondField) ^
-      const DeepCollectionEquality().hash(firstFieldFocusNode) ^
-      const DeepCollectionEquality().hash(secondFieldFocusNode) ^
-      const DeepCollectionEquality().hash(firstFieldValue) ^
-      const DeepCollectionEquality().hash(secondFieldValue) ^
-      const DeepCollectionEquality().hash(formKey);
+  int get hashCode => Object.hash(
+      runtimeType,
+      autovalidateModeFirstField,
+      autovalidateModeSecondField,
+      firstFieldFocusNode,
+      secondFieldFocusNode,
+      firstFieldValue,
+      secondFieldValue,
+      formKey);
 
   @JsonKey(ignore: true)
   @override
@@ -1678,21 +1981,19 @@ abstract class _TwoFieldsFormProperties implements TwoFieldsFormProperties {
       required GlobalKey<FormState> formKey}) = _$_TwoFieldsFormProperties;
 
   @override
-  AutovalidateMode get autovalidateModeFirstField =>
-      throw _privateConstructorUsedError;
+  AutovalidateMode get autovalidateModeFirstField;
   @override
-  AutovalidateMode get autovalidateModeSecondField =>
-      throw _privateConstructorUsedError;
+  AutovalidateMode get autovalidateModeSecondField;
   @override
-  FocusNode get firstFieldFocusNode => throw _privateConstructorUsedError;
+  FocusNode get firstFieldFocusNode;
   @override
-  FocusNode get secondFieldFocusNode => throw _privateConstructorUsedError;
+  FocusNode get secondFieldFocusNode;
   @override
-  String? get firstFieldValue => throw _privateConstructorUsedError;
+  String? get firstFieldValue;
   @override
-  String? get secondFieldValue => throw _privateConstructorUsedError;
+  String? get secondFieldValue;
   @override
-  GlobalKey<FormState> get formKey => throw _privateConstructorUsedError;
+  GlobalKey<FormState> get formKey;
   @override
   @JsonKey(ignore: true)
   _$TwoFieldsFormPropertiesCopyWith<_TwoFieldsFormProperties> get copyWith =>

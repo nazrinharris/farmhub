@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:farmhub/core/auth/domain/entities/farmhub_user/farmhub_user.dart';
 import 'package:farmhub/core/constants/app_const.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fpdart/fpdart.dart';
 import 'package:intl/intl.dart';
 import 'package:clock/clock.dart';
 
@@ -20,6 +21,8 @@ abstract class IAuthRemoteDataSource {
   Future<FarmhubUser> loginWithGoogleAccount();
 
   Future<FarmhubUser> registerWithGoogleAccount();
+
+  Future<Unit> signOut();
 }
 
 class AuthRemoteDataSource implements IAuthRemoteDataSource {
@@ -109,5 +112,11 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
   Future<FarmhubUser> registerWithGoogleAccount() {
     // TODO: implement registerWithGoogleAccount
     throw UnimplementedError();
+  }
+
+  @override
+  Future<Unit> signOut() async {
+    await firebaseAuth.signOut();
+    return unit;
   }
 }

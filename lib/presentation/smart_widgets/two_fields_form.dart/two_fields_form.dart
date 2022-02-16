@@ -1,5 +1,39 @@
 part of 'two_fields_form_bloc.dart';
 
+/// Guide on using [TwoFieldsForm]
+///
+/// [TwoFieldsForm] is a widget which has two fields, as it name implies.
+///
+/// Using this form requires the supply of either [FirstTwoFieldsFormBloc]
+/// or [SecondTwoFieldsFormBloc], or both.
+///
+///
+/// Below are the events which can be called, other events should not be touched.
+///
+/// [TwoFieldsFormEvent.unfocusAllNodes]
+/// Which unfocuses both of the text fields.
+///
+/// [TwoFieldsFormEvent.firstFieldValueChanged] and
+/// [TwoFieldsFormEvent.secondFieldValueChanged],
+/// This event is called each time the user changes something in the respective fields
+///
+/// [TwoFieldsFormEvent.enableAlwaysValidation]
+/// Used to enable validation of both fields.
+///
+///
+/// To access the fields, you must have an instance of the respective blocs in the
+/// current [context].
+///
+/// The fields are accessed through the [props] property which is accesible in the [state].
+/// For example:
+///
+/// state.props.firstFieldValue
+///
+/// Some of the values that may be of use is:
+///
+/// [firstFieldFocusNode] & [secondFieldFocusNode]
+/// [firstFieldValue] & [secondFieldValue]
+/// [formKey]
 class TwoFieldsForm<T extends Bloc<TwoFieldsFormEvent, TwoFieldsFormState>>
     extends StatelessWidget {
   final String firstFieldLabel;
@@ -108,7 +142,7 @@ class _TextFieldLabelText extends StatelessWidget {
       alignment: Alignment.centerLeft,
       child: Text(
         labelText,
-        style: Theme.of(context).textTheme.headline3,
+        style: Theme.of(context).textTheme.bodyText1,
       ),
     );
   }

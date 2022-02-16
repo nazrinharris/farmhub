@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 enum FarmhubThemeVariants {
   light,
@@ -11,12 +12,13 @@ enum FarmhubThemeVariants {
 ColorScheme _farmhubColorSchemeLight = const ColorScheme(
   primary: Color(0xff343A1A),
   primaryVariant: Color(0xff808E60),
+  onPrimary: Color(0xffF2FFF6),
   secondary: Color(0xffC5FFD7),
   secondaryVariant: Color(0xff5EF38C),
   surface: Colors.transparent,
   background: Color(0xffF2FFF6),
   error: Color(0xffE15C5C),
-  onPrimary: Colors.transparent,
+  onErrorContainer: Color(0xffF2FFF6),
   onSecondary: Colors.transparent,
   onSurface: Colors.transparent,
   onBackground: Colors.transparent,
@@ -24,30 +26,39 @@ ColorScheme _farmhubColorSchemeLight = const ColorScheme(
   brightness: Brightness.light,
 );
 
-TextTheme _farmhubTextThemeLight = const TextTheme(
+ColorScheme _lightFarmhubColorScheme =
+    ColorScheme.fromSeed(seedColor: const Color(0xff343A1A));
+
+TextTheme _farmhubTextThemeLight = TextTheme(
   headline1: TextStyle(
-    fontSize: 28,
+    fontSize: 28.sp,
     fontFamily: 'Montserrat',
+    color: _farmhubColorSchemeLight.primary,
     fontWeight: FontWeight.w800,
   ),
   headline2: TextStyle(
-    fontSize: 28,
+    fontSize: 28.sp,
     fontFamily: 'Montserrat',
+    color: _farmhubColorSchemeLight.primaryVariant,
     fontWeight: FontWeight.w800,
   ),
   headline3: TextStyle(
     fontSize: 23,
     fontFamily: 'Montserrat',
+    // TODO: Temporary Solution
+    color: _farmhubColorSchemeLight.primaryVariant.withOpacity(0.65),
     fontWeight: FontWeight.w800,
   ),
   headline4: TextStyle(
     fontSize: 20,
     fontFamily: 'Montserrat',
+    color: _farmhubColorSchemeLight.primary,
     fontWeight: FontWeight.w800,
   ),
   bodyText1: TextStyle(
     fontSize: 14,
     fontFamily: 'Montserrat',
+    color: _farmhubColorSchemeLight.primary,
     fontWeight: FontWeight.w600,
   ),
 );
@@ -84,7 +95,7 @@ InputDecoration kInputDecoration({
   return InputDecoration(
       focusColor: Theme.of(context).focusColor,
       labelText: labelText,
-      labelStyle: Theme.of(context).textTheme.bodyText1,
+      //labelStyle: Theme.of(context).textTheme.bodyText1,
       hintText: hintText,
       // TODO: Update to use a proper TextTheme [Caption]
       hintStyle: Theme.of(context)
@@ -92,10 +103,11 @@ InputDecoration kInputDecoration({
           .bodyText1!
           .copyWith(color: Colors.black.withOpacity(0.2)),
       enabledBorder: UnderlineInputBorder(
-        borderSide:
-            BorderSide(color: Theme.of(context).accentColor.withOpacity(0.5)),
+        borderSide: BorderSide(
+            color: Theme.of(context).colorScheme.primary.withOpacity(0.5)),
       ),
       focusedBorder: UnderlineInputBorder(
-        borderSide: BorderSide(width: 2, color: Theme.of(context).primaryColor),
+        borderSide:
+            BorderSide(width: 2, color: Theme.of(context).colorScheme.primary),
       ));
 }

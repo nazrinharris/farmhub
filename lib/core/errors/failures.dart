@@ -15,6 +15,17 @@ abstract class Failure extends Equatable {
   }
 }
 
+//TODO: Change to [require] code and message. Unknown should be handled at data/repo level.
+class UnexpectedFailure extends Failure {
+  const UnexpectedFailure({
+    String? code,
+    String? message,
+  }) : super(
+          code: code ?? 'UNKNOWN CODE',
+          message: message ?? 'Unknown message for this failure',
+        );
+}
+
 //! Firebase Suite Failures
 class FirebaseAuthFailure extends Failure {
   const FirebaseAuthFailure({
