@@ -1,24 +1,13 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_declarations
 
-import 'package:farmhub/core/auth/data/datasources/auth_local_datasource.dart';
-import 'package:farmhub/core/auth/data/datasources/auth_remote_datasource.dart';
 import 'package:farmhub/core/auth/data/repository/auth_repository.dart';
-import 'package:farmhub/core/auth/domain/entities/farmhub_user/farmhub_user.dart';
-import 'package:farmhub/core/network/network_info.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:mocktail/mocktail.dart';
 
 import '../../../../presets/entities_presets.dart';
 import '../../../../presets/failures_exceptions_presets.dart';
-
-class MockAuthRemoteDataSource extends Mock implements IAuthRemoteDataSource {}
-
-class MockAuthLocalDataSource extends Mock implements IAuthLocalDataSource {}
-
-class MockNetworkInfo extends Mock implements INetworkInfo {}
-
-class FakeFarmhubUser extends Fake implements FarmhubUser {}
+import '../../../../presets/mockings.dart';
 
 void main() {
   late AuthRepository authRepository;
@@ -37,8 +26,7 @@ void main() {
     );
     registerFallbackValue(FakeFarmhubUser());
 
-    when(() => mockAuthLocalDataSource.storeFarmhubUser(any()))
-        .thenAnswer((_) async => unit);
+    when(() => mockAuthLocalDataSource.storeFarmhubUser(any())).thenAnswer((_) async => unit);
   });
 
   group('AuthRepository', () {
@@ -104,8 +92,7 @@ void main() {
               password: tPassword,
             );
             // assert
-            verify(
-                () => mockAuthLocalDataSource.storeFarmhubUser(tFarmhubUser));
+            verify(() => mockAuthLocalDataSource.storeFarmhubUser(tFarmhubUser));
           },
         );
 
@@ -130,8 +117,7 @@ void main() {
 
       group('[offline]', () {
         setUp(() {
-          when(() => mockNetworkInfo.isConnected)
-              .thenAnswer((_) async => false);
+          when(() => mockNetworkInfo.isConnected).thenAnswer((_) async => false);
         });
 
         test(
@@ -171,8 +157,7 @@ void main() {
 
       group('[offline]', () {
         setUp(() {
-          when(() => mockNetworkInfo.isConnected)
-              .thenAnswer((_) async => false);
+          when(() => mockNetworkInfo.isConnected).thenAnswer((_) async => false);
         });
       });
     });
@@ -187,8 +172,7 @@ void main() {
           'should check if device is online',
           () async {
             // arrange
-            when(() => mockNetworkInfo.isConnected)
-                .thenAnswer((_) async => true);
+            when(() => mockNetworkInfo.isConnected).thenAnswer((_) async => true);
             when(() => mockAuthRemoteDataSource.registerWithEmailAndPassword(
                   email: any(named: 'email'),
                   password: any(named: 'password'),
@@ -241,8 +225,7 @@ void main() {
               username: tUsername,
             );
             // assert
-            verify(
-                () => mockAuthLocalDataSource.storeFarmhubUser(tFarmhubUser));
+            verify(() => mockAuthLocalDataSource.storeFarmhubUser(tFarmhubUser));
           },
         );
 
@@ -269,8 +252,7 @@ void main() {
 
       group('[offline]', () {
         setUp(() {
-          when(() => mockNetworkInfo.isConnected)
-              .thenAnswer((_) async => false);
+          when(() => mockNetworkInfo.isConnected).thenAnswer((_) async => false);
         });
 
         test(
@@ -310,8 +292,7 @@ void main() {
 
       group('[offline]', () {
         setUp(() {
-          when(() => mockNetworkInfo.isConnected)
-              .thenAnswer((_) async => false);
+          when(() => mockNetworkInfo.isConnected).thenAnswer((_) async => false);
         });
       });
     });

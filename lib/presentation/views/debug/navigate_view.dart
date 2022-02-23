@@ -24,10 +24,7 @@ class NavigateView extends StatelessWidget {
               width: 200,
               child: Text(
                 'To Login',
-                style: Theme.of(context)
-                    .textTheme
-                    .bodyText1!
-                    .copyWith(color: Colors.white),
+                style: Theme.of(context).textTheme.bodyText1!.copyWith(color: Colors.white),
               ),
             ),
             const UIVerticalSpace14(),
@@ -38,10 +35,7 @@ class NavigateView extends StatelessWidget {
               width: 200,
               child: Text(
                 'To Register',
-                style: Theme.of(context)
-                    .textTheme
-                    .bodyText1!
-                    .copyWith(color: Colors.white),
+                style: Theme.of(context).textTheme.bodyText1!.copyWith(color: Colors.white),
               ),
             ),
             const UIVerticalSpace14(),
@@ -52,10 +46,7 @@ class NavigateView extends StatelessWidget {
               width: 200,
               child: Text(
                 'To Start',
-                style: Theme.of(context)
-                    .textTheme
-                    .bodyText1!
-                    .copyWith(color: Colors.white),
+                style: Theme.of(context).textTheme.bodyText1!.copyWith(color: Colors.white),
               ),
             ),
             const UIVerticalSpace14(),
@@ -67,10 +58,19 @@ class NavigateView extends StatelessWidget {
               width: 200,
               child: Text(
                 'To Main',
-                style: Theme.of(context)
-                    .textTheme
-                    .bodyText1!
-                    .copyWith(color: Colors.white),
+                style: Theme.of(context).textTheme.bodyText1!.copyWith(color: Colors.white),
+              ),
+            ),
+            const UIVerticalSpace14(),
+            PrimaryButton(
+              onPressed: () {
+                Navigator.of(context).pushNamed('/playground');
+              },
+              backgroundColor: Color.fromARGB(255, 137, 97, 205),
+              width: 200,
+              child: Text(
+                'To Playground',
+                style: Theme.of(context).textTheme.bodyText1!.copyWith(color: Colors.white),
               ),
             ),
             const UIVerticalSpace14(),
@@ -82,10 +82,7 @@ class NavigateView extends StatelessWidget {
               width: 200,
               child: Text(
                 'Sign Out',
-                style: Theme.of(context)
-                    .textTheme
-                    .bodyText1!
-                    .copyWith(color: Colors.white),
+                style: Theme.of(context).textTheme.bodyText1!.copyWith(color: Colors.white),
               ),
             ),
             const UIVerticalSpace14(),

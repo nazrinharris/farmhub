@@ -13,23 +13,7 @@ import 'package:mocktail/mocktail.dart';
 
 import '../../../../presets/entities_presets.dart';
 import '../../../../presets/failures_exceptions_presets.dart';
-
-class MockFirebaseFirestore extends Mock implements FirebaseFirestore {}
-
-class MockCollectionReference extends Mock
-    implements CollectionReference<Map<String, dynamic>> {}
-
-class MockDocumentReference extends Mock
-    implements DocumentReference<Map<String, dynamic>> {}
-
-class MockDocumentSnapshot extends Mock
-    implements DocumentSnapshot<Map<String, dynamic>> {}
-
-class MockFirebaseAuth extends Mock implements FirebaseAuth {}
-
-class MockUserCredential extends Mock implements UserCredential {}
-
-class MockUser extends Mock implements User {}
+import '../../../../presets/mockings.dart';
 
 void main() {
   late AuthRemoteDataSource authRemoteDataSource;

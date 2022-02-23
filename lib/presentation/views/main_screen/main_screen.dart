@@ -1,3 +1,5 @@
+import 'package:farmhub/features/produce_manager/bloc/produce_manager_bloc.dart';
+import 'package:farmhub/presentation/shared_widgets/buttons.dart';
 import 'package:farmhub/presentation/shared_widgets/scroll_physics.dart';
 import 'package:farmhub/presentation/shared_widgets/texts.dart';
 import 'package:farmhub/presentation/shared_widgets/ui_helpers.dart';
@@ -8,49 +10,86 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:material_floating_search_bar/material_floating_search_bar.dart';
 import 'package:simple_animations/simple_animations.dart';
 
-class MainScreen extends StatelessWidget {
+import '../../../locator.dart';
+
+class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
+
+  @override
+  State<MainScreen> createState() => _MainScreenState();
+}
+
+class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateMixin {
+  late AnimationController mainHeaderController;
+
+  @override
+  void initState() {
+    mainHeaderController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 500),
+      reverseDuration: const Duration(milliseconds: 500),
+    );
+
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return MainScreenProviders(
+      mainHeaderController: mainHeaderController,
       child: Builder(
-        builder: (context) => Scaffold(
-          body: SafeArea(
-            bottom: false,
-            child: CustomScrollView(
-              physics: DefaultScrollPhysics,
-              slivers: [
-                CupertinoSliverRefreshControl(
-                  onRefresh: () async {},
+        builder: (context) => BlocBuilder<MainScreenBloc, MainScreenState>(
+          builder: (context, state) {
+            return Scaffold(
+              body: SafeArea(
+                bottom: false,
+                child: CustomScrollView(
+                  physics: DefaultScrollPhysics,
+                  slivers: [
+                    CupertinoSliverRefreshControl(
+                      onRefresh: () async {},
+                    ),
+                    SliverPersistentHeader(
+                      floating: true,
+                      delegate: MainScreenHeaderDelegate(maxExtent: 160, minExtent: 60),
+                    ),
+                    SliverProduceList(),
+                    const SliverWhiteSpace(900),
+                  ],
                 ),
-                SliverPersistentHeader(
-                  floating: true,
-                  delegate:
-                      MainScreenHeaderDelegate(maxExtent: 160, minExtent: 160),
-                ),
-                const SliverWhiteSpace(900),
-              ],
-            ),
-          ),
+              ),
+            );
+          },
         ),
       ),
     );
   }
 }
 
-class ProducePriceSliverBuilder extends StatefulWidget {
-  const ProducePriceSliverBuilder({Key? key}) : super(key: key);
+class SliverProduceList extends StatelessWidget {
+  const SliverProduceList({Key? key}) : super(key: key);
 
-  @override
-  State<ProducePriceSliverBuilder> createState() =>
-      _ProducePriceSliverBuilderState();
-}
-
-class _ProducePriceSliverBuilderState extends State<ProducePriceSliverBuilder> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return SliverList(
+        delegate: SliverChildListDelegate(
+      [
+        Align(
+          alignment: Alignment.center,
+          child: SizedBox(
+            width: 200,
+            child: PrimaryButton(
+              horizontalPadding: 10,
+              width: 500,
+              content: "Toggle Top Header",
+              onPressed: () {
+                context.read<MainScreenBloc>().add(const MainScreenEvent.toggleMainHeader());
+              },
+            ),
+          ),
+        ),
+      ],
+    ));
   }
 }
 
@@ -63,8 +102,7 @@ class MainScreenHeaderDelegate extends SliverPersistentHeaderDelegate {
   MainScreenHeaderDelegate({required this.maxExtent, required this.minExtent});
 
   @override
-  Widget build(
-      BuildContext context, double shrinkOffset, bool overlapsContent) {
+  Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
     return Stack(
       fit: StackFit.expand,
       children: [
@@ -82,7 +120,9 @@ class MainScreenHeaderDelegate extends SliverPersistentHeaderDelegate {
         ),
         Column(
           children: [
-            const TopHeader(),
+            MainHeader(
+              mainHeaderController: context.read<MainScreenBloc>().mainHeaderController,
+            ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 14),
               child: CupertinoSearchTextField(
@@ -101,52 +141,62 @@ class MainScreenHeaderDelegate extends SliverPersistentHeaderDelegate {
   }
 }
 
-class SliverWhiteSpace extends StatelessWidget {
-  final double height;
+class MainHeader extends StatefulWidget {
+  final AnimationController mainHeaderController;
 
-  const SliverWhiteSpace(this.height, {Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return SliverList(
-      delegate: SliverChildListDelegate([
-        SizedBox(
-          height: height,
-        )
-      ]),
-    );
-  }
-}
-
-class Dummy extends StatelessWidget {
-  const Dummy({
+  const MainHeader({
     Key? key,
+    required this.mainHeaderController,
   }) : super(key: key);
 
   @override
+  State<MainHeader> createState() => _MainHeaderState();
+}
+
+class _MainHeaderState extends State<MainHeader> {
+  late Animation<double> sizeFactor;
+
+  @override
+  void initState() {
+    super.initState();
+
+    if (context.read<MainScreenBloc>().state.props.isMainHeaderVisible) {
+      sizeFactor = Tween<double>(begin: 1.0, end: 0.0).animate(widget.mainHeaderController);
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 24, right: 24, top: 30),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+    return SizeTransition(
+      sizeFactor: sizeFactor,
+      axis: Axis.vertical,
+      axisAlignment: 1,
+      child: Padding(
+        padding: const EdgeInsets.only(left: 24, right: 24, top: 30),
+        child: Align(
+          alignment: Alignment.center,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Headline1('Pasar Selayang'),
-              const Headline2('7 November'),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Headline1('Pasar Selayang'),
+                  const Headline2('7 November'),
+                ],
+              ),
+              Container(
+                margin: const EdgeInsets.only(right: 6),
+                height: 54,
+                width: 54,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(100),
+                  color: Theme.of(context).colorScheme.primary,
+                ),
+              )
             ],
           ),
-          Container(
-            margin: const EdgeInsets.only(right: 6),
-            height: 54,
-            width: 54,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(100),
-              color: Theme.of(context).colorScheme.primary,
-            ),
-          )
-        ],
+        ),
       ),
     );
   }
@@ -159,7 +209,7 @@ class TopHeader extends StatefulWidget {
   State<TopHeader> createState() => _TopHeaderState();
 }
 
-class _TopHeaderState extends State<TopHeader> with AnimationMixin {
+class _TopHeaderState extends State<TopHeader> with SingleTickerProviderStateMixin {
   late AnimationController _heightFactorController;
 
   late Animation<double> _opacity;
@@ -169,7 +219,10 @@ class _TopHeaderState extends State<TopHeader> with AnimationMixin {
   void initState() {
     super.initState();
 
-    _heightFactorController = createController();
+    _heightFactorController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 500),
+    );
     _heightFactor = CurvedAnimation(
       parent: _heightFactorController,
       curve: Curves.fastOutSlowIn,
@@ -228,15 +281,48 @@ class _TopHeaderState extends State<TopHeader> with AnimationMixin {
   }
 }
 
+class SliverWhiteSpace extends StatelessWidget {
+  final double height;
+
+  const SliverWhiteSpace(this.height, {Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SliverList(
+      delegate: SliverChildListDelegate([
+        SizedBox(
+          height: height,
+        )
+      ]),
+    );
+  }
+}
+
 class MainScreenProviders extends StatelessWidget {
   final Widget child;
+  final AnimationController mainHeaderController;
 
-  const MainScreenProviders({Key? key, required this.child}) : super(key: key);
+  const MainScreenProviders({
+    Key? key,
+    required this.child,
+    required this.mainHeaderController,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-        providers: [BlocProvider(create: (context) => MainScreenBloc())],
-        child: child);
+      providers: [
+        BlocProvider(create: (context) => ProduceManagerBloc(repository: locator())),
+      ],
+      child: Builder(builder: (context) {
+        return BlocProvider(
+          create: (context) => MainScreenBloc(
+            mainHeaderController: mainHeaderController,
+            produceManagerBloc: context.read<ProduceManagerBloc>(),
+          ),
+          child: child,
+        );
+      }),
+    );
   }
 }

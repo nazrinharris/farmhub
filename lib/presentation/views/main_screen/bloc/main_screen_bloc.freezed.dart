@@ -20,6 +20,10 @@ class _$MainScreenEventTearOff {
   _Started started() {
     return const _Started();
   }
+
+  _MSEToggleMainHeader toggleMainHeader() {
+    return const _MSEToggleMainHeader();
+  }
 }
 
 /// @nodoc
@@ -30,32 +34,38 @@ mixin _$MainScreenEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function() toggleMainHeader,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function()? toggleMainHeader,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function()? toggleMainHeader,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_MSEToggleMainHeader value) toggleMainHeader,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_MSEToggleMainHeader value)? toggleMainHeader,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_MSEToggleMainHeader value)? toggleMainHeader,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -117,6 +127,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function() toggleMainHeader,
   }) {
     return started();
   }
@@ -125,6 +136,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function()? toggleMainHeader,
   }) {
     return started?.call();
   }
@@ -133,6 +145,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function()? toggleMainHeader,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -145,6 +158,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_MSEToggleMainHeader value) toggleMainHeader,
   }) {
     return started(this);
   }
@@ -153,6 +167,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_MSEToggleMainHeader value)? toggleMainHeader,
   }) {
     return started?.call(this);
   }
@@ -161,6 +176,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_MSEToggleMainHeader value)? toggleMainHeader,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -175,39 +191,160 @@ abstract class _Started implements MainScreenEvent {
 }
 
 /// @nodoc
+abstract class _$MSEToggleMainHeaderCopyWith<$Res> {
+  factory _$MSEToggleMainHeaderCopyWith(_MSEToggleMainHeader value,
+          $Res Function(_MSEToggleMainHeader) then) =
+      __$MSEToggleMainHeaderCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$MSEToggleMainHeaderCopyWithImpl<$Res>
+    extends _$MainScreenEventCopyWithImpl<$Res>
+    implements _$MSEToggleMainHeaderCopyWith<$Res> {
+  __$MSEToggleMainHeaderCopyWithImpl(
+      _MSEToggleMainHeader _value, $Res Function(_MSEToggleMainHeader) _then)
+      : super(_value, (v) => _then(v as _MSEToggleMainHeader));
+
+  @override
+  _MSEToggleMainHeader get _value => super._value as _MSEToggleMainHeader;
+}
+
+/// @nodoc
+
+class _$_MSEToggleMainHeader implements _MSEToggleMainHeader {
+  const _$_MSEToggleMainHeader();
+
+  @override
+  String toString() {
+    return 'MainScreenEvent.toggleMainHeader()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _MSEToggleMainHeader);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() toggleMainHeader,
+  }) {
+    return toggleMainHeader();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? toggleMainHeader,
+  }) {
+    return toggleMainHeader?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? toggleMainHeader,
+    required TResult orElse(),
+  }) {
+    if (toggleMainHeader != null) {
+      return toggleMainHeader();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_MSEToggleMainHeader value) toggleMainHeader,
+  }) {
+    return toggleMainHeader(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_MSEToggleMainHeader value)? toggleMainHeader,
+  }) {
+    return toggleMainHeader?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_MSEToggleMainHeader value)? toggleMainHeader,
+    required TResult orElse(),
+  }) {
+    if (toggleMainHeader != null) {
+      return toggleMainHeader(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _MSEToggleMainHeader implements MainScreenEvent {
+  const factory _MSEToggleMainHeader() = _$_MSEToggleMainHeader;
+}
+
+/// @nodoc
 class _$MainScreenStateTearOff {
   const _$MainScreenStateTearOff();
 
-  _Initial initial() {
-    return const _Initial();
+  MSSInitial initial({required MainScreenProps props}) {
+    return MSSInitial(
+      props: props,
+    );
   }
 
-  MSSPricesLoading mainPricesLoading() {
-    return const MSSPricesLoading();
+  MSSPricesLoading mainPricesLoading({required MainScreenProps props}) {
+    return MSSPricesLoading(
+      props: props,
+    );
   }
 
-  MSSPricesCompleted mainPricesCompleted() {
-    return const MSSPricesCompleted();
+  MSSPricesCompleted mainPricesCompleted({required MainScreenProps props}) {
+    return MSSPricesCompleted(
+      props: props,
+    );
   }
 
-  MSSPricesError mainPricesError() {
-    return const MSSPricesError();
+  MSSPricesError mainPricesError({required MainScreenProps props}) {
+    return MSSPricesError(
+      props: props,
+    );
   }
 
-  MSSSearchInitial searchInitial() {
-    return const MSSSearchInitial();
+  MSSSearchInitial searchInitial({required MainScreenProps props}) {
+    return MSSSearchInitial(
+      props: props,
+    );
   }
 
-  MSSSearchLoading searchLoading() {
-    return const MSSSearchLoading();
+  MSSSearchLoading searchLoading({required MainScreenProps props}) {
+    return MSSSearchLoading(
+      props: props,
+    );
   }
 
-  MSSSearchCompleted searchCompleted() {
-    return const MSSSearchCompleted();
+  MSSSearchCompleted searchCompleted({required MainScreenProps props}) {
+    return MSSSearchCompleted(
+      props: props,
+    );
   }
 
-  MSSSearchError searchError() {
-    return const MSSSearchError();
+  MSSSearchError searchError({required MainScreenProps props}) {
+    return MSSSearchError(
+      props: props,
+    );
   }
 }
 
@@ -216,46 +353,48 @@ const $MainScreenState = _$MainScreenStateTearOff();
 
 /// @nodoc
 mixin _$MainScreenState {
+  MainScreenProps get props => throw _privateConstructorUsedError;
+
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() mainPricesLoading,
-    required TResult Function() mainPricesCompleted,
-    required TResult Function() mainPricesError,
-    required TResult Function() searchInitial,
-    required TResult Function() searchLoading,
-    required TResult Function() searchCompleted,
-    required TResult Function() searchError,
+    required TResult Function(MainScreenProps props) initial,
+    required TResult Function(MainScreenProps props) mainPricesLoading,
+    required TResult Function(MainScreenProps props) mainPricesCompleted,
+    required TResult Function(MainScreenProps props) mainPricesError,
+    required TResult Function(MainScreenProps props) searchInitial,
+    required TResult Function(MainScreenProps props) searchLoading,
+    required TResult Function(MainScreenProps props) searchCompleted,
+    required TResult Function(MainScreenProps props) searchError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? mainPricesLoading,
-    TResult Function()? mainPricesCompleted,
-    TResult Function()? mainPricesError,
-    TResult Function()? searchInitial,
-    TResult Function()? searchLoading,
-    TResult Function()? searchCompleted,
-    TResult Function()? searchError,
+    TResult Function(MainScreenProps props)? initial,
+    TResult Function(MainScreenProps props)? mainPricesLoading,
+    TResult Function(MainScreenProps props)? mainPricesCompleted,
+    TResult Function(MainScreenProps props)? mainPricesError,
+    TResult Function(MainScreenProps props)? searchInitial,
+    TResult Function(MainScreenProps props)? searchLoading,
+    TResult Function(MainScreenProps props)? searchCompleted,
+    TResult Function(MainScreenProps props)? searchError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? mainPricesLoading,
-    TResult Function()? mainPricesCompleted,
-    TResult Function()? mainPricesError,
-    TResult Function()? searchInitial,
-    TResult Function()? searchLoading,
-    TResult Function()? searchCompleted,
-    TResult Function()? searchError,
+    TResult Function(MainScreenProps props)? initial,
+    TResult Function(MainScreenProps props)? mainPricesLoading,
+    TResult Function(MainScreenProps props)? mainPricesCompleted,
+    TResult Function(MainScreenProps props)? mainPricesError,
+    TResult Function(MainScreenProps props)? searchInitial,
+    TResult Function(MainScreenProps props)? searchLoading,
+    TResult Function(MainScreenProps props)? searchCompleted,
+    TResult Function(MainScreenProps props)? searchError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(MSSInitial value) initial,
     required TResult Function(MSSPricesLoading value) mainPricesLoading,
     required TResult Function(MSSPricesCompleted value) mainPricesCompleted,
     required TResult Function(MSSPricesError value) mainPricesError,
@@ -267,7 +406,7 @@ mixin _$MainScreenState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(MSSInitial value)? initial,
     TResult Function(MSSPricesLoading value)? mainPricesLoading,
     TResult Function(MSSPricesCompleted value)? mainPricesCompleted,
     TResult Function(MSSPricesError value)? mainPricesError,
@@ -279,7 +418,7 @@ mixin _$MainScreenState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(MSSInitial value)? initial,
     TResult Function(MSSPricesLoading value)? mainPricesLoading,
     TResult Function(MSSPricesCompleted value)? mainPricesCompleted,
     TResult Function(MSSPricesError value)? mainPricesError,
@@ -290,6 +429,10 @@ mixin _$MainScreenState {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $MainScreenStateCopyWith<MainScreenState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -297,6 +440,9 @@ abstract class $MainScreenStateCopyWith<$Res> {
   factory $MainScreenStateCopyWith(
           MainScreenState value, $Res Function(MainScreenState) then) =
       _$MainScreenStateCopyWithImpl<$Res>;
+  $Res call({MainScreenProps props});
+
+  $MainScreenPropsCopyWith<$Res> get props;
 }
 
 /// @nodoc
@@ -307,88 +453,136 @@ class _$MainScreenStateCopyWithImpl<$Res>
   final MainScreenState _value;
   // ignore: unused_field
   final $Res Function(MainScreenState) _then;
-}
-
-/// @nodoc
-abstract class _$InitialCopyWith<$Res> {
-  factory _$InitialCopyWith(_Initial value, $Res Function(_Initial) then) =
-      __$InitialCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$InitialCopyWithImpl<$Res> extends _$MainScreenStateCopyWithImpl<$Res>
-    implements _$InitialCopyWith<$Res> {
-  __$InitialCopyWithImpl(_Initial _value, $Res Function(_Initial) _then)
-      : super(_value, (v) => _then(v as _Initial));
 
   @override
-  _Initial get _value => super._value as _Initial;
+  $Res call({
+    Object? props = freezed,
+  }) {
+    return _then(_value.copyWith(
+      props: props == freezed
+          ? _value.props
+          : props // ignore: cast_nullable_to_non_nullable
+              as MainScreenProps,
+    ));
+  }
+
+  @override
+  $MainScreenPropsCopyWith<$Res> get props {
+    return $MainScreenPropsCopyWith<$Res>(_value.props, (value) {
+      return _then(_value.copyWith(props: value));
+    });
+  }
+}
+
+/// @nodoc
+abstract class $MSSInitialCopyWith<$Res>
+    implements $MainScreenStateCopyWith<$Res> {
+  factory $MSSInitialCopyWith(
+          MSSInitial value, $Res Function(MSSInitial) then) =
+      _$MSSInitialCopyWithImpl<$Res>;
+  @override
+  $Res call({MainScreenProps props});
+
+  @override
+  $MainScreenPropsCopyWith<$Res> get props;
+}
+
+/// @nodoc
+class _$MSSInitialCopyWithImpl<$Res> extends _$MainScreenStateCopyWithImpl<$Res>
+    implements $MSSInitialCopyWith<$Res> {
+  _$MSSInitialCopyWithImpl(MSSInitial _value, $Res Function(MSSInitial) _then)
+      : super(_value, (v) => _then(v as MSSInitial));
+
+  @override
+  MSSInitial get _value => super._value as MSSInitial;
+
+  @override
+  $Res call({
+    Object? props = freezed,
+  }) {
+    return _then(MSSInitial(
+      props: props == freezed
+          ? _value.props
+          : props // ignore: cast_nullable_to_non_nullable
+              as MainScreenProps,
+    ));
+  }
 }
 
 /// @nodoc
 
-class _$_Initial implements _Initial {
-  const _$_Initial();
+class _$MSSInitial implements MSSInitial {
+  const _$MSSInitial({required this.props});
+
+  @override
+  final MainScreenProps props;
 
   @override
   String toString() {
-    return 'MainScreenState.initial()';
+    return 'MainScreenState.initial(props: $props)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _Initial);
+        (other.runtimeType == runtimeType &&
+            other is MSSInitial &&
+            (identical(other.props, props) || other.props == props));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, props);
+
+  @JsonKey(ignore: true)
+  @override
+  $MSSInitialCopyWith<MSSInitial> get copyWith =>
+      _$MSSInitialCopyWithImpl<MSSInitial>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() mainPricesLoading,
-    required TResult Function() mainPricesCompleted,
-    required TResult Function() mainPricesError,
-    required TResult Function() searchInitial,
-    required TResult Function() searchLoading,
-    required TResult Function() searchCompleted,
-    required TResult Function() searchError,
+    required TResult Function(MainScreenProps props) initial,
+    required TResult Function(MainScreenProps props) mainPricesLoading,
+    required TResult Function(MainScreenProps props) mainPricesCompleted,
+    required TResult Function(MainScreenProps props) mainPricesError,
+    required TResult Function(MainScreenProps props) searchInitial,
+    required TResult Function(MainScreenProps props) searchLoading,
+    required TResult Function(MainScreenProps props) searchCompleted,
+    required TResult Function(MainScreenProps props) searchError,
   }) {
-    return initial();
+    return initial(props);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? mainPricesLoading,
-    TResult Function()? mainPricesCompleted,
-    TResult Function()? mainPricesError,
-    TResult Function()? searchInitial,
-    TResult Function()? searchLoading,
-    TResult Function()? searchCompleted,
-    TResult Function()? searchError,
+    TResult Function(MainScreenProps props)? initial,
+    TResult Function(MainScreenProps props)? mainPricesLoading,
+    TResult Function(MainScreenProps props)? mainPricesCompleted,
+    TResult Function(MainScreenProps props)? mainPricesError,
+    TResult Function(MainScreenProps props)? searchInitial,
+    TResult Function(MainScreenProps props)? searchLoading,
+    TResult Function(MainScreenProps props)? searchCompleted,
+    TResult Function(MainScreenProps props)? searchError,
   }) {
-    return initial?.call();
+    return initial?.call(props);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? mainPricesLoading,
-    TResult Function()? mainPricesCompleted,
-    TResult Function()? mainPricesError,
-    TResult Function()? searchInitial,
-    TResult Function()? searchLoading,
-    TResult Function()? searchCompleted,
-    TResult Function()? searchError,
+    TResult Function(MainScreenProps props)? initial,
+    TResult Function(MainScreenProps props)? mainPricesLoading,
+    TResult Function(MainScreenProps props)? mainPricesCompleted,
+    TResult Function(MainScreenProps props)? mainPricesError,
+    TResult Function(MainScreenProps props)? searchInitial,
+    TResult Function(MainScreenProps props)? searchLoading,
+    TResult Function(MainScreenProps props)? searchCompleted,
+    TResult Function(MainScreenProps props)? searchError,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial();
+      return initial(props);
     }
     return orElse();
   }
@@ -396,7 +590,7 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(MSSInitial value) initial,
     required TResult Function(MSSPricesLoading value) mainPricesLoading,
     required TResult Function(MSSPricesCompleted value) mainPricesCompleted,
     required TResult Function(MSSPricesError value) mainPricesError,
@@ -411,7 +605,7 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(MSSInitial value)? initial,
     TResult Function(MSSPricesLoading value)? mainPricesLoading,
     TResult Function(MSSPricesCompleted value)? mainPricesCompleted,
     TResult Function(MSSPricesError value)? mainPricesError,
@@ -426,7 +620,7 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(MSSInitial value)? initial,
     TResult Function(MSSPricesLoading value)? mainPricesLoading,
     TResult Function(MSSPricesCompleted value)? mainPricesCompleted,
     TResult Function(MSSPricesError value)? mainPricesError,
@@ -443,15 +637,28 @@ class _$_Initial implements _Initial {
   }
 }
 
-abstract class _Initial implements MainScreenState {
-  const factory _Initial() = _$_Initial;
+abstract class MSSInitial implements MainScreenState {
+  const factory MSSInitial({required MainScreenProps props}) = _$MSSInitial;
+
+  @override
+  MainScreenProps get props;
+  @override
+  @JsonKey(ignore: true)
+  $MSSInitialCopyWith<MSSInitial> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $MSSPricesLoadingCopyWith<$Res> {
+abstract class $MSSPricesLoadingCopyWith<$Res>
+    implements $MainScreenStateCopyWith<$Res> {
   factory $MSSPricesLoadingCopyWith(
           MSSPricesLoading value, $Res Function(MSSPricesLoading) then) =
       _$MSSPricesLoadingCopyWithImpl<$Res>;
+  @override
+  $Res call({MainScreenProps props});
+
+  @override
+  $MainScreenPropsCopyWith<$Res> get props;
 }
 
 /// @nodoc
@@ -464,72 +671,94 @@ class _$MSSPricesLoadingCopyWithImpl<$Res>
 
   @override
   MSSPricesLoading get _value => super._value as MSSPricesLoading;
+
+  @override
+  $Res call({
+    Object? props = freezed,
+  }) {
+    return _then(MSSPricesLoading(
+      props: props == freezed
+          ? _value.props
+          : props // ignore: cast_nullable_to_non_nullable
+              as MainScreenProps,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$MSSPricesLoading implements MSSPricesLoading {
-  const _$MSSPricesLoading();
+  const _$MSSPricesLoading({required this.props});
+
+  @override
+  final MainScreenProps props;
 
   @override
   String toString() {
-    return 'MainScreenState.mainPricesLoading()';
+    return 'MainScreenState.mainPricesLoading(props: $props)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is MSSPricesLoading);
+        (other.runtimeType == runtimeType &&
+            other is MSSPricesLoading &&
+            (identical(other.props, props) || other.props == props));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, props);
+
+  @JsonKey(ignore: true)
+  @override
+  $MSSPricesLoadingCopyWith<MSSPricesLoading> get copyWith =>
+      _$MSSPricesLoadingCopyWithImpl<MSSPricesLoading>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() mainPricesLoading,
-    required TResult Function() mainPricesCompleted,
-    required TResult Function() mainPricesError,
-    required TResult Function() searchInitial,
-    required TResult Function() searchLoading,
-    required TResult Function() searchCompleted,
-    required TResult Function() searchError,
+    required TResult Function(MainScreenProps props) initial,
+    required TResult Function(MainScreenProps props) mainPricesLoading,
+    required TResult Function(MainScreenProps props) mainPricesCompleted,
+    required TResult Function(MainScreenProps props) mainPricesError,
+    required TResult Function(MainScreenProps props) searchInitial,
+    required TResult Function(MainScreenProps props) searchLoading,
+    required TResult Function(MainScreenProps props) searchCompleted,
+    required TResult Function(MainScreenProps props) searchError,
   }) {
-    return mainPricesLoading();
+    return mainPricesLoading(props);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? mainPricesLoading,
-    TResult Function()? mainPricesCompleted,
-    TResult Function()? mainPricesError,
-    TResult Function()? searchInitial,
-    TResult Function()? searchLoading,
-    TResult Function()? searchCompleted,
-    TResult Function()? searchError,
+    TResult Function(MainScreenProps props)? initial,
+    TResult Function(MainScreenProps props)? mainPricesLoading,
+    TResult Function(MainScreenProps props)? mainPricesCompleted,
+    TResult Function(MainScreenProps props)? mainPricesError,
+    TResult Function(MainScreenProps props)? searchInitial,
+    TResult Function(MainScreenProps props)? searchLoading,
+    TResult Function(MainScreenProps props)? searchCompleted,
+    TResult Function(MainScreenProps props)? searchError,
   }) {
-    return mainPricesLoading?.call();
+    return mainPricesLoading?.call(props);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? mainPricesLoading,
-    TResult Function()? mainPricesCompleted,
-    TResult Function()? mainPricesError,
-    TResult Function()? searchInitial,
-    TResult Function()? searchLoading,
-    TResult Function()? searchCompleted,
-    TResult Function()? searchError,
+    TResult Function(MainScreenProps props)? initial,
+    TResult Function(MainScreenProps props)? mainPricesLoading,
+    TResult Function(MainScreenProps props)? mainPricesCompleted,
+    TResult Function(MainScreenProps props)? mainPricesError,
+    TResult Function(MainScreenProps props)? searchInitial,
+    TResult Function(MainScreenProps props)? searchLoading,
+    TResult Function(MainScreenProps props)? searchCompleted,
+    TResult Function(MainScreenProps props)? searchError,
     required TResult orElse(),
   }) {
     if (mainPricesLoading != null) {
-      return mainPricesLoading();
+      return mainPricesLoading(props);
     }
     return orElse();
   }
@@ -537,7 +766,7 @@ class _$MSSPricesLoading implements MSSPricesLoading {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(MSSInitial value) initial,
     required TResult Function(MSSPricesLoading value) mainPricesLoading,
     required TResult Function(MSSPricesCompleted value) mainPricesCompleted,
     required TResult Function(MSSPricesError value) mainPricesError,
@@ -552,7 +781,7 @@ class _$MSSPricesLoading implements MSSPricesLoading {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(MSSInitial value)? initial,
     TResult Function(MSSPricesLoading value)? mainPricesLoading,
     TResult Function(MSSPricesCompleted value)? mainPricesCompleted,
     TResult Function(MSSPricesError value)? mainPricesError,
@@ -567,7 +796,7 @@ class _$MSSPricesLoading implements MSSPricesLoading {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(MSSInitial value)? initial,
     TResult Function(MSSPricesLoading value)? mainPricesLoading,
     TResult Function(MSSPricesCompleted value)? mainPricesCompleted,
     TResult Function(MSSPricesError value)? mainPricesError,
@@ -585,14 +814,28 @@ class _$MSSPricesLoading implements MSSPricesLoading {
 }
 
 abstract class MSSPricesLoading implements MainScreenState {
-  const factory MSSPricesLoading() = _$MSSPricesLoading;
+  const factory MSSPricesLoading({required MainScreenProps props}) =
+      _$MSSPricesLoading;
+
+  @override
+  MainScreenProps get props;
+  @override
+  @JsonKey(ignore: true)
+  $MSSPricesLoadingCopyWith<MSSPricesLoading> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $MSSPricesCompletedCopyWith<$Res> {
+abstract class $MSSPricesCompletedCopyWith<$Res>
+    implements $MainScreenStateCopyWith<$Res> {
   factory $MSSPricesCompletedCopyWith(
           MSSPricesCompleted value, $Res Function(MSSPricesCompleted) then) =
       _$MSSPricesCompletedCopyWithImpl<$Res>;
+  @override
+  $Res call({MainScreenProps props});
+
+  @override
+  $MainScreenPropsCopyWith<$Res> get props;
 }
 
 /// @nodoc
@@ -605,72 +848,94 @@ class _$MSSPricesCompletedCopyWithImpl<$Res>
 
   @override
   MSSPricesCompleted get _value => super._value as MSSPricesCompleted;
+
+  @override
+  $Res call({
+    Object? props = freezed,
+  }) {
+    return _then(MSSPricesCompleted(
+      props: props == freezed
+          ? _value.props
+          : props // ignore: cast_nullable_to_non_nullable
+              as MainScreenProps,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$MSSPricesCompleted implements MSSPricesCompleted {
-  const _$MSSPricesCompleted();
+  const _$MSSPricesCompleted({required this.props});
+
+  @override
+  final MainScreenProps props;
 
   @override
   String toString() {
-    return 'MainScreenState.mainPricesCompleted()';
+    return 'MainScreenState.mainPricesCompleted(props: $props)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is MSSPricesCompleted);
+        (other.runtimeType == runtimeType &&
+            other is MSSPricesCompleted &&
+            (identical(other.props, props) || other.props == props));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, props);
+
+  @JsonKey(ignore: true)
+  @override
+  $MSSPricesCompletedCopyWith<MSSPricesCompleted> get copyWith =>
+      _$MSSPricesCompletedCopyWithImpl<MSSPricesCompleted>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() mainPricesLoading,
-    required TResult Function() mainPricesCompleted,
-    required TResult Function() mainPricesError,
-    required TResult Function() searchInitial,
-    required TResult Function() searchLoading,
-    required TResult Function() searchCompleted,
-    required TResult Function() searchError,
+    required TResult Function(MainScreenProps props) initial,
+    required TResult Function(MainScreenProps props) mainPricesLoading,
+    required TResult Function(MainScreenProps props) mainPricesCompleted,
+    required TResult Function(MainScreenProps props) mainPricesError,
+    required TResult Function(MainScreenProps props) searchInitial,
+    required TResult Function(MainScreenProps props) searchLoading,
+    required TResult Function(MainScreenProps props) searchCompleted,
+    required TResult Function(MainScreenProps props) searchError,
   }) {
-    return mainPricesCompleted();
+    return mainPricesCompleted(props);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? mainPricesLoading,
-    TResult Function()? mainPricesCompleted,
-    TResult Function()? mainPricesError,
-    TResult Function()? searchInitial,
-    TResult Function()? searchLoading,
-    TResult Function()? searchCompleted,
-    TResult Function()? searchError,
+    TResult Function(MainScreenProps props)? initial,
+    TResult Function(MainScreenProps props)? mainPricesLoading,
+    TResult Function(MainScreenProps props)? mainPricesCompleted,
+    TResult Function(MainScreenProps props)? mainPricesError,
+    TResult Function(MainScreenProps props)? searchInitial,
+    TResult Function(MainScreenProps props)? searchLoading,
+    TResult Function(MainScreenProps props)? searchCompleted,
+    TResult Function(MainScreenProps props)? searchError,
   }) {
-    return mainPricesCompleted?.call();
+    return mainPricesCompleted?.call(props);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? mainPricesLoading,
-    TResult Function()? mainPricesCompleted,
-    TResult Function()? mainPricesError,
-    TResult Function()? searchInitial,
-    TResult Function()? searchLoading,
-    TResult Function()? searchCompleted,
-    TResult Function()? searchError,
+    TResult Function(MainScreenProps props)? initial,
+    TResult Function(MainScreenProps props)? mainPricesLoading,
+    TResult Function(MainScreenProps props)? mainPricesCompleted,
+    TResult Function(MainScreenProps props)? mainPricesError,
+    TResult Function(MainScreenProps props)? searchInitial,
+    TResult Function(MainScreenProps props)? searchLoading,
+    TResult Function(MainScreenProps props)? searchCompleted,
+    TResult Function(MainScreenProps props)? searchError,
     required TResult orElse(),
   }) {
     if (mainPricesCompleted != null) {
-      return mainPricesCompleted();
+      return mainPricesCompleted(props);
     }
     return orElse();
   }
@@ -678,7 +943,7 @@ class _$MSSPricesCompleted implements MSSPricesCompleted {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(MSSInitial value) initial,
     required TResult Function(MSSPricesLoading value) mainPricesLoading,
     required TResult Function(MSSPricesCompleted value) mainPricesCompleted,
     required TResult Function(MSSPricesError value) mainPricesError,
@@ -693,7 +958,7 @@ class _$MSSPricesCompleted implements MSSPricesCompleted {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(MSSInitial value)? initial,
     TResult Function(MSSPricesLoading value)? mainPricesLoading,
     TResult Function(MSSPricesCompleted value)? mainPricesCompleted,
     TResult Function(MSSPricesError value)? mainPricesError,
@@ -708,7 +973,7 @@ class _$MSSPricesCompleted implements MSSPricesCompleted {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(MSSInitial value)? initial,
     TResult Function(MSSPricesLoading value)? mainPricesLoading,
     TResult Function(MSSPricesCompleted value)? mainPricesCompleted,
     TResult Function(MSSPricesError value)? mainPricesError,
@@ -726,14 +991,28 @@ class _$MSSPricesCompleted implements MSSPricesCompleted {
 }
 
 abstract class MSSPricesCompleted implements MainScreenState {
-  const factory MSSPricesCompleted() = _$MSSPricesCompleted;
+  const factory MSSPricesCompleted({required MainScreenProps props}) =
+      _$MSSPricesCompleted;
+
+  @override
+  MainScreenProps get props;
+  @override
+  @JsonKey(ignore: true)
+  $MSSPricesCompletedCopyWith<MSSPricesCompleted> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $MSSPricesErrorCopyWith<$Res> {
+abstract class $MSSPricesErrorCopyWith<$Res>
+    implements $MainScreenStateCopyWith<$Res> {
   factory $MSSPricesErrorCopyWith(
           MSSPricesError value, $Res Function(MSSPricesError) then) =
       _$MSSPricesErrorCopyWithImpl<$Res>;
+  @override
+  $Res call({MainScreenProps props});
+
+  @override
+  $MainScreenPropsCopyWith<$Res> get props;
 }
 
 /// @nodoc
@@ -746,72 +1025,94 @@ class _$MSSPricesErrorCopyWithImpl<$Res>
 
   @override
   MSSPricesError get _value => super._value as MSSPricesError;
+
+  @override
+  $Res call({
+    Object? props = freezed,
+  }) {
+    return _then(MSSPricesError(
+      props: props == freezed
+          ? _value.props
+          : props // ignore: cast_nullable_to_non_nullable
+              as MainScreenProps,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$MSSPricesError implements MSSPricesError {
-  const _$MSSPricesError();
+  const _$MSSPricesError({required this.props});
+
+  @override
+  final MainScreenProps props;
 
   @override
   String toString() {
-    return 'MainScreenState.mainPricesError()';
+    return 'MainScreenState.mainPricesError(props: $props)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is MSSPricesError);
+        (other.runtimeType == runtimeType &&
+            other is MSSPricesError &&
+            (identical(other.props, props) || other.props == props));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, props);
+
+  @JsonKey(ignore: true)
+  @override
+  $MSSPricesErrorCopyWith<MSSPricesError> get copyWith =>
+      _$MSSPricesErrorCopyWithImpl<MSSPricesError>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() mainPricesLoading,
-    required TResult Function() mainPricesCompleted,
-    required TResult Function() mainPricesError,
-    required TResult Function() searchInitial,
-    required TResult Function() searchLoading,
-    required TResult Function() searchCompleted,
-    required TResult Function() searchError,
+    required TResult Function(MainScreenProps props) initial,
+    required TResult Function(MainScreenProps props) mainPricesLoading,
+    required TResult Function(MainScreenProps props) mainPricesCompleted,
+    required TResult Function(MainScreenProps props) mainPricesError,
+    required TResult Function(MainScreenProps props) searchInitial,
+    required TResult Function(MainScreenProps props) searchLoading,
+    required TResult Function(MainScreenProps props) searchCompleted,
+    required TResult Function(MainScreenProps props) searchError,
   }) {
-    return mainPricesError();
+    return mainPricesError(props);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? mainPricesLoading,
-    TResult Function()? mainPricesCompleted,
-    TResult Function()? mainPricesError,
-    TResult Function()? searchInitial,
-    TResult Function()? searchLoading,
-    TResult Function()? searchCompleted,
-    TResult Function()? searchError,
+    TResult Function(MainScreenProps props)? initial,
+    TResult Function(MainScreenProps props)? mainPricesLoading,
+    TResult Function(MainScreenProps props)? mainPricesCompleted,
+    TResult Function(MainScreenProps props)? mainPricesError,
+    TResult Function(MainScreenProps props)? searchInitial,
+    TResult Function(MainScreenProps props)? searchLoading,
+    TResult Function(MainScreenProps props)? searchCompleted,
+    TResult Function(MainScreenProps props)? searchError,
   }) {
-    return mainPricesError?.call();
+    return mainPricesError?.call(props);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? mainPricesLoading,
-    TResult Function()? mainPricesCompleted,
-    TResult Function()? mainPricesError,
-    TResult Function()? searchInitial,
-    TResult Function()? searchLoading,
-    TResult Function()? searchCompleted,
-    TResult Function()? searchError,
+    TResult Function(MainScreenProps props)? initial,
+    TResult Function(MainScreenProps props)? mainPricesLoading,
+    TResult Function(MainScreenProps props)? mainPricesCompleted,
+    TResult Function(MainScreenProps props)? mainPricesError,
+    TResult Function(MainScreenProps props)? searchInitial,
+    TResult Function(MainScreenProps props)? searchLoading,
+    TResult Function(MainScreenProps props)? searchCompleted,
+    TResult Function(MainScreenProps props)? searchError,
     required TResult orElse(),
   }) {
     if (mainPricesError != null) {
-      return mainPricesError();
+      return mainPricesError(props);
     }
     return orElse();
   }
@@ -819,7 +1120,7 @@ class _$MSSPricesError implements MSSPricesError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(MSSInitial value) initial,
     required TResult Function(MSSPricesLoading value) mainPricesLoading,
     required TResult Function(MSSPricesCompleted value) mainPricesCompleted,
     required TResult Function(MSSPricesError value) mainPricesError,
@@ -834,7 +1135,7 @@ class _$MSSPricesError implements MSSPricesError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(MSSInitial value)? initial,
     TResult Function(MSSPricesLoading value)? mainPricesLoading,
     TResult Function(MSSPricesCompleted value)? mainPricesCompleted,
     TResult Function(MSSPricesError value)? mainPricesError,
@@ -849,7 +1150,7 @@ class _$MSSPricesError implements MSSPricesError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(MSSInitial value)? initial,
     TResult Function(MSSPricesLoading value)? mainPricesLoading,
     TResult Function(MSSPricesCompleted value)? mainPricesCompleted,
     TResult Function(MSSPricesError value)? mainPricesError,
@@ -867,14 +1168,28 @@ class _$MSSPricesError implements MSSPricesError {
 }
 
 abstract class MSSPricesError implements MainScreenState {
-  const factory MSSPricesError() = _$MSSPricesError;
+  const factory MSSPricesError({required MainScreenProps props}) =
+      _$MSSPricesError;
+
+  @override
+  MainScreenProps get props;
+  @override
+  @JsonKey(ignore: true)
+  $MSSPricesErrorCopyWith<MSSPricesError> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $MSSSearchInitialCopyWith<$Res> {
+abstract class $MSSSearchInitialCopyWith<$Res>
+    implements $MainScreenStateCopyWith<$Res> {
   factory $MSSSearchInitialCopyWith(
           MSSSearchInitial value, $Res Function(MSSSearchInitial) then) =
       _$MSSSearchInitialCopyWithImpl<$Res>;
+  @override
+  $Res call({MainScreenProps props});
+
+  @override
+  $MainScreenPropsCopyWith<$Res> get props;
 }
 
 /// @nodoc
@@ -887,72 +1202,94 @@ class _$MSSSearchInitialCopyWithImpl<$Res>
 
   @override
   MSSSearchInitial get _value => super._value as MSSSearchInitial;
+
+  @override
+  $Res call({
+    Object? props = freezed,
+  }) {
+    return _then(MSSSearchInitial(
+      props: props == freezed
+          ? _value.props
+          : props // ignore: cast_nullable_to_non_nullable
+              as MainScreenProps,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$MSSSearchInitial implements MSSSearchInitial {
-  const _$MSSSearchInitial();
+  const _$MSSSearchInitial({required this.props});
+
+  @override
+  final MainScreenProps props;
 
   @override
   String toString() {
-    return 'MainScreenState.searchInitial()';
+    return 'MainScreenState.searchInitial(props: $props)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is MSSSearchInitial);
+        (other.runtimeType == runtimeType &&
+            other is MSSSearchInitial &&
+            (identical(other.props, props) || other.props == props));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, props);
+
+  @JsonKey(ignore: true)
+  @override
+  $MSSSearchInitialCopyWith<MSSSearchInitial> get copyWith =>
+      _$MSSSearchInitialCopyWithImpl<MSSSearchInitial>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() mainPricesLoading,
-    required TResult Function() mainPricesCompleted,
-    required TResult Function() mainPricesError,
-    required TResult Function() searchInitial,
-    required TResult Function() searchLoading,
-    required TResult Function() searchCompleted,
-    required TResult Function() searchError,
+    required TResult Function(MainScreenProps props) initial,
+    required TResult Function(MainScreenProps props) mainPricesLoading,
+    required TResult Function(MainScreenProps props) mainPricesCompleted,
+    required TResult Function(MainScreenProps props) mainPricesError,
+    required TResult Function(MainScreenProps props) searchInitial,
+    required TResult Function(MainScreenProps props) searchLoading,
+    required TResult Function(MainScreenProps props) searchCompleted,
+    required TResult Function(MainScreenProps props) searchError,
   }) {
-    return searchInitial();
+    return searchInitial(props);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? mainPricesLoading,
-    TResult Function()? mainPricesCompleted,
-    TResult Function()? mainPricesError,
-    TResult Function()? searchInitial,
-    TResult Function()? searchLoading,
-    TResult Function()? searchCompleted,
-    TResult Function()? searchError,
+    TResult Function(MainScreenProps props)? initial,
+    TResult Function(MainScreenProps props)? mainPricesLoading,
+    TResult Function(MainScreenProps props)? mainPricesCompleted,
+    TResult Function(MainScreenProps props)? mainPricesError,
+    TResult Function(MainScreenProps props)? searchInitial,
+    TResult Function(MainScreenProps props)? searchLoading,
+    TResult Function(MainScreenProps props)? searchCompleted,
+    TResult Function(MainScreenProps props)? searchError,
   }) {
-    return searchInitial?.call();
+    return searchInitial?.call(props);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? mainPricesLoading,
-    TResult Function()? mainPricesCompleted,
-    TResult Function()? mainPricesError,
-    TResult Function()? searchInitial,
-    TResult Function()? searchLoading,
-    TResult Function()? searchCompleted,
-    TResult Function()? searchError,
+    TResult Function(MainScreenProps props)? initial,
+    TResult Function(MainScreenProps props)? mainPricesLoading,
+    TResult Function(MainScreenProps props)? mainPricesCompleted,
+    TResult Function(MainScreenProps props)? mainPricesError,
+    TResult Function(MainScreenProps props)? searchInitial,
+    TResult Function(MainScreenProps props)? searchLoading,
+    TResult Function(MainScreenProps props)? searchCompleted,
+    TResult Function(MainScreenProps props)? searchError,
     required TResult orElse(),
   }) {
     if (searchInitial != null) {
-      return searchInitial();
+      return searchInitial(props);
     }
     return orElse();
   }
@@ -960,7 +1297,7 @@ class _$MSSSearchInitial implements MSSSearchInitial {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(MSSInitial value) initial,
     required TResult Function(MSSPricesLoading value) mainPricesLoading,
     required TResult Function(MSSPricesCompleted value) mainPricesCompleted,
     required TResult Function(MSSPricesError value) mainPricesError,
@@ -975,7 +1312,7 @@ class _$MSSSearchInitial implements MSSSearchInitial {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(MSSInitial value)? initial,
     TResult Function(MSSPricesLoading value)? mainPricesLoading,
     TResult Function(MSSPricesCompleted value)? mainPricesCompleted,
     TResult Function(MSSPricesError value)? mainPricesError,
@@ -990,7 +1327,7 @@ class _$MSSSearchInitial implements MSSSearchInitial {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(MSSInitial value)? initial,
     TResult Function(MSSPricesLoading value)? mainPricesLoading,
     TResult Function(MSSPricesCompleted value)? mainPricesCompleted,
     TResult Function(MSSPricesError value)? mainPricesError,
@@ -1008,14 +1345,28 @@ class _$MSSSearchInitial implements MSSSearchInitial {
 }
 
 abstract class MSSSearchInitial implements MainScreenState {
-  const factory MSSSearchInitial() = _$MSSSearchInitial;
+  const factory MSSSearchInitial({required MainScreenProps props}) =
+      _$MSSSearchInitial;
+
+  @override
+  MainScreenProps get props;
+  @override
+  @JsonKey(ignore: true)
+  $MSSSearchInitialCopyWith<MSSSearchInitial> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $MSSSearchLoadingCopyWith<$Res> {
+abstract class $MSSSearchLoadingCopyWith<$Res>
+    implements $MainScreenStateCopyWith<$Res> {
   factory $MSSSearchLoadingCopyWith(
           MSSSearchLoading value, $Res Function(MSSSearchLoading) then) =
       _$MSSSearchLoadingCopyWithImpl<$Res>;
+  @override
+  $Res call({MainScreenProps props});
+
+  @override
+  $MainScreenPropsCopyWith<$Res> get props;
 }
 
 /// @nodoc
@@ -1028,72 +1379,94 @@ class _$MSSSearchLoadingCopyWithImpl<$Res>
 
   @override
   MSSSearchLoading get _value => super._value as MSSSearchLoading;
+
+  @override
+  $Res call({
+    Object? props = freezed,
+  }) {
+    return _then(MSSSearchLoading(
+      props: props == freezed
+          ? _value.props
+          : props // ignore: cast_nullable_to_non_nullable
+              as MainScreenProps,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$MSSSearchLoading implements MSSSearchLoading {
-  const _$MSSSearchLoading();
+  const _$MSSSearchLoading({required this.props});
+
+  @override
+  final MainScreenProps props;
 
   @override
   String toString() {
-    return 'MainScreenState.searchLoading()';
+    return 'MainScreenState.searchLoading(props: $props)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is MSSSearchLoading);
+        (other.runtimeType == runtimeType &&
+            other is MSSSearchLoading &&
+            (identical(other.props, props) || other.props == props));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, props);
+
+  @JsonKey(ignore: true)
+  @override
+  $MSSSearchLoadingCopyWith<MSSSearchLoading> get copyWith =>
+      _$MSSSearchLoadingCopyWithImpl<MSSSearchLoading>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() mainPricesLoading,
-    required TResult Function() mainPricesCompleted,
-    required TResult Function() mainPricesError,
-    required TResult Function() searchInitial,
-    required TResult Function() searchLoading,
-    required TResult Function() searchCompleted,
-    required TResult Function() searchError,
+    required TResult Function(MainScreenProps props) initial,
+    required TResult Function(MainScreenProps props) mainPricesLoading,
+    required TResult Function(MainScreenProps props) mainPricesCompleted,
+    required TResult Function(MainScreenProps props) mainPricesError,
+    required TResult Function(MainScreenProps props) searchInitial,
+    required TResult Function(MainScreenProps props) searchLoading,
+    required TResult Function(MainScreenProps props) searchCompleted,
+    required TResult Function(MainScreenProps props) searchError,
   }) {
-    return searchLoading();
+    return searchLoading(props);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? mainPricesLoading,
-    TResult Function()? mainPricesCompleted,
-    TResult Function()? mainPricesError,
-    TResult Function()? searchInitial,
-    TResult Function()? searchLoading,
-    TResult Function()? searchCompleted,
-    TResult Function()? searchError,
+    TResult Function(MainScreenProps props)? initial,
+    TResult Function(MainScreenProps props)? mainPricesLoading,
+    TResult Function(MainScreenProps props)? mainPricesCompleted,
+    TResult Function(MainScreenProps props)? mainPricesError,
+    TResult Function(MainScreenProps props)? searchInitial,
+    TResult Function(MainScreenProps props)? searchLoading,
+    TResult Function(MainScreenProps props)? searchCompleted,
+    TResult Function(MainScreenProps props)? searchError,
   }) {
-    return searchLoading?.call();
+    return searchLoading?.call(props);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? mainPricesLoading,
-    TResult Function()? mainPricesCompleted,
-    TResult Function()? mainPricesError,
-    TResult Function()? searchInitial,
-    TResult Function()? searchLoading,
-    TResult Function()? searchCompleted,
-    TResult Function()? searchError,
+    TResult Function(MainScreenProps props)? initial,
+    TResult Function(MainScreenProps props)? mainPricesLoading,
+    TResult Function(MainScreenProps props)? mainPricesCompleted,
+    TResult Function(MainScreenProps props)? mainPricesError,
+    TResult Function(MainScreenProps props)? searchInitial,
+    TResult Function(MainScreenProps props)? searchLoading,
+    TResult Function(MainScreenProps props)? searchCompleted,
+    TResult Function(MainScreenProps props)? searchError,
     required TResult orElse(),
   }) {
     if (searchLoading != null) {
-      return searchLoading();
+      return searchLoading(props);
     }
     return orElse();
   }
@@ -1101,7 +1474,7 @@ class _$MSSSearchLoading implements MSSSearchLoading {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(MSSInitial value) initial,
     required TResult Function(MSSPricesLoading value) mainPricesLoading,
     required TResult Function(MSSPricesCompleted value) mainPricesCompleted,
     required TResult Function(MSSPricesError value) mainPricesError,
@@ -1116,7 +1489,7 @@ class _$MSSSearchLoading implements MSSSearchLoading {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(MSSInitial value)? initial,
     TResult Function(MSSPricesLoading value)? mainPricesLoading,
     TResult Function(MSSPricesCompleted value)? mainPricesCompleted,
     TResult Function(MSSPricesError value)? mainPricesError,
@@ -1131,7 +1504,7 @@ class _$MSSSearchLoading implements MSSSearchLoading {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(MSSInitial value)? initial,
     TResult Function(MSSPricesLoading value)? mainPricesLoading,
     TResult Function(MSSPricesCompleted value)? mainPricesCompleted,
     TResult Function(MSSPricesError value)? mainPricesError,
@@ -1149,14 +1522,28 @@ class _$MSSSearchLoading implements MSSSearchLoading {
 }
 
 abstract class MSSSearchLoading implements MainScreenState {
-  const factory MSSSearchLoading() = _$MSSSearchLoading;
+  const factory MSSSearchLoading({required MainScreenProps props}) =
+      _$MSSSearchLoading;
+
+  @override
+  MainScreenProps get props;
+  @override
+  @JsonKey(ignore: true)
+  $MSSSearchLoadingCopyWith<MSSSearchLoading> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $MSSSearchCompletedCopyWith<$Res> {
+abstract class $MSSSearchCompletedCopyWith<$Res>
+    implements $MainScreenStateCopyWith<$Res> {
   factory $MSSSearchCompletedCopyWith(
           MSSSearchCompleted value, $Res Function(MSSSearchCompleted) then) =
       _$MSSSearchCompletedCopyWithImpl<$Res>;
+  @override
+  $Res call({MainScreenProps props});
+
+  @override
+  $MainScreenPropsCopyWith<$Res> get props;
 }
 
 /// @nodoc
@@ -1169,72 +1556,94 @@ class _$MSSSearchCompletedCopyWithImpl<$Res>
 
   @override
   MSSSearchCompleted get _value => super._value as MSSSearchCompleted;
+
+  @override
+  $Res call({
+    Object? props = freezed,
+  }) {
+    return _then(MSSSearchCompleted(
+      props: props == freezed
+          ? _value.props
+          : props // ignore: cast_nullable_to_non_nullable
+              as MainScreenProps,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$MSSSearchCompleted implements MSSSearchCompleted {
-  const _$MSSSearchCompleted();
+  const _$MSSSearchCompleted({required this.props});
+
+  @override
+  final MainScreenProps props;
 
   @override
   String toString() {
-    return 'MainScreenState.searchCompleted()';
+    return 'MainScreenState.searchCompleted(props: $props)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is MSSSearchCompleted);
+        (other.runtimeType == runtimeType &&
+            other is MSSSearchCompleted &&
+            (identical(other.props, props) || other.props == props));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, props);
+
+  @JsonKey(ignore: true)
+  @override
+  $MSSSearchCompletedCopyWith<MSSSearchCompleted> get copyWith =>
+      _$MSSSearchCompletedCopyWithImpl<MSSSearchCompleted>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() mainPricesLoading,
-    required TResult Function() mainPricesCompleted,
-    required TResult Function() mainPricesError,
-    required TResult Function() searchInitial,
-    required TResult Function() searchLoading,
-    required TResult Function() searchCompleted,
-    required TResult Function() searchError,
+    required TResult Function(MainScreenProps props) initial,
+    required TResult Function(MainScreenProps props) mainPricesLoading,
+    required TResult Function(MainScreenProps props) mainPricesCompleted,
+    required TResult Function(MainScreenProps props) mainPricesError,
+    required TResult Function(MainScreenProps props) searchInitial,
+    required TResult Function(MainScreenProps props) searchLoading,
+    required TResult Function(MainScreenProps props) searchCompleted,
+    required TResult Function(MainScreenProps props) searchError,
   }) {
-    return searchCompleted();
+    return searchCompleted(props);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? mainPricesLoading,
-    TResult Function()? mainPricesCompleted,
-    TResult Function()? mainPricesError,
-    TResult Function()? searchInitial,
-    TResult Function()? searchLoading,
-    TResult Function()? searchCompleted,
-    TResult Function()? searchError,
+    TResult Function(MainScreenProps props)? initial,
+    TResult Function(MainScreenProps props)? mainPricesLoading,
+    TResult Function(MainScreenProps props)? mainPricesCompleted,
+    TResult Function(MainScreenProps props)? mainPricesError,
+    TResult Function(MainScreenProps props)? searchInitial,
+    TResult Function(MainScreenProps props)? searchLoading,
+    TResult Function(MainScreenProps props)? searchCompleted,
+    TResult Function(MainScreenProps props)? searchError,
   }) {
-    return searchCompleted?.call();
+    return searchCompleted?.call(props);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? mainPricesLoading,
-    TResult Function()? mainPricesCompleted,
-    TResult Function()? mainPricesError,
-    TResult Function()? searchInitial,
-    TResult Function()? searchLoading,
-    TResult Function()? searchCompleted,
-    TResult Function()? searchError,
+    TResult Function(MainScreenProps props)? initial,
+    TResult Function(MainScreenProps props)? mainPricesLoading,
+    TResult Function(MainScreenProps props)? mainPricesCompleted,
+    TResult Function(MainScreenProps props)? mainPricesError,
+    TResult Function(MainScreenProps props)? searchInitial,
+    TResult Function(MainScreenProps props)? searchLoading,
+    TResult Function(MainScreenProps props)? searchCompleted,
+    TResult Function(MainScreenProps props)? searchError,
     required TResult orElse(),
   }) {
     if (searchCompleted != null) {
-      return searchCompleted();
+      return searchCompleted(props);
     }
     return orElse();
   }
@@ -1242,7 +1651,7 @@ class _$MSSSearchCompleted implements MSSSearchCompleted {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(MSSInitial value) initial,
     required TResult Function(MSSPricesLoading value) mainPricesLoading,
     required TResult Function(MSSPricesCompleted value) mainPricesCompleted,
     required TResult Function(MSSPricesError value) mainPricesError,
@@ -1257,7 +1666,7 @@ class _$MSSSearchCompleted implements MSSSearchCompleted {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(MSSInitial value)? initial,
     TResult Function(MSSPricesLoading value)? mainPricesLoading,
     TResult Function(MSSPricesCompleted value)? mainPricesCompleted,
     TResult Function(MSSPricesError value)? mainPricesError,
@@ -1272,7 +1681,7 @@ class _$MSSSearchCompleted implements MSSSearchCompleted {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(MSSInitial value)? initial,
     TResult Function(MSSPricesLoading value)? mainPricesLoading,
     TResult Function(MSSPricesCompleted value)? mainPricesCompleted,
     TResult Function(MSSPricesError value)? mainPricesError,
@@ -1290,14 +1699,28 @@ class _$MSSSearchCompleted implements MSSSearchCompleted {
 }
 
 abstract class MSSSearchCompleted implements MainScreenState {
-  const factory MSSSearchCompleted() = _$MSSSearchCompleted;
+  const factory MSSSearchCompleted({required MainScreenProps props}) =
+      _$MSSSearchCompleted;
+
+  @override
+  MainScreenProps get props;
+  @override
+  @JsonKey(ignore: true)
+  $MSSSearchCompletedCopyWith<MSSSearchCompleted> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $MSSSearchErrorCopyWith<$Res> {
+abstract class $MSSSearchErrorCopyWith<$Res>
+    implements $MainScreenStateCopyWith<$Res> {
   factory $MSSSearchErrorCopyWith(
           MSSSearchError value, $Res Function(MSSSearchError) then) =
       _$MSSSearchErrorCopyWithImpl<$Res>;
+  @override
+  $Res call({MainScreenProps props});
+
+  @override
+  $MainScreenPropsCopyWith<$Res> get props;
 }
 
 /// @nodoc
@@ -1310,72 +1733,94 @@ class _$MSSSearchErrorCopyWithImpl<$Res>
 
   @override
   MSSSearchError get _value => super._value as MSSSearchError;
+
+  @override
+  $Res call({
+    Object? props = freezed,
+  }) {
+    return _then(MSSSearchError(
+      props: props == freezed
+          ? _value.props
+          : props // ignore: cast_nullable_to_non_nullable
+              as MainScreenProps,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$MSSSearchError implements MSSSearchError {
-  const _$MSSSearchError();
+  const _$MSSSearchError({required this.props});
+
+  @override
+  final MainScreenProps props;
 
   @override
   String toString() {
-    return 'MainScreenState.searchError()';
+    return 'MainScreenState.searchError(props: $props)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is MSSSearchError);
+        (other.runtimeType == runtimeType &&
+            other is MSSSearchError &&
+            (identical(other.props, props) || other.props == props));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, props);
+
+  @JsonKey(ignore: true)
+  @override
+  $MSSSearchErrorCopyWith<MSSSearchError> get copyWith =>
+      _$MSSSearchErrorCopyWithImpl<MSSSearchError>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() mainPricesLoading,
-    required TResult Function() mainPricesCompleted,
-    required TResult Function() mainPricesError,
-    required TResult Function() searchInitial,
-    required TResult Function() searchLoading,
-    required TResult Function() searchCompleted,
-    required TResult Function() searchError,
+    required TResult Function(MainScreenProps props) initial,
+    required TResult Function(MainScreenProps props) mainPricesLoading,
+    required TResult Function(MainScreenProps props) mainPricesCompleted,
+    required TResult Function(MainScreenProps props) mainPricesError,
+    required TResult Function(MainScreenProps props) searchInitial,
+    required TResult Function(MainScreenProps props) searchLoading,
+    required TResult Function(MainScreenProps props) searchCompleted,
+    required TResult Function(MainScreenProps props) searchError,
   }) {
-    return searchError();
+    return searchError(props);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? mainPricesLoading,
-    TResult Function()? mainPricesCompleted,
-    TResult Function()? mainPricesError,
-    TResult Function()? searchInitial,
-    TResult Function()? searchLoading,
-    TResult Function()? searchCompleted,
-    TResult Function()? searchError,
+    TResult Function(MainScreenProps props)? initial,
+    TResult Function(MainScreenProps props)? mainPricesLoading,
+    TResult Function(MainScreenProps props)? mainPricesCompleted,
+    TResult Function(MainScreenProps props)? mainPricesError,
+    TResult Function(MainScreenProps props)? searchInitial,
+    TResult Function(MainScreenProps props)? searchLoading,
+    TResult Function(MainScreenProps props)? searchCompleted,
+    TResult Function(MainScreenProps props)? searchError,
   }) {
-    return searchError?.call();
+    return searchError?.call(props);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? mainPricesLoading,
-    TResult Function()? mainPricesCompleted,
-    TResult Function()? mainPricesError,
-    TResult Function()? searchInitial,
-    TResult Function()? searchLoading,
-    TResult Function()? searchCompleted,
-    TResult Function()? searchError,
+    TResult Function(MainScreenProps props)? initial,
+    TResult Function(MainScreenProps props)? mainPricesLoading,
+    TResult Function(MainScreenProps props)? mainPricesCompleted,
+    TResult Function(MainScreenProps props)? mainPricesError,
+    TResult Function(MainScreenProps props)? searchInitial,
+    TResult Function(MainScreenProps props)? searchLoading,
+    TResult Function(MainScreenProps props)? searchCompleted,
+    TResult Function(MainScreenProps props)? searchError,
     required TResult orElse(),
   }) {
     if (searchError != null) {
-      return searchError();
+      return searchError(props);
     }
     return orElse();
   }
@@ -1383,7 +1828,7 @@ class _$MSSSearchError implements MSSSearchError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(MSSInitial value) initial,
     required TResult Function(MSSPricesLoading value) mainPricesLoading,
     required TResult Function(MSSPricesCompleted value) mainPricesCompleted,
     required TResult Function(MSSPricesError value) mainPricesError,
@@ -1398,7 +1843,7 @@ class _$MSSSearchError implements MSSSearchError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(MSSInitial value)? initial,
     TResult Function(MSSPricesLoading value)? mainPricesLoading,
     TResult Function(MSSPricesCompleted value)? mainPricesCompleted,
     TResult Function(MSSPricesError value)? mainPricesError,
@@ -1413,7 +1858,7 @@ class _$MSSSearchError implements MSSSearchError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(MSSInitial value)? initial,
     TResult Function(MSSPricesLoading value)? mainPricesLoading,
     TResult Function(MSSPricesCompleted value)? mainPricesCompleted,
     TResult Function(MSSPricesError value)? mainPricesError,
@@ -1431,5 +1876,143 @@ class _$MSSSearchError implements MSSSearchError {
 }
 
 abstract class MSSSearchError implements MainScreenState {
-  const factory MSSSearchError() = _$MSSSearchError;
+  const factory MSSSearchError({required MainScreenProps props}) =
+      _$MSSSearchError;
+
+  @override
+  MainScreenProps get props;
+  @override
+  @JsonKey(ignore: true)
+  $MSSSearchErrorCopyWith<MSSSearchError> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+class _$MainScreenPropsTearOff {
+  const _$MainScreenPropsTearOff();
+
+  _MainScreenProps call({required bool isMainHeaderVisible}) {
+    return _MainScreenProps(
+      isMainHeaderVisible: isMainHeaderVisible,
+    );
+  }
+}
+
+/// @nodoc
+const $MainScreenProps = _$MainScreenPropsTearOff();
+
+/// @nodoc
+mixin _$MainScreenProps {
+  bool get isMainHeaderVisible => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $MainScreenPropsCopyWith<MainScreenProps> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $MainScreenPropsCopyWith<$Res> {
+  factory $MainScreenPropsCopyWith(
+          MainScreenProps value, $Res Function(MainScreenProps) then) =
+      _$MainScreenPropsCopyWithImpl<$Res>;
+  $Res call({bool isMainHeaderVisible});
+}
+
+/// @nodoc
+class _$MainScreenPropsCopyWithImpl<$Res>
+    implements $MainScreenPropsCopyWith<$Res> {
+  _$MainScreenPropsCopyWithImpl(this._value, this._then);
+
+  final MainScreenProps _value;
+  // ignore: unused_field
+  final $Res Function(MainScreenProps) _then;
+
+  @override
+  $Res call({
+    Object? isMainHeaderVisible = freezed,
+  }) {
+    return _then(_value.copyWith(
+      isMainHeaderVisible: isMainHeaderVisible == freezed
+          ? _value.isMainHeaderVisible
+          : isMainHeaderVisible // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$MainScreenPropsCopyWith<$Res>
+    implements $MainScreenPropsCopyWith<$Res> {
+  factory _$MainScreenPropsCopyWith(
+          _MainScreenProps value, $Res Function(_MainScreenProps) then) =
+      __$MainScreenPropsCopyWithImpl<$Res>;
+  @override
+  $Res call({bool isMainHeaderVisible});
+}
+
+/// @nodoc
+class __$MainScreenPropsCopyWithImpl<$Res>
+    extends _$MainScreenPropsCopyWithImpl<$Res>
+    implements _$MainScreenPropsCopyWith<$Res> {
+  __$MainScreenPropsCopyWithImpl(
+      _MainScreenProps _value, $Res Function(_MainScreenProps) _then)
+      : super(_value, (v) => _then(v as _MainScreenProps));
+
+  @override
+  _MainScreenProps get _value => super._value as _MainScreenProps;
+
+  @override
+  $Res call({
+    Object? isMainHeaderVisible = freezed,
+  }) {
+    return _then(_MainScreenProps(
+      isMainHeaderVisible: isMainHeaderVisible == freezed
+          ? _value.isMainHeaderVisible
+          : isMainHeaderVisible // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_MainScreenProps implements _MainScreenProps {
+  const _$_MainScreenProps({required this.isMainHeaderVisible});
+
+  @override
+  final bool isMainHeaderVisible;
+
+  @override
+  String toString() {
+    return 'MainScreenProps(isMainHeaderVisible: $isMainHeaderVisible)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _MainScreenProps &&
+            (identical(other.isMainHeaderVisible, isMainHeaderVisible) ||
+                other.isMainHeaderVisible == isMainHeaderVisible));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, isMainHeaderVisible);
+
+  @JsonKey(ignore: true)
+  @override
+  _$MainScreenPropsCopyWith<_MainScreenProps> get copyWith =>
+      __$MainScreenPropsCopyWithImpl<_MainScreenProps>(this, _$identity);
+}
+
+abstract class _MainScreenProps implements MainScreenProps {
+  const factory _MainScreenProps({required bool isMainHeaderVisible}) =
+      _$_MainScreenProps;
+
+  @override
+  bool get isMainHeaderVisible;
+  @override
+  @JsonKey(ignore: true)
+  _$MainScreenPropsCopyWith<_MainScreenProps> get copyWith =>
+      throw _privateConstructorUsedError;
 }

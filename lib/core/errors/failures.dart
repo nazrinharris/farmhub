@@ -4,7 +4,7 @@ abstract class Failure extends Equatable {
   final String? code;
   final String? message;
 
-  const Failure({this.code, this.message});
+  const Failure({this.code = "UNKNOWN CODE", this.message = "Unknown message for this failure"});
 
   @override
   List<Object> get props {
