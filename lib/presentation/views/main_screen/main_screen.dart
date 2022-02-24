@@ -1,3 +1,4 @@
+import 'package:boxy/slivers.dart';
 import 'package:farmhub/features/produce_manager/bloc/produce_manager_bloc.dart';
 import 'package:farmhub/presentation/shared_widgets/buttons.dart';
 import 'package:farmhub/presentation/shared_widgets/scroll_physics.dart';
@@ -7,9 +8,9 @@ import 'package:farmhub/presentation/views/main_screen/bloc/main_screen_bloc.dar
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:material_floating_search_bar/material_floating_search_bar.dart';
-import 'package:simple_animations/simple_animations.dart';
+import 'package:sliver_tools/sliver_tools.dart';
 
+import '../../../features/produce_manager/domain/entities/produce/produce.dart';
 import '../../../locator.dart';
 
 class MainScreen extends StatefulWidget {
@@ -22,52 +23,196 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateMixin {
   late AnimationController mainHeaderController;
 
+  late Animation<double> extent;
+
   @override
   void initState() {
+    super.initState();
     mainHeaderController = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 500),
       reverseDuration: const Duration(milliseconds: 500),
     );
 
-    super.initState();
+    mainHeaderController.addListener(() {
+      setState(() {});
+    });
+
+    extent = Tween<double>(begin: 160.0, end: 64.0).animate(mainHeaderController);
   }
 
   @override
   Widget build(BuildContext context) {
     return MainScreenProviders(
       mainHeaderController: mainHeaderController,
-      child: Builder(
-        builder: (context) => BlocBuilder<MainScreenBloc, MainScreenState>(
+      child: Builder(builder: (context) {
+        return BlocBuilder<MainScreenBloc, MainScreenState>(
           builder: (context, state) {
-            return Scaffold(
-              body: SafeArea(
-                bottom: false,
-                child: CustomScrollView(
-                  physics: DefaultScrollPhysics,
-                  slivers: [
-                    CupertinoSliverRefreshControl(
-                      onRefresh: () async {},
-                    ),
-                    SliverPersistentHeader(
-                      floating: true,
-                      delegate: MainScreenHeaderDelegate(maxExtent: 160, minExtent: 60),
-                    ),
-                    SliverProduceList(),
-                    const SliverWhiteSpace(900),
-                  ],
-                ),
-              ),
-            );
+            return MainScreenCore(extent: extent);
           },
+        );
+      }),
+    );
+  }
+}
+
+class MainScreenCore extends StatefulWidget {
+  const MainScreenCore({
+    Key? key,
+    required this.extent,
+  }) : super(key: key);
+
+  final Animation<double> extent;
+
+  @override
+  State<MainScreenCore> createState() => _MainScreenCoreState();
+}
+
+class _MainScreenCoreState extends State<MainScreenCore> {
+  @override
+  void initState() {
+    super.initState();
+
+    context.read<MainScreenBloc>().add(const MainScreenEvent.getFirstTenProduce());
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SafeArea(
+        bottom: false,
+        child: CustomScrollView(
+          physics: DefaultScrollPhysics,
+          slivers: [
+            CupertinoSliverRefreshControl(
+              onRefresh: () async {},
+            ),
+            SliverPersistentHeader(
+              delegate: MainScreenHeaderDelegate(widget.extent),
+            ),
+            const SliverDebugSlot(),
+            const SliverAnimatedSwitcher(
+              child: ProducePriceList(),
+              duration: Duration(milliseconds: 500),
+            )
+          ],
         ),
       ),
     );
   }
 }
 
+class ProducePriceList extends StatefulWidget {
+  const ProducePriceList({Key? key}) : super(key: key);
+
+  @override
+  State<ProducePriceList> createState() => _ProducePriceListState();
+}
+
+class _ProducePriceListState extends State<ProducePriceList> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<MainScreenBloc>().stream.listen((event) {
+      setState(() {});
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final currentState = context.read<MainScreenBloc>().state;
+
+    if (currentState is MSSInitial) {
+      throw Exception("MSSInitial State is received when it should not have existed.");
+    } else if (currentState is MSSPricesLoading) {
+      return SliverList(delegate: SliverChildListDelegate([const CircularProgressIndicator()]));
+    } else if (currentState is MSSPricesCompleted) {
+      return SliverProduceList(
+        currentState: currentState,
+      );
+    } else if (currentState is MSSPricesError) {
+      return SliverList(
+          delegate: SliverChildListDelegate(
+        [Text("ERROR!, ${currentState.code}, ${currentState.message}")],
+      ));
+    }
+
+    return SliverList(
+        delegate: SliverChildListDelegate([
+      Container(
+        child: Text('Uh oh, some weird state is thrown here. In ProduceList!'),
+      )
+    ]));
+  }
+}
+
 class SliverProduceList extends StatelessWidget {
-  const SliverProduceList({Key? key}) : super(key: key);
+  final MSSPricesCompleted currentState;
+
+  const SliverProduceList({Key? key, required this.currentState}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SliverList(
+      delegate: SliverChildBuilderDelegate(
+        (context, index) {
+          final Produce produce = currentState.produceList[index];
+
+          return Material(
+            type: MaterialType.transparency,
+            child: InkWell(
+              onTap: () {},
+              child: Container(
+                height: 109,
+                padding: const EdgeInsets.symmetric(horizontal: 38, vertical: 13),
+                decoration: const BoxDecoration(
+                  border: Border(
+                    top: BorderSide(),
+                    bottom: BorderSide(),
+                  ),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          produce.produceName,
+                          style: Theme.of(context).textTheme.bodyText1!.copyWith(fontSize: 17),
+                        ),
+                        Text(
+                          "RM ${produce.currentProducePrice["price"].toString()}",
+                          style: Theme.of(context).textTheme.bodyText2,
+                        )
+                      ],
+                    ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Container(
+                          color: Colors.red,
+                          height: 50,
+                          width: 50,
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+              ),
+            ),
+          );
+        },
+        childCount: currentState.produceList.length,
+      ),
+    );
+  }
+}
+
+class SliverDebugSlot extends StatelessWidget {
+  const SliverDebugSlot({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -94,12 +239,9 @@ class SliverProduceList extends StatelessWidget {
 }
 
 class MainScreenHeaderDelegate extends SliverPersistentHeaderDelegate {
-  @override
-  final double minExtent;
-  @override
-  final double maxExtent;
+  final Animation<double> extent;
 
-  MainScreenHeaderDelegate({required this.maxExtent, required this.minExtent});
+  MainScreenHeaderDelegate(this.extent);
 
   @override
   Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
@@ -139,6 +281,12 @@ class MainScreenHeaderDelegate extends SliverPersistentHeaderDelegate {
   bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) {
     return true;
   }
+
+  @override
+  double get maxExtent => extent.value;
+
+  @override
+  double get minExtent => extent.value;
 }
 
 class MainHeader extends StatefulWidget {
@@ -319,6 +467,7 @@ class MainScreenProviders extends StatelessWidget {
           create: (context) => MainScreenBloc(
             mainHeaderController: mainHeaderController,
             produceManagerBloc: context.read<ProduceManagerBloc>(),
+            produceManagerRepository: locator(),
           ),
           child: child,
         );

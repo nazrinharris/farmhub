@@ -26,45 +26,48 @@ ColorScheme _farmhubColorSchemeLight = const ColorScheme(
   brightness: Brightness.light,
 );
 
-ColorScheme _lightFarmhubColorScheme =
-    ColorScheme.fromSeed(seedColor: const Color(0xff343A1A));
+ColorScheme _lightFarmhubColorScheme = ColorScheme.fromSeed(seedColor: const Color(0xff343A1A));
 
 TextTheme _farmhubTextThemeLight = TextTheme(
-  headline1: TextStyle(
-    fontSize: 28.sp,
-    fontFamily: 'Montserrat',
-    color: _farmhubColorSchemeLight.primary,
-    fontWeight: FontWeight.w800,
-  ),
-  headline2: TextStyle(
-    fontSize: 28.sp,
-    fontFamily: 'Montserrat',
-    color: _farmhubColorSchemeLight.primaryVariant,
-    fontWeight: FontWeight.w800,
-  ),
-  headline3: TextStyle(
-    fontSize: 23,
-    fontFamily: 'Montserrat',
-    // TODO: Temporary Solution
-    color: _farmhubColorSchemeLight.primaryVariant.withOpacity(0.65),
-    fontWeight: FontWeight.w800,
-  ),
-  headline4: TextStyle(
-    fontSize: 20,
-    fontFamily: 'Montserrat',
-    color: _farmhubColorSchemeLight.primary,
-    fontWeight: FontWeight.w800,
-  ),
-  bodyText1: TextStyle(
-    fontSize: 14,
-    fontFamily: 'Montserrat',
-    color: _farmhubColorSchemeLight.primary,
-    fontWeight: FontWeight.w600,
-  ),
-);
+    headline1: TextStyle(
+      fontSize: 28.sp,
+      fontFamily: 'Montserrat',
+      color: _farmhubColorSchemeLight.primary,
+      fontWeight: FontWeight.w800,
+    ),
+    headline2: TextStyle(
+      fontSize: 28.sp,
+      fontFamily: 'Montserrat',
+      color: _farmhubColorSchemeLight.primaryVariant,
+      fontWeight: FontWeight.w800,
+    ),
+    headline3: TextStyle(
+      fontSize: 23,
+      fontFamily: 'Montserrat',
+      // TODO: Temporary Solution
+      color: _farmhubColorSchemeLight.primaryVariant.withOpacity(0.65),
+      fontWeight: FontWeight.w800,
+    ),
+    headline4: TextStyle(
+      fontSize: 20,
+      fontFamily: 'Montserrat',
+      color: _farmhubColorSchemeLight.primary,
+      fontWeight: FontWeight.w800,
+    ),
+    bodyText1: TextStyle(
+      fontSize: 14.sp,
+      fontFamily: 'Montserrat',
+      color: _farmhubColorSchemeLight.primary,
+      fontWeight: FontWeight.w600,
+    ),
+    bodyText2: TextStyle(
+      fontSize: 17.sp,
+      fontFamily: 'Montserrat',
+      color: _farmhubColorSchemeLight.primary,
+      fontWeight: FontWeight.w700,
+    ));
 
-ElevatedButtonThemeData _farmhubElevatedButtonThemeDataLight =
-    ElevatedButtonThemeData(
+ElevatedButtonThemeData _farmhubElevatedButtonThemeDataLight = ElevatedButtonThemeData(
   style: ElevatedButton.styleFrom(
     padding: EdgeInsets.zero,
     primary: _farmhubColorSchemeLight.primary,
@@ -98,16 +101,12 @@ InputDecoration kInputDecoration({
       //labelStyle: Theme.of(context).textTheme.bodyText1,
       hintText: hintText,
       // TODO: Update to use a proper TextTheme [Caption]
-      hintStyle: Theme.of(context)
-          .textTheme
-          .bodyText1!
-          .copyWith(color: Colors.black.withOpacity(0.2)),
+      hintStyle:
+          Theme.of(context).textTheme.bodyText1!.copyWith(color: Colors.black.withOpacity(0.2)),
       enabledBorder: UnderlineInputBorder(
-        borderSide: BorderSide(
-            color: Theme.of(context).colorScheme.primary.withOpacity(0.5)),
+        borderSide: BorderSide(color: Theme.of(context).colorScheme.primary.withOpacity(0.5)),
       ),
       focusedBorder: UnderlineInputBorder(
-        borderSide:
-            BorderSide(width: 2, color: Theme.of(context).colorScheme.primary),
+        borderSide: BorderSide(width: 2, color: Theme.of(context).colorScheme.primary),
       ));
 }

@@ -26,18 +26,18 @@ class ProduceManagerRepository implements IProduceManagerRepository {
     final isConnected = await networkInfo.isConnected;
 
     if (isConnected) {
-      // try {
-      final firstTenProduce = await remoteDatasource.getFirstTenProduce();
-
-      return Right(firstTenProduce);
-      // } catch (e) {
-      //   return Left(
-      //     UnexpectedFailure(
-      //       code: (ProduceManagerRepositoryCode + 'getFirstTenProduce()'),
-      //       message: e.toString(),
-      //     ),
-      //   );
-      // }
+      try {
+        final firstTenProduce = await remoteDatasource.getFirstTenProduce();
+        print("Successful getFirstTenProduce!");
+        return Right(firstTenProduce);
+      } catch (e) {
+        return Left(
+          UnexpectedFailure(
+            code: (ProduceManagerRepositoryCode + 'getFirstTenProduce()'),
+            message: e.toString(),
+          ),
+        );
+      }
     } else {
       return const Left(
         InternetConnectionFailure(

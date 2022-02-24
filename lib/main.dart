@@ -35,6 +35,7 @@ class FarmhubApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       designSize: const Size(414, 896),
+      minTextAdapt: true,
       builder: () => MultiBlocProvider(
         providers: [
           BlocProvider(create: (context) => locator<AuthBloc>()),

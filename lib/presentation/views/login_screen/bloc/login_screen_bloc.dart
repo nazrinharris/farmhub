@@ -71,8 +71,7 @@ class LoginScreenBloc extends Bloc<LoginScreenEvent, LoginScreenState> {
     firstTwoFieldsFormBloc.add(TwoFieldsFormEvent.enableAlwaysValidation());
 
     // Access Status and check whether form is valid
-    final isValid =
-        firstTwoFieldsFormBloc.state.props.formKey.currentState!.validate();
+    final isValid = firstTwoFieldsFormBloc.state.props.formKey.currentState!.validate();
     if (isValid) {
       // Initialization
       final email = firstTwoFieldsFormBloc.state.props.firstFieldValue!;
@@ -87,8 +86,7 @@ class LoginScreenBloc extends Bloc<LoginScreenEvent, LoginScreenState> {
         currentStatus: InfoTileStatus.loading,
       ));
       primaryButtonAwareCubit.triggerLoading();
-      infoTileAnimationController.play(
-          duration: const Duration(milliseconds: 500));
+      infoTileAnimationController.play(duration: const Duration(milliseconds: 500));
 
       // Start Login Process
       authBloc.add(AuthEvent.execLoginWithEmailAndPassword(
@@ -143,11 +141,9 @@ class LoginScreenBloc extends Bloc<LoginScreenEvent, LoginScreenState> {
     final isVisible = state.props.isInfoTileVisible;
 
     if (isVisible) {
-      infoTileAnimationController.playReverse(
-          duration: const Duration(milliseconds: 500));
+      infoTileAnimationController.playReverse(duration: const Duration(milliseconds: 500));
     } else {
-      infoTileAnimationController.play(
-          duration: const Duration(milliseconds: 500));
+      infoTileAnimationController.play(duration: const Duration(milliseconds: 500));
     }
 
     emit(

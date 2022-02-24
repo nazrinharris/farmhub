@@ -44,8 +44,7 @@ dependencies:
   flutter_screenutil: ^5.0.3
   simple_animations: ^4.0.1
   bottom_nav_layout: ^3.0.9
-  google_nav_bar: ^5.0.5
-  material_floating_search_bar: ^0.3.6
+  sliver_tools: ^0.2.5
   boxy: ^2.0.5
 
   # Misc
@@ -83,9 +82,11 @@ flutter:
       fonts:
         - asset: assets/fonts/Montserrat-Regular.ttf
           weight: 400
-        - asset: assets/fonts/Montserrat-ExtraBold.ttf
-          weight: 800
-        - asset: assets/fonts/Montserrat-SemiBold.ttf
-          weight: 600
         - asset: assets/fonts/Montserrat-Medium.ttf
           weight: 500
+        - asset: assets/fonts/Montserrat-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Montserrat-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Montserrat-ExtraBold.ttf
+          weight: 800

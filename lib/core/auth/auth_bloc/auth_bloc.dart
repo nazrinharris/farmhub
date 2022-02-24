@@ -72,8 +72,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     final failureOrSignOut = await authRepository.signOut();
 
     emit(failureOrSignOut.fold(
-      (failure) => AuthState.signOutError(
-          code: failure.code!, message: failure.message!),
+      (failure) => AuthState.signOutError(code: failure.code!, message: failure.message!),
       (_) => const AuthState.signOutSuccess(),
     ));
   }

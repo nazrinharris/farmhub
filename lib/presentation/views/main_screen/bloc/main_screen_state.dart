@@ -12,9 +12,12 @@ class MainScreenState with _$MainScreenState {
   }) = MSSPricesLoading;
   const factory MainScreenState.mainPricesCompleted({
     required MainScreenProps props,
+    required List<Produce> produceList,
   }) = MSSPricesCompleted;
   const factory MainScreenState.mainPricesError({
     required MainScreenProps props,
+    required String code,
+    required String message,
   }) = MSSPricesError;
 
   // Search Screen
