@@ -1,11 +1,10 @@
 import 'package:farmhub/app_router.dart';
 import 'package:farmhub/locator.dart';
 import 'package:farmhub/presentation/themes/farmhub_theme.dart';
-import 'package:farmhub/presentation/views/debug/navigate_view.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'core/auth/auth_bloc/auth_bloc.dart';
 
@@ -15,6 +14,12 @@ Future<void> main() async {
   await Firebase.initializeApp();
 
   setupLocator();
+
+  SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(
+      statusBarBrightness: Brightness.dark,
+    ),
+  );
 
   runApp(
     FarmhubApp(
@@ -33,18 +38,14 @@ class FarmhubApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ScreenUtilInit(
-      designSize: const Size(414, 896),
-      minTextAdapt: true,
-      builder: () => MultiBlocProvider(
-        providers: [
-          BlocProvider(create: (context) => locator<AuthBloc>()),
-        ],
-        child: MaterialApp(
-          title: "Farmhub",
-          theme: FarmhubTheme.appThemeData[FarmhubThemeVariants.light],
-          onGenerateRoute: appRouter.onGenerateRoute,
-        ),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => locator<AuthBloc>()),
+      ],
+      child: MaterialApp(
+        title: "Farmhub",
+        theme: FarmhubTheme.appThemeData[FarmhubThemeVariants.light],
+        onGenerateRoute: appRouter.onGenerateRoute,
       ),
     );
   }

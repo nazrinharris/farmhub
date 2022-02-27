@@ -5,7 +5,6 @@ import 'package:farmhub/presentation/views/register_screen/bloc/register_screen_
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:simple_animations/simple_animations.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../shared_widgets/buttons.dart';
 import '../../shared_widgets/ui_helpers.dart';
@@ -38,14 +37,14 @@ class _RegisterScreenState extends State<RegisterScreen> with AnimationMixin {
       reverseCurve: Curves.easeInExpo,
     );
 
-    _infoTileHeightFactor =
-        Tween<double>(begin: 0.0, end: 1.0).animate(_infoTileCurve);
-    _infoTileOpacity =
-        Tween<double>(begin: 0.0, end: 1.0).animate(_infoTileCurve);
+    _infoTileHeightFactor = Tween<double>(begin: 0.0, end: 1.0).animate(_infoTileCurve);
+    _infoTileOpacity = Tween<double>(begin: 0.0, end: 1.0).animate(_infoTileCurve);
   }
 
   @override
   Widget build(BuildContext context) {
+    final screen = MediaQuery.of(context).size;
+
     return RegisterScreenBlocProviders(
       infoTileVisibilityController: _infoTileVisibilityController,
       initialInfoTileBloc: initialInfoTileBloc,
@@ -89,8 +88,7 @@ class _RegisterScreenState extends State<RegisterScreen> with AnimationMixin {
                       content: "Debug",
                       onPressed: () {
                         context.read<RegisterScreenBloc>().add(
-                              const RegisterScreenEvent
-                                  .toggleInfoTileVisibility(),
+                              const RegisterScreenEvent.toggleInfoTileVisibility(),
                             );
                       },
                       width: 100,
@@ -100,8 +98,8 @@ class _RegisterScreenState extends State<RegisterScreen> with AnimationMixin {
                 ],
               ),
               Container(
-                width: 1.sh,
-                height: 1.sh,
+                width: screen.width,
+                height: screen.height,
                 padding: const EdgeInsets.symmetric(horizontal: 14),
                 alignment: Alignment.bottomCenter,
                 child: const _BuildBottomButton(),
@@ -169,8 +167,7 @@ class _RegisterFieldsState extends State<RegisterFields> {
   }
 
   String? validateEmail(String? value) {
-    const emailRegex =
-        r"""^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+""";
+    const emailRegex = r"""^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+""";
     if (value == null || value.isEmpty) {
       return 'Please enter an email';
     } else {
@@ -195,8 +192,7 @@ class _RegisterFieldsState extends State<RegisterFields> {
   String? validateConfirmPassword(String? value) {
     if (value == null || value.isEmpty) {
       return "This cannot be empty";
-    } else if (value !=
-        context.read<SecondTwoFieldsFormBloc>().state.props.firstFieldValue) {
+    } else if (value != context.read<SecondTwoFieldsFormBloc>().state.props.firstFieldValue) {
       return "The passwords are not the same";
     } else {
       return null;
@@ -244,6 +240,8 @@ class _BuildBottomButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screen = MediaQuery.of(context).size;
+
     return Padding(
       padding: const EdgeInsets.only(bottom: 34.0),
       child: Row(
@@ -252,9 +250,7 @@ class _BuildBottomButton extends StatelessWidget {
           PrimaryButtonAware(
             firstPageContent: 'Continue',
             firstPageOnPressed: () {
-              context
-                  .read<RegisterScreenBloc>()
-                  .add(RegisterScreenEvent.continuePressed());
+              context.read<RegisterScreenBloc>().add(RegisterScreenEvent.continuePressed());
             },
             firstPageButtonIcon: const Icon(
               Icons.arrow_right,
@@ -262,7 +258,7 @@ class _BuildBottomButton extends StatelessWidget {
               size: 24,
             ),
             type: PrimaryButtonAwareType.onePage,
-            width: 0.41.sw,
+            width: (0.41 * screen.width),
             padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
             borderRadius: 20.0,
           ),
@@ -307,15 +303,12 @@ class RegisterScreenBlocProviders extends StatelessWidget {
             BlocProvider<RegisterScreenBloc>(
               create: (context) => RegisterScreenBloc(
                 infoTileVisibilityController: infoTileVisibilityController,
-                registerScreenProps:
-                    const RegisterScreenProps(isInfoTileVisible: false),
+                registerScreenProps: const RegisterScreenProps(isInfoTileVisible: false),
                 authBloc: locator(),
                 infoTileBloc: context.read<InfoTileBloc>(),
-                primaryButtonAwareCubit:
-                    context.read<PrimaryButtonAwareCubit>(),
+                primaryButtonAwareCubit: context.read<PrimaryButtonAwareCubit>(),
                 firstTwoFieldsFormBloc: context.read<FirstTwoFieldsFormBloc>(),
-                secondTwoFieldsFormBloc:
-                    context.read<SecondTwoFieldsFormBloc>(),
+                secondTwoFieldsFormBloc: context.read<SecondTwoFieldsFormBloc>(),
               ),
             ),
           ],

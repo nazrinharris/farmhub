@@ -30,6 +30,13 @@ class Produce with _$Produce {
   }
 }
 
+class PriceData {
+  final int day;
+  final num price;
+
+  PriceData(this.day, this.price);
+}
+
 /*
 
   Structure for [currentProducePrice]

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 enum FarmhubThemeVariants {
   light,
@@ -30,13 +29,13 @@ ColorScheme _lightFarmhubColorScheme = ColorScheme.fromSeed(seedColor: const Col
 
 TextTheme _farmhubTextThemeLight = TextTheme(
     headline1: TextStyle(
-      fontSize: 28.sp,
+      fontSize: 28,
       fontFamily: 'Montserrat',
       color: _farmhubColorSchemeLight.primary,
       fontWeight: FontWeight.w800,
     ),
     headline2: TextStyle(
-      fontSize: 28.sp,
+      fontSize: 28,
       fontFamily: 'Montserrat',
       color: _farmhubColorSchemeLight.primaryVariant,
       fontWeight: FontWeight.w800,
@@ -55,13 +54,13 @@ TextTheme _farmhubTextThemeLight = TextTheme(
       fontWeight: FontWeight.w800,
     ),
     bodyText1: TextStyle(
-      fontSize: 14.sp,
+      fontSize: 14,
       fontFamily: 'Montserrat',
       color: _farmhubColorSchemeLight.primary,
       fontWeight: FontWeight.w600,
     ),
     bodyText2: TextStyle(
-      fontSize: 17.sp,
+      fontSize: 17,
       fontFamily: 'Montserrat',
       color: _farmhubColorSchemeLight.primary,
       fontWeight: FontWeight.w700,
@@ -80,13 +79,15 @@ ElevatedButtonThemeData _farmhubElevatedButtonThemeDataLight = ElevatedButtonThe
 class FarmhubTheme {
   static final appThemeData = {
     FarmhubThemeVariants.light: ThemeData(
-      colorScheme: _farmhubColorSchemeLight,
-      textTheme: _farmhubTextThemeLight,
-      // TODO: Temporary Fix for ColorScheme, update to use the new Seed. Or fix it so that the old one can use
-      scaffoldBackgroundColor: _farmhubColorSchemeLight.background,
-      backgroundColor: _farmhubColorSchemeLight.background,
-      elevatedButtonTheme: _farmhubElevatedButtonThemeDataLight,
-    ),
+        colorScheme: _farmhubColorSchemeLight,
+        textTheme: _farmhubTextThemeLight,
+        // TODO: Temporary Fix for ColorScheme, update to use the new Seed. Or fix it so that the old one can use
+        scaffoldBackgroundColor: _farmhubColorSchemeLight.background,
+        backgroundColor: _farmhubColorSchemeLight.background,
+        elevatedButtonTheme: _farmhubElevatedButtonThemeDataLight,
+        iconTheme: const IconThemeData(
+          color: Colors.white,
+        )),
   };
 }
 

@@ -1,3 +1,4 @@
+import 'package:farmhub/presentation/views/create_produce_screen/create_produce_screen.dart';
 import 'package:farmhub/presentation/views/debug/navigate_view.dart';
 import 'package:farmhub/presentation/views/debug/playground_screen.dart';
 import 'package:farmhub/presentation/views/login_screen/login_screen.dart';
@@ -19,6 +20,8 @@ class AppRouter {
         return CupertinoPageRoute(builder: (_) => const StartScreen());
       case '/main':
         return CupertinoPageRoute(builder: (_) => const MainScreen());
+      case '/create_produce':
+        return CupertinoPageRoute(builder: (_) => const CreateProduceScreen());
 
       //! DEBUG ROUTES
       case '/navigate':

@@ -41,11 +41,17 @@ dependencies:
 
   # Render
   flutter_svg: ^1.0.0
-  flutter_screenutil: ^5.0.3
   simple_animations: ^4.0.1
   bottom_nav_layout: ^3.0.9
   sliver_tools: ^0.2.5
   boxy: ^2.0.5
+  syncfusion_flutter_charts: ^19.4.53
+  #flutter_speed_dial:
+  #  git:
+  #    url: git://github.com/nazrinharris/flutter_speed_dial.git
+  #    ref: master
+  flutter_speed_dial:
+    path: ./packages/flutter_speed_dial-5.0.0+1-hijacked
 
   # Misc
   lint: ^1.8.1
@@ -90,3 +96,7 @@ flutter:
           weight: 700
         - asset: assets/fonts/Montserrat-ExtraBold.ttf
           weight: 800
+
+    - family: FarmhubIcons
+      fonts:
+        - asset: assets/fonts/FarmhubIcons.ttf

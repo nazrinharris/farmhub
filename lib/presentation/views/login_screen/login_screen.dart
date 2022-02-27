@@ -9,7 +9,6 @@ import 'package:farmhub/presentation/smart_widgets/two_fields_form.dart/two_fiel
 import 'package:farmhub/presentation/views/login_screen/bloc/login_screen_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:simple_animations/simple_animations.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -37,10 +36,8 @@ class _LoginScreenState extends State<LoginScreen> with AnimationMixin {
       reverseCurve: Curves.easeInExpo,
     );
 
-    _infoTileHeightFactor =
-        Tween<double>(begin: 0.0, end: 1.0).animate(_infoTileCurve);
-    _infoTileOpacity =
-        Tween<double>(begin: 0.0, end: 1.0).animate(_infoTileCurve);
+    _infoTileHeightFactor = Tween<double>(begin: 0.0, end: 1.0).animate(_infoTileCurve);
+    _infoTileOpacity = Tween<double>(begin: 0.0, end: 1.0).animate(_infoTileCurve);
   }
 
   FirstTwoFieldsFormBloc giveFirstTwoFieldsFormBloc(BuildContext context) {
@@ -53,6 +50,8 @@ class _LoginScreenState extends State<LoginScreen> with AnimationMixin {
 
   @override
   Widget build(BuildContext context) {
+    final screen = MediaQuery.of(context).size;
+
     return MultiBlocProvider(
       providers: [
         BlocProvider<FirstTwoFieldsFormBloc>(
@@ -76,13 +75,10 @@ class _LoginScreenState extends State<LoginScreen> with AnimationMixin {
                         isInfoTileVisible: false,
                       ),
                       authBloc: locator(),
-                      firstTwoFieldsFormBloc:
-                          giveFirstTwoFieldsFormBloc(context),
+                      firstTwoFieldsFormBloc: giveFirstTwoFieldsFormBloc(context),
                       infoTileBloc: giveInfoTileBloc(context),
-                      primaryButtonAwareCubit:
-                          context.read<PrimaryButtonAwareCubit>(),
-                      infoTileAnimationController:
-                          _infoTileVisibilityController,
+                      primaryButtonAwareCubit: context.read<PrimaryButtonAwareCubit>(),
+                      infoTileAnimationController: _infoTileVisibilityController,
                     ),
                   )
                 ],
@@ -102,8 +98,8 @@ class _LoginScreenState extends State<LoginScreen> with AnimationMixin {
                       top: false,
                       child: Container(
                         //padding: const EdgeInsets.symmetric(horizontal: 24),
-                        height: 1.sh,
-                        width: 1.sh,
+                        height: screen.height,
+                        width: screen.width,
                         child: Stack(
                           children: [
                             ListView(
@@ -116,8 +112,7 @@ class _LoginScreenState extends State<LoginScreen> with AnimationMixin {
                                   child: Align(
                                     heightFactor: _infoTileHeightFactor.value,
                                     child: Padding(
-                                      padding:
-                                          const EdgeInsets.only(bottom: 24),
+                                      padding: const EdgeInsets.only(bottom: 24),
                                       child: Opacity(
                                         opacity: _infoTileOpacity.value,
                                         child: const InfoTile(),
@@ -126,31 +121,24 @@ class _LoginScreenState extends State<LoginScreen> with AnimationMixin {
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 24),
+                                  padding: const EdgeInsets.symmetric(horizontal: 24),
                                   child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
                                       Text(
                                         "Login",
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .headline1,
+                                        style: Theme.of(context).textTheme.headline1,
                                       ),
                                       Text(
                                         "Welcome back!",
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .headline2,
+                                        style: Theme.of(context).textTheme.headline2,
                                       ),
                                     ],
                                   ),
                                 ),
                                 const UICustomVertical(60),
                                 const Padding(
-                                    padding:
-                                        EdgeInsets.symmetric(horizontal: 30),
+                                    padding: EdgeInsets.symmetric(horizontal: 30),
                                     child: LoginFields()),
                                 const UIVerticalSpace24(),
                                 Container(
@@ -158,9 +146,9 @@ class _LoginScreenState extends State<LoginScreen> with AnimationMixin {
                                   child: ThirdPartySignUpButton(
                                     content: "Debug",
                                     onPressed: () {
-                                      context.read<LoginScreenBloc>().add(
-                                          const LoginScreenEvent
-                                              .toggleInfoTileVisibility());
+                                      context
+                                          .read<LoginScreenBloc>()
+                                          .add(const LoginScreenEvent.toggleInfoTileVisibility());
                                     },
                                     width: 100,
                                   ),
@@ -168,13 +156,12 @@ class _LoginScreenState extends State<LoginScreen> with AnimationMixin {
                               ],
                             ),
                             SizedBox(
-                              height: 1.sh,
-                              width: 1.sw,
+                              height: screen.height,
+                              width: screen.width,
                               child: Align(
                                 alignment: Alignment.bottomCenter,
                                 child: Padding(
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: 0.058.sw),
+                                  padding: EdgeInsets.symmetric(horizontal: (0.058 * screen.width)),
                                   child: const _BuildBottomButton(),
                                 ),
                               ),
@@ -225,8 +212,7 @@ class LoginFields extends StatelessWidget {
   }
 
   String? validateEmail(String? value) {
-    const emailRegex =
-        r"""^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+""";
+    const emailRegex = r"""^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+""";
     if (value == null || value.isEmpty) {
       return 'Please enter an email';
     } else {
@@ -254,6 +240,8 @@ class _BuildBottomButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screen = MediaQuery.of(context).size;
+
     return Padding(
       padding: const EdgeInsets.only(bottom: 34.0),
       child: Row(
@@ -262,9 +250,7 @@ class _BuildBottomButton extends StatelessWidget {
           PrimaryButtonAware(
             firstPageContent: 'Continue',
             firstPageOnPressed: () {
-              context
-                  .read<LoginScreenBloc>()
-                  .add(LoginScreenEvent.continuePressed());
+              context.read<LoginScreenBloc>().add(LoginScreenEvent.continuePressed());
             },
             firstPageButtonIcon: const Icon(
               Icons.arrow_right,
@@ -272,7 +258,7 @@ class _BuildBottomButton extends StatelessWidget {
               size: 24,
             ),
             type: PrimaryButtonAwareType.onePage,
-            width: 0.41.sw,
+            width: (0.41 * screen.width),
             padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
             borderRadius: 20.0,
           ),

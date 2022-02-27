@@ -1,7 +1,6 @@
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:simple_animations/simple_animations.dart';
 
 import 'bloc/info_tile_bloc.dart';
@@ -69,8 +68,7 @@ class _InfoTileState extends State<InfoTile> with AnimationMixin {
 
   bool _isExpanded = false;
 
-  InfoTileProps readProps(BuildContext context) =>
-      context.read<InfoTileBloc>().state.infoTileProps;
+  InfoTileProps readProps(BuildContext context) => context.read<InfoTileBloc>().state.infoTileProps;
 
   @override
   void initState() {
@@ -82,15 +80,11 @@ class _InfoTileState extends State<InfoTile> with AnimationMixin {
       curve: Curves.fastOutSlowIn,
       reverseCurve: Curves.fastOutSlowIn.flipped,
     );
-    _horizontalLeadingPadding =
-        Tween<double>(begin: 14, end: 24).animate(_childrenHeightFactor);
-    _iconRotation =
-        Tween<double>(begin: 0, end: math.pi).animate(_childrenHeightFactor);
+    _horizontalLeadingPadding = Tween<double>(begin: 14, end: 24).animate(_childrenHeightFactor);
+    _iconRotation = Tween<double>(begin: 0, end: math.pi).animate(_childrenHeightFactor);
     _opacity = Tween<double>(begin: 0, end: 1).animate(_childrenHeightFactor);
-    _fontSize = Tween<double>(begin: 16.0.sp, end: 18.0.sp)
-        .animate(_childrenHeightFactor);
-    _topLeadingPadding =
-        Tween<double>(begin: 0.0, end: 6.0).animate(_childrenHeightFactor);
+    _fontSize = Tween<double>(begin: 16.0, end: 18.0).animate(_childrenHeightFactor);
+    _topLeadingPadding = Tween<double>(begin: 0.0, end: 6.0).animate(_childrenHeightFactor);
     _isExpanded = context.read<InfoTileBloc>().state.infoTileProps.isExpanded;
 
     if (_isExpanded) {
@@ -100,15 +94,12 @@ class _InfoTileState extends State<InfoTile> with AnimationMixin {
 
   void _handleTap() {
     setState(() {
-      _isExpanded =
-          !context.read<InfoTileBloc>().state.infoTileProps.isExpanded;
+      _isExpanded = !context.read<InfoTileBloc>().state.infoTileProps.isExpanded;
       if (_isExpanded) {
-        _childrenHeightFactorController.play(
-            duration: const Duration(milliseconds: 250));
+        _childrenHeightFactorController.play(duration: const Duration(milliseconds: 250));
         context.read<InfoTileBloc>().add(const InfoTileEvent.toggleExpansion());
       } else {
-        _childrenHeightFactorController.playReverse(
-            duration: const Duration(milliseconds: 250));
+        _childrenHeightFactorController.playReverse(duration: const Duration(milliseconds: 250));
         context.read<InfoTileBloc>().add(const InfoTileEvent.toggleExpansion());
       }
     });
@@ -124,13 +115,10 @@ class _InfoTileState extends State<InfoTile> with AnimationMixin {
   }
 
   Widget _buildInfoTile() {
-    final InfoTileProps currentStateProps =
-        context.read<InfoTileBloc>().state.infoTileProps;
+    final InfoTileProps currentStateProps = context.read<InfoTileBloc>().state.infoTileProps;
 
-    if (currentStateProps.isAbleToExpand == false &&
-        currentStateProps.isExpanded == false) {
-      _childrenHeightFactorController.playReverse(
-          duration: const Duration(milliseconds: 350));
+    if (currentStateProps.isAbleToExpand == false && currentStateProps.isExpanded == false) {
+      _childrenHeightFactorController.playReverse(duration: const Duration(milliseconds: 350));
     }
 
     return AnimatedBuilder(
@@ -162,11 +150,8 @@ class _InfoTileState extends State<InfoTile> with AnimationMixin {
                   highlightColor: _resolveHighlightColorForInkWell(),
                   borderRadius: BorderRadius.circular(16.0),
                   onTap: () {
-                    final bool _isAbleToExpand = context
-                        .read<InfoTileBloc>()
-                        .state
-                        .infoTileProps
-                        .isAbleToExpand;
+                    final bool _isAbleToExpand =
+                        context.read<InfoTileBloc>().state.infoTileProps.isAbleToExpand;
                     if (_isAbleToExpand) {
                       _handleTap();
                     } else {
@@ -188,11 +173,9 @@ class _InfoTileState extends State<InfoTile> with AnimationMixin {
                               alignment: Alignment.centerLeft,
                               //height: 54,
                               child: Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(vertical: 20),
+                                padding: const EdgeInsets.symmetric(vertical: 20),
                                 child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
                                     Expanded(
                                       child: Container(
@@ -200,20 +183,15 @@ class _InfoTileState extends State<InfoTile> with AnimationMixin {
                                         padding: EdgeInsets.only(right: 50),
                                         child: Text(
                                           readProps(context).leadingText,
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .bodyText1!
-                                              .copyWith(
+                                          style: Theme.of(context).textTheme.bodyText1!.copyWith(
                                                 fontSize: _fontSize.value,
-                                                color:
-                                                    _resolveStatusForTextColor(),
+                                                color: _resolveStatusForTextColor(),
                                               ),
                                         ),
                                       ),
                                     ),
                                     AnimatedSwitcher(
-                                        duration:
-                                            const Duration(milliseconds: 10),
+                                        duration: const Duration(milliseconds: 10),
                                         child: context
                                                 .read<InfoTileBloc>()
                                                 .state
@@ -304,10 +282,8 @@ class _InfoTileState extends State<InfoTile> with AnimationMixin {
   Color _resolveSplashColorForInkWell() {
     final Color _errorSplashColor =
         Theme.of(context).colorScheme.onErrorContainer.withOpacity(0.25);
-    final Color _successSplashColor =
-        Theme.of(context).colorScheme.background.withOpacity(0.25);
-    final Color _loadingSplashColor =
-        Theme.of(context).colorScheme.background.withOpacity(0.25);
+    final Color _successSplashColor = Theme.of(context).colorScheme.background.withOpacity(0.25);
+    final Color _loadingSplashColor = Theme.of(context).colorScheme.background.withOpacity(0.25);
 
     switch (readProps(context).currentStatus) {
       case InfoTileStatus.loading:
@@ -334,10 +310,8 @@ class _InfoTileState extends State<InfoTile> with AnimationMixin {
   Color _resolveHighlightColorForInkWell() {
     final Color _errorHighlightColor =
         Theme.of(context).colorScheme.onErrorContainer.withOpacity(0.15);
-    final Color _successHighlightColor =
-        Theme.of(context).colorScheme.background.withOpacity(0.15);
-    final Color _loadingHighlightColor =
-        Theme.of(context).colorScheme.onPrimary.withOpacity(0.15);
+    final Color _successHighlightColor = Theme.of(context).colorScheme.background.withOpacity(0.15);
+    final Color _loadingHighlightColor = Theme.of(context).colorScheme.onPrimary.withOpacity(0.15);
 
     switch (readProps(context).currentStatus) {
       case InfoTileStatus.loading:
@@ -362,12 +336,10 @@ class _InfoTileState extends State<InfoTile> with AnimationMixin {
   }
 
   Color _resolveShadowColor() {
-    final Color _errorShadowColor =
-        Theme.of(context).colorScheme.error.withOpacity(0.5);
+    final Color _errorShadowColor = Theme.of(context).colorScheme.error.withOpacity(0.5);
     final Color _successShadowColor =
         Theme.of(context).colorScheme.secondaryVariant.withOpacity(0.5);
-    final Color _loadingShadowColor =
-        Theme.of(context).colorScheme.primary.withOpacity(0.12);
+    final Color _loadingShadowColor = Theme.of(context).colorScheme.primary.withOpacity(0.12);
 
     switch (readProps(context).currentStatus) {
       case InfoTileStatus.loading:

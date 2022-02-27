@@ -1,17 +1,20 @@
-import 'package:boxy/slivers.dart';
+import 'dart:math';
+
+import 'package:farmhub/core/util/farmhub_icons.dart';
 import 'package:farmhub/features/produce_manager/bloc/produce_manager_bloc.dart';
 import 'package:farmhub/presentation/shared_widgets/buttons.dart';
-import 'package:farmhub/presentation/shared_widgets/scroll_physics.dart';
 import 'package:farmhub/presentation/shared_widgets/texts.dart';
 import 'package:farmhub/presentation/shared_widgets/ui_helpers.dart';
 import 'package:farmhub/presentation/views/main_screen/bloc/main_screen_bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sliver_tools/sliver_tools.dart';
+import 'package:flutter_speed_dial/flutter_speed_dial.dart';
+import 'package:syncfusion_flutter_charts/charts.dart';
 
 import '../../../features/produce_manager/domain/entities/produce/produce.dart';
 import '../../../locator.dart';
+import '../../shared_widgets/scroll_physics.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -28,6 +31,7 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
   @override
   void initState() {
     super.initState();
+
     mainHeaderController = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 500),
@@ -38,81 +42,104 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
       setState(() {});
     });
 
-    extent = Tween<double>(begin: 160.0, end: 64.0).animate(mainHeaderController);
+    extent = Tween<double>(begin: 162.0, end: 68.0).animate(mainHeaderController);
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
   }
 
   @override
   Widget build(BuildContext context) {
-    return MainScreenProviders(
-      mainHeaderController: mainHeaderController,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => ProduceManagerBloc(repository: locator()),
+        ),
+      ],
       child: Builder(builder: (context) {
-        return BlocBuilder<MainScreenBloc, MainScreenState>(
-          builder: (context, state) {
-            return MainScreenCore(extent: extent);
-          },
+        return BlocProvider(
+          create: (context) => MainScreenBloc(
+            mainHeaderController: mainHeaderController,
+            produceManagerBloc: context.read<ProduceManagerBloc>(),
+          ),
+          child: Builder(
+            builder: (context) => Scaffold(
+              resizeToAvoidBottomInset: false,
+              floatingActionButton: SpeedDial(
+                useRotationAnimation: false,
+                overlayColor: Colors.black,
+                overlayOpacity: 0.85,
+                spacing: 24,
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+                backgroundColor: Theme.of(context).colorScheme.primary,
+                activeBackgroundColor: Theme.of(context).colorScheme.error,
+                icon: Icons.add,
+                activeIcon: Icons.close,
+                iconTheme: const IconThemeData(color: Colors.white),
+                children: [
+                  SpeedDialChild(
+                    onTap: () => Navigator.of(context).pushNamed('/create_produce'),
+                    backgroundColor: Theme.of(context).colorScheme.primary,
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+                    child: const Icon(
+                      FarmhubIcons.farmhub_corn_icon,
+                      color: Colors.white,
+                      size: 20,
+                    ),
+                    labelWidget: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(50),
+                      ),
+                      child: Text(
+                        "Create new Produce",
+                        style: Theme.of(context).textTheme.bodyText1!.copyWith(color: Colors.white),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              body: SafeArea(
+                child: CustomScrollView(
+                  physics: DefaultScrollPhysics,
+                  slivers: [
+                    CupertinoSliverRefreshControl(
+                      onRefresh: () async {},
+                    ),
+                    SliverPersistentHeader(
+                      delegate: MainScreenHeaderDelegate(extent),
+                    ),
+                    //const SliverDebugSlot(),
+                    const SliverMainScreenListView(),
+                  ],
+                ),
+              ),
+            ),
+          ),
         );
       }),
     );
   }
 }
 
-class MainScreenCore extends StatefulWidget {
-  const MainScreenCore({
-    Key? key,
-    required this.extent,
-  }) : super(key: key);
-
-  final Animation<double> extent;
+class SliverMainScreenListView extends StatefulWidget {
+  const SliverMainScreenListView({Key? key}) : super(key: key);
 
   @override
-  State<MainScreenCore> createState() => _MainScreenCoreState();
+  State<SliverMainScreenListView> createState() => _SliverMainScreenListViewState();
 }
 
-class _MainScreenCoreState extends State<MainScreenCore> {
+class _SliverMainScreenListViewState extends State<SliverMainScreenListView> {
   @override
   void initState() {
     super.initState();
-
     context.read<MainScreenBloc>().add(const MainScreenEvent.getFirstTenProduce());
-  }
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        bottom: false,
-        child: CustomScrollView(
-          physics: DefaultScrollPhysics,
-          slivers: [
-            CupertinoSliverRefreshControl(
-              onRefresh: () async {},
-            ),
-            SliverPersistentHeader(
-              delegate: MainScreenHeaderDelegate(widget.extent),
-            ),
-            const SliverDebugSlot(),
-            const SliverAnimatedSwitcher(
-              child: ProducePriceList(),
-              duration: Duration(milliseconds: 500),
-            )
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class ProducePriceList extends StatefulWidget {
-  const ProducePriceList({Key? key}) : super(key: key);
-
-  @override
-  State<ProducePriceList> createState() => _ProducePriceListState();
-}
-
-class _ProducePriceListState extends State<ProducePriceList> {
-  @override
-  void initState() {
-    super.initState();
     context.read<MainScreenBloc>().stream.listen((event) {
       setState(() {});
     });
@@ -153,6 +180,18 @@ class SliverProduceList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    BorderSide borderSide =
+        BorderSide(color: Theme.of(context).colorScheme.primary.withOpacity(0.24));
+
+    final LinearGradient gradient = LinearGradient(
+      colors: [
+        Color(0xff79D2DE),
+        Color(0xffFFF4F4),
+      ],
+      begin: Alignment.topCenter,
+      end: Alignment.bottomCenter,
+    );
+
     return SliverList(
       delegate: SliverChildBuilderDelegate(
         (context, index) {
@@ -163,12 +202,13 @@ class SliverProduceList extends StatelessWidget {
             child: InkWell(
               onTap: () {},
               child: Container(
-                height: 109,
-                padding: const EdgeInsets.symmetric(horizontal: 38, vertical: 13),
-                decoration: const BoxDecoration(
+                height: 120,
+                margin: const EdgeInsets.symmetric(horizontal: 24),
+                padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 13),
+                decoration: BoxDecoration(
                   border: Border(
-                    top: BorderSide(),
-                    bottom: BorderSide(),
+                    top: _resolveTop(context, index, borderSide),
+                    bottom: borderSide,
                   ),
                 ),
                 child: Row(
@@ -182,10 +222,16 @@ class SliverProduceList extends StatelessWidget {
                           produce.produceName,
                           style: Theme.of(context).textTheme.bodyText1!.copyWith(fontSize: 17),
                         ),
+                        const UICustomVertical(2),
                         Text(
                           "RM ${produce.currentProducePrice["price"].toString()}",
-                          style: Theme.of(context).textTheme.bodyText2,
-                        )
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyText2!
+                              .copyWith(fontWeight: FontWeight.w800),
+                        ),
+                        const UICustomVertical(9),
+                        ChangeBox(index),
                       ],
                     ),
                     Column(
@@ -193,9 +239,28 @@ class SliverProduceList extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         Container(
-                          color: Colors.red,
-                          height: 50,
-                          width: 50,
+                          height: 90,
+                          width: 120,
+                          child: SfCartesianChart(
+                            plotAreaBorderColor: Colors.transparent,
+                            primaryXAxis: NumericAxis(
+                              isVisible: false,
+                            ),
+                            primaryYAxis: NumericAxis(
+                              isVisible: false,
+                            ),
+                            series: <CartesianSeries>[
+                              SplineAreaSeries<num, num>(
+                                animationDuration: 1000,
+                                dataSource: currentState.produceList[0].weeklyPrices,
+                                xValueMapper: (num price, index) => index,
+                                yValueMapper: (num price, index) => price,
+                                borderWidth: 3,
+                                borderColor: Color(0xff79D2DE),
+                                gradient: gradient,
+                              ),
+                            ],
+                          ),
                         ),
                       ],
                     )
@@ -208,6 +273,86 @@ class SliverProduceList extends StatelessWidget {
         childCount: currentState.produceList.length,
       ),
     );
+  }
+
+  BorderSide _resolveTop(BuildContext context, int index, BorderSide borderSide) {
+    if (index == 0) {
+      return BorderSide(color: Theme.of(context).colorScheme.primary.withOpacity(0.24));
+    } else {
+      return BorderSide.none;
+    }
+  }
+}
+
+class ChangeBox extends StatelessWidget {
+  final int index;
+
+  const ChangeBox(this.index, {Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    num percentage = resolvePercentage(context);
+    bool isNegative = percentage < 0;
+
+    return SizedBox(
+      height: 34,
+      width: 70,
+      child: Container(
+        alignment: Alignment.center,
+        padding: const EdgeInsets.only(bottom: 2),
+        decoration: BoxDecoration(
+          color: _resolveBackgroundColor(context, isNegative),
+          borderRadius: BorderRadius.circular(6),
+        ),
+        child: Text(
+          "${percentage.toString()}%",
+          style: Theme.of(context).textTheme.bodyText2!.copyWith(
+                fontSize: 14,
+                color: _resolveTextColor(context, isNegative),
+              ),
+        ),
+      ),
+    );
+  }
+
+  num resolvePercentage(BuildContext context) {
+    final currentState = context.read<MainScreenBloc>().state;
+
+    late num currentPrice;
+    late num previousPrice;
+    late double percentageChange;
+
+    if (currentState is MSSPricesCompleted) {
+      // Retrieve Price
+      currentPrice = currentState.produceList[index].currentProducePrice["price"];
+      previousPrice = currentState.produceList[index].previousProducePrice["price"];
+      percentageChange = ((currentPrice - previousPrice) * 100) / currentPrice;
+
+      return roundDouble(percentageChange, 2);
+    } else {
+      throw Exception("ChangeBox - ChangeBox is built during incorrect state.");
+    }
+  }
+
+  double roundDouble(double value, int places) {
+    num mod = pow(10.0, places);
+    return ((value * mod).round().toDouble() / mod);
+  }
+
+  Color _resolveBackgroundColor(BuildContext context, bool isNegative) {
+    if (isNegative) {
+      return Theme.of(context).colorScheme.error;
+    } else {
+      return Theme.of(context).colorScheme.secondaryVariant;
+    }
+  }
+
+  Color _resolveTextColor(BuildContext context, bool isNegative) {
+    if (isNegative) {
+      return Theme.of(context).colorScheme.background;
+    } else {
+      return Theme.of(context).colorScheme.background;
+    }
   }
 }
 
@@ -350,85 +495,6 @@ class _MainHeaderState extends State<MainHeader> {
   }
 }
 
-class TopHeader extends StatefulWidget {
-  const TopHeader({Key? key}) : super(key: key);
-
-  @override
-  State<TopHeader> createState() => _TopHeaderState();
-}
-
-class _TopHeaderState extends State<TopHeader> with SingleTickerProviderStateMixin {
-  late AnimationController _heightFactorController;
-
-  late Animation<double> _opacity;
-  late Animation<double> _heightFactor;
-
-  @override
-  void initState() {
-    super.initState();
-
-    _heightFactorController = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 500),
-    );
-    _heightFactor = CurvedAnimation(
-      parent: _heightFactorController,
-      curve: Curves.fastOutSlowIn,
-      reverseCurve: Curves.fastOutSlowIn.flipped,
-    );
-    _opacity = Tween<double>(begin: 0, end: 1).animate(_heightFactor);
-  }
-
-  void hideHeader() {}
-
-  void showHeader() {}
-
-  @override
-  Widget build(BuildContext context) {
-    return AnimatedBuilder(
-      animation: _heightFactorController.view,
-      builder: (context, child) {
-        return ClipRect(
-          child: Align(
-            heightFactor: _heightFactor.value,
-            child: Opacity(
-              opacity: _opacity.value,
-              child: Padding(
-                padding: const EdgeInsets.all(14),
-                child: Align(
-                  alignment: Alignment.center,
-                  child: child,
-                ),
-              ),
-            ),
-          ),
-        );
-      },
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Headline1('Pasar Selayang'),
-              const Headline2('7 November'),
-            ],
-          ),
-          Container(
-            margin: const EdgeInsets.only(right: 6),
-            height: 54,
-            width: 54,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(100),
-              color: Theme.of(context).colorScheme.primary,
-            ),
-          )
-        ],
-      ),
-    );
-  }
-}
-
 class SliverWhiteSpace extends StatelessWidget {
   final double height;
 
@@ -442,36 +508,6 @@ class SliverWhiteSpace extends StatelessWidget {
           height: height,
         )
       ]),
-    );
-  }
-}
-
-class MainScreenProviders extends StatelessWidget {
-  final Widget child;
-  final AnimationController mainHeaderController;
-
-  const MainScreenProviders({
-    Key? key,
-    required this.child,
-    required this.mainHeaderController,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(create: (context) => ProduceManagerBloc(repository: locator())),
-      ],
-      child: Builder(builder: (context) {
-        return BlocProvider(
-          create: (context) => MainScreenBloc(
-            mainHeaderController: mainHeaderController,
-            produceManagerBloc: context.read<ProduceManagerBloc>(),
-            produceManagerRepository: locator(),
-          ),
-          child: child,
-        );
-      }),
     );
   }
 }
