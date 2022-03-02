@@ -1,6 +1,8 @@
 import 'dart:math';
 
+import 'package:farmhub/core/util/dates.dart';
 import 'package:farmhub/core/util/farmhub_icons.dart';
+
 import 'package:farmhub/features/produce_manager/bloc/produce_manager_bloc.dart';
 import 'package:farmhub/presentation/shared_widgets/buttons.dart';
 import 'package:farmhub/presentation/shared_widgets/texts.dart';
@@ -70,11 +72,13 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
           child: Builder(
             builder: (context) => Scaffold(
               resizeToAvoidBottomInset: false,
+              extendBodyBehindAppBar: true,
               floatingActionButton: SpeedDial(
                 useRotationAnimation: false,
                 overlayColor: Colors.black,
                 overlayOpacity: 0.85,
                 spacing: 24,
+                spaceBetweenChildren: 5,
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
                 backgroundColor: Theme.of(context).colorScheme.primary,
                 activeBackgroundColor: Theme.of(context).colorScheme.error,
@@ -102,6 +106,25 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
                       ),
                     ),
                   ),
+                  SpeedDialChild(
+                    onTap: () {},
+                    backgroundColor: Theme.of(context).colorScheme.primary,
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+                    child: const Icon(
+                      Icons.price_change,
+                      color: Colors.white,
+                    ),
+                    labelWidget: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(50),
+                      ),
+                      child: Text(
+                        "Add new Price",
+                        style: Theme.of(context).textTheme.bodyText1!.copyWith(color: Colors.white),
+                      ),
+                    ),
+                  ),
                 ],
               ),
               body: SafeArea(
@@ -116,6 +139,7 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
                     ),
                     //const SliverDebugSlot(),
                     const SliverMainScreenListView(),
+                    const SliverWhiteSpace(200)
                   ],
                 ),
               ),
@@ -152,7 +176,7 @@ class _SliverMainScreenListViewState extends State<SliverMainScreenListView> {
     if (currentState is MSSInitial) {
       throw Exception("MSSInitial State is received when it should not have existed.");
     } else if (currentState is MSSPricesLoading) {
-      return SliverList(delegate: SliverChildListDelegate([const CircularProgressIndicator()]));
+      return SliverLoadingIndicator();
     } else if (currentState is MSSPricesCompleted) {
       return SliverProduceList(
         currentState: currentState,
@@ -173,6 +197,31 @@ class _SliverMainScreenListViewState extends State<SliverMainScreenListView> {
   }
 }
 
+class SliverLoadingIndicator extends StatelessWidget {
+  const SliverLoadingIndicator({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
+
+    return SliverList(
+      delegate: SliverChildListDelegate(
+        [
+          Container(
+            alignment: Alignment.center,
+            width: screenWidth,
+            height: screenHeight - 400,
+            child: const CircularProgressIndicator(),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
 class SliverProduceList extends StatelessWidget {
   final MSSPricesCompleted currentState;
 
@@ -183,92 +232,12 @@ class SliverProduceList extends StatelessWidget {
     BorderSide borderSide =
         BorderSide(color: Theme.of(context).colorScheme.primary.withOpacity(0.24));
 
-    final LinearGradient gradient = LinearGradient(
-      colors: [
-        Color(0xff79D2DE),
-        Color(0xffFFF4F4),
-      ],
-      begin: Alignment.topCenter,
-      end: Alignment.bottomCenter,
-    );
-
     return SliverList(
       delegate: SliverChildBuilderDelegate(
         (context, index) {
           final Produce produce = currentState.produceList[index];
 
-          return Material(
-            type: MaterialType.transparency,
-            child: InkWell(
-              onTap: () {},
-              child: Container(
-                height: 120,
-                margin: const EdgeInsets.symmetric(horizontal: 24),
-                padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 13),
-                decoration: BoxDecoration(
-                  border: Border(
-                    top: _resolveTop(context, index, borderSide),
-                    bottom: borderSide,
-                  ),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          produce.produceName,
-                          style: Theme.of(context).textTheme.bodyText1!.copyWith(fontSize: 17),
-                        ),
-                        const UICustomVertical(2),
-                        Text(
-                          "RM ${produce.currentProducePrice["price"].toString()}",
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyText2!
-                              .copyWith(fontWeight: FontWeight.w800),
-                        ),
-                        const UICustomVertical(9),
-                        ChangeBox(index),
-                      ],
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        Container(
-                          height: 90,
-                          width: 120,
-                          child: SfCartesianChart(
-                            plotAreaBorderColor: Colors.transparent,
-                            primaryXAxis: NumericAxis(
-                              isVisible: false,
-                            ),
-                            primaryYAxis: NumericAxis(
-                              isVisible: false,
-                            ),
-                            series: <CartesianSeries>[
-                              SplineAreaSeries<num, num>(
-                                animationDuration: 1000,
-                                dataSource: currentState.produceList[0].weeklyPrices,
-                                xValueMapper: (num price, index) => index,
-                                yValueMapper: (num price, index) => price,
-                                borderWidth: 3,
-                                borderColor: Color(0xff79D2DE),
-                                gradient: gradient,
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    )
-                  ],
-                ),
-              ),
-            ),
-          );
+          return ProduceListCard(index, currentState);
         },
         childCount: currentState.produceList.length,
       ),
@@ -284,6 +253,188 @@ class SliverProduceList extends StatelessWidget {
   }
 }
 
+class ProduceListCard extends StatelessWidget {
+  final int index;
+  final MSSPricesCompleted currentState;
+
+  const ProduceListCard(this.index, this.currentState, {Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    BorderSide borderSide =
+        BorderSide(color: Theme.of(context).colorScheme.primary.withOpacity(0.24));
+
+    final Produce produce = currentState.produceList[index];
+
+    return Material(
+      type: MaterialType.transparency,
+      child: InkWell(
+        onTap: () {},
+        child: Container(
+          margin: const EdgeInsets.symmetric(horizontal: 24),
+          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 13),
+          decoration: BoxDecoration(
+            border: Border(
+              top: _resolveTop(context, index, borderSide),
+              bottom: borderSide,
+            ),
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Flexible(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      produce.produceName,
+                      maxLines: 3,
+                      overflow: TextOverflow.fade,
+                      style: Theme.of(context).textTheme.bodyText1!.copyWith(fontSize: 17),
+                    ),
+                    const UICustomVertical(2),
+                    Text(
+                      "RM ${produce.currentProducePrice["price"].toString()}",
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodyText2!
+                          .copyWith(fontWeight: FontWeight.w800),
+                    ),
+                    const UICustomVertical(9),
+                    ChangeBox(index),
+                  ],
+                ),
+              ),
+              Flexible(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    IgnorePointer(
+                      child: PriceChart(
+                        currentState: currentState,
+                        index: index,
+                      ),
+                    ),
+                  ],
+                ),
+              )
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  BorderSide _resolveTop(BuildContext context, int index, BorderSide borderSide) {
+    if (index == 0) {
+      return BorderSide(color: Theme.of(context).colorScheme.primary.withOpacity(0.24));
+    } else {
+      return BorderSide.none;
+    }
+  }
+}
+
+class PriceChart extends StatelessWidget {
+  const PriceChart({
+    Key? key,
+    required this.currentState,
+    required this.index,
+  }) : super(key: key);
+
+  final MSSPricesCompleted currentState;
+  final int index;
+
+  @override
+  Widget build(BuildContext context) {
+    // Check if there is less than two weeklyPrices
+    print("Length: ${currentState.produceList.length}");
+    if (currentState.produceList[index].weeklyPrices.length < 2) {
+      return Container(
+        alignment: Alignment.center,
+        height: 90,
+        width: 120,
+        child: Text(
+          'Not enough data for chart',
+          textAlign: TextAlign.center,
+          style: Theme.of(context).textTheme.caption,
+        ),
+      );
+    } else {
+      final bool isNegative = resolveIsNegative(context);
+      late LinearGradient gradient;
+      late Color borderColor;
+
+      if (isNegative) {
+        gradient = const LinearGradient(
+          colors: [
+            Color(0xffEC6666),
+            Color(0xffFFF4F4),
+          ],
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+        );
+        borderColor = const Color(0xffEC6666);
+      } else {
+        gradient = const LinearGradient(
+          colors: [
+            Color(0xff79D2DE),
+            Color(0xffFFF4F4),
+          ],
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+        );
+        borderColor = const Color(0xff79D2DE);
+      }
+
+      return SizedBox(
+        height: 90,
+        width: 120,
+        child: SfCartesianChart(
+          plotAreaBorderColor: Colors.transparent,
+          primaryXAxis: NumericAxis(
+            isInversed: true,
+            isVisible: false,
+          ),
+          primaryYAxis: NumericAxis(
+            isVisible: false,
+          ),
+          series: <CartesianSeries>[
+            SplineAreaSeries<num, num>(
+              animationDuration: 1000,
+              dataSource: currentState.produceList[index].weeklyPrices,
+              xValueMapper: (num price, index) => index,
+              yValueMapper: (num price, index) => price,
+              borderWidth: 3,
+              borderColor: borderColor,
+              gradient: gradient,
+            ),
+          ],
+        ),
+      );
+    }
+  }
+
+  bool resolveIsNegative(BuildContext context) {
+    final currentState = context.read<MainScreenBloc>().state;
+
+    if (currentState is MSSPricesCompleted) {
+      final num currentPrice = currentState.produceList[index].currentProducePrice["price"];
+      final num previousPrice = currentState.produceList[index].previousProducePrice["price"];
+      final num change = currentPrice - previousPrice;
+
+      if (change < 0) {
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      throw Exception("ChangeBox - ChangeBox is built during incorrect state.");
+    }
+  }
+}
+
 class ChangeBox extends StatelessWidget {
   final int index;
 
@@ -291,13 +442,55 @@ class ChangeBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    num percentage = resolvePercentage(context);
-    bool isNegative = percentage < 0;
+    num? priceChange = resolvePriceChange(context);
+    bool? isNegative;
 
-    return SizedBox(
-      height: 34,
-      width: 70,
-      child: Container(
+    if (priceChange != null) {
+      isNegative = priceChange < 0;
+    }
+
+    if (isNegative != null) {
+      return Align(
+        alignment: Alignment.centerLeft,
+        child: Container(
+          padding: const EdgeInsets.symmetric(vertical: 7, horizontal: 14),
+          decoration: BoxDecoration(
+            color: _resolveBackgroundColor(context, isNegative),
+            borderRadius: BorderRadius.circular(6),
+          ),
+          child: Text(
+            _resolveString(priceChange!, isNegative),
+            style: Theme.of(context).textTheme.bodyText2!.copyWith(
+                  fontSize: 14,
+                  color: _resolveTextColor(context, isNegative),
+                ),
+          ),
+        ),
+      );
+    } else {
+      return Align(
+        alignment: Alignment.centerLeft,
+        child: Container(
+          padding: const EdgeInsets.symmetric(vertical: 7, horizontal: 14),
+          decoration: BoxDecoration(
+            color: Colors.grey.withOpacity(0.2),
+            borderRadius: BorderRadius.circular(6),
+          ),
+          child: Text(
+            "RM-.--",
+            style: Theme.of(context).textTheme.bodyText2!.copyWith(
+                  fontSize: 14,
+                  color: Theme.of(context).colorScheme.primary,
+                ),
+          ),
+        ),
+      );
+    }
+  }
+
+  Container _buildChangeBox(BuildContext context, bool? isNegative, num? priceChange) {
+    if (isNegative != null) {
+      return Container(
         alignment: Alignment.center,
         padding: const EdgeInsets.only(bottom: 2),
         decoration: BoxDecoration(
@@ -305,30 +498,54 @@ class ChangeBox extends StatelessWidget {
           borderRadius: BorderRadius.circular(6),
         ),
         child: Text(
-          "${percentage.toString()}%",
+          _resolveString(priceChange!, isNegative),
           style: Theme.of(context).textTheme.bodyText2!.copyWith(
                 fontSize: 14,
                 color: _resolveTextColor(context, isNegative),
               ),
         ),
-      ),
-    );
+      );
+    } else {
+      return Container(
+        alignment: Alignment.center,
+        padding: const EdgeInsets.only(bottom: 2),
+        decoration: BoxDecoration(
+          color: Colors.grey.withOpacity(0.2),
+          borderRadius: BorderRadius.circular(6),
+        ),
+        child: Text(
+          "RM-.--",
+          style: Theme.of(context).textTheme.bodyText2!.copyWith(
+                fontSize: 14,
+                color: Theme.of(context).colorScheme.primary,
+              ),
+        ),
+      );
+    }
   }
 
-  num resolvePercentage(BuildContext context) {
+  String _resolveString(num priceChange, bool isNegative) {
+    if (isNegative) {
+      return "-RM${priceChange.abs()}";
+    } else {
+      return "+RM$priceChange";
+    }
+  }
+
+  num? resolvePriceChange(BuildContext context) {
     final currentState = context.read<MainScreenBloc>().state;
 
-    late num currentPrice;
-    late num previousPrice;
-    late double percentageChange;
-
     if (currentState is MSSPricesCompleted) {
-      // Retrieve Price
-      currentPrice = currentState.produceList[index].currentProducePrice["price"];
-      previousPrice = currentState.produceList[index].previousProducePrice["price"];
-      percentageChange = ((currentPrice - previousPrice) * 100) / currentPrice;
+      // Check if previous price is null
+      if (currentState.produceList[index].previousProducePrice["price"] == null) {
+        return null;
+      } else {
+        final num currentPrice = currentState.produceList[index].currentProducePrice["price"];
+        final num previousPrice = currentState.produceList[index].previousProducePrice["price"];
+        final num change = currentPrice - previousPrice;
 
-      return roundDouble(percentageChange, 2);
+        return roundDouble(change.toDouble(), 2);
+      }
     } else {
       throw Exception("ChangeBox - ChangeBox is built during incorrect state.");
     }
@@ -475,7 +692,7 @@ class _MainHeaderState extends State<MainHeader> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const Headline1('Pasar Selayang'),
-                  const Headline2('7 November'),
+                  Headline2(returnCurrentDate()),
                 ],
               ),
               Container(

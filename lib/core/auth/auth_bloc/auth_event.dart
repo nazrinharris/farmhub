@@ -18,5 +18,8 @@ class AuthEvent with _$AuthEvent {
   }) = _AEExecRegisterWithEmailAndPassword;
 
   // Others
+  const factory AuthEvent.execRetrieveUserData() = _AEExecRetrieveUserData;
   const factory AuthEvent.execSignOut() = _AEExecSignOut;
+
+  const factory AuthEvent.execIsAdmin(String uid) = _AEExecIsAdmin;
 }

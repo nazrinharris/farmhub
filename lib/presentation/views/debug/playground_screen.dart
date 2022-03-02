@@ -1,4 +1,5 @@
 // ignore_for_file: prefer_const_constructors
+import 'package:farmhub/core/auth/auth_bloc/auth_bloc.dart';
 import 'package:farmhub/features/produce_manager/bloc/produce_manager_bloc.dart';
 import 'package:farmhub/locator.dart';
 import 'package:farmhub/presentation/shared_widgets/buttons.dart';
@@ -21,13 +22,15 @@ class PlaygroundScreen extends StatelessWidget {
       end: Alignment.bottomCenter,
     );
 
-    return BlocProvider(
-      create: (context) => ProduceManagerBloc(repository: locator()),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => ProduceManagerBloc(repository: locator())),
+        BlocProvider(create: (context) => AuthBloc(authRepository: locator())),
+      ],
       child: Builder(builder: (context) {
         return Scaffold(
           body: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+            child: ListView(
               children: [
                 Container(
                   child: BlocBuilder<ProduceManagerBloc, ProduceManagerState>(
@@ -86,6 +89,32 @@ class PlaygroundScreen extends StatelessWidget {
                     },
                   ),
                 ),
+                Container(
+                  padding: EdgeInsets.only(top: 14, bottom: 14),
+                  alignment: Alignment.center,
+                  child: PrimaryButton(
+                    width: 250,
+                    content: "Retrieve User Data!",
+                    onPressed: () {
+                      context.read<AuthBloc>().add(AuthEvent.execRetrieveUserData());
+                    },
+                  ),
+                ),
+                Container(
+                  child: BlocBuilder<AuthBloc, AuthState>(builder: (context, state) {
+                    if (state is ASInitial) {
+                      return Text('Nothing really.');
+                    } else if (state is ASRetrieveUserDataLoading) {
+                      return CircularProgressIndicator();
+                    } else if (state is ASRetrieveUserDataSuccess) {
+                      return Text(state.farmhubUser.toString());
+                    } else if (state is ASRetrieveUserDataError) {
+                      return Text('ERROR! Code: ${state.code}, Message: ${state.message}');
+                    } else {
+                      return Text("Unexpected State by AuthBloc! - $state");
+                    }
+                  }),
+                )
               ],
             ),
           ),

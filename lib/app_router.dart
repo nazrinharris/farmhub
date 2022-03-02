@@ -21,7 +21,12 @@ class AppRouter {
       case '/main':
         return CupertinoPageRoute(builder: (_) => const MainScreen());
       case '/create_produce':
-        return CupertinoPageRoute(builder: (_) => const CreateProduceScreen());
+        return PageRouteBuilder(
+          transitionDuration: const Duration(milliseconds: 600),
+          reverseTransitionDuration: const Duration(milliseconds: 600),
+          pageBuilder: ((context, animation, secondaryAnimation) => const CreateProduceScreen()),
+          transitionsBuilder: createProduceScreenTransitionBuilder,
+        );
 
       //! DEBUG ROUTES
       case '/navigate':
@@ -32,5 +37,30 @@ class AppRouter {
       default:
         throw Exception('UnknownRoute called');
     }
+  }
+
+  Widget createProduceScreenTransitionBuilder(context, animation, secondaryAnimation, child) {
+    var offsetCurve =
+        animation.status == AnimationStatus.reverse ? Curves.easeInExpo : Curves.easeOutExpo;
+
+    var opacityCurve =
+        animation.status == AnimationStatus.reverse ? Curves.easeOutQuad : Curves.easeOutExpo;
+
+    final offsetAnimation = Tween<Offset>(begin: const Offset(0, 1), end: Offset.zero)
+        .chain(CurveTween(
+          curve: offsetCurve,
+        ))
+        .animate(animation);
+
+    final opacityAnimation =
+        Tween<double>(begin: 0, end: 1).chain(CurveTween(curve: opacityCurve)).animate(animation);
+
+    return SlideTransition(
+      position: offsetAnimation,
+      child: FadeTransition(
+        opacity: opacityAnimation,
+        child: child,
+      ),
+    );
   }
 }

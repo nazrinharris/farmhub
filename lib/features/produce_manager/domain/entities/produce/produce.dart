@@ -9,6 +9,7 @@ class Produce with _$Produce {
   factory Produce({
     required String produceId,
     required String produceName,
+    required String authorId,
     required Map<String, dynamic> currentProducePrice,
     required Map<String, dynamic> previousProducePrice,
     required List<num> weeklyPrices,
@@ -26,15 +27,9 @@ class Produce with _$Produce {
       currentProducePrice: map['currentProducePrice'],
       previousProducePrice: map['previousProducePrice'],
       weeklyPrices: List<num>.from(map['weeklyPrices']),
+      authorId: map['authorId'],
     );
   }
-}
-
-class PriceData {
-  final int day;
-  final num price;
-
-  PriceData(this.day, this.price);
 }
 
 /*

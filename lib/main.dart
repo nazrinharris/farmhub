@@ -15,15 +15,17 @@ Future<void> main() async {
 
   setupLocator();
 
-  SystemChrome.setSystemUIOverlayStyle(
-    const SystemUiOverlayStyle(
-      statusBarBrightness: Brightness.dark,
-    ),
-  );
-
   runApp(
     FarmhubApp(
       appRouter: AppRouter(),
+    ),
+  );
+
+  SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(
+      statusBarBrightness: Brightness.light,
+      systemNavigationBarDividerColor: Colors.transparent,
+      systemNavigationBarColor: Colors.transparent,
     ),
   );
 }

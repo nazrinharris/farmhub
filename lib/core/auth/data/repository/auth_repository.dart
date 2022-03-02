@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:fpdart/fpdart.dart';
 
 import 'package:farmhub/core/auth/data/datasources/auth_local_datasource.dart';
@@ -111,5 +112,57 @@ class AuthRepository implements IAuthRepository {
     // TODO: implement registerWithGoogleAccount
     // TODO: tests registerWithGoogleAccount
     throw UnimplementedError();
+  }
+
+  @override
+  Future<Either<Failure, FarmhubUser>> retrieveUserData() async {
+    if (await networkInfo.isConnected) {
+      try {
+        final FarmhubUser user = await authRemoteDataSource.retrieveUserData();
+
+        return Right(user);
+      } on FirebaseAuthException catch (e) {
+        print('Retrieval of User Information Error Occurred, ${e.code}, ${e.message}');
+        return Left(FirebaseAuthFailure(code: e.code, message: e.message));
+      } on FirebaseException catch (e) {
+        print('Retrieval of User Information Error Occurred, ${e.code}, ${e.message}');
+        return Left(FirebaseFirestoreFailure(code: e.code, message: e.message));
+      } catch (e) {
+        print('Retrieval of User Information Error Occurred');
+        return Left(UnexpectedFailure(message: e.toString()));
+      }
+    } else {
+      // TODO: Retrieval of user information from local storage.
+      return const Left(InternetConnectionFailure(
+        code: ERROR_NO_INTERNET_CONNECTION,
+        message: MESSAGE_NO_INTERNET_CONNECTION,
+      ));
+    }
+  }
+
+  @override
+  Future<Either<Failure, bool>> isAdmin({required String uid}) async {
+    // TODO: implement isAdmin
+    if (await networkInfo.isConnected) {
+      try {
+        bool isAdmin = await authRemoteDataSource.isAdmin(uid);
+
+        return Right(isAdmin);
+      } on FirebaseAuthException catch (e) {
+        print('isAdmin Check Error Occurred, ${e.code}, ${e.message}');
+        return Left(FirebaseAuthFailure(code: e.code, message: e.message));
+      } on FirebaseException catch (e) {
+        print('isAdmin Check Error Occurred, ${e.code}, ${e.message}');
+        return Left(FirebaseFirestoreFailure(code: e.code, message: e.message));
+      } catch (e) {
+        print('isAdmin Check Error Occurred, $e');
+        return Left(UnexpectedFailure(message: e.toString()));
+      }
+    } else {
+      return const Left(InternetConnectionFailure(
+        code: ERROR_NO_INTERNET_CONNECTION,
+        message: MESSAGE_NO_INTERNET_CONNECTION,
+      ));
+    }
   }
 }

@@ -5,6 +5,7 @@ class AuthState with _$AuthState {
   // General States
   const factory AuthState.initial() = ASInitial;
   const factory AuthState.idle() = ASIdle;
+  const factory AuthState.loading() = ASLoading;
 
   // Login-Specific States
   const factory AuthState.loginLoading() = ASLoginLoading;
@@ -33,4 +34,24 @@ class AuthState with _$AuthState {
     required String code,
     required String message,
   }) = ASSignOutError;
+
+  // Retrieve User States
+  const factory AuthState.retrieveUserDataLoading() = ASRetrieveUserDataLoading;
+  const factory AuthState.retrieveUserDataSuccess({
+    required FarmhubUser farmhubUser,
+  }) = ASRetrieveUserDataSuccess;
+  const factory AuthState.retrieveUserDataError({
+    required String code,
+    required String message,
+  }) = ASRetrieveUserDataError;
+
+  // isAdmin States
+  const factory AuthState.isAdminLoading() = ASIsAdminLoading;
+  const factory AuthState.isAdminSuccess({
+    required bool isAdmin,
+  }) = ASIsAdminSuccess;
+  const factory AuthState.isAdminError({
+    required String code,
+    required String message,
+  }) = ASIsAdminError;
 }

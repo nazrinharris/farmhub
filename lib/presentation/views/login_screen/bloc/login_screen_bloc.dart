@@ -58,7 +58,7 @@ class LoginScreenBloc extends Bloc<LoginScreenEvent, LoginScreenState> {
   FutureOr<void> continuePressed(
     _LSEContinuePressed event,
     Emitter<LoginScreenState> emit,
-  ) {
+  ) async {
     print("continuePressed Started");
 
     void updateInfoTile(InfoTileProps infoTileProps) {
@@ -96,41 +96,42 @@ class LoginScreenBloc extends Bloc<LoginScreenEvent, LoginScreenState> {
 
       // TODO: May need to move the updateInfoTile to the WidgetTree, because of the need to access context for [Themes]
 
-      authBloc.stream.listen((state) {
-        if (state is ASLoginSuccess) {
-          updateInfoTile(InfoTileProps(
-            leadingText: 'Login Success!',
-            child: Text(
-              "With the UID: ${state.user.uid}}",
-              style: TextStyle(
-                color: Color(0xff343A1A),
+      await emit.onEach(
+        authBloc.stream,
+        onData: (AuthState state) {
+          if (state is ASLoginSuccess) {
+            updateInfoTile(InfoTileProps(
+              leadingText: 'Login Success!',
+              child: Text(
+                "With the UID: ${state.user.uid}}",
+                style: TextStyle(
+                  color: Color(0xff343A1A),
+                ),
               ),
-            ),
-            isAbleToExpand: true,
-            isExpanded: false,
-            currentStatus: InfoTileStatus.success,
-          ));
+              isAbleToExpand: true,
+              isExpanded: false,
+              currentStatus: InfoTileStatus.success,
+            ));
 
-          primaryButtonAwareCubit.triggerFirstPage();
-        } else if (state is ASLoginError) {
-          updateInfoTile(InfoTileProps(
-            leadingText: 'Uh oh, Something\'s wrong!',
-            child: Text(
-              "Code: ${state.code}, Message: ${state.message}",
-              style: TextStyle(
-                color: Colors.white,
+            primaryButtonAwareCubit.triggerFirstPage();
+          } else if (state is ASLoginError) {
+            updateInfoTile(InfoTileProps(
+              leadingText: 'Uh oh, Something\'s wrong!',
+              child: Text(
+                "Code: ${state.code}, Message: ${state.message}",
+                style: TextStyle(
+                  color: Colors.white,
+                ),
               ),
-            ),
-            isAbleToExpand: true,
-            isExpanded: false,
-            currentStatus: InfoTileStatus.error,
-          ));
+              isAbleToExpand: true,
+              isExpanded: false,
+              currentStatus: InfoTileStatus.error,
+            ));
 
-          primaryButtonAwareCubit.triggerFirstPage();
-        }
-      });
-    } else {
-      emit(LoginScreenState.initial(state.props));
+            primaryButtonAwareCubit.triggerFirstPage();
+          }
+        },
+      );
     }
   }
 

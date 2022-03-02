@@ -24,6 +24,14 @@ class _$ProduceManagerEventTearOff {
   _PMEExecGetFirstTenProduce execGetFirstTenProduce() {
     return const _PMEExecGetFirstTenProduce();
   }
+
+  _PMEExecCreateProduce execCreateProduce(
+      {required String produceName, required num currentProducePrice}) {
+    return _PMEExecCreateProduce(
+      produceName: produceName,
+      currentProducePrice: currentProducePrice,
+    );
+  }
 }
 
 /// @nodoc
@@ -35,18 +43,24 @@ mixin _$ProduceManagerEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() execGetFirstTenProduce,
+    required TResult Function(String produceName, num currentProducePrice)
+        execCreateProduce,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? execGetFirstTenProduce,
+    TResult Function(String produceName, num currentProducePrice)?
+        execCreateProduce,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? execGetFirstTenProduce,
+    TResult Function(String produceName, num currentProducePrice)?
+        execCreateProduce,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -55,18 +69,21 @@ mixin _$ProduceManagerEvent {
     required TResult Function(_Started value) started,
     required TResult Function(_PMEExecGetFirstTenProduce value)
         execGetFirstTenProduce,
+    required TResult Function(_PMEExecCreateProduce value) execCreateProduce,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_PMEExecGetFirstTenProduce value)? execGetFirstTenProduce,
+    TResult Function(_PMEExecCreateProduce value)? execCreateProduce,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_PMEExecGetFirstTenProduce value)? execGetFirstTenProduce,
+    TResult Function(_PMEExecCreateProduce value)? execCreateProduce,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -130,6 +147,8 @@ class _$_Started implements _Started {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() execGetFirstTenProduce,
+    required TResult Function(String produceName, num currentProducePrice)
+        execCreateProduce,
   }) {
     return started();
   }
@@ -139,6 +158,8 @@ class _$_Started implements _Started {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? execGetFirstTenProduce,
+    TResult Function(String produceName, num currentProducePrice)?
+        execCreateProduce,
   }) {
     return started?.call();
   }
@@ -148,6 +169,8 @@ class _$_Started implements _Started {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? execGetFirstTenProduce,
+    TResult Function(String produceName, num currentProducePrice)?
+        execCreateProduce,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -162,6 +185,7 @@ class _$_Started implements _Started {
     required TResult Function(_Started value) started,
     required TResult Function(_PMEExecGetFirstTenProduce value)
         execGetFirstTenProduce,
+    required TResult Function(_PMEExecCreateProduce value) execCreateProduce,
   }) {
     return started(this);
   }
@@ -171,6 +195,7 @@ class _$_Started implements _Started {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_PMEExecGetFirstTenProduce value)? execGetFirstTenProduce,
+    TResult Function(_PMEExecCreateProduce value)? execCreateProduce,
   }) {
     return started?.call(this);
   }
@@ -180,6 +205,7 @@ class _$_Started implements _Started {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_PMEExecGetFirstTenProduce value)? execGetFirstTenProduce,
+    TResult Function(_PMEExecCreateProduce value)? execCreateProduce,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -238,6 +264,8 @@ class _$_PMEExecGetFirstTenProduce implements _PMEExecGetFirstTenProduce {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() execGetFirstTenProduce,
+    required TResult Function(String produceName, num currentProducePrice)
+        execCreateProduce,
   }) {
     return execGetFirstTenProduce();
   }
@@ -247,6 +275,8 @@ class _$_PMEExecGetFirstTenProduce implements _PMEExecGetFirstTenProduce {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? execGetFirstTenProduce,
+    TResult Function(String produceName, num currentProducePrice)?
+        execCreateProduce,
   }) {
     return execGetFirstTenProduce?.call();
   }
@@ -256,6 +286,8 @@ class _$_PMEExecGetFirstTenProduce implements _PMEExecGetFirstTenProduce {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? execGetFirstTenProduce,
+    TResult Function(String produceName, num currentProducePrice)?
+        execCreateProduce,
     required TResult orElse(),
   }) {
     if (execGetFirstTenProduce != null) {
@@ -270,6 +302,7 @@ class _$_PMEExecGetFirstTenProduce implements _PMEExecGetFirstTenProduce {
     required TResult Function(_Started value) started,
     required TResult Function(_PMEExecGetFirstTenProduce value)
         execGetFirstTenProduce,
+    required TResult Function(_PMEExecCreateProduce value) execCreateProduce,
   }) {
     return execGetFirstTenProduce(this);
   }
@@ -279,6 +312,7 @@ class _$_PMEExecGetFirstTenProduce implements _PMEExecGetFirstTenProduce {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_PMEExecGetFirstTenProduce value)? execGetFirstTenProduce,
+    TResult Function(_PMEExecCreateProduce value)? execCreateProduce,
   }) {
     return execGetFirstTenProduce?.call(this);
   }
@@ -288,6 +322,7 @@ class _$_PMEExecGetFirstTenProduce implements _PMEExecGetFirstTenProduce {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_PMEExecGetFirstTenProduce value)? execGetFirstTenProduce,
+    TResult Function(_PMEExecCreateProduce value)? execCreateProduce,
     required TResult orElse(),
   }) {
     if (execGetFirstTenProduce != null) {
@@ -299,6 +334,165 @@ class _$_PMEExecGetFirstTenProduce implements _PMEExecGetFirstTenProduce {
 
 abstract class _PMEExecGetFirstTenProduce implements ProduceManagerEvent {
   const factory _PMEExecGetFirstTenProduce() = _$_PMEExecGetFirstTenProduce;
+}
+
+/// @nodoc
+abstract class _$PMEExecCreateProduceCopyWith<$Res> {
+  factory _$PMEExecCreateProduceCopyWith(_PMEExecCreateProduce value,
+          $Res Function(_PMEExecCreateProduce) then) =
+      __$PMEExecCreateProduceCopyWithImpl<$Res>;
+  $Res call({String produceName, num currentProducePrice});
+}
+
+/// @nodoc
+class __$PMEExecCreateProduceCopyWithImpl<$Res>
+    extends _$ProduceManagerEventCopyWithImpl<$Res>
+    implements _$PMEExecCreateProduceCopyWith<$Res> {
+  __$PMEExecCreateProduceCopyWithImpl(
+      _PMEExecCreateProduce _value, $Res Function(_PMEExecCreateProduce) _then)
+      : super(_value, (v) => _then(v as _PMEExecCreateProduce));
+
+  @override
+  _PMEExecCreateProduce get _value => super._value as _PMEExecCreateProduce;
+
+  @override
+  $Res call({
+    Object? produceName = freezed,
+    Object? currentProducePrice = freezed,
+  }) {
+    return _then(_PMEExecCreateProduce(
+      produceName: produceName == freezed
+          ? _value.produceName
+          : produceName // ignore: cast_nullable_to_non_nullable
+              as String,
+      currentProducePrice: currentProducePrice == freezed
+          ? _value.currentProducePrice
+          : currentProducePrice // ignore: cast_nullable_to_non_nullable
+              as num,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_PMEExecCreateProduce implements _PMEExecCreateProduce {
+  const _$_PMEExecCreateProduce(
+      {required this.produceName, required this.currentProducePrice});
+
+  @override
+  final String produceName;
+  @override
+  final num currentProducePrice;
+
+  @override
+  String toString() {
+    return 'ProduceManagerEvent.execCreateProduce(produceName: $produceName, currentProducePrice: $currentProducePrice)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _PMEExecCreateProduce &&
+            (identical(other.produceName, produceName) ||
+                other.produceName == produceName) &&
+            (identical(other.currentProducePrice, currentProducePrice) ||
+                other.currentProducePrice == currentProducePrice));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, produceName, currentProducePrice);
+
+  @JsonKey(ignore: true)
+  @override
+  _$PMEExecCreateProduceCopyWith<_PMEExecCreateProduce> get copyWith =>
+      __$PMEExecCreateProduceCopyWithImpl<_PMEExecCreateProduce>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() execGetFirstTenProduce,
+    required TResult Function(String produceName, num currentProducePrice)
+        execCreateProduce,
+  }) {
+    return execCreateProduce(produceName, currentProducePrice);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? execGetFirstTenProduce,
+    TResult Function(String produceName, num currentProducePrice)?
+        execCreateProduce,
+  }) {
+    return execCreateProduce?.call(produceName, currentProducePrice);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? execGetFirstTenProduce,
+    TResult Function(String produceName, num currentProducePrice)?
+        execCreateProduce,
+    required TResult orElse(),
+  }) {
+    if (execCreateProduce != null) {
+      return execCreateProduce(produceName, currentProducePrice);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_PMEExecGetFirstTenProduce value)
+        execGetFirstTenProduce,
+    required TResult Function(_PMEExecCreateProduce value) execCreateProduce,
+  }) {
+    return execCreateProduce(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_PMEExecGetFirstTenProduce value)? execGetFirstTenProduce,
+    TResult Function(_PMEExecCreateProduce value)? execCreateProduce,
+  }) {
+    return execCreateProduce?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_PMEExecGetFirstTenProduce value)? execGetFirstTenProduce,
+    TResult Function(_PMEExecCreateProduce value)? execCreateProduce,
+    required TResult orElse(),
+  }) {
+    if (execCreateProduce != null) {
+      return execCreateProduce(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _PMEExecCreateProduce implements ProduceManagerEvent {
+  const factory _PMEExecCreateProduce(
+      {required String produceName,
+      required num currentProducePrice}) = _$_PMEExecCreateProduce;
+
+  String get produceName;
+  num get currentProducePrice;
+  @JsonKey(ignore: true)
+  _$PMEExecCreateProduceCopyWith<_PMEExecCreateProduce> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -327,6 +521,25 @@ class _$ProduceManagerStateTearOff {
       message: message,
     );
   }
+
+  PMSCreateNewProduceLoading createNewProduceLoading() {
+    return const PMSCreateNewProduceLoading();
+  }
+
+  PMSCreateNewProduceSuccess createNewProduceSuccess(
+      {required Produce produce}) {
+    return PMSCreateNewProduceSuccess(
+      produce: produce,
+    );
+  }
+
+  PMSCreateNewProduceError createNewProduceError(
+      {required String code, required String message}) {
+    return PMSCreateNewProduceError(
+      code: code,
+      message: message,
+    );
+  }
 }
 
 /// @nodoc
@@ -342,6 +555,10 @@ mixin _$ProduceManagerState {
         getFirstTenProduceSuccess,
     required TResult Function(String code, String message)
         getFirstTenProduceError,
+    required TResult Function() createNewProduceLoading,
+    required TResult Function(Produce produce) createNewProduceSuccess,
+    required TResult Function(String code, String message)
+        createNewProduceError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -350,6 +567,9 @@ mixin _$ProduceManagerState {
     TResult Function()? getFirstTenProduceLoading,
     TResult Function(List<Produce> produceList)? getFirstTenProduceSuccess,
     TResult Function(String code, String message)? getFirstTenProduceError,
+    TResult Function()? createNewProduceLoading,
+    TResult Function(Produce produce)? createNewProduceSuccess,
+    TResult Function(String code, String message)? createNewProduceError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -358,6 +578,9 @@ mixin _$ProduceManagerState {
     TResult Function()? getFirstTenProduceLoading,
     TResult Function(List<Produce> produceList)? getFirstTenProduceSuccess,
     TResult Function(String code, String message)? getFirstTenProduceError,
+    TResult Function()? createNewProduceLoading,
+    TResult Function(Produce produce)? createNewProduceSuccess,
+    TResult Function(String code, String message)? createNewProduceError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -370,6 +593,12 @@ mixin _$ProduceManagerState {
         getFirstTenProduceSuccess,
     required TResult Function(PMSGetFirstTenProduceError value)
         getFirstTenProduceError,
+    required TResult Function(PMSCreateNewProduceLoading value)
+        createNewProduceLoading,
+    required TResult Function(PMSCreateNewProduceSuccess value)
+        createNewProduceSuccess,
+    required TResult Function(PMSCreateNewProduceError value)
+        createNewProduceError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -380,6 +609,9 @@ mixin _$ProduceManagerState {
     TResult Function(PMSGetFirstTenProduceSuccess value)?
         getFirstTenProduceSuccess,
     TResult Function(PMSGetFirstTenProduceError value)? getFirstTenProduceError,
+    TResult Function(PMSCreateNewProduceLoading value)? createNewProduceLoading,
+    TResult Function(PMSCreateNewProduceSuccess value)? createNewProduceSuccess,
+    TResult Function(PMSCreateNewProduceError value)? createNewProduceError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -390,6 +622,9 @@ mixin _$ProduceManagerState {
     TResult Function(PMSGetFirstTenProduceSuccess value)?
         getFirstTenProduceSuccess,
     TResult Function(PMSGetFirstTenProduceError value)? getFirstTenProduceError,
+    TResult Function(PMSCreateNewProduceLoading value)? createNewProduceLoading,
+    TResult Function(PMSCreateNewProduceSuccess value)? createNewProduceSuccess,
+    TResult Function(PMSCreateNewProduceError value)? createNewProduceError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -458,6 +693,10 @@ class _$PMSInitial implements PMSInitial {
         getFirstTenProduceSuccess,
     required TResult Function(String code, String message)
         getFirstTenProduceError,
+    required TResult Function() createNewProduceLoading,
+    required TResult Function(Produce produce) createNewProduceSuccess,
+    required TResult Function(String code, String message)
+        createNewProduceError,
   }) {
     return initial();
   }
@@ -469,6 +708,9 @@ class _$PMSInitial implements PMSInitial {
     TResult Function()? getFirstTenProduceLoading,
     TResult Function(List<Produce> produceList)? getFirstTenProduceSuccess,
     TResult Function(String code, String message)? getFirstTenProduceError,
+    TResult Function()? createNewProduceLoading,
+    TResult Function(Produce produce)? createNewProduceSuccess,
+    TResult Function(String code, String message)? createNewProduceError,
   }) {
     return initial?.call();
   }
@@ -480,6 +722,9 @@ class _$PMSInitial implements PMSInitial {
     TResult Function()? getFirstTenProduceLoading,
     TResult Function(List<Produce> produceList)? getFirstTenProduceSuccess,
     TResult Function(String code, String message)? getFirstTenProduceError,
+    TResult Function()? createNewProduceLoading,
+    TResult Function(Produce produce)? createNewProduceSuccess,
+    TResult Function(String code, String message)? createNewProduceError,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -498,6 +743,12 @@ class _$PMSInitial implements PMSInitial {
         getFirstTenProduceSuccess,
     required TResult Function(PMSGetFirstTenProduceError value)
         getFirstTenProduceError,
+    required TResult Function(PMSCreateNewProduceLoading value)
+        createNewProduceLoading,
+    required TResult Function(PMSCreateNewProduceSuccess value)
+        createNewProduceSuccess,
+    required TResult Function(PMSCreateNewProduceError value)
+        createNewProduceError,
   }) {
     return initial(this);
   }
@@ -511,6 +762,9 @@ class _$PMSInitial implements PMSInitial {
     TResult Function(PMSGetFirstTenProduceSuccess value)?
         getFirstTenProduceSuccess,
     TResult Function(PMSGetFirstTenProduceError value)? getFirstTenProduceError,
+    TResult Function(PMSCreateNewProduceLoading value)? createNewProduceLoading,
+    TResult Function(PMSCreateNewProduceSuccess value)? createNewProduceSuccess,
+    TResult Function(PMSCreateNewProduceError value)? createNewProduceError,
   }) {
     return initial?.call(this);
   }
@@ -524,6 +778,9 @@ class _$PMSInitial implements PMSInitial {
     TResult Function(PMSGetFirstTenProduceSuccess value)?
         getFirstTenProduceSuccess,
     TResult Function(PMSGetFirstTenProduceError value)? getFirstTenProduceError,
+    TResult Function(PMSCreateNewProduceLoading value)? createNewProduceLoading,
+    TResult Function(PMSCreateNewProduceSuccess value)? createNewProduceSuccess,
+    TResult Function(PMSCreateNewProduceError value)? createNewProduceError,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -588,6 +845,10 @@ class _$PMSGetFirstTenProduceLoading implements PMSGetFirstTenProduceLoading {
         getFirstTenProduceSuccess,
     required TResult Function(String code, String message)
         getFirstTenProduceError,
+    required TResult Function() createNewProduceLoading,
+    required TResult Function(Produce produce) createNewProduceSuccess,
+    required TResult Function(String code, String message)
+        createNewProduceError,
   }) {
     return getFirstTenProduceLoading();
   }
@@ -599,6 +860,9 @@ class _$PMSGetFirstTenProduceLoading implements PMSGetFirstTenProduceLoading {
     TResult Function()? getFirstTenProduceLoading,
     TResult Function(List<Produce> produceList)? getFirstTenProduceSuccess,
     TResult Function(String code, String message)? getFirstTenProduceError,
+    TResult Function()? createNewProduceLoading,
+    TResult Function(Produce produce)? createNewProduceSuccess,
+    TResult Function(String code, String message)? createNewProduceError,
   }) {
     return getFirstTenProduceLoading?.call();
   }
@@ -610,6 +874,9 @@ class _$PMSGetFirstTenProduceLoading implements PMSGetFirstTenProduceLoading {
     TResult Function()? getFirstTenProduceLoading,
     TResult Function(List<Produce> produceList)? getFirstTenProduceSuccess,
     TResult Function(String code, String message)? getFirstTenProduceError,
+    TResult Function()? createNewProduceLoading,
+    TResult Function(Produce produce)? createNewProduceSuccess,
+    TResult Function(String code, String message)? createNewProduceError,
     required TResult orElse(),
   }) {
     if (getFirstTenProduceLoading != null) {
@@ -628,6 +895,12 @@ class _$PMSGetFirstTenProduceLoading implements PMSGetFirstTenProduceLoading {
         getFirstTenProduceSuccess,
     required TResult Function(PMSGetFirstTenProduceError value)
         getFirstTenProduceError,
+    required TResult Function(PMSCreateNewProduceLoading value)
+        createNewProduceLoading,
+    required TResult Function(PMSCreateNewProduceSuccess value)
+        createNewProduceSuccess,
+    required TResult Function(PMSCreateNewProduceError value)
+        createNewProduceError,
   }) {
     return getFirstTenProduceLoading(this);
   }
@@ -641,6 +914,9 @@ class _$PMSGetFirstTenProduceLoading implements PMSGetFirstTenProduceLoading {
     TResult Function(PMSGetFirstTenProduceSuccess value)?
         getFirstTenProduceSuccess,
     TResult Function(PMSGetFirstTenProduceError value)? getFirstTenProduceError,
+    TResult Function(PMSCreateNewProduceLoading value)? createNewProduceLoading,
+    TResult Function(PMSCreateNewProduceSuccess value)? createNewProduceSuccess,
+    TResult Function(PMSCreateNewProduceError value)? createNewProduceError,
   }) {
     return getFirstTenProduceLoading?.call(this);
   }
@@ -654,6 +930,9 @@ class _$PMSGetFirstTenProduceLoading implements PMSGetFirstTenProduceLoading {
     TResult Function(PMSGetFirstTenProduceSuccess value)?
         getFirstTenProduceSuccess,
     TResult Function(PMSGetFirstTenProduceError value)? getFirstTenProduceError,
+    TResult Function(PMSCreateNewProduceLoading value)? createNewProduceLoading,
+    TResult Function(PMSCreateNewProduceSuccess value)? createNewProduceSuccess,
+    TResult Function(PMSCreateNewProduceError value)? createNewProduceError,
     required TResult orElse(),
   }) {
     if (getFirstTenProduceLoading != null) {
@@ -743,6 +1022,10 @@ class _$PMSGetFirstTenProduceSuccess implements PMSGetFirstTenProduceSuccess {
         getFirstTenProduceSuccess,
     required TResult Function(String code, String message)
         getFirstTenProduceError,
+    required TResult Function() createNewProduceLoading,
+    required TResult Function(Produce produce) createNewProduceSuccess,
+    required TResult Function(String code, String message)
+        createNewProduceError,
   }) {
     return getFirstTenProduceSuccess(produceList);
   }
@@ -754,6 +1037,9 @@ class _$PMSGetFirstTenProduceSuccess implements PMSGetFirstTenProduceSuccess {
     TResult Function()? getFirstTenProduceLoading,
     TResult Function(List<Produce> produceList)? getFirstTenProduceSuccess,
     TResult Function(String code, String message)? getFirstTenProduceError,
+    TResult Function()? createNewProduceLoading,
+    TResult Function(Produce produce)? createNewProduceSuccess,
+    TResult Function(String code, String message)? createNewProduceError,
   }) {
     return getFirstTenProduceSuccess?.call(produceList);
   }
@@ -765,6 +1051,9 @@ class _$PMSGetFirstTenProduceSuccess implements PMSGetFirstTenProduceSuccess {
     TResult Function()? getFirstTenProduceLoading,
     TResult Function(List<Produce> produceList)? getFirstTenProduceSuccess,
     TResult Function(String code, String message)? getFirstTenProduceError,
+    TResult Function()? createNewProduceLoading,
+    TResult Function(Produce produce)? createNewProduceSuccess,
+    TResult Function(String code, String message)? createNewProduceError,
     required TResult orElse(),
   }) {
     if (getFirstTenProduceSuccess != null) {
@@ -783,6 +1072,12 @@ class _$PMSGetFirstTenProduceSuccess implements PMSGetFirstTenProduceSuccess {
         getFirstTenProduceSuccess,
     required TResult Function(PMSGetFirstTenProduceError value)
         getFirstTenProduceError,
+    required TResult Function(PMSCreateNewProduceLoading value)
+        createNewProduceLoading,
+    required TResult Function(PMSCreateNewProduceSuccess value)
+        createNewProduceSuccess,
+    required TResult Function(PMSCreateNewProduceError value)
+        createNewProduceError,
   }) {
     return getFirstTenProduceSuccess(this);
   }
@@ -796,6 +1091,9 @@ class _$PMSGetFirstTenProduceSuccess implements PMSGetFirstTenProduceSuccess {
     TResult Function(PMSGetFirstTenProduceSuccess value)?
         getFirstTenProduceSuccess,
     TResult Function(PMSGetFirstTenProduceError value)? getFirstTenProduceError,
+    TResult Function(PMSCreateNewProduceLoading value)? createNewProduceLoading,
+    TResult Function(PMSCreateNewProduceSuccess value)? createNewProduceSuccess,
+    TResult Function(PMSCreateNewProduceError value)? createNewProduceError,
   }) {
     return getFirstTenProduceSuccess?.call(this);
   }
@@ -809,6 +1107,9 @@ class _$PMSGetFirstTenProduceSuccess implements PMSGetFirstTenProduceSuccess {
     TResult Function(PMSGetFirstTenProduceSuccess value)?
         getFirstTenProduceSuccess,
     TResult Function(PMSGetFirstTenProduceError value)? getFirstTenProduceError,
+    TResult Function(PMSCreateNewProduceLoading value)? createNewProduceLoading,
+    TResult Function(PMSCreateNewProduceSuccess value)? createNewProduceSuccess,
+    TResult Function(PMSCreateNewProduceError value)? createNewProduceError,
     required TResult orElse(),
   }) {
     if (getFirstTenProduceSuccess != null) {
@@ -910,6 +1211,10 @@ class _$PMSGetFirstTenProduceError implements PMSGetFirstTenProduceError {
         getFirstTenProduceSuccess,
     required TResult Function(String code, String message)
         getFirstTenProduceError,
+    required TResult Function() createNewProduceLoading,
+    required TResult Function(Produce produce) createNewProduceSuccess,
+    required TResult Function(String code, String message)
+        createNewProduceError,
   }) {
     return getFirstTenProduceError(code, message);
   }
@@ -921,6 +1226,9 @@ class _$PMSGetFirstTenProduceError implements PMSGetFirstTenProduceError {
     TResult Function()? getFirstTenProduceLoading,
     TResult Function(List<Produce> produceList)? getFirstTenProduceSuccess,
     TResult Function(String code, String message)? getFirstTenProduceError,
+    TResult Function()? createNewProduceLoading,
+    TResult Function(Produce produce)? createNewProduceSuccess,
+    TResult Function(String code, String message)? createNewProduceError,
   }) {
     return getFirstTenProduceError?.call(code, message);
   }
@@ -932,6 +1240,9 @@ class _$PMSGetFirstTenProduceError implements PMSGetFirstTenProduceError {
     TResult Function()? getFirstTenProduceLoading,
     TResult Function(List<Produce> produceList)? getFirstTenProduceSuccess,
     TResult Function(String code, String message)? getFirstTenProduceError,
+    TResult Function()? createNewProduceLoading,
+    TResult Function(Produce produce)? createNewProduceSuccess,
+    TResult Function(String code, String message)? createNewProduceError,
     required TResult orElse(),
   }) {
     if (getFirstTenProduceError != null) {
@@ -950,6 +1261,12 @@ class _$PMSGetFirstTenProduceError implements PMSGetFirstTenProduceError {
         getFirstTenProduceSuccess,
     required TResult Function(PMSGetFirstTenProduceError value)
         getFirstTenProduceError,
+    required TResult Function(PMSCreateNewProduceLoading value)
+        createNewProduceLoading,
+    required TResult Function(PMSCreateNewProduceSuccess value)
+        createNewProduceSuccess,
+    required TResult Function(PMSCreateNewProduceError value)
+        createNewProduceError,
   }) {
     return getFirstTenProduceError(this);
   }
@@ -963,6 +1280,9 @@ class _$PMSGetFirstTenProduceError implements PMSGetFirstTenProduceError {
     TResult Function(PMSGetFirstTenProduceSuccess value)?
         getFirstTenProduceSuccess,
     TResult Function(PMSGetFirstTenProduceError value)? getFirstTenProduceError,
+    TResult Function(PMSCreateNewProduceLoading value)? createNewProduceLoading,
+    TResult Function(PMSCreateNewProduceSuccess value)? createNewProduceSuccess,
+    TResult Function(PMSCreateNewProduceError value)? createNewProduceError,
   }) {
     return getFirstTenProduceError?.call(this);
   }
@@ -976,6 +1296,9 @@ class _$PMSGetFirstTenProduceError implements PMSGetFirstTenProduceError {
     TResult Function(PMSGetFirstTenProduceSuccess value)?
         getFirstTenProduceSuccess,
     TResult Function(PMSGetFirstTenProduceError value)? getFirstTenProduceError,
+    TResult Function(PMSCreateNewProduceLoading value)? createNewProduceLoading,
+    TResult Function(PMSCreateNewProduceSuccess value)? createNewProduceSuccess,
+    TResult Function(PMSCreateNewProduceError value)? createNewProduceError,
     required TResult orElse(),
   }) {
     if (getFirstTenProduceError != null) {
@@ -995,4 +1318,532 @@ abstract class PMSGetFirstTenProduceError implements ProduceManagerState {
   @JsonKey(ignore: true)
   $PMSGetFirstTenProduceErrorCopyWith<PMSGetFirstTenProduceError>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $PMSCreateNewProduceLoadingCopyWith<$Res> {
+  factory $PMSCreateNewProduceLoadingCopyWith(PMSCreateNewProduceLoading value,
+          $Res Function(PMSCreateNewProduceLoading) then) =
+      _$PMSCreateNewProduceLoadingCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$PMSCreateNewProduceLoadingCopyWithImpl<$Res>
+    extends _$ProduceManagerStateCopyWithImpl<$Res>
+    implements $PMSCreateNewProduceLoadingCopyWith<$Res> {
+  _$PMSCreateNewProduceLoadingCopyWithImpl(PMSCreateNewProduceLoading _value,
+      $Res Function(PMSCreateNewProduceLoading) _then)
+      : super(_value, (v) => _then(v as PMSCreateNewProduceLoading));
+
+  @override
+  PMSCreateNewProduceLoading get _value =>
+      super._value as PMSCreateNewProduceLoading;
+}
+
+/// @nodoc
+
+class _$PMSCreateNewProduceLoading implements PMSCreateNewProduceLoading {
+  const _$PMSCreateNewProduceLoading();
+
+  @override
+  String toString() {
+    return 'ProduceManagerState.createNewProduceLoading()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is PMSCreateNewProduceLoading);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() getFirstTenProduceLoading,
+    required TResult Function(List<Produce> produceList)
+        getFirstTenProduceSuccess,
+    required TResult Function(String code, String message)
+        getFirstTenProduceError,
+    required TResult Function() createNewProduceLoading,
+    required TResult Function(Produce produce) createNewProduceSuccess,
+    required TResult Function(String code, String message)
+        createNewProduceError,
+  }) {
+    return createNewProduceLoading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? getFirstTenProduceLoading,
+    TResult Function(List<Produce> produceList)? getFirstTenProduceSuccess,
+    TResult Function(String code, String message)? getFirstTenProduceError,
+    TResult Function()? createNewProduceLoading,
+    TResult Function(Produce produce)? createNewProduceSuccess,
+    TResult Function(String code, String message)? createNewProduceError,
+  }) {
+    return createNewProduceLoading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? getFirstTenProduceLoading,
+    TResult Function(List<Produce> produceList)? getFirstTenProduceSuccess,
+    TResult Function(String code, String message)? getFirstTenProduceError,
+    TResult Function()? createNewProduceLoading,
+    TResult Function(Produce produce)? createNewProduceSuccess,
+    TResult Function(String code, String message)? createNewProduceError,
+    required TResult orElse(),
+  }) {
+    if (createNewProduceLoading != null) {
+      return createNewProduceLoading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(PMSInitial value) initial,
+    required TResult Function(PMSGetFirstTenProduceLoading value)
+        getFirstTenProduceLoading,
+    required TResult Function(PMSGetFirstTenProduceSuccess value)
+        getFirstTenProduceSuccess,
+    required TResult Function(PMSGetFirstTenProduceError value)
+        getFirstTenProduceError,
+    required TResult Function(PMSCreateNewProduceLoading value)
+        createNewProduceLoading,
+    required TResult Function(PMSCreateNewProduceSuccess value)
+        createNewProduceSuccess,
+    required TResult Function(PMSCreateNewProduceError value)
+        createNewProduceError,
+  }) {
+    return createNewProduceLoading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(PMSInitial value)? initial,
+    TResult Function(PMSGetFirstTenProduceLoading value)?
+        getFirstTenProduceLoading,
+    TResult Function(PMSGetFirstTenProduceSuccess value)?
+        getFirstTenProduceSuccess,
+    TResult Function(PMSGetFirstTenProduceError value)? getFirstTenProduceError,
+    TResult Function(PMSCreateNewProduceLoading value)? createNewProduceLoading,
+    TResult Function(PMSCreateNewProduceSuccess value)? createNewProduceSuccess,
+    TResult Function(PMSCreateNewProduceError value)? createNewProduceError,
+  }) {
+    return createNewProduceLoading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(PMSInitial value)? initial,
+    TResult Function(PMSGetFirstTenProduceLoading value)?
+        getFirstTenProduceLoading,
+    TResult Function(PMSGetFirstTenProduceSuccess value)?
+        getFirstTenProduceSuccess,
+    TResult Function(PMSGetFirstTenProduceError value)? getFirstTenProduceError,
+    TResult Function(PMSCreateNewProduceLoading value)? createNewProduceLoading,
+    TResult Function(PMSCreateNewProduceSuccess value)? createNewProduceSuccess,
+    TResult Function(PMSCreateNewProduceError value)? createNewProduceError,
+    required TResult orElse(),
+  }) {
+    if (createNewProduceLoading != null) {
+      return createNewProduceLoading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class PMSCreateNewProduceLoading implements ProduceManagerState {
+  const factory PMSCreateNewProduceLoading() = _$PMSCreateNewProduceLoading;
+}
+
+/// @nodoc
+abstract class $PMSCreateNewProduceSuccessCopyWith<$Res> {
+  factory $PMSCreateNewProduceSuccessCopyWith(PMSCreateNewProduceSuccess value,
+          $Res Function(PMSCreateNewProduceSuccess) then) =
+      _$PMSCreateNewProduceSuccessCopyWithImpl<$Res>;
+  $Res call({Produce produce});
+
+  $ProduceCopyWith<$Res> get produce;
+}
+
+/// @nodoc
+class _$PMSCreateNewProduceSuccessCopyWithImpl<$Res>
+    extends _$ProduceManagerStateCopyWithImpl<$Res>
+    implements $PMSCreateNewProduceSuccessCopyWith<$Res> {
+  _$PMSCreateNewProduceSuccessCopyWithImpl(PMSCreateNewProduceSuccess _value,
+      $Res Function(PMSCreateNewProduceSuccess) _then)
+      : super(_value, (v) => _then(v as PMSCreateNewProduceSuccess));
+
+  @override
+  PMSCreateNewProduceSuccess get _value =>
+      super._value as PMSCreateNewProduceSuccess;
+
+  @override
+  $Res call({
+    Object? produce = freezed,
+  }) {
+    return _then(PMSCreateNewProduceSuccess(
+      produce: produce == freezed
+          ? _value.produce
+          : produce // ignore: cast_nullable_to_non_nullable
+              as Produce,
+    ));
+  }
+
+  @override
+  $ProduceCopyWith<$Res> get produce {
+    return $ProduceCopyWith<$Res>(_value.produce, (value) {
+      return _then(_value.copyWith(produce: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$PMSCreateNewProduceSuccess implements PMSCreateNewProduceSuccess {
+  const _$PMSCreateNewProduceSuccess({required this.produce});
+
+  @override
+  final Produce produce;
+
+  @override
+  String toString() {
+    return 'ProduceManagerState.createNewProduceSuccess(produce: $produce)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is PMSCreateNewProduceSuccess &&
+            (identical(other.produce, produce) || other.produce == produce));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, produce);
+
+  @JsonKey(ignore: true)
+  @override
+  $PMSCreateNewProduceSuccessCopyWith<PMSCreateNewProduceSuccess>
+      get copyWith =>
+          _$PMSCreateNewProduceSuccessCopyWithImpl<PMSCreateNewProduceSuccess>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() getFirstTenProduceLoading,
+    required TResult Function(List<Produce> produceList)
+        getFirstTenProduceSuccess,
+    required TResult Function(String code, String message)
+        getFirstTenProduceError,
+    required TResult Function() createNewProduceLoading,
+    required TResult Function(Produce produce) createNewProduceSuccess,
+    required TResult Function(String code, String message)
+        createNewProduceError,
+  }) {
+    return createNewProduceSuccess(produce);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? getFirstTenProduceLoading,
+    TResult Function(List<Produce> produceList)? getFirstTenProduceSuccess,
+    TResult Function(String code, String message)? getFirstTenProduceError,
+    TResult Function()? createNewProduceLoading,
+    TResult Function(Produce produce)? createNewProduceSuccess,
+    TResult Function(String code, String message)? createNewProduceError,
+  }) {
+    return createNewProduceSuccess?.call(produce);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? getFirstTenProduceLoading,
+    TResult Function(List<Produce> produceList)? getFirstTenProduceSuccess,
+    TResult Function(String code, String message)? getFirstTenProduceError,
+    TResult Function()? createNewProduceLoading,
+    TResult Function(Produce produce)? createNewProduceSuccess,
+    TResult Function(String code, String message)? createNewProduceError,
+    required TResult orElse(),
+  }) {
+    if (createNewProduceSuccess != null) {
+      return createNewProduceSuccess(produce);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(PMSInitial value) initial,
+    required TResult Function(PMSGetFirstTenProduceLoading value)
+        getFirstTenProduceLoading,
+    required TResult Function(PMSGetFirstTenProduceSuccess value)
+        getFirstTenProduceSuccess,
+    required TResult Function(PMSGetFirstTenProduceError value)
+        getFirstTenProduceError,
+    required TResult Function(PMSCreateNewProduceLoading value)
+        createNewProduceLoading,
+    required TResult Function(PMSCreateNewProduceSuccess value)
+        createNewProduceSuccess,
+    required TResult Function(PMSCreateNewProduceError value)
+        createNewProduceError,
+  }) {
+    return createNewProduceSuccess(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(PMSInitial value)? initial,
+    TResult Function(PMSGetFirstTenProduceLoading value)?
+        getFirstTenProduceLoading,
+    TResult Function(PMSGetFirstTenProduceSuccess value)?
+        getFirstTenProduceSuccess,
+    TResult Function(PMSGetFirstTenProduceError value)? getFirstTenProduceError,
+    TResult Function(PMSCreateNewProduceLoading value)? createNewProduceLoading,
+    TResult Function(PMSCreateNewProduceSuccess value)? createNewProduceSuccess,
+    TResult Function(PMSCreateNewProduceError value)? createNewProduceError,
+  }) {
+    return createNewProduceSuccess?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(PMSInitial value)? initial,
+    TResult Function(PMSGetFirstTenProduceLoading value)?
+        getFirstTenProduceLoading,
+    TResult Function(PMSGetFirstTenProduceSuccess value)?
+        getFirstTenProduceSuccess,
+    TResult Function(PMSGetFirstTenProduceError value)? getFirstTenProduceError,
+    TResult Function(PMSCreateNewProduceLoading value)? createNewProduceLoading,
+    TResult Function(PMSCreateNewProduceSuccess value)? createNewProduceSuccess,
+    TResult Function(PMSCreateNewProduceError value)? createNewProduceError,
+    required TResult orElse(),
+  }) {
+    if (createNewProduceSuccess != null) {
+      return createNewProduceSuccess(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class PMSCreateNewProduceSuccess implements ProduceManagerState {
+  const factory PMSCreateNewProduceSuccess({required Produce produce}) =
+      _$PMSCreateNewProduceSuccess;
+
+  Produce get produce;
+  @JsonKey(ignore: true)
+  $PMSCreateNewProduceSuccessCopyWith<PMSCreateNewProduceSuccess>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $PMSCreateNewProduceErrorCopyWith<$Res> {
+  factory $PMSCreateNewProduceErrorCopyWith(PMSCreateNewProduceError value,
+          $Res Function(PMSCreateNewProduceError) then) =
+      _$PMSCreateNewProduceErrorCopyWithImpl<$Res>;
+  $Res call({String code, String message});
+}
+
+/// @nodoc
+class _$PMSCreateNewProduceErrorCopyWithImpl<$Res>
+    extends _$ProduceManagerStateCopyWithImpl<$Res>
+    implements $PMSCreateNewProduceErrorCopyWith<$Res> {
+  _$PMSCreateNewProduceErrorCopyWithImpl(PMSCreateNewProduceError _value,
+      $Res Function(PMSCreateNewProduceError) _then)
+      : super(_value, (v) => _then(v as PMSCreateNewProduceError));
+
+  @override
+  PMSCreateNewProduceError get _value =>
+      super._value as PMSCreateNewProduceError;
+
+  @override
+  $Res call({
+    Object? code = freezed,
+    Object? message = freezed,
+  }) {
+    return _then(PMSCreateNewProduceError(
+      code: code == freezed
+          ? _value.code
+          : code // ignore: cast_nullable_to_non_nullable
+              as String,
+      message: message == freezed
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$PMSCreateNewProduceError implements PMSCreateNewProduceError {
+  const _$PMSCreateNewProduceError({required this.code, required this.message});
+
+  @override
+  final String code;
+  @override
+  final String message;
+
+  @override
+  String toString() {
+    return 'ProduceManagerState.createNewProduceError(code: $code, message: $message)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is PMSCreateNewProduceError &&
+            (identical(other.code, code) || other.code == code) &&
+            (identical(other.message, message) || other.message == message));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, code, message);
+
+  @JsonKey(ignore: true)
+  @override
+  $PMSCreateNewProduceErrorCopyWith<PMSCreateNewProduceError> get copyWith =>
+      _$PMSCreateNewProduceErrorCopyWithImpl<PMSCreateNewProduceError>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() getFirstTenProduceLoading,
+    required TResult Function(List<Produce> produceList)
+        getFirstTenProduceSuccess,
+    required TResult Function(String code, String message)
+        getFirstTenProduceError,
+    required TResult Function() createNewProduceLoading,
+    required TResult Function(Produce produce) createNewProduceSuccess,
+    required TResult Function(String code, String message)
+        createNewProduceError,
+  }) {
+    return createNewProduceError(code, message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? getFirstTenProduceLoading,
+    TResult Function(List<Produce> produceList)? getFirstTenProduceSuccess,
+    TResult Function(String code, String message)? getFirstTenProduceError,
+    TResult Function()? createNewProduceLoading,
+    TResult Function(Produce produce)? createNewProduceSuccess,
+    TResult Function(String code, String message)? createNewProduceError,
+  }) {
+    return createNewProduceError?.call(code, message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? getFirstTenProduceLoading,
+    TResult Function(List<Produce> produceList)? getFirstTenProduceSuccess,
+    TResult Function(String code, String message)? getFirstTenProduceError,
+    TResult Function()? createNewProduceLoading,
+    TResult Function(Produce produce)? createNewProduceSuccess,
+    TResult Function(String code, String message)? createNewProduceError,
+    required TResult orElse(),
+  }) {
+    if (createNewProduceError != null) {
+      return createNewProduceError(code, message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(PMSInitial value) initial,
+    required TResult Function(PMSGetFirstTenProduceLoading value)
+        getFirstTenProduceLoading,
+    required TResult Function(PMSGetFirstTenProduceSuccess value)
+        getFirstTenProduceSuccess,
+    required TResult Function(PMSGetFirstTenProduceError value)
+        getFirstTenProduceError,
+    required TResult Function(PMSCreateNewProduceLoading value)
+        createNewProduceLoading,
+    required TResult Function(PMSCreateNewProduceSuccess value)
+        createNewProduceSuccess,
+    required TResult Function(PMSCreateNewProduceError value)
+        createNewProduceError,
+  }) {
+    return createNewProduceError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(PMSInitial value)? initial,
+    TResult Function(PMSGetFirstTenProduceLoading value)?
+        getFirstTenProduceLoading,
+    TResult Function(PMSGetFirstTenProduceSuccess value)?
+        getFirstTenProduceSuccess,
+    TResult Function(PMSGetFirstTenProduceError value)? getFirstTenProduceError,
+    TResult Function(PMSCreateNewProduceLoading value)? createNewProduceLoading,
+    TResult Function(PMSCreateNewProduceSuccess value)? createNewProduceSuccess,
+    TResult Function(PMSCreateNewProduceError value)? createNewProduceError,
+  }) {
+    return createNewProduceError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(PMSInitial value)? initial,
+    TResult Function(PMSGetFirstTenProduceLoading value)?
+        getFirstTenProduceLoading,
+    TResult Function(PMSGetFirstTenProduceSuccess value)?
+        getFirstTenProduceSuccess,
+    TResult Function(PMSGetFirstTenProduceError value)? getFirstTenProduceError,
+    TResult Function(PMSCreateNewProduceLoading value)? createNewProduceLoading,
+    TResult Function(PMSCreateNewProduceSuccess value)? createNewProduceSuccess,
+    TResult Function(PMSCreateNewProduceError value)? createNewProduceError,
+    required TResult orElse(),
+  }) {
+    if (createNewProduceError != null) {
+      return createNewProduceError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class PMSCreateNewProduceError implements ProduceManagerState {
+  const factory PMSCreateNewProduceError(
+      {required String code,
+      required String message}) = _$PMSCreateNewProduceError;
+
+  String get code;
+  String get message;
+  @JsonKey(ignore: true)
+  $PMSCreateNewProduceErrorCopyWith<PMSCreateNewProduceError> get copyWith =>
+      throw _privateConstructorUsedError;
 }

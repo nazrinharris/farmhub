@@ -15,8 +15,7 @@ part 'register_screen_event.dart';
 part 'register_screen_state.dart';
 part 'register_screen_bloc.freezed.dart';
 
-class RegisterScreenBloc
-    extends Bloc<RegisterScreenEvent, RegisterScreenState> {
+class RegisterScreenBloc extends Bloc<RegisterScreenEvent, RegisterScreenState> {
   final RegisterScreenProps registerScreenProps;
   final AuthBloc authBloc;
 
@@ -65,11 +64,9 @@ class RegisterScreenBloc
     print("InfoTile is $isVisible");
 
     if (isVisible) {
-      infoTileVisibilityController.playReverse(
-          duration: const Duration(milliseconds: 500));
+      infoTileVisibilityController.playReverse(duration: const Duration(milliseconds: 500));
     } else {
-      infoTileVisibilityController.play(
-          duration: const Duration(milliseconds: 500));
+      infoTileVisibilityController.play(duration: const Duration(milliseconds: 500));
     }
 
     emit(
@@ -82,7 +79,7 @@ class RegisterScreenBloc
   FutureOr<void> continuePressed(
     _RSEContinuePressed event,
     Emitter<RegisterScreenState> emit,
-  ) {
+  ) async {
     firstTwoFieldsFormBloc.add(unfocusAllNodes);
     firstTwoFieldsFormBloc.add(enableAlwaysValidation);
 
@@ -93,17 +90,13 @@ class RegisterScreenBloc
       infoTileBloc.add(InfoTileEvent.triggerStateChange(infoTileProps));
     }
 
-    final bool isFormValid = firstTwoFieldsFormBloc
-            .state.props.formKey.currentState!
-            .validate() &&
+    final bool isFormValid = firstTwoFieldsFormBloc.state.props.formKey.currentState!.validate() &&
         secondTwoFieldsFormBloc.state.props.formKey.currentState!.validate();
 
     if (isFormValid) {
-      final String username =
-          firstTwoFieldsFormBloc.state.props.firstFieldValue!;
+      final String username = firstTwoFieldsFormBloc.state.props.firstFieldValue!;
       final String email = firstTwoFieldsFormBloc.state.props.secondFieldValue!;
-      final String password =
-          secondTwoFieldsFormBloc.state.props.secondFieldValue!;
+      final String password = secondTwoFieldsFormBloc.state.props.secondFieldValue!;
 
       // Update UI to indicate Loading
       infoTileVisibilityController.play(
@@ -125,7 +118,7 @@ class RegisterScreenBloc
         username: username,
       ));
 
-      authBloc.stream.listen((state) {
+      await emit.onEach(authBloc.stream, onData: (AuthState state) {
         if (state is ASRegisterSuccess) {
           updateInfoTile(InfoTileProps(
             leadingText: 'Registration Success!',

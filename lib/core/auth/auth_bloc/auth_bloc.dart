@@ -15,7 +15,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthBloc({required this.authRepository}) : super(const ASInitial()) {
     on<_AEExecLoginWithEmailAndPassword>(execLoginWithEmailAndPassword);
     on<_AEExecRegisterWithEmailAndPassword>(execRegisterWithEmailAndPassword);
+    on<_AEExecRetrieveUserData>(execRetrieveUserData);
     on<_AEExecSignOut>(execSignOut);
+    on<_AEExecIsAdmin>(execIsAdmin);
   }
 
   FutureOr<void> execLoginWithEmailAndPassword(
@@ -74,6 +76,34 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     emit(failureOrSignOut.fold(
       (failure) => AuthState.signOutError(code: failure.code!, message: failure.message!),
       (_) => const AuthState.signOutSuccess(),
+    ));
+  }
+
+  FutureOr<void> execRetrieveUserData(
+    _AEExecRetrieveUserData event,
+    Emitter<AuthState> emit,
+  ) async {
+    emit(const AuthState.retrieveUserDataLoading());
+
+    final failureOrSignOut = await authRepository.retrieveUserData();
+
+    emit(failureOrSignOut.fold(
+      (failure) => AuthState.retrieveUserDataError(code: failure.code!, message: failure.message!),
+      (farmhubUser) => AuthState.retrieveUserDataSuccess(farmhubUser: farmhubUser),
+    ));
+  }
+
+  FutureOr<void> execIsAdmin(
+    _AEExecIsAdmin event,
+    Emitter<AuthState> emit,
+  ) async {
+    emit(const AuthState.isAdminLoading());
+
+    final failureOrBool = await authRepository.isAdmin(uid: event.uid);
+
+    emit(failureOrBool.fold(
+      (failure) => AuthState.isAdminError(code: failure.code!, message: failure.message!),
+      (isAdmin) => AuthState.isAdminSuccess(isAdmin: isAdmin),
     ));
   }
 }

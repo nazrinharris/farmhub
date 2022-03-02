@@ -40,8 +40,18 @@ class _$AuthEventTearOff {
     );
   }
 
+  _AEExecRetrieveUserData execRetrieveUserData() {
+    return const _AEExecRetrieveUserData();
+  }
+
   _AEExecSignOut execSignOut() {
     return const _AEExecSignOut();
+  }
+
+  _AEExecIsAdmin execIsAdmin(String uid) {
+    return _AEExecIsAdmin(
+      uid,
+    );
   }
 }
 
@@ -57,7 +67,9 @@ mixin _$AuthEvent {
         execLoginWithEmailAndPassword,
     required TResult Function(String email, String password, String username)
         execRegisterWithEmailAndPassword,
+    required TResult Function() execRetrieveUserData,
     required TResult Function() execSignOut,
+    required TResult Function(String uid) execIsAdmin,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -67,7 +79,9 @@ mixin _$AuthEvent {
         execLoginWithEmailAndPassword,
     TResult Function(String email, String password, String username)?
         execRegisterWithEmailAndPassword,
+    TResult Function()? execRetrieveUserData,
     TResult Function()? execSignOut,
+    TResult Function(String uid)? execIsAdmin,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -77,7 +91,9 @@ mixin _$AuthEvent {
         execLoginWithEmailAndPassword,
     TResult Function(String email, String password, String username)?
         execRegisterWithEmailAndPassword,
+    TResult Function()? execRetrieveUserData,
     TResult Function()? execSignOut,
+    TResult Function(String uid)? execIsAdmin,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -88,7 +104,10 @@ mixin _$AuthEvent {
         execLoginWithEmailAndPassword,
     required TResult Function(_AEExecRegisterWithEmailAndPassword value)
         execRegisterWithEmailAndPassword,
+    required TResult Function(_AEExecRetrieveUserData value)
+        execRetrieveUserData,
     required TResult Function(_AEExecSignOut value) execSignOut,
+    required TResult Function(_AEExecIsAdmin value) execIsAdmin,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -98,7 +117,9 @@ mixin _$AuthEvent {
         execLoginWithEmailAndPassword,
     TResult Function(_AEExecRegisterWithEmailAndPassword value)?
         execRegisterWithEmailAndPassword,
+    TResult Function(_AEExecRetrieveUserData value)? execRetrieveUserData,
     TResult Function(_AEExecSignOut value)? execSignOut,
+    TResult Function(_AEExecIsAdmin value)? execIsAdmin,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -108,7 +129,9 @@ mixin _$AuthEvent {
         execLoginWithEmailAndPassword,
     TResult Function(_AEExecRegisterWithEmailAndPassword value)?
         execRegisterWithEmailAndPassword,
+    TResult Function(_AEExecRetrieveUserData value)? execRetrieveUserData,
     TResult Function(_AEExecSignOut value)? execSignOut,
+    TResult Function(_AEExecIsAdmin value)? execIsAdmin,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -173,7 +196,9 @@ class _$_AEStarted implements _AEStarted {
         execLoginWithEmailAndPassword,
     required TResult Function(String email, String password, String username)
         execRegisterWithEmailAndPassword,
+    required TResult Function() execRetrieveUserData,
     required TResult Function() execSignOut,
+    required TResult Function(String uid) execIsAdmin,
   }) {
     return started();
   }
@@ -186,7 +211,9 @@ class _$_AEStarted implements _AEStarted {
         execLoginWithEmailAndPassword,
     TResult Function(String email, String password, String username)?
         execRegisterWithEmailAndPassword,
+    TResult Function()? execRetrieveUserData,
     TResult Function()? execSignOut,
+    TResult Function(String uid)? execIsAdmin,
   }) {
     return started?.call();
   }
@@ -199,7 +226,9 @@ class _$_AEStarted implements _AEStarted {
         execLoginWithEmailAndPassword,
     TResult Function(String email, String password, String username)?
         execRegisterWithEmailAndPassword,
+    TResult Function()? execRetrieveUserData,
     TResult Function()? execSignOut,
+    TResult Function(String uid)? execIsAdmin,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -216,7 +245,10 @@ class _$_AEStarted implements _AEStarted {
         execLoginWithEmailAndPassword,
     required TResult Function(_AEExecRegisterWithEmailAndPassword value)
         execRegisterWithEmailAndPassword,
+    required TResult Function(_AEExecRetrieveUserData value)
+        execRetrieveUserData,
     required TResult Function(_AEExecSignOut value) execSignOut,
+    required TResult Function(_AEExecIsAdmin value) execIsAdmin,
   }) {
     return started(this);
   }
@@ -229,7 +261,9 @@ class _$_AEStarted implements _AEStarted {
         execLoginWithEmailAndPassword,
     TResult Function(_AEExecRegisterWithEmailAndPassword value)?
         execRegisterWithEmailAndPassword,
+    TResult Function(_AEExecRetrieveUserData value)? execRetrieveUserData,
     TResult Function(_AEExecSignOut value)? execSignOut,
+    TResult Function(_AEExecIsAdmin value)? execIsAdmin,
   }) {
     return started?.call(this);
   }
@@ -242,7 +276,9 @@ class _$_AEStarted implements _AEStarted {
         execLoginWithEmailAndPassword,
     TResult Function(_AEExecRegisterWithEmailAndPassword value)?
         execRegisterWithEmailAndPassword,
+    TResult Function(_AEExecRetrieveUserData value)? execRetrieveUserData,
     TResult Function(_AEExecSignOut value)? execSignOut,
+    TResult Function(_AEExecIsAdmin value)? execIsAdmin,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -340,7 +376,9 @@ class _$_AEExecLoginWithEmailAndPassword
         execLoginWithEmailAndPassword,
     required TResult Function(String email, String password, String username)
         execRegisterWithEmailAndPassword,
+    required TResult Function() execRetrieveUserData,
     required TResult Function() execSignOut,
+    required TResult Function(String uid) execIsAdmin,
   }) {
     return execLoginWithEmailAndPassword(email, password);
   }
@@ -353,7 +391,9 @@ class _$_AEExecLoginWithEmailAndPassword
         execLoginWithEmailAndPassword,
     TResult Function(String email, String password, String username)?
         execRegisterWithEmailAndPassword,
+    TResult Function()? execRetrieveUserData,
     TResult Function()? execSignOut,
+    TResult Function(String uid)? execIsAdmin,
   }) {
     return execLoginWithEmailAndPassword?.call(email, password);
   }
@@ -366,7 +406,9 @@ class _$_AEExecLoginWithEmailAndPassword
         execLoginWithEmailAndPassword,
     TResult Function(String email, String password, String username)?
         execRegisterWithEmailAndPassword,
+    TResult Function()? execRetrieveUserData,
     TResult Function()? execSignOut,
+    TResult Function(String uid)? execIsAdmin,
     required TResult orElse(),
   }) {
     if (execLoginWithEmailAndPassword != null) {
@@ -383,7 +425,10 @@ class _$_AEExecLoginWithEmailAndPassword
         execLoginWithEmailAndPassword,
     required TResult Function(_AEExecRegisterWithEmailAndPassword value)
         execRegisterWithEmailAndPassword,
+    required TResult Function(_AEExecRetrieveUserData value)
+        execRetrieveUserData,
     required TResult Function(_AEExecSignOut value) execSignOut,
+    required TResult Function(_AEExecIsAdmin value) execIsAdmin,
   }) {
     return execLoginWithEmailAndPassword(this);
   }
@@ -396,7 +441,9 @@ class _$_AEExecLoginWithEmailAndPassword
         execLoginWithEmailAndPassword,
     TResult Function(_AEExecRegisterWithEmailAndPassword value)?
         execRegisterWithEmailAndPassword,
+    TResult Function(_AEExecRetrieveUserData value)? execRetrieveUserData,
     TResult Function(_AEExecSignOut value)? execSignOut,
+    TResult Function(_AEExecIsAdmin value)? execIsAdmin,
   }) {
     return execLoginWithEmailAndPassword?.call(this);
   }
@@ -409,7 +456,9 @@ class _$_AEExecLoginWithEmailAndPassword
         execLoginWithEmailAndPassword,
     TResult Function(_AEExecRegisterWithEmailAndPassword value)?
         execRegisterWithEmailAndPassword,
+    TResult Function(_AEExecRetrieveUserData value)? execRetrieveUserData,
     TResult Function(_AEExecSignOut value)? execSignOut,
+    TResult Function(_AEExecIsAdmin value)? execIsAdmin,
     required TResult orElse(),
   }) {
     if (execLoginWithEmailAndPassword != null) {
@@ -525,7 +574,9 @@ class _$_AEExecRegisterWithEmailAndPassword
         execLoginWithEmailAndPassword,
     required TResult Function(String email, String password, String username)
         execRegisterWithEmailAndPassword,
+    required TResult Function() execRetrieveUserData,
     required TResult Function() execSignOut,
+    required TResult Function(String uid) execIsAdmin,
   }) {
     return execRegisterWithEmailAndPassword(email, password, username);
   }
@@ -538,7 +589,9 @@ class _$_AEExecRegisterWithEmailAndPassword
         execLoginWithEmailAndPassword,
     TResult Function(String email, String password, String username)?
         execRegisterWithEmailAndPassword,
+    TResult Function()? execRetrieveUserData,
     TResult Function()? execSignOut,
+    TResult Function(String uid)? execIsAdmin,
   }) {
     return execRegisterWithEmailAndPassword?.call(email, password, username);
   }
@@ -551,7 +604,9 @@ class _$_AEExecRegisterWithEmailAndPassword
         execLoginWithEmailAndPassword,
     TResult Function(String email, String password, String username)?
         execRegisterWithEmailAndPassword,
+    TResult Function()? execRetrieveUserData,
     TResult Function()? execSignOut,
+    TResult Function(String uid)? execIsAdmin,
     required TResult orElse(),
   }) {
     if (execRegisterWithEmailAndPassword != null) {
@@ -568,7 +623,10 @@ class _$_AEExecRegisterWithEmailAndPassword
         execLoginWithEmailAndPassword,
     required TResult Function(_AEExecRegisterWithEmailAndPassword value)
         execRegisterWithEmailAndPassword,
+    required TResult Function(_AEExecRetrieveUserData value)
+        execRetrieveUserData,
     required TResult Function(_AEExecSignOut value) execSignOut,
+    required TResult Function(_AEExecIsAdmin value) execIsAdmin,
   }) {
     return execRegisterWithEmailAndPassword(this);
   }
@@ -581,7 +639,9 @@ class _$_AEExecRegisterWithEmailAndPassword
         execLoginWithEmailAndPassword,
     TResult Function(_AEExecRegisterWithEmailAndPassword value)?
         execRegisterWithEmailAndPassword,
+    TResult Function(_AEExecRetrieveUserData value)? execRetrieveUserData,
     TResult Function(_AEExecSignOut value)? execSignOut,
+    TResult Function(_AEExecIsAdmin value)? execIsAdmin,
   }) {
     return execRegisterWithEmailAndPassword?.call(this);
   }
@@ -594,7 +654,9 @@ class _$_AEExecRegisterWithEmailAndPassword
         execLoginWithEmailAndPassword,
     TResult Function(_AEExecRegisterWithEmailAndPassword value)?
         execRegisterWithEmailAndPassword,
+    TResult Function(_AEExecRetrieveUserData value)? execRetrieveUserData,
     TResult Function(_AEExecSignOut value)? execSignOut,
+    TResult Function(_AEExecIsAdmin value)? execIsAdmin,
     required TResult orElse(),
   }) {
     if (execRegisterWithEmailAndPassword != null) {
@@ -617,6 +679,148 @@ abstract class _AEExecRegisterWithEmailAndPassword implements AuthEvent {
   _$AEExecRegisterWithEmailAndPasswordCopyWith<
           _AEExecRegisterWithEmailAndPassword>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$AEExecRetrieveUserDataCopyWith<$Res> {
+  factory _$AEExecRetrieveUserDataCopyWith(_AEExecRetrieveUserData value,
+          $Res Function(_AEExecRetrieveUserData) then) =
+      __$AEExecRetrieveUserDataCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$AEExecRetrieveUserDataCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res>
+    implements _$AEExecRetrieveUserDataCopyWith<$Res> {
+  __$AEExecRetrieveUserDataCopyWithImpl(_AEExecRetrieveUserData _value,
+      $Res Function(_AEExecRetrieveUserData) _then)
+      : super(_value, (v) => _then(v as _AEExecRetrieveUserData));
+
+  @override
+  _AEExecRetrieveUserData get _value => super._value as _AEExecRetrieveUserData;
+}
+
+/// @nodoc
+
+class _$_AEExecRetrieveUserData implements _AEExecRetrieveUserData {
+  const _$_AEExecRetrieveUserData();
+
+  @override
+  String toString() {
+    return 'AuthEvent.execRetrieveUserData()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _AEExecRetrieveUserData);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(String email, String password)
+        execLoginWithEmailAndPassword,
+    required TResult Function(String email, String password, String username)
+        execRegisterWithEmailAndPassword,
+    required TResult Function() execRetrieveUserData,
+    required TResult Function() execSignOut,
+    required TResult Function(String uid) execIsAdmin,
+  }) {
+    return execRetrieveUserData();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(String email, String password)?
+        execLoginWithEmailAndPassword,
+    TResult Function(String email, String password, String username)?
+        execRegisterWithEmailAndPassword,
+    TResult Function()? execRetrieveUserData,
+    TResult Function()? execSignOut,
+    TResult Function(String uid)? execIsAdmin,
+  }) {
+    return execRetrieveUserData?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(String email, String password)?
+        execLoginWithEmailAndPassword,
+    TResult Function(String email, String password, String username)?
+        execRegisterWithEmailAndPassword,
+    TResult Function()? execRetrieveUserData,
+    TResult Function()? execSignOut,
+    TResult Function(String uid)? execIsAdmin,
+    required TResult orElse(),
+  }) {
+    if (execRetrieveUserData != null) {
+      return execRetrieveUserData();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_AEStarted value) started,
+    required TResult Function(_AEExecLoginWithEmailAndPassword value)
+        execLoginWithEmailAndPassword,
+    required TResult Function(_AEExecRegisterWithEmailAndPassword value)
+        execRegisterWithEmailAndPassword,
+    required TResult Function(_AEExecRetrieveUserData value)
+        execRetrieveUserData,
+    required TResult Function(_AEExecSignOut value) execSignOut,
+    required TResult Function(_AEExecIsAdmin value) execIsAdmin,
+  }) {
+    return execRetrieveUserData(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_AEStarted value)? started,
+    TResult Function(_AEExecLoginWithEmailAndPassword value)?
+        execLoginWithEmailAndPassword,
+    TResult Function(_AEExecRegisterWithEmailAndPassword value)?
+        execRegisterWithEmailAndPassword,
+    TResult Function(_AEExecRetrieveUserData value)? execRetrieveUserData,
+    TResult Function(_AEExecSignOut value)? execSignOut,
+    TResult Function(_AEExecIsAdmin value)? execIsAdmin,
+  }) {
+    return execRetrieveUserData?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_AEStarted value)? started,
+    TResult Function(_AEExecLoginWithEmailAndPassword value)?
+        execLoginWithEmailAndPassword,
+    TResult Function(_AEExecRegisterWithEmailAndPassword value)?
+        execRegisterWithEmailAndPassword,
+    TResult Function(_AEExecRetrieveUserData value)? execRetrieveUserData,
+    TResult Function(_AEExecSignOut value)? execSignOut,
+    TResult Function(_AEExecIsAdmin value)? execIsAdmin,
+    required TResult orElse(),
+  }) {
+    if (execRetrieveUserData != null) {
+      return execRetrieveUserData(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AEExecRetrieveUserData implements AuthEvent {
+  const factory _AEExecRetrieveUserData() = _$_AEExecRetrieveUserData;
 }
 
 /// @nodoc
@@ -664,7 +868,9 @@ class _$_AEExecSignOut implements _AEExecSignOut {
         execLoginWithEmailAndPassword,
     required TResult Function(String email, String password, String username)
         execRegisterWithEmailAndPassword,
+    required TResult Function() execRetrieveUserData,
     required TResult Function() execSignOut,
+    required TResult Function(String uid) execIsAdmin,
   }) {
     return execSignOut();
   }
@@ -677,7 +883,9 @@ class _$_AEExecSignOut implements _AEExecSignOut {
         execLoginWithEmailAndPassword,
     TResult Function(String email, String password, String username)?
         execRegisterWithEmailAndPassword,
+    TResult Function()? execRetrieveUserData,
     TResult Function()? execSignOut,
+    TResult Function(String uid)? execIsAdmin,
   }) {
     return execSignOut?.call();
   }
@@ -690,7 +898,9 @@ class _$_AEExecSignOut implements _AEExecSignOut {
         execLoginWithEmailAndPassword,
     TResult Function(String email, String password, String username)?
         execRegisterWithEmailAndPassword,
+    TResult Function()? execRetrieveUserData,
     TResult Function()? execSignOut,
+    TResult Function(String uid)? execIsAdmin,
     required TResult orElse(),
   }) {
     if (execSignOut != null) {
@@ -707,7 +917,10 @@ class _$_AEExecSignOut implements _AEExecSignOut {
         execLoginWithEmailAndPassword,
     required TResult Function(_AEExecRegisterWithEmailAndPassword value)
         execRegisterWithEmailAndPassword,
+    required TResult Function(_AEExecRetrieveUserData value)
+        execRetrieveUserData,
     required TResult Function(_AEExecSignOut value) execSignOut,
+    required TResult Function(_AEExecIsAdmin value) execIsAdmin,
   }) {
     return execSignOut(this);
   }
@@ -720,7 +933,9 @@ class _$_AEExecSignOut implements _AEExecSignOut {
         execLoginWithEmailAndPassword,
     TResult Function(_AEExecRegisterWithEmailAndPassword value)?
         execRegisterWithEmailAndPassword,
+    TResult Function(_AEExecRetrieveUserData value)? execRetrieveUserData,
     TResult Function(_AEExecSignOut value)? execSignOut,
+    TResult Function(_AEExecIsAdmin value)? execIsAdmin,
   }) {
     return execSignOut?.call(this);
   }
@@ -733,7 +948,9 @@ class _$_AEExecSignOut implements _AEExecSignOut {
         execLoginWithEmailAndPassword,
     TResult Function(_AEExecRegisterWithEmailAndPassword value)?
         execRegisterWithEmailAndPassword,
+    TResult Function(_AEExecRetrieveUserData value)? execRetrieveUserData,
     TResult Function(_AEExecSignOut value)? execSignOut,
+    TResult Function(_AEExecIsAdmin value)? execIsAdmin,
     required TResult orElse(),
   }) {
     if (execSignOut != null) {
@@ -748,6 +965,175 @@ abstract class _AEExecSignOut implements AuthEvent {
 }
 
 /// @nodoc
+abstract class _$AEExecIsAdminCopyWith<$Res> {
+  factory _$AEExecIsAdminCopyWith(
+          _AEExecIsAdmin value, $Res Function(_AEExecIsAdmin) then) =
+      __$AEExecIsAdminCopyWithImpl<$Res>;
+  $Res call({String uid});
+}
+
+/// @nodoc
+class __$AEExecIsAdminCopyWithImpl<$Res> extends _$AuthEventCopyWithImpl<$Res>
+    implements _$AEExecIsAdminCopyWith<$Res> {
+  __$AEExecIsAdminCopyWithImpl(
+      _AEExecIsAdmin _value, $Res Function(_AEExecIsAdmin) _then)
+      : super(_value, (v) => _then(v as _AEExecIsAdmin));
+
+  @override
+  _AEExecIsAdmin get _value => super._value as _AEExecIsAdmin;
+
+  @override
+  $Res call({
+    Object? uid = freezed,
+  }) {
+    return _then(_AEExecIsAdmin(
+      uid == freezed
+          ? _value.uid
+          : uid // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_AEExecIsAdmin implements _AEExecIsAdmin {
+  const _$_AEExecIsAdmin(this.uid);
+
+  @override
+  final String uid;
+
+  @override
+  String toString() {
+    return 'AuthEvent.execIsAdmin(uid: $uid)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _AEExecIsAdmin &&
+            (identical(other.uid, uid) || other.uid == uid));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, uid);
+
+  @JsonKey(ignore: true)
+  @override
+  _$AEExecIsAdminCopyWith<_AEExecIsAdmin> get copyWith =>
+      __$AEExecIsAdminCopyWithImpl<_AEExecIsAdmin>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(String email, String password)
+        execLoginWithEmailAndPassword,
+    required TResult Function(String email, String password, String username)
+        execRegisterWithEmailAndPassword,
+    required TResult Function() execRetrieveUserData,
+    required TResult Function() execSignOut,
+    required TResult Function(String uid) execIsAdmin,
+  }) {
+    return execIsAdmin(uid);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(String email, String password)?
+        execLoginWithEmailAndPassword,
+    TResult Function(String email, String password, String username)?
+        execRegisterWithEmailAndPassword,
+    TResult Function()? execRetrieveUserData,
+    TResult Function()? execSignOut,
+    TResult Function(String uid)? execIsAdmin,
+  }) {
+    return execIsAdmin?.call(uid);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(String email, String password)?
+        execLoginWithEmailAndPassword,
+    TResult Function(String email, String password, String username)?
+        execRegisterWithEmailAndPassword,
+    TResult Function()? execRetrieveUserData,
+    TResult Function()? execSignOut,
+    TResult Function(String uid)? execIsAdmin,
+    required TResult orElse(),
+  }) {
+    if (execIsAdmin != null) {
+      return execIsAdmin(uid);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_AEStarted value) started,
+    required TResult Function(_AEExecLoginWithEmailAndPassword value)
+        execLoginWithEmailAndPassword,
+    required TResult Function(_AEExecRegisterWithEmailAndPassword value)
+        execRegisterWithEmailAndPassword,
+    required TResult Function(_AEExecRetrieveUserData value)
+        execRetrieveUserData,
+    required TResult Function(_AEExecSignOut value) execSignOut,
+    required TResult Function(_AEExecIsAdmin value) execIsAdmin,
+  }) {
+    return execIsAdmin(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_AEStarted value)? started,
+    TResult Function(_AEExecLoginWithEmailAndPassword value)?
+        execLoginWithEmailAndPassword,
+    TResult Function(_AEExecRegisterWithEmailAndPassword value)?
+        execRegisterWithEmailAndPassword,
+    TResult Function(_AEExecRetrieveUserData value)? execRetrieveUserData,
+    TResult Function(_AEExecSignOut value)? execSignOut,
+    TResult Function(_AEExecIsAdmin value)? execIsAdmin,
+  }) {
+    return execIsAdmin?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_AEStarted value)? started,
+    TResult Function(_AEExecLoginWithEmailAndPassword value)?
+        execLoginWithEmailAndPassword,
+    TResult Function(_AEExecRegisterWithEmailAndPassword value)?
+        execRegisterWithEmailAndPassword,
+    TResult Function(_AEExecRetrieveUserData value)? execRetrieveUserData,
+    TResult Function(_AEExecSignOut value)? execSignOut,
+    TResult Function(_AEExecIsAdmin value)? execIsAdmin,
+    required TResult orElse(),
+  }) {
+    if (execIsAdmin != null) {
+      return execIsAdmin(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AEExecIsAdmin implements AuthEvent {
+  const factory _AEExecIsAdmin(String uid) = _$_AEExecIsAdmin;
+
+  String get uid;
+  @JsonKey(ignore: true)
+  _$AEExecIsAdminCopyWith<_AEExecIsAdmin> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 class _$AuthStateTearOff {
   const _$AuthStateTearOff();
 
@@ -757,6 +1143,10 @@ class _$AuthStateTearOff {
 
   ASIdle idle() {
     return const ASIdle();
+  }
+
+  ASLoading loading() {
+    return const ASLoading();
   }
 
   ASLoginLoading loginLoading() {
@@ -808,6 +1198,42 @@ class _$AuthStateTearOff {
       message: message,
     );
   }
+
+  ASRetrieveUserDataLoading retrieveUserDataLoading() {
+    return const ASRetrieveUserDataLoading();
+  }
+
+  ASRetrieveUserDataSuccess retrieveUserDataSuccess(
+      {required FarmhubUser farmhubUser}) {
+    return ASRetrieveUserDataSuccess(
+      farmhubUser: farmhubUser,
+    );
+  }
+
+  ASRetrieveUserDataError retrieveUserDataError(
+      {required String code, required String message}) {
+    return ASRetrieveUserDataError(
+      code: code,
+      message: message,
+    );
+  }
+
+  ASIsAdminLoading isAdminLoading() {
+    return const ASIsAdminLoading();
+  }
+
+  ASIsAdminSuccess isAdminSuccess({required bool isAdmin}) {
+    return ASIsAdminSuccess(
+      isAdmin: isAdmin,
+    );
+  }
+
+  ASIsAdminError isAdminError({required String code, required String message}) {
+    return ASIsAdminError(
+      code: code,
+      message: message,
+    );
+  }
 }
 
 /// @nodoc
@@ -819,6 +1245,7 @@ mixin _$AuthState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() idle,
+    required TResult Function() loading,
     required TResult Function() loginLoading,
     required TResult Function(FarmhubUser user) loginSuccess,
     required TResult Function(String code, String message) loginError,
@@ -828,12 +1255,20 @@ mixin _$AuthState {
     required TResult Function() signOutLoading,
     required TResult Function() signOutSuccess,
     required TResult Function(String code, String message) signOutError,
+    required TResult Function() retrieveUserDataLoading,
+    required TResult Function(FarmhubUser farmhubUser) retrieveUserDataSuccess,
+    required TResult Function(String code, String message)
+        retrieveUserDataError,
+    required TResult Function() isAdminLoading,
+    required TResult Function(bool isAdmin) isAdminSuccess,
+    required TResult Function(String code, String message) isAdminError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? idle,
+    TResult Function()? loading,
     TResult Function()? loginLoading,
     TResult Function(FarmhubUser user)? loginSuccess,
     TResult Function(String code, String message)? loginError,
@@ -843,12 +1278,19 @@ mixin _$AuthState {
     TResult Function()? signOutLoading,
     TResult Function()? signOutSuccess,
     TResult Function(String code, String message)? signOutError,
+    TResult Function()? retrieveUserDataLoading,
+    TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
+    TResult Function(String code, String message)? retrieveUserDataError,
+    TResult Function()? isAdminLoading,
+    TResult Function(bool isAdmin)? isAdminSuccess,
+    TResult Function(String code, String message)? isAdminError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? idle,
+    TResult Function()? loading,
     TResult Function()? loginLoading,
     TResult Function(FarmhubUser user)? loginSuccess,
     TResult Function(String code, String message)? loginError,
@@ -858,6 +1300,12 @@ mixin _$AuthState {
     TResult Function()? signOutLoading,
     TResult Function()? signOutSuccess,
     TResult Function(String code, String message)? signOutError,
+    TResult Function()? retrieveUserDataLoading,
+    TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
+    TResult Function(String code, String message)? retrieveUserDataError,
+    TResult Function()? isAdminLoading,
+    TResult Function(bool isAdmin)? isAdminSuccess,
+    TResult Function(String code, String message)? isAdminError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -865,6 +1313,7 @@ mixin _$AuthState {
   TResult map<TResult extends Object?>({
     required TResult Function(ASInitial value) initial,
     required TResult Function(ASIdle value) idle,
+    required TResult Function(ASLoading value) loading,
     required TResult Function(ASLoginLoading value) loginLoading,
     required TResult Function(ASLoginSuccess value) loginSuccess,
     required TResult Function(ASLoginError value) loginError,
@@ -874,12 +1323,22 @@ mixin _$AuthState {
     required TResult Function(ASSignOutLoading value) signOutLoading,
     required TResult Function(ASSignOutSuccess value) signOutSuccess,
     required TResult Function(ASSignOutError value) signOutError,
+    required TResult Function(ASRetrieveUserDataLoading value)
+        retrieveUserDataLoading,
+    required TResult Function(ASRetrieveUserDataSuccess value)
+        retrieveUserDataSuccess,
+    required TResult Function(ASRetrieveUserDataError value)
+        retrieveUserDataError,
+    required TResult Function(ASIsAdminLoading value) isAdminLoading,
+    required TResult Function(ASIsAdminSuccess value) isAdminSuccess,
+    required TResult Function(ASIsAdminError value) isAdminError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(ASInitial value)? initial,
     TResult Function(ASIdle value)? idle,
+    TResult Function(ASLoading value)? loading,
     TResult Function(ASLoginLoading value)? loginLoading,
     TResult Function(ASLoginSuccess value)? loginSuccess,
     TResult Function(ASLoginError value)? loginError,
@@ -889,12 +1348,19 @@ mixin _$AuthState {
     TResult Function(ASSignOutLoading value)? signOutLoading,
     TResult Function(ASSignOutSuccess value)? signOutSuccess,
     TResult Function(ASSignOutError value)? signOutError,
+    TResult Function(ASRetrieveUserDataLoading value)? retrieveUserDataLoading,
+    TResult Function(ASRetrieveUserDataSuccess value)? retrieveUserDataSuccess,
+    TResult Function(ASRetrieveUserDataError value)? retrieveUserDataError,
+    TResult Function(ASIsAdminLoading value)? isAdminLoading,
+    TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
+    TResult Function(ASIsAdminError value)? isAdminError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ASInitial value)? initial,
     TResult Function(ASIdle value)? idle,
+    TResult Function(ASLoading value)? loading,
     TResult Function(ASLoginLoading value)? loginLoading,
     TResult Function(ASLoginSuccess value)? loginSuccess,
     TResult Function(ASLoginError value)? loginError,
@@ -904,6 +1370,12 @@ mixin _$AuthState {
     TResult Function(ASSignOutLoading value)? signOutLoading,
     TResult Function(ASSignOutSuccess value)? signOutSuccess,
     TResult Function(ASSignOutError value)? signOutError,
+    TResult Function(ASRetrieveUserDataLoading value)? retrieveUserDataLoading,
+    TResult Function(ASRetrieveUserDataSuccess value)? retrieveUserDataSuccess,
+    TResult Function(ASRetrieveUserDataError value)? retrieveUserDataError,
+    TResult Function(ASIsAdminLoading value)? isAdminLoading,
+    TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
+    TResult Function(ASIsAdminError value)? isAdminError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -964,6 +1436,7 @@ class _$ASInitial implements ASInitial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() idle,
+    required TResult Function() loading,
     required TResult Function() loginLoading,
     required TResult Function(FarmhubUser user) loginSuccess,
     required TResult Function(String code, String message) loginError,
@@ -973,6 +1446,13 @@ class _$ASInitial implements ASInitial {
     required TResult Function() signOutLoading,
     required TResult Function() signOutSuccess,
     required TResult Function(String code, String message) signOutError,
+    required TResult Function() retrieveUserDataLoading,
+    required TResult Function(FarmhubUser farmhubUser) retrieveUserDataSuccess,
+    required TResult Function(String code, String message)
+        retrieveUserDataError,
+    required TResult Function() isAdminLoading,
+    required TResult Function(bool isAdmin) isAdminSuccess,
+    required TResult Function(String code, String message) isAdminError,
   }) {
     return initial();
   }
@@ -982,6 +1462,7 @@ class _$ASInitial implements ASInitial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? idle,
+    TResult Function()? loading,
     TResult Function()? loginLoading,
     TResult Function(FarmhubUser user)? loginSuccess,
     TResult Function(String code, String message)? loginError,
@@ -991,6 +1472,12 @@ class _$ASInitial implements ASInitial {
     TResult Function()? signOutLoading,
     TResult Function()? signOutSuccess,
     TResult Function(String code, String message)? signOutError,
+    TResult Function()? retrieveUserDataLoading,
+    TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
+    TResult Function(String code, String message)? retrieveUserDataError,
+    TResult Function()? isAdminLoading,
+    TResult Function(bool isAdmin)? isAdminSuccess,
+    TResult Function(String code, String message)? isAdminError,
   }) {
     return initial?.call();
   }
@@ -1000,6 +1487,7 @@ class _$ASInitial implements ASInitial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? idle,
+    TResult Function()? loading,
     TResult Function()? loginLoading,
     TResult Function(FarmhubUser user)? loginSuccess,
     TResult Function(String code, String message)? loginError,
@@ -1009,6 +1497,12 @@ class _$ASInitial implements ASInitial {
     TResult Function()? signOutLoading,
     TResult Function()? signOutSuccess,
     TResult Function(String code, String message)? signOutError,
+    TResult Function()? retrieveUserDataLoading,
+    TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
+    TResult Function(String code, String message)? retrieveUserDataError,
+    TResult Function()? isAdminLoading,
+    TResult Function(bool isAdmin)? isAdminSuccess,
+    TResult Function(String code, String message)? isAdminError,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -1022,6 +1516,7 @@ class _$ASInitial implements ASInitial {
   TResult map<TResult extends Object?>({
     required TResult Function(ASInitial value) initial,
     required TResult Function(ASIdle value) idle,
+    required TResult Function(ASLoading value) loading,
     required TResult Function(ASLoginLoading value) loginLoading,
     required TResult Function(ASLoginSuccess value) loginSuccess,
     required TResult Function(ASLoginError value) loginError,
@@ -1031,6 +1526,15 @@ class _$ASInitial implements ASInitial {
     required TResult Function(ASSignOutLoading value) signOutLoading,
     required TResult Function(ASSignOutSuccess value) signOutSuccess,
     required TResult Function(ASSignOutError value) signOutError,
+    required TResult Function(ASRetrieveUserDataLoading value)
+        retrieveUserDataLoading,
+    required TResult Function(ASRetrieveUserDataSuccess value)
+        retrieveUserDataSuccess,
+    required TResult Function(ASRetrieveUserDataError value)
+        retrieveUserDataError,
+    required TResult Function(ASIsAdminLoading value) isAdminLoading,
+    required TResult Function(ASIsAdminSuccess value) isAdminSuccess,
+    required TResult Function(ASIsAdminError value) isAdminError,
   }) {
     return initial(this);
   }
@@ -1040,6 +1544,7 @@ class _$ASInitial implements ASInitial {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(ASInitial value)? initial,
     TResult Function(ASIdle value)? idle,
+    TResult Function(ASLoading value)? loading,
     TResult Function(ASLoginLoading value)? loginLoading,
     TResult Function(ASLoginSuccess value)? loginSuccess,
     TResult Function(ASLoginError value)? loginError,
@@ -1049,6 +1554,12 @@ class _$ASInitial implements ASInitial {
     TResult Function(ASSignOutLoading value)? signOutLoading,
     TResult Function(ASSignOutSuccess value)? signOutSuccess,
     TResult Function(ASSignOutError value)? signOutError,
+    TResult Function(ASRetrieveUserDataLoading value)? retrieveUserDataLoading,
+    TResult Function(ASRetrieveUserDataSuccess value)? retrieveUserDataSuccess,
+    TResult Function(ASRetrieveUserDataError value)? retrieveUserDataError,
+    TResult Function(ASIsAdminLoading value)? isAdminLoading,
+    TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
+    TResult Function(ASIsAdminError value)? isAdminError,
   }) {
     return initial?.call(this);
   }
@@ -1058,6 +1569,7 @@ class _$ASInitial implements ASInitial {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ASInitial value)? initial,
     TResult Function(ASIdle value)? idle,
+    TResult Function(ASLoading value)? loading,
     TResult Function(ASLoginLoading value)? loginLoading,
     TResult Function(ASLoginSuccess value)? loginSuccess,
     TResult Function(ASLoginError value)? loginError,
@@ -1067,6 +1579,12 @@ class _$ASInitial implements ASInitial {
     TResult Function(ASSignOutLoading value)? signOutLoading,
     TResult Function(ASSignOutSuccess value)? signOutSuccess,
     TResult Function(ASSignOutError value)? signOutError,
+    TResult Function(ASRetrieveUserDataLoading value)? retrieveUserDataLoading,
+    TResult Function(ASRetrieveUserDataSuccess value)? retrieveUserDataSuccess,
+    TResult Function(ASRetrieveUserDataError value)? retrieveUserDataError,
+    TResult Function(ASIsAdminLoading value)? isAdminLoading,
+    TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
+    TResult Function(ASIsAdminError value)? isAdminError,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -1120,6 +1638,7 @@ class _$ASIdle implements ASIdle {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() idle,
+    required TResult Function() loading,
     required TResult Function() loginLoading,
     required TResult Function(FarmhubUser user) loginSuccess,
     required TResult Function(String code, String message) loginError,
@@ -1129,6 +1648,13 @@ class _$ASIdle implements ASIdle {
     required TResult Function() signOutLoading,
     required TResult Function() signOutSuccess,
     required TResult Function(String code, String message) signOutError,
+    required TResult Function() retrieveUserDataLoading,
+    required TResult Function(FarmhubUser farmhubUser) retrieveUserDataSuccess,
+    required TResult Function(String code, String message)
+        retrieveUserDataError,
+    required TResult Function() isAdminLoading,
+    required TResult Function(bool isAdmin) isAdminSuccess,
+    required TResult Function(String code, String message) isAdminError,
   }) {
     return idle();
   }
@@ -1138,6 +1664,7 @@ class _$ASIdle implements ASIdle {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? idle,
+    TResult Function()? loading,
     TResult Function()? loginLoading,
     TResult Function(FarmhubUser user)? loginSuccess,
     TResult Function(String code, String message)? loginError,
@@ -1147,6 +1674,12 @@ class _$ASIdle implements ASIdle {
     TResult Function()? signOutLoading,
     TResult Function()? signOutSuccess,
     TResult Function(String code, String message)? signOutError,
+    TResult Function()? retrieveUserDataLoading,
+    TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
+    TResult Function(String code, String message)? retrieveUserDataError,
+    TResult Function()? isAdminLoading,
+    TResult Function(bool isAdmin)? isAdminSuccess,
+    TResult Function(String code, String message)? isAdminError,
   }) {
     return idle?.call();
   }
@@ -1156,6 +1689,7 @@ class _$ASIdle implements ASIdle {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? idle,
+    TResult Function()? loading,
     TResult Function()? loginLoading,
     TResult Function(FarmhubUser user)? loginSuccess,
     TResult Function(String code, String message)? loginError,
@@ -1165,6 +1699,12 @@ class _$ASIdle implements ASIdle {
     TResult Function()? signOutLoading,
     TResult Function()? signOutSuccess,
     TResult Function(String code, String message)? signOutError,
+    TResult Function()? retrieveUserDataLoading,
+    TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
+    TResult Function(String code, String message)? retrieveUserDataError,
+    TResult Function()? isAdminLoading,
+    TResult Function(bool isAdmin)? isAdminSuccess,
+    TResult Function(String code, String message)? isAdminError,
     required TResult orElse(),
   }) {
     if (idle != null) {
@@ -1178,6 +1718,7 @@ class _$ASIdle implements ASIdle {
   TResult map<TResult extends Object?>({
     required TResult Function(ASInitial value) initial,
     required TResult Function(ASIdle value) idle,
+    required TResult Function(ASLoading value) loading,
     required TResult Function(ASLoginLoading value) loginLoading,
     required TResult Function(ASLoginSuccess value) loginSuccess,
     required TResult Function(ASLoginError value) loginError,
@@ -1187,6 +1728,15 @@ class _$ASIdle implements ASIdle {
     required TResult Function(ASSignOutLoading value) signOutLoading,
     required TResult Function(ASSignOutSuccess value) signOutSuccess,
     required TResult Function(ASSignOutError value) signOutError,
+    required TResult Function(ASRetrieveUserDataLoading value)
+        retrieveUserDataLoading,
+    required TResult Function(ASRetrieveUserDataSuccess value)
+        retrieveUserDataSuccess,
+    required TResult Function(ASRetrieveUserDataError value)
+        retrieveUserDataError,
+    required TResult Function(ASIsAdminLoading value) isAdminLoading,
+    required TResult Function(ASIsAdminSuccess value) isAdminSuccess,
+    required TResult Function(ASIsAdminError value) isAdminError,
   }) {
     return idle(this);
   }
@@ -1196,6 +1746,7 @@ class _$ASIdle implements ASIdle {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(ASInitial value)? initial,
     TResult Function(ASIdle value)? idle,
+    TResult Function(ASLoading value)? loading,
     TResult Function(ASLoginLoading value)? loginLoading,
     TResult Function(ASLoginSuccess value)? loginSuccess,
     TResult Function(ASLoginError value)? loginError,
@@ -1205,6 +1756,12 @@ class _$ASIdle implements ASIdle {
     TResult Function(ASSignOutLoading value)? signOutLoading,
     TResult Function(ASSignOutSuccess value)? signOutSuccess,
     TResult Function(ASSignOutError value)? signOutError,
+    TResult Function(ASRetrieveUserDataLoading value)? retrieveUserDataLoading,
+    TResult Function(ASRetrieveUserDataSuccess value)? retrieveUserDataSuccess,
+    TResult Function(ASRetrieveUserDataError value)? retrieveUserDataError,
+    TResult Function(ASIsAdminLoading value)? isAdminLoading,
+    TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
+    TResult Function(ASIsAdminError value)? isAdminError,
   }) {
     return idle?.call(this);
   }
@@ -1214,6 +1771,7 @@ class _$ASIdle implements ASIdle {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ASInitial value)? initial,
     TResult Function(ASIdle value)? idle,
+    TResult Function(ASLoading value)? loading,
     TResult Function(ASLoginLoading value)? loginLoading,
     TResult Function(ASLoginSuccess value)? loginSuccess,
     TResult Function(ASLoginError value)? loginError,
@@ -1223,6 +1781,12 @@ class _$ASIdle implements ASIdle {
     TResult Function(ASSignOutLoading value)? signOutLoading,
     TResult Function(ASSignOutSuccess value)? signOutSuccess,
     TResult Function(ASSignOutError value)? signOutError,
+    TResult Function(ASRetrieveUserDataLoading value)? retrieveUserDataLoading,
+    TResult Function(ASRetrieveUserDataSuccess value)? retrieveUserDataSuccess,
+    TResult Function(ASRetrieveUserDataError value)? retrieveUserDataError,
+    TResult Function(ASIsAdminLoading value)? isAdminLoading,
+    TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
+    TResult Function(ASIsAdminError value)? isAdminError,
     required TResult orElse(),
   }) {
     if (idle != null) {
@@ -1234,6 +1798,208 @@ class _$ASIdle implements ASIdle {
 
 abstract class ASIdle implements AuthState {
   const factory ASIdle() = _$ASIdle;
+}
+
+/// @nodoc
+abstract class $ASLoadingCopyWith<$Res> {
+  factory $ASLoadingCopyWith(ASLoading value, $Res Function(ASLoading) then) =
+      _$ASLoadingCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$ASLoadingCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
+    implements $ASLoadingCopyWith<$Res> {
+  _$ASLoadingCopyWithImpl(ASLoading _value, $Res Function(ASLoading) _then)
+      : super(_value, (v) => _then(v as ASLoading));
+
+  @override
+  ASLoading get _value => super._value as ASLoading;
+}
+
+/// @nodoc
+
+class _$ASLoading implements ASLoading {
+  const _$ASLoading();
+
+  @override
+  String toString() {
+    return 'AuthState.loading()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is ASLoading);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() idle,
+    required TResult Function() loading,
+    required TResult Function() loginLoading,
+    required TResult Function(FarmhubUser user) loginSuccess,
+    required TResult Function(String code, String message) loginError,
+    required TResult Function() registerLoading,
+    required TResult Function(FarmhubUser user) registerSuccess,
+    required TResult Function(String code, String message) registerError,
+    required TResult Function() signOutLoading,
+    required TResult Function() signOutSuccess,
+    required TResult Function(String code, String message) signOutError,
+    required TResult Function() retrieveUserDataLoading,
+    required TResult Function(FarmhubUser farmhubUser) retrieveUserDataSuccess,
+    required TResult Function(String code, String message)
+        retrieveUserDataError,
+    required TResult Function() isAdminLoading,
+    required TResult Function(bool isAdmin) isAdminSuccess,
+    required TResult Function(String code, String message) isAdminError,
+  }) {
+    return loading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? idle,
+    TResult Function()? loading,
+    TResult Function()? loginLoading,
+    TResult Function(FarmhubUser user)? loginSuccess,
+    TResult Function(String code, String message)? loginError,
+    TResult Function()? registerLoading,
+    TResult Function(FarmhubUser user)? registerSuccess,
+    TResult Function(String code, String message)? registerError,
+    TResult Function()? signOutLoading,
+    TResult Function()? signOutSuccess,
+    TResult Function(String code, String message)? signOutError,
+    TResult Function()? retrieveUserDataLoading,
+    TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
+    TResult Function(String code, String message)? retrieveUserDataError,
+    TResult Function()? isAdminLoading,
+    TResult Function(bool isAdmin)? isAdminSuccess,
+    TResult Function(String code, String message)? isAdminError,
+  }) {
+    return loading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? idle,
+    TResult Function()? loading,
+    TResult Function()? loginLoading,
+    TResult Function(FarmhubUser user)? loginSuccess,
+    TResult Function(String code, String message)? loginError,
+    TResult Function()? registerLoading,
+    TResult Function(FarmhubUser user)? registerSuccess,
+    TResult Function(String code, String message)? registerError,
+    TResult Function()? signOutLoading,
+    TResult Function()? signOutSuccess,
+    TResult Function(String code, String message)? signOutError,
+    TResult Function()? retrieveUserDataLoading,
+    TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
+    TResult Function(String code, String message)? retrieveUserDataError,
+    TResult Function()? isAdminLoading,
+    TResult Function(bool isAdmin)? isAdminSuccess,
+    TResult Function(String code, String message)? isAdminError,
+    required TResult orElse(),
+  }) {
+    if (loading != null) {
+      return loading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ASInitial value) initial,
+    required TResult Function(ASIdle value) idle,
+    required TResult Function(ASLoading value) loading,
+    required TResult Function(ASLoginLoading value) loginLoading,
+    required TResult Function(ASLoginSuccess value) loginSuccess,
+    required TResult Function(ASLoginError value) loginError,
+    required TResult Function(ASRegisterLoading value) registerLoading,
+    required TResult Function(ASRegisterSuccess value) registerSuccess,
+    required TResult Function(ASRegisterError value) registerError,
+    required TResult Function(ASSignOutLoading value) signOutLoading,
+    required TResult Function(ASSignOutSuccess value) signOutSuccess,
+    required TResult Function(ASSignOutError value) signOutError,
+    required TResult Function(ASRetrieveUserDataLoading value)
+        retrieveUserDataLoading,
+    required TResult Function(ASRetrieveUserDataSuccess value)
+        retrieveUserDataSuccess,
+    required TResult Function(ASRetrieveUserDataError value)
+        retrieveUserDataError,
+    required TResult Function(ASIsAdminLoading value) isAdminLoading,
+    required TResult Function(ASIsAdminSuccess value) isAdminSuccess,
+    required TResult Function(ASIsAdminError value) isAdminError,
+  }) {
+    return loading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(ASInitial value)? initial,
+    TResult Function(ASIdle value)? idle,
+    TResult Function(ASLoading value)? loading,
+    TResult Function(ASLoginLoading value)? loginLoading,
+    TResult Function(ASLoginSuccess value)? loginSuccess,
+    TResult Function(ASLoginError value)? loginError,
+    TResult Function(ASRegisterLoading value)? registerLoading,
+    TResult Function(ASRegisterSuccess value)? registerSuccess,
+    TResult Function(ASRegisterError value)? registerError,
+    TResult Function(ASSignOutLoading value)? signOutLoading,
+    TResult Function(ASSignOutSuccess value)? signOutSuccess,
+    TResult Function(ASSignOutError value)? signOutError,
+    TResult Function(ASRetrieveUserDataLoading value)? retrieveUserDataLoading,
+    TResult Function(ASRetrieveUserDataSuccess value)? retrieveUserDataSuccess,
+    TResult Function(ASRetrieveUserDataError value)? retrieveUserDataError,
+    TResult Function(ASIsAdminLoading value)? isAdminLoading,
+    TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
+    TResult Function(ASIsAdminError value)? isAdminError,
+  }) {
+    return loading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ASInitial value)? initial,
+    TResult Function(ASIdle value)? idle,
+    TResult Function(ASLoading value)? loading,
+    TResult Function(ASLoginLoading value)? loginLoading,
+    TResult Function(ASLoginSuccess value)? loginSuccess,
+    TResult Function(ASLoginError value)? loginError,
+    TResult Function(ASRegisterLoading value)? registerLoading,
+    TResult Function(ASRegisterSuccess value)? registerSuccess,
+    TResult Function(ASRegisterError value)? registerError,
+    TResult Function(ASSignOutLoading value)? signOutLoading,
+    TResult Function(ASSignOutSuccess value)? signOutSuccess,
+    TResult Function(ASSignOutError value)? signOutError,
+    TResult Function(ASRetrieveUserDataLoading value)? retrieveUserDataLoading,
+    TResult Function(ASRetrieveUserDataSuccess value)? retrieveUserDataSuccess,
+    TResult Function(ASRetrieveUserDataError value)? retrieveUserDataError,
+    TResult Function(ASIsAdminLoading value)? isAdminLoading,
+    TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
+    TResult Function(ASIsAdminError value)? isAdminError,
+    required TResult orElse(),
+  }) {
+    if (loading != null) {
+      return loading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ASLoading implements AuthState {
+  const factory ASLoading() = _$ASLoading;
 }
 
 /// @nodoc
@@ -1278,6 +2044,7 @@ class _$ASLoginLoading implements ASLoginLoading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() idle,
+    required TResult Function() loading,
     required TResult Function() loginLoading,
     required TResult Function(FarmhubUser user) loginSuccess,
     required TResult Function(String code, String message) loginError,
@@ -1287,6 +2054,13 @@ class _$ASLoginLoading implements ASLoginLoading {
     required TResult Function() signOutLoading,
     required TResult Function() signOutSuccess,
     required TResult Function(String code, String message) signOutError,
+    required TResult Function() retrieveUserDataLoading,
+    required TResult Function(FarmhubUser farmhubUser) retrieveUserDataSuccess,
+    required TResult Function(String code, String message)
+        retrieveUserDataError,
+    required TResult Function() isAdminLoading,
+    required TResult Function(bool isAdmin) isAdminSuccess,
+    required TResult Function(String code, String message) isAdminError,
   }) {
     return loginLoading();
   }
@@ -1296,6 +2070,7 @@ class _$ASLoginLoading implements ASLoginLoading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? idle,
+    TResult Function()? loading,
     TResult Function()? loginLoading,
     TResult Function(FarmhubUser user)? loginSuccess,
     TResult Function(String code, String message)? loginError,
@@ -1305,6 +2080,12 @@ class _$ASLoginLoading implements ASLoginLoading {
     TResult Function()? signOutLoading,
     TResult Function()? signOutSuccess,
     TResult Function(String code, String message)? signOutError,
+    TResult Function()? retrieveUserDataLoading,
+    TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
+    TResult Function(String code, String message)? retrieveUserDataError,
+    TResult Function()? isAdminLoading,
+    TResult Function(bool isAdmin)? isAdminSuccess,
+    TResult Function(String code, String message)? isAdminError,
   }) {
     return loginLoading?.call();
   }
@@ -1314,6 +2095,7 @@ class _$ASLoginLoading implements ASLoginLoading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? idle,
+    TResult Function()? loading,
     TResult Function()? loginLoading,
     TResult Function(FarmhubUser user)? loginSuccess,
     TResult Function(String code, String message)? loginError,
@@ -1323,6 +2105,12 @@ class _$ASLoginLoading implements ASLoginLoading {
     TResult Function()? signOutLoading,
     TResult Function()? signOutSuccess,
     TResult Function(String code, String message)? signOutError,
+    TResult Function()? retrieveUserDataLoading,
+    TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
+    TResult Function(String code, String message)? retrieveUserDataError,
+    TResult Function()? isAdminLoading,
+    TResult Function(bool isAdmin)? isAdminSuccess,
+    TResult Function(String code, String message)? isAdminError,
     required TResult orElse(),
   }) {
     if (loginLoading != null) {
@@ -1336,6 +2124,7 @@ class _$ASLoginLoading implements ASLoginLoading {
   TResult map<TResult extends Object?>({
     required TResult Function(ASInitial value) initial,
     required TResult Function(ASIdle value) idle,
+    required TResult Function(ASLoading value) loading,
     required TResult Function(ASLoginLoading value) loginLoading,
     required TResult Function(ASLoginSuccess value) loginSuccess,
     required TResult Function(ASLoginError value) loginError,
@@ -1345,6 +2134,15 @@ class _$ASLoginLoading implements ASLoginLoading {
     required TResult Function(ASSignOutLoading value) signOutLoading,
     required TResult Function(ASSignOutSuccess value) signOutSuccess,
     required TResult Function(ASSignOutError value) signOutError,
+    required TResult Function(ASRetrieveUserDataLoading value)
+        retrieveUserDataLoading,
+    required TResult Function(ASRetrieveUserDataSuccess value)
+        retrieveUserDataSuccess,
+    required TResult Function(ASRetrieveUserDataError value)
+        retrieveUserDataError,
+    required TResult Function(ASIsAdminLoading value) isAdminLoading,
+    required TResult Function(ASIsAdminSuccess value) isAdminSuccess,
+    required TResult Function(ASIsAdminError value) isAdminError,
   }) {
     return loginLoading(this);
   }
@@ -1354,6 +2152,7 @@ class _$ASLoginLoading implements ASLoginLoading {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(ASInitial value)? initial,
     TResult Function(ASIdle value)? idle,
+    TResult Function(ASLoading value)? loading,
     TResult Function(ASLoginLoading value)? loginLoading,
     TResult Function(ASLoginSuccess value)? loginSuccess,
     TResult Function(ASLoginError value)? loginError,
@@ -1363,6 +2162,12 @@ class _$ASLoginLoading implements ASLoginLoading {
     TResult Function(ASSignOutLoading value)? signOutLoading,
     TResult Function(ASSignOutSuccess value)? signOutSuccess,
     TResult Function(ASSignOutError value)? signOutError,
+    TResult Function(ASRetrieveUserDataLoading value)? retrieveUserDataLoading,
+    TResult Function(ASRetrieveUserDataSuccess value)? retrieveUserDataSuccess,
+    TResult Function(ASRetrieveUserDataError value)? retrieveUserDataError,
+    TResult Function(ASIsAdminLoading value)? isAdminLoading,
+    TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
+    TResult Function(ASIsAdminError value)? isAdminError,
   }) {
     return loginLoading?.call(this);
   }
@@ -1372,6 +2177,7 @@ class _$ASLoginLoading implements ASLoginLoading {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ASInitial value)? initial,
     TResult Function(ASIdle value)? idle,
+    TResult Function(ASLoading value)? loading,
     TResult Function(ASLoginLoading value)? loginLoading,
     TResult Function(ASLoginSuccess value)? loginSuccess,
     TResult Function(ASLoginError value)? loginError,
@@ -1381,6 +2187,12 @@ class _$ASLoginLoading implements ASLoginLoading {
     TResult Function(ASSignOutLoading value)? signOutLoading,
     TResult Function(ASSignOutSuccess value)? signOutSuccess,
     TResult Function(ASSignOutError value)? signOutError,
+    TResult Function(ASRetrieveUserDataLoading value)? retrieveUserDataLoading,
+    TResult Function(ASRetrieveUserDataSuccess value)? retrieveUserDataSuccess,
+    TResult Function(ASRetrieveUserDataError value)? retrieveUserDataError,
+    TResult Function(ASIsAdminLoading value)? isAdminLoading,
+    TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
+    TResult Function(ASIsAdminError value)? isAdminError,
     required TResult orElse(),
   }) {
     if (loginLoading != null) {
@@ -1468,6 +2280,7 @@ class _$ASLoginSuccess implements ASLoginSuccess {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() idle,
+    required TResult Function() loading,
     required TResult Function() loginLoading,
     required TResult Function(FarmhubUser user) loginSuccess,
     required TResult Function(String code, String message) loginError,
@@ -1477,6 +2290,13 @@ class _$ASLoginSuccess implements ASLoginSuccess {
     required TResult Function() signOutLoading,
     required TResult Function() signOutSuccess,
     required TResult Function(String code, String message) signOutError,
+    required TResult Function() retrieveUserDataLoading,
+    required TResult Function(FarmhubUser farmhubUser) retrieveUserDataSuccess,
+    required TResult Function(String code, String message)
+        retrieveUserDataError,
+    required TResult Function() isAdminLoading,
+    required TResult Function(bool isAdmin) isAdminSuccess,
+    required TResult Function(String code, String message) isAdminError,
   }) {
     return loginSuccess(user);
   }
@@ -1486,6 +2306,7 @@ class _$ASLoginSuccess implements ASLoginSuccess {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? idle,
+    TResult Function()? loading,
     TResult Function()? loginLoading,
     TResult Function(FarmhubUser user)? loginSuccess,
     TResult Function(String code, String message)? loginError,
@@ -1495,6 +2316,12 @@ class _$ASLoginSuccess implements ASLoginSuccess {
     TResult Function()? signOutLoading,
     TResult Function()? signOutSuccess,
     TResult Function(String code, String message)? signOutError,
+    TResult Function()? retrieveUserDataLoading,
+    TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
+    TResult Function(String code, String message)? retrieveUserDataError,
+    TResult Function()? isAdminLoading,
+    TResult Function(bool isAdmin)? isAdminSuccess,
+    TResult Function(String code, String message)? isAdminError,
   }) {
     return loginSuccess?.call(user);
   }
@@ -1504,6 +2331,7 @@ class _$ASLoginSuccess implements ASLoginSuccess {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? idle,
+    TResult Function()? loading,
     TResult Function()? loginLoading,
     TResult Function(FarmhubUser user)? loginSuccess,
     TResult Function(String code, String message)? loginError,
@@ -1513,6 +2341,12 @@ class _$ASLoginSuccess implements ASLoginSuccess {
     TResult Function()? signOutLoading,
     TResult Function()? signOutSuccess,
     TResult Function(String code, String message)? signOutError,
+    TResult Function()? retrieveUserDataLoading,
+    TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
+    TResult Function(String code, String message)? retrieveUserDataError,
+    TResult Function()? isAdminLoading,
+    TResult Function(bool isAdmin)? isAdminSuccess,
+    TResult Function(String code, String message)? isAdminError,
     required TResult orElse(),
   }) {
     if (loginSuccess != null) {
@@ -1526,6 +2360,7 @@ class _$ASLoginSuccess implements ASLoginSuccess {
   TResult map<TResult extends Object?>({
     required TResult Function(ASInitial value) initial,
     required TResult Function(ASIdle value) idle,
+    required TResult Function(ASLoading value) loading,
     required TResult Function(ASLoginLoading value) loginLoading,
     required TResult Function(ASLoginSuccess value) loginSuccess,
     required TResult Function(ASLoginError value) loginError,
@@ -1535,6 +2370,15 @@ class _$ASLoginSuccess implements ASLoginSuccess {
     required TResult Function(ASSignOutLoading value) signOutLoading,
     required TResult Function(ASSignOutSuccess value) signOutSuccess,
     required TResult Function(ASSignOutError value) signOutError,
+    required TResult Function(ASRetrieveUserDataLoading value)
+        retrieveUserDataLoading,
+    required TResult Function(ASRetrieveUserDataSuccess value)
+        retrieveUserDataSuccess,
+    required TResult Function(ASRetrieveUserDataError value)
+        retrieveUserDataError,
+    required TResult Function(ASIsAdminLoading value) isAdminLoading,
+    required TResult Function(ASIsAdminSuccess value) isAdminSuccess,
+    required TResult Function(ASIsAdminError value) isAdminError,
   }) {
     return loginSuccess(this);
   }
@@ -1544,6 +2388,7 @@ class _$ASLoginSuccess implements ASLoginSuccess {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(ASInitial value)? initial,
     TResult Function(ASIdle value)? idle,
+    TResult Function(ASLoading value)? loading,
     TResult Function(ASLoginLoading value)? loginLoading,
     TResult Function(ASLoginSuccess value)? loginSuccess,
     TResult Function(ASLoginError value)? loginError,
@@ -1553,6 +2398,12 @@ class _$ASLoginSuccess implements ASLoginSuccess {
     TResult Function(ASSignOutLoading value)? signOutLoading,
     TResult Function(ASSignOutSuccess value)? signOutSuccess,
     TResult Function(ASSignOutError value)? signOutError,
+    TResult Function(ASRetrieveUserDataLoading value)? retrieveUserDataLoading,
+    TResult Function(ASRetrieveUserDataSuccess value)? retrieveUserDataSuccess,
+    TResult Function(ASRetrieveUserDataError value)? retrieveUserDataError,
+    TResult Function(ASIsAdminLoading value)? isAdminLoading,
+    TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
+    TResult Function(ASIsAdminError value)? isAdminError,
   }) {
     return loginSuccess?.call(this);
   }
@@ -1562,6 +2413,7 @@ class _$ASLoginSuccess implements ASLoginSuccess {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ASInitial value)? initial,
     TResult Function(ASIdle value)? idle,
+    TResult Function(ASLoading value)? loading,
     TResult Function(ASLoginLoading value)? loginLoading,
     TResult Function(ASLoginSuccess value)? loginSuccess,
     TResult Function(ASLoginError value)? loginError,
@@ -1571,6 +2423,12 @@ class _$ASLoginSuccess implements ASLoginSuccess {
     TResult Function(ASSignOutLoading value)? signOutLoading,
     TResult Function(ASSignOutSuccess value)? signOutSuccess,
     TResult Function(ASSignOutError value)? signOutError,
+    TResult Function(ASRetrieveUserDataLoading value)? retrieveUserDataLoading,
+    TResult Function(ASRetrieveUserDataSuccess value)? retrieveUserDataSuccess,
+    TResult Function(ASRetrieveUserDataError value)? retrieveUserDataError,
+    TResult Function(ASIsAdminLoading value)? isAdminLoading,
+    TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
+    TResult Function(ASIsAdminError value)? isAdminError,
     required TResult orElse(),
   }) {
     if (loginSuccess != null) {
@@ -1662,6 +2520,7 @@ class _$ASLoginError implements ASLoginError {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() idle,
+    required TResult Function() loading,
     required TResult Function() loginLoading,
     required TResult Function(FarmhubUser user) loginSuccess,
     required TResult Function(String code, String message) loginError,
@@ -1671,6 +2530,13 @@ class _$ASLoginError implements ASLoginError {
     required TResult Function() signOutLoading,
     required TResult Function() signOutSuccess,
     required TResult Function(String code, String message) signOutError,
+    required TResult Function() retrieveUserDataLoading,
+    required TResult Function(FarmhubUser farmhubUser) retrieveUserDataSuccess,
+    required TResult Function(String code, String message)
+        retrieveUserDataError,
+    required TResult Function() isAdminLoading,
+    required TResult Function(bool isAdmin) isAdminSuccess,
+    required TResult Function(String code, String message) isAdminError,
   }) {
     return loginError(code, message);
   }
@@ -1680,6 +2546,7 @@ class _$ASLoginError implements ASLoginError {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? idle,
+    TResult Function()? loading,
     TResult Function()? loginLoading,
     TResult Function(FarmhubUser user)? loginSuccess,
     TResult Function(String code, String message)? loginError,
@@ -1689,6 +2556,12 @@ class _$ASLoginError implements ASLoginError {
     TResult Function()? signOutLoading,
     TResult Function()? signOutSuccess,
     TResult Function(String code, String message)? signOutError,
+    TResult Function()? retrieveUserDataLoading,
+    TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
+    TResult Function(String code, String message)? retrieveUserDataError,
+    TResult Function()? isAdminLoading,
+    TResult Function(bool isAdmin)? isAdminSuccess,
+    TResult Function(String code, String message)? isAdminError,
   }) {
     return loginError?.call(code, message);
   }
@@ -1698,6 +2571,7 @@ class _$ASLoginError implements ASLoginError {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? idle,
+    TResult Function()? loading,
     TResult Function()? loginLoading,
     TResult Function(FarmhubUser user)? loginSuccess,
     TResult Function(String code, String message)? loginError,
@@ -1707,6 +2581,12 @@ class _$ASLoginError implements ASLoginError {
     TResult Function()? signOutLoading,
     TResult Function()? signOutSuccess,
     TResult Function(String code, String message)? signOutError,
+    TResult Function()? retrieveUserDataLoading,
+    TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
+    TResult Function(String code, String message)? retrieveUserDataError,
+    TResult Function()? isAdminLoading,
+    TResult Function(bool isAdmin)? isAdminSuccess,
+    TResult Function(String code, String message)? isAdminError,
     required TResult orElse(),
   }) {
     if (loginError != null) {
@@ -1720,6 +2600,7 @@ class _$ASLoginError implements ASLoginError {
   TResult map<TResult extends Object?>({
     required TResult Function(ASInitial value) initial,
     required TResult Function(ASIdle value) idle,
+    required TResult Function(ASLoading value) loading,
     required TResult Function(ASLoginLoading value) loginLoading,
     required TResult Function(ASLoginSuccess value) loginSuccess,
     required TResult Function(ASLoginError value) loginError,
@@ -1729,6 +2610,15 @@ class _$ASLoginError implements ASLoginError {
     required TResult Function(ASSignOutLoading value) signOutLoading,
     required TResult Function(ASSignOutSuccess value) signOutSuccess,
     required TResult Function(ASSignOutError value) signOutError,
+    required TResult Function(ASRetrieveUserDataLoading value)
+        retrieveUserDataLoading,
+    required TResult Function(ASRetrieveUserDataSuccess value)
+        retrieveUserDataSuccess,
+    required TResult Function(ASRetrieveUserDataError value)
+        retrieveUserDataError,
+    required TResult Function(ASIsAdminLoading value) isAdminLoading,
+    required TResult Function(ASIsAdminSuccess value) isAdminSuccess,
+    required TResult Function(ASIsAdminError value) isAdminError,
   }) {
     return loginError(this);
   }
@@ -1738,6 +2628,7 @@ class _$ASLoginError implements ASLoginError {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(ASInitial value)? initial,
     TResult Function(ASIdle value)? idle,
+    TResult Function(ASLoading value)? loading,
     TResult Function(ASLoginLoading value)? loginLoading,
     TResult Function(ASLoginSuccess value)? loginSuccess,
     TResult Function(ASLoginError value)? loginError,
@@ -1747,6 +2638,12 @@ class _$ASLoginError implements ASLoginError {
     TResult Function(ASSignOutLoading value)? signOutLoading,
     TResult Function(ASSignOutSuccess value)? signOutSuccess,
     TResult Function(ASSignOutError value)? signOutError,
+    TResult Function(ASRetrieveUserDataLoading value)? retrieveUserDataLoading,
+    TResult Function(ASRetrieveUserDataSuccess value)? retrieveUserDataSuccess,
+    TResult Function(ASRetrieveUserDataError value)? retrieveUserDataError,
+    TResult Function(ASIsAdminLoading value)? isAdminLoading,
+    TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
+    TResult Function(ASIsAdminError value)? isAdminError,
   }) {
     return loginError?.call(this);
   }
@@ -1756,6 +2653,7 @@ class _$ASLoginError implements ASLoginError {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ASInitial value)? initial,
     TResult Function(ASIdle value)? idle,
+    TResult Function(ASLoading value)? loading,
     TResult Function(ASLoginLoading value)? loginLoading,
     TResult Function(ASLoginSuccess value)? loginSuccess,
     TResult Function(ASLoginError value)? loginError,
@@ -1765,6 +2663,12 @@ class _$ASLoginError implements ASLoginError {
     TResult Function(ASSignOutLoading value)? signOutLoading,
     TResult Function(ASSignOutSuccess value)? signOutSuccess,
     TResult Function(ASSignOutError value)? signOutError,
+    TResult Function(ASRetrieveUserDataLoading value)? retrieveUserDataLoading,
+    TResult Function(ASRetrieveUserDataSuccess value)? retrieveUserDataSuccess,
+    TResult Function(ASRetrieveUserDataError value)? retrieveUserDataError,
+    TResult Function(ASIsAdminLoading value)? isAdminLoading,
+    TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
+    TResult Function(ASIsAdminError value)? isAdminError,
     required TResult orElse(),
   }) {
     if (loginError != null) {
@@ -1828,6 +2732,7 @@ class _$ASRegisterLoading implements ASRegisterLoading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() idle,
+    required TResult Function() loading,
     required TResult Function() loginLoading,
     required TResult Function(FarmhubUser user) loginSuccess,
     required TResult Function(String code, String message) loginError,
@@ -1837,6 +2742,13 @@ class _$ASRegisterLoading implements ASRegisterLoading {
     required TResult Function() signOutLoading,
     required TResult Function() signOutSuccess,
     required TResult Function(String code, String message) signOutError,
+    required TResult Function() retrieveUserDataLoading,
+    required TResult Function(FarmhubUser farmhubUser) retrieveUserDataSuccess,
+    required TResult Function(String code, String message)
+        retrieveUserDataError,
+    required TResult Function() isAdminLoading,
+    required TResult Function(bool isAdmin) isAdminSuccess,
+    required TResult Function(String code, String message) isAdminError,
   }) {
     return registerLoading();
   }
@@ -1846,6 +2758,7 @@ class _$ASRegisterLoading implements ASRegisterLoading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? idle,
+    TResult Function()? loading,
     TResult Function()? loginLoading,
     TResult Function(FarmhubUser user)? loginSuccess,
     TResult Function(String code, String message)? loginError,
@@ -1855,6 +2768,12 @@ class _$ASRegisterLoading implements ASRegisterLoading {
     TResult Function()? signOutLoading,
     TResult Function()? signOutSuccess,
     TResult Function(String code, String message)? signOutError,
+    TResult Function()? retrieveUserDataLoading,
+    TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
+    TResult Function(String code, String message)? retrieveUserDataError,
+    TResult Function()? isAdminLoading,
+    TResult Function(bool isAdmin)? isAdminSuccess,
+    TResult Function(String code, String message)? isAdminError,
   }) {
     return registerLoading?.call();
   }
@@ -1864,6 +2783,7 @@ class _$ASRegisterLoading implements ASRegisterLoading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? idle,
+    TResult Function()? loading,
     TResult Function()? loginLoading,
     TResult Function(FarmhubUser user)? loginSuccess,
     TResult Function(String code, String message)? loginError,
@@ -1873,6 +2793,12 @@ class _$ASRegisterLoading implements ASRegisterLoading {
     TResult Function()? signOutLoading,
     TResult Function()? signOutSuccess,
     TResult Function(String code, String message)? signOutError,
+    TResult Function()? retrieveUserDataLoading,
+    TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
+    TResult Function(String code, String message)? retrieveUserDataError,
+    TResult Function()? isAdminLoading,
+    TResult Function(bool isAdmin)? isAdminSuccess,
+    TResult Function(String code, String message)? isAdminError,
     required TResult orElse(),
   }) {
     if (registerLoading != null) {
@@ -1886,6 +2812,7 @@ class _$ASRegisterLoading implements ASRegisterLoading {
   TResult map<TResult extends Object?>({
     required TResult Function(ASInitial value) initial,
     required TResult Function(ASIdle value) idle,
+    required TResult Function(ASLoading value) loading,
     required TResult Function(ASLoginLoading value) loginLoading,
     required TResult Function(ASLoginSuccess value) loginSuccess,
     required TResult Function(ASLoginError value) loginError,
@@ -1895,6 +2822,15 @@ class _$ASRegisterLoading implements ASRegisterLoading {
     required TResult Function(ASSignOutLoading value) signOutLoading,
     required TResult Function(ASSignOutSuccess value) signOutSuccess,
     required TResult Function(ASSignOutError value) signOutError,
+    required TResult Function(ASRetrieveUserDataLoading value)
+        retrieveUserDataLoading,
+    required TResult Function(ASRetrieveUserDataSuccess value)
+        retrieveUserDataSuccess,
+    required TResult Function(ASRetrieveUserDataError value)
+        retrieveUserDataError,
+    required TResult Function(ASIsAdminLoading value) isAdminLoading,
+    required TResult Function(ASIsAdminSuccess value) isAdminSuccess,
+    required TResult Function(ASIsAdminError value) isAdminError,
   }) {
     return registerLoading(this);
   }
@@ -1904,6 +2840,7 @@ class _$ASRegisterLoading implements ASRegisterLoading {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(ASInitial value)? initial,
     TResult Function(ASIdle value)? idle,
+    TResult Function(ASLoading value)? loading,
     TResult Function(ASLoginLoading value)? loginLoading,
     TResult Function(ASLoginSuccess value)? loginSuccess,
     TResult Function(ASLoginError value)? loginError,
@@ -1913,6 +2850,12 @@ class _$ASRegisterLoading implements ASRegisterLoading {
     TResult Function(ASSignOutLoading value)? signOutLoading,
     TResult Function(ASSignOutSuccess value)? signOutSuccess,
     TResult Function(ASSignOutError value)? signOutError,
+    TResult Function(ASRetrieveUserDataLoading value)? retrieveUserDataLoading,
+    TResult Function(ASRetrieveUserDataSuccess value)? retrieveUserDataSuccess,
+    TResult Function(ASRetrieveUserDataError value)? retrieveUserDataError,
+    TResult Function(ASIsAdminLoading value)? isAdminLoading,
+    TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
+    TResult Function(ASIsAdminError value)? isAdminError,
   }) {
     return registerLoading?.call(this);
   }
@@ -1922,6 +2865,7 @@ class _$ASRegisterLoading implements ASRegisterLoading {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ASInitial value)? initial,
     TResult Function(ASIdle value)? idle,
+    TResult Function(ASLoading value)? loading,
     TResult Function(ASLoginLoading value)? loginLoading,
     TResult Function(ASLoginSuccess value)? loginSuccess,
     TResult Function(ASLoginError value)? loginError,
@@ -1931,6 +2875,12 @@ class _$ASRegisterLoading implements ASRegisterLoading {
     TResult Function(ASSignOutLoading value)? signOutLoading,
     TResult Function(ASSignOutSuccess value)? signOutSuccess,
     TResult Function(ASSignOutError value)? signOutError,
+    TResult Function(ASRetrieveUserDataLoading value)? retrieveUserDataLoading,
+    TResult Function(ASRetrieveUserDataSuccess value)? retrieveUserDataSuccess,
+    TResult Function(ASRetrieveUserDataError value)? retrieveUserDataError,
+    TResult Function(ASIsAdminLoading value)? isAdminLoading,
+    TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
+    TResult Function(ASIsAdminError value)? isAdminError,
     required TResult orElse(),
   }) {
     if (registerLoading != null) {
@@ -2019,6 +2969,7 @@ class _$ASRegisterSuccess implements ASRegisterSuccess {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() idle,
+    required TResult Function() loading,
     required TResult Function() loginLoading,
     required TResult Function(FarmhubUser user) loginSuccess,
     required TResult Function(String code, String message) loginError,
@@ -2028,6 +2979,13 @@ class _$ASRegisterSuccess implements ASRegisterSuccess {
     required TResult Function() signOutLoading,
     required TResult Function() signOutSuccess,
     required TResult Function(String code, String message) signOutError,
+    required TResult Function() retrieveUserDataLoading,
+    required TResult Function(FarmhubUser farmhubUser) retrieveUserDataSuccess,
+    required TResult Function(String code, String message)
+        retrieveUserDataError,
+    required TResult Function() isAdminLoading,
+    required TResult Function(bool isAdmin) isAdminSuccess,
+    required TResult Function(String code, String message) isAdminError,
   }) {
     return registerSuccess(user);
   }
@@ -2037,6 +2995,7 @@ class _$ASRegisterSuccess implements ASRegisterSuccess {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? idle,
+    TResult Function()? loading,
     TResult Function()? loginLoading,
     TResult Function(FarmhubUser user)? loginSuccess,
     TResult Function(String code, String message)? loginError,
@@ -2046,6 +3005,12 @@ class _$ASRegisterSuccess implements ASRegisterSuccess {
     TResult Function()? signOutLoading,
     TResult Function()? signOutSuccess,
     TResult Function(String code, String message)? signOutError,
+    TResult Function()? retrieveUserDataLoading,
+    TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
+    TResult Function(String code, String message)? retrieveUserDataError,
+    TResult Function()? isAdminLoading,
+    TResult Function(bool isAdmin)? isAdminSuccess,
+    TResult Function(String code, String message)? isAdminError,
   }) {
     return registerSuccess?.call(user);
   }
@@ -2055,6 +3020,7 @@ class _$ASRegisterSuccess implements ASRegisterSuccess {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? idle,
+    TResult Function()? loading,
     TResult Function()? loginLoading,
     TResult Function(FarmhubUser user)? loginSuccess,
     TResult Function(String code, String message)? loginError,
@@ -2064,6 +3030,12 @@ class _$ASRegisterSuccess implements ASRegisterSuccess {
     TResult Function()? signOutLoading,
     TResult Function()? signOutSuccess,
     TResult Function(String code, String message)? signOutError,
+    TResult Function()? retrieveUserDataLoading,
+    TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
+    TResult Function(String code, String message)? retrieveUserDataError,
+    TResult Function()? isAdminLoading,
+    TResult Function(bool isAdmin)? isAdminSuccess,
+    TResult Function(String code, String message)? isAdminError,
     required TResult orElse(),
   }) {
     if (registerSuccess != null) {
@@ -2077,6 +3049,7 @@ class _$ASRegisterSuccess implements ASRegisterSuccess {
   TResult map<TResult extends Object?>({
     required TResult Function(ASInitial value) initial,
     required TResult Function(ASIdle value) idle,
+    required TResult Function(ASLoading value) loading,
     required TResult Function(ASLoginLoading value) loginLoading,
     required TResult Function(ASLoginSuccess value) loginSuccess,
     required TResult Function(ASLoginError value) loginError,
@@ -2086,6 +3059,15 @@ class _$ASRegisterSuccess implements ASRegisterSuccess {
     required TResult Function(ASSignOutLoading value) signOutLoading,
     required TResult Function(ASSignOutSuccess value) signOutSuccess,
     required TResult Function(ASSignOutError value) signOutError,
+    required TResult Function(ASRetrieveUserDataLoading value)
+        retrieveUserDataLoading,
+    required TResult Function(ASRetrieveUserDataSuccess value)
+        retrieveUserDataSuccess,
+    required TResult Function(ASRetrieveUserDataError value)
+        retrieveUserDataError,
+    required TResult Function(ASIsAdminLoading value) isAdminLoading,
+    required TResult Function(ASIsAdminSuccess value) isAdminSuccess,
+    required TResult Function(ASIsAdminError value) isAdminError,
   }) {
     return registerSuccess(this);
   }
@@ -2095,6 +3077,7 @@ class _$ASRegisterSuccess implements ASRegisterSuccess {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(ASInitial value)? initial,
     TResult Function(ASIdle value)? idle,
+    TResult Function(ASLoading value)? loading,
     TResult Function(ASLoginLoading value)? loginLoading,
     TResult Function(ASLoginSuccess value)? loginSuccess,
     TResult Function(ASLoginError value)? loginError,
@@ -2104,6 +3087,12 @@ class _$ASRegisterSuccess implements ASRegisterSuccess {
     TResult Function(ASSignOutLoading value)? signOutLoading,
     TResult Function(ASSignOutSuccess value)? signOutSuccess,
     TResult Function(ASSignOutError value)? signOutError,
+    TResult Function(ASRetrieveUserDataLoading value)? retrieveUserDataLoading,
+    TResult Function(ASRetrieveUserDataSuccess value)? retrieveUserDataSuccess,
+    TResult Function(ASRetrieveUserDataError value)? retrieveUserDataError,
+    TResult Function(ASIsAdminLoading value)? isAdminLoading,
+    TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
+    TResult Function(ASIsAdminError value)? isAdminError,
   }) {
     return registerSuccess?.call(this);
   }
@@ -2113,6 +3102,7 @@ class _$ASRegisterSuccess implements ASRegisterSuccess {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ASInitial value)? initial,
     TResult Function(ASIdle value)? idle,
+    TResult Function(ASLoading value)? loading,
     TResult Function(ASLoginLoading value)? loginLoading,
     TResult Function(ASLoginSuccess value)? loginSuccess,
     TResult Function(ASLoginError value)? loginError,
@@ -2122,6 +3112,12 @@ class _$ASRegisterSuccess implements ASRegisterSuccess {
     TResult Function(ASSignOutLoading value)? signOutLoading,
     TResult Function(ASSignOutSuccess value)? signOutSuccess,
     TResult Function(ASSignOutError value)? signOutError,
+    TResult Function(ASRetrieveUserDataLoading value)? retrieveUserDataLoading,
+    TResult Function(ASRetrieveUserDataSuccess value)? retrieveUserDataSuccess,
+    TResult Function(ASRetrieveUserDataError value)? retrieveUserDataError,
+    TResult Function(ASIsAdminLoading value)? isAdminLoading,
+    TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
+    TResult Function(ASIsAdminError value)? isAdminError,
     required TResult orElse(),
   }) {
     if (registerSuccess != null) {
@@ -2214,6 +3210,7 @@ class _$ASRegisterError implements ASRegisterError {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() idle,
+    required TResult Function() loading,
     required TResult Function() loginLoading,
     required TResult Function(FarmhubUser user) loginSuccess,
     required TResult Function(String code, String message) loginError,
@@ -2223,6 +3220,13 @@ class _$ASRegisterError implements ASRegisterError {
     required TResult Function() signOutLoading,
     required TResult Function() signOutSuccess,
     required TResult Function(String code, String message) signOutError,
+    required TResult Function() retrieveUserDataLoading,
+    required TResult Function(FarmhubUser farmhubUser) retrieveUserDataSuccess,
+    required TResult Function(String code, String message)
+        retrieveUserDataError,
+    required TResult Function() isAdminLoading,
+    required TResult Function(bool isAdmin) isAdminSuccess,
+    required TResult Function(String code, String message) isAdminError,
   }) {
     return registerError(code, message);
   }
@@ -2232,6 +3236,7 @@ class _$ASRegisterError implements ASRegisterError {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? idle,
+    TResult Function()? loading,
     TResult Function()? loginLoading,
     TResult Function(FarmhubUser user)? loginSuccess,
     TResult Function(String code, String message)? loginError,
@@ -2241,6 +3246,12 @@ class _$ASRegisterError implements ASRegisterError {
     TResult Function()? signOutLoading,
     TResult Function()? signOutSuccess,
     TResult Function(String code, String message)? signOutError,
+    TResult Function()? retrieveUserDataLoading,
+    TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
+    TResult Function(String code, String message)? retrieveUserDataError,
+    TResult Function()? isAdminLoading,
+    TResult Function(bool isAdmin)? isAdminSuccess,
+    TResult Function(String code, String message)? isAdminError,
   }) {
     return registerError?.call(code, message);
   }
@@ -2250,6 +3261,7 @@ class _$ASRegisterError implements ASRegisterError {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? idle,
+    TResult Function()? loading,
     TResult Function()? loginLoading,
     TResult Function(FarmhubUser user)? loginSuccess,
     TResult Function(String code, String message)? loginError,
@@ -2259,6 +3271,12 @@ class _$ASRegisterError implements ASRegisterError {
     TResult Function()? signOutLoading,
     TResult Function()? signOutSuccess,
     TResult Function(String code, String message)? signOutError,
+    TResult Function()? retrieveUserDataLoading,
+    TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
+    TResult Function(String code, String message)? retrieveUserDataError,
+    TResult Function()? isAdminLoading,
+    TResult Function(bool isAdmin)? isAdminSuccess,
+    TResult Function(String code, String message)? isAdminError,
     required TResult orElse(),
   }) {
     if (registerError != null) {
@@ -2272,6 +3290,7 @@ class _$ASRegisterError implements ASRegisterError {
   TResult map<TResult extends Object?>({
     required TResult Function(ASInitial value) initial,
     required TResult Function(ASIdle value) idle,
+    required TResult Function(ASLoading value) loading,
     required TResult Function(ASLoginLoading value) loginLoading,
     required TResult Function(ASLoginSuccess value) loginSuccess,
     required TResult Function(ASLoginError value) loginError,
@@ -2281,6 +3300,15 @@ class _$ASRegisterError implements ASRegisterError {
     required TResult Function(ASSignOutLoading value) signOutLoading,
     required TResult Function(ASSignOutSuccess value) signOutSuccess,
     required TResult Function(ASSignOutError value) signOutError,
+    required TResult Function(ASRetrieveUserDataLoading value)
+        retrieveUserDataLoading,
+    required TResult Function(ASRetrieveUserDataSuccess value)
+        retrieveUserDataSuccess,
+    required TResult Function(ASRetrieveUserDataError value)
+        retrieveUserDataError,
+    required TResult Function(ASIsAdminLoading value) isAdminLoading,
+    required TResult Function(ASIsAdminSuccess value) isAdminSuccess,
+    required TResult Function(ASIsAdminError value) isAdminError,
   }) {
     return registerError(this);
   }
@@ -2290,6 +3318,7 @@ class _$ASRegisterError implements ASRegisterError {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(ASInitial value)? initial,
     TResult Function(ASIdle value)? idle,
+    TResult Function(ASLoading value)? loading,
     TResult Function(ASLoginLoading value)? loginLoading,
     TResult Function(ASLoginSuccess value)? loginSuccess,
     TResult Function(ASLoginError value)? loginError,
@@ -2299,6 +3328,12 @@ class _$ASRegisterError implements ASRegisterError {
     TResult Function(ASSignOutLoading value)? signOutLoading,
     TResult Function(ASSignOutSuccess value)? signOutSuccess,
     TResult Function(ASSignOutError value)? signOutError,
+    TResult Function(ASRetrieveUserDataLoading value)? retrieveUserDataLoading,
+    TResult Function(ASRetrieveUserDataSuccess value)? retrieveUserDataSuccess,
+    TResult Function(ASRetrieveUserDataError value)? retrieveUserDataError,
+    TResult Function(ASIsAdminLoading value)? isAdminLoading,
+    TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
+    TResult Function(ASIsAdminError value)? isAdminError,
   }) {
     return registerError?.call(this);
   }
@@ -2308,6 +3343,7 @@ class _$ASRegisterError implements ASRegisterError {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ASInitial value)? initial,
     TResult Function(ASIdle value)? idle,
+    TResult Function(ASLoading value)? loading,
     TResult Function(ASLoginLoading value)? loginLoading,
     TResult Function(ASLoginSuccess value)? loginSuccess,
     TResult Function(ASLoginError value)? loginError,
@@ -2317,6 +3353,12 @@ class _$ASRegisterError implements ASRegisterError {
     TResult Function(ASSignOutLoading value)? signOutLoading,
     TResult Function(ASSignOutSuccess value)? signOutSuccess,
     TResult Function(ASSignOutError value)? signOutError,
+    TResult Function(ASRetrieveUserDataLoading value)? retrieveUserDataLoading,
+    TResult Function(ASRetrieveUserDataSuccess value)? retrieveUserDataSuccess,
+    TResult Function(ASRetrieveUserDataError value)? retrieveUserDataError,
+    TResult Function(ASIsAdminLoading value)? isAdminLoading,
+    TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
+    TResult Function(ASIsAdminError value)? isAdminError,
     required TResult orElse(),
   }) {
     if (registerError != null) {
@@ -2379,6 +3421,7 @@ class _$ASSignOutLoading implements ASSignOutLoading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() idle,
+    required TResult Function() loading,
     required TResult Function() loginLoading,
     required TResult Function(FarmhubUser user) loginSuccess,
     required TResult Function(String code, String message) loginError,
@@ -2388,6 +3431,13 @@ class _$ASSignOutLoading implements ASSignOutLoading {
     required TResult Function() signOutLoading,
     required TResult Function() signOutSuccess,
     required TResult Function(String code, String message) signOutError,
+    required TResult Function() retrieveUserDataLoading,
+    required TResult Function(FarmhubUser farmhubUser) retrieveUserDataSuccess,
+    required TResult Function(String code, String message)
+        retrieveUserDataError,
+    required TResult Function() isAdminLoading,
+    required TResult Function(bool isAdmin) isAdminSuccess,
+    required TResult Function(String code, String message) isAdminError,
   }) {
     return signOutLoading();
   }
@@ -2397,6 +3447,7 @@ class _$ASSignOutLoading implements ASSignOutLoading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? idle,
+    TResult Function()? loading,
     TResult Function()? loginLoading,
     TResult Function(FarmhubUser user)? loginSuccess,
     TResult Function(String code, String message)? loginError,
@@ -2406,6 +3457,12 @@ class _$ASSignOutLoading implements ASSignOutLoading {
     TResult Function()? signOutLoading,
     TResult Function()? signOutSuccess,
     TResult Function(String code, String message)? signOutError,
+    TResult Function()? retrieveUserDataLoading,
+    TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
+    TResult Function(String code, String message)? retrieveUserDataError,
+    TResult Function()? isAdminLoading,
+    TResult Function(bool isAdmin)? isAdminSuccess,
+    TResult Function(String code, String message)? isAdminError,
   }) {
     return signOutLoading?.call();
   }
@@ -2415,6 +3472,7 @@ class _$ASSignOutLoading implements ASSignOutLoading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? idle,
+    TResult Function()? loading,
     TResult Function()? loginLoading,
     TResult Function(FarmhubUser user)? loginSuccess,
     TResult Function(String code, String message)? loginError,
@@ -2424,6 +3482,12 @@ class _$ASSignOutLoading implements ASSignOutLoading {
     TResult Function()? signOutLoading,
     TResult Function()? signOutSuccess,
     TResult Function(String code, String message)? signOutError,
+    TResult Function()? retrieveUserDataLoading,
+    TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
+    TResult Function(String code, String message)? retrieveUserDataError,
+    TResult Function()? isAdminLoading,
+    TResult Function(bool isAdmin)? isAdminSuccess,
+    TResult Function(String code, String message)? isAdminError,
     required TResult orElse(),
   }) {
     if (signOutLoading != null) {
@@ -2437,6 +3501,7 @@ class _$ASSignOutLoading implements ASSignOutLoading {
   TResult map<TResult extends Object?>({
     required TResult Function(ASInitial value) initial,
     required TResult Function(ASIdle value) idle,
+    required TResult Function(ASLoading value) loading,
     required TResult Function(ASLoginLoading value) loginLoading,
     required TResult Function(ASLoginSuccess value) loginSuccess,
     required TResult Function(ASLoginError value) loginError,
@@ -2446,6 +3511,15 @@ class _$ASSignOutLoading implements ASSignOutLoading {
     required TResult Function(ASSignOutLoading value) signOutLoading,
     required TResult Function(ASSignOutSuccess value) signOutSuccess,
     required TResult Function(ASSignOutError value) signOutError,
+    required TResult Function(ASRetrieveUserDataLoading value)
+        retrieveUserDataLoading,
+    required TResult Function(ASRetrieveUserDataSuccess value)
+        retrieveUserDataSuccess,
+    required TResult Function(ASRetrieveUserDataError value)
+        retrieveUserDataError,
+    required TResult Function(ASIsAdminLoading value) isAdminLoading,
+    required TResult Function(ASIsAdminSuccess value) isAdminSuccess,
+    required TResult Function(ASIsAdminError value) isAdminError,
   }) {
     return signOutLoading(this);
   }
@@ -2455,6 +3529,7 @@ class _$ASSignOutLoading implements ASSignOutLoading {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(ASInitial value)? initial,
     TResult Function(ASIdle value)? idle,
+    TResult Function(ASLoading value)? loading,
     TResult Function(ASLoginLoading value)? loginLoading,
     TResult Function(ASLoginSuccess value)? loginSuccess,
     TResult Function(ASLoginError value)? loginError,
@@ -2464,6 +3539,12 @@ class _$ASSignOutLoading implements ASSignOutLoading {
     TResult Function(ASSignOutLoading value)? signOutLoading,
     TResult Function(ASSignOutSuccess value)? signOutSuccess,
     TResult Function(ASSignOutError value)? signOutError,
+    TResult Function(ASRetrieveUserDataLoading value)? retrieveUserDataLoading,
+    TResult Function(ASRetrieveUserDataSuccess value)? retrieveUserDataSuccess,
+    TResult Function(ASRetrieveUserDataError value)? retrieveUserDataError,
+    TResult Function(ASIsAdminLoading value)? isAdminLoading,
+    TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
+    TResult Function(ASIsAdminError value)? isAdminError,
   }) {
     return signOutLoading?.call(this);
   }
@@ -2473,6 +3554,7 @@ class _$ASSignOutLoading implements ASSignOutLoading {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ASInitial value)? initial,
     TResult Function(ASIdle value)? idle,
+    TResult Function(ASLoading value)? loading,
     TResult Function(ASLoginLoading value)? loginLoading,
     TResult Function(ASLoginSuccess value)? loginSuccess,
     TResult Function(ASLoginError value)? loginError,
@@ -2482,6 +3564,12 @@ class _$ASSignOutLoading implements ASSignOutLoading {
     TResult Function(ASSignOutLoading value)? signOutLoading,
     TResult Function(ASSignOutSuccess value)? signOutSuccess,
     TResult Function(ASSignOutError value)? signOutError,
+    TResult Function(ASRetrieveUserDataLoading value)? retrieveUserDataLoading,
+    TResult Function(ASRetrieveUserDataSuccess value)? retrieveUserDataSuccess,
+    TResult Function(ASRetrieveUserDataError value)? retrieveUserDataError,
+    TResult Function(ASIsAdminLoading value)? isAdminLoading,
+    TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
+    TResult Function(ASIsAdminError value)? isAdminError,
     required TResult orElse(),
   }) {
     if (signOutLoading != null) {
@@ -2537,6 +3625,7 @@ class _$ASSignOutSuccess implements ASSignOutSuccess {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() idle,
+    required TResult Function() loading,
     required TResult Function() loginLoading,
     required TResult Function(FarmhubUser user) loginSuccess,
     required TResult Function(String code, String message) loginError,
@@ -2546,6 +3635,13 @@ class _$ASSignOutSuccess implements ASSignOutSuccess {
     required TResult Function() signOutLoading,
     required TResult Function() signOutSuccess,
     required TResult Function(String code, String message) signOutError,
+    required TResult Function() retrieveUserDataLoading,
+    required TResult Function(FarmhubUser farmhubUser) retrieveUserDataSuccess,
+    required TResult Function(String code, String message)
+        retrieveUserDataError,
+    required TResult Function() isAdminLoading,
+    required TResult Function(bool isAdmin) isAdminSuccess,
+    required TResult Function(String code, String message) isAdminError,
   }) {
     return signOutSuccess();
   }
@@ -2555,6 +3651,7 @@ class _$ASSignOutSuccess implements ASSignOutSuccess {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? idle,
+    TResult Function()? loading,
     TResult Function()? loginLoading,
     TResult Function(FarmhubUser user)? loginSuccess,
     TResult Function(String code, String message)? loginError,
@@ -2564,6 +3661,12 @@ class _$ASSignOutSuccess implements ASSignOutSuccess {
     TResult Function()? signOutLoading,
     TResult Function()? signOutSuccess,
     TResult Function(String code, String message)? signOutError,
+    TResult Function()? retrieveUserDataLoading,
+    TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
+    TResult Function(String code, String message)? retrieveUserDataError,
+    TResult Function()? isAdminLoading,
+    TResult Function(bool isAdmin)? isAdminSuccess,
+    TResult Function(String code, String message)? isAdminError,
   }) {
     return signOutSuccess?.call();
   }
@@ -2573,6 +3676,7 @@ class _$ASSignOutSuccess implements ASSignOutSuccess {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? idle,
+    TResult Function()? loading,
     TResult Function()? loginLoading,
     TResult Function(FarmhubUser user)? loginSuccess,
     TResult Function(String code, String message)? loginError,
@@ -2582,6 +3686,12 @@ class _$ASSignOutSuccess implements ASSignOutSuccess {
     TResult Function()? signOutLoading,
     TResult Function()? signOutSuccess,
     TResult Function(String code, String message)? signOutError,
+    TResult Function()? retrieveUserDataLoading,
+    TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
+    TResult Function(String code, String message)? retrieveUserDataError,
+    TResult Function()? isAdminLoading,
+    TResult Function(bool isAdmin)? isAdminSuccess,
+    TResult Function(String code, String message)? isAdminError,
     required TResult orElse(),
   }) {
     if (signOutSuccess != null) {
@@ -2595,6 +3705,7 @@ class _$ASSignOutSuccess implements ASSignOutSuccess {
   TResult map<TResult extends Object?>({
     required TResult Function(ASInitial value) initial,
     required TResult Function(ASIdle value) idle,
+    required TResult Function(ASLoading value) loading,
     required TResult Function(ASLoginLoading value) loginLoading,
     required TResult Function(ASLoginSuccess value) loginSuccess,
     required TResult Function(ASLoginError value) loginError,
@@ -2604,6 +3715,15 @@ class _$ASSignOutSuccess implements ASSignOutSuccess {
     required TResult Function(ASSignOutLoading value) signOutLoading,
     required TResult Function(ASSignOutSuccess value) signOutSuccess,
     required TResult Function(ASSignOutError value) signOutError,
+    required TResult Function(ASRetrieveUserDataLoading value)
+        retrieveUserDataLoading,
+    required TResult Function(ASRetrieveUserDataSuccess value)
+        retrieveUserDataSuccess,
+    required TResult Function(ASRetrieveUserDataError value)
+        retrieveUserDataError,
+    required TResult Function(ASIsAdminLoading value) isAdminLoading,
+    required TResult Function(ASIsAdminSuccess value) isAdminSuccess,
+    required TResult Function(ASIsAdminError value) isAdminError,
   }) {
     return signOutSuccess(this);
   }
@@ -2613,6 +3733,7 @@ class _$ASSignOutSuccess implements ASSignOutSuccess {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(ASInitial value)? initial,
     TResult Function(ASIdle value)? idle,
+    TResult Function(ASLoading value)? loading,
     TResult Function(ASLoginLoading value)? loginLoading,
     TResult Function(ASLoginSuccess value)? loginSuccess,
     TResult Function(ASLoginError value)? loginError,
@@ -2622,6 +3743,12 @@ class _$ASSignOutSuccess implements ASSignOutSuccess {
     TResult Function(ASSignOutLoading value)? signOutLoading,
     TResult Function(ASSignOutSuccess value)? signOutSuccess,
     TResult Function(ASSignOutError value)? signOutError,
+    TResult Function(ASRetrieveUserDataLoading value)? retrieveUserDataLoading,
+    TResult Function(ASRetrieveUserDataSuccess value)? retrieveUserDataSuccess,
+    TResult Function(ASRetrieveUserDataError value)? retrieveUserDataError,
+    TResult Function(ASIsAdminLoading value)? isAdminLoading,
+    TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
+    TResult Function(ASIsAdminError value)? isAdminError,
   }) {
     return signOutSuccess?.call(this);
   }
@@ -2631,6 +3758,7 @@ class _$ASSignOutSuccess implements ASSignOutSuccess {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ASInitial value)? initial,
     TResult Function(ASIdle value)? idle,
+    TResult Function(ASLoading value)? loading,
     TResult Function(ASLoginLoading value)? loginLoading,
     TResult Function(ASLoginSuccess value)? loginSuccess,
     TResult Function(ASLoginError value)? loginError,
@@ -2640,6 +3768,12 @@ class _$ASSignOutSuccess implements ASSignOutSuccess {
     TResult Function(ASSignOutLoading value)? signOutLoading,
     TResult Function(ASSignOutSuccess value)? signOutSuccess,
     TResult Function(ASSignOutError value)? signOutError,
+    TResult Function(ASRetrieveUserDataLoading value)? retrieveUserDataLoading,
+    TResult Function(ASRetrieveUserDataSuccess value)? retrieveUserDataSuccess,
+    TResult Function(ASRetrieveUserDataError value)? retrieveUserDataError,
+    TResult Function(ASIsAdminLoading value)? isAdminLoading,
+    TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
+    TResult Function(ASIsAdminError value)? isAdminError,
     required TResult orElse(),
   }) {
     if (signOutSuccess != null) {
@@ -2726,6 +3860,7 @@ class _$ASSignOutError implements ASSignOutError {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() idle,
+    required TResult Function() loading,
     required TResult Function() loginLoading,
     required TResult Function(FarmhubUser user) loginSuccess,
     required TResult Function(String code, String message) loginError,
@@ -2735,6 +3870,13 @@ class _$ASSignOutError implements ASSignOutError {
     required TResult Function() signOutLoading,
     required TResult Function() signOutSuccess,
     required TResult Function(String code, String message) signOutError,
+    required TResult Function() retrieveUserDataLoading,
+    required TResult Function(FarmhubUser farmhubUser) retrieveUserDataSuccess,
+    required TResult Function(String code, String message)
+        retrieveUserDataError,
+    required TResult Function() isAdminLoading,
+    required TResult Function(bool isAdmin) isAdminSuccess,
+    required TResult Function(String code, String message) isAdminError,
   }) {
     return signOutError(code, message);
   }
@@ -2744,6 +3886,7 @@ class _$ASSignOutError implements ASSignOutError {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? idle,
+    TResult Function()? loading,
     TResult Function()? loginLoading,
     TResult Function(FarmhubUser user)? loginSuccess,
     TResult Function(String code, String message)? loginError,
@@ -2753,6 +3896,12 @@ class _$ASSignOutError implements ASSignOutError {
     TResult Function()? signOutLoading,
     TResult Function()? signOutSuccess,
     TResult Function(String code, String message)? signOutError,
+    TResult Function()? retrieveUserDataLoading,
+    TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
+    TResult Function(String code, String message)? retrieveUserDataError,
+    TResult Function()? isAdminLoading,
+    TResult Function(bool isAdmin)? isAdminSuccess,
+    TResult Function(String code, String message)? isAdminError,
   }) {
     return signOutError?.call(code, message);
   }
@@ -2762,6 +3911,7 @@ class _$ASSignOutError implements ASSignOutError {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? idle,
+    TResult Function()? loading,
     TResult Function()? loginLoading,
     TResult Function(FarmhubUser user)? loginSuccess,
     TResult Function(String code, String message)? loginError,
@@ -2771,6 +3921,12 @@ class _$ASSignOutError implements ASSignOutError {
     TResult Function()? signOutLoading,
     TResult Function()? signOutSuccess,
     TResult Function(String code, String message)? signOutError,
+    TResult Function()? retrieveUserDataLoading,
+    TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
+    TResult Function(String code, String message)? retrieveUserDataError,
+    TResult Function()? isAdminLoading,
+    TResult Function(bool isAdmin)? isAdminSuccess,
+    TResult Function(String code, String message)? isAdminError,
     required TResult orElse(),
   }) {
     if (signOutError != null) {
@@ -2784,6 +3940,7 @@ class _$ASSignOutError implements ASSignOutError {
   TResult map<TResult extends Object?>({
     required TResult Function(ASInitial value) initial,
     required TResult Function(ASIdle value) idle,
+    required TResult Function(ASLoading value) loading,
     required TResult Function(ASLoginLoading value) loginLoading,
     required TResult Function(ASLoginSuccess value) loginSuccess,
     required TResult Function(ASLoginError value) loginError,
@@ -2793,6 +3950,15 @@ class _$ASSignOutError implements ASSignOutError {
     required TResult Function(ASSignOutLoading value) signOutLoading,
     required TResult Function(ASSignOutSuccess value) signOutSuccess,
     required TResult Function(ASSignOutError value) signOutError,
+    required TResult Function(ASRetrieveUserDataLoading value)
+        retrieveUserDataLoading,
+    required TResult Function(ASRetrieveUserDataSuccess value)
+        retrieveUserDataSuccess,
+    required TResult Function(ASRetrieveUserDataError value)
+        retrieveUserDataError,
+    required TResult Function(ASIsAdminLoading value) isAdminLoading,
+    required TResult Function(ASIsAdminSuccess value) isAdminSuccess,
+    required TResult Function(ASIsAdminError value) isAdminError,
   }) {
     return signOutError(this);
   }
@@ -2802,6 +3968,7 @@ class _$ASSignOutError implements ASSignOutError {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(ASInitial value)? initial,
     TResult Function(ASIdle value)? idle,
+    TResult Function(ASLoading value)? loading,
     TResult Function(ASLoginLoading value)? loginLoading,
     TResult Function(ASLoginSuccess value)? loginSuccess,
     TResult Function(ASLoginError value)? loginError,
@@ -2811,6 +3978,12 @@ class _$ASSignOutError implements ASSignOutError {
     TResult Function(ASSignOutLoading value)? signOutLoading,
     TResult Function(ASSignOutSuccess value)? signOutSuccess,
     TResult Function(ASSignOutError value)? signOutError,
+    TResult Function(ASRetrieveUserDataLoading value)? retrieveUserDataLoading,
+    TResult Function(ASRetrieveUserDataSuccess value)? retrieveUserDataSuccess,
+    TResult Function(ASRetrieveUserDataError value)? retrieveUserDataError,
+    TResult Function(ASIsAdminLoading value)? isAdminLoading,
+    TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
+    TResult Function(ASIsAdminError value)? isAdminError,
   }) {
     return signOutError?.call(this);
   }
@@ -2820,6 +3993,7 @@ class _$ASSignOutError implements ASSignOutError {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ASInitial value)? initial,
     TResult Function(ASIdle value)? idle,
+    TResult Function(ASLoading value)? loading,
     TResult Function(ASLoginLoading value)? loginLoading,
     TResult Function(ASLoginSuccess value)? loginSuccess,
     TResult Function(ASLoginError value)? loginError,
@@ -2829,6 +4003,12 @@ class _$ASSignOutError implements ASSignOutError {
     TResult Function(ASSignOutLoading value)? signOutLoading,
     TResult Function(ASSignOutSuccess value)? signOutSuccess,
     TResult Function(ASSignOutError value)? signOutError,
+    TResult Function(ASRetrieveUserDataLoading value)? retrieveUserDataLoading,
+    TResult Function(ASRetrieveUserDataSuccess value)? retrieveUserDataSuccess,
+    TResult Function(ASRetrieveUserDataError value)? retrieveUserDataError,
+    TResult Function(ASIsAdminLoading value)? isAdminLoading,
+    TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
+    TResult Function(ASIsAdminError value)? isAdminError,
     required TResult orElse(),
   }) {
     if (signOutError != null) {
@@ -2846,5 +4026,1381 @@ abstract class ASSignOutError implements AuthState {
   String get message;
   @JsonKey(ignore: true)
   $ASSignOutErrorCopyWith<ASSignOutError> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ASRetrieveUserDataLoadingCopyWith<$Res> {
+  factory $ASRetrieveUserDataLoadingCopyWith(ASRetrieveUserDataLoading value,
+          $Res Function(ASRetrieveUserDataLoading) then) =
+      _$ASRetrieveUserDataLoadingCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$ASRetrieveUserDataLoadingCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res>
+    implements $ASRetrieveUserDataLoadingCopyWith<$Res> {
+  _$ASRetrieveUserDataLoadingCopyWithImpl(ASRetrieveUserDataLoading _value,
+      $Res Function(ASRetrieveUserDataLoading) _then)
+      : super(_value, (v) => _then(v as ASRetrieveUserDataLoading));
+
+  @override
+  ASRetrieveUserDataLoading get _value =>
+      super._value as ASRetrieveUserDataLoading;
+}
+
+/// @nodoc
+
+class _$ASRetrieveUserDataLoading implements ASRetrieveUserDataLoading {
+  const _$ASRetrieveUserDataLoading();
+
+  @override
+  String toString() {
+    return 'AuthState.retrieveUserDataLoading()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is ASRetrieveUserDataLoading);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() idle,
+    required TResult Function() loading,
+    required TResult Function() loginLoading,
+    required TResult Function(FarmhubUser user) loginSuccess,
+    required TResult Function(String code, String message) loginError,
+    required TResult Function() registerLoading,
+    required TResult Function(FarmhubUser user) registerSuccess,
+    required TResult Function(String code, String message) registerError,
+    required TResult Function() signOutLoading,
+    required TResult Function() signOutSuccess,
+    required TResult Function(String code, String message) signOutError,
+    required TResult Function() retrieveUserDataLoading,
+    required TResult Function(FarmhubUser farmhubUser) retrieveUserDataSuccess,
+    required TResult Function(String code, String message)
+        retrieveUserDataError,
+    required TResult Function() isAdminLoading,
+    required TResult Function(bool isAdmin) isAdminSuccess,
+    required TResult Function(String code, String message) isAdminError,
+  }) {
+    return retrieveUserDataLoading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? idle,
+    TResult Function()? loading,
+    TResult Function()? loginLoading,
+    TResult Function(FarmhubUser user)? loginSuccess,
+    TResult Function(String code, String message)? loginError,
+    TResult Function()? registerLoading,
+    TResult Function(FarmhubUser user)? registerSuccess,
+    TResult Function(String code, String message)? registerError,
+    TResult Function()? signOutLoading,
+    TResult Function()? signOutSuccess,
+    TResult Function(String code, String message)? signOutError,
+    TResult Function()? retrieveUserDataLoading,
+    TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
+    TResult Function(String code, String message)? retrieveUserDataError,
+    TResult Function()? isAdminLoading,
+    TResult Function(bool isAdmin)? isAdminSuccess,
+    TResult Function(String code, String message)? isAdminError,
+  }) {
+    return retrieveUserDataLoading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? idle,
+    TResult Function()? loading,
+    TResult Function()? loginLoading,
+    TResult Function(FarmhubUser user)? loginSuccess,
+    TResult Function(String code, String message)? loginError,
+    TResult Function()? registerLoading,
+    TResult Function(FarmhubUser user)? registerSuccess,
+    TResult Function(String code, String message)? registerError,
+    TResult Function()? signOutLoading,
+    TResult Function()? signOutSuccess,
+    TResult Function(String code, String message)? signOutError,
+    TResult Function()? retrieveUserDataLoading,
+    TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
+    TResult Function(String code, String message)? retrieveUserDataError,
+    TResult Function()? isAdminLoading,
+    TResult Function(bool isAdmin)? isAdminSuccess,
+    TResult Function(String code, String message)? isAdminError,
+    required TResult orElse(),
+  }) {
+    if (retrieveUserDataLoading != null) {
+      return retrieveUserDataLoading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ASInitial value) initial,
+    required TResult Function(ASIdle value) idle,
+    required TResult Function(ASLoading value) loading,
+    required TResult Function(ASLoginLoading value) loginLoading,
+    required TResult Function(ASLoginSuccess value) loginSuccess,
+    required TResult Function(ASLoginError value) loginError,
+    required TResult Function(ASRegisterLoading value) registerLoading,
+    required TResult Function(ASRegisterSuccess value) registerSuccess,
+    required TResult Function(ASRegisterError value) registerError,
+    required TResult Function(ASSignOutLoading value) signOutLoading,
+    required TResult Function(ASSignOutSuccess value) signOutSuccess,
+    required TResult Function(ASSignOutError value) signOutError,
+    required TResult Function(ASRetrieveUserDataLoading value)
+        retrieveUserDataLoading,
+    required TResult Function(ASRetrieveUserDataSuccess value)
+        retrieveUserDataSuccess,
+    required TResult Function(ASRetrieveUserDataError value)
+        retrieveUserDataError,
+    required TResult Function(ASIsAdminLoading value) isAdminLoading,
+    required TResult Function(ASIsAdminSuccess value) isAdminSuccess,
+    required TResult Function(ASIsAdminError value) isAdminError,
+  }) {
+    return retrieveUserDataLoading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(ASInitial value)? initial,
+    TResult Function(ASIdle value)? idle,
+    TResult Function(ASLoading value)? loading,
+    TResult Function(ASLoginLoading value)? loginLoading,
+    TResult Function(ASLoginSuccess value)? loginSuccess,
+    TResult Function(ASLoginError value)? loginError,
+    TResult Function(ASRegisterLoading value)? registerLoading,
+    TResult Function(ASRegisterSuccess value)? registerSuccess,
+    TResult Function(ASRegisterError value)? registerError,
+    TResult Function(ASSignOutLoading value)? signOutLoading,
+    TResult Function(ASSignOutSuccess value)? signOutSuccess,
+    TResult Function(ASSignOutError value)? signOutError,
+    TResult Function(ASRetrieveUserDataLoading value)? retrieveUserDataLoading,
+    TResult Function(ASRetrieveUserDataSuccess value)? retrieveUserDataSuccess,
+    TResult Function(ASRetrieveUserDataError value)? retrieveUserDataError,
+    TResult Function(ASIsAdminLoading value)? isAdminLoading,
+    TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
+    TResult Function(ASIsAdminError value)? isAdminError,
+  }) {
+    return retrieveUserDataLoading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ASInitial value)? initial,
+    TResult Function(ASIdle value)? idle,
+    TResult Function(ASLoading value)? loading,
+    TResult Function(ASLoginLoading value)? loginLoading,
+    TResult Function(ASLoginSuccess value)? loginSuccess,
+    TResult Function(ASLoginError value)? loginError,
+    TResult Function(ASRegisterLoading value)? registerLoading,
+    TResult Function(ASRegisterSuccess value)? registerSuccess,
+    TResult Function(ASRegisterError value)? registerError,
+    TResult Function(ASSignOutLoading value)? signOutLoading,
+    TResult Function(ASSignOutSuccess value)? signOutSuccess,
+    TResult Function(ASSignOutError value)? signOutError,
+    TResult Function(ASRetrieveUserDataLoading value)? retrieveUserDataLoading,
+    TResult Function(ASRetrieveUserDataSuccess value)? retrieveUserDataSuccess,
+    TResult Function(ASRetrieveUserDataError value)? retrieveUserDataError,
+    TResult Function(ASIsAdminLoading value)? isAdminLoading,
+    TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
+    TResult Function(ASIsAdminError value)? isAdminError,
+    required TResult orElse(),
+  }) {
+    if (retrieveUserDataLoading != null) {
+      return retrieveUserDataLoading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ASRetrieveUserDataLoading implements AuthState {
+  const factory ASRetrieveUserDataLoading() = _$ASRetrieveUserDataLoading;
+}
+
+/// @nodoc
+abstract class $ASRetrieveUserDataSuccessCopyWith<$Res> {
+  factory $ASRetrieveUserDataSuccessCopyWith(ASRetrieveUserDataSuccess value,
+          $Res Function(ASRetrieveUserDataSuccess) then) =
+      _$ASRetrieveUserDataSuccessCopyWithImpl<$Res>;
+  $Res call({FarmhubUser farmhubUser});
+
+  $FarmhubUserCopyWith<$Res> get farmhubUser;
+}
+
+/// @nodoc
+class _$ASRetrieveUserDataSuccessCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res>
+    implements $ASRetrieveUserDataSuccessCopyWith<$Res> {
+  _$ASRetrieveUserDataSuccessCopyWithImpl(ASRetrieveUserDataSuccess _value,
+      $Res Function(ASRetrieveUserDataSuccess) _then)
+      : super(_value, (v) => _then(v as ASRetrieveUserDataSuccess));
+
+  @override
+  ASRetrieveUserDataSuccess get _value =>
+      super._value as ASRetrieveUserDataSuccess;
+
+  @override
+  $Res call({
+    Object? farmhubUser = freezed,
+  }) {
+    return _then(ASRetrieveUserDataSuccess(
+      farmhubUser: farmhubUser == freezed
+          ? _value.farmhubUser
+          : farmhubUser // ignore: cast_nullable_to_non_nullable
+              as FarmhubUser,
+    ));
+  }
+
+  @override
+  $FarmhubUserCopyWith<$Res> get farmhubUser {
+    return $FarmhubUserCopyWith<$Res>(_value.farmhubUser, (value) {
+      return _then(_value.copyWith(farmhubUser: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$ASRetrieveUserDataSuccess implements ASRetrieveUserDataSuccess {
+  const _$ASRetrieveUserDataSuccess({required this.farmhubUser});
+
+  @override
+  final FarmhubUser farmhubUser;
+
+  @override
+  String toString() {
+    return 'AuthState.retrieveUserDataSuccess(farmhubUser: $farmhubUser)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is ASRetrieveUserDataSuccess &&
+            (identical(other.farmhubUser, farmhubUser) ||
+                other.farmhubUser == farmhubUser));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, farmhubUser);
+
+  @JsonKey(ignore: true)
+  @override
+  $ASRetrieveUserDataSuccessCopyWith<ASRetrieveUserDataSuccess> get copyWith =>
+      _$ASRetrieveUserDataSuccessCopyWithImpl<ASRetrieveUserDataSuccess>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() idle,
+    required TResult Function() loading,
+    required TResult Function() loginLoading,
+    required TResult Function(FarmhubUser user) loginSuccess,
+    required TResult Function(String code, String message) loginError,
+    required TResult Function() registerLoading,
+    required TResult Function(FarmhubUser user) registerSuccess,
+    required TResult Function(String code, String message) registerError,
+    required TResult Function() signOutLoading,
+    required TResult Function() signOutSuccess,
+    required TResult Function(String code, String message) signOutError,
+    required TResult Function() retrieveUserDataLoading,
+    required TResult Function(FarmhubUser farmhubUser) retrieveUserDataSuccess,
+    required TResult Function(String code, String message)
+        retrieveUserDataError,
+    required TResult Function() isAdminLoading,
+    required TResult Function(bool isAdmin) isAdminSuccess,
+    required TResult Function(String code, String message) isAdminError,
+  }) {
+    return retrieveUserDataSuccess(farmhubUser);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? idle,
+    TResult Function()? loading,
+    TResult Function()? loginLoading,
+    TResult Function(FarmhubUser user)? loginSuccess,
+    TResult Function(String code, String message)? loginError,
+    TResult Function()? registerLoading,
+    TResult Function(FarmhubUser user)? registerSuccess,
+    TResult Function(String code, String message)? registerError,
+    TResult Function()? signOutLoading,
+    TResult Function()? signOutSuccess,
+    TResult Function(String code, String message)? signOutError,
+    TResult Function()? retrieveUserDataLoading,
+    TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
+    TResult Function(String code, String message)? retrieveUserDataError,
+    TResult Function()? isAdminLoading,
+    TResult Function(bool isAdmin)? isAdminSuccess,
+    TResult Function(String code, String message)? isAdminError,
+  }) {
+    return retrieveUserDataSuccess?.call(farmhubUser);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? idle,
+    TResult Function()? loading,
+    TResult Function()? loginLoading,
+    TResult Function(FarmhubUser user)? loginSuccess,
+    TResult Function(String code, String message)? loginError,
+    TResult Function()? registerLoading,
+    TResult Function(FarmhubUser user)? registerSuccess,
+    TResult Function(String code, String message)? registerError,
+    TResult Function()? signOutLoading,
+    TResult Function()? signOutSuccess,
+    TResult Function(String code, String message)? signOutError,
+    TResult Function()? retrieveUserDataLoading,
+    TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
+    TResult Function(String code, String message)? retrieveUserDataError,
+    TResult Function()? isAdminLoading,
+    TResult Function(bool isAdmin)? isAdminSuccess,
+    TResult Function(String code, String message)? isAdminError,
+    required TResult orElse(),
+  }) {
+    if (retrieveUserDataSuccess != null) {
+      return retrieveUserDataSuccess(farmhubUser);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ASInitial value) initial,
+    required TResult Function(ASIdle value) idle,
+    required TResult Function(ASLoading value) loading,
+    required TResult Function(ASLoginLoading value) loginLoading,
+    required TResult Function(ASLoginSuccess value) loginSuccess,
+    required TResult Function(ASLoginError value) loginError,
+    required TResult Function(ASRegisterLoading value) registerLoading,
+    required TResult Function(ASRegisterSuccess value) registerSuccess,
+    required TResult Function(ASRegisterError value) registerError,
+    required TResult Function(ASSignOutLoading value) signOutLoading,
+    required TResult Function(ASSignOutSuccess value) signOutSuccess,
+    required TResult Function(ASSignOutError value) signOutError,
+    required TResult Function(ASRetrieveUserDataLoading value)
+        retrieveUserDataLoading,
+    required TResult Function(ASRetrieveUserDataSuccess value)
+        retrieveUserDataSuccess,
+    required TResult Function(ASRetrieveUserDataError value)
+        retrieveUserDataError,
+    required TResult Function(ASIsAdminLoading value) isAdminLoading,
+    required TResult Function(ASIsAdminSuccess value) isAdminSuccess,
+    required TResult Function(ASIsAdminError value) isAdminError,
+  }) {
+    return retrieveUserDataSuccess(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(ASInitial value)? initial,
+    TResult Function(ASIdle value)? idle,
+    TResult Function(ASLoading value)? loading,
+    TResult Function(ASLoginLoading value)? loginLoading,
+    TResult Function(ASLoginSuccess value)? loginSuccess,
+    TResult Function(ASLoginError value)? loginError,
+    TResult Function(ASRegisterLoading value)? registerLoading,
+    TResult Function(ASRegisterSuccess value)? registerSuccess,
+    TResult Function(ASRegisterError value)? registerError,
+    TResult Function(ASSignOutLoading value)? signOutLoading,
+    TResult Function(ASSignOutSuccess value)? signOutSuccess,
+    TResult Function(ASSignOutError value)? signOutError,
+    TResult Function(ASRetrieveUserDataLoading value)? retrieveUserDataLoading,
+    TResult Function(ASRetrieveUserDataSuccess value)? retrieveUserDataSuccess,
+    TResult Function(ASRetrieveUserDataError value)? retrieveUserDataError,
+    TResult Function(ASIsAdminLoading value)? isAdminLoading,
+    TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
+    TResult Function(ASIsAdminError value)? isAdminError,
+  }) {
+    return retrieveUserDataSuccess?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ASInitial value)? initial,
+    TResult Function(ASIdle value)? idle,
+    TResult Function(ASLoading value)? loading,
+    TResult Function(ASLoginLoading value)? loginLoading,
+    TResult Function(ASLoginSuccess value)? loginSuccess,
+    TResult Function(ASLoginError value)? loginError,
+    TResult Function(ASRegisterLoading value)? registerLoading,
+    TResult Function(ASRegisterSuccess value)? registerSuccess,
+    TResult Function(ASRegisterError value)? registerError,
+    TResult Function(ASSignOutLoading value)? signOutLoading,
+    TResult Function(ASSignOutSuccess value)? signOutSuccess,
+    TResult Function(ASSignOutError value)? signOutError,
+    TResult Function(ASRetrieveUserDataLoading value)? retrieveUserDataLoading,
+    TResult Function(ASRetrieveUserDataSuccess value)? retrieveUserDataSuccess,
+    TResult Function(ASRetrieveUserDataError value)? retrieveUserDataError,
+    TResult Function(ASIsAdminLoading value)? isAdminLoading,
+    TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
+    TResult Function(ASIsAdminError value)? isAdminError,
+    required TResult orElse(),
+  }) {
+    if (retrieveUserDataSuccess != null) {
+      return retrieveUserDataSuccess(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ASRetrieveUserDataSuccess implements AuthState {
+  const factory ASRetrieveUserDataSuccess({required FarmhubUser farmhubUser}) =
+      _$ASRetrieveUserDataSuccess;
+
+  FarmhubUser get farmhubUser;
+  @JsonKey(ignore: true)
+  $ASRetrieveUserDataSuccessCopyWith<ASRetrieveUserDataSuccess> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ASRetrieveUserDataErrorCopyWith<$Res> {
+  factory $ASRetrieveUserDataErrorCopyWith(ASRetrieveUserDataError value,
+          $Res Function(ASRetrieveUserDataError) then) =
+      _$ASRetrieveUserDataErrorCopyWithImpl<$Res>;
+  $Res call({String code, String message});
+}
+
+/// @nodoc
+class _$ASRetrieveUserDataErrorCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res>
+    implements $ASRetrieveUserDataErrorCopyWith<$Res> {
+  _$ASRetrieveUserDataErrorCopyWithImpl(ASRetrieveUserDataError _value,
+      $Res Function(ASRetrieveUserDataError) _then)
+      : super(_value, (v) => _then(v as ASRetrieveUserDataError));
+
+  @override
+  ASRetrieveUserDataError get _value => super._value as ASRetrieveUserDataError;
+
+  @override
+  $Res call({
+    Object? code = freezed,
+    Object? message = freezed,
+  }) {
+    return _then(ASRetrieveUserDataError(
+      code: code == freezed
+          ? _value.code
+          : code // ignore: cast_nullable_to_non_nullable
+              as String,
+      message: message == freezed
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ASRetrieveUserDataError implements ASRetrieveUserDataError {
+  const _$ASRetrieveUserDataError({required this.code, required this.message});
+
+  @override
+  final String code;
+  @override
+  final String message;
+
+  @override
+  String toString() {
+    return 'AuthState.retrieveUserDataError(code: $code, message: $message)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is ASRetrieveUserDataError &&
+            (identical(other.code, code) || other.code == code) &&
+            (identical(other.message, message) || other.message == message));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, code, message);
+
+  @JsonKey(ignore: true)
+  @override
+  $ASRetrieveUserDataErrorCopyWith<ASRetrieveUserDataError> get copyWith =>
+      _$ASRetrieveUserDataErrorCopyWithImpl<ASRetrieveUserDataError>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() idle,
+    required TResult Function() loading,
+    required TResult Function() loginLoading,
+    required TResult Function(FarmhubUser user) loginSuccess,
+    required TResult Function(String code, String message) loginError,
+    required TResult Function() registerLoading,
+    required TResult Function(FarmhubUser user) registerSuccess,
+    required TResult Function(String code, String message) registerError,
+    required TResult Function() signOutLoading,
+    required TResult Function() signOutSuccess,
+    required TResult Function(String code, String message) signOutError,
+    required TResult Function() retrieveUserDataLoading,
+    required TResult Function(FarmhubUser farmhubUser) retrieveUserDataSuccess,
+    required TResult Function(String code, String message)
+        retrieveUserDataError,
+    required TResult Function() isAdminLoading,
+    required TResult Function(bool isAdmin) isAdminSuccess,
+    required TResult Function(String code, String message) isAdminError,
+  }) {
+    return retrieveUserDataError(code, message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? idle,
+    TResult Function()? loading,
+    TResult Function()? loginLoading,
+    TResult Function(FarmhubUser user)? loginSuccess,
+    TResult Function(String code, String message)? loginError,
+    TResult Function()? registerLoading,
+    TResult Function(FarmhubUser user)? registerSuccess,
+    TResult Function(String code, String message)? registerError,
+    TResult Function()? signOutLoading,
+    TResult Function()? signOutSuccess,
+    TResult Function(String code, String message)? signOutError,
+    TResult Function()? retrieveUserDataLoading,
+    TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
+    TResult Function(String code, String message)? retrieveUserDataError,
+    TResult Function()? isAdminLoading,
+    TResult Function(bool isAdmin)? isAdminSuccess,
+    TResult Function(String code, String message)? isAdminError,
+  }) {
+    return retrieveUserDataError?.call(code, message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? idle,
+    TResult Function()? loading,
+    TResult Function()? loginLoading,
+    TResult Function(FarmhubUser user)? loginSuccess,
+    TResult Function(String code, String message)? loginError,
+    TResult Function()? registerLoading,
+    TResult Function(FarmhubUser user)? registerSuccess,
+    TResult Function(String code, String message)? registerError,
+    TResult Function()? signOutLoading,
+    TResult Function()? signOutSuccess,
+    TResult Function(String code, String message)? signOutError,
+    TResult Function()? retrieveUserDataLoading,
+    TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
+    TResult Function(String code, String message)? retrieveUserDataError,
+    TResult Function()? isAdminLoading,
+    TResult Function(bool isAdmin)? isAdminSuccess,
+    TResult Function(String code, String message)? isAdminError,
+    required TResult orElse(),
+  }) {
+    if (retrieveUserDataError != null) {
+      return retrieveUserDataError(code, message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ASInitial value) initial,
+    required TResult Function(ASIdle value) idle,
+    required TResult Function(ASLoading value) loading,
+    required TResult Function(ASLoginLoading value) loginLoading,
+    required TResult Function(ASLoginSuccess value) loginSuccess,
+    required TResult Function(ASLoginError value) loginError,
+    required TResult Function(ASRegisterLoading value) registerLoading,
+    required TResult Function(ASRegisterSuccess value) registerSuccess,
+    required TResult Function(ASRegisterError value) registerError,
+    required TResult Function(ASSignOutLoading value) signOutLoading,
+    required TResult Function(ASSignOutSuccess value) signOutSuccess,
+    required TResult Function(ASSignOutError value) signOutError,
+    required TResult Function(ASRetrieveUserDataLoading value)
+        retrieveUserDataLoading,
+    required TResult Function(ASRetrieveUserDataSuccess value)
+        retrieveUserDataSuccess,
+    required TResult Function(ASRetrieveUserDataError value)
+        retrieveUserDataError,
+    required TResult Function(ASIsAdminLoading value) isAdminLoading,
+    required TResult Function(ASIsAdminSuccess value) isAdminSuccess,
+    required TResult Function(ASIsAdminError value) isAdminError,
+  }) {
+    return retrieveUserDataError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(ASInitial value)? initial,
+    TResult Function(ASIdle value)? idle,
+    TResult Function(ASLoading value)? loading,
+    TResult Function(ASLoginLoading value)? loginLoading,
+    TResult Function(ASLoginSuccess value)? loginSuccess,
+    TResult Function(ASLoginError value)? loginError,
+    TResult Function(ASRegisterLoading value)? registerLoading,
+    TResult Function(ASRegisterSuccess value)? registerSuccess,
+    TResult Function(ASRegisterError value)? registerError,
+    TResult Function(ASSignOutLoading value)? signOutLoading,
+    TResult Function(ASSignOutSuccess value)? signOutSuccess,
+    TResult Function(ASSignOutError value)? signOutError,
+    TResult Function(ASRetrieveUserDataLoading value)? retrieveUserDataLoading,
+    TResult Function(ASRetrieveUserDataSuccess value)? retrieveUserDataSuccess,
+    TResult Function(ASRetrieveUserDataError value)? retrieveUserDataError,
+    TResult Function(ASIsAdminLoading value)? isAdminLoading,
+    TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
+    TResult Function(ASIsAdminError value)? isAdminError,
+  }) {
+    return retrieveUserDataError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ASInitial value)? initial,
+    TResult Function(ASIdle value)? idle,
+    TResult Function(ASLoading value)? loading,
+    TResult Function(ASLoginLoading value)? loginLoading,
+    TResult Function(ASLoginSuccess value)? loginSuccess,
+    TResult Function(ASLoginError value)? loginError,
+    TResult Function(ASRegisterLoading value)? registerLoading,
+    TResult Function(ASRegisterSuccess value)? registerSuccess,
+    TResult Function(ASRegisterError value)? registerError,
+    TResult Function(ASSignOutLoading value)? signOutLoading,
+    TResult Function(ASSignOutSuccess value)? signOutSuccess,
+    TResult Function(ASSignOutError value)? signOutError,
+    TResult Function(ASRetrieveUserDataLoading value)? retrieveUserDataLoading,
+    TResult Function(ASRetrieveUserDataSuccess value)? retrieveUserDataSuccess,
+    TResult Function(ASRetrieveUserDataError value)? retrieveUserDataError,
+    TResult Function(ASIsAdminLoading value)? isAdminLoading,
+    TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
+    TResult Function(ASIsAdminError value)? isAdminError,
+    required TResult orElse(),
+  }) {
+    if (retrieveUserDataError != null) {
+      return retrieveUserDataError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ASRetrieveUserDataError implements AuthState {
+  const factory ASRetrieveUserDataError(
+      {required String code,
+      required String message}) = _$ASRetrieveUserDataError;
+
+  String get code;
+  String get message;
+  @JsonKey(ignore: true)
+  $ASRetrieveUserDataErrorCopyWith<ASRetrieveUserDataError> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ASIsAdminLoadingCopyWith<$Res> {
+  factory $ASIsAdminLoadingCopyWith(
+          ASIsAdminLoading value, $Res Function(ASIsAdminLoading) then) =
+      _$ASIsAdminLoadingCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$ASIsAdminLoadingCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
+    implements $ASIsAdminLoadingCopyWith<$Res> {
+  _$ASIsAdminLoadingCopyWithImpl(
+      ASIsAdminLoading _value, $Res Function(ASIsAdminLoading) _then)
+      : super(_value, (v) => _then(v as ASIsAdminLoading));
+
+  @override
+  ASIsAdminLoading get _value => super._value as ASIsAdminLoading;
+}
+
+/// @nodoc
+
+class _$ASIsAdminLoading implements ASIsAdminLoading {
+  const _$ASIsAdminLoading();
+
+  @override
+  String toString() {
+    return 'AuthState.isAdminLoading()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is ASIsAdminLoading);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() idle,
+    required TResult Function() loading,
+    required TResult Function() loginLoading,
+    required TResult Function(FarmhubUser user) loginSuccess,
+    required TResult Function(String code, String message) loginError,
+    required TResult Function() registerLoading,
+    required TResult Function(FarmhubUser user) registerSuccess,
+    required TResult Function(String code, String message) registerError,
+    required TResult Function() signOutLoading,
+    required TResult Function() signOutSuccess,
+    required TResult Function(String code, String message) signOutError,
+    required TResult Function() retrieveUserDataLoading,
+    required TResult Function(FarmhubUser farmhubUser) retrieveUserDataSuccess,
+    required TResult Function(String code, String message)
+        retrieveUserDataError,
+    required TResult Function() isAdminLoading,
+    required TResult Function(bool isAdmin) isAdminSuccess,
+    required TResult Function(String code, String message) isAdminError,
+  }) {
+    return isAdminLoading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? idle,
+    TResult Function()? loading,
+    TResult Function()? loginLoading,
+    TResult Function(FarmhubUser user)? loginSuccess,
+    TResult Function(String code, String message)? loginError,
+    TResult Function()? registerLoading,
+    TResult Function(FarmhubUser user)? registerSuccess,
+    TResult Function(String code, String message)? registerError,
+    TResult Function()? signOutLoading,
+    TResult Function()? signOutSuccess,
+    TResult Function(String code, String message)? signOutError,
+    TResult Function()? retrieveUserDataLoading,
+    TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
+    TResult Function(String code, String message)? retrieveUserDataError,
+    TResult Function()? isAdminLoading,
+    TResult Function(bool isAdmin)? isAdminSuccess,
+    TResult Function(String code, String message)? isAdminError,
+  }) {
+    return isAdminLoading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? idle,
+    TResult Function()? loading,
+    TResult Function()? loginLoading,
+    TResult Function(FarmhubUser user)? loginSuccess,
+    TResult Function(String code, String message)? loginError,
+    TResult Function()? registerLoading,
+    TResult Function(FarmhubUser user)? registerSuccess,
+    TResult Function(String code, String message)? registerError,
+    TResult Function()? signOutLoading,
+    TResult Function()? signOutSuccess,
+    TResult Function(String code, String message)? signOutError,
+    TResult Function()? retrieveUserDataLoading,
+    TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
+    TResult Function(String code, String message)? retrieveUserDataError,
+    TResult Function()? isAdminLoading,
+    TResult Function(bool isAdmin)? isAdminSuccess,
+    TResult Function(String code, String message)? isAdminError,
+    required TResult orElse(),
+  }) {
+    if (isAdminLoading != null) {
+      return isAdminLoading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ASInitial value) initial,
+    required TResult Function(ASIdle value) idle,
+    required TResult Function(ASLoading value) loading,
+    required TResult Function(ASLoginLoading value) loginLoading,
+    required TResult Function(ASLoginSuccess value) loginSuccess,
+    required TResult Function(ASLoginError value) loginError,
+    required TResult Function(ASRegisterLoading value) registerLoading,
+    required TResult Function(ASRegisterSuccess value) registerSuccess,
+    required TResult Function(ASRegisterError value) registerError,
+    required TResult Function(ASSignOutLoading value) signOutLoading,
+    required TResult Function(ASSignOutSuccess value) signOutSuccess,
+    required TResult Function(ASSignOutError value) signOutError,
+    required TResult Function(ASRetrieveUserDataLoading value)
+        retrieveUserDataLoading,
+    required TResult Function(ASRetrieveUserDataSuccess value)
+        retrieveUserDataSuccess,
+    required TResult Function(ASRetrieveUserDataError value)
+        retrieveUserDataError,
+    required TResult Function(ASIsAdminLoading value) isAdminLoading,
+    required TResult Function(ASIsAdminSuccess value) isAdminSuccess,
+    required TResult Function(ASIsAdminError value) isAdminError,
+  }) {
+    return isAdminLoading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(ASInitial value)? initial,
+    TResult Function(ASIdle value)? idle,
+    TResult Function(ASLoading value)? loading,
+    TResult Function(ASLoginLoading value)? loginLoading,
+    TResult Function(ASLoginSuccess value)? loginSuccess,
+    TResult Function(ASLoginError value)? loginError,
+    TResult Function(ASRegisterLoading value)? registerLoading,
+    TResult Function(ASRegisterSuccess value)? registerSuccess,
+    TResult Function(ASRegisterError value)? registerError,
+    TResult Function(ASSignOutLoading value)? signOutLoading,
+    TResult Function(ASSignOutSuccess value)? signOutSuccess,
+    TResult Function(ASSignOutError value)? signOutError,
+    TResult Function(ASRetrieveUserDataLoading value)? retrieveUserDataLoading,
+    TResult Function(ASRetrieveUserDataSuccess value)? retrieveUserDataSuccess,
+    TResult Function(ASRetrieveUserDataError value)? retrieveUserDataError,
+    TResult Function(ASIsAdminLoading value)? isAdminLoading,
+    TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
+    TResult Function(ASIsAdminError value)? isAdminError,
+  }) {
+    return isAdminLoading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ASInitial value)? initial,
+    TResult Function(ASIdle value)? idle,
+    TResult Function(ASLoading value)? loading,
+    TResult Function(ASLoginLoading value)? loginLoading,
+    TResult Function(ASLoginSuccess value)? loginSuccess,
+    TResult Function(ASLoginError value)? loginError,
+    TResult Function(ASRegisterLoading value)? registerLoading,
+    TResult Function(ASRegisterSuccess value)? registerSuccess,
+    TResult Function(ASRegisterError value)? registerError,
+    TResult Function(ASSignOutLoading value)? signOutLoading,
+    TResult Function(ASSignOutSuccess value)? signOutSuccess,
+    TResult Function(ASSignOutError value)? signOutError,
+    TResult Function(ASRetrieveUserDataLoading value)? retrieveUserDataLoading,
+    TResult Function(ASRetrieveUserDataSuccess value)? retrieveUserDataSuccess,
+    TResult Function(ASRetrieveUserDataError value)? retrieveUserDataError,
+    TResult Function(ASIsAdminLoading value)? isAdminLoading,
+    TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
+    TResult Function(ASIsAdminError value)? isAdminError,
+    required TResult orElse(),
+  }) {
+    if (isAdminLoading != null) {
+      return isAdminLoading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ASIsAdminLoading implements AuthState {
+  const factory ASIsAdminLoading() = _$ASIsAdminLoading;
+}
+
+/// @nodoc
+abstract class $ASIsAdminSuccessCopyWith<$Res> {
+  factory $ASIsAdminSuccessCopyWith(
+          ASIsAdminSuccess value, $Res Function(ASIsAdminSuccess) then) =
+      _$ASIsAdminSuccessCopyWithImpl<$Res>;
+  $Res call({bool isAdmin});
+}
+
+/// @nodoc
+class _$ASIsAdminSuccessCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
+    implements $ASIsAdminSuccessCopyWith<$Res> {
+  _$ASIsAdminSuccessCopyWithImpl(
+      ASIsAdminSuccess _value, $Res Function(ASIsAdminSuccess) _then)
+      : super(_value, (v) => _then(v as ASIsAdminSuccess));
+
+  @override
+  ASIsAdminSuccess get _value => super._value as ASIsAdminSuccess;
+
+  @override
+  $Res call({
+    Object? isAdmin = freezed,
+  }) {
+    return _then(ASIsAdminSuccess(
+      isAdmin: isAdmin == freezed
+          ? _value.isAdmin
+          : isAdmin // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ASIsAdminSuccess implements ASIsAdminSuccess {
+  const _$ASIsAdminSuccess({required this.isAdmin});
+
+  @override
+  final bool isAdmin;
+
+  @override
+  String toString() {
+    return 'AuthState.isAdminSuccess(isAdmin: $isAdmin)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is ASIsAdminSuccess &&
+            (identical(other.isAdmin, isAdmin) || other.isAdmin == isAdmin));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, isAdmin);
+
+  @JsonKey(ignore: true)
+  @override
+  $ASIsAdminSuccessCopyWith<ASIsAdminSuccess> get copyWith =>
+      _$ASIsAdminSuccessCopyWithImpl<ASIsAdminSuccess>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() idle,
+    required TResult Function() loading,
+    required TResult Function() loginLoading,
+    required TResult Function(FarmhubUser user) loginSuccess,
+    required TResult Function(String code, String message) loginError,
+    required TResult Function() registerLoading,
+    required TResult Function(FarmhubUser user) registerSuccess,
+    required TResult Function(String code, String message) registerError,
+    required TResult Function() signOutLoading,
+    required TResult Function() signOutSuccess,
+    required TResult Function(String code, String message) signOutError,
+    required TResult Function() retrieveUserDataLoading,
+    required TResult Function(FarmhubUser farmhubUser) retrieveUserDataSuccess,
+    required TResult Function(String code, String message)
+        retrieveUserDataError,
+    required TResult Function() isAdminLoading,
+    required TResult Function(bool isAdmin) isAdminSuccess,
+    required TResult Function(String code, String message) isAdminError,
+  }) {
+    return isAdminSuccess(isAdmin);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? idle,
+    TResult Function()? loading,
+    TResult Function()? loginLoading,
+    TResult Function(FarmhubUser user)? loginSuccess,
+    TResult Function(String code, String message)? loginError,
+    TResult Function()? registerLoading,
+    TResult Function(FarmhubUser user)? registerSuccess,
+    TResult Function(String code, String message)? registerError,
+    TResult Function()? signOutLoading,
+    TResult Function()? signOutSuccess,
+    TResult Function(String code, String message)? signOutError,
+    TResult Function()? retrieveUserDataLoading,
+    TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
+    TResult Function(String code, String message)? retrieveUserDataError,
+    TResult Function()? isAdminLoading,
+    TResult Function(bool isAdmin)? isAdminSuccess,
+    TResult Function(String code, String message)? isAdminError,
+  }) {
+    return isAdminSuccess?.call(isAdmin);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? idle,
+    TResult Function()? loading,
+    TResult Function()? loginLoading,
+    TResult Function(FarmhubUser user)? loginSuccess,
+    TResult Function(String code, String message)? loginError,
+    TResult Function()? registerLoading,
+    TResult Function(FarmhubUser user)? registerSuccess,
+    TResult Function(String code, String message)? registerError,
+    TResult Function()? signOutLoading,
+    TResult Function()? signOutSuccess,
+    TResult Function(String code, String message)? signOutError,
+    TResult Function()? retrieveUserDataLoading,
+    TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
+    TResult Function(String code, String message)? retrieveUserDataError,
+    TResult Function()? isAdminLoading,
+    TResult Function(bool isAdmin)? isAdminSuccess,
+    TResult Function(String code, String message)? isAdminError,
+    required TResult orElse(),
+  }) {
+    if (isAdminSuccess != null) {
+      return isAdminSuccess(isAdmin);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ASInitial value) initial,
+    required TResult Function(ASIdle value) idle,
+    required TResult Function(ASLoading value) loading,
+    required TResult Function(ASLoginLoading value) loginLoading,
+    required TResult Function(ASLoginSuccess value) loginSuccess,
+    required TResult Function(ASLoginError value) loginError,
+    required TResult Function(ASRegisterLoading value) registerLoading,
+    required TResult Function(ASRegisterSuccess value) registerSuccess,
+    required TResult Function(ASRegisterError value) registerError,
+    required TResult Function(ASSignOutLoading value) signOutLoading,
+    required TResult Function(ASSignOutSuccess value) signOutSuccess,
+    required TResult Function(ASSignOutError value) signOutError,
+    required TResult Function(ASRetrieveUserDataLoading value)
+        retrieveUserDataLoading,
+    required TResult Function(ASRetrieveUserDataSuccess value)
+        retrieveUserDataSuccess,
+    required TResult Function(ASRetrieveUserDataError value)
+        retrieveUserDataError,
+    required TResult Function(ASIsAdminLoading value) isAdminLoading,
+    required TResult Function(ASIsAdminSuccess value) isAdminSuccess,
+    required TResult Function(ASIsAdminError value) isAdminError,
+  }) {
+    return isAdminSuccess(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(ASInitial value)? initial,
+    TResult Function(ASIdle value)? idle,
+    TResult Function(ASLoading value)? loading,
+    TResult Function(ASLoginLoading value)? loginLoading,
+    TResult Function(ASLoginSuccess value)? loginSuccess,
+    TResult Function(ASLoginError value)? loginError,
+    TResult Function(ASRegisterLoading value)? registerLoading,
+    TResult Function(ASRegisterSuccess value)? registerSuccess,
+    TResult Function(ASRegisterError value)? registerError,
+    TResult Function(ASSignOutLoading value)? signOutLoading,
+    TResult Function(ASSignOutSuccess value)? signOutSuccess,
+    TResult Function(ASSignOutError value)? signOutError,
+    TResult Function(ASRetrieveUserDataLoading value)? retrieveUserDataLoading,
+    TResult Function(ASRetrieveUserDataSuccess value)? retrieveUserDataSuccess,
+    TResult Function(ASRetrieveUserDataError value)? retrieveUserDataError,
+    TResult Function(ASIsAdminLoading value)? isAdminLoading,
+    TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
+    TResult Function(ASIsAdminError value)? isAdminError,
+  }) {
+    return isAdminSuccess?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ASInitial value)? initial,
+    TResult Function(ASIdle value)? idle,
+    TResult Function(ASLoading value)? loading,
+    TResult Function(ASLoginLoading value)? loginLoading,
+    TResult Function(ASLoginSuccess value)? loginSuccess,
+    TResult Function(ASLoginError value)? loginError,
+    TResult Function(ASRegisterLoading value)? registerLoading,
+    TResult Function(ASRegisterSuccess value)? registerSuccess,
+    TResult Function(ASRegisterError value)? registerError,
+    TResult Function(ASSignOutLoading value)? signOutLoading,
+    TResult Function(ASSignOutSuccess value)? signOutSuccess,
+    TResult Function(ASSignOutError value)? signOutError,
+    TResult Function(ASRetrieveUserDataLoading value)? retrieveUserDataLoading,
+    TResult Function(ASRetrieveUserDataSuccess value)? retrieveUserDataSuccess,
+    TResult Function(ASRetrieveUserDataError value)? retrieveUserDataError,
+    TResult Function(ASIsAdminLoading value)? isAdminLoading,
+    TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
+    TResult Function(ASIsAdminError value)? isAdminError,
+    required TResult orElse(),
+  }) {
+    if (isAdminSuccess != null) {
+      return isAdminSuccess(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ASIsAdminSuccess implements AuthState {
+  const factory ASIsAdminSuccess({required bool isAdmin}) = _$ASIsAdminSuccess;
+
+  bool get isAdmin;
+  @JsonKey(ignore: true)
+  $ASIsAdminSuccessCopyWith<ASIsAdminSuccess> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ASIsAdminErrorCopyWith<$Res> {
+  factory $ASIsAdminErrorCopyWith(
+          ASIsAdminError value, $Res Function(ASIsAdminError) then) =
+      _$ASIsAdminErrorCopyWithImpl<$Res>;
+  $Res call({String code, String message});
+}
+
+/// @nodoc
+class _$ASIsAdminErrorCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
+    implements $ASIsAdminErrorCopyWith<$Res> {
+  _$ASIsAdminErrorCopyWithImpl(
+      ASIsAdminError _value, $Res Function(ASIsAdminError) _then)
+      : super(_value, (v) => _then(v as ASIsAdminError));
+
+  @override
+  ASIsAdminError get _value => super._value as ASIsAdminError;
+
+  @override
+  $Res call({
+    Object? code = freezed,
+    Object? message = freezed,
+  }) {
+    return _then(ASIsAdminError(
+      code: code == freezed
+          ? _value.code
+          : code // ignore: cast_nullable_to_non_nullable
+              as String,
+      message: message == freezed
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ASIsAdminError implements ASIsAdminError {
+  const _$ASIsAdminError({required this.code, required this.message});
+
+  @override
+  final String code;
+  @override
+  final String message;
+
+  @override
+  String toString() {
+    return 'AuthState.isAdminError(code: $code, message: $message)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is ASIsAdminError &&
+            (identical(other.code, code) || other.code == code) &&
+            (identical(other.message, message) || other.message == message));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, code, message);
+
+  @JsonKey(ignore: true)
+  @override
+  $ASIsAdminErrorCopyWith<ASIsAdminError> get copyWith =>
+      _$ASIsAdminErrorCopyWithImpl<ASIsAdminError>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() idle,
+    required TResult Function() loading,
+    required TResult Function() loginLoading,
+    required TResult Function(FarmhubUser user) loginSuccess,
+    required TResult Function(String code, String message) loginError,
+    required TResult Function() registerLoading,
+    required TResult Function(FarmhubUser user) registerSuccess,
+    required TResult Function(String code, String message) registerError,
+    required TResult Function() signOutLoading,
+    required TResult Function() signOutSuccess,
+    required TResult Function(String code, String message) signOutError,
+    required TResult Function() retrieveUserDataLoading,
+    required TResult Function(FarmhubUser farmhubUser) retrieveUserDataSuccess,
+    required TResult Function(String code, String message)
+        retrieveUserDataError,
+    required TResult Function() isAdminLoading,
+    required TResult Function(bool isAdmin) isAdminSuccess,
+    required TResult Function(String code, String message) isAdminError,
+  }) {
+    return isAdminError(code, message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? idle,
+    TResult Function()? loading,
+    TResult Function()? loginLoading,
+    TResult Function(FarmhubUser user)? loginSuccess,
+    TResult Function(String code, String message)? loginError,
+    TResult Function()? registerLoading,
+    TResult Function(FarmhubUser user)? registerSuccess,
+    TResult Function(String code, String message)? registerError,
+    TResult Function()? signOutLoading,
+    TResult Function()? signOutSuccess,
+    TResult Function(String code, String message)? signOutError,
+    TResult Function()? retrieveUserDataLoading,
+    TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
+    TResult Function(String code, String message)? retrieveUserDataError,
+    TResult Function()? isAdminLoading,
+    TResult Function(bool isAdmin)? isAdminSuccess,
+    TResult Function(String code, String message)? isAdminError,
+  }) {
+    return isAdminError?.call(code, message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? idle,
+    TResult Function()? loading,
+    TResult Function()? loginLoading,
+    TResult Function(FarmhubUser user)? loginSuccess,
+    TResult Function(String code, String message)? loginError,
+    TResult Function()? registerLoading,
+    TResult Function(FarmhubUser user)? registerSuccess,
+    TResult Function(String code, String message)? registerError,
+    TResult Function()? signOutLoading,
+    TResult Function()? signOutSuccess,
+    TResult Function(String code, String message)? signOutError,
+    TResult Function()? retrieveUserDataLoading,
+    TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
+    TResult Function(String code, String message)? retrieveUserDataError,
+    TResult Function()? isAdminLoading,
+    TResult Function(bool isAdmin)? isAdminSuccess,
+    TResult Function(String code, String message)? isAdminError,
+    required TResult orElse(),
+  }) {
+    if (isAdminError != null) {
+      return isAdminError(code, message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ASInitial value) initial,
+    required TResult Function(ASIdle value) idle,
+    required TResult Function(ASLoading value) loading,
+    required TResult Function(ASLoginLoading value) loginLoading,
+    required TResult Function(ASLoginSuccess value) loginSuccess,
+    required TResult Function(ASLoginError value) loginError,
+    required TResult Function(ASRegisterLoading value) registerLoading,
+    required TResult Function(ASRegisterSuccess value) registerSuccess,
+    required TResult Function(ASRegisterError value) registerError,
+    required TResult Function(ASSignOutLoading value) signOutLoading,
+    required TResult Function(ASSignOutSuccess value) signOutSuccess,
+    required TResult Function(ASSignOutError value) signOutError,
+    required TResult Function(ASRetrieveUserDataLoading value)
+        retrieveUserDataLoading,
+    required TResult Function(ASRetrieveUserDataSuccess value)
+        retrieveUserDataSuccess,
+    required TResult Function(ASRetrieveUserDataError value)
+        retrieveUserDataError,
+    required TResult Function(ASIsAdminLoading value) isAdminLoading,
+    required TResult Function(ASIsAdminSuccess value) isAdminSuccess,
+    required TResult Function(ASIsAdminError value) isAdminError,
+  }) {
+    return isAdminError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(ASInitial value)? initial,
+    TResult Function(ASIdle value)? idle,
+    TResult Function(ASLoading value)? loading,
+    TResult Function(ASLoginLoading value)? loginLoading,
+    TResult Function(ASLoginSuccess value)? loginSuccess,
+    TResult Function(ASLoginError value)? loginError,
+    TResult Function(ASRegisterLoading value)? registerLoading,
+    TResult Function(ASRegisterSuccess value)? registerSuccess,
+    TResult Function(ASRegisterError value)? registerError,
+    TResult Function(ASSignOutLoading value)? signOutLoading,
+    TResult Function(ASSignOutSuccess value)? signOutSuccess,
+    TResult Function(ASSignOutError value)? signOutError,
+    TResult Function(ASRetrieveUserDataLoading value)? retrieveUserDataLoading,
+    TResult Function(ASRetrieveUserDataSuccess value)? retrieveUserDataSuccess,
+    TResult Function(ASRetrieveUserDataError value)? retrieveUserDataError,
+    TResult Function(ASIsAdminLoading value)? isAdminLoading,
+    TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
+    TResult Function(ASIsAdminError value)? isAdminError,
+  }) {
+    return isAdminError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ASInitial value)? initial,
+    TResult Function(ASIdle value)? idle,
+    TResult Function(ASLoading value)? loading,
+    TResult Function(ASLoginLoading value)? loginLoading,
+    TResult Function(ASLoginSuccess value)? loginSuccess,
+    TResult Function(ASLoginError value)? loginError,
+    TResult Function(ASRegisterLoading value)? registerLoading,
+    TResult Function(ASRegisterSuccess value)? registerSuccess,
+    TResult Function(ASRegisterError value)? registerError,
+    TResult Function(ASSignOutLoading value)? signOutLoading,
+    TResult Function(ASSignOutSuccess value)? signOutSuccess,
+    TResult Function(ASSignOutError value)? signOutError,
+    TResult Function(ASRetrieveUserDataLoading value)? retrieveUserDataLoading,
+    TResult Function(ASRetrieveUserDataSuccess value)? retrieveUserDataSuccess,
+    TResult Function(ASRetrieveUserDataError value)? retrieveUserDataError,
+    TResult Function(ASIsAdminLoading value)? isAdminLoading,
+    TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
+    TResult Function(ASIsAdminError value)? isAdminError,
+    required TResult orElse(),
+  }) {
+    if (isAdminError != null) {
+      return isAdminError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ASIsAdminError implements AuthState {
+  const factory ASIsAdminError(
+      {required String code, required String message}) = _$ASIsAdminError;
+
+  String get code;
+  String get message;
+  @JsonKey(ignore: true)
+  $ASIsAdminErrorCopyWith<ASIsAdminError> get copyWith =>
       throw _privateConstructorUsedError;
 }

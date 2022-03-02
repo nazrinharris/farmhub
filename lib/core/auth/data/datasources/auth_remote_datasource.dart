@@ -22,18 +22,20 @@ abstract class IAuthRemoteDataSource {
 
   Future<FarmhubUser> registerWithGoogleAccount();
 
+  Future<FarmhubUser> retrieveUserData();
+
+  Future<bool> isAdmin(String uid);
+
   Future<Unit> signOut();
 }
 
 class AuthRemoteDataSource implements IAuthRemoteDataSource {
   final FirebaseAuth firebaseAuth;
   final FirebaseFirestore firebaseFirestore;
-//  final Clock dartClock;
 
   AuthRemoteDataSource({
     required this.firebaseAuth,
     required this.firebaseFirestore,
-    // required this.dartClock
   });
 
   @override
@@ -69,9 +71,7 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
 
   @override
   Future<FarmhubUser> registerWithEmailAndPassword(
-      {required String email,
-      required String password,
-      required String username}) async {
+      {required String email, required String password, required String username}) async {
     /// Start Registration Process - Register Method at FirebaseAuth
     final resultUid = await firebaseAuth
         .createUserWithEmailAndPassword(email: email, password: password)
@@ -115,8 +115,44 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
   }
 
   @override
+  Future<FarmhubUser> retrieveUserData() async {
+    final user = firebaseAuth.currentUser;
+
+    if (user == null) {
+      // TODO: Make a proper constant error code.
+      throw FirebaseAuthException(code: 'user-not-signed-in', message: 'User is not signed in.');
+    } else {
+      final farmhubUser =
+          await firebaseFirestore.collection(FS_USER_COLLECTION).doc(user.uid).get();
+
+      if (farmhubUser == null) {
+        throw FirebaseException(
+          plugin: FS_PLUGIN,
+          code: FS_ERRCODE_JSON_NOT_FOUND,
+          message: 'User document not found.',
+          stackTrace: StackTrace.current,
+        );
+      } else {
+        return FarmhubUser.fromJson(farmhubUser.data()!);
+      }
+    }
+  }
+
+  @override
   Future<Unit> signOut() async {
     await firebaseAuth.signOut();
     return unit;
+  }
+
+  @override
+  Future<bool> isAdmin(String uid) async {
+    //TODO: Make proper constant collectionPath
+    final result = await firebaseFirestore.collection('admins').doc(uid).get();
+
+    if (result.data() == null) {
+      return false;
+    } else {
+      return true;
+    }
   }
 }

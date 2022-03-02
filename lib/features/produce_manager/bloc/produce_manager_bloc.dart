@@ -15,6 +15,7 @@ class ProduceManagerBloc extends Bloc<ProduceManagerEvent, ProduceManagerState> 
 
   ProduceManagerBloc({required this.repository}) : super(const PMSInitial()) {
     on<_PMEExecGetFirstTenProduce>(execGetFirstTenProduce);
+    on<_PMEExecCreateProduce>(execCreateNewProduce);
   }
 
   FutureOr<void> execGetFirstTenProduce(
@@ -28,5 +29,22 @@ class ProduceManagerBloc extends Bloc<ProduceManagerEvent, ProduceManagerState> 
     emit(failureOrList.fold(
         (f) => ProduceManagerState.getFirstTenProduceError(code: f.code!, message: f.message!),
         (list) => ProduceManagerState.getFirstTenProduceSuccess(produceList: list)));
+  }
+
+  FutureOr<void> execCreateNewProduce(
+    _PMEExecCreateProduce event,
+    Emitter<ProduceManagerState> emit,
+  ) async {
+    emit(const ProduceManagerState.createNewProduceLoading());
+
+    final failureOrProduce = await repository.createNewProduce(
+      produceName: event.produceName,
+      currentProducePrice: event.currentProducePrice,
+    );
+
+    emit(failureOrProduce.fold(
+      (f) => ProduceManagerState.createNewProduceError(code: f.code!, message: f.message!),
+      (produce) => ProduceManagerState.createNewProduceSuccess(produce: produce),
+    ));
   }
 }

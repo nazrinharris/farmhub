@@ -51,7 +51,8 @@ void main() {
           'should check device is online',
           () async {
             // arrange
-            when(() => mockRemoteDatasource.getFirstTenProduce()).thenAnswer((_) async => tFirstTenProduce);
+            when(() => mockRemoteDatasource.getFirstTenProduce())
+                .thenAnswer((_) async => tFirstTenProduce);
             // act
             await repository.getFirstTenProduce();
             // assert
@@ -63,7 +64,8 @@ void main() {
           'should return List<Produce> when request is succesfull',
           () async {
             // arrange
-            when(() => mockRemoteDatasource.getFirstTenProduce()).thenAnswer((_) async => tFirstTenProduce);
+            when(() => mockRemoteDatasource.getFirstTenProduce())
+                .thenAnswer((_) async => tFirstTenProduce);
             // act
             final result = await repository.getFirstTenProduce();
             // assert
@@ -99,6 +101,7 @@ List<Produce> tFirstTenProduce = [
       "updateDate": "10-11-1111",
     },
     weeklyPrices: [10.00, 20.00, 30.00, 20.00, 10.00, 0.00],
+    authorId: 'tauthorId',
   ),
   Produce(
     produceId: 'tpid',
@@ -112,6 +115,7 @@ List<Produce> tFirstTenProduce = [
       "updateDate": "10-11-1111",
     },
     weeklyPrices: [10.00, 20.00, 30.00, 20.00, 10.00, 0.00],
+    authorId: 'tauthorId',
   ),
   Produce(
     produceId: 'tpid',
@@ -125,5 +129,6 @@ List<Produce> tFirstTenProduce = [
       "updateDate": "10-11-1111",
     },
     weeklyPrices: [10.00, 20.00, 30.00, 20.00, 10.00, 0.00],
+    authorId: 'tauthorId',
   ),
 ];

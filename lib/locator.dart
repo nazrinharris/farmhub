@@ -49,6 +49,7 @@ void setupLocator() {
         networkInfo: locator(),
         remoteDatasource: locator(),
         localDatasource: locator(),
+        authRepository: locator(),
       ));
   // Datasources
   locator.registerLazySingleton<IProduceManagerRemoteDatasource>(

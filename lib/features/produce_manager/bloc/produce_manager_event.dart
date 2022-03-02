@@ -5,4 +5,9 @@ class ProduceManagerEvent with _$ProduceManagerEvent {
   const factory ProduceManagerEvent.started() = _Started;
 
   const factory ProduceManagerEvent.execGetFirstTenProduce() = _PMEExecGetFirstTenProduce;
+
+  const factory ProduceManagerEvent.execCreateProduce({
+    required String produceName,
+    required num currentProducePrice,
+  }) = _PMEExecCreateProduce;
 }

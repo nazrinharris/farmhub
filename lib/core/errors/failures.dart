@@ -37,9 +37,41 @@ class FirebaseAuthFailure extends Failure {
         );
 }
 
+class FirebaseFirestoreFailure extends Failure {
+  const FirebaseFirestoreFailure({
+    String? code,
+    String? message,
+  }) : super(
+          code: code,
+          message: message,
+        );
+}
+
 //! Explicit Connection Failures
 class InternetConnectionFailure extends Failure {
   const InternetConnectionFailure({
+    String? code,
+    String? message,
+  }) : super(
+          code: code,
+          message: message,
+        );
+}
+
+//! Core Failures
+class AuthFailure extends Failure {
+  const AuthFailure({
+    String? code,
+    String? message,
+  }) : super(
+          code: code,
+          message: message,
+        );
+}
+
+//! Feature Failures
+class ProduceManagerFailure extends Failure {
+  const ProduceManagerFailure({
     String? code,
     String? message,
   }) : super(

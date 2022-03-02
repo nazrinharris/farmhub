@@ -13,4 +13,14 @@ class ProduceManagerState with _$ProduceManagerState {
     required String code,
     required String message,
   }) = PMSGetFirstTenProduceError;
+
+  // Creating New Produce State
+  const factory ProduceManagerState.createNewProduceLoading() = PMSCreateNewProduceLoading;
+  const factory ProduceManagerState.createNewProduceSuccess({
+    required Produce produce,
+  }) = PMSCreateNewProduceSuccess;
+  const factory ProduceManagerState.createNewProduceError({
+    required String code,
+    required String message,
+  }) = PMSCreateNewProduceError;
 }

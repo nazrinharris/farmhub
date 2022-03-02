@@ -85,8 +85,8 @@ class FarmhubTheme {
         scaffoldBackgroundColor: _farmhubColorSchemeLight.background,
         backgroundColor: _farmhubColorSchemeLight.background,
         elevatedButtonTheme: _farmhubElevatedButtonThemeDataLight,
-        iconTheme: const IconThemeData(
-          color: Colors.white,
+        iconTheme: IconThemeData(
+          color: _farmhubColorSchemeLight.primary,
         )),
   };
 }

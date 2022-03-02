@@ -83,7 +83,6 @@ class MainScreenBloc extends Bloc<MainScreenEvent, MainScreenState> {
         ));
       } else {
         print(PMState);
-        emit(MainScreenState.initial(props: state.props));
       }
     });
   }

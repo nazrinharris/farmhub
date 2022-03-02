@@ -51,7 +51,7 @@ dependencies:
   #    url: git://github.com/nazrinharris/flutter_speed_dial.git
   #    ref: master
   flutter_speed_dial:
-    path: ./packages/flutter_speed_dial-5.0.0+1-hijacked
+    path: ./packages/flutter_speed_dial-5.0.0+1-modified
 
   # Misc
   lint: ^1.8.1

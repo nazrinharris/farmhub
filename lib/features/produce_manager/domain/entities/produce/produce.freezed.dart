@@ -24,12 +24,14 @@ class _$ProduceTearOff {
   _Produce call(
       {required String produceId,
       required String produceName,
+      required String authorId,
       required Map<String, dynamic> currentProducePrice,
       required Map<String, dynamic> previousProducePrice,
       required List<num> weeklyPrices}) {
     return _Produce(
       produceId: produceId,
       produceName: produceName,
+      authorId: authorId,
       currentProducePrice: currentProducePrice,
       previousProducePrice: previousProducePrice,
       weeklyPrices: weeklyPrices,
@@ -48,6 +50,7 @@ const $Produce = _$ProduceTearOff();
 mixin _$Produce {
   String get produceId => throw _privateConstructorUsedError;
   String get produceName => throw _privateConstructorUsedError;
+  String get authorId => throw _privateConstructorUsedError;
   Map<String, dynamic> get currentProducePrice =>
       throw _privateConstructorUsedError;
   Map<String, dynamic> get previousProducePrice =>
@@ -66,6 +69,7 @@ abstract class $ProduceCopyWith<$Res> {
   $Res call(
       {String produceId,
       String produceName,
+      String authorId,
       Map<String, dynamic> currentProducePrice,
       Map<String, dynamic> previousProducePrice,
       List<num> weeklyPrices});
@@ -83,6 +87,7 @@ class _$ProduceCopyWithImpl<$Res> implements $ProduceCopyWith<$Res> {
   $Res call({
     Object? produceId = freezed,
     Object? produceName = freezed,
+    Object? authorId = freezed,
     Object? currentProducePrice = freezed,
     Object? previousProducePrice = freezed,
     Object? weeklyPrices = freezed,
@@ -95,6 +100,10 @@ class _$ProduceCopyWithImpl<$Res> implements $ProduceCopyWith<$Res> {
       produceName: produceName == freezed
           ? _value.produceName
           : produceName // ignore: cast_nullable_to_non_nullable
+              as String,
+      authorId: authorId == freezed
+          ? _value.authorId
+          : authorId // ignore: cast_nullable_to_non_nullable
               as String,
       currentProducePrice: currentProducePrice == freezed
           ? _value.currentProducePrice
@@ -120,6 +129,7 @@ abstract class _$ProduceCopyWith<$Res> implements $ProduceCopyWith<$Res> {
   $Res call(
       {String produceId,
       String produceName,
+      String authorId,
       Map<String, dynamic> currentProducePrice,
       Map<String, dynamic> previousProducePrice,
       List<num> weeklyPrices});
@@ -138,6 +148,7 @@ class __$ProduceCopyWithImpl<$Res> extends _$ProduceCopyWithImpl<$Res>
   $Res call({
     Object? produceId = freezed,
     Object? produceName = freezed,
+    Object? authorId = freezed,
     Object? currentProducePrice = freezed,
     Object? previousProducePrice = freezed,
     Object? weeklyPrices = freezed,
@@ -150,6 +161,10 @@ class __$ProduceCopyWithImpl<$Res> extends _$ProduceCopyWithImpl<$Res>
       produceName: produceName == freezed
           ? _value.produceName
           : produceName // ignore: cast_nullable_to_non_nullable
+              as String,
+      authorId: authorId == freezed
+          ? _value.authorId
+          : authorId // ignore: cast_nullable_to_non_nullable
               as String,
       currentProducePrice: currentProducePrice == freezed
           ? _value.currentProducePrice
@@ -173,6 +188,7 @@ class _$_Produce implements _Produce {
   _$_Produce(
       {required this.produceId,
       required this.produceName,
+      required this.authorId,
       required this.currentProducePrice,
       required this.previousProducePrice,
       required this.weeklyPrices});
@@ -185,6 +201,8 @@ class _$_Produce implements _Produce {
   @override
   final String produceName;
   @override
+  final String authorId;
+  @override
   final Map<String, dynamic> currentProducePrice;
   @override
   final Map<String, dynamic> previousProducePrice;
@@ -193,7 +211,7 @@ class _$_Produce implements _Produce {
 
   @override
   String toString() {
-    return 'Produce(produceId: $produceId, produceName: $produceName, currentProducePrice: $currentProducePrice, previousProducePrice: $previousProducePrice, weeklyPrices: $weeklyPrices)';
+    return 'Produce(produceId: $produceId, produceName: $produceName, authorId: $authorId, currentProducePrice: $currentProducePrice, previousProducePrice: $previousProducePrice, weeklyPrices: $weeklyPrices)';
   }
 
   @override
@@ -205,6 +223,8 @@ class _$_Produce implements _Produce {
                 other.produceId == produceId) &&
             (identical(other.produceName, produceName) ||
                 other.produceName == produceName) &&
+            (identical(other.authorId, authorId) ||
+                other.authorId == authorId) &&
             const DeepCollectionEquality()
                 .equals(other.currentProducePrice, currentProducePrice) &&
             const DeepCollectionEquality()
@@ -218,6 +238,7 @@ class _$_Produce implements _Produce {
       runtimeType,
       produceId,
       produceName,
+      authorId,
       const DeepCollectionEquality().hash(currentProducePrice),
       const DeepCollectionEquality().hash(previousProducePrice),
       const DeepCollectionEquality().hash(weeklyPrices));
@@ -237,6 +258,7 @@ abstract class _Produce implements Produce {
   factory _Produce(
       {required String produceId,
       required String produceName,
+      required String authorId,
       required Map<String, dynamic> currentProducePrice,
       required Map<String, dynamic> previousProducePrice,
       required List<num> weeklyPrices}) = _$_Produce;
@@ -247,6 +269,8 @@ abstract class _Produce implements Produce {
   String get produceId;
   @override
   String get produceName;
+  @override
+  String get authorId;
   @override
   Map<String, dynamic> get currentProducePrice;
   @override
