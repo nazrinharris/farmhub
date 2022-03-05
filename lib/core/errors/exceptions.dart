@@ -1,10 +1,12 @@
 class InCodeException implements Exception {
   final String code;
   final String message;
+  final StackTrace? stackTrace;
 
   InCodeException({
     required this.code,
     required this.message,
+    required this.stackTrace,
   });
 }
 
@@ -13,6 +15,12 @@ class UnexpectedException implements InCodeException {
   final String code;
   @override
   final String message;
+  @override
+  final StackTrace? stackTrace;
 
-  UnexpectedException({required this.code, required this.message});
+  UnexpectedException({
+    required this.code,
+    required this.message,
+    required this.stackTrace,
+  });
 }

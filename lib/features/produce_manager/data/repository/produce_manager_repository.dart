@@ -7,6 +7,7 @@ import 'package:farmhub/core/errors/failures.dart';
 import 'package:farmhub/core/network/network_info.dart';
 import 'package:farmhub/features/produce_manager/data/datasources/produce_manager_local_datasource.dart';
 import 'package:farmhub/features/produce_manager/data/datasources/produce_manager_remote_datasource.dart';
+import 'package:farmhub/features/produce_manager/domain/entities/price/price.dart';
 import 'package:farmhub/features/produce_manager/domain/entities/produce/produce.dart';
 import 'package:farmhub/core/typedefs/typedefs.dart';
 import 'package:farmhub/features/produce_manager/domain/i_produce_manager_repository.dart';
@@ -32,22 +33,24 @@ class ProduceManagerRepository implements IProduceManagerRepository {
     final isConnected = await networkInfo.isConnected;
 
     if (isConnected) {
-      // try {
-      final firstTenProduce = await remoteDatasource.getFirstTenProduce();
-      return Right(firstTenProduce);
-      // } catch (e) {
-      //   return Left(
-      //     UnexpectedFailure(
-      //       code: (ProduceManagerRepositoryCode + 'getFirstTenProduce()'),
-      //       message: e.toString(),
-      //     ),
-      //   );
-      // }
+      try {
+        final firstTenProduce = await remoteDatasource.getFirstTenProduce();
+        return Right(firstTenProduce);
+      } catch (e) {
+        return Left(
+          UnexpectedFailure(
+            code: (ProduceManagerRepositoryCode + 'getFirstTenProduce()'),
+            message: e.toString(),
+            stackTrace: StackTrace.current,
+          ),
+        );
+      }
     } else {
-      return const Left(
+      return Left(
         InternetConnectionFailure(
           code: ProduceManagerRepositoryCode + ERROR_NO_INTERNET_CONNECTION,
           message: MESSAGE_NO_INTERNET_CONNECTION,
+          stackTrace: StackTrace.current,
         ),
       );
     }
@@ -97,18 +100,26 @@ class ProduceManagerRepository implements IProduceManagerRepository {
               );
               return Right(result);
             } else {
-              return const Left(
-                ProduceManagerFailure(code: 'isAdmin-check', message: 'User is not an admin'),
+              return Left(
+                ProduceManagerFailure(
+                  code: 'isAdmin-check',
+                  message: 'User is not an admin',
+                  stackTrace: StackTrace.current,
+                ),
               );
             }
           } else if (failureOrIsAdmin is Failure) {
             // Return Error
             return Left(ProduceManagerFailure(
-                code: failureOrIsAdmin.code, message: failureOrIsAdmin.message));
+              code: failureOrIsAdmin.code,
+              message: failureOrIsAdmin.message,
+              stackTrace: StackTrace.current,
+            ));
           } else {
             throw UnexpectedException(
               code: 'createNewProduce',
               message: 'After folding, it returns an unexpected type.',
+              stackTrace: StackTrace.current,
             );
           }
         } else if (failureOrUserData is Failure) {
@@ -116,24 +127,39 @@ class ProduceManagerRepository implements IProduceManagerRepository {
           return Left(ProduceManagerFailure(
             code: failureOrUserData.code,
             message: failureOrUserData.message,
+            stackTrace: StackTrace.current,
           ));
         } else {
           throw UnexpectedException(
             code: 'createNewProduce',
             message: 'After folding, it returns an unexpected type.',
+            stackTrace: StackTrace.current,
           );
         }
       } on FirebaseException catch (e) {
-        // TODO: FirebaseFirestoreFailure
-        return Left(UnexpectedFailure(message: e.message, code: e.code));
+        return Left(FirebaseFirestoreFailure(
+          message: e.message,
+          code: e.code,
+          stackTrace: StackTrace.current,
+        ));
       } catch (e) {
-        return Left(UnexpectedFailure(code: e.toString()));
+        return Left(UnexpectedFailure(
+          code: e.toString(),
+          stackTrace: StackTrace.current,
+        ));
       }
     } else {
-      return const Left(InternetConnectionFailure(
+      return Left(InternetConnectionFailure(
         code: ERROR_NO_INTERNET_CONNECTION,
         message: MESSAGE_NO_INTERNET_CONNECTION,
+        stackTrace: StackTrace.current,
       ));
     }
+  }
+
+  @override
+  FutureEither<List<Price>> getOneWeekPrices({required String pid}) {
+    // TODO: implement getOneWeekPrices
+    throw UnimplementedError();
   }
 }

@@ -3,26 +3,33 @@ import 'package:equatable/equatable.dart';
 abstract class Failure extends Equatable {
   final String? code;
   final String? message;
+  final StackTrace? stackTrace;
 
-  const Failure({this.code = "UNKNOWN CODE", this.message = "Unknown message for this failure"});
+  const Failure({
+    this.code = "UNKNOWN CODE",
+    this.message = "Unknown message for this failure",
+    required this.stackTrace,
+  });
 
   @override
   List<Object> get props {
     return [
       code ?? 'UNKNOWN CODE',
       message ?? 'Unknown message for this failure',
+      stackTrace ?? StackTrace.current,
     ];
   }
 }
 
-//TODO: Change to [require] code and message. Unknown should be handled at data/repo level.
 class UnexpectedFailure extends Failure {
   const UnexpectedFailure({
     String? code,
     String? message,
+    required StackTrace? stackTrace,
   }) : super(
-          code: code ?? 'UNKNOWN CODE',
-          message: message ?? 'Unknown message for this failure',
+          code: code,
+          message: message,
+          stackTrace: stackTrace,
         );
 }
 
@@ -31,9 +38,11 @@ class FirebaseAuthFailure extends Failure {
   const FirebaseAuthFailure({
     String? code,
     String? message,
+    required StackTrace? stackTrace,
   }) : super(
           code: code,
           message: message,
+          stackTrace: stackTrace,
         );
 }
 
@@ -41,9 +50,11 @@ class FirebaseFirestoreFailure extends Failure {
   const FirebaseFirestoreFailure({
     String? code,
     String? message,
+    required StackTrace? stackTrace,
   }) : super(
           code: code,
           message: message,
+          stackTrace: stackTrace,
         );
 }
 
@@ -52,9 +63,11 @@ class InternetConnectionFailure extends Failure {
   const InternetConnectionFailure({
     String? code,
     String? message,
+    required StackTrace? stackTrace,
   }) : super(
           code: code,
           message: message,
+          stackTrace: stackTrace,
         );
 }
 
@@ -63,9 +76,11 @@ class AuthFailure extends Failure {
   const AuthFailure({
     String? code,
     String? message,
+    required StackTrace? stackTrace,
   }) : super(
           code: code,
           message: message,
+          stackTrace: stackTrace,
         );
 }
 
@@ -74,8 +89,10 @@ class ProduceManagerFailure extends Failure {
   const ProduceManagerFailure({
     String? code,
     String? message,
+    required StackTrace? stackTrace,
   }) : super(
           code: code,
           message: message,
+          stackTrace: stackTrace,
         );
 }

@@ -35,12 +35,14 @@ class AuthRepository implements IAuthRepository {
         await authLocalDataSource.storeFarmhubUser(user);
         return Right(user);
       } on FirebaseAuthException catch (e) {
-        return Left(FirebaseAuthFailure(code: e.code, message: e.message));
+        return Left(
+            FirebaseAuthFailure(code: e.code, message: e.message, stackTrace: StackTrace.current));
       }
     } else {
-      return const Left(InternetConnectionFailure(
+      return Left(InternetConnectionFailure(
         code: ERROR_NO_INTERNET_CONNECTION,
         message: MESSAGE_NO_INTERNET_CONNECTION,
+        stackTrace: StackTrace.current,
       ));
     }
   }
@@ -71,14 +73,19 @@ class AuthRepository implements IAuthRepository {
         return Left(FirebaseAuthFailure(
           code: e.code,
           message: e.message,
+          stackTrace: StackTrace.current,
         ));
       } catch (e) {
-        return Left(UnexpectedFailure(message: e.toString()));
+        return Left(UnexpectedFailure(
+          message: e.toString(),
+          stackTrace: StackTrace.current,
+        ));
       }
     } else {
-      return const Left(InternetConnectionFailure(
+      return Left(InternetConnectionFailure(
         code: ERROR_NO_INTERNET_CONNECTION,
         message: MESSAGE_NO_INTERNET_CONNECTION,
+        stackTrace: StackTrace.current,
       ));
     }
   }
@@ -96,6 +103,7 @@ class AuthRepository implements IAuthRepository {
       return Left(FirebaseAuthFailure(
         code: e.code,
         message: e.message,
+        stackTrace: StackTrace.current,
       ));
     }
   }
@@ -123,20 +131,31 @@ class AuthRepository implements IAuthRepository {
         return Right(user);
       } on FirebaseAuthException catch (e) {
         print('Retrieval of User Information Error Occurred, ${e.code}, ${e.message}');
-        return Left(FirebaseAuthFailure(code: e.code, message: e.message));
+        return Left(FirebaseAuthFailure(
+          code: e.code,
+          message: e.message,
+          stackTrace: StackTrace.current,
+        ));
       } on FirebaseException catch (e) {
         print('Retrieval of User Information Error Occurred, ${e.code}, ${e.message}');
-        return Left(FirebaseFirestoreFailure(code: e.code, message: e.message));
+        return Left(FirebaseFirestoreFailure(
+          code: e.code,
+          message: e.message,
+          stackTrace: StackTrace.current,
+        ));
       } catch (e) {
         print('Retrieval of User Information Error Occurred');
-        return Left(UnexpectedFailure(message: e.toString()));
+        return Left(UnexpectedFailure(
+          message: e.toString(),
+          stackTrace: StackTrace.current,
+        ));
       }
     } else {
       // TODO: Retrieval of user information from local storage.
-      return const Left(InternetConnectionFailure(
-        code: ERROR_NO_INTERNET_CONNECTION,
-        message: MESSAGE_NO_INTERNET_CONNECTION,
-      ));
+      return Left(InternetConnectionFailure(
+          code: ERROR_NO_INTERNET_CONNECTION,
+          message: MESSAGE_NO_INTERNET_CONNECTION,
+          stackTrace: StackTrace.current));
     }
   }
 
@@ -150,18 +169,30 @@ class AuthRepository implements IAuthRepository {
         return Right(isAdmin);
       } on FirebaseAuthException catch (e) {
         print('isAdmin Check Error Occurred, ${e.code}, ${e.message}');
-        return Left(FirebaseAuthFailure(code: e.code, message: e.message));
+        return Left(FirebaseAuthFailure(
+          code: e.code,
+          message: e.message,
+          stackTrace: StackTrace.current,
+        ));
       } on FirebaseException catch (e) {
         print('isAdmin Check Error Occurred, ${e.code}, ${e.message}');
-        return Left(FirebaseFirestoreFailure(code: e.code, message: e.message));
+        return Left(FirebaseFirestoreFailure(
+          code: e.code,
+          message: e.message,
+          stackTrace: StackTrace.current,
+        ));
       } catch (e) {
         print('isAdmin Check Error Occurred, $e');
-        return Left(UnexpectedFailure(message: e.toString()));
+        return Left(UnexpectedFailure(
+          message: e.toString(),
+          stackTrace: StackTrace.current,
+        ));
       }
     } else {
-      return const Left(InternetConnectionFailure(
+      return Left(InternetConnectionFailure(
         code: ERROR_NO_INTERNET_CONNECTION,
         message: MESSAGE_NO_INTERNET_CONNECTION,
+        stackTrace: StackTrace.current,
       ));
     }
   }
