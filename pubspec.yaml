@@ -48,12 +48,12 @@ dependencies:
   syncfusion_flutter_charts: ^19.4.53
   sprung: ^3.0.0
   tab_indicator_styler: ^2.0.0
-  #flutter_speed_dial:
-  #  git:
-  #    url: git://github.com/nazrinharris/flutter_speed_dial.git
-  #    ref: master
   flutter_speed_dial:
-    path: ./packages/flutter_speed_dial-5.0.0+1-modified
+    git:
+      url: git://github.com/nazrinharris/flutter_speed_dial.git
+      ref: master
+  #flutter_speed_dial:
+  #  path: ./packages/flutter_speed_dial-5.0.0+1-modified
 
   # Misc
   lint: ^1.8.1

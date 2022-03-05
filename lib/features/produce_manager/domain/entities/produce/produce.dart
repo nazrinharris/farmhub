@@ -19,7 +19,11 @@ class Produce with _$Produce {
 
   static Produce fromMap(Map<String, dynamic>? map) {
     if (map == null) {
-      throw UnexpectedException(code: 'Produce-fromMap', message: "Map is null.");
+      throw UnexpectedException(
+        code: 'Produce-fromMap',
+        message: "Map is null.",
+        stackTrace: StackTrace.current,
+      );
     }
     return Produce(
       produceId: map['produceId'],
