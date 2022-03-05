@@ -51,7 +51,6 @@ class CreateProduceScreenBloc extends Bloc<CreateProduceScreenEvent, CreateProdu
           if (PMState is PMSCreateNewProduceLoading) {
             // Do nothing.
           } else if (PMState is PMSCreateNewProduceSuccess) {
-            print(PMState);
             emit(CreateProduceScreenState.createNewProduceSuccess(produce: PMState.produce));
             primaryButtonAwareCubit.triggerFirstPage();
             Future.delayed(const Duration(seconds: 1)).then(
@@ -59,18 +58,13 @@ class CreateProduceScreenBloc extends Bloc<CreateProduceScreenEvent, CreateProdu
               (_) => print('Succeeded in creation!'),
             );
           } else if (PMState is PMSCreateNewProduceError) {
-            print(PMState);
             emit(CreateProduceScreenState.createNewProduceError(
               code: PMState.code,
               message: PMState.message,
             ));
-          } else {
-            print(PMState);
-          }
+          } else {}
         },
       );
-    } else {
-      print(state);
-    }
+    } else {}
   }
 }

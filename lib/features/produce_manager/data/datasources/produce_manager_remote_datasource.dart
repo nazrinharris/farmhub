@@ -31,7 +31,6 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
         .then((snapshot) => snapshot.docs);
 
     final produceList = documentsList.map((documentSnapshot) {
-      print(documentSnapshot.data());
       return Produce.fromMap(documentSnapshot.data());
     }).toList();
 
@@ -64,7 +63,7 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
       });
 
       // Create Prices sub-collection
-      await firebaseFirestore.collection('produce').doc(doc.id).collection('prices');
+      firebaseFirestore.collection('produce').doc(doc.id).collection('prices');
 
       return doc.id;
     });

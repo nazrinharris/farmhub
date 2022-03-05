@@ -149,9 +149,7 @@ class RegisterScreenBloc extends Bloc<RegisterScreenEvent, RegisterScreenState> 
           ));
 
           primaryButtonAwareCubit.triggerFirstPage();
-        } else {
-          print(state);
-        }
+        } else {}
       });
     }
   }

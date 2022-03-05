@@ -106,7 +106,7 @@ class _LoginScreenState extends State<LoginScreen> with AnimationMixin {
                               physics: const AlwaysScrollableScrollPhysics(
                                   parent: BouncingScrollPhysics()),
                               children: [
-                                const TopPaddingWithAppBar(),
+                                const UITopPadding(),
                                 ClipRRect(
                                   borderRadius: BorderRadius.circular(16.0),
                                   child: Align(

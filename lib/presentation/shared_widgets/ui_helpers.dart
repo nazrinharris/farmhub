@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class TopPaddingWithAppBar extends StatelessWidget {
-  const TopPaddingWithAppBar({Key? key}) : super(key: key);
+class UITopPadding extends StatelessWidget {
+  const UITopPadding({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

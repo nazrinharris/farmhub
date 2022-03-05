@@ -3,9 +3,18 @@ import 'package:farmhub/presentation/views/debug/navigate_view.dart';
 import 'package:farmhub/presentation/views/debug/playground_screen.dart';
 import 'package:farmhub/presentation/views/login_screen/login_screen.dart';
 import 'package:farmhub/presentation/views/main_screen/main_screen.dart';
+import 'package:farmhub/presentation/views/produce_screen/produce_screen.dart';
 import 'package:farmhub/presentation/views/register_screen/register_screen.dart';
 import 'package:farmhub/presentation/views/start_screen/start_screen.dart';
 import 'package:flutter/cupertino.dart';
+
+import 'features/produce_manager/domain/entities/produce/produce.dart';
+
+class ProduceArguments {
+  final Produce produce;
+
+  ProduceArguments(this.produce);
+}
 
 class AppRouter {
   Route onGenerateRoute(RouteSettings routeSettings) {
@@ -27,6 +36,9 @@ class AppRouter {
           pageBuilder: ((context, animation, secondaryAnimation) => const CreateProduceScreen()),
           transitionsBuilder: createProduceScreenTransitionBuilder,
         );
+      case '/produce':
+        return CupertinoPageRoute(
+            builder: (_) => ProduceScreen(routeSettings.arguments as ProduceArguments));
 
       //! DEBUG ROUTES
       case '/navigate':

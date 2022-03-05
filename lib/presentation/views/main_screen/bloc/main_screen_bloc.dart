@@ -64,9 +64,9 @@ class MainScreenBloc extends Bloc<MainScreenEvent, MainScreenState> {
     return emit.onEach(produceManagerBloc.stream, onData: (ProduceManagerState PMState) {
       if (PMState is PMSGetFirstTenProduceLoading) {
         // Do nothing.
-        print(PMState);
+
       } else if (PMState is PMSGetFirstTenProduceSuccess) {
-        print(PMState);
+        ;
         emit(
           MainScreenState.mainPricesCompleted(
             props: state.props,
@@ -74,16 +74,12 @@ class MainScreenBloc extends Bloc<MainScreenEvent, MainScreenState> {
           ),
         );
       } else if (PMState is PMSGetFirstTenProduceError) {
-        print(PMState);
-
         emit(MainScreenState.mainPricesError(
           props: state.props,
           code: PMState.code,
           message: PMState.message,
         ));
-      } else {
-        print(PMState);
-      }
+      } else {}
     });
   }
 }

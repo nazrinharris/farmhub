@@ -34,7 +34,6 @@ class ProduceManagerRepository implements IProduceManagerRepository {
     if (isConnected) {
       // try {
       final firstTenProduce = await remoteDatasource.getFirstTenProduce();
-      print("Successful getFirstTenProduce!");
       return Right(firstTenProduce);
       // } catch (e) {
       //   return Left(
