@@ -9,7 +9,7 @@ part of 'price.dart';
 _$_Price _$$_PriceFromJson(Map<String, dynamic> json) => _$_Price(
       priceId: json['priceId'] as String,
       currentPrice: (json['currentPrice'] as num).toDouble(),
-      changeHistory: (json['changeHistory'] as List<dynamic>)
+      editHistory: (json['editHistory'] as List<dynamic>)
           .map((e) => e as Map<String, dynamic>)
           .toList(),
       updateDate: json['updateDate'] as String,
@@ -18,6 +18,6 @@ _$_Price _$$_PriceFromJson(Map<String, dynamic> json) => _$_Price(
 Map<String, dynamic> _$$_PriceToJson(_$_Price instance) => <String, dynamic>{
       'priceId': instance.priceId,
       'currentPrice': instance.currentPrice,
-      'changeHistory': instance.changeHistory,
+      'editHistory': instance.editHistory,
       'updateDate': instance.updateDate,
     };

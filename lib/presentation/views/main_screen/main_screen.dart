@@ -108,7 +108,10 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
                     ),
                   ),
                   SpeedDialChild(
-                    onTap: () {},
+                    onTap: () {
+                      debugPrint("Pressed");
+                      Navigator.of(context).pushNamed('/add_new_price');
+                    },
                     backgroundColor: Theme.of(context).colorScheme.primary,
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
                     child: const Icon(

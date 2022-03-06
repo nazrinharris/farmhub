@@ -4,6 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:farmhub/features/produce_manager/bloc/produce_manager_bloc.dart';
 import 'package:farmhub/presentation/smart_widgets/primary_button_aware/primary_button_aware_cubit.dart';
 import 'package:farmhub/presentation/smart_widgets/two_fields_form.dart/two_fields_form_bloc.dart';
+import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../features/produce_manager/domain/entities/produce/produce.dart';
@@ -58,6 +59,7 @@ class CreateProduceScreenBloc extends Bloc<CreateProduceScreenEvent, CreateProdu
               (_) => print('Succeeded in creation!'),
             );
           } else if (PMState is PMSCreateNewProduceError) {
+            debugPrintStack(stackTrace: PMState.stackTrace);
             emit(CreateProduceScreenState.createNewProduceError(
               code: PMState.code,
               message: PMState.message,

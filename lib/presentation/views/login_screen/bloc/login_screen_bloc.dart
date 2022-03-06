@@ -115,6 +115,7 @@ class LoginScreenBloc extends Bloc<LoginScreenEvent, LoginScreenState> {
 
             primaryButtonAwareCubit.triggerFirstPage();
           } else if (state is ASLoginError) {
+            debugPrintStack(stackTrace: state.stackTrace);
             updateInfoTile(InfoTileProps(
               leadingText: 'Uh oh, Something\'s wrong!',
               child: Text(

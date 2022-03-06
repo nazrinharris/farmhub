@@ -1159,10 +1159,14 @@ class _$AuthStateTearOff {
     );
   }
 
-  ASLoginError loginError({required String code, required String message}) {
+  ASLoginError loginError(
+      {required String code,
+      required String message,
+      required StackTrace stackTrace}) {
     return ASLoginError(
       code: code,
       message: message,
+      stackTrace: stackTrace,
     );
   }
 
@@ -1177,10 +1181,13 @@ class _$AuthStateTearOff {
   }
 
   ASRegisterError registerError(
-      {required String code, required String message}) {
+      {required String code,
+      required String message,
+      required StackTrace stackTrace}) {
     return ASRegisterError(
       code: code,
       message: message,
+      stackTrace: stackTrace,
     );
   }
 
@@ -1192,10 +1199,14 @@ class _$AuthStateTearOff {
     return const ASSignOutSuccess();
   }
 
-  ASSignOutError signOutError({required String code, required String message}) {
+  ASSignOutError signOutError(
+      {required String code,
+      required String message,
+      required StackTrace stackTrace}) {
     return ASSignOutError(
       code: code,
       message: message,
+      stackTrace: stackTrace,
     );
   }
 
@@ -1211,10 +1222,13 @@ class _$AuthStateTearOff {
   }
 
   ASRetrieveUserDataError retrieveUserDataError(
-      {required String code, required String message}) {
+      {required String code,
+      required String message,
+      required StackTrace stackTrace}) {
     return ASRetrieveUserDataError(
       code: code,
       message: message,
+      stackTrace: stackTrace,
     );
   }
 
@@ -1228,10 +1242,14 @@ class _$AuthStateTearOff {
     );
   }
 
-  ASIsAdminError isAdminError({required String code, required String message}) {
+  ASIsAdminError isAdminError(
+      {required String code,
+      required String message,
+      required StackTrace stackTrace}) {
     return ASIsAdminError(
       code: code,
       message: message,
+      stackTrace: stackTrace,
     );
   }
 }
@@ -1248,20 +1266,29 @@ mixin _$AuthState {
     required TResult Function() loading,
     required TResult Function() loginLoading,
     required TResult Function(FarmhubUser user) loginSuccess,
-    required TResult Function(String code, String message) loginError,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        loginError,
     required TResult Function() registerLoading,
     required TResult Function(FarmhubUser user) registerSuccess,
-    required TResult Function(String code, String message) registerError,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        registerError,
     required TResult Function() signOutLoading,
     required TResult Function() signOutSuccess,
-    required TResult Function(String code, String message) signOutError,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        signOutError,
     required TResult Function() retrieveUserDataLoading,
     required TResult Function(FarmhubUser farmhubUser) retrieveUserDataSuccess,
-    required TResult Function(String code, String message)
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
         retrieveUserDataError,
     required TResult Function() isAdminLoading,
     required TResult Function(bool isAdmin) isAdminSuccess,
-    required TResult Function(String code, String message) isAdminError,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        isAdminError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -1271,19 +1298,24 @@ mixin _$AuthState {
     TResult Function()? loading,
     TResult Function()? loginLoading,
     TResult Function(FarmhubUser user)? loginSuccess,
-    TResult Function(String code, String message)? loginError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        loginError,
     TResult Function()? registerLoading,
     TResult Function(FarmhubUser user)? registerSuccess,
-    TResult Function(String code, String message)? registerError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        registerError,
     TResult Function()? signOutLoading,
     TResult Function()? signOutSuccess,
-    TResult Function(String code, String message)? signOutError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        signOutError,
     TResult Function()? retrieveUserDataLoading,
     TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
-    TResult Function(String code, String message)? retrieveUserDataError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        retrieveUserDataError,
     TResult Function()? isAdminLoading,
     TResult Function(bool isAdmin)? isAdminSuccess,
-    TResult Function(String code, String message)? isAdminError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        isAdminError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -1293,19 +1325,24 @@ mixin _$AuthState {
     TResult Function()? loading,
     TResult Function()? loginLoading,
     TResult Function(FarmhubUser user)? loginSuccess,
-    TResult Function(String code, String message)? loginError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        loginError,
     TResult Function()? registerLoading,
     TResult Function(FarmhubUser user)? registerSuccess,
-    TResult Function(String code, String message)? registerError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        registerError,
     TResult Function()? signOutLoading,
     TResult Function()? signOutSuccess,
-    TResult Function(String code, String message)? signOutError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        signOutError,
     TResult Function()? retrieveUserDataLoading,
     TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
-    TResult Function(String code, String message)? retrieveUserDataError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        retrieveUserDataError,
     TResult Function()? isAdminLoading,
     TResult Function(bool isAdmin)? isAdminSuccess,
-    TResult Function(String code, String message)? isAdminError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        isAdminError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -1439,20 +1476,29 @@ class _$ASInitial implements ASInitial {
     required TResult Function() loading,
     required TResult Function() loginLoading,
     required TResult Function(FarmhubUser user) loginSuccess,
-    required TResult Function(String code, String message) loginError,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        loginError,
     required TResult Function() registerLoading,
     required TResult Function(FarmhubUser user) registerSuccess,
-    required TResult Function(String code, String message) registerError,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        registerError,
     required TResult Function() signOutLoading,
     required TResult Function() signOutSuccess,
-    required TResult Function(String code, String message) signOutError,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        signOutError,
     required TResult Function() retrieveUserDataLoading,
     required TResult Function(FarmhubUser farmhubUser) retrieveUserDataSuccess,
-    required TResult Function(String code, String message)
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
         retrieveUserDataError,
     required TResult Function() isAdminLoading,
     required TResult Function(bool isAdmin) isAdminSuccess,
-    required TResult Function(String code, String message) isAdminError,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        isAdminError,
   }) {
     return initial();
   }
@@ -1465,19 +1511,24 @@ class _$ASInitial implements ASInitial {
     TResult Function()? loading,
     TResult Function()? loginLoading,
     TResult Function(FarmhubUser user)? loginSuccess,
-    TResult Function(String code, String message)? loginError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        loginError,
     TResult Function()? registerLoading,
     TResult Function(FarmhubUser user)? registerSuccess,
-    TResult Function(String code, String message)? registerError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        registerError,
     TResult Function()? signOutLoading,
     TResult Function()? signOutSuccess,
-    TResult Function(String code, String message)? signOutError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        signOutError,
     TResult Function()? retrieveUserDataLoading,
     TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
-    TResult Function(String code, String message)? retrieveUserDataError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        retrieveUserDataError,
     TResult Function()? isAdminLoading,
     TResult Function(bool isAdmin)? isAdminSuccess,
-    TResult Function(String code, String message)? isAdminError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        isAdminError,
   }) {
     return initial?.call();
   }
@@ -1490,19 +1541,24 @@ class _$ASInitial implements ASInitial {
     TResult Function()? loading,
     TResult Function()? loginLoading,
     TResult Function(FarmhubUser user)? loginSuccess,
-    TResult Function(String code, String message)? loginError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        loginError,
     TResult Function()? registerLoading,
     TResult Function(FarmhubUser user)? registerSuccess,
-    TResult Function(String code, String message)? registerError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        registerError,
     TResult Function()? signOutLoading,
     TResult Function()? signOutSuccess,
-    TResult Function(String code, String message)? signOutError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        signOutError,
     TResult Function()? retrieveUserDataLoading,
     TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
-    TResult Function(String code, String message)? retrieveUserDataError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        retrieveUserDataError,
     TResult Function()? isAdminLoading,
     TResult Function(bool isAdmin)? isAdminSuccess,
-    TResult Function(String code, String message)? isAdminError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        isAdminError,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -1641,20 +1697,29 @@ class _$ASIdle implements ASIdle {
     required TResult Function() loading,
     required TResult Function() loginLoading,
     required TResult Function(FarmhubUser user) loginSuccess,
-    required TResult Function(String code, String message) loginError,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        loginError,
     required TResult Function() registerLoading,
     required TResult Function(FarmhubUser user) registerSuccess,
-    required TResult Function(String code, String message) registerError,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        registerError,
     required TResult Function() signOutLoading,
     required TResult Function() signOutSuccess,
-    required TResult Function(String code, String message) signOutError,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        signOutError,
     required TResult Function() retrieveUserDataLoading,
     required TResult Function(FarmhubUser farmhubUser) retrieveUserDataSuccess,
-    required TResult Function(String code, String message)
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
         retrieveUserDataError,
     required TResult Function() isAdminLoading,
     required TResult Function(bool isAdmin) isAdminSuccess,
-    required TResult Function(String code, String message) isAdminError,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        isAdminError,
   }) {
     return idle();
   }
@@ -1667,19 +1732,24 @@ class _$ASIdle implements ASIdle {
     TResult Function()? loading,
     TResult Function()? loginLoading,
     TResult Function(FarmhubUser user)? loginSuccess,
-    TResult Function(String code, String message)? loginError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        loginError,
     TResult Function()? registerLoading,
     TResult Function(FarmhubUser user)? registerSuccess,
-    TResult Function(String code, String message)? registerError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        registerError,
     TResult Function()? signOutLoading,
     TResult Function()? signOutSuccess,
-    TResult Function(String code, String message)? signOutError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        signOutError,
     TResult Function()? retrieveUserDataLoading,
     TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
-    TResult Function(String code, String message)? retrieveUserDataError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        retrieveUserDataError,
     TResult Function()? isAdminLoading,
     TResult Function(bool isAdmin)? isAdminSuccess,
-    TResult Function(String code, String message)? isAdminError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        isAdminError,
   }) {
     return idle?.call();
   }
@@ -1692,19 +1762,24 @@ class _$ASIdle implements ASIdle {
     TResult Function()? loading,
     TResult Function()? loginLoading,
     TResult Function(FarmhubUser user)? loginSuccess,
-    TResult Function(String code, String message)? loginError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        loginError,
     TResult Function()? registerLoading,
     TResult Function(FarmhubUser user)? registerSuccess,
-    TResult Function(String code, String message)? registerError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        registerError,
     TResult Function()? signOutLoading,
     TResult Function()? signOutSuccess,
-    TResult Function(String code, String message)? signOutError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        signOutError,
     TResult Function()? retrieveUserDataLoading,
     TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
-    TResult Function(String code, String message)? retrieveUserDataError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        retrieveUserDataError,
     TResult Function()? isAdminLoading,
     TResult Function(bool isAdmin)? isAdminSuccess,
-    TResult Function(String code, String message)? isAdminError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        isAdminError,
     required TResult orElse(),
   }) {
     if (idle != null) {
@@ -1843,20 +1918,29 @@ class _$ASLoading implements ASLoading {
     required TResult Function() loading,
     required TResult Function() loginLoading,
     required TResult Function(FarmhubUser user) loginSuccess,
-    required TResult Function(String code, String message) loginError,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        loginError,
     required TResult Function() registerLoading,
     required TResult Function(FarmhubUser user) registerSuccess,
-    required TResult Function(String code, String message) registerError,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        registerError,
     required TResult Function() signOutLoading,
     required TResult Function() signOutSuccess,
-    required TResult Function(String code, String message) signOutError,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        signOutError,
     required TResult Function() retrieveUserDataLoading,
     required TResult Function(FarmhubUser farmhubUser) retrieveUserDataSuccess,
-    required TResult Function(String code, String message)
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
         retrieveUserDataError,
     required TResult Function() isAdminLoading,
     required TResult Function(bool isAdmin) isAdminSuccess,
-    required TResult Function(String code, String message) isAdminError,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        isAdminError,
   }) {
     return loading();
   }
@@ -1869,19 +1953,24 @@ class _$ASLoading implements ASLoading {
     TResult Function()? loading,
     TResult Function()? loginLoading,
     TResult Function(FarmhubUser user)? loginSuccess,
-    TResult Function(String code, String message)? loginError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        loginError,
     TResult Function()? registerLoading,
     TResult Function(FarmhubUser user)? registerSuccess,
-    TResult Function(String code, String message)? registerError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        registerError,
     TResult Function()? signOutLoading,
     TResult Function()? signOutSuccess,
-    TResult Function(String code, String message)? signOutError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        signOutError,
     TResult Function()? retrieveUserDataLoading,
     TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
-    TResult Function(String code, String message)? retrieveUserDataError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        retrieveUserDataError,
     TResult Function()? isAdminLoading,
     TResult Function(bool isAdmin)? isAdminSuccess,
-    TResult Function(String code, String message)? isAdminError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        isAdminError,
   }) {
     return loading?.call();
   }
@@ -1894,19 +1983,24 @@ class _$ASLoading implements ASLoading {
     TResult Function()? loading,
     TResult Function()? loginLoading,
     TResult Function(FarmhubUser user)? loginSuccess,
-    TResult Function(String code, String message)? loginError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        loginError,
     TResult Function()? registerLoading,
     TResult Function(FarmhubUser user)? registerSuccess,
-    TResult Function(String code, String message)? registerError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        registerError,
     TResult Function()? signOutLoading,
     TResult Function()? signOutSuccess,
-    TResult Function(String code, String message)? signOutError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        signOutError,
     TResult Function()? retrieveUserDataLoading,
     TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
-    TResult Function(String code, String message)? retrieveUserDataError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        retrieveUserDataError,
     TResult Function()? isAdminLoading,
     TResult Function(bool isAdmin)? isAdminSuccess,
-    TResult Function(String code, String message)? isAdminError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        isAdminError,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -2047,20 +2141,29 @@ class _$ASLoginLoading implements ASLoginLoading {
     required TResult Function() loading,
     required TResult Function() loginLoading,
     required TResult Function(FarmhubUser user) loginSuccess,
-    required TResult Function(String code, String message) loginError,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        loginError,
     required TResult Function() registerLoading,
     required TResult Function(FarmhubUser user) registerSuccess,
-    required TResult Function(String code, String message) registerError,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        registerError,
     required TResult Function() signOutLoading,
     required TResult Function() signOutSuccess,
-    required TResult Function(String code, String message) signOutError,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        signOutError,
     required TResult Function() retrieveUserDataLoading,
     required TResult Function(FarmhubUser farmhubUser) retrieveUserDataSuccess,
-    required TResult Function(String code, String message)
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
         retrieveUserDataError,
     required TResult Function() isAdminLoading,
     required TResult Function(bool isAdmin) isAdminSuccess,
-    required TResult Function(String code, String message) isAdminError,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        isAdminError,
   }) {
     return loginLoading();
   }
@@ -2073,19 +2176,24 @@ class _$ASLoginLoading implements ASLoginLoading {
     TResult Function()? loading,
     TResult Function()? loginLoading,
     TResult Function(FarmhubUser user)? loginSuccess,
-    TResult Function(String code, String message)? loginError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        loginError,
     TResult Function()? registerLoading,
     TResult Function(FarmhubUser user)? registerSuccess,
-    TResult Function(String code, String message)? registerError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        registerError,
     TResult Function()? signOutLoading,
     TResult Function()? signOutSuccess,
-    TResult Function(String code, String message)? signOutError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        signOutError,
     TResult Function()? retrieveUserDataLoading,
     TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
-    TResult Function(String code, String message)? retrieveUserDataError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        retrieveUserDataError,
     TResult Function()? isAdminLoading,
     TResult Function(bool isAdmin)? isAdminSuccess,
-    TResult Function(String code, String message)? isAdminError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        isAdminError,
   }) {
     return loginLoading?.call();
   }
@@ -2098,19 +2206,24 @@ class _$ASLoginLoading implements ASLoginLoading {
     TResult Function()? loading,
     TResult Function()? loginLoading,
     TResult Function(FarmhubUser user)? loginSuccess,
-    TResult Function(String code, String message)? loginError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        loginError,
     TResult Function()? registerLoading,
     TResult Function(FarmhubUser user)? registerSuccess,
-    TResult Function(String code, String message)? registerError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        registerError,
     TResult Function()? signOutLoading,
     TResult Function()? signOutSuccess,
-    TResult Function(String code, String message)? signOutError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        signOutError,
     TResult Function()? retrieveUserDataLoading,
     TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
-    TResult Function(String code, String message)? retrieveUserDataError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        retrieveUserDataError,
     TResult Function()? isAdminLoading,
     TResult Function(bool isAdmin)? isAdminSuccess,
-    TResult Function(String code, String message)? isAdminError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        isAdminError,
     required TResult orElse(),
   }) {
     if (loginLoading != null) {
@@ -2283,20 +2396,29 @@ class _$ASLoginSuccess implements ASLoginSuccess {
     required TResult Function() loading,
     required TResult Function() loginLoading,
     required TResult Function(FarmhubUser user) loginSuccess,
-    required TResult Function(String code, String message) loginError,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        loginError,
     required TResult Function() registerLoading,
     required TResult Function(FarmhubUser user) registerSuccess,
-    required TResult Function(String code, String message) registerError,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        registerError,
     required TResult Function() signOutLoading,
     required TResult Function() signOutSuccess,
-    required TResult Function(String code, String message) signOutError,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        signOutError,
     required TResult Function() retrieveUserDataLoading,
     required TResult Function(FarmhubUser farmhubUser) retrieveUserDataSuccess,
-    required TResult Function(String code, String message)
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
         retrieveUserDataError,
     required TResult Function() isAdminLoading,
     required TResult Function(bool isAdmin) isAdminSuccess,
-    required TResult Function(String code, String message) isAdminError,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        isAdminError,
   }) {
     return loginSuccess(user);
   }
@@ -2309,19 +2431,24 @@ class _$ASLoginSuccess implements ASLoginSuccess {
     TResult Function()? loading,
     TResult Function()? loginLoading,
     TResult Function(FarmhubUser user)? loginSuccess,
-    TResult Function(String code, String message)? loginError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        loginError,
     TResult Function()? registerLoading,
     TResult Function(FarmhubUser user)? registerSuccess,
-    TResult Function(String code, String message)? registerError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        registerError,
     TResult Function()? signOutLoading,
     TResult Function()? signOutSuccess,
-    TResult Function(String code, String message)? signOutError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        signOutError,
     TResult Function()? retrieveUserDataLoading,
     TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
-    TResult Function(String code, String message)? retrieveUserDataError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        retrieveUserDataError,
     TResult Function()? isAdminLoading,
     TResult Function(bool isAdmin)? isAdminSuccess,
-    TResult Function(String code, String message)? isAdminError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        isAdminError,
   }) {
     return loginSuccess?.call(user);
   }
@@ -2334,19 +2461,24 @@ class _$ASLoginSuccess implements ASLoginSuccess {
     TResult Function()? loading,
     TResult Function()? loginLoading,
     TResult Function(FarmhubUser user)? loginSuccess,
-    TResult Function(String code, String message)? loginError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        loginError,
     TResult Function()? registerLoading,
     TResult Function(FarmhubUser user)? registerSuccess,
-    TResult Function(String code, String message)? registerError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        registerError,
     TResult Function()? signOutLoading,
     TResult Function()? signOutSuccess,
-    TResult Function(String code, String message)? signOutError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        signOutError,
     TResult Function()? retrieveUserDataLoading,
     TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
-    TResult Function(String code, String message)? retrieveUserDataError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        retrieveUserDataError,
     TResult Function()? isAdminLoading,
     TResult Function(bool isAdmin)? isAdminSuccess,
-    TResult Function(String code, String message)? isAdminError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        isAdminError,
     required TResult orElse(),
   }) {
     if (loginSuccess != null) {
@@ -2452,7 +2584,7 @@ abstract class $ASLoginErrorCopyWith<$Res> {
   factory $ASLoginErrorCopyWith(
           ASLoginError value, $Res Function(ASLoginError) then) =
       _$ASLoginErrorCopyWithImpl<$Res>;
-  $Res call({String code, String message});
+  $Res call({String code, String message, StackTrace stackTrace});
 }
 
 /// @nodoc
@@ -2469,6 +2601,7 @@ class _$ASLoginErrorCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
   $Res call({
     Object? code = freezed,
     Object? message = freezed,
+    Object? stackTrace = freezed,
   }) {
     return _then(ASLoginError(
       code: code == freezed
@@ -2479,6 +2612,10 @@ class _$ASLoginErrorCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
+      stackTrace: stackTrace == freezed
+          ? _value.stackTrace
+          : stackTrace // ignore: cast_nullable_to_non_nullable
+              as StackTrace,
     ));
   }
 }
@@ -2486,16 +2623,19 @@ class _$ASLoginErrorCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ASLoginError implements ASLoginError {
-  const _$ASLoginError({required this.code, required this.message});
+  const _$ASLoginError(
+      {required this.code, required this.message, required this.stackTrace});
 
   @override
   final String code;
   @override
   final String message;
+  @override
+  final StackTrace stackTrace;
 
   @override
   String toString() {
-    return 'AuthState.loginError(code: $code, message: $message)';
+    return 'AuthState.loginError(code: $code, message: $message, stackTrace: $stackTrace)';
   }
 
   @override
@@ -2504,11 +2644,13 @@ class _$ASLoginError implements ASLoginError {
         (other.runtimeType == runtimeType &&
             other is ASLoginError &&
             (identical(other.code, code) || other.code == code) &&
-            (identical(other.message, message) || other.message == message));
+            (identical(other.message, message) || other.message == message) &&
+            (identical(other.stackTrace, stackTrace) ||
+                other.stackTrace == stackTrace));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, code, message);
+  int get hashCode => Object.hash(runtimeType, code, message, stackTrace);
 
   @JsonKey(ignore: true)
   @override
@@ -2523,22 +2665,31 @@ class _$ASLoginError implements ASLoginError {
     required TResult Function() loading,
     required TResult Function() loginLoading,
     required TResult Function(FarmhubUser user) loginSuccess,
-    required TResult Function(String code, String message) loginError,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        loginError,
     required TResult Function() registerLoading,
     required TResult Function(FarmhubUser user) registerSuccess,
-    required TResult Function(String code, String message) registerError,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        registerError,
     required TResult Function() signOutLoading,
     required TResult Function() signOutSuccess,
-    required TResult Function(String code, String message) signOutError,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        signOutError,
     required TResult Function() retrieveUserDataLoading,
     required TResult Function(FarmhubUser farmhubUser) retrieveUserDataSuccess,
-    required TResult Function(String code, String message)
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
         retrieveUserDataError,
     required TResult Function() isAdminLoading,
     required TResult Function(bool isAdmin) isAdminSuccess,
-    required TResult Function(String code, String message) isAdminError,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        isAdminError,
   }) {
-    return loginError(code, message);
+    return loginError(code, message, stackTrace);
   }
 
   @override
@@ -2549,21 +2700,26 @@ class _$ASLoginError implements ASLoginError {
     TResult Function()? loading,
     TResult Function()? loginLoading,
     TResult Function(FarmhubUser user)? loginSuccess,
-    TResult Function(String code, String message)? loginError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        loginError,
     TResult Function()? registerLoading,
     TResult Function(FarmhubUser user)? registerSuccess,
-    TResult Function(String code, String message)? registerError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        registerError,
     TResult Function()? signOutLoading,
     TResult Function()? signOutSuccess,
-    TResult Function(String code, String message)? signOutError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        signOutError,
     TResult Function()? retrieveUserDataLoading,
     TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
-    TResult Function(String code, String message)? retrieveUserDataError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        retrieveUserDataError,
     TResult Function()? isAdminLoading,
     TResult Function(bool isAdmin)? isAdminSuccess,
-    TResult Function(String code, String message)? isAdminError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        isAdminError,
   }) {
-    return loginError?.call(code, message);
+    return loginError?.call(code, message, stackTrace);
   }
 
   @override
@@ -2574,23 +2730,28 @@ class _$ASLoginError implements ASLoginError {
     TResult Function()? loading,
     TResult Function()? loginLoading,
     TResult Function(FarmhubUser user)? loginSuccess,
-    TResult Function(String code, String message)? loginError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        loginError,
     TResult Function()? registerLoading,
     TResult Function(FarmhubUser user)? registerSuccess,
-    TResult Function(String code, String message)? registerError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        registerError,
     TResult Function()? signOutLoading,
     TResult Function()? signOutSuccess,
-    TResult Function(String code, String message)? signOutError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        signOutError,
     TResult Function()? retrieveUserDataLoading,
     TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
-    TResult Function(String code, String message)? retrieveUserDataError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        retrieveUserDataError,
     TResult Function()? isAdminLoading,
     TResult Function(bool isAdmin)? isAdminSuccess,
-    TResult Function(String code, String message)? isAdminError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        isAdminError,
     required TResult orElse(),
   }) {
     if (loginError != null) {
-      return loginError(code, message);
+      return loginError(code, message, stackTrace);
     }
     return orElse();
   }
@@ -2679,11 +2840,14 @@ class _$ASLoginError implements ASLoginError {
 }
 
 abstract class ASLoginError implements AuthState {
-  const factory ASLoginError({required String code, required String message}) =
-      _$ASLoginError;
+  const factory ASLoginError(
+      {required String code,
+      required String message,
+      required StackTrace stackTrace}) = _$ASLoginError;
 
   String get code;
   String get message;
+  StackTrace get stackTrace;
   @JsonKey(ignore: true)
   $ASLoginErrorCopyWith<ASLoginError> get copyWith =>
       throw _privateConstructorUsedError;
@@ -2735,20 +2899,29 @@ class _$ASRegisterLoading implements ASRegisterLoading {
     required TResult Function() loading,
     required TResult Function() loginLoading,
     required TResult Function(FarmhubUser user) loginSuccess,
-    required TResult Function(String code, String message) loginError,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        loginError,
     required TResult Function() registerLoading,
     required TResult Function(FarmhubUser user) registerSuccess,
-    required TResult Function(String code, String message) registerError,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        registerError,
     required TResult Function() signOutLoading,
     required TResult Function() signOutSuccess,
-    required TResult Function(String code, String message) signOutError,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        signOutError,
     required TResult Function() retrieveUserDataLoading,
     required TResult Function(FarmhubUser farmhubUser) retrieveUserDataSuccess,
-    required TResult Function(String code, String message)
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
         retrieveUserDataError,
     required TResult Function() isAdminLoading,
     required TResult Function(bool isAdmin) isAdminSuccess,
-    required TResult Function(String code, String message) isAdminError,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        isAdminError,
   }) {
     return registerLoading();
   }
@@ -2761,19 +2934,24 @@ class _$ASRegisterLoading implements ASRegisterLoading {
     TResult Function()? loading,
     TResult Function()? loginLoading,
     TResult Function(FarmhubUser user)? loginSuccess,
-    TResult Function(String code, String message)? loginError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        loginError,
     TResult Function()? registerLoading,
     TResult Function(FarmhubUser user)? registerSuccess,
-    TResult Function(String code, String message)? registerError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        registerError,
     TResult Function()? signOutLoading,
     TResult Function()? signOutSuccess,
-    TResult Function(String code, String message)? signOutError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        signOutError,
     TResult Function()? retrieveUserDataLoading,
     TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
-    TResult Function(String code, String message)? retrieveUserDataError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        retrieveUserDataError,
     TResult Function()? isAdminLoading,
     TResult Function(bool isAdmin)? isAdminSuccess,
-    TResult Function(String code, String message)? isAdminError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        isAdminError,
   }) {
     return registerLoading?.call();
   }
@@ -2786,19 +2964,24 @@ class _$ASRegisterLoading implements ASRegisterLoading {
     TResult Function()? loading,
     TResult Function()? loginLoading,
     TResult Function(FarmhubUser user)? loginSuccess,
-    TResult Function(String code, String message)? loginError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        loginError,
     TResult Function()? registerLoading,
     TResult Function(FarmhubUser user)? registerSuccess,
-    TResult Function(String code, String message)? registerError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        registerError,
     TResult Function()? signOutLoading,
     TResult Function()? signOutSuccess,
-    TResult Function(String code, String message)? signOutError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        signOutError,
     TResult Function()? retrieveUserDataLoading,
     TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
-    TResult Function(String code, String message)? retrieveUserDataError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        retrieveUserDataError,
     TResult Function()? isAdminLoading,
     TResult Function(bool isAdmin)? isAdminSuccess,
-    TResult Function(String code, String message)? isAdminError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        isAdminError,
     required TResult orElse(),
   }) {
     if (registerLoading != null) {
@@ -2972,20 +3155,29 @@ class _$ASRegisterSuccess implements ASRegisterSuccess {
     required TResult Function() loading,
     required TResult Function() loginLoading,
     required TResult Function(FarmhubUser user) loginSuccess,
-    required TResult Function(String code, String message) loginError,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        loginError,
     required TResult Function() registerLoading,
     required TResult Function(FarmhubUser user) registerSuccess,
-    required TResult Function(String code, String message) registerError,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        registerError,
     required TResult Function() signOutLoading,
     required TResult Function() signOutSuccess,
-    required TResult Function(String code, String message) signOutError,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        signOutError,
     required TResult Function() retrieveUserDataLoading,
     required TResult Function(FarmhubUser farmhubUser) retrieveUserDataSuccess,
-    required TResult Function(String code, String message)
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
         retrieveUserDataError,
     required TResult Function() isAdminLoading,
     required TResult Function(bool isAdmin) isAdminSuccess,
-    required TResult Function(String code, String message) isAdminError,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        isAdminError,
   }) {
     return registerSuccess(user);
   }
@@ -2998,19 +3190,24 @@ class _$ASRegisterSuccess implements ASRegisterSuccess {
     TResult Function()? loading,
     TResult Function()? loginLoading,
     TResult Function(FarmhubUser user)? loginSuccess,
-    TResult Function(String code, String message)? loginError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        loginError,
     TResult Function()? registerLoading,
     TResult Function(FarmhubUser user)? registerSuccess,
-    TResult Function(String code, String message)? registerError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        registerError,
     TResult Function()? signOutLoading,
     TResult Function()? signOutSuccess,
-    TResult Function(String code, String message)? signOutError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        signOutError,
     TResult Function()? retrieveUserDataLoading,
     TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
-    TResult Function(String code, String message)? retrieveUserDataError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        retrieveUserDataError,
     TResult Function()? isAdminLoading,
     TResult Function(bool isAdmin)? isAdminSuccess,
-    TResult Function(String code, String message)? isAdminError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        isAdminError,
   }) {
     return registerSuccess?.call(user);
   }
@@ -3023,19 +3220,24 @@ class _$ASRegisterSuccess implements ASRegisterSuccess {
     TResult Function()? loading,
     TResult Function()? loginLoading,
     TResult Function(FarmhubUser user)? loginSuccess,
-    TResult Function(String code, String message)? loginError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        loginError,
     TResult Function()? registerLoading,
     TResult Function(FarmhubUser user)? registerSuccess,
-    TResult Function(String code, String message)? registerError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        registerError,
     TResult Function()? signOutLoading,
     TResult Function()? signOutSuccess,
-    TResult Function(String code, String message)? signOutError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        signOutError,
     TResult Function()? retrieveUserDataLoading,
     TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
-    TResult Function(String code, String message)? retrieveUserDataError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        retrieveUserDataError,
     TResult Function()? isAdminLoading,
     TResult Function(bool isAdmin)? isAdminSuccess,
-    TResult Function(String code, String message)? isAdminError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        isAdminError,
     required TResult orElse(),
   }) {
     if (registerSuccess != null) {
@@ -3142,7 +3344,7 @@ abstract class $ASRegisterErrorCopyWith<$Res> {
   factory $ASRegisterErrorCopyWith(
           ASRegisterError value, $Res Function(ASRegisterError) then) =
       _$ASRegisterErrorCopyWithImpl<$Res>;
-  $Res call({String code, String message});
+  $Res call({String code, String message, StackTrace stackTrace});
 }
 
 /// @nodoc
@@ -3159,6 +3361,7 @@ class _$ASRegisterErrorCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
   $Res call({
     Object? code = freezed,
     Object? message = freezed,
+    Object? stackTrace = freezed,
   }) {
     return _then(ASRegisterError(
       code: code == freezed
@@ -3169,6 +3372,10 @@ class _$ASRegisterErrorCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
+      stackTrace: stackTrace == freezed
+          ? _value.stackTrace
+          : stackTrace // ignore: cast_nullable_to_non_nullable
+              as StackTrace,
     ));
   }
 }
@@ -3176,16 +3383,19 @@ class _$ASRegisterErrorCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ASRegisterError implements ASRegisterError {
-  const _$ASRegisterError({required this.code, required this.message});
+  const _$ASRegisterError(
+      {required this.code, required this.message, required this.stackTrace});
 
   @override
   final String code;
   @override
   final String message;
+  @override
+  final StackTrace stackTrace;
 
   @override
   String toString() {
-    return 'AuthState.registerError(code: $code, message: $message)';
+    return 'AuthState.registerError(code: $code, message: $message, stackTrace: $stackTrace)';
   }
 
   @override
@@ -3194,11 +3404,13 @@ class _$ASRegisterError implements ASRegisterError {
         (other.runtimeType == runtimeType &&
             other is ASRegisterError &&
             (identical(other.code, code) || other.code == code) &&
-            (identical(other.message, message) || other.message == message));
+            (identical(other.message, message) || other.message == message) &&
+            (identical(other.stackTrace, stackTrace) ||
+                other.stackTrace == stackTrace));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, code, message);
+  int get hashCode => Object.hash(runtimeType, code, message, stackTrace);
 
   @JsonKey(ignore: true)
   @override
@@ -3213,22 +3425,31 @@ class _$ASRegisterError implements ASRegisterError {
     required TResult Function() loading,
     required TResult Function() loginLoading,
     required TResult Function(FarmhubUser user) loginSuccess,
-    required TResult Function(String code, String message) loginError,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        loginError,
     required TResult Function() registerLoading,
     required TResult Function(FarmhubUser user) registerSuccess,
-    required TResult Function(String code, String message) registerError,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        registerError,
     required TResult Function() signOutLoading,
     required TResult Function() signOutSuccess,
-    required TResult Function(String code, String message) signOutError,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        signOutError,
     required TResult Function() retrieveUserDataLoading,
     required TResult Function(FarmhubUser farmhubUser) retrieveUserDataSuccess,
-    required TResult Function(String code, String message)
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
         retrieveUserDataError,
     required TResult Function() isAdminLoading,
     required TResult Function(bool isAdmin) isAdminSuccess,
-    required TResult Function(String code, String message) isAdminError,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        isAdminError,
   }) {
-    return registerError(code, message);
+    return registerError(code, message, stackTrace);
   }
 
   @override
@@ -3239,21 +3460,26 @@ class _$ASRegisterError implements ASRegisterError {
     TResult Function()? loading,
     TResult Function()? loginLoading,
     TResult Function(FarmhubUser user)? loginSuccess,
-    TResult Function(String code, String message)? loginError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        loginError,
     TResult Function()? registerLoading,
     TResult Function(FarmhubUser user)? registerSuccess,
-    TResult Function(String code, String message)? registerError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        registerError,
     TResult Function()? signOutLoading,
     TResult Function()? signOutSuccess,
-    TResult Function(String code, String message)? signOutError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        signOutError,
     TResult Function()? retrieveUserDataLoading,
     TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
-    TResult Function(String code, String message)? retrieveUserDataError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        retrieveUserDataError,
     TResult Function()? isAdminLoading,
     TResult Function(bool isAdmin)? isAdminSuccess,
-    TResult Function(String code, String message)? isAdminError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        isAdminError,
   }) {
-    return registerError?.call(code, message);
+    return registerError?.call(code, message, stackTrace);
   }
 
   @override
@@ -3264,23 +3490,28 @@ class _$ASRegisterError implements ASRegisterError {
     TResult Function()? loading,
     TResult Function()? loginLoading,
     TResult Function(FarmhubUser user)? loginSuccess,
-    TResult Function(String code, String message)? loginError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        loginError,
     TResult Function()? registerLoading,
     TResult Function(FarmhubUser user)? registerSuccess,
-    TResult Function(String code, String message)? registerError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        registerError,
     TResult Function()? signOutLoading,
     TResult Function()? signOutSuccess,
-    TResult Function(String code, String message)? signOutError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        signOutError,
     TResult Function()? retrieveUserDataLoading,
     TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
-    TResult Function(String code, String message)? retrieveUserDataError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        retrieveUserDataError,
     TResult Function()? isAdminLoading,
     TResult Function(bool isAdmin)? isAdminSuccess,
-    TResult Function(String code, String message)? isAdminError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        isAdminError,
     required TResult orElse(),
   }) {
     if (registerError != null) {
-      return registerError(code, message);
+      return registerError(code, message, stackTrace);
     }
     return orElse();
   }
@@ -3370,10 +3601,13 @@ class _$ASRegisterError implements ASRegisterError {
 
 abstract class ASRegisterError implements AuthState {
   const factory ASRegisterError(
-      {required String code, required String message}) = _$ASRegisterError;
+      {required String code,
+      required String message,
+      required StackTrace stackTrace}) = _$ASRegisterError;
 
   String get code;
   String get message;
+  StackTrace get stackTrace;
   @JsonKey(ignore: true)
   $ASRegisterErrorCopyWith<ASRegisterError> get copyWith =>
       throw _privateConstructorUsedError;
@@ -3424,20 +3658,29 @@ class _$ASSignOutLoading implements ASSignOutLoading {
     required TResult Function() loading,
     required TResult Function() loginLoading,
     required TResult Function(FarmhubUser user) loginSuccess,
-    required TResult Function(String code, String message) loginError,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        loginError,
     required TResult Function() registerLoading,
     required TResult Function(FarmhubUser user) registerSuccess,
-    required TResult Function(String code, String message) registerError,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        registerError,
     required TResult Function() signOutLoading,
     required TResult Function() signOutSuccess,
-    required TResult Function(String code, String message) signOutError,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        signOutError,
     required TResult Function() retrieveUserDataLoading,
     required TResult Function(FarmhubUser farmhubUser) retrieveUserDataSuccess,
-    required TResult Function(String code, String message)
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
         retrieveUserDataError,
     required TResult Function() isAdminLoading,
     required TResult Function(bool isAdmin) isAdminSuccess,
-    required TResult Function(String code, String message) isAdminError,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        isAdminError,
   }) {
     return signOutLoading();
   }
@@ -3450,19 +3693,24 @@ class _$ASSignOutLoading implements ASSignOutLoading {
     TResult Function()? loading,
     TResult Function()? loginLoading,
     TResult Function(FarmhubUser user)? loginSuccess,
-    TResult Function(String code, String message)? loginError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        loginError,
     TResult Function()? registerLoading,
     TResult Function(FarmhubUser user)? registerSuccess,
-    TResult Function(String code, String message)? registerError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        registerError,
     TResult Function()? signOutLoading,
     TResult Function()? signOutSuccess,
-    TResult Function(String code, String message)? signOutError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        signOutError,
     TResult Function()? retrieveUserDataLoading,
     TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
-    TResult Function(String code, String message)? retrieveUserDataError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        retrieveUserDataError,
     TResult Function()? isAdminLoading,
     TResult Function(bool isAdmin)? isAdminSuccess,
-    TResult Function(String code, String message)? isAdminError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        isAdminError,
   }) {
     return signOutLoading?.call();
   }
@@ -3475,19 +3723,24 @@ class _$ASSignOutLoading implements ASSignOutLoading {
     TResult Function()? loading,
     TResult Function()? loginLoading,
     TResult Function(FarmhubUser user)? loginSuccess,
-    TResult Function(String code, String message)? loginError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        loginError,
     TResult Function()? registerLoading,
     TResult Function(FarmhubUser user)? registerSuccess,
-    TResult Function(String code, String message)? registerError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        registerError,
     TResult Function()? signOutLoading,
     TResult Function()? signOutSuccess,
-    TResult Function(String code, String message)? signOutError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        signOutError,
     TResult Function()? retrieveUserDataLoading,
     TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
-    TResult Function(String code, String message)? retrieveUserDataError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        retrieveUserDataError,
     TResult Function()? isAdminLoading,
     TResult Function(bool isAdmin)? isAdminSuccess,
-    TResult Function(String code, String message)? isAdminError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        isAdminError,
     required TResult orElse(),
   }) {
     if (signOutLoading != null) {
@@ -3628,20 +3881,29 @@ class _$ASSignOutSuccess implements ASSignOutSuccess {
     required TResult Function() loading,
     required TResult Function() loginLoading,
     required TResult Function(FarmhubUser user) loginSuccess,
-    required TResult Function(String code, String message) loginError,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        loginError,
     required TResult Function() registerLoading,
     required TResult Function(FarmhubUser user) registerSuccess,
-    required TResult Function(String code, String message) registerError,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        registerError,
     required TResult Function() signOutLoading,
     required TResult Function() signOutSuccess,
-    required TResult Function(String code, String message) signOutError,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        signOutError,
     required TResult Function() retrieveUserDataLoading,
     required TResult Function(FarmhubUser farmhubUser) retrieveUserDataSuccess,
-    required TResult Function(String code, String message)
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
         retrieveUserDataError,
     required TResult Function() isAdminLoading,
     required TResult Function(bool isAdmin) isAdminSuccess,
-    required TResult Function(String code, String message) isAdminError,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        isAdminError,
   }) {
     return signOutSuccess();
   }
@@ -3654,19 +3916,24 @@ class _$ASSignOutSuccess implements ASSignOutSuccess {
     TResult Function()? loading,
     TResult Function()? loginLoading,
     TResult Function(FarmhubUser user)? loginSuccess,
-    TResult Function(String code, String message)? loginError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        loginError,
     TResult Function()? registerLoading,
     TResult Function(FarmhubUser user)? registerSuccess,
-    TResult Function(String code, String message)? registerError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        registerError,
     TResult Function()? signOutLoading,
     TResult Function()? signOutSuccess,
-    TResult Function(String code, String message)? signOutError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        signOutError,
     TResult Function()? retrieveUserDataLoading,
     TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
-    TResult Function(String code, String message)? retrieveUserDataError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        retrieveUserDataError,
     TResult Function()? isAdminLoading,
     TResult Function(bool isAdmin)? isAdminSuccess,
-    TResult Function(String code, String message)? isAdminError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        isAdminError,
   }) {
     return signOutSuccess?.call();
   }
@@ -3679,19 +3946,24 @@ class _$ASSignOutSuccess implements ASSignOutSuccess {
     TResult Function()? loading,
     TResult Function()? loginLoading,
     TResult Function(FarmhubUser user)? loginSuccess,
-    TResult Function(String code, String message)? loginError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        loginError,
     TResult Function()? registerLoading,
     TResult Function(FarmhubUser user)? registerSuccess,
-    TResult Function(String code, String message)? registerError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        registerError,
     TResult Function()? signOutLoading,
     TResult Function()? signOutSuccess,
-    TResult Function(String code, String message)? signOutError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        signOutError,
     TResult Function()? retrieveUserDataLoading,
     TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
-    TResult Function(String code, String message)? retrieveUserDataError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        retrieveUserDataError,
     TResult Function()? isAdminLoading,
     TResult Function(bool isAdmin)? isAdminSuccess,
-    TResult Function(String code, String message)? isAdminError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        isAdminError,
     required TResult orElse(),
   }) {
     if (signOutSuccess != null) {
@@ -3792,7 +4064,7 @@ abstract class $ASSignOutErrorCopyWith<$Res> {
   factory $ASSignOutErrorCopyWith(
           ASSignOutError value, $Res Function(ASSignOutError) then) =
       _$ASSignOutErrorCopyWithImpl<$Res>;
-  $Res call({String code, String message});
+  $Res call({String code, String message, StackTrace stackTrace});
 }
 
 /// @nodoc
@@ -3809,6 +4081,7 @@ class _$ASSignOutErrorCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
   $Res call({
     Object? code = freezed,
     Object? message = freezed,
+    Object? stackTrace = freezed,
   }) {
     return _then(ASSignOutError(
       code: code == freezed
@@ -3819,6 +4092,10 @@ class _$ASSignOutErrorCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
+      stackTrace: stackTrace == freezed
+          ? _value.stackTrace
+          : stackTrace // ignore: cast_nullable_to_non_nullable
+              as StackTrace,
     ));
   }
 }
@@ -3826,16 +4103,19 @@ class _$ASSignOutErrorCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ASSignOutError implements ASSignOutError {
-  const _$ASSignOutError({required this.code, required this.message});
+  const _$ASSignOutError(
+      {required this.code, required this.message, required this.stackTrace});
 
   @override
   final String code;
   @override
   final String message;
+  @override
+  final StackTrace stackTrace;
 
   @override
   String toString() {
-    return 'AuthState.signOutError(code: $code, message: $message)';
+    return 'AuthState.signOutError(code: $code, message: $message, stackTrace: $stackTrace)';
   }
 
   @override
@@ -3844,11 +4124,13 @@ class _$ASSignOutError implements ASSignOutError {
         (other.runtimeType == runtimeType &&
             other is ASSignOutError &&
             (identical(other.code, code) || other.code == code) &&
-            (identical(other.message, message) || other.message == message));
+            (identical(other.message, message) || other.message == message) &&
+            (identical(other.stackTrace, stackTrace) ||
+                other.stackTrace == stackTrace));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, code, message);
+  int get hashCode => Object.hash(runtimeType, code, message, stackTrace);
 
   @JsonKey(ignore: true)
   @override
@@ -3863,22 +4145,31 @@ class _$ASSignOutError implements ASSignOutError {
     required TResult Function() loading,
     required TResult Function() loginLoading,
     required TResult Function(FarmhubUser user) loginSuccess,
-    required TResult Function(String code, String message) loginError,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        loginError,
     required TResult Function() registerLoading,
     required TResult Function(FarmhubUser user) registerSuccess,
-    required TResult Function(String code, String message) registerError,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        registerError,
     required TResult Function() signOutLoading,
     required TResult Function() signOutSuccess,
-    required TResult Function(String code, String message) signOutError,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        signOutError,
     required TResult Function() retrieveUserDataLoading,
     required TResult Function(FarmhubUser farmhubUser) retrieveUserDataSuccess,
-    required TResult Function(String code, String message)
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
         retrieveUserDataError,
     required TResult Function() isAdminLoading,
     required TResult Function(bool isAdmin) isAdminSuccess,
-    required TResult Function(String code, String message) isAdminError,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        isAdminError,
   }) {
-    return signOutError(code, message);
+    return signOutError(code, message, stackTrace);
   }
 
   @override
@@ -3889,21 +4180,26 @@ class _$ASSignOutError implements ASSignOutError {
     TResult Function()? loading,
     TResult Function()? loginLoading,
     TResult Function(FarmhubUser user)? loginSuccess,
-    TResult Function(String code, String message)? loginError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        loginError,
     TResult Function()? registerLoading,
     TResult Function(FarmhubUser user)? registerSuccess,
-    TResult Function(String code, String message)? registerError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        registerError,
     TResult Function()? signOutLoading,
     TResult Function()? signOutSuccess,
-    TResult Function(String code, String message)? signOutError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        signOutError,
     TResult Function()? retrieveUserDataLoading,
     TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
-    TResult Function(String code, String message)? retrieveUserDataError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        retrieveUserDataError,
     TResult Function()? isAdminLoading,
     TResult Function(bool isAdmin)? isAdminSuccess,
-    TResult Function(String code, String message)? isAdminError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        isAdminError,
   }) {
-    return signOutError?.call(code, message);
+    return signOutError?.call(code, message, stackTrace);
   }
 
   @override
@@ -3914,23 +4210,28 @@ class _$ASSignOutError implements ASSignOutError {
     TResult Function()? loading,
     TResult Function()? loginLoading,
     TResult Function(FarmhubUser user)? loginSuccess,
-    TResult Function(String code, String message)? loginError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        loginError,
     TResult Function()? registerLoading,
     TResult Function(FarmhubUser user)? registerSuccess,
-    TResult Function(String code, String message)? registerError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        registerError,
     TResult Function()? signOutLoading,
     TResult Function()? signOutSuccess,
-    TResult Function(String code, String message)? signOutError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        signOutError,
     TResult Function()? retrieveUserDataLoading,
     TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
-    TResult Function(String code, String message)? retrieveUserDataError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        retrieveUserDataError,
     TResult Function()? isAdminLoading,
     TResult Function(bool isAdmin)? isAdminSuccess,
-    TResult Function(String code, String message)? isAdminError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        isAdminError,
     required TResult orElse(),
   }) {
     if (signOutError != null) {
-      return signOutError(code, message);
+      return signOutError(code, message, stackTrace);
     }
     return orElse();
   }
@@ -4020,10 +4321,13 @@ class _$ASSignOutError implements ASSignOutError {
 
 abstract class ASSignOutError implements AuthState {
   const factory ASSignOutError(
-      {required String code, required String message}) = _$ASSignOutError;
+      {required String code,
+      required String message,
+      required StackTrace stackTrace}) = _$ASSignOutError;
 
   String get code;
   String get message;
+  StackTrace get stackTrace;
   @JsonKey(ignore: true)
   $ASSignOutErrorCopyWith<ASSignOutError> get copyWith =>
       throw _privateConstructorUsedError;
@@ -4077,20 +4381,29 @@ class _$ASRetrieveUserDataLoading implements ASRetrieveUserDataLoading {
     required TResult Function() loading,
     required TResult Function() loginLoading,
     required TResult Function(FarmhubUser user) loginSuccess,
-    required TResult Function(String code, String message) loginError,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        loginError,
     required TResult Function() registerLoading,
     required TResult Function(FarmhubUser user) registerSuccess,
-    required TResult Function(String code, String message) registerError,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        registerError,
     required TResult Function() signOutLoading,
     required TResult Function() signOutSuccess,
-    required TResult Function(String code, String message) signOutError,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        signOutError,
     required TResult Function() retrieveUserDataLoading,
     required TResult Function(FarmhubUser farmhubUser) retrieveUserDataSuccess,
-    required TResult Function(String code, String message)
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
         retrieveUserDataError,
     required TResult Function() isAdminLoading,
     required TResult Function(bool isAdmin) isAdminSuccess,
-    required TResult Function(String code, String message) isAdminError,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        isAdminError,
   }) {
     return retrieveUserDataLoading();
   }
@@ -4103,19 +4416,24 @@ class _$ASRetrieveUserDataLoading implements ASRetrieveUserDataLoading {
     TResult Function()? loading,
     TResult Function()? loginLoading,
     TResult Function(FarmhubUser user)? loginSuccess,
-    TResult Function(String code, String message)? loginError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        loginError,
     TResult Function()? registerLoading,
     TResult Function(FarmhubUser user)? registerSuccess,
-    TResult Function(String code, String message)? registerError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        registerError,
     TResult Function()? signOutLoading,
     TResult Function()? signOutSuccess,
-    TResult Function(String code, String message)? signOutError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        signOutError,
     TResult Function()? retrieveUserDataLoading,
     TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
-    TResult Function(String code, String message)? retrieveUserDataError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        retrieveUserDataError,
     TResult Function()? isAdminLoading,
     TResult Function(bool isAdmin)? isAdminSuccess,
-    TResult Function(String code, String message)? isAdminError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        isAdminError,
   }) {
     return retrieveUserDataLoading?.call();
   }
@@ -4128,19 +4446,24 @@ class _$ASRetrieveUserDataLoading implements ASRetrieveUserDataLoading {
     TResult Function()? loading,
     TResult Function()? loginLoading,
     TResult Function(FarmhubUser user)? loginSuccess,
-    TResult Function(String code, String message)? loginError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        loginError,
     TResult Function()? registerLoading,
     TResult Function(FarmhubUser user)? registerSuccess,
-    TResult Function(String code, String message)? registerError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        registerError,
     TResult Function()? signOutLoading,
     TResult Function()? signOutSuccess,
-    TResult Function(String code, String message)? signOutError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        signOutError,
     TResult Function()? retrieveUserDataLoading,
     TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
-    TResult Function(String code, String message)? retrieveUserDataError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        retrieveUserDataError,
     TResult Function()? isAdminLoading,
     TResult Function(bool isAdmin)? isAdminSuccess,
-    TResult Function(String code, String message)? isAdminError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        isAdminError,
     required TResult orElse(),
   }) {
     if (retrieveUserDataLoading != null) {
@@ -4317,20 +4640,29 @@ class _$ASRetrieveUserDataSuccess implements ASRetrieveUserDataSuccess {
     required TResult Function() loading,
     required TResult Function() loginLoading,
     required TResult Function(FarmhubUser user) loginSuccess,
-    required TResult Function(String code, String message) loginError,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        loginError,
     required TResult Function() registerLoading,
     required TResult Function(FarmhubUser user) registerSuccess,
-    required TResult Function(String code, String message) registerError,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        registerError,
     required TResult Function() signOutLoading,
     required TResult Function() signOutSuccess,
-    required TResult Function(String code, String message) signOutError,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        signOutError,
     required TResult Function() retrieveUserDataLoading,
     required TResult Function(FarmhubUser farmhubUser) retrieveUserDataSuccess,
-    required TResult Function(String code, String message)
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
         retrieveUserDataError,
     required TResult Function() isAdminLoading,
     required TResult Function(bool isAdmin) isAdminSuccess,
-    required TResult Function(String code, String message) isAdminError,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        isAdminError,
   }) {
     return retrieveUserDataSuccess(farmhubUser);
   }
@@ -4343,19 +4675,24 @@ class _$ASRetrieveUserDataSuccess implements ASRetrieveUserDataSuccess {
     TResult Function()? loading,
     TResult Function()? loginLoading,
     TResult Function(FarmhubUser user)? loginSuccess,
-    TResult Function(String code, String message)? loginError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        loginError,
     TResult Function()? registerLoading,
     TResult Function(FarmhubUser user)? registerSuccess,
-    TResult Function(String code, String message)? registerError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        registerError,
     TResult Function()? signOutLoading,
     TResult Function()? signOutSuccess,
-    TResult Function(String code, String message)? signOutError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        signOutError,
     TResult Function()? retrieveUserDataLoading,
     TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
-    TResult Function(String code, String message)? retrieveUserDataError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        retrieveUserDataError,
     TResult Function()? isAdminLoading,
     TResult Function(bool isAdmin)? isAdminSuccess,
-    TResult Function(String code, String message)? isAdminError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        isAdminError,
   }) {
     return retrieveUserDataSuccess?.call(farmhubUser);
   }
@@ -4368,19 +4705,24 @@ class _$ASRetrieveUserDataSuccess implements ASRetrieveUserDataSuccess {
     TResult Function()? loading,
     TResult Function()? loginLoading,
     TResult Function(FarmhubUser user)? loginSuccess,
-    TResult Function(String code, String message)? loginError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        loginError,
     TResult Function()? registerLoading,
     TResult Function(FarmhubUser user)? registerSuccess,
-    TResult Function(String code, String message)? registerError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        registerError,
     TResult Function()? signOutLoading,
     TResult Function()? signOutSuccess,
-    TResult Function(String code, String message)? signOutError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        signOutError,
     TResult Function()? retrieveUserDataLoading,
     TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
-    TResult Function(String code, String message)? retrieveUserDataError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        retrieveUserDataError,
     TResult Function()? isAdminLoading,
     TResult Function(bool isAdmin)? isAdminSuccess,
-    TResult Function(String code, String message)? isAdminError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        isAdminError,
     required TResult orElse(),
   }) {
     if (retrieveUserDataSuccess != null) {
@@ -4487,7 +4829,7 @@ abstract class $ASRetrieveUserDataErrorCopyWith<$Res> {
   factory $ASRetrieveUserDataErrorCopyWith(ASRetrieveUserDataError value,
           $Res Function(ASRetrieveUserDataError) then) =
       _$ASRetrieveUserDataErrorCopyWithImpl<$Res>;
-  $Res call({String code, String message});
+  $Res call({String code, String message, StackTrace stackTrace});
 }
 
 /// @nodoc
@@ -4505,6 +4847,7 @@ class _$ASRetrieveUserDataErrorCopyWithImpl<$Res>
   $Res call({
     Object? code = freezed,
     Object? message = freezed,
+    Object? stackTrace = freezed,
   }) {
     return _then(ASRetrieveUserDataError(
       code: code == freezed
@@ -4515,6 +4858,10 @@ class _$ASRetrieveUserDataErrorCopyWithImpl<$Res>
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
+      stackTrace: stackTrace == freezed
+          ? _value.stackTrace
+          : stackTrace // ignore: cast_nullable_to_non_nullable
+              as StackTrace,
     ));
   }
 }
@@ -4522,16 +4869,19 @@ class _$ASRetrieveUserDataErrorCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ASRetrieveUserDataError implements ASRetrieveUserDataError {
-  const _$ASRetrieveUserDataError({required this.code, required this.message});
+  const _$ASRetrieveUserDataError(
+      {required this.code, required this.message, required this.stackTrace});
 
   @override
   final String code;
   @override
   final String message;
+  @override
+  final StackTrace stackTrace;
 
   @override
   String toString() {
-    return 'AuthState.retrieveUserDataError(code: $code, message: $message)';
+    return 'AuthState.retrieveUserDataError(code: $code, message: $message, stackTrace: $stackTrace)';
   }
 
   @override
@@ -4540,11 +4890,13 @@ class _$ASRetrieveUserDataError implements ASRetrieveUserDataError {
         (other.runtimeType == runtimeType &&
             other is ASRetrieveUserDataError &&
             (identical(other.code, code) || other.code == code) &&
-            (identical(other.message, message) || other.message == message));
+            (identical(other.message, message) || other.message == message) &&
+            (identical(other.stackTrace, stackTrace) ||
+                other.stackTrace == stackTrace));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, code, message);
+  int get hashCode => Object.hash(runtimeType, code, message, stackTrace);
 
   @JsonKey(ignore: true)
   @override
@@ -4560,22 +4912,31 @@ class _$ASRetrieveUserDataError implements ASRetrieveUserDataError {
     required TResult Function() loading,
     required TResult Function() loginLoading,
     required TResult Function(FarmhubUser user) loginSuccess,
-    required TResult Function(String code, String message) loginError,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        loginError,
     required TResult Function() registerLoading,
     required TResult Function(FarmhubUser user) registerSuccess,
-    required TResult Function(String code, String message) registerError,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        registerError,
     required TResult Function() signOutLoading,
     required TResult Function() signOutSuccess,
-    required TResult Function(String code, String message) signOutError,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        signOutError,
     required TResult Function() retrieveUserDataLoading,
     required TResult Function(FarmhubUser farmhubUser) retrieveUserDataSuccess,
-    required TResult Function(String code, String message)
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
         retrieveUserDataError,
     required TResult Function() isAdminLoading,
     required TResult Function(bool isAdmin) isAdminSuccess,
-    required TResult Function(String code, String message) isAdminError,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        isAdminError,
   }) {
-    return retrieveUserDataError(code, message);
+    return retrieveUserDataError(code, message, stackTrace);
   }
 
   @override
@@ -4586,21 +4947,26 @@ class _$ASRetrieveUserDataError implements ASRetrieveUserDataError {
     TResult Function()? loading,
     TResult Function()? loginLoading,
     TResult Function(FarmhubUser user)? loginSuccess,
-    TResult Function(String code, String message)? loginError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        loginError,
     TResult Function()? registerLoading,
     TResult Function(FarmhubUser user)? registerSuccess,
-    TResult Function(String code, String message)? registerError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        registerError,
     TResult Function()? signOutLoading,
     TResult Function()? signOutSuccess,
-    TResult Function(String code, String message)? signOutError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        signOutError,
     TResult Function()? retrieveUserDataLoading,
     TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
-    TResult Function(String code, String message)? retrieveUserDataError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        retrieveUserDataError,
     TResult Function()? isAdminLoading,
     TResult Function(bool isAdmin)? isAdminSuccess,
-    TResult Function(String code, String message)? isAdminError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        isAdminError,
   }) {
-    return retrieveUserDataError?.call(code, message);
+    return retrieveUserDataError?.call(code, message, stackTrace);
   }
 
   @override
@@ -4611,23 +4977,28 @@ class _$ASRetrieveUserDataError implements ASRetrieveUserDataError {
     TResult Function()? loading,
     TResult Function()? loginLoading,
     TResult Function(FarmhubUser user)? loginSuccess,
-    TResult Function(String code, String message)? loginError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        loginError,
     TResult Function()? registerLoading,
     TResult Function(FarmhubUser user)? registerSuccess,
-    TResult Function(String code, String message)? registerError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        registerError,
     TResult Function()? signOutLoading,
     TResult Function()? signOutSuccess,
-    TResult Function(String code, String message)? signOutError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        signOutError,
     TResult Function()? retrieveUserDataLoading,
     TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
-    TResult Function(String code, String message)? retrieveUserDataError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        retrieveUserDataError,
     TResult Function()? isAdminLoading,
     TResult Function(bool isAdmin)? isAdminSuccess,
-    TResult Function(String code, String message)? isAdminError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        isAdminError,
     required TResult orElse(),
   }) {
     if (retrieveUserDataError != null) {
-      return retrieveUserDataError(code, message);
+      return retrieveUserDataError(code, message, stackTrace);
     }
     return orElse();
   }
@@ -4718,10 +5089,12 @@ class _$ASRetrieveUserDataError implements ASRetrieveUserDataError {
 abstract class ASRetrieveUserDataError implements AuthState {
   const factory ASRetrieveUserDataError(
       {required String code,
-      required String message}) = _$ASRetrieveUserDataError;
+      required String message,
+      required StackTrace stackTrace}) = _$ASRetrieveUserDataError;
 
   String get code;
   String get message;
+  StackTrace get stackTrace;
   @JsonKey(ignore: true)
   $ASRetrieveUserDataErrorCopyWith<ASRetrieveUserDataError> get copyWith =>
       throw _privateConstructorUsedError;
@@ -4772,20 +5145,29 @@ class _$ASIsAdminLoading implements ASIsAdminLoading {
     required TResult Function() loading,
     required TResult Function() loginLoading,
     required TResult Function(FarmhubUser user) loginSuccess,
-    required TResult Function(String code, String message) loginError,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        loginError,
     required TResult Function() registerLoading,
     required TResult Function(FarmhubUser user) registerSuccess,
-    required TResult Function(String code, String message) registerError,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        registerError,
     required TResult Function() signOutLoading,
     required TResult Function() signOutSuccess,
-    required TResult Function(String code, String message) signOutError,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        signOutError,
     required TResult Function() retrieveUserDataLoading,
     required TResult Function(FarmhubUser farmhubUser) retrieveUserDataSuccess,
-    required TResult Function(String code, String message)
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
         retrieveUserDataError,
     required TResult Function() isAdminLoading,
     required TResult Function(bool isAdmin) isAdminSuccess,
-    required TResult Function(String code, String message) isAdminError,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        isAdminError,
   }) {
     return isAdminLoading();
   }
@@ -4798,19 +5180,24 @@ class _$ASIsAdminLoading implements ASIsAdminLoading {
     TResult Function()? loading,
     TResult Function()? loginLoading,
     TResult Function(FarmhubUser user)? loginSuccess,
-    TResult Function(String code, String message)? loginError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        loginError,
     TResult Function()? registerLoading,
     TResult Function(FarmhubUser user)? registerSuccess,
-    TResult Function(String code, String message)? registerError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        registerError,
     TResult Function()? signOutLoading,
     TResult Function()? signOutSuccess,
-    TResult Function(String code, String message)? signOutError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        signOutError,
     TResult Function()? retrieveUserDataLoading,
     TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
-    TResult Function(String code, String message)? retrieveUserDataError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        retrieveUserDataError,
     TResult Function()? isAdminLoading,
     TResult Function(bool isAdmin)? isAdminSuccess,
-    TResult Function(String code, String message)? isAdminError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        isAdminError,
   }) {
     return isAdminLoading?.call();
   }
@@ -4823,19 +5210,24 @@ class _$ASIsAdminLoading implements ASIsAdminLoading {
     TResult Function()? loading,
     TResult Function()? loginLoading,
     TResult Function(FarmhubUser user)? loginSuccess,
-    TResult Function(String code, String message)? loginError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        loginError,
     TResult Function()? registerLoading,
     TResult Function(FarmhubUser user)? registerSuccess,
-    TResult Function(String code, String message)? registerError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        registerError,
     TResult Function()? signOutLoading,
     TResult Function()? signOutSuccess,
-    TResult Function(String code, String message)? signOutError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        signOutError,
     TResult Function()? retrieveUserDataLoading,
     TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
-    TResult Function(String code, String message)? retrieveUserDataError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        retrieveUserDataError,
     TResult Function()? isAdminLoading,
     TResult Function(bool isAdmin)? isAdminSuccess,
-    TResult Function(String code, String message)? isAdminError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        isAdminError,
     required TResult orElse(),
   }) {
     if (isAdminLoading != null) {
@@ -4999,20 +5391,29 @@ class _$ASIsAdminSuccess implements ASIsAdminSuccess {
     required TResult Function() loading,
     required TResult Function() loginLoading,
     required TResult Function(FarmhubUser user) loginSuccess,
-    required TResult Function(String code, String message) loginError,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        loginError,
     required TResult Function() registerLoading,
     required TResult Function(FarmhubUser user) registerSuccess,
-    required TResult Function(String code, String message) registerError,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        registerError,
     required TResult Function() signOutLoading,
     required TResult Function() signOutSuccess,
-    required TResult Function(String code, String message) signOutError,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        signOutError,
     required TResult Function() retrieveUserDataLoading,
     required TResult Function(FarmhubUser farmhubUser) retrieveUserDataSuccess,
-    required TResult Function(String code, String message)
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
         retrieveUserDataError,
     required TResult Function() isAdminLoading,
     required TResult Function(bool isAdmin) isAdminSuccess,
-    required TResult Function(String code, String message) isAdminError,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        isAdminError,
   }) {
     return isAdminSuccess(isAdmin);
   }
@@ -5025,19 +5426,24 @@ class _$ASIsAdminSuccess implements ASIsAdminSuccess {
     TResult Function()? loading,
     TResult Function()? loginLoading,
     TResult Function(FarmhubUser user)? loginSuccess,
-    TResult Function(String code, String message)? loginError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        loginError,
     TResult Function()? registerLoading,
     TResult Function(FarmhubUser user)? registerSuccess,
-    TResult Function(String code, String message)? registerError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        registerError,
     TResult Function()? signOutLoading,
     TResult Function()? signOutSuccess,
-    TResult Function(String code, String message)? signOutError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        signOutError,
     TResult Function()? retrieveUserDataLoading,
     TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
-    TResult Function(String code, String message)? retrieveUserDataError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        retrieveUserDataError,
     TResult Function()? isAdminLoading,
     TResult Function(bool isAdmin)? isAdminSuccess,
-    TResult Function(String code, String message)? isAdminError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        isAdminError,
   }) {
     return isAdminSuccess?.call(isAdmin);
   }
@@ -5050,19 +5456,24 @@ class _$ASIsAdminSuccess implements ASIsAdminSuccess {
     TResult Function()? loading,
     TResult Function()? loginLoading,
     TResult Function(FarmhubUser user)? loginSuccess,
-    TResult Function(String code, String message)? loginError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        loginError,
     TResult Function()? registerLoading,
     TResult Function(FarmhubUser user)? registerSuccess,
-    TResult Function(String code, String message)? registerError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        registerError,
     TResult Function()? signOutLoading,
     TResult Function()? signOutSuccess,
-    TResult Function(String code, String message)? signOutError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        signOutError,
     TResult Function()? retrieveUserDataLoading,
     TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
-    TResult Function(String code, String message)? retrieveUserDataError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        retrieveUserDataError,
     TResult Function()? isAdminLoading,
     TResult Function(bool isAdmin)? isAdminSuccess,
-    TResult Function(String code, String message)? isAdminError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        isAdminError,
     required TResult orElse(),
   }) {
     if (isAdminSuccess != null) {
@@ -5168,7 +5579,7 @@ abstract class $ASIsAdminErrorCopyWith<$Res> {
   factory $ASIsAdminErrorCopyWith(
           ASIsAdminError value, $Res Function(ASIsAdminError) then) =
       _$ASIsAdminErrorCopyWithImpl<$Res>;
-  $Res call({String code, String message});
+  $Res call({String code, String message, StackTrace stackTrace});
 }
 
 /// @nodoc
@@ -5185,6 +5596,7 @@ class _$ASIsAdminErrorCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
   $Res call({
     Object? code = freezed,
     Object? message = freezed,
+    Object? stackTrace = freezed,
   }) {
     return _then(ASIsAdminError(
       code: code == freezed
@@ -5195,6 +5607,10 @@ class _$ASIsAdminErrorCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
+      stackTrace: stackTrace == freezed
+          ? _value.stackTrace
+          : stackTrace // ignore: cast_nullable_to_non_nullable
+              as StackTrace,
     ));
   }
 }
@@ -5202,16 +5618,19 @@ class _$ASIsAdminErrorCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ASIsAdminError implements ASIsAdminError {
-  const _$ASIsAdminError({required this.code, required this.message});
+  const _$ASIsAdminError(
+      {required this.code, required this.message, required this.stackTrace});
 
   @override
   final String code;
   @override
   final String message;
+  @override
+  final StackTrace stackTrace;
 
   @override
   String toString() {
-    return 'AuthState.isAdminError(code: $code, message: $message)';
+    return 'AuthState.isAdminError(code: $code, message: $message, stackTrace: $stackTrace)';
   }
 
   @override
@@ -5220,11 +5639,13 @@ class _$ASIsAdminError implements ASIsAdminError {
         (other.runtimeType == runtimeType &&
             other is ASIsAdminError &&
             (identical(other.code, code) || other.code == code) &&
-            (identical(other.message, message) || other.message == message));
+            (identical(other.message, message) || other.message == message) &&
+            (identical(other.stackTrace, stackTrace) ||
+                other.stackTrace == stackTrace));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, code, message);
+  int get hashCode => Object.hash(runtimeType, code, message, stackTrace);
 
   @JsonKey(ignore: true)
   @override
@@ -5239,22 +5660,31 @@ class _$ASIsAdminError implements ASIsAdminError {
     required TResult Function() loading,
     required TResult Function() loginLoading,
     required TResult Function(FarmhubUser user) loginSuccess,
-    required TResult Function(String code, String message) loginError,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        loginError,
     required TResult Function() registerLoading,
     required TResult Function(FarmhubUser user) registerSuccess,
-    required TResult Function(String code, String message) registerError,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        registerError,
     required TResult Function() signOutLoading,
     required TResult Function() signOutSuccess,
-    required TResult Function(String code, String message) signOutError,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        signOutError,
     required TResult Function() retrieveUserDataLoading,
     required TResult Function(FarmhubUser farmhubUser) retrieveUserDataSuccess,
-    required TResult Function(String code, String message)
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
         retrieveUserDataError,
     required TResult Function() isAdminLoading,
     required TResult Function(bool isAdmin) isAdminSuccess,
-    required TResult Function(String code, String message) isAdminError,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        isAdminError,
   }) {
-    return isAdminError(code, message);
+    return isAdminError(code, message, stackTrace);
   }
 
   @override
@@ -5265,21 +5695,26 @@ class _$ASIsAdminError implements ASIsAdminError {
     TResult Function()? loading,
     TResult Function()? loginLoading,
     TResult Function(FarmhubUser user)? loginSuccess,
-    TResult Function(String code, String message)? loginError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        loginError,
     TResult Function()? registerLoading,
     TResult Function(FarmhubUser user)? registerSuccess,
-    TResult Function(String code, String message)? registerError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        registerError,
     TResult Function()? signOutLoading,
     TResult Function()? signOutSuccess,
-    TResult Function(String code, String message)? signOutError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        signOutError,
     TResult Function()? retrieveUserDataLoading,
     TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
-    TResult Function(String code, String message)? retrieveUserDataError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        retrieveUserDataError,
     TResult Function()? isAdminLoading,
     TResult Function(bool isAdmin)? isAdminSuccess,
-    TResult Function(String code, String message)? isAdminError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        isAdminError,
   }) {
-    return isAdminError?.call(code, message);
+    return isAdminError?.call(code, message, stackTrace);
   }
 
   @override
@@ -5290,23 +5725,28 @@ class _$ASIsAdminError implements ASIsAdminError {
     TResult Function()? loading,
     TResult Function()? loginLoading,
     TResult Function(FarmhubUser user)? loginSuccess,
-    TResult Function(String code, String message)? loginError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        loginError,
     TResult Function()? registerLoading,
     TResult Function(FarmhubUser user)? registerSuccess,
-    TResult Function(String code, String message)? registerError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        registerError,
     TResult Function()? signOutLoading,
     TResult Function()? signOutSuccess,
-    TResult Function(String code, String message)? signOutError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        signOutError,
     TResult Function()? retrieveUserDataLoading,
     TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
-    TResult Function(String code, String message)? retrieveUserDataError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        retrieveUserDataError,
     TResult Function()? isAdminLoading,
     TResult Function(bool isAdmin)? isAdminSuccess,
-    TResult Function(String code, String message)? isAdminError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        isAdminError,
     required TResult orElse(),
   }) {
     if (isAdminError != null) {
-      return isAdminError(code, message);
+      return isAdminError(code, message, stackTrace);
     }
     return orElse();
   }
@@ -5396,10 +5836,13 @@ class _$ASIsAdminError implements ASIsAdminError {
 
 abstract class ASIsAdminError implements AuthState {
   const factory ASIsAdminError(
-      {required String code, required String message}) = _$ASIsAdminError;
+      {required String code,
+      required String message,
+      required StackTrace stackTrace}) = _$ASIsAdminError;
 
   String get code;
   String get message;
+  StackTrace get stackTrace;
   @JsonKey(ignore: true)
   $ASIsAdminErrorCopyWith<ASIsAdminError> get copyWith =>
       throw _privateConstructorUsedError;

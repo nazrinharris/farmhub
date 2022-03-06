@@ -33,9 +33,10 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
     emit(
       failureOrLogin.fold(
-        (failure) => AuthState.loginError(
-          message: failure.message!,
-          code: failure.code!,
+        (f) => AuthState.loginError(
+          message: f.message!,
+          code: f.code!,
+          stackTrace: f.stackTrace!,
         ),
         (user) => AuthState.loginSuccess(user: user),
       ),
@@ -56,9 +57,10 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
     emit(
       failureOrRegister.fold(
-        (failure) => AuthState.registerError(
-          code: failure.code!,
-          message: failure.message!,
+        (f) => AuthState.registerError(
+          code: f.code!,
+          message: f.message!,
+          stackTrace: f.stackTrace!,
         ),
         (user) => AuthState.registerSuccess(user: user),
       ),
@@ -74,7 +76,11 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     final failureOrSignOut = await authRepository.signOut();
 
     emit(failureOrSignOut.fold(
-      (failure) => AuthState.signOutError(code: failure.code!, message: failure.message!),
+      (f) => AuthState.signOutError(
+        code: f.code!,
+        message: f.message!,
+        stackTrace: f.stackTrace!,
+      ),
       (_) => const AuthState.signOutSuccess(),
     ));
   }
@@ -88,7 +94,11 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     final failureOrSignOut = await authRepository.retrieveUserData();
 
     emit(failureOrSignOut.fold(
-      (failure) => AuthState.retrieveUserDataError(code: failure.code!, message: failure.message!),
+      (f) => AuthState.retrieveUserDataError(
+        code: f.code!,
+        message: f.message!,
+        stackTrace: f.stackTrace!,
+      ),
       (farmhubUser) => AuthState.retrieveUserDataSuccess(farmhubUser: farmhubUser),
     ));
   }
@@ -102,7 +112,11 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     final failureOrBool = await authRepository.isAdmin(uid: event.uid);
 
     emit(failureOrBool.fold(
-      (failure) => AuthState.isAdminError(code: failure.code!, message: failure.message!),
+      (f) => AuthState.isAdminError(
+        code: f.code!,
+        message: f.message!,
+        stackTrace: f.stackTrace!,
+      ),
       (isAdmin) => AuthState.isAdminSuccess(isAdmin: isAdmin),
     ));
   }

@@ -135,6 +135,7 @@ class RegisterScreenBloc extends Bloc<RegisterScreenEvent, RegisterScreenState> 
 
           primaryButtonAwareCubit.triggerFirstPage();
         } else if (state is ASRegisterError) {
+          debugPrintStack(stackTrace: state.stackTrace);
           updateInfoTile(InfoTileProps(
             leadingText: 'Uh oh, Something\'s wrong!',
             child: Text(

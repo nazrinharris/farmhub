@@ -15,6 +15,7 @@ class AuthState with _$AuthState {
   const factory AuthState.loginError({
     required String code,
     required String message,
+    required StackTrace stackTrace,
   }) = ASLoginError;
 
   // Register-Specific States
@@ -25,6 +26,7 @@ class AuthState with _$AuthState {
   const factory AuthState.registerError({
     required String code,
     required String message,
+    required StackTrace stackTrace,
   }) = ASRegisterError;
 
   // Sign-Out States
@@ -33,6 +35,7 @@ class AuthState with _$AuthState {
   const factory AuthState.signOutError({
     required String code,
     required String message,
+    required StackTrace stackTrace,
   }) = ASSignOutError;
 
   // Retrieve User States
@@ -43,6 +46,7 @@ class AuthState with _$AuthState {
   const factory AuthState.retrieveUserDataError({
     required String code,
     required String message,
+    required StackTrace stackTrace,
   }) = ASRetrieveUserDataError;
 
   // isAdmin States
@@ -53,5 +57,6 @@ class AuthState with _$AuthState {
   const factory AuthState.isAdminError({
     required String code,
     required String message,
+    required StackTrace stackTrace,
   }) = ASIsAdminError;
 }

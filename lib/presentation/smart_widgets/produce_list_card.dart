@@ -10,17 +10,24 @@ import '../shared_widgets/ui_helpers.dart';
 class ProduceListCard extends StatelessWidget {
   final int index;
   final Produce produce;
+  final Function()? onTap;
 
-  const ProduceListCard(this.index, this.produce, {Key? key}) : super(key: key);
+  const ProduceListCard(
+    this.index,
+    this.produce, {
+    Key? key,
+    this.onTap,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Material(
       type: MaterialType.transparency,
       child: InkWell(
-        onTap: () {
-          Navigator.of(context).pushNamed('/produce', arguments: ProduceArguments(produce));
-        },
+        onTap: onTap ??
+            () {
+              Navigator.of(context).pushNamed('/produce', arguments: ProduceArguments(produce));
+            },
         child: Container(
           margin: const EdgeInsets.symmetric(horizontal: 24),
           padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 13),
@@ -206,7 +213,7 @@ class ChangeBox extends StatelessWidget {
     if (isNegative) {
       return Theme.of(context).colorScheme.background;
     } else {
-      return Theme.of(context).colorScheme.background;
+      return Theme.of(context).colorScheme.primary;
     }
   }
 }

@@ -24,12 +24,12 @@ class _$PriceTearOff {
   _Price call(
       {required String priceId,
       required double currentPrice,
-      required List<Map<String, dynamic>> changeHistory,
+      required List<Map<String, dynamic>> editHistory,
       required String updateDate}) {
     return _Price(
       priceId: priceId,
       currentPrice: currentPrice,
-      changeHistory: changeHistory,
+      editHistory: editHistory,
       updateDate: updateDate,
     );
   }
@@ -46,7 +46,7 @@ const $Price = _$PriceTearOff();
 mixin _$Price {
   String get priceId => throw _privateConstructorUsedError;
   double get currentPrice => throw _privateConstructorUsedError;
-  List<Map<String, dynamic>> get changeHistory =>
+  List<Map<String, dynamic>> get editHistory =>
       throw _privateConstructorUsedError;
   String get updateDate => throw _privateConstructorUsedError;
 
@@ -62,7 +62,7 @@ abstract class $PriceCopyWith<$Res> {
   $Res call(
       {String priceId,
       double currentPrice,
-      List<Map<String, dynamic>> changeHistory,
+      List<Map<String, dynamic>> editHistory,
       String updateDate});
 }
 
@@ -78,7 +78,7 @@ class _$PriceCopyWithImpl<$Res> implements $PriceCopyWith<$Res> {
   $Res call({
     Object? priceId = freezed,
     Object? currentPrice = freezed,
-    Object? changeHistory = freezed,
+    Object? editHistory = freezed,
     Object? updateDate = freezed,
   }) {
     return _then(_value.copyWith(
@@ -90,9 +90,9 @@ class _$PriceCopyWithImpl<$Res> implements $PriceCopyWith<$Res> {
           ? _value.currentPrice
           : currentPrice // ignore: cast_nullable_to_non_nullable
               as double,
-      changeHistory: changeHistory == freezed
-          ? _value.changeHistory
-          : changeHistory // ignore: cast_nullable_to_non_nullable
+      editHistory: editHistory == freezed
+          ? _value.editHistory
+          : editHistory // ignore: cast_nullable_to_non_nullable
               as List<Map<String, dynamic>>,
       updateDate: updateDate == freezed
           ? _value.updateDate
@@ -110,7 +110,7 @@ abstract class _$PriceCopyWith<$Res> implements $PriceCopyWith<$Res> {
   $Res call(
       {String priceId,
       double currentPrice,
-      List<Map<String, dynamic>> changeHistory,
+      List<Map<String, dynamic>> editHistory,
       String updateDate});
 }
 
@@ -127,7 +127,7 @@ class __$PriceCopyWithImpl<$Res> extends _$PriceCopyWithImpl<$Res>
   $Res call({
     Object? priceId = freezed,
     Object? currentPrice = freezed,
-    Object? changeHistory = freezed,
+    Object? editHistory = freezed,
     Object? updateDate = freezed,
   }) {
     return _then(_Price(
@@ -139,9 +139,9 @@ class __$PriceCopyWithImpl<$Res> extends _$PriceCopyWithImpl<$Res>
           ? _value.currentPrice
           : currentPrice // ignore: cast_nullable_to_non_nullable
               as double,
-      changeHistory: changeHistory == freezed
-          ? _value.changeHistory
-          : changeHistory // ignore: cast_nullable_to_non_nullable
+      editHistory: editHistory == freezed
+          ? _value.editHistory
+          : editHistory // ignore: cast_nullable_to_non_nullable
               as List<Map<String, dynamic>>,
       updateDate: updateDate == freezed
           ? _value.updateDate
@@ -157,7 +157,7 @@ class _$_Price implements _Price {
   _$_Price(
       {required this.priceId,
       required this.currentPrice,
-      required this.changeHistory,
+      required this.editHistory,
       required this.updateDate});
 
   factory _$_Price.fromJson(Map<String, dynamic> json) =>
@@ -168,13 +168,13 @@ class _$_Price implements _Price {
   @override
   final double currentPrice;
   @override
-  final List<Map<String, dynamic>> changeHistory;
+  final List<Map<String, dynamic>> editHistory;
   @override
   final String updateDate;
 
   @override
   String toString() {
-    return 'Price(priceId: $priceId, currentPrice: $currentPrice, changeHistory: $changeHistory, updateDate: $updateDate)';
+    return 'Price(priceId: $priceId, currentPrice: $currentPrice, editHistory: $editHistory, updateDate: $updateDate)';
   }
 
   @override
@@ -186,14 +186,14 @@ class _$_Price implements _Price {
             (identical(other.currentPrice, currentPrice) ||
                 other.currentPrice == currentPrice) &&
             const DeepCollectionEquality()
-                .equals(other.changeHistory, changeHistory) &&
+                .equals(other.editHistory, editHistory) &&
             (identical(other.updateDate, updateDate) ||
                 other.updateDate == updateDate));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, priceId, currentPrice,
-      const DeepCollectionEquality().hash(changeHistory), updateDate);
+      const DeepCollectionEquality().hash(editHistory), updateDate);
 
   @JsonKey(ignore: true)
   @override
@@ -210,7 +210,7 @@ abstract class _Price implements Price {
   factory _Price(
       {required String priceId,
       required double currentPrice,
-      required List<Map<String, dynamic>> changeHistory,
+      required List<Map<String, dynamic>> editHistory,
       required String updateDate}) = _$_Price;
 
   factory _Price.fromJson(Map<String, dynamic> json) = _$_Price.fromJson;
@@ -220,7 +220,7 @@ abstract class _Price implements Price {
   @override
   double get currentPrice;
   @override
-  List<Map<String, dynamic>> get changeHistory;
+  List<Map<String, dynamic>> get editHistory;
   @override
   String get updateDate;
   @override

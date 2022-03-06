@@ -32,6 +32,12 @@ class _$ProduceManagerEventTearOff {
       currentProducePrice: currentProducePrice,
     );
   }
+
+  _PMEExecGetOneWeekPrices execGetOneWeekPrices({required String pid}) {
+    return _PMEExecGetOneWeekPrices(
+      pid: pid,
+    );
+  }
 }
 
 /// @nodoc
@@ -45,6 +51,7 @@ mixin _$ProduceManagerEvent {
     required TResult Function() execGetFirstTenProduce,
     required TResult Function(String produceName, num currentProducePrice)
         execCreateProduce,
+    required TResult Function(String pid) execGetOneWeekPrices,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -53,6 +60,7 @@ mixin _$ProduceManagerEvent {
     TResult Function()? execGetFirstTenProduce,
     TResult Function(String produceName, num currentProducePrice)?
         execCreateProduce,
+    TResult Function(String pid)? execGetOneWeekPrices,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -61,6 +69,7 @@ mixin _$ProduceManagerEvent {
     TResult Function()? execGetFirstTenProduce,
     TResult Function(String produceName, num currentProducePrice)?
         execCreateProduce,
+    TResult Function(String pid)? execGetOneWeekPrices,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -70,6 +79,8 @@ mixin _$ProduceManagerEvent {
     required TResult Function(_PMEExecGetFirstTenProduce value)
         execGetFirstTenProduce,
     required TResult Function(_PMEExecCreateProduce value) execCreateProduce,
+    required TResult Function(_PMEExecGetOneWeekPrices value)
+        execGetOneWeekPrices,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -77,6 +88,7 @@ mixin _$ProduceManagerEvent {
     TResult Function(_Started value)? started,
     TResult Function(_PMEExecGetFirstTenProduce value)? execGetFirstTenProduce,
     TResult Function(_PMEExecCreateProduce value)? execCreateProduce,
+    TResult Function(_PMEExecGetOneWeekPrices value)? execGetOneWeekPrices,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -84,6 +96,7 @@ mixin _$ProduceManagerEvent {
     TResult Function(_Started value)? started,
     TResult Function(_PMEExecGetFirstTenProduce value)? execGetFirstTenProduce,
     TResult Function(_PMEExecCreateProduce value)? execCreateProduce,
+    TResult Function(_PMEExecGetOneWeekPrices value)? execGetOneWeekPrices,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -149,6 +162,7 @@ class _$_Started implements _Started {
     required TResult Function() execGetFirstTenProduce,
     required TResult Function(String produceName, num currentProducePrice)
         execCreateProduce,
+    required TResult Function(String pid) execGetOneWeekPrices,
   }) {
     return started();
   }
@@ -160,6 +174,7 @@ class _$_Started implements _Started {
     TResult Function()? execGetFirstTenProduce,
     TResult Function(String produceName, num currentProducePrice)?
         execCreateProduce,
+    TResult Function(String pid)? execGetOneWeekPrices,
   }) {
     return started?.call();
   }
@@ -171,6 +186,7 @@ class _$_Started implements _Started {
     TResult Function()? execGetFirstTenProduce,
     TResult Function(String produceName, num currentProducePrice)?
         execCreateProduce,
+    TResult Function(String pid)? execGetOneWeekPrices,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -186,6 +202,8 @@ class _$_Started implements _Started {
     required TResult Function(_PMEExecGetFirstTenProduce value)
         execGetFirstTenProduce,
     required TResult Function(_PMEExecCreateProduce value) execCreateProduce,
+    required TResult Function(_PMEExecGetOneWeekPrices value)
+        execGetOneWeekPrices,
   }) {
     return started(this);
   }
@@ -196,6 +214,7 @@ class _$_Started implements _Started {
     TResult Function(_Started value)? started,
     TResult Function(_PMEExecGetFirstTenProduce value)? execGetFirstTenProduce,
     TResult Function(_PMEExecCreateProduce value)? execCreateProduce,
+    TResult Function(_PMEExecGetOneWeekPrices value)? execGetOneWeekPrices,
   }) {
     return started?.call(this);
   }
@@ -206,6 +225,7 @@ class _$_Started implements _Started {
     TResult Function(_Started value)? started,
     TResult Function(_PMEExecGetFirstTenProduce value)? execGetFirstTenProduce,
     TResult Function(_PMEExecCreateProduce value)? execCreateProduce,
+    TResult Function(_PMEExecGetOneWeekPrices value)? execGetOneWeekPrices,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -266,6 +286,7 @@ class _$_PMEExecGetFirstTenProduce implements _PMEExecGetFirstTenProduce {
     required TResult Function() execGetFirstTenProduce,
     required TResult Function(String produceName, num currentProducePrice)
         execCreateProduce,
+    required TResult Function(String pid) execGetOneWeekPrices,
   }) {
     return execGetFirstTenProduce();
   }
@@ -277,6 +298,7 @@ class _$_PMEExecGetFirstTenProduce implements _PMEExecGetFirstTenProduce {
     TResult Function()? execGetFirstTenProduce,
     TResult Function(String produceName, num currentProducePrice)?
         execCreateProduce,
+    TResult Function(String pid)? execGetOneWeekPrices,
   }) {
     return execGetFirstTenProduce?.call();
   }
@@ -288,6 +310,7 @@ class _$_PMEExecGetFirstTenProduce implements _PMEExecGetFirstTenProduce {
     TResult Function()? execGetFirstTenProduce,
     TResult Function(String produceName, num currentProducePrice)?
         execCreateProduce,
+    TResult Function(String pid)? execGetOneWeekPrices,
     required TResult orElse(),
   }) {
     if (execGetFirstTenProduce != null) {
@@ -303,6 +326,8 @@ class _$_PMEExecGetFirstTenProduce implements _PMEExecGetFirstTenProduce {
     required TResult Function(_PMEExecGetFirstTenProduce value)
         execGetFirstTenProduce,
     required TResult Function(_PMEExecCreateProduce value) execCreateProduce,
+    required TResult Function(_PMEExecGetOneWeekPrices value)
+        execGetOneWeekPrices,
   }) {
     return execGetFirstTenProduce(this);
   }
@@ -313,6 +338,7 @@ class _$_PMEExecGetFirstTenProduce implements _PMEExecGetFirstTenProduce {
     TResult Function(_Started value)? started,
     TResult Function(_PMEExecGetFirstTenProduce value)? execGetFirstTenProduce,
     TResult Function(_PMEExecCreateProduce value)? execCreateProduce,
+    TResult Function(_PMEExecGetOneWeekPrices value)? execGetOneWeekPrices,
   }) {
     return execGetFirstTenProduce?.call(this);
   }
@@ -323,6 +349,7 @@ class _$_PMEExecGetFirstTenProduce implements _PMEExecGetFirstTenProduce {
     TResult Function(_Started value)? started,
     TResult Function(_PMEExecGetFirstTenProduce value)? execGetFirstTenProduce,
     TResult Function(_PMEExecCreateProduce value)? execCreateProduce,
+    TResult Function(_PMEExecGetOneWeekPrices value)? execGetOneWeekPrices,
     required TResult orElse(),
   }) {
     if (execGetFirstTenProduce != null) {
@@ -417,6 +444,7 @@ class _$_PMEExecCreateProduce implements _PMEExecCreateProduce {
     required TResult Function() execGetFirstTenProduce,
     required TResult Function(String produceName, num currentProducePrice)
         execCreateProduce,
+    required TResult Function(String pid) execGetOneWeekPrices,
   }) {
     return execCreateProduce(produceName, currentProducePrice);
   }
@@ -428,6 +456,7 @@ class _$_PMEExecCreateProduce implements _PMEExecCreateProduce {
     TResult Function()? execGetFirstTenProduce,
     TResult Function(String produceName, num currentProducePrice)?
         execCreateProduce,
+    TResult Function(String pid)? execGetOneWeekPrices,
   }) {
     return execCreateProduce?.call(produceName, currentProducePrice);
   }
@@ -439,6 +468,7 @@ class _$_PMEExecCreateProduce implements _PMEExecCreateProduce {
     TResult Function()? execGetFirstTenProduce,
     TResult Function(String produceName, num currentProducePrice)?
         execCreateProduce,
+    TResult Function(String pid)? execGetOneWeekPrices,
     required TResult orElse(),
   }) {
     if (execCreateProduce != null) {
@@ -454,6 +484,8 @@ class _$_PMEExecCreateProduce implements _PMEExecCreateProduce {
     required TResult Function(_PMEExecGetFirstTenProduce value)
         execGetFirstTenProduce,
     required TResult Function(_PMEExecCreateProduce value) execCreateProduce,
+    required TResult Function(_PMEExecGetOneWeekPrices value)
+        execGetOneWeekPrices,
   }) {
     return execCreateProduce(this);
   }
@@ -464,6 +496,7 @@ class _$_PMEExecCreateProduce implements _PMEExecCreateProduce {
     TResult Function(_Started value)? started,
     TResult Function(_PMEExecGetFirstTenProduce value)? execGetFirstTenProduce,
     TResult Function(_PMEExecCreateProduce value)? execCreateProduce,
+    TResult Function(_PMEExecGetOneWeekPrices value)? execGetOneWeekPrices,
   }) {
     return execCreateProduce?.call(this);
   }
@@ -474,6 +507,7 @@ class _$_PMEExecCreateProduce implements _PMEExecCreateProduce {
     TResult Function(_Started value)? started,
     TResult Function(_PMEExecGetFirstTenProduce value)? execGetFirstTenProduce,
     TResult Function(_PMEExecCreateProduce value)? execCreateProduce,
+    TResult Function(_PMEExecGetOneWeekPrices value)? execGetOneWeekPrices,
     required TResult orElse(),
   }) {
     if (execCreateProduce != null) {
@@ -492,6 +526,159 @@ abstract class _PMEExecCreateProduce implements ProduceManagerEvent {
   num get currentProducePrice;
   @JsonKey(ignore: true)
   _$PMEExecCreateProduceCopyWith<_PMEExecCreateProduce> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$PMEExecGetOneWeekPricesCopyWith<$Res> {
+  factory _$PMEExecGetOneWeekPricesCopyWith(_PMEExecGetOneWeekPrices value,
+          $Res Function(_PMEExecGetOneWeekPrices) then) =
+      __$PMEExecGetOneWeekPricesCopyWithImpl<$Res>;
+  $Res call({String pid});
+}
+
+/// @nodoc
+class __$PMEExecGetOneWeekPricesCopyWithImpl<$Res>
+    extends _$ProduceManagerEventCopyWithImpl<$Res>
+    implements _$PMEExecGetOneWeekPricesCopyWith<$Res> {
+  __$PMEExecGetOneWeekPricesCopyWithImpl(_PMEExecGetOneWeekPrices _value,
+      $Res Function(_PMEExecGetOneWeekPrices) _then)
+      : super(_value, (v) => _then(v as _PMEExecGetOneWeekPrices));
+
+  @override
+  _PMEExecGetOneWeekPrices get _value =>
+      super._value as _PMEExecGetOneWeekPrices;
+
+  @override
+  $Res call({
+    Object? pid = freezed,
+  }) {
+    return _then(_PMEExecGetOneWeekPrices(
+      pid: pid == freezed
+          ? _value.pid
+          : pid // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_PMEExecGetOneWeekPrices implements _PMEExecGetOneWeekPrices {
+  const _$_PMEExecGetOneWeekPrices({required this.pid});
+
+  @override
+  final String pid;
+
+  @override
+  String toString() {
+    return 'ProduceManagerEvent.execGetOneWeekPrices(pid: $pid)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _PMEExecGetOneWeekPrices &&
+            (identical(other.pid, pid) || other.pid == pid));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, pid);
+
+  @JsonKey(ignore: true)
+  @override
+  _$PMEExecGetOneWeekPricesCopyWith<_PMEExecGetOneWeekPrices> get copyWith =>
+      __$PMEExecGetOneWeekPricesCopyWithImpl<_PMEExecGetOneWeekPrices>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() execGetFirstTenProduce,
+    required TResult Function(String produceName, num currentProducePrice)
+        execCreateProduce,
+    required TResult Function(String pid) execGetOneWeekPrices,
+  }) {
+    return execGetOneWeekPrices(pid);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? execGetFirstTenProduce,
+    TResult Function(String produceName, num currentProducePrice)?
+        execCreateProduce,
+    TResult Function(String pid)? execGetOneWeekPrices,
+  }) {
+    return execGetOneWeekPrices?.call(pid);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? execGetFirstTenProduce,
+    TResult Function(String produceName, num currentProducePrice)?
+        execCreateProduce,
+    TResult Function(String pid)? execGetOneWeekPrices,
+    required TResult orElse(),
+  }) {
+    if (execGetOneWeekPrices != null) {
+      return execGetOneWeekPrices(pid);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_PMEExecGetFirstTenProduce value)
+        execGetFirstTenProduce,
+    required TResult Function(_PMEExecCreateProduce value) execCreateProduce,
+    required TResult Function(_PMEExecGetOneWeekPrices value)
+        execGetOneWeekPrices,
+  }) {
+    return execGetOneWeekPrices(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_PMEExecGetFirstTenProduce value)? execGetFirstTenProduce,
+    TResult Function(_PMEExecCreateProduce value)? execCreateProduce,
+    TResult Function(_PMEExecGetOneWeekPrices value)? execGetOneWeekPrices,
+  }) {
+    return execGetOneWeekPrices?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_PMEExecGetFirstTenProduce value)? execGetFirstTenProduce,
+    TResult Function(_PMEExecCreateProduce value)? execCreateProduce,
+    TResult Function(_PMEExecGetOneWeekPrices value)? execGetOneWeekPrices,
+    required TResult orElse(),
+  }) {
+    if (execGetOneWeekPrices != null) {
+      return execGetOneWeekPrices(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _PMEExecGetOneWeekPrices implements ProduceManagerEvent {
+  const factory _PMEExecGetOneWeekPrices({required String pid}) =
+      _$_PMEExecGetOneWeekPrices;
+
+  String get pid;
+  @JsonKey(ignore: true)
+  _$PMEExecGetOneWeekPricesCopyWith<_PMEExecGetOneWeekPrices> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -515,10 +702,13 @@ class _$ProduceManagerStateTearOff {
   }
 
   PMSGetFirstTenProduceError getFirstTenProduceError(
-      {required String code, required String message}) {
+      {required String code,
+      required String message,
+      required StackTrace stackTrace}) {
     return PMSGetFirstTenProduceError(
       code: code,
       message: message,
+      stackTrace: stackTrace,
     );
   }
 
@@ -534,10 +724,35 @@ class _$ProduceManagerStateTearOff {
   }
 
   PMSCreateNewProduceError createNewProduceError(
-      {required String code, required String message}) {
+      {required String code,
+      required String message,
+      required StackTrace stackTrace}) {
     return PMSCreateNewProduceError(
       code: code,
       message: message,
+      stackTrace: stackTrace,
+    );
+  }
+
+  PMSOneWeekPricesLoading getOneWeekPricesLoading() {
+    return const PMSOneWeekPricesLoading();
+  }
+
+  PMSOneWeekPricesSuccess getOneWeekPricesSuccess(
+      {required List<Price> priceList}) {
+    return PMSOneWeekPricesSuccess(
+      priceList: priceList,
+    );
+  }
+
+  PMSOneWeekPricesError getOneWeekPricesError(
+      {required String code,
+      required String message,
+      required StackTrace stackTrace}) {
+    return PMSOneWeekPricesError(
+      code: code,
+      message: message,
+      stackTrace: stackTrace,
     );
   }
 }
@@ -553,12 +768,19 @@ mixin _$ProduceManagerState {
     required TResult Function() getFirstTenProduceLoading,
     required TResult Function(List<Produce> produceList)
         getFirstTenProduceSuccess,
-    required TResult Function(String code, String message)
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
         getFirstTenProduceError,
     required TResult Function() createNewProduceLoading,
     required TResult Function(Produce produce) createNewProduceSuccess,
-    required TResult Function(String code, String message)
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
         createNewProduceError,
+    required TResult Function() getOneWeekPricesLoading,
+    required TResult Function(List<Price> priceList) getOneWeekPricesSuccess,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        getOneWeekPricesError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -566,10 +788,16 @@ mixin _$ProduceManagerState {
     TResult Function()? initial,
     TResult Function()? getFirstTenProduceLoading,
     TResult Function(List<Produce> produceList)? getFirstTenProduceSuccess,
-    TResult Function(String code, String message)? getFirstTenProduceError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        getFirstTenProduceError,
     TResult Function()? createNewProduceLoading,
     TResult Function(Produce produce)? createNewProduceSuccess,
-    TResult Function(String code, String message)? createNewProduceError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        createNewProduceError,
+    TResult Function()? getOneWeekPricesLoading,
+    TResult Function(List<Price> priceList)? getOneWeekPricesSuccess,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        getOneWeekPricesError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -577,10 +805,16 @@ mixin _$ProduceManagerState {
     TResult Function()? initial,
     TResult Function()? getFirstTenProduceLoading,
     TResult Function(List<Produce> produceList)? getFirstTenProduceSuccess,
-    TResult Function(String code, String message)? getFirstTenProduceError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        getFirstTenProduceError,
     TResult Function()? createNewProduceLoading,
     TResult Function(Produce produce)? createNewProduceSuccess,
-    TResult Function(String code, String message)? createNewProduceError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        createNewProduceError,
+    TResult Function()? getOneWeekPricesLoading,
+    TResult Function(List<Price> priceList)? getOneWeekPricesSuccess,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        getOneWeekPricesError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -599,6 +833,12 @@ mixin _$ProduceManagerState {
         createNewProduceSuccess,
     required TResult Function(PMSCreateNewProduceError value)
         createNewProduceError,
+    required TResult Function(PMSOneWeekPricesLoading value)
+        getOneWeekPricesLoading,
+    required TResult Function(PMSOneWeekPricesSuccess value)
+        getOneWeekPricesSuccess,
+    required TResult Function(PMSOneWeekPricesError value)
+        getOneWeekPricesError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -612,6 +852,9 @@ mixin _$ProduceManagerState {
     TResult Function(PMSCreateNewProduceLoading value)? createNewProduceLoading,
     TResult Function(PMSCreateNewProduceSuccess value)? createNewProduceSuccess,
     TResult Function(PMSCreateNewProduceError value)? createNewProduceError,
+    TResult Function(PMSOneWeekPricesLoading value)? getOneWeekPricesLoading,
+    TResult Function(PMSOneWeekPricesSuccess value)? getOneWeekPricesSuccess,
+    TResult Function(PMSOneWeekPricesError value)? getOneWeekPricesError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -625,6 +868,9 @@ mixin _$ProduceManagerState {
     TResult Function(PMSCreateNewProduceLoading value)? createNewProduceLoading,
     TResult Function(PMSCreateNewProduceSuccess value)? createNewProduceSuccess,
     TResult Function(PMSCreateNewProduceError value)? createNewProduceError,
+    TResult Function(PMSOneWeekPricesLoading value)? getOneWeekPricesLoading,
+    TResult Function(PMSOneWeekPricesSuccess value)? getOneWeekPricesSuccess,
+    TResult Function(PMSOneWeekPricesError value)? getOneWeekPricesError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -691,12 +937,19 @@ class _$PMSInitial implements PMSInitial {
     required TResult Function() getFirstTenProduceLoading,
     required TResult Function(List<Produce> produceList)
         getFirstTenProduceSuccess,
-    required TResult Function(String code, String message)
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
         getFirstTenProduceError,
     required TResult Function() createNewProduceLoading,
     required TResult Function(Produce produce) createNewProduceSuccess,
-    required TResult Function(String code, String message)
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
         createNewProduceError,
+    required TResult Function() getOneWeekPricesLoading,
+    required TResult Function(List<Price> priceList) getOneWeekPricesSuccess,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        getOneWeekPricesError,
   }) {
     return initial();
   }
@@ -707,10 +960,16 @@ class _$PMSInitial implements PMSInitial {
     TResult Function()? initial,
     TResult Function()? getFirstTenProduceLoading,
     TResult Function(List<Produce> produceList)? getFirstTenProduceSuccess,
-    TResult Function(String code, String message)? getFirstTenProduceError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        getFirstTenProduceError,
     TResult Function()? createNewProduceLoading,
     TResult Function(Produce produce)? createNewProduceSuccess,
-    TResult Function(String code, String message)? createNewProduceError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        createNewProduceError,
+    TResult Function()? getOneWeekPricesLoading,
+    TResult Function(List<Price> priceList)? getOneWeekPricesSuccess,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        getOneWeekPricesError,
   }) {
     return initial?.call();
   }
@@ -721,10 +980,16 @@ class _$PMSInitial implements PMSInitial {
     TResult Function()? initial,
     TResult Function()? getFirstTenProduceLoading,
     TResult Function(List<Produce> produceList)? getFirstTenProduceSuccess,
-    TResult Function(String code, String message)? getFirstTenProduceError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        getFirstTenProduceError,
     TResult Function()? createNewProduceLoading,
     TResult Function(Produce produce)? createNewProduceSuccess,
-    TResult Function(String code, String message)? createNewProduceError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        createNewProduceError,
+    TResult Function()? getOneWeekPricesLoading,
+    TResult Function(List<Price> priceList)? getOneWeekPricesSuccess,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        getOneWeekPricesError,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -749,6 +1014,12 @@ class _$PMSInitial implements PMSInitial {
         createNewProduceSuccess,
     required TResult Function(PMSCreateNewProduceError value)
         createNewProduceError,
+    required TResult Function(PMSOneWeekPricesLoading value)
+        getOneWeekPricesLoading,
+    required TResult Function(PMSOneWeekPricesSuccess value)
+        getOneWeekPricesSuccess,
+    required TResult Function(PMSOneWeekPricesError value)
+        getOneWeekPricesError,
   }) {
     return initial(this);
   }
@@ -765,6 +1036,9 @@ class _$PMSInitial implements PMSInitial {
     TResult Function(PMSCreateNewProduceLoading value)? createNewProduceLoading,
     TResult Function(PMSCreateNewProduceSuccess value)? createNewProduceSuccess,
     TResult Function(PMSCreateNewProduceError value)? createNewProduceError,
+    TResult Function(PMSOneWeekPricesLoading value)? getOneWeekPricesLoading,
+    TResult Function(PMSOneWeekPricesSuccess value)? getOneWeekPricesSuccess,
+    TResult Function(PMSOneWeekPricesError value)? getOneWeekPricesError,
   }) {
     return initial?.call(this);
   }
@@ -781,6 +1055,9 @@ class _$PMSInitial implements PMSInitial {
     TResult Function(PMSCreateNewProduceLoading value)? createNewProduceLoading,
     TResult Function(PMSCreateNewProduceSuccess value)? createNewProduceSuccess,
     TResult Function(PMSCreateNewProduceError value)? createNewProduceError,
+    TResult Function(PMSOneWeekPricesLoading value)? getOneWeekPricesLoading,
+    TResult Function(PMSOneWeekPricesSuccess value)? getOneWeekPricesSuccess,
+    TResult Function(PMSOneWeekPricesError value)? getOneWeekPricesError,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -843,12 +1120,19 @@ class _$PMSGetFirstTenProduceLoading implements PMSGetFirstTenProduceLoading {
     required TResult Function() getFirstTenProduceLoading,
     required TResult Function(List<Produce> produceList)
         getFirstTenProduceSuccess,
-    required TResult Function(String code, String message)
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
         getFirstTenProduceError,
     required TResult Function() createNewProduceLoading,
     required TResult Function(Produce produce) createNewProduceSuccess,
-    required TResult Function(String code, String message)
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
         createNewProduceError,
+    required TResult Function() getOneWeekPricesLoading,
+    required TResult Function(List<Price> priceList) getOneWeekPricesSuccess,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        getOneWeekPricesError,
   }) {
     return getFirstTenProduceLoading();
   }
@@ -859,10 +1143,16 @@ class _$PMSGetFirstTenProduceLoading implements PMSGetFirstTenProduceLoading {
     TResult Function()? initial,
     TResult Function()? getFirstTenProduceLoading,
     TResult Function(List<Produce> produceList)? getFirstTenProduceSuccess,
-    TResult Function(String code, String message)? getFirstTenProduceError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        getFirstTenProduceError,
     TResult Function()? createNewProduceLoading,
     TResult Function(Produce produce)? createNewProduceSuccess,
-    TResult Function(String code, String message)? createNewProduceError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        createNewProduceError,
+    TResult Function()? getOneWeekPricesLoading,
+    TResult Function(List<Price> priceList)? getOneWeekPricesSuccess,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        getOneWeekPricesError,
   }) {
     return getFirstTenProduceLoading?.call();
   }
@@ -873,10 +1163,16 @@ class _$PMSGetFirstTenProduceLoading implements PMSGetFirstTenProduceLoading {
     TResult Function()? initial,
     TResult Function()? getFirstTenProduceLoading,
     TResult Function(List<Produce> produceList)? getFirstTenProduceSuccess,
-    TResult Function(String code, String message)? getFirstTenProduceError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        getFirstTenProduceError,
     TResult Function()? createNewProduceLoading,
     TResult Function(Produce produce)? createNewProduceSuccess,
-    TResult Function(String code, String message)? createNewProduceError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        createNewProduceError,
+    TResult Function()? getOneWeekPricesLoading,
+    TResult Function(List<Price> priceList)? getOneWeekPricesSuccess,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        getOneWeekPricesError,
     required TResult orElse(),
   }) {
     if (getFirstTenProduceLoading != null) {
@@ -901,6 +1197,12 @@ class _$PMSGetFirstTenProduceLoading implements PMSGetFirstTenProduceLoading {
         createNewProduceSuccess,
     required TResult Function(PMSCreateNewProduceError value)
         createNewProduceError,
+    required TResult Function(PMSOneWeekPricesLoading value)
+        getOneWeekPricesLoading,
+    required TResult Function(PMSOneWeekPricesSuccess value)
+        getOneWeekPricesSuccess,
+    required TResult Function(PMSOneWeekPricesError value)
+        getOneWeekPricesError,
   }) {
     return getFirstTenProduceLoading(this);
   }
@@ -917,6 +1219,9 @@ class _$PMSGetFirstTenProduceLoading implements PMSGetFirstTenProduceLoading {
     TResult Function(PMSCreateNewProduceLoading value)? createNewProduceLoading,
     TResult Function(PMSCreateNewProduceSuccess value)? createNewProduceSuccess,
     TResult Function(PMSCreateNewProduceError value)? createNewProduceError,
+    TResult Function(PMSOneWeekPricesLoading value)? getOneWeekPricesLoading,
+    TResult Function(PMSOneWeekPricesSuccess value)? getOneWeekPricesSuccess,
+    TResult Function(PMSOneWeekPricesError value)? getOneWeekPricesError,
   }) {
     return getFirstTenProduceLoading?.call(this);
   }
@@ -933,6 +1238,9 @@ class _$PMSGetFirstTenProduceLoading implements PMSGetFirstTenProduceLoading {
     TResult Function(PMSCreateNewProduceLoading value)? createNewProduceLoading,
     TResult Function(PMSCreateNewProduceSuccess value)? createNewProduceSuccess,
     TResult Function(PMSCreateNewProduceError value)? createNewProduceError,
+    TResult Function(PMSOneWeekPricesLoading value)? getOneWeekPricesLoading,
+    TResult Function(PMSOneWeekPricesSuccess value)? getOneWeekPricesSuccess,
+    TResult Function(PMSOneWeekPricesError value)? getOneWeekPricesError,
     required TResult orElse(),
   }) {
     if (getFirstTenProduceLoading != null) {
@@ -1020,12 +1328,19 @@ class _$PMSGetFirstTenProduceSuccess implements PMSGetFirstTenProduceSuccess {
     required TResult Function() getFirstTenProduceLoading,
     required TResult Function(List<Produce> produceList)
         getFirstTenProduceSuccess,
-    required TResult Function(String code, String message)
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
         getFirstTenProduceError,
     required TResult Function() createNewProduceLoading,
     required TResult Function(Produce produce) createNewProduceSuccess,
-    required TResult Function(String code, String message)
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
         createNewProduceError,
+    required TResult Function() getOneWeekPricesLoading,
+    required TResult Function(List<Price> priceList) getOneWeekPricesSuccess,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        getOneWeekPricesError,
   }) {
     return getFirstTenProduceSuccess(produceList);
   }
@@ -1036,10 +1351,16 @@ class _$PMSGetFirstTenProduceSuccess implements PMSGetFirstTenProduceSuccess {
     TResult Function()? initial,
     TResult Function()? getFirstTenProduceLoading,
     TResult Function(List<Produce> produceList)? getFirstTenProduceSuccess,
-    TResult Function(String code, String message)? getFirstTenProduceError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        getFirstTenProduceError,
     TResult Function()? createNewProduceLoading,
     TResult Function(Produce produce)? createNewProduceSuccess,
-    TResult Function(String code, String message)? createNewProduceError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        createNewProduceError,
+    TResult Function()? getOneWeekPricesLoading,
+    TResult Function(List<Price> priceList)? getOneWeekPricesSuccess,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        getOneWeekPricesError,
   }) {
     return getFirstTenProduceSuccess?.call(produceList);
   }
@@ -1050,10 +1371,16 @@ class _$PMSGetFirstTenProduceSuccess implements PMSGetFirstTenProduceSuccess {
     TResult Function()? initial,
     TResult Function()? getFirstTenProduceLoading,
     TResult Function(List<Produce> produceList)? getFirstTenProduceSuccess,
-    TResult Function(String code, String message)? getFirstTenProduceError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        getFirstTenProduceError,
     TResult Function()? createNewProduceLoading,
     TResult Function(Produce produce)? createNewProduceSuccess,
-    TResult Function(String code, String message)? createNewProduceError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        createNewProduceError,
+    TResult Function()? getOneWeekPricesLoading,
+    TResult Function(List<Price> priceList)? getOneWeekPricesSuccess,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        getOneWeekPricesError,
     required TResult orElse(),
   }) {
     if (getFirstTenProduceSuccess != null) {
@@ -1078,6 +1405,12 @@ class _$PMSGetFirstTenProduceSuccess implements PMSGetFirstTenProduceSuccess {
         createNewProduceSuccess,
     required TResult Function(PMSCreateNewProduceError value)
         createNewProduceError,
+    required TResult Function(PMSOneWeekPricesLoading value)
+        getOneWeekPricesLoading,
+    required TResult Function(PMSOneWeekPricesSuccess value)
+        getOneWeekPricesSuccess,
+    required TResult Function(PMSOneWeekPricesError value)
+        getOneWeekPricesError,
   }) {
     return getFirstTenProduceSuccess(this);
   }
@@ -1094,6 +1427,9 @@ class _$PMSGetFirstTenProduceSuccess implements PMSGetFirstTenProduceSuccess {
     TResult Function(PMSCreateNewProduceLoading value)? createNewProduceLoading,
     TResult Function(PMSCreateNewProduceSuccess value)? createNewProduceSuccess,
     TResult Function(PMSCreateNewProduceError value)? createNewProduceError,
+    TResult Function(PMSOneWeekPricesLoading value)? getOneWeekPricesLoading,
+    TResult Function(PMSOneWeekPricesSuccess value)? getOneWeekPricesSuccess,
+    TResult Function(PMSOneWeekPricesError value)? getOneWeekPricesError,
   }) {
     return getFirstTenProduceSuccess?.call(this);
   }
@@ -1110,6 +1446,9 @@ class _$PMSGetFirstTenProduceSuccess implements PMSGetFirstTenProduceSuccess {
     TResult Function(PMSCreateNewProduceLoading value)? createNewProduceLoading,
     TResult Function(PMSCreateNewProduceSuccess value)? createNewProduceSuccess,
     TResult Function(PMSCreateNewProduceError value)? createNewProduceError,
+    TResult Function(PMSOneWeekPricesLoading value)? getOneWeekPricesLoading,
+    TResult Function(PMSOneWeekPricesSuccess value)? getOneWeekPricesSuccess,
+    TResult Function(PMSOneWeekPricesError value)? getOneWeekPricesError,
     required TResult orElse(),
   }) {
     if (getFirstTenProduceSuccess != null) {
@@ -1134,7 +1473,7 @@ abstract class $PMSGetFirstTenProduceErrorCopyWith<$Res> {
   factory $PMSGetFirstTenProduceErrorCopyWith(PMSGetFirstTenProduceError value,
           $Res Function(PMSGetFirstTenProduceError) then) =
       _$PMSGetFirstTenProduceErrorCopyWithImpl<$Res>;
-  $Res call({String code, String message});
+  $Res call({String code, String message, StackTrace stackTrace});
 }
 
 /// @nodoc
@@ -1153,6 +1492,7 @@ class _$PMSGetFirstTenProduceErrorCopyWithImpl<$Res>
   $Res call({
     Object? code = freezed,
     Object? message = freezed,
+    Object? stackTrace = freezed,
   }) {
     return _then(PMSGetFirstTenProduceError(
       code: code == freezed
@@ -1163,6 +1503,10 @@ class _$PMSGetFirstTenProduceErrorCopyWithImpl<$Res>
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
+      stackTrace: stackTrace == freezed
+          ? _value.stackTrace
+          : stackTrace // ignore: cast_nullable_to_non_nullable
+              as StackTrace,
     ));
   }
 }
@@ -1171,16 +1515,18 @@ class _$PMSGetFirstTenProduceErrorCopyWithImpl<$Res>
 
 class _$PMSGetFirstTenProduceError implements PMSGetFirstTenProduceError {
   const _$PMSGetFirstTenProduceError(
-      {required this.code, required this.message});
+      {required this.code, required this.message, required this.stackTrace});
 
   @override
   final String code;
   @override
   final String message;
+  @override
+  final StackTrace stackTrace;
 
   @override
   String toString() {
-    return 'ProduceManagerState.getFirstTenProduceError(code: $code, message: $message)';
+    return 'ProduceManagerState.getFirstTenProduceError(code: $code, message: $message, stackTrace: $stackTrace)';
   }
 
   @override
@@ -1189,11 +1535,13 @@ class _$PMSGetFirstTenProduceError implements PMSGetFirstTenProduceError {
         (other.runtimeType == runtimeType &&
             other is PMSGetFirstTenProduceError &&
             (identical(other.code, code) || other.code == code) &&
-            (identical(other.message, message) || other.message == message));
+            (identical(other.message, message) || other.message == message) &&
+            (identical(other.stackTrace, stackTrace) ||
+                other.stackTrace == stackTrace));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, code, message);
+  int get hashCode => Object.hash(runtimeType, code, message, stackTrace);
 
   @JsonKey(ignore: true)
   @override
@@ -1209,14 +1557,21 @@ class _$PMSGetFirstTenProduceError implements PMSGetFirstTenProduceError {
     required TResult Function() getFirstTenProduceLoading,
     required TResult Function(List<Produce> produceList)
         getFirstTenProduceSuccess,
-    required TResult Function(String code, String message)
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
         getFirstTenProduceError,
     required TResult Function() createNewProduceLoading,
     required TResult Function(Produce produce) createNewProduceSuccess,
-    required TResult Function(String code, String message)
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
         createNewProduceError,
+    required TResult Function() getOneWeekPricesLoading,
+    required TResult Function(List<Price> priceList) getOneWeekPricesSuccess,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        getOneWeekPricesError,
   }) {
-    return getFirstTenProduceError(code, message);
+    return getFirstTenProduceError(code, message, stackTrace);
   }
 
   @override
@@ -1225,12 +1580,18 @@ class _$PMSGetFirstTenProduceError implements PMSGetFirstTenProduceError {
     TResult Function()? initial,
     TResult Function()? getFirstTenProduceLoading,
     TResult Function(List<Produce> produceList)? getFirstTenProduceSuccess,
-    TResult Function(String code, String message)? getFirstTenProduceError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        getFirstTenProduceError,
     TResult Function()? createNewProduceLoading,
     TResult Function(Produce produce)? createNewProduceSuccess,
-    TResult Function(String code, String message)? createNewProduceError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        createNewProduceError,
+    TResult Function()? getOneWeekPricesLoading,
+    TResult Function(List<Price> priceList)? getOneWeekPricesSuccess,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        getOneWeekPricesError,
   }) {
-    return getFirstTenProduceError?.call(code, message);
+    return getFirstTenProduceError?.call(code, message, stackTrace);
   }
 
   @override
@@ -1239,14 +1600,20 @@ class _$PMSGetFirstTenProduceError implements PMSGetFirstTenProduceError {
     TResult Function()? initial,
     TResult Function()? getFirstTenProduceLoading,
     TResult Function(List<Produce> produceList)? getFirstTenProduceSuccess,
-    TResult Function(String code, String message)? getFirstTenProduceError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        getFirstTenProduceError,
     TResult Function()? createNewProduceLoading,
     TResult Function(Produce produce)? createNewProduceSuccess,
-    TResult Function(String code, String message)? createNewProduceError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        createNewProduceError,
+    TResult Function()? getOneWeekPricesLoading,
+    TResult Function(List<Price> priceList)? getOneWeekPricesSuccess,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        getOneWeekPricesError,
     required TResult orElse(),
   }) {
     if (getFirstTenProduceError != null) {
-      return getFirstTenProduceError(code, message);
+      return getFirstTenProduceError(code, message, stackTrace);
     }
     return orElse();
   }
@@ -1267,6 +1634,12 @@ class _$PMSGetFirstTenProduceError implements PMSGetFirstTenProduceError {
         createNewProduceSuccess,
     required TResult Function(PMSCreateNewProduceError value)
         createNewProduceError,
+    required TResult Function(PMSOneWeekPricesLoading value)
+        getOneWeekPricesLoading,
+    required TResult Function(PMSOneWeekPricesSuccess value)
+        getOneWeekPricesSuccess,
+    required TResult Function(PMSOneWeekPricesError value)
+        getOneWeekPricesError,
   }) {
     return getFirstTenProduceError(this);
   }
@@ -1283,6 +1656,9 @@ class _$PMSGetFirstTenProduceError implements PMSGetFirstTenProduceError {
     TResult Function(PMSCreateNewProduceLoading value)? createNewProduceLoading,
     TResult Function(PMSCreateNewProduceSuccess value)? createNewProduceSuccess,
     TResult Function(PMSCreateNewProduceError value)? createNewProduceError,
+    TResult Function(PMSOneWeekPricesLoading value)? getOneWeekPricesLoading,
+    TResult Function(PMSOneWeekPricesSuccess value)? getOneWeekPricesSuccess,
+    TResult Function(PMSOneWeekPricesError value)? getOneWeekPricesError,
   }) {
     return getFirstTenProduceError?.call(this);
   }
@@ -1299,6 +1675,9 @@ class _$PMSGetFirstTenProduceError implements PMSGetFirstTenProduceError {
     TResult Function(PMSCreateNewProduceLoading value)? createNewProduceLoading,
     TResult Function(PMSCreateNewProduceSuccess value)? createNewProduceSuccess,
     TResult Function(PMSCreateNewProduceError value)? createNewProduceError,
+    TResult Function(PMSOneWeekPricesLoading value)? getOneWeekPricesLoading,
+    TResult Function(PMSOneWeekPricesSuccess value)? getOneWeekPricesSuccess,
+    TResult Function(PMSOneWeekPricesError value)? getOneWeekPricesError,
     required TResult orElse(),
   }) {
     if (getFirstTenProduceError != null) {
@@ -1311,10 +1690,12 @@ class _$PMSGetFirstTenProduceError implements PMSGetFirstTenProduceError {
 abstract class PMSGetFirstTenProduceError implements ProduceManagerState {
   const factory PMSGetFirstTenProduceError(
       {required String code,
-      required String message}) = _$PMSGetFirstTenProduceError;
+      required String message,
+      required StackTrace stackTrace}) = _$PMSGetFirstTenProduceError;
 
   String get code;
   String get message;
+  StackTrace get stackTrace;
   @JsonKey(ignore: true)
   $PMSGetFirstTenProduceErrorCopyWith<PMSGetFirstTenProduceError>
       get copyWith => throw _privateConstructorUsedError;
@@ -1367,12 +1748,19 @@ class _$PMSCreateNewProduceLoading implements PMSCreateNewProduceLoading {
     required TResult Function() getFirstTenProduceLoading,
     required TResult Function(List<Produce> produceList)
         getFirstTenProduceSuccess,
-    required TResult Function(String code, String message)
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
         getFirstTenProduceError,
     required TResult Function() createNewProduceLoading,
     required TResult Function(Produce produce) createNewProduceSuccess,
-    required TResult Function(String code, String message)
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
         createNewProduceError,
+    required TResult Function() getOneWeekPricesLoading,
+    required TResult Function(List<Price> priceList) getOneWeekPricesSuccess,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        getOneWeekPricesError,
   }) {
     return createNewProduceLoading();
   }
@@ -1383,10 +1771,16 @@ class _$PMSCreateNewProduceLoading implements PMSCreateNewProduceLoading {
     TResult Function()? initial,
     TResult Function()? getFirstTenProduceLoading,
     TResult Function(List<Produce> produceList)? getFirstTenProduceSuccess,
-    TResult Function(String code, String message)? getFirstTenProduceError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        getFirstTenProduceError,
     TResult Function()? createNewProduceLoading,
     TResult Function(Produce produce)? createNewProduceSuccess,
-    TResult Function(String code, String message)? createNewProduceError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        createNewProduceError,
+    TResult Function()? getOneWeekPricesLoading,
+    TResult Function(List<Price> priceList)? getOneWeekPricesSuccess,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        getOneWeekPricesError,
   }) {
     return createNewProduceLoading?.call();
   }
@@ -1397,10 +1791,16 @@ class _$PMSCreateNewProduceLoading implements PMSCreateNewProduceLoading {
     TResult Function()? initial,
     TResult Function()? getFirstTenProduceLoading,
     TResult Function(List<Produce> produceList)? getFirstTenProduceSuccess,
-    TResult Function(String code, String message)? getFirstTenProduceError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        getFirstTenProduceError,
     TResult Function()? createNewProduceLoading,
     TResult Function(Produce produce)? createNewProduceSuccess,
-    TResult Function(String code, String message)? createNewProduceError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        createNewProduceError,
+    TResult Function()? getOneWeekPricesLoading,
+    TResult Function(List<Price> priceList)? getOneWeekPricesSuccess,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        getOneWeekPricesError,
     required TResult orElse(),
   }) {
     if (createNewProduceLoading != null) {
@@ -1425,6 +1825,12 @@ class _$PMSCreateNewProduceLoading implements PMSCreateNewProduceLoading {
         createNewProduceSuccess,
     required TResult Function(PMSCreateNewProduceError value)
         createNewProduceError,
+    required TResult Function(PMSOneWeekPricesLoading value)
+        getOneWeekPricesLoading,
+    required TResult Function(PMSOneWeekPricesSuccess value)
+        getOneWeekPricesSuccess,
+    required TResult Function(PMSOneWeekPricesError value)
+        getOneWeekPricesError,
   }) {
     return createNewProduceLoading(this);
   }
@@ -1441,6 +1847,9 @@ class _$PMSCreateNewProduceLoading implements PMSCreateNewProduceLoading {
     TResult Function(PMSCreateNewProduceLoading value)? createNewProduceLoading,
     TResult Function(PMSCreateNewProduceSuccess value)? createNewProduceSuccess,
     TResult Function(PMSCreateNewProduceError value)? createNewProduceError,
+    TResult Function(PMSOneWeekPricesLoading value)? getOneWeekPricesLoading,
+    TResult Function(PMSOneWeekPricesSuccess value)? getOneWeekPricesSuccess,
+    TResult Function(PMSOneWeekPricesError value)? getOneWeekPricesError,
   }) {
     return createNewProduceLoading?.call(this);
   }
@@ -1457,6 +1866,9 @@ class _$PMSCreateNewProduceLoading implements PMSCreateNewProduceLoading {
     TResult Function(PMSCreateNewProduceLoading value)? createNewProduceLoading,
     TResult Function(PMSCreateNewProduceSuccess value)? createNewProduceSuccess,
     TResult Function(PMSCreateNewProduceError value)? createNewProduceError,
+    TResult Function(PMSOneWeekPricesLoading value)? getOneWeekPricesLoading,
+    TResult Function(PMSOneWeekPricesSuccess value)? getOneWeekPricesSuccess,
+    TResult Function(PMSOneWeekPricesError value)? getOneWeekPricesError,
     required TResult orElse(),
   }) {
     if (createNewProduceLoading != null) {
@@ -1550,12 +1962,19 @@ class _$PMSCreateNewProduceSuccess implements PMSCreateNewProduceSuccess {
     required TResult Function() getFirstTenProduceLoading,
     required TResult Function(List<Produce> produceList)
         getFirstTenProduceSuccess,
-    required TResult Function(String code, String message)
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
         getFirstTenProduceError,
     required TResult Function() createNewProduceLoading,
     required TResult Function(Produce produce) createNewProduceSuccess,
-    required TResult Function(String code, String message)
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
         createNewProduceError,
+    required TResult Function() getOneWeekPricesLoading,
+    required TResult Function(List<Price> priceList) getOneWeekPricesSuccess,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        getOneWeekPricesError,
   }) {
     return createNewProduceSuccess(produce);
   }
@@ -1566,10 +1985,16 @@ class _$PMSCreateNewProduceSuccess implements PMSCreateNewProduceSuccess {
     TResult Function()? initial,
     TResult Function()? getFirstTenProduceLoading,
     TResult Function(List<Produce> produceList)? getFirstTenProduceSuccess,
-    TResult Function(String code, String message)? getFirstTenProduceError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        getFirstTenProduceError,
     TResult Function()? createNewProduceLoading,
     TResult Function(Produce produce)? createNewProduceSuccess,
-    TResult Function(String code, String message)? createNewProduceError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        createNewProduceError,
+    TResult Function()? getOneWeekPricesLoading,
+    TResult Function(List<Price> priceList)? getOneWeekPricesSuccess,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        getOneWeekPricesError,
   }) {
     return createNewProduceSuccess?.call(produce);
   }
@@ -1580,10 +2005,16 @@ class _$PMSCreateNewProduceSuccess implements PMSCreateNewProduceSuccess {
     TResult Function()? initial,
     TResult Function()? getFirstTenProduceLoading,
     TResult Function(List<Produce> produceList)? getFirstTenProduceSuccess,
-    TResult Function(String code, String message)? getFirstTenProduceError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        getFirstTenProduceError,
     TResult Function()? createNewProduceLoading,
     TResult Function(Produce produce)? createNewProduceSuccess,
-    TResult Function(String code, String message)? createNewProduceError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        createNewProduceError,
+    TResult Function()? getOneWeekPricesLoading,
+    TResult Function(List<Price> priceList)? getOneWeekPricesSuccess,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        getOneWeekPricesError,
     required TResult orElse(),
   }) {
     if (createNewProduceSuccess != null) {
@@ -1608,6 +2039,12 @@ class _$PMSCreateNewProduceSuccess implements PMSCreateNewProduceSuccess {
         createNewProduceSuccess,
     required TResult Function(PMSCreateNewProduceError value)
         createNewProduceError,
+    required TResult Function(PMSOneWeekPricesLoading value)
+        getOneWeekPricesLoading,
+    required TResult Function(PMSOneWeekPricesSuccess value)
+        getOneWeekPricesSuccess,
+    required TResult Function(PMSOneWeekPricesError value)
+        getOneWeekPricesError,
   }) {
     return createNewProduceSuccess(this);
   }
@@ -1624,6 +2061,9 @@ class _$PMSCreateNewProduceSuccess implements PMSCreateNewProduceSuccess {
     TResult Function(PMSCreateNewProduceLoading value)? createNewProduceLoading,
     TResult Function(PMSCreateNewProduceSuccess value)? createNewProduceSuccess,
     TResult Function(PMSCreateNewProduceError value)? createNewProduceError,
+    TResult Function(PMSOneWeekPricesLoading value)? getOneWeekPricesLoading,
+    TResult Function(PMSOneWeekPricesSuccess value)? getOneWeekPricesSuccess,
+    TResult Function(PMSOneWeekPricesError value)? getOneWeekPricesError,
   }) {
     return createNewProduceSuccess?.call(this);
   }
@@ -1640,6 +2080,9 @@ class _$PMSCreateNewProduceSuccess implements PMSCreateNewProduceSuccess {
     TResult Function(PMSCreateNewProduceLoading value)? createNewProduceLoading,
     TResult Function(PMSCreateNewProduceSuccess value)? createNewProduceSuccess,
     TResult Function(PMSCreateNewProduceError value)? createNewProduceError,
+    TResult Function(PMSOneWeekPricesLoading value)? getOneWeekPricesLoading,
+    TResult Function(PMSOneWeekPricesSuccess value)? getOneWeekPricesSuccess,
+    TResult Function(PMSOneWeekPricesError value)? getOneWeekPricesError,
     required TResult orElse(),
   }) {
     if (createNewProduceSuccess != null) {
@@ -1664,7 +2107,7 @@ abstract class $PMSCreateNewProduceErrorCopyWith<$Res> {
   factory $PMSCreateNewProduceErrorCopyWith(PMSCreateNewProduceError value,
           $Res Function(PMSCreateNewProduceError) then) =
       _$PMSCreateNewProduceErrorCopyWithImpl<$Res>;
-  $Res call({String code, String message});
+  $Res call({String code, String message, StackTrace stackTrace});
 }
 
 /// @nodoc
@@ -1683,6 +2126,7 @@ class _$PMSCreateNewProduceErrorCopyWithImpl<$Res>
   $Res call({
     Object? code = freezed,
     Object? message = freezed,
+    Object? stackTrace = freezed,
   }) {
     return _then(PMSCreateNewProduceError(
       code: code == freezed
@@ -1693,6 +2137,10 @@ class _$PMSCreateNewProduceErrorCopyWithImpl<$Res>
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
+      stackTrace: stackTrace == freezed
+          ? _value.stackTrace
+          : stackTrace // ignore: cast_nullable_to_non_nullable
+              as StackTrace,
     ));
   }
 }
@@ -1700,16 +2148,19 @@ class _$PMSCreateNewProduceErrorCopyWithImpl<$Res>
 /// @nodoc
 
 class _$PMSCreateNewProduceError implements PMSCreateNewProduceError {
-  const _$PMSCreateNewProduceError({required this.code, required this.message});
+  const _$PMSCreateNewProduceError(
+      {required this.code, required this.message, required this.stackTrace});
 
   @override
   final String code;
   @override
   final String message;
+  @override
+  final StackTrace stackTrace;
 
   @override
   String toString() {
-    return 'ProduceManagerState.createNewProduceError(code: $code, message: $message)';
+    return 'ProduceManagerState.createNewProduceError(code: $code, message: $message, stackTrace: $stackTrace)';
   }
 
   @override
@@ -1718,11 +2169,13 @@ class _$PMSCreateNewProduceError implements PMSCreateNewProduceError {
         (other.runtimeType == runtimeType &&
             other is PMSCreateNewProduceError &&
             (identical(other.code, code) || other.code == code) &&
-            (identical(other.message, message) || other.message == message));
+            (identical(other.message, message) || other.message == message) &&
+            (identical(other.stackTrace, stackTrace) ||
+                other.stackTrace == stackTrace));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, code, message);
+  int get hashCode => Object.hash(runtimeType, code, message, stackTrace);
 
   @JsonKey(ignore: true)
   @override
@@ -1737,14 +2190,21 @@ class _$PMSCreateNewProduceError implements PMSCreateNewProduceError {
     required TResult Function() getFirstTenProduceLoading,
     required TResult Function(List<Produce> produceList)
         getFirstTenProduceSuccess,
-    required TResult Function(String code, String message)
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
         getFirstTenProduceError,
     required TResult Function() createNewProduceLoading,
     required TResult Function(Produce produce) createNewProduceSuccess,
-    required TResult Function(String code, String message)
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
         createNewProduceError,
+    required TResult Function() getOneWeekPricesLoading,
+    required TResult Function(List<Price> priceList) getOneWeekPricesSuccess,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        getOneWeekPricesError,
   }) {
-    return createNewProduceError(code, message);
+    return createNewProduceError(code, message, stackTrace);
   }
 
   @override
@@ -1753,12 +2213,18 @@ class _$PMSCreateNewProduceError implements PMSCreateNewProduceError {
     TResult Function()? initial,
     TResult Function()? getFirstTenProduceLoading,
     TResult Function(List<Produce> produceList)? getFirstTenProduceSuccess,
-    TResult Function(String code, String message)? getFirstTenProduceError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        getFirstTenProduceError,
     TResult Function()? createNewProduceLoading,
     TResult Function(Produce produce)? createNewProduceSuccess,
-    TResult Function(String code, String message)? createNewProduceError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        createNewProduceError,
+    TResult Function()? getOneWeekPricesLoading,
+    TResult Function(List<Price> priceList)? getOneWeekPricesSuccess,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        getOneWeekPricesError,
   }) {
-    return createNewProduceError?.call(code, message);
+    return createNewProduceError?.call(code, message, stackTrace);
   }
 
   @override
@@ -1767,14 +2233,20 @@ class _$PMSCreateNewProduceError implements PMSCreateNewProduceError {
     TResult Function()? initial,
     TResult Function()? getFirstTenProduceLoading,
     TResult Function(List<Produce> produceList)? getFirstTenProduceSuccess,
-    TResult Function(String code, String message)? getFirstTenProduceError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        getFirstTenProduceError,
     TResult Function()? createNewProduceLoading,
     TResult Function(Produce produce)? createNewProduceSuccess,
-    TResult Function(String code, String message)? createNewProduceError,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        createNewProduceError,
+    TResult Function()? getOneWeekPricesLoading,
+    TResult Function(List<Price> priceList)? getOneWeekPricesSuccess,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        getOneWeekPricesError,
     required TResult orElse(),
   }) {
     if (createNewProduceError != null) {
-      return createNewProduceError(code, message);
+      return createNewProduceError(code, message, stackTrace);
     }
     return orElse();
   }
@@ -1795,6 +2267,12 @@ class _$PMSCreateNewProduceError implements PMSCreateNewProduceError {
         createNewProduceSuccess,
     required TResult Function(PMSCreateNewProduceError value)
         createNewProduceError,
+    required TResult Function(PMSOneWeekPricesLoading value)
+        getOneWeekPricesLoading,
+    required TResult Function(PMSOneWeekPricesSuccess value)
+        getOneWeekPricesSuccess,
+    required TResult Function(PMSOneWeekPricesError value)
+        getOneWeekPricesError,
   }) {
     return createNewProduceError(this);
   }
@@ -1811,6 +2289,9 @@ class _$PMSCreateNewProduceError implements PMSCreateNewProduceError {
     TResult Function(PMSCreateNewProduceLoading value)? createNewProduceLoading,
     TResult Function(PMSCreateNewProduceSuccess value)? createNewProduceSuccess,
     TResult Function(PMSCreateNewProduceError value)? createNewProduceError,
+    TResult Function(PMSOneWeekPricesLoading value)? getOneWeekPricesLoading,
+    TResult Function(PMSOneWeekPricesSuccess value)? getOneWeekPricesSuccess,
+    TResult Function(PMSOneWeekPricesError value)? getOneWeekPricesError,
   }) {
     return createNewProduceError?.call(this);
   }
@@ -1827,6 +2308,9 @@ class _$PMSCreateNewProduceError implements PMSCreateNewProduceError {
     TResult Function(PMSCreateNewProduceLoading value)? createNewProduceLoading,
     TResult Function(PMSCreateNewProduceSuccess value)? createNewProduceSuccess,
     TResult Function(PMSCreateNewProduceError value)? createNewProduceError,
+    TResult Function(PMSOneWeekPricesLoading value)? getOneWeekPricesLoading,
+    TResult Function(PMSOneWeekPricesSuccess value)? getOneWeekPricesSuccess,
+    TResult Function(PMSOneWeekPricesError value)? getOneWeekPricesError,
     required TResult orElse(),
   }) {
     if (createNewProduceError != null) {
@@ -1839,11 +2323,633 @@ class _$PMSCreateNewProduceError implements PMSCreateNewProduceError {
 abstract class PMSCreateNewProduceError implements ProduceManagerState {
   const factory PMSCreateNewProduceError(
       {required String code,
-      required String message}) = _$PMSCreateNewProduceError;
+      required String message,
+      required StackTrace stackTrace}) = _$PMSCreateNewProduceError;
 
   String get code;
   String get message;
+  StackTrace get stackTrace;
   @JsonKey(ignore: true)
   $PMSCreateNewProduceErrorCopyWith<PMSCreateNewProduceError> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $PMSOneWeekPricesLoadingCopyWith<$Res> {
+  factory $PMSOneWeekPricesLoadingCopyWith(PMSOneWeekPricesLoading value,
+          $Res Function(PMSOneWeekPricesLoading) then) =
+      _$PMSOneWeekPricesLoadingCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$PMSOneWeekPricesLoadingCopyWithImpl<$Res>
+    extends _$ProduceManagerStateCopyWithImpl<$Res>
+    implements $PMSOneWeekPricesLoadingCopyWith<$Res> {
+  _$PMSOneWeekPricesLoadingCopyWithImpl(PMSOneWeekPricesLoading _value,
+      $Res Function(PMSOneWeekPricesLoading) _then)
+      : super(_value, (v) => _then(v as PMSOneWeekPricesLoading));
+
+  @override
+  PMSOneWeekPricesLoading get _value => super._value as PMSOneWeekPricesLoading;
+}
+
+/// @nodoc
+
+class _$PMSOneWeekPricesLoading implements PMSOneWeekPricesLoading {
+  const _$PMSOneWeekPricesLoading();
+
+  @override
+  String toString() {
+    return 'ProduceManagerState.getOneWeekPricesLoading()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is PMSOneWeekPricesLoading);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() getFirstTenProduceLoading,
+    required TResult Function(List<Produce> produceList)
+        getFirstTenProduceSuccess,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        getFirstTenProduceError,
+    required TResult Function() createNewProduceLoading,
+    required TResult Function(Produce produce) createNewProduceSuccess,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        createNewProduceError,
+    required TResult Function() getOneWeekPricesLoading,
+    required TResult Function(List<Price> priceList) getOneWeekPricesSuccess,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        getOneWeekPricesError,
+  }) {
+    return getOneWeekPricesLoading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? getFirstTenProduceLoading,
+    TResult Function(List<Produce> produceList)? getFirstTenProduceSuccess,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        getFirstTenProduceError,
+    TResult Function()? createNewProduceLoading,
+    TResult Function(Produce produce)? createNewProduceSuccess,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        createNewProduceError,
+    TResult Function()? getOneWeekPricesLoading,
+    TResult Function(List<Price> priceList)? getOneWeekPricesSuccess,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        getOneWeekPricesError,
+  }) {
+    return getOneWeekPricesLoading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? getFirstTenProduceLoading,
+    TResult Function(List<Produce> produceList)? getFirstTenProduceSuccess,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        getFirstTenProduceError,
+    TResult Function()? createNewProduceLoading,
+    TResult Function(Produce produce)? createNewProduceSuccess,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        createNewProduceError,
+    TResult Function()? getOneWeekPricesLoading,
+    TResult Function(List<Price> priceList)? getOneWeekPricesSuccess,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        getOneWeekPricesError,
+    required TResult orElse(),
+  }) {
+    if (getOneWeekPricesLoading != null) {
+      return getOneWeekPricesLoading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(PMSInitial value) initial,
+    required TResult Function(PMSGetFirstTenProduceLoading value)
+        getFirstTenProduceLoading,
+    required TResult Function(PMSGetFirstTenProduceSuccess value)
+        getFirstTenProduceSuccess,
+    required TResult Function(PMSGetFirstTenProduceError value)
+        getFirstTenProduceError,
+    required TResult Function(PMSCreateNewProduceLoading value)
+        createNewProduceLoading,
+    required TResult Function(PMSCreateNewProduceSuccess value)
+        createNewProduceSuccess,
+    required TResult Function(PMSCreateNewProduceError value)
+        createNewProduceError,
+    required TResult Function(PMSOneWeekPricesLoading value)
+        getOneWeekPricesLoading,
+    required TResult Function(PMSOneWeekPricesSuccess value)
+        getOneWeekPricesSuccess,
+    required TResult Function(PMSOneWeekPricesError value)
+        getOneWeekPricesError,
+  }) {
+    return getOneWeekPricesLoading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(PMSInitial value)? initial,
+    TResult Function(PMSGetFirstTenProduceLoading value)?
+        getFirstTenProduceLoading,
+    TResult Function(PMSGetFirstTenProduceSuccess value)?
+        getFirstTenProduceSuccess,
+    TResult Function(PMSGetFirstTenProduceError value)? getFirstTenProduceError,
+    TResult Function(PMSCreateNewProduceLoading value)? createNewProduceLoading,
+    TResult Function(PMSCreateNewProduceSuccess value)? createNewProduceSuccess,
+    TResult Function(PMSCreateNewProduceError value)? createNewProduceError,
+    TResult Function(PMSOneWeekPricesLoading value)? getOneWeekPricesLoading,
+    TResult Function(PMSOneWeekPricesSuccess value)? getOneWeekPricesSuccess,
+    TResult Function(PMSOneWeekPricesError value)? getOneWeekPricesError,
+  }) {
+    return getOneWeekPricesLoading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(PMSInitial value)? initial,
+    TResult Function(PMSGetFirstTenProduceLoading value)?
+        getFirstTenProduceLoading,
+    TResult Function(PMSGetFirstTenProduceSuccess value)?
+        getFirstTenProduceSuccess,
+    TResult Function(PMSGetFirstTenProduceError value)? getFirstTenProduceError,
+    TResult Function(PMSCreateNewProduceLoading value)? createNewProduceLoading,
+    TResult Function(PMSCreateNewProduceSuccess value)? createNewProduceSuccess,
+    TResult Function(PMSCreateNewProduceError value)? createNewProduceError,
+    TResult Function(PMSOneWeekPricesLoading value)? getOneWeekPricesLoading,
+    TResult Function(PMSOneWeekPricesSuccess value)? getOneWeekPricesSuccess,
+    TResult Function(PMSOneWeekPricesError value)? getOneWeekPricesError,
+    required TResult orElse(),
+  }) {
+    if (getOneWeekPricesLoading != null) {
+      return getOneWeekPricesLoading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class PMSOneWeekPricesLoading implements ProduceManagerState {
+  const factory PMSOneWeekPricesLoading() = _$PMSOneWeekPricesLoading;
+}
+
+/// @nodoc
+abstract class $PMSOneWeekPricesSuccessCopyWith<$Res> {
+  factory $PMSOneWeekPricesSuccessCopyWith(PMSOneWeekPricesSuccess value,
+          $Res Function(PMSOneWeekPricesSuccess) then) =
+      _$PMSOneWeekPricesSuccessCopyWithImpl<$Res>;
+  $Res call({List<Price> priceList});
+}
+
+/// @nodoc
+class _$PMSOneWeekPricesSuccessCopyWithImpl<$Res>
+    extends _$ProduceManagerStateCopyWithImpl<$Res>
+    implements $PMSOneWeekPricesSuccessCopyWith<$Res> {
+  _$PMSOneWeekPricesSuccessCopyWithImpl(PMSOneWeekPricesSuccess _value,
+      $Res Function(PMSOneWeekPricesSuccess) _then)
+      : super(_value, (v) => _then(v as PMSOneWeekPricesSuccess));
+
+  @override
+  PMSOneWeekPricesSuccess get _value => super._value as PMSOneWeekPricesSuccess;
+
+  @override
+  $Res call({
+    Object? priceList = freezed,
+  }) {
+    return _then(PMSOneWeekPricesSuccess(
+      priceList: priceList == freezed
+          ? _value.priceList
+          : priceList // ignore: cast_nullable_to_non_nullable
+              as List<Price>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$PMSOneWeekPricesSuccess implements PMSOneWeekPricesSuccess {
+  const _$PMSOneWeekPricesSuccess({required this.priceList});
+
+  @override
+  final List<Price> priceList;
+
+  @override
+  String toString() {
+    return 'ProduceManagerState.getOneWeekPricesSuccess(priceList: $priceList)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is PMSOneWeekPricesSuccess &&
+            const DeepCollectionEquality().equals(other.priceList, priceList));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(priceList));
+
+  @JsonKey(ignore: true)
+  @override
+  $PMSOneWeekPricesSuccessCopyWith<PMSOneWeekPricesSuccess> get copyWith =>
+      _$PMSOneWeekPricesSuccessCopyWithImpl<PMSOneWeekPricesSuccess>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() getFirstTenProduceLoading,
+    required TResult Function(List<Produce> produceList)
+        getFirstTenProduceSuccess,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        getFirstTenProduceError,
+    required TResult Function() createNewProduceLoading,
+    required TResult Function(Produce produce) createNewProduceSuccess,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        createNewProduceError,
+    required TResult Function() getOneWeekPricesLoading,
+    required TResult Function(List<Price> priceList) getOneWeekPricesSuccess,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        getOneWeekPricesError,
+  }) {
+    return getOneWeekPricesSuccess(priceList);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? getFirstTenProduceLoading,
+    TResult Function(List<Produce> produceList)? getFirstTenProduceSuccess,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        getFirstTenProduceError,
+    TResult Function()? createNewProduceLoading,
+    TResult Function(Produce produce)? createNewProduceSuccess,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        createNewProduceError,
+    TResult Function()? getOneWeekPricesLoading,
+    TResult Function(List<Price> priceList)? getOneWeekPricesSuccess,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        getOneWeekPricesError,
+  }) {
+    return getOneWeekPricesSuccess?.call(priceList);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? getFirstTenProduceLoading,
+    TResult Function(List<Produce> produceList)? getFirstTenProduceSuccess,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        getFirstTenProduceError,
+    TResult Function()? createNewProduceLoading,
+    TResult Function(Produce produce)? createNewProduceSuccess,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        createNewProduceError,
+    TResult Function()? getOneWeekPricesLoading,
+    TResult Function(List<Price> priceList)? getOneWeekPricesSuccess,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        getOneWeekPricesError,
+    required TResult orElse(),
+  }) {
+    if (getOneWeekPricesSuccess != null) {
+      return getOneWeekPricesSuccess(priceList);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(PMSInitial value) initial,
+    required TResult Function(PMSGetFirstTenProduceLoading value)
+        getFirstTenProduceLoading,
+    required TResult Function(PMSGetFirstTenProduceSuccess value)
+        getFirstTenProduceSuccess,
+    required TResult Function(PMSGetFirstTenProduceError value)
+        getFirstTenProduceError,
+    required TResult Function(PMSCreateNewProduceLoading value)
+        createNewProduceLoading,
+    required TResult Function(PMSCreateNewProduceSuccess value)
+        createNewProduceSuccess,
+    required TResult Function(PMSCreateNewProduceError value)
+        createNewProduceError,
+    required TResult Function(PMSOneWeekPricesLoading value)
+        getOneWeekPricesLoading,
+    required TResult Function(PMSOneWeekPricesSuccess value)
+        getOneWeekPricesSuccess,
+    required TResult Function(PMSOneWeekPricesError value)
+        getOneWeekPricesError,
+  }) {
+    return getOneWeekPricesSuccess(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(PMSInitial value)? initial,
+    TResult Function(PMSGetFirstTenProduceLoading value)?
+        getFirstTenProduceLoading,
+    TResult Function(PMSGetFirstTenProduceSuccess value)?
+        getFirstTenProduceSuccess,
+    TResult Function(PMSGetFirstTenProduceError value)? getFirstTenProduceError,
+    TResult Function(PMSCreateNewProduceLoading value)? createNewProduceLoading,
+    TResult Function(PMSCreateNewProduceSuccess value)? createNewProduceSuccess,
+    TResult Function(PMSCreateNewProduceError value)? createNewProduceError,
+    TResult Function(PMSOneWeekPricesLoading value)? getOneWeekPricesLoading,
+    TResult Function(PMSOneWeekPricesSuccess value)? getOneWeekPricesSuccess,
+    TResult Function(PMSOneWeekPricesError value)? getOneWeekPricesError,
+  }) {
+    return getOneWeekPricesSuccess?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(PMSInitial value)? initial,
+    TResult Function(PMSGetFirstTenProduceLoading value)?
+        getFirstTenProduceLoading,
+    TResult Function(PMSGetFirstTenProduceSuccess value)?
+        getFirstTenProduceSuccess,
+    TResult Function(PMSGetFirstTenProduceError value)? getFirstTenProduceError,
+    TResult Function(PMSCreateNewProduceLoading value)? createNewProduceLoading,
+    TResult Function(PMSCreateNewProduceSuccess value)? createNewProduceSuccess,
+    TResult Function(PMSCreateNewProduceError value)? createNewProduceError,
+    TResult Function(PMSOneWeekPricesLoading value)? getOneWeekPricesLoading,
+    TResult Function(PMSOneWeekPricesSuccess value)? getOneWeekPricesSuccess,
+    TResult Function(PMSOneWeekPricesError value)? getOneWeekPricesError,
+    required TResult orElse(),
+  }) {
+    if (getOneWeekPricesSuccess != null) {
+      return getOneWeekPricesSuccess(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class PMSOneWeekPricesSuccess implements ProduceManagerState {
+  const factory PMSOneWeekPricesSuccess({required List<Price> priceList}) =
+      _$PMSOneWeekPricesSuccess;
+
+  List<Price> get priceList;
+  @JsonKey(ignore: true)
+  $PMSOneWeekPricesSuccessCopyWith<PMSOneWeekPricesSuccess> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $PMSOneWeekPricesErrorCopyWith<$Res> {
+  factory $PMSOneWeekPricesErrorCopyWith(PMSOneWeekPricesError value,
+          $Res Function(PMSOneWeekPricesError) then) =
+      _$PMSOneWeekPricesErrorCopyWithImpl<$Res>;
+  $Res call({String code, String message, StackTrace stackTrace});
+}
+
+/// @nodoc
+class _$PMSOneWeekPricesErrorCopyWithImpl<$Res>
+    extends _$ProduceManagerStateCopyWithImpl<$Res>
+    implements $PMSOneWeekPricesErrorCopyWith<$Res> {
+  _$PMSOneWeekPricesErrorCopyWithImpl(
+      PMSOneWeekPricesError _value, $Res Function(PMSOneWeekPricesError) _then)
+      : super(_value, (v) => _then(v as PMSOneWeekPricesError));
+
+  @override
+  PMSOneWeekPricesError get _value => super._value as PMSOneWeekPricesError;
+
+  @override
+  $Res call({
+    Object? code = freezed,
+    Object? message = freezed,
+    Object? stackTrace = freezed,
+  }) {
+    return _then(PMSOneWeekPricesError(
+      code: code == freezed
+          ? _value.code
+          : code // ignore: cast_nullable_to_non_nullable
+              as String,
+      message: message == freezed
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+      stackTrace: stackTrace == freezed
+          ? _value.stackTrace
+          : stackTrace // ignore: cast_nullable_to_non_nullable
+              as StackTrace,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$PMSOneWeekPricesError implements PMSOneWeekPricesError {
+  const _$PMSOneWeekPricesError(
+      {required this.code, required this.message, required this.stackTrace});
+
+  @override
+  final String code;
+  @override
+  final String message;
+  @override
+  final StackTrace stackTrace;
+
+  @override
+  String toString() {
+    return 'ProduceManagerState.getOneWeekPricesError(code: $code, message: $message, stackTrace: $stackTrace)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is PMSOneWeekPricesError &&
+            (identical(other.code, code) || other.code == code) &&
+            (identical(other.message, message) || other.message == message) &&
+            (identical(other.stackTrace, stackTrace) ||
+                other.stackTrace == stackTrace));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, code, message, stackTrace);
+
+  @JsonKey(ignore: true)
+  @override
+  $PMSOneWeekPricesErrorCopyWith<PMSOneWeekPricesError> get copyWith =>
+      _$PMSOneWeekPricesErrorCopyWithImpl<PMSOneWeekPricesError>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() getFirstTenProduceLoading,
+    required TResult Function(List<Produce> produceList)
+        getFirstTenProduceSuccess,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        getFirstTenProduceError,
+    required TResult Function() createNewProduceLoading,
+    required TResult Function(Produce produce) createNewProduceSuccess,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        createNewProduceError,
+    required TResult Function() getOneWeekPricesLoading,
+    required TResult Function(List<Price> priceList) getOneWeekPricesSuccess,
+    required TResult Function(
+            String code, String message, StackTrace stackTrace)
+        getOneWeekPricesError,
+  }) {
+    return getOneWeekPricesError(code, message, stackTrace);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? getFirstTenProduceLoading,
+    TResult Function(List<Produce> produceList)? getFirstTenProduceSuccess,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        getFirstTenProduceError,
+    TResult Function()? createNewProduceLoading,
+    TResult Function(Produce produce)? createNewProduceSuccess,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        createNewProduceError,
+    TResult Function()? getOneWeekPricesLoading,
+    TResult Function(List<Price> priceList)? getOneWeekPricesSuccess,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        getOneWeekPricesError,
+  }) {
+    return getOneWeekPricesError?.call(code, message, stackTrace);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? getFirstTenProduceLoading,
+    TResult Function(List<Produce> produceList)? getFirstTenProduceSuccess,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        getFirstTenProduceError,
+    TResult Function()? createNewProduceLoading,
+    TResult Function(Produce produce)? createNewProduceSuccess,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        createNewProduceError,
+    TResult Function()? getOneWeekPricesLoading,
+    TResult Function(List<Price> priceList)? getOneWeekPricesSuccess,
+    TResult Function(String code, String message, StackTrace stackTrace)?
+        getOneWeekPricesError,
+    required TResult orElse(),
+  }) {
+    if (getOneWeekPricesError != null) {
+      return getOneWeekPricesError(code, message, stackTrace);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(PMSInitial value) initial,
+    required TResult Function(PMSGetFirstTenProduceLoading value)
+        getFirstTenProduceLoading,
+    required TResult Function(PMSGetFirstTenProduceSuccess value)
+        getFirstTenProduceSuccess,
+    required TResult Function(PMSGetFirstTenProduceError value)
+        getFirstTenProduceError,
+    required TResult Function(PMSCreateNewProduceLoading value)
+        createNewProduceLoading,
+    required TResult Function(PMSCreateNewProduceSuccess value)
+        createNewProduceSuccess,
+    required TResult Function(PMSCreateNewProduceError value)
+        createNewProduceError,
+    required TResult Function(PMSOneWeekPricesLoading value)
+        getOneWeekPricesLoading,
+    required TResult Function(PMSOneWeekPricesSuccess value)
+        getOneWeekPricesSuccess,
+    required TResult Function(PMSOneWeekPricesError value)
+        getOneWeekPricesError,
+  }) {
+    return getOneWeekPricesError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(PMSInitial value)? initial,
+    TResult Function(PMSGetFirstTenProduceLoading value)?
+        getFirstTenProduceLoading,
+    TResult Function(PMSGetFirstTenProduceSuccess value)?
+        getFirstTenProduceSuccess,
+    TResult Function(PMSGetFirstTenProduceError value)? getFirstTenProduceError,
+    TResult Function(PMSCreateNewProduceLoading value)? createNewProduceLoading,
+    TResult Function(PMSCreateNewProduceSuccess value)? createNewProduceSuccess,
+    TResult Function(PMSCreateNewProduceError value)? createNewProduceError,
+    TResult Function(PMSOneWeekPricesLoading value)? getOneWeekPricesLoading,
+    TResult Function(PMSOneWeekPricesSuccess value)? getOneWeekPricesSuccess,
+    TResult Function(PMSOneWeekPricesError value)? getOneWeekPricesError,
+  }) {
+    return getOneWeekPricesError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(PMSInitial value)? initial,
+    TResult Function(PMSGetFirstTenProduceLoading value)?
+        getFirstTenProduceLoading,
+    TResult Function(PMSGetFirstTenProduceSuccess value)?
+        getFirstTenProduceSuccess,
+    TResult Function(PMSGetFirstTenProduceError value)? getFirstTenProduceError,
+    TResult Function(PMSCreateNewProduceLoading value)? createNewProduceLoading,
+    TResult Function(PMSCreateNewProduceSuccess value)? createNewProduceSuccess,
+    TResult Function(PMSCreateNewProduceError value)? createNewProduceError,
+    TResult Function(PMSOneWeekPricesLoading value)? getOneWeekPricesLoading,
+    TResult Function(PMSOneWeekPricesSuccess value)? getOneWeekPricesSuccess,
+    TResult Function(PMSOneWeekPricesError value)? getOneWeekPricesError,
+    required TResult orElse(),
+  }) {
+    if (getOneWeekPricesError != null) {
+      return getOneWeekPricesError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class PMSOneWeekPricesError implements ProduceManagerState {
+  const factory PMSOneWeekPricesError(
+      {required String code,
+      required String message,
+      required StackTrace stackTrace}) = _$PMSOneWeekPricesError;
+
+  String get code;
+  String get message;
+  StackTrace get stackTrace;
+  @JsonKey(ignore: true)
+  $PMSOneWeekPricesErrorCopyWith<PMSOneWeekPricesError> get copyWith =>
       throw _privateConstructorUsedError;
 }
