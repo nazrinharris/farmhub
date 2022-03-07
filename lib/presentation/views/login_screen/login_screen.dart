@@ -5,11 +5,13 @@ import 'package:farmhub/presentation/shared_widgets/ui_helpers.dart';
 import 'package:farmhub/presentation/smart_widgets/info_tile/bloc/info_tile_bloc.dart';
 import 'package:farmhub/presentation/smart_widgets/info_tile/info_tile.dart';
 import 'package:farmhub/presentation/smart_widgets/primary_button_aware/primary_button_aware_cubit.dart';
-import 'package:farmhub/presentation/smart_widgets/two_fields_form.dart/two_fields_form_bloc.dart';
+
 import 'package:farmhub/presentation/views/login_screen/bloc/login_screen_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:simple_animations/simple_animations.dart';
+
+import '../../smart_widgets/multiple_fields_form/multiple_fields_form_bloc.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -55,7 +57,7 @@ class _LoginScreenState extends State<LoginScreen> with AnimationMixin {
     return MultiBlocProvider(
       providers: [
         BlocProvider<FirstTwoFieldsFormBloc>(
-          create: (context) => TwoFieldsFormBloc(
+          create: (context) => MultipleFieldsFormBloc(
             isWithAnotherTwoFields: false,
           ),
         ),
@@ -200,7 +202,8 @@ class LoginFields extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TwoFieldsForm<FirstTwoFieldsFormBloc>(
+    return MultipleFieldsForm<FirstTwoFieldsFormBloc>(
+      type: MultipleFieldsFormType.twoField,
       firstFieldLabel: 'Email',
       firstFieldHintText: 'Enter your email',
       secondFieldLabel: 'Password',

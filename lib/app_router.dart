@@ -1,4 +1,5 @@
 import 'package:farmhub/presentation/views/add_new_price_screen/add_new_price_screen.dart';
+import 'package:farmhub/presentation/views/add_new_price_screen/add_new_price_second_screen.dart';
 import 'package:farmhub/presentation/views/create_produce_screen/create_produce_screen.dart';
 import 'package:farmhub/presentation/views/debug/navigate_view.dart';
 import 'package:farmhub/presentation/views/debug/playground_screen.dart';
@@ -47,6 +48,9 @@ class AppRouter {
           pageBuilder: ((context, animation, secondaryAnimation) => const AddNewPriceScreen()),
           transitionsBuilder: createProduceScreenTransitionBuilder,
         );
+      case '/add_new_price_second':
+        return CupertinoPageRoute(
+            builder: (_) => AddNewPriceSecondScreen(routeSettings.arguments as ProduceArguments));
 
       //! DEBUG ROUTES
       case '/navigate':

@@ -7,11 +7,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'two_fields_form_event.dart';
-part 'two_fields_form_state.dart';
-part 'two_fields_form_bloc.freezed.dart';
-part 'two_fields_form.dart';
-part 'two_fields_form_properties.dart';
+part 'multiple_fields_form_event.dart';
+part 'multiple_fields_form_state.dart';
+part 'multiple_fields_form_bloc.freezed.dart';
+part 'multiple_fields_form.dart';
 
 FirstTwoFieldsFormBloc readFirstFormBloc(BuildContext context) =>
     BlocProvider.of<FirstTwoFieldsFormBloc>(context);
@@ -19,56 +18,62 @@ FirstTwoFieldsFormBloc readFirstFormBloc(BuildContext context) =>
 SecondTwoFieldsFormBloc readSecondFormBloc(BuildContext context) =>
     BlocProvider.of<SecondTwoFieldsFormBloc>(context);
 
-mixin FirstTwoFieldsFormBloc on Bloc<TwoFieldsFormEvent, TwoFieldsFormState> {}
+mixin FirstTwoFieldsFormBloc on Bloc<MultipleFieldsFormEvent, MultipleFieldsFormState> {}
 
-mixin SecondTwoFieldsFormBloc on Bloc<TwoFieldsFormEvent, TwoFieldsFormState> {}
+mixin SecondTwoFieldsFormBloc on Bloc<MultipleFieldsFormEvent, MultipleFieldsFormState> {}
 
-/// Some info on [TwoFieldsFormBloc]
+/// Some info on [MultipleFieldsFormBloc]
 ///
 /// The [SecondTwoFieldsFormBloc] is not required, but it can be provided to be used
-/// in conjuction with another [TwoFieldsForm].
+/// in conjuction with another [MultipleFieldsForm].
 ///
 /// For this conjunction to work, [isWithAnotherTwoFields] must be [true]
-class TwoFieldsFormBloc extends Bloc<TwoFieldsFormEvent, TwoFieldsFormState>
+class MultipleFieldsFormBloc extends Bloc<MultipleFieldsFormEvent, MultipleFieldsFormState>
     with FirstTwoFieldsFormBloc, SecondTwoFieldsFormBloc {
   final SecondTwoFieldsFormBloc? secondTwoFieldsFormBloc;
   final bool isWithAnotherTwoFields;
 
-  TwoFieldsFormBloc({
+  MultipleFieldsFormBloc({
     this.secondTwoFieldsFormBloc,
     required this.isWithAnotherTwoFields,
   }) : super(
-          TwoFieldsFormState.initial(
-            props: TwoFieldsFormProperties(
+          MultipleFieldsFormState.initial(
+            props: MultipleFieldsFormProps(
               autovalidateModeFirstField: AutovalidateMode.disabled,
               autovalidateModeSecondField: AutovalidateMode.disabled,
+              autovalidateModeThirdField: AutovalidateMode.disabled,
+              autovalidateModeFourthField: AutovalidateMode.disabled,
               firstFieldFocusNode: FocusNode(),
               secondFieldFocusNode: FocusNode(),
+              thirdFieldFocusNode: FocusNode(),
+              fourthFieldFocusNode: FocusNode(),
               firstFieldValue: null,
               secondFieldValue: null,
+              thirdFieldValue: null,
+              fourthFieldValue: null,
               formKey: GlobalKey<FormState>(),
             ),
           ),
         ) {
-    on<_TwoFieldsFormStarted>(startedEvent);
-    on<_TwoFieldsFormUnfocusAllNodes>(unfocusAllNodesEvent);
-    on<_TwoFieldsFormFirstFieldValueChanged>(firstFieldValueChangedEvent);
-    on<_TwoFieldsFormSecondFieldValueChanged>(secondFieldValueChangedEvent);
-    on<_TwoFieldsFormFirstFieldSubmitted>(firstFieldSubmittedEvent);
-    on<_TwoFieldsFormSecondFieldSubmitted>(secondFieldSubmittedEvent);
-    on<_TwoFieldsFormEnableAlwaysValidation>(enableAlwaysValidationEvent);
+    on<_MultipleFieldsFormStarted>(startedEvent);
+    on<_MultipleFieldsFormUnfocusAllNodes>(unfocusAllNodesEvent);
+    on<_MultipleFieldsFormFirstFieldValueChanged>(firstFieldValueChangedEvent);
+    on<_MultipleFieldsFormSecondFieldValueChanged>(secondFieldValueChangedEvent);
+    on<_MultipleFieldsFormFirstFieldSubmitted>(firstFieldSubmittedEvent);
+    on<_MultipleFieldsFormSecondFieldSubmitted>(secondFieldSubmittedEvent);
+    on<_MultipleFieldsFormEnableAlwaysValidation>(enableAlwaysValidationEvent);
   }
 
   FutureOr<void> startedEvent(
-    _TwoFieldsFormStarted event,
-    Emitter<TwoFieldsFormState> emit,
+    _MultipleFieldsFormStarted event,
+    Emitter<MultipleFieldsFormState> emit,
   ) {
-    emit(TwoFieldsFormState.initial(props: state.props));
+    emit(MultipleFieldsFormState.initial(props: state.props));
   }
 
   FutureOr<void> unfocusAllNodesEvent(
-    _TwoFieldsFormUnfocusAllNodes event,
-    Emitter<TwoFieldsFormState> emit,
+    _MultipleFieldsFormUnfocusAllNodes event,
+    Emitter<MultipleFieldsFormState> emit,
   ) {
     state.props.firstFieldFocusNode.unfocus();
     state.props.secondFieldFocusNode.unfocus();
@@ -76,22 +81,22 @@ class TwoFieldsFormBloc extends Bloc<TwoFieldsFormEvent, TwoFieldsFormState>
   }
 
   FutureOr<void> firstFieldValueChangedEvent(
-    _TwoFieldsFormFirstFieldValueChanged event,
-    Emitter<TwoFieldsFormState> emit,
+    _MultipleFieldsFormFirstFieldValueChanged event,
+    Emitter<MultipleFieldsFormState> emit,
   ) {
     emit(state.copyWith.props(firstFieldValue: event.input));
   }
 
   FutureOr<void> secondFieldValueChangedEvent(
-    _TwoFieldsFormSecondFieldValueChanged event,
-    Emitter<TwoFieldsFormState> emit,
+    _MultipleFieldsFormSecondFieldValueChanged event,
+    Emitter<MultipleFieldsFormState> emit,
   ) {
     emit(state.copyWith.props(secondFieldValue: event.input));
   }
 
   FutureOr<void> firstFieldSubmittedEvent(
-    _TwoFieldsFormFirstFieldSubmitted event,
-    Emitter<TwoFieldsFormState> emit,
+    _MultipleFieldsFormFirstFieldSubmitted event,
+    Emitter<MultipleFieldsFormState> emit,
   ) {
     state.props.secondFieldFocusNode.requestFocus();
     emit(
@@ -102,8 +107,8 @@ class TwoFieldsFormBloc extends Bloc<TwoFieldsFormEvent, TwoFieldsFormState>
   }
 
   FutureOr<void> secondFieldSubmittedEvent(
-    _TwoFieldsFormSecondFieldSubmitted event,
-    Emitter<TwoFieldsFormState> emit,
+    _MultipleFieldsFormSecondFieldSubmitted event,
+    Emitter<MultipleFieldsFormState> emit,
   ) {
     emit(
       state.copyWith.props(
@@ -113,8 +118,8 @@ class TwoFieldsFormBloc extends Bloc<TwoFieldsFormEvent, TwoFieldsFormState>
   }
 
   FutureOr<void> enableAlwaysValidationEvent(
-    _TwoFieldsFormEnableAlwaysValidation event,
-    Emitter<TwoFieldsFormState> emit,
+    _MultipleFieldsFormEnableAlwaysValidation event,
+    Emitter<MultipleFieldsFormState> emit,
   ) {
     emit(
       state.copyWith.props(

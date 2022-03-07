@@ -109,12 +109,19 @@ class __$ANPEStartedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ANPEStarted implements _ANPEStarted {
+class _$_ANPEStarted with DiagnosticableTreeMixin implements _ANPEStarted {
   const _$_ANPEStarted();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AddNewPriceScreenEvent.started()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'AddNewPriceScreenEvent.started'));
   }
 
   @override
@@ -214,12 +221,22 @@ class __$ANPEGetFirstTenProduceCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ANPEGetFirstTenProduce implements _ANPEGetFirstTenProduce {
+class _$_ANPEGetFirstTenProduce
+    with DiagnosticableTreeMixin
+    implements _ANPEGetFirstTenProduce {
   const _$_ANPEGetFirstTenProduce();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AddNewPriceScreenEvent.getFirstTenProduce()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty(
+          'type', 'AddNewPriceScreenEvent.getFirstTenProduce'));
   }
 
   @override
@@ -435,12 +452,19 @@ class _$ANPSInitialCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ANPSInitial implements ANPSInitial {
+class _$ANPSInitial with DiagnosticableTreeMixin implements ANPSInitial {
   const _$ANPSInitial();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AddNewPriceScreenState.initial()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'AddNewPriceScreenState.initial'));
   }
 
   @override
@@ -563,12 +587,19 @@ class _$ANPSLoadingCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ANPSLoading implements ANPSLoading {
+class _$ANPSLoading with DiagnosticableTreeMixin implements ANPSLoading {
   const _$ANPSLoading();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AddNewPriceScreenState.loading()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'AddNewPriceScreenState.loading'));
   }
 
   @override
@@ -707,15 +738,26 @@ class _$ANPSGetFirstTenProduceSuccessCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ANPSGetFirstTenProduceSuccess implements ANPSGetFirstTenProduceSuccess {
+class _$ANPSGetFirstTenProduceSuccess
+    with DiagnosticableTreeMixin
+    implements ANPSGetFirstTenProduceSuccess {
   const _$ANPSGetFirstTenProduceSuccess({required this.produceList});
 
   @override
   final List<Produce> produceList;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AddNewPriceScreenState.getFirstTenProduceSuccess(produceList: $produceList)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty(
+          'type', 'AddNewPriceScreenState.getFirstTenProduceSuccess'))
+      ..add(DiagnosticsProperty('produceList', produceList));
   }
 
   @override
@@ -879,7 +921,9 @@ class _$ANPSGetFirstTenProduceErrorCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ANPSGetFirstTenProduceError implements ANPSGetFirstTenProduceError {
+class _$ANPSGetFirstTenProduceError
+    with DiagnosticableTreeMixin
+    implements ANPSGetFirstTenProduceError {
   const _$ANPSGetFirstTenProduceError(
       {required this.message, required this.code, required this.stackTrace});
 
@@ -891,8 +935,19 @@ class _$ANPSGetFirstTenProduceError implements ANPSGetFirstTenProduceError {
   final StackTrace stackTrace;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AddNewPriceScreenState.getFirstTenProduceError(message: $message, code: $code, stackTrace: $stackTrace)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty(
+          'type', 'AddNewPriceScreenState.getFirstTenProduceError'))
+      ..add(DiagnosticsProperty('message', message))
+      ..add(DiagnosticsProperty('code', code))
+      ..add(DiagnosticsProperty('stackTrace', stackTrace));
   }
 
   @override

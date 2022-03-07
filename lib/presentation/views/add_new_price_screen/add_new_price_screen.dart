@@ -8,6 +8,7 @@ import 'package:farmhub/presentation/views/main_screen/main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../app_router.dart';
 import '../../../locator.dart';
 import '../../shared_widgets/texts.dart';
 
@@ -33,7 +34,7 @@ class AddNewPriceScreen extends StatelessWidget {
                 resizeToAvoidBottomInset: false,
                 extendBodyBehindAppBar: true,
                 appBar: DefaultAppBar(
-                  trailingIcon: const Icon(Icons.arrow_back),
+                  trailingIcon: const Icon(Icons.close),
                   trailingOnPressed: () => Navigator.of(context).pop(),
                 ),
                 body: SafeArea(
@@ -93,7 +94,10 @@ class _ProduceListSliverState extends State<ProduceListSliver> {
                 return ProduceListCard(
                   index,
                   produceList[index],
-                  onTap: () {},
+                  onTap: () => Navigator.of(context).pushNamed(
+                    '/add_new_price_second',
+                    arguments: ProduceArguments(produceList[index]),
+                  ),
                 );
               },
               childCount: produceList.length,

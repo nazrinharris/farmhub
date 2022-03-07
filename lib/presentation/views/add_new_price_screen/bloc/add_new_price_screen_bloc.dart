@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../features/produce_manager/domain/entities/produce/produce.dart';
@@ -13,9 +14,11 @@ part 'add_new_price_screen_bloc.freezed.dart';
 
 class AddNewPriceScreenBloc extends Bloc<AddNewPriceScreenEvent, AddNewPriceScreenState> {
   final IProduceManagerRepository produceManagerRepository;
+  final TextEditingController? textEditingController;
 
   AddNewPriceScreenBloc({
     required this.produceManagerRepository,
+    this.textEditingController,
   }) : super(const ANPSInitial()) {
     on<_ANPEStarted>(started);
     on<_ANPEGetFirstTenProduce>(getFirstTenProduce);
