@@ -15,11 +15,10 @@ final FarmhubUser tFarmhubUser = FarmhubUser(
   createdAt: '2021-11-28',
 );
 
-final InternetConnectionFailure tInternetConnectionFailure =
-    InternetConnectionFailure(
-  code: ERROR_NO_INTERNET_CONNECTION,
-  message: MESSAGE_NO_INTERNET_CONNECTION,
-);
+final InternetConnectionFailure tInternetConnectionFailure = InternetConnectionFailure(
+    code: ERROR_NO_INTERNET_CONNECTION,
+    message: MESSAGE_NO_INTERNET_CONNECTION,
+    stackTrace: StackTrace.empty);
 
 const String tEmail = 'temail@temail.temail';
 const String tPassword = 'tpassword';
@@ -29,7 +28,6 @@ const String tCreatedAt = '2021-11-28';
 String todayCreatedAt = DateFormat('yyyy-MM-dd').format(DateTime.now());
 DateTime tCurrentDate = DateTime.parse('2021-11-28');
 
-Map<String, dynamic> tFarmhubUserJSON =
-    json.decode(fixture('farmhub_user.json'));
+Map<String, dynamic> tFarmhubUserJSON = json.decode(fixture('farmhub_user.json'));
 
 Map<String, dynamic>? tnullMap;

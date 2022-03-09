@@ -287,10 +287,10 @@ class RegisterScreenBlocProviders extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider<FirstTwoFieldsFormBloc>(
-          create: (context) => MultipleFieldsFormBloc(isWithAnotherTwoFields: true),
+          create: (context) => MultipleFieldsFormBloc(),
         ),
         BlocProvider<SecondTwoFieldsFormBloc>(
-          create: (context) => MultipleFieldsFormBloc(isWithAnotherTwoFields: true),
+          create: (context) => MultipleFieldsFormBloc(),
         ),
         BlocProvider<InfoTileBloc>(
           create: (context) => initialInfoTileBloc!(),

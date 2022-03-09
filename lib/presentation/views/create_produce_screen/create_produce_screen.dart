@@ -22,7 +22,7 @@ class CreateProduceScreen extends StatelessWidget {
       providers: [
         BlocProvider(create: (_) => ProduceManagerBloc(repository: locator())),
         BlocProvider<FirstTwoFieldsFormBloc>(
-          create: (context) => MultipleFieldsFormBloc(isWithAnotherTwoFields: false),
+          create: (context) => MultipleFieldsFormBloc(),
         ),
         BlocProvider(create: (context) => PrimaryButtonAwareCubit())
       ],

@@ -14,4 +14,14 @@ class AddNewPriceScreenState with _$AddNewPriceScreenState {
     required String code,
     required StackTrace stackTrace,
   }) = ANPSGetFirstTenProduceError;
+
+  const factory AddNewPriceScreenState.addNewPriceSuccess({
+    required Produce produce,
+  }) = ANPSAddNewPriceSuccess;
+
+  const factory AddNewPriceScreenState.addNewPriceError({
+    required String message,
+    required String code,
+    required StackTrace stackTrace,
+  }) = ANPSAddNewPriceError;
 }

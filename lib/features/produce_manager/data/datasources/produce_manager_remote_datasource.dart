@@ -117,6 +117,15 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
   }) async {
     final currentTimeStamp = clock.now();
 
+    // Get most recent [currentProducePrice] and [weeklyPrice]
+    final Map<String, dynamic> staleProduce =
+        await firebaseFirestore.collection('produce').doc(produceId).get().then(
+              (doc) => doc.data()!,
+            );
+    final Map<String, dynamic> staleCurrentProducePrice = staleProduce["currentProducePrice"];
+    final List<dynamic> weeklyPrices = staleProduce["weeklyPrices"];
+
+    // Update Prices Collection
     await firebaseFirestore.collection('produce').doc(produceId).collection('prices').add(
       {
         "currentPrice": currentPrice,
@@ -130,6 +139,26 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
       },
     ).then((doc) => doc.update({"priceId": doc.id}));
 
+    // Locally process and update [weeklyPrices]
+    weeklyPrices.insert(0, currentPrice);
+    // Remove last price if list is too long.
+    if (weeklyPrices.length > 7) {
+      weeklyPrices.removeLast();
+    }
+
+    // Update [currentProducePrice], [previousProducePrice] and [weeklyPrices]
+    await firebaseFirestore.collection('produce').doc(produceId).update(
+      {
+        "currentProducePrice": {
+          "price": currentPrice,
+          "updateDate": currentTimeStamp,
+        },
+        "previousProducePrice": staleCurrentProducePrice,
+        "weeklyPrices": weeklyPrices,
+      },
+    );
+
+    // Retrieve updated produce
     final produce = await firebaseFirestore.collection('produce').doc(produceId).get().then(
           (snapshot) => Produce.fromMap(snapshot.data()),
         );

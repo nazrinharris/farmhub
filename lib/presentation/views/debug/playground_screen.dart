@@ -7,6 +7,8 @@ import 'package:farmhub/presentation/shared_widgets/ui_helpers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
+import 'package:top_snackbar_flutter/custom_snack_bar.dart';
+import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
 class PlaygroundScreen extends StatelessWidget {
   const PlaygroundScreen({Key? key}) : super(key: key);
@@ -114,7 +116,21 @@ class PlaygroundScreen extends StatelessWidget {
                       return Text("Unexpected State by AuthBloc! - $state");
                     }
                   }),
-                )
+                ),
+                Container(
+                  padding: EdgeInsets.only(top: 14, bottom: 14),
+                  alignment: Alignment.center,
+                  child: PrimaryButton(
+                    width: 250,
+                    content: "Show snackbar!",
+                    onPressed: () {
+                      showTopSnackBar(
+                        context,
+                        CustomSnackBar.info(message: "Test!"),
+                      );
+                    },
+                  ),
+                ),
               ],
             ),
           ),

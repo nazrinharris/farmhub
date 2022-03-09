@@ -30,13 +30,8 @@ mixin SecondTwoFieldsFormBloc on Bloc<MultipleFieldsFormEvent, MultipleFieldsFor
 /// For this conjunction to work, [isWithAnotherTwoFields] must be [true]
 class MultipleFieldsFormBloc extends Bloc<MultipleFieldsFormEvent, MultipleFieldsFormState>
     with FirstTwoFieldsFormBloc, SecondTwoFieldsFormBloc {
-  final SecondTwoFieldsFormBloc? secondTwoFieldsFormBloc;
-  final bool isWithAnotherTwoFields;
-
-  MultipleFieldsFormBloc({
-    this.secondTwoFieldsFormBloc,
-    required this.isWithAnotherTwoFields,
-  }) : super(
+  MultipleFieldsFormBloc()
+      : super(
           MultipleFieldsFormState.initial(
             props: MultipleFieldsFormProps(
               autovalidateModeFirstField: AutovalidateMode.disabled,
@@ -55,15 +50,29 @@ class MultipleFieldsFormBloc extends Bloc<MultipleFieldsFormEvent, MultipleField
             ),
           ),
         ) {
+    // General
     on<_MultipleFieldsFormStarted>(startedEvent);
     on<_MultipleFieldsFormUnfocusAllNodes>(unfocusAllNodesEvent);
-    on<_MultipleFieldsFormFirstFieldValueChanged>(firstFieldValueChangedEvent);
-    on<_MultipleFieldsFormSecondFieldValueChanged>(secondFieldValueChangedEvent);
-    on<_MultipleFieldsFormFirstFieldSubmitted>(firstFieldSubmittedEvent);
-    on<_MultipleFieldsFormSecondFieldSubmitted>(secondFieldSubmittedEvent);
     on<_MultipleFieldsFormEnableAlwaysValidation>(enableAlwaysValidationEvent);
+
+    // First
+    on<_MultipleFieldsFormFirstFieldValueChanged>(firstFieldValueChangedEvent);
+    on<_MultipleFieldsFormFirstFieldSubmitted>(firstFieldSubmittedEvent);
+
+    // Second
+    on<_MultipleFieldsFormSecondFieldValueChanged>(secondFieldValueChangedEvent);
+    on<_MultipleFieldsFormSecondFieldSubmitted>(secondFieldSubmittedEvent);
+
+    // Third
+    on<_MultipleFieldsFormThirdFieldValueChanged>(thirdFieldValueChangedEvent);
+    on<_MultipleFieldsFormThirdFieldSubmitted>(thirdFieldSubmittedEvent);
+
+    // Fourth
+    on<_MultipleFieldsFormFourthFieldValueChanged>(fourthFieldValueChangedEvent);
+    on<_MultipleFieldsFormFourthFieldSubmitted>(fourthFieldSubmittedEvent);
   }
 
+  //* General Handlres
   FutureOr<void> startedEvent(
     _MultipleFieldsFormStarted event,
     Emitter<MultipleFieldsFormState> emit,
@@ -77,21 +86,31 @@ class MultipleFieldsFormBloc extends Bloc<MultipleFieldsFormEvent, MultipleField
   ) {
     state.props.firstFieldFocusNode.unfocus();
     state.props.secondFieldFocusNode.unfocus();
+    state.props.thirdFieldFocusNode.unfocus();
+    state.props.fourthFieldFocusNode.unfocus();
     emit(state);
   }
 
+  FutureOr<void> enableAlwaysValidationEvent(
+    _MultipleFieldsFormEnableAlwaysValidation event,
+    Emitter<MultipleFieldsFormState> emit,
+  ) {
+    emit(
+      state.copyWith.props(
+        autovalidateModeFirstField: AutovalidateMode.always,
+        autovalidateModeSecondField: AutovalidateMode.always,
+        autovalidateModeThirdField: AutovalidateMode.always,
+        autovalidateModeFourthField: AutovalidateMode.always,
+      ),
+    );
+  }
+
+  //* First Field
   FutureOr<void> firstFieldValueChangedEvent(
     _MultipleFieldsFormFirstFieldValueChanged event,
     Emitter<MultipleFieldsFormState> emit,
   ) {
     emit(state.copyWith.props(firstFieldValue: event.input));
-  }
-
-  FutureOr<void> secondFieldValueChangedEvent(
-    _MultipleFieldsFormSecondFieldValueChanged event,
-    Emitter<MultipleFieldsFormState> emit,
-  ) {
-    emit(state.copyWith.props(secondFieldValue: event.input));
   }
 
   FutureOr<void> firstFieldSubmittedEvent(
@@ -106,6 +125,14 @@ class MultipleFieldsFormBloc extends Bloc<MultipleFieldsFormEvent, MultipleField
     );
   }
 
+  //* Second Field
+  FutureOr<void> secondFieldValueChangedEvent(
+    _MultipleFieldsFormSecondFieldValueChanged event,
+    Emitter<MultipleFieldsFormState> emit,
+  ) {
+    emit(state.copyWith.props(secondFieldValue: event.input));
+  }
+
   FutureOr<void> secondFieldSubmittedEvent(
     _MultipleFieldsFormSecondFieldSubmitted event,
     Emitter<MultipleFieldsFormState> emit,
@@ -117,14 +144,40 @@ class MultipleFieldsFormBloc extends Bloc<MultipleFieldsFormEvent, MultipleField
     );
   }
 
-  FutureOr<void> enableAlwaysValidationEvent(
-    _MultipleFieldsFormEnableAlwaysValidation event,
+  //* Third Field
+  FutureOr<void> thirdFieldValueChangedEvent(
+    _MultipleFieldsFormThirdFieldValueChanged event,
+    Emitter<MultipleFieldsFormState> emit,
+  ) {
+    emit(state.copyWith.props(thirdFieldValue: event.input));
+  }
+
+  FutureOr<void> thirdFieldSubmittedEvent(
+    _MultipleFieldsFormThirdFieldSubmitted event,
     Emitter<MultipleFieldsFormState> emit,
   ) {
     emit(
       state.copyWith.props(
-        autovalidateModeFirstField: AutovalidateMode.always,
-        autovalidateModeSecondField: AutovalidateMode.always,
+        autovalidateModeThirdField: AutovalidateMode.always,
+      ),
+    );
+  }
+
+  //* Fourth Field
+  FutureOr<void> fourthFieldValueChangedEvent(
+    _MultipleFieldsFormFourthFieldValueChanged event,
+    Emitter<MultipleFieldsFormState> emit,
+  ) {
+    emit(state.copyWith.props(fourthFieldValue: event.input));
+  }
+
+  FutureOr<void> fourthFieldSubmittedEvent(
+    _MultipleFieldsFormFourthFieldSubmitted event,
+    Emitter<MultipleFieldsFormState> emit,
+  ) {
+    emit(
+      state.copyWith.props(
+        autovalidateModeFourthField: AutovalidateMode.always,
       ),
     );
   }

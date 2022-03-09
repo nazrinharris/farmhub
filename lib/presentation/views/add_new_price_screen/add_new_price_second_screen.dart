@@ -1,15 +1,19 @@
 import 'package:farmhub/app_router.dart';
 import 'package:farmhub/locator.dart';
+import 'package:farmhub/presentation/smart_widgets/primary_button_aware/primary_button_aware_cubit.dart';
 import 'package:farmhub/presentation/smart_widgets/produce_list_card.dart';
 import 'package:farmhub/presentation/themes/farmhub_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 
 import '../../../features/produce_manager/domain/entities/produce/produce.dart';
 import '../../shared_widgets/appbars.dart';
 import '../../shared_widgets/texts.dart';
 import '../../shared_widgets/ui_helpers.dart';
+import '../../smart_widgets/multiple_fields_form/multiple_fields_form_bloc.dart';
 import 'bloc/add_new_price_screen_bloc.dart';
+import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
 class AddNewPriceSecondScreen extends StatefulWidget {
   final ProduceArguments produceArguments;
@@ -21,51 +25,94 @@ class AddNewPriceSecondScreen extends StatefulWidget {
 }
 
 class _AddNewPriceSecondScreenState extends State<AddNewPriceSecondScreen> {
-  late TextEditingController textEditingController;
-
   @override
   void initState() {
     super.initState();
-
-    textEditingController = TextEditingController();
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => AddNewPriceScreenBloc(
-        produceManagerRepository: locator(),
-        textEditingController: textEditingController,
-      ),
-      child: Builder(
-        builder: (context) {
-          return Scaffold(
-            resizeToAvoidBottomInset: false,
-            extendBodyBehindAppBar: true,
-            appBar: DefaultAppBar(
-              trailingIcon: const Icon(Icons.arrow_back),
-              trailingOnPressed: () => Navigator.of(context).pop(),
-            ),
-            body: SafeArea(
-              top: false,
-              child: Stack(
-                children: [
-                  CustomScrollView(
-                    slivers: [
-                      HeaderSliver(widget.produceArguments.produce),
-                      ContentSliver(textEditingController),
-                    ],
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => MultipleFieldsFormBloc(),
+        ),
+        BlocProvider(
+          create: (context) => PrimaryButtonAwareCubit(),
+        ),
+      ],
+      child: Builder(builder: (context) {
+        return BlocProvider(
+          create: (context) => AddNewPriceScreenBloc(
+            produceManagerRepository: locator(),
+            multipleFieldsFormBloc: context.read<MultipleFieldsFormBloc>(),
+            primaryButtonAwareCubit: context.read<PrimaryButtonAwareCubit>(),
+          ),
+          child: Builder(
+            builder: (context) {
+              return BlocListener<AddNewPriceScreenBloc, AddNewPriceScreenState>(
+                listener: (context, state) {
+                  if (state is ANPSAddNewPriceError) {
+                    showTopSnackBar(
+                      context,
+                      CustomSnackBar.error(
+                          message:
+                              "Uh oh! An error occured. Code: ${state.code}, Message: ${state.message}"),
+                    );
+                  } else if (state is ANPSAddNewPriceSuccess) {
+                    showTopSnackBar(
+                      context,
+                      CustomSnackBar.success(
+                        message:
+                            "Price of RM${state.produce.currentProducePrice["price"]} is succesfully added to ${state.produce.produceName}",
+                      ),
+                    );
+                    Navigator.of(context).pushNamed(
+                      '/add_new_price_third',
+                      arguments: ProduceArguments(state.produce),
+                    );
+                  }
+                },
+                child: Scaffold(
+                  resizeToAvoidBottomInset: false,
+                  extendBodyBehindAppBar: true,
+                  appBar: DefaultAppBar(
+                    trailingIcon: const Icon(Icons.arrow_back),
+                    trailingOnPressed: () => Navigator.of(context).pop(),
                   ),
-                  Container(
-                    alignment: Alignment.bottomCenter,
-                    padding: const EdgeInsets.symmetric(vertical: 24),
-                  )
-                ],
-              ),
-            ),
-          );
-        },
-      ),
+                  body: SafeArea(
+                    top: false,
+                    child: Stack(
+                      children: [
+                        CustomScrollView(
+                          slivers: [
+                            HeaderSliver(widget.produceArguments.produce),
+                            ContentSliver(),
+                          ],
+                        ),
+                        Container(
+                          alignment: Alignment.bottomCenter,
+                          padding: const EdgeInsets.symmetric(vertical: 24),
+                          child: PrimaryButtonAware(
+                            firstPageContent: 'Continue',
+                            firstPageOnPressed: () => context
+                                .read<AddNewPriceScreenBloc>()
+                                .add(AddNewPriceScreenEvent.execAddNewPrice(
+                                  produce: widget.produceArguments.produce,
+                                )),
+                            type: PrimaryButtonAwareType.onePage,
+                            width: 200,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              );
+            },
+          ),
+        );
+      }),
     );
   }
 }
@@ -90,7 +137,7 @@ class HeaderSliver extends StatelessWidget {
                 const Headline1('You have chosen:'),
                 const UIVerticalSpace14(),
                 Padding(
-                    padding: const EdgeInsets.only(right: 100),
+                    padding: const EdgeInsets.only(right: 40),
                     child: Row(
                       children: [
                         Headline2(produce.produceName),
@@ -99,18 +146,12 @@ class HeaderSliver extends StatelessWidget {
                       ],
                     )),
                 const UIVerticalSpace24(),
-                Container(
-                  color: Theme.of(context).colorScheme.primary.withOpacity(0.24),
-                  height: 1,
-                ),
+                const UIBorder(),
                 const UIVerticalSpace24(),
                 Text("Current Price: RM${produce.currentProducePrice["price"]}"),
-                Text("Previous Price: RM${produce.previousProducePrice["price"]}"),
+                Text(resolvePreviousPriceText(produce)),
                 const UIVerticalSpace24(),
-                Container(
-                  color: Theme.of(context).colorScheme.primary.withOpacity(0.24),
-                  height: 1,
-                ),
+                const UIBorder(),
               ],
             ),
           ),
@@ -118,12 +159,18 @@ class HeaderSliver extends StatelessWidget {
       ),
     );
   }
+
+  String resolvePreviousPriceText(Produce produce) {
+    if (produce.previousProducePrice["price"] == null) {
+      return "Previous Price: RM-.--";
+    } else {
+      return "Previous Price: RM${produce.previousProducePrice["price"]}";
+    }
+  }
 }
 
 class ContentSliver extends StatelessWidget {
-  final TextEditingController textEditingController;
-
-  const ContentSliver(this.textEditingController, {Key? key}) : super(key: key);
+  const ContentSliver({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -132,21 +179,15 @@ class ContentSliver extends StatelessWidget {
         [
           Container(
             alignment: Alignment.center,
-            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
+            padding: const EdgeInsets.symmetric(horizontal: 34, vertical: 44),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  "Price (in RM)",
-                  style: Theme.of(context).textTheme.bodyText1,
-                ),
-                Form(
-                  child: TextFormField(
-                    decoration: kInputDecoration(
-                      hintText: "What's the price now?",
-                      context: context,
-                    ),
-                  ),
+                MultipleFieldsForm<MultipleFieldsFormBloc>(
+                  type: MultipleFieldsFormType.oneField,
+                  firstFieldLabel: "Price (in RM)",
+                  firstFieldHintText: "What's the new price?",
+                  validateFirstField: validateCurrentPrice,
                 ),
               ],
             ),
@@ -154,5 +195,15 @@ class ContentSliver extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  String? validateCurrentPrice(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Please enter a value';
+    } else if (double.tryParse(value) == null) {
+      return 'Please enter a valid number: e.g. 12.80';
+    } else if (double.tryParse(value)! < 0) {
+      return 'A negative price is invalid';
+    }
   }
 }

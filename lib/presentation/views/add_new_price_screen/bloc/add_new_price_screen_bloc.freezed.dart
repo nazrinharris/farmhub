@@ -24,6 +24,12 @@ class _$AddNewPriceScreenEventTearOff {
   _ANPEGetFirstTenProduce getFirstTenProduce() {
     return const _ANPEGetFirstTenProduce();
   }
+
+  _ANPEExecAddNewPrice execAddNewPrice({required Produce produce}) {
+    return _ANPEExecAddNewPrice(
+      produce: produce,
+    );
+  }
 }
 
 /// @nodoc
@@ -35,18 +41,21 @@ mixin _$AddNewPriceScreenEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getFirstTenProduce,
+    required TResult Function(Produce produce) execAddNewPrice,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getFirstTenProduce,
+    TResult Function(Produce produce)? execAddNewPrice,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getFirstTenProduce,
+    TResult Function(Produce produce)? execAddNewPrice,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -54,18 +63,21 @@ mixin _$AddNewPriceScreenEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_ANPEStarted value) started,
     required TResult Function(_ANPEGetFirstTenProduce value) getFirstTenProduce,
+    required TResult Function(_ANPEExecAddNewPrice value) execAddNewPrice,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_ANPEStarted value)? started,
     TResult Function(_ANPEGetFirstTenProduce value)? getFirstTenProduce,
+    TResult Function(_ANPEExecAddNewPrice value)? execAddNewPrice,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_ANPEStarted value)? started,
     TResult Function(_ANPEGetFirstTenProduce value)? getFirstTenProduce,
+    TResult Function(_ANPEExecAddNewPrice value)? execAddNewPrice,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -138,6 +150,7 @@ class _$_ANPEStarted with DiagnosticableTreeMixin implements _ANPEStarted {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getFirstTenProduce,
+    required TResult Function(Produce produce) execAddNewPrice,
   }) {
     return started();
   }
@@ -147,6 +160,7 @@ class _$_ANPEStarted with DiagnosticableTreeMixin implements _ANPEStarted {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getFirstTenProduce,
+    TResult Function(Produce produce)? execAddNewPrice,
   }) {
     return started?.call();
   }
@@ -156,6 +170,7 @@ class _$_ANPEStarted with DiagnosticableTreeMixin implements _ANPEStarted {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getFirstTenProduce,
+    TResult Function(Produce produce)? execAddNewPrice,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -169,6 +184,7 @@ class _$_ANPEStarted with DiagnosticableTreeMixin implements _ANPEStarted {
   TResult map<TResult extends Object?>({
     required TResult Function(_ANPEStarted value) started,
     required TResult Function(_ANPEGetFirstTenProduce value) getFirstTenProduce,
+    required TResult Function(_ANPEExecAddNewPrice value) execAddNewPrice,
   }) {
     return started(this);
   }
@@ -178,6 +194,7 @@ class _$_ANPEStarted with DiagnosticableTreeMixin implements _ANPEStarted {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_ANPEStarted value)? started,
     TResult Function(_ANPEGetFirstTenProduce value)? getFirstTenProduce,
+    TResult Function(_ANPEExecAddNewPrice value)? execAddNewPrice,
   }) {
     return started?.call(this);
   }
@@ -187,6 +204,7 @@ class _$_ANPEStarted with DiagnosticableTreeMixin implements _ANPEStarted {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_ANPEStarted value)? started,
     TResult Function(_ANPEGetFirstTenProduce value)? getFirstTenProduce,
+    TResult Function(_ANPEExecAddNewPrice value)? execAddNewPrice,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -253,6 +271,7 @@ class _$_ANPEGetFirstTenProduce
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getFirstTenProduce,
+    required TResult Function(Produce produce) execAddNewPrice,
   }) {
     return getFirstTenProduce();
   }
@@ -262,6 +281,7 @@ class _$_ANPEGetFirstTenProduce
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getFirstTenProduce,
+    TResult Function(Produce produce)? execAddNewPrice,
   }) {
     return getFirstTenProduce?.call();
   }
@@ -271,6 +291,7 @@ class _$_ANPEGetFirstTenProduce
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getFirstTenProduce,
+    TResult Function(Produce produce)? execAddNewPrice,
     required TResult orElse(),
   }) {
     if (getFirstTenProduce != null) {
@@ -284,6 +305,7 @@ class _$_ANPEGetFirstTenProduce
   TResult map<TResult extends Object?>({
     required TResult Function(_ANPEStarted value) started,
     required TResult Function(_ANPEGetFirstTenProduce value) getFirstTenProduce,
+    required TResult Function(_ANPEExecAddNewPrice value) execAddNewPrice,
   }) {
     return getFirstTenProduce(this);
   }
@@ -293,6 +315,7 @@ class _$_ANPEGetFirstTenProduce
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_ANPEStarted value)? started,
     TResult Function(_ANPEGetFirstTenProduce value)? getFirstTenProduce,
+    TResult Function(_ANPEExecAddNewPrice value)? execAddNewPrice,
   }) {
     return getFirstTenProduce?.call(this);
   }
@@ -302,6 +325,7 @@ class _$_ANPEGetFirstTenProduce
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_ANPEStarted value)? started,
     TResult Function(_ANPEGetFirstTenProduce value)? getFirstTenProduce,
+    TResult Function(_ANPEExecAddNewPrice value)? execAddNewPrice,
     required TResult orElse(),
   }) {
     if (getFirstTenProduce != null) {
@@ -313,6 +337,167 @@ class _$_ANPEGetFirstTenProduce
 
 abstract class _ANPEGetFirstTenProduce implements AddNewPriceScreenEvent {
   const factory _ANPEGetFirstTenProduce() = _$_ANPEGetFirstTenProduce;
+}
+
+/// @nodoc
+abstract class _$ANPEExecAddNewPriceCopyWith<$Res> {
+  factory _$ANPEExecAddNewPriceCopyWith(_ANPEExecAddNewPrice value,
+          $Res Function(_ANPEExecAddNewPrice) then) =
+      __$ANPEExecAddNewPriceCopyWithImpl<$Res>;
+  $Res call({Produce produce});
+
+  $ProduceCopyWith<$Res> get produce;
+}
+
+/// @nodoc
+class __$ANPEExecAddNewPriceCopyWithImpl<$Res>
+    extends _$AddNewPriceScreenEventCopyWithImpl<$Res>
+    implements _$ANPEExecAddNewPriceCopyWith<$Res> {
+  __$ANPEExecAddNewPriceCopyWithImpl(
+      _ANPEExecAddNewPrice _value, $Res Function(_ANPEExecAddNewPrice) _then)
+      : super(_value, (v) => _then(v as _ANPEExecAddNewPrice));
+
+  @override
+  _ANPEExecAddNewPrice get _value => super._value as _ANPEExecAddNewPrice;
+
+  @override
+  $Res call({
+    Object? produce = freezed,
+  }) {
+    return _then(_ANPEExecAddNewPrice(
+      produce: produce == freezed
+          ? _value.produce
+          : produce // ignore: cast_nullable_to_non_nullable
+              as Produce,
+    ));
+  }
+
+  @override
+  $ProduceCopyWith<$Res> get produce {
+    return $ProduceCopyWith<$Res>(_value.produce, (value) {
+      return _then(_value.copyWith(produce: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$_ANPEExecAddNewPrice
+    with DiagnosticableTreeMixin
+    implements _ANPEExecAddNewPrice {
+  const _$_ANPEExecAddNewPrice({required this.produce});
+
+  @override
+  final Produce produce;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'AddNewPriceScreenEvent.execAddNewPrice(produce: $produce)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(
+          DiagnosticsProperty('type', 'AddNewPriceScreenEvent.execAddNewPrice'))
+      ..add(DiagnosticsProperty('produce', produce));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _ANPEExecAddNewPrice &&
+            (identical(other.produce, produce) || other.produce == produce));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, produce);
+
+  @JsonKey(ignore: true)
+  @override
+  _$ANPEExecAddNewPriceCopyWith<_ANPEExecAddNewPrice> get copyWith =>
+      __$ANPEExecAddNewPriceCopyWithImpl<_ANPEExecAddNewPrice>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() getFirstTenProduce,
+    required TResult Function(Produce produce) execAddNewPrice,
+  }) {
+    return execAddNewPrice(produce);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? getFirstTenProduce,
+    TResult Function(Produce produce)? execAddNewPrice,
+  }) {
+    return execAddNewPrice?.call(produce);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? getFirstTenProduce,
+    TResult Function(Produce produce)? execAddNewPrice,
+    required TResult orElse(),
+  }) {
+    if (execAddNewPrice != null) {
+      return execAddNewPrice(produce);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ANPEStarted value) started,
+    required TResult Function(_ANPEGetFirstTenProduce value) getFirstTenProduce,
+    required TResult Function(_ANPEExecAddNewPrice value) execAddNewPrice,
+  }) {
+    return execAddNewPrice(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_ANPEStarted value)? started,
+    TResult Function(_ANPEGetFirstTenProduce value)? getFirstTenProduce,
+    TResult Function(_ANPEExecAddNewPrice value)? execAddNewPrice,
+  }) {
+    return execAddNewPrice?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ANPEStarted value)? started,
+    TResult Function(_ANPEGetFirstTenProduce value)? getFirstTenProduce,
+    TResult Function(_ANPEExecAddNewPrice value)? execAddNewPrice,
+    required TResult orElse(),
+  }) {
+    if (execAddNewPrice != null) {
+      return execAddNewPrice(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ANPEExecAddNewPrice implements AddNewPriceScreenEvent {
+  const factory _ANPEExecAddNewPrice({required Produce produce}) =
+      _$_ANPEExecAddNewPrice;
+
+  Produce get produce;
+  @JsonKey(ignore: true)
+  _$ANPEExecAddNewPriceCopyWith<_ANPEExecAddNewPrice> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -344,6 +529,23 @@ class _$AddNewPriceScreenStateTearOff {
       stackTrace: stackTrace,
     );
   }
+
+  ANPSAddNewPriceSuccess addNewPriceSuccess({required Produce produce}) {
+    return ANPSAddNewPriceSuccess(
+      produce: produce,
+    );
+  }
+
+  ANPSAddNewPriceError addNewPriceError(
+      {required String message,
+      required String code,
+      required StackTrace stackTrace}) {
+    return ANPSAddNewPriceError(
+      message: message,
+      code: code,
+      stackTrace: stackTrace,
+    );
+  }
 }
 
 /// @nodoc
@@ -360,6 +562,10 @@ mixin _$AddNewPriceScreenState {
     required TResult Function(
             String message, String code, StackTrace stackTrace)
         getFirstTenProduceError,
+    required TResult Function(Produce produce) addNewPriceSuccess,
+    required TResult Function(
+            String message, String code, StackTrace stackTrace)
+        addNewPriceError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -369,6 +575,9 @@ mixin _$AddNewPriceScreenState {
     TResult Function(List<Produce> produceList)? getFirstTenProduceSuccess,
     TResult Function(String message, String code, StackTrace stackTrace)?
         getFirstTenProduceError,
+    TResult Function(Produce produce)? addNewPriceSuccess,
+    TResult Function(String message, String code, StackTrace stackTrace)?
+        addNewPriceError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -378,6 +587,9 @@ mixin _$AddNewPriceScreenState {
     TResult Function(List<Produce> produceList)? getFirstTenProduceSuccess,
     TResult Function(String message, String code, StackTrace stackTrace)?
         getFirstTenProduceError,
+    TResult Function(Produce produce)? addNewPriceSuccess,
+    TResult Function(String message, String code, StackTrace stackTrace)?
+        addNewPriceError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -389,6 +601,8 @@ mixin _$AddNewPriceScreenState {
         getFirstTenProduceSuccess,
     required TResult Function(ANPSGetFirstTenProduceError value)
         getFirstTenProduceError,
+    required TResult Function(ANPSAddNewPriceSuccess value) addNewPriceSuccess,
+    required TResult Function(ANPSAddNewPriceError value) addNewPriceError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -399,6 +613,8 @@ mixin _$AddNewPriceScreenState {
         getFirstTenProduceSuccess,
     TResult Function(ANPSGetFirstTenProduceError value)?
         getFirstTenProduceError,
+    TResult Function(ANPSAddNewPriceSuccess value)? addNewPriceSuccess,
+    TResult Function(ANPSAddNewPriceError value)? addNewPriceError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -409,6 +625,8 @@ mixin _$AddNewPriceScreenState {
         getFirstTenProduceSuccess,
     TResult Function(ANPSGetFirstTenProduceError value)?
         getFirstTenProduceError,
+    TResult Function(ANPSAddNewPriceSuccess value)? addNewPriceSuccess,
+    TResult Function(ANPSAddNewPriceError value)? addNewPriceError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -486,6 +704,10 @@ class _$ANPSInitial with DiagnosticableTreeMixin implements ANPSInitial {
     required TResult Function(
             String message, String code, StackTrace stackTrace)
         getFirstTenProduceError,
+    required TResult Function(Produce produce) addNewPriceSuccess,
+    required TResult Function(
+            String message, String code, StackTrace stackTrace)
+        addNewPriceError,
   }) {
     return initial();
   }
@@ -498,6 +720,9 @@ class _$ANPSInitial with DiagnosticableTreeMixin implements ANPSInitial {
     TResult Function(List<Produce> produceList)? getFirstTenProduceSuccess,
     TResult Function(String message, String code, StackTrace stackTrace)?
         getFirstTenProduceError,
+    TResult Function(Produce produce)? addNewPriceSuccess,
+    TResult Function(String message, String code, StackTrace stackTrace)?
+        addNewPriceError,
   }) {
     return initial?.call();
   }
@@ -510,6 +735,9 @@ class _$ANPSInitial with DiagnosticableTreeMixin implements ANPSInitial {
     TResult Function(List<Produce> produceList)? getFirstTenProduceSuccess,
     TResult Function(String message, String code, StackTrace stackTrace)?
         getFirstTenProduceError,
+    TResult Function(Produce produce)? addNewPriceSuccess,
+    TResult Function(String message, String code, StackTrace stackTrace)?
+        addNewPriceError,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -527,6 +755,8 @@ class _$ANPSInitial with DiagnosticableTreeMixin implements ANPSInitial {
         getFirstTenProduceSuccess,
     required TResult Function(ANPSGetFirstTenProduceError value)
         getFirstTenProduceError,
+    required TResult Function(ANPSAddNewPriceSuccess value) addNewPriceSuccess,
+    required TResult Function(ANPSAddNewPriceError value) addNewPriceError,
   }) {
     return initial(this);
   }
@@ -540,6 +770,8 @@ class _$ANPSInitial with DiagnosticableTreeMixin implements ANPSInitial {
         getFirstTenProduceSuccess,
     TResult Function(ANPSGetFirstTenProduceError value)?
         getFirstTenProduceError,
+    TResult Function(ANPSAddNewPriceSuccess value)? addNewPriceSuccess,
+    TResult Function(ANPSAddNewPriceError value)? addNewPriceError,
   }) {
     return initial?.call(this);
   }
@@ -553,6 +785,8 @@ class _$ANPSInitial with DiagnosticableTreeMixin implements ANPSInitial {
         getFirstTenProduceSuccess,
     TResult Function(ANPSGetFirstTenProduceError value)?
         getFirstTenProduceError,
+    TResult Function(ANPSAddNewPriceSuccess value)? addNewPriceSuccess,
+    TResult Function(ANPSAddNewPriceError value)? addNewPriceError,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -621,6 +855,10 @@ class _$ANPSLoading with DiagnosticableTreeMixin implements ANPSLoading {
     required TResult Function(
             String message, String code, StackTrace stackTrace)
         getFirstTenProduceError,
+    required TResult Function(Produce produce) addNewPriceSuccess,
+    required TResult Function(
+            String message, String code, StackTrace stackTrace)
+        addNewPriceError,
   }) {
     return loading();
   }
@@ -633,6 +871,9 @@ class _$ANPSLoading with DiagnosticableTreeMixin implements ANPSLoading {
     TResult Function(List<Produce> produceList)? getFirstTenProduceSuccess,
     TResult Function(String message, String code, StackTrace stackTrace)?
         getFirstTenProduceError,
+    TResult Function(Produce produce)? addNewPriceSuccess,
+    TResult Function(String message, String code, StackTrace stackTrace)?
+        addNewPriceError,
   }) {
     return loading?.call();
   }
@@ -645,6 +886,9 @@ class _$ANPSLoading with DiagnosticableTreeMixin implements ANPSLoading {
     TResult Function(List<Produce> produceList)? getFirstTenProduceSuccess,
     TResult Function(String message, String code, StackTrace stackTrace)?
         getFirstTenProduceError,
+    TResult Function(Produce produce)? addNewPriceSuccess,
+    TResult Function(String message, String code, StackTrace stackTrace)?
+        addNewPriceError,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -662,6 +906,8 @@ class _$ANPSLoading with DiagnosticableTreeMixin implements ANPSLoading {
         getFirstTenProduceSuccess,
     required TResult Function(ANPSGetFirstTenProduceError value)
         getFirstTenProduceError,
+    required TResult Function(ANPSAddNewPriceSuccess value) addNewPriceSuccess,
+    required TResult Function(ANPSAddNewPriceError value) addNewPriceError,
   }) {
     return loading(this);
   }
@@ -675,6 +921,8 @@ class _$ANPSLoading with DiagnosticableTreeMixin implements ANPSLoading {
         getFirstTenProduceSuccess,
     TResult Function(ANPSGetFirstTenProduceError value)?
         getFirstTenProduceError,
+    TResult Function(ANPSAddNewPriceSuccess value)? addNewPriceSuccess,
+    TResult Function(ANPSAddNewPriceError value)? addNewPriceError,
   }) {
     return loading?.call(this);
   }
@@ -688,6 +936,8 @@ class _$ANPSLoading with DiagnosticableTreeMixin implements ANPSLoading {
         getFirstTenProduceSuccess,
     TResult Function(ANPSGetFirstTenProduceError value)?
         getFirstTenProduceError,
+    TResult Function(ANPSAddNewPriceSuccess value)? addNewPriceSuccess,
+    TResult Function(ANPSAddNewPriceError value)? addNewPriceError,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -789,6 +1039,10 @@ class _$ANPSGetFirstTenProduceSuccess
     required TResult Function(
             String message, String code, StackTrace stackTrace)
         getFirstTenProduceError,
+    required TResult Function(Produce produce) addNewPriceSuccess,
+    required TResult Function(
+            String message, String code, StackTrace stackTrace)
+        addNewPriceError,
   }) {
     return getFirstTenProduceSuccess(produceList);
   }
@@ -801,6 +1055,9 @@ class _$ANPSGetFirstTenProduceSuccess
     TResult Function(List<Produce> produceList)? getFirstTenProduceSuccess,
     TResult Function(String message, String code, StackTrace stackTrace)?
         getFirstTenProduceError,
+    TResult Function(Produce produce)? addNewPriceSuccess,
+    TResult Function(String message, String code, StackTrace stackTrace)?
+        addNewPriceError,
   }) {
     return getFirstTenProduceSuccess?.call(produceList);
   }
@@ -813,6 +1070,9 @@ class _$ANPSGetFirstTenProduceSuccess
     TResult Function(List<Produce> produceList)? getFirstTenProduceSuccess,
     TResult Function(String message, String code, StackTrace stackTrace)?
         getFirstTenProduceError,
+    TResult Function(Produce produce)? addNewPriceSuccess,
+    TResult Function(String message, String code, StackTrace stackTrace)?
+        addNewPriceError,
     required TResult orElse(),
   }) {
     if (getFirstTenProduceSuccess != null) {
@@ -830,6 +1090,8 @@ class _$ANPSGetFirstTenProduceSuccess
         getFirstTenProduceSuccess,
     required TResult Function(ANPSGetFirstTenProduceError value)
         getFirstTenProduceError,
+    required TResult Function(ANPSAddNewPriceSuccess value) addNewPriceSuccess,
+    required TResult Function(ANPSAddNewPriceError value) addNewPriceError,
   }) {
     return getFirstTenProduceSuccess(this);
   }
@@ -843,6 +1105,8 @@ class _$ANPSGetFirstTenProduceSuccess
         getFirstTenProduceSuccess,
     TResult Function(ANPSGetFirstTenProduceError value)?
         getFirstTenProduceError,
+    TResult Function(ANPSAddNewPriceSuccess value)? addNewPriceSuccess,
+    TResult Function(ANPSAddNewPriceError value)? addNewPriceError,
   }) {
     return getFirstTenProduceSuccess?.call(this);
   }
@@ -856,6 +1120,8 @@ class _$ANPSGetFirstTenProduceSuccess
         getFirstTenProduceSuccess,
     TResult Function(ANPSGetFirstTenProduceError value)?
         getFirstTenProduceError,
+    TResult Function(ANPSAddNewPriceSuccess value)? addNewPriceSuccess,
+    TResult Function(ANPSAddNewPriceError value)? addNewPriceError,
     required TResult orElse(),
   }) {
     if (getFirstTenProduceSuccess != null) {
@@ -980,6 +1246,10 @@ class _$ANPSGetFirstTenProduceError
     required TResult Function(
             String message, String code, StackTrace stackTrace)
         getFirstTenProduceError,
+    required TResult Function(Produce produce) addNewPriceSuccess,
+    required TResult Function(
+            String message, String code, StackTrace stackTrace)
+        addNewPriceError,
   }) {
     return getFirstTenProduceError(message, code, stackTrace);
   }
@@ -992,6 +1262,9 @@ class _$ANPSGetFirstTenProduceError
     TResult Function(List<Produce> produceList)? getFirstTenProduceSuccess,
     TResult Function(String message, String code, StackTrace stackTrace)?
         getFirstTenProduceError,
+    TResult Function(Produce produce)? addNewPriceSuccess,
+    TResult Function(String message, String code, StackTrace stackTrace)?
+        addNewPriceError,
   }) {
     return getFirstTenProduceError?.call(message, code, stackTrace);
   }
@@ -1004,6 +1277,9 @@ class _$ANPSGetFirstTenProduceError
     TResult Function(List<Produce> produceList)? getFirstTenProduceSuccess,
     TResult Function(String message, String code, StackTrace stackTrace)?
         getFirstTenProduceError,
+    TResult Function(Produce produce)? addNewPriceSuccess,
+    TResult Function(String message, String code, StackTrace stackTrace)?
+        addNewPriceError,
     required TResult orElse(),
   }) {
     if (getFirstTenProduceError != null) {
@@ -1021,6 +1297,8 @@ class _$ANPSGetFirstTenProduceError
         getFirstTenProduceSuccess,
     required TResult Function(ANPSGetFirstTenProduceError value)
         getFirstTenProduceError,
+    required TResult Function(ANPSAddNewPriceSuccess value) addNewPriceSuccess,
+    required TResult Function(ANPSAddNewPriceError value) addNewPriceError,
   }) {
     return getFirstTenProduceError(this);
   }
@@ -1034,6 +1312,8 @@ class _$ANPSGetFirstTenProduceError
         getFirstTenProduceSuccess,
     TResult Function(ANPSGetFirstTenProduceError value)?
         getFirstTenProduceError,
+    TResult Function(ANPSAddNewPriceSuccess value)? addNewPriceSuccess,
+    TResult Function(ANPSAddNewPriceError value)? addNewPriceError,
   }) {
     return getFirstTenProduceError?.call(this);
   }
@@ -1047,6 +1327,8 @@ class _$ANPSGetFirstTenProduceError
         getFirstTenProduceSuccess,
     TResult Function(ANPSGetFirstTenProduceError value)?
         getFirstTenProduceError,
+    TResult Function(ANPSAddNewPriceSuccess value)? addNewPriceSuccess,
+    TResult Function(ANPSAddNewPriceError value)? addNewPriceError,
     required TResult orElse(),
   }) {
     if (getFirstTenProduceError != null) {
@@ -1068,4 +1350,407 @@ abstract class ANPSGetFirstTenProduceError implements AddNewPriceScreenState {
   @JsonKey(ignore: true)
   $ANPSGetFirstTenProduceErrorCopyWith<ANPSGetFirstTenProduceError>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ANPSAddNewPriceSuccessCopyWith<$Res> {
+  factory $ANPSAddNewPriceSuccessCopyWith(ANPSAddNewPriceSuccess value,
+          $Res Function(ANPSAddNewPriceSuccess) then) =
+      _$ANPSAddNewPriceSuccessCopyWithImpl<$Res>;
+  $Res call({Produce produce});
+
+  $ProduceCopyWith<$Res> get produce;
+}
+
+/// @nodoc
+class _$ANPSAddNewPriceSuccessCopyWithImpl<$Res>
+    extends _$AddNewPriceScreenStateCopyWithImpl<$Res>
+    implements $ANPSAddNewPriceSuccessCopyWith<$Res> {
+  _$ANPSAddNewPriceSuccessCopyWithImpl(ANPSAddNewPriceSuccess _value,
+      $Res Function(ANPSAddNewPriceSuccess) _then)
+      : super(_value, (v) => _then(v as ANPSAddNewPriceSuccess));
+
+  @override
+  ANPSAddNewPriceSuccess get _value => super._value as ANPSAddNewPriceSuccess;
+
+  @override
+  $Res call({
+    Object? produce = freezed,
+  }) {
+    return _then(ANPSAddNewPriceSuccess(
+      produce: produce == freezed
+          ? _value.produce
+          : produce // ignore: cast_nullable_to_non_nullable
+              as Produce,
+    ));
+  }
+
+  @override
+  $ProduceCopyWith<$Res> get produce {
+    return $ProduceCopyWith<$Res>(_value.produce, (value) {
+      return _then(_value.copyWith(produce: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$ANPSAddNewPriceSuccess
+    with DiagnosticableTreeMixin
+    implements ANPSAddNewPriceSuccess {
+  const _$ANPSAddNewPriceSuccess({required this.produce});
+
+  @override
+  final Produce produce;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'AddNewPriceScreenState.addNewPriceSuccess(produce: $produce)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty(
+          'type', 'AddNewPriceScreenState.addNewPriceSuccess'))
+      ..add(DiagnosticsProperty('produce', produce));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is ANPSAddNewPriceSuccess &&
+            (identical(other.produce, produce) || other.produce == produce));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, produce);
+
+  @JsonKey(ignore: true)
+  @override
+  $ANPSAddNewPriceSuccessCopyWith<ANPSAddNewPriceSuccess> get copyWith =>
+      _$ANPSAddNewPriceSuccessCopyWithImpl<ANPSAddNewPriceSuccess>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(List<Produce> produceList)
+        getFirstTenProduceSuccess,
+    required TResult Function(
+            String message, String code, StackTrace stackTrace)
+        getFirstTenProduceError,
+    required TResult Function(Produce produce) addNewPriceSuccess,
+    required TResult Function(
+            String message, String code, StackTrace stackTrace)
+        addNewPriceError,
+  }) {
+    return addNewPriceSuccess(produce);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<Produce> produceList)? getFirstTenProduceSuccess,
+    TResult Function(String message, String code, StackTrace stackTrace)?
+        getFirstTenProduceError,
+    TResult Function(Produce produce)? addNewPriceSuccess,
+    TResult Function(String message, String code, StackTrace stackTrace)?
+        addNewPriceError,
+  }) {
+    return addNewPriceSuccess?.call(produce);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<Produce> produceList)? getFirstTenProduceSuccess,
+    TResult Function(String message, String code, StackTrace stackTrace)?
+        getFirstTenProduceError,
+    TResult Function(Produce produce)? addNewPriceSuccess,
+    TResult Function(String message, String code, StackTrace stackTrace)?
+        addNewPriceError,
+    required TResult orElse(),
+  }) {
+    if (addNewPriceSuccess != null) {
+      return addNewPriceSuccess(produce);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ANPSInitial value) initial,
+    required TResult Function(ANPSLoading value) loading,
+    required TResult Function(ANPSGetFirstTenProduceSuccess value)
+        getFirstTenProduceSuccess,
+    required TResult Function(ANPSGetFirstTenProduceError value)
+        getFirstTenProduceError,
+    required TResult Function(ANPSAddNewPriceSuccess value) addNewPriceSuccess,
+    required TResult Function(ANPSAddNewPriceError value) addNewPriceError,
+  }) {
+    return addNewPriceSuccess(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(ANPSInitial value)? initial,
+    TResult Function(ANPSLoading value)? loading,
+    TResult Function(ANPSGetFirstTenProduceSuccess value)?
+        getFirstTenProduceSuccess,
+    TResult Function(ANPSGetFirstTenProduceError value)?
+        getFirstTenProduceError,
+    TResult Function(ANPSAddNewPriceSuccess value)? addNewPriceSuccess,
+    TResult Function(ANPSAddNewPriceError value)? addNewPriceError,
+  }) {
+    return addNewPriceSuccess?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ANPSInitial value)? initial,
+    TResult Function(ANPSLoading value)? loading,
+    TResult Function(ANPSGetFirstTenProduceSuccess value)?
+        getFirstTenProduceSuccess,
+    TResult Function(ANPSGetFirstTenProduceError value)?
+        getFirstTenProduceError,
+    TResult Function(ANPSAddNewPriceSuccess value)? addNewPriceSuccess,
+    TResult Function(ANPSAddNewPriceError value)? addNewPriceError,
+    required TResult orElse(),
+  }) {
+    if (addNewPriceSuccess != null) {
+      return addNewPriceSuccess(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ANPSAddNewPriceSuccess implements AddNewPriceScreenState {
+  const factory ANPSAddNewPriceSuccess({required Produce produce}) =
+      _$ANPSAddNewPriceSuccess;
+
+  Produce get produce;
+  @JsonKey(ignore: true)
+  $ANPSAddNewPriceSuccessCopyWith<ANPSAddNewPriceSuccess> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ANPSAddNewPriceErrorCopyWith<$Res> {
+  factory $ANPSAddNewPriceErrorCopyWith(ANPSAddNewPriceError value,
+          $Res Function(ANPSAddNewPriceError) then) =
+      _$ANPSAddNewPriceErrorCopyWithImpl<$Res>;
+  $Res call({String message, String code, StackTrace stackTrace});
+}
+
+/// @nodoc
+class _$ANPSAddNewPriceErrorCopyWithImpl<$Res>
+    extends _$AddNewPriceScreenStateCopyWithImpl<$Res>
+    implements $ANPSAddNewPriceErrorCopyWith<$Res> {
+  _$ANPSAddNewPriceErrorCopyWithImpl(
+      ANPSAddNewPriceError _value, $Res Function(ANPSAddNewPriceError) _then)
+      : super(_value, (v) => _then(v as ANPSAddNewPriceError));
+
+  @override
+  ANPSAddNewPriceError get _value => super._value as ANPSAddNewPriceError;
+
+  @override
+  $Res call({
+    Object? message = freezed,
+    Object? code = freezed,
+    Object? stackTrace = freezed,
+  }) {
+    return _then(ANPSAddNewPriceError(
+      message: message == freezed
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+      code: code == freezed
+          ? _value.code
+          : code // ignore: cast_nullable_to_non_nullable
+              as String,
+      stackTrace: stackTrace == freezed
+          ? _value.stackTrace
+          : stackTrace // ignore: cast_nullable_to_non_nullable
+              as StackTrace,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ANPSAddNewPriceError
+    with DiagnosticableTreeMixin
+    implements ANPSAddNewPriceError {
+  const _$ANPSAddNewPriceError(
+      {required this.message, required this.code, required this.stackTrace});
+
+  @override
+  final String message;
+  @override
+  final String code;
+  @override
+  final StackTrace stackTrace;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'AddNewPriceScreenState.addNewPriceError(message: $message, code: $code, stackTrace: $stackTrace)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty(
+          'type', 'AddNewPriceScreenState.addNewPriceError'))
+      ..add(DiagnosticsProperty('message', message))
+      ..add(DiagnosticsProperty('code', code))
+      ..add(DiagnosticsProperty('stackTrace', stackTrace));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is ANPSAddNewPriceError &&
+            (identical(other.message, message) || other.message == message) &&
+            (identical(other.code, code) || other.code == code) &&
+            (identical(other.stackTrace, stackTrace) ||
+                other.stackTrace == stackTrace));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, message, code, stackTrace);
+
+  @JsonKey(ignore: true)
+  @override
+  $ANPSAddNewPriceErrorCopyWith<ANPSAddNewPriceError> get copyWith =>
+      _$ANPSAddNewPriceErrorCopyWithImpl<ANPSAddNewPriceError>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(List<Produce> produceList)
+        getFirstTenProduceSuccess,
+    required TResult Function(
+            String message, String code, StackTrace stackTrace)
+        getFirstTenProduceError,
+    required TResult Function(Produce produce) addNewPriceSuccess,
+    required TResult Function(
+            String message, String code, StackTrace stackTrace)
+        addNewPriceError,
+  }) {
+    return addNewPriceError(message, code, stackTrace);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<Produce> produceList)? getFirstTenProduceSuccess,
+    TResult Function(String message, String code, StackTrace stackTrace)?
+        getFirstTenProduceError,
+    TResult Function(Produce produce)? addNewPriceSuccess,
+    TResult Function(String message, String code, StackTrace stackTrace)?
+        addNewPriceError,
+  }) {
+    return addNewPriceError?.call(message, code, stackTrace);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<Produce> produceList)? getFirstTenProduceSuccess,
+    TResult Function(String message, String code, StackTrace stackTrace)?
+        getFirstTenProduceError,
+    TResult Function(Produce produce)? addNewPriceSuccess,
+    TResult Function(String message, String code, StackTrace stackTrace)?
+        addNewPriceError,
+    required TResult orElse(),
+  }) {
+    if (addNewPriceError != null) {
+      return addNewPriceError(message, code, stackTrace);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ANPSInitial value) initial,
+    required TResult Function(ANPSLoading value) loading,
+    required TResult Function(ANPSGetFirstTenProduceSuccess value)
+        getFirstTenProduceSuccess,
+    required TResult Function(ANPSGetFirstTenProduceError value)
+        getFirstTenProduceError,
+    required TResult Function(ANPSAddNewPriceSuccess value) addNewPriceSuccess,
+    required TResult Function(ANPSAddNewPriceError value) addNewPriceError,
+  }) {
+    return addNewPriceError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(ANPSInitial value)? initial,
+    TResult Function(ANPSLoading value)? loading,
+    TResult Function(ANPSGetFirstTenProduceSuccess value)?
+        getFirstTenProduceSuccess,
+    TResult Function(ANPSGetFirstTenProduceError value)?
+        getFirstTenProduceError,
+    TResult Function(ANPSAddNewPriceSuccess value)? addNewPriceSuccess,
+    TResult Function(ANPSAddNewPriceError value)? addNewPriceError,
+  }) {
+    return addNewPriceError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ANPSInitial value)? initial,
+    TResult Function(ANPSLoading value)? loading,
+    TResult Function(ANPSGetFirstTenProduceSuccess value)?
+        getFirstTenProduceSuccess,
+    TResult Function(ANPSGetFirstTenProduceError value)?
+        getFirstTenProduceError,
+    TResult Function(ANPSAddNewPriceSuccess value)? addNewPriceSuccess,
+    TResult Function(ANPSAddNewPriceError value)? addNewPriceError,
+    required TResult orElse(),
+  }) {
+    if (addNewPriceError != null) {
+      return addNewPriceError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ANPSAddNewPriceError implements AddNewPriceScreenState {
+  const factory ANPSAddNewPriceError(
+      {required String message,
+      required String code,
+      required StackTrace stackTrace}) = _$ANPSAddNewPriceError;
+
+  String get message;
+  String get code;
+  StackTrace get stackTrace;
+  @JsonKey(ignore: true)
+  $ANPSAddNewPriceErrorCopyWith<ANPSAddNewPriceError> get copyWith =>
+      throw _privateConstructorUsedError;
 }

@@ -5,6 +5,8 @@ import 'package:syncfusion_flutter_charts/charts.dart';
 import '../../../features/produce_manager/domain/entities/produce/produce.dart';
 import 'bloc/produce_screen_bloc.dart';
 
+enum LargePriceChartType { oneWeek }
+
 class LargePriceChart extends StatelessWidget {
   final Produce produce;
 
