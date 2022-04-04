@@ -15,7 +15,7 @@ import 'custom_tab.dart' as ct;
 
 import '../../../features/produce_manager/domain/entities/produce/produce.dart';
 import '../../shared_widgets/texts.dart';
-import 'large_price_chart.dart';
+import '../../smart_widgets/large_price_chart.dart';
 
 class ProduceScreen extends StatefulWidget {
   final ProduceArguments produceArguments;
@@ -124,7 +124,7 @@ class _SliverProduceHeaderState extends State<SliverProduceHeader> {
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Text("RM ${widget.produce.currentProducePrice["price"].toString()}"),
+                Text("RM ${widget.produce.currentProducePrice["price"].toString()}/kg"),
                 const UIHorizontalSpace14(),
                 ChangeBox(widget.produce),
               ],
@@ -182,7 +182,11 @@ class _SliverProducePriceChartState extends State<SliverProducePriceChart> {
         ),
       ),
       const UIVerticalSpace14(),
-      LargePriceChart(widget.produce),
+      BlocBuilder<ProduceScreenBloc, ProduceScreenState>(
+        builder: (context, state) {
+          return LargePriceChart(widget.produce, determineChartType(state.props.index));
+        },
+      ),
     ]));
   }
 }

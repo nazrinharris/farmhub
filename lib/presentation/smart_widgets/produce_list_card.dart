@@ -53,11 +53,11 @@ class ProduceListCard extends StatelessWidget {
                     ),
                     const UICustomVertical(2),
                     Text(
-                      "RM ${produce.currentProducePrice["price"].toString()}",
+                      "RM ${produce.currentProducePrice["price"].toString()}/kg",
                       style: Theme.of(context)
                           .textTheme
                           .bodyText2!
-                          .copyWith(fontWeight: FontWeight.w800),
+                          .copyWith(fontWeight: FontWeight.w700),
                     ),
                     const UICustomVertical(9),
                     ChangeBox(produce),
@@ -93,8 +93,9 @@ class ProduceListCard extends StatelessWidget {
 
 class ChangeBox extends StatelessWidget {
   final Produce produce;
+  final Alignment? alignment;
 
-  const ChangeBox(this.produce, {Key? key}) : super(key: key);
+  const ChangeBox(this.produce, {Key? key, this.alignment}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -107,7 +108,7 @@ class ChangeBox extends StatelessWidget {
 
     if (isNegative != null) {
       return Align(
-        alignment: Alignment.centerLeft,
+        alignment: alignment ?? Alignment.centerLeft,
         child: Container(
           padding: const EdgeInsets.symmetric(vertical: 7, horizontal: 14),
           decoration: BoxDecoration(
@@ -125,7 +126,7 @@ class ChangeBox extends StatelessWidget {
       );
     } else {
       return Align(
-        alignment: Alignment.centerLeft,
+        alignment: alignment ?? Alignment.centerLeft,
         child: Container(
           padding: const EdgeInsets.symmetric(vertical: 7, horizontal: 14),
           decoration: BoxDecoration(

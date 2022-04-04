@@ -79,7 +79,7 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
       },
       "produceId": "0000",
       "produceName": produceName,
-      "weeklyPrices": [],
+      "weeklyPrices": [currentProducePrice],
       "authorId": authorId,
     }).then((doc) async {
       doc.update({

@@ -136,19 +136,13 @@ class HeaderSliver extends StatelessWidget {
                 const UITopPadding(),
                 const Headline1('You have chosen:'),
                 const UIVerticalSpace14(),
-                Padding(
-                    padding: const EdgeInsets.only(right: 40),
-                    child: Row(
-                      children: [
-                        Headline2(produce.produceName),
-                        const UIHorizontalSpace14(),
-                        ChangeBox(produce),
-                      ],
-                    )),
+                Headline2(produce.produceName),
+                const UIVerticalSpace14(),
+                ChangeBox(produce),
                 const UIVerticalSpace24(),
                 const UIBorder(),
                 const UIVerticalSpace24(),
-                Text("Current Price: RM${produce.currentProducePrice["price"]}"),
+                Text("Current Price: RM${produce.currentProducePrice["price"]}/kg"),
                 Text(resolvePreviousPriceText(produce)),
                 const UIVerticalSpace24(),
                 const UIBorder(),
@@ -164,7 +158,7 @@ class HeaderSliver extends StatelessWidget {
     if (produce.previousProducePrice["price"] == null) {
       return "Previous Price: RM-.--";
     } else {
-      return "Previous Price: RM${produce.previousProducePrice["price"]}";
+      return "Previous Price: RM${produce.previousProducePrice["price"]}/kg";
     }
   }
 }

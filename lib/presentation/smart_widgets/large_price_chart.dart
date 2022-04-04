@@ -2,33 +2,50 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
-import '../../../features/produce_manager/domain/entities/produce/produce.dart';
-import 'bloc/produce_screen_bloc.dart';
+import '../../features/produce_manager/domain/entities/produce/produce.dart';
+import '../views/produce_screen/bloc/produce_screen_bloc.dart';
 
-enum LargePriceChartType { oneWeek }
+enum LargePriceChartType { oneW, twoW, oneM, twoM, sixM, oneY, err }
+
+LargePriceChartType determineChartType(int index) {
+  switch (index) {
+    case 0:
+      return LargePriceChartType.oneW;
+    case 1:
+      return LargePriceChartType.twoW;
+    case 2:
+      return LargePriceChartType.oneM;
+    case 3:
+      return LargePriceChartType.twoM;
+    case 4:
+      return LargePriceChartType.sixM;
+    case 5:
+      return LargePriceChartType.oneY;
+    default:
+      return LargePriceChartType.err;
+  }
+}
 
 class LargePriceChart extends StatelessWidget {
   final Produce produce;
+  final LargePriceChartType type;
 
-  const LargePriceChart(this.produce, {Key? key}) : super(key: key);
+  const LargePriceChart(this.produce, this.type, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ProduceScreenBloc, ProduceScreenState>(
-      builder: (context, state) {
-        if (state.props.index == 0) {
-          return _buildOneWeekChart(produce);
-        } else {
-          return Container(
-            margin: const EdgeInsets.symmetric(horizontal: 12),
-            height: 220,
-            child: const Center(
-              child: Text('Not implemented'),
-            ),
-          );
-        }
-      },
-    );
+    switch (type) {
+      case LargePriceChartType.oneW:
+        return _buildOneWeekChart(produce);
+      default:
+        return Container(
+          margin: const EdgeInsets.symmetric(horizontal: 12),
+          height: 220,
+          child: const Center(
+            child: Text('Not implemented'),
+          ),
+        );
+    }
   }
 
   Container _buildOneWeekChart(Produce produce) {

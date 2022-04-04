@@ -7,7 +7,7 @@ import 'package:farmhub/presentation/shared_widgets/ui_helpers.dart';
 import 'package:farmhub/presentation/smart_widgets/primary_button_aware/primary_button_aware_cubit.dart';
 import 'package:farmhub/presentation/smart_widgets/produce_list_card.dart';
 import 'package:farmhub/presentation/views/add_new_price_screen/bloc/add_new_price_screen_bloc.dart';
-import 'package:farmhub/presentation/views/produce_screen/large_price_chart.dart';
+import 'package:farmhub/presentation/smart_widgets/large_price_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:top_snackbar_flutter/custom_snack_bar.dart';
@@ -50,16 +50,14 @@ class AddNewPriceThirdScreen extends StatelessWidget {
                       children: [
                         const UITopPadding(),
                         const UIVerticalSpace30(),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 24),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Headline1(produceArguments.produce.produceName),
-                              const UIHorizontalSpace14(),
-                              ChangeBox(produceArguments.produce)
-                            ],
-                          ),
+                        Container(
+                          alignment: Alignment.center,
+                          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
+                          child: Headline1(produceArguments.produce.produceName),
+                        ),
+                        ChangeBox(
+                          produceArguments.produce,
+                          alignment: Alignment.center,
                         ),
                         const UIVerticalSpace14(),
                         const UIBorder(margin: EdgeInsets.symmetric(horizontal: 24)),
@@ -67,16 +65,17 @@ class AddNewPriceThirdScreen extends StatelessWidget {
                         Column(
                           children: [
                             Text(
-                              "Current Price: RM${produceArguments.produce.currentProducePrice["price"]}",
+                              "Current Price: RM${produceArguments.produce.currentProducePrice["price"]}/kg",
                             ),
                             Text(
-                              "Previous Price: RM${produceArguments.produce.previousProducePrice["price"]}",
+                              "Previous Price: RM${produceArguments.produce.previousProducePrice["price"]}/kg",
                             ),
                           ],
                         ),
                         const UIVerticalSpace14(),
                         UIBorder(),
                         const UIVerticalSpace30(),
+                        LargePriceChart(produceArguments.produce, LargePriceChartType.oneW)
                       ],
                     ),
                     Container(

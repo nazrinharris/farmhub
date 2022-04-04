@@ -64,7 +64,7 @@ class CreateProduceScreen extends StatelessWidget {
                             type: MultipleFieldsFormType.twoField,
                             firstFieldLabel: 'Produce Name',
                             firstFieldHintText: 'Enter the produce name',
-                            secondFieldLabel: 'Current Produce Price',
+                            secondFieldLabel: 'Current Produce Price (/kg)',
                             secondFieldHintText: 'What is the price of it now?',
                             validateFirstField: validateProduceName,
                             validateSecondField: validateCurrentPrice,
