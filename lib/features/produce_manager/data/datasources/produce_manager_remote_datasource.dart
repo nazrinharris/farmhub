@@ -87,7 +87,18 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
       });
 
       // Create Prices sub-collection
-      firebaseFirestore.collection('produce').doc(doc.id).collection('prices');
+      await firebaseFirestore.collection('produce').doc(doc.id).collection('prices').add(
+        {
+          "currentPrice": currentProducePrice,
+          "editHistory": [
+            {
+              "price": currentProducePrice,
+              "editDate": clock.now().toString(),
+            }
+          ],
+          "updateDate": clock.now().toString(),
+        },
+      ).then((doc) => doc.update({"priceId": doc.id}));
 
       return doc.id;
     });
