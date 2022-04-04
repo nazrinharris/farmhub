@@ -19,7 +19,10 @@ abstract class IProduceManagerRepository {
     required num currentProducePrice,
   });
 
-  FutureEither<List<Price>> getOneWeekPrices({
-    required String pid,
+  FutureEither<List<Price>> getOneWeekPrices(String priceId);
+
+  FutureEither<Produce> addNewPrice({
+    required String produceId,
+    required num currentPrice,
   });
 }

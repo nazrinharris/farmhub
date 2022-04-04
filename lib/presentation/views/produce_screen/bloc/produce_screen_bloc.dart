@@ -33,7 +33,7 @@ class ProduceScreenBloc extends Bloc<ProduceScreenEvent, ProduceScreenState> {
     _PSETabChanged event,
     Emitter<ProduceScreenState> emit,
   ) {
-    /// List of index corresponding
+    /// List of index correspondent
     /// 0 - 1W
     /// 1 - 2W
     /// 2 - 1M

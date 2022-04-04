@@ -10,7 +10,7 @@ import '../../shared_widgets/buttons.dart';
 import '../../shared_widgets/ui_helpers.dart';
 import '../../smart_widgets/info_tile/bloc/info_tile_bloc.dart';
 import '../../smart_widgets/info_tile/info_tile.dart';
-import '../../smart_widgets/two_fields_form.dart/two_fields_form_bloc.dart';
+import '../../smart_widgets/multiple_fields_form/multiple_fields_form_bloc.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({Key? key}) : super(key: key);
@@ -143,7 +143,8 @@ class _RegisterFieldsState extends State<RegisterFields> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        TwoFieldsForm<FirstTwoFieldsFormBloc>(
+        MultipleFieldsForm<FirstTwoFieldsFormBloc>(
+          type: MultipleFieldsFormType.twoField,
           firstFieldLabel: 'Username',
           firstFieldHintText: 'Enter your desired username',
           secondFieldLabel: 'Email',
@@ -152,7 +153,8 @@ class _RegisterFieldsState extends State<RegisterFields> {
           validateSecondField: validateEmail,
         ),
         const UIVerticalSpace14(),
-        TwoFieldsForm<SecondTwoFieldsFormBloc>(
+        MultipleFieldsForm<SecondTwoFieldsFormBloc>(
+          type: MultipleFieldsFormType.twoField,
           firstFieldLabel: 'Password',
           firstFieldHintText: 'Enter a secure password',
           secondFieldLabel: 'Confirm Password',
@@ -285,10 +287,10 @@ class RegisterScreenBlocProviders extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider<FirstTwoFieldsFormBloc>(
-          create: (context) => TwoFieldsFormBloc(isWithAnotherTwoFields: true),
+          create: (context) => MultipleFieldsFormBloc(),
         ),
         BlocProvider<SecondTwoFieldsFormBloc>(
-          create: (context) => TwoFieldsFormBloc(isWithAnotherTwoFields: true),
+          create: (context) => MultipleFieldsFormBloc(),
         ),
         BlocProvider<InfoTileBloc>(
           create: (context) => initialInfoTileBloc!(),

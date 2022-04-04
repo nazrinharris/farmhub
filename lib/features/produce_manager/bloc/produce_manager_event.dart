@@ -10,4 +10,8 @@ class ProduceManagerEvent with _$ProduceManagerEvent {
     required String produceName,
     required num currentProducePrice,
   }) = _PMEExecCreateProduce;
+
+  const factory ProduceManagerEvent.execGetOneWeekPrices({
+    required String pid,
+  }) = _PMEExecGetOneWeekPrices;
 }

@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:farmhub/core/auth/domain/i_auth_repository.dart';
 import 'package:farmhub/core/network/network_info.dart';
 import 'package:farmhub/features/produce_manager/data/datasources/produce_manager_local_datasource.dart';
 import 'package:farmhub/features/produce_manager/data/datasources/produce_manager_remote_datasource.dart';
@@ -13,6 +14,8 @@ class MockProduceManagerRemoteDatasource extends Mock implements IProduceManager
 
 class MockProduceManagerLocalDatasource extends Mock implements IProduceManagerLocalDatasource {}
 
+class MockAuthRepository extends Mock implements IAuthRepository {}
+
 class MockNetworkInfo extends Mock implements NetworkInfo {}
 
 class FakeProduce extends Fake implements Produce {}
@@ -22,17 +25,20 @@ void main() {
 
   late MockProduceManagerRemoteDatasource mockRemoteDatasource;
   late MockProduceManagerLocalDatasource mockLocalDatasource;
+  late MockAuthRepository mockAuthRepository;
   late MockNetworkInfo mockNetworkInfo;
 
   setUp(() {
     mockRemoteDatasource = MockProduceManagerRemoteDatasource();
     mockLocalDatasource = MockProduceManagerLocalDatasource();
     mockNetworkInfo = MockNetworkInfo();
+    mockAuthRepository = MockAuthRepository();
 
     repository = ProduceManagerRepository(
       localDatasource: mockLocalDatasource,
       networkInfo: mockNetworkInfo,
       remoteDatasource: mockRemoteDatasource,
+      authRepository: mockAuthRepository,
     );
 
     registerFallbackValue(FakeProduce());

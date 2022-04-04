@@ -8,10 +8,12 @@ import 'package:farmhub/core/auth/auth_bloc/auth_bloc.dart';
 import 'package:farmhub/presentation/smart_widgets/info_tile/bloc/info_tile_bloc.dart';
 import 'package:farmhub/presentation/smart_widgets/info_tile/info_tile.dart';
 import 'package:farmhub/presentation/smart_widgets/primary_button_aware/primary_button_aware_cubit.dart';
-import 'package:farmhub/presentation/smart_widgets/two_fields_form.dart/two_fields_form_bloc.dart';
+
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:simple_animations/simple_animations.dart';
+
+import '../../../smart_widgets/multiple_fields_form/multiple_fields_form_bloc.dart';
 
 part 'login_screen_event.dart';
 part 'login_screen_state.dart';
@@ -68,7 +70,7 @@ class LoginScreenBloc extends Bloc<LoginScreenEvent, LoginScreenState> {
     emit(LoginScreenState.loading(state.props));
 
     // Enable AlwaysValidation for FirstTwoFieldsForm
-    firstTwoFieldsFormBloc.add(TwoFieldsFormEvent.enableAlwaysValidation());
+    firstTwoFieldsFormBloc.add(MultipleFieldsFormEvent.enableAlwaysValidation());
 
     // Access Status and check whether form is valid
     final isValid = firstTwoFieldsFormBloc.state.props.formKey.currentState!.validate();
@@ -115,6 +117,7 @@ class LoginScreenBloc extends Bloc<LoginScreenEvent, LoginScreenState> {
 
             primaryButtonAwareCubit.triggerFirstPage();
           } else if (state is ASLoginError) {
+            debugPrintStack(stackTrace: state.stackTrace);
             updateInfoTile(InfoTileProps(
               leadingText: 'Uh oh, Something\'s wrong!',
               child: Text(

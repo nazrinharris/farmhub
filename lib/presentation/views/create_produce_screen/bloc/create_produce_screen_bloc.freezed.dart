@@ -108,12 +108,19 @@ class __$StartedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Started implements _Started {
+class _$_Started with DiagnosticableTreeMixin implements _Started {
   const _$_Started();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'CreateProduceScreenEvent.started()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'CreateProduceScreenEvent.started'));
   }
 
   @override
@@ -215,12 +222,22 @@ class __$CPSEExecCreateNewProduceCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_CPSEExecCreateNewProduce implements _CPSEExecCreateNewProduce {
+class _$_CPSEExecCreateNewProduce
+    with DiagnosticableTreeMixin
+    implements _CPSEExecCreateNewProduce {
   const _$_CPSEExecCreateNewProduce();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'CreateProduceScreenEvent.execCreateNewProduce()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty(
+          'type', 'CreateProduceScreenEvent.execCreateNewProduce'));
   }
 
   @override
@@ -430,12 +447,19 @@ class __$InitialCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Initial implements _Initial {
+class _$_Initial with DiagnosticableTreeMixin implements _Initial {
   const _$_Initial();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'CreateProduceScreenState.initial()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'CreateProduceScreenState.initial'));
   }
 
   @override
@@ -558,12 +582,22 @@ class __$CPSSCreateNewProduceLoadingCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_CPSSCreateNewProduceLoading implements _CPSSCreateNewProduceLoading {
+class _$_CPSSCreateNewProduceLoading
+    with DiagnosticableTreeMixin
+    implements _CPSSCreateNewProduceLoading {
   const _$_CPSSCreateNewProduceLoading();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'CreateProduceScreenState.createNewProduceLoading()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty(
+          'type', 'CreateProduceScreenState.createNewProduceLoading'));
   }
 
   @override
@@ -710,15 +744,26 @@ class __$CPSSCreateNewProduceSuccessCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_CPSSCreateNewProduceSuccess implements _CPSSCreateNewProduceSuccess {
+class _$_CPSSCreateNewProduceSuccess
+    with DiagnosticableTreeMixin
+    implements _CPSSCreateNewProduceSuccess {
   const _$_CPSSCreateNewProduceSuccess({required this.produce});
 
   @override
   final Produce produce;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'CreateProduceScreenState.createNewProduceSuccess(produce: $produce)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty(
+          'type', 'CreateProduceScreenState.createNewProduceSuccess'))
+      ..add(DiagnosticsProperty('produce', produce));
   }
 
   @override
@@ -872,7 +917,9 @@ class __$CPSSCreateNewProduceErrorCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_CPSSCreateNewProduceError implements _CPSSCreateNewProduceError {
+class _$_CPSSCreateNewProduceError
+    with DiagnosticableTreeMixin
+    implements _CPSSCreateNewProduceError {
   const _$_CPSSCreateNewProduceError(
       {required this.code, required this.message});
 
@@ -882,8 +929,18 @@ class _$_CPSSCreateNewProduceError implements _CPSSCreateNewProduceError {
   final String message;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'CreateProduceScreenState.createNewProduceError(code: $code, message: $message)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty(
+          'type', 'CreateProduceScreenState.createNewProduceError'))
+      ..add(DiagnosticsProperty('code', code))
+      ..add(DiagnosticsProperty('message', message));
   }
 
   @override

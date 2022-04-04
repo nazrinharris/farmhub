@@ -108,7 +108,10 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
                     ),
                   ),
                   SpeedDialChild(
-                    onTap: () {},
+                    onTap: () {
+                      debugPrint("Pressed");
+                      Navigator.of(context).pushNamed('/add_new_price');
+                    },
                     backgroundColor: Theme.of(context).colorScheme.primary,
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
                     child: const Icon(
@@ -311,7 +314,17 @@ class MainScreenHeaderDelegate extends SliverPersistentHeaderDelegate {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 14),
               child: CupertinoSearchTextField(
+                backgroundColor: const Color(0xffB5CBBB),
+                style: Theme.of(context).textTheme.bodyText1!.copyWith(color: Colors.black),
+                prefixIcon: const Icon(Icons.search),
+                prefixInsets: const EdgeInsets.only(left: 14, right: 4),
+                suffixInsets: const EdgeInsets.only(left: 4, right: 14),
                 onTap: () {},
+                itemColor: Theme.of(context).colorScheme.primary,
+                placeholder: "Search",
+                placeholderStyle: Theme.of(context).textTheme.bodyText1!.copyWith(
+                      color: Theme.of(context).colorScheme.primary.withOpacity(0.45),
+                    ),
               ),
             ),
           ],

@@ -8,6 +8,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 final FirebaseAuthFailure tFirebaseAuthFailure = FirebaseAuthFailure(
   code: 'CODE',
   message: 'tmessage',
+  stackTrace: StackTrace.empty,
 );
 
 //! Firebase Exceptions

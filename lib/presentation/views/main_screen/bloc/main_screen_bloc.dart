@@ -74,6 +74,7 @@ class MainScreenBloc extends Bloc<MainScreenEvent, MainScreenState> {
           ),
         );
       } else if (PMState is PMSGetFirstTenProduceError) {
+        debugPrintStack(stackTrace: PMState.stackTrace);
         emit(MainScreenState.mainPricesError(
           props: state.props,
           code: PMState.code,

@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../domain/entities/price/price.dart';
 import '../domain/entities/produce/produce.dart';
 import '../domain/i_produce_manager_repository.dart';
 
@@ -16,6 +17,7 @@ class ProduceManagerBloc extends Bloc<ProduceManagerEvent, ProduceManagerState> 
   ProduceManagerBloc({required this.repository}) : super(const PMSInitial()) {
     on<_PMEExecGetFirstTenProduce>(execGetFirstTenProduce);
     on<_PMEExecCreateProduce>(execCreateNewProduce);
+    on<_PMEExecGetOneWeekPrices>(execGetOneWeekPrices);
   }
 
   FutureOr<void> execGetFirstTenProduce(
@@ -27,7 +29,11 @@ class ProduceManagerBloc extends Bloc<ProduceManagerEvent, ProduceManagerState> 
     final failureOrList = await repository.getFirstTenProduce();
 
     emit(failureOrList.fold(
-        (f) => ProduceManagerState.getFirstTenProduceError(code: f.code!, message: f.message!),
+        (f) => ProduceManagerState.getFirstTenProduceError(
+              code: f.code!,
+              message: f.message!,
+              stackTrace: f.stackTrace!,
+            ),
         (list) => ProduceManagerState.getFirstTenProduceSuccess(produceList: list)));
   }
 
@@ -43,8 +49,30 @@ class ProduceManagerBloc extends Bloc<ProduceManagerEvent, ProduceManagerState> 
     );
 
     emit(failureOrProduce.fold(
-      (f) => ProduceManagerState.createNewProduceError(code: f.code!, message: f.message!),
+      (f) => ProduceManagerState.createNewProduceError(
+        code: f.code!,
+        message: f.message!,
+        stackTrace: f.stackTrace!,
+      ),
       (produce) => ProduceManagerState.createNewProduceSuccess(produce: produce),
+    ));
+  }
+
+  FutureOr<void> execGetOneWeekPrices(
+    _PMEExecGetOneWeekPrices event,
+    Emitter<ProduceManagerState> emit,
+  ) async {
+    emit(const ProduceManagerState.getOneWeekPricesLoading());
+
+    final failureOrPrice = await repository.getOneWeekPrices(event.pid);
+
+    emit(failureOrPrice.fold(
+      (f) => ProduceManagerState.getOneWeekPricesError(
+        code: f.code!,
+        message: f.message!,
+        stackTrace: f.stackTrace!,
+      ),
+      (priceList) => ProduceManagerState.getOneWeekPricesSuccess(priceList: priceList),
     ));
   }
 }
