@@ -8,6 +8,7 @@ import 'package:farmhub/presentation/views/login_screen/login_screen.dart';
 import 'package:farmhub/presentation/views/main_screen/main_screen.dart';
 import 'package:farmhub/presentation/views/produce_screen/produce_screen.dart';
 import 'package:farmhub/presentation/views/register_screen/register_screen.dart';
+import 'package:farmhub/presentation/views/search_screen/search_screen.dart';
 import 'package:farmhub/presentation/views/start_screen/start_screen.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -56,6 +57,14 @@ class AppRouter {
       case '/add_new_price_third':
         return CupertinoPageRoute(
           builder: (_) => AddNewPriceThirdScreen(routeSettings.arguments as ProduceArguments),
+        );
+
+      case '/search_screen':
+        return PageRouteBuilder(
+          transitionDuration: const Duration(milliseconds: 600),
+          reverseTransitionDuration: const Duration(milliseconds: 600),
+          pageBuilder: ((context, animation, secondaryAnimation) => const SearchScreen()),
+          transitionsBuilder: createProduceScreenTransitionBuilder,
         );
 
       //! DEBUG ROUTES

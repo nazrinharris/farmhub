@@ -6,6 +6,7 @@ import 'package:farmhub/core/util/farmhub_icons.dart';
 import 'package:farmhub/features/produce_manager/bloc/produce_manager_bloc.dart';
 import 'package:farmhub/presentation/shared_widgets/buttons.dart';
 import 'package:farmhub/presentation/shared_widgets/texts.dart';
+import 'package:farmhub/presentation/smart_widgets/custom_search_field.dart';
 
 import 'package:farmhub/presentation/views/main_screen/bloc/main_screen_bloc.dart';
 import 'package:flutter/cupertino.dart';
@@ -44,7 +45,7 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
       setState(() {});
     });
 
-    extent = Tween<double>(begin: 162.0, end: 68.0).animate(mainHeaderController);
+    extent = Tween<double>(begin: 166.0, end: 68.0).animate(mainHeaderController);
   }
 
   @override
@@ -311,22 +312,17 @@ class MainScreenHeaderDelegate extends SliverPersistentHeaderDelegate {
             MainHeader(
               mainHeaderController: context.read<MainScreenBloc>().mainHeaderController,
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 14),
-              child: CupertinoSearchTextField(
-                backgroundColor: const Color(0xffB5CBBB),
-                style: Theme.of(context).textTheme.bodyText1!.copyWith(color: Colors.black),
-                prefixIcon: const Icon(Icons.search),
-                prefixInsets: const EdgeInsets.only(left: 14, right: 4),
-                suffixInsets: const EdgeInsets.only(left: 4, right: 14),
-                onTap: () {},
-                itemColor: Theme.of(context).colorScheme.primary,
-                placeholder: "Search",
-                placeholderStyle: Theme.of(context).textTheme.bodyText1!.copyWith(
-                      color: Theme.of(context).colorScheme.primary.withOpacity(0.45),
-                    ),
+            Hero(
+              tag: "search_bar",
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 16),
+                child: CustomSearchField(
+                  onFieldFocus: () {
+                    Navigator.of(context).pushNamed('/search_screen');
+                  },
+                ),
               ),
-            ),
+            )
           ],
         ),
       ],
