@@ -8,29 +8,38 @@ class SearchScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      extendBodyBehindAppBar: true,
-      appBar: DefaultAppBar(
-        trailingIcon: const Icon(Icons.arrow_back),
-        trailingOnPressed: () {
-          Navigator.of(context).pop();
-        },
-      ),
-      body: ListView(
-        children: [
-          Hero(
-            tag: "search_bar",
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 16),
-              child: CustomSearchField(
-                onFieldFocus: () {
-                  Navigator.of(context).pushNamed('/search_screen');
-                },
+    return WillPopScope(
+      onWillPop: () async {
+        return true;
+      },
+      child: Scaffold(
+        resizeToAvoidBottomInset: false,
+        extendBodyBehindAppBar: true,
+        appBar: DefaultAppBar(
+          title: "Search Produce",
+          trailingIcon: const Icon(Icons.arrow_back),
+          leadingIcon: const Icon(
+            Icons.help,
+            color: Colors.transparent,
+          ),
+          trailingOnPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
+        body: ListView(
+          children: [
+            Hero(
+              tag: "search_bar",
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 16),
+                child: CustomSearchField(
+                  isFocus: true,
+                  onTap: () {},
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

@@ -317,7 +317,8 @@ class MainScreenHeaderDelegate extends SliverPersistentHeaderDelegate {
               child: Padding(
                 padding: const EdgeInsets.symmetric(vertical: 16),
                 child: CustomSearchField(
-                  onFieldFocus: () {
+                  isFocus: false,
+                  onTap: () {
                     Navigator.of(context).pushNamed('/search_screen');
                   },
                 ),

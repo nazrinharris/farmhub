@@ -1,17 +1,31 @@
 import 'package:flutter/material.dart';
 
-class CustomSearchField extends StatelessWidget {
-  final Function()? onFieldFocus;
+class CustomSearchField extends StatefulWidget {
+  final Function()? onTap;
+  final bool isFocus;
 
-  const CustomSearchField({
-    Key? key,
-    required this.onFieldFocus,
-  }) : super(key: key);
+  const CustomSearchField({Key? key, required this.onTap, required this.isFocus}) : super(key: key);
+
+  @override
+  State<CustomSearchField> createState() => _CustomSearchFieldState();
+}
+
+class _CustomSearchFieldState extends State<CustomSearchField> {
+  late FocusNode focusNode;
+
+  @override
+  void initState() {
+    super.initState();
+
+    focusNode = FocusNode();
+
+    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+      widget.isFocus ? focusNode.requestFocus() : null;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-
     return Material(
       type: MaterialType.transparency,
       child: Container(
@@ -33,6 +47,7 @@ class CustomSearchField extends StatelessWidget {
             ),
             Expanded(
               child: TextField(
+                focusNode: focusNode,
                 decoration: InputDecoration(
                   focusColor: Theme.of(context).focusColor,
                   hintText: "Search",
@@ -47,7 +62,7 @@ class CustomSearchField extends StatelessWidget {
                     borderSide: BorderSide(width: 2, color: Colors.transparent),
                   ),
                 ),
-                onTap: onFieldFocus,
+                onTap: widget.onTap,
               ),
             ),
           ],

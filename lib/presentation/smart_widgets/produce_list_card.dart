@@ -283,7 +283,6 @@ class SmallPriceChart extends StatelessWidget {
           ),
           series: <CartesianSeries>[
             SplineAreaSeries<num, num>(
-              animationDuration: 1000,
               dataSource: produce.weeklyPrices.reversed.toList(),
               xValueMapper: (num price, index) => index,
               yValueMapper: (num price, index) => price,
