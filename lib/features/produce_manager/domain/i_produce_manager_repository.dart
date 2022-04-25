@@ -25,4 +25,6 @@ abstract class IProduceManagerRepository {
     required String produceId,
     required num currentPrice,
   });
+
+  FutureEither<List<Produce>> searchProduce(String query);
 }

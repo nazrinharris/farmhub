@@ -203,4 +203,22 @@ class ProduceManagerRepository implements IProduceManagerRepository {
       ));
     }
   }
+
+  @override
+  FutureEither<List<Produce>> searchProduce(String query) async {
+    if (await networkInfo.isConnected) {
+      try {
+        final result = await remoteDatasource.searchProduce(query: query);
+        return Right(result);
+      } catch (e) {
+        return Left(UnexpectedFailure(code: e.toString(), stackTrace: StackTrace.current));
+      }
+    } else {
+      return Left(InternetConnectionFailure(
+        code: ERROR_NO_INTERNET_CONNECTION,
+        message: MESSAGE_NO_INTERNET_CONNECTION,
+        stackTrace: StackTrace.current,
+      ));
+    }
+  }
 }

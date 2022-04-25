@@ -20,6 +20,8 @@ abstract class IProduceManagerRemoteDatasource {
     required String produceId,
     required num currentPrice,
   });
+
+  Future<List<Produce>> searchProduce({required String query});
 }
 
 class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource {
@@ -175,5 +177,20 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
         );
 
     return produce;
+  }
+
+  // TODO: Add Pagination!
+  @override
+  Future<List<Produce>> searchProduce({required String query}) async {
+    final queryList = await firebaseFirestore
+        .collection('produce')
+        .where('produceName', isGreaterThanOrEqualTo: query)
+        .get();
+
+    final produceList = queryList.docs.map((documentSnapshot) {
+      return Produce.fromMap(documentSnapshot.data());
+    }).toList();
+
+    return produceList;
   }
 }

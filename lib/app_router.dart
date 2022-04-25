@@ -20,6 +20,12 @@ class ProduceArguments {
   ProduceArguments(this.produce);
 }
 
+class SearchScreenArguments {
+  final FocusNode mainScreenFocusNode;
+
+  SearchScreenArguments(this.mainScreenFocusNode);
+}
+
 class AppRouter {
   Route onGenerateRoute(RouteSettings routeSettings) {
     switch (routeSettings.name) {
@@ -61,9 +67,10 @@ class AppRouter {
 
       case '/search_screen':
         return PageRouteBuilder(
-          transitionDuration: const Duration(milliseconds: 500),
-          reverseTransitionDuration: const Duration(milliseconds: 500),
-          pageBuilder: ((context, animation, secondaryAnimation) => const SearchScreen()),
+          transitionDuration: const Duration(milliseconds: 300),
+          reverseTransitionDuration: const Duration(milliseconds: 300),
+          pageBuilder: ((context, animation, secondaryAnimation) =>
+              SearchScreen(routeSettings.arguments as SearchScreenArguments)),
           transitionsBuilder: searchScreenTransitionBuilder,
         );
 
