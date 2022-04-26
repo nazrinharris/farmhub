@@ -116,10 +116,10 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
           "editHistory": [
             {
               "price": currentProducePrice,
-              "editDate": clock.now().toString(),
+              "editDate": clock.now(),
             }
           ],
-          "updateDate": clock.now().toString(),
+          "updateDate": clock.now(),
         },
       ).then((doc) => doc.update({"priceId": doc.id}));
 
