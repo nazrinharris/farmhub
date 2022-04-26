@@ -10,12 +10,12 @@ class MainScreenState with _$MainScreenState {
   const factory MainScreenState.pricesLoading({
     required MainScreenProps props,
   }) = MSSPricesLoading;
-  const factory MainScreenState.firstTenPricesCompleted({
+  const factory MainScreenState.nextPricesLoading({
     required MainScreenProps props,
-  }) = MSSFirstTenPricesSuccess;
-  const factory MainScreenState.nextTenPricesCompleted({
+  }) = MSSNextPricesLoading;
+  const factory MainScreenState.pricesCompleted({
     required MainScreenProps props,
-  }) = MSSNextTenPricesSuccess;
+  }) = MSSPricesCompleted;
   const factory MainScreenState.pricesError({
     required MainScreenProps props,
     required String code,

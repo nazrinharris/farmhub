@@ -592,16 +592,14 @@ class _$MainScreenStateTearOff {
     );
   }
 
-  MSSFirstTenPricesSuccess firstTenPricesCompleted(
-      {required MainScreenProps props}) {
-    return MSSFirstTenPricesSuccess(
+  MSSNextPricesLoading nextPricesLoading({required MainScreenProps props}) {
+    return MSSNextPricesLoading(
       props: props,
     );
   }
 
-  MSSNextTenPricesSuccess nextTenPricesCompleted(
-      {required MainScreenProps props}) {
-    return MSSNextTenPricesSuccess(
+  MSSPricesCompleted pricesCompleted({required MainScreenProps props}) {
+    return MSSPricesCompleted(
       props: props,
     );
   }
@@ -629,8 +627,8 @@ mixin _$MainScreenState {
   TResult when<TResult extends Object?>({
     required TResult Function(MainScreenProps props) initial,
     required TResult Function(MainScreenProps props) pricesLoading,
-    required TResult Function(MainScreenProps props) firstTenPricesCompleted,
-    required TResult Function(MainScreenProps props) nextTenPricesCompleted,
+    required TResult Function(MainScreenProps props) nextPricesLoading,
+    required TResult Function(MainScreenProps props) pricesCompleted,
     required TResult Function(
             MainScreenProps props, String code, String message)
         pricesError,
@@ -640,8 +638,8 @@ mixin _$MainScreenState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(MainScreenProps props)? initial,
     TResult Function(MainScreenProps props)? pricesLoading,
-    TResult Function(MainScreenProps props)? firstTenPricesCompleted,
-    TResult Function(MainScreenProps props)? nextTenPricesCompleted,
+    TResult Function(MainScreenProps props)? nextPricesLoading,
+    TResult Function(MainScreenProps props)? pricesCompleted,
     TResult Function(MainScreenProps props, String code, String message)?
         pricesError,
   }) =>
@@ -650,8 +648,8 @@ mixin _$MainScreenState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(MainScreenProps props)? initial,
     TResult Function(MainScreenProps props)? pricesLoading,
-    TResult Function(MainScreenProps props)? firstTenPricesCompleted,
-    TResult Function(MainScreenProps props)? nextTenPricesCompleted,
+    TResult Function(MainScreenProps props)? nextPricesLoading,
+    TResult Function(MainScreenProps props)? pricesCompleted,
     TResult Function(MainScreenProps props, String code, String message)?
         pricesError,
     required TResult orElse(),
@@ -661,10 +659,8 @@ mixin _$MainScreenState {
   TResult map<TResult extends Object?>({
     required TResult Function(MSSInitial value) initial,
     required TResult Function(MSSPricesLoading value) pricesLoading,
-    required TResult Function(MSSFirstTenPricesSuccess value)
-        firstTenPricesCompleted,
-    required TResult Function(MSSNextTenPricesSuccess value)
-        nextTenPricesCompleted,
+    required TResult Function(MSSNextPricesLoading value) nextPricesLoading,
+    required TResult Function(MSSPricesCompleted value) pricesCompleted,
     required TResult Function(MSSPricesError value) pricesError,
   }) =>
       throw _privateConstructorUsedError;
@@ -672,8 +668,8 @@ mixin _$MainScreenState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(MSSInitial value)? initial,
     TResult Function(MSSPricesLoading value)? pricesLoading,
-    TResult Function(MSSFirstTenPricesSuccess value)? firstTenPricesCompleted,
-    TResult Function(MSSNextTenPricesSuccess value)? nextTenPricesCompleted,
+    TResult Function(MSSNextPricesLoading value)? nextPricesLoading,
+    TResult Function(MSSPricesCompleted value)? pricesCompleted,
     TResult Function(MSSPricesError value)? pricesError,
   }) =>
       throw _privateConstructorUsedError;
@@ -681,8 +677,8 @@ mixin _$MainScreenState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(MSSInitial value)? initial,
     TResult Function(MSSPricesLoading value)? pricesLoading,
-    TResult Function(MSSFirstTenPricesSuccess value)? firstTenPricesCompleted,
-    TResult Function(MSSNextTenPricesSuccess value)? nextTenPricesCompleted,
+    TResult Function(MSSNextPricesLoading value)? nextPricesLoading,
+    TResult Function(MSSPricesCompleted value)? pricesCompleted,
     TResult Function(MSSPricesError value)? pricesError,
     required TResult orElse(),
   }) =>
@@ -801,8 +797,8 @@ class _$MSSInitial implements MSSInitial {
   TResult when<TResult extends Object?>({
     required TResult Function(MainScreenProps props) initial,
     required TResult Function(MainScreenProps props) pricesLoading,
-    required TResult Function(MainScreenProps props) firstTenPricesCompleted,
-    required TResult Function(MainScreenProps props) nextTenPricesCompleted,
+    required TResult Function(MainScreenProps props) nextPricesLoading,
+    required TResult Function(MainScreenProps props) pricesCompleted,
     required TResult Function(
             MainScreenProps props, String code, String message)
         pricesError,
@@ -815,8 +811,8 @@ class _$MSSInitial implements MSSInitial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(MainScreenProps props)? initial,
     TResult Function(MainScreenProps props)? pricesLoading,
-    TResult Function(MainScreenProps props)? firstTenPricesCompleted,
-    TResult Function(MainScreenProps props)? nextTenPricesCompleted,
+    TResult Function(MainScreenProps props)? nextPricesLoading,
+    TResult Function(MainScreenProps props)? pricesCompleted,
     TResult Function(MainScreenProps props, String code, String message)?
         pricesError,
   }) {
@@ -828,8 +824,8 @@ class _$MSSInitial implements MSSInitial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(MainScreenProps props)? initial,
     TResult Function(MainScreenProps props)? pricesLoading,
-    TResult Function(MainScreenProps props)? firstTenPricesCompleted,
-    TResult Function(MainScreenProps props)? nextTenPricesCompleted,
+    TResult Function(MainScreenProps props)? nextPricesLoading,
+    TResult Function(MainScreenProps props)? pricesCompleted,
     TResult Function(MainScreenProps props, String code, String message)?
         pricesError,
     required TResult orElse(),
@@ -845,10 +841,8 @@ class _$MSSInitial implements MSSInitial {
   TResult map<TResult extends Object?>({
     required TResult Function(MSSInitial value) initial,
     required TResult Function(MSSPricesLoading value) pricesLoading,
-    required TResult Function(MSSFirstTenPricesSuccess value)
-        firstTenPricesCompleted,
-    required TResult Function(MSSNextTenPricesSuccess value)
-        nextTenPricesCompleted,
+    required TResult Function(MSSNextPricesLoading value) nextPricesLoading,
+    required TResult Function(MSSPricesCompleted value) pricesCompleted,
     required TResult Function(MSSPricesError value) pricesError,
   }) {
     return initial(this);
@@ -859,8 +853,8 @@ class _$MSSInitial implements MSSInitial {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(MSSInitial value)? initial,
     TResult Function(MSSPricesLoading value)? pricesLoading,
-    TResult Function(MSSFirstTenPricesSuccess value)? firstTenPricesCompleted,
-    TResult Function(MSSNextTenPricesSuccess value)? nextTenPricesCompleted,
+    TResult Function(MSSNextPricesLoading value)? nextPricesLoading,
+    TResult Function(MSSPricesCompleted value)? pricesCompleted,
     TResult Function(MSSPricesError value)? pricesError,
   }) {
     return initial?.call(this);
@@ -871,8 +865,8 @@ class _$MSSInitial implements MSSInitial {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(MSSInitial value)? initial,
     TResult Function(MSSPricesLoading value)? pricesLoading,
-    TResult Function(MSSFirstTenPricesSuccess value)? firstTenPricesCompleted,
-    TResult Function(MSSNextTenPricesSuccess value)? nextTenPricesCompleted,
+    TResult Function(MSSNextPricesLoading value)? nextPricesLoading,
+    TResult Function(MSSPricesCompleted value)? pricesCompleted,
     TResult Function(MSSPricesError value)? pricesError,
     required TResult orElse(),
   }) {
@@ -965,8 +959,8 @@ class _$MSSPricesLoading implements MSSPricesLoading {
   TResult when<TResult extends Object?>({
     required TResult Function(MainScreenProps props) initial,
     required TResult Function(MainScreenProps props) pricesLoading,
-    required TResult Function(MainScreenProps props) firstTenPricesCompleted,
-    required TResult Function(MainScreenProps props) nextTenPricesCompleted,
+    required TResult Function(MainScreenProps props) nextPricesLoading,
+    required TResult Function(MainScreenProps props) pricesCompleted,
     required TResult Function(
             MainScreenProps props, String code, String message)
         pricesError,
@@ -979,8 +973,8 @@ class _$MSSPricesLoading implements MSSPricesLoading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(MainScreenProps props)? initial,
     TResult Function(MainScreenProps props)? pricesLoading,
-    TResult Function(MainScreenProps props)? firstTenPricesCompleted,
-    TResult Function(MainScreenProps props)? nextTenPricesCompleted,
+    TResult Function(MainScreenProps props)? nextPricesLoading,
+    TResult Function(MainScreenProps props)? pricesCompleted,
     TResult Function(MainScreenProps props, String code, String message)?
         pricesError,
   }) {
@@ -992,8 +986,8 @@ class _$MSSPricesLoading implements MSSPricesLoading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(MainScreenProps props)? initial,
     TResult Function(MainScreenProps props)? pricesLoading,
-    TResult Function(MainScreenProps props)? firstTenPricesCompleted,
-    TResult Function(MainScreenProps props)? nextTenPricesCompleted,
+    TResult Function(MainScreenProps props)? nextPricesLoading,
+    TResult Function(MainScreenProps props)? pricesCompleted,
     TResult Function(MainScreenProps props, String code, String message)?
         pricesError,
     required TResult orElse(),
@@ -1009,10 +1003,8 @@ class _$MSSPricesLoading implements MSSPricesLoading {
   TResult map<TResult extends Object?>({
     required TResult Function(MSSInitial value) initial,
     required TResult Function(MSSPricesLoading value) pricesLoading,
-    required TResult Function(MSSFirstTenPricesSuccess value)
-        firstTenPricesCompleted,
-    required TResult Function(MSSNextTenPricesSuccess value)
-        nextTenPricesCompleted,
+    required TResult Function(MSSNextPricesLoading value) nextPricesLoading,
+    required TResult Function(MSSPricesCompleted value) pricesCompleted,
     required TResult Function(MSSPricesError value) pricesError,
   }) {
     return pricesLoading(this);
@@ -1023,8 +1015,8 @@ class _$MSSPricesLoading implements MSSPricesLoading {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(MSSInitial value)? initial,
     TResult Function(MSSPricesLoading value)? pricesLoading,
-    TResult Function(MSSFirstTenPricesSuccess value)? firstTenPricesCompleted,
-    TResult Function(MSSNextTenPricesSuccess value)? nextTenPricesCompleted,
+    TResult Function(MSSNextPricesLoading value)? nextPricesLoading,
+    TResult Function(MSSPricesCompleted value)? pricesCompleted,
     TResult Function(MSSPricesError value)? pricesError,
   }) {
     return pricesLoading?.call(this);
@@ -1035,8 +1027,8 @@ class _$MSSPricesLoading implements MSSPricesLoading {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(MSSInitial value)? initial,
     TResult Function(MSSPricesLoading value)? pricesLoading,
-    TResult Function(MSSFirstTenPricesSuccess value)? firstTenPricesCompleted,
-    TResult Function(MSSNextTenPricesSuccess value)? nextTenPricesCompleted,
+    TResult Function(MSSNextPricesLoading value)? nextPricesLoading,
+    TResult Function(MSSPricesCompleted value)? pricesCompleted,
     TResult Function(MSSPricesError value)? pricesError,
     required TResult orElse(),
   }) {
@@ -1060,11 +1052,11 @@ abstract class MSSPricesLoading implements MainScreenState {
 }
 
 /// @nodoc
-abstract class $MSSFirstTenPricesSuccessCopyWith<$Res>
+abstract class $MSSNextPricesLoadingCopyWith<$Res>
     implements $MainScreenStateCopyWith<$Res> {
-  factory $MSSFirstTenPricesSuccessCopyWith(MSSFirstTenPricesSuccess value,
-          $Res Function(MSSFirstTenPricesSuccess) then) =
-      _$MSSFirstTenPricesSuccessCopyWithImpl<$Res>;
+  factory $MSSNextPricesLoadingCopyWith(MSSNextPricesLoading value,
+          $Res Function(MSSNextPricesLoading) then) =
+      _$MSSNextPricesLoadingCopyWithImpl<$Res>;
   @override
   $Res call({MainScreenProps props});
 
@@ -1073,22 +1065,21 @@ abstract class $MSSFirstTenPricesSuccessCopyWith<$Res>
 }
 
 /// @nodoc
-class _$MSSFirstTenPricesSuccessCopyWithImpl<$Res>
+class _$MSSNextPricesLoadingCopyWithImpl<$Res>
     extends _$MainScreenStateCopyWithImpl<$Res>
-    implements $MSSFirstTenPricesSuccessCopyWith<$Res> {
-  _$MSSFirstTenPricesSuccessCopyWithImpl(MSSFirstTenPricesSuccess _value,
-      $Res Function(MSSFirstTenPricesSuccess) _then)
-      : super(_value, (v) => _then(v as MSSFirstTenPricesSuccess));
+    implements $MSSNextPricesLoadingCopyWith<$Res> {
+  _$MSSNextPricesLoadingCopyWithImpl(
+      MSSNextPricesLoading _value, $Res Function(MSSNextPricesLoading) _then)
+      : super(_value, (v) => _then(v as MSSNextPricesLoading));
 
   @override
-  MSSFirstTenPricesSuccess get _value =>
-      super._value as MSSFirstTenPricesSuccess;
+  MSSNextPricesLoading get _value => super._value as MSSNextPricesLoading;
 
   @override
   $Res call({
     Object? props = freezed,
   }) {
-    return _then(MSSFirstTenPricesSuccess(
+    return _then(MSSNextPricesLoading(
       props: props == freezed
           ? _value.props
           : props // ignore: cast_nullable_to_non_nullable
@@ -1099,22 +1090,22 @@ class _$MSSFirstTenPricesSuccessCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$MSSFirstTenPricesSuccess implements MSSFirstTenPricesSuccess {
-  const _$MSSFirstTenPricesSuccess({required this.props});
+class _$MSSNextPricesLoading implements MSSNextPricesLoading {
+  const _$MSSNextPricesLoading({required this.props});
 
   @override
   final MainScreenProps props;
 
   @override
   String toString() {
-    return 'MainScreenState.firstTenPricesCompleted(props: $props)';
+    return 'MainScreenState.nextPricesLoading(props: $props)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is MSSFirstTenPricesSuccess &&
+            other is MSSNextPricesLoading &&
             (identical(other.props, props) || other.props == props));
   }
 
@@ -1123,8 +1114,8 @@ class _$MSSFirstTenPricesSuccess implements MSSFirstTenPricesSuccess {
 
   @JsonKey(ignore: true)
   @override
-  $MSSFirstTenPricesSuccessCopyWith<MSSFirstTenPricesSuccess> get copyWith =>
-      _$MSSFirstTenPricesSuccessCopyWithImpl<MSSFirstTenPricesSuccess>(
+  $MSSNextPricesLoadingCopyWith<MSSNextPricesLoading> get copyWith =>
+      _$MSSNextPricesLoadingCopyWithImpl<MSSNextPricesLoading>(
           this, _$identity);
 
   @override
@@ -1132,13 +1123,13 @@ class _$MSSFirstTenPricesSuccess implements MSSFirstTenPricesSuccess {
   TResult when<TResult extends Object?>({
     required TResult Function(MainScreenProps props) initial,
     required TResult Function(MainScreenProps props) pricesLoading,
-    required TResult Function(MainScreenProps props) firstTenPricesCompleted,
-    required TResult Function(MainScreenProps props) nextTenPricesCompleted,
+    required TResult Function(MainScreenProps props) nextPricesLoading,
+    required TResult Function(MainScreenProps props) pricesCompleted,
     required TResult Function(
             MainScreenProps props, String code, String message)
         pricesError,
   }) {
-    return firstTenPricesCompleted(props);
+    return nextPricesLoading(props);
   }
 
   @override
@@ -1146,12 +1137,12 @@ class _$MSSFirstTenPricesSuccess implements MSSFirstTenPricesSuccess {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(MainScreenProps props)? initial,
     TResult Function(MainScreenProps props)? pricesLoading,
-    TResult Function(MainScreenProps props)? firstTenPricesCompleted,
-    TResult Function(MainScreenProps props)? nextTenPricesCompleted,
+    TResult Function(MainScreenProps props)? nextPricesLoading,
+    TResult Function(MainScreenProps props)? pricesCompleted,
     TResult Function(MainScreenProps props, String code, String message)?
         pricesError,
   }) {
-    return firstTenPricesCompleted?.call(props);
+    return nextPricesLoading?.call(props);
   }
 
   @override
@@ -1159,14 +1150,14 @@ class _$MSSFirstTenPricesSuccess implements MSSFirstTenPricesSuccess {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(MainScreenProps props)? initial,
     TResult Function(MainScreenProps props)? pricesLoading,
-    TResult Function(MainScreenProps props)? firstTenPricesCompleted,
-    TResult Function(MainScreenProps props)? nextTenPricesCompleted,
+    TResult Function(MainScreenProps props)? nextPricesLoading,
+    TResult Function(MainScreenProps props)? pricesCompleted,
     TResult Function(MainScreenProps props, String code, String message)?
         pricesError,
     required TResult orElse(),
   }) {
-    if (firstTenPricesCompleted != null) {
-      return firstTenPricesCompleted(props);
+    if (nextPricesLoading != null) {
+      return nextPricesLoading(props);
     }
     return orElse();
   }
@@ -1176,13 +1167,11 @@ class _$MSSFirstTenPricesSuccess implements MSSFirstTenPricesSuccess {
   TResult map<TResult extends Object?>({
     required TResult Function(MSSInitial value) initial,
     required TResult Function(MSSPricesLoading value) pricesLoading,
-    required TResult Function(MSSFirstTenPricesSuccess value)
-        firstTenPricesCompleted,
-    required TResult Function(MSSNextTenPricesSuccess value)
-        nextTenPricesCompleted,
+    required TResult Function(MSSNextPricesLoading value) nextPricesLoading,
+    required TResult Function(MSSPricesCompleted value) pricesCompleted,
     required TResult Function(MSSPricesError value) pricesError,
   }) {
-    return firstTenPricesCompleted(this);
+    return nextPricesLoading(this);
   }
 
   @override
@@ -1190,11 +1179,11 @@ class _$MSSFirstTenPricesSuccess implements MSSFirstTenPricesSuccess {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(MSSInitial value)? initial,
     TResult Function(MSSPricesLoading value)? pricesLoading,
-    TResult Function(MSSFirstTenPricesSuccess value)? firstTenPricesCompleted,
-    TResult Function(MSSNextTenPricesSuccess value)? nextTenPricesCompleted,
+    TResult Function(MSSNextPricesLoading value)? nextPricesLoading,
+    TResult Function(MSSPricesCompleted value)? pricesCompleted,
     TResult Function(MSSPricesError value)? pricesError,
   }) {
-    return firstTenPricesCompleted?.call(this);
+    return nextPricesLoading?.call(this);
   }
 
   @override
@@ -1202,36 +1191,36 @@ class _$MSSFirstTenPricesSuccess implements MSSFirstTenPricesSuccess {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(MSSInitial value)? initial,
     TResult Function(MSSPricesLoading value)? pricesLoading,
-    TResult Function(MSSFirstTenPricesSuccess value)? firstTenPricesCompleted,
-    TResult Function(MSSNextTenPricesSuccess value)? nextTenPricesCompleted,
+    TResult Function(MSSNextPricesLoading value)? nextPricesLoading,
+    TResult Function(MSSPricesCompleted value)? pricesCompleted,
     TResult Function(MSSPricesError value)? pricesError,
     required TResult orElse(),
   }) {
-    if (firstTenPricesCompleted != null) {
-      return firstTenPricesCompleted(this);
+    if (nextPricesLoading != null) {
+      return nextPricesLoading(this);
     }
     return orElse();
   }
 }
 
-abstract class MSSFirstTenPricesSuccess implements MainScreenState {
-  const factory MSSFirstTenPricesSuccess({required MainScreenProps props}) =
-      _$MSSFirstTenPricesSuccess;
+abstract class MSSNextPricesLoading implements MainScreenState {
+  const factory MSSNextPricesLoading({required MainScreenProps props}) =
+      _$MSSNextPricesLoading;
 
   @override
   MainScreenProps get props;
   @override
   @JsonKey(ignore: true)
-  $MSSFirstTenPricesSuccessCopyWith<MSSFirstTenPricesSuccess> get copyWith =>
+  $MSSNextPricesLoadingCopyWith<MSSNextPricesLoading> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $MSSNextTenPricesSuccessCopyWith<$Res>
+abstract class $MSSPricesCompletedCopyWith<$Res>
     implements $MainScreenStateCopyWith<$Res> {
-  factory $MSSNextTenPricesSuccessCopyWith(MSSNextTenPricesSuccess value,
-          $Res Function(MSSNextTenPricesSuccess) then) =
-      _$MSSNextTenPricesSuccessCopyWithImpl<$Res>;
+  factory $MSSPricesCompletedCopyWith(
+          MSSPricesCompleted value, $Res Function(MSSPricesCompleted) then) =
+      _$MSSPricesCompletedCopyWithImpl<$Res>;
   @override
   $Res call({MainScreenProps props});
 
@@ -1240,21 +1229,21 @@ abstract class $MSSNextTenPricesSuccessCopyWith<$Res>
 }
 
 /// @nodoc
-class _$MSSNextTenPricesSuccessCopyWithImpl<$Res>
+class _$MSSPricesCompletedCopyWithImpl<$Res>
     extends _$MainScreenStateCopyWithImpl<$Res>
-    implements $MSSNextTenPricesSuccessCopyWith<$Res> {
-  _$MSSNextTenPricesSuccessCopyWithImpl(MSSNextTenPricesSuccess _value,
-      $Res Function(MSSNextTenPricesSuccess) _then)
-      : super(_value, (v) => _then(v as MSSNextTenPricesSuccess));
+    implements $MSSPricesCompletedCopyWith<$Res> {
+  _$MSSPricesCompletedCopyWithImpl(
+      MSSPricesCompleted _value, $Res Function(MSSPricesCompleted) _then)
+      : super(_value, (v) => _then(v as MSSPricesCompleted));
 
   @override
-  MSSNextTenPricesSuccess get _value => super._value as MSSNextTenPricesSuccess;
+  MSSPricesCompleted get _value => super._value as MSSPricesCompleted;
 
   @override
   $Res call({
     Object? props = freezed,
   }) {
-    return _then(MSSNextTenPricesSuccess(
+    return _then(MSSPricesCompleted(
       props: props == freezed
           ? _value.props
           : props // ignore: cast_nullable_to_non_nullable
@@ -1265,22 +1254,22 @@ class _$MSSNextTenPricesSuccessCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$MSSNextTenPricesSuccess implements MSSNextTenPricesSuccess {
-  const _$MSSNextTenPricesSuccess({required this.props});
+class _$MSSPricesCompleted implements MSSPricesCompleted {
+  const _$MSSPricesCompleted({required this.props});
 
   @override
   final MainScreenProps props;
 
   @override
   String toString() {
-    return 'MainScreenState.nextTenPricesCompleted(props: $props)';
+    return 'MainScreenState.pricesCompleted(props: $props)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is MSSNextTenPricesSuccess &&
+            other is MSSPricesCompleted &&
             (identical(other.props, props) || other.props == props));
   }
 
@@ -1289,22 +1278,21 @@ class _$MSSNextTenPricesSuccess implements MSSNextTenPricesSuccess {
 
   @JsonKey(ignore: true)
   @override
-  $MSSNextTenPricesSuccessCopyWith<MSSNextTenPricesSuccess> get copyWith =>
-      _$MSSNextTenPricesSuccessCopyWithImpl<MSSNextTenPricesSuccess>(
-          this, _$identity);
+  $MSSPricesCompletedCopyWith<MSSPricesCompleted> get copyWith =>
+      _$MSSPricesCompletedCopyWithImpl<MSSPricesCompleted>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(MainScreenProps props) initial,
     required TResult Function(MainScreenProps props) pricesLoading,
-    required TResult Function(MainScreenProps props) firstTenPricesCompleted,
-    required TResult Function(MainScreenProps props) nextTenPricesCompleted,
+    required TResult Function(MainScreenProps props) nextPricesLoading,
+    required TResult Function(MainScreenProps props) pricesCompleted,
     required TResult Function(
             MainScreenProps props, String code, String message)
         pricesError,
   }) {
-    return nextTenPricesCompleted(props);
+    return pricesCompleted(props);
   }
 
   @override
@@ -1312,12 +1300,12 @@ class _$MSSNextTenPricesSuccess implements MSSNextTenPricesSuccess {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(MainScreenProps props)? initial,
     TResult Function(MainScreenProps props)? pricesLoading,
-    TResult Function(MainScreenProps props)? firstTenPricesCompleted,
-    TResult Function(MainScreenProps props)? nextTenPricesCompleted,
+    TResult Function(MainScreenProps props)? nextPricesLoading,
+    TResult Function(MainScreenProps props)? pricesCompleted,
     TResult Function(MainScreenProps props, String code, String message)?
         pricesError,
   }) {
-    return nextTenPricesCompleted?.call(props);
+    return pricesCompleted?.call(props);
   }
 
   @override
@@ -1325,14 +1313,14 @@ class _$MSSNextTenPricesSuccess implements MSSNextTenPricesSuccess {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(MainScreenProps props)? initial,
     TResult Function(MainScreenProps props)? pricesLoading,
-    TResult Function(MainScreenProps props)? firstTenPricesCompleted,
-    TResult Function(MainScreenProps props)? nextTenPricesCompleted,
+    TResult Function(MainScreenProps props)? nextPricesLoading,
+    TResult Function(MainScreenProps props)? pricesCompleted,
     TResult Function(MainScreenProps props, String code, String message)?
         pricesError,
     required TResult orElse(),
   }) {
-    if (nextTenPricesCompleted != null) {
-      return nextTenPricesCompleted(props);
+    if (pricesCompleted != null) {
+      return pricesCompleted(props);
     }
     return orElse();
   }
@@ -1342,13 +1330,11 @@ class _$MSSNextTenPricesSuccess implements MSSNextTenPricesSuccess {
   TResult map<TResult extends Object?>({
     required TResult Function(MSSInitial value) initial,
     required TResult Function(MSSPricesLoading value) pricesLoading,
-    required TResult Function(MSSFirstTenPricesSuccess value)
-        firstTenPricesCompleted,
-    required TResult Function(MSSNextTenPricesSuccess value)
-        nextTenPricesCompleted,
+    required TResult Function(MSSNextPricesLoading value) nextPricesLoading,
+    required TResult Function(MSSPricesCompleted value) pricesCompleted,
     required TResult Function(MSSPricesError value) pricesError,
   }) {
-    return nextTenPricesCompleted(this);
+    return pricesCompleted(this);
   }
 
   @override
@@ -1356,11 +1342,11 @@ class _$MSSNextTenPricesSuccess implements MSSNextTenPricesSuccess {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(MSSInitial value)? initial,
     TResult Function(MSSPricesLoading value)? pricesLoading,
-    TResult Function(MSSFirstTenPricesSuccess value)? firstTenPricesCompleted,
-    TResult Function(MSSNextTenPricesSuccess value)? nextTenPricesCompleted,
+    TResult Function(MSSNextPricesLoading value)? nextPricesLoading,
+    TResult Function(MSSPricesCompleted value)? pricesCompleted,
     TResult Function(MSSPricesError value)? pricesError,
   }) {
-    return nextTenPricesCompleted?.call(this);
+    return pricesCompleted?.call(this);
   }
 
   @override
@@ -1368,27 +1354,27 @@ class _$MSSNextTenPricesSuccess implements MSSNextTenPricesSuccess {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(MSSInitial value)? initial,
     TResult Function(MSSPricesLoading value)? pricesLoading,
-    TResult Function(MSSFirstTenPricesSuccess value)? firstTenPricesCompleted,
-    TResult Function(MSSNextTenPricesSuccess value)? nextTenPricesCompleted,
+    TResult Function(MSSNextPricesLoading value)? nextPricesLoading,
+    TResult Function(MSSPricesCompleted value)? pricesCompleted,
     TResult Function(MSSPricesError value)? pricesError,
     required TResult orElse(),
   }) {
-    if (nextTenPricesCompleted != null) {
-      return nextTenPricesCompleted(this);
+    if (pricesCompleted != null) {
+      return pricesCompleted(this);
     }
     return orElse();
   }
 }
 
-abstract class MSSNextTenPricesSuccess implements MainScreenState {
-  const factory MSSNextTenPricesSuccess({required MainScreenProps props}) =
-      _$MSSNextTenPricesSuccess;
+abstract class MSSPricesCompleted implements MainScreenState {
+  const factory MSSPricesCompleted({required MainScreenProps props}) =
+      _$MSSPricesCompleted;
 
   @override
   MainScreenProps get props;
   @override
   @JsonKey(ignore: true)
-  $MSSNextTenPricesSuccessCopyWith<MSSNextTenPricesSuccess> get copyWith =>
+  $MSSPricesCompletedCopyWith<MSSPricesCompleted> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1480,8 +1466,8 @@ class _$MSSPricesError implements MSSPricesError {
   TResult when<TResult extends Object?>({
     required TResult Function(MainScreenProps props) initial,
     required TResult Function(MainScreenProps props) pricesLoading,
-    required TResult Function(MainScreenProps props) firstTenPricesCompleted,
-    required TResult Function(MainScreenProps props) nextTenPricesCompleted,
+    required TResult Function(MainScreenProps props) nextPricesLoading,
+    required TResult Function(MainScreenProps props) pricesCompleted,
     required TResult Function(
             MainScreenProps props, String code, String message)
         pricesError,
@@ -1494,8 +1480,8 @@ class _$MSSPricesError implements MSSPricesError {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(MainScreenProps props)? initial,
     TResult Function(MainScreenProps props)? pricesLoading,
-    TResult Function(MainScreenProps props)? firstTenPricesCompleted,
-    TResult Function(MainScreenProps props)? nextTenPricesCompleted,
+    TResult Function(MainScreenProps props)? nextPricesLoading,
+    TResult Function(MainScreenProps props)? pricesCompleted,
     TResult Function(MainScreenProps props, String code, String message)?
         pricesError,
   }) {
@@ -1507,8 +1493,8 @@ class _$MSSPricesError implements MSSPricesError {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(MainScreenProps props)? initial,
     TResult Function(MainScreenProps props)? pricesLoading,
-    TResult Function(MainScreenProps props)? firstTenPricesCompleted,
-    TResult Function(MainScreenProps props)? nextTenPricesCompleted,
+    TResult Function(MainScreenProps props)? nextPricesLoading,
+    TResult Function(MainScreenProps props)? pricesCompleted,
     TResult Function(MainScreenProps props, String code, String message)?
         pricesError,
     required TResult orElse(),
@@ -1524,10 +1510,8 @@ class _$MSSPricesError implements MSSPricesError {
   TResult map<TResult extends Object?>({
     required TResult Function(MSSInitial value) initial,
     required TResult Function(MSSPricesLoading value) pricesLoading,
-    required TResult Function(MSSFirstTenPricesSuccess value)
-        firstTenPricesCompleted,
-    required TResult Function(MSSNextTenPricesSuccess value)
-        nextTenPricesCompleted,
+    required TResult Function(MSSNextPricesLoading value) nextPricesLoading,
+    required TResult Function(MSSPricesCompleted value) pricesCompleted,
     required TResult Function(MSSPricesError value) pricesError,
   }) {
     return pricesError(this);
@@ -1538,8 +1522,8 @@ class _$MSSPricesError implements MSSPricesError {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(MSSInitial value)? initial,
     TResult Function(MSSPricesLoading value)? pricesLoading,
-    TResult Function(MSSFirstTenPricesSuccess value)? firstTenPricesCompleted,
-    TResult Function(MSSNextTenPricesSuccess value)? nextTenPricesCompleted,
+    TResult Function(MSSNextPricesLoading value)? nextPricesLoading,
+    TResult Function(MSSPricesCompleted value)? pricesCompleted,
     TResult Function(MSSPricesError value)? pricesError,
   }) {
     return pricesError?.call(this);
@@ -1550,8 +1534,8 @@ class _$MSSPricesError implements MSSPricesError {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(MSSInitial value)? initial,
     TResult Function(MSSPricesLoading value)? pricesLoading,
-    TResult Function(MSSFirstTenPricesSuccess value)? firstTenPricesCompleted,
-    TResult Function(MSSNextTenPricesSuccess value)? nextTenPricesCompleted,
+    TResult Function(MSSNextPricesLoading value)? nextPricesLoading,
+    TResult Function(MSSPricesCompleted value)? pricesCompleted,
     TResult Function(MSSPricesError value)? pricesError,
     required TResult orElse(),
   }) {

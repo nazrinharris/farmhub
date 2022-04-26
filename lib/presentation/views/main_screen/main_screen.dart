@@ -74,6 +74,7 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
           create: (context) => MainScreenBloc(
             mainHeaderController: mainHeaderController,
             produceManagerBloc: context.read<ProduceManagerBloc>(),
+            produceManagerRepository: locator(),
           ),
           child: Builder(
             builder: (context) => Scaffold(
@@ -145,8 +146,12 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
                     CupertinoSliverRefreshControl(
                       onRefresh: () async {},
                     ),
-                    SliverPersistentHeader(
-                      delegate: MainScreenHeaderDelegate(extent, mainScreenFocusNode),
+                    BlocBuilder<MainScreenBloc, MainScreenState>(
+                      builder: (context, state) {
+                        return SliverPersistentHeader(
+                          delegate: MainScreenHeaderDelegate(extent, mainScreenFocusNode),
+                        );
+                      },
                     ),
                     //const SliverDebugSlot(),
                     SliverMainScreenListView(scrollController),
@@ -191,6 +196,7 @@ class _SliverMainScreenListViewState extends State<SliverMainScreenListView> {
       if (widget.scrollController.offset >= widget.scrollController.position.maxScrollExtent &&
           !widget.scrollController.position.outOfRange) {
         print("Reached the end of the list!");
+        context.read<MainScreenBloc>().add(const MainScreenEvent.getNextTenProduce());
       }
     });
   }
@@ -202,10 +208,14 @@ class _SliverMainScreenListViewState extends State<SliverMainScreenListView> {
     if (currentState is MSSInitial) {
       throw Exception("MSSInitial State is received when it should not have existed.");
     } else if (currentState is MSSPricesLoading) {
-      return SliverLoadingIndicator();
-    } else if (currentState is MSSFirstTenPricesSuccess) {
+      return const SliverLoadingIndicator();
+    } else if (currentState is MSSNextPricesLoading) {
       return SliverProduceList(
-        currentState: currentState,
+        props: currentState.props,
+      );
+    } else if (currentState is MSSPricesCompleted) {
+      return SliverProduceList(
+        props: currentState.props,
       );
     } else if (currentState is MSSPricesError) {
       return SliverList(
@@ -249,9 +259,9 @@ class SliverLoadingIndicator extends StatelessWidget {
 }
 
 class SliverProduceList extends StatelessWidget {
-  final MSSFirstTenPricesSuccess currentState;
+  final MainScreenProps props;
 
-  const SliverProduceList({Key? key, required this.currentState}) : super(key: key);
+  const SliverProduceList({Key? key, required this.props}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -261,11 +271,11 @@ class SliverProduceList extends StatelessWidget {
     return SliverList(
       delegate: SliverChildBuilderDelegate(
         (context, index) {
-          final Produce produce = currentState.props.produceList[index];
+          final Produce produce = props.produceList[index];
 
           return ProduceListCard(index, produce);
         },
-        childCount: currentState.props.produceList.length,
+        childCount: props.produceList.length,
       ),
     );
   }
