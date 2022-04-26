@@ -127,7 +127,6 @@ class _CustomSearchFieldState extends State<CustomSearchField> {
         onPressed: () {
           textEditingController.clear();
           focusNode.requestFocus();
-          widget.onChanged(textEditingController.text);
           setAsTrue();
           setState(() {});
         },
