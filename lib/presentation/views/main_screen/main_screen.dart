@@ -197,6 +197,7 @@ class _SliverMainScreenListViewState extends State<SliverMainScreenListView> {
           !widget.scrollController.position.outOfRange) {
         print("Reached the end of the list!");
         context.read<MainScreenBloc>().add(const MainScreenEvent.getNextTenProduce());
+        setState(() {});
       }
     });
   }
@@ -212,10 +213,12 @@ class _SliverMainScreenListViewState extends State<SliverMainScreenListView> {
     } else if (currentState is MSSNextPricesLoading) {
       return SliverProduceList(
         props: currentState.props,
+        isLoading: true,
       );
     } else if (currentState is MSSPricesCompleted) {
       return SliverProduceList(
         props: currentState.props,
+        isLoading: false,
       );
     } else if (currentState is MSSPricesError) {
       return SliverList(
@@ -260,8 +263,13 @@ class SliverLoadingIndicator extends StatelessWidget {
 
 class SliverProduceList extends StatelessWidget {
   final MainScreenProps props;
+  final bool isLoading;
 
-  const SliverProduceList({Key? key, required this.props}) : super(key: key);
+  const SliverProduceList({
+    Key? key,
+    required this.props,
+    required this.isLoading,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -271,13 +279,27 @@ class SliverProduceList extends StatelessWidget {
     return SliverList(
       delegate: SliverChildBuilderDelegate(
         (context, index) {
-          final Produce produce = props.produceList[index];
-
-          return ProduceListCard(index, produce);
+          if (isLoading == true) {
+            if (index == props.produceList.length) {
+              return Container(
+                padding: const EdgeInsets.only(top: 24),
+                alignment: Alignment.center,
+                child: const CircularProgressIndicator(),
+              );
+            } else {
+              return ProduceListCard(index, props.produceList[index]);
+            }
+          } else {
+            return ProduceListCard(index, props.produceList[index]);
+          }
         },
-        childCount: props.produceList.length,
+        childCount: resolveChildCount(props.produceList, isLoading),
       ),
     );
+  }
+
+  int resolveChildCount(List<Produce> produceList, bool isLoading) {
+    return isLoading ? produceList.length + 1 : produceList.length;
   }
 
   BorderSide _resolveTop(BuildContext context, int index, BorderSide borderSide) {

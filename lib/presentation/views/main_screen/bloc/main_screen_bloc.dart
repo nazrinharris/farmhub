@@ -101,6 +101,8 @@ class MainScreenBloc extends Bloc<MainScreenEvent, MainScreenState> {
     final failureOrNewProduceList =
         await produceManagerRepository.getNextTenProduce(state.props.produceList);
 
+    // Check if there are more produce
+
     failureOrNewProduceList.fold(
         (f) => emit(MainScreenState.pricesError(
               props: state.props,
