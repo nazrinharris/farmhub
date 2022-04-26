@@ -29,6 +29,7 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateMixin {
   late AnimationController mainHeaderController;
+  late ScrollController scrollController;
 
   late Animation<double> extent;
 
@@ -46,6 +47,7 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
       duration: const Duration(milliseconds: 500),
       reverseDuration: const Duration(milliseconds: 500),
     );
+    scrollController = ScrollController();
 
     mainHeaderController.addListener(() {
       setState(() {});
@@ -137,6 +139,7 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
               ),
               body: SafeArea(
                 child: CustomScrollView(
+                  controller: scrollController,
                   physics: DefaultScrollPhysics,
                   slivers: [
                     CupertinoSliverRefreshControl(
@@ -146,7 +149,7 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
                       delegate: MainScreenHeaderDelegate(extent, mainScreenFocusNode),
                     ),
                     //const SliverDebugSlot(),
-                    const SliverMainScreenListView(),
+                    SliverMainScreenListView(scrollController),
                     const SliverWhiteSpace(200)
                   ],
                 ),
@@ -166,7 +169,9 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
 }
 
 class SliverMainScreenListView extends StatefulWidget {
-  const SliverMainScreenListView({Key? key}) : super(key: key);
+  final ScrollController scrollController;
+
+  const SliverMainScreenListView(this.scrollController, {Key? key}) : super(key: key);
 
   @override
   State<SliverMainScreenListView> createState() => _SliverMainScreenListViewState();
@@ -181,6 +186,13 @@ class _SliverMainScreenListViewState extends State<SliverMainScreenListView> {
     context.read<MainScreenBloc>().stream.listen((event) {
       setState(() {});
     });
+
+    widget.scrollController.addListener(() {
+      if (widget.scrollController.offset >= widget.scrollController.position.maxScrollExtent &&
+          !widget.scrollController.position.outOfRange) {
+        print("Reached the end of the list!");
+      }
+    });
   }
 
   @override
@@ -191,7 +203,7 @@ class _SliverMainScreenListViewState extends State<SliverMainScreenListView> {
       throw Exception("MSSInitial State is received when it should not have existed.");
     } else if (currentState is MSSPricesLoading) {
       return SliverLoadingIndicator();
-    } else if (currentState is MSSPricesCompleted) {
+    } else if (currentState is MSSFirstTenPricesSuccess) {
       return SliverProduceList(
         currentState: currentState,
       );
@@ -237,7 +249,7 @@ class SliverLoadingIndicator extends StatelessWidget {
 }
 
 class SliverProduceList extends StatelessWidget {
-  final MSSPricesCompleted currentState;
+  final MSSFirstTenPricesSuccess currentState;
 
   const SliverProduceList({Key? key, required this.currentState}) : super(key: key);
 
@@ -249,11 +261,11 @@ class SliverProduceList extends StatelessWidget {
     return SliverList(
       delegate: SliverChildBuilderDelegate(
         (context, index) {
-          final Produce produce = currentState.produceList[index];
+          final Produce produce = currentState.props.produceList[index];
 
           return ProduceListCard(index, produce);
         },
-        childCount: currentState.produceList.length,
+        childCount: currentState.props.produceList.length,
       ),
     );
   }

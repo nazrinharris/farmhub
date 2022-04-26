@@ -57,9 +57,22 @@ class ProduceManagerRepository implements IProduceManagerRepository {
   }
 
   @override
-  FutureEither<List<Produce>> getNextTenProduce() {
-    // TODO: implement getNextTenProduce
-    throw UnimplementedError();
+  FutureEither<List<Produce>> getNextTenProduce(List<Produce> lastProduceList) async {
+    if (await networkInfo.isConnected) {
+      try {
+        final newProduceList = await remoteDatasource.getNextTenProduce(lastProduceList);
+
+        return Right(newProduceList);
+      } catch (e) {
+        return Left(ProduceManagerFailure(code: e.toString(), stackTrace: StackTrace.current));
+      }
+    } else {
+      return Left(InternetConnectionFailure(
+        code: ERROR_NO_INTERNET_CONNECTION,
+        message: MESSAGE_NO_INTERNET_CONNECTION,
+        stackTrace: StackTrace.current,
+      ));
+    }
   }
 
   @override

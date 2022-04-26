@@ -12,7 +12,7 @@ abstract class IProduceManagerRepository {
 
   FutureEither<List<Produce>> getFirstTenProduce();
 
-  FutureEither<List<Produce>> getNextTenProduce();
+  FutureEither<List<Produce>> getNextTenProduce(List<Produce> lastProduceList);
 
   FutureEither<Produce> createNewProduce({
     required String produceName,

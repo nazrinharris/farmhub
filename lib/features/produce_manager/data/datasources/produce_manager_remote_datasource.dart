@@ -8,6 +8,8 @@ import '../../domain/entities/produce/produce.dart';
 abstract class IProduceManagerRemoteDatasource {
   Future<List<Produce>> getFirstTenProduce();
 
+  Future<List<Produce>> getNextTenProduce(List<Produce> lastProduceList);
+
   Future<Produce> createNewProduce({
     required String produceName,
     required num currentProducePrice,
@@ -40,6 +42,45 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
         .then((snapshot) => snapshot.docs);
 
     final produceList = documentsList.map((documentSnapshot) {
+      return Produce.fromMap(documentSnapshot.data());
+    }).toList();
+
+    return produceList;
+  }
+
+  @override
+  Future<List<Produce>> getNextTenProduce(List<Produce> lastProduceList) async {
+    final lastDocument = await firebaseFirestore
+        .collection('produce')
+        .doc(lastProduceList[lastProduceList.length - 1].produceId)
+        .get();
+
+    final documentsList = await firebaseFirestore
+        .collection('produce')
+        .startAfterDocument(lastDocument)
+        .limit(10)
+        .get()
+        .then((snapshot) => snapshot.docs);
+
+    final List<Produce> newProduceList = documentsList.map((documentSnapshot) {
+      return Produce.fromMap(documentSnapshot.data());
+    }).toList();
+
+    lastProduceList.addAll(newProduceList);
+
+    return lastProduceList;
+  }
+
+  // TODO: Add Pagination!
+  @override
+  Future<List<Produce>> searchProduce({required String query}) async {
+    final queryList = await firebaseFirestore
+        .collection('produce')
+        .where('produceNameSearch', arrayContains: query.toLowerCase())
+        .limit(10)
+        .get();
+
+    final produceList = queryList.docs.map((documentSnapshot) {
       return Produce.fromMap(documentSnapshot.data());
     }).toList();
 
@@ -198,20 +239,5 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
         );
 
     return produce;
-  }
-
-  // TODO: Add Pagination!
-  @override
-  Future<List<Produce>> searchProduce({required String query}) async {
-    final queryList = await firebaseFirestore
-        .collection('produce')
-        .where('produceNameSearch', arrayContains: query.toLowerCase())
-        .get();
-
-    final produceList = queryList.docs.map((documentSnapshot) {
-      return Produce.fromMap(documentSnapshot.data());
-    }).toList();
-
-    return produceList;
   }
 }

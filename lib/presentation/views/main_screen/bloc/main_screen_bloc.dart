@@ -20,7 +20,11 @@ class MainScreenBloc extends Bloc<MainScreenEvent, MainScreenState> {
   MainScreenBloc({
     required this.produceManagerBloc,
     required this.mainHeaderController,
-  }) : super(const MSSPricesLoading(props: MainScreenProps(isMainHeaderVisible: true))) {
+  }) : super(const MSSPricesLoading(
+            props: MainScreenProps(
+          isMainHeaderVisible: true,
+          produceList: [],
+        ))) {
     on<_MSEStarted>(started);
     on<_MSEToggleMainHeader>(toggleMainHeader);
     on<_MSEGetFirstTenProduce>(getFirstTenProduce);
@@ -66,16 +70,14 @@ class MainScreenBloc extends Bloc<MainScreenEvent, MainScreenState> {
         // Do nothing.
 
       } else if (PMState is PMSGetFirstTenProduceSuccess) {
-        ;
         emit(
-          MainScreenState.mainPricesCompleted(
-            props: state.props,
-            produceList: PMState.produceList,
+          MainScreenState.firstTenPricesCompleted(
+            props: state.props.copyWith(produceList: PMState.produceList),
           ),
         );
       } else if (PMState is PMSGetFirstTenProduceError) {
         debugPrintStack(stackTrace: PMState.stackTrace);
-        emit(MainScreenState.mainPricesError(
+        emit(MainScreenState.pricesError(
           props: state.props,
           code: PMState.code,
           message: PMState.message,

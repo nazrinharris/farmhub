@@ -1016,12 +1016,11 @@ class _$SSSError implements SSSError {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is SSSError &&
-            const DeepCollectionEquality().equals(other.failure, failure));
+            (identical(other.failure, failure) || other.failure == failure));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(failure));
+  int get hashCode => Object.hash(runtimeType, failure);
 
   @JsonKey(ignore: true)
   @override

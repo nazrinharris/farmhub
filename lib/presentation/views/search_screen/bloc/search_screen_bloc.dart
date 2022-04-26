@@ -33,13 +33,7 @@ class SearchScreenBloc extends Bloc<SearchScreenEvent, SearchScreenState> {
     _SSEOnChanged event,
     Emitter<SearchScreenState> emit,
   ) async {
-    // // Indicate Loading
-    // emit(const SearchScreenState.loading());
-
-    // // Start query
-    // final failureOrProduceList = await produceManagerRepository.searchProduce(event.query);
-
-    // print(failureOrProduceList);
+    emit(state);
   }
 
   FutureOr<void> onSubmitted(
