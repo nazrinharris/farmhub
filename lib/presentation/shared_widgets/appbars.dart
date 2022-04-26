@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+// TODO: Make proper layout for centering the title when there is only a trailing icon.
+// The current workaround is by specifying a dummy leading icon and setting its color to
+// transparent. Also do not specify a method for the leading icon to avoid inkwells
+
 class DefaultAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Function()? trailingOnPressed;
   final Icon? trailingIcon;

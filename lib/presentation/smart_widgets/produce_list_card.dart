@@ -7,6 +7,8 @@ import '../../core/util/misc.dart';
 import '../../features/produce_manager/domain/entities/produce/produce.dart';
 import '../shared_widgets/ui_helpers.dart';
 
+/// [index] is only used to decide if the top border should be rendered or not.
+/// [0] If the top border should be drawn and all other numbers will not draw it.
 class ProduceListCard extends StatelessWidget {
   final int index;
   final Produce produce;
@@ -26,6 +28,7 @@ class ProduceListCard extends StatelessWidget {
       child: InkWell(
         onTap: onTap ??
             () {
+              FocusScope.of(context).unfocus();
               Navigator.of(context).pushNamed('/produce', arguments: ProduceArguments(produce));
             },
         child: Container(
@@ -283,7 +286,6 @@ class SmallPriceChart extends StatelessWidget {
           ),
           series: <CartesianSeries>[
             SplineAreaSeries<num, num>(
-              animationDuration: 1000,
               dataSource: produce.weeklyPrices.reversed.toList(),
               xValueMapper: (num price, index) => index,
               yValueMapper: (num price, index) => price,

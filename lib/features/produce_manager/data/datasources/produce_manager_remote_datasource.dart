@@ -20,6 +20,8 @@ abstract class IProduceManagerRemoteDatasource {
     required String produceId,
     required num currentPrice,
   });
+
+  Future<List<Produce>> searchProduce({required String query});
 }
 
 class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource {
@@ -67,6 +69,26 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
     required num currentProducePrice,
     required String authorId,
   }) async {
+    // Create search parameters
+    List<String> produceNameSearch = [];
+    String temp = "";
+    for (int i = 0; i < produceName.length; i++) {
+      temp = temp + produceName[i].toLowerCase();
+      produceNameSearch.add(temp);
+    }
+    // Create per-word basis search parameters
+    List<String> listOfWords = produceName.split(" ");
+    temp = "";
+    if (listOfWords.length > 1) {
+      for (String word in listOfWords) {
+        for (int i = 0; i < word.length; i++) {
+          temp = temp + word[i].toLowerCase();
+          produceNameSearch.add(temp);
+        }
+        temp = "";
+      }
+    }
+
     // Create produce and store in Firestore
     final String resultingId = await firebaseFirestore.collection('produce').add({
       "currentProducePrice": {
@@ -79,6 +101,7 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
       },
       "produceId": "0000",
       "produceName": produceName,
+      "produceNameSearch": produceNameSearch,
       "weeklyPrices": [currentProducePrice],
       "authorId": authorId,
     }).then((doc) async {
@@ -87,7 +110,18 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
       });
 
       // Create Prices sub-collection
-      firebaseFirestore.collection('produce').doc(doc.id).collection('prices');
+      await firebaseFirestore.collection('produce').doc(doc.id).collection('prices').add(
+        {
+          "currentPrice": currentProducePrice,
+          "editHistory": [
+            {
+              "price": currentProducePrice,
+              "editDate": clock.now(),
+            }
+          ],
+          "updateDate": clock.now(),
+        },
+      ).then((doc) => doc.update({"priceId": doc.id}));
 
       return doc.id;
     });
@@ -164,5 +198,20 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
         );
 
     return produce;
+  }
+
+  // TODO: Add Pagination!
+  @override
+  Future<List<Produce>> searchProduce({required String query}) async {
+    final queryList = await firebaseFirestore
+        .collection('produce')
+        .where('produceNameSearch', arrayContains: query.toLowerCase())
+        .get();
+
+    final produceList = queryList.docs.map((documentSnapshot) {
+      return Produce.fromMap(documentSnapshot.data());
+    }).toList();
+
+    return produceList;
   }
 }

@@ -1,11 +1,13 @@
 import 'dart:math';
 
+import 'package:farmhub/app_router.dart';
 import 'package:farmhub/core/util/dates.dart';
 import 'package:farmhub/core/util/farmhub_icons.dart';
 
 import 'package:farmhub/features/produce_manager/bloc/produce_manager_bloc.dart';
 import 'package:farmhub/presentation/shared_widgets/buttons.dart';
 import 'package:farmhub/presentation/shared_widgets/texts.dart';
+import 'package:farmhub/presentation/smart_widgets/custom_search_field.dart';
 
 import 'package:farmhub/presentation/views/main_screen/bloc/main_screen_bloc.dart';
 import 'package:flutter/cupertino.dart';
@@ -30,9 +32,14 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
 
   late Animation<double> extent;
 
+  late FocusNode mainScreenFocusNode;
+
   @override
   void initState() {
     super.initState();
+
+    mainScreenFocusNode = FocusNode();
+    mainScreenFocusNode.canRequestFocus = false;
 
     mainHeaderController = AnimationController(
       vsync: this,
@@ -44,15 +51,12 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
       setState(() {});
     });
 
-    extent = Tween<double>(begin: 162.0, end: 68.0).animate(mainHeaderController);
+    extent = Tween<double>(begin: 166.0, end: 68.0).animate(mainHeaderController);
   }
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-
-    final screenHeight = MediaQuery.of(context).size.height;
-    final screenWidth = MediaQuery.of(context).size.width;
   }
 
   @override
@@ -139,7 +143,7 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
                       onRefresh: () async {},
                     ),
                     SliverPersistentHeader(
-                      delegate: MainScreenHeaderDelegate(extent),
+                      delegate: MainScreenHeaderDelegate(extent, mainScreenFocusNode),
                     ),
                     //const SliverDebugSlot(),
                     const SliverMainScreenListView(),
@@ -152,6 +156,12 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
         );
       }),
     );
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    mainScreenFocusNode.dispose();
   }
 }
 
@@ -286,8 +296,9 @@ class SliverDebugSlot extends StatelessWidget {
 
 class MainScreenHeaderDelegate extends SliverPersistentHeaderDelegate {
   final Animation<double> extent;
+  final FocusNode mainScreenFocusNode;
 
-  MainScreenHeaderDelegate(this.extent);
+  MainScreenHeaderDelegate(this.extent, this.mainScreenFocusNode);
 
   @override
   Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
@@ -311,22 +322,23 @@ class MainScreenHeaderDelegate extends SliverPersistentHeaderDelegate {
             MainHeader(
               mainHeaderController: context.read<MainScreenBloc>().mainHeaderController,
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 14),
-              child: CupertinoSearchTextField(
-                backgroundColor: const Color(0xffB5CBBB),
-                style: Theme.of(context).textTheme.bodyText1!.copyWith(color: Colors.black),
-                prefixIcon: const Icon(Icons.search),
-                prefixInsets: const EdgeInsets.only(left: 14, right: 4),
-                suffixInsets: const EdgeInsets.only(left: 4, right: 14),
-                onTap: () {},
-                itemColor: Theme.of(context).colorScheme.primary,
-                placeholder: "Search",
-                placeholderStyle: Theme.of(context).textTheme.bodyText1!.copyWith(
-                      color: Theme.of(context).colorScheme.primary.withOpacity(0.45),
-                    ),
+            Hero(
+              tag: "search_bar",
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 16),
+                child: CustomSearchField(
+                  isFocus: false,
+                  // TODO: Set default right inside of [CustomSearchField] rather than this
+                  onChanged: (value) {},
+                  onTap: () {
+                    Navigator.of(context).pushNamed(
+                      '/search_screen',
+                      arguments: SearchScreenArguments(mainScreenFocusNode),
+                    );
+                  },
+                ),
               ),
-            ),
+            )
           ],
         ),
       ],

@@ -8,6 +8,7 @@ import 'package:farmhub/presentation/views/login_screen/login_screen.dart';
 import 'package:farmhub/presentation/views/main_screen/main_screen.dart';
 import 'package:farmhub/presentation/views/produce_screen/produce_screen.dart';
 import 'package:farmhub/presentation/views/register_screen/register_screen.dart';
+import 'package:farmhub/presentation/views/search_screen/search_screen.dart';
 import 'package:farmhub/presentation/views/start_screen/start_screen.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -17,6 +18,12 @@ class ProduceArguments {
   final Produce produce;
 
   ProduceArguments(this.produce);
+}
+
+class SearchScreenArguments {
+  final FocusNode mainScreenFocusNode;
+
+  SearchScreenArguments(this.mainScreenFocusNode);
 }
 
 class AppRouter {
@@ -58,6 +65,15 @@ class AppRouter {
           builder: (_) => AddNewPriceThirdScreen(routeSettings.arguments as ProduceArguments),
         );
 
+      case '/search_screen':
+        return PageRouteBuilder(
+          transitionDuration: const Duration(milliseconds: 300),
+          reverseTransitionDuration: const Duration(milliseconds: 300),
+          pageBuilder: ((context, animation, secondaryAnimation) =>
+              SearchScreen(routeSettings.arguments as SearchScreenArguments)),
+          transitionsBuilder: searchScreenTransitionBuilder,
+        );
+
       //! DEBUG ROUTES
       case '/navigate':
         return CupertinoPageRoute(builder: (_) => const NavigateView());
@@ -77,6 +93,31 @@ class AppRouter {
         animation.status == AnimationStatus.reverse ? Curves.easeOutQuad : Curves.easeOutExpo;
 
     final offsetAnimation = Tween<Offset>(begin: const Offset(0, 1), end: Offset.zero)
+        .chain(CurveTween(
+          curve: offsetCurve,
+        ))
+        .animate(animation);
+
+    final opacityAnimation =
+        Tween<double>(begin: 0, end: 1).chain(CurveTween(curve: opacityCurve)).animate(animation);
+
+    return SlideTransition(
+      position: offsetAnimation,
+      child: FadeTransition(
+        opacity: opacityAnimation,
+        child: child,
+      ),
+    );
+  }
+
+  Widget searchScreenTransitionBuilder(context, animation, secondaryAnimation, child) {
+    var offsetCurve =
+        animation.status == AnimationStatus.reverse ? Curves.easeInExpo : Curves.easeOutExpo;
+
+    var opacityCurve =
+        animation.status == AnimationStatus.reverse ? Curves.easeOutQuad : Curves.easeOutExpo;
+
+    final offsetAnimation = Tween<Offset>(begin: const Offset(0, -1), end: Offset.zero)
         .chain(CurveTween(
           curve: offsetCurve,
         ))
