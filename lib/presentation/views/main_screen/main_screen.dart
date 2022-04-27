@@ -27,7 +27,8 @@ class MainScreen extends StatefulWidget {
   State<MainScreen> createState() => _MainScreenState();
 }
 
-class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateMixin {
+class _MainScreenState extends State<MainScreen>
+    with SingleTickerProviderStateMixin {
   late AnimationController mainHeaderController;
   late ScrollController scrollController;
 
@@ -53,7 +54,8 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
       setState(() {});
     });
 
-    extent = Tween<double>(begin: 166.0, end: 68.0).animate(mainHeaderController);
+    extent =
+        Tween<double>(begin: 166.0, end: 68.0).animate(mainHeaderController);
   }
 
   @override
@@ -87,7 +89,8 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
                 overlayOpacity: 0.85,
                 spacing: 24,
                 spaceBetweenChildren: 5,
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(14)),
                 backgroundColor: Theme.of(context).colorScheme.primary,
                 activeBackgroundColor: Theme.of(context).colorScheme.error,
                 icon: Icons.add,
@@ -95,22 +98,28 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
                 iconTheme: const IconThemeData(color: Colors.white),
                 children: [
                   SpeedDialChild(
-                    onTap: () => Navigator.of(context).pushNamed('/create_produce'),
+                    onTap: () =>
+                        Navigator.of(context).pushNamed('/create_produce'),
                     backgroundColor: Theme.of(context).colorScheme.primary,
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(14)),
                     child: const Icon(
                       FarmhubIcons.farmhub_corn_icon,
                       color: Colors.white,
                       size: 20,
                     ),
                     labelWidget: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 14, vertical: 14),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(50),
                       ),
                       child: Text(
                         "Create new Produce",
-                        style: Theme.of(context).textTheme.bodyText1!.copyWith(color: Colors.white),
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodyText1!
+                            .copyWith(color: Colors.white),
                       ),
                     ),
                   ),
@@ -120,19 +129,24 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
                       Navigator.of(context).pushNamed('/add_new_price');
                     },
                     backgroundColor: Theme.of(context).colorScheme.primary,
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(14)),
                     child: const Icon(
                       Icons.price_change,
                       color: Colors.white,
                     ),
                     labelWidget: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 14, vertical: 14),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(50),
                       ),
                       child: Text(
                         "Add new Price",
-                        style: Theme.of(context).textTheme.bodyText1!.copyWith(color: Colors.white),
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodyText1!
+                            .copyWith(color: Colors.white),
                       ),
                     ),
                   ),
@@ -149,7 +163,8 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
                     BlocBuilder<MainScreenBloc, MainScreenState>(
                       builder: (context, state) {
                         return SliverPersistentHeader(
-                          delegate: MainScreenHeaderDelegate(extent, mainScreenFocusNode),
+                          delegate: MainScreenHeaderDelegate(
+                              extent, mainScreenFocusNode),
                         );
                       },
                     ),
@@ -176,28 +191,34 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
 class SliverMainScreenListView extends StatefulWidget {
   final ScrollController scrollController;
 
-  const SliverMainScreenListView(this.scrollController, {Key? key}) : super(key: key);
+  const SliverMainScreenListView(this.scrollController, {Key? key})
+      : super(key: key);
 
   @override
-  State<SliverMainScreenListView> createState() => _SliverMainScreenListViewState();
+  State<SliverMainScreenListView> createState() =>
+      _SliverMainScreenListViewState();
 }
 
 class _SliverMainScreenListViewState extends State<SliverMainScreenListView> {
   @override
   void initState() {
     super.initState();
-    context.read<MainScreenBloc>().add(const MainScreenEvent.getFirstTenProduce());
+    context
+        .read<MainScreenBloc>()
+        .add(const MainScreenEvent.getFirstTenProduce());
 
     context.read<MainScreenBloc>().stream.listen((event) {
       setState(() {});
     });
 
     widget.scrollController.addListener(() {
-      if (widget.scrollController.offset >= widget.scrollController.position.maxScrollExtent &&
+      if (widget.scrollController.offset >=
+              widget.scrollController.position.maxScrollExtent &&
           !widget.scrollController.position.outOfRange) {
         print("Reached the end of the list!");
-        context.read<MainScreenBloc>().add(const MainScreenEvent.getNextTenProduce());
-        setState(() {});
+        context
+            .read<MainScreenBloc>()
+            .add(const MainScreenEvent.getNextTenProduce());
       }
     });
   }
@@ -207,7 +228,8 @@ class _SliverMainScreenListViewState extends State<SliverMainScreenListView> {
     final currentState = context.read<MainScreenBloc>().state;
 
     if (currentState is MSSInitial) {
-      throw Exception("MSSInitial State is received when it should not have existed.");
+      throw Exception(
+          "MSSInitial State is received when it should not have existed.");
     } else if (currentState is MSSPricesLoading) {
       return const SliverLoadingIndicator();
     } else if (currentState is MSSNextPricesLoading) {
@@ -273,8 +295,8 @@ class SliverProduceList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    BorderSide borderSide =
-        BorderSide(color: Theme.of(context).colorScheme.primary.withOpacity(0.24));
+    BorderSide borderSide = BorderSide(
+        color: Theme.of(context).colorScheme.primary.withOpacity(0.24));
 
     return SliverList(
       delegate: SliverChildBuilderDelegate(
@@ -302,9 +324,11 @@ class SliverProduceList extends StatelessWidget {
     return isLoading ? produceList.length + 1 : produceList.length;
   }
 
-  BorderSide _resolveTop(BuildContext context, int index, BorderSide borderSide) {
+  BorderSide _resolveTop(
+      BuildContext context, int index, BorderSide borderSide) {
     if (index == 0) {
-      return BorderSide(color: Theme.of(context).colorScheme.primary.withOpacity(0.24));
+      return BorderSide(
+          color: Theme.of(context).colorScheme.primary.withOpacity(0.24));
     } else {
       return BorderSide.none;
     }
@@ -328,7 +352,9 @@ class SliverDebugSlot extends StatelessWidget {
               width: 500,
               content: "Toggle Top Header",
               onPressed: () {
-                context.read<MainScreenBloc>().add(const MainScreenEvent.toggleMainHeader());
+                context
+                    .read<MainScreenBloc>()
+                    .add(const MainScreenEvent.toggleMainHeader());
               },
             ),
           ),
@@ -345,7 +371,8 @@ class MainScreenHeaderDelegate extends SliverPersistentHeaderDelegate {
   MainScreenHeaderDelegate(this.extent, this.mainScreenFocusNode);
 
   @override
-  Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
+  Widget build(
+      BuildContext context, double shrinkOffset, bool overlapsContent) {
     return Stack(
       fit: StackFit.expand,
       children: [
@@ -364,7 +391,8 @@ class MainScreenHeaderDelegate extends SliverPersistentHeaderDelegate {
         Column(
           children: [
             MainHeader(
-              mainHeaderController: context.read<MainScreenBloc>().mainHeaderController,
+              mainHeaderController:
+                  context.read<MainScreenBloc>().mainHeaderController,
             ),
             Hero(
               tag: "search_bar",
@@ -421,7 +449,8 @@ class _MainHeaderState extends State<MainHeader> {
     super.initState();
 
     if (context.read<MainScreenBloc>().state.props.isMainHeaderVisible) {
-      sizeFactor = Tween<double>(begin: 1.0, end: 0.0).animate(widget.mainHeaderController);
+      sizeFactor = Tween<double>(begin: 1.0, end: 0.0)
+          .animate(widget.mainHeaderController);
     }
   }
 

@@ -32,6 +32,10 @@ class _$SearchScreenEventTearOff {
       query: query,
     );
   }
+
+  _SSEGetNextTenProduce getNextTenProduce() {
+    return const _SSEGetNextTenProduce();
+  }
 }
 
 /// @nodoc
@@ -44,6 +48,7 @@ mixin _$SearchScreenEvent {
     required TResult Function() started,
     required TResult Function(String query) onChanged,
     required TResult Function(String query) onSubmitted,
+    required TResult Function() getNextTenProduce,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -51,6 +56,7 @@ mixin _$SearchScreenEvent {
     TResult Function()? started,
     TResult Function(String query)? onChanged,
     TResult Function(String query)? onSubmitted,
+    TResult Function()? getNextTenProduce,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -58,6 +64,7 @@ mixin _$SearchScreenEvent {
     TResult Function()? started,
     TResult Function(String query)? onChanged,
     TResult Function(String query)? onSubmitted,
+    TResult Function()? getNextTenProduce,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -66,6 +73,7 @@ mixin _$SearchScreenEvent {
     required TResult Function(_SSEStarted value) started,
     required TResult Function(_SSEOnChanged value) onChanged,
     required TResult Function(_SSEOnSubmitted value) onSubmitted,
+    required TResult Function(_SSEGetNextTenProduce value) getNextTenProduce,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -73,6 +81,7 @@ mixin _$SearchScreenEvent {
     TResult Function(_SSEStarted value)? started,
     TResult Function(_SSEOnChanged value)? onChanged,
     TResult Function(_SSEOnSubmitted value)? onSubmitted,
+    TResult Function(_SSEGetNextTenProduce value)? getNextTenProduce,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -80,6 +89,7 @@ mixin _$SearchScreenEvent {
     TResult Function(_SSEStarted value)? started,
     TResult Function(_SSEOnChanged value)? onChanged,
     TResult Function(_SSEOnSubmitted value)? onSubmitted,
+    TResult Function(_SSEGetNextTenProduce value)? getNextTenProduce,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -146,6 +156,7 @@ class _$_SSEStarted implements _SSEStarted {
     required TResult Function() started,
     required TResult Function(String query) onChanged,
     required TResult Function(String query) onSubmitted,
+    required TResult Function() getNextTenProduce,
   }) {
     return started();
   }
@@ -156,6 +167,7 @@ class _$_SSEStarted implements _SSEStarted {
     TResult Function()? started,
     TResult Function(String query)? onChanged,
     TResult Function(String query)? onSubmitted,
+    TResult Function()? getNextTenProduce,
   }) {
     return started?.call();
   }
@@ -166,6 +178,7 @@ class _$_SSEStarted implements _SSEStarted {
     TResult Function()? started,
     TResult Function(String query)? onChanged,
     TResult Function(String query)? onSubmitted,
+    TResult Function()? getNextTenProduce,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -180,6 +193,7 @@ class _$_SSEStarted implements _SSEStarted {
     required TResult Function(_SSEStarted value) started,
     required TResult Function(_SSEOnChanged value) onChanged,
     required TResult Function(_SSEOnSubmitted value) onSubmitted,
+    required TResult Function(_SSEGetNextTenProduce value) getNextTenProduce,
   }) {
     return started(this);
   }
@@ -190,6 +204,7 @@ class _$_SSEStarted implements _SSEStarted {
     TResult Function(_SSEStarted value)? started,
     TResult Function(_SSEOnChanged value)? onChanged,
     TResult Function(_SSEOnSubmitted value)? onSubmitted,
+    TResult Function(_SSEGetNextTenProduce value)? getNextTenProduce,
   }) {
     return started?.call(this);
   }
@@ -200,6 +215,7 @@ class _$_SSEStarted implements _SSEStarted {
     TResult Function(_SSEStarted value)? started,
     TResult Function(_SSEOnChanged value)? onChanged,
     TResult Function(_SSEOnSubmitted value)? onSubmitted,
+    TResult Function(_SSEGetNextTenProduce value)? getNextTenProduce,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -280,6 +296,7 @@ class _$_SSEOnChanged implements _SSEOnChanged {
     required TResult Function() started,
     required TResult Function(String query) onChanged,
     required TResult Function(String query) onSubmitted,
+    required TResult Function() getNextTenProduce,
   }) {
     return onChanged(query);
   }
@@ -290,6 +307,7 @@ class _$_SSEOnChanged implements _SSEOnChanged {
     TResult Function()? started,
     TResult Function(String query)? onChanged,
     TResult Function(String query)? onSubmitted,
+    TResult Function()? getNextTenProduce,
   }) {
     return onChanged?.call(query);
   }
@@ -300,6 +318,7 @@ class _$_SSEOnChanged implements _SSEOnChanged {
     TResult Function()? started,
     TResult Function(String query)? onChanged,
     TResult Function(String query)? onSubmitted,
+    TResult Function()? getNextTenProduce,
     required TResult orElse(),
   }) {
     if (onChanged != null) {
@@ -314,6 +333,7 @@ class _$_SSEOnChanged implements _SSEOnChanged {
     required TResult Function(_SSEStarted value) started,
     required TResult Function(_SSEOnChanged value) onChanged,
     required TResult Function(_SSEOnSubmitted value) onSubmitted,
+    required TResult Function(_SSEGetNextTenProduce value) getNextTenProduce,
   }) {
     return onChanged(this);
   }
@@ -324,6 +344,7 @@ class _$_SSEOnChanged implements _SSEOnChanged {
     TResult Function(_SSEStarted value)? started,
     TResult Function(_SSEOnChanged value)? onChanged,
     TResult Function(_SSEOnSubmitted value)? onSubmitted,
+    TResult Function(_SSEGetNextTenProduce value)? getNextTenProduce,
   }) {
     return onChanged?.call(this);
   }
@@ -334,6 +355,7 @@ class _$_SSEOnChanged implements _SSEOnChanged {
     TResult Function(_SSEStarted value)? started,
     TResult Function(_SSEOnChanged value)? onChanged,
     TResult Function(_SSEOnSubmitted value)? onSubmitted,
+    TResult Function(_SSEGetNextTenProduce value)? getNextTenProduce,
     required TResult orElse(),
   }) {
     if (onChanged != null) {
@@ -419,6 +441,7 @@ class _$_SSEOnSubmitted implements _SSEOnSubmitted {
     required TResult Function() started,
     required TResult Function(String query) onChanged,
     required TResult Function(String query) onSubmitted,
+    required TResult Function() getNextTenProduce,
   }) {
     return onSubmitted(query);
   }
@@ -429,6 +452,7 @@ class _$_SSEOnSubmitted implements _SSEOnSubmitted {
     TResult Function()? started,
     TResult Function(String query)? onChanged,
     TResult Function(String query)? onSubmitted,
+    TResult Function()? getNextTenProduce,
   }) {
     return onSubmitted?.call(query);
   }
@@ -439,6 +463,7 @@ class _$_SSEOnSubmitted implements _SSEOnSubmitted {
     TResult Function()? started,
     TResult Function(String query)? onChanged,
     TResult Function(String query)? onSubmitted,
+    TResult Function()? getNextTenProduce,
     required TResult orElse(),
   }) {
     if (onSubmitted != null) {
@@ -453,6 +478,7 @@ class _$_SSEOnSubmitted implements _SSEOnSubmitted {
     required TResult Function(_SSEStarted value) started,
     required TResult Function(_SSEOnChanged value) onChanged,
     required TResult Function(_SSEOnSubmitted value) onSubmitted,
+    required TResult Function(_SSEGetNextTenProduce value) getNextTenProduce,
   }) {
     return onSubmitted(this);
   }
@@ -463,6 +489,7 @@ class _$_SSEOnSubmitted implements _SSEOnSubmitted {
     TResult Function(_SSEStarted value)? started,
     TResult Function(_SSEOnChanged value)? onChanged,
     TResult Function(_SSEOnSubmitted value)? onSubmitted,
+    TResult Function(_SSEGetNextTenProduce value)? getNextTenProduce,
   }) {
     return onSubmitted?.call(this);
   }
@@ -473,6 +500,7 @@ class _$_SSEOnSubmitted implements _SSEOnSubmitted {
     TResult Function(_SSEStarted value)? started,
     TResult Function(_SSEOnChanged value)? onChanged,
     TResult Function(_SSEOnSubmitted value)? onSubmitted,
+    TResult Function(_SSEGetNextTenProduce value)? getNextTenProduce,
     required TResult orElse(),
   }) {
     if (onSubmitted != null) {
@@ -492,26 +520,154 @@ abstract class _SSEOnSubmitted implements SearchScreenEvent {
 }
 
 /// @nodoc
+abstract class _$SSEGetNextTenProduceCopyWith<$Res> {
+  factory _$SSEGetNextTenProduceCopyWith(_SSEGetNextTenProduce value,
+          $Res Function(_SSEGetNextTenProduce) then) =
+      __$SSEGetNextTenProduceCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$SSEGetNextTenProduceCopyWithImpl<$Res>
+    extends _$SearchScreenEventCopyWithImpl<$Res>
+    implements _$SSEGetNextTenProduceCopyWith<$Res> {
+  __$SSEGetNextTenProduceCopyWithImpl(
+      _SSEGetNextTenProduce _value, $Res Function(_SSEGetNextTenProduce) _then)
+      : super(_value, (v) => _then(v as _SSEGetNextTenProduce));
+
+  @override
+  _SSEGetNextTenProduce get _value => super._value as _SSEGetNextTenProduce;
+}
+
+/// @nodoc
+
+class _$_SSEGetNextTenProduce implements _SSEGetNextTenProduce {
+  const _$_SSEGetNextTenProduce();
+
+  @override
+  String toString() {
+    return 'SearchScreenEvent.getNextTenProduce()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _SSEGetNextTenProduce);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(String query) onChanged,
+    required TResult Function(String query) onSubmitted,
+    required TResult Function() getNextTenProduce,
+  }) {
+    return getNextTenProduce();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(String query)? onChanged,
+    TResult Function(String query)? onSubmitted,
+    TResult Function()? getNextTenProduce,
+  }) {
+    return getNextTenProduce?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(String query)? onChanged,
+    TResult Function(String query)? onSubmitted,
+    TResult Function()? getNextTenProduce,
+    required TResult orElse(),
+  }) {
+    if (getNextTenProduce != null) {
+      return getNextTenProduce();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SSEStarted value) started,
+    required TResult Function(_SSEOnChanged value) onChanged,
+    required TResult Function(_SSEOnSubmitted value) onSubmitted,
+    required TResult Function(_SSEGetNextTenProduce value) getNextTenProduce,
+  }) {
+    return getNextTenProduce(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_SSEStarted value)? started,
+    TResult Function(_SSEOnChanged value)? onChanged,
+    TResult Function(_SSEOnSubmitted value)? onSubmitted,
+    TResult Function(_SSEGetNextTenProduce value)? getNextTenProduce,
+  }) {
+    return getNextTenProduce?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SSEStarted value)? started,
+    TResult Function(_SSEOnChanged value)? onChanged,
+    TResult Function(_SSEOnSubmitted value)? onSubmitted,
+    TResult Function(_SSEGetNextTenProduce value)? getNextTenProduce,
+    required TResult orElse(),
+  }) {
+    if (getNextTenProduce != null) {
+      return getNextTenProduce(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SSEGetNextTenProduce implements SearchScreenEvent {
+  const factory _SSEGetNextTenProduce() = _$_SSEGetNextTenProduce;
+}
+
+/// @nodoc
 class _$SearchScreenStateTearOff {
   const _$SearchScreenStateTearOff();
 
-  SSSInitial initial() {
-    return const SSSInitial();
-  }
-
-  SSSLoading loading() {
-    return const SSSLoading();
-  }
-
-  SSSCompleted completed(List<Produce> produceList) {
-    return SSSCompleted(
-      produceList,
+  SSSInitial initial(SearchScreenProps props) {
+    return SSSInitial(
+      props,
     );
   }
 
-  SSSError error(Failure failure) {
+  SSSLoading loading(SearchScreenProps props) {
+    return SSSLoading(
+      props,
+    );
+  }
+
+  SSSLoadingNextTenProduce loadingNextTenProduce(SearchScreenProps props) {
+    return SSSLoadingNextTenProduce(
+      props,
+    );
+  }
+
+  SSSCompleted completed(SearchScreenProps props) {
+    return SSSCompleted(
+      props,
+    );
+  }
+
+  SSSError error({required SearchScreenProps props, required Failure failure}) {
     return SSSError(
-      failure,
+      props: props,
+      failure: failure,
     );
   }
 }
@@ -521,28 +677,33 @@ const $SearchScreenState = _$SearchScreenStateTearOff();
 
 /// @nodoc
 mixin _$SearchScreenState {
+  SearchScreenProps get props => throw _privateConstructorUsedError;
+
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(List<Produce> produceList) completed,
-    required TResult Function(Failure failure) error,
+    required TResult Function(SearchScreenProps props) initial,
+    required TResult Function(SearchScreenProps props) loading,
+    required TResult Function(SearchScreenProps props) loadingNextTenProduce,
+    required TResult Function(SearchScreenProps props) completed,
+    required TResult Function(SearchScreenProps props, Failure failure) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(List<Produce> produceList)? completed,
-    TResult Function(Failure failure)? error,
+    TResult Function(SearchScreenProps props)? initial,
+    TResult Function(SearchScreenProps props)? loading,
+    TResult Function(SearchScreenProps props)? loadingNextTenProduce,
+    TResult Function(SearchScreenProps props)? completed,
+    TResult Function(SearchScreenProps props, Failure failure)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(List<Produce> produceList)? completed,
-    TResult Function(Failure failure)? error,
+    TResult Function(SearchScreenProps props)? initial,
+    TResult Function(SearchScreenProps props)? loading,
+    TResult Function(SearchScreenProps props)? loadingNextTenProduce,
+    TResult Function(SearchScreenProps props)? completed,
+    TResult Function(SearchScreenProps props, Failure failure)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -550,6 +711,8 @@ mixin _$SearchScreenState {
   TResult map<TResult extends Object?>({
     required TResult Function(SSSInitial value) initial,
     required TResult Function(SSSLoading value) loading,
+    required TResult Function(SSSLoadingNextTenProduce value)
+        loadingNextTenProduce,
     required TResult Function(SSSCompleted value) completed,
     required TResult Function(SSSError value) error,
   }) =>
@@ -558,6 +721,7 @@ mixin _$SearchScreenState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(SSSInitial value)? initial,
     TResult Function(SSSLoading value)? loading,
+    TResult Function(SSSLoadingNextTenProduce value)? loadingNextTenProduce,
     TResult Function(SSSCompleted value)? completed,
     TResult Function(SSSError value)? error,
   }) =>
@@ -566,10 +730,15 @@ mixin _$SearchScreenState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(SSSInitial value)? initial,
     TResult Function(SSSLoading value)? loading,
+    TResult Function(SSSLoadingNextTenProduce value)? loadingNextTenProduce,
     TResult Function(SSSCompleted value)? completed,
     TResult Function(SSSError value)? error,
     required TResult orElse(),
   }) =>
+      throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $SearchScreenStateCopyWith<SearchScreenState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -578,6 +747,9 @@ abstract class $SearchScreenStateCopyWith<$Res> {
   factory $SearchScreenStateCopyWith(
           SearchScreenState value, $Res Function(SearchScreenState) then) =
       _$SearchScreenStateCopyWithImpl<$Res>;
+  $Res call({SearchScreenProps props});
+
+  $SearchScreenPropsCopyWith<$Res> get props;
 }
 
 /// @nodoc
@@ -588,13 +760,38 @@ class _$SearchScreenStateCopyWithImpl<$Res>
   final SearchScreenState _value;
   // ignore: unused_field
   final $Res Function(SearchScreenState) _then;
+
+  @override
+  $Res call({
+    Object? props = freezed,
+  }) {
+    return _then(_value.copyWith(
+      props: props == freezed
+          ? _value.props
+          : props // ignore: cast_nullable_to_non_nullable
+              as SearchScreenProps,
+    ));
+  }
+
+  @override
+  $SearchScreenPropsCopyWith<$Res> get props {
+    return $SearchScreenPropsCopyWith<$Res>(_value.props, (value) {
+      return _then(_value.copyWith(props: value));
+    });
+  }
 }
 
 /// @nodoc
-abstract class $SSSInitialCopyWith<$Res> {
+abstract class $SSSInitialCopyWith<$Res>
+    implements $SearchScreenStateCopyWith<$Res> {
   factory $SSSInitialCopyWith(
           SSSInitial value, $Res Function(SSSInitial) then) =
       _$SSSInitialCopyWithImpl<$Res>;
+  @override
+  $Res call({SearchScreenProps props});
+
+  @override
+  $SearchScreenPropsCopyWith<$Res> get props;
 }
 
 /// @nodoc
@@ -606,60 +803,85 @@ class _$SSSInitialCopyWithImpl<$Res>
 
   @override
   SSSInitial get _value => super._value as SSSInitial;
+
+  @override
+  $Res call({
+    Object? props = freezed,
+  }) {
+    return _then(SSSInitial(
+      props == freezed
+          ? _value.props
+          : props // ignore: cast_nullable_to_non_nullable
+              as SearchScreenProps,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$SSSInitial implements SSSInitial {
-  const _$SSSInitial();
+  const _$SSSInitial(this.props);
+
+  @override
+  final SearchScreenProps props;
 
   @override
   String toString() {
-    return 'SearchScreenState.initial()';
+    return 'SearchScreenState.initial(props: $props)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is SSSInitial);
+        (other.runtimeType == runtimeType &&
+            other is SSSInitial &&
+            (identical(other.props, props) || other.props == props));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, props);
+
+  @JsonKey(ignore: true)
+  @override
+  $SSSInitialCopyWith<SSSInitial> get copyWith =>
+      _$SSSInitialCopyWithImpl<SSSInitial>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(List<Produce> produceList) completed,
-    required TResult Function(Failure failure) error,
+    required TResult Function(SearchScreenProps props) initial,
+    required TResult Function(SearchScreenProps props) loading,
+    required TResult Function(SearchScreenProps props) loadingNextTenProduce,
+    required TResult Function(SearchScreenProps props) completed,
+    required TResult Function(SearchScreenProps props, Failure failure) error,
   }) {
-    return initial();
+    return initial(props);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(List<Produce> produceList)? completed,
-    TResult Function(Failure failure)? error,
+    TResult Function(SearchScreenProps props)? initial,
+    TResult Function(SearchScreenProps props)? loading,
+    TResult Function(SearchScreenProps props)? loadingNextTenProduce,
+    TResult Function(SearchScreenProps props)? completed,
+    TResult Function(SearchScreenProps props, Failure failure)? error,
   }) {
-    return initial?.call();
+    return initial?.call(props);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(List<Produce> produceList)? completed,
-    TResult Function(Failure failure)? error,
+    TResult Function(SearchScreenProps props)? initial,
+    TResult Function(SearchScreenProps props)? loading,
+    TResult Function(SearchScreenProps props)? loadingNextTenProduce,
+    TResult Function(SearchScreenProps props)? completed,
+    TResult Function(SearchScreenProps props, Failure failure)? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial();
+      return initial(props);
     }
     return orElse();
   }
@@ -669,6 +891,8 @@ class _$SSSInitial implements SSSInitial {
   TResult map<TResult extends Object?>({
     required TResult Function(SSSInitial value) initial,
     required TResult Function(SSSLoading value) loading,
+    required TResult Function(SSSLoadingNextTenProduce value)
+        loadingNextTenProduce,
     required TResult Function(SSSCompleted value) completed,
     required TResult Function(SSSError value) error,
   }) {
@@ -680,6 +904,7 @@ class _$SSSInitial implements SSSInitial {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(SSSInitial value)? initial,
     TResult Function(SSSLoading value)? loading,
+    TResult Function(SSSLoadingNextTenProduce value)? loadingNextTenProduce,
     TResult Function(SSSCompleted value)? completed,
     TResult Function(SSSError value)? error,
   }) {
@@ -691,6 +916,7 @@ class _$SSSInitial implements SSSInitial {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(SSSInitial value)? initial,
     TResult Function(SSSLoading value)? loading,
+    TResult Function(SSSLoadingNextTenProduce value)? loadingNextTenProduce,
     TResult Function(SSSCompleted value)? completed,
     TResult Function(SSSError value)? error,
     required TResult orElse(),
@@ -703,14 +929,27 @@ class _$SSSInitial implements SSSInitial {
 }
 
 abstract class SSSInitial implements SearchScreenState {
-  const factory SSSInitial() = _$SSSInitial;
+  const factory SSSInitial(SearchScreenProps props) = _$SSSInitial;
+
+  @override
+  SearchScreenProps get props;
+  @override
+  @JsonKey(ignore: true)
+  $SSSInitialCopyWith<SSSInitial> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $SSSLoadingCopyWith<$Res> {
+abstract class $SSSLoadingCopyWith<$Res>
+    implements $SearchScreenStateCopyWith<$Res> {
   factory $SSSLoadingCopyWith(
           SSSLoading value, $Res Function(SSSLoading) then) =
       _$SSSLoadingCopyWithImpl<$Res>;
+  @override
+  $Res call({SearchScreenProps props});
+
+  @override
+  $SearchScreenPropsCopyWith<$Res> get props;
 }
 
 /// @nodoc
@@ -722,60 +961,85 @@ class _$SSSLoadingCopyWithImpl<$Res>
 
   @override
   SSSLoading get _value => super._value as SSSLoading;
+
+  @override
+  $Res call({
+    Object? props = freezed,
+  }) {
+    return _then(SSSLoading(
+      props == freezed
+          ? _value.props
+          : props // ignore: cast_nullable_to_non_nullable
+              as SearchScreenProps,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$SSSLoading implements SSSLoading {
-  const _$SSSLoading();
+  const _$SSSLoading(this.props);
+
+  @override
+  final SearchScreenProps props;
 
   @override
   String toString() {
-    return 'SearchScreenState.loading()';
+    return 'SearchScreenState.loading(props: $props)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is SSSLoading);
+        (other.runtimeType == runtimeType &&
+            other is SSSLoading &&
+            (identical(other.props, props) || other.props == props));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, props);
+
+  @JsonKey(ignore: true)
+  @override
+  $SSSLoadingCopyWith<SSSLoading> get copyWith =>
+      _$SSSLoadingCopyWithImpl<SSSLoading>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(List<Produce> produceList) completed,
-    required TResult Function(Failure failure) error,
+    required TResult Function(SearchScreenProps props) initial,
+    required TResult Function(SearchScreenProps props) loading,
+    required TResult Function(SearchScreenProps props) loadingNextTenProduce,
+    required TResult Function(SearchScreenProps props) completed,
+    required TResult Function(SearchScreenProps props, Failure failure) error,
   }) {
-    return loading();
+    return loading(props);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(List<Produce> produceList)? completed,
-    TResult Function(Failure failure)? error,
+    TResult Function(SearchScreenProps props)? initial,
+    TResult Function(SearchScreenProps props)? loading,
+    TResult Function(SearchScreenProps props)? loadingNextTenProduce,
+    TResult Function(SearchScreenProps props)? completed,
+    TResult Function(SearchScreenProps props, Failure failure)? error,
   }) {
-    return loading?.call();
+    return loading?.call(props);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(List<Produce> produceList)? completed,
-    TResult Function(Failure failure)? error,
+    TResult Function(SearchScreenProps props)? initial,
+    TResult Function(SearchScreenProps props)? loading,
+    TResult Function(SearchScreenProps props)? loadingNextTenProduce,
+    TResult Function(SearchScreenProps props)? completed,
+    TResult Function(SearchScreenProps props, Failure failure)? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
-      return loading();
+      return loading(props);
     }
     return orElse();
   }
@@ -785,6 +1049,8 @@ class _$SSSLoading implements SSSLoading {
   TResult map<TResult extends Object?>({
     required TResult Function(SSSInitial value) initial,
     required TResult Function(SSSLoading value) loading,
+    required TResult Function(SSSLoadingNextTenProduce value)
+        loadingNextTenProduce,
     required TResult Function(SSSCompleted value) completed,
     required TResult Function(SSSError value) error,
   }) {
@@ -796,6 +1062,7 @@ class _$SSSLoading implements SSSLoading {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(SSSInitial value)? initial,
     TResult Function(SSSLoading value)? loading,
+    TResult Function(SSSLoadingNextTenProduce value)? loadingNextTenProduce,
     TResult Function(SSSCompleted value)? completed,
     TResult Function(SSSError value)? error,
   }) {
@@ -807,6 +1074,7 @@ class _$SSSLoading implements SSSLoading {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(SSSInitial value)? initial,
     TResult Function(SSSLoading value)? loading,
+    TResult Function(SSSLoadingNextTenProduce value)? loadingNextTenProduce,
     TResult Function(SSSCompleted value)? completed,
     TResult Function(SSSError value)? error,
     required TResult orElse(),
@@ -819,15 +1087,189 @@ class _$SSSLoading implements SSSLoading {
 }
 
 abstract class SSSLoading implements SearchScreenState {
-  const factory SSSLoading() = _$SSSLoading;
+  const factory SSSLoading(SearchScreenProps props) = _$SSSLoading;
+
+  @override
+  SearchScreenProps get props;
+  @override
+  @JsonKey(ignore: true)
+  $SSSLoadingCopyWith<SSSLoading> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $SSSCompletedCopyWith<$Res> {
+abstract class $SSSLoadingNextTenProduceCopyWith<$Res>
+    implements $SearchScreenStateCopyWith<$Res> {
+  factory $SSSLoadingNextTenProduceCopyWith(SSSLoadingNextTenProduce value,
+          $Res Function(SSSLoadingNextTenProduce) then) =
+      _$SSSLoadingNextTenProduceCopyWithImpl<$Res>;
+  @override
+  $Res call({SearchScreenProps props});
+
+  @override
+  $SearchScreenPropsCopyWith<$Res> get props;
+}
+
+/// @nodoc
+class _$SSSLoadingNextTenProduceCopyWithImpl<$Res>
+    extends _$SearchScreenStateCopyWithImpl<$Res>
+    implements $SSSLoadingNextTenProduceCopyWith<$Res> {
+  _$SSSLoadingNextTenProduceCopyWithImpl(SSSLoadingNextTenProduce _value,
+      $Res Function(SSSLoadingNextTenProduce) _then)
+      : super(_value, (v) => _then(v as SSSLoadingNextTenProduce));
+
+  @override
+  SSSLoadingNextTenProduce get _value =>
+      super._value as SSSLoadingNextTenProduce;
+
+  @override
+  $Res call({
+    Object? props = freezed,
+  }) {
+    return _then(SSSLoadingNextTenProduce(
+      props == freezed
+          ? _value.props
+          : props // ignore: cast_nullable_to_non_nullable
+              as SearchScreenProps,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SSSLoadingNextTenProduce implements SSSLoadingNextTenProduce {
+  const _$SSSLoadingNextTenProduce(this.props);
+
+  @override
+  final SearchScreenProps props;
+
+  @override
+  String toString() {
+    return 'SearchScreenState.loadingNextTenProduce(props: $props)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is SSSLoadingNextTenProduce &&
+            (identical(other.props, props) || other.props == props));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, props);
+
+  @JsonKey(ignore: true)
+  @override
+  $SSSLoadingNextTenProduceCopyWith<SSSLoadingNextTenProduce> get copyWith =>
+      _$SSSLoadingNextTenProduceCopyWithImpl<SSSLoadingNextTenProduce>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(SearchScreenProps props) initial,
+    required TResult Function(SearchScreenProps props) loading,
+    required TResult Function(SearchScreenProps props) loadingNextTenProduce,
+    required TResult Function(SearchScreenProps props) completed,
+    required TResult Function(SearchScreenProps props, Failure failure) error,
+  }) {
+    return loadingNextTenProduce(props);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(SearchScreenProps props)? initial,
+    TResult Function(SearchScreenProps props)? loading,
+    TResult Function(SearchScreenProps props)? loadingNextTenProduce,
+    TResult Function(SearchScreenProps props)? completed,
+    TResult Function(SearchScreenProps props, Failure failure)? error,
+  }) {
+    return loadingNextTenProduce?.call(props);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(SearchScreenProps props)? initial,
+    TResult Function(SearchScreenProps props)? loading,
+    TResult Function(SearchScreenProps props)? loadingNextTenProduce,
+    TResult Function(SearchScreenProps props)? completed,
+    TResult Function(SearchScreenProps props, Failure failure)? error,
+    required TResult orElse(),
+  }) {
+    if (loadingNextTenProduce != null) {
+      return loadingNextTenProduce(props);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(SSSInitial value) initial,
+    required TResult Function(SSSLoading value) loading,
+    required TResult Function(SSSLoadingNextTenProduce value)
+        loadingNextTenProduce,
+    required TResult Function(SSSCompleted value) completed,
+    required TResult Function(SSSError value) error,
+  }) {
+    return loadingNextTenProduce(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(SSSInitial value)? initial,
+    TResult Function(SSSLoading value)? loading,
+    TResult Function(SSSLoadingNextTenProduce value)? loadingNextTenProduce,
+    TResult Function(SSSCompleted value)? completed,
+    TResult Function(SSSError value)? error,
+  }) {
+    return loadingNextTenProduce?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(SSSInitial value)? initial,
+    TResult Function(SSSLoading value)? loading,
+    TResult Function(SSSLoadingNextTenProduce value)? loadingNextTenProduce,
+    TResult Function(SSSCompleted value)? completed,
+    TResult Function(SSSError value)? error,
+    required TResult orElse(),
+  }) {
+    if (loadingNextTenProduce != null) {
+      return loadingNextTenProduce(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SSSLoadingNextTenProduce implements SearchScreenState {
+  const factory SSSLoadingNextTenProduce(SearchScreenProps props) =
+      _$SSSLoadingNextTenProduce;
+
+  @override
+  SearchScreenProps get props;
+  @override
+  @JsonKey(ignore: true)
+  $SSSLoadingNextTenProduceCopyWith<SSSLoadingNextTenProduce> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $SSSCompletedCopyWith<$Res>
+    implements $SearchScreenStateCopyWith<$Res> {
   factory $SSSCompletedCopyWith(
           SSSCompleted value, $Res Function(SSSCompleted) then) =
       _$SSSCompletedCopyWithImpl<$Res>;
-  $Res call({List<Produce> produceList});
+  @override
+  $Res call({SearchScreenProps props});
+
+  @override
+  $SearchScreenPropsCopyWith<$Res> get props;
 }
 
 /// @nodoc
@@ -843,13 +1285,13 @@ class _$SSSCompletedCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? produceList = freezed,
+    Object? props = freezed,
   }) {
     return _then(SSSCompleted(
-      produceList == freezed
-          ? _value.produceList
-          : produceList // ignore: cast_nullable_to_non_nullable
-              as List<Produce>,
+      props == freezed
+          ? _value.props
+          : props // ignore: cast_nullable_to_non_nullable
+              as SearchScreenProps,
     ));
   }
 }
@@ -857,14 +1299,14 @@ class _$SSSCompletedCopyWithImpl<$Res>
 /// @nodoc
 
 class _$SSSCompleted implements SSSCompleted {
-  const _$SSSCompleted(this.produceList);
+  const _$SSSCompleted(this.props);
 
   @override
-  final List<Produce> produceList;
+  final SearchScreenProps props;
 
   @override
   String toString() {
-    return 'SearchScreenState.completed(produceList: $produceList)';
+    return 'SearchScreenState.completed(props: $props)';
   }
 
   @override
@@ -872,13 +1314,11 @@ class _$SSSCompleted implements SSSCompleted {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is SSSCompleted &&
-            const DeepCollectionEquality()
-                .equals(other.produceList, produceList));
+            (identical(other.props, props) || other.props == props));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(produceList));
+  int get hashCode => Object.hash(runtimeType, props);
 
   @JsonKey(ignore: true)
   @override
@@ -888,36 +1328,39 @@ class _$SSSCompleted implements SSSCompleted {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(List<Produce> produceList) completed,
-    required TResult Function(Failure failure) error,
+    required TResult Function(SearchScreenProps props) initial,
+    required TResult Function(SearchScreenProps props) loading,
+    required TResult Function(SearchScreenProps props) loadingNextTenProduce,
+    required TResult Function(SearchScreenProps props) completed,
+    required TResult Function(SearchScreenProps props, Failure failure) error,
   }) {
-    return completed(produceList);
+    return completed(props);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(List<Produce> produceList)? completed,
-    TResult Function(Failure failure)? error,
+    TResult Function(SearchScreenProps props)? initial,
+    TResult Function(SearchScreenProps props)? loading,
+    TResult Function(SearchScreenProps props)? loadingNextTenProduce,
+    TResult Function(SearchScreenProps props)? completed,
+    TResult Function(SearchScreenProps props, Failure failure)? error,
   }) {
-    return completed?.call(produceList);
+    return completed?.call(props);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(List<Produce> produceList)? completed,
-    TResult Function(Failure failure)? error,
+    TResult Function(SearchScreenProps props)? initial,
+    TResult Function(SearchScreenProps props)? loading,
+    TResult Function(SearchScreenProps props)? loadingNextTenProduce,
+    TResult Function(SearchScreenProps props)? completed,
+    TResult Function(SearchScreenProps props, Failure failure)? error,
     required TResult orElse(),
   }) {
     if (completed != null) {
-      return completed(produceList);
+      return completed(props);
     }
     return orElse();
   }
@@ -927,6 +1370,8 @@ class _$SSSCompleted implements SSSCompleted {
   TResult map<TResult extends Object?>({
     required TResult Function(SSSInitial value) initial,
     required TResult Function(SSSLoading value) loading,
+    required TResult Function(SSSLoadingNextTenProduce value)
+        loadingNextTenProduce,
     required TResult Function(SSSCompleted value) completed,
     required TResult Function(SSSError value) error,
   }) {
@@ -938,6 +1383,7 @@ class _$SSSCompleted implements SSSCompleted {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(SSSInitial value)? initial,
     TResult Function(SSSLoading value)? loading,
+    TResult Function(SSSLoadingNextTenProduce value)? loadingNextTenProduce,
     TResult Function(SSSCompleted value)? completed,
     TResult Function(SSSError value)? error,
   }) {
@@ -949,6 +1395,7 @@ class _$SSSCompleted implements SSSCompleted {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(SSSInitial value)? initial,
     TResult Function(SSSLoading value)? loading,
+    TResult Function(SSSLoadingNextTenProduce value)? loadingNextTenProduce,
     TResult Function(SSSCompleted value)? completed,
     TResult Function(SSSError value)? error,
     required TResult orElse(),
@@ -961,19 +1408,26 @@ class _$SSSCompleted implements SSSCompleted {
 }
 
 abstract class SSSCompleted implements SearchScreenState {
-  const factory SSSCompleted(List<Produce> produceList) = _$SSSCompleted;
+  const factory SSSCompleted(SearchScreenProps props) = _$SSSCompleted;
 
-  List<Produce> get produceList;
+  @override
+  SearchScreenProps get props;
+  @override
   @JsonKey(ignore: true)
   $SSSCompletedCopyWith<SSSCompleted> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $SSSErrorCopyWith<$Res> {
+abstract class $SSSErrorCopyWith<$Res>
+    implements $SearchScreenStateCopyWith<$Res> {
   factory $SSSErrorCopyWith(SSSError value, $Res Function(SSSError) then) =
       _$SSSErrorCopyWithImpl<$Res>;
-  $Res call({Failure failure});
+  @override
+  $Res call({SearchScreenProps props, Failure failure});
+
+  @override
+  $SearchScreenPropsCopyWith<$Res> get props;
 }
 
 /// @nodoc
@@ -987,10 +1441,15 @@ class _$SSSErrorCopyWithImpl<$Res> extends _$SearchScreenStateCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? props = freezed,
     Object? failure = freezed,
   }) {
     return _then(SSSError(
-      failure == freezed
+      props: props == freezed
+          ? _value.props
+          : props // ignore: cast_nullable_to_non_nullable
+              as SearchScreenProps,
+      failure: failure == freezed
           ? _value.failure
           : failure // ignore: cast_nullable_to_non_nullable
               as Failure,
@@ -1001,14 +1460,16 @@ class _$SSSErrorCopyWithImpl<$Res> extends _$SearchScreenStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$SSSError implements SSSError {
-  const _$SSSError(this.failure);
+  const _$SSSError({required this.props, required this.failure});
 
+  @override
+  final SearchScreenProps props;
   @override
   final Failure failure;
 
   @override
   String toString() {
-    return 'SearchScreenState.error(failure: $failure)';
+    return 'SearchScreenState.error(props: $props, failure: $failure)';
   }
 
   @override
@@ -1016,11 +1477,12 @@ class _$SSSError implements SSSError {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is SSSError &&
+            (identical(other.props, props) || other.props == props) &&
             (identical(other.failure, failure) || other.failure == failure));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, failure);
+  int get hashCode => Object.hash(runtimeType, props, failure);
 
   @JsonKey(ignore: true)
   @override
@@ -1030,36 +1492,39 @@ class _$SSSError implements SSSError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(List<Produce> produceList) completed,
-    required TResult Function(Failure failure) error,
+    required TResult Function(SearchScreenProps props) initial,
+    required TResult Function(SearchScreenProps props) loading,
+    required TResult Function(SearchScreenProps props) loadingNextTenProduce,
+    required TResult Function(SearchScreenProps props) completed,
+    required TResult Function(SearchScreenProps props, Failure failure) error,
   }) {
-    return error(failure);
+    return error(props, failure);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(List<Produce> produceList)? completed,
-    TResult Function(Failure failure)? error,
+    TResult Function(SearchScreenProps props)? initial,
+    TResult Function(SearchScreenProps props)? loading,
+    TResult Function(SearchScreenProps props)? loadingNextTenProduce,
+    TResult Function(SearchScreenProps props)? completed,
+    TResult Function(SearchScreenProps props, Failure failure)? error,
   }) {
-    return error?.call(failure);
+    return error?.call(props, failure);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(List<Produce> produceList)? completed,
-    TResult Function(Failure failure)? error,
+    TResult Function(SearchScreenProps props)? initial,
+    TResult Function(SearchScreenProps props)? loading,
+    TResult Function(SearchScreenProps props)? loadingNextTenProduce,
+    TResult Function(SearchScreenProps props)? completed,
+    TResult Function(SearchScreenProps props, Failure failure)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
-      return error(failure);
+      return error(props, failure);
     }
     return orElse();
   }
@@ -1069,6 +1534,8 @@ class _$SSSError implements SSSError {
   TResult map<TResult extends Object?>({
     required TResult Function(SSSInitial value) initial,
     required TResult Function(SSSLoading value) loading,
+    required TResult Function(SSSLoadingNextTenProduce value)
+        loadingNextTenProduce,
     required TResult Function(SSSCompleted value) completed,
     required TResult Function(SSSError value) error,
   }) {
@@ -1080,6 +1547,7 @@ class _$SSSError implements SSSError {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(SSSInitial value)? initial,
     TResult Function(SSSLoading value)? loading,
+    TResult Function(SSSLoadingNextTenProduce value)? loadingNextTenProduce,
     TResult Function(SSSCompleted value)? completed,
     TResult Function(SSSError value)? error,
   }) {
@@ -1091,6 +1559,7 @@ class _$SSSError implements SSSError {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(SSSInitial value)? initial,
     TResult Function(SSSLoading value)? loading,
+    TResult Function(SSSLoadingNextTenProduce value)? loadingNextTenProduce,
     TResult Function(SSSCompleted value)? completed,
     TResult Function(SSSError value)? error,
     required TResult orElse(),
@@ -1103,9 +1572,14 @@ class _$SSSError implements SSSError {
 }
 
 abstract class SSSError implements SearchScreenState {
-  const factory SSSError(Failure failure) = _$SSSError;
+  const factory SSSError(
+      {required SearchScreenProps props,
+      required Failure failure}) = _$SSSError;
 
+  @override
+  SearchScreenProps get props;
   Failure get failure;
+  @override
   @JsonKey(ignore: true)
   $SSSErrorCopyWith<SSSError> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1115,9 +1589,11 @@ abstract class SSSError implements SearchScreenState {
 class _$SearchScreenPropsTearOff {
   const _$SearchScreenPropsTearOff();
 
-  _SearchScreenProps call({required String query}) {
+  _SearchScreenProps call(
+      {required String query, required List<Produce> produceList}) {
     return _SearchScreenProps(
       query: query,
+      produceList: produceList,
     );
   }
 }
@@ -1128,6 +1604,7 @@ const $SearchScreenProps = _$SearchScreenPropsTearOff();
 /// @nodoc
 mixin _$SearchScreenProps {
   String get query => throw _privateConstructorUsedError;
+  List<Produce> get produceList => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SearchScreenPropsCopyWith<SearchScreenProps> get copyWith =>
@@ -1139,7 +1616,7 @@ abstract class $SearchScreenPropsCopyWith<$Res> {
   factory $SearchScreenPropsCopyWith(
           SearchScreenProps value, $Res Function(SearchScreenProps) then) =
       _$SearchScreenPropsCopyWithImpl<$Res>;
-  $Res call({String query});
+  $Res call({String query, List<Produce> produceList});
 }
 
 /// @nodoc
@@ -1154,12 +1631,17 @@ class _$SearchScreenPropsCopyWithImpl<$Res>
   @override
   $Res call({
     Object? query = freezed,
+    Object? produceList = freezed,
   }) {
     return _then(_value.copyWith(
       query: query == freezed
           ? _value.query
           : query // ignore: cast_nullable_to_non_nullable
               as String,
+      produceList: produceList == freezed
+          ? _value.produceList
+          : produceList // ignore: cast_nullable_to_non_nullable
+              as List<Produce>,
     ));
   }
 }
@@ -1171,7 +1653,7 @@ abstract class _$SearchScreenPropsCopyWith<$Res>
           _SearchScreenProps value, $Res Function(_SearchScreenProps) then) =
       __$SearchScreenPropsCopyWithImpl<$Res>;
   @override
-  $Res call({String query});
+  $Res call({String query, List<Produce> produceList});
 }
 
 /// @nodoc
@@ -1188,12 +1670,17 @@ class __$SearchScreenPropsCopyWithImpl<$Res>
   @override
   $Res call({
     Object? query = freezed,
+    Object? produceList = freezed,
   }) {
     return _then(_SearchScreenProps(
       query: query == freezed
           ? _value.query
           : query // ignore: cast_nullable_to_non_nullable
               as String,
+      produceList: produceList == freezed
+          ? _value.produceList
+          : produceList // ignore: cast_nullable_to_non_nullable
+              as List<Produce>,
     ));
   }
 }
@@ -1201,14 +1688,16 @@ class __$SearchScreenPropsCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_SearchScreenProps implements _SearchScreenProps {
-  const _$_SearchScreenProps({required this.query});
+  const _$_SearchScreenProps({required this.query, required this.produceList});
 
   @override
   final String query;
+  @override
+  final List<Produce> produceList;
 
   @override
   String toString() {
-    return 'SearchScreenProps(query: $query)';
+    return 'SearchScreenProps(query: $query, produceList: $produceList)';
   }
 
   @override
@@ -1216,11 +1705,14 @@ class _$_SearchScreenProps implements _SearchScreenProps {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _SearchScreenProps &&
-            (identical(other.query, query) || other.query == query));
+            (identical(other.query, query) || other.query == query) &&
+            const DeepCollectionEquality()
+                .equals(other.produceList, produceList));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, query);
+  int get hashCode => Object.hash(
+      runtimeType, query, const DeepCollectionEquality().hash(produceList));
 
   @JsonKey(ignore: true)
   @override
@@ -1229,11 +1721,14 @@ class _$_SearchScreenProps implements _SearchScreenProps {
 }
 
 abstract class _SearchScreenProps implements SearchScreenProps {
-  const factory _SearchScreenProps({required String query}) =
-      _$_SearchScreenProps;
+  const factory _SearchScreenProps(
+      {required String query,
+      required List<Produce> produceList}) = _$_SearchScreenProps;
 
   @override
   String get query;
+  @override
+  List<Produce> get produceList;
   @override
   @JsonKey(ignore: true)
   _$SearchScreenPropsCopyWith<_SearchScreenProps> get copyWith =>

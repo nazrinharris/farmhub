@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:farmhub/core/errors/failures.dart';
 import 'package:farmhub/features/produce_manager/domain/i_produce_manager_repository.dart';
+import 'package:farmhub/presentation/views/main_screen/bloc/main_screen_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../features/produce_manager/domain/entities/produce/produce.dart';
@@ -16,10 +17,11 @@ class SearchScreenBloc extends Bloc<SearchScreenEvent, SearchScreenState> {
 
   SearchScreenBloc({
     required this.produceManagerRepository,
-  }) : super(const SSSInitial()) {
+  }) : super(const SSSInitial(SearchScreenProps(query: "", produceList: []))) {
     on<_SSEStarted>(started);
     on<_SSEOnChanged>(onChanged);
     on<_SSEOnSubmitted>(onSubmitted);
+    on<_SSEGetNextTenProduce>(getNextTenProduce);
   }
 
   FutureOr<void> started(
@@ -41,19 +43,58 @@ class SearchScreenBloc extends Bloc<SearchScreenEvent, SearchScreenState> {
     Emitter<SearchScreenState> emit,
   ) async {
     // Indicate Loading
-    emit(const SearchScreenState.loading());
+    emit(SearchScreenState.loading(state.props));
 
     // Check if empty
     if (event.query == "" || event.query.isEmpty) {
-      emit(const SearchScreenState.initial());
+      emit(SearchScreenState.initial(state.props.copyWith(produceList: [])));
     } else {
       // Start query
       final failureOrProduceList = await produceManagerRepository.searchProduce(event.query);
 
       failureOrProduceList.fold(
-        (f) => emit(SearchScreenState.error(f)),
-        (produceList) => emit(SearchScreenState.completed(produceList)),
+        (f) => emit(SearchScreenState.error(props: state.props, failure: f)),
+        (produceList) {
+          emit(SearchScreenState.completed(state.props.copyWith(
+            produceList: produceList,
+            query: event.query,
+          )));
+          int index = 1;
+          for (Produce produce in produceList) {
+            print(index.toString() + " " + produce.produceName + "   " + produce.produceId + "\n");
+            index++;
+          }
+        },
       );
     }
+  }
+
+  FutureOr<void> getNextTenProduce(
+    _SSEGetNextTenProduce event,
+    Emitter<SearchScreenState> emit,
+  ) async {
+    if (state is SSSCompleted) {
+      emit(SearchScreenState.loadingNextTenProduce(state.props));
+
+      final failureOrNewProduceList = await produceManagerRepository.getNextTenSearchProduce(
+        state.props.produceList,
+        state.props.query,
+      );
+
+      failureOrNewProduceList.fold(
+        (f) {
+          emit(SearchScreenState.error(props: state.props, failure: f));
+          print(f.toString());
+        },
+        (produceList) {
+          emit(SearchScreenState.completed(state.props.copyWith(produceList: produceList)));
+          int index = 1;
+          for (Produce produce in produceList) {
+            print(index.toString() + " " + produce.produceName + "   " + produce.produceId + "\n");
+            index++;
+          }
+        },
+      );
+    } else {}
   }
 }

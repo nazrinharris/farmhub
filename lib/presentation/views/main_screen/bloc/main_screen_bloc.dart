@@ -51,14 +51,16 @@ class MainScreenBloc extends Bloc<MainScreenEvent, MainScreenState> {
         duration: const Duration(milliseconds: 250),
         curve: Curves.easeOutExpo,
       );
-      emit(state.copyWith(props: state.props.copyWith(isMainHeaderVisible: _isVisible)));
+      emit(state.copyWith(
+          props: state.props.copyWith(isMainHeaderVisible: _isVisible)));
     } else {
       mainHeaderController.animateTo(
         0.0,
         duration: const Duration(milliseconds: 250),
         curve: Curves.easeOutExpo,
       );
-      emit(state.copyWith(props: state.props.copyWith(isMainHeaderVisible: _isVisible)));
+      emit(state.copyWith(
+          props: state.props.copyWith(isMainHeaderVisible: _isVisible)));
     }
   }
 
@@ -69,7 +71,8 @@ class MainScreenBloc extends Bloc<MainScreenEvent, MainScreenState> {
     print("Adding getFirstTenProduce event...");
     produceManagerBloc.add(const ProduceManagerEvent.execGetFirstTenProduce());
 
-    return emit.onEach(produceManagerBloc.stream, onData: (ProduceManagerState PMState) {
+    return emit.onEach(produceManagerBloc.stream,
+        onData: (ProduceManagerState PMState) {
       if (PMState is PMSGetFirstTenProduceLoading) {
         // Do nothing.
 
@@ -98,11 +101,10 @@ class MainScreenBloc extends Bloc<MainScreenEvent, MainScreenState> {
     emit(MainScreenState.nextPricesLoading(props: state.props));
 
     // Start getting next ten produce
-    final failureOrNewProduceList =
-        await produceManagerRepository.getNextTenProduce(state.props.produceList);
+    final failureOrNewProduceList = await produceManagerRepository
+        .getNextTenProduce(state.props.produceList);
 
     // Check if there are more produce
-
     failureOrNewProduceList.fold(
         (f) => emit(MainScreenState.pricesError(
               props: state.props,
@@ -111,10 +113,16 @@ class MainScreenBloc extends Bloc<MainScreenEvent, MainScreenState> {
             )), (produceList) {
       int index = 1;
       for (Produce produce in produceList) {
-        print(index.toString() + " " + produce.produceName + "   " + produce.produceId + "\n");
+        print(index.toString() +
+            " " +
+            produce.produceName +
+            "   " +
+            produce.produceId +
+            "\n");
         index++;
       }
-      emit(MainScreenState.pricesCompleted(props: state.props.copyWith(produceList: produceList)));
+      emit(MainScreenState.pricesCompleted(
+          props: state.props.copyWith(produceList: produceList)));
     });
   }
 }

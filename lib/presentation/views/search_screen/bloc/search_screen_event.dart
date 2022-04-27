@@ -10,4 +10,5 @@ class SearchScreenEvent with _$SearchScreenEvent {
   const factory SearchScreenEvent.onSubmitted({
     required String query,
   }) = _SSEOnSubmitted;
+  const factory SearchScreenEvent.getNextTenProduce() = _SSEGetNextTenProduce;
 }

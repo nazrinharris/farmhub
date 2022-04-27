@@ -24,6 +24,11 @@ abstract class IProduceManagerRemoteDatasource {
   });
 
   Future<List<Produce>> searchProduce({required String query});
+
+  Future<List<Produce>> getNextTenSearchProduce({
+    required List<Produce> lastProduceList,
+    required String query,
+  });
 }
 
 class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource {
@@ -85,6 +90,32 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
     }).toList();
 
     return produceList;
+  }
+
+  @override
+  Future<List<Produce>> getNextTenSearchProduce(
+      {required List<Produce> lastProduceList, required String query}) async {
+    final lastDocument = await firebaseFirestore
+        .collection('produce')
+        .doc(lastProduceList[lastProduceList.length - 1].produceId)
+        .get();
+
+    final newQueryList = await firebaseFirestore
+        .collection('produce')
+        .startAfterDocument(lastDocument)
+        .where('produceNameSearch', arrayContains: query.toLowerCase())
+        .limit(10)
+        .get();
+
+    final List<Produce> newProduceList = newQueryList.docs.map((documentSnapshot) {
+      return Produce.fromMap(documentSnapshot.data());
+    }).toList();
+
+    print("Search new produce list: $newProduceList");
+
+    lastProduceList.addAll(newProduceList);
+
+    return lastProduceList;
   }
 
   @override

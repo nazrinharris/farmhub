@@ -7,12 +7,27 @@ import 'package:farmhub/presentation/views/search_screen/bloc/search_screen_bloc
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../features/produce_manager/domain/entities/produce/produce.dart';
 import '../../smart_widgets/custom_search_field.dart';
 
-class SearchScreen extends StatelessWidget {
+class SearchScreen extends StatefulWidget {
   final SearchScreenArguments arguments;
 
   const SearchScreen(this.arguments, {Key? key}) : super(key: key);
+
+  @override
+  State<SearchScreen> createState() => _SearchScreenState();
+}
+
+class _SearchScreenState extends State<SearchScreen> {
+  late ScrollController scrollController;
+
+  @override
+  void initState() {
+    super.initState();
+
+    scrollController = ScrollController();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +44,7 @@ class SearchScreen extends StatelessWidget {
             extendBodyBehindAppBar: true,
             appBar: DefaultAppBar(
               title: "Search Produce",
-              trailingIcon: const Icon(Icons.arrow_back),
+              trailingIcon: const Icon(Icons.close),
               leadingIcon: const Icon(
                 Icons.help,
                 color: Colors.transparent,
@@ -62,7 +77,7 @@ class SearchScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                SearchProduceList(),
+                SearchProduceList(scrollController: scrollController),
               ],
             ),
           ),
@@ -72,8 +87,32 @@ class SearchScreen extends StatelessWidget {
   }
 }
 
-class SearchProduceList extends StatelessWidget {
-  const SearchProduceList({Key? key}) : super(key: key);
+class SearchProduceList extends StatefulWidget {
+  final ScrollController scrollController;
+
+  const SearchProduceList({Key? key, required this.scrollController}) : super(key: key);
+
+  @override
+  State<SearchProduceList> createState() => _SearchProduceListState();
+}
+
+class _SearchProduceListState extends State<SearchProduceList> {
+  @override
+  void initState() {
+    super.initState();
+
+    context.read<SearchScreenBloc>().stream.listen((event) {
+      setState(() {});
+    });
+
+    widget.scrollController.addListener(() {
+      if (widget.scrollController.offset >= widget.scrollController.position.maxScrollExtent &&
+          !widget.scrollController.position.outOfRange) {
+        print("Reached the end of the list!");
+        context.read<SearchScreenBloc>().add(const SearchScreenEvent.getNextTenProduce());
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -97,18 +136,44 @@ class SearchProduceList extends StatelessWidget {
             padding: const EdgeInsets.only(top: 100),
             child: const CircularProgressIndicator(),
           );
+        } else if (state is SSSLoadingNextTenProduce) {
+          return Expanded(
+            child: MediaQuery.removePadding(
+              context: context,
+              removeTop: true,
+              child: ListView.builder(
+                controller: widget.scrollController,
+                physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+                itemCount: resolveChildCount(state.props.produceList, true),
+                itemBuilder: (context, index) {
+                  if (index == state.props.produceList.length) {
+                    return Container(
+                      padding: const EdgeInsets.only(top: 24),
+                      alignment: Alignment.center,
+                      child: const CircularProgressIndicator(),
+                    );
+                  } else {
+                    return ProduceListCard(index, state.props.produceList[index]);
+                  }
+                },
+              ),
+            ),
+          );
         } else if (state is SSSCompleted) {
           return Expanded(
             child: MediaQuery.removePadding(
               context: context,
               removeTop: true,
               child: ListView.builder(
+                controller: widget.scrollController,
                 physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
-                itemCount: state.produceList.length,
+                itemCount: state.props.produceList.length + 1,
                 itemBuilder: (context, index) {
-                  final produce = state.produceList[index];
-
-                  return ProduceListCard(index, produce);
+                  if (index == state.props.produceList.length) {
+                    return const SizedBox(height: 100);
+                  } else {
+                    return ProduceListCard(index, state.props.produceList[index]);
+                  }
                 },
               ),
             ),
@@ -116,9 +181,21 @@ class SearchProduceList extends StatelessWidget {
         } else if (state is SSSError) {
           return Container(
             padding: const EdgeInsets.only(top: 100),
-            child: Text(
-              state.failure.message ?? "Unknown Error",
-              style: Theme.of(context).textTheme.bodyText1,
+            child: Column(
+              children: [
+                Text(
+                  state.failure.message ?? "Unknown Error",
+                  style: Theme.of(context).textTheme.bodyText1,
+                ),
+                Text(
+                  state.failure.code ?? "Unknown Error",
+                  style: Theme.of(context).textTheme.bodyText1,
+                ),
+                Text(
+                  state.failure.toString(),
+                  style: Theme.of(context).textTheme.bodyText1,
+                ),
+              ],
             ),
           );
         } else {
@@ -128,5 +205,9 @@ class SearchProduceList extends StatelessWidget {
         }
       },
     );
+  }
+
+  int resolveChildCount(List<Produce> produceList, bool isLoading) {
+    return isLoading ? produceList.length + 1 : produceList.length;
   }
 }
