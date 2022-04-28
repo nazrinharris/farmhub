@@ -31,7 +31,8 @@ abstract class IProduceManagerRemoteDatasource {
   });
 }
 
-class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource {
+class ProduceManagerRemoteDatasource
+    implements IProduceManagerRemoteDatasource {
   final FirebaseFirestore firebaseFirestore;
 
   ProduceManagerRemoteDatasource({
@@ -71,7 +72,8 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
       return Produce.fromMap(documentSnapshot.data());
     }).toList();
 
-    List<Produce> combinedProduceList = List.from(lastProduceList)..addAll(newProduceList);
+    List<Produce> combinedProduceList = List.from(lastProduceList)
+      ..addAll(newProduceList);
 
     throw Exception();
   }
@@ -106,12 +108,15 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
         .limit(10)
         .get();
 
-    final List<Produce> newProduceList = newQueryList.docs.map((documentSnapshot) {
+    final List<Produce> newProduceList =
+        newQueryList.docs.map((documentSnapshot) {
       return Produce.fromMap(documentSnapshot.data());
     }).toList();
 
-    List<Produce> combinedProduceList = List.from(lastProduceList)..addAll(newProduceList);
+    List<Produce> combinedProduceList = List.from(lastProduceList)
+      ..addAll(newProduceList);
 
+    //return combinedProduceList;
     throw Exception();
   }
 
@@ -159,7 +164,8 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
     }
 
     // Create produce and store in Firestore
-    final String resultingId = await firebaseFirestore.collection('produce').add({
+    final String resultingId =
+        await firebaseFirestore.collection('produce').add({
       "currentProducePrice": {
         "price": currentProducePrice,
         "updateDate": clock.now().toString(),
@@ -179,7 +185,11 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
       });
 
       // Create Prices sub-collection
-      await firebaseFirestore.collection('produce').doc(doc.id).collection('prices').add(
+      await firebaseFirestore
+          .collection('produce')
+          .doc(doc.id)
+          .collection('prices')
+          .add(
         {
           "currentPrice": currentProducePrice,
           "editHistory": [
@@ -225,11 +235,16 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
         await firebaseFirestore.collection('produce').doc(produceId).get().then(
               (doc) => doc.data()!,
             );
-    final Map<String, dynamic> staleCurrentProducePrice = staleProduce["currentProducePrice"];
+    final Map<String, dynamic> staleCurrentProducePrice =
+        staleProduce["currentProducePrice"];
     final List<dynamic> weeklyPrices = staleProduce["weeklyPrices"];
 
     // Update Prices Collection
-    await firebaseFirestore.collection('produce').doc(produceId).collection('prices').add(
+    await firebaseFirestore
+        .collection('produce')
+        .doc(produceId)
+        .collection('prices')
+        .add(
       {
         "currentPrice": currentPrice,
         "editHistory": [
@@ -262,9 +277,10 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
     );
 
     // Retrieve updated produce
-    final produce = await firebaseFirestore.collection('produce').doc(produceId).get().then(
-          (snapshot) => Produce.fromMap(snapshot.data()),
-        );
+    final produce =
+        await firebaseFirestore.collection('produce').doc(produceId).get().then(
+              (snapshot) => Produce.fromMap(snapshot.data()),
+            );
 
     return produce;
   }

@@ -173,15 +173,42 @@ class _ProduceListSliverState extends State<ProduceListSliver> {
         } else if (state is ANPSPricesError) {
           debugPrintStack();
           return SliverList(
-              delegate: SliverChildListDelegate([
-            SizedBox(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height - 250,
-              child: const Center(
-                child: CircularProgressIndicator(),
-              ),
+            delegate: SliverChildBuilderDelegate(
+              (context, index) {
+                if (index == state.props.produceList.length) {
+                  return Container(
+                    height: 100,
+                    alignment: Alignment.center,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "Uh oh, something went wrong.",
+                          style: Theme.of(context).textTheme.bodyText1!.copyWith(color: Colors.red),
+                        ),
+                        UIVerticalSpace14(),
+                        Text(
+                          "Scroll to retry",
+                          style: Theme.of(context).textTheme.caption,
+                        ),
+                      ],
+                    ),
+                  );
+                } else {
+                  return ProduceListCard(
+                    index,
+                    state.props.produceList[index],
+                    onTap: () => Navigator.of(context).pushNamed(
+                      '/add_new_price_second',
+                      arguments: ProduceArguments(state.props.produceList[index]),
+                    ),
+                    chartAnimationDuration: 0,
+                  );
+                }
+              },
+              childCount: state.props.produceList.length + 1,
             ),
-          ]));
+          );
         } else {
           return SliverList(
               delegate: SliverChildListDelegate([

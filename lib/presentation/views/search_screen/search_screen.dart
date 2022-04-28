@@ -179,23 +179,40 @@ class _SearchProduceListState extends State<SearchProduceList> {
             ),
           );
         } else if (state is SSSError) {
-          return Container(
-            padding: const EdgeInsets.only(top: 100),
-            child: Column(
-              children: [
-                Text(
-                  state.failure.message ?? "Unknown Error",
-                  style: Theme.of(context).textTheme.bodyText1,
-                ),
-                Text(
-                  state.failure.code ?? "Unknown Error",
-                  style: Theme.of(context).textTheme.bodyText1,
-                ),
-                Text(
-                  state.failure.toString(),
-                  style: Theme.of(context).textTheme.bodyText1,
-                ),
-              ],
+          return Expanded(
+            child: MediaQuery.removePadding(
+              context: context,
+              removeTop: true,
+              child: ListView.builder(
+                controller: widget.scrollController,
+                physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+                itemCount: state.props.produceList.length + 1,
+                itemBuilder: (context, index) {
+                  if (index == state.props.produceList.length) {
+                    return Container(
+                      height: 100,
+                      alignment: Alignment.center,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Uh oh, something went wrong.",
+                            style:
+                                Theme.of(context).textTheme.bodyText1!.copyWith(color: Colors.red),
+                          ),
+                          const UIVerticalSpace14(),
+                          Text(
+                            "Scroll to retry",
+                            style: Theme.of(context).textTheme.caption,
+                          ),
+                        ],
+                      ),
+                    );
+                  } else {
+                    return ProduceListCard(index, state.props.produceList[index]);
+                  }
+                },
+              ),
             ),
           );
         } else {

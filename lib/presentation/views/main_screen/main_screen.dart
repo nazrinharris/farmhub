@@ -19,6 +19,7 @@ import '../../../core/errors/failures.dart';
 import '../../../features/produce_manager/domain/entities/produce/produce.dart';
 import '../../../locator.dart';
 import '../../shared_widgets/scroll_physics.dart';
+import '../../shared_widgets/ui_helpers.dart';
 import '../../smart_widgets/produce_list_card.dart';
 
 class MainScreen extends StatefulWidget {
@@ -319,11 +320,21 @@ class SliverProduceErrorList extends StatelessWidget {
         (context, index) {
           if (index == props.produceList.length) {
             return Container(
-              padding: const EdgeInsets.only(top: 24),
+              height: 100,
               alignment: Alignment.center,
-              child: Text(
-                "Uh oh, something went wrong.",
-                style: Theme.of(context).textTheme.bodyText1!.copyWith(color: Colors.red),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "Uh oh, something went wrong.",
+                    style: Theme.of(context).textTheme.bodyText1!.copyWith(color: Colors.red),
+                  ),
+                  const UIVerticalSpace14(),
+                  Text(
+                    "Scroll to retry",
+                    style: Theme.of(context).textTheme.caption,
+                  ),
+                ],
               ),
             );
           } else {

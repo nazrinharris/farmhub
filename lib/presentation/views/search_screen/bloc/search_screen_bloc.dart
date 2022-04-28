@@ -73,28 +73,26 @@ class SearchScreenBloc extends Bloc<SearchScreenEvent, SearchScreenState> {
     _SSEGetNextTenProduce event,
     Emitter<SearchScreenState> emit,
   ) async {
-    if (state is SSSCompleted) {
-      emit(SearchScreenState.loadingNextTenProduce(state.props));
+    emit(SearchScreenState.loadingNextTenProduce(state.props));
 
-      final failureOrNewProduceList = await produceManagerRepository.getNextTenSearchProduce(
-        state.props.produceList,
-        state.props.query,
-      );
+    final failureOrNewProduceList = await produceManagerRepository.getNextTenSearchProduce(
+      state.props.produceList,
+      state.props.query,
+    );
 
-      failureOrNewProduceList.fold(
-        (f) {
-          emit(SearchScreenState.error(props: state.props, failure: f));
-          print(f.toString());
-        },
-        (produceList) {
-          emit(SearchScreenState.completed(state.props.copyWith(produceList: produceList)));
-          int index = 1;
-          for (Produce produce in produceList) {
-            print(index.toString() + " " + produce.produceName + "   " + produce.produceId + "\n");
-            index++;
-          }
-        },
-      );
-    } else {}
+    failureOrNewProduceList.fold(
+      (f) {
+        emit(SearchScreenState.error(props: state.props, failure: f));
+        print(f.toString());
+      },
+      (produceList) {
+        emit(SearchScreenState.completed(state.props.copyWith(produceList: produceList)));
+        int index = 1;
+        for (Produce produce in produceList) {
+          print(index.toString() + " " + produce.produceName + "   " + produce.produceId + "\n");
+          index++;
+        }
+      },
+    );
   }
 }
