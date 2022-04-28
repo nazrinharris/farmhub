@@ -59,7 +59,7 @@ class _AddNewPriceSearchScreenState extends State<AddNewPriceSearchScreen> {
               children: [
                 const UICustomVertical(100),
                 Padding(
-                  padding: const EdgeInsets.only(bottom: 16),
+                  padding: const EdgeInsets.only(bottom: 16, top: 16),
                   child: Hero(
                     tag: "add_new_price_search_bar",
                     child: CustomSearchField(
@@ -149,7 +149,7 @@ class _SearchProduceListState extends State<SearchProduceList> {
                 itemBuilder: (context, index) {
                   if (index == state.props.produceList.length) {
                     return Container(
-                      padding: const EdgeInsets.only(top: 24),
+                      height: 100,
                       alignment: Alignment.center,
                       child: const CircularProgressIndicator(),
                     );

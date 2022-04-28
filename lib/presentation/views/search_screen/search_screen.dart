@@ -148,7 +148,7 @@ class _SearchProduceListState extends State<SearchProduceList> {
                 itemBuilder: (context, index) {
                   if (index == state.props.produceList.length) {
                     return Container(
-                      padding: const EdgeInsets.only(top: 24),
+                      height: 100,
                       alignment: Alignment.center,
                       child: const CircularProgressIndicator(),
                     );
