@@ -1,4 +1,5 @@
 import 'package:farmhub/presentation/views/add_new_price_screen/add_new_price_screen.dart';
+import 'package:farmhub/presentation/views/add_new_price_screen/add_new_price_search_screen.dart';
 import 'package:farmhub/presentation/views/add_new_price_screen/add_new_price_second_screen.dart';
 import 'package:farmhub/presentation/views/add_new_price_screen/add_new_price_third_screen.dart';
 import 'package:farmhub/presentation/views/create_produce_screen/create_produce_screen.dart';
@@ -71,6 +72,14 @@ class AppRouter {
           reverseTransitionDuration: const Duration(milliseconds: 300),
           pageBuilder: ((context, animation, secondaryAnimation) =>
               SearchScreen(routeSettings.arguments as SearchScreenArguments)),
+          transitionsBuilder: searchScreenTransitionBuilder,
+        );
+      case '/add_new_price_search_screen':
+        return PageRouteBuilder(
+          transitionDuration: const Duration(milliseconds: 300),
+          reverseTransitionDuration: const Duration(milliseconds: 300),
+          pageBuilder: ((context, animation, secondaryAnimation) =>
+              AddNewPriceSearchScreen(routeSettings.arguments as SearchScreenArguments)),
           transitionsBuilder: searchScreenTransitionBuilder,
         );
 

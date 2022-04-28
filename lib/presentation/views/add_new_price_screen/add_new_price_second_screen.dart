@@ -179,7 +179,7 @@ class ContentSliver extends StatelessWidget {
               children: [
                 MultipleFieldsForm<MultipleFieldsFormBloc>(
                   type: MultipleFieldsFormType.oneField,
-                  firstFieldLabel: "Price (in RM)",
+                  firstFieldLabel: "Price (in RM/kg)",
                   firstFieldHintText: "What's the new price?",
                   validateFirstField: validateCurrentPrice,
                 ),

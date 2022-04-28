@@ -400,7 +400,7 @@ class MainScreenHeaderDelegate extends SliverPersistentHeaderDelegate {
                 padding: const EdgeInsets.symmetric(vertical: 16),
                 child: CustomSearchField(
                   isFocus: false,
-                  // TODO: Set default right inside of [CustomSearchField] rather than this
+                  // TODO: Set default right inside of [CustomSearchField] rather than this (onChanged)
                   onChanged: (value) {},
                   onTap: () {
                     Navigator.of(context).pushNamed(

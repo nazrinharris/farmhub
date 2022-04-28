@@ -8,6 +8,7 @@ class CustomSearchField extends StatefulWidget {
   final bool? isFocus;
   final FocusNode? focusNode;
   final TextEditingController? textEditingController;
+  final EdgeInsets? margin;
 
   const CustomSearchField({
     Key? key,
@@ -17,6 +18,7 @@ class CustomSearchField extends StatefulWidget {
     this.focusNode,
     this.onSubmitted,
     this.textEditingController,
+    this.margin,
   }) : super(key: key);
 
   @override
@@ -51,7 +53,7 @@ class _CustomSearchFieldState extends State<CustomSearchField> {
     return Material(
       type: MaterialType.transparency,
       child: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 30),
+        margin: widget.margin ?? const EdgeInsets.symmetric(horizontal: 30),
         padding: const EdgeInsets.only(bottom: 1, left: 10, right: 10),
         height: 36,
         decoration: BoxDecoration(
@@ -119,10 +121,8 @@ class _CustomSearchFieldState extends State<CustomSearchField> {
   Widget resolveTrailingIcon(
       bool isFieldEmpty, TextEditingController textEditingController, Function setAsTrue) {
     if (isFieldEmpty == true) {
-      print("Rebuilt Shrink!");
       return const SizedBox.shrink();
     } else {
-      print("Rebuilt Icon Button");
       return IconButton(
         onPressed: () {
           textEditingController.clear();

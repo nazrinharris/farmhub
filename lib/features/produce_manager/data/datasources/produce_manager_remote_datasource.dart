@@ -111,8 +111,6 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
       return Produce.fromMap(documentSnapshot.data());
     }).toList();
 
-    print("Search new produce list: $newProduceList");
-
     lastProduceList.addAll(newProduceList);
 
     return lastProduceList;

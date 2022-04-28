@@ -100,11 +100,7 @@ class AddNewPriceThirdScreen extends StatelessWidget {
                             width: 180,
                             content: "Back to Home",
                             onPressed: () {
-                              Navigator.of(context)
-                                ..pop()
-                                ..pop()
-                                ..pop()
-                                ..pushReplacementNamed('/main');
+                              Navigator.of(context).pushReplacementNamed('/main');
                             },
                           )
                         ],
