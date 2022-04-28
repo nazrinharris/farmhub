@@ -57,7 +57,7 @@ class _AddNewPriceSecondScreenState extends State<AddNewPriceSecondScreen> {
                       context,
                       CustomSnackBar.error(
                           message:
-                              "Uh oh! An error occured. Code: ${state.code}, Message: ${state.message}"),
+                              "Uh oh! An error occured. Code: ${state.failure.code}, Message: ${state.failure.message}"),
                     );
                   } else if (state is ANPSAddNewPriceSuccess) {
                     showTopSnackBar(

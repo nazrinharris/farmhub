@@ -18,8 +18,7 @@ class MainScreenState with _$MainScreenState {
   }) = MSSPricesCompleted;
   const factory MainScreenState.pricesError({
     required MainScreenProps props,
-    required String code,
-    required String message,
+    required Failure failure,
   }) = MSSPricesError;
 }
 

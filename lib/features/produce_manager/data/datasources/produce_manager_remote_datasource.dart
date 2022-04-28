@@ -71,12 +71,11 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
       return Produce.fromMap(documentSnapshot.data());
     }).toList();
 
-    lastProduceList.addAll(newProduceList);
+    List<Produce> combinedProduceList = List.from(lastProduceList)..addAll(newProduceList);
 
-    return lastProduceList;
+    throw Exception();
   }
 
-  // TODO: Add Pagination!
   @override
   Future<List<Produce>> searchProduce({required String query}) async {
     final queryList = await firebaseFirestore
@@ -111,9 +110,9 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
       return Produce.fromMap(documentSnapshot.data());
     }).toList();
 
-    lastProduceList.addAll(newProduceList);
+    List<Produce> combinedProduceList = List.from(lastProduceList)..addAll(newProduceList);
 
-    return lastProduceList;
+    throw Exception();
   }
 
   @override

@@ -7,6 +7,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../../../core/errors/failures.dart';
 import '../../../../features/produce_manager/domain/entities/produce/produce.dart';
 import '../../../../features/produce_manager/domain/i_produce_manager_repository.dart';
 
@@ -117,9 +118,7 @@ class AddNewPriceScreenBloc extends Bloc<AddNewPriceScreenEvent, AddNewPriceScre
       emit(
         AddNewPriceScreenState.addNewPriceError(
           props: state.props,
-          message: f.message!,
-          code: f.code!,
-          stackTrace: f.stackTrace!,
+          failure: f,
         ),
       );
     }, (p) => emit(AddNewPriceScreenState.addNewPriceSuccess(produce: p, props: state.props)));

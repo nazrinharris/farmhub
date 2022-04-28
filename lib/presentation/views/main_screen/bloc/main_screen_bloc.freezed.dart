@@ -605,13 +605,10 @@ class _$MainScreenStateTearOff {
   }
 
   MSSPricesError pricesError(
-      {required MainScreenProps props,
-      required String code,
-      required String message}) {
+      {required MainScreenProps props, required Failure failure}) {
     return MSSPricesError(
       props: props,
-      code: code,
-      message: message,
+      failure: failure,
     );
   }
 }
@@ -629,8 +626,7 @@ mixin _$MainScreenState {
     required TResult Function(MainScreenProps props) pricesLoading,
     required TResult Function(MainScreenProps props) nextPricesLoading,
     required TResult Function(MainScreenProps props) pricesCompleted,
-    required TResult Function(
-            MainScreenProps props, String code, String message)
+    required TResult Function(MainScreenProps props, Failure failure)
         pricesError,
   }) =>
       throw _privateConstructorUsedError;
@@ -640,8 +636,7 @@ mixin _$MainScreenState {
     TResult Function(MainScreenProps props)? pricesLoading,
     TResult Function(MainScreenProps props)? nextPricesLoading,
     TResult Function(MainScreenProps props)? pricesCompleted,
-    TResult Function(MainScreenProps props, String code, String message)?
-        pricesError,
+    TResult Function(MainScreenProps props, Failure failure)? pricesError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -650,8 +645,7 @@ mixin _$MainScreenState {
     TResult Function(MainScreenProps props)? pricesLoading,
     TResult Function(MainScreenProps props)? nextPricesLoading,
     TResult Function(MainScreenProps props)? pricesCompleted,
-    TResult Function(MainScreenProps props, String code, String message)?
-        pricesError,
+    TResult Function(MainScreenProps props, Failure failure)? pricesError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -799,8 +793,7 @@ class _$MSSInitial implements MSSInitial {
     required TResult Function(MainScreenProps props) pricesLoading,
     required TResult Function(MainScreenProps props) nextPricesLoading,
     required TResult Function(MainScreenProps props) pricesCompleted,
-    required TResult Function(
-            MainScreenProps props, String code, String message)
+    required TResult Function(MainScreenProps props, Failure failure)
         pricesError,
   }) {
     return initial(props);
@@ -813,8 +806,7 @@ class _$MSSInitial implements MSSInitial {
     TResult Function(MainScreenProps props)? pricesLoading,
     TResult Function(MainScreenProps props)? nextPricesLoading,
     TResult Function(MainScreenProps props)? pricesCompleted,
-    TResult Function(MainScreenProps props, String code, String message)?
-        pricesError,
+    TResult Function(MainScreenProps props, Failure failure)? pricesError,
   }) {
     return initial?.call(props);
   }
@@ -826,8 +818,7 @@ class _$MSSInitial implements MSSInitial {
     TResult Function(MainScreenProps props)? pricesLoading,
     TResult Function(MainScreenProps props)? nextPricesLoading,
     TResult Function(MainScreenProps props)? pricesCompleted,
-    TResult Function(MainScreenProps props, String code, String message)?
-        pricesError,
+    TResult Function(MainScreenProps props, Failure failure)? pricesError,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -961,8 +952,7 @@ class _$MSSPricesLoading implements MSSPricesLoading {
     required TResult Function(MainScreenProps props) pricesLoading,
     required TResult Function(MainScreenProps props) nextPricesLoading,
     required TResult Function(MainScreenProps props) pricesCompleted,
-    required TResult Function(
-            MainScreenProps props, String code, String message)
+    required TResult Function(MainScreenProps props, Failure failure)
         pricesError,
   }) {
     return pricesLoading(props);
@@ -975,8 +965,7 @@ class _$MSSPricesLoading implements MSSPricesLoading {
     TResult Function(MainScreenProps props)? pricesLoading,
     TResult Function(MainScreenProps props)? nextPricesLoading,
     TResult Function(MainScreenProps props)? pricesCompleted,
-    TResult Function(MainScreenProps props, String code, String message)?
-        pricesError,
+    TResult Function(MainScreenProps props, Failure failure)? pricesError,
   }) {
     return pricesLoading?.call(props);
   }
@@ -988,8 +977,7 @@ class _$MSSPricesLoading implements MSSPricesLoading {
     TResult Function(MainScreenProps props)? pricesLoading,
     TResult Function(MainScreenProps props)? nextPricesLoading,
     TResult Function(MainScreenProps props)? pricesCompleted,
-    TResult Function(MainScreenProps props, String code, String message)?
-        pricesError,
+    TResult Function(MainScreenProps props, Failure failure)? pricesError,
     required TResult orElse(),
   }) {
     if (pricesLoading != null) {
@@ -1125,8 +1113,7 @@ class _$MSSNextPricesLoading implements MSSNextPricesLoading {
     required TResult Function(MainScreenProps props) pricesLoading,
     required TResult Function(MainScreenProps props) nextPricesLoading,
     required TResult Function(MainScreenProps props) pricesCompleted,
-    required TResult Function(
-            MainScreenProps props, String code, String message)
+    required TResult Function(MainScreenProps props, Failure failure)
         pricesError,
   }) {
     return nextPricesLoading(props);
@@ -1139,8 +1126,7 @@ class _$MSSNextPricesLoading implements MSSNextPricesLoading {
     TResult Function(MainScreenProps props)? pricesLoading,
     TResult Function(MainScreenProps props)? nextPricesLoading,
     TResult Function(MainScreenProps props)? pricesCompleted,
-    TResult Function(MainScreenProps props, String code, String message)?
-        pricesError,
+    TResult Function(MainScreenProps props, Failure failure)? pricesError,
   }) {
     return nextPricesLoading?.call(props);
   }
@@ -1152,8 +1138,7 @@ class _$MSSNextPricesLoading implements MSSNextPricesLoading {
     TResult Function(MainScreenProps props)? pricesLoading,
     TResult Function(MainScreenProps props)? nextPricesLoading,
     TResult Function(MainScreenProps props)? pricesCompleted,
-    TResult Function(MainScreenProps props, String code, String message)?
-        pricesError,
+    TResult Function(MainScreenProps props, Failure failure)? pricesError,
     required TResult orElse(),
   }) {
     if (nextPricesLoading != null) {
@@ -1288,8 +1273,7 @@ class _$MSSPricesCompleted implements MSSPricesCompleted {
     required TResult Function(MainScreenProps props) pricesLoading,
     required TResult Function(MainScreenProps props) nextPricesLoading,
     required TResult Function(MainScreenProps props) pricesCompleted,
-    required TResult Function(
-            MainScreenProps props, String code, String message)
+    required TResult Function(MainScreenProps props, Failure failure)
         pricesError,
   }) {
     return pricesCompleted(props);
@@ -1302,8 +1286,7 @@ class _$MSSPricesCompleted implements MSSPricesCompleted {
     TResult Function(MainScreenProps props)? pricesLoading,
     TResult Function(MainScreenProps props)? nextPricesLoading,
     TResult Function(MainScreenProps props)? pricesCompleted,
-    TResult Function(MainScreenProps props, String code, String message)?
-        pricesError,
+    TResult Function(MainScreenProps props, Failure failure)? pricesError,
   }) {
     return pricesCompleted?.call(props);
   }
@@ -1315,8 +1298,7 @@ class _$MSSPricesCompleted implements MSSPricesCompleted {
     TResult Function(MainScreenProps props)? pricesLoading,
     TResult Function(MainScreenProps props)? nextPricesLoading,
     TResult Function(MainScreenProps props)? pricesCompleted,
-    TResult Function(MainScreenProps props, String code, String message)?
-        pricesError,
+    TResult Function(MainScreenProps props, Failure failure)? pricesError,
     required TResult orElse(),
   }) {
     if (pricesCompleted != null) {
@@ -1385,7 +1367,7 @@ abstract class $MSSPricesErrorCopyWith<$Res>
           MSSPricesError value, $Res Function(MSSPricesError) then) =
       _$MSSPricesErrorCopyWithImpl<$Res>;
   @override
-  $Res call({MainScreenProps props, String code, String message});
+  $Res call({MainScreenProps props, Failure failure});
 
   @override
   $MainScreenPropsCopyWith<$Res> get props;
@@ -1405,22 +1387,17 @@ class _$MSSPricesErrorCopyWithImpl<$Res>
   @override
   $Res call({
     Object? props = freezed,
-    Object? code = freezed,
-    Object? message = freezed,
+    Object? failure = freezed,
   }) {
     return _then(MSSPricesError(
       props: props == freezed
           ? _value.props
           : props // ignore: cast_nullable_to_non_nullable
               as MainScreenProps,
-      code: code == freezed
-          ? _value.code
-          : code // ignore: cast_nullable_to_non_nullable
-              as String,
-      message: message == freezed
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
+      failure: failure == freezed
+          ? _value.failure
+          : failure // ignore: cast_nullable_to_non_nullable
+              as Failure,
     ));
   }
 }
@@ -1428,19 +1405,16 @@ class _$MSSPricesErrorCopyWithImpl<$Res>
 /// @nodoc
 
 class _$MSSPricesError implements MSSPricesError {
-  const _$MSSPricesError(
-      {required this.props, required this.code, required this.message});
+  const _$MSSPricesError({required this.props, required this.failure});
 
   @override
   final MainScreenProps props;
   @override
-  final String code;
-  @override
-  final String message;
+  final Failure failure;
 
   @override
   String toString() {
-    return 'MainScreenState.pricesError(props: $props, code: $code, message: $message)';
+    return 'MainScreenState.pricesError(props: $props, failure: $failure)';
   }
 
   @override
@@ -1449,12 +1423,12 @@ class _$MSSPricesError implements MSSPricesError {
         (other.runtimeType == runtimeType &&
             other is MSSPricesError &&
             (identical(other.props, props) || other.props == props) &&
-            (identical(other.code, code) || other.code == code) &&
-            (identical(other.message, message) || other.message == message));
+            const DeepCollectionEquality().equals(other.failure, failure));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, props, code, message);
+  int get hashCode => Object.hash(
+      runtimeType, props, const DeepCollectionEquality().hash(failure));
 
   @JsonKey(ignore: true)
   @override
@@ -1468,11 +1442,10 @@ class _$MSSPricesError implements MSSPricesError {
     required TResult Function(MainScreenProps props) pricesLoading,
     required TResult Function(MainScreenProps props) nextPricesLoading,
     required TResult Function(MainScreenProps props) pricesCompleted,
-    required TResult Function(
-            MainScreenProps props, String code, String message)
+    required TResult Function(MainScreenProps props, Failure failure)
         pricesError,
   }) {
-    return pricesError(props, code, message);
+    return pricesError(props, failure);
   }
 
   @override
@@ -1482,10 +1455,9 @@ class _$MSSPricesError implements MSSPricesError {
     TResult Function(MainScreenProps props)? pricesLoading,
     TResult Function(MainScreenProps props)? nextPricesLoading,
     TResult Function(MainScreenProps props)? pricesCompleted,
-    TResult Function(MainScreenProps props, String code, String message)?
-        pricesError,
+    TResult Function(MainScreenProps props, Failure failure)? pricesError,
   }) {
-    return pricesError?.call(props, code, message);
+    return pricesError?.call(props, failure);
   }
 
   @override
@@ -1495,12 +1467,11 @@ class _$MSSPricesError implements MSSPricesError {
     TResult Function(MainScreenProps props)? pricesLoading,
     TResult Function(MainScreenProps props)? nextPricesLoading,
     TResult Function(MainScreenProps props)? pricesCompleted,
-    TResult Function(MainScreenProps props, String code, String message)?
-        pricesError,
+    TResult Function(MainScreenProps props, Failure failure)? pricesError,
     required TResult orElse(),
   }) {
     if (pricesError != null) {
-      return pricesError(props, code, message);
+      return pricesError(props, failure);
     }
     return orElse();
   }
@@ -1549,13 +1520,11 @@ class _$MSSPricesError implements MSSPricesError {
 abstract class MSSPricesError implements MainScreenState {
   const factory MSSPricesError(
       {required MainScreenProps props,
-      required String code,
-      required String message}) = _$MSSPricesError;
+      required Failure failure}) = _$MSSPricesError;
 
   @override
   MainScreenProps get props;
-  String get code;
-  String get message;
+  Failure get failure;
   @override
   @JsonKey(ignore: true)
   $MSSPricesErrorCopyWith<MSSPricesError> get copyWith =>

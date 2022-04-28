@@ -30,9 +30,7 @@ class AddNewPriceScreenState with _$AddNewPriceScreenState {
 
   const factory AddNewPriceScreenState.addNewPriceError({
     required AddNewPriceScreenProps props,
-    required String message,
-    required String code,
-    required StackTrace stackTrace,
+    required Failure failure,
   }) = ANPSAddNewPriceError;
 }
 

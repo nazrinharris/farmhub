@@ -706,15 +706,10 @@ class _$AddNewPriceScreenStateTearOff {
   }
 
   ANPSAddNewPriceError addNewPriceError(
-      {required AddNewPriceScreenProps props,
-      required String message,
-      required String code,
-      required StackTrace stackTrace}) {
+      {required AddNewPriceScreenProps props, required Failure failure}) {
     return ANPSAddNewPriceError(
       props: props,
-      message: message,
-      code: code,
-      stackTrace: stackTrace,
+      failure: failure,
     );
   }
 }
@@ -737,8 +732,7 @@ mixin _$AddNewPriceScreenState {
         pricesError,
     required TResult Function(Produce produce, AddNewPriceScreenProps props)
         addNewPriceSuccess,
-    required TResult Function(AddNewPriceScreenProps props, String message,
-            String code, StackTrace stackTrace)
+    required TResult Function(AddNewPriceScreenProps props, Failure failure)
         addNewPriceError,
   }) =>
       throw _privateConstructorUsedError;
@@ -753,8 +747,7 @@ mixin _$AddNewPriceScreenState {
         pricesError,
     TResult Function(Produce produce, AddNewPriceScreenProps props)?
         addNewPriceSuccess,
-    TResult Function(AddNewPriceScreenProps props, String message, String code,
-            StackTrace stackTrace)?
+    TResult Function(AddNewPriceScreenProps props, Failure failure)?
         addNewPriceError,
   }) =>
       throw _privateConstructorUsedError;
@@ -769,8 +762,7 @@ mixin _$AddNewPriceScreenState {
         pricesError,
     TResult Function(Produce produce, AddNewPriceScreenProps props)?
         addNewPriceSuccess,
-    TResult Function(AddNewPriceScreenProps props, String message, String code,
-            StackTrace stackTrace)?
+    TResult Function(AddNewPriceScreenProps props, Failure failure)?
         addNewPriceError,
     required TResult orElse(),
   }) =>
@@ -940,8 +932,7 @@ class _$ANPSInitial with DiagnosticableTreeMixin implements ANPSInitial {
         pricesError,
     required TResult Function(Produce produce, AddNewPriceScreenProps props)
         addNewPriceSuccess,
-    required TResult Function(AddNewPriceScreenProps props, String message,
-            String code, StackTrace stackTrace)
+    required TResult Function(AddNewPriceScreenProps props, Failure failure)
         addNewPriceError,
   }) {
     return initial(props);
@@ -959,8 +950,7 @@ class _$ANPSInitial with DiagnosticableTreeMixin implements ANPSInitial {
         pricesError,
     TResult Function(Produce produce, AddNewPriceScreenProps props)?
         addNewPriceSuccess,
-    TResult Function(AddNewPriceScreenProps props, String message, String code,
-            StackTrace stackTrace)?
+    TResult Function(AddNewPriceScreenProps props, Failure failure)?
         addNewPriceError,
   }) {
     return initial?.call(props);
@@ -978,8 +968,7 @@ class _$ANPSInitial with DiagnosticableTreeMixin implements ANPSInitial {
         pricesError,
     TResult Function(Produce produce, AddNewPriceScreenProps props)?
         addNewPriceSuccess,
-    TResult Function(AddNewPriceScreenProps props, String message, String code,
-            StackTrace stackTrace)?
+    TResult Function(AddNewPriceScreenProps props, Failure failure)?
         addNewPriceError,
     required TResult orElse(),
   }) {
@@ -1136,8 +1125,7 @@ class _$ANPSPricesLoading
         pricesError,
     required TResult Function(Produce produce, AddNewPriceScreenProps props)
         addNewPriceSuccess,
-    required TResult Function(AddNewPriceScreenProps props, String message,
-            String code, StackTrace stackTrace)
+    required TResult Function(AddNewPriceScreenProps props, Failure failure)
         addNewPriceError,
   }) {
     return pricesLoading(props);
@@ -1155,8 +1143,7 @@ class _$ANPSPricesLoading
         pricesError,
     TResult Function(Produce produce, AddNewPriceScreenProps props)?
         addNewPriceSuccess,
-    TResult Function(AddNewPriceScreenProps props, String message, String code,
-            StackTrace stackTrace)?
+    TResult Function(AddNewPriceScreenProps props, Failure failure)?
         addNewPriceError,
   }) {
     return pricesLoading?.call(props);
@@ -1174,8 +1161,7 @@ class _$ANPSPricesLoading
         pricesError,
     TResult Function(Produce produce, AddNewPriceScreenProps props)?
         addNewPriceSuccess,
-    TResult Function(AddNewPriceScreenProps props, String message, String code,
-            StackTrace stackTrace)?
+    TResult Function(AddNewPriceScreenProps props, Failure failure)?
         addNewPriceError,
     required TResult orElse(),
   }) {
@@ -1334,8 +1320,7 @@ class _$ANPSNextPricesLoading
         pricesError,
     required TResult Function(Produce produce, AddNewPriceScreenProps props)
         addNewPriceSuccess,
-    required TResult Function(AddNewPriceScreenProps props, String message,
-            String code, StackTrace stackTrace)
+    required TResult Function(AddNewPriceScreenProps props, Failure failure)
         addNewPriceError,
   }) {
     return nextPricesLoading(props);
@@ -1353,8 +1338,7 @@ class _$ANPSNextPricesLoading
         pricesError,
     TResult Function(Produce produce, AddNewPriceScreenProps props)?
         addNewPriceSuccess,
-    TResult Function(AddNewPriceScreenProps props, String message, String code,
-            StackTrace stackTrace)?
+    TResult Function(AddNewPriceScreenProps props, Failure failure)?
         addNewPriceError,
   }) {
     return nextPricesLoading?.call(props);
@@ -1372,8 +1356,7 @@ class _$ANPSNextPricesLoading
         pricesError,
     TResult Function(Produce produce, AddNewPriceScreenProps props)?
         addNewPriceSuccess,
-    TResult Function(AddNewPriceScreenProps props, String message, String code,
-            StackTrace stackTrace)?
+    TResult Function(AddNewPriceScreenProps props, Failure failure)?
         addNewPriceError,
     required TResult orElse(),
   }) {
@@ -1531,8 +1514,7 @@ class _$ANPSPricesCompleted
         pricesError,
     required TResult Function(Produce produce, AddNewPriceScreenProps props)
         addNewPriceSuccess,
-    required TResult Function(AddNewPriceScreenProps props, String message,
-            String code, StackTrace stackTrace)
+    required TResult Function(AddNewPriceScreenProps props, Failure failure)
         addNewPriceError,
   }) {
     return pricesCompleted(props);
@@ -1550,8 +1532,7 @@ class _$ANPSPricesCompleted
         pricesError,
     TResult Function(Produce produce, AddNewPriceScreenProps props)?
         addNewPriceSuccess,
-    TResult Function(AddNewPriceScreenProps props, String message, String code,
-            StackTrace stackTrace)?
+    TResult Function(AddNewPriceScreenProps props, Failure failure)?
         addNewPriceError,
   }) {
     return pricesCompleted?.call(props);
@@ -1569,8 +1550,7 @@ class _$ANPSPricesCompleted
         pricesError,
     TResult Function(Produce produce, AddNewPriceScreenProps props)?
         addNewPriceSuccess,
-    TResult Function(AddNewPriceScreenProps props, String message, String code,
-            StackTrace stackTrace)?
+    TResult Function(AddNewPriceScreenProps props, Failure failure)?
         addNewPriceError,
     required TResult orElse(),
   }) {
@@ -1764,8 +1744,7 @@ class _$ANPSPricesError
         pricesError,
     required TResult Function(Produce produce, AddNewPriceScreenProps props)
         addNewPriceSuccess,
-    required TResult Function(AddNewPriceScreenProps props, String message,
-            String code, StackTrace stackTrace)
+    required TResult Function(AddNewPriceScreenProps props, Failure failure)
         addNewPriceError,
   }) {
     return pricesError(message, code, stackTrace, props);
@@ -1783,8 +1762,7 @@ class _$ANPSPricesError
         pricesError,
     TResult Function(Produce produce, AddNewPriceScreenProps props)?
         addNewPriceSuccess,
-    TResult Function(AddNewPriceScreenProps props, String message, String code,
-            StackTrace stackTrace)?
+    TResult Function(AddNewPriceScreenProps props, Failure failure)?
         addNewPriceError,
   }) {
     return pricesError?.call(message, code, stackTrace, props);
@@ -1802,8 +1780,7 @@ class _$ANPSPricesError
         pricesError,
     TResult Function(Produce produce, AddNewPriceScreenProps props)?
         addNewPriceSuccess,
-    TResult Function(AddNewPriceScreenProps props, String message, String code,
-            StackTrace stackTrace)?
+    TResult Function(AddNewPriceScreenProps props, Failure failure)?
         addNewPriceError,
     required TResult orElse(),
   }) {
@@ -1985,8 +1962,7 @@ class _$ANPSAddNewPriceSuccess
         pricesError,
     required TResult Function(Produce produce, AddNewPriceScreenProps props)
         addNewPriceSuccess,
-    required TResult Function(AddNewPriceScreenProps props, String message,
-            String code, StackTrace stackTrace)
+    required TResult Function(AddNewPriceScreenProps props, Failure failure)
         addNewPriceError,
   }) {
     return addNewPriceSuccess(produce, props);
@@ -2004,8 +1980,7 @@ class _$ANPSAddNewPriceSuccess
         pricesError,
     TResult Function(Produce produce, AddNewPriceScreenProps props)?
         addNewPriceSuccess,
-    TResult Function(AddNewPriceScreenProps props, String message, String code,
-            StackTrace stackTrace)?
+    TResult Function(AddNewPriceScreenProps props, Failure failure)?
         addNewPriceError,
   }) {
     return addNewPriceSuccess?.call(produce, props);
@@ -2023,8 +1998,7 @@ class _$ANPSAddNewPriceSuccess
         pricesError,
     TResult Function(Produce produce, AddNewPriceScreenProps props)?
         addNewPriceSuccess,
-    TResult Function(AddNewPriceScreenProps props, String message, String code,
-            StackTrace stackTrace)?
+    TResult Function(AddNewPriceScreenProps props, Failure failure)?
         addNewPriceError,
     required TResult orElse(),
   }) {
@@ -2102,11 +2076,7 @@ abstract class $ANPSAddNewPriceErrorCopyWith<$Res>
           $Res Function(ANPSAddNewPriceError) then) =
       _$ANPSAddNewPriceErrorCopyWithImpl<$Res>;
   @override
-  $Res call(
-      {AddNewPriceScreenProps props,
-      String message,
-      String code,
-      StackTrace stackTrace});
+  $Res call({AddNewPriceScreenProps props, Failure failure});
 
   @override
   $AddNewPriceScreenPropsCopyWith<$Res> get props;
@@ -2126,27 +2096,17 @@ class _$ANPSAddNewPriceErrorCopyWithImpl<$Res>
   @override
   $Res call({
     Object? props = freezed,
-    Object? message = freezed,
-    Object? code = freezed,
-    Object? stackTrace = freezed,
+    Object? failure = freezed,
   }) {
     return _then(ANPSAddNewPriceError(
       props: props == freezed
           ? _value.props
           : props // ignore: cast_nullable_to_non_nullable
               as AddNewPriceScreenProps,
-      message: message == freezed
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-      code: code == freezed
-          ? _value.code
-          : code // ignore: cast_nullable_to_non_nullable
-              as String,
-      stackTrace: stackTrace == freezed
-          ? _value.stackTrace
-          : stackTrace // ignore: cast_nullable_to_non_nullable
-              as StackTrace,
+      failure: failure == freezed
+          ? _value.failure
+          : failure // ignore: cast_nullable_to_non_nullable
+              as Failure,
     ));
   }
 }
@@ -2156,24 +2116,16 @@ class _$ANPSAddNewPriceErrorCopyWithImpl<$Res>
 class _$ANPSAddNewPriceError
     with DiagnosticableTreeMixin
     implements ANPSAddNewPriceError {
-  const _$ANPSAddNewPriceError(
-      {required this.props,
-      required this.message,
-      required this.code,
-      required this.stackTrace});
+  const _$ANPSAddNewPriceError({required this.props, required this.failure});
 
   @override
   final AddNewPriceScreenProps props;
   @override
-  final String message;
-  @override
-  final String code;
-  @override
-  final StackTrace stackTrace;
+  final Failure failure;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AddNewPriceScreenState.addNewPriceError(props: $props, message: $message, code: $code, stackTrace: $stackTrace)';
+    return 'AddNewPriceScreenState.addNewPriceError(props: $props, failure: $failure)';
   }
 
   @override
@@ -2183,9 +2135,7 @@ class _$ANPSAddNewPriceError
       ..add(DiagnosticsProperty(
           'type', 'AddNewPriceScreenState.addNewPriceError'))
       ..add(DiagnosticsProperty('props', props))
-      ..add(DiagnosticsProperty('message', message))
-      ..add(DiagnosticsProperty('code', code))
-      ..add(DiagnosticsProperty('stackTrace', stackTrace));
+      ..add(DiagnosticsProperty('failure', failure));
   }
 
   @override
@@ -2194,15 +2144,11 @@ class _$ANPSAddNewPriceError
         (other.runtimeType == runtimeType &&
             other is ANPSAddNewPriceError &&
             (identical(other.props, props) || other.props == props) &&
-            (identical(other.message, message) || other.message == message) &&
-            (identical(other.code, code) || other.code == code) &&
-            (identical(other.stackTrace, stackTrace) ||
-                other.stackTrace == stackTrace));
+            (identical(other.failure, failure) || other.failure == failure));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, props, message, code, stackTrace);
+  int get hashCode => Object.hash(runtimeType, props, failure);
 
   @JsonKey(ignore: true)
   @override
@@ -2222,11 +2168,10 @@ class _$ANPSAddNewPriceError
         pricesError,
     required TResult Function(Produce produce, AddNewPriceScreenProps props)
         addNewPriceSuccess,
-    required TResult Function(AddNewPriceScreenProps props, String message,
-            String code, StackTrace stackTrace)
+    required TResult Function(AddNewPriceScreenProps props, Failure failure)
         addNewPriceError,
   }) {
-    return addNewPriceError(props, message, code, stackTrace);
+    return addNewPriceError(props, failure);
   }
 
   @override
@@ -2241,11 +2186,10 @@ class _$ANPSAddNewPriceError
         pricesError,
     TResult Function(Produce produce, AddNewPriceScreenProps props)?
         addNewPriceSuccess,
-    TResult Function(AddNewPriceScreenProps props, String message, String code,
-            StackTrace stackTrace)?
+    TResult Function(AddNewPriceScreenProps props, Failure failure)?
         addNewPriceError,
   }) {
-    return addNewPriceError?.call(props, message, code, stackTrace);
+    return addNewPriceError?.call(props, failure);
   }
 
   @override
@@ -2260,13 +2204,12 @@ class _$ANPSAddNewPriceError
         pricesError,
     TResult Function(Produce produce, AddNewPriceScreenProps props)?
         addNewPriceSuccess,
-    TResult Function(AddNewPriceScreenProps props, String message, String code,
-            StackTrace stackTrace)?
+    TResult Function(AddNewPriceScreenProps props, Failure failure)?
         addNewPriceError,
     required TResult orElse(),
   }) {
     if (addNewPriceError != null) {
-      return addNewPriceError(props, message, code, stackTrace);
+      return addNewPriceError(props, failure);
     }
     return orElse();
   }
@@ -2321,15 +2264,11 @@ class _$ANPSAddNewPriceError
 abstract class ANPSAddNewPriceError implements AddNewPriceScreenState {
   const factory ANPSAddNewPriceError(
       {required AddNewPriceScreenProps props,
-      required String message,
-      required String code,
-      required StackTrace stackTrace}) = _$ANPSAddNewPriceError;
+      required Failure failure}) = _$ANPSAddNewPriceError;
 
   @override
   AddNewPriceScreenProps get props;
-  String get message;
-  String get code;
-  StackTrace get stackTrace;
+  Failure get failure;
   @override
   @JsonKey(ignore: true)
   $ANPSAddNewPriceErrorCopyWith<ANPSAddNewPriceError> get copyWith =>
