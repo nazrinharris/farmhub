@@ -59,10 +59,11 @@ class _AddNewPriceSearchScreenState extends State<AddNewPriceSearchScreen> {
               children: [
                 const UICustomVertical(100),
                 Padding(
-                  padding: const EdgeInsets.only(bottom: 16, top: 16),
+                  padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 30),
                   child: Hero(
                     tag: "add_new_price_search_bar",
                     child: CustomSearchField(
+                      margin: EdgeInsets.zero,
                       isFocus: true,
                       onTap: () {},
                       onChanged: (value) {

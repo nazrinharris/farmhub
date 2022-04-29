@@ -252,10 +252,10 @@ class HeaderSliver extends StatelessWidget {
                         ),
                   ),
                 ),
-                Hero(
-                  tag: "add_new_price_search_bar",
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 16),
+                Padding(
+                  padding: const EdgeInsets.only(top: 16),
+                  child: Hero(
+                    tag: "add_new_price_search_bar",
                     child: CustomSearchField(
                       margin: EdgeInsets.zero,
                       isFocus: false,
