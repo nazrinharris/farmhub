@@ -282,15 +282,24 @@ class SliverProduceList extends StatelessWidget {
           if (isLoading == true) {
             if (index == props.produceList.length) {
               return Container(
+                height: 100,
                 padding: const EdgeInsets.only(top: 24),
                 alignment: Alignment.center,
                 child: const CircularProgressIndicator(),
               );
             } else {
-              return ProduceListCard(index, props.produceList[index]);
+              return ProduceListCard(
+                index,
+                props.produceList[index],
+                chartAnimationDuration: 0,
+              );
             }
           } else {
-            return ProduceListCard(index, props.produceList[index]);
+            return ProduceListCard(
+              index,
+              props.produceList[index],
+              chartAnimationDuration: 0,
+            );
           }
         },
         childCount: resolveChildCount(props.produceList, isLoading),
@@ -338,7 +347,11 @@ class SliverProduceErrorList extends StatelessWidget {
               ),
             );
           } else {
-            return ProduceListCard(index, props.produceList[index]);
+            return ProduceListCard(
+              index,
+              props.produceList[index],
+              chartAnimationDuration: 0,
+            );
           }
         },
         childCount: props.produceList.length + 1,
