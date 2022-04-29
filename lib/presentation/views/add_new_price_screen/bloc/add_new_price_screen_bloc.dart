@@ -7,6 +7,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../../../core/errors/failures.dart';
 import '../../../../features/produce_manager/domain/entities/produce/produce.dart';
 import '../../../../features/produce_manager/domain/i_produce_manager_repository.dart';
 
@@ -23,10 +24,11 @@ class AddNewPriceScreenBloc extends Bloc<AddNewPriceScreenEvent, AddNewPriceScre
     required this.produceManagerRepository,
     this.multipleFieldsFormBloc,
     this.primaryButtonAwareCubit,
-  }) : super(const ANPSInitial()) {
+  }) : super(const ANPSInitial(props: AddNewPriceScreenProps(produceList: []))) {
     on<_ANPEStarted>(started);
     on<_ANPEGetFirstTenProduce>(getFirstTenProduce);
     on<_ANPEExecAddNewPrice>(execAddNewPrice);
+    on<_ANPEGetNextTenProduce>(getNextTenProduce);
   }
 
   FutureOr<void> started(
@@ -40,7 +42,7 @@ class AddNewPriceScreenBloc extends Bloc<AddNewPriceScreenEvent, AddNewPriceScre
     _ANPEGetFirstTenProduce event,
     Emitter<AddNewPriceScreenState> emit,
   ) async {
-    emit(const AddNewPriceScreenState.loading());
+    emit(AddNewPriceScreenState.pricesLoading(props: state.props));
 
     // Start getting produce.
     final failureOrProduceList = await produceManagerRepository.getFirstTenProduce();
@@ -48,16 +50,51 @@ class AddNewPriceScreenBloc extends Bloc<AddNewPriceScreenEvent, AddNewPriceScre
     emit(failureOrProduceList.fold(
       (f) {
         debugPrintStack(stackTrace: f.stackTrace);
-        return AddNewPriceScreenState.getFirstTenProduceError(
+        return AddNewPriceScreenState.pricesError(
+          props: state.props,
           message: f.message!,
           code: f.code!,
           stackTrace: f.stackTrace!,
         );
       },
-      (produceList) => AddNewPriceScreenState.getFirstTenProduceSuccess(
-        produceList: produceList,
-      ),
+      (produceList) => AddNewPriceScreenState.pricesCompleted(
+          props: state.props.copyWith(produceList: produceList)),
     ));
+  }
+
+  FutureOr<void> getNextTenProduce(
+    _ANPEGetNextTenProduce event,
+    Emitter<AddNewPriceScreenState> emit,
+  ) async {
+    emit(AddNewPriceScreenState.nextPricesLoading(props: state.props));
+
+    // Start getting next ten produce.
+    final failureOrNewProduceList =
+        await produceManagerRepository.getNextTenProduce(state.props.produceList);
+
+    failureOrNewProduceList.fold(
+      (f) {
+        debugPrintStack(stackTrace: f.stackTrace);
+        emit(AddNewPriceScreenState.pricesError(
+          message: f.message ?? "Unknown Message",
+          code: f.code ?? "Unknown Code - $f",
+          stackTrace: f.stackTrace ?? StackTrace.current,
+          props: state.props,
+        ));
+      },
+      (produceList) {
+        int index = 1;
+        for (Produce produce in produceList) {
+          print(index.toString() + " " + produce.produceName + "   " + produce.produceId + "\n");
+          index++;
+        }
+
+        emit(AddNewPriceScreenState.pricesCompleted(
+            props: state.props.copyWith(
+          produceList: produceList,
+        )));
+      },
+    );
   }
 
   FutureOr<void> execAddNewPrice(
@@ -65,10 +102,10 @@ class AddNewPriceScreenBloc extends Bloc<AddNewPriceScreenEvent, AddNewPriceScre
     Emitter<AddNewPriceScreenState> emit,
   ) async {
     // Indicate Loading
-    emit(const AddNewPriceScreenState.loading());
+    emit(AddNewPriceScreenState.pricesLoading(props: state.props));
     primaryButtonAwareCubit!.triggerLoading();
-    multipleFieldsFormBloc!.add(unfocusAllNodes);
     multipleFieldsFormBloc!.add(enableAlwaysValidation);
+    multipleFieldsFormBloc!.add(unfocusAllNodes);
 
     // Start Adding Price
     final failureOrProduce = await produceManagerRepository.addNewPrice(
@@ -80,11 +117,10 @@ class AddNewPriceScreenBloc extends Bloc<AddNewPriceScreenEvent, AddNewPriceScre
       primaryButtonAwareCubit!.triggerFirstPage();
       emit(
         AddNewPriceScreenState.addNewPriceError(
-          message: f.message!,
-          code: f.code!,
-          stackTrace: f.stackTrace!,
+          props: state.props,
+          failure: f,
         ),
       );
-    }, (p) => emit(AddNewPriceScreenState.addNewPriceSuccess(produce: p)));
+    }, (p) => emit(AddNewPriceScreenState.addNewPriceSuccess(produce: p, props: state.props)));
   }
 }

@@ -1,4 +1,5 @@
 import 'package:farmhub/presentation/views/add_new_price_screen/add_new_price_screen.dart';
+import 'package:farmhub/presentation/views/add_new_price_screen/add_new_price_search_screen.dart';
 import 'package:farmhub/presentation/views/add_new_price_screen/add_new_price_second_screen.dart';
 import 'package:farmhub/presentation/views/add_new_price_screen/add_new_price_third_screen.dart';
 import 'package:farmhub/presentation/views/create_produce_screen/create_produce_screen.dart';
@@ -16,8 +17,9 @@ import 'features/produce_manager/domain/entities/produce/produce.dart';
 
 class ProduceArguments {
   final Produce produce;
+  final bool? isFromSearch;
 
-  ProduceArguments(this.produce);
+  ProduceArguments(this.produce, {this.isFromSearch});
 }
 
 class SearchScreenArguments {
@@ -27,7 +29,9 @@ class SearchScreenArguments {
 }
 
 class AppRouter {
-  Route onGenerateRoute(RouteSettings routeSettings) {
+  static const add_new_price_second = "/add_new_price_second";
+
+  Route<dynamic> onGenerateRoute(RouteSettings routeSettings) {
     switch (routeSettings.name) {
       case '/':
         return CupertinoPageRoute(builder: (_) => const NavigateView());
@@ -56,7 +60,7 @@ class AppRouter {
           pageBuilder: ((context, animation, secondaryAnimation) => const AddNewPriceScreen()),
           transitionsBuilder: createProduceScreenTransitionBuilder,
         );
-      case '/add_new_price_second':
+      case add_new_price_second:
         return CupertinoPageRoute(
           builder: (_) => AddNewPriceSecondScreen(routeSettings.arguments as ProduceArguments),
         );
@@ -71,6 +75,14 @@ class AppRouter {
           reverseTransitionDuration: const Duration(milliseconds: 300),
           pageBuilder: ((context, animation, secondaryAnimation) =>
               SearchScreen(routeSettings.arguments as SearchScreenArguments)),
+          transitionsBuilder: searchScreenTransitionBuilder,
+        );
+      case '/add_new_price_search_screen':
+        return PageRouteBuilder(
+          transitionDuration: const Duration(milliseconds: 300),
+          reverseTransitionDuration: const Duration(milliseconds: 300),
+          pageBuilder: ((context, animation, secondaryAnimation) =>
+              AddNewPriceSearchScreen(routeSettings.arguments as SearchScreenArguments)),
           transitionsBuilder: searchScreenTransitionBuilder,
         );
 

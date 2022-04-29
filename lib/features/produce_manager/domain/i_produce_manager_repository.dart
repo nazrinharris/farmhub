@@ -12,7 +12,7 @@ abstract class IProduceManagerRepository {
 
   FutureEither<List<Produce>> getFirstTenProduce();
 
-  FutureEither<List<Produce>> getNextTenProduce();
+  FutureEither<List<Produce>> getNextTenProduce(List<Produce> lastProduceList);
 
   FutureEither<Produce> createNewProduce({
     required String produceName,
@@ -27,4 +27,6 @@ abstract class IProduceManagerRepository {
   });
 
   FutureEither<List<Produce>> searchProduce(String query);
+
+  FutureEither<List<Produce>> getNextTenSearchProduce(List<Produce> lastProduceList, String query);
 }

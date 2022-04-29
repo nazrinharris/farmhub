@@ -3,10 +3,12 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:farmhub/features/produce_manager/bloc/produce_manager_bloc.dart';
+import 'package:farmhub/features/produce_manager/domain/i_produce_manager_repository.dart';
 
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../../../core/errors/failures.dart';
 import '../../../../features/produce_manager/domain/entities/produce/produce.dart';
 
 part 'main_screen_event.dart';
@@ -15,15 +17,22 @@ part 'main_screen_bloc.freezed.dart';
 
 class MainScreenBloc extends Bloc<MainScreenEvent, MainScreenState> {
   final ProduceManagerBloc produceManagerBloc;
+  final IProduceManagerRepository produceManagerRepository;
   final AnimationController mainHeaderController;
 
   MainScreenBloc({
     required this.produceManagerBloc,
     required this.mainHeaderController,
-  }) : super(const MSSPricesLoading(props: MainScreenProps(isMainHeaderVisible: true))) {
+    required this.produceManagerRepository,
+  }) : super(const MSSPricesLoading(
+            props: MainScreenProps(
+          isMainHeaderVisible: true,
+          produceList: [],
+        ))) {
     on<_MSEStarted>(started);
     on<_MSEToggleMainHeader>(toggleMainHeader);
     on<_MSEGetFirstTenProduce>(getFirstTenProduce);
+    on<_MSEGetNextTenProduce>(getNextTenProduce);
   }
 
   FutureOr<void> started(
@@ -59,28 +68,46 @@ class MainScreenBloc extends Bloc<MainScreenEvent, MainScreenState> {
     Emitter<MainScreenState> emit,
   ) async {
     print("Adding getFirstTenProduce event...");
-    produceManagerBloc.add(const ProduceManagerEvent.execGetFirstTenProduce());
+    emit(MainScreenState.pricesLoading(props: state.props));
 
-    return emit.onEach(produceManagerBloc.stream, onData: (ProduceManagerState PMState) {
-      if (PMState is PMSGetFirstTenProduceLoading) {
-        // Do nothing.
+    final failureOrProduceList = await produceManagerRepository.getFirstTenProduce();
 
-      } else if (PMState is PMSGetFirstTenProduceSuccess) {
-        ;
+    failureOrProduceList.fold(
+      (f) {
+        emit(MainScreenState.pricesError(props: state.props, failure: f));
+      },
+      (produceList) {
         emit(
-          MainScreenState.mainPricesCompleted(
-            props: state.props,
-            produceList: PMState.produceList,
-          ),
-        );
-      } else if (PMState is PMSGetFirstTenProduceError) {
-        debugPrintStack(stackTrace: PMState.stackTrace);
-        emit(MainScreenState.mainPricesError(
-          props: state.props,
-          code: PMState.code,
-          message: PMState.message,
-        ));
-      } else {}
+            MainScreenState.pricesCompleted(props: state.props.copyWith(produceList: produceList)));
+      },
+    );
+  }
+
+  FutureOr<void> getNextTenProduce(
+    _MSEGetNextTenProduce event,
+    Emitter<MainScreenState> emit,
+  ) async {
+    print("Adding getNextTenProduce event...");
+    emit(MainScreenState.nextPricesLoading(props: state.props));
+
+    // Start getting next ten produce
+    final failureOrNewProduceList =
+        await produceManagerRepository.getNextTenProduce(state.props.produceList);
+
+    // Check if there are more produce
+    failureOrNewProduceList.fold((f) {
+      print(f.toString());
+      emit(MainScreenState.pricesError(
+        props: state.props,
+        failure: f,
+      ));
+    }, (produceList) {
+      int index = 1;
+      for (Produce produce in produceList) {
+        print(index.toString() + " " + produce.produceName + "   " + produce.produceId + "\n");
+        index++;
+      }
+      emit(MainScreenState.pricesCompleted(props: state.props.copyWith(produceList: produceList)));
     });
   }
 }

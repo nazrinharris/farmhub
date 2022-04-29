@@ -14,9 +14,9 @@ import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
 class AddNewPriceThirdScreen extends StatelessWidget {
-  final ProduceArguments produceArguments;
+  final ProduceArguments arguments;
 
-  const AddNewPriceThirdScreen(this.produceArguments, {Key? key}) : super(key: key);
+  const AddNewPriceThirdScreen(this.arguments, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -35,11 +35,20 @@ class AddNewPriceThirdScreen extends StatelessWidget {
                 trailingIcon: Icon(Icons.close),
                 trailingOnPressed: () {
                   // TODO: Make sure to refresh MainScreen
-                  Navigator.of(context)
-                    ..pop()
-                    ..pop()
-                    ..pop()
-                    ..pushReplacementNamed('/main');
+                  if (arguments.isFromSearch == true) {
+                    Navigator.of(context)
+                      ..pop()
+                      ..pop()
+                      ..pop()
+                      ..pop()
+                      ..pushReplacementNamed('/main');
+                  } else {
+                    Navigator.of(context)
+                      ..pop()
+                      ..pop()
+                      ..pop()
+                      ..pushReplacementNamed('/main');
+                  }
                 },
               ),
               body: SafeArea(
@@ -53,10 +62,10 @@ class AddNewPriceThirdScreen extends StatelessWidget {
                         Container(
                           alignment: Alignment.center,
                           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
-                          child: Headline1(produceArguments.produce.produceName),
+                          child: Headline1(arguments.produce.produceName),
                         ),
                         ChangeBox(
-                          produceArguments.produce,
+                          arguments.produce,
                           alignment: Alignment.center,
                         ),
                         const UIVerticalSpace14(),
@@ -65,17 +74,17 @@ class AddNewPriceThirdScreen extends StatelessWidget {
                         Column(
                           children: [
                             Text(
-                              "Current Price: RM${produceArguments.produce.currentProducePrice["price"]}/kg",
+                              "Current Price: RM${arguments.produce.currentProducePrice["price"]}/kg",
                             ),
                             Text(
-                              "Previous Price: RM${produceArguments.produce.previousProducePrice["price"]}/kg",
+                              "Previous Price: RM${arguments.produce.previousProducePrice["price"]}/kg",
                             ),
                           ],
                         ),
                         const UIVerticalSpace14(),
                         UIBorder(),
                         const UIVerticalSpace30(),
-                        LargePriceChart(produceArguments.produce, LargePriceChartType.oneW)
+                        LargePriceChart(arguments.produce, LargePriceChartType.oneW)
                       ],
                     ),
                     Container(
@@ -88,11 +97,20 @@ class AddNewPriceThirdScreen extends StatelessWidget {
                             width: 220,
                             content: 'Add another Price',
                             onPressed: () {
-                              Navigator.of(context)
-                                ..pop()
-                                ..pop()
-                                ..pop()
-                                ..pushNamed('/add_new_price');
+                              if (arguments.isFromSearch == true) {
+                                Navigator.of(context)
+                                  ..pop()
+                                  ..pop()
+                                  ..pop()
+                                  ..pop()
+                                  ..pushNamed('/add_new_price');
+                              } else {
+                                Navigator.of(context)
+                                  ..pop()
+                                  ..pop()
+                                  ..pop()
+                                  ..pushNamed('/add_new_price');
+                              }
                             },
                           ),
                           const UIVerticalSpace14(),
@@ -100,11 +118,20 @@ class AddNewPriceThirdScreen extends StatelessWidget {
                             width: 180,
                             content: "Back to Home",
                             onPressed: () {
-                              Navigator.of(context)
-                                ..pop()
-                                ..pop()
-                                ..pop()
-                                ..pushReplacementNamed('/main');
+                              if (arguments.isFromSearch == true) {
+                                Navigator.of(context)
+                                  ..pop()
+                                  ..pop()
+                                  ..pop()
+                                  ..pop()
+                                  ..pushReplacementNamed('/main');
+                              } else {
+                                Navigator.of(context)
+                                  ..pop()
+                                  ..pop()
+                                  ..pop()
+                                  ..pushReplacementNamed('/main');
+                              }
                             },
                           )
                         ],

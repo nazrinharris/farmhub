@@ -13,12 +13,14 @@ class ProduceListCard extends StatelessWidget {
   final int index;
   final Produce produce;
   final Function()? onTap;
+  final double? chartAnimationDuration;
 
   const ProduceListCard(
     this.index,
     this.produce, {
     Key? key,
     this.onTap,
+    this.chartAnimationDuration,
   }) : super(key: key);
 
   @override
@@ -73,7 +75,11 @@ class ProduceListCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     IgnorePointer(
-                      child: SmallPriceChart(produce, index),
+                      child: SmallPriceChart(
+                        produce,
+                        index,
+                        chartAnimationDuration: chartAnimationDuration,
+                      ),
                     ),
                   ],
                 ),
@@ -223,10 +229,13 @@ class ChangeBox extends StatelessWidget {
 }
 
 class SmallPriceChart extends StatelessWidget {
+  final double? chartAnimationDuration;
+
   const SmallPriceChart(
     this.produce,
     this.index, {
     Key? key,
+    this.chartAnimationDuration,
   }) : super(key: key);
 
   final Produce produce;
@@ -286,6 +295,7 @@ class SmallPriceChart extends StatelessWidget {
           ),
           series: <CartesianSeries>[
             SplineAreaSeries<num, num>(
+              animationDuration: chartAnimationDuration,
               dataSource: produce.weeklyPrices.reversed.toList(),
               xValueMapper: (num price, index) => index,
               yValueMapper: (num price, index) => price,

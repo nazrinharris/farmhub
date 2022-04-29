@@ -7,37 +7,25 @@ class MainScreenState with _$MainScreenState {
   }) = MSSInitial;
 
   // Main Screen
-  const factory MainScreenState.mainPricesLoading({
+  const factory MainScreenState.pricesLoading({
     required MainScreenProps props,
   }) = MSSPricesLoading;
-  const factory MainScreenState.mainPricesCompleted({
+  const factory MainScreenState.nextPricesLoading({
     required MainScreenProps props,
-    required List<Produce> produceList,
+  }) = MSSNextPricesLoading;
+  const factory MainScreenState.pricesCompleted({
+    required MainScreenProps props,
   }) = MSSPricesCompleted;
-  const factory MainScreenState.mainPricesError({
+  const factory MainScreenState.pricesError({
     required MainScreenProps props,
-    required String code,
-    required String message,
+    required Failure failure,
   }) = MSSPricesError;
-
-  // Search Screen
-  const factory MainScreenState.searchInitial({
-    required MainScreenProps props,
-  }) = MSSSearchInitial;
-  const factory MainScreenState.searchLoading({
-    required MainScreenProps props,
-  }) = MSSSearchLoading;
-  const factory MainScreenState.searchCompleted({
-    required MainScreenProps props,
-  }) = MSSSearchCompleted;
-  const factory MainScreenState.searchError({
-    required MainScreenProps props,
-  }) = MSSSearchError;
 }
 
 @freezed
 class MainScreenProps with _$MainScreenProps {
   const factory MainScreenProps({
     required bool isMainHeaderVisible,
+    required List<Produce> produceList,
   }) = _MainScreenProps;
 }

@@ -15,9 +15,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 
+import '../../../core/errors/failures.dart';
 import '../../../features/produce_manager/domain/entities/produce/produce.dart';
 import '../../../locator.dart';
 import '../../shared_widgets/scroll_physics.dart';
+import '../../shared_widgets/ui_helpers.dart';
 import '../../smart_widgets/produce_list_card.dart';
 
 class MainScreen extends StatefulWidget {
@@ -29,6 +31,7 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateMixin {
   late AnimationController mainHeaderController;
+  late ScrollController scrollController;
 
   late Animation<double> extent;
 
@@ -46,6 +49,7 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
       duration: const Duration(milliseconds: 500),
       reverseDuration: const Duration(milliseconds: 500),
     );
+    scrollController = ScrollController();
 
     mainHeaderController.addListener(() {
       setState(() {});
@@ -72,6 +76,7 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
           create: (context) => MainScreenBloc(
             mainHeaderController: mainHeaderController,
             produceManagerBloc: context.read<ProduceManagerBloc>(),
+            produceManagerRepository: locator(),
           ),
           child: Builder(
             builder: (context) => Scaffold(
@@ -137,16 +142,21 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
               ),
               body: SafeArea(
                 child: CustomScrollView(
+                  controller: scrollController,
                   physics: DefaultScrollPhysics,
                   slivers: [
                     CupertinoSliverRefreshControl(
                       onRefresh: () async {},
                     ),
-                    SliverPersistentHeader(
-                      delegate: MainScreenHeaderDelegate(extent, mainScreenFocusNode),
+                    BlocBuilder<MainScreenBloc, MainScreenState>(
+                      builder: (context, state) {
+                        return SliverPersistentHeader(
+                          delegate: MainScreenHeaderDelegate(extent, mainScreenFocusNode),
+                        );
+                      },
                     ),
                     //const SliverDebugSlot(),
-                    const SliverMainScreenListView(),
+                    SliverMainScreenListView(scrollController),
                     const SliverWhiteSpace(200)
                   ],
                 ),
@@ -166,7 +176,9 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
 }
 
 class SliverMainScreenListView extends StatefulWidget {
-  const SliverMainScreenListView({Key? key}) : super(key: key);
+  final ScrollController scrollController;
+
+  const SliverMainScreenListView(this.scrollController, {Key? key}) : super(key: key);
 
   @override
   State<SliverMainScreenListView> createState() => _SliverMainScreenListViewState();
@@ -181,6 +193,13 @@ class _SliverMainScreenListViewState extends State<SliverMainScreenListView> {
     context.read<MainScreenBloc>().stream.listen((event) {
       setState(() {});
     });
+
+    widget.scrollController.addListener(() {
+      if (widget.scrollController.offset >= widget.scrollController.position.maxScrollExtent &&
+          !widget.scrollController.position.outOfRange) {
+        context.read<MainScreenBloc>().add(const MainScreenEvent.getNextTenProduce());
+      }
+    });
   }
 
   @override
@@ -190,16 +209,22 @@ class _SliverMainScreenListViewState extends State<SliverMainScreenListView> {
     if (currentState is MSSInitial) {
       throw Exception("MSSInitial State is received when it should not have existed.");
     } else if (currentState is MSSPricesLoading) {
-      return SliverLoadingIndicator();
+      return const SliverLoadingIndicator();
+    } else if (currentState is MSSNextPricesLoading) {
+      return SliverProduceList(
+        props: currentState.props,
+        isLoading: true,
+      );
     } else if (currentState is MSSPricesCompleted) {
       return SliverProduceList(
-        currentState: currentState,
+        props: currentState.props,
+        isLoading: false,
       );
     } else if (currentState is MSSPricesError) {
-      return SliverList(
-          delegate: SliverChildListDelegate(
-        [Text("ERROR!, ${currentState.code}, ${currentState.message}")],
-      ));
+      return SliverProduceErrorList(
+        props: currentState.props,
+        failure: currentState.failure,
+      );
     }
 
     return SliverList(
@@ -237,9 +262,14 @@ class SliverLoadingIndicator extends StatelessWidget {
 }
 
 class SliverProduceList extends StatelessWidget {
-  final MSSPricesCompleted currentState;
+  final MainScreenProps props;
+  final bool isLoading;
 
-  const SliverProduceList({Key? key, required this.currentState}) : super(key: key);
+  const SliverProduceList({
+    Key? key,
+    required this.props,
+    required this.isLoading,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -249,21 +279,84 @@ class SliverProduceList extends StatelessWidget {
     return SliverList(
       delegate: SliverChildBuilderDelegate(
         (context, index) {
-          final Produce produce = currentState.produceList[index];
-
-          return ProduceListCard(index, produce);
+          if (isLoading == true) {
+            if (index == props.produceList.length) {
+              return Container(
+                height: 100,
+                padding: const EdgeInsets.only(top: 24),
+                alignment: Alignment.center,
+                child: const CircularProgressIndicator(),
+              );
+            } else {
+              return ProduceListCard(
+                index,
+                props.produceList[index],
+                chartAnimationDuration: 0,
+              );
+            }
+          } else {
+            return ProduceListCard(
+              index,
+              props.produceList[index],
+              chartAnimationDuration: 0,
+            );
+          }
         },
-        childCount: currentState.produceList.length,
+        childCount: resolveChildCount(props.produceList, isLoading),
       ),
     );
   }
 
-  BorderSide _resolveTop(BuildContext context, int index, BorderSide borderSide) {
-    if (index == 0) {
-      return BorderSide(color: Theme.of(context).colorScheme.primary.withOpacity(0.24));
-    } else {
-      return BorderSide.none;
-    }
+  int resolveChildCount(List<Produce> produceList, bool isLoading) {
+    return isLoading ? produceList.length + 1 : produceList.length;
+  }
+}
+
+class SliverProduceErrorList extends StatelessWidget {
+  final MainScreenProps props;
+  final Failure failure;
+
+  const SliverProduceErrorList({
+    Key? key,
+    required this.props,
+    required this.failure,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SliverList(
+      delegate: SliverChildBuilderDelegate(
+        (context, index) {
+          if (index == props.produceList.length) {
+            return Container(
+              height: 100,
+              alignment: Alignment.center,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "Uh oh, something went wrong.",
+                    style: Theme.of(context).textTheme.bodyText1!.copyWith(color: Colors.red),
+                  ),
+                  const UIVerticalSpace14(),
+                  Text(
+                    "Scroll to retry",
+                    style: Theme.of(context).textTheme.caption,
+                  ),
+                ],
+              ),
+            );
+          } else {
+            return ProduceListCard(
+              index,
+              props.produceList[index],
+              chartAnimationDuration: 0,
+            );
+          }
+        },
+        childCount: props.produceList.length + 1,
+      ),
+    );
   }
 }
 
@@ -328,7 +421,7 @@ class MainScreenHeaderDelegate extends SliverPersistentHeaderDelegate {
                 padding: const EdgeInsets.symmetric(vertical: 16),
                 child: CustomSearchField(
                   isFocus: false,
-                  // TODO: Set default right inside of [CustomSearchField] rather than this
+                  // TODO: Set default right inside of [CustomSearchField] rather than this (onChanged)
                   onChanged: (value) {},
                   onTap: () {
                     Navigator.of(context).pushNamed(

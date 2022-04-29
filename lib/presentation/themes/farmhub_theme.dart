@@ -28,43 +28,50 @@ ColorScheme _farmhubColorSchemeLight = const ColorScheme(
 ColorScheme _lightFarmhubColorScheme = ColorScheme.fromSeed(seedColor: const Color(0xff343A1A));
 
 TextTheme _farmhubTextThemeLight = TextTheme(
-    headline1: TextStyle(
-      fontSize: 28,
-      fontFamily: 'Montserrat',
-      color: _farmhubColorSchemeLight.primary,
-      fontWeight: FontWeight.w800,
-    ),
-    headline2: TextStyle(
-      fontSize: 28,
-      fontFamily: 'Montserrat',
-      color: _farmhubColorSchemeLight.primaryVariant,
-      fontWeight: FontWeight.w800,
-    ),
-    headline3: TextStyle(
-      fontSize: 23,
-      fontFamily: 'Montserrat',
-      // TODO: Temporary Solution
-      color: _farmhubColorSchemeLight.primaryVariant.withOpacity(0.65),
-      fontWeight: FontWeight.w800,
-    ),
-    headline4: TextStyle(
-      fontSize: 20,
-      fontFamily: 'Montserrat',
-      color: _farmhubColorSchemeLight.primary,
-      fontWeight: FontWeight.w800,
-    ),
-    bodyText1: TextStyle(
-      fontSize: 14,
-      fontFamily: 'Montserrat',
-      color: _farmhubColorSchemeLight.primary,
-      fontWeight: FontWeight.w600,
-    ),
-    bodyText2: TextStyle(
-      fontSize: 17,
-      fontFamily: 'Montserrat',
-      color: _farmhubColorSchemeLight.primary,
-      fontWeight: FontWeight.w700,
-    ));
+  headline1: TextStyle(
+    fontSize: 28,
+    fontFamily: 'Montserrat',
+    color: _farmhubColorSchemeLight.primary,
+    fontWeight: FontWeight.w800,
+  ),
+  headline2: TextStyle(
+    fontSize: 28,
+    fontFamily: 'Montserrat',
+    color: _farmhubColorSchemeLight.primaryVariant,
+    fontWeight: FontWeight.w800,
+  ),
+  headline3: TextStyle(
+    fontSize: 23,
+    fontFamily: 'Montserrat',
+    // TODO: Temporary Solution
+    color: _farmhubColorSchemeLight.primaryVariant.withOpacity(0.65),
+    fontWeight: FontWeight.w800,
+  ),
+  headline4: TextStyle(
+    fontSize: 20,
+    fontFamily: 'Montserrat',
+    color: _farmhubColorSchemeLight.primary,
+    fontWeight: FontWeight.w800,
+  ),
+  bodyText1: TextStyle(
+    fontSize: 14,
+    fontFamily: 'Montserrat',
+    color: _farmhubColorSchemeLight.primary,
+    fontWeight: FontWeight.w600,
+  ),
+  bodyText2: TextStyle(
+    fontSize: 17,
+    fontFamily: 'Montserrat',
+    color: _farmhubColorSchemeLight.primary,
+    fontWeight: FontWeight.w700,
+  ),
+  caption: TextStyle(
+    fontSize: 11,
+    fontFamily: 'Montserrat',
+    color: _farmhubColorSchemeLight.primary.withOpacity(0.4),
+    fontWeight: FontWeight.w600,
+  ),
+);
 
 ElevatedButtonThemeData _farmhubElevatedButtonThemeDataLight = ElevatedButtonThemeData(
   style: ElevatedButton.styleFrom(

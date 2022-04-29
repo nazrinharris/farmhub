@@ -8,6 +8,8 @@ import '../../domain/entities/produce/produce.dart';
 abstract class IProduceManagerRemoteDatasource {
   Future<List<Produce>> getFirstTenProduce();
 
+  Future<List<Produce>> getNextTenProduce(List<Produce> lastProduceList);
+
   Future<Produce> createNewProduce({
     required String produceName,
     required num currentProducePrice,
@@ -22,9 +24,15 @@ abstract class IProduceManagerRemoteDatasource {
   });
 
   Future<List<Produce>> searchProduce({required String query});
+
+  Future<List<Produce>> getNextTenSearchProduce({
+    required List<Produce> lastProduceList,
+    required String query,
+  });
 }
 
-class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource {
+class ProduceManagerRemoteDatasource
+    implements IProduceManagerRemoteDatasource {
   final FirebaseFirestore firebaseFirestore;
 
   ProduceManagerRemoteDatasource({
@@ -44,6 +52,71 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
     }).toList();
 
     return produceList;
+  }
+
+  @override
+  Future<List<Produce>> getNextTenProduce(List<Produce> lastProduceList) async {
+    final lastDocument = await firebaseFirestore
+        .collection('produce')
+        .doc(lastProduceList[lastProduceList.length - 1].produceId)
+        .get();
+
+    final documentsList = await firebaseFirestore
+        .collection('produce')
+        .startAfterDocument(lastDocument)
+        .limit(10)
+        .get()
+        .then((snapshot) => snapshot.docs);
+
+    final List<Produce> newProduceList = documentsList.map((documentSnapshot) {
+      return Produce.fromMap(documentSnapshot.data());
+    }).toList();
+
+    List<Produce> combinedProduceList = List.from(lastProduceList)
+      ..addAll(newProduceList);
+
+    throw Exception();
+  }
+
+  @override
+  Future<List<Produce>> searchProduce({required String query}) async {
+    final queryList = await firebaseFirestore
+        .collection('produce')
+        .where('produceNameSearch', arrayContains: query.toLowerCase())
+        .limit(10)
+        .get();
+
+    final produceList = queryList.docs.map((documentSnapshot) {
+      return Produce.fromMap(documentSnapshot.data());
+    }).toList();
+
+    return produceList;
+  }
+
+  @override
+  Future<List<Produce>> getNextTenSearchProduce(
+      {required List<Produce> lastProduceList, required String query}) async {
+    final lastDocument = await firebaseFirestore
+        .collection('produce')
+        .doc(lastProduceList[lastProduceList.length - 1].produceId)
+        .get();
+
+    final newQueryList = await firebaseFirestore
+        .collection('produce')
+        .startAfterDocument(lastDocument)
+        .where('produceNameSearch', arrayContains: query.toLowerCase())
+        .limit(10)
+        .get();
+
+    final List<Produce> newProduceList =
+        newQueryList.docs.map((documentSnapshot) {
+      return Produce.fromMap(documentSnapshot.data());
+    }).toList();
+
+    List<Produce> combinedProduceList = List.from(lastProduceList)
+      ..addAll(newProduceList);
+
+    return combinedProduceList;
   }
 
   @override
@@ -90,7 +163,8 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
     }
 
     // Create produce and store in Firestore
-    final String resultingId = await firebaseFirestore.collection('produce').add({
+    final String resultingId =
+        await firebaseFirestore.collection('produce').add({
       "currentProducePrice": {
         "price": currentProducePrice,
         "updateDate": clock.now().toString(),
@@ -110,7 +184,11 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
       });
 
       // Create Prices sub-collection
-      await firebaseFirestore.collection('produce').doc(doc.id).collection('prices').add(
+      await firebaseFirestore
+          .collection('produce')
+          .doc(doc.id)
+          .collection('prices')
+          .add(
         {
           "currentPrice": currentProducePrice,
           "editHistory": [
@@ -156,11 +234,16 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
         await firebaseFirestore.collection('produce').doc(produceId).get().then(
               (doc) => doc.data()!,
             );
-    final Map<String, dynamic> staleCurrentProducePrice = staleProduce["currentProducePrice"];
+    final Map<String, dynamic> staleCurrentProducePrice =
+        staleProduce["currentProducePrice"];
     final List<dynamic> weeklyPrices = staleProduce["weeklyPrices"];
 
     // Update Prices Collection
-    await firebaseFirestore.collection('produce').doc(produceId).collection('prices').add(
+    await firebaseFirestore
+        .collection('produce')
+        .doc(produceId)
+        .collection('prices')
+        .add(
       {
         "currentPrice": currentPrice,
         "editHistory": [
@@ -193,25 +276,11 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
     );
 
     // Retrieve updated produce
-    final produce = await firebaseFirestore.collection('produce').doc(produceId).get().then(
-          (snapshot) => Produce.fromMap(snapshot.data()),
-        );
+    final produce =
+        await firebaseFirestore.collection('produce').doc(produceId).get().then(
+              (snapshot) => Produce.fromMap(snapshot.data()),
+            );
 
     return produce;
-  }
-
-  // TODO: Add Pagination!
-  @override
-  Future<List<Produce>> searchProduce({required String query}) async {
-    final queryList = await firebaseFirestore
-        .collection('produce')
-        .where('produceNameSearch', arrayContains: query.toLowerCase())
-        .get();
-
-    final produceList = queryList.docs.map((documentSnapshot) {
-      return Produce.fromMap(documentSnapshot.data());
-    }).toList();
-
-    return produceList;
   }
 }

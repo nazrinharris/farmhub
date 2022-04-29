@@ -60,7 +60,6 @@ class _ProduceScreenState extends State<ProduceScreen> with SingleTickerProvider
                 appBar: DefaultAppBar(
                   trailingIcon: const Icon(Icons.arrow_back),
                   trailingOnPressed: () {
-                    print('pop!');
                     Navigator.of(context).pop();
                   },
                   leadingIcon: const Icon(Icons.bookmark_add_outlined),

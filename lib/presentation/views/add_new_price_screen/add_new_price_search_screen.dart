@@ -10,16 +10,16 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../features/produce_manager/domain/entities/produce/produce.dart';
 import '../../smart_widgets/custom_search_field.dart';
 
-class SearchScreen extends StatefulWidget {
+class AddNewPriceSearchScreen extends StatefulWidget {
   final SearchScreenArguments arguments;
 
-  const SearchScreen(this.arguments, {Key? key}) : super(key: key);
+  const AddNewPriceSearchScreen(this.arguments, {Key? key}) : super(key: key);
 
   @override
-  State<SearchScreen> createState() => _SearchScreenState();
+  State<AddNewPriceSearchScreen> createState() => _AddNewPriceSearchScreenState();
 }
 
-class _SearchScreenState extends State<SearchScreen> {
+class _AddNewPriceSearchScreenState extends State<AddNewPriceSearchScreen> {
   late ScrollController scrollController;
 
   @override
@@ -37,7 +37,8 @@ class _SearchScreenState extends State<SearchScreen> {
         return WillPopScope(
           onWillPop: () async {
             FocusScope.of(context).unfocus();
-            return true;
+            Navigator.of(context).pop();
+            return false;
           },
           child: Scaffold(
             resizeToAvoidBottomInset: false,
@@ -57,11 +58,12 @@ class _SearchScreenState extends State<SearchScreen> {
             body: Column(
               children: [
                 const UICustomVertical(100),
-                Hero(
-                  tag: "search_bar",
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 16),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 30),
+                  child: Hero(
+                    tag: "add_new_price_search_bar",
                     child: CustomSearchField(
+                      margin: EdgeInsets.zero,
                       isFocus: true,
                       onTap: () {},
                       onChanged: (value) {
@@ -172,7 +174,17 @@ class _SearchProduceListState extends State<SearchProduceList> {
                   if (index == state.props.produceList.length) {
                     return const SizedBox(height: 100);
                   } else {
-                    return ProduceListCard(index, state.props.produceList[index]);
+                    return ProduceListCard(
+                      index,
+                      state.props.produceList[index],
+                      onTap: () {
+                        Navigator.of(context).pushNamed(
+                          '/add_new_price_second',
+                          arguments:
+                              ProduceArguments(state.props.produceList[index], isFromSearch: true),
+                        );
+                      },
+                    );
                   }
                 },
               ),
@@ -200,7 +212,7 @@ class _SearchProduceListState extends State<SearchProduceList> {
                             style:
                                 Theme.of(context).textTheme.bodyText1!.copyWith(color: Colors.red),
                           ),
-                          const UIVerticalSpace14(),
+                          UIVerticalSpace14(),
                           Text(
                             "Scroll to retry",
                             style: Theme.of(context).textTheme.caption,
@@ -209,7 +221,16 @@ class _SearchProduceListState extends State<SearchProduceList> {
                       ),
                     );
                   } else {
-                    return ProduceListCard(index, state.props.produceList[index]);
+                    return ProduceListCard(
+                      index,
+                      state.props.produceList[index],
+                      onTap: () {
+                        Navigator.of(context).pushNamed(
+                          '/add_new_price_second',
+                          arguments: ProduceArguments(state.props.produceList[index]),
+                        );
+                      },
+                    );
                   }
                 },
               ),
@@ -217,7 +238,7 @@ class _SearchProduceListState extends State<SearchProduceList> {
           );
         } else {
           return Center(
-            child: Text("Unexpected"),
+            child: Text("Unexpected $state"),
           );
         }
       },
