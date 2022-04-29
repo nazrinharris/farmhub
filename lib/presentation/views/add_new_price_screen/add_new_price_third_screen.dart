@@ -109,7 +109,7 @@ class AddNewPriceThirdScreen extends StatelessWidget {
                                   ..pop()
                                   ..pop()
                                   ..pop()
-                                  ..pushReplacementNamed('/add_new_price');
+                                  ..pushNamed('/add_new_price');
                               }
                             },
                           ),
