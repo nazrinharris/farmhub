@@ -180,7 +180,8 @@ class _SearchProduceListState extends State<SearchProduceList> {
                       onTap: () {
                         Navigator.of(context).pushNamed(
                           '/add_new_price_second',
-                          arguments: ProduceArguments(state.props.produceList[index]),
+                          arguments:
+                              ProduceArguments(state.props.produceList[index], isFromSearch: true),
                         );
                       },
                     );

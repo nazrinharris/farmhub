@@ -161,7 +161,7 @@ class _ProduceListSliverState extends State<ProduceListSliver> {
                     produceList[index],
                     onTap: () => Navigator.of(context).pushNamed(
                       '/add_new_price_second',
-                      arguments: ProduceArguments(produceList[index]),
+                      arguments: ProduceArguments(produceList[index], isFromSearch: false),
                     ),
                     chartAnimationDuration: 0,
                   );

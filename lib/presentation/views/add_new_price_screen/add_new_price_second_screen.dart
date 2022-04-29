@@ -69,7 +69,10 @@ class _AddNewPriceSecondScreenState extends State<AddNewPriceSecondScreen> {
                     );
                     Navigator.of(context).pushNamed(
                       '/add_new_price_third',
-                      arguments: ProduceArguments(state.produce),
+                      arguments: ProduceArguments(
+                        state.produce,
+                        isFromSearch: widget.produceArguments.isFromSearch,
+                      ),
                     );
                   }
                 },

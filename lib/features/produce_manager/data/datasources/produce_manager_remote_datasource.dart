@@ -75,7 +75,7 @@ class ProduceManagerRemoteDatasource
     List<Produce> combinedProduceList = List.from(lastProduceList)
       ..addAll(newProduceList);
 
-    throw Exception();
+    return combinedProduceList;
   }
 
   @override
@@ -116,8 +116,7 @@ class ProduceManagerRemoteDatasource
     List<Produce> combinedProduceList = List.from(lastProduceList)
       ..addAll(newProduceList);
 
-    //return combinedProduceList;
-    throw Exception();
+    return combinedProduceList;
   }
 
   @override

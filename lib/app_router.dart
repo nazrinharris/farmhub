@@ -17,8 +17,9 @@ import 'features/produce_manager/domain/entities/produce/produce.dart';
 
 class ProduceArguments {
   final Produce produce;
+  final bool? isFromSearch;
 
-  ProduceArguments(this.produce);
+  ProduceArguments(this.produce, {this.isFromSearch});
 }
 
 class SearchScreenArguments {
@@ -28,7 +29,9 @@ class SearchScreenArguments {
 }
 
 class AppRouter {
-  Route onGenerateRoute(RouteSettings routeSettings) {
+  static const add_new_price_second = "/add_new_price_second";
+
+  Route<dynamic> onGenerateRoute(RouteSettings routeSettings) {
     switch (routeSettings.name) {
       case '/':
         return CupertinoPageRoute(builder: (_) => const NavigateView());
@@ -57,7 +60,7 @@ class AppRouter {
           pageBuilder: ((context, animation, secondaryAnimation) => const AddNewPriceScreen()),
           transitionsBuilder: createProduceScreenTransitionBuilder,
         );
-      case '/add_new_price_second':
+      case add_new_price_second:
         return CupertinoPageRoute(
           builder: (_) => AddNewPriceSecondScreen(routeSettings.arguments as ProduceArguments),
         );
