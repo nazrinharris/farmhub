@@ -76,6 +76,18 @@ class NavigateView extends StatelessWidget {
             const UIVerticalSpace14(),
             PrimaryButton(
               onPressed: () {
+                Navigator.of(context).pushNamed('/playground_two');
+              },
+              backgroundColor: Color.fromARGB(255, 239, 162, 243),
+              width: 200,
+              child: Text(
+                'To Playground2',
+                style: Theme.of(context).textTheme.bodyText1!.copyWith(color: Colors.white),
+              ),
+            ),
+            const UIVerticalSpace14(),
+            PrimaryButton(
+              onPressed: () {
                 context.read<AuthBloc>().add(AuthEvent.execSignOut());
               },
               backgroundColor: Theme.of(context).colorScheme.error,

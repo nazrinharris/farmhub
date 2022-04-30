@@ -12,7 +12,7 @@ class Produce with _$Produce {
     required String authorId,
     required Map<String, dynamic> currentProducePrice,
     required Map<String, dynamic> previousProducePrice,
-    required List<num> weeklyPrices,
+    required Map<String, dynamic> weeklyPrices,
   }) = _Produce;
 
   factory Produce.fromJson(Map<String, dynamic> json) => _$ProduceFromJson(json);
@@ -30,7 +30,7 @@ class Produce with _$Produce {
       produceName: map['produceName'],
       currentProducePrice: map['currentProducePrice'],
       previousProducePrice: map['previousProducePrice'],
-      weeklyPrices: List<num>.from(map['weeklyPrices']),
+      weeklyPrices: map['weeklyPrices'],
       authorId: map['authorId'],
     );
   }

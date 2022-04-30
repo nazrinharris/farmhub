@@ -1423,12 +1423,11 @@ class _$MSSPricesError implements MSSPricesError {
         (other.runtimeType == runtimeType &&
             other is MSSPricesError &&
             (identical(other.props, props) || other.props == props) &&
-            const DeepCollectionEquality().equals(other.failure, failure));
+            (identical(other.failure, failure) || other.failure == failure));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, props, const DeepCollectionEquality().hash(failure));
+  int get hashCode => Object.hash(runtimeType, props, failure);
 
   @JsonKey(ignore: true)
   @override

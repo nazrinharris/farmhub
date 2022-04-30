@@ -13,8 +13,7 @@ _$_Produce _$$_ProduceFromJson(Map<String, dynamic> json) => _$_Produce(
       currentProducePrice: json['currentProducePrice'] as Map<String, dynamic>,
       previousProducePrice:
           json['previousProducePrice'] as Map<String, dynamic>,
-      weeklyPrices:
-          (json['weeklyPrices'] as List<dynamic>).map((e) => e as num).toList(),
+      weeklyPrices: json['weeklyPrices'] as Map<String, dynamic>,
     );
 
 Map<String, dynamic> _$$_ProduceToJson(_$_Produce instance) =>

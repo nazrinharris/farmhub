@@ -24,3 +24,15 @@ class UnexpectedException implements InCodeException {
     required this.stackTrace,
   });
 }
+
+class ProduceManagerException implements Exception {
+  final String code;
+  final String message;
+  final StackTrace? stackTrace;
+
+  ProduceManagerException({
+    required this.code,
+    required this.message,
+    required this.stackTrace,
+  });
+}

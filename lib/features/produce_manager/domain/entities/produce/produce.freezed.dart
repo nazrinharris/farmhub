@@ -27,7 +27,7 @@ class _$ProduceTearOff {
       required String authorId,
       required Map<String, dynamic> currentProducePrice,
       required Map<String, dynamic> previousProducePrice,
-      required List<num> weeklyPrices}) {
+      required Map<String, dynamic> weeklyPrices}) {
     return _Produce(
       produceId: produceId,
       produceName: produceName,
@@ -55,7 +55,7 @@ mixin _$Produce {
       throw _privateConstructorUsedError;
   Map<String, dynamic> get previousProducePrice =>
       throw _privateConstructorUsedError;
-  List<num> get weeklyPrices => throw _privateConstructorUsedError;
+  Map<String, dynamic> get weeklyPrices => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -72,7 +72,7 @@ abstract class $ProduceCopyWith<$Res> {
       String authorId,
       Map<String, dynamic> currentProducePrice,
       Map<String, dynamic> previousProducePrice,
-      List<num> weeklyPrices});
+      Map<String, dynamic> weeklyPrices});
 }
 
 /// @nodoc
@@ -116,7 +116,7 @@ class _$ProduceCopyWithImpl<$Res> implements $ProduceCopyWith<$Res> {
       weeklyPrices: weeklyPrices == freezed
           ? _value.weeklyPrices
           : weeklyPrices // ignore: cast_nullable_to_non_nullable
-              as List<num>,
+              as Map<String, dynamic>,
     ));
   }
 }
@@ -132,7 +132,7 @@ abstract class _$ProduceCopyWith<$Res> implements $ProduceCopyWith<$Res> {
       String authorId,
       Map<String, dynamic> currentProducePrice,
       Map<String, dynamic> previousProducePrice,
-      List<num> weeklyPrices});
+      Map<String, dynamic> weeklyPrices});
 }
 
 /// @nodoc
@@ -177,7 +177,7 @@ class __$ProduceCopyWithImpl<$Res> extends _$ProduceCopyWithImpl<$Res>
       weeklyPrices: weeklyPrices == freezed
           ? _value.weeklyPrices
           : weeklyPrices // ignore: cast_nullable_to_non_nullable
-              as List<num>,
+              as Map<String, dynamic>,
     ));
   }
 }
@@ -207,7 +207,7 @@ class _$_Produce implements _Produce {
   @override
   final Map<String, dynamic> previousProducePrice;
   @override
-  final List<num> weeklyPrices;
+  final Map<String, dynamic> weeklyPrices;
 
   @override
   String toString() {
@@ -261,7 +261,7 @@ abstract class _Produce implements Produce {
       required String authorId,
       required Map<String, dynamic> currentProducePrice,
       required Map<String, dynamic> previousProducePrice,
-      required List<num> weeklyPrices}) = _$_Produce;
+      required Map<String, dynamic> weeklyPrices}) = _$_Produce;
 
   factory _Produce.fromJson(Map<String, dynamic> json) = _$_Produce.fromJson;
 
@@ -276,7 +276,7 @@ abstract class _Produce implements Produce {
   @override
   Map<String, dynamic> get previousProducePrice;
   @override
-  List<num> get weeklyPrices;
+  Map<String, dynamic> get weeklyPrices;
   @override
   @JsonKey(ignore: true)
   _$ProduceCopyWith<_Produce> get copyWith =>

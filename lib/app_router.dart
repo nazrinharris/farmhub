@@ -5,6 +5,7 @@ import 'package:farmhub/presentation/views/add_new_price_screen/add_new_price_th
 import 'package:farmhub/presentation/views/create_produce_screen/create_produce_screen.dart';
 import 'package:farmhub/presentation/views/debug/navigate_view.dart';
 import 'package:farmhub/presentation/views/debug/playground_screen.dart';
+import 'package:farmhub/presentation/views/debug/playground_two_screen.dart';
 import 'package:farmhub/presentation/views/login_screen/login_screen.dart';
 import 'package:farmhub/presentation/views/main_screen/main_screen.dart';
 import 'package:farmhub/presentation/views/produce_screen/produce_screen.dart';
@@ -91,6 +92,8 @@ class AppRouter {
         return CupertinoPageRoute(builder: (_) => const NavigateView());
       case '/playground':
         return CupertinoPageRoute(builder: (_) => const PlaygroundScreen());
+      case '/playground_two':
+        return CupertinoPageRoute(builder: (_) => const PlaygroundTwoScreen());
 
       default:
         throw Exception('UnknownRoute called');
