@@ -29,4 +29,6 @@ abstract class IProduceManagerRepository {
   FutureEither<List<Produce>> searchProduce(String query);
 
   FutureEither<List<Produce>> getNextTenSearchProduce(List<Produce> lastProduceList, String query);
+
+  FutureEither<void>? debugMethod(String produceId);
 }

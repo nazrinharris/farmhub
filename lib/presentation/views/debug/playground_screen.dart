@@ -44,30 +44,30 @@ class PlaygroundScreen extends StatelessWidget {
                     } else if (state is PMSGetFirstTenProduceSuccess) {
                       return Column(
                         children: [
-                          Container(
-                            height: 200,
-                            width: 200,
-                            child: SfCartesianChart(
-                              plotAreaBorderColor: Colors.transparent,
-                              primaryXAxis: NumericAxis(
-                                isVisible: false,
-                              ),
-                              primaryYAxis: NumericAxis(
-                                isVisible: false,
-                              ),
-                              series: <CartesianSeries>[
-                                SplineAreaSeries<num, num>(
-                                  animationDuration: 1000,
-                                  dataSource: state.produceList[0].weeklyPrices,
-                                  xValueMapper: (num price, index) => index,
-                                  yValueMapper: (num price, index) => price,
-                                  borderWidth: 3,
-                                  borderColor: Color(0xff79D2DE),
-                                  gradient: gradient,
-                                ),
-                              ],
-                            ),
-                          ),
+                          // Container(
+                          //   height: 200,
+                          //   width: 200,
+                          //   child: SfCartesianChart(
+                          //     plotAreaBorderColor: Colors.transparent,
+                          //     primaryXAxis: NumericAxis(
+                          //       isVisible: false,
+                          //     ),
+                          //     primaryYAxis: NumericAxis(
+                          //       isVisible: false,
+                          //     ),
+                          //     series: <CartesianSeries>[
+                          //       SplineAreaSeries<num, num>(
+                          //         animationDuration: 1000,
+                          //         dataSource: state.produceList[0].weeklyPrices,
+                          //         xValueMapper: (num price, index) => index,
+                          //         yValueMapper: (num price, index) => price,
+                          //         borderWidth: 3,
+                          //         borderColor: Color(0xff79D2DE),
+                          //         gradient: gradient,
+                          //       ),
+                          //     ],
+                          //   ),
+                          // ),
                           Text(state.produceList.toString()),
                         ],
                       );

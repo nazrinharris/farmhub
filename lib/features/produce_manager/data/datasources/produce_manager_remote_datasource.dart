@@ -236,7 +236,7 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
     required String produceId,
     required num currentPrice,
   }) async {
-    final currentTimeStamp = clock.now();
+    final currentTimeStamp = clock.daysAgo(1);
     final chosenDate = DateFormat("dd-MM-yyyy").format(currentTimeStamp);
     final chosenYear = DateFormat("yyyy").format(currentTimeStamp);
     // This boolean just tells us if we are creating a new price or updating an existing one.
@@ -264,8 +264,7 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
       isUpdatingExistingPrice = false;
 
       // Update Price Document
-      final result =
-          await firebaseFirestore.collection('produce').doc(produceId).collection('prices').add(
+      await firebaseFirestore.collection('produce').doc(produceId).collection('prices').add(
         {
           "currentPrice": currentPrice,
           "priceDate": chosenDate,
@@ -344,7 +343,10 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
 
     if (isUpdatingExistingPrice == false) {
       //! Creating a new price.
-      // Locally process and update [weeklyPrices]
+      // Update weeklyPrices
+      weeklyPrices[chosenDate] = calculatedPrice;
+      List<PriceSnippet> weeklyPricesSnippet = [];
+      weeklyPrices.forEach((d, p) => weeklyPricesSnippet.add(PriceSnippet(price: p, priceDate: d)));
 
       // Update [currentProducePrice], [previousProducePrice] and [weeklyPrices]
       await firebaseFirestore.collection('produce').doc(produceId).update(
@@ -419,8 +421,33 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
   }
 
   @override
-  Future<void>? debugMethod(String produceId) {
+  Future<void>? debugMethod(String produceId) async {
     num calculatedPrice = 18;
     String chosenDate = "30-04-22";
+
+    final Map<String, dynamic> produce =
+        await firebaseFirestore.collection('produce').doc(produceId).get().then(
+              (doc) => doc.data()!,
+            );
+    final Map<String, dynamic> weeklyPrices = produce["weeklyPrices"];
+    final List<PriceSnippet> weeklyPricesSnippet = [];
+    weeklyPrices.forEach((d, p) => weeklyPricesSnippet.add(PriceSnippet(price: p, priceDate: d)));
+
+    print("Unsorted weeklyPricesSnippet");
+    weeklyPricesSnippet.forEach((element) {
+      print(element);
+    });
+
+    weeklyPricesSnippet.sort((a, b) {
+      DateTime aPriceDate = DateFormat("dd-MM-yyyy").parse(a.priceDate);
+      DateTime bPriceDate = DateFormat("dd-MM-yyyy").parse(b.priceDate);
+
+      return aPriceDate.compareTo(bPriceDate);
+    });
+
+    print("Sorted weeklyPricesSnippet");
+    weeklyPricesSnippet.forEach((element) {
+      print(element);
+    });
   }
 }

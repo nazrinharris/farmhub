@@ -106,7 +106,7 @@ List<Produce> tFirstTenProduce = [
       "price": 20.00,
       "updateDate": "10-11-1111",
     },
-    weeklyPrices: [10.00, 20.00, 30.00, 20.00, 10.00, 0.00],
+    weeklyPrices: {"10-10-1000": 24},
     authorId: 'tauthorId',
   ),
   Produce(
@@ -120,7 +120,7 @@ List<Produce> tFirstTenProduce = [
       "price": 20.00,
       "updateDate": "10-11-1111",
     },
-    weeklyPrices: [10.00, 20.00, 30.00, 20.00, 10.00, 0.00],
+    weeklyPrices: {"10-10-1000": 24},
     authorId: 'tauthorId',
   ),
   Produce(
@@ -134,7 +134,7 @@ List<Produce> tFirstTenProduce = [
       "price": 20.00,
       "updateDate": "10-11-1111",
     },
-    weeklyPrices: [10.00, 20.00, 30.00, 20.00, 10.00, 0.00],
+    weeklyPrices: {"10-10-1000": 24},
     authorId: 'tauthorId',
   ),
 ];

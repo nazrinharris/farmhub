@@ -33,11 +33,12 @@ class Price with _$Price {
   }
 }
 
-class PriceSnippet {
-  final String priceDate;
-  final num price;
-
-  PriceSnippet({required this.price, required this.priceDate});
+@freezed
+class PriceSnippet with _$PriceSnippet {
+  factory PriceSnippet({
+    required num price,
+    required String priceDate,
+  }) = _PriceSnippet;
 
   // static PriceSnippet fromMap(Map<String, dynamic>? map) {
   //   if (map == null) {

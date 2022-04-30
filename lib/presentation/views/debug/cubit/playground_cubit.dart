@@ -55,4 +55,14 @@ class PlaygroundCubit extends Cubit<PlaygroundState> {
       (produce) {},
     );
   }
+
+  void debugMethod({
+    required String produceId,
+  }) async {
+    emit(const PlaygroundState.loading());
+
+    print("Adding new price to Produce with ID: $produceId");
+
+    final failureOrNewPrice = await repository.debugMethod(produceId);
+  }
 }

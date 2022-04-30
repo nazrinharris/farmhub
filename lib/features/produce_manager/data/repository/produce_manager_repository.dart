@@ -258,4 +258,11 @@ class ProduceManagerRepository implements IProduceManagerRepository {
       ));
     }
   }
+
+  @override
+  FutureEither<void>? debugMethod(String produceId) async {
+    final result = await remoteDatasource.debugMethod(produceId);
+
+    return Right(result);
+  }
 }

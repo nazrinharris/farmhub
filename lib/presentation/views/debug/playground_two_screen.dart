@@ -39,8 +39,20 @@ class PlaygroundTwoScreen extends StatelessWidget {
                   content: "Add New Price",
                   onPressed: () {
                     context.read<PlaygroundCubit>().addNewPrice(
-                          produceId: "GffTLGhGq0smusdZ6g1G",
+                          produceId: "ELIgOCHelYwb3iveHFyR",
                           currentPrice: 10,
+                        );
+                  },
+                ),
+              ),
+              UIVerticalSpace6(),
+              Center(
+                child: PrimaryButton(
+                  width: 200,
+                  content: "Run Debug",
+                  onPressed: () {
+                    context.read<PlaygroundCubit>().debugMethod(
+                          produceId: "ELIgOCHelYwb3iveHFyR",
                         );
                   },
                 ),
