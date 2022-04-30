@@ -19,7 +19,7 @@ class Price with _$Price {
   static Price fromMap(Map<String, dynamic>? map) {
     if (map == null) {
       throw UnexpectedException(
-        code: 'Produce-fromMap',
+        code: 'Price-fromMap',
         message: "Map is null.",
         stackTrace: StackTrace.current,
       );
@@ -31,4 +31,25 @@ class Price with _$Price {
       updateDate: map["updateDate"],
     );
   }
+}
+
+class PriceSnippet {
+  final String priceDate;
+  final num price;
+
+  PriceSnippet({required this.price, required this.priceDate});
+
+  // static PriceSnippet fromMap(Map<String, dynamic>? map) {
+  //   if (map == null) {
+  //     throw UnexpectedException(
+  //       code: 'PriceSnippet-fromMap',
+  //       message: "Map is null.",
+  //       stackTrace: StackTrace.current,
+  //     );
+  //   }
+  //   return PriceSnippet(
+  //     price: map[""],
+  //     priceDate: priceDate,
+  //   );
+  // }
 }

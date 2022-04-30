@@ -1,3 +1,4 @@
+import 'package:farmhub/features/produce_manager/domain/entities/price/price.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
@@ -75,16 +76,24 @@ class LargePriceChart extends StatelessWidget {
       borderColor = const Color(0xff79D2DE);
     }
 
+    // Begin process of transtaling weeklyPricesMap
+    final Map<String, dynamic> weeklyPricesMap = produce.weeklyPrices;
+    final List<PriceSnippet> pricesList = [];
+
+    weeklyPricesMap.forEach((priceDate, price) {
+      pricesList.add(PriceSnippet(price: price, priceDate: priceDate));
+    });
+
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 12),
       height: 220,
       child: SfCartesianChart(
         plotAreaBorderColor: Colors.transparent,
         series: <CartesianSeries>[
-          SplineAreaSeries<num, num>(
-            dataSource: produce.weeklyPrices.reversed.toList(),
-            xValueMapper: (num price, index) => index,
-            yValueMapper: (num price, index) => price,
+          SplineAreaSeries<PriceSnippet, String>(
+            dataSource: pricesList,
+            xValueMapper: (priceSnippet, index) => priceSnippet.priceDate,
+            yValueMapper: (priceSnippet, index) => priceSnippet.price,
             borderColor: borderColor,
             gradient: gradient,
           )
