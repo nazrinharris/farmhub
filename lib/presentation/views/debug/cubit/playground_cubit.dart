@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:bloc/bloc.dart';
+import 'package:farmhub/core/errors/failures.dart';
 import 'package:farmhub/features/produce_manager/domain/entities/produce/produce.dart';
 import 'package:farmhub/features/produce_manager/domain/i_produce_manager_repository.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -51,7 +52,9 @@ class PlaygroundCubit extends Cubit<PlaygroundState> {
     );
 
     failureOrNewPrice.fold(
-      (f) {},
+      (f) {
+        emit(PlaygroundState.error(f));
+      },
       (produce) {},
     );
   }

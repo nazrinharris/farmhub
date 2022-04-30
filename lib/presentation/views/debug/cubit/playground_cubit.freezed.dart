@@ -36,6 +36,12 @@ class _$PlaygroundStateTearOff {
       produce,
     );
   }
+
+  Error error(Failure failure) {
+    return Error(
+      failure,
+    );
+  }
 }
 
 /// @nodoc
@@ -49,6 +55,7 @@ mixin _$PlaygroundState {
     required TResult Function() loading,
     required TResult Function(Produce produce) createCompleted,
     required TResult Function(Produce produce) addPriceCompleted,
+    required TResult Function(Failure failure) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,6 +64,7 @@ mixin _$PlaygroundState {
     TResult Function()? loading,
     TResult Function(Produce produce)? createCompleted,
     TResult Function(Produce produce)? addPriceCompleted,
+    TResult Function(Failure failure)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -65,6 +73,7 @@ mixin _$PlaygroundState {
     TResult Function()? loading,
     TResult Function(Produce produce)? createCompleted,
     TResult Function(Produce produce)? addPriceCompleted,
+    TResult Function(Failure failure)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -74,6 +83,7 @@ mixin _$PlaygroundState {
     required TResult Function(Loading value) loading,
     required TResult Function(CreateCompleted value) createCompleted,
     required TResult Function(AddPriceCompleted value) addPriceCompleted,
+    required TResult Function(Error value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -82,6 +92,7 @@ mixin _$PlaygroundState {
     TResult Function(Loading value)? loading,
     TResult Function(CreateCompleted value)? createCompleted,
     TResult Function(AddPriceCompleted value)? addPriceCompleted,
+    TResult Function(Error value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -90,6 +101,7 @@ mixin _$PlaygroundState {
     TResult Function(Loading value)? loading,
     TResult Function(CreateCompleted value)? createCompleted,
     TResult Function(AddPriceCompleted value)? addPriceCompleted,
+    TResult Function(Error value)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -154,6 +166,7 @@ class _$Initial implements Initial {
     required TResult Function() loading,
     required TResult Function(Produce produce) createCompleted,
     required TResult Function(Produce produce) addPriceCompleted,
+    required TResult Function(Failure failure) error,
   }) {
     return initial();
   }
@@ -165,6 +178,7 @@ class _$Initial implements Initial {
     TResult Function()? loading,
     TResult Function(Produce produce)? createCompleted,
     TResult Function(Produce produce)? addPriceCompleted,
+    TResult Function(Failure failure)? error,
   }) {
     return initial?.call();
   }
@@ -176,6 +190,7 @@ class _$Initial implements Initial {
     TResult Function()? loading,
     TResult Function(Produce produce)? createCompleted,
     TResult Function(Produce produce)? addPriceCompleted,
+    TResult Function(Failure failure)? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -191,6 +206,7 @@ class _$Initial implements Initial {
     required TResult Function(Loading value) loading,
     required TResult Function(CreateCompleted value) createCompleted,
     required TResult Function(AddPriceCompleted value) addPriceCompleted,
+    required TResult Function(Error value) error,
   }) {
     return initial(this);
   }
@@ -202,6 +218,7 @@ class _$Initial implements Initial {
     TResult Function(Loading value)? loading,
     TResult Function(CreateCompleted value)? createCompleted,
     TResult Function(AddPriceCompleted value)? addPriceCompleted,
+    TResult Function(Error value)? error,
   }) {
     return initial?.call(this);
   }
@@ -213,6 +230,7 @@ class _$Initial implements Initial {
     TResult Function(Loading value)? loading,
     TResult Function(CreateCompleted value)? createCompleted,
     TResult Function(AddPriceCompleted value)? addPriceCompleted,
+    TResult Function(Error value)? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -268,6 +286,7 @@ class _$Loading implements Loading {
     required TResult Function() loading,
     required TResult Function(Produce produce) createCompleted,
     required TResult Function(Produce produce) addPriceCompleted,
+    required TResult Function(Failure failure) error,
   }) {
     return loading();
   }
@@ -279,6 +298,7 @@ class _$Loading implements Loading {
     TResult Function()? loading,
     TResult Function(Produce produce)? createCompleted,
     TResult Function(Produce produce)? addPriceCompleted,
+    TResult Function(Failure failure)? error,
   }) {
     return loading?.call();
   }
@@ -290,6 +310,7 @@ class _$Loading implements Loading {
     TResult Function()? loading,
     TResult Function(Produce produce)? createCompleted,
     TResult Function(Produce produce)? addPriceCompleted,
+    TResult Function(Failure failure)? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -305,6 +326,7 @@ class _$Loading implements Loading {
     required TResult Function(Loading value) loading,
     required TResult Function(CreateCompleted value) createCompleted,
     required TResult Function(AddPriceCompleted value) addPriceCompleted,
+    required TResult Function(Error value) error,
   }) {
     return loading(this);
   }
@@ -316,6 +338,7 @@ class _$Loading implements Loading {
     TResult Function(Loading value)? loading,
     TResult Function(CreateCompleted value)? createCompleted,
     TResult Function(AddPriceCompleted value)? addPriceCompleted,
+    TResult Function(Error value)? error,
   }) {
     return loading?.call(this);
   }
@@ -327,6 +350,7 @@ class _$Loading implements Loading {
     TResult Function(Loading value)? loading,
     TResult Function(CreateCompleted value)? createCompleted,
     TResult Function(AddPriceCompleted value)? addPriceCompleted,
+    TResult Function(Error value)? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -417,6 +441,7 @@ class _$CreateCompleted implements CreateCompleted {
     required TResult Function() loading,
     required TResult Function(Produce produce) createCompleted,
     required TResult Function(Produce produce) addPriceCompleted,
+    required TResult Function(Failure failure) error,
   }) {
     return createCompleted(produce);
   }
@@ -428,6 +453,7 @@ class _$CreateCompleted implements CreateCompleted {
     TResult Function()? loading,
     TResult Function(Produce produce)? createCompleted,
     TResult Function(Produce produce)? addPriceCompleted,
+    TResult Function(Failure failure)? error,
   }) {
     return createCompleted?.call(produce);
   }
@@ -439,6 +465,7 @@ class _$CreateCompleted implements CreateCompleted {
     TResult Function()? loading,
     TResult Function(Produce produce)? createCompleted,
     TResult Function(Produce produce)? addPriceCompleted,
+    TResult Function(Failure failure)? error,
     required TResult orElse(),
   }) {
     if (createCompleted != null) {
@@ -454,6 +481,7 @@ class _$CreateCompleted implements CreateCompleted {
     required TResult Function(Loading value) loading,
     required TResult Function(CreateCompleted value) createCompleted,
     required TResult Function(AddPriceCompleted value) addPriceCompleted,
+    required TResult Function(Error value) error,
   }) {
     return createCompleted(this);
   }
@@ -465,6 +493,7 @@ class _$CreateCompleted implements CreateCompleted {
     TResult Function(Loading value)? loading,
     TResult Function(CreateCompleted value)? createCompleted,
     TResult Function(AddPriceCompleted value)? addPriceCompleted,
+    TResult Function(Error value)? error,
   }) {
     return createCompleted?.call(this);
   }
@@ -476,6 +505,7 @@ class _$CreateCompleted implements CreateCompleted {
     TResult Function(Loading value)? loading,
     TResult Function(CreateCompleted value)? createCompleted,
     TResult Function(AddPriceCompleted value)? addPriceCompleted,
+    TResult Function(Error value)? error,
     required TResult orElse(),
   }) {
     if (createCompleted != null) {
@@ -571,6 +601,7 @@ class _$AddPriceCompleted implements AddPriceCompleted {
     required TResult Function() loading,
     required TResult Function(Produce produce) createCompleted,
     required TResult Function(Produce produce) addPriceCompleted,
+    required TResult Function(Failure failure) error,
   }) {
     return addPriceCompleted(produce);
   }
@@ -582,6 +613,7 @@ class _$AddPriceCompleted implements AddPriceCompleted {
     TResult Function()? loading,
     TResult Function(Produce produce)? createCompleted,
     TResult Function(Produce produce)? addPriceCompleted,
+    TResult Function(Failure failure)? error,
   }) {
     return addPriceCompleted?.call(produce);
   }
@@ -593,6 +625,7 @@ class _$AddPriceCompleted implements AddPriceCompleted {
     TResult Function()? loading,
     TResult Function(Produce produce)? createCompleted,
     TResult Function(Produce produce)? addPriceCompleted,
+    TResult Function(Failure failure)? error,
     required TResult orElse(),
   }) {
     if (addPriceCompleted != null) {
@@ -608,6 +641,7 @@ class _$AddPriceCompleted implements AddPriceCompleted {
     required TResult Function(Loading value) loading,
     required TResult Function(CreateCompleted value) createCompleted,
     required TResult Function(AddPriceCompleted value) addPriceCompleted,
+    required TResult Function(Error value) error,
   }) {
     return addPriceCompleted(this);
   }
@@ -619,6 +653,7 @@ class _$AddPriceCompleted implements AddPriceCompleted {
     TResult Function(Loading value)? loading,
     TResult Function(CreateCompleted value)? createCompleted,
     TResult Function(AddPriceCompleted value)? addPriceCompleted,
+    TResult Function(Error value)? error,
   }) {
     return addPriceCompleted?.call(this);
   }
@@ -630,6 +665,7 @@ class _$AddPriceCompleted implements AddPriceCompleted {
     TResult Function(Loading value)? loading,
     TResult Function(CreateCompleted value)? createCompleted,
     TResult Function(AddPriceCompleted value)? addPriceCompleted,
+    TResult Function(Error value)? error,
     required TResult orElse(),
   }) {
     if (addPriceCompleted != null) {
@@ -646,4 +682,152 @@ abstract class AddPriceCompleted implements PlaygroundState {
   @JsonKey(ignore: true)
   $AddPriceCompletedCopyWith<AddPriceCompleted> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ErrorCopyWith<$Res> {
+  factory $ErrorCopyWith(Error value, $Res Function(Error) then) =
+      _$ErrorCopyWithImpl<$Res>;
+  $Res call({Failure failure});
+}
+
+/// @nodoc
+class _$ErrorCopyWithImpl<$Res> extends _$PlaygroundStateCopyWithImpl<$Res>
+    implements $ErrorCopyWith<$Res> {
+  _$ErrorCopyWithImpl(Error _value, $Res Function(Error) _then)
+      : super(_value, (v) => _then(v as Error));
+
+  @override
+  Error get _value => super._value as Error;
+
+  @override
+  $Res call({
+    Object? failure = freezed,
+  }) {
+    return _then(Error(
+      failure == freezed
+          ? _value.failure
+          : failure // ignore: cast_nullable_to_non_nullable
+              as Failure,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$Error implements Error {
+  const _$Error(this.failure);
+
+  @override
+  final Failure failure;
+
+  @override
+  String toString() {
+    return 'PlaygroundState.error(failure: $failure)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is Error &&
+            const DeepCollectionEquality().equals(other.failure, failure));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(failure));
+
+  @JsonKey(ignore: true)
+  @override
+  $ErrorCopyWith<Error> get copyWith =>
+      _$ErrorCopyWithImpl<Error>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(Produce produce) createCompleted,
+    required TResult Function(Produce produce) addPriceCompleted,
+    required TResult Function(Failure failure) error,
+  }) {
+    return error(failure);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(Produce produce)? createCompleted,
+    TResult Function(Produce produce)? addPriceCompleted,
+    TResult Function(Failure failure)? error,
+  }) {
+    return error?.call(failure);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(Produce produce)? createCompleted,
+    TResult Function(Produce produce)? addPriceCompleted,
+    TResult Function(Failure failure)? error,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(failure);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Initial value) initial,
+    required TResult Function(Loading value) loading,
+    required TResult Function(CreateCompleted value) createCompleted,
+    required TResult Function(AddPriceCompleted value) addPriceCompleted,
+    required TResult Function(Error value) error,
+  }) {
+    return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(Initial value)? initial,
+    TResult Function(Loading value)? loading,
+    TResult Function(CreateCompleted value)? createCompleted,
+    TResult Function(AddPriceCompleted value)? addPriceCompleted,
+    TResult Function(Error value)? error,
+  }) {
+    return error?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Initial value)? initial,
+    TResult Function(Loading value)? loading,
+    TResult Function(CreateCompleted value)? createCompleted,
+    TResult Function(AddPriceCompleted value)? addPriceCompleted,
+    TResult Function(Error value)? error,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Error implements PlaygroundState {
+  const factory Error(Failure failure) = _$Error;
+
+  Failure get failure;
+  @JsonKey(ignore: true)
+  $ErrorCopyWith<Error> get copyWith => throw _privateConstructorUsedError;
 }

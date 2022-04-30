@@ -15,50 +15,59 @@ class PlaygroundTwoScreen extends StatelessWidget {
     return BlocProvider(
       create: (context) => PlaygroundCubit(repository: locator()),
       child: Builder(builder: (context) {
-        return Scaffold(
-          body: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Center(
-                child: PrimaryButton(
-                  width: 200,
-                  content: "Create Produce",
-                  onPressed: () {
-                    context.read<PlaygroundCubit>().createProduce(
-                          produceName: "Beijing Cabbage",
-                          currentProducePrice: 99,
-                        );
-                  },
-                ),
+        return BlocBuilder<PlaygroundCubit, PlaygroundState>(
+          builder: (context, state) {
+            return Scaffold(
+              body: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Center(
+                    child: PrimaryButton(
+                      width: 200,
+                      content: "Create Produce",
+                      onPressed: () {
+                        context.read<PlaygroundCubit>().createProduce(
+                              produceName: "Beijing Cabbage",
+                              currentProducePrice: 99,
+                            );
+                      },
+                    ),
+                  ),
+                  UIVerticalSpace6(),
+                  Center(
+                    child: PrimaryButton(
+                      width: 200,
+                      content: "Add New Price",
+                      onPressed: () {
+                        context.read<PlaygroundCubit>().addNewPrice(
+                              produceId: "M0EDrwfr8LGQc7EAQaR8",
+                              currentPrice: 21,
+                            );
+                      },
+                    ),
+                  ),
+                  UIVerticalSpace6(),
+                  Center(
+                    child: PrimaryButton(
+                      width: 200,
+                      content: "Run Debug",
+                      onPressed: () {
+                        context.read<PlaygroundCubit>().debugMethod(
+                              produceId: "M0EDrwfr8LGQc7EAQaR8",
+                            );
+                      },
+                    ),
+                  ),
+                  UIVerticalSpace24(),
+                  if (state is Error)
+                    Container(
+                      child: Text(state.failure.toString()),
+                    )
+                ],
               ),
-              UIVerticalSpace6(),
-              Center(
-                child: PrimaryButton(
-                  width: 200,
-                  content: "Add New Price",
-                  onPressed: () {
-                    context.read<PlaygroundCubit>().addNewPrice(
-                          produceId: "ELIgOCHelYwb3iveHFyR",
-                          currentPrice: 10,
-                        );
-                  },
-                ),
-              ),
-              UIVerticalSpace6(),
-              Center(
-                child: PrimaryButton(
-                  width: 200,
-                  content: "Run Debug",
-                  onPressed: () {
-                    context.read<PlaygroundCubit>().debugMethod(
-                          produceId: "ELIgOCHelYwb3iveHFyR",
-                        );
-                  },
-                ),
-              ),
-            ],
-          ),
+            );
+          },
         );
       }),
     );
