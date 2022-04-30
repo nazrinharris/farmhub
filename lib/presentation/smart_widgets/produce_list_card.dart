@@ -4,6 +4,7 @@ import 'package:syncfusion_flutter_charts/charts.dart';
 
 import '../../app_router.dart';
 import '../../core/util/misc.dart';
+import '../../features/produce_manager/domain/entities/price/price.dart';
 import '../../features/produce_manager/domain/entities/produce/produce.dart';
 import '../shared_widgets/ui_helpers.dart';
 
@@ -282,6 +283,14 @@ class SmallPriceChart extends StatelessWidget {
         borderColor = const Color(0xff79D2DE);
       }
 
+      // Begin process of transtaling weeklyPricesMap
+      final Map<String, dynamic> weeklyPricesMap = produce.weeklyPrices;
+      final List<PriceSnippet> pricesList = [];
+
+      weeklyPricesMap.forEach((priceDate, price) {
+        pricesList.add(PriceSnippet(price: price, priceDate: priceDate));
+      });
+
       return SizedBox(
         height: 90,
         width: 120,
@@ -294,11 +303,11 @@ class SmallPriceChart extends StatelessWidget {
             isVisible: false,
           ),
           series: <CartesianSeries>[
-            SplineAreaSeries<num, num>(
+            SplineAreaSeries<PriceSnippet, String>(
               animationDuration: chartAnimationDuration,
-              dataSource: produce.weeklyPrices.reversed.toList(),
-              xValueMapper: (num price, index) => index,
-              yValueMapper: (num price, index) => price,
+              dataSource: pricesList,
+              xValueMapper: (priceSnippet, index) => priceSnippet.priceDate,
+              yValueMapper: (priceSnippet, index) => priceSnippet.price,
               borderWidth: 3,
               borderColor: borderColor,
               gradient: gradient,
