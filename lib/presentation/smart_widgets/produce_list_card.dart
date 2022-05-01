@@ -1,5 +1,6 @@
 // TODO: Extract ProduceListCard and whatever else that is needed.
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 import '../../app_router.dart';
@@ -291,6 +292,13 @@ class SmallPriceChart extends StatelessWidget {
         pricesList.add(PriceSnippet(price: price, priceDate: priceDate));
       });
 
+      pricesList.sort((a, b) {
+        DateTime aPriceDate = DateFormat("dd-MM-yyyy").parse(a.priceDate);
+        DateTime bPriceDate = DateFormat("dd-MM-yyyy").parse(b.priceDate);
+
+        return aPriceDate.compareTo(bPriceDate);
+      });
+
       return SizedBox(
         height: 90,
         width: 120,
@@ -302,11 +310,11 @@ class SmallPriceChart extends StatelessWidget {
           primaryYAxis: NumericAxis(
             isVisible: false,
           ),
-          series: <CartesianSeries>[
-            SplineAreaSeries<PriceSnippet, String>(
+          series: <CartesianSeries<PriceSnippet, int>>[
+            SplineAreaSeries<PriceSnippet, int>(
               animationDuration: chartAnimationDuration,
               dataSource: pricesList,
-              xValueMapper: (priceSnippet, index) => priceSnippet.priceDate,
+              xValueMapper: (priceSnippet, index) => index,
               yValueMapper: (priceSnippet, index) => priceSnippet.price,
               borderWidth: 3,
               borderColor: borderColor,

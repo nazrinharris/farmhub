@@ -79,7 +79,7 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
 
     List<Produce> combinedProduceList = List.from(lastProduceList)..addAll(newProduceList);
 
-    throw Exception();
+    return combinedProduceList;
   }
 
   @override
@@ -238,11 +238,9 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
     required String produceId,
     required num currentPrice,
   }) async {
-    final currentTimeStamp = clock.daysFromNow(12);
+    final currentTimeStamp = clock.now();
     final chosenDate = DateFormat("dd-MM-yyyy").format(currentTimeStamp);
     final chosenYear = DateFormat("yyyy").format(currentTimeStamp);
-    // This boolean just tells us if we are creating a new price or updating an existing one.
-    bool isUpdatingExistingPrice;
     num calculatedPrice;
 
     //! Begin updating Price Document and Aggregate Prices
@@ -263,7 +261,6 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
     if (chosenDatePriceDoc.isEmpty) {
       // Begin process of creating a new Price Document
       print("There is no Price Document for date $chosenDate");
-      isUpdatingExistingPrice = false;
 
       // Update Price Document
       await firebaseFirestore.collection('produce').doc(produceId).collection('prices').add(
@@ -291,7 +288,6 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
       String priceId = chosenDatePriceDoc[0]["priceId"];
       List<num> newAllPrices = List.from(chosenDatePriceDoc[0]["allPrices"]);
       newAllPrices.add(currentPrice);
-      isUpdatingExistingPrice = true;
 
       // Calculate averaged price
       num tempSum = 0;
@@ -418,16 +414,34 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
       "weeklyPrices": weeklyPricesSnippetJSON,
     });
 
-    //! Start updating [currentProducePrice] and [previousProducePrice] based on [weeklyPrices]
-    await firebaseFirestore.collection('produce').doc(produceId).update({
-      "currentProducePrice": {
+    // There can be a case where [currentProducePrice] is being updated while [previousProducePrice] has
+    // not yet existed.
+    Map<String, dynamic> previousProducePrice = {};
+    Map<String, dynamic> currentProducePrice = {};
+    if (weeklyPricesSnippet.length == 1) {
+      currentProducePrice = {
         "price": weeklyPricesSnippet[weeklyPricesSnippet.length - 1].price,
         "priceDate": weeklyPricesSnippet[weeklyPricesSnippet.length - 1].priceDate,
-      },
-      "previousProducePrice": {
+      };
+      previousProducePrice = {
+        "price": null,
+        "priceDate": null,
+      };
+    } else {
+      currentProducePrice = {
+        "price": weeklyPricesSnippet[weeklyPricesSnippet.length - 1].price,
+        "priceDate": weeklyPricesSnippet[weeklyPricesSnippet.length - 1].priceDate,
+      };
+      previousProducePrice = {
         "price": weeklyPricesSnippet[weeklyPricesSnippet.length - 2].price,
         "priceDate": weeklyPricesSnippet[weeklyPricesSnippet.length - 2].priceDate,
-      },
+      };
+    }
+
+    //! Start updating [currentProducePrice] and [previousProducePrice] based on [weeklyPrices]
+    await firebaseFirestore.collection('produce').doc(produceId).update({
+      "currentProducePrice": currentProducePrice,
+      "previousProducePrice": previousProducePrice,
     });
 
     // Retrieve updated produce

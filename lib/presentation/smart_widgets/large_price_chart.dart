@@ -1,6 +1,7 @@
 import 'package:farmhub/features/produce_manager/domain/entities/price/price.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 import '../../features/produce_manager/domain/entities/produce/produce.dart';
@@ -37,7 +38,7 @@ class LargePriceChart extends StatelessWidget {
   Widget build(BuildContext context) {
     switch (type) {
       case LargePriceChartType.oneW:
-        return _buildOneWeekChart(produce);
+        return LargeOneWeekChart(produce);
       default:
         return Container(
           margin: const EdgeInsets.symmetric(horizontal: 12),
@@ -48,11 +49,24 @@ class LargePriceChart extends StatelessWidget {
         );
     }
   }
+}
 
-  Container _buildOneWeekChart(Produce produce) {
-    final bool isNegative = resolveIsNegative(produce);
+class LargeOneWeekChart extends StatelessWidget {
+  final Produce produce;
+
+  const LargeOneWeekChart(this.produce, {Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    late bool isNegative;
     late LinearGradient gradient;
     late Color borderColor;
+
+    if (produce.weeklyPrices.length < 2) {
+      isNegative = false;
+    } else {
+      isNegative = resolveIsNegative(produce);
+    }
 
     if (isNegative) {
       gradient = const LinearGradient(
@@ -84,15 +98,27 @@ class LargePriceChart extends StatelessWidget {
       pricesList.add(PriceSnippet(price: price, priceDate: priceDate));
     });
 
+    pricesList.sort((a, b) {
+      DateTime aPriceDate = DateFormat("dd-MM-yyyy").parse(a.priceDate);
+      DateTime bPriceDate = DateFormat("dd-MM-yyyy").parse(b.priceDate);
+
+      return aPriceDate.compareTo(bPriceDate);
+    });
+
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 12),
       height: 220,
       child: SfCartesianChart(
+        primaryXAxis: CategoryAxis(),
+        primaryYAxis: NumericAxis(),
         plotAreaBorderColor: Colors.transparent,
         series: <CartesianSeries>[
           SplineAreaSeries<PriceSnippet, String>(
             dataSource: pricesList,
-            xValueMapper: (priceSnippet, index) => priceSnippet.priceDate,
+            xValueMapper: (priceSnippet, index) {
+              DateTime priceDate = DateFormat("dd-MM-yyyy").parse(priceSnippet.priceDate);
+              return DateFormat('EEEE').format(priceDate);
+            },
             yValueMapper: (priceSnippet, index) => priceSnippet.price,
             borderColor: borderColor,
             gradient: gradient,
@@ -112,5 +138,14 @@ class LargePriceChart extends StatelessWidget {
     } else {
       return false;
     }
+  }
+}
+
+class LargeTwoWeekChart extends StatelessWidget {
+  const LargeTwoWeekChart({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container();
   }
 }

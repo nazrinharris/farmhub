@@ -64,6 +64,8 @@ class _AddNewPriceSecondScreenState extends State<AddNewPriceSecondScreen> {
                             message:
                                 "Uh oh! An error occured. Code: ${state.failure.code}, Message: ${state.failure.message}"),
                       );
+                      print(state.failure);
+                      print(state.failure.stackTrace);
                     } else if (state is ANPSAddNewPriceSuccess) {
                       showTopSnackBar(
                         context,
