@@ -27,6 +27,9 @@ class ProduceListCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    num currentProducePrice = produce.currentProducePrice["price"];
+    currentProducePrice = roundDouble(currentProducePrice.toDouble(), 2);
+
     return Material(
       type: MaterialType.transparency,
       child: InkWell(
@@ -60,7 +63,7 @@ class ProduceListCard extends StatelessWidget {
                     ),
                     const UICustomVertical(2),
                     Text(
-                      "RM ${produce.currentProducePrice["price"].toString()}/kg",
+                      "RM $currentProducePrice/kg",
                       style: Theme.of(context)
                           .textTheme
                           .bodyText2!

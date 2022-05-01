@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 
+import '../../../core/util/misc.dart';
 import '../../../features/produce_manager/domain/entities/produce/produce.dart';
 import '../../shared_widgets/appbars.dart';
 import '../../shared_widgets/texts.dart';
@@ -71,7 +72,7 @@ class _AddNewPriceSecondScreenState extends State<AddNewPriceSecondScreen> {
                         context,
                         CustomSnackBar.success(
                           message:
-                              "Price of RM${state.produce.currentProducePrice["price"]} is succesfully added to ${state.produce.produceName}",
+                              "Price of RM${context.read<MultipleFieldsFormBloc>().state.props.firstFieldValue} is succesfully added to ${state.produce.produceName}",
                         ),
                       );
                       Navigator.of(context).pushNamed(
@@ -138,6 +139,17 @@ class HeaderSliver extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    num currentProducePrice = produce.currentProducePrice["price"];
+    currentProducePrice = roundDouble(currentProducePrice.toDouble(), 2);
+
+    dynamic previousProducePrice;
+    if (produce.previousProducePrice["price"] == null) {
+      previousProducePrice = "-.--";
+    } else {
+      previousProducePrice = produce.previousProducePrice["price"] as num;
+      previousProducePrice = roundDouble(previousProducePrice.toDouble(), 2);
+    }
+
     return SliverList(
       delegate: SliverChildListDelegate(
         [
@@ -156,8 +168,8 @@ class HeaderSliver extends StatelessWidget {
                 const UIVerticalSpace24(),
                 const UIBorder(),
                 const UIVerticalSpace24(),
-                Text("Current Price: RM${produce.currentProducePrice["price"]}/kg"),
-                Text(resolvePreviousPriceText(produce)),
+                Text("Current Price: RM$currentProducePrice/kg"),
+                Text("Previous Price: RM$previousProducePrice/kg"),
                 const UIVerticalSpace24(),
                 const UIBorder(),
               ],
@@ -166,14 +178,6 @@ class HeaderSliver extends StatelessWidget {
         ],
       ),
     );
-  }
-
-  String resolvePreviousPriceText(Produce produce) {
-    if (produce.previousProducePrice["price"] == null) {
-      return "Previous Price: RM-.--";
-    } else {
-      return "Previous Price: RM${produce.previousProducePrice["price"]}/kg";
-    }
   }
 }
 

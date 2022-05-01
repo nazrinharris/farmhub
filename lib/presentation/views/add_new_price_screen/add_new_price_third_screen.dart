@@ -1,4 +1,5 @@
 import 'package:farmhub/app_router.dart';
+import 'package:farmhub/core/util/misc.dart';
 import 'package:farmhub/locator.dart';
 import 'package:farmhub/presentation/shared_widgets/appbars.dart';
 import 'package:farmhub/presentation/shared_widgets/buttons.dart';
@@ -28,6 +29,17 @@ class AddNewPriceThirdScreen extends StatelessWidget {
         ),
         child: Builder(
           builder: (context) {
+            num currentProducePrice = arguments.produce.currentProducePrice["price"];
+            currentProducePrice = roundDouble(currentProducePrice.toDouble(), 2);
+
+            dynamic previousProducePrice;
+            if (arguments.produce.previousProducePrice["price"] == null) {
+              previousProducePrice = "-.--";
+            } else {
+              previousProducePrice = arguments.produce.previousProducePrice["price"] as num;
+              previousProducePrice = roundDouble(previousProducePrice.toDouble(), 2);
+            }
+
             return Scaffold(
               resizeToAvoidBottomInset: false,
               extendBodyBehindAppBar: true,
@@ -74,10 +86,10 @@ class AddNewPriceThirdScreen extends StatelessWidget {
                         Column(
                           children: [
                             Text(
-                              "Current Price: RM${arguments.produce.currentProducePrice["price"]}/kg",
+                              "Current Price: RM$currentProducePrice/kg",
                             ),
                             Text(
-                              "Previous Price: RM${arguments.produce.previousProducePrice["price"]}/kg",
+                              "Previous Price: RM$previousProducePrice/kg",
                             ),
                           ],
                         ),

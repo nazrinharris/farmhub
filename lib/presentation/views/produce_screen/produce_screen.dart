@@ -11,6 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
+import '../../../core/util/misc.dart';
 import 'custom_tab.dart' as ct;
 
 import '../../../features/produce_manager/domain/entities/produce/produce.dart';
@@ -109,6 +110,9 @@ class _SliverProduceHeaderState extends State<SliverProduceHeader> {
 
   @override
   Widget build(BuildContext context) {
+    num currentProducePrice = widget.produce.currentProducePrice["price"];
+    currentProducePrice = roundDouble(currentProducePrice.toDouble(), 2);
+
     return SliverList(
         delegate: SliverChildListDelegate([
       Padding(
@@ -123,7 +127,7 @@ class _SliverProduceHeaderState extends State<SliverProduceHeader> {
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Text("RM ${widget.produce.currentProducePrice["price"].toString()}/kg"),
+                Text("RM $currentProducePrice/kg"),
                 const UIHorizontalSpace14(),
                 ChangeBox(widget.produce),
               ],
