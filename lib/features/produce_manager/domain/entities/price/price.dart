@@ -45,4 +45,5 @@ class PriceSnippet with _$PriceSnippet {
 class PriceAggregate with _$PriceAggregate {
   factory PriceAggregate(
     Map<String, dynamic> aggregatePrices,
+  ) = _PriceAggregate;
 }
