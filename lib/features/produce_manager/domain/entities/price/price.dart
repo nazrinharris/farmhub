@@ -39,18 +39,10 @@ class PriceSnippet with _$PriceSnippet {
     required num price,
     required String priceDate,
   }) = _PriceSnippet;
+}
 
-  // static PriceSnippet fromMap(Map<String, dynamic>? map) {
-  //   if (map == null) {
-  //     throw UnexpectedException(
-  //       code: 'PriceSnippet-fromMap',
-  //       message: "Map is null.",
-  //       stackTrace: StackTrace.current,
-  //     );
-  //   }
-  //   return PriceSnippet(
-  //     price: map[""],
-  //     priceDate: priceDate,
-  //   );
-  // }
+@freezed
+class PriceAggregate with _$PriceAggregate {
+  factory PriceAggregate(
+    Map<String, dynamic> aggregatePrices,
 }

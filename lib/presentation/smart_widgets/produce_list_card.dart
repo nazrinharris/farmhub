@@ -295,6 +295,8 @@ class SmallPriceChart extends StatelessWidget {
         pricesList.add(PriceSnippet(price: price, priceDate: priceDate));
       });
 
+      // This sorts the price in ascending order. [0] being the most old and the last index being
+      // the most newest date.
       pricesList.sort((a, b) {
         DateTime aPriceDate = DateFormat("dd-MM-yyyy").parse(a.priceDate);
         DateTime bPriceDate = DateFormat("dd-MM-yyyy").parse(b.priceDate);
