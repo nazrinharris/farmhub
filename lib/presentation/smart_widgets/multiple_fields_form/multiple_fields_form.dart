@@ -44,21 +44,25 @@ class MultipleFieldsForm<T extends Bloc<MultipleFieldsFormEvent, MultipleFieldsF
   final String firstFieldHintText;
   final String? Function(String?)? validateFirstField;
   final bool? isFirstFieldObscured;
+  final TextInputType? firstFieldInputType;
 
   final String? secondFieldLabel;
   final String? secondFieldHintText;
   final String? Function(String?)? validateSecondField;
   final bool? isSecondFieldObscured;
+  final TextInputType? secondFieldInputType;
 
   final String? thirdFieldLabel;
   final String? thirdFieldHintText;
   final String? Function(String?)? validateThirdField;
   final bool? isThirdFieldObscured;
+  final TextInputType? thirdFieldInputType;
 
   final String? fourthFieldLabel;
   final String? fourthFieldHintText;
   final String? Function(String?)? validateFourthField;
   final bool? isFourthFieldObscured;
+  final TextInputType? fourthFieldInputType;
 
   const MultipleFieldsForm({
     // General
@@ -69,21 +73,25 @@ class MultipleFieldsForm<T extends Bloc<MultipleFieldsFormEvent, MultipleFieldsF
     required this.firstFieldHintText,
     required this.validateFirstField,
     this.isFirstFieldObscured,
+    this.firstFieldInputType,
     // Second
     this.secondFieldLabel,
     this.secondFieldHintText,
     this.validateSecondField,
     this.isSecondFieldObscured,
+    this.secondFieldInputType,
     // Third
     this.thirdFieldLabel,
     this.thirdFieldHintText,
     this.validateThirdField,
     this.isThirdFieldObscured,
+    this.thirdFieldInputType,
     // Fourth
     this.fourthFieldLabel,
     this.fourthFieldHintText,
     this.validateFourthField,
     this.isFourthFieldObscured,
+    this.fourthFieldInputType,
   }) : super(key: key);
 
   @override
@@ -101,6 +109,7 @@ class MultipleFieldsForm<T extends Bloc<MultipleFieldsFormEvent, MultipleFieldsF
             children: [
               _TextFieldLabelText(firstFieldLabel),
               TextFormField(
+                  keyboardType: firstFieldInputType,
                   focusNode: _readBlocState(context).props.firstFieldFocusNode,
                   onChanged: (input) {
                     // Should update the cubit's local username value.
@@ -129,6 +138,21 @@ class MultipleFieldsForm<T extends Bloc<MultipleFieldsFormEvent, MultipleFieldsF
                 validateSecondField: validateSecondField,
                 isSecondFieldObscured: isSecondFieldObscured,
                 secondFieldHintText: secondFieldHintText,
+                secondFieldInputType: secondFieldInputType,
+              ),
+              BuildThirdField(
+                type: type,
+                thirdFieldLabel: thirdFieldLabel,
+                validateThirdField: validateThirdField,
+                isThirdFieldObscured: isThirdFieldObscured,
+                thirdFieldHintText: thirdFieldHintText,
+              ),
+              BuildFourthField(
+                type: type,
+                fourthFieldLabel: fourthFieldLabel,
+                validateFourthField: validateFourthField,
+                isFourthFieldObscured: isFourthFieldObscured,
+                fourthFieldHintText: fourthFieldHintText,
               ),
               const UIVerticalSpace14(),
             ],
@@ -148,12 +172,14 @@ class BuildSecondField<T extends Bloc<MultipleFieldsFormEvent, MultipleFieldsFor
     required this.validateSecondField,
     required this.isSecondFieldObscured,
     required this.secondFieldHintText,
+    this.secondFieldInputType,
   }) : super(key: key);
 
   final String? secondFieldLabel;
   final String? Function(String? p1)? validateSecondField;
   final bool? isSecondFieldObscured;
   final String? secondFieldHintText;
+  final TextInputType? secondFieldInputType;
   final MultipleFieldsFormType type;
 
   @override
@@ -202,6 +228,7 @@ class BuildThirdField<T extends Bloc<MultipleFieldsFormEvent, MultipleFieldsForm
     required this.thirdFieldLabel,
     required this.validateThirdField,
     required this.isThirdFieldObscured,
+    this.thirdFieldInputType,
     required this.thirdFieldHintText,
   }) : super(key: key);
 
@@ -209,6 +236,7 @@ class BuildThirdField<T extends Bloc<MultipleFieldsFormEvent, MultipleFieldsForm
   final String? Function(String? p1)? validateThirdField;
   final bool? isThirdFieldObscured;
   final String? thirdFieldHintText;
+  final TextInputType? thirdFieldInputType;
   final MultipleFieldsFormType type;
 
   @override
@@ -260,12 +288,14 @@ class BuildFourthField<T extends Bloc<MultipleFieldsFormEvent, MultipleFieldsFor
     required this.validateFourthField,
     required this.isFourthFieldObscured,
     required this.fourthFieldHintText,
+    this.fourthFieldInputType,
   }) : super(key: key);
 
   final String? fourthFieldLabel;
   final String? Function(String? p1)? validateFourthField;
   final bool? isFourthFieldObscured;
   final String? fourthFieldHintText;
+  final TextInputType? fourthFieldInputType;
   final MultipleFieldsFormType type;
 
   @override

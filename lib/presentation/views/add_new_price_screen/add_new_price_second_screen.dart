@@ -85,7 +85,7 @@ class _AddNewPriceSecondScreenState extends State<AddNewPriceSecondScreen> {
                     }
                   },
                   child: Scaffold(
-                    resizeToAvoidBottomInset: false,
+                    // resizeToAvoidBottomInset: false,
                     extendBodyBehindAppBar: true,
                     appBar: DefaultAppBar(
                       trailingIcon: const Icon(Icons.arrow_back),
@@ -101,7 +101,8 @@ class _AddNewPriceSecondScreenState extends State<AddNewPriceSecondScreen> {
                           CustomScrollView(
                             slivers: [
                               HeaderSliver(widget.produceArguments.produce),
-                              ContentSliver(),
+                              const ContentSliver(),
+                              const SliverWhiteSpace(100)
                             ],
                           ),
                           Container(
@@ -196,10 +197,14 @@ class ContentSliver extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 MultipleFieldsForm<MultipleFieldsFormBloc>(
-                  type: MultipleFieldsFormType.oneField,
+                  type: MultipleFieldsFormType.twoField,
                   firstFieldLabel: "Price (in RM/kg)",
                   firstFieldHintText: "What's the new price?",
+                  firstFieldInputType: TextInputType.number,
                   validateFirstField: validateCurrentPrice,
+                  secondFieldLabel: "Days from Now",
+                  secondFieldHintText: "Must be a number; (0) for today",
+                  secondFieldInputType: TextInputType.number,
                 ),
               ],
             ),
@@ -217,5 +222,22 @@ class ContentSliver extends StatelessWidget {
     } else if (double.tryParse(value)! < 0) {
       return 'A negative price is invalid';
     }
+  }
+}
+
+class SliverWhiteSpace extends StatelessWidget {
+  final double height;
+
+  const SliverWhiteSpace(this.height, {Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SliverList(
+      delegate: SliverChildListDelegate([
+        SizedBox(
+          height: height,
+        )
+      ]),
+    );
   }
 }
