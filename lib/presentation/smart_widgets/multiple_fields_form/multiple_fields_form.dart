@@ -213,6 +213,7 @@ class BuildSecondField<T extends Bloc<MultipleFieldsFormEvent, MultipleFieldsFor
               context: context,
               hintText: secondFieldHintText!,
             ),
+            keyboardType: secondFieldInputType,
           ),
         ],
       );
@@ -272,6 +273,7 @@ class BuildThirdField<T extends Bloc<MultipleFieldsFormEvent, MultipleFieldsForm
               context: context,
               hintText: thirdFieldHintText!,
             ),
+            keyboardType: thirdFieldInputType,
           ),
         ],
       );
@@ -333,6 +335,7 @@ class BuildFourthField<T extends Bloc<MultipleFieldsFormEvent, MultipleFieldsFor
               context: context,
               hintText: fourthFieldHintText!,
             ),
+            keyboardType: fourthFieldInputType,
           ),
         ],
       );

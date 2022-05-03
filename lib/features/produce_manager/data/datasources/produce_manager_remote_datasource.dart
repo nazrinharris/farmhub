@@ -25,6 +25,7 @@ abstract class IProduceManagerRemoteDatasource {
   Future<Produce> addNewPrice({
     required String produceId,
     required num currentPrice,
+    num? daysFromNow,
   });
 
   Future<List<Produce>> searchProduce({required String query});
@@ -241,8 +242,15 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
   Future<Produce> addNewPrice({
     required String produceId,
     required num currentPrice,
+    num? daysFromNow,
   }) async {
-    final currentTimeStamp = clock.now();
+    DateTime currentTimeStamp;
+    if (daysFromNow == null) {
+      currentTimeStamp = clock.now();
+    } else {
+      currentTimeStamp = clock.daysFromNow(daysFromNow.toInt());
+    }
+
     final chosenDate = DateFormat("dd-MM-yyyy").format(currentTimeStamp);
     final chosenYear = DateFormat("yyyy").format(currentTimeStamp);
     num calculatedPrice;

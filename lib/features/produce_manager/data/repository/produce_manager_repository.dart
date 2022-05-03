@@ -171,7 +171,11 @@ class ProduceManagerRepository implements IProduceManagerRepository {
   }
 
   @override
-  FutureEither<Produce> addNewPrice({required String produceId, required num currentPrice}) async {
+  FutureEither<Produce> addNewPrice({
+    required String produceId,
+    required num currentPrice,
+    num? daysFromNow,
+  }) async {
     if (await networkInfo.isConnected) {
       try {
         final result = await remoteDatasource.addNewPrice(

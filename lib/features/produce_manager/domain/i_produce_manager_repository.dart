@@ -22,6 +22,7 @@ abstract class IProduceManagerRepository {
   FutureEither<Produce> addNewPrice({
     required String produceId,
     required num currentPrice,
+    num? daysFromNow,
   });
 
   FutureEither<List<Produce>> searchProduce(String query);

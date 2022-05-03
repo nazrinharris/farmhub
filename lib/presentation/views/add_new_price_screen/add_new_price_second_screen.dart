@@ -2,7 +2,7 @@ import 'package:farmhub/app_router.dart';
 import 'package:farmhub/locator.dart';
 import 'package:farmhub/presentation/smart_widgets/primary_button_aware/primary_button_aware_cubit.dart';
 import 'package:farmhub/presentation/smart_widgets/produce_list_card.dart';
-import 'package:farmhub/presentation/themes/farmhub_theme.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:top_snackbar_flutter/custom_snack_bar.dart';
@@ -200,11 +200,12 @@ class ContentSliver extends StatelessWidget {
                   type: MultipleFieldsFormType.twoField,
                   firstFieldLabel: "Price (in RM/kg)",
                   firstFieldHintText: "What's the new price?",
-                  firstFieldInputType: TextInputType.number,
+                  firstFieldInputType: resolveInputType(),
                   validateFirstField: validateCurrentPrice,
                   secondFieldLabel: "Days from Now",
                   secondFieldHintText: "Must be a number; (0) for today",
-                  secondFieldInputType: TextInputType.number,
+                  secondFieldInputType: resolveInputType(),
+                  validateSecondField: validateCurrentPrice,
                 ),
               ],
             ),
@@ -221,6 +222,14 @@ class ContentSliver extends StatelessWidget {
       return 'Please enter a valid number: e.g. 12.80';
     } else if (double.tryParse(value)! < 0) {
       return 'A negative price is invalid';
+    }
+  }
+
+  TextInputType resolveInputType() {
+    if (defaultTargetPlatform == TargetPlatform.iOS) {
+      return const TextInputType.numberWithOptions(decimal: true, signed: true);
+    } else {
+      return const TextInputType.numberWithOptions(decimal: true);
     }
   }
 }
