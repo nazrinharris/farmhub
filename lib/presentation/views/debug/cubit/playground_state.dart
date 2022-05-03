@@ -8,6 +8,8 @@ class PlaygroundState with _$PlaygroundState {
 
   const factory PlaygroundState.createCompleted(Produce produce) = CreateCompleted;
   const factory PlaygroundState.addPriceCompleted(Produce produce) = AddPriceCompleted;
+  const factory PlaygroundState.getPricesCompleted(List<PriceSnippet> pricesList) =
+      GetPricesCompleted;
 
   const factory PlaygroundState.error(Failure failure) = Error;
 }

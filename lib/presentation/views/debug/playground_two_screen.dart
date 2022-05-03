@@ -64,15 +64,19 @@ class PlaygroundTwoScreen extends StatelessWidget {
                     Container(
                       child: Text(state.failure.toString()),
                     ),
+                  if (state is GetPricesCompleted)
+                    Container(
+                      child: Text(state.pricesList.toString()),
+                    ),
                   UIVerticalSpace14(),
                   Center(
                     child: PrimaryButton(
                       width: 200,
-                      content: "Run Debug",
+                      content: "Get Two Weeks",
                       onPressed: () {
-                        context.read<PlaygroundCubit>().debugMethod(
-                              produceId: "M0EDrwfr8LGQc7EAQaR8",
-                            );
+                        context
+                            .read<PlaygroundCubit>()
+                            .getTwoWeeksPrices(produceId: "M0EDrwfr8LGQc7EAQaR8");
                       },
                     ),
                   ),

@@ -6,6 +6,8 @@ import 'package:farmhub/features/produce_manager/domain/entities/produce/produce
 import 'package:farmhub/features/produce_manager/domain/i_produce_manager_repository.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../../../features/produce_manager/domain/entities/price/price.dart';
+
 part 'playground_state.dart';
 part 'playground_cubit.freezed.dart';
 
@@ -67,5 +69,27 @@ class PlaygroundCubit extends Cubit<PlaygroundState> {
     print("Adding new price to Produce with ID: $produceId");
 
     final failureOrNewPrice = await repository.debugMethod(produceId);
+  }
+
+  void getTwoWeeksPrices({
+    required String produceId,
+  }) async {
+    emit(const PlaygroundState.loading());
+
+    print("Retrieving prices for Produce with ID: $produceId");
+
+    final failureOrPricesList = await repository.getTwoWeeksPrices(produceId);
+
+    failureOrPricesList.fold(
+      (f) {
+        print(f);
+      },
+      (r) {
+        emit(PlaygroundState.getPricesCompleted(r));
+        for (PriceSnippet price in r) {
+          print(price);
+        }
+      },
+    );
   }
 }

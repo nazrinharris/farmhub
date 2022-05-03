@@ -2,11 +2,11 @@ import 'package:farmhub/features/produce_manager/domain/entities/price/price.dar
 import 'package:intl/intl.dart';
 import 'package:clock/clock.dart';
 
-List<PriceSnippet> aggregateToTwoWeeks(Map<String, dynamic> aggregatePricesMap) {
+List<PriceSnippet> aggregateToTwoWeeks(Map<String, dynamic>? aggregatePricesMap) {
   final DateTime todayTimeStamp = clock.now();
 
   final List<PriceSnippet> pricesList = [];
-  aggregatePricesMap.forEach((date, price) {
+  aggregatePricesMap!["prices-map"].forEach((date, price) {
     pricesList.add(PriceSnippet(price: price, priceDate: date));
   });
 
