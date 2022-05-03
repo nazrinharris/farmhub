@@ -17,7 +17,6 @@ class ProduceManagerBloc extends Bloc<ProduceManagerEvent, ProduceManagerState> 
   ProduceManagerBloc({required this.repository}) : super(const PMSInitial()) {
     on<_PMEExecGetFirstTenProduce>(execGetFirstTenProduce);
     on<_PMEExecCreateProduce>(execCreateNewProduce);
-    on<_PMEExecGetOneWeekPrices>(execGetOneWeekPrices);
   }
 
   FutureOr<void> execGetFirstTenProduce(
@@ -55,24 +54,6 @@ class ProduceManagerBloc extends Bloc<ProduceManagerEvent, ProduceManagerState> 
         stackTrace: f.stackTrace!,
       ),
       (produce) => ProduceManagerState.createNewProduceSuccess(produce: produce),
-    ));
-  }
-
-  FutureOr<void> execGetOneWeekPrices(
-    _PMEExecGetOneWeekPrices event,
-    Emitter<ProduceManagerState> emit,
-  ) async {
-    emit(const ProduceManagerState.getOneWeekPricesLoading());
-
-    final failureOrPrice = await repository.getOneWeekPrices(event.pid);
-
-    emit(failureOrPrice.fold(
-      (f) => ProduceManagerState.getOneWeekPricesError(
-        code: f.code!,
-        message: f.message!,
-        stackTrace: f.stackTrace!,
-      ),
-      (priceList) => ProduceManagerState.getOneWeekPricesSuccess(priceList: priceList),
     ));
   }
 }

@@ -171,28 +171,6 @@ class ProduceManagerRepository implements IProduceManagerRepository {
   }
 
   @override
-  FutureEither<List<Price>> getOneWeekPrices(String pid) async {
-    if (await networkInfo.isConnected) {
-      try {
-        final result = await remoteDatasource.getOneWeekPrices(pid);
-
-        return Right(result);
-      } catch (e) {
-        return Left(UnexpectedFailure(
-          code: e.toString(),
-          stackTrace: StackTrace.current,
-        ));
-      }
-    } else {
-      return Left(InternetConnectionFailure(
-        code: ERROR_NO_INTERNET_CONNECTION,
-        message: MESSAGE_NO_INTERNET_CONNECTION,
-        stackTrace: StackTrace.current,
-      ));
-    }
-  }
-
-  @override
   FutureEither<Produce> addNewPrice({required String produceId, required num currentPrice}) async {
     if (await networkInfo.isConnected) {
       try {
@@ -264,5 +242,24 @@ class ProduceManagerRepository implements IProduceManagerRepository {
     final result = await remoteDatasource.debugMethod(produceId);
 
     return Right(result);
+  }
+
+  @override
+  FutureEither<List<PriceSnippet>> getTwoWeeksPrices(String produceId) async {
+    if (await networkInfo.isConnected) {
+      try {
+        final result = await remoteDatasource.getTwoWeeksPrices(produceId);
+
+        return Right(result);
+      } catch (e) {
+        return Left(UnexpectedFailure(code: e.toString(), stackTrace: StackTrace.current));
+      }
+    } else {
+      return Left(InternetConnectionFailure(
+        code: ERROR_NO_INTERNET_CONNECTION,
+        message: MESSAGE_NO_INTERNET_CONNECTION,
+        stackTrace: StackTrace.current,
+      ));
+    }
   }
 }

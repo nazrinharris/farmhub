@@ -40,10 +40,3 @@ class PriceSnippet with _$PriceSnippet {
     required String priceDate,
   }) = _PriceSnippet;
 }
-
-@freezed
-class PriceAggregate with _$PriceAggregate {
-  factory PriceAggregate(
-    Map<String, dynamic> aggregatePrices,
-  ) = _PriceAggregate;
-}

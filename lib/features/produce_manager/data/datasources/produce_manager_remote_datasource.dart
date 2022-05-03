@@ -4,6 +4,7 @@ import 'package:clock/clock.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:farmhub/core/errors/exceptions.dart';
 import 'package:farmhub/features/produce_manager/domain/entities/price/price.dart';
+import 'package:farmhub/features/produce_manager/domain/helpers.dart';
 import 'package:intl/intl.dart';
 
 import '../../domain/entities/produce/produce.dart';
@@ -19,7 +20,7 @@ abstract class IProduceManagerRemoteDatasource {
     required String authorId,
   });
 
-  Future<List<Price>> getOneWeekPrices(String pid);
+  Future<List<PriceSnippet>> getTwoWeeksPrices(String produceId);
 
   Future<Produce> addNewPrice({
     required String produceId,
@@ -121,20 +122,24 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
   }
 
   @override
-  Future<List<Price>> getOneWeekPrices(String pid) async {
-    final documentsList = await firebaseFirestore
+  Future<List<PriceSnippet>> getTwoWeeksPrices(String produceId) async {
+    final DateTime todayTimeStamp = clock.now();
+    final int currentYear = todayTimeStamp.year;
+
+    final Map<String, dynamic>? aggregatePricesMap = await firebaseFirestore
         .collection('produce')
-        .doc(pid)
+        .doc(produceId)
         .collection('prices')
-        .limit(7)
+        .doc('aggregate-prices-${currentYear.toString()}')
         .get()
-        .then((querySnapshot) => querySnapshot.docs);
+        .then((doc) => doc.data());
 
-    final priceList = documentsList.map((documentSnapshot) {
-      return Price.fromMap(documentSnapshot.data());
-    }).toList();
-
-    return priceList;
+    if (aggregatePricesMap == null) {
+      return [];
+    } else {
+      final twoWeeksPricesList = aggregateToTwoWeeks(aggregatePricesMap);
+      return twoWeeksPricesList;
+    }
   }
 
   @override

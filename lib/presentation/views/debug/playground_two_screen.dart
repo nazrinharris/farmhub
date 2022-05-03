@@ -63,7 +63,19 @@ class PlaygroundTwoScreen extends StatelessWidget {
                   if (state is Error)
                     Container(
                       child: Text(state.failure.toString()),
-                    )
+                    ),
+                  UIVerticalSpace14(),
+                  Center(
+                    child: PrimaryButton(
+                      width: 200,
+                      content: "Run Debug",
+                      onPressed: () {
+                        context.read<PlaygroundCubit>().debugMethod(
+                              produceId: "M0EDrwfr8LGQc7EAQaR8",
+                            );
+                      },
+                    ),
+                  ),
                 ],
               ),
             );

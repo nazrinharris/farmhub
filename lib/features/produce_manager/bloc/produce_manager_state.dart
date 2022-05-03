@@ -25,15 +25,4 @@ class ProduceManagerState with _$ProduceManagerState {
     required String message,
     required StackTrace stackTrace,
   }) = PMSCreateNewProduceError;
-
-  // Retrieving last seven prices of a Produce
-  const factory ProduceManagerState.getOneWeekPricesLoading() = PMSOneWeekPricesLoading;
-  const factory ProduceManagerState.getOneWeekPricesSuccess({
-    required List<Price> priceList,
-  }) = PMSOneWeekPricesSuccess;
-  const factory ProduceManagerState.getOneWeekPricesError({
-    required String code,
-    required String message,
-    required StackTrace stackTrace,
-  }) = PMSOneWeekPricesError;
 }

@@ -19,8 +19,6 @@ abstract class IProduceManagerRepository {
     required num currentProducePrice,
   });
 
-  FutureEither<List<Price>> getOneWeekPrices(String priceId);
-
   FutureEither<Produce> addNewPrice({
     required String produceId,
     required num currentPrice,
@@ -29,6 +27,8 @@ abstract class IProduceManagerRepository {
   FutureEither<List<Produce>> searchProduce(String query);
 
   FutureEither<List<Produce>> getNextTenSearchProduce(List<Produce> lastProduceList, String query);
+
+  FutureEither<List<PriceSnippet>> getTwoWeeksPrices(String produceId);
 
   FutureEither<void>? debugMethod(String produceId);
 }
