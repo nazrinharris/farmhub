@@ -4,6 +4,16 @@ import 'package:clock/clock.dart';
 
 enum RangeType { twoW, oneM, twoM, sixM, oneY }
 
+// TODO: Solve oneM until oneY to account for different length of months
+const Map<String, int> rangeTypeInDaysMap = {
+  "oneW": 7,
+  "twoW": 14,
+  "oneM": 31,
+  "twoM": 62,
+  "sixM": 62,
+  "oneY": 62,
+};
+
 /// This method converts the given [pricesList] which should be an unsorted list converted from
 /// [aggregate-prices].
 ///
@@ -30,19 +40,19 @@ List<PriceSnippet> pricesToRanged(
   int? range;
   switch (rangeType) {
     case RangeType.twoW:
-      range = 14;
+      range = rangeTypeInDaysMap["twoW"];
       break;
     case RangeType.oneM:
-      range = 31;
+      range = rangeTypeInDaysMap["oneM"];
       break;
     case RangeType.twoM:
-      range = 62;
+      range = rangeTypeInDaysMap["twoM"];
       break;
     case RangeType.sixM:
-      range = 62;
+      range = rangeTypeInDaysMap["sixM"];
       break;
     case RangeType.oneY:
-      range = 62;
+      range = rangeTypeInDaysMap["oneY"];
       break;
     default:
   }
