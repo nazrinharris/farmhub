@@ -181,6 +181,7 @@ class ProduceManagerRepository implements IProduceManagerRepository {
         final result = await remoteDatasource.addNewPrice(
           produceId: produceId,
           currentPrice: currentPrice,
+          daysFromNow: daysFromNow,
         );
 
         return Right(result);
@@ -249,10 +250,10 @@ class ProduceManagerRepository implements IProduceManagerRepository {
   }
 
   @override
-  FutureEither<List<PriceSnippet>> getTwoWeeksPrices(String produceId) async {
+  FutureEither<List<PriceSnippet>> getAggregatePrices(String produceId) async {
     if (await networkInfo.isConnected) {
       try {
-        final result = await remoteDatasource.getTwoWeeksPrices(produceId);
+        final result = await remoteDatasource.getAggregatePrices(produceId);
 
         return Right(result);
       } catch (e) {

@@ -54,6 +54,7 @@ class _AddNewPriceScreenState extends State<AddNewPriceScreen> {
                 body: SafeArea(
                   top: false,
                   child: CustomScrollView(
+                    physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
                     controller: scrollController,
                     slivers: [
                       HeaderSliver(),

@@ -20,7 +20,9 @@ abstract class IProduceManagerRemoteDatasource {
     required String authorId,
   });
 
-  Future<List<PriceSnippet>> getTwoWeeksPrices(String produceId);
+  /// This method will return a list of [PriceSnippet] which is unsorted. Use
+  /// helper methods from [helpers.dart] to filter and sort it.
+  Future<List<PriceSnippet>> getAggregatePrices(String produceId);
 
   Future<Produce> addNewPrice({
     required String produceId,
@@ -123,7 +125,7 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
   }
 
   @override
-  Future<List<PriceSnippet>> getTwoWeeksPrices(String produceId) async {
+  Future<List<PriceSnippet>> getAggregatePrices(String produceId) async {
     final DateTime todayTimeStamp = clock.now();
     final int currentYear = todayTimeStamp.year;
 
@@ -138,8 +140,12 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
     if (aggregatePricesMap == null) {
       return [];
     } else {
-      final twoWeeksPricesList = aggregateToTwoWeeks(aggregatePricesMap);
-      return twoWeeksPricesList;
+      final List<PriceSnippet> pricesList = [];
+      aggregatePricesMap["prices-map"].forEach((date, price) {
+        pricesList.add(PriceSnippet(price: price, priceDate: date));
+      });
+
+      return pricesList;
     }
   }
 

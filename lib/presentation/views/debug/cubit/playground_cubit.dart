@@ -7,6 +7,7 @@ import 'package:farmhub/features/produce_manager/domain/i_produce_manager_reposi
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../features/produce_manager/domain/entities/price/price.dart';
+import '../../../../features/produce_manager/domain/helpers.dart';
 
 part 'playground_state.dart';
 part 'playground_cubit.freezed.dart';
@@ -78,15 +79,17 @@ class PlaygroundCubit extends Cubit<PlaygroundState> {
 
     print("Retrieving prices for Produce with ID: $produceId");
 
-    final failureOrPricesList = await repository.getTwoWeeksPrices(produceId);
+    final failureOrPricesList = await repository.getAggregatePrices(produceId);
 
     failureOrPricesList.fold(
       (f) {
         print(f);
       },
       (r) {
+        List<PriceSnippet> pricesList = pricesToRanged(r, rangeType: RangeType.twoW);
+
         emit(PlaygroundState.getPricesCompleted(r));
-        for (PriceSnippet price in r) {
+        for (PriceSnippet price in pricesList) {
           print(price);
         }
       },

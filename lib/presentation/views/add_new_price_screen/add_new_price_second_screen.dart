@@ -161,8 +161,11 @@ class HeaderSliver extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const UITopPadding(),
-                const Headline1('You have chosen:'),
-                const UIVerticalSpace14(),
+                Text(
+                  "You have chosen:",
+                  style: Theme.of(context).textTheme.bodyText1,
+                ),
+                const UIVerticalSpace6(),
                 Headline2(produce.produceName),
                 const UIVerticalSpace14(),
                 ChangeBox(produce),

@@ -2,13 +2,17 @@ import 'package:farmhub/features/produce_manager/domain/entities/price/price.dar
 import 'package:intl/intl.dart';
 import 'package:clock/clock.dart';
 
-List<PriceSnippet> aggregateToTwoWeeks(Map<String, dynamic>? aggregatePricesMap) {
-  final DateTime todayTimeStamp = clock.now();
+enum RangeType { twoW, oneM, twoM, sixM, oneY }
 
-  final List<PriceSnippet> pricesList = [];
-  aggregatePricesMap!["prices-map"].forEach((date, price) {
-    pricesList.add(PriceSnippet(price: price, priceDate: date));
-  });
+/// This method converts the given [pricesList] which should be an unsorted list converted from
+/// [aggregate-prices].
+///
+/// If [rangeType] is not specified, it defaults to [twoW]
+List<PriceSnippet> pricesToRanged(
+  List<PriceSnippet> pricesList, {
+  RangeType? rangeType = RangeType.twoW,
+}) {
+  final DateTime todayTimeStamp = clock.now();
 
   // This will sort it in such a way that the first index will be the lower bound (oldest date)
   // and the last index will be the upper bound (latest/newest date).
@@ -22,13 +26,34 @@ List<PriceSnippet> aggregateToTwoWeeks(Map<String, dynamic>? aggregatePricesMap)
   // We reverse the list because we want the first index to be the upper bound (latest/newest date)
   final reversedPricesList = pricesList.reversed.toList();
 
+  // Set the range
+  int? range;
+  switch (rangeType) {
+    case RangeType.twoW:
+      range = 14;
+      break;
+    case RangeType.oneM:
+      range = 31;
+      break;
+    case RangeType.twoM:
+      range = 62;
+      break;
+    case RangeType.sixM:
+      range = null;
+      break;
+    case RangeType.oneY:
+      range = null;
+      break;
+    default:
+  }
+
   final List<PriceSnippet> twoWeeksPricesList = [];
   for (PriceSnippet priceSnippet in reversedPricesList) {
     final DateTime priceDate = DateFormat("dd-MM-yyyy").parse(priceSnippet.priceDate);
     Duration diff = priceDate.difference(todayTimeStamp);
 
     // This means that [priceDate] is within two weeks from [todayTimeStamp]
-    if (diff.inDays < 14) {
+    if (diff.inDays < range!) {
       twoWeeksPricesList.add(priceSnippet);
     } else {
       // We break because at this point, we assume all dates after is over the two week mark.

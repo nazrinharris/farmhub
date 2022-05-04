@@ -76,7 +76,7 @@ class PlaygroundTwoScreen extends StatelessWidget {
                       onPressed: () {
                         context
                             .read<PlaygroundCubit>()
-                            .getTwoWeeksPrices(produceId: "M0EDrwfr8LGQc7EAQaR8");
+                            .getTwoWeeksPrices(produceId: "8kv2QQ6j1uNvzVHSxN8w");
                       },
                     ),
                   ),

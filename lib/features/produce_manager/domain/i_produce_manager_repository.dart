@@ -29,7 +29,7 @@ abstract class IProduceManagerRepository {
 
   FutureEither<List<Produce>> getNextTenSearchProduce(List<Produce> lastProduceList, String query);
 
-  FutureEither<List<PriceSnippet>> getTwoWeeksPrices(String produceId);
+  FutureEither<List<PriceSnippet>> getAggregatePrices(String produceId);
 
   FutureEither<void>? debugMethod(String produceId);
 }
