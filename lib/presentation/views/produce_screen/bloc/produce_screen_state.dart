@@ -4,15 +4,20 @@ part of 'produce_screen_bloc.dart';
 class ProduceScreenState with _$ProduceScreenState {
   const factory ProduceScreenState.initial({
     required ProduceScreenProps props,
-  }) = _PSSInitial;
+  }) = PSSInitial;
 
   const factory ProduceScreenState.loading({
     required ProduceScreenProps props,
-  }) = _PSSLoading;
+  }) = PSSLoading;
 
   const factory ProduceScreenState.completed({
     required ProduceScreenProps props,
-  }) = _PSSCompleted;
+  }) = PSSCompleted;
+
+  const factory ProduceScreenState.error({
+    required ProduceScreenProps props,
+    required Failure failure,
+  }) = PSSError;
 }
 
 @freezed

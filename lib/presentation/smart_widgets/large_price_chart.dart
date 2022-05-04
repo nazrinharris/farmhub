@@ -33,6 +33,10 @@ LargePriceChartType determineChartType(int index) {
 class LargePriceChart extends StatelessWidget {
   final Produce produce;
   final List<PriceSnippet>? twoWeeksPricesList;
+  final List<PriceSnippet>? oneMonthPricesList;
+  final List<PriceSnippet>? twoMonthPricesList;
+  final List<PriceSnippet>? sixMonthPricesList;
+  final List<PriceSnippet>? oneYearPricesList;
   final LargePriceChartType type;
 
   const LargePriceChart(
@@ -40,6 +44,10 @@ class LargePriceChart extends StatelessWidget {
     this.type, {
     Key? key,
     this.twoWeeksPricesList,
+    this.oneMonthPricesList,
+    this.twoMonthPricesList,
+    this.sixMonthPricesList,
+    this.oneYearPricesList,
   }) : super(key: key);
 
   @override
@@ -86,20 +94,20 @@ class LargeTwoWeekChart extends StatelessWidget {
     }
 
     if (isNegative) {
-      gradient = const LinearGradient(
+      gradient = LinearGradient(
         colors: [
           Color(0xffEC6666),
-          Color(0xffFFF4F4),
+          Colors.white.withOpacity(0.1),
         ],
         begin: Alignment.topCenter,
         end: Alignment.bottomCenter,
       );
       borderColor = const Color(0xffEC6666);
     } else {
-      gradient = const LinearGradient(
+      gradient = LinearGradient(
         colors: [
           Color(0xff79D2DE),
-          Color(0xffFFF4F4),
+          Colors.white.withOpacity(0.1),
         ],
         begin: Alignment.topCenter,
         end: Alignment.bottomCenter,
@@ -126,15 +134,18 @@ class LargeTwoWeekChart extends StatelessWidget {
       margin: const EdgeInsets.symmetric(horizontal: 12),
       height: 220,
       child: SfCartesianChart(
-        primaryXAxis: CategoryAxis(edgeLabelPlacement: EdgeLabelPlacement.shift),
-        primaryYAxis: NumericAxis(edgeLabelPlacement: EdgeLabelPlacement.shift),
+        primaryXAxis: CategoryAxis(
+          edgeLabelPlacement: EdgeLabelPlacement.shift,
+          labelPlacement: LabelPlacement.onTicks,
+        ),
+        primaryYAxis: NumericAxis(),
         plotAreaBorderColor: Colors.transparent,
         series: <CartesianSeries>[
           SplineAreaSeries<PriceSnippet, String>(
             dataSource: pricesList,
             xValueMapper: (priceSnippet, index) {
               DateTime priceDate = DateFormat("dd-MM-yyyy").parse(priceSnippet.priceDate);
-              return DateFormat('EEEE').format(priceDate);
+              return DateFormat('dd-MM').format(priceDate);
             },
             yValueMapper: (priceSnippet, index) => priceSnippet.price,
             borderColor: borderColor,
@@ -220,7 +231,7 @@ class LargeOneWeekChart extends StatelessWidget {
           edgeLabelPlacement: EdgeLabelPlacement.shift,
           labelPlacement: LabelPlacement.onTicks,
         ),
-        primaryYAxis: NumericAxis(edgeLabelPlacement: EdgeLabelPlacement.shift),
+        primaryYAxis: NumericAxis(),
         plotAreaBorderColor: Colors.transparent,
         series: <CartesianSeries>[
           SplineAreaSeries<PriceSnippet, String>(

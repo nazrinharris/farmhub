@@ -39,10 +39,10 @@ List<PriceSnippet> pricesToRanged(
       range = 62;
       break;
     case RangeType.sixM:
-      range = null;
+      range = 62;
       break;
     case RangeType.oneY:
-      range = null;
+      range = 62;
       break;
     default:
   }

@@ -25,8 +25,10 @@ class _$ProduceScreenEventTearOff {
     return const _PSETabChanged();
   }
 
-  _PSEGetAggregatePrices getAggregatePrices() {
-    return const _PSEGetAggregatePrices();
+  _PSEGetAggregatePrices getAggregatePrices(String produceId) {
+    return _PSEGetAggregatePrices(
+      produceId,
+    );
   }
 }
 
@@ -39,21 +41,21 @@ mixin _$ProduceScreenEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() tabChanged,
-    required TResult Function() getAggregatePrices,
+    required TResult Function(String produceId) getAggregatePrices,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? tabChanged,
-    TResult Function()? getAggregatePrices,
+    TResult Function(String produceId)? getAggregatePrices,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? tabChanged,
-    TResult Function()? getAggregatePrices,
+    TResult Function(String produceId)? getAggregatePrices,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -141,7 +143,7 @@ class _$_PSEStarted implements _PSEStarted {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() tabChanged,
-    required TResult Function() getAggregatePrices,
+    required TResult Function(String produceId) getAggregatePrices,
   }) {
     return started();
   }
@@ -151,7 +153,7 @@ class _$_PSEStarted implements _PSEStarted {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? tabChanged,
-    TResult Function()? getAggregatePrices,
+    TResult Function(String produceId)? getAggregatePrices,
   }) {
     return started?.call();
   }
@@ -161,7 +163,7 @@ class _$_PSEStarted implements _PSEStarted {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? tabChanged,
-    TResult Function()? getAggregatePrices,
+    TResult Function(String produceId)? getAggregatePrices,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -252,7 +254,7 @@ class _$_PSETabChanged implements _PSETabChanged {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() tabChanged,
-    required TResult Function() getAggregatePrices,
+    required TResult Function(String produceId) getAggregatePrices,
   }) {
     return tabChanged();
   }
@@ -262,7 +264,7 @@ class _$_PSETabChanged implements _PSETabChanged {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? tabChanged,
-    TResult Function()? getAggregatePrices,
+    TResult Function(String produceId)? getAggregatePrices,
   }) {
     return tabChanged?.call();
   }
@@ -272,7 +274,7 @@ class _$_PSETabChanged implements _PSETabChanged {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? tabChanged,
-    TResult Function()? getAggregatePrices,
+    TResult Function(String produceId)? getAggregatePrices,
     required TResult orElse(),
   }) {
     if (tabChanged != null) {
@@ -325,6 +327,7 @@ abstract class _$PSEGetAggregatePricesCopyWith<$Res> {
   factory _$PSEGetAggregatePricesCopyWith(_PSEGetAggregatePrices value,
           $Res Function(_PSEGetAggregatePrices) then) =
       __$PSEGetAggregatePricesCopyWithImpl<$Res>;
+  $Res call({String produceId});
 }
 
 /// @nodoc
@@ -337,35 +340,59 @@ class __$PSEGetAggregatePricesCopyWithImpl<$Res>
 
   @override
   _PSEGetAggregatePrices get _value => super._value as _PSEGetAggregatePrices;
+
+  @override
+  $Res call({
+    Object? produceId = freezed,
+  }) {
+    return _then(_PSEGetAggregatePrices(
+      produceId == freezed
+          ? _value.produceId
+          : produceId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_PSEGetAggregatePrices implements _PSEGetAggregatePrices {
-  const _$_PSEGetAggregatePrices();
+  const _$_PSEGetAggregatePrices(this.produceId);
+
+  @override
+  final String produceId;
 
   @override
   String toString() {
-    return 'ProduceScreenEvent.getAggregatePrices()';
+    return 'ProduceScreenEvent.getAggregatePrices(produceId: $produceId)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _PSEGetAggregatePrices);
+        (other.runtimeType == runtimeType &&
+            other is _PSEGetAggregatePrices &&
+            (identical(other.produceId, produceId) ||
+                other.produceId == produceId));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, produceId);
+
+  @JsonKey(ignore: true)
+  @override
+  _$PSEGetAggregatePricesCopyWith<_PSEGetAggregatePrices> get copyWith =>
+      __$PSEGetAggregatePricesCopyWithImpl<_PSEGetAggregatePrices>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() tabChanged,
-    required TResult Function() getAggregatePrices,
+    required TResult Function(String produceId) getAggregatePrices,
   }) {
-    return getAggregatePrices();
+    return getAggregatePrices(produceId);
   }
 
   @override
@@ -373,9 +400,9 @@ class _$_PSEGetAggregatePrices implements _PSEGetAggregatePrices {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? tabChanged,
-    TResult Function()? getAggregatePrices,
+    TResult Function(String produceId)? getAggregatePrices,
   }) {
-    return getAggregatePrices?.call();
+    return getAggregatePrices?.call(produceId);
   }
 
   @override
@@ -383,11 +410,11 @@ class _$_PSEGetAggregatePrices implements _PSEGetAggregatePrices {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? tabChanged,
-    TResult Function()? getAggregatePrices,
+    TResult Function(String produceId)? getAggregatePrices,
     required TResult orElse(),
   }) {
     if (getAggregatePrices != null) {
-      return getAggregatePrices();
+      return getAggregatePrices(produceId);
     }
     return orElse();
   }
@@ -428,28 +455,42 @@ class _$_PSEGetAggregatePrices implements _PSEGetAggregatePrices {
 }
 
 abstract class _PSEGetAggregatePrices implements ProduceScreenEvent {
-  const factory _PSEGetAggregatePrices() = _$_PSEGetAggregatePrices;
+  const factory _PSEGetAggregatePrices(String produceId) =
+      _$_PSEGetAggregatePrices;
+
+  String get produceId;
+  @JsonKey(ignore: true)
+  _$PSEGetAggregatePricesCopyWith<_PSEGetAggregatePrices> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 class _$ProduceScreenStateTearOff {
   const _$ProduceScreenStateTearOff();
 
-  _PSSInitial initial({required ProduceScreenProps props}) {
-    return _PSSInitial(
+  PSSInitial initial({required ProduceScreenProps props}) {
+    return PSSInitial(
       props: props,
     );
   }
 
-  _PSSLoading loading({required ProduceScreenProps props}) {
-    return _PSSLoading(
+  PSSLoading loading({required ProduceScreenProps props}) {
+    return PSSLoading(
       props: props,
     );
   }
 
-  _PSSCompleted completed({required ProduceScreenProps props}) {
-    return _PSSCompleted(
+  PSSCompleted completed({required ProduceScreenProps props}) {
+    return PSSCompleted(
       props: props,
+    );
+  }
+
+  PSSError error(
+      {required ProduceScreenProps props, required Failure failure}) {
+    return PSSError(
+      props: props,
+      failure: failure,
     );
   }
 }
@@ -466,6 +507,7 @@ mixin _$ProduceScreenState {
     required TResult Function(ProduceScreenProps props) initial,
     required TResult Function(ProduceScreenProps props) loading,
     required TResult Function(ProduceScreenProps props) completed,
+    required TResult Function(ProduceScreenProps props, Failure failure) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -473,6 +515,7 @@ mixin _$ProduceScreenState {
     TResult Function(ProduceScreenProps props)? initial,
     TResult Function(ProduceScreenProps props)? loading,
     TResult Function(ProduceScreenProps props)? completed,
+    TResult Function(ProduceScreenProps props, Failure failure)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -480,28 +523,32 @@ mixin _$ProduceScreenState {
     TResult Function(ProduceScreenProps props)? initial,
     TResult Function(ProduceScreenProps props)? loading,
     TResult Function(ProduceScreenProps props)? completed,
+    TResult Function(ProduceScreenProps props, Failure failure)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_PSSInitial value) initial,
-    required TResult Function(_PSSLoading value) loading,
-    required TResult Function(_PSSCompleted value) completed,
+    required TResult Function(PSSInitial value) initial,
+    required TResult Function(PSSLoading value) loading,
+    required TResult Function(PSSCompleted value) completed,
+    required TResult Function(PSSError value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_PSSInitial value)? initial,
-    TResult Function(_PSSLoading value)? loading,
-    TResult Function(_PSSCompleted value)? completed,
+    TResult Function(PSSInitial value)? initial,
+    TResult Function(PSSLoading value)? loading,
+    TResult Function(PSSCompleted value)? completed,
+    TResult Function(PSSError value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_PSSInitial value)? initial,
-    TResult Function(_PSSLoading value)? loading,
-    TResult Function(_PSSCompleted value)? completed,
+    TResult Function(PSSInitial value)? initial,
+    TResult Function(PSSLoading value)? loading,
+    TResult Function(PSSCompleted value)? completed,
+    TResult Function(PSSError value)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -551,11 +598,11 @@ class _$ProduceScreenStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$PSSInitialCopyWith<$Res>
+abstract class $PSSInitialCopyWith<$Res>
     implements $ProduceScreenStateCopyWith<$Res> {
-  factory _$PSSInitialCopyWith(
-          _PSSInitial value, $Res Function(_PSSInitial) then) =
-      __$PSSInitialCopyWithImpl<$Res>;
+  factory $PSSInitialCopyWith(
+          PSSInitial value, $Res Function(PSSInitial) then) =
+      _$PSSInitialCopyWithImpl<$Res>;
   @override
   $Res call({ProduceScreenProps props});
 
@@ -564,21 +611,20 @@ abstract class _$PSSInitialCopyWith<$Res>
 }
 
 /// @nodoc
-class __$PSSInitialCopyWithImpl<$Res>
+class _$PSSInitialCopyWithImpl<$Res>
     extends _$ProduceScreenStateCopyWithImpl<$Res>
-    implements _$PSSInitialCopyWith<$Res> {
-  __$PSSInitialCopyWithImpl(
-      _PSSInitial _value, $Res Function(_PSSInitial) _then)
-      : super(_value, (v) => _then(v as _PSSInitial));
+    implements $PSSInitialCopyWith<$Res> {
+  _$PSSInitialCopyWithImpl(PSSInitial _value, $Res Function(PSSInitial) _then)
+      : super(_value, (v) => _then(v as PSSInitial));
 
   @override
-  _PSSInitial get _value => super._value as _PSSInitial;
+  PSSInitial get _value => super._value as PSSInitial;
 
   @override
   $Res call({
     Object? props = freezed,
   }) {
-    return _then(_PSSInitial(
+    return _then(PSSInitial(
       props: props == freezed
           ? _value.props
           : props // ignore: cast_nullable_to_non_nullable
@@ -589,8 +635,8 @@ class __$PSSInitialCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_PSSInitial implements _PSSInitial {
-  const _$_PSSInitial({required this.props});
+class _$PSSInitial implements PSSInitial {
+  const _$PSSInitial({required this.props});
 
   @override
   final ProduceScreenProps props;
@@ -604,7 +650,7 @@ class _$_PSSInitial implements _PSSInitial {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _PSSInitial &&
+            other is PSSInitial &&
             (identical(other.props, props) || other.props == props));
   }
 
@@ -613,8 +659,8 @@ class _$_PSSInitial implements _PSSInitial {
 
   @JsonKey(ignore: true)
   @override
-  _$PSSInitialCopyWith<_PSSInitial> get copyWith =>
-      __$PSSInitialCopyWithImpl<_PSSInitial>(this, _$identity);
+  $PSSInitialCopyWith<PSSInitial> get copyWith =>
+      _$PSSInitialCopyWithImpl<PSSInitial>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -622,6 +668,7 @@ class _$_PSSInitial implements _PSSInitial {
     required TResult Function(ProduceScreenProps props) initial,
     required TResult Function(ProduceScreenProps props) loading,
     required TResult Function(ProduceScreenProps props) completed,
+    required TResult Function(ProduceScreenProps props, Failure failure) error,
   }) {
     return initial(props);
   }
@@ -632,6 +679,7 @@ class _$_PSSInitial implements _PSSInitial {
     TResult Function(ProduceScreenProps props)? initial,
     TResult Function(ProduceScreenProps props)? loading,
     TResult Function(ProduceScreenProps props)? completed,
+    TResult Function(ProduceScreenProps props, Failure failure)? error,
   }) {
     return initial?.call(props);
   }
@@ -642,6 +690,7 @@ class _$_PSSInitial implements _PSSInitial {
     TResult Function(ProduceScreenProps props)? initial,
     TResult Function(ProduceScreenProps props)? loading,
     TResult Function(ProduceScreenProps props)? completed,
+    TResult Function(ProduceScreenProps props, Failure failure)? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -653,9 +702,10 @@ class _$_PSSInitial implements _PSSInitial {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_PSSInitial value) initial,
-    required TResult Function(_PSSLoading value) loading,
-    required TResult Function(_PSSCompleted value) completed,
+    required TResult Function(PSSInitial value) initial,
+    required TResult Function(PSSLoading value) loading,
+    required TResult Function(PSSCompleted value) completed,
+    required TResult Function(PSSError value) error,
   }) {
     return initial(this);
   }
@@ -663,9 +713,10 @@ class _$_PSSInitial implements _PSSInitial {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_PSSInitial value)? initial,
-    TResult Function(_PSSLoading value)? loading,
-    TResult Function(_PSSCompleted value)? completed,
+    TResult Function(PSSInitial value)? initial,
+    TResult Function(PSSLoading value)? loading,
+    TResult Function(PSSCompleted value)? completed,
+    TResult Function(PSSError value)? error,
   }) {
     return initial?.call(this);
   }
@@ -673,9 +724,10 @@ class _$_PSSInitial implements _PSSInitial {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_PSSInitial value)? initial,
-    TResult Function(_PSSLoading value)? loading,
-    TResult Function(_PSSCompleted value)? completed,
+    TResult Function(PSSInitial value)? initial,
+    TResult Function(PSSLoading value)? loading,
+    TResult Function(PSSCompleted value)? completed,
+    TResult Function(PSSError value)? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -685,24 +737,23 @@ class _$_PSSInitial implements _PSSInitial {
   }
 }
 
-abstract class _PSSInitial implements ProduceScreenState {
-  const factory _PSSInitial({required ProduceScreenProps props}) =
-      _$_PSSInitial;
+abstract class PSSInitial implements ProduceScreenState {
+  const factory PSSInitial({required ProduceScreenProps props}) = _$PSSInitial;
 
   @override
   ProduceScreenProps get props;
   @override
   @JsonKey(ignore: true)
-  _$PSSInitialCopyWith<_PSSInitial> get copyWith =>
+  $PSSInitialCopyWith<PSSInitial> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$PSSLoadingCopyWith<$Res>
+abstract class $PSSLoadingCopyWith<$Res>
     implements $ProduceScreenStateCopyWith<$Res> {
-  factory _$PSSLoadingCopyWith(
-          _PSSLoading value, $Res Function(_PSSLoading) then) =
-      __$PSSLoadingCopyWithImpl<$Res>;
+  factory $PSSLoadingCopyWith(
+          PSSLoading value, $Res Function(PSSLoading) then) =
+      _$PSSLoadingCopyWithImpl<$Res>;
   @override
   $Res call({ProduceScreenProps props});
 
@@ -711,21 +762,20 @@ abstract class _$PSSLoadingCopyWith<$Res>
 }
 
 /// @nodoc
-class __$PSSLoadingCopyWithImpl<$Res>
+class _$PSSLoadingCopyWithImpl<$Res>
     extends _$ProduceScreenStateCopyWithImpl<$Res>
-    implements _$PSSLoadingCopyWith<$Res> {
-  __$PSSLoadingCopyWithImpl(
-      _PSSLoading _value, $Res Function(_PSSLoading) _then)
-      : super(_value, (v) => _then(v as _PSSLoading));
+    implements $PSSLoadingCopyWith<$Res> {
+  _$PSSLoadingCopyWithImpl(PSSLoading _value, $Res Function(PSSLoading) _then)
+      : super(_value, (v) => _then(v as PSSLoading));
 
   @override
-  _PSSLoading get _value => super._value as _PSSLoading;
+  PSSLoading get _value => super._value as PSSLoading;
 
   @override
   $Res call({
     Object? props = freezed,
   }) {
-    return _then(_PSSLoading(
+    return _then(PSSLoading(
       props: props == freezed
           ? _value.props
           : props // ignore: cast_nullable_to_non_nullable
@@ -736,8 +786,8 @@ class __$PSSLoadingCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_PSSLoading implements _PSSLoading {
-  const _$_PSSLoading({required this.props});
+class _$PSSLoading implements PSSLoading {
+  const _$PSSLoading({required this.props});
 
   @override
   final ProduceScreenProps props;
@@ -751,7 +801,7 @@ class _$_PSSLoading implements _PSSLoading {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _PSSLoading &&
+            other is PSSLoading &&
             (identical(other.props, props) || other.props == props));
   }
 
@@ -760,8 +810,8 @@ class _$_PSSLoading implements _PSSLoading {
 
   @JsonKey(ignore: true)
   @override
-  _$PSSLoadingCopyWith<_PSSLoading> get copyWith =>
-      __$PSSLoadingCopyWithImpl<_PSSLoading>(this, _$identity);
+  $PSSLoadingCopyWith<PSSLoading> get copyWith =>
+      _$PSSLoadingCopyWithImpl<PSSLoading>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -769,6 +819,7 @@ class _$_PSSLoading implements _PSSLoading {
     required TResult Function(ProduceScreenProps props) initial,
     required TResult Function(ProduceScreenProps props) loading,
     required TResult Function(ProduceScreenProps props) completed,
+    required TResult Function(ProduceScreenProps props, Failure failure) error,
   }) {
     return loading(props);
   }
@@ -779,6 +830,7 @@ class _$_PSSLoading implements _PSSLoading {
     TResult Function(ProduceScreenProps props)? initial,
     TResult Function(ProduceScreenProps props)? loading,
     TResult Function(ProduceScreenProps props)? completed,
+    TResult Function(ProduceScreenProps props, Failure failure)? error,
   }) {
     return loading?.call(props);
   }
@@ -789,6 +841,7 @@ class _$_PSSLoading implements _PSSLoading {
     TResult Function(ProduceScreenProps props)? initial,
     TResult Function(ProduceScreenProps props)? loading,
     TResult Function(ProduceScreenProps props)? completed,
+    TResult Function(ProduceScreenProps props, Failure failure)? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -800,9 +853,10 @@ class _$_PSSLoading implements _PSSLoading {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_PSSInitial value) initial,
-    required TResult Function(_PSSLoading value) loading,
-    required TResult Function(_PSSCompleted value) completed,
+    required TResult Function(PSSInitial value) initial,
+    required TResult Function(PSSLoading value) loading,
+    required TResult Function(PSSCompleted value) completed,
+    required TResult Function(PSSError value) error,
   }) {
     return loading(this);
   }
@@ -810,9 +864,10 @@ class _$_PSSLoading implements _PSSLoading {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_PSSInitial value)? initial,
-    TResult Function(_PSSLoading value)? loading,
-    TResult Function(_PSSCompleted value)? completed,
+    TResult Function(PSSInitial value)? initial,
+    TResult Function(PSSLoading value)? loading,
+    TResult Function(PSSCompleted value)? completed,
+    TResult Function(PSSError value)? error,
   }) {
     return loading?.call(this);
   }
@@ -820,9 +875,10 @@ class _$_PSSLoading implements _PSSLoading {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_PSSInitial value)? initial,
-    TResult Function(_PSSLoading value)? loading,
-    TResult Function(_PSSCompleted value)? completed,
+    TResult Function(PSSInitial value)? initial,
+    TResult Function(PSSLoading value)? loading,
+    TResult Function(PSSCompleted value)? completed,
+    TResult Function(PSSError value)? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -832,24 +888,23 @@ class _$_PSSLoading implements _PSSLoading {
   }
 }
 
-abstract class _PSSLoading implements ProduceScreenState {
-  const factory _PSSLoading({required ProduceScreenProps props}) =
-      _$_PSSLoading;
+abstract class PSSLoading implements ProduceScreenState {
+  const factory PSSLoading({required ProduceScreenProps props}) = _$PSSLoading;
 
   @override
   ProduceScreenProps get props;
   @override
   @JsonKey(ignore: true)
-  _$PSSLoadingCopyWith<_PSSLoading> get copyWith =>
+  $PSSLoadingCopyWith<PSSLoading> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$PSSCompletedCopyWith<$Res>
+abstract class $PSSCompletedCopyWith<$Res>
     implements $ProduceScreenStateCopyWith<$Res> {
-  factory _$PSSCompletedCopyWith(
-          _PSSCompleted value, $Res Function(_PSSCompleted) then) =
-      __$PSSCompletedCopyWithImpl<$Res>;
+  factory $PSSCompletedCopyWith(
+          PSSCompleted value, $Res Function(PSSCompleted) then) =
+      _$PSSCompletedCopyWithImpl<$Res>;
   @override
   $Res call({ProduceScreenProps props});
 
@@ -858,21 +913,21 @@ abstract class _$PSSCompletedCopyWith<$Res>
 }
 
 /// @nodoc
-class __$PSSCompletedCopyWithImpl<$Res>
+class _$PSSCompletedCopyWithImpl<$Res>
     extends _$ProduceScreenStateCopyWithImpl<$Res>
-    implements _$PSSCompletedCopyWith<$Res> {
-  __$PSSCompletedCopyWithImpl(
-      _PSSCompleted _value, $Res Function(_PSSCompleted) _then)
-      : super(_value, (v) => _then(v as _PSSCompleted));
+    implements $PSSCompletedCopyWith<$Res> {
+  _$PSSCompletedCopyWithImpl(
+      PSSCompleted _value, $Res Function(PSSCompleted) _then)
+      : super(_value, (v) => _then(v as PSSCompleted));
 
   @override
-  _PSSCompleted get _value => super._value as _PSSCompleted;
+  PSSCompleted get _value => super._value as PSSCompleted;
 
   @override
   $Res call({
     Object? props = freezed,
   }) {
-    return _then(_PSSCompleted(
+    return _then(PSSCompleted(
       props: props == freezed
           ? _value.props
           : props // ignore: cast_nullable_to_non_nullable
@@ -883,8 +938,8 @@ class __$PSSCompletedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_PSSCompleted implements _PSSCompleted {
-  const _$_PSSCompleted({required this.props});
+class _$PSSCompleted implements PSSCompleted {
+  const _$PSSCompleted({required this.props});
 
   @override
   final ProduceScreenProps props;
@@ -898,7 +953,7 @@ class _$_PSSCompleted implements _PSSCompleted {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _PSSCompleted &&
+            other is PSSCompleted &&
             (identical(other.props, props) || other.props == props));
   }
 
@@ -907,8 +962,8 @@ class _$_PSSCompleted implements _PSSCompleted {
 
   @JsonKey(ignore: true)
   @override
-  _$PSSCompletedCopyWith<_PSSCompleted> get copyWith =>
-      __$PSSCompletedCopyWithImpl<_PSSCompleted>(this, _$identity);
+  $PSSCompletedCopyWith<PSSCompleted> get copyWith =>
+      _$PSSCompletedCopyWithImpl<PSSCompleted>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -916,6 +971,7 @@ class _$_PSSCompleted implements _PSSCompleted {
     required TResult Function(ProduceScreenProps props) initial,
     required TResult Function(ProduceScreenProps props) loading,
     required TResult Function(ProduceScreenProps props) completed,
+    required TResult Function(ProduceScreenProps props, Failure failure) error,
   }) {
     return completed(props);
   }
@@ -926,6 +982,7 @@ class _$_PSSCompleted implements _PSSCompleted {
     TResult Function(ProduceScreenProps props)? initial,
     TResult Function(ProduceScreenProps props)? loading,
     TResult Function(ProduceScreenProps props)? completed,
+    TResult Function(ProduceScreenProps props, Failure failure)? error,
   }) {
     return completed?.call(props);
   }
@@ -936,6 +993,7 @@ class _$_PSSCompleted implements _PSSCompleted {
     TResult Function(ProduceScreenProps props)? initial,
     TResult Function(ProduceScreenProps props)? loading,
     TResult Function(ProduceScreenProps props)? completed,
+    TResult Function(ProduceScreenProps props, Failure failure)? error,
     required TResult orElse(),
   }) {
     if (completed != null) {
@@ -947,9 +1005,10 @@ class _$_PSSCompleted implements _PSSCompleted {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_PSSInitial value) initial,
-    required TResult Function(_PSSLoading value) loading,
-    required TResult Function(_PSSCompleted value) completed,
+    required TResult Function(PSSInitial value) initial,
+    required TResult Function(PSSLoading value) loading,
+    required TResult Function(PSSCompleted value) completed,
+    required TResult Function(PSSError value) error,
   }) {
     return completed(this);
   }
@@ -957,9 +1016,10 @@ class _$_PSSCompleted implements _PSSCompleted {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_PSSInitial value)? initial,
-    TResult Function(_PSSLoading value)? loading,
-    TResult Function(_PSSCompleted value)? completed,
+    TResult Function(PSSInitial value)? initial,
+    TResult Function(PSSLoading value)? loading,
+    TResult Function(PSSCompleted value)? completed,
+    TResult Function(PSSError value)? error,
   }) {
     return completed?.call(this);
   }
@@ -967,9 +1027,10 @@ class _$_PSSCompleted implements _PSSCompleted {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_PSSInitial value)? initial,
-    TResult Function(_PSSLoading value)? loading,
-    TResult Function(_PSSCompleted value)? completed,
+    TResult Function(PSSInitial value)? initial,
+    TResult Function(PSSLoading value)? loading,
+    TResult Function(PSSCompleted value)? completed,
+    TResult Function(PSSError value)? error,
     required TResult orElse(),
   }) {
     if (completed != null) {
@@ -979,15 +1040,176 @@ class _$_PSSCompleted implements _PSSCompleted {
   }
 }
 
-abstract class _PSSCompleted implements ProduceScreenState {
-  const factory _PSSCompleted({required ProduceScreenProps props}) =
-      _$_PSSCompleted;
+abstract class PSSCompleted implements ProduceScreenState {
+  const factory PSSCompleted({required ProduceScreenProps props}) =
+      _$PSSCompleted;
 
   @override
   ProduceScreenProps get props;
   @override
   @JsonKey(ignore: true)
-  _$PSSCompletedCopyWith<_PSSCompleted> get copyWith =>
+  $PSSCompletedCopyWith<PSSCompleted> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $PSSErrorCopyWith<$Res>
+    implements $ProduceScreenStateCopyWith<$Res> {
+  factory $PSSErrorCopyWith(PSSError value, $Res Function(PSSError) then) =
+      _$PSSErrorCopyWithImpl<$Res>;
+  @override
+  $Res call({ProduceScreenProps props, Failure failure});
+
+  @override
+  $ProduceScreenPropsCopyWith<$Res> get props;
+}
+
+/// @nodoc
+class _$PSSErrorCopyWithImpl<$Res>
+    extends _$ProduceScreenStateCopyWithImpl<$Res>
+    implements $PSSErrorCopyWith<$Res> {
+  _$PSSErrorCopyWithImpl(PSSError _value, $Res Function(PSSError) _then)
+      : super(_value, (v) => _then(v as PSSError));
+
+  @override
+  PSSError get _value => super._value as PSSError;
+
+  @override
+  $Res call({
+    Object? props = freezed,
+    Object? failure = freezed,
+  }) {
+    return _then(PSSError(
+      props: props == freezed
+          ? _value.props
+          : props // ignore: cast_nullable_to_non_nullable
+              as ProduceScreenProps,
+      failure: failure == freezed
+          ? _value.failure
+          : failure // ignore: cast_nullable_to_non_nullable
+              as Failure,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$PSSError implements PSSError {
+  const _$PSSError({required this.props, required this.failure});
+
+  @override
+  final ProduceScreenProps props;
+  @override
+  final Failure failure;
+
+  @override
+  String toString() {
+    return 'ProduceScreenState.error(props: $props, failure: $failure)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is PSSError &&
+            (identical(other.props, props) || other.props == props) &&
+            (identical(other.failure, failure) || other.failure == failure));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, props, failure);
+
+  @JsonKey(ignore: true)
+  @override
+  $PSSErrorCopyWith<PSSError> get copyWith =>
+      _$PSSErrorCopyWithImpl<PSSError>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(ProduceScreenProps props) initial,
+    required TResult Function(ProduceScreenProps props) loading,
+    required TResult Function(ProduceScreenProps props) completed,
+    required TResult Function(ProduceScreenProps props, Failure failure) error,
+  }) {
+    return error(props, failure);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(ProduceScreenProps props)? initial,
+    TResult Function(ProduceScreenProps props)? loading,
+    TResult Function(ProduceScreenProps props)? completed,
+    TResult Function(ProduceScreenProps props, Failure failure)? error,
+  }) {
+    return error?.call(props, failure);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(ProduceScreenProps props)? initial,
+    TResult Function(ProduceScreenProps props)? loading,
+    TResult Function(ProduceScreenProps props)? completed,
+    TResult Function(ProduceScreenProps props, Failure failure)? error,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(props, failure);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(PSSInitial value) initial,
+    required TResult Function(PSSLoading value) loading,
+    required TResult Function(PSSCompleted value) completed,
+    required TResult Function(PSSError value) error,
+  }) {
+    return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(PSSInitial value)? initial,
+    TResult Function(PSSLoading value)? loading,
+    TResult Function(PSSCompleted value)? completed,
+    TResult Function(PSSError value)? error,
+  }) {
+    return error?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(PSSInitial value)? initial,
+    TResult Function(PSSLoading value)? loading,
+    TResult Function(PSSCompleted value)? completed,
+    TResult Function(PSSError value)? error,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class PSSError implements ProduceScreenState {
+  const factory PSSError(
+      {required ProduceScreenProps props,
+      required Failure failure}) = _$PSSError;
+
+  @override
+  ProduceScreenProps get props;
+  Failure get failure;
+  @override
+  @JsonKey(ignore: true)
+  $PSSErrorCopyWith<PSSError> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

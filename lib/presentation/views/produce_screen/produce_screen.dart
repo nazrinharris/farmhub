@@ -1,5 +1,6 @@
 import 'package:farmhub/app_router.dart';
 import 'package:farmhub/core/util/dates.dart';
+import 'package:farmhub/locator.dart';
 import 'package:farmhub/presentation/shared_widgets/appbars.dart';
 import 'package:farmhub/presentation/shared_widgets/scroll_physics.dart';
 import 'package:farmhub/presentation/shared_widgets/ui_helpers.dart';
@@ -52,7 +53,10 @@ class _ProduceScreenState extends State<ProduceScreen> with SingleTickerProvider
       ],
       child: Builder(
         builder: (context) => BlocProvider(
-          create: (_) => ProduceScreenBloc(tabController: tabController),
+          create: (_) => ProduceScreenBloc(
+            tabController: tabController,
+            repository: locator(),
+          ),
           child: Builder(
             builder: (context) => Scaffold(
                 resizeToAvoidBottomInset: false,
@@ -145,8 +149,6 @@ class _SliverProduceHeaderState extends State<SliverProduceHeader> {
   }
 }
 
-enum LargeChartInterval { oneWeek, twoWeek, oneMonth, twoMonth, sixMonth, oneYear }
-
 class SliverProducePriceChart extends StatefulWidget {
   final List<ct.CustomTab> tabs;
   final Produce produce;
@@ -158,6 +160,15 @@ class SliverProducePriceChart extends StatefulWidget {
 }
 
 class _SliverProducePriceChartState extends State<SliverProducePriceChart> {
+  @override
+  void initState() {
+    super.initState();
+
+    context
+        .read<ProduceScreenBloc>()
+        .add(ProduceScreenEvent.getAggregatePrices(widget.produce.produceId));
+  }
+
   @override
   Widget build(BuildContext context) {
     return SliverList(
@@ -187,7 +198,55 @@ class _SliverProducePriceChartState extends State<SliverProducePriceChart> {
       const UIVerticalSpace14(),
       BlocBuilder<ProduceScreenBloc, ProduceScreenState>(
         builder: (context, state) {
-          return LargePriceChart(widget.produce, determineChartType(state.props.index));
+          if (state is PSSInitial) {
+            return const SizedBox.shrink();
+          } else if (state is PSSLoading) {
+            return Container(
+              height: 200,
+              alignment: Alignment.center,
+              child: const CircularProgressIndicator(),
+            );
+          } else if (state is PSSCompleted) {
+            return LargePriceChart(
+              widget.produce,
+              determineChartType(state.props.index),
+              twoWeeksPricesList: state.props.twoWeeksPricesList,
+              oneMonthPricesList: state.props.oneMonthPricesList,
+              twoMonthPricesList: state.props.twoMonthPricesList,
+              sixMonthPricesList: state.props.sixMonthPricesList,
+              oneYearPricesList: state.props.oneYearPricesList,
+            );
+          } else if (state is PSSError) {
+            return Container(
+              height: 200,
+              alignment: Alignment.center,
+              child: Column(
+                children: [
+                  Text(
+                    "Uh oh, something went wrong.",
+                    style: Theme.of(context).textTheme.bodyText1!.copyWith(color: Colors.red),
+                    textAlign: TextAlign.center,
+                  ),
+                  const UIVerticalSpace6(),
+                  Text(
+                    "${state.failure.message}",
+                    style: Theme.of(context).textTheme.bodyText1,
+                    textAlign: TextAlign.center,
+                  ),
+                ],
+              ),
+            );
+          } else {
+            return Container(
+              height: 200,
+              alignment: Alignment.center,
+              child: Text(
+                "Unexpected state was thrown",
+                style: Theme.of(context).textTheme.bodyText1,
+                textAlign: TextAlign.center,
+              ),
+            );
+          }
         },
       ),
     ]));
