@@ -65,9 +65,6 @@ List<PriceSnippet> pricesToRanged(
     // This means that [priceDate] is within two weeks from [todayTimeStamp]
     if (diff.inDays < range!) {
       twoWeeksPricesList.add(priceSnippet);
-    } else {
-      // We break because at this point, we assume all dates after is over the two week mark.
-      break;
     }
   }
 

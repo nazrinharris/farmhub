@@ -1,10 +1,15 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'dart:math';
+
 import 'package:bloc/bloc.dart';
+import 'package:clock/clock.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:farmhub/core/errors/failures.dart';
 import 'package:farmhub/features/produce_manager/domain/entities/produce/produce.dart';
 import 'package:farmhub/features/produce_manager/domain/i_produce_manager_repository.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:intl/intl.dart';
 
 import '../../../../features/produce_manager/domain/entities/price/price.dart';
 import '../../../../features/produce_manager/domain/helpers.dart';
@@ -14,8 +19,12 @@ part 'playground_cubit.freezed.dart';
 
 class PlaygroundCubit extends Cubit<PlaygroundState> {
   final IProduceManagerRepository repository;
+  final FirebaseFirestore firebaseFirestore;
 
-  PlaygroundCubit({required this.repository}) : super(PlaygroundState.initial());
+  PlaygroundCubit({
+    required this.repository,
+    required this.firebaseFirestore,
+  }) : super(PlaygroundState.initial());
 
   void createProduce({
     required String produceName,
@@ -94,5 +103,35 @@ class PlaygroundCubit extends Cubit<PlaygroundState> {
         }
       },
     );
+  }
+
+  void createMorePrices({
+    required int pricesAmount,
+    required String produceId,
+  }) async {
+    emit(const PlaygroundState.loading());
+
+    final List<PriceSnippet> createdPricesList = [];
+    final Random random = Random();
+
+    for (int i = 0; i < pricesAmount; i++) {
+      Future.delayed(Duration(seconds: 1));
+
+      final String chosenDate = DateFormat("dd-MM-yyyy").format(clock.daysFromNow(i));
+      int randomPrice = random.nextInt(20) + 20;
+
+      createdPricesList.add(PriceSnippet(price: randomPrice, priceDate: chosenDate));
+
+      //! This code will write to the database! Be careful!
+      final failureOrAddPrice = repository.addNewPrice(
+        produceId: produceId,
+        currentPrice: randomPrice,
+        daysFromNow: i,
+      );
+    }
+
+    for (PriceSnippet priceSnippet in createdPricesList) {
+      print(priceSnippet);
+    }
   }
 }

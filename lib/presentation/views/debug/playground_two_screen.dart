@@ -13,7 +13,10 @@ class PlaygroundTwoScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => PlaygroundCubit(repository: locator()),
+      create: (context) => PlaygroundCubit(
+        repository: locator(),
+        firebaseFirestore: locator(),
+      ),
       child: Builder(builder: (context) {
         return BlocBuilder<PlaygroundCubit, PlaygroundState>(
           builder: (context, state) {
@@ -76,7 +79,20 @@ class PlaygroundTwoScreen extends StatelessWidget {
                       onPressed: () {
                         context
                             .read<PlaygroundCubit>()
-                            .getTwoWeeksPrices(produceId: "8kv2QQ6j1uNvzVHSxN8w");
+                            .getTwoWeeksPrices(produceId: "5Sb9YzFo52Y1QUKKZZF9");
+                      },
+                    ),
+                  ),
+                  UIVerticalSpace14(),
+                  Center(
+                    child: PrimaryButton(
+                      width: 200,
+                      content: "Create Random",
+                      onPressed: () {
+                        context.read<PlaygroundCubit>().createMorePrices(
+                              pricesAmount: 30,
+                              produceId: "5Sb9YzFo52Y1QUKKZZF9",
+                            );
                       },
                     ),
                   ),

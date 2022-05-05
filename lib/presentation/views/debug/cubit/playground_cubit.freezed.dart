@@ -43,6 +43,12 @@ class _$PlaygroundStateTearOff {
     );
   }
 
+  CreatePricesCompleted createPricesCompleted(List<PriceSnippet> pricesList) {
+    return CreatePricesCompleted(
+      pricesList,
+    );
+  }
+
   Error error(Failure failure) {
     return Error(
       failure,
@@ -62,6 +68,8 @@ mixin _$PlaygroundState {
     required TResult Function(Produce produce) createCompleted,
     required TResult Function(Produce produce) addPriceCompleted,
     required TResult Function(List<PriceSnippet> pricesList) getPricesCompleted,
+    required TResult Function(List<PriceSnippet> pricesList)
+        createPricesCompleted,
     required TResult Function(Failure failure) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -72,6 +80,7 @@ mixin _$PlaygroundState {
     TResult Function(Produce produce)? createCompleted,
     TResult Function(Produce produce)? addPriceCompleted,
     TResult Function(List<PriceSnippet> pricesList)? getPricesCompleted,
+    TResult Function(List<PriceSnippet> pricesList)? createPricesCompleted,
     TResult Function(Failure failure)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -82,6 +91,7 @@ mixin _$PlaygroundState {
     TResult Function(Produce produce)? createCompleted,
     TResult Function(Produce produce)? addPriceCompleted,
     TResult Function(List<PriceSnippet> pricesList)? getPricesCompleted,
+    TResult Function(List<PriceSnippet> pricesList)? createPricesCompleted,
     TResult Function(Failure failure)? error,
     required TResult orElse(),
   }) =>
@@ -93,6 +103,8 @@ mixin _$PlaygroundState {
     required TResult Function(CreateCompleted value) createCompleted,
     required TResult Function(AddPriceCompleted value) addPriceCompleted,
     required TResult Function(GetPricesCompleted value) getPricesCompleted,
+    required TResult Function(CreatePricesCompleted value)
+        createPricesCompleted,
     required TResult Function(Error value) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -103,6 +115,7 @@ mixin _$PlaygroundState {
     TResult Function(CreateCompleted value)? createCompleted,
     TResult Function(AddPriceCompleted value)? addPriceCompleted,
     TResult Function(GetPricesCompleted value)? getPricesCompleted,
+    TResult Function(CreatePricesCompleted value)? createPricesCompleted,
     TResult Function(Error value)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -113,6 +126,7 @@ mixin _$PlaygroundState {
     TResult Function(CreateCompleted value)? createCompleted,
     TResult Function(AddPriceCompleted value)? addPriceCompleted,
     TResult Function(GetPricesCompleted value)? getPricesCompleted,
+    TResult Function(CreatePricesCompleted value)? createPricesCompleted,
     TResult Function(Error value)? error,
     required TResult orElse(),
   }) =>
@@ -179,6 +193,8 @@ class _$Initial implements Initial {
     required TResult Function(Produce produce) createCompleted,
     required TResult Function(Produce produce) addPriceCompleted,
     required TResult Function(List<PriceSnippet> pricesList) getPricesCompleted,
+    required TResult Function(List<PriceSnippet> pricesList)
+        createPricesCompleted,
     required TResult Function(Failure failure) error,
   }) {
     return initial();
@@ -192,6 +208,7 @@ class _$Initial implements Initial {
     TResult Function(Produce produce)? createCompleted,
     TResult Function(Produce produce)? addPriceCompleted,
     TResult Function(List<PriceSnippet> pricesList)? getPricesCompleted,
+    TResult Function(List<PriceSnippet> pricesList)? createPricesCompleted,
     TResult Function(Failure failure)? error,
   }) {
     return initial?.call();
@@ -205,6 +222,7 @@ class _$Initial implements Initial {
     TResult Function(Produce produce)? createCompleted,
     TResult Function(Produce produce)? addPriceCompleted,
     TResult Function(List<PriceSnippet> pricesList)? getPricesCompleted,
+    TResult Function(List<PriceSnippet> pricesList)? createPricesCompleted,
     TResult Function(Failure failure)? error,
     required TResult orElse(),
   }) {
@@ -222,6 +240,8 @@ class _$Initial implements Initial {
     required TResult Function(CreateCompleted value) createCompleted,
     required TResult Function(AddPriceCompleted value) addPriceCompleted,
     required TResult Function(GetPricesCompleted value) getPricesCompleted,
+    required TResult Function(CreatePricesCompleted value)
+        createPricesCompleted,
     required TResult Function(Error value) error,
   }) {
     return initial(this);
@@ -235,6 +255,7 @@ class _$Initial implements Initial {
     TResult Function(CreateCompleted value)? createCompleted,
     TResult Function(AddPriceCompleted value)? addPriceCompleted,
     TResult Function(GetPricesCompleted value)? getPricesCompleted,
+    TResult Function(CreatePricesCompleted value)? createPricesCompleted,
     TResult Function(Error value)? error,
   }) {
     return initial?.call(this);
@@ -248,6 +269,7 @@ class _$Initial implements Initial {
     TResult Function(CreateCompleted value)? createCompleted,
     TResult Function(AddPriceCompleted value)? addPriceCompleted,
     TResult Function(GetPricesCompleted value)? getPricesCompleted,
+    TResult Function(CreatePricesCompleted value)? createPricesCompleted,
     TResult Function(Error value)? error,
     required TResult orElse(),
   }) {
@@ -305,6 +327,8 @@ class _$Loading implements Loading {
     required TResult Function(Produce produce) createCompleted,
     required TResult Function(Produce produce) addPriceCompleted,
     required TResult Function(List<PriceSnippet> pricesList) getPricesCompleted,
+    required TResult Function(List<PriceSnippet> pricesList)
+        createPricesCompleted,
     required TResult Function(Failure failure) error,
   }) {
     return loading();
@@ -318,6 +342,7 @@ class _$Loading implements Loading {
     TResult Function(Produce produce)? createCompleted,
     TResult Function(Produce produce)? addPriceCompleted,
     TResult Function(List<PriceSnippet> pricesList)? getPricesCompleted,
+    TResult Function(List<PriceSnippet> pricesList)? createPricesCompleted,
     TResult Function(Failure failure)? error,
   }) {
     return loading?.call();
@@ -331,6 +356,7 @@ class _$Loading implements Loading {
     TResult Function(Produce produce)? createCompleted,
     TResult Function(Produce produce)? addPriceCompleted,
     TResult Function(List<PriceSnippet> pricesList)? getPricesCompleted,
+    TResult Function(List<PriceSnippet> pricesList)? createPricesCompleted,
     TResult Function(Failure failure)? error,
     required TResult orElse(),
   }) {
@@ -348,6 +374,8 @@ class _$Loading implements Loading {
     required TResult Function(CreateCompleted value) createCompleted,
     required TResult Function(AddPriceCompleted value) addPriceCompleted,
     required TResult Function(GetPricesCompleted value) getPricesCompleted,
+    required TResult Function(CreatePricesCompleted value)
+        createPricesCompleted,
     required TResult Function(Error value) error,
   }) {
     return loading(this);
@@ -361,6 +389,7 @@ class _$Loading implements Loading {
     TResult Function(CreateCompleted value)? createCompleted,
     TResult Function(AddPriceCompleted value)? addPriceCompleted,
     TResult Function(GetPricesCompleted value)? getPricesCompleted,
+    TResult Function(CreatePricesCompleted value)? createPricesCompleted,
     TResult Function(Error value)? error,
   }) {
     return loading?.call(this);
@@ -374,6 +403,7 @@ class _$Loading implements Loading {
     TResult Function(CreateCompleted value)? createCompleted,
     TResult Function(AddPriceCompleted value)? addPriceCompleted,
     TResult Function(GetPricesCompleted value)? getPricesCompleted,
+    TResult Function(CreatePricesCompleted value)? createPricesCompleted,
     TResult Function(Error value)? error,
     required TResult orElse(),
   }) {
@@ -466,6 +496,8 @@ class _$CreateCompleted implements CreateCompleted {
     required TResult Function(Produce produce) createCompleted,
     required TResult Function(Produce produce) addPriceCompleted,
     required TResult Function(List<PriceSnippet> pricesList) getPricesCompleted,
+    required TResult Function(List<PriceSnippet> pricesList)
+        createPricesCompleted,
     required TResult Function(Failure failure) error,
   }) {
     return createCompleted(produce);
@@ -479,6 +511,7 @@ class _$CreateCompleted implements CreateCompleted {
     TResult Function(Produce produce)? createCompleted,
     TResult Function(Produce produce)? addPriceCompleted,
     TResult Function(List<PriceSnippet> pricesList)? getPricesCompleted,
+    TResult Function(List<PriceSnippet> pricesList)? createPricesCompleted,
     TResult Function(Failure failure)? error,
   }) {
     return createCompleted?.call(produce);
@@ -492,6 +525,7 @@ class _$CreateCompleted implements CreateCompleted {
     TResult Function(Produce produce)? createCompleted,
     TResult Function(Produce produce)? addPriceCompleted,
     TResult Function(List<PriceSnippet> pricesList)? getPricesCompleted,
+    TResult Function(List<PriceSnippet> pricesList)? createPricesCompleted,
     TResult Function(Failure failure)? error,
     required TResult orElse(),
   }) {
@@ -509,6 +543,8 @@ class _$CreateCompleted implements CreateCompleted {
     required TResult Function(CreateCompleted value) createCompleted,
     required TResult Function(AddPriceCompleted value) addPriceCompleted,
     required TResult Function(GetPricesCompleted value) getPricesCompleted,
+    required TResult Function(CreatePricesCompleted value)
+        createPricesCompleted,
     required TResult Function(Error value) error,
   }) {
     return createCompleted(this);
@@ -522,6 +558,7 @@ class _$CreateCompleted implements CreateCompleted {
     TResult Function(CreateCompleted value)? createCompleted,
     TResult Function(AddPriceCompleted value)? addPriceCompleted,
     TResult Function(GetPricesCompleted value)? getPricesCompleted,
+    TResult Function(CreatePricesCompleted value)? createPricesCompleted,
     TResult Function(Error value)? error,
   }) {
     return createCompleted?.call(this);
@@ -535,6 +572,7 @@ class _$CreateCompleted implements CreateCompleted {
     TResult Function(CreateCompleted value)? createCompleted,
     TResult Function(AddPriceCompleted value)? addPriceCompleted,
     TResult Function(GetPricesCompleted value)? getPricesCompleted,
+    TResult Function(CreatePricesCompleted value)? createPricesCompleted,
     TResult Function(Error value)? error,
     required TResult orElse(),
   }) {
@@ -632,6 +670,8 @@ class _$AddPriceCompleted implements AddPriceCompleted {
     required TResult Function(Produce produce) createCompleted,
     required TResult Function(Produce produce) addPriceCompleted,
     required TResult Function(List<PriceSnippet> pricesList) getPricesCompleted,
+    required TResult Function(List<PriceSnippet> pricesList)
+        createPricesCompleted,
     required TResult Function(Failure failure) error,
   }) {
     return addPriceCompleted(produce);
@@ -645,6 +685,7 @@ class _$AddPriceCompleted implements AddPriceCompleted {
     TResult Function(Produce produce)? createCompleted,
     TResult Function(Produce produce)? addPriceCompleted,
     TResult Function(List<PriceSnippet> pricesList)? getPricesCompleted,
+    TResult Function(List<PriceSnippet> pricesList)? createPricesCompleted,
     TResult Function(Failure failure)? error,
   }) {
     return addPriceCompleted?.call(produce);
@@ -658,6 +699,7 @@ class _$AddPriceCompleted implements AddPriceCompleted {
     TResult Function(Produce produce)? createCompleted,
     TResult Function(Produce produce)? addPriceCompleted,
     TResult Function(List<PriceSnippet> pricesList)? getPricesCompleted,
+    TResult Function(List<PriceSnippet> pricesList)? createPricesCompleted,
     TResult Function(Failure failure)? error,
     required TResult orElse(),
   }) {
@@ -675,6 +717,8 @@ class _$AddPriceCompleted implements AddPriceCompleted {
     required TResult Function(CreateCompleted value) createCompleted,
     required TResult Function(AddPriceCompleted value) addPriceCompleted,
     required TResult Function(GetPricesCompleted value) getPricesCompleted,
+    required TResult Function(CreatePricesCompleted value)
+        createPricesCompleted,
     required TResult Function(Error value) error,
   }) {
     return addPriceCompleted(this);
@@ -688,6 +732,7 @@ class _$AddPriceCompleted implements AddPriceCompleted {
     TResult Function(CreateCompleted value)? createCompleted,
     TResult Function(AddPriceCompleted value)? addPriceCompleted,
     TResult Function(GetPricesCompleted value)? getPricesCompleted,
+    TResult Function(CreatePricesCompleted value)? createPricesCompleted,
     TResult Function(Error value)? error,
   }) {
     return addPriceCompleted?.call(this);
@@ -701,6 +746,7 @@ class _$AddPriceCompleted implements AddPriceCompleted {
     TResult Function(CreateCompleted value)? createCompleted,
     TResult Function(AddPriceCompleted value)? addPriceCompleted,
     TResult Function(GetPricesCompleted value)? getPricesCompleted,
+    TResult Function(CreatePricesCompleted value)? createPricesCompleted,
     TResult Function(Error value)? error,
     required TResult orElse(),
   }) {
@@ -791,6 +837,8 @@ class _$GetPricesCompleted implements GetPricesCompleted {
     required TResult Function(Produce produce) createCompleted,
     required TResult Function(Produce produce) addPriceCompleted,
     required TResult Function(List<PriceSnippet> pricesList) getPricesCompleted,
+    required TResult Function(List<PriceSnippet> pricesList)
+        createPricesCompleted,
     required TResult Function(Failure failure) error,
   }) {
     return getPricesCompleted(pricesList);
@@ -804,6 +852,7 @@ class _$GetPricesCompleted implements GetPricesCompleted {
     TResult Function(Produce produce)? createCompleted,
     TResult Function(Produce produce)? addPriceCompleted,
     TResult Function(List<PriceSnippet> pricesList)? getPricesCompleted,
+    TResult Function(List<PriceSnippet> pricesList)? createPricesCompleted,
     TResult Function(Failure failure)? error,
   }) {
     return getPricesCompleted?.call(pricesList);
@@ -817,6 +866,7 @@ class _$GetPricesCompleted implements GetPricesCompleted {
     TResult Function(Produce produce)? createCompleted,
     TResult Function(Produce produce)? addPriceCompleted,
     TResult Function(List<PriceSnippet> pricesList)? getPricesCompleted,
+    TResult Function(List<PriceSnippet> pricesList)? createPricesCompleted,
     TResult Function(Failure failure)? error,
     required TResult orElse(),
   }) {
@@ -834,6 +884,8 @@ class _$GetPricesCompleted implements GetPricesCompleted {
     required TResult Function(CreateCompleted value) createCompleted,
     required TResult Function(AddPriceCompleted value) addPriceCompleted,
     required TResult Function(GetPricesCompleted value) getPricesCompleted,
+    required TResult Function(CreatePricesCompleted value)
+        createPricesCompleted,
     required TResult Function(Error value) error,
   }) {
     return getPricesCompleted(this);
@@ -847,6 +899,7 @@ class _$GetPricesCompleted implements GetPricesCompleted {
     TResult Function(CreateCompleted value)? createCompleted,
     TResult Function(AddPriceCompleted value)? addPriceCompleted,
     TResult Function(GetPricesCompleted value)? getPricesCompleted,
+    TResult Function(CreatePricesCompleted value)? createPricesCompleted,
     TResult Function(Error value)? error,
   }) {
     return getPricesCompleted?.call(this);
@@ -860,6 +913,7 @@ class _$GetPricesCompleted implements GetPricesCompleted {
     TResult Function(CreateCompleted value)? createCompleted,
     TResult Function(AddPriceCompleted value)? addPriceCompleted,
     TResult Function(GetPricesCompleted value)? getPricesCompleted,
+    TResult Function(CreatePricesCompleted value)? createPricesCompleted,
     TResult Function(Error value)? error,
     required TResult orElse(),
   }) {
@@ -877,6 +931,175 @@ abstract class GetPricesCompleted implements PlaygroundState {
   List<PriceSnippet> get pricesList;
   @JsonKey(ignore: true)
   $GetPricesCompletedCopyWith<GetPricesCompleted> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $CreatePricesCompletedCopyWith<$Res> {
+  factory $CreatePricesCompletedCopyWith(CreatePricesCompleted value,
+          $Res Function(CreatePricesCompleted) then) =
+      _$CreatePricesCompletedCopyWithImpl<$Res>;
+  $Res call({List<PriceSnippet> pricesList});
+}
+
+/// @nodoc
+class _$CreatePricesCompletedCopyWithImpl<$Res>
+    extends _$PlaygroundStateCopyWithImpl<$Res>
+    implements $CreatePricesCompletedCopyWith<$Res> {
+  _$CreatePricesCompletedCopyWithImpl(
+      CreatePricesCompleted _value, $Res Function(CreatePricesCompleted) _then)
+      : super(_value, (v) => _then(v as CreatePricesCompleted));
+
+  @override
+  CreatePricesCompleted get _value => super._value as CreatePricesCompleted;
+
+  @override
+  $Res call({
+    Object? pricesList = freezed,
+  }) {
+    return _then(CreatePricesCompleted(
+      pricesList == freezed
+          ? _value.pricesList
+          : pricesList // ignore: cast_nullable_to_non_nullable
+              as List<PriceSnippet>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$CreatePricesCompleted implements CreatePricesCompleted {
+  const _$CreatePricesCompleted(this.pricesList);
+
+  @override
+  final List<PriceSnippet> pricesList;
+
+  @override
+  String toString() {
+    return 'PlaygroundState.createPricesCompleted(pricesList: $pricesList)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is CreatePricesCompleted &&
+            const DeepCollectionEquality()
+                .equals(other.pricesList, pricesList));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(pricesList));
+
+  @JsonKey(ignore: true)
+  @override
+  $CreatePricesCompletedCopyWith<CreatePricesCompleted> get copyWith =>
+      _$CreatePricesCompletedCopyWithImpl<CreatePricesCompleted>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(Produce produce) createCompleted,
+    required TResult Function(Produce produce) addPriceCompleted,
+    required TResult Function(List<PriceSnippet> pricesList) getPricesCompleted,
+    required TResult Function(List<PriceSnippet> pricesList)
+        createPricesCompleted,
+    required TResult Function(Failure failure) error,
+  }) {
+    return createPricesCompleted(pricesList);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(Produce produce)? createCompleted,
+    TResult Function(Produce produce)? addPriceCompleted,
+    TResult Function(List<PriceSnippet> pricesList)? getPricesCompleted,
+    TResult Function(List<PriceSnippet> pricesList)? createPricesCompleted,
+    TResult Function(Failure failure)? error,
+  }) {
+    return createPricesCompleted?.call(pricesList);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(Produce produce)? createCompleted,
+    TResult Function(Produce produce)? addPriceCompleted,
+    TResult Function(List<PriceSnippet> pricesList)? getPricesCompleted,
+    TResult Function(List<PriceSnippet> pricesList)? createPricesCompleted,
+    TResult Function(Failure failure)? error,
+    required TResult orElse(),
+  }) {
+    if (createPricesCompleted != null) {
+      return createPricesCompleted(pricesList);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Initial value) initial,
+    required TResult Function(Loading value) loading,
+    required TResult Function(CreateCompleted value) createCompleted,
+    required TResult Function(AddPriceCompleted value) addPriceCompleted,
+    required TResult Function(GetPricesCompleted value) getPricesCompleted,
+    required TResult Function(CreatePricesCompleted value)
+        createPricesCompleted,
+    required TResult Function(Error value) error,
+  }) {
+    return createPricesCompleted(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(Initial value)? initial,
+    TResult Function(Loading value)? loading,
+    TResult Function(CreateCompleted value)? createCompleted,
+    TResult Function(AddPriceCompleted value)? addPriceCompleted,
+    TResult Function(GetPricesCompleted value)? getPricesCompleted,
+    TResult Function(CreatePricesCompleted value)? createPricesCompleted,
+    TResult Function(Error value)? error,
+  }) {
+    return createPricesCompleted?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Initial value)? initial,
+    TResult Function(Loading value)? loading,
+    TResult Function(CreateCompleted value)? createCompleted,
+    TResult Function(AddPriceCompleted value)? addPriceCompleted,
+    TResult Function(GetPricesCompleted value)? getPricesCompleted,
+    TResult Function(CreatePricesCompleted value)? createPricesCompleted,
+    TResult Function(Error value)? error,
+    required TResult orElse(),
+  }) {
+    if (createPricesCompleted != null) {
+      return createPricesCompleted(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CreatePricesCompleted implements PlaygroundState {
+  const factory CreatePricesCompleted(List<PriceSnippet> pricesList) =
+      _$CreatePricesCompleted;
+
+  List<PriceSnippet> get pricesList;
+  @JsonKey(ignore: true)
+  $CreatePricesCompletedCopyWith<CreatePricesCompleted> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -946,6 +1169,8 @@ class _$Error implements Error {
     required TResult Function(Produce produce) createCompleted,
     required TResult Function(Produce produce) addPriceCompleted,
     required TResult Function(List<PriceSnippet> pricesList) getPricesCompleted,
+    required TResult Function(List<PriceSnippet> pricesList)
+        createPricesCompleted,
     required TResult Function(Failure failure) error,
   }) {
     return error(failure);
@@ -959,6 +1184,7 @@ class _$Error implements Error {
     TResult Function(Produce produce)? createCompleted,
     TResult Function(Produce produce)? addPriceCompleted,
     TResult Function(List<PriceSnippet> pricesList)? getPricesCompleted,
+    TResult Function(List<PriceSnippet> pricesList)? createPricesCompleted,
     TResult Function(Failure failure)? error,
   }) {
     return error?.call(failure);
@@ -972,6 +1198,7 @@ class _$Error implements Error {
     TResult Function(Produce produce)? createCompleted,
     TResult Function(Produce produce)? addPriceCompleted,
     TResult Function(List<PriceSnippet> pricesList)? getPricesCompleted,
+    TResult Function(List<PriceSnippet> pricesList)? createPricesCompleted,
     TResult Function(Failure failure)? error,
     required TResult orElse(),
   }) {
@@ -989,6 +1216,8 @@ class _$Error implements Error {
     required TResult Function(CreateCompleted value) createCompleted,
     required TResult Function(AddPriceCompleted value) addPriceCompleted,
     required TResult Function(GetPricesCompleted value) getPricesCompleted,
+    required TResult Function(CreatePricesCompleted value)
+        createPricesCompleted,
     required TResult Function(Error value) error,
   }) {
     return error(this);
@@ -1002,6 +1231,7 @@ class _$Error implements Error {
     TResult Function(CreateCompleted value)? createCompleted,
     TResult Function(AddPriceCompleted value)? addPriceCompleted,
     TResult Function(GetPricesCompleted value)? getPricesCompleted,
+    TResult Function(CreatePricesCompleted value)? createPricesCompleted,
     TResult Function(Error value)? error,
   }) {
     return error?.call(this);
@@ -1015,6 +1245,7 @@ class _$Error implements Error {
     TResult Function(CreateCompleted value)? createCompleted,
     TResult Function(AddPriceCompleted value)? addPriceCompleted,
     TResult Function(GetPricesCompleted value)? getPricesCompleted,
+    TResult Function(CreatePricesCompleted value)? createPricesCompleted,
     TResult Function(Error value)? error,
     required TResult orElse(),
   }) {
