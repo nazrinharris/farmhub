@@ -14,6 +14,8 @@ _$_Produce _$$_ProduceFromJson(Map<String, dynamic> json) => _$_Produce(
       previousProducePrice:
           json['previousProducePrice'] as Map<String, dynamic>,
       weeklyPrices: json['weeklyPrices'] as Map<String, dynamic>,
+      lastUpdateTimeStamp:
+          DateTime.parse(json['lastUpdateTimeStamp'] as String),
     );
 
 Map<String, dynamic> _$$_ProduceToJson(_$_Produce instance) =>
@@ -24,4 +26,5 @@ Map<String, dynamic> _$$_ProduceToJson(_$_Produce instance) =>
       'currentProducePrice': instance.currentProducePrice,
       'previousProducePrice': instance.previousProducePrice,
       'weeklyPrices': instance.weeklyPrices,
+      'lastUpdateTimeStamp': instance.lastUpdateTimeStamp.toIso8601String(),
     };

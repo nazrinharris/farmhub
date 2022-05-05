@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:farmhub/core/errors/exceptions.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -13,6 +14,7 @@ class Produce with _$Produce {
     required Map<String, dynamic> currentProducePrice,
     required Map<String, dynamic> previousProducePrice,
     required Map<String, dynamic> weeklyPrices,
+    required DateTime lastUpdateTimeStamp,
   }) = _Produce;
 
   factory Produce.fromJson(Map<String, dynamic> json) => _$ProduceFromJson(json);
@@ -25,6 +27,9 @@ class Produce with _$Produce {
         stackTrace: StackTrace.current,
       );
     }
+
+    DateTime lastUpdateTimeStamp = (map["lastUpdateTimeStamp"] as Timestamp).toDate();
+
     return Produce(
       produceId: map['produceId'],
       produceName: map['produceName'],
@@ -32,6 +37,7 @@ class Produce with _$Produce {
       previousProducePrice: map['previousProducePrice'],
       weeklyPrices: map['weeklyPrices'],
       authorId: map['authorId'],
+      lastUpdateTimeStamp: lastUpdateTimeStamp,
     );
   }
 }

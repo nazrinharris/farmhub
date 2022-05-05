@@ -11,8 +11,13 @@ abstract class IProduceManagerRepository {
   });
 
   FutureEither<List<Produce>> getFirstTenProduce();
-
   FutureEither<List<Produce>> getNextTenProduce(List<Produce> lastProduceList);
+  FutureEither<List<Produce>> searchProduce(String query);
+  FutureEither<List<Produce>> getNextTenSearchProduce(List<Produce> lastProduceList, String query);
+
+  FutureEither<List<PriceSnippet>> getAggregatePrices(String produceId);
+  FutureEither<List<Price>> getFirstTenPrices(String produceId);
+  FutureEither<List<Price>> getNextTenPrices(List<Price> lastPriceList, String produceId);
 
   FutureEither<Produce> createNewProduce({
     required String produceName,
@@ -24,12 +29,6 @@ abstract class IProduceManagerRepository {
     required num currentPrice,
     num? daysFromNow,
   });
-
-  FutureEither<List<Produce>> searchProduce(String query);
-
-  FutureEither<List<Produce>> getNextTenSearchProduce(List<Produce> lastProduceList, String query);
-
-  FutureEither<List<PriceSnippet>> getAggregatePrices(String produceId);
 
   FutureEither<void>? debugMethod(String produceId);
 }

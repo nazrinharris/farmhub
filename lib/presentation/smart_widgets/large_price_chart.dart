@@ -213,11 +213,8 @@ class LargeOneWeekChart extends StatelessWidget {
       child: SfCartesianChart(
         primaryXAxis: CategoryAxis(
           labelPlacement: LabelPlacement.onTicks,
-          rangePadding: ChartRangePadding.round,
         ),
-        primaryYAxis: NumericAxis(
-          rangePadding: ChartRangePadding.normal,
-        ),
+        primaryYAxis: NumericAxis(),
         plotAreaBorderColor: Colors.transparent,
         series: <CartesianSeries>[
           SplineAreaSeries<PriceSnippet, String>(
@@ -225,7 +222,7 @@ class LargeOneWeekChart extends StatelessWidget {
             dataSource: pricesList,
             xValueMapper: (priceSnippet, index) {
               DateTime priceDate = DateFormat("dd-MM-yyyy").parse(priceSnippet.priceDate);
-              return DateFormat('d').format(priceDate);
+              return DateFormat('d/M').format(priceDate);
             },
             yValueMapper: (priceSnippet, index) => priceSnippet.price,
             borderColor: borderColor,

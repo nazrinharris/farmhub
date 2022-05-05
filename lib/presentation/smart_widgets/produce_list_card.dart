@@ -266,20 +266,20 @@ class SmallPriceChart extends StatelessWidget {
       late Color borderColor;
 
       if (isNegative) {
-        gradient = const LinearGradient(
+        gradient = LinearGradient(
           colors: [
             Color(0xffEC6666),
-            Color(0xffFFF4F4),
+            Color(0xffFFF4F4).withOpacity(0.1),
           ],
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
         );
         borderColor = const Color(0xffEC6666);
       } else {
-        gradient = const LinearGradient(
+        gradient = LinearGradient(
           colors: [
             Color(0xff79D2DE),
-            Color(0xffFFF4F4),
+            Color(0xffFFF4F4).withOpacity(0.1),
           ],
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,

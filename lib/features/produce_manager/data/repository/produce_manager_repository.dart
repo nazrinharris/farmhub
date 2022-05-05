@@ -267,4 +267,42 @@ class ProduceManagerRepository implements IProduceManagerRepository {
       ));
     }
   }
+
+  @override
+  FutureEither<List<Price>> getFirstTenPrices(String produceId) async {
+    if (await networkInfo.isConnected) {
+      try {
+        final result = await remoteDatasource.getFirstTenPrices(produceId);
+
+        return Right(result);
+      } catch (e) {
+        return Left(UnexpectedFailure(code: e.toString(), stackTrace: StackTrace.current));
+      }
+    } else {
+      return Left(InternetConnectionFailure(
+        code: ERROR_NO_INTERNET_CONNECTION,
+        message: MESSAGE_NO_INTERNET_CONNECTION,
+        stackTrace: StackTrace.current,
+      ));
+    }
+  }
+
+  @override
+  FutureEither<List<Price>> getNextTenPrices(List<Price> lastPriceList, String produceId) async {
+    if (await networkInfo.isConnected) {
+      try {
+        final result = await remoteDatasource.getNextTenPrices(lastPriceList, produceId);
+
+        return Right(result);
+      } catch (e) {
+        return Left(UnexpectedFailure(code: e.toString(), stackTrace: StackTrace.current));
+      }
+    } else {
+      return Left(InternetConnectionFailure(
+        code: ERROR_NO_INTERNET_CONNECTION,
+        message: MESSAGE_NO_INTERNET_CONNECTION,
+        stackTrace: StackTrace.current,
+      ));
+    }
+  }
 }

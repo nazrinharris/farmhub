@@ -27,7 +27,8 @@ class _$ProduceTearOff {
       required String authorId,
       required Map<String, dynamic> currentProducePrice,
       required Map<String, dynamic> previousProducePrice,
-      required Map<String, dynamic> weeklyPrices}) {
+      required Map<String, dynamic> weeklyPrices,
+      required DateTime lastUpdateTimeStamp}) {
     return _Produce(
       produceId: produceId,
       produceName: produceName,
@@ -35,6 +36,7 @@ class _$ProduceTearOff {
       currentProducePrice: currentProducePrice,
       previousProducePrice: previousProducePrice,
       weeklyPrices: weeklyPrices,
+      lastUpdateTimeStamp: lastUpdateTimeStamp,
     );
   }
 
@@ -56,6 +58,7 @@ mixin _$Produce {
   Map<String, dynamic> get previousProducePrice =>
       throw _privateConstructorUsedError;
   Map<String, dynamic> get weeklyPrices => throw _privateConstructorUsedError;
+  DateTime get lastUpdateTimeStamp => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -72,7 +75,8 @@ abstract class $ProduceCopyWith<$Res> {
       String authorId,
       Map<String, dynamic> currentProducePrice,
       Map<String, dynamic> previousProducePrice,
-      Map<String, dynamic> weeklyPrices});
+      Map<String, dynamic> weeklyPrices,
+      DateTime lastUpdateTimeStamp});
 }
 
 /// @nodoc
@@ -91,6 +95,7 @@ class _$ProduceCopyWithImpl<$Res> implements $ProduceCopyWith<$Res> {
     Object? currentProducePrice = freezed,
     Object? previousProducePrice = freezed,
     Object? weeklyPrices = freezed,
+    Object? lastUpdateTimeStamp = freezed,
   }) {
     return _then(_value.copyWith(
       produceId: produceId == freezed
@@ -117,6 +122,10 @@ class _$ProduceCopyWithImpl<$Res> implements $ProduceCopyWith<$Res> {
           ? _value.weeklyPrices
           : weeklyPrices // ignore: cast_nullable_to_non_nullable
               as Map<String, dynamic>,
+      lastUpdateTimeStamp: lastUpdateTimeStamp == freezed
+          ? _value.lastUpdateTimeStamp
+          : lastUpdateTimeStamp // ignore: cast_nullable_to_non_nullable
+              as DateTime,
     ));
   }
 }
@@ -132,7 +141,8 @@ abstract class _$ProduceCopyWith<$Res> implements $ProduceCopyWith<$Res> {
       String authorId,
       Map<String, dynamic> currentProducePrice,
       Map<String, dynamic> previousProducePrice,
-      Map<String, dynamic> weeklyPrices});
+      Map<String, dynamic> weeklyPrices,
+      DateTime lastUpdateTimeStamp});
 }
 
 /// @nodoc
@@ -152,6 +162,7 @@ class __$ProduceCopyWithImpl<$Res> extends _$ProduceCopyWithImpl<$Res>
     Object? currentProducePrice = freezed,
     Object? previousProducePrice = freezed,
     Object? weeklyPrices = freezed,
+    Object? lastUpdateTimeStamp = freezed,
   }) {
     return _then(_Produce(
       produceId: produceId == freezed
@@ -178,6 +189,10 @@ class __$ProduceCopyWithImpl<$Res> extends _$ProduceCopyWithImpl<$Res>
           ? _value.weeklyPrices
           : weeklyPrices // ignore: cast_nullable_to_non_nullable
               as Map<String, dynamic>,
+      lastUpdateTimeStamp: lastUpdateTimeStamp == freezed
+          ? _value.lastUpdateTimeStamp
+          : lastUpdateTimeStamp // ignore: cast_nullable_to_non_nullable
+              as DateTime,
     ));
   }
 }
@@ -191,7 +206,8 @@ class _$_Produce implements _Produce {
       required this.authorId,
       required this.currentProducePrice,
       required this.previousProducePrice,
-      required this.weeklyPrices});
+      required this.weeklyPrices,
+      required this.lastUpdateTimeStamp});
 
   factory _$_Produce.fromJson(Map<String, dynamic> json) =>
       _$$_ProduceFromJson(json);
@@ -208,10 +224,12 @@ class _$_Produce implements _Produce {
   final Map<String, dynamic> previousProducePrice;
   @override
   final Map<String, dynamic> weeklyPrices;
+  @override
+  final DateTime lastUpdateTimeStamp;
 
   @override
   String toString() {
-    return 'Produce(produceId: $produceId, produceName: $produceName, authorId: $authorId, currentProducePrice: $currentProducePrice, previousProducePrice: $previousProducePrice, weeklyPrices: $weeklyPrices)';
+    return 'Produce(produceId: $produceId, produceName: $produceName, authorId: $authorId, currentProducePrice: $currentProducePrice, previousProducePrice: $previousProducePrice, weeklyPrices: $weeklyPrices, lastUpdateTimeStamp: $lastUpdateTimeStamp)';
   }
 
   @override
@@ -230,7 +248,9 @@ class _$_Produce implements _Produce {
             const DeepCollectionEquality()
                 .equals(other.previousProducePrice, previousProducePrice) &&
             const DeepCollectionEquality()
-                .equals(other.weeklyPrices, weeklyPrices));
+                .equals(other.weeklyPrices, weeklyPrices) &&
+            (identical(other.lastUpdateTimeStamp, lastUpdateTimeStamp) ||
+                other.lastUpdateTimeStamp == lastUpdateTimeStamp));
   }
 
   @override
@@ -241,7 +261,8 @@ class _$_Produce implements _Produce {
       authorId,
       const DeepCollectionEquality().hash(currentProducePrice),
       const DeepCollectionEquality().hash(previousProducePrice),
-      const DeepCollectionEquality().hash(weeklyPrices));
+      const DeepCollectionEquality().hash(weeklyPrices),
+      lastUpdateTimeStamp);
 
   @JsonKey(ignore: true)
   @override
@@ -261,7 +282,8 @@ abstract class _Produce implements Produce {
       required String authorId,
       required Map<String, dynamic> currentProducePrice,
       required Map<String, dynamic> previousProducePrice,
-      required Map<String, dynamic> weeklyPrices}) = _$_Produce;
+      required Map<String, dynamic> weeklyPrices,
+      required DateTime lastUpdateTimeStamp}) = _$_Produce;
 
   factory _Produce.fromJson(Map<String, dynamic> json) = _$_Produce.fromJson;
 
@@ -277,6 +299,8 @@ abstract class _Produce implements Produce {
   Map<String, dynamic> get previousProducePrice;
   @override
   Map<String, dynamic> get weeklyPrices;
+  @override
+  DateTime get lastUpdateTimeStamp;
   @override
   @JsonKey(ignore: true)
   _$ProduceCopyWith<_Produce> get copyWith =>

@@ -37,6 +37,9 @@ abstract class IProduceManagerRemoteDatasource {
     required String query,
   });
 
+  Future<List<Price>> getFirstTenPrices(String produceId);
+  Future<List<Price>> getNextTenPrices(List<Price> lastPricesList, String produceId);
+
   Future<void>? debugMethod(String produceId);
 }
 
@@ -194,6 +197,7 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
       "produceName": produceName,
       "produceNameSearch": produceNameSearch,
       "weeklyPrices": weeklyPrices,
+      "lastUpdateTimeStamp": currentTimeStamp,
       "authorId": authorId,
     }).then((doc) async {
       doc.update({
@@ -239,6 +243,7 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
       },
       weeklyPrices: weeklyPrices,
       authorId: authorId,
+      lastUpdateTimeStamp: currentTimeStamp,
     );
 
     return produce;
@@ -530,5 +535,17 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
     await firebaseFirestore.collection('produce').doc(produceId).update({
       "weeklyPrices": weeklyPricesSnippetMap,
     });
+  }
+
+  @override
+  Future<List<Price>> getFirstTenPrices(String produceId) {
+    // TODO: implement getFirstTenPrices
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<List<Price>> getNextTenPrices(List<Price> lastPricesList, String produceId) {
+    // TODO: implement getNextTenPrices
+    throw UnimplementedError();
   }
 }

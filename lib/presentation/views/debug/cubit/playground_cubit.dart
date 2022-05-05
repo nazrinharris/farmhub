@@ -131,4 +131,16 @@ class PlaygroundCubit extends Cubit<PlaygroundState> {
       );
     }
   }
+
+  void retrieveProduce({
+    required String produceId,
+  }) async {
+    emit(const PlaygroundState.loading());
+
+    final produceDoc = await firebaseFirestore.collection('produce').doc(produceId).get();
+
+    final Produce produce = Produce.fromMap(produceDoc.data());
+
+    print(produce);
+  }
 }

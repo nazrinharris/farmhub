@@ -93,6 +93,18 @@ class PlaygroundTwoScreen extends StatelessWidget {
                       },
                     ),
                   ),
+                  UIVerticalSpace14(),
+                  Center(
+                    child: PrimaryButton(
+                      width: 200,
+                      content: "Get Produce",
+                      onPressed: () {
+                        context
+                            .read<PlaygroundCubit>()
+                            .retrieveProduce(produceId: "DqAWC2GsXDcqjH8ZGc2h");
+                      },
+                    ),
+                  ),
                 ],
               ),
             );

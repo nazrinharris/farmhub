@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:clock/clock.dart';
 import 'package:farmhub/core/auth/domain/i_auth_repository.dart';
 import 'package:farmhub/core/network/network_info.dart';
 import 'package:farmhub/features/produce_manager/data/datasources/produce_manager_local_datasource.dart';
@@ -96,45 +97,45 @@ void main() {
 
 List<Produce> tFirstTenProduce = [
   Produce(
-    produceId: 'tpid',
-    produceName: 'tproduceName',
-    currentProducePrice: {
-      "price": 10.00,
-      "updateDate": "11-11-1111",
-    },
-    previousProducePrice: {
-      "price": 20.00,
-      "updateDate": "10-11-1111",
-    },
-    weeklyPrices: {"10-10-1000": 24},
-    authorId: 'tauthorId',
-  ),
+      produceId: 'tpid',
+      produceName: 'tproduceName',
+      currentProducePrice: {
+        "price": 10.00,
+        "updateDate": "11-11-1111",
+      },
+      previousProducePrice: {
+        "price": 20.00,
+        "updateDate": "10-11-1111",
+      },
+      weeklyPrices: {"10-10-1000": 24},
+      authorId: 'tauthorId',
+      lastUpdateTimeStamp: clock.now()),
   Produce(
-    produceId: 'tpid',
-    produceName: 'tproduceName',
-    currentProducePrice: {
-      "price": 10.00,
-      "updateDate": "11-11-1111",
-    },
-    previousProducePrice: {
-      "price": 20.00,
-      "updateDate": "10-11-1111",
-    },
-    weeklyPrices: {"10-10-1000": 24},
-    authorId: 'tauthorId',
-  ),
+      produceId: 'tpid',
+      produceName: 'tproduceName',
+      currentProducePrice: {
+        "price": 10.00,
+        "updateDate": "11-11-1111",
+      },
+      previousProducePrice: {
+        "price": 20.00,
+        "updateDate": "10-11-1111",
+      },
+      weeklyPrices: {"10-10-1000": 24},
+      authorId: 'tauthorId',
+      lastUpdateTimeStamp: clock.now()),
   Produce(
-    produceId: 'tpid',
-    produceName: 'tproduceName',
-    currentProducePrice: {
-      "price": 10.00,
-      "updateDate": "11-11-1111",
-    },
-    previousProducePrice: {
-      "price": 20.00,
-      "updateDate": "10-11-1111",
-    },
-    weeklyPrices: {"10-10-1000": 24},
-    authorId: 'tauthorId',
-  ),
+      produceId: 'tpid',
+      produceName: 'tproduceName',
+      currentProducePrice: {
+        "price": 10.00,
+        "updateDate": "11-11-1111",
+      },
+      previousProducePrice: {
+        "price": 20.00,
+        "updateDate": "10-11-1111",
+      },
+      weeklyPrices: {"10-10-1000": 24},
+      authorId: 'tauthorId',
+      lastUpdateTimeStamp: clock.now()),
 ];
