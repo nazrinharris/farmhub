@@ -709,7 +709,7 @@ class ErrorText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 12),
-      height: 220,
+      height: 250,
       child: Center(
         child: Text(message ?? "Not Implemented"),
       ),
@@ -728,7 +728,7 @@ class TwoLinedErrorText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 48),
-      height: 220,
+      height: 250,
       child: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

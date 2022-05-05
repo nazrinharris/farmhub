@@ -206,7 +206,7 @@ class _SliverProducePriceChartState extends State<SliverProducePriceChart> {
             return const SizedBox.shrink();
           } else if (state is PSSLoading) {
             return Container(
-              height: 200,
+              height: 250,
               alignment: Alignment.center,
               child: const CircularProgressIndicator(),
             );
@@ -222,7 +222,7 @@ class _SliverProducePriceChartState extends State<SliverProducePriceChart> {
             );
           } else if (state is PSSError) {
             return Container(
-              height: 200,
+              height: 250,
               alignment: Alignment.center,
               child: Column(
                 children: [
@@ -242,7 +242,7 @@ class _SliverProducePriceChartState extends State<SliverProducePriceChart> {
             );
           } else {
             return Container(
-              height: 200,
+              height: 250,
               alignment: Alignment.center,
               child: Text(
                 "Unexpected state was thrown",
