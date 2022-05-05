@@ -93,6 +93,54 @@ class LargePriceChart extends StatelessWidget {
           }
           return LargeOneMonthChart(produce, oneMonthPricesList!);
         }
+      case LargePriceChartType.twoM:
+        if (twoMonthPricesList == null) {
+          return const TwoLinedErrorText(
+            firstLineMessage: "It seems like there are no prices.",
+            secondLineMessage:
+                "This is most likely because this produce is very new and has not yet been updated",
+          );
+        } else {
+          if (twoMonthPricesList!.length == 1) {
+            return const TwoLinedErrorText(
+              firstLineMessage: "Uh oh, we can't draw the chart",
+              secondLineMessage: "This is because there is only one price for this Produce.",
+            );
+          }
+          return LargeTwoMonthChart(produce, twoMonthPricesList!);
+        }
+      case LargePriceChartType.sixM:
+        if (sixMonthPricesList == null) {
+          return const TwoLinedErrorText(
+            firstLineMessage: "It seems like there are no prices.",
+            secondLineMessage:
+                "This is most likely because this produce is very new and has not yet been updated",
+          );
+        } else {
+          if (sixMonthPricesList!.length == 1) {
+            return const TwoLinedErrorText(
+              firstLineMessage: "Uh oh, we can't draw the chart",
+              secondLineMessage: "This is because there is only one price for this Produce.",
+            );
+          }
+          return LargeSixMonthChart(produce, sixMonthPricesList!);
+        }
+      case LargePriceChartType.oneY:
+        if (oneYearPricesList == null) {
+          return const TwoLinedErrorText(
+            firstLineMessage: "It seems like there are no prices.",
+            secondLineMessage:
+                "This is most likely because this produce is very new and has not yet been updated",
+          );
+        } else {
+          if (oneYearPricesList!.length == 1) {
+            return const TwoLinedErrorText(
+              firstLineMessage: "Uh oh, we can't draw the chart",
+              secondLineMessage: "This is because there is only one price for this Produce.",
+            );
+          }
+          return LargeOneYearChart(produce, oneYearPricesList!);
+        }
       default:
         return const TwoLinedErrorText(
           firstLineMessage: "Huh, something feels wrong.",
@@ -172,12 +220,12 @@ class LargeOneWeekChart extends StatelessWidget {
         ),
         plotAreaBorderColor: Colors.transparent,
         series: <CartesianSeries>[
-          AreaSeries<PriceSnippet, String>(
+          SplineAreaSeries<PriceSnippet, String>(
             key: ValueKey("large-one-week-chart"),
             dataSource: pricesList,
             xValueMapper: (priceSnippet, index) {
               DateTime priceDate = DateFormat("dd-MM-yyyy").parse(priceSnippet.priceDate);
-              return DateFormat('dd').format(priceDate);
+              return DateFormat('d').format(priceDate);
             },
             yValueMapper: (priceSnippet, index) => priceSnippet.price,
             borderColor: borderColor,
@@ -267,7 +315,7 @@ class LargeTwoWeekChart extends StatelessWidget {
             dataSource: twoWeeksPricesList,
             xValueMapper: (priceSnippet, index) {
               DateTime priceDate = DateFormat("dd-MM-yyyy").parse(priceSnippet.priceDate);
-              return DateFormat('dd-MM').format(priceDate);
+              return DateFormat('d/M').format(priceDate);
             },
             yValueMapper: (priceSnippet, index) => priceSnippet.price,
             borderColor: borderColor,
@@ -357,7 +405,277 @@ class LargeOneMonthChart extends StatelessWidget {
             dataSource: oneMonthPricesList,
             xValueMapper: (priceSnippet, index) {
               DateTime priceDate = DateFormat("dd-MM-yyyy").parse(priceSnippet.priceDate);
-              return DateFormat('dd-MM').format(priceDate);
+              return DateFormat('d/M').format(priceDate);
+            },
+            yValueMapper: (priceSnippet, index) => priceSnippet.price,
+            borderColor: borderColor,
+            borderWidth: 3,
+            gradient: gradient,
+          )
+        ],
+      ),
+    );
+  }
+
+  bool resolveIsNegative(List<PriceSnippet> oneMonthPricesList) {
+    final num currentPrice = oneMonthPricesList[oneMonthPricesList.length - 1].price;
+    final num previousPrice = oneMonthPricesList[oneMonthPricesList.length - 2].price;
+    final num change = currentPrice - previousPrice;
+
+    if (change < 0) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+}
+
+class LargeTwoMonthChart extends StatelessWidget {
+  final Produce produce;
+  final List<PriceSnippet> oneMonthPricesList;
+
+  const LargeTwoMonthChart(this.produce, this.oneMonthPricesList, {Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    late bool isNegative;
+    late LinearGradient gradient;
+    late Color borderColor;
+
+    if (oneMonthPricesList.length < 2) {
+      isNegative = false;
+    } else {
+      isNegative = resolveIsNegative(oneMonthPricesList);
+    }
+
+    if (isNegative) {
+      gradient = LinearGradient(
+        colors: [
+          Color(0xffEC6666),
+          Colors.white.withOpacity(0.1),
+        ],
+        begin: Alignment.topCenter,
+        end: Alignment.bottomCenter,
+      );
+      borderColor = Color.fromARGB(255, 220, 79, 79);
+    } else {
+      gradient = LinearGradient(
+        colors: [
+          Color(0xff79D2DE),
+          Colors.white.withOpacity(0.1),
+        ],
+        begin: Alignment.topCenter,
+        end: Alignment.bottomCenter,
+      );
+      borderColor = Color.fromARGB(255, 85, 189, 202);
+    }
+
+    oneMonthPricesList.sort((a, b) {
+      DateTime aPriceDate = DateFormat("dd-MM-yyyy").parse(a.priceDate);
+      DateTime bPriceDate = DateFormat("dd-MM-yyyy").parse(b.priceDate);
+
+      return aPriceDate.compareTo(bPriceDate);
+    });
+
+    final random = Random();
+    final randomInt = random.nextInt(10000);
+
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 12),
+      height: 250,
+      child: SfCartesianChart(
+        primaryXAxis: CategoryAxis(
+          labelPlacement: LabelPlacement.onTicks,
+        ),
+        primaryYAxis: NumericAxis(),
+        plotAreaBorderColor: Colors.transparent,
+        series: <CartesianSeries>[
+          SplineAreaSeries<PriceSnippet, String>(
+            key: ValueKey("$randomInt"),
+            dataSource: oneMonthPricesList,
+            xValueMapper: (priceSnippet, index) {
+              DateTime priceDate = DateFormat("dd-MM-yyyy").parse(priceSnippet.priceDate);
+              return DateFormat('d/M').format(priceDate);
+            },
+            yValueMapper: (priceSnippet, index) => priceSnippet.price,
+            borderColor: borderColor,
+            borderWidth: 3,
+            gradient: gradient,
+          )
+        ],
+      ),
+    );
+  }
+
+  bool resolveIsNegative(List<PriceSnippet> oneMonthPricesList) {
+    final num currentPrice = oneMonthPricesList[oneMonthPricesList.length - 1].price;
+    final num previousPrice = oneMonthPricesList[oneMonthPricesList.length - 2].price;
+    final num change = currentPrice - previousPrice;
+
+    if (change < 0) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+}
+
+class LargeSixMonthChart extends StatelessWidget {
+  final Produce produce;
+  final List<PriceSnippet> oneMonthPricesList;
+
+  const LargeSixMonthChart(this.produce, this.oneMonthPricesList, {Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    late bool isNegative;
+    late LinearGradient gradient;
+    late Color borderColor;
+
+    if (oneMonthPricesList.length < 2) {
+      isNegative = false;
+    } else {
+      isNegative = resolveIsNegative(oneMonthPricesList);
+    }
+
+    if (isNegative) {
+      gradient = LinearGradient(
+        colors: [
+          Color(0xffEC6666),
+          Colors.white.withOpacity(0.1),
+        ],
+        begin: Alignment.topCenter,
+        end: Alignment.bottomCenter,
+      );
+      borderColor = Color.fromARGB(255, 220, 79, 79);
+    } else {
+      gradient = LinearGradient(
+        colors: [
+          Color(0xff79D2DE),
+          Colors.white.withOpacity(0.1),
+        ],
+        begin: Alignment.topCenter,
+        end: Alignment.bottomCenter,
+      );
+      borderColor = Color.fromARGB(255, 85, 189, 202);
+    }
+
+    oneMonthPricesList.sort((a, b) {
+      DateTime aPriceDate = DateFormat("dd-MM-yyyy").parse(a.priceDate);
+      DateTime bPriceDate = DateFormat("dd-MM-yyyy").parse(b.priceDate);
+
+      return aPriceDate.compareTo(bPriceDate);
+    });
+
+    final random = Random();
+    final randomInt = random.nextInt(10000);
+
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 12),
+      height: 250,
+      child: SfCartesianChart(
+        primaryXAxis: CategoryAxis(
+          labelPlacement: LabelPlacement.onTicks,
+        ),
+        primaryYAxis: NumericAxis(),
+        plotAreaBorderColor: Colors.transparent,
+        series: <CartesianSeries>[
+          SplineAreaSeries<PriceSnippet, String>(
+            key: ValueKey("$randomInt"),
+            dataSource: oneMonthPricesList,
+            xValueMapper: (priceSnippet, index) {
+              DateTime priceDate = DateFormat("dd-MM-yyyy").parse(priceSnippet.priceDate);
+              return DateFormat('d/M').format(priceDate);
+            },
+            yValueMapper: (priceSnippet, index) => priceSnippet.price,
+            borderColor: borderColor,
+            borderWidth: 3,
+            gradient: gradient,
+          )
+        ],
+      ),
+    );
+  }
+
+  bool resolveIsNegative(List<PriceSnippet> oneMonthPricesList) {
+    final num currentPrice = oneMonthPricesList[oneMonthPricesList.length - 1].price;
+    final num previousPrice = oneMonthPricesList[oneMonthPricesList.length - 2].price;
+    final num change = currentPrice - previousPrice;
+
+    if (change < 0) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+}
+
+class LargeOneYearChart extends StatelessWidget {
+  final Produce produce;
+  final List<PriceSnippet> oneMonthPricesList;
+
+  const LargeOneYearChart(this.produce, this.oneMonthPricesList, {Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    late bool isNegative;
+    late LinearGradient gradient;
+    late Color borderColor;
+
+    if (oneMonthPricesList.length < 2) {
+      isNegative = false;
+    } else {
+      isNegative = resolveIsNegative(oneMonthPricesList);
+    }
+
+    if (isNegative) {
+      gradient = LinearGradient(
+        colors: [
+          Color(0xffEC6666),
+          Colors.white.withOpacity(0.1),
+        ],
+        begin: Alignment.topCenter,
+        end: Alignment.bottomCenter,
+      );
+      borderColor = Color.fromARGB(255, 220, 79, 79);
+    } else {
+      gradient = LinearGradient(
+        colors: [
+          Color(0xff79D2DE),
+          Colors.white.withOpacity(0.1),
+        ],
+        begin: Alignment.topCenter,
+        end: Alignment.bottomCenter,
+      );
+      borderColor = Color.fromARGB(255, 85, 189, 202);
+    }
+
+    oneMonthPricesList.sort((a, b) {
+      DateTime aPriceDate = DateFormat("dd-MM-yyyy").parse(a.priceDate);
+      DateTime bPriceDate = DateFormat("dd-MM-yyyy").parse(b.priceDate);
+
+      return aPriceDate.compareTo(bPriceDate);
+    });
+
+    final random = Random();
+    final randomInt = random.nextInt(10000);
+
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 12),
+      height: 250,
+      child: SfCartesianChart(
+        primaryXAxis: CategoryAxis(
+          labelPlacement: LabelPlacement.onTicks,
+        ),
+        primaryYAxis: NumericAxis(),
+        plotAreaBorderColor: Colors.transparent,
+        series: <CartesianSeries>[
+          SplineAreaSeries<PriceSnippet, String>(
+            key: ValueKey("$randomInt"),
+            dataSource: oneMonthPricesList,
+            xValueMapper: (priceSnippet, index) {
+              DateTime priceDate = DateFormat("dd-MM-yyyy").parse(priceSnippet.priceDate);
+              return DateFormat('d/M').format(priceDate);
             },
             yValueMapper: (priceSnippet, index) => priceSnippet.price,
             borderColor: borderColor,

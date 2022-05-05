@@ -254,7 +254,7 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
     if (daysFromNow == null) {
       currentTimeStamp = clock.now();
     } else {
-      currentTimeStamp = clock.daysFromNow(daysFromNow.toInt());
+      currentTimeStamp = clock.daysAgo(daysFromNow.toInt());
     }
 
     final chosenDate = DateFormat("dd-MM-yyyy").format(currentTimeStamp);

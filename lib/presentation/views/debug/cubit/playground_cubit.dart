@@ -95,10 +95,13 @@ class PlaygroundCubit extends Cubit<PlaygroundState> {
         print(f);
       },
       (r) {
-        List<PriceSnippet> pricesList = pricesToRanged(r, rangeType: RangeType.twoW);
+        List<PriceSnippet> twoWeeksPricesList = pricesToRanged(r, rangeType: RangeType.twoW);
+        List<PriceSnippet> oneMonthPricesList = pricesToRanged(r, rangeType: RangeType.twoW);
 
         emit(PlaygroundState.getPricesCompleted(r));
-        for (PriceSnippet price in pricesList) {
+        print("Two Weeks Sorted Prices");
+
+        for (PriceSnippet price in twoWeeksPricesList) {
           print(price);
         }
       },
@@ -115,23 +118,17 @@ class PlaygroundCubit extends Cubit<PlaygroundState> {
     final Random random = Random();
 
     for (int i = 0; i < pricesAmount; i++) {
-      Future.delayed(Duration(seconds: 1));
-
       final String chosenDate = DateFormat("dd-MM-yyyy").format(clock.daysFromNow(i));
       int randomPrice = random.nextInt(20) + 20;
 
       createdPricesList.add(PriceSnippet(price: randomPrice, priceDate: chosenDate));
 
       //! This code will write to the database! Be careful!
-      final failureOrAddPrice = repository.addNewPrice(
+      final failureOrAddPrice = await repository.addNewPrice(
         produceId: produceId,
         currentPrice: randomPrice,
         daysFromNow: i,
       );
-    }
-
-    for (PriceSnippet priceSnippet in createdPricesList) {
-      print(priceSnippet);
     }
   }
 }

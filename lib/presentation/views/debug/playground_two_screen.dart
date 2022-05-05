@@ -67,10 +67,7 @@ class PlaygroundTwoScreen extends StatelessWidget {
                     Container(
                       child: Text(state.failure.toString()),
                     ),
-                  if (state is GetPricesCompleted)
-                    Container(
-                      child: Text(state.pricesList.toString()),
-                    ),
+                  if (state is GetPricesCompleted) SizedBox.shrink(),
                   UIVerticalSpace14(),
                   Center(
                     child: PrimaryButton(
@@ -79,7 +76,7 @@ class PlaygroundTwoScreen extends StatelessWidget {
                       onPressed: () {
                         context
                             .read<PlaygroundCubit>()
-                            .getTwoWeeksPrices(produceId: "5Sb9YzFo52Y1QUKKZZF9");
+                            .getTwoWeeksPrices(produceId: "3Wwn4LGLbbgtftX7MDNs");
                       },
                     ),
                   ),
@@ -91,7 +88,7 @@ class PlaygroundTwoScreen extends StatelessWidget {
                       onPressed: () {
                         context.read<PlaygroundCubit>().createMorePrices(
                               pricesAmount: 30,
-                              produceId: "5Sb9YzFo52Y1QUKKZZF9",
+                              produceId: "3Wwn4LGLbbgtftX7MDNs",
                             );
                       },
                     ),
