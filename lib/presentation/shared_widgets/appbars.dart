@@ -10,6 +10,7 @@ class DefaultAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Function()? leadingOnPressed;
   final Icon? leadingIcon;
   final String? title;
+  final List<Color>? backgroundColors;
 
   const DefaultAppBar({
     Key? key,
@@ -18,6 +19,7 @@ class DefaultAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.leadingOnPressed,
     this.leadingIcon,
     this.title,
+    this.backgroundColors,
   }) : super(key: key);
 
   @override
@@ -42,13 +44,9 @@ class DefaultAppBar extends StatelessWidget implements PreferredSizeWidget {
                 constraints: const BoxConstraints.expand(height: 80),
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [
-                      Theme.of(context).backgroundColor,
-                      Theme.of(context).backgroundColor.withOpacity(0.0),
-                    ],
-                  ),
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: resolveBackgroundColors(context)),
                 ),
               ),
               Row(
@@ -96,6 +94,17 @@ class DefaultAppBar extends StatelessWidget implements PreferredSizeWidget {
       );
     } else {
       return const SizedBox.shrink();
+    }
+  }
+
+  List<Color> resolveBackgroundColors(BuildContext context) {
+    if (backgroundColors == null) {
+      return [
+        Theme.of(context).backgroundColor,
+        Theme.of(context).backgroundColor.withOpacity(0.0),
+      ];
+    } else {
+      return backgroundColors!;
     }
   }
 }

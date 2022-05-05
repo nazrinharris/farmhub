@@ -6,6 +6,7 @@ import 'package:farmhub/presentation/shared_widgets/scroll_physics.dart';
 import 'package:farmhub/presentation/shared_widgets/ui_helpers.dart';
 import 'package:farmhub/presentation/smart_widgets/primary_button_aware/primary_button_aware_cubit.dart';
 import 'package:farmhub/presentation/smart_widgets/produce_list_card.dart';
+import 'package:farmhub/presentation/views/main_screen/main_screen.dart';
 import 'package:farmhub/presentation/views/produce_screen/bloc/produce_screen_bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -63,6 +64,7 @@ class _ProduceScreenState extends State<ProduceScreen> with SingleTickerProvider
                 extendBodyBehindAppBar: true,
                 extendBody: true,
                 appBar: DefaultAppBar(
+                  backgroundColors: [Colors.transparent, Colors.transparent],
                   trailingIcon: const Icon(Icons.arrow_back),
                   trailingOnPressed: () {
                     Navigator.of(context).pop();
@@ -71,15 +73,17 @@ class _ProduceScreenState extends State<ProduceScreen> with SingleTickerProvider
                   leadingOnPressed: () {},
                 ),
                 body: SafeArea(
-                  top: false,
                   child: CustomScrollView(
                     physics: DefaultScrollPhysics,
                     slivers: [
                       CupertinoSliverRefreshControl(
-                        onRefresh: () async {},
+                        onRefresh: () async {
+                          print("Refreshed");
+                        },
                       ),
                       SliverProduceHeader(widget.produceArguments.produce),
                       SliverProducePriceChart(tabs, widget.produceArguments.produce),
+                      SliverPricesListHeader(),
                     ],
                   ),
                 )),
@@ -250,5 +254,35 @@ class _SliverProducePriceChartState extends State<SliverProducePriceChart> {
         },
       ),
     ]));
+  }
+}
+
+class SliverPricesListHeader extends StatefulWidget {
+  SliverPricesListHeader({Key? key}) : super(key: key);
+
+  @override
+  State<SliverPricesListHeader> createState() => _SliverPricesListHeaderState();
+}
+
+class _SliverPricesListHeaderState extends State<SliverPricesListHeader> {
+  @override
+  Widget build(BuildContext context) {
+    return SliverList(
+      delegate: SliverChildListDelegate(
+        [
+          Container(
+            margin: const EdgeInsets.only(left: 24, right: 24, top: 24, bottom: 10),
+            alignment: Alignment.centerLeft,
+            child: Text(
+              "Price History",
+              style: Theme.of(context).textTheme.bodyText1,
+            ),
+          ),
+          const UIBorder(
+            margin: EdgeInsets.symmetric(horizontal: 24),
+          ),
+        ],
+      ),
+    );
   }
 }
