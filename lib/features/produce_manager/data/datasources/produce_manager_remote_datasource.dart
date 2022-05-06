@@ -291,6 +291,7 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
           "currentPrice": currentPrice,
           "priceDate": chosenDate,
           "allPrices": [currentPrice],
+          "priceDateTimeStamp": currentTimeStamp,
           "isAverage": false,
         },
       ).then((doc) => doc.update({"priceId": doc.id}));
@@ -465,6 +466,7 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
     await firebaseFirestore.collection('produce').doc(produceId).update({
       "currentProducePrice": currentProducePrice,
       "previousProducePrice": previousProducePrice,
+      "lastUpdateTimeStamp": currentTimeStamp,
     });
 
     // Retrieve updated produce
@@ -538,14 +540,46 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
   }
 
   @override
-  Future<List<Price>> getFirstTenPrices(String produceId) {
-    // TODO: implement getFirstTenPrices
-    throw UnimplementedError();
+  Future<List<Price>> getFirstTenPrices(String produceId) async {
+    final queryList = await firebaseFirestore
+        .collection('produce')
+        .doc(produceId)
+        .collection('prices')
+        .orderBy("priceDateTimeStamp")
+        .limit(10)
+        .get();
+
+    final priceList = queryList.docs.map((documentSnapshot) {
+      return Price.fromMap(documentSnapshot.data());
+    }).toList();
+
+    return priceList;
   }
 
   @override
-  Future<List<Price>> getNextTenPrices(List<Price> lastPricesList, String produceId) {
-    // TODO: implement getNextTenPrices
-    throw UnimplementedError();
+  Future<List<Price>> getNextTenPrices(List<Price> lastPricesList, String produceId) async {
+    final lastDocument = await firebaseFirestore
+        .collection('produce')
+        .doc(produceId)
+        .collection('prices')
+        .doc(lastPricesList[lastPricesList.length - 1].priceId)
+        .get();
+
+    final newQueryList = await firebaseFirestore
+        .collection('produce')
+        .doc(produceId)
+        .collection('prices')
+        .orderBy("priceDateTimeStamp")
+        .startAfterDocument(lastDocument)
+        .limit(10)
+        .get();
+
+    final List<Price> newPricesList = newQueryList.docs.map((documentSnapshot) {
+      return Price.fromMap(documentSnapshot.data());
+    }).toList();
+
+    List<Price> combinedPricesList = List.from(lastPricesList)..addAll(newPricesList);
+
+    return combinedPricesList;
   }
 }

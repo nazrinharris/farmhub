@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../../core/errors/exceptions.dart';
@@ -8,10 +9,12 @@ part 'price.g.dart';
 @freezed
 class Price with _$Price {
   factory Price({
-    required String priceId,
     required double currentPrice,
-    required List<Map<String, dynamic>> editHistory,
-    required String updateDate,
+    required String priceDate,
+    required List<num> allPrices,
+    required DateTime priceDateTimeStamp,
+    required bool isAverage,
+    required String priceId,
   }) = _Price;
 
   factory Price.fromJson(Map<String, dynamic> json) => _$PriceFromJson(json);
@@ -24,11 +27,16 @@ class Price with _$Price {
         stackTrace: StackTrace.current,
       );
     }
+
+    DateTime priceDateTimeStamp = (map["lastUpdateTimeStamp"] as Timestamp).toDate();
+
     return Price(
-      priceId: map["priceId"],
       currentPrice: map["currentPrice"],
-      editHistory: map["editHistory"],
-      updateDate: map["updateDate"],
+      priceDate: map["priceDate"],
+      allPrices: map["allPrices"],
+      priceDateTimeStamp: priceDateTimeStamp,
+      isAverage: map["isAverage"],
+      priceId: map["priceId"],
     );
   }
 }

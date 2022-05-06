@@ -30,6 +30,16 @@ class _$ProduceScreenEventTearOff {
       produceId,
     );
   }
+
+  _PSEGetFirstTenPrices getFirstTenPrices(String produceId) {
+    return _PSEGetFirstTenPrices(
+      produceId,
+    );
+  }
+
+  _PSEGetNextTenPrices getNextTenPrices() {
+    return const _PSEGetNextTenPrices();
+  }
 }
 
 /// @nodoc
@@ -42,6 +52,8 @@ mixin _$ProduceScreenEvent {
     required TResult Function() started,
     required TResult Function() tabChanged,
     required TResult Function(String produceId) getAggregatePrices,
+    required TResult Function(String produceId) getFirstTenPrices,
+    required TResult Function() getNextTenPrices,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -49,6 +61,8 @@ mixin _$ProduceScreenEvent {
     TResult Function()? started,
     TResult Function()? tabChanged,
     TResult Function(String produceId)? getAggregatePrices,
+    TResult Function(String produceId)? getFirstTenPrices,
+    TResult Function()? getNextTenPrices,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -56,6 +70,8 @@ mixin _$ProduceScreenEvent {
     TResult Function()? started,
     TResult Function()? tabChanged,
     TResult Function(String produceId)? getAggregatePrices,
+    TResult Function(String produceId)? getFirstTenPrices,
+    TResult Function()? getNextTenPrices,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -64,6 +80,8 @@ mixin _$ProduceScreenEvent {
     required TResult Function(_PSEStarted value) started,
     required TResult Function(_PSETabChanged value) tabChanged,
     required TResult Function(_PSEGetAggregatePrices value) getAggregatePrices,
+    required TResult Function(_PSEGetFirstTenPrices value) getFirstTenPrices,
+    required TResult Function(_PSEGetNextTenPrices value) getNextTenPrices,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -71,6 +89,8 @@ mixin _$ProduceScreenEvent {
     TResult Function(_PSEStarted value)? started,
     TResult Function(_PSETabChanged value)? tabChanged,
     TResult Function(_PSEGetAggregatePrices value)? getAggregatePrices,
+    TResult Function(_PSEGetFirstTenPrices value)? getFirstTenPrices,
+    TResult Function(_PSEGetNextTenPrices value)? getNextTenPrices,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -78,6 +98,8 @@ mixin _$ProduceScreenEvent {
     TResult Function(_PSEStarted value)? started,
     TResult Function(_PSETabChanged value)? tabChanged,
     TResult Function(_PSEGetAggregatePrices value)? getAggregatePrices,
+    TResult Function(_PSEGetFirstTenPrices value)? getFirstTenPrices,
+    TResult Function(_PSEGetNextTenPrices value)? getNextTenPrices,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -144,6 +166,8 @@ class _$_PSEStarted implements _PSEStarted {
     required TResult Function() started,
     required TResult Function() tabChanged,
     required TResult Function(String produceId) getAggregatePrices,
+    required TResult Function(String produceId) getFirstTenPrices,
+    required TResult Function() getNextTenPrices,
   }) {
     return started();
   }
@@ -154,6 +178,8 @@ class _$_PSEStarted implements _PSEStarted {
     TResult Function()? started,
     TResult Function()? tabChanged,
     TResult Function(String produceId)? getAggregatePrices,
+    TResult Function(String produceId)? getFirstTenPrices,
+    TResult Function()? getNextTenPrices,
   }) {
     return started?.call();
   }
@@ -164,6 +190,8 @@ class _$_PSEStarted implements _PSEStarted {
     TResult Function()? started,
     TResult Function()? tabChanged,
     TResult Function(String produceId)? getAggregatePrices,
+    TResult Function(String produceId)? getFirstTenPrices,
+    TResult Function()? getNextTenPrices,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -178,6 +206,8 @@ class _$_PSEStarted implements _PSEStarted {
     required TResult Function(_PSEStarted value) started,
     required TResult Function(_PSETabChanged value) tabChanged,
     required TResult Function(_PSEGetAggregatePrices value) getAggregatePrices,
+    required TResult Function(_PSEGetFirstTenPrices value) getFirstTenPrices,
+    required TResult Function(_PSEGetNextTenPrices value) getNextTenPrices,
   }) {
     return started(this);
   }
@@ -188,6 +218,8 @@ class _$_PSEStarted implements _PSEStarted {
     TResult Function(_PSEStarted value)? started,
     TResult Function(_PSETabChanged value)? tabChanged,
     TResult Function(_PSEGetAggregatePrices value)? getAggregatePrices,
+    TResult Function(_PSEGetFirstTenPrices value)? getFirstTenPrices,
+    TResult Function(_PSEGetNextTenPrices value)? getNextTenPrices,
   }) {
     return started?.call(this);
   }
@@ -198,6 +230,8 @@ class _$_PSEStarted implements _PSEStarted {
     TResult Function(_PSEStarted value)? started,
     TResult Function(_PSETabChanged value)? tabChanged,
     TResult Function(_PSEGetAggregatePrices value)? getAggregatePrices,
+    TResult Function(_PSEGetFirstTenPrices value)? getFirstTenPrices,
+    TResult Function(_PSEGetNextTenPrices value)? getNextTenPrices,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -255,6 +289,8 @@ class _$_PSETabChanged implements _PSETabChanged {
     required TResult Function() started,
     required TResult Function() tabChanged,
     required TResult Function(String produceId) getAggregatePrices,
+    required TResult Function(String produceId) getFirstTenPrices,
+    required TResult Function() getNextTenPrices,
   }) {
     return tabChanged();
   }
@@ -265,6 +301,8 @@ class _$_PSETabChanged implements _PSETabChanged {
     TResult Function()? started,
     TResult Function()? tabChanged,
     TResult Function(String produceId)? getAggregatePrices,
+    TResult Function(String produceId)? getFirstTenPrices,
+    TResult Function()? getNextTenPrices,
   }) {
     return tabChanged?.call();
   }
@@ -275,6 +313,8 @@ class _$_PSETabChanged implements _PSETabChanged {
     TResult Function()? started,
     TResult Function()? tabChanged,
     TResult Function(String produceId)? getAggregatePrices,
+    TResult Function(String produceId)? getFirstTenPrices,
+    TResult Function()? getNextTenPrices,
     required TResult orElse(),
   }) {
     if (tabChanged != null) {
@@ -289,6 +329,8 @@ class _$_PSETabChanged implements _PSETabChanged {
     required TResult Function(_PSEStarted value) started,
     required TResult Function(_PSETabChanged value) tabChanged,
     required TResult Function(_PSEGetAggregatePrices value) getAggregatePrices,
+    required TResult Function(_PSEGetFirstTenPrices value) getFirstTenPrices,
+    required TResult Function(_PSEGetNextTenPrices value) getNextTenPrices,
   }) {
     return tabChanged(this);
   }
@@ -299,6 +341,8 @@ class _$_PSETabChanged implements _PSETabChanged {
     TResult Function(_PSEStarted value)? started,
     TResult Function(_PSETabChanged value)? tabChanged,
     TResult Function(_PSEGetAggregatePrices value)? getAggregatePrices,
+    TResult Function(_PSEGetFirstTenPrices value)? getFirstTenPrices,
+    TResult Function(_PSEGetNextTenPrices value)? getNextTenPrices,
   }) {
     return tabChanged?.call(this);
   }
@@ -309,6 +353,8 @@ class _$_PSETabChanged implements _PSETabChanged {
     TResult Function(_PSEStarted value)? started,
     TResult Function(_PSETabChanged value)? tabChanged,
     TResult Function(_PSEGetAggregatePrices value)? getAggregatePrices,
+    TResult Function(_PSEGetFirstTenPrices value)? getFirstTenPrices,
+    TResult Function(_PSEGetNextTenPrices value)? getNextTenPrices,
     required TResult orElse(),
   }) {
     if (tabChanged != null) {
@@ -391,6 +437,8 @@ class _$_PSEGetAggregatePrices implements _PSEGetAggregatePrices {
     required TResult Function() started,
     required TResult Function() tabChanged,
     required TResult Function(String produceId) getAggregatePrices,
+    required TResult Function(String produceId) getFirstTenPrices,
+    required TResult Function() getNextTenPrices,
   }) {
     return getAggregatePrices(produceId);
   }
@@ -401,6 +449,8 @@ class _$_PSEGetAggregatePrices implements _PSEGetAggregatePrices {
     TResult Function()? started,
     TResult Function()? tabChanged,
     TResult Function(String produceId)? getAggregatePrices,
+    TResult Function(String produceId)? getFirstTenPrices,
+    TResult Function()? getNextTenPrices,
   }) {
     return getAggregatePrices?.call(produceId);
   }
@@ -411,6 +461,8 @@ class _$_PSEGetAggregatePrices implements _PSEGetAggregatePrices {
     TResult Function()? started,
     TResult Function()? tabChanged,
     TResult Function(String produceId)? getAggregatePrices,
+    TResult Function(String produceId)? getFirstTenPrices,
+    TResult Function()? getNextTenPrices,
     required TResult orElse(),
   }) {
     if (getAggregatePrices != null) {
@@ -425,6 +477,8 @@ class _$_PSEGetAggregatePrices implements _PSEGetAggregatePrices {
     required TResult Function(_PSEStarted value) started,
     required TResult Function(_PSETabChanged value) tabChanged,
     required TResult Function(_PSEGetAggregatePrices value) getAggregatePrices,
+    required TResult Function(_PSEGetFirstTenPrices value) getFirstTenPrices,
+    required TResult Function(_PSEGetNextTenPrices value) getNextTenPrices,
   }) {
     return getAggregatePrices(this);
   }
@@ -435,6 +489,8 @@ class _$_PSEGetAggregatePrices implements _PSEGetAggregatePrices {
     TResult Function(_PSEStarted value)? started,
     TResult Function(_PSETabChanged value)? tabChanged,
     TResult Function(_PSEGetAggregatePrices value)? getAggregatePrices,
+    TResult Function(_PSEGetFirstTenPrices value)? getFirstTenPrices,
+    TResult Function(_PSEGetNextTenPrices value)? getNextTenPrices,
   }) {
     return getAggregatePrices?.call(this);
   }
@@ -445,6 +501,8 @@ class _$_PSEGetAggregatePrices implements _PSEGetAggregatePrices {
     TResult Function(_PSEStarted value)? started,
     TResult Function(_PSETabChanged value)? tabChanged,
     TResult Function(_PSEGetAggregatePrices value)? getAggregatePrices,
+    TResult Function(_PSEGetFirstTenPrices value)? getFirstTenPrices,
+    TResult Function(_PSEGetNextTenPrices value)? getNextTenPrices,
     required TResult orElse(),
   }) {
     if (getAggregatePrices != null) {
@@ -465,6 +523,283 @@ abstract class _PSEGetAggregatePrices implements ProduceScreenEvent {
 }
 
 /// @nodoc
+abstract class _$PSEGetFirstTenPricesCopyWith<$Res> {
+  factory _$PSEGetFirstTenPricesCopyWith(_PSEGetFirstTenPrices value,
+          $Res Function(_PSEGetFirstTenPrices) then) =
+      __$PSEGetFirstTenPricesCopyWithImpl<$Res>;
+  $Res call({String produceId});
+}
+
+/// @nodoc
+class __$PSEGetFirstTenPricesCopyWithImpl<$Res>
+    extends _$ProduceScreenEventCopyWithImpl<$Res>
+    implements _$PSEGetFirstTenPricesCopyWith<$Res> {
+  __$PSEGetFirstTenPricesCopyWithImpl(
+      _PSEGetFirstTenPrices _value, $Res Function(_PSEGetFirstTenPrices) _then)
+      : super(_value, (v) => _then(v as _PSEGetFirstTenPrices));
+
+  @override
+  _PSEGetFirstTenPrices get _value => super._value as _PSEGetFirstTenPrices;
+
+  @override
+  $Res call({
+    Object? produceId = freezed,
+  }) {
+    return _then(_PSEGetFirstTenPrices(
+      produceId == freezed
+          ? _value.produceId
+          : produceId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_PSEGetFirstTenPrices implements _PSEGetFirstTenPrices {
+  const _$_PSEGetFirstTenPrices(this.produceId);
+
+  @override
+  final String produceId;
+
+  @override
+  String toString() {
+    return 'ProduceScreenEvent.getFirstTenPrices(produceId: $produceId)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _PSEGetFirstTenPrices &&
+            (identical(other.produceId, produceId) ||
+                other.produceId == produceId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, produceId);
+
+  @JsonKey(ignore: true)
+  @override
+  _$PSEGetFirstTenPricesCopyWith<_PSEGetFirstTenPrices> get copyWith =>
+      __$PSEGetFirstTenPricesCopyWithImpl<_PSEGetFirstTenPrices>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() tabChanged,
+    required TResult Function(String produceId) getAggregatePrices,
+    required TResult Function(String produceId) getFirstTenPrices,
+    required TResult Function() getNextTenPrices,
+  }) {
+    return getFirstTenPrices(produceId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? tabChanged,
+    TResult Function(String produceId)? getAggregatePrices,
+    TResult Function(String produceId)? getFirstTenPrices,
+    TResult Function()? getNextTenPrices,
+  }) {
+    return getFirstTenPrices?.call(produceId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? tabChanged,
+    TResult Function(String produceId)? getAggregatePrices,
+    TResult Function(String produceId)? getFirstTenPrices,
+    TResult Function()? getNextTenPrices,
+    required TResult orElse(),
+  }) {
+    if (getFirstTenPrices != null) {
+      return getFirstTenPrices(produceId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_PSEStarted value) started,
+    required TResult Function(_PSETabChanged value) tabChanged,
+    required TResult Function(_PSEGetAggregatePrices value) getAggregatePrices,
+    required TResult Function(_PSEGetFirstTenPrices value) getFirstTenPrices,
+    required TResult Function(_PSEGetNextTenPrices value) getNextTenPrices,
+  }) {
+    return getFirstTenPrices(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_PSEStarted value)? started,
+    TResult Function(_PSETabChanged value)? tabChanged,
+    TResult Function(_PSEGetAggregatePrices value)? getAggregatePrices,
+    TResult Function(_PSEGetFirstTenPrices value)? getFirstTenPrices,
+    TResult Function(_PSEGetNextTenPrices value)? getNextTenPrices,
+  }) {
+    return getFirstTenPrices?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_PSEStarted value)? started,
+    TResult Function(_PSETabChanged value)? tabChanged,
+    TResult Function(_PSEGetAggregatePrices value)? getAggregatePrices,
+    TResult Function(_PSEGetFirstTenPrices value)? getFirstTenPrices,
+    TResult Function(_PSEGetNextTenPrices value)? getNextTenPrices,
+    required TResult orElse(),
+  }) {
+    if (getFirstTenPrices != null) {
+      return getFirstTenPrices(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _PSEGetFirstTenPrices implements ProduceScreenEvent {
+  const factory _PSEGetFirstTenPrices(String produceId) =
+      _$_PSEGetFirstTenPrices;
+
+  String get produceId;
+  @JsonKey(ignore: true)
+  _$PSEGetFirstTenPricesCopyWith<_PSEGetFirstTenPrices> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$PSEGetNextTenPricesCopyWith<$Res> {
+  factory _$PSEGetNextTenPricesCopyWith(_PSEGetNextTenPrices value,
+          $Res Function(_PSEGetNextTenPrices) then) =
+      __$PSEGetNextTenPricesCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$PSEGetNextTenPricesCopyWithImpl<$Res>
+    extends _$ProduceScreenEventCopyWithImpl<$Res>
+    implements _$PSEGetNextTenPricesCopyWith<$Res> {
+  __$PSEGetNextTenPricesCopyWithImpl(
+      _PSEGetNextTenPrices _value, $Res Function(_PSEGetNextTenPrices) _then)
+      : super(_value, (v) => _then(v as _PSEGetNextTenPrices));
+
+  @override
+  _PSEGetNextTenPrices get _value => super._value as _PSEGetNextTenPrices;
+}
+
+/// @nodoc
+
+class _$_PSEGetNextTenPrices implements _PSEGetNextTenPrices {
+  const _$_PSEGetNextTenPrices();
+
+  @override
+  String toString() {
+    return 'ProduceScreenEvent.getNextTenPrices()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _PSEGetNextTenPrices);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() tabChanged,
+    required TResult Function(String produceId) getAggregatePrices,
+    required TResult Function(String produceId) getFirstTenPrices,
+    required TResult Function() getNextTenPrices,
+  }) {
+    return getNextTenPrices();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? tabChanged,
+    TResult Function(String produceId)? getAggregatePrices,
+    TResult Function(String produceId)? getFirstTenPrices,
+    TResult Function()? getNextTenPrices,
+  }) {
+    return getNextTenPrices?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? tabChanged,
+    TResult Function(String produceId)? getAggregatePrices,
+    TResult Function(String produceId)? getFirstTenPrices,
+    TResult Function()? getNextTenPrices,
+    required TResult orElse(),
+  }) {
+    if (getNextTenPrices != null) {
+      return getNextTenPrices();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_PSEStarted value) started,
+    required TResult Function(_PSETabChanged value) tabChanged,
+    required TResult Function(_PSEGetAggregatePrices value) getAggregatePrices,
+    required TResult Function(_PSEGetFirstTenPrices value) getFirstTenPrices,
+    required TResult Function(_PSEGetNextTenPrices value) getNextTenPrices,
+  }) {
+    return getNextTenPrices(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_PSEStarted value)? started,
+    TResult Function(_PSETabChanged value)? tabChanged,
+    TResult Function(_PSEGetAggregatePrices value)? getAggregatePrices,
+    TResult Function(_PSEGetFirstTenPrices value)? getFirstTenPrices,
+    TResult Function(_PSEGetNextTenPrices value)? getNextTenPrices,
+  }) {
+    return getNextTenPrices?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_PSEStarted value)? started,
+    TResult Function(_PSETabChanged value)? tabChanged,
+    TResult Function(_PSEGetAggregatePrices value)? getAggregatePrices,
+    TResult Function(_PSEGetFirstTenPrices value)? getFirstTenPrices,
+    TResult Function(_PSEGetNextTenPrices value)? getNextTenPrices,
+    required TResult orElse(),
+  }) {
+    if (getNextTenPrices != null) {
+      return getNextTenPrices(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _PSEGetNextTenPrices implements ProduceScreenEvent {
+  const factory _PSEGetNextTenPrices() = _$_PSEGetNextTenPrices;
+}
+
+/// @nodoc
 class _$ProduceScreenStateTearOff {
   const _$ProduceScreenStateTearOff();
 
@@ -474,23 +809,59 @@ class _$ProduceScreenStateTearOff {
     );
   }
 
-  PSSLoading loading({required ProduceScreenProps props}) {
-    return PSSLoading(
+  PSSGetAggregateLoading getAggregateLoading(
+      {required ProduceScreenProps props}) {
+    return PSSGetAggregateLoading(
       props: props,
     );
   }
 
-  PSSCompleted completed({required ProduceScreenProps props}) {
-    return PSSCompleted(
+  PSSGetAggregateCompleted getAggregateCompleted(
+      {required ProduceScreenProps props}) {
+    return PSSGetAggregateCompleted(
       props: props,
     );
   }
 
-  PSSError error(
+  PSSGetAggregateError getAggregateError(
       {required ProduceScreenProps props, required Failure failure}) {
-    return PSSError(
+    return PSSGetAggregateError(
       props: props,
       failure: failure,
+    );
+  }
+
+  PSSGetFirstTenPricesLoading getFirstTenPricesLoading(
+      {required ProduceScreenProps props}) {
+    return PSSGetFirstTenPricesLoading(
+      props: props,
+    );
+  }
+
+  PSSGetFirstTenPricesCompleted getFirstTenPricesCompleted(
+      {required ProduceScreenProps props}) {
+    return PSSGetFirstTenPricesCompleted(
+      props: props,
+    );
+  }
+
+  PSSGetNextTenPricesLoading getNextTenPricesLoading(
+      {required ProduceScreenProps props}) {
+    return PSSGetNextTenPricesLoading(
+      props: props,
+    );
+  }
+
+  PSSGetNextTenPricesCompleted getNextTenPricesCompleted(
+      {required ProduceScreenProps props}) {
+    return PSSGetNextTenPricesCompleted(
+      props: props,
+    );
+  }
+
+  PSSGetPricesError getPricesError({required ProduceScreenProps props}) {
+    return PSSGetPricesError(
+      props: props,
     );
   }
 }
@@ -505,50 +876,97 @@ mixin _$ProduceScreenState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(ProduceScreenProps props) initial,
-    required TResult Function(ProduceScreenProps props) loading,
-    required TResult Function(ProduceScreenProps props) completed,
-    required TResult Function(ProduceScreenProps props, Failure failure) error,
+    required TResult Function(ProduceScreenProps props) getAggregateLoading,
+    required TResult Function(ProduceScreenProps props) getAggregateCompleted,
+    required TResult Function(ProduceScreenProps props, Failure failure)
+        getAggregateError,
+    required TResult Function(ProduceScreenProps props)
+        getFirstTenPricesLoading,
+    required TResult Function(ProduceScreenProps props)
+        getFirstTenPricesCompleted,
+    required TResult Function(ProduceScreenProps props) getNextTenPricesLoading,
+    required TResult Function(ProduceScreenProps props)
+        getNextTenPricesCompleted,
+    required TResult Function(ProduceScreenProps props) getPricesError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(ProduceScreenProps props)? initial,
-    TResult Function(ProduceScreenProps props)? loading,
-    TResult Function(ProduceScreenProps props)? completed,
-    TResult Function(ProduceScreenProps props, Failure failure)? error,
+    TResult Function(ProduceScreenProps props)? getAggregateLoading,
+    TResult Function(ProduceScreenProps props)? getAggregateCompleted,
+    TResult Function(ProduceScreenProps props, Failure failure)?
+        getAggregateError,
+    TResult Function(ProduceScreenProps props)? getFirstTenPricesLoading,
+    TResult Function(ProduceScreenProps props)? getFirstTenPricesCompleted,
+    TResult Function(ProduceScreenProps props)? getNextTenPricesLoading,
+    TResult Function(ProduceScreenProps props)? getNextTenPricesCompleted,
+    TResult Function(ProduceScreenProps props)? getPricesError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(ProduceScreenProps props)? initial,
-    TResult Function(ProduceScreenProps props)? loading,
-    TResult Function(ProduceScreenProps props)? completed,
-    TResult Function(ProduceScreenProps props, Failure failure)? error,
+    TResult Function(ProduceScreenProps props)? getAggregateLoading,
+    TResult Function(ProduceScreenProps props)? getAggregateCompleted,
+    TResult Function(ProduceScreenProps props, Failure failure)?
+        getAggregateError,
+    TResult Function(ProduceScreenProps props)? getFirstTenPricesLoading,
+    TResult Function(ProduceScreenProps props)? getFirstTenPricesCompleted,
+    TResult Function(ProduceScreenProps props)? getNextTenPricesLoading,
+    TResult Function(ProduceScreenProps props)? getNextTenPricesCompleted,
+    TResult Function(ProduceScreenProps props)? getPricesError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(PSSInitial value) initial,
-    required TResult Function(PSSLoading value) loading,
-    required TResult Function(PSSCompleted value) completed,
-    required TResult Function(PSSError value) error,
+    required TResult Function(PSSGetAggregateLoading value) getAggregateLoading,
+    required TResult Function(PSSGetAggregateCompleted value)
+        getAggregateCompleted,
+    required TResult Function(PSSGetAggregateError value) getAggregateError,
+    required TResult Function(PSSGetFirstTenPricesLoading value)
+        getFirstTenPricesLoading,
+    required TResult Function(PSSGetFirstTenPricesCompleted value)
+        getFirstTenPricesCompleted,
+    required TResult Function(PSSGetNextTenPricesLoading value)
+        getNextTenPricesLoading,
+    required TResult Function(PSSGetNextTenPricesCompleted value)
+        getNextTenPricesCompleted,
+    required TResult Function(PSSGetPricesError value) getPricesError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(PSSInitial value)? initial,
-    TResult Function(PSSLoading value)? loading,
-    TResult Function(PSSCompleted value)? completed,
-    TResult Function(PSSError value)? error,
+    TResult Function(PSSGetAggregateLoading value)? getAggregateLoading,
+    TResult Function(PSSGetAggregateCompleted value)? getAggregateCompleted,
+    TResult Function(PSSGetAggregateError value)? getAggregateError,
+    TResult Function(PSSGetFirstTenPricesLoading value)?
+        getFirstTenPricesLoading,
+    TResult Function(PSSGetFirstTenPricesCompleted value)?
+        getFirstTenPricesCompleted,
+    TResult Function(PSSGetNextTenPricesLoading value)? getNextTenPricesLoading,
+    TResult Function(PSSGetNextTenPricesCompleted value)?
+        getNextTenPricesCompleted,
+    TResult Function(PSSGetPricesError value)? getPricesError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(PSSInitial value)? initial,
-    TResult Function(PSSLoading value)? loading,
-    TResult Function(PSSCompleted value)? completed,
-    TResult Function(PSSError value)? error,
+    TResult Function(PSSGetAggregateLoading value)? getAggregateLoading,
+    TResult Function(PSSGetAggregateCompleted value)? getAggregateCompleted,
+    TResult Function(PSSGetAggregateError value)? getAggregateError,
+    TResult Function(PSSGetFirstTenPricesLoading value)?
+        getFirstTenPricesLoading,
+    TResult Function(PSSGetFirstTenPricesCompleted value)?
+        getFirstTenPricesCompleted,
+    TResult Function(PSSGetNextTenPricesLoading value)? getNextTenPricesLoading,
+    TResult Function(PSSGetNextTenPricesCompleted value)?
+        getNextTenPricesCompleted,
+    TResult Function(PSSGetPricesError value)? getPricesError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -666,9 +1084,18 @@ class _$PSSInitial implements PSSInitial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(ProduceScreenProps props) initial,
-    required TResult Function(ProduceScreenProps props) loading,
-    required TResult Function(ProduceScreenProps props) completed,
-    required TResult Function(ProduceScreenProps props, Failure failure) error,
+    required TResult Function(ProduceScreenProps props) getAggregateLoading,
+    required TResult Function(ProduceScreenProps props) getAggregateCompleted,
+    required TResult Function(ProduceScreenProps props, Failure failure)
+        getAggregateError,
+    required TResult Function(ProduceScreenProps props)
+        getFirstTenPricesLoading,
+    required TResult Function(ProduceScreenProps props)
+        getFirstTenPricesCompleted,
+    required TResult Function(ProduceScreenProps props) getNextTenPricesLoading,
+    required TResult Function(ProduceScreenProps props)
+        getNextTenPricesCompleted,
+    required TResult Function(ProduceScreenProps props) getPricesError,
   }) {
     return initial(props);
   }
@@ -677,9 +1104,15 @@ class _$PSSInitial implements PSSInitial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(ProduceScreenProps props)? initial,
-    TResult Function(ProduceScreenProps props)? loading,
-    TResult Function(ProduceScreenProps props)? completed,
-    TResult Function(ProduceScreenProps props, Failure failure)? error,
+    TResult Function(ProduceScreenProps props)? getAggregateLoading,
+    TResult Function(ProduceScreenProps props)? getAggregateCompleted,
+    TResult Function(ProduceScreenProps props, Failure failure)?
+        getAggregateError,
+    TResult Function(ProduceScreenProps props)? getFirstTenPricesLoading,
+    TResult Function(ProduceScreenProps props)? getFirstTenPricesCompleted,
+    TResult Function(ProduceScreenProps props)? getNextTenPricesLoading,
+    TResult Function(ProduceScreenProps props)? getNextTenPricesCompleted,
+    TResult Function(ProduceScreenProps props)? getPricesError,
   }) {
     return initial?.call(props);
   }
@@ -688,9 +1121,15 @@ class _$PSSInitial implements PSSInitial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(ProduceScreenProps props)? initial,
-    TResult Function(ProduceScreenProps props)? loading,
-    TResult Function(ProduceScreenProps props)? completed,
-    TResult Function(ProduceScreenProps props, Failure failure)? error,
+    TResult Function(ProduceScreenProps props)? getAggregateLoading,
+    TResult Function(ProduceScreenProps props)? getAggregateCompleted,
+    TResult Function(ProduceScreenProps props, Failure failure)?
+        getAggregateError,
+    TResult Function(ProduceScreenProps props)? getFirstTenPricesLoading,
+    TResult Function(ProduceScreenProps props)? getFirstTenPricesCompleted,
+    TResult Function(ProduceScreenProps props)? getNextTenPricesLoading,
+    TResult Function(ProduceScreenProps props)? getNextTenPricesCompleted,
+    TResult Function(ProduceScreenProps props)? getPricesError,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -703,9 +1142,19 @@ class _$PSSInitial implements PSSInitial {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(PSSInitial value) initial,
-    required TResult Function(PSSLoading value) loading,
-    required TResult Function(PSSCompleted value) completed,
-    required TResult Function(PSSError value) error,
+    required TResult Function(PSSGetAggregateLoading value) getAggregateLoading,
+    required TResult Function(PSSGetAggregateCompleted value)
+        getAggregateCompleted,
+    required TResult Function(PSSGetAggregateError value) getAggregateError,
+    required TResult Function(PSSGetFirstTenPricesLoading value)
+        getFirstTenPricesLoading,
+    required TResult Function(PSSGetFirstTenPricesCompleted value)
+        getFirstTenPricesCompleted,
+    required TResult Function(PSSGetNextTenPricesLoading value)
+        getNextTenPricesLoading,
+    required TResult Function(PSSGetNextTenPricesCompleted value)
+        getNextTenPricesCompleted,
+    required TResult Function(PSSGetPricesError value) getPricesError,
   }) {
     return initial(this);
   }
@@ -714,9 +1163,17 @@ class _$PSSInitial implements PSSInitial {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(PSSInitial value)? initial,
-    TResult Function(PSSLoading value)? loading,
-    TResult Function(PSSCompleted value)? completed,
-    TResult Function(PSSError value)? error,
+    TResult Function(PSSGetAggregateLoading value)? getAggregateLoading,
+    TResult Function(PSSGetAggregateCompleted value)? getAggregateCompleted,
+    TResult Function(PSSGetAggregateError value)? getAggregateError,
+    TResult Function(PSSGetFirstTenPricesLoading value)?
+        getFirstTenPricesLoading,
+    TResult Function(PSSGetFirstTenPricesCompleted value)?
+        getFirstTenPricesCompleted,
+    TResult Function(PSSGetNextTenPricesLoading value)? getNextTenPricesLoading,
+    TResult Function(PSSGetNextTenPricesCompleted value)?
+        getNextTenPricesCompleted,
+    TResult Function(PSSGetPricesError value)? getPricesError,
   }) {
     return initial?.call(this);
   }
@@ -725,9 +1182,17 @@ class _$PSSInitial implements PSSInitial {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(PSSInitial value)? initial,
-    TResult Function(PSSLoading value)? loading,
-    TResult Function(PSSCompleted value)? completed,
-    TResult Function(PSSError value)? error,
+    TResult Function(PSSGetAggregateLoading value)? getAggregateLoading,
+    TResult Function(PSSGetAggregateCompleted value)? getAggregateCompleted,
+    TResult Function(PSSGetAggregateError value)? getAggregateError,
+    TResult Function(PSSGetFirstTenPricesLoading value)?
+        getFirstTenPricesLoading,
+    TResult Function(PSSGetFirstTenPricesCompleted value)?
+        getFirstTenPricesCompleted,
+    TResult Function(PSSGetNextTenPricesLoading value)? getNextTenPricesLoading,
+    TResult Function(PSSGetNextTenPricesCompleted value)?
+        getNextTenPricesCompleted,
+    TResult Function(PSSGetPricesError value)? getPricesError,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -749,11 +1214,11 @@ abstract class PSSInitial implements ProduceScreenState {
 }
 
 /// @nodoc
-abstract class $PSSLoadingCopyWith<$Res>
+abstract class $PSSGetAggregateLoadingCopyWith<$Res>
     implements $ProduceScreenStateCopyWith<$Res> {
-  factory $PSSLoadingCopyWith(
-          PSSLoading value, $Res Function(PSSLoading) then) =
-      _$PSSLoadingCopyWithImpl<$Res>;
+  factory $PSSGetAggregateLoadingCopyWith(PSSGetAggregateLoading value,
+          $Res Function(PSSGetAggregateLoading) then) =
+      _$PSSGetAggregateLoadingCopyWithImpl<$Res>;
   @override
   $Res call({ProduceScreenProps props});
 
@@ -762,20 +1227,21 @@ abstract class $PSSLoadingCopyWith<$Res>
 }
 
 /// @nodoc
-class _$PSSLoadingCopyWithImpl<$Res>
+class _$PSSGetAggregateLoadingCopyWithImpl<$Res>
     extends _$ProduceScreenStateCopyWithImpl<$Res>
-    implements $PSSLoadingCopyWith<$Res> {
-  _$PSSLoadingCopyWithImpl(PSSLoading _value, $Res Function(PSSLoading) _then)
-      : super(_value, (v) => _then(v as PSSLoading));
+    implements $PSSGetAggregateLoadingCopyWith<$Res> {
+  _$PSSGetAggregateLoadingCopyWithImpl(PSSGetAggregateLoading _value,
+      $Res Function(PSSGetAggregateLoading) _then)
+      : super(_value, (v) => _then(v as PSSGetAggregateLoading));
 
   @override
-  PSSLoading get _value => super._value as PSSLoading;
+  PSSGetAggregateLoading get _value => super._value as PSSGetAggregateLoading;
 
   @override
   $Res call({
     Object? props = freezed,
   }) {
-    return _then(PSSLoading(
+    return _then(PSSGetAggregateLoading(
       props: props == freezed
           ? _value.props
           : props // ignore: cast_nullable_to_non_nullable
@@ -786,22 +1252,22 @@ class _$PSSLoadingCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$PSSLoading implements PSSLoading {
-  const _$PSSLoading({required this.props});
+class _$PSSGetAggregateLoading implements PSSGetAggregateLoading {
+  const _$PSSGetAggregateLoading({required this.props});
 
   @override
   final ProduceScreenProps props;
 
   @override
   String toString() {
-    return 'ProduceScreenState.loading(props: $props)';
+    return 'ProduceScreenState.getAggregateLoading(props: $props)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is PSSLoading &&
+            other is PSSGetAggregateLoading &&
             (identical(other.props, props) || other.props == props));
   }
 
@@ -810,42 +1276,64 @@ class _$PSSLoading implements PSSLoading {
 
   @JsonKey(ignore: true)
   @override
-  $PSSLoadingCopyWith<PSSLoading> get copyWith =>
-      _$PSSLoadingCopyWithImpl<PSSLoading>(this, _$identity);
+  $PSSGetAggregateLoadingCopyWith<PSSGetAggregateLoading> get copyWith =>
+      _$PSSGetAggregateLoadingCopyWithImpl<PSSGetAggregateLoading>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(ProduceScreenProps props) initial,
-    required TResult Function(ProduceScreenProps props) loading,
-    required TResult Function(ProduceScreenProps props) completed,
-    required TResult Function(ProduceScreenProps props, Failure failure) error,
+    required TResult Function(ProduceScreenProps props) getAggregateLoading,
+    required TResult Function(ProduceScreenProps props) getAggregateCompleted,
+    required TResult Function(ProduceScreenProps props, Failure failure)
+        getAggregateError,
+    required TResult Function(ProduceScreenProps props)
+        getFirstTenPricesLoading,
+    required TResult Function(ProduceScreenProps props)
+        getFirstTenPricesCompleted,
+    required TResult Function(ProduceScreenProps props) getNextTenPricesLoading,
+    required TResult Function(ProduceScreenProps props)
+        getNextTenPricesCompleted,
+    required TResult Function(ProduceScreenProps props) getPricesError,
   }) {
-    return loading(props);
+    return getAggregateLoading(props);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(ProduceScreenProps props)? initial,
-    TResult Function(ProduceScreenProps props)? loading,
-    TResult Function(ProduceScreenProps props)? completed,
-    TResult Function(ProduceScreenProps props, Failure failure)? error,
+    TResult Function(ProduceScreenProps props)? getAggregateLoading,
+    TResult Function(ProduceScreenProps props)? getAggregateCompleted,
+    TResult Function(ProduceScreenProps props, Failure failure)?
+        getAggregateError,
+    TResult Function(ProduceScreenProps props)? getFirstTenPricesLoading,
+    TResult Function(ProduceScreenProps props)? getFirstTenPricesCompleted,
+    TResult Function(ProduceScreenProps props)? getNextTenPricesLoading,
+    TResult Function(ProduceScreenProps props)? getNextTenPricesCompleted,
+    TResult Function(ProduceScreenProps props)? getPricesError,
   }) {
-    return loading?.call(props);
+    return getAggregateLoading?.call(props);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(ProduceScreenProps props)? initial,
-    TResult Function(ProduceScreenProps props)? loading,
-    TResult Function(ProduceScreenProps props)? completed,
-    TResult Function(ProduceScreenProps props, Failure failure)? error,
+    TResult Function(ProduceScreenProps props)? getAggregateLoading,
+    TResult Function(ProduceScreenProps props)? getAggregateCompleted,
+    TResult Function(ProduceScreenProps props, Failure failure)?
+        getAggregateError,
+    TResult Function(ProduceScreenProps props)? getFirstTenPricesLoading,
+    TResult Function(ProduceScreenProps props)? getFirstTenPricesCompleted,
+    TResult Function(ProduceScreenProps props)? getNextTenPricesLoading,
+    TResult Function(ProduceScreenProps props)? getNextTenPricesCompleted,
+    TResult Function(ProduceScreenProps props)? getPricesError,
     required TResult orElse(),
   }) {
-    if (loading != null) {
-      return loading(props);
+    if (getAggregateLoading != null) {
+      return getAggregateLoading(props);
     }
     return orElse();
   }
@@ -854,57 +1342,84 @@ class _$PSSLoading implements PSSLoading {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(PSSInitial value) initial,
-    required TResult Function(PSSLoading value) loading,
-    required TResult Function(PSSCompleted value) completed,
-    required TResult Function(PSSError value) error,
+    required TResult Function(PSSGetAggregateLoading value) getAggregateLoading,
+    required TResult Function(PSSGetAggregateCompleted value)
+        getAggregateCompleted,
+    required TResult Function(PSSGetAggregateError value) getAggregateError,
+    required TResult Function(PSSGetFirstTenPricesLoading value)
+        getFirstTenPricesLoading,
+    required TResult Function(PSSGetFirstTenPricesCompleted value)
+        getFirstTenPricesCompleted,
+    required TResult Function(PSSGetNextTenPricesLoading value)
+        getNextTenPricesLoading,
+    required TResult Function(PSSGetNextTenPricesCompleted value)
+        getNextTenPricesCompleted,
+    required TResult Function(PSSGetPricesError value) getPricesError,
   }) {
-    return loading(this);
+    return getAggregateLoading(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(PSSInitial value)? initial,
-    TResult Function(PSSLoading value)? loading,
-    TResult Function(PSSCompleted value)? completed,
-    TResult Function(PSSError value)? error,
+    TResult Function(PSSGetAggregateLoading value)? getAggregateLoading,
+    TResult Function(PSSGetAggregateCompleted value)? getAggregateCompleted,
+    TResult Function(PSSGetAggregateError value)? getAggregateError,
+    TResult Function(PSSGetFirstTenPricesLoading value)?
+        getFirstTenPricesLoading,
+    TResult Function(PSSGetFirstTenPricesCompleted value)?
+        getFirstTenPricesCompleted,
+    TResult Function(PSSGetNextTenPricesLoading value)? getNextTenPricesLoading,
+    TResult Function(PSSGetNextTenPricesCompleted value)?
+        getNextTenPricesCompleted,
+    TResult Function(PSSGetPricesError value)? getPricesError,
   }) {
-    return loading?.call(this);
+    return getAggregateLoading?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(PSSInitial value)? initial,
-    TResult Function(PSSLoading value)? loading,
-    TResult Function(PSSCompleted value)? completed,
-    TResult Function(PSSError value)? error,
+    TResult Function(PSSGetAggregateLoading value)? getAggregateLoading,
+    TResult Function(PSSGetAggregateCompleted value)? getAggregateCompleted,
+    TResult Function(PSSGetAggregateError value)? getAggregateError,
+    TResult Function(PSSGetFirstTenPricesLoading value)?
+        getFirstTenPricesLoading,
+    TResult Function(PSSGetFirstTenPricesCompleted value)?
+        getFirstTenPricesCompleted,
+    TResult Function(PSSGetNextTenPricesLoading value)? getNextTenPricesLoading,
+    TResult Function(PSSGetNextTenPricesCompleted value)?
+        getNextTenPricesCompleted,
+    TResult Function(PSSGetPricesError value)? getPricesError,
     required TResult orElse(),
   }) {
-    if (loading != null) {
-      return loading(this);
+    if (getAggregateLoading != null) {
+      return getAggregateLoading(this);
     }
     return orElse();
   }
 }
 
-abstract class PSSLoading implements ProduceScreenState {
-  const factory PSSLoading({required ProduceScreenProps props}) = _$PSSLoading;
+abstract class PSSGetAggregateLoading implements ProduceScreenState {
+  const factory PSSGetAggregateLoading({required ProduceScreenProps props}) =
+      _$PSSGetAggregateLoading;
 
   @override
   ProduceScreenProps get props;
   @override
   @JsonKey(ignore: true)
-  $PSSLoadingCopyWith<PSSLoading> get copyWith =>
+  $PSSGetAggregateLoadingCopyWith<PSSGetAggregateLoading> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $PSSCompletedCopyWith<$Res>
+abstract class $PSSGetAggregateCompletedCopyWith<$Res>
     implements $ProduceScreenStateCopyWith<$Res> {
-  factory $PSSCompletedCopyWith(
-          PSSCompleted value, $Res Function(PSSCompleted) then) =
-      _$PSSCompletedCopyWithImpl<$Res>;
+  factory $PSSGetAggregateCompletedCopyWith(PSSGetAggregateCompleted value,
+          $Res Function(PSSGetAggregateCompleted) then) =
+      _$PSSGetAggregateCompletedCopyWithImpl<$Res>;
   @override
   $Res call({ProduceScreenProps props});
 
@@ -913,21 +1428,22 @@ abstract class $PSSCompletedCopyWith<$Res>
 }
 
 /// @nodoc
-class _$PSSCompletedCopyWithImpl<$Res>
+class _$PSSGetAggregateCompletedCopyWithImpl<$Res>
     extends _$ProduceScreenStateCopyWithImpl<$Res>
-    implements $PSSCompletedCopyWith<$Res> {
-  _$PSSCompletedCopyWithImpl(
-      PSSCompleted _value, $Res Function(PSSCompleted) _then)
-      : super(_value, (v) => _then(v as PSSCompleted));
+    implements $PSSGetAggregateCompletedCopyWith<$Res> {
+  _$PSSGetAggregateCompletedCopyWithImpl(PSSGetAggregateCompleted _value,
+      $Res Function(PSSGetAggregateCompleted) _then)
+      : super(_value, (v) => _then(v as PSSGetAggregateCompleted));
 
   @override
-  PSSCompleted get _value => super._value as PSSCompleted;
+  PSSGetAggregateCompleted get _value =>
+      super._value as PSSGetAggregateCompleted;
 
   @override
   $Res call({
     Object? props = freezed,
   }) {
-    return _then(PSSCompleted(
+    return _then(PSSGetAggregateCompleted(
       props: props == freezed
           ? _value.props
           : props // ignore: cast_nullable_to_non_nullable
@@ -938,22 +1454,22 @@ class _$PSSCompletedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$PSSCompleted implements PSSCompleted {
-  const _$PSSCompleted({required this.props});
+class _$PSSGetAggregateCompleted implements PSSGetAggregateCompleted {
+  const _$PSSGetAggregateCompleted({required this.props});
 
   @override
   final ProduceScreenProps props;
 
   @override
   String toString() {
-    return 'ProduceScreenState.completed(props: $props)';
+    return 'ProduceScreenState.getAggregateCompleted(props: $props)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is PSSCompleted &&
+            other is PSSGetAggregateCompleted &&
             (identical(other.props, props) || other.props == props));
   }
 
@@ -962,42 +1478,64 @@ class _$PSSCompleted implements PSSCompleted {
 
   @JsonKey(ignore: true)
   @override
-  $PSSCompletedCopyWith<PSSCompleted> get copyWith =>
-      _$PSSCompletedCopyWithImpl<PSSCompleted>(this, _$identity);
+  $PSSGetAggregateCompletedCopyWith<PSSGetAggregateCompleted> get copyWith =>
+      _$PSSGetAggregateCompletedCopyWithImpl<PSSGetAggregateCompleted>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(ProduceScreenProps props) initial,
-    required TResult Function(ProduceScreenProps props) loading,
-    required TResult Function(ProduceScreenProps props) completed,
-    required TResult Function(ProduceScreenProps props, Failure failure) error,
+    required TResult Function(ProduceScreenProps props) getAggregateLoading,
+    required TResult Function(ProduceScreenProps props) getAggregateCompleted,
+    required TResult Function(ProduceScreenProps props, Failure failure)
+        getAggregateError,
+    required TResult Function(ProduceScreenProps props)
+        getFirstTenPricesLoading,
+    required TResult Function(ProduceScreenProps props)
+        getFirstTenPricesCompleted,
+    required TResult Function(ProduceScreenProps props) getNextTenPricesLoading,
+    required TResult Function(ProduceScreenProps props)
+        getNextTenPricesCompleted,
+    required TResult Function(ProduceScreenProps props) getPricesError,
   }) {
-    return completed(props);
+    return getAggregateCompleted(props);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(ProduceScreenProps props)? initial,
-    TResult Function(ProduceScreenProps props)? loading,
-    TResult Function(ProduceScreenProps props)? completed,
-    TResult Function(ProduceScreenProps props, Failure failure)? error,
+    TResult Function(ProduceScreenProps props)? getAggregateLoading,
+    TResult Function(ProduceScreenProps props)? getAggregateCompleted,
+    TResult Function(ProduceScreenProps props, Failure failure)?
+        getAggregateError,
+    TResult Function(ProduceScreenProps props)? getFirstTenPricesLoading,
+    TResult Function(ProduceScreenProps props)? getFirstTenPricesCompleted,
+    TResult Function(ProduceScreenProps props)? getNextTenPricesLoading,
+    TResult Function(ProduceScreenProps props)? getNextTenPricesCompleted,
+    TResult Function(ProduceScreenProps props)? getPricesError,
   }) {
-    return completed?.call(props);
+    return getAggregateCompleted?.call(props);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(ProduceScreenProps props)? initial,
-    TResult Function(ProduceScreenProps props)? loading,
-    TResult Function(ProduceScreenProps props)? completed,
-    TResult Function(ProduceScreenProps props, Failure failure)? error,
+    TResult Function(ProduceScreenProps props)? getAggregateLoading,
+    TResult Function(ProduceScreenProps props)? getAggregateCompleted,
+    TResult Function(ProduceScreenProps props, Failure failure)?
+        getAggregateError,
+    TResult Function(ProduceScreenProps props)? getFirstTenPricesLoading,
+    TResult Function(ProduceScreenProps props)? getFirstTenPricesCompleted,
+    TResult Function(ProduceScreenProps props)? getNextTenPricesLoading,
+    TResult Function(ProduceScreenProps props)? getNextTenPricesCompleted,
+    TResult Function(ProduceScreenProps props)? getPricesError,
     required TResult orElse(),
   }) {
-    if (completed != null) {
-      return completed(props);
+    if (getAggregateCompleted != null) {
+      return getAggregateCompleted(props);
     }
     return orElse();
   }
@@ -1006,57 +1544,84 @@ class _$PSSCompleted implements PSSCompleted {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(PSSInitial value) initial,
-    required TResult Function(PSSLoading value) loading,
-    required TResult Function(PSSCompleted value) completed,
-    required TResult Function(PSSError value) error,
+    required TResult Function(PSSGetAggregateLoading value) getAggregateLoading,
+    required TResult Function(PSSGetAggregateCompleted value)
+        getAggregateCompleted,
+    required TResult Function(PSSGetAggregateError value) getAggregateError,
+    required TResult Function(PSSGetFirstTenPricesLoading value)
+        getFirstTenPricesLoading,
+    required TResult Function(PSSGetFirstTenPricesCompleted value)
+        getFirstTenPricesCompleted,
+    required TResult Function(PSSGetNextTenPricesLoading value)
+        getNextTenPricesLoading,
+    required TResult Function(PSSGetNextTenPricesCompleted value)
+        getNextTenPricesCompleted,
+    required TResult Function(PSSGetPricesError value) getPricesError,
   }) {
-    return completed(this);
+    return getAggregateCompleted(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(PSSInitial value)? initial,
-    TResult Function(PSSLoading value)? loading,
-    TResult Function(PSSCompleted value)? completed,
-    TResult Function(PSSError value)? error,
+    TResult Function(PSSGetAggregateLoading value)? getAggregateLoading,
+    TResult Function(PSSGetAggregateCompleted value)? getAggregateCompleted,
+    TResult Function(PSSGetAggregateError value)? getAggregateError,
+    TResult Function(PSSGetFirstTenPricesLoading value)?
+        getFirstTenPricesLoading,
+    TResult Function(PSSGetFirstTenPricesCompleted value)?
+        getFirstTenPricesCompleted,
+    TResult Function(PSSGetNextTenPricesLoading value)? getNextTenPricesLoading,
+    TResult Function(PSSGetNextTenPricesCompleted value)?
+        getNextTenPricesCompleted,
+    TResult Function(PSSGetPricesError value)? getPricesError,
   }) {
-    return completed?.call(this);
+    return getAggregateCompleted?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(PSSInitial value)? initial,
-    TResult Function(PSSLoading value)? loading,
-    TResult Function(PSSCompleted value)? completed,
-    TResult Function(PSSError value)? error,
+    TResult Function(PSSGetAggregateLoading value)? getAggregateLoading,
+    TResult Function(PSSGetAggregateCompleted value)? getAggregateCompleted,
+    TResult Function(PSSGetAggregateError value)? getAggregateError,
+    TResult Function(PSSGetFirstTenPricesLoading value)?
+        getFirstTenPricesLoading,
+    TResult Function(PSSGetFirstTenPricesCompleted value)?
+        getFirstTenPricesCompleted,
+    TResult Function(PSSGetNextTenPricesLoading value)? getNextTenPricesLoading,
+    TResult Function(PSSGetNextTenPricesCompleted value)?
+        getNextTenPricesCompleted,
+    TResult Function(PSSGetPricesError value)? getPricesError,
     required TResult orElse(),
   }) {
-    if (completed != null) {
-      return completed(this);
+    if (getAggregateCompleted != null) {
+      return getAggregateCompleted(this);
     }
     return orElse();
   }
 }
 
-abstract class PSSCompleted implements ProduceScreenState {
-  const factory PSSCompleted({required ProduceScreenProps props}) =
-      _$PSSCompleted;
+abstract class PSSGetAggregateCompleted implements ProduceScreenState {
+  const factory PSSGetAggregateCompleted({required ProduceScreenProps props}) =
+      _$PSSGetAggregateCompleted;
 
   @override
   ProduceScreenProps get props;
   @override
   @JsonKey(ignore: true)
-  $PSSCompletedCopyWith<PSSCompleted> get copyWith =>
+  $PSSGetAggregateCompletedCopyWith<PSSGetAggregateCompleted> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $PSSErrorCopyWith<$Res>
+abstract class $PSSGetAggregateErrorCopyWith<$Res>
     implements $ProduceScreenStateCopyWith<$Res> {
-  factory $PSSErrorCopyWith(PSSError value, $Res Function(PSSError) then) =
-      _$PSSErrorCopyWithImpl<$Res>;
+  factory $PSSGetAggregateErrorCopyWith(PSSGetAggregateError value,
+          $Res Function(PSSGetAggregateError) then) =
+      _$PSSGetAggregateErrorCopyWithImpl<$Res>;
   @override
   $Res call({ProduceScreenProps props, Failure failure});
 
@@ -1065,21 +1630,22 @@ abstract class $PSSErrorCopyWith<$Res>
 }
 
 /// @nodoc
-class _$PSSErrorCopyWithImpl<$Res>
+class _$PSSGetAggregateErrorCopyWithImpl<$Res>
     extends _$ProduceScreenStateCopyWithImpl<$Res>
-    implements $PSSErrorCopyWith<$Res> {
-  _$PSSErrorCopyWithImpl(PSSError _value, $Res Function(PSSError) _then)
-      : super(_value, (v) => _then(v as PSSError));
+    implements $PSSGetAggregateErrorCopyWith<$Res> {
+  _$PSSGetAggregateErrorCopyWithImpl(
+      PSSGetAggregateError _value, $Res Function(PSSGetAggregateError) _then)
+      : super(_value, (v) => _then(v as PSSGetAggregateError));
 
   @override
-  PSSError get _value => super._value as PSSError;
+  PSSGetAggregateError get _value => super._value as PSSGetAggregateError;
 
   @override
   $Res call({
     Object? props = freezed,
     Object? failure = freezed,
   }) {
-    return _then(PSSError(
+    return _then(PSSGetAggregateError(
       props: props == freezed
           ? _value.props
           : props // ignore: cast_nullable_to_non_nullable
@@ -1094,8 +1660,8 @@ class _$PSSErrorCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$PSSError implements PSSError {
-  const _$PSSError({required this.props, required this.failure});
+class _$PSSGetAggregateError implements PSSGetAggregateError {
+  const _$PSSGetAggregateError({required this.props, required this.failure});
 
   @override
   final ProduceScreenProps props;
@@ -1104,14 +1670,14 @@ class _$PSSError implements PSSError {
 
   @override
   String toString() {
-    return 'ProduceScreenState.error(props: $props, failure: $failure)';
+    return 'ProduceScreenState.getAggregateError(props: $props, failure: $failure)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is PSSError &&
+            other is PSSGetAggregateError &&
             (identical(other.props, props) || other.props == props) &&
             (identical(other.failure, failure) || other.failure == failure));
   }
@@ -1121,42 +1687,64 @@ class _$PSSError implements PSSError {
 
   @JsonKey(ignore: true)
   @override
-  $PSSErrorCopyWith<PSSError> get copyWith =>
-      _$PSSErrorCopyWithImpl<PSSError>(this, _$identity);
+  $PSSGetAggregateErrorCopyWith<PSSGetAggregateError> get copyWith =>
+      _$PSSGetAggregateErrorCopyWithImpl<PSSGetAggregateError>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(ProduceScreenProps props) initial,
-    required TResult Function(ProduceScreenProps props) loading,
-    required TResult Function(ProduceScreenProps props) completed,
-    required TResult Function(ProduceScreenProps props, Failure failure) error,
+    required TResult Function(ProduceScreenProps props) getAggregateLoading,
+    required TResult Function(ProduceScreenProps props) getAggregateCompleted,
+    required TResult Function(ProduceScreenProps props, Failure failure)
+        getAggregateError,
+    required TResult Function(ProduceScreenProps props)
+        getFirstTenPricesLoading,
+    required TResult Function(ProduceScreenProps props)
+        getFirstTenPricesCompleted,
+    required TResult Function(ProduceScreenProps props) getNextTenPricesLoading,
+    required TResult Function(ProduceScreenProps props)
+        getNextTenPricesCompleted,
+    required TResult Function(ProduceScreenProps props) getPricesError,
   }) {
-    return error(props, failure);
+    return getAggregateError(props, failure);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(ProduceScreenProps props)? initial,
-    TResult Function(ProduceScreenProps props)? loading,
-    TResult Function(ProduceScreenProps props)? completed,
-    TResult Function(ProduceScreenProps props, Failure failure)? error,
+    TResult Function(ProduceScreenProps props)? getAggregateLoading,
+    TResult Function(ProduceScreenProps props)? getAggregateCompleted,
+    TResult Function(ProduceScreenProps props, Failure failure)?
+        getAggregateError,
+    TResult Function(ProduceScreenProps props)? getFirstTenPricesLoading,
+    TResult Function(ProduceScreenProps props)? getFirstTenPricesCompleted,
+    TResult Function(ProduceScreenProps props)? getNextTenPricesLoading,
+    TResult Function(ProduceScreenProps props)? getNextTenPricesCompleted,
+    TResult Function(ProduceScreenProps props)? getPricesError,
   }) {
-    return error?.call(props, failure);
+    return getAggregateError?.call(props, failure);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(ProduceScreenProps props)? initial,
-    TResult Function(ProduceScreenProps props)? loading,
-    TResult Function(ProduceScreenProps props)? completed,
-    TResult Function(ProduceScreenProps props, Failure failure)? error,
+    TResult Function(ProduceScreenProps props)? getAggregateLoading,
+    TResult Function(ProduceScreenProps props)? getAggregateCompleted,
+    TResult Function(ProduceScreenProps props, Failure failure)?
+        getAggregateError,
+    TResult Function(ProduceScreenProps props)? getFirstTenPricesLoading,
+    TResult Function(ProduceScreenProps props)? getFirstTenPricesCompleted,
+    TResult Function(ProduceScreenProps props)? getNextTenPricesLoading,
+    TResult Function(ProduceScreenProps props)? getNextTenPricesCompleted,
+    TResult Function(ProduceScreenProps props)? getPricesError,
     required TResult orElse(),
   }) {
-    if (error != null) {
-      return error(props, failure);
+    if (getAggregateError != null) {
+      return getAggregateError(props, failure);
     }
     return orElse();
   }
@@ -1165,51 +1753,1091 @@ class _$PSSError implements PSSError {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(PSSInitial value) initial,
-    required TResult Function(PSSLoading value) loading,
-    required TResult Function(PSSCompleted value) completed,
-    required TResult Function(PSSError value) error,
+    required TResult Function(PSSGetAggregateLoading value) getAggregateLoading,
+    required TResult Function(PSSGetAggregateCompleted value)
+        getAggregateCompleted,
+    required TResult Function(PSSGetAggregateError value) getAggregateError,
+    required TResult Function(PSSGetFirstTenPricesLoading value)
+        getFirstTenPricesLoading,
+    required TResult Function(PSSGetFirstTenPricesCompleted value)
+        getFirstTenPricesCompleted,
+    required TResult Function(PSSGetNextTenPricesLoading value)
+        getNextTenPricesLoading,
+    required TResult Function(PSSGetNextTenPricesCompleted value)
+        getNextTenPricesCompleted,
+    required TResult Function(PSSGetPricesError value) getPricesError,
   }) {
-    return error(this);
+    return getAggregateError(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(PSSInitial value)? initial,
-    TResult Function(PSSLoading value)? loading,
-    TResult Function(PSSCompleted value)? completed,
-    TResult Function(PSSError value)? error,
+    TResult Function(PSSGetAggregateLoading value)? getAggregateLoading,
+    TResult Function(PSSGetAggregateCompleted value)? getAggregateCompleted,
+    TResult Function(PSSGetAggregateError value)? getAggregateError,
+    TResult Function(PSSGetFirstTenPricesLoading value)?
+        getFirstTenPricesLoading,
+    TResult Function(PSSGetFirstTenPricesCompleted value)?
+        getFirstTenPricesCompleted,
+    TResult Function(PSSGetNextTenPricesLoading value)? getNextTenPricesLoading,
+    TResult Function(PSSGetNextTenPricesCompleted value)?
+        getNextTenPricesCompleted,
+    TResult Function(PSSGetPricesError value)? getPricesError,
   }) {
-    return error?.call(this);
+    return getAggregateError?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(PSSInitial value)? initial,
-    TResult Function(PSSLoading value)? loading,
-    TResult Function(PSSCompleted value)? completed,
-    TResult Function(PSSError value)? error,
+    TResult Function(PSSGetAggregateLoading value)? getAggregateLoading,
+    TResult Function(PSSGetAggregateCompleted value)? getAggregateCompleted,
+    TResult Function(PSSGetAggregateError value)? getAggregateError,
+    TResult Function(PSSGetFirstTenPricesLoading value)?
+        getFirstTenPricesLoading,
+    TResult Function(PSSGetFirstTenPricesCompleted value)?
+        getFirstTenPricesCompleted,
+    TResult Function(PSSGetNextTenPricesLoading value)? getNextTenPricesLoading,
+    TResult Function(PSSGetNextTenPricesCompleted value)?
+        getNextTenPricesCompleted,
+    TResult Function(PSSGetPricesError value)? getPricesError,
     required TResult orElse(),
   }) {
-    if (error != null) {
-      return error(this);
+    if (getAggregateError != null) {
+      return getAggregateError(this);
     }
     return orElse();
   }
 }
 
-abstract class PSSError implements ProduceScreenState {
-  const factory PSSError(
+abstract class PSSGetAggregateError implements ProduceScreenState {
+  const factory PSSGetAggregateError(
       {required ProduceScreenProps props,
-      required Failure failure}) = _$PSSError;
+      required Failure failure}) = _$PSSGetAggregateError;
 
   @override
   ProduceScreenProps get props;
   Failure get failure;
   @override
   @JsonKey(ignore: true)
-  $PSSErrorCopyWith<PSSError> get copyWith =>
+  $PSSGetAggregateErrorCopyWith<PSSGetAggregateError> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $PSSGetFirstTenPricesLoadingCopyWith<$Res>
+    implements $ProduceScreenStateCopyWith<$Res> {
+  factory $PSSGetFirstTenPricesLoadingCopyWith(
+          PSSGetFirstTenPricesLoading value,
+          $Res Function(PSSGetFirstTenPricesLoading) then) =
+      _$PSSGetFirstTenPricesLoadingCopyWithImpl<$Res>;
+  @override
+  $Res call({ProduceScreenProps props});
+
+  @override
+  $ProduceScreenPropsCopyWith<$Res> get props;
+}
+
+/// @nodoc
+class _$PSSGetFirstTenPricesLoadingCopyWithImpl<$Res>
+    extends _$ProduceScreenStateCopyWithImpl<$Res>
+    implements $PSSGetFirstTenPricesLoadingCopyWith<$Res> {
+  _$PSSGetFirstTenPricesLoadingCopyWithImpl(PSSGetFirstTenPricesLoading _value,
+      $Res Function(PSSGetFirstTenPricesLoading) _then)
+      : super(_value, (v) => _then(v as PSSGetFirstTenPricesLoading));
+
+  @override
+  PSSGetFirstTenPricesLoading get _value =>
+      super._value as PSSGetFirstTenPricesLoading;
+
+  @override
+  $Res call({
+    Object? props = freezed,
+  }) {
+    return _then(PSSGetFirstTenPricesLoading(
+      props: props == freezed
+          ? _value.props
+          : props // ignore: cast_nullable_to_non_nullable
+              as ProduceScreenProps,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$PSSGetFirstTenPricesLoading implements PSSGetFirstTenPricesLoading {
+  const _$PSSGetFirstTenPricesLoading({required this.props});
+
+  @override
+  final ProduceScreenProps props;
+
+  @override
+  String toString() {
+    return 'ProduceScreenState.getFirstTenPricesLoading(props: $props)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is PSSGetFirstTenPricesLoading &&
+            (identical(other.props, props) || other.props == props));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, props);
+
+  @JsonKey(ignore: true)
+  @override
+  $PSSGetFirstTenPricesLoadingCopyWith<PSSGetFirstTenPricesLoading>
+      get copyWith => _$PSSGetFirstTenPricesLoadingCopyWithImpl<
+          PSSGetFirstTenPricesLoading>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(ProduceScreenProps props) initial,
+    required TResult Function(ProduceScreenProps props) getAggregateLoading,
+    required TResult Function(ProduceScreenProps props) getAggregateCompleted,
+    required TResult Function(ProduceScreenProps props, Failure failure)
+        getAggregateError,
+    required TResult Function(ProduceScreenProps props)
+        getFirstTenPricesLoading,
+    required TResult Function(ProduceScreenProps props)
+        getFirstTenPricesCompleted,
+    required TResult Function(ProduceScreenProps props) getNextTenPricesLoading,
+    required TResult Function(ProduceScreenProps props)
+        getNextTenPricesCompleted,
+    required TResult Function(ProduceScreenProps props) getPricesError,
+  }) {
+    return getFirstTenPricesLoading(props);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(ProduceScreenProps props)? initial,
+    TResult Function(ProduceScreenProps props)? getAggregateLoading,
+    TResult Function(ProduceScreenProps props)? getAggregateCompleted,
+    TResult Function(ProduceScreenProps props, Failure failure)?
+        getAggregateError,
+    TResult Function(ProduceScreenProps props)? getFirstTenPricesLoading,
+    TResult Function(ProduceScreenProps props)? getFirstTenPricesCompleted,
+    TResult Function(ProduceScreenProps props)? getNextTenPricesLoading,
+    TResult Function(ProduceScreenProps props)? getNextTenPricesCompleted,
+    TResult Function(ProduceScreenProps props)? getPricesError,
+  }) {
+    return getFirstTenPricesLoading?.call(props);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(ProduceScreenProps props)? initial,
+    TResult Function(ProduceScreenProps props)? getAggregateLoading,
+    TResult Function(ProduceScreenProps props)? getAggregateCompleted,
+    TResult Function(ProduceScreenProps props, Failure failure)?
+        getAggregateError,
+    TResult Function(ProduceScreenProps props)? getFirstTenPricesLoading,
+    TResult Function(ProduceScreenProps props)? getFirstTenPricesCompleted,
+    TResult Function(ProduceScreenProps props)? getNextTenPricesLoading,
+    TResult Function(ProduceScreenProps props)? getNextTenPricesCompleted,
+    TResult Function(ProduceScreenProps props)? getPricesError,
+    required TResult orElse(),
+  }) {
+    if (getFirstTenPricesLoading != null) {
+      return getFirstTenPricesLoading(props);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(PSSInitial value) initial,
+    required TResult Function(PSSGetAggregateLoading value) getAggregateLoading,
+    required TResult Function(PSSGetAggregateCompleted value)
+        getAggregateCompleted,
+    required TResult Function(PSSGetAggregateError value) getAggregateError,
+    required TResult Function(PSSGetFirstTenPricesLoading value)
+        getFirstTenPricesLoading,
+    required TResult Function(PSSGetFirstTenPricesCompleted value)
+        getFirstTenPricesCompleted,
+    required TResult Function(PSSGetNextTenPricesLoading value)
+        getNextTenPricesLoading,
+    required TResult Function(PSSGetNextTenPricesCompleted value)
+        getNextTenPricesCompleted,
+    required TResult Function(PSSGetPricesError value) getPricesError,
+  }) {
+    return getFirstTenPricesLoading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(PSSInitial value)? initial,
+    TResult Function(PSSGetAggregateLoading value)? getAggregateLoading,
+    TResult Function(PSSGetAggregateCompleted value)? getAggregateCompleted,
+    TResult Function(PSSGetAggregateError value)? getAggregateError,
+    TResult Function(PSSGetFirstTenPricesLoading value)?
+        getFirstTenPricesLoading,
+    TResult Function(PSSGetFirstTenPricesCompleted value)?
+        getFirstTenPricesCompleted,
+    TResult Function(PSSGetNextTenPricesLoading value)? getNextTenPricesLoading,
+    TResult Function(PSSGetNextTenPricesCompleted value)?
+        getNextTenPricesCompleted,
+    TResult Function(PSSGetPricesError value)? getPricesError,
+  }) {
+    return getFirstTenPricesLoading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(PSSInitial value)? initial,
+    TResult Function(PSSGetAggregateLoading value)? getAggregateLoading,
+    TResult Function(PSSGetAggregateCompleted value)? getAggregateCompleted,
+    TResult Function(PSSGetAggregateError value)? getAggregateError,
+    TResult Function(PSSGetFirstTenPricesLoading value)?
+        getFirstTenPricesLoading,
+    TResult Function(PSSGetFirstTenPricesCompleted value)?
+        getFirstTenPricesCompleted,
+    TResult Function(PSSGetNextTenPricesLoading value)? getNextTenPricesLoading,
+    TResult Function(PSSGetNextTenPricesCompleted value)?
+        getNextTenPricesCompleted,
+    TResult Function(PSSGetPricesError value)? getPricesError,
+    required TResult orElse(),
+  }) {
+    if (getFirstTenPricesLoading != null) {
+      return getFirstTenPricesLoading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class PSSGetFirstTenPricesLoading implements ProduceScreenState {
+  const factory PSSGetFirstTenPricesLoading(
+      {required ProduceScreenProps props}) = _$PSSGetFirstTenPricesLoading;
+
+  @override
+  ProduceScreenProps get props;
+  @override
+  @JsonKey(ignore: true)
+  $PSSGetFirstTenPricesLoadingCopyWith<PSSGetFirstTenPricesLoading>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $PSSGetFirstTenPricesCompletedCopyWith<$Res>
+    implements $ProduceScreenStateCopyWith<$Res> {
+  factory $PSSGetFirstTenPricesCompletedCopyWith(
+          PSSGetFirstTenPricesCompleted value,
+          $Res Function(PSSGetFirstTenPricesCompleted) then) =
+      _$PSSGetFirstTenPricesCompletedCopyWithImpl<$Res>;
+  @override
+  $Res call({ProduceScreenProps props});
+
+  @override
+  $ProduceScreenPropsCopyWith<$Res> get props;
+}
+
+/// @nodoc
+class _$PSSGetFirstTenPricesCompletedCopyWithImpl<$Res>
+    extends _$ProduceScreenStateCopyWithImpl<$Res>
+    implements $PSSGetFirstTenPricesCompletedCopyWith<$Res> {
+  _$PSSGetFirstTenPricesCompletedCopyWithImpl(
+      PSSGetFirstTenPricesCompleted _value,
+      $Res Function(PSSGetFirstTenPricesCompleted) _then)
+      : super(_value, (v) => _then(v as PSSGetFirstTenPricesCompleted));
+
+  @override
+  PSSGetFirstTenPricesCompleted get _value =>
+      super._value as PSSGetFirstTenPricesCompleted;
+
+  @override
+  $Res call({
+    Object? props = freezed,
+  }) {
+    return _then(PSSGetFirstTenPricesCompleted(
+      props: props == freezed
+          ? _value.props
+          : props // ignore: cast_nullable_to_non_nullable
+              as ProduceScreenProps,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$PSSGetFirstTenPricesCompleted implements PSSGetFirstTenPricesCompleted {
+  const _$PSSGetFirstTenPricesCompleted({required this.props});
+
+  @override
+  final ProduceScreenProps props;
+
+  @override
+  String toString() {
+    return 'ProduceScreenState.getFirstTenPricesCompleted(props: $props)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is PSSGetFirstTenPricesCompleted &&
+            (identical(other.props, props) || other.props == props));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, props);
+
+  @JsonKey(ignore: true)
+  @override
+  $PSSGetFirstTenPricesCompletedCopyWith<PSSGetFirstTenPricesCompleted>
+      get copyWith => _$PSSGetFirstTenPricesCompletedCopyWithImpl<
+          PSSGetFirstTenPricesCompleted>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(ProduceScreenProps props) initial,
+    required TResult Function(ProduceScreenProps props) getAggregateLoading,
+    required TResult Function(ProduceScreenProps props) getAggregateCompleted,
+    required TResult Function(ProduceScreenProps props, Failure failure)
+        getAggregateError,
+    required TResult Function(ProduceScreenProps props)
+        getFirstTenPricesLoading,
+    required TResult Function(ProduceScreenProps props)
+        getFirstTenPricesCompleted,
+    required TResult Function(ProduceScreenProps props) getNextTenPricesLoading,
+    required TResult Function(ProduceScreenProps props)
+        getNextTenPricesCompleted,
+    required TResult Function(ProduceScreenProps props) getPricesError,
+  }) {
+    return getFirstTenPricesCompleted(props);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(ProduceScreenProps props)? initial,
+    TResult Function(ProduceScreenProps props)? getAggregateLoading,
+    TResult Function(ProduceScreenProps props)? getAggregateCompleted,
+    TResult Function(ProduceScreenProps props, Failure failure)?
+        getAggregateError,
+    TResult Function(ProduceScreenProps props)? getFirstTenPricesLoading,
+    TResult Function(ProduceScreenProps props)? getFirstTenPricesCompleted,
+    TResult Function(ProduceScreenProps props)? getNextTenPricesLoading,
+    TResult Function(ProduceScreenProps props)? getNextTenPricesCompleted,
+    TResult Function(ProduceScreenProps props)? getPricesError,
+  }) {
+    return getFirstTenPricesCompleted?.call(props);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(ProduceScreenProps props)? initial,
+    TResult Function(ProduceScreenProps props)? getAggregateLoading,
+    TResult Function(ProduceScreenProps props)? getAggregateCompleted,
+    TResult Function(ProduceScreenProps props, Failure failure)?
+        getAggregateError,
+    TResult Function(ProduceScreenProps props)? getFirstTenPricesLoading,
+    TResult Function(ProduceScreenProps props)? getFirstTenPricesCompleted,
+    TResult Function(ProduceScreenProps props)? getNextTenPricesLoading,
+    TResult Function(ProduceScreenProps props)? getNextTenPricesCompleted,
+    TResult Function(ProduceScreenProps props)? getPricesError,
+    required TResult orElse(),
+  }) {
+    if (getFirstTenPricesCompleted != null) {
+      return getFirstTenPricesCompleted(props);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(PSSInitial value) initial,
+    required TResult Function(PSSGetAggregateLoading value) getAggregateLoading,
+    required TResult Function(PSSGetAggregateCompleted value)
+        getAggregateCompleted,
+    required TResult Function(PSSGetAggregateError value) getAggregateError,
+    required TResult Function(PSSGetFirstTenPricesLoading value)
+        getFirstTenPricesLoading,
+    required TResult Function(PSSGetFirstTenPricesCompleted value)
+        getFirstTenPricesCompleted,
+    required TResult Function(PSSGetNextTenPricesLoading value)
+        getNextTenPricesLoading,
+    required TResult Function(PSSGetNextTenPricesCompleted value)
+        getNextTenPricesCompleted,
+    required TResult Function(PSSGetPricesError value) getPricesError,
+  }) {
+    return getFirstTenPricesCompleted(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(PSSInitial value)? initial,
+    TResult Function(PSSGetAggregateLoading value)? getAggregateLoading,
+    TResult Function(PSSGetAggregateCompleted value)? getAggregateCompleted,
+    TResult Function(PSSGetAggregateError value)? getAggregateError,
+    TResult Function(PSSGetFirstTenPricesLoading value)?
+        getFirstTenPricesLoading,
+    TResult Function(PSSGetFirstTenPricesCompleted value)?
+        getFirstTenPricesCompleted,
+    TResult Function(PSSGetNextTenPricesLoading value)? getNextTenPricesLoading,
+    TResult Function(PSSGetNextTenPricesCompleted value)?
+        getNextTenPricesCompleted,
+    TResult Function(PSSGetPricesError value)? getPricesError,
+  }) {
+    return getFirstTenPricesCompleted?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(PSSInitial value)? initial,
+    TResult Function(PSSGetAggregateLoading value)? getAggregateLoading,
+    TResult Function(PSSGetAggregateCompleted value)? getAggregateCompleted,
+    TResult Function(PSSGetAggregateError value)? getAggregateError,
+    TResult Function(PSSGetFirstTenPricesLoading value)?
+        getFirstTenPricesLoading,
+    TResult Function(PSSGetFirstTenPricesCompleted value)?
+        getFirstTenPricesCompleted,
+    TResult Function(PSSGetNextTenPricesLoading value)? getNextTenPricesLoading,
+    TResult Function(PSSGetNextTenPricesCompleted value)?
+        getNextTenPricesCompleted,
+    TResult Function(PSSGetPricesError value)? getPricesError,
+    required TResult orElse(),
+  }) {
+    if (getFirstTenPricesCompleted != null) {
+      return getFirstTenPricesCompleted(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class PSSGetFirstTenPricesCompleted implements ProduceScreenState {
+  const factory PSSGetFirstTenPricesCompleted(
+      {required ProduceScreenProps props}) = _$PSSGetFirstTenPricesCompleted;
+
+  @override
+  ProduceScreenProps get props;
+  @override
+  @JsonKey(ignore: true)
+  $PSSGetFirstTenPricesCompletedCopyWith<PSSGetFirstTenPricesCompleted>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $PSSGetNextTenPricesLoadingCopyWith<$Res>
+    implements $ProduceScreenStateCopyWith<$Res> {
+  factory $PSSGetNextTenPricesLoadingCopyWith(PSSGetNextTenPricesLoading value,
+          $Res Function(PSSGetNextTenPricesLoading) then) =
+      _$PSSGetNextTenPricesLoadingCopyWithImpl<$Res>;
+  @override
+  $Res call({ProduceScreenProps props});
+
+  @override
+  $ProduceScreenPropsCopyWith<$Res> get props;
+}
+
+/// @nodoc
+class _$PSSGetNextTenPricesLoadingCopyWithImpl<$Res>
+    extends _$ProduceScreenStateCopyWithImpl<$Res>
+    implements $PSSGetNextTenPricesLoadingCopyWith<$Res> {
+  _$PSSGetNextTenPricesLoadingCopyWithImpl(PSSGetNextTenPricesLoading _value,
+      $Res Function(PSSGetNextTenPricesLoading) _then)
+      : super(_value, (v) => _then(v as PSSGetNextTenPricesLoading));
+
+  @override
+  PSSGetNextTenPricesLoading get _value =>
+      super._value as PSSGetNextTenPricesLoading;
+
+  @override
+  $Res call({
+    Object? props = freezed,
+  }) {
+    return _then(PSSGetNextTenPricesLoading(
+      props: props == freezed
+          ? _value.props
+          : props // ignore: cast_nullable_to_non_nullable
+              as ProduceScreenProps,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$PSSGetNextTenPricesLoading implements PSSGetNextTenPricesLoading {
+  const _$PSSGetNextTenPricesLoading({required this.props});
+
+  @override
+  final ProduceScreenProps props;
+
+  @override
+  String toString() {
+    return 'ProduceScreenState.getNextTenPricesLoading(props: $props)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is PSSGetNextTenPricesLoading &&
+            (identical(other.props, props) || other.props == props));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, props);
+
+  @JsonKey(ignore: true)
+  @override
+  $PSSGetNextTenPricesLoadingCopyWith<PSSGetNextTenPricesLoading>
+      get copyWith =>
+          _$PSSGetNextTenPricesLoadingCopyWithImpl<PSSGetNextTenPricesLoading>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(ProduceScreenProps props) initial,
+    required TResult Function(ProduceScreenProps props) getAggregateLoading,
+    required TResult Function(ProduceScreenProps props) getAggregateCompleted,
+    required TResult Function(ProduceScreenProps props, Failure failure)
+        getAggregateError,
+    required TResult Function(ProduceScreenProps props)
+        getFirstTenPricesLoading,
+    required TResult Function(ProduceScreenProps props)
+        getFirstTenPricesCompleted,
+    required TResult Function(ProduceScreenProps props) getNextTenPricesLoading,
+    required TResult Function(ProduceScreenProps props)
+        getNextTenPricesCompleted,
+    required TResult Function(ProduceScreenProps props) getPricesError,
+  }) {
+    return getNextTenPricesLoading(props);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(ProduceScreenProps props)? initial,
+    TResult Function(ProduceScreenProps props)? getAggregateLoading,
+    TResult Function(ProduceScreenProps props)? getAggregateCompleted,
+    TResult Function(ProduceScreenProps props, Failure failure)?
+        getAggregateError,
+    TResult Function(ProduceScreenProps props)? getFirstTenPricesLoading,
+    TResult Function(ProduceScreenProps props)? getFirstTenPricesCompleted,
+    TResult Function(ProduceScreenProps props)? getNextTenPricesLoading,
+    TResult Function(ProduceScreenProps props)? getNextTenPricesCompleted,
+    TResult Function(ProduceScreenProps props)? getPricesError,
+  }) {
+    return getNextTenPricesLoading?.call(props);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(ProduceScreenProps props)? initial,
+    TResult Function(ProduceScreenProps props)? getAggregateLoading,
+    TResult Function(ProduceScreenProps props)? getAggregateCompleted,
+    TResult Function(ProduceScreenProps props, Failure failure)?
+        getAggregateError,
+    TResult Function(ProduceScreenProps props)? getFirstTenPricesLoading,
+    TResult Function(ProduceScreenProps props)? getFirstTenPricesCompleted,
+    TResult Function(ProduceScreenProps props)? getNextTenPricesLoading,
+    TResult Function(ProduceScreenProps props)? getNextTenPricesCompleted,
+    TResult Function(ProduceScreenProps props)? getPricesError,
+    required TResult orElse(),
+  }) {
+    if (getNextTenPricesLoading != null) {
+      return getNextTenPricesLoading(props);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(PSSInitial value) initial,
+    required TResult Function(PSSGetAggregateLoading value) getAggregateLoading,
+    required TResult Function(PSSGetAggregateCompleted value)
+        getAggregateCompleted,
+    required TResult Function(PSSGetAggregateError value) getAggregateError,
+    required TResult Function(PSSGetFirstTenPricesLoading value)
+        getFirstTenPricesLoading,
+    required TResult Function(PSSGetFirstTenPricesCompleted value)
+        getFirstTenPricesCompleted,
+    required TResult Function(PSSGetNextTenPricesLoading value)
+        getNextTenPricesLoading,
+    required TResult Function(PSSGetNextTenPricesCompleted value)
+        getNextTenPricesCompleted,
+    required TResult Function(PSSGetPricesError value) getPricesError,
+  }) {
+    return getNextTenPricesLoading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(PSSInitial value)? initial,
+    TResult Function(PSSGetAggregateLoading value)? getAggregateLoading,
+    TResult Function(PSSGetAggregateCompleted value)? getAggregateCompleted,
+    TResult Function(PSSGetAggregateError value)? getAggregateError,
+    TResult Function(PSSGetFirstTenPricesLoading value)?
+        getFirstTenPricesLoading,
+    TResult Function(PSSGetFirstTenPricesCompleted value)?
+        getFirstTenPricesCompleted,
+    TResult Function(PSSGetNextTenPricesLoading value)? getNextTenPricesLoading,
+    TResult Function(PSSGetNextTenPricesCompleted value)?
+        getNextTenPricesCompleted,
+    TResult Function(PSSGetPricesError value)? getPricesError,
+  }) {
+    return getNextTenPricesLoading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(PSSInitial value)? initial,
+    TResult Function(PSSGetAggregateLoading value)? getAggregateLoading,
+    TResult Function(PSSGetAggregateCompleted value)? getAggregateCompleted,
+    TResult Function(PSSGetAggregateError value)? getAggregateError,
+    TResult Function(PSSGetFirstTenPricesLoading value)?
+        getFirstTenPricesLoading,
+    TResult Function(PSSGetFirstTenPricesCompleted value)?
+        getFirstTenPricesCompleted,
+    TResult Function(PSSGetNextTenPricesLoading value)? getNextTenPricesLoading,
+    TResult Function(PSSGetNextTenPricesCompleted value)?
+        getNextTenPricesCompleted,
+    TResult Function(PSSGetPricesError value)? getPricesError,
+    required TResult orElse(),
+  }) {
+    if (getNextTenPricesLoading != null) {
+      return getNextTenPricesLoading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class PSSGetNextTenPricesLoading implements ProduceScreenState {
+  const factory PSSGetNextTenPricesLoading(
+      {required ProduceScreenProps props}) = _$PSSGetNextTenPricesLoading;
+
+  @override
+  ProduceScreenProps get props;
+  @override
+  @JsonKey(ignore: true)
+  $PSSGetNextTenPricesLoadingCopyWith<PSSGetNextTenPricesLoading>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $PSSGetNextTenPricesCompletedCopyWith<$Res>
+    implements $ProduceScreenStateCopyWith<$Res> {
+  factory $PSSGetNextTenPricesCompletedCopyWith(
+          PSSGetNextTenPricesCompleted value,
+          $Res Function(PSSGetNextTenPricesCompleted) then) =
+      _$PSSGetNextTenPricesCompletedCopyWithImpl<$Res>;
+  @override
+  $Res call({ProduceScreenProps props});
+
+  @override
+  $ProduceScreenPropsCopyWith<$Res> get props;
+}
+
+/// @nodoc
+class _$PSSGetNextTenPricesCompletedCopyWithImpl<$Res>
+    extends _$ProduceScreenStateCopyWithImpl<$Res>
+    implements $PSSGetNextTenPricesCompletedCopyWith<$Res> {
+  _$PSSGetNextTenPricesCompletedCopyWithImpl(
+      PSSGetNextTenPricesCompleted _value,
+      $Res Function(PSSGetNextTenPricesCompleted) _then)
+      : super(_value, (v) => _then(v as PSSGetNextTenPricesCompleted));
+
+  @override
+  PSSGetNextTenPricesCompleted get _value =>
+      super._value as PSSGetNextTenPricesCompleted;
+
+  @override
+  $Res call({
+    Object? props = freezed,
+  }) {
+    return _then(PSSGetNextTenPricesCompleted(
+      props: props == freezed
+          ? _value.props
+          : props // ignore: cast_nullable_to_non_nullable
+              as ProduceScreenProps,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$PSSGetNextTenPricesCompleted implements PSSGetNextTenPricesCompleted {
+  const _$PSSGetNextTenPricesCompleted({required this.props});
+
+  @override
+  final ProduceScreenProps props;
+
+  @override
+  String toString() {
+    return 'ProduceScreenState.getNextTenPricesCompleted(props: $props)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is PSSGetNextTenPricesCompleted &&
+            (identical(other.props, props) || other.props == props));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, props);
+
+  @JsonKey(ignore: true)
+  @override
+  $PSSGetNextTenPricesCompletedCopyWith<PSSGetNextTenPricesCompleted>
+      get copyWith => _$PSSGetNextTenPricesCompletedCopyWithImpl<
+          PSSGetNextTenPricesCompleted>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(ProduceScreenProps props) initial,
+    required TResult Function(ProduceScreenProps props) getAggregateLoading,
+    required TResult Function(ProduceScreenProps props) getAggregateCompleted,
+    required TResult Function(ProduceScreenProps props, Failure failure)
+        getAggregateError,
+    required TResult Function(ProduceScreenProps props)
+        getFirstTenPricesLoading,
+    required TResult Function(ProduceScreenProps props)
+        getFirstTenPricesCompleted,
+    required TResult Function(ProduceScreenProps props) getNextTenPricesLoading,
+    required TResult Function(ProduceScreenProps props)
+        getNextTenPricesCompleted,
+    required TResult Function(ProduceScreenProps props) getPricesError,
+  }) {
+    return getNextTenPricesCompleted(props);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(ProduceScreenProps props)? initial,
+    TResult Function(ProduceScreenProps props)? getAggregateLoading,
+    TResult Function(ProduceScreenProps props)? getAggregateCompleted,
+    TResult Function(ProduceScreenProps props, Failure failure)?
+        getAggregateError,
+    TResult Function(ProduceScreenProps props)? getFirstTenPricesLoading,
+    TResult Function(ProduceScreenProps props)? getFirstTenPricesCompleted,
+    TResult Function(ProduceScreenProps props)? getNextTenPricesLoading,
+    TResult Function(ProduceScreenProps props)? getNextTenPricesCompleted,
+    TResult Function(ProduceScreenProps props)? getPricesError,
+  }) {
+    return getNextTenPricesCompleted?.call(props);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(ProduceScreenProps props)? initial,
+    TResult Function(ProduceScreenProps props)? getAggregateLoading,
+    TResult Function(ProduceScreenProps props)? getAggregateCompleted,
+    TResult Function(ProduceScreenProps props, Failure failure)?
+        getAggregateError,
+    TResult Function(ProduceScreenProps props)? getFirstTenPricesLoading,
+    TResult Function(ProduceScreenProps props)? getFirstTenPricesCompleted,
+    TResult Function(ProduceScreenProps props)? getNextTenPricesLoading,
+    TResult Function(ProduceScreenProps props)? getNextTenPricesCompleted,
+    TResult Function(ProduceScreenProps props)? getPricesError,
+    required TResult orElse(),
+  }) {
+    if (getNextTenPricesCompleted != null) {
+      return getNextTenPricesCompleted(props);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(PSSInitial value) initial,
+    required TResult Function(PSSGetAggregateLoading value) getAggregateLoading,
+    required TResult Function(PSSGetAggregateCompleted value)
+        getAggregateCompleted,
+    required TResult Function(PSSGetAggregateError value) getAggregateError,
+    required TResult Function(PSSGetFirstTenPricesLoading value)
+        getFirstTenPricesLoading,
+    required TResult Function(PSSGetFirstTenPricesCompleted value)
+        getFirstTenPricesCompleted,
+    required TResult Function(PSSGetNextTenPricesLoading value)
+        getNextTenPricesLoading,
+    required TResult Function(PSSGetNextTenPricesCompleted value)
+        getNextTenPricesCompleted,
+    required TResult Function(PSSGetPricesError value) getPricesError,
+  }) {
+    return getNextTenPricesCompleted(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(PSSInitial value)? initial,
+    TResult Function(PSSGetAggregateLoading value)? getAggregateLoading,
+    TResult Function(PSSGetAggregateCompleted value)? getAggregateCompleted,
+    TResult Function(PSSGetAggregateError value)? getAggregateError,
+    TResult Function(PSSGetFirstTenPricesLoading value)?
+        getFirstTenPricesLoading,
+    TResult Function(PSSGetFirstTenPricesCompleted value)?
+        getFirstTenPricesCompleted,
+    TResult Function(PSSGetNextTenPricesLoading value)? getNextTenPricesLoading,
+    TResult Function(PSSGetNextTenPricesCompleted value)?
+        getNextTenPricesCompleted,
+    TResult Function(PSSGetPricesError value)? getPricesError,
+  }) {
+    return getNextTenPricesCompleted?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(PSSInitial value)? initial,
+    TResult Function(PSSGetAggregateLoading value)? getAggregateLoading,
+    TResult Function(PSSGetAggregateCompleted value)? getAggregateCompleted,
+    TResult Function(PSSGetAggregateError value)? getAggregateError,
+    TResult Function(PSSGetFirstTenPricesLoading value)?
+        getFirstTenPricesLoading,
+    TResult Function(PSSGetFirstTenPricesCompleted value)?
+        getFirstTenPricesCompleted,
+    TResult Function(PSSGetNextTenPricesLoading value)? getNextTenPricesLoading,
+    TResult Function(PSSGetNextTenPricesCompleted value)?
+        getNextTenPricesCompleted,
+    TResult Function(PSSGetPricesError value)? getPricesError,
+    required TResult orElse(),
+  }) {
+    if (getNextTenPricesCompleted != null) {
+      return getNextTenPricesCompleted(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class PSSGetNextTenPricesCompleted implements ProduceScreenState {
+  const factory PSSGetNextTenPricesCompleted(
+      {required ProduceScreenProps props}) = _$PSSGetNextTenPricesCompleted;
+
+  @override
+  ProduceScreenProps get props;
+  @override
+  @JsonKey(ignore: true)
+  $PSSGetNextTenPricesCompletedCopyWith<PSSGetNextTenPricesCompleted>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $PSSGetPricesErrorCopyWith<$Res>
+    implements $ProduceScreenStateCopyWith<$Res> {
+  factory $PSSGetPricesErrorCopyWith(
+          PSSGetPricesError value, $Res Function(PSSGetPricesError) then) =
+      _$PSSGetPricesErrorCopyWithImpl<$Res>;
+  @override
+  $Res call({ProduceScreenProps props});
+
+  @override
+  $ProduceScreenPropsCopyWith<$Res> get props;
+}
+
+/// @nodoc
+class _$PSSGetPricesErrorCopyWithImpl<$Res>
+    extends _$ProduceScreenStateCopyWithImpl<$Res>
+    implements $PSSGetPricesErrorCopyWith<$Res> {
+  _$PSSGetPricesErrorCopyWithImpl(
+      PSSGetPricesError _value, $Res Function(PSSGetPricesError) _then)
+      : super(_value, (v) => _then(v as PSSGetPricesError));
+
+  @override
+  PSSGetPricesError get _value => super._value as PSSGetPricesError;
+
+  @override
+  $Res call({
+    Object? props = freezed,
+  }) {
+    return _then(PSSGetPricesError(
+      props: props == freezed
+          ? _value.props
+          : props // ignore: cast_nullable_to_non_nullable
+              as ProduceScreenProps,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$PSSGetPricesError implements PSSGetPricesError {
+  const _$PSSGetPricesError({required this.props});
+
+  @override
+  final ProduceScreenProps props;
+
+  @override
+  String toString() {
+    return 'ProduceScreenState.getPricesError(props: $props)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is PSSGetPricesError &&
+            (identical(other.props, props) || other.props == props));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, props);
+
+  @JsonKey(ignore: true)
+  @override
+  $PSSGetPricesErrorCopyWith<PSSGetPricesError> get copyWith =>
+      _$PSSGetPricesErrorCopyWithImpl<PSSGetPricesError>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(ProduceScreenProps props) initial,
+    required TResult Function(ProduceScreenProps props) getAggregateLoading,
+    required TResult Function(ProduceScreenProps props) getAggregateCompleted,
+    required TResult Function(ProduceScreenProps props, Failure failure)
+        getAggregateError,
+    required TResult Function(ProduceScreenProps props)
+        getFirstTenPricesLoading,
+    required TResult Function(ProduceScreenProps props)
+        getFirstTenPricesCompleted,
+    required TResult Function(ProduceScreenProps props) getNextTenPricesLoading,
+    required TResult Function(ProduceScreenProps props)
+        getNextTenPricesCompleted,
+    required TResult Function(ProduceScreenProps props) getPricesError,
+  }) {
+    return getPricesError(props);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(ProduceScreenProps props)? initial,
+    TResult Function(ProduceScreenProps props)? getAggregateLoading,
+    TResult Function(ProduceScreenProps props)? getAggregateCompleted,
+    TResult Function(ProduceScreenProps props, Failure failure)?
+        getAggregateError,
+    TResult Function(ProduceScreenProps props)? getFirstTenPricesLoading,
+    TResult Function(ProduceScreenProps props)? getFirstTenPricesCompleted,
+    TResult Function(ProduceScreenProps props)? getNextTenPricesLoading,
+    TResult Function(ProduceScreenProps props)? getNextTenPricesCompleted,
+    TResult Function(ProduceScreenProps props)? getPricesError,
+  }) {
+    return getPricesError?.call(props);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(ProduceScreenProps props)? initial,
+    TResult Function(ProduceScreenProps props)? getAggregateLoading,
+    TResult Function(ProduceScreenProps props)? getAggregateCompleted,
+    TResult Function(ProduceScreenProps props, Failure failure)?
+        getAggregateError,
+    TResult Function(ProduceScreenProps props)? getFirstTenPricesLoading,
+    TResult Function(ProduceScreenProps props)? getFirstTenPricesCompleted,
+    TResult Function(ProduceScreenProps props)? getNextTenPricesLoading,
+    TResult Function(ProduceScreenProps props)? getNextTenPricesCompleted,
+    TResult Function(ProduceScreenProps props)? getPricesError,
+    required TResult orElse(),
+  }) {
+    if (getPricesError != null) {
+      return getPricesError(props);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(PSSInitial value) initial,
+    required TResult Function(PSSGetAggregateLoading value) getAggregateLoading,
+    required TResult Function(PSSGetAggregateCompleted value)
+        getAggregateCompleted,
+    required TResult Function(PSSGetAggregateError value) getAggregateError,
+    required TResult Function(PSSGetFirstTenPricesLoading value)
+        getFirstTenPricesLoading,
+    required TResult Function(PSSGetFirstTenPricesCompleted value)
+        getFirstTenPricesCompleted,
+    required TResult Function(PSSGetNextTenPricesLoading value)
+        getNextTenPricesLoading,
+    required TResult Function(PSSGetNextTenPricesCompleted value)
+        getNextTenPricesCompleted,
+    required TResult Function(PSSGetPricesError value) getPricesError,
+  }) {
+    return getPricesError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(PSSInitial value)? initial,
+    TResult Function(PSSGetAggregateLoading value)? getAggregateLoading,
+    TResult Function(PSSGetAggregateCompleted value)? getAggregateCompleted,
+    TResult Function(PSSGetAggregateError value)? getAggregateError,
+    TResult Function(PSSGetFirstTenPricesLoading value)?
+        getFirstTenPricesLoading,
+    TResult Function(PSSGetFirstTenPricesCompleted value)?
+        getFirstTenPricesCompleted,
+    TResult Function(PSSGetNextTenPricesLoading value)? getNextTenPricesLoading,
+    TResult Function(PSSGetNextTenPricesCompleted value)?
+        getNextTenPricesCompleted,
+    TResult Function(PSSGetPricesError value)? getPricesError,
+  }) {
+    return getPricesError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(PSSInitial value)? initial,
+    TResult Function(PSSGetAggregateLoading value)? getAggregateLoading,
+    TResult Function(PSSGetAggregateCompleted value)? getAggregateCompleted,
+    TResult Function(PSSGetAggregateError value)? getAggregateError,
+    TResult Function(PSSGetFirstTenPricesLoading value)?
+        getFirstTenPricesLoading,
+    TResult Function(PSSGetFirstTenPricesCompleted value)?
+        getFirstTenPricesCompleted,
+    TResult Function(PSSGetNextTenPricesLoading value)? getNextTenPricesLoading,
+    TResult Function(PSSGetNextTenPricesCompleted value)?
+        getNextTenPricesCompleted,
+    TResult Function(PSSGetPricesError value)? getPricesError,
+    required TResult orElse(),
+  }) {
+    if (getPricesError != null) {
+      return getPricesError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class PSSGetPricesError implements ProduceScreenState {
+  const factory PSSGetPricesError({required ProduceScreenProps props}) =
+      _$PSSGetPricesError;
+
+  @override
+  ProduceScreenProps get props;
+  @override
+  @JsonKey(ignore: true)
+  $PSSGetPricesErrorCopyWith<PSSGetPricesError> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1220,6 +2848,7 @@ class _$ProduceScreenPropsTearOff {
   _ProduceScreenProps call(
       {required TabController tabController,
       required int index,
+      required List<Price> pricesList,
       List<PriceSnippet>? twoWeeksPricesList,
       List<PriceSnippet>? oneMonthPricesList,
       List<PriceSnippet>? twoMonthPricesList,
@@ -1228,6 +2857,7 @@ class _$ProduceScreenPropsTearOff {
     return _ProduceScreenProps(
       tabController: tabController,
       index: index,
+      pricesList: pricesList,
       twoWeeksPricesList: twoWeeksPricesList,
       oneMonthPricesList: oneMonthPricesList,
       twoMonthPricesList: twoMonthPricesList,
@@ -1244,6 +2874,7 @@ const $ProduceScreenProps = _$ProduceScreenPropsTearOff();
 mixin _$ProduceScreenProps {
   TabController get tabController => throw _privateConstructorUsedError;
   int get index => throw _privateConstructorUsedError;
+  List<Price> get pricesList => throw _privateConstructorUsedError;
   List<PriceSnippet>? get twoWeeksPricesList =>
       throw _privateConstructorUsedError;
   List<PriceSnippet>? get oneMonthPricesList =>
@@ -1268,6 +2899,7 @@ abstract class $ProduceScreenPropsCopyWith<$Res> {
   $Res call(
       {TabController tabController,
       int index,
+      List<Price> pricesList,
       List<PriceSnippet>? twoWeeksPricesList,
       List<PriceSnippet>? oneMonthPricesList,
       List<PriceSnippet>? twoMonthPricesList,
@@ -1288,6 +2920,7 @@ class _$ProduceScreenPropsCopyWithImpl<$Res>
   $Res call({
     Object? tabController = freezed,
     Object? index = freezed,
+    Object? pricesList = freezed,
     Object? twoWeeksPricesList = freezed,
     Object? oneMonthPricesList = freezed,
     Object? twoMonthPricesList = freezed,
@@ -1303,6 +2936,10 @@ class _$ProduceScreenPropsCopyWithImpl<$Res>
           ? _value.index
           : index // ignore: cast_nullable_to_non_nullable
               as int,
+      pricesList: pricesList == freezed
+          ? _value.pricesList
+          : pricesList // ignore: cast_nullable_to_non_nullable
+              as List<Price>,
       twoWeeksPricesList: twoWeeksPricesList == freezed
           ? _value.twoWeeksPricesList
           : twoWeeksPricesList // ignore: cast_nullable_to_non_nullable
@@ -1337,6 +2974,7 @@ abstract class _$ProduceScreenPropsCopyWith<$Res>
   $Res call(
       {TabController tabController,
       int index,
+      List<Price> pricesList,
       List<PriceSnippet>? twoWeeksPricesList,
       List<PriceSnippet>? oneMonthPricesList,
       List<PriceSnippet>? twoMonthPricesList,
@@ -1359,6 +2997,7 @@ class __$ProduceScreenPropsCopyWithImpl<$Res>
   $Res call({
     Object? tabController = freezed,
     Object? index = freezed,
+    Object? pricesList = freezed,
     Object? twoWeeksPricesList = freezed,
     Object? oneMonthPricesList = freezed,
     Object? twoMonthPricesList = freezed,
@@ -1374,6 +3013,10 @@ class __$ProduceScreenPropsCopyWithImpl<$Res>
           ? _value.index
           : index // ignore: cast_nullable_to_non_nullable
               as int,
+      pricesList: pricesList == freezed
+          ? _value.pricesList
+          : pricesList // ignore: cast_nullable_to_non_nullable
+              as List<Price>,
       twoWeeksPricesList: twoWeeksPricesList == freezed
           ? _value.twoWeeksPricesList
           : twoWeeksPricesList // ignore: cast_nullable_to_non_nullable
@@ -1404,6 +3047,7 @@ class _$_ProduceScreenProps implements _ProduceScreenProps {
   const _$_ProduceScreenProps(
       {required this.tabController,
       required this.index,
+      required this.pricesList,
       this.twoWeeksPricesList,
       this.oneMonthPricesList,
       this.twoMonthPricesList,
@@ -1414,6 +3058,8 @@ class _$_ProduceScreenProps implements _ProduceScreenProps {
   final TabController tabController;
   @override
   final int index;
+  @override
+  final List<Price> pricesList;
   @override
   final List<PriceSnippet>? twoWeeksPricesList;
   @override
@@ -1427,7 +3073,7 @@ class _$_ProduceScreenProps implements _ProduceScreenProps {
 
   @override
   String toString() {
-    return 'ProduceScreenProps(tabController: $tabController, index: $index, twoWeeksPricesList: $twoWeeksPricesList, oneMonthPricesList: $oneMonthPricesList, twoMonthPricesList: $twoMonthPricesList, sixMonthPricesList: $sixMonthPricesList, oneYearPricesList: $oneYearPricesList)';
+    return 'ProduceScreenProps(tabController: $tabController, index: $index, pricesList: $pricesList, twoWeeksPricesList: $twoWeeksPricesList, oneMonthPricesList: $oneMonthPricesList, twoMonthPricesList: $twoMonthPricesList, sixMonthPricesList: $sixMonthPricesList, oneYearPricesList: $oneYearPricesList)';
   }
 
   @override
@@ -1438,6 +3084,8 @@ class _$_ProduceScreenProps implements _ProduceScreenProps {
             (identical(other.tabController, tabController) ||
                 other.tabController == tabController) &&
             (identical(other.index, index) || other.index == index) &&
+            const DeepCollectionEquality()
+                .equals(other.pricesList, pricesList) &&
             const DeepCollectionEquality()
                 .equals(other.twoWeeksPricesList, twoWeeksPricesList) &&
             const DeepCollectionEquality()
@@ -1455,6 +3103,7 @@ class _$_ProduceScreenProps implements _ProduceScreenProps {
       runtimeType,
       tabController,
       index,
+      const DeepCollectionEquality().hash(pricesList),
       const DeepCollectionEquality().hash(twoWeeksPricesList),
       const DeepCollectionEquality().hash(oneMonthPricesList),
       const DeepCollectionEquality().hash(twoMonthPricesList),
@@ -1471,6 +3120,7 @@ abstract class _ProduceScreenProps implements ProduceScreenProps {
   const factory _ProduceScreenProps(
       {required TabController tabController,
       required int index,
+      required List<Price> pricesList,
       List<PriceSnippet>? twoWeeksPricesList,
       List<PriceSnippet>? oneMonthPricesList,
       List<PriceSnippet>? twoMonthPricesList,
@@ -1481,6 +3131,8 @@ abstract class _ProduceScreenProps implements ProduceScreenProps {
   TabController get tabController;
   @override
   int get index;
+  @override
+  List<Price> get pricesList;
   @override
   List<PriceSnippet>? get twoWeeksPricesList;
   @override

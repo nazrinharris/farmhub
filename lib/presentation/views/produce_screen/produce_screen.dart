@@ -14,6 +14,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 import '../../../core/util/misc.dart';
+import '../../../features/produce_manager/domain/entities/price/price.dart';
 import 'custom_tab.dart' as ct;
 
 import '../../../features/produce_manager/domain/entities/produce/produce.dart';
@@ -39,10 +40,12 @@ class _ProduceScreenState extends State<ProduceScreen> with SingleTickerProvider
     const ct.CustomTab(text: '1Y'),
   ];
   late TabController tabController;
+  late ScrollController scrollController;
 
   @override
   void initState() {
     super.initState();
+    scrollController = ScrollController();
     tabController = TabController(length: tabs.length, vsync: this, initialIndex: 0);
   }
 
@@ -74,6 +77,7 @@ class _ProduceScreenState extends State<ProduceScreen> with SingleTickerProvider
                 ),
                 body: SafeArea(
                   child: CustomScrollView(
+                    controller: scrollController,
                     physics: DefaultScrollPhysics,
                     slivers: [
                       CupertinoSliverRefreshControl(
@@ -204,13 +208,13 @@ class _SliverProducePriceChartState extends State<SliverProducePriceChart> {
         builder: (context, state) {
           if (state is PSSInitial) {
             return const SizedBox.shrink();
-          } else if (state is PSSLoading) {
+          } else if (state is PSSGetAggregateLoading) {
             return Container(
               height: 250,
               alignment: Alignment.center,
               child: const CircularProgressIndicator(),
             );
-          } else if (state is PSSCompleted) {
+          } else if (state is PSSGetAggregateCompleted) {
             return LargePriceChart(
               widget.produce,
               determineChartType(state.props.index),
@@ -220,7 +224,7 @@ class _SliverProducePriceChartState extends State<SliverProducePriceChart> {
               sixMonthPricesList: state.props.sixMonthPricesList,
               oneYearPricesList: state.props.oneYearPricesList,
             );
-          } else if (state is PSSError) {
+          } else if (state is PSSGetAggregateError) {
             return Container(
               height: 250,
               alignment: Alignment.center,
@@ -284,5 +288,174 @@ class _SliverPricesListHeaderState extends State<SliverPricesListHeader> {
         ],
       ),
     );
+  }
+}
+
+class SliverPricesListSwitcher extends StatefulWidget {
+  final ScrollController scrollController;
+
+  SliverPricesListSwitcher(this.scrollController, {Key? key}) : super(key: key);
+
+  @override
+  State<SliverPricesListSwitcher> createState() => _SliverPricesListSwitcherState();
+}
+
+class _SliverPricesListSwitcherState extends State<SliverPricesListSwitcher> {
+  @override
+  void initState() {
+    super.initState();
+
+    context.read<ProduceScreenBloc>().stream.listen((event) {
+      setState(() {});
+    });
+
+    widget.scrollController.addListener(() {
+      if (widget.scrollController.offset >= widget.scrollController.position.maxScrollExtent &&
+          !widget.scrollController.position.outOfRange) {
+        context.read<ProduceScreenBloc>().add(const ProduceScreenEvent.getNextTenPrices());
+      }
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final currentState = context.read<ProduceScreenBloc>().state;
+
+    if (currentState is PSSInitial) {
+      throw Exception("PSSInitial state is received when it should not have existed.");
+    } else if (currentState is PSSGetFirstTenPricesLoading) {
+      return const SliverLoadingIndicator();
+    } else if (currentState is PSSGetNextTenPricesLoading) {
+      return SliverPricesList(currentState.props.pricesList, isError: false, isLoading: true);
+    } else if (currentState is PSSGetFirstTenPricesCompleted) {
+      return SliverPricesList(currentState.props.pricesList, isError: false, isLoading: false);
+    }
+  }
+}
+
+class SliverPricesList extends StatelessWidget {
+  final List<Price> pricesList;
+  final bool isLoading;
+  final bool isError;
+
+  const SliverPricesList(
+    this.pricesList, {
+    Key? key,
+    required this.isLoading,
+    required this.isError,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SliverList(
+      delegate: SliverChildBuilderDelegate((context, index) {
+        if (index == pricesList.length) {
+          return resolveBottomCard(context, isLoading, isError);
+        } else {
+          return PriceListCard(index, pricesList[index]);
+        }
+      }, childCount: pricesList.length + 1),
+    );
+  }
+
+  Widget resolveBottomCard(BuildContext context, bool isLoading, bool isError) {
+    if (isLoading) {
+      return Container(
+        height: 100,
+        alignment: Alignment.center,
+        child: const CircularProgressIndicator(),
+      );
+    } else if (isError) {
+      return Container(
+        height: 100,
+        alignment: Alignment.center,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              "Uh oh, something went wrong.",
+              style: Theme.of(context).textTheme.bodyText1!.copyWith(color: Colors.red),
+            ),
+            const UIVerticalSpace14(),
+            Text(
+              "Scroll to retry",
+              style: Theme.of(context).textTheme.caption,
+            ),
+          ],
+        ),
+      );
+    } else if (isLoading && isError) {
+      throw Exception("In SliverPricesList, [isLoading] and [isError] cannot both be true");
+    } else {
+      return Container(
+        height: 100,
+      );
+    }
+  }
+}
+
+class PriceListCard extends StatelessWidget {
+  final Price price;
+  final int index;
+
+  const PriceListCard(this.index, this.price, {Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      type: MaterialType.transparency,
+      child: InkWell(
+        onTap: () {},
+        child: Container(
+          margin: const EdgeInsets.symmetric(horizontal: 24),
+          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 13),
+          decoration: BoxDecoration(
+            border: Border(
+              top: _resolveTop(context, index),
+              bottom: BorderSide(color: Theme.of(context).colorScheme.primary.withOpacity(0.24)),
+            ),
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Flexible(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      price.currentPrice.toString(),
+                      maxLines: 3,
+                      overflow: TextOverflow.fade,
+                      style: Theme.of(context).textTheme.bodyText1!.copyWith(fontSize: 17),
+                    ),
+                  ],
+                ),
+              ),
+              Flexible(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Text(
+                      price.priceDate,
+                      style: Theme.of(context).textTheme.bodyText1,
+                    ),
+                  ],
+                ),
+              )
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  BorderSide _resolveTop(BuildContext context, int index) {
+    if (index == 0) {
+      return BorderSide(color: Theme.of(context).colorScheme.primary.withOpacity(0.24));
+    } else {
+      return BorderSide.none;
+    }
   }
 }

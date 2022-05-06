@@ -7,17 +7,20 @@ part of 'price.dart';
 // **************************************************************************
 
 _$_Price _$$_PriceFromJson(Map<String, dynamic> json) => _$_Price(
-      priceId: json['priceId'] as String,
       currentPrice: (json['currentPrice'] as num).toDouble(),
-      editHistory: (json['editHistory'] as List<dynamic>)
-          .map((e) => e as Map<String, dynamic>)
-          .toList(),
-      updateDate: json['updateDate'] as String,
+      priceDate: json['priceDate'] as String,
+      allPrices:
+          (json['allPrices'] as List<dynamic>).map((e) => e as num).toList(),
+      priceDateTimeStamp: DateTime.parse(json['priceDateTimeStamp'] as String),
+      isAverage: json['isAverage'] as bool,
+      priceId: json['priceId'] as String,
     );
 
 Map<String, dynamic> _$$_PriceToJson(_$_Price instance) => <String, dynamic>{
-      'priceId': instance.priceId,
       'currentPrice': instance.currentPrice,
-      'editHistory': instance.editHistory,
-      'updateDate': instance.updateDate,
+      'priceDate': instance.priceDate,
+      'allPrices': instance.allPrices,
+      'priceDateTimeStamp': instance.priceDateTimeStamp.toIso8601String(),
+      'isAverage': instance.isAverage,
+      'priceId': instance.priceId,
     };

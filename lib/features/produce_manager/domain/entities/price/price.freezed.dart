@@ -22,15 +22,19 @@ class _$PriceTearOff {
   const _$PriceTearOff();
 
   _Price call(
-      {required String priceId,
-      required double currentPrice,
-      required List<Map<String, dynamic>> editHistory,
-      required String updateDate}) {
+      {required double currentPrice,
+      required String priceDate,
+      required List<num> allPrices,
+      required DateTime priceDateTimeStamp,
+      required bool isAverage,
+      required String priceId}) {
     return _Price(
-      priceId: priceId,
       currentPrice: currentPrice,
-      editHistory: editHistory,
-      updateDate: updateDate,
+      priceDate: priceDate,
+      allPrices: allPrices,
+      priceDateTimeStamp: priceDateTimeStamp,
+      isAverage: isAverage,
+      priceId: priceId,
     );
   }
 
@@ -44,11 +48,12 @@ const $Price = _$PriceTearOff();
 
 /// @nodoc
 mixin _$Price {
-  String get priceId => throw _privateConstructorUsedError;
   double get currentPrice => throw _privateConstructorUsedError;
-  List<Map<String, dynamic>> get editHistory =>
-      throw _privateConstructorUsedError;
-  String get updateDate => throw _privateConstructorUsedError;
+  String get priceDate => throw _privateConstructorUsedError;
+  List<num> get allPrices => throw _privateConstructorUsedError;
+  DateTime get priceDateTimeStamp => throw _privateConstructorUsedError;
+  bool get isAverage => throw _privateConstructorUsedError;
+  String get priceId => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -60,10 +65,12 @@ abstract class $PriceCopyWith<$Res> {
   factory $PriceCopyWith(Price value, $Res Function(Price) then) =
       _$PriceCopyWithImpl<$Res>;
   $Res call(
-      {String priceId,
-      double currentPrice,
-      List<Map<String, dynamic>> editHistory,
-      String updateDate});
+      {double currentPrice,
+      String priceDate,
+      List<num> allPrices,
+      DateTime priceDateTimeStamp,
+      bool isAverage,
+      String priceId});
 }
 
 /// @nodoc
@@ -76,27 +83,37 @@ class _$PriceCopyWithImpl<$Res> implements $PriceCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? priceId = freezed,
     Object? currentPrice = freezed,
-    Object? editHistory = freezed,
-    Object? updateDate = freezed,
+    Object? priceDate = freezed,
+    Object? allPrices = freezed,
+    Object? priceDateTimeStamp = freezed,
+    Object? isAverage = freezed,
+    Object? priceId = freezed,
   }) {
     return _then(_value.copyWith(
-      priceId: priceId == freezed
-          ? _value.priceId
-          : priceId // ignore: cast_nullable_to_non_nullable
-              as String,
       currentPrice: currentPrice == freezed
           ? _value.currentPrice
           : currentPrice // ignore: cast_nullable_to_non_nullable
               as double,
-      editHistory: editHistory == freezed
-          ? _value.editHistory
-          : editHistory // ignore: cast_nullable_to_non_nullable
-              as List<Map<String, dynamic>>,
-      updateDate: updateDate == freezed
-          ? _value.updateDate
-          : updateDate // ignore: cast_nullable_to_non_nullable
+      priceDate: priceDate == freezed
+          ? _value.priceDate
+          : priceDate // ignore: cast_nullable_to_non_nullable
+              as String,
+      allPrices: allPrices == freezed
+          ? _value.allPrices
+          : allPrices // ignore: cast_nullable_to_non_nullable
+              as List<num>,
+      priceDateTimeStamp: priceDateTimeStamp == freezed
+          ? _value.priceDateTimeStamp
+          : priceDateTimeStamp // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      isAverage: isAverage == freezed
+          ? _value.isAverage
+          : isAverage // ignore: cast_nullable_to_non_nullable
+              as bool,
+      priceId: priceId == freezed
+          ? _value.priceId
+          : priceId // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -108,10 +125,12 @@ abstract class _$PriceCopyWith<$Res> implements $PriceCopyWith<$Res> {
       __$PriceCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String priceId,
-      double currentPrice,
-      List<Map<String, dynamic>> editHistory,
-      String updateDate});
+      {double currentPrice,
+      String priceDate,
+      List<num> allPrices,
+      DateTime priceDateTimeStamp,
+      bool isAverage,
+      String priceId});
 }
 
 /// @nodoc
@@ -125,27 +144,37 @@ class __$PriceCopyWithImpl<$Res> extends _$PriceCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? priceId = freezed,
     Object? currentPrice = freezed,
-    Object? editHistory = freezed,
-    Object? updateDate = freezed,
+    Object? priceDate = freezed,
+    Object? allPrices = freezed,
+    Object? priceDateTimeStamp = freezed,
+    Object? isAverage = freezed,
+    Object? priceId = freezed,
   }) {
     return _then(_Price(
-      priceId: priceId == freezed
-          ? _value.priceId
-          : priceId // ignore: cast_nullable_to_non_nullable
-              as String,
       currentPrice: currentPrice == freezed
           ? _value.currentPrice
           : currentPrice // ignore: cast_nullable_to_non_nullable
               as double,
-      editHistory: editHistory == freezed
-          ? _value.editHistory
-          : editHistory // ignore: cast_nullable_to_non_nullable
-              as List<Map<String, dynamic>>,
-      updateDate: updateDate == freezed
-          ? _value.updateDate
-          : updateDate // ignore: cast_nullable_to_non_nullable
+      priceDate: priceDate == freezed
+          ? _value.priceDate
+          : priceDate // ignore: cast_nullable_to_non_nullable
+              as String,
+      allPrices: allPrices == freezed
+          ? _value.allPrices
+          : allPrices // ignore: cast_nullable_to_non_nullable
+              as List<num>,
+      priceDateTimeStamp: priceDateTimeStamp == freezed
+          ? _value.priceDateTimeStamp
+          : priceDateTimeStamp // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      isAverage: isAverage == freezed
+          ? _value.isAverage
+          : isAverage // ignore: cast_nullable_to_non_nullable
+              as bool,
+      priceId: priceId == freezed
+          ? _value.priceId
+          : priceId // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -155,26 +184,32 @@ class __$PriceCopyWithImpl<$Res> extends _$PriceCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_Price implements _Price {
   _$_Price(
-      {required this.priceId,
-      required this.currentPrice,
-      required this.editHistory,
-      required this.updateDate});
+      {required this.currentPrice,
+      required this.priceDate,
+      required this.allPrices,
+      required this.priceDateTimeStamp,
+      required this.isAverage,
+      required this.priceId});
 
   factory _$_Price.fromJson(Map<String, dynamic> json) =>
       _$$_PriceFromJson(json);
 
   @override
-  final String priceId;
-  @override
   final double currentPrice;
   @override
-  final List<Map<String, dynamic>> editHistory;
+  final String priceDate;
   @override
-  final String updateDate;
+  final List<num> allPrices;
+  @override
+  final DateTime priceDateTimeStamp;
+  @override
+  final bool isAverage;
+  @override
+  final String priceId;
 
   @override
   String toString() {
-    return 'Price(priceId: $priceId, currentPrice: $currentPrice, editHistory: $editHistory, updateDate: $updateDate)';
+    return 'Price(currentPrice: $currentPrice, priceDate: $priceDate, allPrices: $allPrices, priceDateTimeStamp: $priceDateTimeStamp, isAverage: $isAverage, priceId: $priceId)';
   }
 
   @override
@@ -182,18 +217,27 @@ class _$_Price implements _Price {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _Price &&
-            (identical(other.priceId, priceId) || other.priceId == priceId) &&
             (identical(other.currentPrice, currentPrice) ||
                 other.currentPrice == currentPrice) &&
-            const DeepCollectionEquality()
-                .equals(other.editHistory, editHistory) &&
-            (identical(other.updateDate, updateDate) ||
-                other.updateDate == updateDate));
+            (identical(other.priceDate, priceDate) ||
+                other.priceDate == priceDate) &&
+            const DeepCollectionEquality().equals(other.allPrices, allPrices) &&
+            (identical(other.priceDateTimeStamp, priceDateTimeStamp) ||
+                other.priceDateTimeStamp == priceDateTimeStamp) &&
+            (identical(other.isAverage, isAverage) ||
+                other.isAverage == isAverage) &&
+            (identical(other.priceId, priceId) || other.priceId == priceId));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, priceId, currentPrice,
-      const DeepCollectionEquality().hash(editHistory), updateDate);
+  int get hashCode => Object.hash(
+      runtimeType,
+      currentPrice,
+      priceDate,
+      const DeepCollectionEquality().hash(allPrices),
+      priceDateTimeStamp,
+      isAverage,
+      priceId);
 
   @JsonKey(ignore: true)
   @override
@@ -208,21 +252,27 @@ class _$_Price implements _Price {
 
 abstract class _Price implements Price {
   factory _Price(
-      {required String priceId,
-      required double currentPrice,
-      required List<Map<String, dynamic>> editHistory,
-      required String updateDate}) = _$_Price;
+      {required double currentPrice,
+      required String priceDate,
+      required List<num> allPrices,
+      required DateTime priceDateTimeStamp,
+      required bool isAverage,
+      required String priceId}) = _$_Price;
 
   factory _Price.fromJson(Map<String, dynamic> json) = _$_Price.fromJson;
 
   @override
-  String get priceId;
-  @override
   double get currentPrice;
   @override
-  List<Map<String, dynamic>> get editHistory;
+  String get priceDate;
   @override
-  String get updateDate;
+  List<num> get allPrices;
+  @override
+  DateTime get priceDateTimeStamp;
+  @override
+  bool get isAverage;
+  @override
+  String get priceId;
   @override
   @JsonKey(ignore: true)
   _$PriceCopyWith<_Price> get copyWith => throw _privateConstructorUsedError;

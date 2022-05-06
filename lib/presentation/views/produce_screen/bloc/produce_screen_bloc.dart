@@ -24,6 +24,7 @@ class ProduceScreenBloc extends Bloc<ProduceScreenEvent, ProduceScreenState> {
             props: ProduceScreenProps(
           tabController: tabController,
           index: tabController.index,
+          pricesList: [],
         ))) {
     on<_PSEStarted>(started);
     on<_PSETabChanged>(tabChanged);
@@ -59,14 +60,14 @@ class ProduceScreenBloc extends Bloc<ProduceScreenEvent, ProduceScreenState> {
     Emitter<ProduceScreenState> emit,
   ) async {
     // Indicate Loading
-    emit(ProduceScreenState.loading(props: state.props));
+    emit(ProduceScreenState.getAggregateLoading(props: state.props));
 
     // Begin retrieval of [aggregate-prices]
     final failureOrAggregatePrices = await repository.getAggregatePrices(event.produceId);
 
     failureOrAggregatePrices.fold(
       (f) {
-        emit(ProduceScreenState.error(props: state.props, failure: f));
+        emit(ProduceScreenState.getAggregateError(props: state.props, failure: f));
       },
       (pricesList) {
         final List<PriceSnippet> twoWeeksPrices =
@@ -80,7 +81,7 @@ class ProduceScreenBloc extends Bloc<ProduceScreenEvent, ProduceScreenState> {
         final List<PriceSnippet> oneYearPrices =
             pricesToRanged(pricesList, rangeType: RangeType.oneY);
 
-        emit(ProduceScreenState.completed(
+        emit(ProduceScreenState.getAggregateCompleted(
             props: state.props.copyWith(
           twoWeeksPricesList: twoWeeksPrices,
           oneMonthPricesList: oneMonthPrices,
