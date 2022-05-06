@@ -7,7 +7,7 @@ part of 'price.dart';
 // **************************************************************************
 
 _$_Price _$$_PriceFromJson(Map<String, dynamic> json) => _$_Price(
-      currentPrice: (json['currentPrice'] as num).toDouble(),
+      currentPrice: json['currentPrice'] as num,
       priceDate: json['priceDate'] as String,
       allPrices:
           (json['allPrices'] as List<dynamic>).map((e) => e as num).toList(),

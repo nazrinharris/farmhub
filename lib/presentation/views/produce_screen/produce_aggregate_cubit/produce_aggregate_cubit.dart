@@ -1,73 +1,46 @@
-import 'dart:async';
-
 import 'package:bloc/bloc.dart';
-import 'package:farmhub/features/produce_manager/domain/helpers.dart';
+import 'package:farmhub/core/errors/failures.dart';
 import 'package:farmhub/features/produce_manager/domain/i_produce_manager_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../../core/errors/failures.dart';
 import '../../../../features/produce_manager/domain/entities/price/price.dart';
+import '../../../../features/produce_manager/domain/helpers.dart';
 
-part 'produce_screen_event.dart';
-part 'produce_screen_state.dart';
-part 'produce_screen_bloc.freezed.dart';
+part 'produce_aggregate_state.dart';
+part 'produce_aggregate_cubit.freezed.dart';
 
-class ProduceScreenBloc extends Bloc<ProduceScreenEvent, ProduceScreenState> {
+class ProduceAggregateCubit extends Cubit<ProduceAggregateState> {
   final TabController tabController;
   final IProduceManagerRepository repository;
 
-  ProduceScreenBloc({
+  ProduceAggregateCubit({
     required this.tabController,
     required this.repository,
-  }) : super(PSSInitial(
-            props: ProduceScreenProps(
+  }) : super(ProduceAggregateState.initial(
+            props: ProduceAggregateProps(
           tabController: tabController,
           index: tabController.index,
-          pricesList: [],
-        ))) {
-    on<_PSEStarted>(started);
-    on<_PSETabChanged>(tabChanged);
-    on<_PSEGetAggregatePrices>(getAggregatePrices);
-  }
+        )));
 
-  FutureOr<void> started(
-    _PSEStarted event,
-    Emitter<ProduceScreenState> emit,
-  ) {
-    emit(state);
-  }
-
-  FutureOr<void> tabChanged(
-    _PSETabChanged event,
-    Emitter<ProduceScreenState> emit,
-  ) {
-    /// List of index correspondent
-    /// 0 - 1W
-    /// 1 - 2W
-    /// 2 - 1M
-    /// 3 - 2M
-    /// 4 - 6M
-    /// 5 - 1Y
+  /// List of index correspondent
+  /// [0, 1W] [1, 2W] [2, 1M] [3, 2M] [4, 6M] [5, 1Y]
+  void tabChanged() {
     if (tabController.indexIsChanging) {
       emit(state.copyWith(props: state.props.copyWith(index: tabController.index)));
-      print(tabController.index);
     }
   }
 
-  FutureOr<void> getAggregatePrices(
-    _PSEGetAggregatePrices event,
-    Emitter<ProduceScreenState> emit,
-  ) async {
+  void getAggregatePrices(String produceId) async {
     // Indicate Loading
-    emit(ProduceScreenState.getAggregateLoading(props: state.props));
+    emit(ProduceAggregateState.loading(props: state.props));
 
     // Begin retrieval of [aggregate-prices]
-    final failureOrAggregatePrices = await repository.getAggregatePrices(event.produceId);
+    final failureOrAggregatePrices = await repository.getAggregatePrices(produceId);
 
     failureOrAggregatePrices.fold(
       (f) {
-        emit(ProduceScreenState.getAggregateError(props: state.props, failure: f));
+        emit(ProduceAggregateState.error(props: state.props, failure: f));
       },
       (pricesList) {
         final List<PriceSnippet> twoWeeksPrices =
@@ -81,7 +54,7 @@ class ProduceScreenBloc extends Bloc<ProduceScreenEvent, ProduceScreenState> {
         final List<PriceSnippet> oneYearPrices =
             pricesToRanged(pricesList, rangeType: RangeType.oneY);
 
-        emit(ProduceScreenState.getAggregateCompleted(
+        emit(ProduceAggregateState.completed(
             props: state.props.copyWith(
           twoWeeksPricesList: twoWeeksPrices,
           oneMonthPricesList: oneMonthPrices,
@@ -91,10 +64,5 @@ class ProduceScreenBloc extends Bloc<ProduceScreenEvent, ProduceScreenState> {
         )));
       },
     );
-  }
-
-  @override
-  Future<void> close() {
-    return super.close();
   }
 }

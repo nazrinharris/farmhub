@@ -1,4 +1,6 @@
 import 'package:farmhub/app_router.dart';
+import 'package:farmhub/core/errors/exceptions.dart';
+import 'package:farmhub/core/errors/failures.dart';
 import 'package:farmhub/core/util/dates.dart';
 import 'package:farmhub/locator.dart';
 import 'package:farmhub/presentation/shared_widgets/appbars.dart';
@@ -7,14 +9,15 @@ import 'package:farmhub/presentation/shared_widgets/ui_helpers.dart';
 import 'package:farmhub/presentation/smart_widgets/primary_button_aware/primary_button_aware_cubit.dart';
 import 'package:farmhub/presentation/smart_widgets/produce_list_card.dart';
 import 'package:farmhub/presentation/views/main_screen/main_screen.dart';
-import 'package:farmhub/presentation/views/produce_screen/bloc/produce_screen_bloc.dart';
+import 'package:farmhub/presentation/views/produce_screen/produce_aggregate_cubit/produce_aggregate_cubit.dart';
+import 'package:farmhub/presentation/views/produce_screen/produce_prices_cubit/produce_prices_cubit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 import '../../../core/util/misc.dart';
 import '../../../features/produce_manager/domain/entities/price/price.dart';
+
 import 'custom_tab.dart' as ct;
 
 import '../../../features/produce_manager/domain/entities/produce/produce.dart';
@@ -54,45 +57,44 @@ class _ProduceScreenState extends State<ProduceScreen> with SingleTickerProvider
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (_) => PrimaryButtonAwareCubit()),
+        BlocProvider(
+            create: (_) => ProduceAggregateCubit(
+                  tabController: tabController,
+                  repository: locator(),
+                )),
+        BlocProvider(create: (_) => ProducePricesCubit(repository: locator()))
       ],
       child: Builder(
-        builder: (context) => BlocProvider(
-          create: (_) => ProduceScreenBloc(
-            tabController: tabController,
-            repository: locator(),
-          ),
-          child: Builder(
-            builder: (context) => Scaffold(
-                resizeToAvoidBottomInset: false,
-                extendBodyBehindAppBar: true,
-                extendBody: true,
-                appBar: DefaultAppBar(
-                  backgroundColors: [Colors.transparent, Colors.transparent],
-                  trailingIcon: const Icon(Icons.arrow_back),
-                  trailingOnPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                  leadingIcon: const Icon(Icons.bookmark_add_outlined),
-                  leadingOnPressed: () {},
-                ),
-                body: SafeArea(
-                  child: CustomScrollView(
-                    controller: scrollController,
-                    physics: DefaultScrollPhysics,
-                    slivers: [
-                      CupertinoSliverRefreshControl(
-                        onRefresh: () async {
-                          print("Refreshed");
-                        },
-                      ),
-                      SliverProduceHeader(widget.produceArguments.produce),
-                      SliverProducePriceChart(tabs, widget.produceArguments.produce),
-                      SliverPricesListHeader(),
-                    ],
+        builder: (context) => Scaffold(
+            resizeToAvoidBottomInset: false,
+            extendBodyBehindAppBar: true,
+            extendBody: true,
+            appBar: DefaultAppBar(
+              backgroundColors: [Colors.transparent, Colors.transparent],
+              trailingIcon: const Icon(Icons.arrow_back),
+              trailingOnPressed: () {
+                Navigator.of(context).pop();
+              },
+              leadingIcon: const Icon(Icons.bookmark_add_outlined),
+              leadingOnPressed: () {},
+            ),
+            body: SafeArea(
+              child: CustomScrollView(
+                controller: scrollController,
+                physics: DefaultScrollPhysics,
+                slivers: [
+                  CupertinoSliverRefreshControl(
+                    onRefresh: () async {
+                      print("Refreshed");
+                    },
                   ),
-                )),
-          ),
-        ),
+                  SliverProduceHeader(widget.produceArguments.produce),
+                  SliverProducePriceChart(tabs, widget.produceArguments.produce),
+                  SliverPricesListHeader(),
+                  SliverPricesListSwitcher(scrollController, widget.produceArguments.produce),
+                ],
+              ),
+            )),
       ),
     );
   }
@@ -115,8 +117,8 @@ class _SliverProduceHeaderState extends State<SliverProduceHeader> {
   void initState() {
     super.initState();
 
-    context.read<ProduceScreenBloc>().state.props.tabController.addListener(() {
-      context.read<ProduceScreenBloc>().add(const ProduceScreenEvent.tabChanged());
+    context.read<ProduceAggregateCubit>().state.props.tabController.addListener(() {
+      context.read<ProduceAggregateCubit>().tabChanged();
     });
   }
 
@@ -172,9 +174,7 @@ class _SliverProducePriceChartState extends State<SliverProducePriceChart> {
   void initState() {
     super.initState();
 
-    context
-        .read<ProduceScreenBloc>()
-        .add(ProduceScreenEvent.getAggregatePrices(widget.produce.produceId));
+    context.read<ProduceAggregateCubit>().getAggregatePrices(widget.produce.produceId);
   }
 
   @override
@@ -187,7 +187,7 @@ class _SliverProducePriceChartState extends State<SliverProducePriceChart> {
             color: Theme.of(context).colorScheme.primary.withOpacity(0.08),
             borderRadius: BorderRadius.circular(16)),
         child: ct.TabBar(
-          controller: context.read<ProduceScreenBloc>().state.props.tabController,
+          controller: context.read<ProduceAggregateCubit>().state.props.tabController,
           tabs: widget.tabs,
           labelColor: Theme.of(context).colorScheme.primary,
           indicatorSize: ct.TabBarIndicatorSize.tab,
@@ -204,17 +204,17 @@ class _SliverProducePriceChartState extends State<SliverProducePriceChart> {
         ),
       ),
       const UIVerticalSpace14(),
-      BlocBuilder<ProduceScreenBloc, ProduceScreenState>(
+      BlocBuilder<ProduceAggregateCubit, ProduceAggregateState>(
         builder: (context, state) {
-          if (state is PSSInitial) {
+          if (state is PASInitial) {
             return const SizedBox.shrink();
-          } else if (state is PSSGetAggregateLoading) {
+          } else if (state is PASLoading) {
             return Container(
               height: 250,
               alignment: Alignment.center,
               child: const CircularProgressIndicator(),
             );
-          } else if (state is PSSGetAggregateCompleted) {
+          } else if (state is PASCompleted) {
             return LargePriceChart(
               widget.produce,
               determineChartType(state.props.index),
@@ -224,7 +224,7 @@ class _SliverProducePriceChartState extends State<SliverProducePriceChart> {
               sixMonthPricesList: state.props.sixMonthPricesList,
               oneYearPricesList: state.props.oneYearPricesList,
             );
-          } else if (state is PSSGetAggregateError) {
+          } else if (state is PASError) {
             return Container(
               height: 250,
               alignment: Alignment.center,
@@ -275,15 +275,12 @@ class _SliverPricesListHeaderState extends State<SliverPricesListHeader> {
       delegate: SliverChildListDelegate(
         [
           Container(
-            margin: const EdgeInsets.only(left: 24, right: 24, top: 24, bottom: 10),
+            margin: const EdgeInsets.only(left: 24, right: 24, top: 24, bottom: 24),
             alignment: Alignment.centerLeft,
             child: Text(
               "Price History",
               style: Theme.of(context).textTheme.bodyText1,
             ),
-          ),
-          const UIBorder(
-            margin: EdgeInsets.symmetric(horizontal: 24),
           ),
         ],
       ),
@@ -293,8 +290,9 @@ class _SliverPricesListHeaderState extends State<SliverPricesListHeader> {
 
 class SliverPricesListSwitcher extends StatefulWidget {
   final ScrollController scrollController;
+  final Produce produce;
 
-  SliverPricesListSwitcher(this.scrollController, {Key? key}) : super(key: key);
+  SliverPricesListSwitcher(this.scrollController, this.produce, {Key? key}) : super(key: key);
 
   @override
   State<SliverPricesListSwitcher> createState() => _SliverPricesListSwitcherState();
@@ -305,30 +303,47 @@ class _SliverPricesListSwitcherState extends State<SliverPricesListSwitcher> {
   void initState() {
     super.initState();
 
-    context.read<ProduceScreenBloc>().stream.listen((event) {
+    context.read<ProducePricesCubit>().getFirstTenPrices(widget.produce.produceId);
+
+    context.read<ProducePricesCubit>().stream.listen((event) {
       setState(() {});
     });
 
     widget.scrollController.addListener(() {
       if (widget.scrollController.offset >= widget.scrollController.position.maxScrollExtent &&
           !widget.scrollController.position.outOfRange) {
-        context.read<ProduceScreenBloc>().add(const ProduceScreenEvent.getNextTenPrices());
+        context.read<ProducePricesCubit>().getNextTenPrices(widget.produce.produceId);
       }
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    final currentState = context.read<ProduceScreenBloc>().state;
+    final currentState = context.read<ProducePricesCubit>().state;
 
-    if (currentState is PSSInitial) {
+    if (currentState is PPSInitial) {
       throw Exception("PSSInitial state is received when it should not have existed.");
-    } else if (currentState is PSSGetFirstTenPricesLoading) {
+    } else if (currentState is PPSFirstTenPricesLoading) {
       return const SliverLoadingIndicator();
-    } else if (currentState is PSSGetNextTenPricesLoading) {
-      return SliverPricesList(currentState.props.pricesList, isError: false, isLoading: true);
-    } else if (currentState is PSSGetFirstTenPricesCompleted) {
-      return SliverPricesList(currentState.props.pricesList, isError: false, isLoading: false);
+    } else if (currentState is PPSNextTenPricesLoading) {
+      return SliverPricesList(currentState.pricesList, isError: false, isLoading: true);
+    } else if (currentState is PPSFirstTenPricesCompleted) {
+      return SliverPricesList(currentState.pricesList, isError: false, isLoading: false);
+    } else if (currentState is PPSNextTenPricesCompleted) {
+      return SliverPricesList(currentState.pricesList, isLoading: false, isError: false);
+    } else if (currentState is PPSPricesError) {
+      return SliverPricesList(
+        currentState.pricesList,
+        isLoading: false,
+        isError: true,
+        failure: currentState.failure,
+      );
+    } else {
+      throw UnexpectedException(
+        code: "$currentState",
+        message: "Unexpected state is emitted",
+        stackTrace: StackTrace.current,
+      );
     }
   }
 }
@@ -337,12 +352,14 @@ class SliverPricesList extends StatelessWidget {
   final List<Price> pricesList;
   final bool isLoading;
   final bool isError;
+  Failure? failure;
 
-  const SliverPricesList(
+  SliverPricesList(
     this.pricesList, {
     Key? key,
     required this.isLoading,
     required this.isError,
+    this.failure,
   }) : super(key: key);
 
   @override
@@ -366,6 +383,8 @@ class SliverPricesList extends StatelessWidget {
         child: const CircularProgressIndicator(),
       );
     } else if (isError) {
+      print(failure);
+
       return Container(
         height: 100,
         alignment: Alignment.center,

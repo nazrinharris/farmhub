@@ -22,7 +22,7 @@ class _$PriceTearOff {
   const _$PriceTearOff();
 
   _Price call(
-      {required double currentPrice,
+      {required num currentPrice,
       required String priceDate,
       required List<num> allPrices,
       required DateTime priceDateTimeStamp,
@@ -48,7 +48,7 @@ const $Price = _$PriceTearOff();
 
 /// @nodoc
 mixin _$Price {
-  double get currentPrice => throw _privateConstructorUsedError;
+  num get currentPrice => throw _privateConstructorUsedError;
   String get priceDate => throw _privateConstructorUsedError;
   List<num> get allPrices => throw _privateConstructorUsedError;
   DateTime get priceDateTimeStamp => throw _privateConstructorUsedError;
@@ -65,7 +65,7 @@ abstract class $PriceCopyWith<$Res> {
   factory $PriceCopyWith(Price value, $Res Function(Price) then) =
       _$PriceCopyWithImpl<$Res>;
   $Res call(
-      {double currentPrice,
+      {num currentPrice,
       String priceDate,
       List<num> allPrices,
       DateTime priceDateTimeStamp,
@@ -94,7 +94,7 @@ class _$PriceCopyWithImpl<$Res> implements $PriceCopyWith<$Res> {
       currentPrice: currentPrice == freezed
           ? _value.currentPrice
           : currentPrice // ignore: cast_nullable_to_non_nullable
-              as double,
+              as num,
       priceDate: priceDate == freezed
           ? _value.priceDate
           : priceDate // ignore: cast_nullable_to_non_nullable
@@ -125,7 +125,7 @@ abstract class _$PriceCopyWith<$Res> implements $PriceCopyWith<$Res> {
       __$PriceCopyWithImpl<$Res>;
   @override
   $Res call(
-      {double currentPrice,
+      {num currentPrice,
       String priceDate,
       List<num> allPrices,
       DateTime priceDateTimeStamp,
@@ -155,7 +155,7 @@ class __$PriceCopyWithImpl<$Res> extends _$PriceCopyWithImpl<$Res>
       currentPrice: currentPrice == freezed
           ? _value.currentPrice
           : currentPrice // ignore: cast_nullable_to_non_nullable
-              as double,
+              as num,
       priceDate: priceDate == freezed
           ? _value.priceDate
           : priceDate // ignore: cast_nullable_to_non_nullable
@@ -195,7 +195,7 @@ class _$_Price implements _Price {
       _$$_PriceFromJson(json);
 
   @override
-  final double currentPrice;
+  final num currentPrice;
   @override
   final String priceDate;
   @override
@@ -252,7 +252,7 @@ class _$_Price implements _Price {
 
 abstract class _Price implements Price {
   factory _Price(
-      {required double currentPrice,
+      {required num currentPrice,
       required String priceDate,
       required List<num> allPrices,
       required DateTime priceDateTimeStamp,
@@ -262,7 +262,7 @@ abstract class _Price implements Price {
   factory _Price.fromJson(Map<String, dynamic> json) = _$_Price.fromJson;
 
   @override
-  double get currentPrice;
+  num get currentPrice;
   @override
   String get priceDate;
   @override

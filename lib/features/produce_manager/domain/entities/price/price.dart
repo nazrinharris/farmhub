@@ -9,7 +9,7 @@ part 'price.g.dart';
 @freezed
 class Price with _$Price {
   factory Price({
-    required double currentPrice,
+    required num currentPrice,
     required String priceDate,
     required List<num> allPrices,
     required DateTime priceDateTimeStamp,
@@ -28,12 +28,12 @@ class Price with _$Price {
       );
     }
 
-    DateTime priceDateTimeStamp = (map["lastUpdateTimeStamp"] as Timestamp).toDate();
+    DateTime priceDateTimeStamp = (map["priceDateTimeStamp"] as Timestamp).toDate();
 
     return Price(
       currentPrice: map["currentPrice"],
       priceDate: map["priceDate"],
-      allPrices: map["allPrices"],
+      allPrices: List<num>.from(map["allPrices"]),
       priceDateTimeStamp: priceDateTimeStamp,
       isAverage: map["isAverage"],
       priceId: map["priceId"],

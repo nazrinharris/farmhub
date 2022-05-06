@@ -545,7 +545,7 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
         .collection('produce')
         .doc(produceId)
         .collection('prices')
-        .orderBy("priceDateTimeStamp")
+        .orderBy("priceDateTimeStamp", descending: true)
         .limit(10)
         .get();
 
@@ -569,7 +569,7 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
         .collection('produce')
         .doc(produceId)
         .collection('prices')
-        .orderBy("priceDateTimeStamp")
+        .orderBy("priceDateTimeStamp", descending: true)
         .startAfterDocument(lastDocument)
         .limit(10)
         .get();
