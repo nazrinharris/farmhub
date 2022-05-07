@@ -11,13 +11,13 @@ import 'package:farmhub/presentation/smart_widgets/produce_list_card.dart';
 import 'package:farmhub/presentation/views/main_screen/main_screen.dart';
 import 'package:farmhub/presentation/views/produce_screen/produce_aggregate_cubit/produce_aggregate_cubit.dart';
 import 'package:farmhub/presentation/views/produce_screen/produce_prices_cubit/produce_prices_cubit.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 import '../../../core/util/misc.dart';
 import '../../../features/produce_manager/domain/entities/price/price.dart';
 
+import '../../smart_widgets/custom_cupertino_sliver_refresh_control.dart';
 import 'custom_tab.dart' as ct;
 
 import '../../../features/produce_manager/domain/entities/produce/produce.dart';
@@ -70,7 +70,6 @@ class _ProduceScreenState extends State<ProduceScreen> with SingleTickerProvider
             extendBodyBehindAppBar: true,
             extendBody: true,
             appBar: DefaultAppBar(
-              backgroundColors: [Colors.transparent, Colors.transparent],
               trailingIcon: const Icon(Icons.arrow_back),
               trailingOnPressed: () {
                 Navigator.of(context).pop();
@@ -78,22 +77,25 @@ class _ProduceScreenState extends State<ProduceScreen> with SingleTickerProvider
               leadingIcon: const Icon(Icons.bookmark_add_outlined),
               leadingOnPressed: () {},
             ),
-            body: SafeArea(
-              child: CustomScrollView(
-                controller: scrollController,
-                physics: DefaultScrollPhysics,
-                slivers: [
-                  CupertinoSliverRefreshControl(
-                    onRefresh: () async {
-                      print("Refreshed");
-                    },
-                  ),
-                  SliverProduceHeader(widget.produceArguments.produce),
-                  SliverProducePriceChart(tabs, widget.produceArguments.produce),
-                  SliverPricesListHeader(),
-                  SliverPricesListSwitcher(scrollController, widget.produceArguments.produce),
-                ],
-              ),
+            body: CustomScrollView(
+              controller: scrollController,
+              physics: DefaultScrollPhysics,
+              slivers: [
+                CustomCupertinoSliverRefreshControl(
+                  onRefresh: () async {
+                    print("Refreshed");
+                    await Future.delayed(Duration(seconds: 2));
+                  },
+                ),
+                SliverProduceHeader(widget.produceArguments.produce),
+                SliverProducePriceChart(tabs, widget.produceArguments.produce),
+                SliverPricesListHeader(scrollController, widget.produceArguments.produce),
+                BlocBuilder<ProducePricesCubit, ProducePricesState>(
+                  builder: (context, state) {
+                    return SliverPricesListSwitcher(widget.produceArguments.produce);
+                  },
+                ),
+              ],
             )),
       ),
     );
@@ -262,13 +264,27 @@ class _SliverProducePriceChartState extends State<SliverProducePriceChart> {
 }
 
 class SliverPricesListHeader extends StatefulWidget {
-  SliverPricesListHeader({Key? key}) : super(key: key);
+  final Produce produce;
+  final ScrollController scrollController;
+
+  SliverPricesListHeader(this.scrollController, this.produce, {Key? key}) : super(key: key);
 
   @override
   State<SliverPricesListHeader> createState() => _SliverPricesListHeaderState();
 }
 
 class _SliverPricesListHeaderState extends State<SliverPricesListHeader> {
+  @override
+  void initState() {
+    super.initState();
+    widget.scrollController.addListener(() {
+      if (widget.scrollController.offset >= widget.scrollController.position.maxScrollExtent &&
+          !widget.scrollController.position.outOfRange) {
+        context.read<ProducePricesCubit>().getNextTenPrices(widget.produce.produceId);
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return SliverList(
@@ -289,10 +305,9 @@ class _SliverPricesListHeaderState extends State<SliverPricesListHeader> {
 }
 
 class SliverPricesListSwitcher extends StatefulWidget {
-  final ScrollController scrollController;
   final Produce produce;
 
-  SliverPricesListSwitcher(this.scrollController, this.produce, {Key? key}) : super(key: key);
+  SliverPricesListSwitcher(this.produce, {Key? key}) : super(key: key);
 
   @override
   State<SliverPricesListSwitcher> createState() => _SliverPricesListSwitcherState();
@@ -304,17 +319,6 @@ class _SliverPricesListSwitcherState extends State<SliverPricesListSwitcher> {
     super.initState();
 
     context.read<ProducePricesCubit>().getFirstTenPrices(widget.produce.produceId);
-
-    context.read<ProducePricesCubit>().stream.listen((event) {
-      setState(() {});
-    });
-
-    widget.scrollController.addListener(() {
-      if (widget.scrollController.offset >= widget.scrollController.position.maxScrollExtent &&
-          !widget.scrollController.position.outOfRange) {
-        context.read<ProducePricesCubit>().getNextTenPrices(widget.produce.produceId);
-      }
-    });
   }
 
   @override
@@ -443,7 +447,7 @@ class PriceListCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      price.currentPrice.toString(),
+                      price.priceDate,
                       maxLines: 3,
                       overflow: TextOverflow.fade,
                       style: Theme.of(context).textTheme.bodyText1!.copyWith(fontSize: 17),
@@ -457,7 +461,7 @@ class PriceListCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Text(
-                      price.priceDate,
+                      "RM ${price.currentPrice.toString()}/kg",
                       style: Theme.of(context).textTheme.bodyText1,
                     ),
                   ],

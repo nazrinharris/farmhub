@@ -413,8 +413,8 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
     // At this point, we know that [weeklyPricesSnippet] date range between upper and lower is over a week.
     // And as such, we need to remove the price(s) documents of all those more than a week old.
     if (isOverAWeek == true) {
-      assert(weeklyPricesSnippet.length <= 8,
-          "There should at max, be 8 prices within [weeklyPricesSnippet] but there are ${weeklyPricesSnippet.length}");
+      assert(weeklyPricesSnippet.length <= 9,
+          "There should at max, be 9 prices within [weeklyPricesSnippet] but there are ${weeklyPricesSnippet.length}");
       weeklyPricesSnippet.removeWhere((priceSnippet) {
         DateTime snippetDate = DateFormat("dd-MM-yyyy").parse(priceSnippet.priceDate);
         Duration diff = upperDate.difference(snippetDate);
