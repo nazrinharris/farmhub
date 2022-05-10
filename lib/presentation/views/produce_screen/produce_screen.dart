@@ -482,9 +482,7 @@ class PriceListCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    Text(
-                      "RM ${price.currentPrice.toString()}/kg",
-                    ),
+                    resolveIsAverage(context, price),
                   ],
                 ),
               )
@@ -493,6 +491,21 @@ class PriceListCard extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Widget resolveIsAverage(BuildContext context, Price price) {
+    if (price.isAverage) {
+      return Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          Text("(avg.)", style: Theme.of(context).textTheme.caption),
+          const UIHorizontalSpace6(),
+          Text("RM ${price.currentPrice.toString()}/kg"),
+        ],
+      );
+    } else {
+      return Text("RM ${price.currentPrice.toString()}/kg");
+    }
   }
 
   BorderSide _resolveTop(BuildContext context, int index) {
