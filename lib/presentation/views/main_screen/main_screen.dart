@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:farmhub/app_router.dart';
 import 'package:farmhub/core/util/dates.dart';
 import 'package:farmhub/core/util/farmhub_icons.dart';
@@ -312,7 +310,7 @@ class SliverProduceList extends StatelessWidget {
   }
 }
 
-class SliverProduceErrorList extends StatelessWidget {
+class SliverProduceErrorList extends StatefulWidget {
   final MainScreenProps props;
   final Failure failure;
 
@@ -323,11 +321,23 @@ class SliverProduceErrorList extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  State<SliverProduceErrorList> createState() => _SliverProduceErrorListState();
+}
+
+class _SliverProduceErrorListState extends State<SliverProduceErrorList> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    print(widget.failure);
+
     return SliverList(
       delegate: SliverChildBuilderDelegate(
         (context, index) {
-          if (index == props.produceList.length) {
+          if (index == widget.props.produceList.length) {
             return Container(
               height: 100,
               alignment: Alignment.center,
@@ -349,12 +359,12 @@ class SliverProduceErrorList extends StatelessWidget {
           } else {
             return ProduceListCard(
               index,
-              props.produceList[index],
+              widget.props.produceList[index],
               chartAnimationDuration: 0,
             );
           }
         },
-        childCount: props.produceList.length + 1,
+        childCount: widget.props.produceList.length + 1,
       ),
     );
   }

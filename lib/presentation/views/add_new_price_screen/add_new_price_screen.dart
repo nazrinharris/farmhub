@@ -5,6 +5,7 @@ import 'package:farmhub/presentation/shared_widgets/ui_helpers.dart';
 import 'package:farmhub/presentation/smart_widgets/produce_list_card.dart';
 import 'package:farmhub/presentation/views/add_new_price_screen/bloc/add_new_price_screen_bloc.dart';
 import 'package:farmhub/presentation/views/main_screen/main_screen.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -54,8 +55,12 @@ class _AddNewPriceScreenState extends State<AddNewPriceScreen> {
                 body: SafeArea(
                   top: false,
                   child: CustomScrollView(
+                    physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
                     controller: scrollController,
                     slivers: [
+                      CupertinoSliverRefreshControl(
+                        onRefresh: () async {},
+                      ),
                       HeaderSliver(),
                       SliverWhiteSpace(30),
                       ProduceListSliver(

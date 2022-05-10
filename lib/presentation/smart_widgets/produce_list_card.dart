@@ -1,9 +1,11 @@
 // TODO: Extract ProduceListCard and whatever else that is needed.
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 import '../../app_router.dart';
 import '../../core/util/misc.dart';
+import '../../features/produce_manager/domain/entities/price/price.dart';
 import '../../features/produce_manager/domain/entities/produce/produce.dart';
 import '../shared_widgets/ui_helpers.dart';
 
@@ -25,6 +27,9 @@ class ProduceListCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    num currentProducePrice = produce.currentProducePrice["price"];
+    currentProducePrice = roundNum(currentProducePrice.toDouble(), 2);
+
     return Material(
       type: MaterialType.transparency,
       child: InkWell(
@@ -58,7 +63,7 @@ class ProduceListCard extends StatelessWidget {
                     ),
                     const UICustomVertical(2),
                     Text(
-                      "RM ${produce.currentProducePrice["price"].toString()}/kg",
+                      "RM $currentProducePrice/kg",
                       style: Theme.of(context)
                           .textTheme
                           .bodyText2!
@@ -207,7 +212,7 @@ class ChangeBox extends StatelessWidget {
       final num previousPrice = produce.previousProducePrice["price"];
       final num change = currentPrice - previousPrice;
 
-      return roundDouble(change.toDouble(), 2);
+      return roundNum(change.toDouble(), 2);
     }
   }
 
@@ -261,26 +266,43 @@ class SmallPriceChart extends StatelessWidget {
       late Color borderColor;
 
       if (isNegative) {
-        gradient = const LinearGradient(
+        gradient = LinearGradient(
           colors: [
             Color(0xffEC6666),
-            Color(0xffFFF4F4),
+            Color(0xffFFF4F4).withOpacity(0.1),
           ],
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
         );
         borderColor = const Color(0xffEC6666);
       } else {
-        gradient = const LinearGradient(
+        gradient = LinearGradient(
           colors: [
             Color(0xff79D2DE),
-            Color(0xffFFF4F4),
+            Color(0xffFFF4F4).withOpacity(0.1),
           ],
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
         );
         borderColor = const Color(0xff79D2DE);
       }
+
+      // Begin process of transtaling weeklyPricesMap
+      final Map<String, dynamic> weeklyPricesMap = produce.weeklyPrices;
+      final List<PriceSnippet> pricesList = [];
+
+      weeklyPricesMap.forEach((priceDate, price) {
+        pricesList.add(PriceSnippet(price: price, priceDate: priceDate));
+      });
+
+      // This sorts the price in ascending order. [0] being the most old and the last index being
+      // the most newest date.
+      pricesList.sort((a, b) {
+        DateTime aPriceDate = DateFormat("dd-MM-yyyy").parse(a.priceDate);
+        DateTime bPriceDate = DateFormat("dd-MM-yyyy").parse(b.priceDate);
+
+        return aPriceDate.compareTo(bPriceDate);
+      });
 
       return SizedBox(
         height: 90,
@@ -293,12 +315,12 @@ class SmallPriceChart extends StatelessWidget {
           primaryYAxis: NumericAxis(
             isVisible: false,
           ),
-          series: <CartesianSeries>[
-            SplineAreaSeries<num, num>(
+          series: <CartesianSeries<PriceSnippet, int>>[
+            SplineAreaSeries<PriceSnippet, int>(
               animationDuration: chartAnimationDuration,
-              dataSource: produce.weeklyPrices.reversed.toList(),
-              xValueMapper: (num price, index) => index,
-              yValueMapper: (num price, index) => price,
+              dataSource: pricesList,
+              xValueMapper: (priceSnippet, index) => index,
+              yValueMapper: (priceSnippet, index) => priceSnippet.price,
               borderWidth: 3,
               borderColor: borderColor,
               gradient: gradient,

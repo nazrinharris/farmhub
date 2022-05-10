@@ -107,20 +107,26 @@ class AddNewPriceScreenBloc extends Bloc<AddNewPriceScreenEvent, AddNewPriceScre
     multipleFieldsFormBloc!.add(enableAlwaysValidation);
     multipleFieldsFormBloc!.add(unfocusAllNodes);
 
-    // Start Adding Price
-    final failureOrProduce = await produceManagerRepository.addNewPrice(
-      produceId: event.produce.produceId,
-      currentPrice: num.parse(multipleFieldsFormBloc!.state.props.firstFieldValue!),
-    );
+    // Check validation
+    bool isValid = multipleFieldsFormBloc!.state.props.formKey.currentState!.validate();
 
-    failureOrProduce.fold((f) {
-      primaryButtonAwareCubit!.triggerFirstPage();
-      emit(
-        AddNewPriceScreenState.addNewPriceError(
-          props: state.props,
-          failure: f,
-        ),
+    if (isValid) {
+      // Start Adding Price
+      final failureOrProduce = await produceManagerRepository.addNewPrice(
+        produceId: event.produce.produceId,
+        currentPrice: num.parse(multipleFieldsFormBloc!.state.props.firstFieldValue!),
+        daysFromNow: num.parse(multipleFieldsFormBloc!.state.props.secondFieldValue!).toInt(),
       );
-    }, (p) => emit(AddNewPriceScreenState.addNewPriceSuccess(produce: p, props: state.props)));
+
+      failureOrProduce.fold((f) {
+        primaryButtonAwareCubit!.triggerFirstPage();
+        emit(
+          AddNewPriceScreenState.addNewPriceError(
+            props: state.props,
+            failure: f,
+          ),
+        );
+      }, (p) => emit(AddNewPriceScreenState.addNewPriceSuccess(produce: p, props: state.props)));
+    } else {}
   }
 }

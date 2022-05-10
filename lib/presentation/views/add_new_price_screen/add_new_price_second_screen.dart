@@ -2,11 +2,12 @@ import 'package:farmhub/app_router.dart';
 import 'package:farmhub/locator.dart';
 import 'package:farmhub/presentation/smart_widgets/primary_button_aware/primary_button_aware_cubit.dart';
 import 'package:farmhub/presentation/smart_widgets/produce_list_card.dart';
-import 'package:farmhub/presentation/themes/farmhub_theme.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 
+import '../../../core/util/misc.dart';
 import '../../../features/produce_manager/domain/entities/produce/produce.dart';
 import '../../shared_widgets/appbars.dart';
 import '../../shared_widgets/texts.dart';
@@ -64,12 +65,14 @@ class _AddNewPriceSecondScreenState extends State<AddNewPriceSecondScreen> {
                             message:
                                 "Uh oh! An error occured. Code: ${state.failure.code}, Message: ${state.failure.message}"),
                       );
+                      print(state.failure);
+                      print(state.failure.stackTrace);
                     } else if (state is ANPSAddNewPriceSuccess) {
                       showTopSnackBar(
                         context,
                         CustomSnackBar.success(
                           message:
-                              "Price of RM${state.produce.currentProducePrice["price"]} is succesfully added to ${state.produce.produceName}",
+                              "Price of RM${context.read<MultipleFieldsFormBloc>().state.props.firstFieldValue} is succesfully added to ${state.produce.produceName}",
                         ),
                       );
                       Navigator.of(context).pushNamed(
@@ -82,7 +85,7 @@ class _AddNewPriceSecondScreenState extends State<AddNewPriceSecondScreen> {
                     }
                   },
                   child: Scaffold(
-                    resizeToAvoidBottomInset: false,
+                    // resizeToAvoidBottomInset: false,
                     extendBodyBehindAppBar: true,
                     appBar: DefaultAppBar(
                       trailingIcon: const Icon(Icons.arrow_back),
@@ -98,7 +101,8 @@ class _AddNewPriceSecondScreenState extends State<AddNewPriceSecondScreen> {
                           CustomScrollView(
                             slivers: [
                               HeaderSliver(widget.produceArguments.produce),
-                              ContentSliver(),
+                              const ContentSliver(),
+                              const SliverWhiteSpace(100)
                             ],
                           ),
                           Container(
@@ -136,6 +140,17 @@ class HeaderSliver extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    num currentProducePrice = produce.currentProducePrice["price"];
+    currentProducePrice = roundNum(currentProducePrice.toDouble(), 2);
+
+    dynamic previousProducePrice;
+    if (produce.previousProducePrice["price"] == null) {
+      previousProducePrice = "-.--";
+    } else {
+      previousProducePrice = produce.previousProducePrice["price"] as num;
+      previousProducePrice = roundNum(previousProducePrice.toDouble(), 2);
+    }
+
     return SliverList(
       delegate: SliverChildListDelegate(
         [
@@ -146,16 +161,19 @@ class HeaderSliver extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const UITopPadding(),
-                const Headline1('You have chosen:'),
-                const UIVerticalSpace14(),
+                Text(
+                  "You have chosen:",
+                  style: Theme.of(context).textTheme.bodyText1,
+                ),
+                const UIVerticalSpace6(),
                 Headline2(produce.produceName),
                 const UIVerticalSpace14(),
                 ChangeBox(produce),
                 const UIVerticalSpace24(),
                 const UIBorder(),
                 const UIVerticalSpace24(),
-                Text("Current Price: RM${produce.currentProducePrice["price"]}/kg"),
-                Text(resolvePreviousPriceText(produce)),
+                Text("Current Price: RM$currentProducePrice/kg"),
+                Text("Previous Price: RM$previousProducePrice/kg"),
                 const UIVerticalSpace24(),
                 const UIBorder(),
               ],
@@ -164,14 +182,6 @@ class HeaderSliver extends StatelessWidget {
         ],
       ),
     );
-  }
-
-  String resolvePreviousPriceText(Produce produce) {
-    if (produce.previousProducePrice["price"] == null) {
-      return "Previous Price: RM-.--";
-    } else {
-      return "Previous Price: RM${produce.previousProducePrice["price"]}/kg";
-    }
   }
 }
 
@@ -190,10 +200,15 @@ class ContentSliver extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 MultipleFieldsForm<MultipleFieldsFormBloc>(
-                  type: MultipleFieldsFormType.oneField,
+                  type: MultipleFieldsFormType.twoField,
                   firstFieldLabel: "Price (in RM/kg)",
                   firstFieldHintText: "What's the new price?",
+                  firstFieldInputType: resolveInputType(),
                   validateFirstField: validateCurrentPrice,
+                  secondFieldLabel: "Days from Now",
+                  secondFieldHintText: "Must be a number; (0) for today",
+                  secondFieldInputType: resolveInputType(),
+                  validateSecondField: validateCurrentPrice,
                 ),
               ],
             ),
@@ -211,5 +226,30 @@ class ContentSliver extends StatelessWidget {
     } else if (double.tryParse(value)! < 0) {
       return 'A negative price is invalid';
     }
+  }
+
+  TextInputType resolveInputType() {
+    if (defaultTargetPlatform == TargetPlatform.iOS) {
+      return const TextInputType.numberWithOptions(decimal: true, signed: true);
+    } else {
+      return const TextInputType.numberWithOptions(decimal: true);
+    }
+  }
+}
+
+class SliverWhiteSpace extends StatelessWidget {
+  final double height;
+
+  const SliverWhiteSpace(this.height, {Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SliverList(
+      delegate: SliverChildListDelegate([
+        SizedBox(
+          height: height,
+        )
+      ]),
+    );
   }
 }

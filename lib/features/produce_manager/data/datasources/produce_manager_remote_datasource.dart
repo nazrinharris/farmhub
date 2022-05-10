@@ -1,7 +1,11 @@
+// ignore_for_file: avoid_print
+
 import 'package:clock/clock.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:farmhub/core/errors/exceptions.dart';
 import 'package:farmhub/features/produce_manager/domain/entities/price/price.dart';
-import 'package:clock/clock.dart';
+import 'package:farmhub/features/produce_manager/domain/helpers.dart';
+import 'package:intl/intl.dart';
 
 import '../../domain/entities/produce/produce.dart';
 
@@ -16,11 +20,14 @@ abstract class IProduceManagerRemoteDatasource {
     required String authorId,
   });
 
-  Future<List<Price>> getOneWeekPrices(String pid);
+  /// This method will return a list of [PriceSnippet] which is unsorted. Use
+  /// helper methods from [helpers.dart] to filter and sort it.
+  Future<List<PriceSnippet>> getAggregatePrices(String produceId);
 
   Future<Produce> addNewPrice({
     required String produceId,
     required num currentPrice,
+    num? daysFromNow,
   });
 
   Future<List<Produce>> searchProduce({required String query});
@@ -29,10 +36,14 @@ abstract class IProduceManagerRemoteDatasource {
     required List<Produce> lastProduceList,
     required String query,
   });
+
+  Future<List<Price>> getFirstTenPrices(String produceId);
+  Future<List<Price>> getNextTenPrices(List<Price> lastPricesList, String produceId);
+
+  Future<void>? debugMethod(String produceId);
 }
 
-class ProduceManagerRemoteDatasource
-    implements IProduceManagerRemoteDatasource {
+class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource {
   final FirebaseFirestore firebaseFirestore;
 
   ProduceManagerRemoteDatasource({
@@ -72,10 +83,9 @@ class ProduceManagerRemoteDatasource
       return Produce.fromMap(documentSnapshot.data());
     }).toList();
 
-    List<Produce> combinedProduceList = List.from(lastProduceList)
-      ..addAll(newProduceList);
+    List<Produce> combinedProduceList = List.from(lastProduceList)..addAll(newProduceList);
 
-    throw Exception();
+    return combinedProduceList;
   }
 
   @override
@@ -108,32 +118,38 @@ class ProduceManagerRemoteDatasource
         .limit(10)
         .get();
 
-    final List<Produce> newProduceList =
-        newQueryList.docs.map((documentSnapshot) {
+    final List<Produce> newProduceList = newQueryList.docs.map((documentSnapshot) {
       return Produce.fromMap(documentSnapshot.data());
     }).toList();
 
-    List<Produce> combinedProduceList = List.from(lastProduceList)
-      ..addAll(newProduceList);
+    List<Produce> combinedProduceList = List.from(lastProduceList)..addAll(newProduceList);
 
     return combinedProduceList;
   }
 
   @override
-  Future<List<Price>> getOneWeekPrices(String pid) async {
-    final documentsList = await firebaseFirestore
+  Future<List<PriceSnippet>> getAggregatePrices(String produceId) async {
+    final DateTime todayTimeStamp = clock.now();
+    final int currentYear = todayTimeStamp.year;
+
+    final Map<String, dynamic>? aggregatePricesMap = await firebaseFirestore
         .collection('produce')
-        .doc(pid)
+        .doc(produceId)
         .collection('prices')
-        .limit(7)
+        .doc('aggregate-prices-${currentYear.toString()}')
         .get()
-        .then((querySnapshot) => querySnapshot.docs);
+        .then((doc) => doc.data());
 
-    final priceList = documentsList.map((documentSnapshot) {
-      return Price.fromMap(documentSnapshot.data());
-    }).toList();
+    if (aggregatePricesMap == null) {
+      return [];
+    } else {
+      final List<PriceSnippet> pricesList = [];
+      aggregatePricesMap["prices-map"].forEach((date, price) {
+        pricesList.add(PriceSnippet(price: price, priceDate: date));
+      });
 
-    return priceList;
+      return pricesList;
+    }
   }
 
   @override
@@ -142,6 +158,13 @@ class ProduceManagerRemoteDatasource
     required num currentProducePrice,
     required String authorId,
   }) async {
+    // Basic setups
+    DateTime currentTimeStamp = clock.now();
+    String currentDate = DateFormat("dd-MM-yyyy").format(currentTimeStamp);
+    String currentYear = DateFormat("yyyy").format(currentTimeStamp);
+    Map<String, dynamic> weeklyPrices = {currentDate: currentProducePrice};
+    final formattedCurrentTimeStamp = DateFormat("yyyy-MM-dd hh:mm aaa").format(currentTimeStamp);
+
     // Create search parameters
     List<String> produceNameSearch = [];
     String temp = "";
@@ -161,49 +184,55 @@ class ProduceManagerRemoteDatasource
         temp = "";
       }
     }
-
     // Create produce and store in Firestore
-    final String resultingId =
-        await firebaseFirestore.collection('produce').add({
+    final String resultingId = await firebaseFirestore.collection('produce').add({
       "currentProducePrice": {
         "price": currentProducePrice,
-        "updateDate": clock.now().toString(),
+        "priceDate": currentDate,
       },
       "previousProducePrice": {
         "price": null,
-        "updateDate": null,
+        "priceDate": null,
       },
-      "produceId": "0000",
+      "produceId": "not-yet-updated",
       "produceName": produceName,
       "produceNameSearch": produceNameSearch,
-      "weeklyPrices": [currentProducePrice],
+      "weeklyPrices": weeklyPrices,
+      "lastUpdateTimeStamp": currentTimeStamp,
       "authorId": authorId,
     }).then((doc) async {
       doc.update({
         "produceId": doc.id,
       });
 
-      // Create Prices sub-collection
+      // Create Prices Sub-Collection and Price Document
+      await firebaseFirestore.collection('produce').doc(doc.id).collection('prices').add(
+        {
+          "currentPrice": currentProducePrice,
+          "priceDate": currentDate,
+          "allPrices": [currentProducePrice],
+          "isAverage": false,
+          "priceDateTimeStamp": currentTimeStamp,
+          "allPricesMap": {formattedCurrentTimeStamp: currentProducePrice}
+        },
+      ).then((doc) => doc.update({"priceId": doc.id}));
+
+      // Create Aggregate Prices
       await firebaseFirestore
           .collection('produce')
           .doc(doc.id)
           .collection('prices')
-          .add(
-        {
-          "currentPrice": currentProducePrice,
-          "editHistory": [
-            {
-              "price": currentProducePrice,
-              "editDate": clock.now(),
-            }
-          ],
-          "updateDate": clock.now(),
-        },
-      ).then((doc) => doc.update({"priceId": doc.id}));
+          .doc("aggregate-prices-$currentYear")
+          .set({
+        "prices-map": {
+          currentDate: currentProducePrice,
+        }
+      });
 
       return doc.id;
     });
 
+    // Create [Produce] to return to caller.
     final produce = Produce(
       produceId: resultingId,
       produceName: produceName,
@@ -215,8 +244,9 @@ class ProduceManagerRemoteDatasource
         "price": null,
         "updateDate": null,
       },
-      weeklyPrices: [],
+      weeklyPrices: weeklyPrices,
       authorId: authorId,
+      lastUpdateTimeStamp: currentTimeStamp,
     );
 
     return produce;
@@ -226,61 +256,339 @@ class ProduceManagerRemoteDatasource
   Future<Produce> addNewPrice({
     required String produceId,
     required num currentPrice,
+    num? daysFromNow,
   }) async {
-    final currentTimeStamp = clock.now();
+    DateTime currentTimeStamp;
+    if (daysFromNow == null) {
+      currentTimeStamp = clock.now();
+    } else {
+      currentTimeStamp = clock.daysAgo(daysFromNow.toInt());
+    }
 
+    final chosenDate = DateFormat("dd-MM-yyyy").format(currentTimeStamp);
+    final chosenYear = DateFormat("yyyy").format(currentTimeStamp);
+    final formattedCurrentTimeStamp = DateFormat("yyyy-MM-dd hh:mm aaa").format(currentTimeStamp);
+    num calculatedPrice;
+
+    //! Begin updating Price Document and Aggregate Prices
+    // Find out if price document of date [chosenDate] exists
+    // If it exists, there should one in the list, if not, it should be empty.
+    final chosenDatePriceDoc = await firebaseFirestore
+        .collection('produce')
+        .doc(produceId)
+        .collection('prices')
+        .where('priceDate', isEqualTo: chosenDate)
+        .get()
+        .then((querySnapshot) {
+      return querySnapshot.docs.map((doc) {
+        return doc.data();
+      }).toList();
+    });
+
+    if (chosenDatePriceDoc.isEmpty) {
+      // Begin process of creating a new Price Document
+      print("There is no Price Document for date $chosenDate");
+
+      // Update Price Document
+      await firebaseFirestore.collection('produce').doc(produceId).collection('prices').add(
+        {
+          "currentPrice": currentPrice,
+          "priceDate": chosenDate,
+          "allPrices": [currentPrice],
+          "priceDateTimeStamp": currentTimeStamp,
+          "isAverage": false,
+          "allPricesMap": {
+            formattedCurrentTimeStamp: currentPrice,
+          }
+        },
+      ).then((doc) => doc.update({"priceId": doc.id}));
+
+      // Update Aggregate Prices
+      await firebaseFirestore
+          .collection('produce')
+          .doc(produceId)
+          .collection('prices')
+          .doc('aggregate-prices-$chosenYear')
+          .update({"prices-map.$chosenDate": currentPrice});
+
+      // Set relevant variables
+      calculatedPrice = currentPrice;
+    } else if (chosenDatePriceDoc.length == 1) {
+      // Begin process of updating the existing Price Document
+      print("There already exists a Price Document for date $chosenDate");
+      String priceId = chosenDatePriceDoc[0]["priceId"];
+      List<num> newAllPrices = List.from(chosenDatePriceDoc[0]["allPrices"]);
+      newAllPrices.add(currentPrice);
+
+      // Calculate averaged price
+      num tempSum = 0;
+      num newCurrentPrice = 0;
+      for (num price in newAllPrices) {
+        tempSum = tempSum + price;
+      }
+      newCurrentPrice = tempSum / newAllPrices.length;
+      String currentTimeStampString = currentTimeStamp.toString();
+
+      // Update Price Document
+      await firebaseFirestore
+          .collection('produce')
+          .doc(produceId)
+          .collection('prices')
+          .doc(priceId)
+          .update({
+        "allPrices": newAllPrices,
+        "currentPrice": newCurrentPrice,
+        "isAverage": true,
+        "allPricesMap.$formattedCurrentTimeStamp": currentPrice,
+      });
+
+      // Update Aggregate Prices
+      await firebaseFirestore
+          .collection('produce')
+          .doc(produceId)
+          .collection('prices')
+          .doc('aggregate-prices-$chosenYear')
+          .update({"prices-map.$chosenDate": newCurrentPrice});
+
+      // Set relevant variables
+      calculatedPrice = newCurrentPrice;
+    } else {
+      // If there are multiple documents, an error is thrown. There should never be multiple.
+      throw ProduceManagerException(
+        //TODO: Provide Proper Code
+        code: "ERR",
+        message:
+            "Unexpected structure: There should be only one or no document inside [chosenDatePriceDoc]",
+        stackTrace: StackTrace.current,
+      );
+    }
+
+    //! Begin Updating Produce Document
+    // From here, we will be updating [currentProducePrice], [previousProducePrice], and [weeklyPrices]
     // Get most recent [currentProducePrice] and [weeklyPrice]
     final Map<String, dynamic> staleProduce =
         await firebaseFirestore.collection('produce').doc(produceId).get().then(
               (doc) => doc.data()!,
             );
-    final Map<String, dynamic> staleCurrentProducePrice =
-        staleProduce["currentProducePrice"];
-    final List<dynamic> weeklyPrices = staleProduce["weeklyPrices"];
+    final Map<String, dynamic> weeklyPrices = staleProduce["weeklyPrices"];
 
-    // Update Prices Collection
-    await firebaseFirestore
+    //! Start updating [weeklyPrices]
+    final List<PriceSnippet> weeklyPricesSnippet = [];
+    // Convert the map to list
+    weeklyPrices.forEach((d, p) => weeklyPricesSnippet.add(PriceSnippet(price: p, priceDate: d)));
+    // Check if price for the same date exists. If so remove.
+    final PriceSnippet newSnippet = PriceSnippet(price: calculatedPrice, priceDate: chosenDate);
+    bool isThereAnEqualDate = false;
+    int index = 0;
+    for (PriceSnippet snippet in weeklyPricesSnippet) {
+      if (snippet.priceDate == newSnippet.priceDate) {
+        isThereAnEqualDate = true;
+        break;
+      }
+      index++;
+    }
+    if (isThereAnEqualDate) weeklyPricesSnippet.removeAt(index);
+    weeklyPricesSnippet.add(newSnippet);
+
+    print("Unsorted weeklyPricesSnippet");
+    weeklyPricesSnippet.forEach((element) {
+      print(element);
+    });
+
+    weeklyPricesSnippet.sort((a, b) {
+      DateTime aPriceDate = DateFormat("dd-MM-yyyy").parse(a.priceDate);
+      DateTime bPriceDate = DateFormat("dd-MM-yyyy").parse(b.priceDate);
+
+      return aPriceDate.compareTo(bPriceDate);
+    });
+
+    print("Sorted weeklyPricesSnippet");
+    weeklyPricesSnippet.forEach((element) {
+      print(element);
+    });
+
+    // At this point, weeklyPricesSnippet[0] should represent the lower bound and the
+    // last entry of weeklyPricesSnippet should represent the upper bounr.
+    final int lastIndex = weeklyPricesSnippet.length - 1;
+    DateTime lowerDate = DateFormat("dd-MM-yyyy").parse(weeklyPricesSnippet[0].priceDate);
+    DateTime upperDate = DateFormat("dd-MM-yyyy").parse(weeklyPricesSnippet[lastIndex].priceDate);
+
+    Duration diff = upperDate.difference(lowerDate);
+    bool isOverAWeek = diff.inDays > 7;
+
+    print("From $lowerDate to $upperDate");
+    print("The difference of which is: ${diff.inDays}, that means isOverAWeek = $isOverAWeek");
+
+    // At this point, we know that [weeklyPricesSnippet] date range between upper and lower is over a week.
+    // And as such, we need to remove the price(s) documents of all those more than a week old.
+    if (isOverAWeek == true) {
+      assert(weeklyPricesSnippet.length <= 9,
+          "There should at max, be 9 prices within [weeklyPricesSnippet] but there are ${weeklyPricesSnippet.length}");
+      weeklyPricesSnippet.removeWhere((priceSnippet) {
+        DateTime snippetDate = DateFormat("dd-MM-yyyy").parse(priceSnippet.priceDate);
+        Duration diff = upperDate.difference(snippetDate);
+
+        if (diff.inDays > 7) {
+          return true;
+        } else {
+          return false;
+        }
+      });
+    }
+
+    // At this point, [weeklyPricesSnippet] should have been fully updated. Convert it to map and update
+    Map<String, dynamic> weeklyPricesSnippetJSON = {};
+    for (PriceSnippet priceSnippet in weeklyPricesSnippet) {
+      weeklyPricesSnippetJSON[priceSnippet.priceDate] = priceSnippet.price;
+    }
+    print(weeklyPricesSnippetJSON);
+
+    await firebaseFirestore.collection('produce').doc(produceId).update({
+      "weeklyPrices": weeklyPricesSnippetJSON,
+    });
+
+    // There can be a case where [currentProducePrice] is being updated while [previousProducePrice] has
+    // not yet existed.
+    Map<String, dynamic> previousProducePrice = {};
+    Map<String, dynamic> currentProducePrice = {};
+    if (weeklyPricesSnippet.length == 1) {
+      currentProducePrice = {
+        "price": weeklyPricesSnippet[weeklyPricesSnippet.length - 1].price,
+        "priceDate": weeklyPricesSnippet[weeklyPricesSnippet.length - 1].priceDate,
+      };
+      previousProducePrice = {
+        "price": null,
+        "priceDate": null,
+      };
+    } else {
+      currentProducePrice = {
+        "price": weeklyPricesSnippet[weeklyPricesSnippet.length - 1].price,
+        "priceDate": weeklyPricesSnippet[weeklyPricesSnippet.length - 1].priceDate,
+      };
+      previousProducePrice = {
+        "price": weeklyPricesSnippet[weeklyPricesSnippet.length - 2].price,
+        "priceDate": weeklyPricesSnippet[weeklyPricesSnippet.length - 2].priceDate,
+      };
+    }
+
+    //! Start updating [currentProducePrice] and [previousProducePrice] based on [weeklyPrices]
+    await firebaseFirestore.collection('produce').doc(produceId).update({
+      "currentProducePrice": currentProducePrice,
+      "previousProducePrice": previousProducePrice,
+      "lastUpdateTimeStamp": currentTimeStamp,
+    });
+
+    // Retrieve updated produce
+    final produce = await firebaseFirestore.collection('produce').doc(produceId).get().then(
+          (snapshot) => Produce.fromMap(snapshot.data()),
+        );
+
+    return produce;
+  }
+
+  @override
+  Future<void>? debugMethod(String produceId) async {
+    num calculatedPrice = 18;
+    String chosenDate = "02-05-2022";
+    DateTime currentDate = clock.now();
+
+    final Map<String, dynamic> produce =
+        await firebaseFirestore.collection('produce').doc(produceId).get().then(
+              (doc) => doc.data()!,
+            );
+    final Map<String, dynamic> weeklyPrices = produce["weeklyPrices"];
+    final List<PriceSnippet> weeklyPricesSnippet = [];
+    weeklyPrices.forEach((d, p) => weeklyPricesSnippet.add(PriceSnippet(price: p, priceDate: d)));
+    weeklyPricesSnippet.add(PriceSnippet(price: calculatedPrice, priceDate: chosenDate));
+
+    print("Unsorted weeklyPricesSnippet");
+    weeklyPricesSnippet.forEach((element) {
+      print(element);
+    });
+
+    weeklyPricesSnippet.sort((a, b) {
+      DateTime aPriceDate = DateFormat("dd-MM-yyyy").parse(a.priceDate);
+      DateTime bPriceDate = DateFormat("dd-MM-yyyy").parse(b.priceDate);
+
+      return aPriceDate.compareTo(bPriceDate);
+    });
+
+    print("Sorted weeklyPricesSnippet");
+    weeklyPricesSnippet.forEach((element) {
+      print(element);
+    });
+
+    // At this point, weeklyPricesSnippet[0] should represent the lower bound and the
+    // last entry of weeklyPricesSnippet should represent the upper bounr.
+    final int lastIndex = weeklyPricesSnippet.length - 1;
+    DateTime lowerDate = DateFormat("dd-MM-yyyy").parse(weeklyPricesSnippet[0].priceDate);
+    DateTime upperDate = DateFormat("dd-MM-yyyy").parse(weeklyPricesSnippet[lastIndex].priceDate);
+
+    Duration diff = upperDate.difference(lowerDate);
+    bool isOverAWeek = diff.inDays > 7;
+
+    print("From $lowerDate to $upperDate");
+    print("The difference of which is: ${diff.inDays}, that means isOverAWeek = $isOverAWeek");
+
+    if (isOverAWeek == true) {
+      assert(diff.inDays > 8,
+          "There should at max, be 8 prices within [weeklyPricesSnippet] but there are ${diff.inDays}");
+      weeklyPricesSnippet.removeAt(0);
+    }
+
+    // At this point, [weeklyPricesSnippet] should have been fully updated. Convert it to map and update
+    Map<String, dynamic> weeklyPricesSnippetMap = {};
+    for (PriceSnippet priceSnippet in weeklyPricesSnippet) {
+      weeklyPricesSnippetMap[priceSnippet.priceDate] = priceSnippet.price;
+    }
+    print(weeklyPricesSnippetMap);
+
+    await firebaseFirestore.collection('produce').doc(produceId).update({
+      "weeklyPrices": weeklyPricesSnippetMap,
+    });
+  }
+
+  @override
+  Future<List<Price>> getFirstTenPrices(String produceId) async {
+    final queryList = await firebaseFirestore
         .collection('produce')
         .doc(produceId)
         .collection('prices')
-        .add(
-      {
-        "currentPrice": currentPrice,
-        "editHistory": [
-          {
-            "price": currentPrice,
-            "editDate": currentTimeStamp,
-          }
-        ],
-        "updateDate": currentTimeStamp,
-      },
-    ).then((doc) => doc.update({"priceId": doc.id}));
+        .orderBy("priceDateTimeStamp", descending: true)
+        .limit(10)
+        .get();
 
-    // Locally process and update [weeklyPrices]
-    weeklyPrices.insert(0, currentPrice);
-    // Remove last price if list is too long.
-    if (weeklyPrices.length > 7) {
-      weeklyPrices.removeLast();
-    }
+    final priceList = queryList.docs.map((documentSnapshot) {
+      return Price.fromMap(documentSnapshot.data());
+    }).toList();
 
-    // Update [currentProducePrice], [previousProducePrice] and [weeklyPrices]
-    await firebaseFirestore.collection('produce').doc(produceId).update(
-      {
-        "currentProducePrice": {
-          "price": currentPrice,
-          "updateDate": currentTimeStamp,
-        },
-        "previousProducePrice": staleCurrentProducePrice,
-        "weeklyPrices": weeklyPrices,
-      },
-    );
+    return priceList;
+  }
 
-    // Retrieve updated produce
-    final produce =
-        await firebaseFirestore.collection('produce').doc(produceId).get().then(
-              (snapshot) => Produce.fromMap(snapshot.data()),
-            );
+  @override
+  Future<List<Price>> getNextTenPrices(List<Price> lastPricesList, String produceId) async {
+    final lastDocument = await firebaseFirestore
+        .collection('produce')
+        .doc(produceId)
+        .collection('prices')
+        .doc(lastPricesList[lastPricesList.length - 1].priceId)
+        .get();
 
-    return produce;
+    final newQueryList = await firebaseFirestore
+        .collection('produce')
+        .doc(produceId)
+        .collection('prices')
+        .orderBy("priceDateTimeStamp", descending: true)
+        .startAfterDocument(lastDocument)
+        .limit(10)
+        .get();
+
+    final List<Price> newPricesList = newQueryList.docs.map((documentSnapshot) {
+      return Price.fromMap(documentSnapshot.data());
+    }).toList();
+
+    List<Price> combinedPricesList = List.from(lastPricesList)..addAll(newPricesList);
+
+    return combinedPricesList;
   }
 }

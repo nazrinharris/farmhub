@@ -136,14 +136,15 @@ class DebugRedBox extends StatelessWidget {
 
 class UIBorder extends StatelessWidget {
   final EdgeInsetsGeometry? margin;
+  final double? opacity;
 
-  const UIBorder({Key? key, this.margin}) : super(key: key);
+  const UIBorder({Key? key, this.margin, this.opacity}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: margin,
-      color: Theme.of(context).colorScheme.primary.withOpacity(0.24),
+      color: Theme.of(context).colorScheme.primary.withOpacity(opacity ?? 0.24),
       height: 1,
     );
   }

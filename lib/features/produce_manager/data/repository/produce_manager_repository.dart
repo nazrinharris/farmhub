@@ -171,34 +171,17 @@ class ProduceManagerRepository implements IProduceManagerRepository {
   }
 
   @override
-  FutureEither<List<Price>> getOneWeekPrices(String pid) async {
-    if (await networkInfo.isConnected) {
-      try {
-        final result = await remoteDatasource.getOneWeekPrices(pid);
-
-        return Right(result);
-      } catch (e) {
-        return Left(UnexpectedFailure(
-          code: e.toString(),
-          stackTrace: StackTrace.current,
-        ));
-      }
-    } else {
-      return Left(InternetConnectionFailure(
-        code: ERROR_NO_INTERNET_CONNECTION,
-        message: MESSAGE_NO_INTERNET_CONNECTION,
-        stackTrace: StackTrace.current,
-      ));
-    }
-  }
-
-  @override
-  FutureEither<Produce> addNewPrice({required String produceId, required num currentPrice}) async {
+  FutureEither<Produce> addNewPrice({
+    required String produceId,
+    required num currentPrice,
+    num? daysFromNow,
+  }) async {
     if (await networkInfo.isConnected) {
       try {
         final result = await remoteDatasource.addNewPrice(
           produceId: produceId,
           currentPrice: currentPrice,
+          daysFromNow: daysFromNow,
         );
 
         return Right(result);
@@ -246,6 +229,70 @@ class ProduceManagerRepository implements IProduceManagerRepository {
           lastProduceList: lastProduceList,
           query: query,
         );
+        return Right(result);
+      } catch (e) {
+        return Left(UnexpectedFailure(code: e.toString(), stackTrace: StackTrace.current));
+      }
+    } else {
+      return Left(InternetConnectionFailure(
+        code: ERROR_NO_INTERNET_CONNECTION,
+        message: MESSAGE_NO_INTERNET_CONNECTION,
+        stackTrace: StackTrace.current,
+      ));
+    }
+  }
+
+  @override
+  FutureEither<void>? debugMethod(String produceId) async {
+    final result = await remoteDatasource.debugMethod(produceId);
+
+    return Right(result);
+  }
+
+  @override
+  FutureEither<List<PriceSnippet>> getAggregatePrices(String produceId) async {
+    if (await networkInfo.isConnected) {
+      try {
+        final result = await remoteDatasource.getAggregatePrices(produceId);
+
+        return Right(result);
+      } catch (e) {
+        return Left(UnexpectedFailure(code: e.toString(), stackTrace: StackTrace.current));
+      }
+    } else {
+      return Left(InternetConnectionFailure(
+        code: ERROR_NO_INTERNET_CONNECTION,
+        message: MESSAGE_NO_INTERNET_CONNECTION,
+        stackTrace: StackTrace.current,
+      ));
+    }
+  }
+
+  @override
+  FutureEither<List<Price>> getFirstTenPrices(String produceId) async {
+    if (await networkInfo.isConnected) {
+      try {
+        final result = await remoteDatasource.getFirstTenPrices(produceId);
+
+        return Right(result);
+      } catch (e) {
+        return Left(UnexpectedFailure(code: e.toString(), stackTrace: StackTrace.current));
+      }
+    } else {
+      return Left(InternetConnectionFailure(
+        code: ERROR_NO_INTERNET_CONNECTION,
+        message: MESSAGE_NO_INTERNET_CONNECTION,
+        stackTrace: StackTrace.current,
+      ));
+    }
+  }
+
+  @override
+  FutureEither<List<Price>> getNextTenPrices(List<Price> lastPriceList, String produceId) async {
+    if (await networkInfo.isConnected) {
+      try {
+        final result = await remoteDatasource.getNextTenPrices(lastPriceList, produceId);
+
         return Right(result);
       } catch (e) {
         return Left(UnexpectedFailure(code: e.toString(), stackTrace: StackTrace.current));
