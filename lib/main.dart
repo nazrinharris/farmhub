@@ -28,6 +28,8 @@ Future<void> main() async {
       systemNavigationBarColor: Colors.transparent,
     ),
   );
+
+  // This comment is just for creating the PR
 }
 
 class FarmhubApp extends StatelessWidget {
