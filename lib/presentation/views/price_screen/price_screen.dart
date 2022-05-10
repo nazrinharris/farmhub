@@ -3,6 +3,7 @@ import 'package:farmhub/presentation/shared_widgets/appbars.dart';
 import 'package:farmhub/presentation/shared_widgets/ui_helpers.dart';
 import 'package:farmhub/presentation/smart_widgets/produce_list_card.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import '../../../features/produce_manager/domain/entities/price/price.dart';
 
@@ -124,14 +125,37 @@ class AllPricesList extends StatelessWidget {
   }
 }
 
-class AllPriceListCard extends StatelessWidget {
+class AllPriceListCard extends StatefulWidget {
   final Price price;
   final int index;
 
   const AllPriceListCard(this.index, this.price, {Key? key}) : super(key: key);
 
   @override
+  State<AllPriceListCard> createState() => _AllPriceListCardState();
+}
+
+class _AllPriceListCardState extends State<AllPriceListCard> {
+  @override
+  void initState() {
+    super.initState();
+
+    widget.price.allPricesWithDateList.sort((a, b) {
+      DateTime aPriceDate = DateFormat("yyyy-MM-dd hh:mm aaa").parse(a.priceDate);
+      DateTime bPriceDate = DateFormat("yyyy-MM-dd hh:mm aaa").parse(b.priceDate);
+
+      return bPriceDate.compareTo(aPriceDate);
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final dateTimeStamp = DateFormat("yyyy-MM-dd hh:mm aaa").parse(
+      widget.price.allPricesWithDateList[widget.index].priceDate,
+    );
+    final date = DateFormat("dd/MM/yyyy").format(dateTimeStamp);
+    final time = DateFormat("hh:mm aaa").format(dateTimeStamp);
+
     return Material(
       type: MaterialType.transparency,
       child: InkWell(
@@ -142,7 +166,7 @@ class AllPriceListCard extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 24),
           decoration: BoxDecoration(
             border: Border(
-              top: _resolveTop(context, index),
+              top: _resolveTop(context, widget.index),
               bottom: BorderSide(color: Theme.of(context).colorScheme.primary.withOpacity(0.24)),
             ),
           ),
@@ -155,9 +179,11 @@ class AllPriceListCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      price.allPricesWithDateList[index].priceDate.replaceAll(RegExp("-"), "/"),
-                      maxLines: 3,
-                      overflow: TextOverflow.fade,
+                      date,
+                      style: Theme.of(context).textTheme.caption,
+                    ),
+                    Text(
+                      time,
                       style: Theme.of(context).textTheme.bodyText1!.copyWith(fontSize: 17),
                     ),
                   ],
@@ -168,7 +194,8 @@ class AllPriceListCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    Text("RM ${price.allPricesWithDateList[index].price.toString()}/kg"),
+                    Text(
+                        "RM ${widget.price.allPricesWithDateList[widget.index].price.toString()}/kg"),
                   ],
                 ),
               )
