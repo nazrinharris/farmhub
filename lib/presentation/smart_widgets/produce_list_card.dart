@@ -28,7 +28,7 @@ class ProduceListCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     num currentProducePrice = produce.currentProducePrice["price"];
-    currentProducePrice = roundDouble(currentProducePrice.toDouble(), 2);
+    currentProducePrice = roundNum(currentProducePrice.toDouble(), 2);
 
     return Material(
       type: MaterialType.transparency,
@@ -212,7 +212,7 @@ class ChangeBox extends StatelessWidget {
       final num previousPrice = produce.previousProducePrice["price"];
       final num change = currentPrice - previousPrice;
 
-      return roundDouble(change.toDouble(), 2);
+      return roundNum(change.toDouble(), 2);
     }
   }
 

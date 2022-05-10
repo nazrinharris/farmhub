@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:farmhub/core/util/misc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../../core/errors/exceptions.dart';
@@ -31,11 +32,11 @@ class Price with _$Price {
     DateTime priceDateTimeStamp = (map["priceDateTimeStamp"] as Timestamp).toDate();
 
     map["allPricesMap"].forEach((date, price) {
-      allPricesWithDateList.add(PriceSnippet(price: price, priceDate: date));
+      allPricesWithDateList.add(PriceSnippet(price: roundNum(price, 2), priceDate: date));
     });
 
     return Price(
-      currentPrice: map["currentPrice"],
+      currentPrice: roundNum(map["currentPrice"], 2),
       priceDate: map["priceDate"],
       allPrices: List<num>.from(map["allPrices"]),
       priceDateTimeStamp: priceDateTimeStamp,

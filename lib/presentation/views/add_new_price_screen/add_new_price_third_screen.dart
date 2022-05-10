@@ -30,14 +30,14 @@ class AddNewPriceThirdScreen extends StatelessWidget {
         child: Builder(
           builder: (context) {
             num currentProducePrice = arguments.produce.currentProducePrice["price"];
-            currentProducePrice = roundDouble(currentProducePrice.toDouble(), 2);
+            currentProducePrice = roundNum(currentProducePrice.toDouble(), 2);
 
             dynamic previousProducePrice;
             if (arguments.produce.previousProducePrice["price"] == null) {
               previousProducePrice = "-.--";
             } else {
               previousProducePrice = arguments.produce.previousProducePrice["price"] as num;
-              previousProducePrice = roundDouble(previousProducePrice.toDouble(), 2);
+              previousProducePrice = roundNum(previousProducePrice.toDouble(), 2);
             }
 
             return Scaffold(

@@ -127,7 +127,7 @@ class _SliverProduceHeaderState extends State<SliverProduceHeader> {
   @override
   Widget build(BuildContext context) {
     num currentProducePrice = widget.produce.currentProducePrice["price"];
-    currentProducePrice = roundDouble(currentProducePrice.toDouble(), 2);
+    currentProducePrice = roundNum(currentProducePrice.toDouble(), 2);
 
     return SliverList(
         delegate: SliverChildListDelegate([

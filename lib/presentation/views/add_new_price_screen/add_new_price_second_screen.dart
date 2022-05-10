@@ -141,14 +141,14 @@ class HeaderSliver extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     num currentProducePrice = produce.currentProducePrice["price"];
-    currentProducePrice = roundDouble(currentProducePrice.toDouble(), 2);
+    currentProducePrice = roundNum(currentProducePrice.toDouble(), 2);
 
     dynamic previousProducePrice;
     if (produce.previousProducePrice["price"] == null) {
       previousProducePrice = "-.--";
     } else {
       previousProducePrice = produce.previousProducePrice["price"] as num;
-      previousProducePrice = roundDouble(previousProducePrice.toDouble(), 2);
+      previousProducePrice = roundNum(previousProducePrice.toDouble(), 2);
     }
 
     return SliverList(
