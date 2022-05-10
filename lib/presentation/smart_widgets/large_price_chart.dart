@@ -150,10 +150,28 @@ class LargePriceChart extends StatelessWidget {
   }
 }
 
-class LargeOneWeekChart extends StatelessWidget {
+class LargeOneWeekChart extends StatefulWidget {
   final Produce produce;
 
   const LargeOneWeekChart(this.produce, {Key? key}) : super(key: key);
+
+  @override
+  State<LargeOneWeekChart> createState() => _LargeOneWeekChartState();
+}
+
+class _LargeOneWeekChartState extends State<LargeOneWeekChart> {
+  late TooltipBehavior tooltipBehavior;
+
+  @override
+  void initState() {
+    super.initState();
+
+    tooltipBehavior = TooltipBehavior(
+      enable: true,
+      header: widget.produce.produceName,
+      format: "point.x - RM point.y/kg",
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -161,10 +179,10 @@ class LargeOneWeekChart extends StatelessWidget {
     late LinearGradient gradient;
     late Color borderColor;
 
-    if (produce.weeklyPrices.length < 2) {
+    if (widget.produce.weeklyPrices.length < 2) {
       isNegative = false;
     } else {
-      isNegative = resolveIsNegative(produce);
+      isNegative = resolveIsNegative(widget.produce);
     }
 
     if (isNegative) {
@@ -190,7 +208,7 @@ class LargeOneWeekChart extends StatelessWidget {
     }
 
     // Begin process of transtaling weeklyPricesMap
-    final Map<String, dynamic> weeklyPricesMap = produce.weeklyPrices;
+    final Map<String, dynamic> weeklyPricesMap = widget.produce.weeklyPrices;
     final List<PriceSnippet> pricesList = [];
 
     weeklyPricesMap.forEach((priceDate, price) {
@@ -205,12 +223,13 @@ class LargeOneWeekChart extends StatelessWidget {
     });
 
     final month = DateFormat('LLLL')
-        .format(DateFormat("dd-MM-yyyy").parse(produce.currentProducePrice["priceDate"]));
+        .format(DateFormat("dd-MM-yyyy").parse(widget.produce.currentProducePrice["priceDate"]));
 
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 12),
       height: 250,
       child: SfCartesianChart(
+        tooltipBehavior: tooltipBehavior,
         primaryXAxis: CategoryAxis(
           labelPlacement: LabelPlacement.onTicks,
         ),
@@ -218,6 +237,7 @@ class LargeOneWeekChart extends StatelessWidget {
         plotAreaBorderColor: Colors.transparent,
         series: <CartesianSeries>[
           SplineAreaSeries<PriceSnippet, String>(
+            enableTooltip: true,
             key: ValueKey("large-one-week-chart"),
             dataSource: pricesList,
             xValueMapper: (priceSnippet, index) {

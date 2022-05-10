@@ -211,6 +211,7 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
           "priceDate": currentDate,
           "allPrices": [currentProducePrice],
           "isAverage": false,
+          "priceDateTimeStamp": currentTimeStamp,
         },
       ).then((doc) => doc.update({"priceId": doc.id}));
 

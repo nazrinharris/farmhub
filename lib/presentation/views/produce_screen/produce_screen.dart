@@ -330,17 +330,33 @@ class _SliverPricesListSwitcherState extends State<SliverPricesListSwitcher> {
     } else if (currentState is PPSFirstTenPricesLoading) {
       return const SliverLoadingIndicator();
     } else if (currentState is PPSNextTenPricesLoading) {
-      return SliverPricesList(currentState.pricesList, isError: false, isLoading: true);
+      return SliverPricesList(
+        currentState.pricesList,
+        isError: false,
+        isLoading: true,
+        produce: widget.produce,
+      );
     } else if (currentState is PPSFirstTenPricesCompleted) {
-      return SliverPricesList(currentState.pricesList, isError: false, isLoading: false);
+      return SliverPricesList(
+        currentState.pricesList,
+        isError: false,
+        isLoading: false,
+        produce: widget.produce,
+      );
     } else if (currentState is PPSNextTenPricesCompleted) {
-      return SliverPricesList(currentState.pricesList, isLoading: false, isError: false);
+      return SliverPricesList(
+        currentState.pricesList,
+        isLoading: false,
+        isError: false,
+        produce: widget.produce,
+      );
     } else if (currentState is PPSPricesError) {
       return SliverPricesList(
         currentState.pricesList,
         isLoading: false,
         isError: true,
         failure: currentState.failure,
+        produce: widget.produce,
       );
     } else {
       throw UnexpectedException(
@@ -356,6 +372,7 @@ class SliverPricesList extends StatelessWidget {
   final List<Price> pricesList;
   final bool isLoading;
   final bool isError;
+  final Produce produce;
   Failure? failure;
 
   SliverPricesList(
@@ -363,6 +380,7 @@ class SliverPricesList extends StatelessWidget {
     Key? key,
     required this.isLoading,
     required this.isError,
+    required this.produce,
     this.failure,
   }) : super(key: key);
 
@@ -373,7 +391,7 @@ class SliverPricesList extends StatelessWidget {
         if (index == pricesList.length) {
           return resolveBottomCard(context, isLoading, isError);
         } else {
-          return PriceListCard(index, pricesList[index]);
+          return PriceListCard(index, pricesList[index], produce);
         }
       }, childCount: pricesList.length + 1),
     );
@@ -420,18 +438,22 @@ class SliverPricesList extends StatelessWidget {
 class PriceListCard extends StatelessWidget {
   final Price price;
   final int index;
+  final Produce produce;
 
-  const PriceListCard(this.index, this.price, {Key? key}) : super(key: key);
+  const PriceListCard(this.index, this.price, this.produce, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Material(
       type: MaterialType.transparency,
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          Navigator.of(context)
+              .pushNamed('/price', arguments: PriceScreenArguments(produce, price));
+        },
         child: Container(
           margin: const EdgeInsets.symmetric(horizontal: 24),
-          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 13),
+          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 24),
           decoration: BoxDecoration(
             border: Border(
               top: _resolveTop(context, index),
@@ -447,7 +469,7 @@ class PriceListCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      price.priceDate,
+                      price.priceDate.replaceAll(RegExp("-"), "/"),
                       maxLines: 3,
                       overflow: TextOverflow.fade,
                       style: Theme.of(context).textTheme.bodyText1!.copyWith(fontSize: 17),
@@ -462,7 +484,6 @@ class PriceListCard extends StatelessWidget {
                   children: [
                     Text(
                       "RM ${price.currentPrice.toString()}/kg",
-                      style: Theme.of(context).textTheme.bodyText1,
                     ),
                   ],
                 ),

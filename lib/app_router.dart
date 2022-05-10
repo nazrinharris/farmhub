@@ -1,3 +1,4 @@
+import 'package:farmhub/features/produce_manager/domain/entities/price/price.dart';
 import 'package:farmhub/presentation/views/add_new_price_screen/add_new_price_screen.dart';
 import 'package:farmhub/presentation/views/add_new_price_screen/add_new_price_search_screen.dart';
 import 'package:farmhub/presentation/views/add_new_price_screen/add_new_price_second_screen.dart';
@@ -8,6 +9,7 @@ import 'package:farmhub/presentation/views/debug/playground_screen.dart';
 import 'package:farmhub/presentation/views/debug/playground_two_screen.dart';
 import 'package:farmhub/presentation/views/login_screen/login_screen.dart';
 import 'package:farmhub/presentation/views/main_screen/main_screen.dart';
+import 'package:farmhub/presentation/views/price_screen/price_screen.dart';
 import 'package:farmhub/presentation/views/produce_screen/produce_screen.dart';
 import 'package:farmhub/presentation/views/register_screen/register_screen.dart';
 import 'package:farmhub/presentation/views/search_screen/search_screen.dart';
@@ -21,6 +23,13 @@ class ProduceArguments {
   final bool? isFromSearch;
 
   ProduceArguments(this.produce, {this.isFromSearch});
+}
+
+class PriceScreenArguments {
+  final Produce produce;
+  final Price price;
+
+  PriceScreenArguments(this.produce, this.price);
 }
 
 class SearchScreenArguments {
@@ -54,6 +63,9 @@ class AppRouter {
       case '/produce':
         return CupertinoPageRoute(
             builder: (_) => ProduceScreen(routeSettings.arguments as ProduceArguments));
+      case '/price':
+        return CupertinoPageRoute(
+            builder: (_) => PriceScreen(routeSettings.arguments as PriceScreenArguments));
       case '/add_new_price':
         return PageRouteBuilder(
           transitionDuration: const Duration(milliseconds: 600),
