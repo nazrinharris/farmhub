@@ -88,7 +88,7 @@ class PlaygroundTwoScreen extends StatelessWidget {
                       onPressed: () {
                         context.read<PlaygroundCubit>().createMorePrices(
                               pricesAmount: 70,
-                              produceId: "U533YsFF8tkKZNImjrbm",
+                              produceId: "WBOIwlizkFZkaokHv7OK",
                             );
                       },
                     ),
@@ -101,7 +101,20 @@ class PlaygroundTwoScreen extends StatelessWidget {
                       onPressed: () {
                         context
                             .read<PlaygroundCubit>()
-                            .retrieveProduce(produceId: "U533YsFF8tkKZNImjrbm");
+                            .retrieveProduce(produceId: "WBOIwlizkFZkaokHv7OK");
+                      },
+                    ),
+                  ),
+                  UIVerticalSpace14(),
+                  Center(
+                    child: PrimaryButton(
+                      width: 200,
+                      content: "Get Price",
+                      onPressed: () {
+                        context.read<PlaygroundCubit>().getPrice(
+                              produceId: "WBOIwlizkFZkaokHv7OK",
+                              priceId: "VnvECcHslrAsOEiWnGwc",
+                            );
                       },
                     ),
                   ),

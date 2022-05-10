@@ -143,4 +143,24 @@ class PlaygroundCubit extends Cubit<PlaygroundState> {
 
     print(produce);
   }
+
+  void getPrice({
+    required String produceId,
+    required String priceId,
+  }) async {
+    print("Get Price Started");
+    emit(const PlaygroundState.loading());
+
+    final priceDoc = await firebaseFirestore
+        .collection('produce')
+        .doc(produceId)
+        .collection('prices')
+        .doc(priceId)
+        .get()
+        .then((doc) => doc.data());
+
+    final Price price = Price.fromMap(priceDoc);
+
+    print(price);
+  }
 }

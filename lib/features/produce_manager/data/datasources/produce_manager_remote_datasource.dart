@@ -163,6 +163,7 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
     String currentDate = DateFormat("dd-MM-yyyy").format(currentTimeStamp);
     String currentYear = DateFormat("yyyy").format(currentTimeStamp);
     Map<String, dynamic> weeklyPrices = {currentDate: currentProducePrice};
+    final formattedCurrentTimeStamp = DateFormat("yyyy-MM-dd hh:mm aaa").format(currentTimeStamp);
 
     // Create search parameters
     List<String> produceNameSearch = [];
@@ -212,6 +213,7 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
           "allPrices": [currentProducePrice],
           "isAverage": false,
           "priceDateTimeStamp": currentTimeStamp,
+          "allPricesMap": {formattedCurrentTimeStamp: currentProducePrice}
         },
       ).then((doc) => doc.update({"priceId": doc.id}));
 
@@ -265,6 +267,7 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
 
     final chosenDate = DateFormat("dd-MM-yyyy").format(currentTimeStamp);
     final chosenYear = DateFormat("yyyy").format(currentTimeStamp);
+    final formattedCurrentTimeStamp = DateFormat("yyyy-MM-dd hh:mm aaa").format(currentTimeStamp);
     num calculatedPrice;
 
     //! Begin updating Price Document and Aggregate Prices
@@ -294,6 +297,9 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
           "allPrices": [currentPrice],
           "priceDateTimeStamp": currentTimeStamp,
           "isAverage": false,
+          "allPricesMap": {
+            formattedCurrentTimeStamp: currentPrice,
+          }
         },
       ).then((doc) => doc.update({"priceId": doc.id}));
 
@@ -321,6 +327,7 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
         tempSum = tempSum + price;
       }
       newCurrentPrice = tempSum / newAllPrices.length;
+      String currentTimeStampString = currentTimeStamp.toString();
 
       // Update Price Document
       await firebaseFirestore
@@ -332,6 +339,7 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
         "allPrices": newAllPrices,
         "currentPrice": newCurrentPrice,
         "isAverage": true,
+        "allPricesMap.$formattedCurrentTimeStamp": currentPrice,
       });
 
       // Update Aggregate Prices

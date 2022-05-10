@@ -4,7 +4,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import '../../../../../core/errors/exceptions.dart';
 
 part 'price.freezed.dart';
-part 'price.g.dart';
 
 @freezed
 class Price with _$Price {
@@ -15,9 +14,8 @@ class Price with _$Price {
     required DateTime priceDateTimeStamp,
     required bool isAverage,
     required String priceId,
+    required List<PriceSnippet> allPricesWithDateList,
   }) = _Price;
-
-  factory Price.fromJson(Map<String, dynamic> json) => _$PriceFromJson(json);
 
   static Price fromMap(Map<String, dynamic>? map) {
     if (map == null) {
@@ -28,7 +26,13 @@ class Price with _$Price {
       );
     }
 
+    List<PriceSnippet> allPricesWithDateList = [];
+
     DateTime priceDateTimeStamp = (map["priceDateTimeStamp"] as Timestamp).toDate();
+
+    map["allPricesMap"].forEach((date, price) {
+      allPricesWithDateList.add(PriceSnippet(price: price, priceDate: date));
+    });
 
     return Price(
       currentPrice: map["currentPrice"],
@@ -37,6 +41,7 @@ class Price with _$Price {
       priceDateTimeStamp: priceDateTimeStamp,
       isAverage: map["isAverage"],
       priceId: map["priceId"],
+      allPricesWithDateList: allPricesWithDateList,
     );
   }
 }
