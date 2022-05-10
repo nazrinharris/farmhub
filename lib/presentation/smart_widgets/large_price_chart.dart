@@ -267,11 +267,29 @@ class _LargeOneWeekChartState extends State<LargeOneWeekChart> {
   }
 }
 
-class LargeTwoWeekChart extends StatelessWidget {
+class LargeTwoWeekChart extends StatefulWidget {
   final Produce produce;
   final List<PriceSnippet> twoWeeksPricesList;
 
   const LargeTwoWeekChart(this.produce, this.twoWeeksPricesList, {Key? key}) : super(key: key);
+
+  @override
+  State<LargeTwoWeekChart> createState() => _LargeTwoWeekChartState();
+}
+
+class _LargeTwoWeekChartState extends State<LargeTwoWeekChart> {
+  late TooltipBehavior tooltipBehavior;
+
+  @override
+  void initState() {
+    super.initState();
+
+    tooltipBehavior = TooltipBehavior(
+      enable: true,
+      header: widget.produce.produceName,
+      format: "point.x - RM point.y/kg",
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -279,10 +297,10 @@ class LargeTwoWeekChart extends StatelessWidget {
     late LinearGradient gradient;
     late Color borderColor;
 
-    if (twoWeeksPricesList.length < 2) {
+    if (widget.twoWeeksPricesList.length < 2) {
       isNegative = false;
     } else {
-      isNegative = resolveIsNegative(twoWeeksPricesList);
+      isNegative = resolveIsNegative(widget.twoWeeksPricesList);
     }
 
     if (isNegative) {
@@ -307,7 +325,7 @@ class LargeTwoWeekChart extends StatelessWidget {
       borderColor = Color.fromARGB(255, 85, 189, 202);
     }
 
-    twoWeeksPricesList.sort((a, b) {
+    widget.twoWeeksPricesList.sort((a, b) {
       DateTime aPriceDate = DateFormat("dd-MM-yyyy").parse(a.priceDate);
       DateTime bPriceDate = DateFormat("dd-MM-yyyy").parse(b.priceDate);
 
@@ -321,6 +339,7 @@ class LargeTwoWeekChart extends StatelessWidget {
       margin: const EdgeInsets.symmetric(horizontal: 12),
       height: 250,
       child: SfCartesianChart(
+        tooltipBehavior: tooltipBehavior,
         primaryXAxis: CategoryAxis(
           labelPlacement: LabelPlacement.onTicks,
         ),
@@ -328,8 +347,9 @@ class LargeTwoWeekChart extends StatelessWidget {
         plotAreaBorderColor: Colors.transparent,
         series: <CartesianSeries>[
           SplineAreaSeries<PriceSnippet, String>(
+            enableTooltip: true,
             key: ValueKey("$randomInt"),
-            dataSource: twoWeeksPricesList,
+            dataSource: widget.twoWeeksPricesList,
             xValueMapper: (priceSnippet, index) {
               DateTime priceDate = DateFormat("dd-MM-yyyy").parse(priceSnippet.priceDate);
               return DateFormat('d/M').format(priceDate);
@@ -357,22 +377,40 @@ class LargeTwoWeekChart extends StatelessWidget {
   }
 }
 
-class LargeOneMonthChart extends StatelessWidget {
+class LargeOneMonthChart extends StatefulWidget {
   final Produce produce;
   final List<PriceSnippet> oneMonthPricesList;
 
   const LargeOneMonthChart(this.produce, this.oneMonthPricesList, {Key? key}) : super(key: key);
 
   @override
+  State<LargeOneMonthChart> createState() => _LargeOneMonthChartState();
+}
+
+class _LargeOneMonthChartState extends State<LargeOneMonthChart> {
+  late TooltipBehavior tooltipBehavior;
+
+  @override
+  void initState() {
+    super.initState();
+
+    tooltipBehavior = TooltipBehavior(
+      enable: true,
+      header: widget.produce.produceName,
+      format: "point.x - RM point.y/kg",
+    );
+  }
+
+  @override
   Widget build(BuildContext context) {
     late bool isNegative;
     late LinearGradient gradient;
     late Color borderColor;
 
-    if (oneMonthPricesList.length < 2) {
+    if (widget.oneMonthPricesList.length < 2) {
       isNegative = false;
     } else {
-      isNegative = resolveIsNegative(oneMonthPricesList);
+      isNegative = resolveIsNegative(widget.oneMonthPricesList);
     }
 
     if (isNegative) {
@@ -397,7 +435,7 @@ class LargeOneMonthChart extends StatelessWidget {
       borderColor = Color.fromARGB(255, 85, 189, 202);
     }
 
-    oneMonthPricesList.sort((a, b) {
+    widget.oneMonthPricesList.sort((a, b) {
       DateTime aPriceDate = DateFormat("dd-MM-yyyy").parse(a.priceDate);
       DateTime bPriceDate = DateFormat("dd-MM-yyyy").parse(b.priceDate);
 
@@ -411,6 +449,7 @@ class LargeOneMonthChart extends StatelessWidget {
       margin: const EdgeInsets.symmetric(horizontal: 12),
       height: 250,
       child: SfCartesianChart(
+        tooltipBehavior: tooltipBehavior,
         primaryXAxis: CategoryAxis(
           labelPlacement: LabelPlacement.onTicks,
         ),
@@ -418,8 +457,9 @@ class LargeOneMonthChart extends StatelessWidget {
         plotAreaBorderColor: Colors.transparent,
         series: <CartesianSeries>[
           SplineAreaSeries<PriceSnippet, String>(
+            enableTooltip: true,
             key: ValueKey("$randomInt"),
-            dataSource: oneMonthPricesList,
+            dataSource: widget.oneMonthPricesList,
             xValueMapper: (priceSnippet, index) {
               DateTime priceDate = DateFormat("dd-MM-yyyy").parse(priceSnippet.priceDate);
               return DateFormat('d/M').format(priceDate);
@@ -447,22 +487,40 @@ class LargeOneMonthChart extends StatelessWidget {
   }
 }
 
-class LargeTwoMonthChart extends StatelessWidget {
+class LargeTwoMonthChart extends StatefulWidget {
   final Produce produce;
   final List<PriceSnippet> oneMonthPricesList;
 
   const LargeTwoMonthChart(this.produce, this.oneMonthPricesList, {Key? key}) : super(key: key);
 
   @override
+  State<LargeTwoMonthChart> createState() => _LargeTwoMonthChartState();
+}
+
+class _LargeTwoMonthChartState extends State<LargeTwoMonthChart> {
+  late TooltipBehavior tooltipBehavior;
+
+  @override
+  void initState() {
+    super.initState();
+
+    tooltipBehavior = TooltipBehavior(
+      enable: true,
+      header: widget.produce.produceName,
+      format: "point.x - RM point.y/kg",
+    );
+  }
+
+  @override
   Widget build(BuildContext context) {
     late bool isNegative;
     late LinearGradient gradient;
     late Color borderColor;
 
-    if (oneMonthPricesList.length < 2) {
+    if (widget.oneMonthPricesList.length < 2) {
       isNegative = false;
     } else {
-      isNegative = resolveIsNegative(oneMonthPricesList);
+      isNegative = resolveIsNegative(widget.oneMonthPricesList);
     }
 
     if (isNegative) {
@@ -487,7 +545,7 @@ class LargeTwoMonthChart extends StatelessWidget {
       borderColor = Color.fromARGB(255, 85, 189, 202);
     }
 
-    oneMonthPricesList.sort((a, b) {
+    widget.oneMonthPricesList.sort((a, b) {
       DateTime aPriceDate = DateFormat("dd-MM-yyyy").parse(a.priceDate);
       DateTime bPriceDate = DateFormat("dd-MM-yyyy").parse(b.priceDate);
 
@@ -501,6 +559,7 @@ class LargeTwoMonthChart extends StatelessWidget {
       margin: const EdgeInsets.symmetric(horizontal: 12),
       height: 250,
       child: SfCartesianChart(
+        tooltipBehavior: tooltipBehavior,
         primaryXAxis: CategoryAxis(
           labelPlacement: LabelPlacement.onTicks,
         ),
@@ -508,8 +567,9 @@ class LargeTwoMonthChart extends StatelessWidget {
         plotAreaBorderColor: Colors.transparent,
         series: <CartesianSeries>[
           SplineAreaSeries<PriceSnippet, String>(
+            enableTooltip: true,
             key: ValueKey("$randomInt"),
-            dataSource: oneMonthPricesList,
+            dataSource: widget.oneMonthPricesList,
             xValueMapper: (priceSnippet, index) {
               DateTime priceDate = DateFormat("dd-MM-yyyy").parse(priceSnippet.priceDate);
               return DateFormat('d/M').format(priceDate);
@@ -537,22 +597,40 @@ class LargeTwoMonthChart extends StatelessWidget {
   }
 }
 
-class LargeSixMonthChart extends StatelessWidget {
+class LargeSixMonthChart extends StatefulWidget {
   final Produce produce;
   final List<PriceSnippet> oneMonthPricesList;
 
   const LargeSixMonthChart(this.produce, this.oneMonthPricesList, {Key? key}) : super(key: key);
 
   @override
+  State<LargeSixMonthChart> createState() => _LargeSixMonthChartState();
+}
+
+class _LargeSixMonthChartState extends State<LargeSixMonthChart> {
+  late TooltipBehavior tooltipBehavior;
+
+  @override
+  void initState() {
+    super.initState();
+
+    tooltipBehavior = TooltipBehavior(
+      enable: true,
+      header: widget.produce.produceName,
+      format: "point.x - RM point.y/kg",
+    );
+  }
+
+  @override
   Widget build(BuildContext context) {
     late bool isNegative;
     late LinearGradient gradient;
     late Color borderColor;
 
-    if (oneMonthPricesList.length < 2) {
+    if (widget.oneMonthPricesList.length < 2) {
       isNegative = false;
     } else {
-      isNegative = resolveIsNegative(oneMonthPricesList);
+      isNegative = resolveIsNegative(widget.oneMonthPricesList);
     }
 
     if (isNegative) {
@@ -577,7 +655,7 @@ class LargeSixMonthChart extends StatelessWidget {
       borderColor = Color.fromARGB(255, 85, 189, 202);
     }
 
-    oneMonthPricesList.sort((a, b) {
+    widget.oneMonthPricesList.sort((a, b) {
       DateTime aPriceDate = DateFormat("dd-MM-yyyy").parse(a.priceDate);
       DateTime bPriceDate = DateFormat("dd-MM-yyyy").parse(b.priceDate);
 
@@ -591,6 +669,7 @@ class LargeSixMonthChart extends StatelessWidget {
       margin: const EdgeInsets.symmetric(horizontal: 12),
       height: 250,
       child: SfCartesianChart(
+        tooltipBehavior: tooltipBehavior,
         primaryXAxis: CategoryAxis(
           labelPlacement: LabelPlacement.onTicks,
         ),
@@ -598,8 +677,9 @@ class LargeSixMonthChart extends StatelessWidget {
         plotAreaBorderColor: Colors.transparent,
         series: <CartesianSeries>[
           SplineAreaSeries<PriceSnippet, String>(
+            enableTooltip: true,
             key: ValueKey("$randomInt"),
-            dataSource: oneMonthPricesList,
+            dataSource: widget.oneMonthPricesList,
             xValueMapper: (priceSnippet, index) {
               DateTime priceDate = DateFormat("dd-MM-yyyy").parse(priceSnippet.priceDate);
               return DateFormat('d/M').format(priceDate);
@@ -627,11 +707,29 @@ class LargeSixMonthChart extends StatelessWidget {
   }
 }
 
-class LargeOneYearChart extends StatelessWidget {
+class LargeOneYearChart extends StatefulWidget {
   final Produce produce;
   final List<PriceSnippet> oneMonthPricesList;
 
   const LargeOneYearChart(this.produce, this.oneMonthPricesList, {Key? key}) : super(key: key);
+
+  @override
+  State<LargeOneYearChart> createState() => _LargeOneYearChartState();
+}
+
+class _LargeOneYearChartState extends State<LargeOneYearChart> {
+  late TooltipBehavior tooltipBehavior;
+
+  @override
+  void initState() {
+    super.initState();
+
+    tooltipBehavior = TooltipBehavior(
+      enable: true,
+      header: widget.produce.produceName,
+      format: "point.x - RM point.y/kg",
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -639,10 +737,10 @@ class LargeOneYearChart extends StatelessWidget {
     late LinearGradient gradient;
     late Color borderColor;
 
-    if (oneMonthPricesList.length < 2) {
+    if (widget.oneMonthPricesList.length < 2) {
       isNegative = false;
     } else {
-      isNegative = resolveIsNegative(oneMonthPricesList);
+      isNegative = resolveIsNegative(widget.oneMonthPricesList);
     }
 
     if (isNegative) {
@@ -667,7 +765,7 @@ class LargeOneYearChart extends StatelessWidget {
       borderColor = Color.fromARGB(255, 85, 189, 202);
     }
 
-    oneMonthPricesList.sort((a, b) {
+    widget.oneMonthPricesList.sort((a, b) {
       DateTime aPriceDate = DateFormat("dd-MM-yyyy").parse(a.priceDate);
       DateTime bPriceDate = DateFormat("dd-MM-yyyy").parse(b.priceDate);
 
@@ -681,6 +779,7 @@ class LargeOneYearChart extends StatelessWidget {
       margin: const EdgeInsets.symmetric(horizontal: 12),
       height: 250,
       child: SfCartesianChart(
+        tooltipBehavior: tooltipBehavior,
         primaryXAxis: CategoryAxis(
           labelPlacement: LabelPlacement.onTicks,
         ),
@@ -688,8 +787,9 @@ class LargeOneYearChart extends StatelessWidget {
         plotAreaBorderColor: Colors.transparent,
         series: <CartesianSeries>[
           SplineAreaSeries<PriceSnippet, String>(
+            enableTooltip: true,
             key: ValueKey("$randomInt"),
-            dataSource: oneMonthPricesList,
+            dataSource: widget.oneMonthPricesList,
             xValueMapper: (priceSnippet, index) {
               DateTime priceDate = DateFormat("dd-MM-yyyy").parse(priceSnippet.priceDate);
               return DateFormat('d/M').format(priceDate);
