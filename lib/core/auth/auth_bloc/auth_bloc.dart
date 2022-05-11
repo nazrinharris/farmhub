@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:farmhub/core/auth/domain/entities/farmhub_user/farmhub_user.dart';
 import 'package:farmhub/core/auth/domain/i_auth_repository.dart';
+import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'auth_event.dart';
@@ -11,8 +12,10 @@ part 'auth_bloc.freezed.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final IAuthRepository authRepository;
+  final GlobalAuthCubit globalAuthCubit;
 
-  AuthBloc({required this.authRepository}) : super(const ASInitial()) {
+  AuthBloc({required this.authRepository, required this.globalAuthCubit})
+      : super(const ASInitial()) {
     on<_AEExecLoginWithEmailAndPassword>(execLoginWithEmailAndPassword);
     on<_AEExecRegisterWithEmailAndPassword>(execRegisterWithEmailAndPassword);
     on<_AEExecRetrieveUserData>(execRetrieveUserData);

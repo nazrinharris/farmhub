@@ -4,6 +4,7 @@ import 'package:farmhub/core/auth/data/datasources/auth_local_datasource.dart';
 import 'package:farmhub/core/auth/data/datasources/auth_remote_datasource.dart';
 import 'package:farmhub/core/auth/data/repository/auth_repository.dart';
 import 'package:farmhub/core/auth/domain/i_auth_repository.dart';
+import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
 import 'package:farmhub/core/network/network_info.dart';
 import 'package:farmhub/features/produce_manager/bloc/produce_manager_bloc.dart';
 import 'package:farmhub/features/produce_manager/data/datasources/produce_manager_local_datasource.dart';
@@ -23,7 +24,9 @@ void setupLocator() {
   // Blocs & Cubits
   locator.registerFactory(() => AuthBloc(
         authRepository: locator(),
+        globalAuthCubit: locator(),
       ));
+  locator.registerFactory(() => GlobalAuthCubit());
   // Repository
   locator.registerLazySingleton<IAuthRepository>(() => AuthRepository(
         networkInfo: locator(),

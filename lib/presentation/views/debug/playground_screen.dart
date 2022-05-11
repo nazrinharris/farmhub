@@ -27,7 +27,8 @@ class PlaygroundScreen extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => ProduceManagerBloc(repository: locator())),
-        BlocProvider(create: (context) => AuthBloc(authRepository: locator())),
+        BlocProvider(
+            create: (context) => AuthBloc(authRepository: locator(), globalAuthCubit: locator())),
       ],
       child: Builder(builder: (context) {
         return Scaffold(
