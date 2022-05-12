@@ -26,7 +26,7 @@ void setupLocator() {
         authRepository: locator(),
         globalAuthCubit: locator(),
       ));
-  locator.registerFactory(() => GlobalAuthCubit(locator()));
+  locator.registerLazySingleton(() => GlobalAuthCubit(locator()));
   // Repository
   locator.registerLazySingleton<IAuthRepository>(() => AuthRepository(
         networkInfo: locator(),

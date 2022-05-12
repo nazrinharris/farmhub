@@ -1,12 +1,7 @@
-import 'package:farmhub/app_router.dart';
 import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
-import 'package:farmhub/core/util/dates.dart';
-import 'package:farmhub/core/util/farmhub_icons.dart';
 
 import 'package:farmhub/features/produce_manager/bloc/produce_manager_bloc.dart';
 import 'package:farmhub/presentation/shared_widgets/buttons.dart';
-import 'package:farmhub/presentation/shared_widgets/texts.dart';
-import 'package:farmhub/presentation/smart_widgets/custom_search_field.dart';
 
 import 'package:farmhub/presentation/views/main_screen/bloc/main_screen_bloc.dart';
 import 'package:farmhub/presentation/views/main_screen/main_screen_fab.dart';
@@ -14,7 +9,6 @@ import 'package:farmhub/presentation/views/main_screen/main_screen_header.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 
 import '../../../core/errors/failures.dart';
 import '../../../features/produce_manager/domain/entities/produce/produce.dart';
@@ -59,8 +53,6 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
 
     extent = Tween<double>(begin: 166.0, end: 68.0).animate(mainHeaderController);
     adminExtent = Tween<double>(begin: 200.0, end: 68.0).animate(mainHeaderController);
-
-    context.read<GlobalAuthCubit>().updateGlobalAuthCubit();
   }
 
   @override
@@ -102,6 +94,7 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
                         return BlocBuilder<GlobalAuthCubit, GlobalAuthState>(
                           builder: (context, state) {
                             final bool isAdmin = state.isAdmin ?? false;
+                            print("isAdmin -> $isAdmin");
 
                             return SliverMainScreenHeader(
                               isAdmin ? adminExtent : extent,
