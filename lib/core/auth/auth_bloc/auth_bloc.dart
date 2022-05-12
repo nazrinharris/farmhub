@@ -34,8 +34,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       password: event.password,
     );
 
-    failureOrLogin.fold(
-      (f) {
+    await failureOrLogin.fold(
+      (f) async {
         emit(AuthState.loginError(
           message: f.message!,
           code: f.code!,
@@ -43,14 +43,26 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         ));
       },
       (user) async {
-        final isAdmin = (await authRepository.isAdmin(uid: user.uid)).getOrElse((l) => false);
-        globalAuthCubit.updateFarmhubUser(user);
-        globalAuthCubit.updateIsAdmin(isAdmin);
+        final isAdminOrFailure = await authRepository.isAdmin(uid: user.uid);
+
+        await isAdminOrFailure.fold(
+          (f) async {
+            emit(AuthState.loginError(
+              code: f.code ?? "Unknown Code",
+              message: f.message ?? "Unknown message",
+              stackTrace: f.stackTrace ?? StackTrace.current,
+            ));
+          },
+          (isAdmin) async {
+            globalAuthCubit.updateFarmhubUser(user);
+            globalAuthCubit.updateIsAdmin(isAdmin);
+
+            emit(AuthState.loginSuccess(user: user));
+          },
+        );
 
         print(
             "GlobalAuthCubit: User -> ${globalAuthCubit.state.farmhubUser}, isAdmin -> ${globalAuthCubit.state.isAdmin}");
-
-        emit(AuthState.loginSuccess(user: user));
       },
     );
   }
