@@ -1,4 +1,5 @@
 import 'package:farmhub/app_router.dart';
+import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
 import 'package:farmhub/core/util/dates.dart';
 import 'package:farmhub/core/util/farmhub_icons.dart';
 
@@ -8,6 +9,8 @@ import 'package:farmhub/presentation/shared_widgets/texts.dart';
 import 'package:farmhub/presentation/smart_widgets/custom_search_field.dart';
 
 import 'package:farmhub/presentation/views/main_screen/bloc/main_screen_bloc.dart';
+import 'package:farmhub/presentation/views/main_screen/main_screen_fab.dart';
+import 'package:farmhub/presentation/views/main_screen/main_screen_header.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -32,6 +35,7 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
   late ScrollController scrollController;
 
   late Animation<double> extent;
+  late Animation<double> adminExtent;
 
   late FocusNode mainScreenFocusNode;
 
@@ -54,6 +58,9 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
     });
 
     extent = Tween<double>(begin: 166.0, end: 68.0).animate(mainHeaderController);
+    adminExtent = Tween<double>(begin: 200.0, end: 68.0).animate(mainHeaderController);
+
+    context.read<GlobalAuthCubit>().updateGlobalAuthCubit();
   }
 
   @override
@@ -81,63 +88,7 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
               resizeToAvoidBottomInset: false,
               extendBodyBehindAppBar: true,
               extendBody: true,
-              floatingActionButton: SpeedDial(
-                useRotationAnimation: false,
-                overlayColor: Colors.black,
-                overlayOpacity: 0.85,
-                spacing: 24,
-                spaceBetweenChildren: 5,
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
-                backgroundColor: Theme.of(context).colorScheme.primary,
-                activeBackgroundColor: Theme.of(context).colorScheme.error,
-                icon: Icons.add,
-                activeIcon: Icons.close,
-                iconTheme: const IconThemeData(color: Colors.white),
-                children: [
-                  SpeedDialChild(
-                    onTap: () => Navigator.of(context).pushNamed('/create_produce'),
-                    backgroundColor: Theme.of(context).colorScheme.primary,
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
-                    child: const Icon(
-                      FarmhubIcons.farmhub_corn_icon,
-                      color: Colors.white,
-                      size: 20,
-                    ),
-                    labelWidget: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(50),
-                      ),
-                      child: Text(
-                        "Create new Produce",
-                        style: Theme.of(context).textTheme.bodyText1!.copyWith(color: Colors.white),
-                      ),
-                    ),
-                  ),
-                  SpeedDialChild(
-                    onTap: () {
-                      debugPrint("Pressed");
-                      Navigator.of(context).pushNamed('/add_new_price');
-                    },
-                    backgroundColor: Theme.of(context).colorScheme.primary,
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
-                    child: const Icon(
-                      Icons.price_change,
-                      color: Colors.white,
-                    ),
-                    labelWidget: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(50),
-                      ),
-                      child: Text(
-                        "Add new Price",
-                        style: Theme.of(context).textTheme.bodyText1!.copyWith(color: Colors.white),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+              floatingActionButton: MainScreenFAB(),
               body: SafeArea(
                 child: CustomScrollView(
                   controller: scrollController,
@@ -148,8 +99,16 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
                     ),
                     BlocBuilder<MainScreenBloc, MainScreenState>(
                       builder: (context, state) {
-                        return SliverPersistentHeader(
-                          delegate: MainScreenHeaderDelegate(extent, mainScreenFocusNode),
+                        return BlocBuilder<GlobalAuthCubit, GlobalAuthState>(
+                          builder: (context, state) {
+                            final bool isAdmin = state.isAdmin ?? false;
+
+                            return SliverMainScreenHeader(
+                              isAdmin ? adminExtent : extent,
+                              mainScreenFocusNode,
+                              isAdmin,
+                            );
+                          },
                         );
                       },
                     ),
@@ -394,130 +353,6 @@ class SliverDebugSlot extends StatelessWidget {
         ),
       ],
     ));
-  }
-}
-
-class MainScreenHeaderDelegate extends SliverPersistentHeaderDelegate {
-  final Animation<double> extent;
-  final FocusNode mainScreenFocusNode;
-
-  MainScreenHeaderDelegate(this.extent, this.mainScreenFocusNode);
-
-  @override
-  Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
-    return Stack(
-      fit: StackFit.expand,
-      children: [
-        Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-                Theme.of(context).backgroundColor,
-                Theme.of(context).backgroundColor.withOpacity(0.0),
-              ],
-            ),
-          ),
-        ),
-        Column(
-          children: [
-            MainHeader(
-              mainHeaderController: context.read<MainScreenBloc>().mainHeaderController,
-            ),
-            Hero(
-              tag: "search_bar",
-              child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 16),
-                child: CustomSearchField(
-                  isFocus: false,
-                  // TODO: Set default right inside of [CustomSearchField] rather than this (onChanged)
-                  onChanged: (value) {},
-                  onTap: () {
-                    Navigator.of(context).pushNamed(
-                      '/search_screen',
-                      arguments: SearchScreenArguments(mainScreenFocusNode),
-                    );
-                  },
-                ),
-              ),
-            )
-          ],
-        ),
-      ],
-    );
-  }
-
-  @override
-  bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) {
-    return true;
-  }
-
-  @override
-  double get maxExtent => extent.value;
-
-  @override
-  double get minExtent => extent.value;
-}
-
-class MainHeader extends StatefulWidget {
-  final AnimationController mainHeaderController;
-
-  const MainHeader({
-    Key? key,
-    required this.mainHeaderController,
-  }) : super(key: key);
-
-  @override
-  State<MainHeader> createState() => _MainHeaderState();
-}
-
-class _MainHeaderState extends State<MainHeader> {
-  late Animation<double> sizeFactor;
-
-  @override
-  void initState() {
-    super.initState();
-
-    if (context.read<MainScreenBloc>().state.props.isMainHeaderVisible) {
-      sizeFactor = Tween<double>(begin: 1.0, end: 0.0).animate(widget.mainHeaderController);
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return SizeTransition(
-      sizeFactor: sizeFactor,
-      axis: Axis.vertical,
-      axisAlignment: 1,
-      child: Padding(
-        padding: const EdgeInsets.only(left: 24, right: 24, top: 30),
-        child: Align(
-          alignment: Alignment.center,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Headline1('Pasar Selayang'),
-                  Headline2(returnCurrentDate()),
-                ],
-              ),
-              Container(
-                margin: const EdgeInsets.only(right: 6),
-                height: 54,
-                width: 54,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(100),
-                  color: Theme.of(context).colorScheme.primary,
-                ),
-              )
-            ],
-          ),
-        ),
-      ),
-    );
   }
 }
 

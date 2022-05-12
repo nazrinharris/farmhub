@@ -1,4 +1,5 @@
 import 'package:farmhub/app_router.dart';
+import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
 import 'package:farmhub/locator.dart';
 import 'package:farmhub/presentation/themes/farmhub_theme.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -43,12 +44,39 @@ class FarmhubApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => locator<AuthBloc>()),
+        BlocProvider(create: (context) => locator<GlobalAuthCubit>())
       ],
-      child: MaterialApp(
-        title: "Farmhub",
-        theme: FarmhubTheme.appThemeData[FarmhubThemeVariants.light],
-        onGenerateRoute: appRouter.onGenerateRoute,
-      ),
+      child: FarmhubMaterialApp(appRouter: appRouter),
+    );
+  }
+}
+
+class FarmhubMaterialApp extends StatefulWidget {
+  const FarmhubMaterialApp({
+    Key? key,
+    required this.appRouter,
+  }) : super(key: key);
+
+  final AppRouter appRouter;
+
+  @override
+  State<FarmhubMaterialApp> createState() => _FarmhubMaterialAppState();
+}
+
+class _FarmhubMaterialAppState extends State<FarmhubMaterialApp> {
+  @override
+  void initState() {
+    super.initState();
+
+    context.read<GlobalAuthCubit>().updateGlobalAuthCubit();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: "Farmhub",
+      theme: FarmhubTheme.appThemeData[FarmhubThemeVariants.light],
+      onGenerateRoute: widget.appRouter.onGenerateRoute,
     );
   }
 }
