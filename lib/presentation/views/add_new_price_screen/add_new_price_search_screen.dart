@@ -45,12 +45,12 @@ class _AddNewPriceSearchScreenState extends State<AddNewPriceSearchScreen> {
             extendBodyBehindAppBar: true,
             appBar: DefaultAppBar(
               title: "Search Produce",
-              trailingIcon: const Icon(Icons.close),
-              leadingIcon: const Icon(
+              leadingIcon: const Icon(Icons.close),
+              trailingIcon: const Icon(
                 Icons.help,
                 color: Colors.transparent,
               ),
-              trailingOnPressed: () {
+              leadingOnPressed: () {
                 FocusScope.of(context).unfocus();
                 Navigator.of(context).pop();
               },

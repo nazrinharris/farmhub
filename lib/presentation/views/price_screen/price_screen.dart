@@ -23,8 +23,8 @@ class PriceScreen extends StatelessWidget {
       extendBodyBehindAppBar: true,
       extendBody: true,
       appBar: DefaultAppBar(
-        trailingIcon: const Icon(Icons.arrow_back),
-        trailingOnPressed: () {
+        leadingIcon: const Icon(Icons.arrow_back),
+        leadingOnPressed: () {
           Navigator.of(context).pop();
         },
       ),

@@ -88,8 +88,8 @@ class _AddNewPriceSecondScreenState extends State<AddNewPriceSecondScreen> {
                     // resizeToAvoidBottomInset: false,
                     extendBodyBehindAppBar: true,
                     appBar: DefaultAppBar(
-                      trailingIcon: const Icon(Icons.arrow_back),
-                      trailingOnPressed: () {
+                      leadingIcon: const Icon(Icons.arrow_back),
+                      leadingOnPressed: () {
                         FocusScope.of(context).unfocus();
                         Navigator.of(context).pop();
                       },

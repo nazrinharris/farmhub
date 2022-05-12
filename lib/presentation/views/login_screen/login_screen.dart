@@ -87,8 +87,8 @@ class _LoginScreenState extends State<LoginScreen> with AnimationMixin {
                     extendBodyBehindAppBar: true,
                     resizeToAvoidBottomInset: false,
                     appBar: DefaultAppBar(
-                      trailingIcon: const Icon(Icons.arrow_back),
-                      trailingOnPressed: () {
+                      leadingIcon: const Icon(Icons.arrow_back),
+                      leadingOnPressed: () {
                         Navigator.of(context).pop();
                       },
                     ),

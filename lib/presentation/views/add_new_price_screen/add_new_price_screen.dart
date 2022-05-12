@@ -49,8 +49,8 @@ class _AddNewPriceScreenState extends State<AddNewPriceScreen> {
                 resizeToAvoidBottomInset: false,
                 extendBodyBehindAppBar: true,
                 appBar: DefaultAppBar(
-                  trailingIcon: const Icon(Icons.close),
-                  trailingOnPressed: () => Navigator.of(context).pop(),
+                  leadingIcon: const Icon(Icons.close),
+                  leadingOnPressed: () => Navigator.of(context).pop(),
                 ),
                 body: SafeArea(
                   top: false,

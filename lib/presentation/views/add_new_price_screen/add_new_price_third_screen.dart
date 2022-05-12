@@ -44,8 +44,8 @@ class AddNewPriceThirdScreen extends StatelessWidget {
               resizeToAvoidBottomInset: false,
               extendBodyBehindAppBar: true,
               appBar: DefaultAppBar(
-                trailingIcon: Icon(Icons.close),
-                trailingOnPressed: () {
+                leadingIcon: Icon(Icons.close),
+                leadingOnPressed: () {
                   // TODO: Make sure to refresh MainScreen
                   if (arguments.isFromSearch == true) {
                     Navigator.of(context)

@@ -1,4 +1,5 @@
 import 'package:farmhub/app_router.dart';
+import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
 import 'package:farmhub/core/errors/exceptions.dart';
 import 'package:farmhub/core/errors/failures.dart';
 import 'package:farmhub/core/util/dates.dart';
@@ -11,6 +12,7 @@ import 'package:farmhub/presentation/smart_widgets/produce_list_card.dart';
 import 'package:farmhub/presentation/views/main_screen/main_screen.dart';
 import 'package:farmhub/presentation/views/produce_screen/produce_aggregate_cubit/produce_aggregate_cubit.dart';
 import 'package:farmhub/presentation/views/produce_screen/produce_prices_cubit/produce_prices_cubit.dart';
+import 'package:farmhub/presentation/views/produce_screen/produce_screen_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
@@ -65,38 +67,37 @@ class _ProduceScreenState extends State<ProduceScreen> with SingleTickerProvider
         BlocProvider(create: (_) => ProducePricesCubit(repository: locator()))
       ],
       child: Builder(
-        builder: (context) => Scaffold(
-            resizeToAvoidBottomInset: false,
-            extendBodyBehindAppBar: true,
-            extendBody: true,
-            appBar: DefaultAppBar(
-              trailingIcon: const Icon(Icons.arrow_back),
-              trailingOnPressed: () {
-                Navigator.of(context).pop();
-              },
-              leadingIcon: const Icon(Icons.bookmark_add_outlined),
-              leadingOnPressed: () {},
-            ),
-            body: CustomScrollView(
-              controller: scrollController,
-              physics: DefaultScrollPhysics,
-              slivers: [
-                CustomCupertinoSliverRefreshControl(
-                  onRefresh: () async {
-                    print("Refreshed");
-                    await Future.delayed(Duration(seconds: 2));
-                  },
-                ),
-                SliverProduceHeader(widget.produceArguments.produce),
-                SliverProducePriceChart(tabs, widget.produceArguments.produce),
-                SliverPricesListHeader(scrollController, widget.produceArguments.produce),
-                BlocBuilder<ProducePricesCubit, ProducePricesState>(
-                  builder: (context, state) {
-                    return SliverPricesListSwitcher(widget.produceArguments.produce);
-                  },
-                ),
-              ],
-            )),
+        builder: (context) => BlocBuilder<GlobalAuthCubit, GlobalAuthState>(
+          builder: (context, state) {
+            final bool isAdmin = state.isAdmin ?? false;
+
+            return Scaffold(
+                resizeToAvoidBottomInset: false,
+                extendBodyBehindAppBar: true,
+                extendBody: true,
+                appBar: ProduceScreenAppBar(isAdmin),
+                body: CustomScrollView(
+                  controller: scrollController,
+                  physics: DefaultScrollPhysics,
+                  slivers: [
+                    CustomCupertinoSliverRefreshControl(
+                      onRefresh: () async {
+                        print("Refreshed");
+                        await Future.delayed(Duration(seconds: 2));
+                      },
+                    ),
+                    SliverProduceHeader(widget.produceArguments.produce),
+                    SliverProducePriceChart(tabs, widget.produceArguments.produce),
+                    SliverPricesListHeader(scrollController, widget.produceArguments.produce),
+                    BlocBuilder<ProducePricesCubit, ProducePricesState>(
+                      builder: (context, state) {
+                        return SliverPricesListSwitcher(widget.produceArguments.produce);
+                      },
+                    ),
+                  ],
+                ));
+          },
+        ),
       ),
     );
   }
