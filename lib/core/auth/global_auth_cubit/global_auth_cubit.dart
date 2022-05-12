@@ -8,11 +8,11 @@ part 'global_auth_cubit.freezed.dart';
 class GlobalAuthCubit extends Cubit<GlobalAuthState> {
   GlobalAuthCubit() : super(const GlobalAuthState.initial());
 
-  void updateFarmhubUser(FarmhubUser farmhubUser) {
+  void updateFarmhubUser(FarmhubUser? farmhubUser) {
     emit(state.copyWith(farmhubUser: farmhubUser));
   }
 
-  void updateIsAdmin(bool isAdmin) {
+  void updateIsAdmin(bool? isAdmin) {
     emit(state.copyWith(isAdmin: isAdmin));
   }
 }

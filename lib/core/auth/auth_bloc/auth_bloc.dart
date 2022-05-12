@@ -34,15 +34,24 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       password: event.password,
     );
 
-    emit(
-      failureOrLogin.fold(
-        (f) => AuthState.loginError(
+    failureOrLogin.fold(
+      (f) {
+        emit(AuthState.loginError(
           message: f.message!,
           code: f.code!,
           stackTrace: f.stackTrace!,
-        ),
-        (user) => AuthState.loginSuccess(user: user),
-      ),
+        ));
+      },
+      (user) async {
+        final isAdmin = (await authRepository.isAdmin(uid: user.uid)).getOrElse((l) => false);
+        globalAuthCubit.updateFarmhubUser(user);
+        globalAuthCubit.updateIsAdmin(isAdmin);
+
+        print(
+            "GlobalAuthCubit: User -> ${globalAuthCubit.state.farmhubUser}, isAdmin -> ${globalAuthCubit.state.isAdmin}");
+
+        emit(AuthState.loginSuccess(user: user));
+      },
     );
   }
 
@@ -58,15 +67,23 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       username: event.username,
     );
 
-    emit(
-      failureOrRegister.fold(
-        (f) => AuthState.registerError(
-          code: f.code!,
+    failureOrRegister.fold(
+      (f) {
+        emit(AuthState.registerError(
           message: f.message!,
+          code: f.code!,
           stackTrace: f.stackTrace!,
-        ),
-        (user) => AuthState.registerSuccess(user: user),
-      ),
+        ));
+      },
+      (user) async {
+        globalAuthCubit.updateFarmhubUser(user);
+        globalAuthCubit.updateIsAdmin(false);
+
+        print(
+            "GlobalAuthCubit: User -> ${globalAuthCubit.state.farmhubUser}, isAdmin -> ${globalAuthCubit.state.isAdmin}");
+
+        emit(AuthState.registerSuccess(user: user));
+      },
     );
   }
 
@@ -78,14 +95,24 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
     final failureOrSignOut = await authRepository.signOut();
 
-    emit(failureOrSignOut.fold(
-      (f) => AuthState.signOutError(
-        code: f.code!,
-        message: f.message!,
-        stackTrace: f.stackTrace!,
-      ),
-      (_) => const AuthState.signOutSuccess(),
-    ));
+    failureOrSignOut.fold(
+      (f) {
+        emit(AuthState.signOutError(
+          code: f.code!,
+          message: f.message!,
+          stackTrace: f.stackTrace!,
+        ));
+      },
+      (r) {
+        globalAuthCubit.updateFarmhubUser(null);
+        globalAuthCubit.updateIsAdmin(null);
+
+        print(
+            "GlobalAuthCubit: User -> ${globalAuthCubit.state.farmhubUser}, isAdmin -> ${globalAuthCubit.state.isAdmin}");
+
+        emit(const AuthState.signOutSuccess());
+      },
+    );
   }
 
   FutureOr<void> execRetrieveUserData(
