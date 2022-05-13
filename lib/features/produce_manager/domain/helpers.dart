@@ -59,7 +59,6 @@ List<PriceSnippet> pricesToRanged(
   }
 
   final List<PriceSnippet> twoWeeksPricesList = [];
-  print("Range is: $range");
   for (PriceSnippet priceSnippet in reversedPricesList) {
     final DateTime priceDate = DateFormat("dd-MM-yyyy").parse(priceSnippet.priceDate);
 

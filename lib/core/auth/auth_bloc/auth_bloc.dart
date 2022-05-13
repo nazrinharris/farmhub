@@ -60,9 +60,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
             emit(AuthState.loginSuccess(user: user));
           },
         );
-
-        print(
-            "GlobalAuthCubit: User -> ${globalAuthCubit.state.farmhubUser}, isAdmin -> ${globalAuthCubit.state.isAdmin}");
       },
     );
   }
@@ -91,9 +88,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         globalAuthCubit.updateFarmhubUser(user);
         globalAuthCubit.updateIsAdmin(false);
 
-        print(
-            "GlobalAuthCubit: User -> ${globalAuthCubit.state.farmhubUser}, isAdmin -> ${globalAuthCubit.state.isAdmin}");
-
         emit(AuthState.registerSuccess(user: user));
       },
     );
@@ -118,9 +112,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       (r) {
         globalAuthCubit.updateFarmhubUser(null);
         globalAuthCubit.updateIsAdmin(null);
-
-        print(
-            "GlobalAuthCubit: User -> ${globalAuthCubit.state.farmhubUser}, isAdmin -> ${globalAuthCubit.state.isAdmin}");
 
         emit(const AuthState.signOutSuccess());
       },

@@ -94,7 +94,6 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
                         return BlocBuilder<GlobalAuthCubit, GlobalAuthState>(
                           builder: (context, state) {
                             final bool isAdmin = state.isAdmin ?? false;
-                            print("isAdmin -> $isAdmin");
 
                             return SliverMainScreenHeader(
                               isAdmin ? adminExtent : extent,
@@ -155,6 +154,7 @@ class _SliverMainScreenListViewState extends State<SliverMainScreenListView> {
   @override
   Widget build(BuildContext context) {
     final currentState = context.read<MainScreenBloc>().state;
+    final isAdmin = context.read<GlobalAuthCubit>().state.isAdmin;
 
     if (currentState is MSSInitial) {
       throw Exception("MSSInitial State is received when it should not have existed.");
@@ -164,16 +164,19 @@ class _SliverMainScreenListViewState extends State<SliverMainScreenListView> {
       return SliverProduceList(
         props: currentState.props,
         isLoading: true,
+        isAdmin: isAdmin,
       );
     } else if (currentState is MSSPricesCompleted) {
       return SliverProduceList(
         props: currentState.props,
         isLoading: false,
+        isAdmin: isAdmin,
       );
     } else if (currentState is MSSPricesError) {
       return SliverProduceErrorList(
         props: currentState.props,
         failure: currentState.failure,
+        isAdmin: isAdmin,
       );
     }
 
@@ -214,11 +217,13 @@ class SliverLoadingIndicator extends StatelessWidget {
 class SliverProduceList extends StatelessWidget {
   final MainScreenProps props;
   final bool isLoading;
+  final bool? isAdmin;
 
   const SliverProduceList({
     Key? key,
     required this.props,
     required this.isLoading,
+    this.isAdmin,
   }) : super(key: key);
 
   @override
@@ -265,11 +270,13 @@ class SliverProduceList extends StatelessWidget {
 class SliverProduceErrorList extends StatefulWidget {
   final MainScreenProps props;
   final Failure failure;
+  final bool? isAdmin;
 
   const SliverProduceErrorList({
     Key? key,
     required this.props,
     required this.failure,
+    this.isAdmin,
   }) : super(key: key);
 
   @override

@@ -1,5 +1,9 @@
 // TODO: Extract ProduceListCard and whatever else that is needed.
+import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
+import 'package:farmhub/presentation/shared_widgets/buttons.dart';
+import 'package:farmhub/presentation/shared_widgets/texts.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
@@ -29,10 +33,14 @@ class ProduceListCard extends StatelessWidget {
   Widget build(BuildContext context) {
     num currentProducePrice = produce.currentProducePrice["price"];
     currentProducePrice = roundNum(currentProducePrice.toDouble(), 2);
+    final bool? isAdmin = context.read<GlobalAuthCubit>().state.isAdmin;
 
     return Material(
       type: MaterialType.transparency,
       child: InkWell(
+        onLongPress: () {
+          showProduceBottomActionSheet(context, isAdmin, produce);
+        },
         onTap: onTap ??
             () {
               FocusScope.of(context).unfocus();
@@ -101,6 +109,138 @@ class ProduceListCard extends StatelessWidget {
       return BorderSide(color: Theme.of(context).colorScheme.primary.withOpacity(0.24));
     } else {
       return BorderSide.none;
+    }
+  }
+
+  void showProduceBottomActionSheet(BuildContext context, bool? isAdmin, Produce produce) {
+    isAdmin ??= false;
+
+    if (isAdmin) {
+      showModalBottomSheet<void>(
+        backgroundColor: Colors.transparent,
+        context: context,
+        builder: (BuildContext context) {
+          return Container(
+            height: 390,
+            decoration: BoxDecoration(
+              color: Theme.of(context).colorScheme.background,
+              borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(14), topRight: Radius.circular(14)),
+            ),
+            child: Column(
+              children: [
+                Container(
+                  padding: EdgeInsets.only(top: 24),
+                  alignment: Alignment.center,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(produce.produceName),
+                      UIVerticalSpace14(),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "RM ${produce.currentProducePrice["price"]}/kg",
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyText2!
+                                .copyWith(fontWeight: FontWeight.w700),
+                          ),
+                          UIHorizontalSpace14(),
+                          ChangeBox(produce),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 14, left: 46, right: 46),
+                  child: SecondaryButton(
+                    onPressed: () {},
+                    content: "Add to Favorites",
+                    buttonIcon: Icon(Icons.bookmark_add_outlined, size: 20),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 14, left: 46, right: 46),
+                  child: SecondaryButton(
+                    onPressed: () {},
+                    content: "Add new Price",
+                    type: SecondaryButtonType.filled,
+                    buttonIcon: Icon(Icons.attach_money, size: 20),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 14, left: 46, right: 46),
+                  child: SecondaryButton(
+                    type: SecondaryButtonType.filled,
+                    onPressed: () {},
+                    content: "Edit Produce",
+                    buttonIcon: const Icon(Icons.edit, size: 20),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 14, left: 46, right: 46),
+                  child: SecondaryButton(
+                    type: SecondaryButtonType.red,
+                    onPressed: () {},
+                    content: "Delete Produce",
+                    buttonIcon: const Icon(Icons.delete, size: 20),
+                  ),
+                )
+              ],
+            ),
+          );
+        },
+      );
+    } else {
+      showModalBottomSheet<void>(
+        backgroundColor: Colors.transparent,
+        context: context,
+        builder: (BuildContext context) {
+          return Container(
+            height: 200,
+            decoration: BoxDecoration(
+              color: Theme.of(context).colorScheme.background,
+              borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(14), topRight: Radius.circular(14)),
+            ),
+            child: Column(
+              children: [
+                Container(
+                  padding: EdgeInsets.only(top: 24),
+                  alignment: Alignment.center,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(produce.produceName),
+                      UIHorizontalSpace14(),
+                      ChangeBox(produce),
+                    ],
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.only(top: 24, bottom: 34),
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).colorScheme.background,
+                    borderRadius: const BorderRadius.only(
+                        topLeft: Radius.circular(14), topRight: Radius.circular(14)),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 46),
+                    child: SecondaryButton(
+                      onPressed: () {},
+                      content: "Add to Favorites",
+                      buttonIcon: Icon(Icons.bookmark_add_outlined, size: 20),
+                    ),
+                  ),
+                )
+              ],
+            ),
+          );
+        },
+      );
     }
   }
 }

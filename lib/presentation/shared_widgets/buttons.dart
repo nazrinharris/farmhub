@@ -118,6 +118,8 @@ class PrimaryButton extends StatelessWidget {
   }
 }
 
+enum SecondaryButtonType { normal, red, filled }
+
 class SecondaryButton extends StatelessWidget {
   final String? content;
   final Widget? child;
@@ -127,6 +129,7 @@ class SecondaryButton extends StatelessWidget {
   final double? horizontalPadding;
   final double? verticalPadding;
   final Color? backgroundColor;
+  final SecondaryButtonType? type;
 
   const SecondaryButton({
     Key? key,
@@ -138,6 +141,7 @@ class SecondaryButton extends StatelessWidget {
     this.horizontalPadding,
     this.verticalPadding,
     this.backgroundColor,
+    this.type = SecondaryButtonType.normal,
   })  : assert(content == null || child == null,
             "You cannot specify both a [content] and a [child], choose either."),
         assert(content != null || child != null,
@@ -169,13 +173,13 @@ class SecondaryButton extends StatelessWidget {
           children: [
             Text(
               content!,
-              style: const TextStyle(
-                color: Colors.white,
+              style: TextStyle(
+                color: _resolveTextColor(context),
                 fontFamily: "Montserrat",
                 fontWeight: FontWeight.w500,
               ),
             ),
-            const UIHorizontalSpace14(),
+            const UIHorizontalSpace6(),
             buttonIcon!,
           ],
         );
@@ -183,7 +187,7 @@ class SecondaryButton extends StatelessWidget {
         return Text(
           content!,
           style: TextStyle(
-            color: Theme.of(context).colorScheme.primary,
+            color: _resolveTextColor(context),
             fontFamily: "Montserrat",
             fontWeight: FontWeight.w500,
           ),
@@ -195,11 +199,47 @@ class SecondaryButton extends StatelessWidget {
     }
   }
 
+  Color? _resolveTextColor(BuildContext context) {
+    if (type == SecondaryButtonType.normal) {
+      return Theme.of(context).colorScheme.primary;
+    } else if (type == SecondaryButtonType.red) {
+      return Theme.of(context).colorScheme.error;
+    } else {
+      return null;
+    }
+  }
+
   Color? _resolveBackgroundColor(BuildContext context) {
     if (backgroundColor != null) {
       return backgroundColor;
+    } else if (type == SecondaryButtonType.normal) {
+      return null;
+    } else if (type == SecondaryButtonType.red) {
+      return Theme.of(context).colorScheme.error.withOpacity(0.15);
+    } else if (type == SecondaryButtonType.filled) {
+      return Theme.of(context).colorScheme.primary.withOpacity(0.09);
     } else {
       return null;
+    }
+  }
+
+  BorderSide _resolveBorderSide(BuildContext context) {
+    if (type == SecondaryButtonType.normal) {
+      return BorderSide(color: Theme.of(context).colorScheme.primary.withOpacity(0.30));
+    } else if (type == SecondaryButtonType.red) {
+      return BorderSide(color: Theme.of(context).colorScheme.error.withOpacity(0.30));
+    } else {
+      return BorderSide(color: Theme.of(context).colorScheme.primary.withOpacity(0.30));
+    }
+  }
+
+  Color _resolvePrimary(BuildContext context) {
+    if (type == SecondaryButtonType.normal) {
+      return Theme.of(context).colorScheme.primary;
+    } else if (type == SecondaryButtonType.red) {
+      return Theme.of(context).colorScheme.error;
+    } else {
+      return Theme.of(context).colorScheme.primary;
     }
   }
 
@@ -207,13 +247,13 @@ class SecondaryButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return OutlinedButton(
       onPressed: onPressed,
-      style: ButtonStyle(
-        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-          RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16),
+      style: OutlinedButton.styleFrom(
+          primary: _resolvePrimary(context),
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(14)),
           ),
-        ),
-      ),
+          side: _resolveBorderSide(context),
+          backgroundColor: _resolveBackgroundColor(context)),
       child: Container(
         height: 46,
         padding: EdgeInsets.symmetric(
