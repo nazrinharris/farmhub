@@ -5,6 +5,7 @@ import 'package:farmhub/core/errors/failures.dart';
 import 'package:farmhub/core/util/dates.dart';
 import 'package:farmhub/locator.dart';
 import 'package:farmhub/presentation/shared_widgets/appbars.dart';
+import 'package:farmhub/presentation/shared_widgets/buttons.dart';
 import 'package:farmhub/presentation/shared_widgets/scroll_physics.dart';
 import 'package:farmhub/presentation/shared_widgets/ui_helpers.dart';
 import 'package:farmhub/presentation/smart_widgets/primary_button_aware/primary_button_aware_cubit.dart';
@@ -18,6 +19,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 import '../../../core/util/misc.dart';
 import '../../../features/produce_manager/domain/entities/price/price.dart';
+
+import 'package:ndialog/ndialog.dart';
 
 import '../../smart_widgets/custom_cupertino_sliver_refresh_control.dart';
 import 'custom_tab.dart' as ct;
@@ -445,9 +448,35 @@ class PriceListCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bool isAdmin = context.read<GlobalAuthCubit>().state.isAdmin ?? false;
+
     return Material(
       type: MaterialType.transparency,
       child: InkWell(
+        onLongPress: () async {
+          if (isAdmin) {
+            await NDialog(
+              dialogStyle: DialogStyle(
+                titleDivider: true,
+                backgroundColor: Theme.of(context).colorScheme.background,
+              ),
+              title: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 14),
+                child: Text(
+                  "Hmm, did you long-press this price?",
+                  style: Theme.of(context).textTheme.bodyText2,
+                ),
+              ),
+              content: Padding(
+                padding: const EdgeInsets.only(top: 14, bottom: 24, right: 24),
+                child: Text(
+                  "If you want to edit a price, press the price again to go to the price screen.",
+                  style: Theme.of(context).textTheme.bodyText1,
+                ),
+              ),
+            ).show(context, transitionType: DialogTransitionType.Bubble);
+          }
+        },
         onTap: () {
           Navigator.of(context)
               .pushNamed('/price', arguments: PriceScreenArguments(produce, price));

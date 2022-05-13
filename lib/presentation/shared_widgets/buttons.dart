@@ -124,6 +124,7 @@ class SecondaryButton extends StatelessWidget {
   final String? content;
   final Widget? child;
   final double? width;
+  final double? height;
   final Function()? onPressed;
   final Icon? buttonIcon;
   final double? horizontalPadding;
@@ -138,6 +139,7 @@ class SecondaryButton extends StatelessWidget {
     this.onPressed,
     this.buttonIcon,
     this.width,
+    this.height,
     this.horizontalPadding,
     this.verticalPadding,
     this.backgroundColor,
@@ -255,7 +257,7 @@ class SecondaryButton extends StatelessWidget {
           side: _resolveBorderSide(context),
           backgroundColor: _resolveBackgroundColor(context)),
       child: Container(
-        height: 46,
+        height: height ?? 46,
         padding: EdgeInsets.symmetric(
           vertical: verticalPadding ?? 14,
           horizontal: horizontalPadding ?? 34,
