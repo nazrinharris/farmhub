@@ -161,6 +161,7 @@ class _AllPriceListCardState extends State<AllPriceListCard> {
     );
     final date = DateFormat("dd/MM/yyyy").format(dateTimeStamp);
     final time = DateFormat("hh:mm aaa").format(dateTimeStamp);
+    final currentPrice = widget.price.allPricesWithDateList[widget.index].price;
     final bool? isAdmin = context.read<GlobalAuthCubit>().state.isAdmin;
 
     return Material(
@@ -168,7 +169,7 @@ class _AllPriceListCardState extends State<AllPriceListCard> {
       child: InkWell(
         onLongPress: () {
           HapticFeedback.heavyImpact();
-          showProduceBottomActionSheet(context, isAdmin, widget.price);
+          showProduceBottomActionSheet(context, isAdmin, date, time, currentPrice);
         },
         borderRadius: BorderRadius.circular(16),
         onTap: () {},
@@ -225,7 +226,13 @@ class _AllPriceListCardState extends State<AllPriceListCard> {
     }
   }
 
-  void showProduceBottomActionSheet(BuildContext context, bool? isAdmin, Price price) {
+  void showProduceBottomActionSheet(
+    BuildContext context,
+    bool? isAdmin,
+    String date,
+    String time,
+    num currentPrice,
+  ) {
     isAdmin ??= false;
 
     if (isAdmin) {
@@ -234,7 +241,7 @@ class _AllPriceListCardState extends State<AllPriceListCard> {
         context: context,
         builder: (BuildContext context) {
           return Container(
-            height: 390,
+            height: 290,
             decoration: BoxDecoration(
               color: Theme.of(context).colorScheme.background,
               borderRadius: const BorderRadius.only(
@@ -248,10 +255,10 @@ class _AllPriceListCardState extends State<AllPriceListCard> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text("test"),
+                      Text("$date - $time", style: Theme.of(context).textTheme.bodyText1),
                       const UIVerticalSpace14(),
                       Text(
-                        "RM /kg",
+                        "RM ${currentPrice.toString()}/kg",
                         style: Theme.of(context)
                             .textTheme
                             .bodyText2!
@@ -263,9 +270,19 @@ class _AllPriceListCardState extends State<AllPriceListCard> {
                 Padding(
                   padding: const EdgeInsets.only(top: 14, left: 46, right: 46),
                   child: SecondaryButton(
+                    type: SecondaryButtonType.filled,
                     onPressed: () {},
                     content: "Edit Price",
-                    buttonIcon: Icon(Icons.bookmark_add_outlined, size: 20),
+                    buttonIcon: Icon(Icons.edit, size: 20),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 14, left: 46, right: 46),
+                  child: SecondaryButton(
+                    type: SecondaryButtonType.red,
+                    onPressed: () {},
+                    content: "Delete Price",
+                    buttonIcon: Icon(Icons.delete, size: 20),
                   ),
                 ),
               ],
