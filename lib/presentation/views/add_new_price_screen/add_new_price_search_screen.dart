@@ -155,7 +155,11 @@ class _SearchProduceListState extends State<SearchProduceList> {
                       child: const CircularProgressIndicator(),
                     );
                   } else {
-                    return ProduceListCard(index, state.props.produceList[index]);
+                    return ProduceListCard(
+                      index,
+                      state.props.produceList[index],
+                      disableLongPress: true,
+                    );
                   }
                 },
               ),
@@ -184,6 +188,7 @@ class _SearchProduceListState extends State<SearchProduceList> {
                               ProduceArguments(state.props.produceList[index], isFromSearch: true),
                         );
                       },
+                      disableLongPress: true,
                     );
                   }
                 },
@@ -230,6 +235,7 @@ class _SearchProduceListState extends State<SearchProduceList> {
                           arguments: ProduceArguments(state.props.produceList[index]),
                         );
                       },
+                      disableLongPress: true,
                     );
                   }
                 },

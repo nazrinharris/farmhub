@@ -143,6 +143,7 @@ class _ProduceListSliverState extends State<ProduceListSliver> {
                       '/add_new_price_second',
                       arguments: ProduceArguments(produceList[index]),
                     ),
+                    disableLongPress: true,
                     chartAnimationDuration: 0,
                   );
                 }
@@ -168,6 +169,7 @@ class _ProduceListSliverState extends State<ProduceListSliver> {
                       '/add_new_price_second',
                       arguments: ProduceArguments(produceList[index], isFromSearch: false),
                     ),
+                    disableLongPress: true,
                     chartAnimationDuration: 0,
                   );
                 }
@@ -207,6 +209,7 @@ class _ProduceListSliverState extends State<ProduceListSliver> {
                       '/add_new_price_second',
                       arguments: ProduceArguments(state.props.produceList[index]),
                     ),
+                    disableLongPress: true,
                     chartAnimationDuration: 0,
                   );
                 }

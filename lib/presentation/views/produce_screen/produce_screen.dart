@@ -15,6 +15,7 @@ import 'package:farmhub/presentation/views/produce_screen/produce_aggregate_cubi
 import 'package:farmhub/presentation/views/produce_screen/produce_prices_cubit/produce_prices_cubit.dart';
 import 'package:farmhub/presentation/views/produce_screen/produce_screen_appbar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 import '../../../core/util/misc.dart';
@@ -454,6 +455,7 @@ class PriceListCard extends StatelessWidget {
       type: MaterialType.transparency,
       child: InkWell(
         onLongPress: () async {
+          HapticFeedback.heavyImpact();
           if (isAdmin) {
             await NDialog(
               dialogStyle: DialogStyle(

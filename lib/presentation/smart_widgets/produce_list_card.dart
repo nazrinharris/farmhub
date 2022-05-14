@@ -3,6 +3,7 @@ import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
 import 'package:farmhub/presentation/shared_widgets/buttons.dart';
 import 'package:farmhub/presentation/shared_widgets/texts.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
@@ -20,6 +21,7 @@ class ProduceListCard extends StatelessWidget {
   final Produce produce;
   final Function()? onTap;
   final double? chartAnimationDuration;
+  final bool? disableLongPress;
 
   const ProduceListCard(
     this.index,
@@ -27,6 +29,7 @@ class ProduceListCard extends StatelessWidget {
     Key? key,
     this.onTap,
     this.chartAnimationDuration,
+    this.disableLongPress,
   }) : super(key: key);
 
   @override
@@ -34,12 +37,17 @@ class ProduceListCard extends StatelessWidget {
     num currentProducePrice = produce.currentProducePrice["price"];
     currentProducePrice = roundNum(currentProducePrice.toDouble(), 2);
     final bool? isAdmin = context.read<GlobalAuthCubit>().state.isAdmin;
+    final bool disableLongPress = this.disableLongPress ?? false;
 
     return Material(
       type: MaterialType.transparency,
       child: InkWell(
         onLongPress: () {
-          showProduceBottomActionSheet(context, isAdmin, produce);
+          HapticFeedback.heavyImpact();
+          if (disableLongPress) {
+          } else {
+            showProduceBottomActionSheet(context, isAdmin, produce);
+          }
         },
         onTap: onTap ??
             () {
@@ -136,7 +144,7 @@ class ProduceListCard extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(produce.produceName),
-                      UIVerticalSpace14(),
+                      const UIVerticalSpace14(),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -147,7 +155,7 @@ class ProduceListCard extends StatelessWidget {
                                 .bodyText2!
                                 .copyWith(fontWeight: FontWeight.w700),
                           ),
-                          UIHorizontalSpace14(),
+                          const UIHorizontalSpace14(),
                           ChangeBox(produce),
                         ],
                       ),

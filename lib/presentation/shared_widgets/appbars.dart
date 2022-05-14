@@ -10,6 +10,7 @@ class DefaultAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Function()? leadingOnPressed;
   final Icon? secondTrailingIcon;
   final Function()? secondTrailingOnPressed;
+  final Widget? secondTrailingChild;
   final Icon? trailingIcon;
   final Function()? trailingOnPressed;
   final String? title;
@@ -25,6 +26,7 @@ class DefaultAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.trailingOnPressed,
     this.title,
     this.backgroundColors,
+    this.secondTrailingChild,
   }) : super(key: key);
 
   @override
@@ -70,11 +72,8 @@ class DefaultAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   Widget resolveTrailing() {
-    if (trailingIcon != null && secondTrailingIcon == null) {
-      return IconButton(
-        onPressed: trailingOnPressed,
-        icon: trailingIcon!,
-      );
+    if (trailingIcon != null && secondTrailingIcon == null && secondTrailingChild == null) {
+      return IconButton(onPressed: trailingOnPressed, icon: trailingIcon!);
     } else if (trailingIcon != null && secondTrailingIcon != null) {
       return Container(
         child: Row(
@@ -84,6 +83,14 @@ class DefaultAppBar extends StatelessWidget implements PreferredSizeWidget {
             IconButton(onPressed: secondTrailingOnPressed, icon: secondTrailingIcon!),
           ],
         ),
+      );
+    } else if (trailingIcon != null && secondTrailingChild != null) {
+      print("second trailing child used");
+      return Row(
+        children: [
+          IconButton(onPressed: trailingOnPressed, icon: trailingIcon!),
+          secondTrailingChild!,
+        ],
       );
     } else {
       return const SizedBox.shrink();

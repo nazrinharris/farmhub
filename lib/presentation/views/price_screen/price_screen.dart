@@ -1,11 +1,15 @@
 import 'package:farmhub/app_router.dart';
+import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
 import 'package:farmhub/presentation/shared_widgets/appbars.dart';
 import 'package:farmhub/presentation/shared_widgets/ui_helpers.dart';
 import 'package:farmhub/presentation/smart_widgets/produce_list_card.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 
 import '../../../features/produce_manager/domain/entities/price/price.dart';
+import '../../shared_widgets/buttons.dart';
 
 class PriceScreen extends StatelessWidget {
   final PriceScreenArguments arguments;
@@ -29,6 +33,7 @@ class PriceScreen extends StatelessWidget {
         },
       ),
       body: ListView(
+        physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
         children: [
           Column(
             children: [
@@ -114,6 +119,7 @@ class AllPricesList extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.builder(
       shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
       itemCount: price.allPricesWithDateList.length,
       itemBuilder: (context, index) {
         return Padding(
@@ -155,10 +161,15 @@ class _AllPriceListCardState extends State<AllPriceListCard> {
     );
     final date = DateFormat("dd/MM/yyyy").format(dateTimeStamp);
     final time = DateFormat("hh:mm aaa").format(dateTimeStamp);
+    final bool? isAdmin = context.read<GlobalAuthCubit>().state.isAdmin;
 
     return Material(
       type: MaterialType.transparency,
       child: InkWell(
+        onLongPress: () {
+          HapticFeedback.heavyImpact();
+          showProduceBottomActionSheet(context, isAdmin, widget.price);
+        },
         borderRadius: BorderRadius.circular(16),
         onTap: () {},
         child: Container(
@@ -212,5 +223,56 @@ class _AllPriceListCardState extends State<AllPriceListCard> {
     } else {
       return BorderSide.none;
     }
+  }
+
+  void showProduceBottomActionSheet(BuildContext context, bool? isAdmin, Price price) {
+    isAdmin ??= false;
+
+    if (isAdmin) {
+      showModalBottomSheet<void>(
+        backgroundColor: Colors.transparent,
+        context: context,
+        builder: (BuildContext context) {
+          return Container(
+            height: 390,
+            decoration: BoxDecoration(
+              color: Theme.of(context).colorScheme.background,
+              borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(14), topRight: Radius.circular(14)),
+            ),
+            child: Column(
+              children: [
+                Container(
+                  padding: EdgeInsets.only(top: 24),
+                  alignment: Alignment.center,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text("test"),
+                      const UIVerticalSpace14(),
+                      Text(
+                        "RM /kg",
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodyText2!
+                            .copyWith(fontWeight: FontWeight.w700),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 14, left: 46, right: 46),
+                  child: SecondaryButton(
+                    onPressed: () {},
+                    content: "Edit Price",
+                    buttonIcon: Icon(Icons.bookmark_add_outlined, size: 20),
+                  ),
+                ),
+              ],
+            ),
+          );
+        },
+      );
+    } else {}
   }
 }
