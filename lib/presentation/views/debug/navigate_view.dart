@@ -54,7 +54,7 @@ class NavigateView extends StatelessWidget {
               onPressed: () {
                 Navigator.of(context).pushNamed('/main');
               },
-              backgroundColor: Theme.of(context).colorScheme.primaryVariant,
+              backgroundColor: Theme.of(context).colorScheme.primaryContainer,
               width: 200,
               child: Text(
                 'To Main',

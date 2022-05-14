@@ -166,6 +166,7 @@ class PrimaryButtonAware extends StatelessWidget {
         }
         break;
     }
+    return null;
   }
 
   AnimatedSwitcher _buildNormalButtonContent(

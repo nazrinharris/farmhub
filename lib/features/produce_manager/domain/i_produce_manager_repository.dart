@@ -2,7 +2,6 @@ import 'package:farmhub/core/typedefs/typedefs.dart';
 import 'package:farmhub/features/produce_manager/domain/entities/price/price.dart';
 import 'package:fpdart/fpdart.dart';
 
-import '../../../core/errors/failures.dart';
 import 'entities/produce/produce.dart';
 
 abstract class IProduceManagerRepository {

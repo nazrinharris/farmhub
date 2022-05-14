@@ -1,7 +1,6 @@
 // TODO: Extract ProduceListCard and whatever else that is needed.
 import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
 import 'package:farmhub/presentation/shared_widgets/buttons.dart';
-import 'package:farmhub/presentation/shared_widgets/texts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -138,7 +137,7 @@ class ProduceListCard extends StatelessWidget {
             child: Column(
               children: [
                 Container(
-                  padding: EdgeInsets.only(top: 24),
+                  padding: const EdgeInsets.only(top: 24),
                   alignment: Alignment.center,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -167,7 +166,7 @@ class ProduceListCard extends StatelessWidget {
                   child: SecondaryButton(
                     onPressed: () {},
                     content: "Add to Favorites",
-                    buttonIcon: Icon(Icons.bookmark_add_outlined, size: 20),
+                    buttonIcon: const Icon(Icons.bookmark_add_outlined, size: 20),
                   ),
                 ),
                 Padding(
@@ -176,7 +175,7 @@ class ProduceListCard extends StatelessWidget {
                     onPressed: () {},
                     content: "Add new Price",
                     type: SecondaryButtonType.filled,
-                    buttonIcon: Icon(Icons.attach_money, size: 20),
+                    buttonIcon: const Icon(Icons.attach_money, size: 20),
                   ),
                 ),
                 Padding(
@@ -217,19 +216,19 @@ class ProduceListCard extends StatelessWidget {
             child: Column(
               children: [
                 Container(
-                  padding: EdgeInsets.only(top: 24),
+                  padding: const EdgeInsets.only(top: 24),
                   alignment: Alignment.center,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(produce.produceName),
-                      UIHorizontalSpace14(),
+                      const UIHorizontalSpace14(),
                       ChangeBox(produce),
                     ],
                   ),
                 ),
                 Container(
-                  padding: EdgeInsets.only(top: 24, bottom: 34),
+                  padding: const EdgeInsets.only(top: 24, bottom: 34),
                   decoration: BoxDecoration(
                     color: Theme.of(context).colorScheme.background,
                     borderRadius: const BorderRadius.only(
@@ -240,7 +239,7 @@ class ProduceListCard extends StatelessWidget {
                     child: SecondaryButton(
                       onPressed: () {},
                       content: "Add to Favorites",
-                      buttonIcon: Icon(Icons.bookmark_add_outlined, size: 20),
+                      buttonIcon: const Icon(Icons.bookmark_add_outlined, size: 20),
                     ),
                   ),
                 )
@@ -368,7 +367,7 @@ class ChangeBox extends StatelessWidget {
     if (isNegative) {
       return Theme.of(context).colorScheme.error;
     } else {
-      return Theme.of(context).colorScheme.secondaryVariant;
+      return Theme.of(context).colorScheme.secondaryContainer;
     }
   }
 
@@ -416,8 +415,8 @@ class SmallPriceChart extends StatelessWidget {
       if (isNegative) {
         gradient = LinearGradient(
           colors: [
-            Color(0xffEC6666),
-            Color(0xffFFF4F4).withOpacity(0.1),
+            const Color(0xffEC6666),
+            const Color(0xffFFF4F4).withOpacity(0.1),
           ],
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
@@ -426,8 +425,8 @@ class SmallPriceChart extends StatelessWidget {
       } else {
         gradient = LinearGradient(
           colors: [
-            Color(0xff79D2DE),
-            Color(0xffFFF4F4).withOpacity(0.1),
+            const Color(0xff79D2DE),
+            const Color(0xffFFF4F4).withOpacity(0.1),
           ],
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,

@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:farmhub/core/errors/failures.dart';
 import 'package:farmhub/features/produce_manager/domain/i_produce_manager_repository.dart';
-import 'package:farmhub/presentation/views/main_screen/bloc/main_screen_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../features/produce_manager/domain/entities/produce/produce.dart';

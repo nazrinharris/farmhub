@@ -1,5 +1,4 @@
 import 'package:bloc/bloc.dart';
-import 'package:farmhub/core/auth/data/repository/auth_repository.dart';
 import 'package:farmhub/core/auth/domain/entities/farmhub_user/farmhub_user.dart';
 import 'package:farmhub/core/auth/domain/i_auth_repository.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -31,7 +30,7 @@ class GlobalAuthCubit extends Cubit<GlobalAuthState> {
       (farmhubUser) async {
         final failureOrIsAdmin = await repository.isAdmin(uid: farmhubUser.uid);
 
-        await failureOrIsAdmin.fold(
+        failureOrIsAdmin.fold(
           (f) {
             print("Failed to check if user is admin");
             print(f);

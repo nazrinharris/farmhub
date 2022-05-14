@@ -5,14 +5,11 @@ import 'package:farmhub/presentation/shared_widgets/appbars.dart';
 import 'package:farmhub/presentation/shared_widgets/buttons.dart';
 import 'package:farmhub/presentation/shared_widgets/texts.dart';
 import 'package:farmhub/presentation/shared_widgets/ui_helpers.dart';
-import 'package:farmhub/presentation/smart_widgets/primary_button_aware/primary_button_aware_cubit.dart';
 import 'package:farmhub/presentation/smart_widgets/produce_list_card.dart';
 import 'package:farmhub/presentation/views/add_new_price_screen/bloc/add_new_price_screen_bloc.dart';
 import 'package:farmhub/presentation/smart_widgets/large_price_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:top_snackbar_flutter/custom_snack_bar.dart';
-import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
 class AddNewPriceThirdScreen extends StatelessWidget {
   final ProduceArguments arguments;
@@ -44,7 +41,7 @@ class AddNewPriceThirdScreen extends StatelessWidget {
               resizeToAvoidBottomInset: false,
               extendBodyBehindAppBar: true,
               appBar: DefaultAppBar(
-                leadingIcon: Icon(Icons.close),
+                leadingIcon: const Icon(Icons.close),
                 leadingOnPressed: () {
                   // TODO: Make sure to refresh MainScreen
                   if (arguments.isFromSearch == true) {
@@ -94,7 +91,7 @@ class AddNewPriceThirdScreen extends StatelessWidget {
                           ],
                         ),
                         const UIVerticalSpace14(),
-                        UIBorder(),
+                        const UIBorder(),
                         const UIVerticalSpace30(),
                         LargePriceChart(arguments.produce, LargePriceChartType.oneW)
                       ],

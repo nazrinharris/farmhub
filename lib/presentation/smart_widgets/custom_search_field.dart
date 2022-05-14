@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CustomSearchField extends StatefulWidget {
@@ -38,7 +37,7 @@ class _CustomSearchFieldState extends State<CustomSearchField> {
     textEditingController = widget.textEditingController ?? TextEditingController();
     isFieldEmpty = true;
 
-    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       if (widget.isFocus != null) widget.isFocus! ? focusNode.requestFocus() : null;
     });
   }

@@ -23,7 +23,7 @@ class CreateProduceScreenBloc extends Bloc<CreateProduceScreenEvent, CreateProdu
     required this.firstTwoFieldsFormBloc,
     required this.produceManagerBloc,
     required this.primaryButtonAwareCubit,
-  }) : super(_Initial()) {
+  }) : super(const _Initial()) {
     on<_CPSEExecCreateNewProduce>(execCreateNewProduce);
   }
 

@@ -4,8 +4,6 @@ import 'package:farmhub/core/errors/exceptions.dart';
 import 'package:farmhub/core/errors/failures.dart';
 import 'package:farmhub/core/util/dates.dart';
 import 'package:farmhub/locator.dart';
-import 'package:farmhub/presentation/shared_widgets/appbars.dart';
-import 'package:farmhub/presentation/shared_widgets/buttons.dart';
 import 'package:farmhub/presentation/shared_widgets/scroll_physics.dart';
 import 'package:farmhub/presentation/shared_widgets/ui_helpers.dart';
 import 'package:farmhub/presentation/smart_widgets/primary_button_aware/primary_button_aware_cubit.dart';
@@ -87,7 +85,7 @@ class _ProduceScreenState extends State<ProduceScreen> with SingleTickerProvider
                     CustomCupertinoSliverRefreshControl(
                       onRefresh: () async {
                         print("Refreshed");
-                        await Future.delayed(Duration(seconds: 2));
+                        await Future.delayed(const Duration(seconds: 2));
                       },
                     ),
                     SliverProduceHeader(widget.produceArguments.produce),
@@ -272,7 +270,7 @@ class SliverPricesListHeader extends StatefulWidget {
   final Produce produce;
   final ScrollController scrollController;
 
-  SliverPricesListHeader(this.scrollController, this.produce, {Key? key}) : super(key: key);
+  const SliverPricesListHeader(this.scrollController, this.produce, {Key? key}) : super(key: key);
 
   @override
   State<SliverPricesListHeader> createState() => _SliverPricesListHeaderState();
@@ -312,7 +310,7 @@ class _SliverPricesListHeaderState extends State<SliverPricesListHeader> {
 class SliverPricesListSwitcher extends StatefulWidget {
   final Produce produce;
 
-  SliverPricesListSwitcher(this.produce, {Key? key}) : super(key: key);
+  const SliverPricesListSwitcher(this.produce, {Key? key}) : super(key: key);
 
   @override
   State<SliverPricesListSwitcher> createState() => _SliverPricesListSwitcherState();

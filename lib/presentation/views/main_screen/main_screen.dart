@@ -80,7 +80,7 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
               resizeToAvoidBottomInset: false,
               extendBodyBehindAppBar: true,
               extendBody: true,
-              floatingActionButton: MainScreenFAB(),
+              floatingActionButton: const MainScreenFAB(),
               body: SafeArea(
                 child: CustomScrollView(
                   controller: scrollController,
@@ -183,7 +183,7 @@ class _SliverMainScreenListViewState extends State<SliverMainScreenListView> {
     return SliverList(
         delegate: SliverChildListDelegate([
       Container(
-        child: Text('Uh oh, some weird state is thrown here. In ProduceList!'),
+        child: const Text('Uh oh, some weird state is thrown here. In ProduceList!'),
       )
     ]));
   }
