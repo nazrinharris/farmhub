@@ -217,7 +217,7 @@ class _SearchProduceListState extends State<SearchProduceList> {
                             style:
                                 Theme.of(context).textTheme.bodyText1!.copyWith(color: Colors.red),
                           ),
-                          const UIVerticalSpace14(),
+                          UIVerticalSpace14(),
                           Text(
                             "Scroll to retry",
                             style: Theme.of(context).textTheme.caption,

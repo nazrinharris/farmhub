@@ -4,6 +4,7 @@ import 'package:clock/clock.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:farmhub/core/errors/exceptions.dart';
 import 'package:farmhub/features/produce_manager/domain/entities/price/price.dart';
+import 'package:farmhub/features/produce_manager/domain/helpers.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:intl/intl.dart';
 
@@ -435,9 +436,9 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
     weeklyPricesSnippet.add(newSnippet);
 
     print("Unsorted weeklyPricesSnippet");
-    for (var element in weeklyPricesSnippet) {
+    weeklyPricesSnippet.forEach((element) {
       print(element);
-    }
+    });
 
     weeklyPricesSnippet.sort((a, b) {
       DateTime aPriceDate = DateFormat("dd-MM-yyyy").parse(a.priceDate);
@@ -447,9 +448,9 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
     });
 
     print("Sorted weeklyPricesSnippet");
-    for (var element in weeklyPricesSnippet) {
+    weeklyPricesSnippet.forEach((element) {
       print(element);
-    }
+    });
 
     // At this point, weeklyPricesSnippet[0] should represent the lower bound and the
     // last entry of weeklyPricesSnippet should represent the upper bounr.
@@ -546,9 +547,9 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
     weeklyPricesSnippet.add(PriceSnippet(price: calculatedPrice, priceDate: chosenDate));
 
     print("Unsorted weeklyPricesSnippet");
-    for (var element in weeklyPricesSnippet) {
+    weeklyPricesSnippet.forEach((element) {
       print(element);
-    }
+    });
 
     weeklyPricesSnippet.sort((a, b) {
       DateTime aPriceDate = DateFormat("dd-MM-yyyy").parse(a.priceDate);
@@ -558,9 +559,9 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
     });
 
     print("Sorted weeklyPricesSnippet");
-    for (var element in weeklyPricesSnippet) {
+    weeklyPricesSnippet.forEach((element) {
       print(element);
-    }
+    });
 
     // At this point, weeklyPricesSnippet[0] should represent the lower bound and the
     // last entry of weeklyPricesSnippet should represent the upper bounr.

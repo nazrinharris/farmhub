@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../domain/entities/price/price.dart';
 import '../domain/entities/produce/produce.dart';
 import '../domain/i_produce_manager_repository.dart';
 

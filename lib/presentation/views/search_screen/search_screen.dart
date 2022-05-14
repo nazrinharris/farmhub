@@ -216,7 +216,7 @@ class _SearchProduceListState extends State<SearchProduceList> {
             ),
           );
         } else {
-          return const Center(
+          return Center(
             child: Text("Unexpected"),
           );
         }

@@ -118,6 +118,5 @@ class CreateProduceScreen extends StatelessWidget {
     } else if (double.tryParse(value)! < 0) {
       return 'A negative price is invalid';
     }
-    return null;
   }
 }

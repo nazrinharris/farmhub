@@ -6,6 +6,7 @@ import 'package:farmhub/presentation/smart_widgets/info_tile/bloc/info_tile_bloc
 import 'package:farmhub/presentation/smart_widgets/info_tile/info_tile.dart';
 import 'package:farmhub/presentation/smart_widgets/primary_button_aware/primary_button_aware_cubit.dart';
 
+import 'package:flutter/animation.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:simple_animations/simple_animations.dart';

@@ -96,7 +96,7 @@ class _LoginScreenState extends State<LoginScreen> with AnimationMixin {
                       left: false,
                       right: false,
                       top: false,
-                      child: SizedBox(
+                      child: Container(
                         //padding: const EdgeInsets.symmetric(horizontal: 24),
                         height: screen.height,
                         width: screen.width,
@@ -253,7 +253,7 @@ class _BuildBottomButton extends StatelessWidget {
           PrimaryButtonAware(
             firstPageContent: 'Continue',
             firstPageOnPressed: () {
-              context.read<LoginScreenBloc>().add(const LoginScreenEvent.continuePressed());
+              context.read<LoginScreenBloc>().add(LoginScreenEvent.continuePressed());
             },
             firstPageButtonIcon: const Icon(
               Icons.arrow_right,

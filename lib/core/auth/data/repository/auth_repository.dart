@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:fpdart/fpdart.dart';
 
 import 'package:farmhub/core/auth/data/datasources/auth_local_datasource.dart';

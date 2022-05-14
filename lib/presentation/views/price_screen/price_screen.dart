@@ -2,6 +2,7 @@ import 'package:farmhub/app_router.dart';
 import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
 import 'package:farmhub/presentation/shared_widgets/appbars.dart';
 import 'package:farmhub/presentation/shared_widgets/ui_helpers.dart';
+import 'package:farmhub/presentation/smart_widgets/produce_list_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -249,7 +250,7 @@ class _AllPriceListCardState extends State<AllPriceListCard> {
             child: Column(
               children: [
                 Container(
-                  padding: const EdgeInsets.only(top: 24),
+                  padding: EdgeInsets.only(top: 24),
                   alignment: Alignment.center,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -272,7 +273,7 @@ class _AllPriceListCardState extends State<AllPriceListCard> {
                     type: SecondaryButtonType.filled,
                     onPressed: () {},
                     content: "Edit Price",
-                    buttonIcon: const Icon(Icons.edit, size: 20),
+                    buttonIcon: Icon(Icons.edit, size: 20),
                   ),
                 ),
                 Padding(
@@ -281,7 +282,7 @@ class _AllPriceListCardState extends State<AllPriceListCard> {
                     type: SecondaryButtonType.red,
                     onPressed: () {},
                     content: "Delete Price",
-                    buttonIcon: const Icon(Icons.delete, size: 20),
+                    buttonIcon: Icon(Icons.delete, size: 20),
                   ),
                 ),
               ],
