@@ -57,6 +57,7 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
   Future<List<Produce>> getFirstTenProduce() async {
     final documentsList = await firebaseFirestore
         .collection('produce')
+        .where("isDeleted", isNotEqualTo: true)
         .limit(10)
         .get()
         .then((snapshot) => snapshot.docs);
@@ -77,6 +78,7 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
 
     final documentsList = await firebaseFirestore
         .collection('produce')
+        .where("isDeleted", isNotEqualTo: true)
         .startAfterDocument(lastDocument)
         .limit(10)
         .get()
@@ -96,6 +98,7 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
     final queryList = await firebaseFirestore
         .collection('produce')
         .where('produceNameSearch', arrayContains: query.toLowerCase())
+        .where("isDeleted", isNotEqualTo: true)
         .limit(10)
         .get();
 
@@ -117,6 +120,7 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
     final newQueryList = await firebaseFirestore
         .collection('produce')
         .startAfterDocument(lastDocument)
+        .where("isDeleted", isNotEqualTo: true)
         .where('produceNameSearch', arrayContains: query.toLowerCase())
         .limit(10)
         .get();
@@ -202,6 +206,7 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
       "produceNameSearch": produceNameSearch,
       "weeklyPrices": weeklyPrices,
       "lastUpdateTimeStamp": currentTimeStamp,
+      "isDeleted": false,
       "authorId": authorId,
     }).then((doc) async {
       doc.update({
@@ -286,7 +291,11 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
   }
 
   @override
-  Future<Unit> deleteProduce(String produceId) {}
+  Future<Unit> deleteProduce(String produceId) async {
+    await firebaseFirestore.collection('produce').doc(produceId).update({"isDeleted": true});
+
+    return unit;
+  }
 
   @override
   Future<Produce> addNewPrice({
