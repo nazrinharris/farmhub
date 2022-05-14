@@ -219,6 +219,44 @@ class ProduceManagerRepository implements IProduceManagerRepository {
   }
 
   @override
+  FutureEither<Unit> editProduce(String produceId, String newProduceName) async {
+    if (await networkInfo.isConnected) {
+      try {
+        await remoteDatasource.editProduce(produceId, newProduceName);
+
+        return const Right(unit);
+      } catch (e) {
+        return Left(UnexpectedFailure(code: e.toString(), stackTrace: StackTrace.current));
+      }
+    } else {
+      return Left(InternetConnectionFailure(
+        code: ERROR_NO_INTERNET_CONNECTION,
+        message: MESSAGE_NO_INTERNET_CONNECTION,
+        stackTrace: StackTrace.current,
+      ));
+    }
+  }
+
+  @override
+  FutureEither<Unit> deleteProduce(String produceId) async {
+    if (await networkInfo.isConnected) {
+      try {
+        await remoteDatasource.deleteProduce(produceId);
+
+        return const Right(unit);
+      } catch (e) {
+        return Left(UnexpectedFailure(code: e.toString(), stackTrace: StackTrace.current));
+      }
+    } else {
+      return Left(InternetConnectionFailure(
+        code: ERROR_NO_INTERNET_CONNECTION,
+        message: MESSAGE_NO_INTERNET_CONNECTION,
+        stackTrace: StackTrace.current,
+      ));
+    }
+  }
+
+  @override
   FutureEither<List<Produce>> getNextTenSearchProduce(
     List<Produce> lastProduceList,
     String query,

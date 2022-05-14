@@ -241,7 +241,7 @@ class _AllPriceListCardState extends State<AllPriceListCard> {
         context: context,
         builder: (BuildContext context) {
           return Container(
-            height: 290,
+            height: 260,
             decoration: BoxDecoration(
               color: Theme.of(context).colorScheme.background,
               borderRadius: const BorderRadius.only(

@@ -5,6 +5,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:farmhub/core/errors/exceptions.dart';
 import 'package:farmhub/features/produce_manager/domain/entities/price/price.dart';
 import 'package:farmhub/features/produce_manager/domain/helpers.dart';
+import 'package:fpdart/fpdart.dart';
 import 'package:intl/intl.dart';
 
 import '../../domain/entities/produce/produce.dart';
@@ -19,6 +20,8 @@ abstract class IProduceManagerRemoteDatasource {
     required num currentProducePrice,
     required String authorId,
   });
+  Future<Unit> editProduce(String produceId, String newProduceName);
+  Future<Unit> deleteProduce(String produceId);
 
   /// This method will return a list of [PriceSnippet] which is unsorted. Use
   /// helper methods from [helpers.dart] to filter and sort it.
@@ -251,6 +254,39 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
 
     return produce;
   }
+
+  @override
+  Future<Unit> editProduce(String produceId, String newProduceName) async {
+    // Create search parameters
+    List<String> newProduceNameSearch = [];
+    String temp = "";
+    for (int i = 0; i < newProduceName.length; i++) {
+      temp = temp + newProduceName[i].toLowerCase();
+      newProduceNameSearch.add(temp);
+    }
+    // Create per-word basis search parameters
+    List<String> listOfWords = newProduceName.split(" ");
+    temp = "";
+    if (listOfWords.length > 1) {
+      for (String word in listOfWords) {
+        for (int i = 0; i < word.length; i++) {
+          temp = temp + word[i].toLowerCase();
+          newProduceNameSearch.add(temp);
+        }
+        temp = "";
+      }
+    }
+
+    await firebaseFirestore.collection('produce').doc(produceId).update({
+      "produceName": newProduceName,
+      "produceNameSearch": newProduceNameSearch,
+    });
+
+    return unit;
+  }
+
+  @override
+  Future<Unit> deleteProduce(String produceId) {}
 
   @override
   Future<Produce> addNewPrice({

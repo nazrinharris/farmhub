@@ -23,6 +23,8 @@ abstract class IProduceManagerRepository {
     required String produceName,
     required num currentProducePrice,
   });
+  FutureEither<Unit> editProduce(String produceId, String newProduceName);
+  FutureEither<Unit> deleteProduce(String produceId);
 
   FutureEither<Produce> addNewPrice({
     required String produceId,
