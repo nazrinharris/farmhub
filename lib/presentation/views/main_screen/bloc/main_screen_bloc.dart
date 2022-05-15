@@ -120,8 +120,6 @@ class MainScreenBloc extends Bloc<MainScreenEvent, MainScreenState> {
     // Start loading and reset the list
     emit(MainScreenState.pricesLoading(props: state.props.copyWith(produceList: [])));
 
-    await Future.delayed(Duration(seconds: 5));
-
     final failureOrProduceList = await produceManagerRepository.getFirstTenProduce();
 
     await failureOrProduceList.fold(

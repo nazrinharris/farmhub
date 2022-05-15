@@ -57,7 +57,7 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
   Future<List<Produce>> getFirstTenProduce() async {
     final documentsList = await firebaseFirestore
         .collection('produce')
-        .where("isDeleted", isNotEqualTo: true)
+        .where("isDeleted", isEqualTo: false)
         .limit(10)
         .get()
         .then((snapshot) => snapshot.docs);
@@ -78,8 +78,8 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
 
     final documentsList = await firebaseFirestore
         .collection('produce')
-        .where("isDeleted", isNotEqualTo: true)
         .startAfterDocument(lastDocument)
+        .where("isDeleted", isEqualTo: false)
         .limit(10)
         .get()
         .then((snapshot) => snapshot.docs);
@@ -98,7 +98,7 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
     final queryList = await firebaseFirestore
         .collection('produce')
         .where('produceNameSearch', arrayContains: query.toLowerCase())
-        .where("isDeleted", isNotEqualTo: true)
+        .where("isDeleted", isEqualTo: false)
         .limit(10)
         .get();
 
@@ -120,7 +120,7 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
     final newQueryList = await firebaseFirestore
         .collection('produce')
         .startAfterDocument(lastDocument)
-        .where("isDeleted", isNotEqualTo: true)
+        .where("isDeleted", isEqualTo: false)
         .where('produceNameSearch', arrayContains: query.toLowerCase())
         .limit(10)
         .get();
