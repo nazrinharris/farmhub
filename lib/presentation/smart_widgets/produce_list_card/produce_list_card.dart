@@ -1,12 +1,10 @@
-// TODO: Extract ProduceListCard and whatever else that is needed.
 import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
+import 'package:farmhub/presentation/global/cubit/global_ui_cubit.dart';
 import 'package:farmhub/presentation/shared_widgets/buttons.dart';
-import 'package:farmhub/presentation/views/search_screen/bloc/search_screen_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
-import 'package:ndialog/ndialog.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 import '../../../app_router.dart';
@@ -15,7 +13,6 @@ import '../../../features/produce_manager/domain/entities/price/price.dart';
 import '../../../features/produce_manager/domain/entities/produce/produce.dart';
 import '../../../locator.dart';
 import '../../shared_widgets/ui_helpers.dart';
-import '../../views/main_screen/bloc/main_screen_bloc.dart';
 import 'cubit/produce_list_card_cubit.dart';
 
 /// [index] is only used to decide if the top border should be rendered or not.
@@ -139,7 +136,7 @@ class ProduceListCard extends StatelessWidget {
         context: context,
         builder: (BuildContext context) {
           return BlocProvider(
-            create: (context) => ProduceListCardCubit(locator()),
+            create: (context) => ProduceListCardCubit(locator(), locator()),
             child: Builder(builder: (context) {
               return Container(
                 height: 390,
@@ -180,7 +177,7 @@ class ProduceListCard extends StatelessWidget {
                       child: SecondaryButton(
                         onPressed: () {},
                         content: "Add to Favorites",
-                        buttonIcon: Icon(Icons.bookmark_add_outlined, size: 20),
+                        buttonIcon: const Icon(Icons.bookmark_add_outlined, size: 20),
                       ),
                     ),
                     Padding(
@@ -189,7 +186,7 @@ class ProduceListCard extends StatelessWidget {
                         onPressed: () {},
                         content: "Add new Price",
                         type: SecondaryButtonType.filled,
-                        buttonIcon: Icon(Icons.attach_money, size: 20),
+                        buttonIcon: const Icon(Icons.attach_money, size: 20),
                       ),
                     ),
                     Padding(
@@ -220,7 +217,7 @@ class ProduceListCard extends StatelessWidget {
             }),
           );
         },
-      ).then((value) => print("Should refresh now!"));
+      );
     } else {
       showModalBottomSheet<void>(
         backgroundColor: Colors.transparent,

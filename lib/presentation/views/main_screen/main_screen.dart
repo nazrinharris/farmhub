@@ -1,6 +1,7 @@
 import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
 
 import 'package:farmhub/features/produce_manager/bloc/produce_manager_bloc.dart';
+import 'package:farmhub/presentation/global/cubit/global_ui_cubit.dart';
 import 'package:farmhub/presentation/shared_widgets/buttons.dart';
 import 'package:farmhub/presentation/smart_widgets/produce_list_card/cubit/produce_list_card_cubit.dart';
 
@@ -77,44 +78,56 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
             produceManagerRepository: locator(),
           ),
           child: Builder(
-            builder: (context) => Scaffold(
-              resizeToAvoidBottomInset: false,
-              extendBodyBehindAppBar: true,
-              extendBody: true,
-              floatingActionButton: MainScreenFAB(),
-              body: SafeArea(
-                child: CustomScrollView(
-                  controller: scrollController,
-                  physics: DefaultScrollPhysics,
-                  slivers: [
-                    CupertinoSliverRefreshControl(
-                      onRefresh: () async {
-                        context.read<MainScreenBloc>().add(const MainScreenEvent.refresh());
+            builder: (context) => BlocListener<GlobalUICubit, GlobalUIState>(
+              listener: (context, state) {
+                if (state.props.shouldRefreshMain) {
+                  print("This line means refresh is executed!");
+                  context.read<MainScreenBloc>().add(const MainScreenEvent.refresh());
+                  context.read<GlobalUICubit>().setShouldRefreshMain(false);
+                }
+              },
+              listenWhen: (state1, state2) {
+                return true;
+              },
+              child: Scaffold(
+                resizeToAvoidBottomInset: false,
+                extendBodyBehindAppBar: true,
+                extendBody: true,
+                floatingActionButton: MainScreenFAB(),
+                body: SafeArea(
+                  child: CustomScrollView(
+                    controller: scrollController,
+                    physics: DefaultScrollPhysics,
+                    slivers: [
+                      CupertinoSliverRefreshControl(
+                        onRefresh: () async {
+                          context.read<MainScreenBloc>().add(const MainScreenEvent.refresh());
 
-                        await context.read<MainScreenBloc>().stream.firstWhere((state) {
-                          return (state is MSSPricesCompleted);
-                        });
-                      },
-                    ),
-                    BlocBuilder<MainScreenBloc, MainScreenState>(
-                      builder: (context, state) {
-                        return BlocBuilder<GlobalAuthCubit, GlobalAuthState>(
-                          builder: (context, state) {
-                            final bool isAdmin = state.isAdmin ?? false;
+                          await context.read<MainScreenBloc>().stream.firstWhere((state) {
+                            return (state is MSSPricesCompleted);
+                          });
+                        },
+                      ),
+                      BlocBuilder<MainScreenBloc, MainScreenState>(
+                        builder: (context, state) {
+                          return BlocBuilder<GlobalAuthCubit, GlobalAuthState>(
+                            builder: (context, state) {
+                              final bool isAdmin = state.isAdmin ?? false;
 
-                            return SliverMainScreenHeader(
-                              isAdmin ? adminExtent : extent,
-                              mainScreenFocusNode,
-                              isAdmin,
-                            );
-                          },
-                        );
-                      },
-                    ),
-                    //const SliverDebugSlot(),
-                    SliverMainScreenListView(scrollController),
-                    const SliverWhiteSpace(200)
-                  ],
+                              return SliverMainScreenHeader(
+                                isAdmin ? adminExtent : extent,
+                                mainScreenFocusNode,
+                                isAdmin,
+                              );
+                            },
+                          );
+                        },
+                      ),
+                      //const SliverDebugSlot(),
+                      SliverMainScreenListView(scrollController),
+                      const SliverWhiteSpace(200)
+                    ],
+                  ),
                 ),
               ),
             ),

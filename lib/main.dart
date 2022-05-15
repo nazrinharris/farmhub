@@ -1,6 +1,7 @@
 import 'package:farmhub/app_router.dart';
 import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
 import 'package:farmhub/locator.dart';
+import 'package:farmhub/presentation/global/cubit/global_ui_cubit.dart';
 import 'package:farmhub/presentation/themes/farmhub_theme.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -44,7 +45,8 @@ class FarmhubApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => locator<AuthBloc>()),
-        BlocProvider(create: (context) => locator<GlobalAuthCubit>())
+        BlocProvider(create: (context) => locator<GlobalAuthCubit>()),
+        BlocProvider(create: (context) => locator<GlobalUICubit>()),
       ],
       child: FarmhubMaterialApp(appRouter: appRouter),
     );

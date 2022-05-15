@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:farmhub/features/produce_manager/domain/entities/produce/produce.dart';
 import 'package:farmhub/features/produce_manager/domain/i_produce_manager_repository.dart';
+import 'package:farmhub/presentation/global/cubit/global_ui_cubit.dart';
 import 'package:farmhub/presentation/shared_widgets/buttons.dart';
 import 'package:farmhub/presentation/shared_widgets/ui_helpers.dart';
 import 'package:flutter/material.dart';
@@ -12,8 +13,12 @@ part 'produce_list_card_cubit.freezed.dart';
 
 class ProduceListCardCubit extends Cubit<ProduceListCardState> {
   final IProduceManagerRepository repository;
+  final GlobalUICubit globalUICubit;
 
-  ProduceListCardCubit(this.repository) : super(const ProduceListCardState.initial());
+  ProduceListCardCubit(
+    this.repository,
+    this.globalUICubit,
+  ) : super(const ProduceListCardState.initial());
 
   void showDeleteConfirmation({
     required BuildContext context,
@@ -107,8 +112,11 @@ class ProduceListCardCubit extends Cubit<ProduceListCardState> {
 
     progressDialog.show();
 
-    await Future.delayed(Duration(seconds: 4));
+    await Future.delayed(Duration(seconds: 2));
+    globalUICubit.setShouldRefreshMain(true);
 
     progressDialog.dismiss();
+
+    Navigator.of(context).pop();
   }
 }
