@@ -1,7 +1,7 @@
 import 'package:farmhub/app_router.dart';
 import 'package:farmhub/locator.dart';
 import 'package:farmhub/presentation/smart_widgets/primary_button_aware/primary_button_aware_cubit.dart';
-import 'package:farmhub/presentation/smart_widgets/produce_list_card.dart';
+import 'package:farmhub/presentation/smart_widgets/produce_list_card/produce_list_card.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

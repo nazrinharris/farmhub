@@ -2,7 +2,7 @@ import 'package:farmhub/app_router.dart';
 import 'package:farmhub/locator.dart';
 import 'package:farmhub/presentation/shared_widgets/appbars.dart';
 import 'package:farmhub/presentation/shared_widgets/ui_helpers.dart';
-import 'package:farmhub/presentation/smart_widgets/produce_list_card.dart';
+import 'package:farmhub/presentation/smart_widgets/produce_list_card/produce_list_card.dart';
 import 'package:farmhub/presentation/views/search_screen/bloc/search_screen_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

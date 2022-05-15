@@ -2,6 +2,7 @@ import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
 
 import 'package:farmhub/features/produce_manager/bloc/produce_manager_bloc.dart';
 import 'package:farmhub/presentation/shared_widgets/buttons.dart';
+import 'package:farmhub/presentation/smart_widgets/produce_list_card/cubit/produce_list_card_cubit.dart';
 
 import 'package:farmhub/presentation/views/main_screen/bloc/main_screen_bloc.dart';
 import 'package:farmhub/presentation/views/main_screen/main_screen_fab.dart';
@@ -15,7 +16,7 @@ import '../../../features/produce_manager/domain/entities/produce/produce.dart';
 import '../../../locator.dart';
 import '../../shared_widgets/scroll_physics.dart';
 import '../../shared_widgets/ui_helpers.dart';
-import '../../smart_widgets/produce_list_card.dart';
+import '../../smart_widgets/produce_list_card/produce_list_card.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);

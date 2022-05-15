@@ -1,18 +1,20 @@
 // TODO: Extract ProduceListCard and whatever else that is needed.
 import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
 import 'package:farmhub/presentation/shared_widgets/buttons.dart';
-import 'package:farmhub/presentation/shared_widgets/texts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
+import 'package:ndialog/ndialog.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
-import '../../app_router.dart';
-import '../../core/util/misc.dart';
-import '../../features/produce_manager/domain/entities/price/price.dart';
-import '../../features/produce_manager/domain/entities/produce/produce.dart';
-import '../shared_widgets/ui_helpers.dart';
+import '../../../app_router.dart';
+import '../../../core/util/misc.dart';
+import '../../../features/produce_manager/domain/entities/price/price.dart';
+import '../../../features/produce_manager/domain/entities/produce/produce.dart';
+import '../../../locator.dart';
+import '../../shared_widgets/ui_helpers.dart';
+import 'cubit/produce_list_card_cubit.dart';
 
 /// [index] is only used to decide if the top border should be rendered or not.
 /// [0] If the top border should be drawn and all other numbers will not draw it.
@@ -128,77 +130,86 @@ class ProduceListCard extends StatelessWidget {
         backgroundColor: Colors.transparent,
         context: context,
         builder: (BuildContext context) {
-          return Container(
-            height: 390,
-            decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.background,
-              borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(14), topRight: Radius.circular(14)),
-            ),
-            child: Column(
-              children: [
-                Container(
-                  padding: EdgeInsets.only(top: 24),
-                  alignment: Alignment.center,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(produce.produceName),
-                      const UIVerticalSpace14(),
-                      Row(
+          return BlocProvider(
+            create: (context) => ProduceListCardCubit(locator()),
+            child: Builder(builder: (context) {
+              return Container(
+                height: 390,
+                decoration: BoxDecoration(
+                  color: Theme.of(context).colorScheme.background,
+                  borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(14), topRight: Radius.circular(14)),
+                ),
+                child: Column(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.only(top: 24),
+                      alignment: Alignment.center,
+                      child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text(
-                            "RM ${produce.currentProducePrice["price"]}/kg",
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyText2!
-                                .copyWith(fontWeight: FontWeight.w700),
+                          Text(produce.produceName),
+                          const UIVerticalSpace14(),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                "RM ${produce.currentProducePrice["price"]}/kg",
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyText2!
+                                    .copyWith(fontWeight: FontWeight.w700),
+                              ),
+                              const UIHorizontalSpace14(),
+                              ChangeBox(produce),
+                            ],
                           ),
-                          const UIHorizontalSpace14(),
-                          ChangeBox(produce),
                         ],
                       ),
-                    ],
-                  ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 14, left: 46, right: 46),
+                      child: SecondaryButton(
+                        onPressed: () {},
+                        content: "Add to Favorites",
+                        buttonIcon: Icon(Icons.bookmark_add_outlined, size: 20),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 14, left: 46, right: 46),
+                      child: SecondaryButton(
+                        onPressed: () {},
+                        content: "Add new Price",
+                        type: SecondaryButtonType.filled,
+                        buttonIcon: Icon(Icons.attach_money, size: 20),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 14, left: 46, right: 46),
+                      child: SecondaryButton(
+                        type: SecondaryButtonType.filled,
+                        onPressed: () {},
+                        content: "Edit Produce",
+                        buttonIcon: const Icon(Icons.edit, size: 20),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 14, left: 46, right: 46),
+                      child: SecondaryButton(
+                        type: SecondaryButtonType.red,
+                        onPressed: () async {
+                          context
+                              .read<ProduceListCardCubit>()
+                              .showDeleteConfirmation(context: context, produce: produce);
+                        },
+                        content: "Delete Produce",
+                        buttonIcon: const Icon(Icons.delete, size: 20),
+                      ),
+                    )
+                  ],
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 14, left: 46, right: 46),
-                  child: SecondaryButton(
-                    onPressed: () {},
-                    content: "Add to Favorites",
-                    buttonIcon: Icon(Icons.bookmark_add_outlined, size: 20),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 14, left: 46, right: 46),
-                  child: SecondaryButton(
-                    onPressed: () {},
-                    content: "Add new Price",
-                    type: SecondaryButtonType.filled,
-                    buttonIcon: Icon(Icons.attach_money, size: 20),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 14, left: 46, right: 46),
-                  child: SecondaryButton(
-                    type: SecondaryButtonType.filled,
-                    onPressed: () {},
-                    content: "Edit Produce",
-                    buttonIcon: const Icon(Icons.edit, size: 20),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 14, left: 46, right: 46),
-                  child: SecondaryButton(
-                    type: SecondaryButtonType.red,
-                    onPressed: () {},
-                    content: "Delete Produce",
-                    buttonIcon: const Icon(Icons.delete, size: 20),
-                  ),
-                )
-              ],
-            ),
+              );
+            }),
           );
         },
       );

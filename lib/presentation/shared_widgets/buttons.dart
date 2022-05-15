@@ -16,6 +16,7 @@ class PrimaryButton extends StatelessWidget {
   final double? horizontalPadding;
   final double? verticalPadding;
   final Color? backgroundColor;
+  final EdgeInsets? margin;
 
   const PrimaryButton({
     Key? key,
@@ -27,6 +28,7 @@ class PrimaryButton extends StatelessWidget {
     this.horizontalPadding,
     this.verticalPadding,
     this.backgroundColor,
+    this.margin,
   })  : assert(content == null || child == null,
             "You cannot specify both a [content] and a [child], choose either."),
         assert(content != null || child != null,
@@ -94,25 +96,28 @@ class PrimaryButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: onPressed,
-      style: ButtonStyle(
-        backgroundColor: MaterialStateProperty.all(_resolveBackgroundColor(context)),
-        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-          RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16),
+    return Padding(
+      padding: margin ?? EdgeInsets.zero,
+      child: ElevatedButton(
+        onPressed: onPressed,
+        style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all(_resolveBackgroundColor(context)),
+          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(16),
+            ),
           ),
         ),
-      ),
-      child: Container(
-        height: 46,
-        padding: EdgeInsets.symmetric(
-          vertical: verticalPadding ?? 14,
-          horizontal: horizontalPadding ?? 34,
+        child: Container(
+          height: 46,
+          padding: EdgeInsets.symmetric(
+            vertical: verticalPadding ?? 14,
+            horizontal: horizontalPadding ?? 34,
+          ),
+          alignment: Alignment.center,
+          width: width,
+          child: _resolveChild(context),
         ),
-        alignment: Alignment.center,
-        width: width,
-        child: _resolveChild(context),
       ),
     );
   }
@@ -131,6 +136,7 @@ class SecondaryButton extends StatelessWidget {
   final double? verticalPadding;
   final Color? backgroundColor;
   final SecondaryButtonType? type;
+  final EdgeInsets? margin;
 
   const SecondaryButton({
     Key? key,
@@ -143,6 +149,7 @@ class SecondaryButton extends StatelessWidget {
     this.horizontalPadding,
     this.verticalPadding,
     this.backgroundColor,
+    this.margin,
     this.type = SecondaryButtonType.normal,
   })  : assert(content == null || child == null,
             "You cannot specify both a [content] and a [child], choose either."),
@@ -247,24 +254,27 @@ class SecondaryButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return OutlinedButton(
-      onPressed: onPressed,
-      style: OutlinedButton.styleFrom(
-          primary: _resolvePrimary(context),
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(14)),
+    return Padding(
+      padding: margin ?? EdgeInsets.zero,
+      child: OutlinedButton(
+        onPressed: onPressed,
+        style: OutlinedButton.styleFrom(
+            primary: _resolvePrimary(context),
+            shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(14)),
+            ),
+            side: _resolveBorderSide(context),
+            backgroundColor: _resolveBackgroundColor(context)),
+        child: Container(
+          height: height ?? 46,
+          padding: EdgeInsets.symmetric(
+            vertical: verticalPadding ?? 14,
+            horizontal: horizontalPadding ?? 34,
           ),
-          side: _resolveBorderSide(context),
-          backgroundColor: _resolveBackgroundColor(context)),
-      child: Container(
-        height: height ?? 46,
-        padding: EdgeInsets.symmetric(
-          vertical: verticalPadding ?? 14,
-          horizontal: horizontalPadding ?? 34,
+          alignment: Alignment.center,
+          width: width,
+          child: _resolveChild(context),
         ),
-        alignment: Alignment.center,
-        width: width,
-        child: _resolveChild(context),
       ),
     );
   }

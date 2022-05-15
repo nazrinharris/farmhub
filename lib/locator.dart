@@ -11,6 +11,7 @@ import 'package:farmhub/features/produce_manager/data/datasources/produce_manage
 import 'package:farmhub/features/produce_manager/data/datasources/produce_manager_remote_datasource.dart';
 import 'package:farmhub/features/produce_manager/data/repository/produce_manager_repository.dart';
 import 'package:farmhub/features/produce_manager/domain/i_produce_manager_repository.dart';
+import 'package:farmhub/presentation/smart_widgets/produce_list_card/cubit/produce_list_card_cubit.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get_it/get_it.dart';
 import 'package:hive/hive.dart';
@@ -59,6 +60,10 @@ void setupLocator() {
       () => ProduceManagerRemoteDatasource(firebaseFirestore: locator()));
   locator
       .registerLazySingleton<IProduceManagerLocalDatasource>(() => ProduceManagerLocalDatasource());
+
+  //! UI Relared
+  //* ProduceListCard
+  locator.registerFactory<ProduceListCardCubit>(() => ProduceListCardCubit(locator()));
 
   //! External/Third Party
   //* Firebase
