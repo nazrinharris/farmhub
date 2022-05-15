@@ -33,6 +33,7 @@ class MainScreenBloc extends Bloc<MainScreenEvent, MainScreenState> {
     on<_MSEToggleMainHeader>(toggleMainHeader);
     on<_MSEGetFirstTenProduce>(getFirstTenProduce);
     on<_MSEGetNextTenProduce>(getNextTenProduce);
+    on<_MSERefresh>(refresh);
   }
 
   FutureOr<void> started(
@@ -109,5 +110,28 @@ class MainScreenBloc extends Bloc<MainScreenEvent, MainScreenState> {
       }
       emit(MainScreenState.pricesCompleted(props: state.props.copyWith(produceList: produceList)));
     });
+  }
+
+  FutureOr<void> refresh(
+    _MSERefresh event,
+    Emitter<MainScreenState> emit,
+  ) async {
+    print("Refresh MainScreen beginning.");
+    // Start loading and reset the list
+    emit(MainScreenState.pricesLoading(props: state.props.copyWith(produceList: [])));
+
+    await Future.delayed(Duration(seconds: 5));
+
+    final failureOrProduceList = await produceManagerRepository.getFirstTenProduce();
+
+    await failureOrProduceList.fold(
+      (f) {
+        emit(MainScreenState.pricesError(props: state.props, failure: f));
+      },
+      (produceList) {
+        emit(
+            MainScreenState.pricesCompleted(props: state.props.copyWith(produceList: produceList)));
+      },
+    );
   }
 }

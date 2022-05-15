@@ -7,6 +7,8 @@ class MainScreenEvent with _$MainScreenEvent {
   const factory MainScreenEvent.getFirstTenProduce() = _MSEGetFirstTenProduce;
   const factory MainScreenEvent.getNextTenProduce() = _MSEGetNextTenProduce;
 
+  const factory MainScreenEvent.refresh() = _MSERefresh;
+
   //! Debug
   const factory MainScreenEvent.toggleMainHeader() = _MSEToggleMainHeader;
 }

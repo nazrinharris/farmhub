@@ -88,7 +88,13 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
                   physics: DefaultScrollPhysics,
                   slivers: [
                     CupertinoSliverRefreshControl(
-                      onRefresh: () async {},
+                      onRefresh: () async {
+                        context.read<MainScreenBloc>().add(const MainScreenEvent.refresh());
+
+                        await context.read<MainScreenBloc>().stream.firstWhere((state) {
+                          return (state is MSSPricesCompleted);
+                        });
+                      },
                     ),
                     BlocBuilder<MainScreenBloc, MainScreenState>(
                       builder: (context, state) {

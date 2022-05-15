@@ -1,6 +1,7 @@
 // TODO: Extract ProduceListCard and whatever else that is needed.
 import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
 import 'package:farmhub/presentation/shared_widgets/buttons.dart';
+import 'package:farmhub/presentation/views/search_screen/bloc/search_screen_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,6 +15,7 @@ import '../../../features/produce_manager/domain/entities/price/price.dart';
 import '../../../features/produce_manager/domain/entities/produce/produce.dart';
 import '../../../locator.dart';
 import '../../shared_widgets/ui_helpers.dart';
+import '../../views/main_screen/bloc/main_screen_bloc.dart';
 import 'cubit/produce_list_card_cubit.dart';
 
 /// [index] is only used to decide if the top border should be rendered or not.
@@ -24,6 +26,7 @@ class ProduceListCard extends StatelessWidget {
   final Function()? onTap;
   final double? chartAnimationDuration;
   final bool? disableLongPress;
+  final bool? willRefreshPage;
 
   const ProduceListCard(
     this.index,
@@ -32,6 +35,7 @@ class ProduceListCard extends StatelessWidget {
     this.onTap,
     this.chartAnimationDuration,
     this.disableLongPress,
+    this.willRefreshPage = false,
   }) : super(key: key);
 
   @override
@@ -122,7 +126,11 @@ class ProduceListCard extends StatelessWidget {
     }
   }
 
-  void showProduceBottomActionSheet(BuildContext context, bool? isAdmin, Produce produce) {
+  void showProduceBottomActionSheet(
+    BuildContext context,
+    bool? isAdmin,
+    Produce produce,
+  ) {
     isAdmin ??= false;
 
     if (isAdmin) {
@@ -212,7 +220,7 @@ class ProduceListCard extends StatelessWidget {
             }),
           );
         },
-      );
+      ).then((value) => print("Should refresh now!"));
     } else {
       showModalBottomSheet<void>(
         backgroundColor: Colors.transparent,

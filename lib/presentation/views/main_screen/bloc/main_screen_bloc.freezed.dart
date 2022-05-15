@@ -29,6 +29,10 @@ class _$MainScreenEventTearOff {
     return const _MSEGetNextTenProduce();
   }
 
+  _MSERefresh refresh() {
+    return const _MSERefresh();
+  }
+
   _MSEToggleMainHeader toggleMainHeader() {
     return const _MSEToggleMainHeader();
   }
@@ -44,6 +48,7 @@ mixin _$MainScreenEvent {
     required TResult Function() started,
     required TResult Function() getFirstTenProduce,
     required TResult Function() getNextTenProduce,
+    required TResult Function() refresh,
     required TResult Function() toggleMainHeader,
   }) =>
       throw _privateConstructorUsedError;
@@ -52,6 +57,7 @@ mixin _$MainScreenEvent {
     TResult Function()? started,
     TResult Function()? getFirstTenProduce,
     TResult Function()? getNextTenProduce,
+    TResult Function()? refresh,
     TResult Function()? toggleMainHeader,
   }) =>
       throw _privateConstructorUsedError;
@@ -60,6 +66,7 @@ mixin _$MainScreenEvent {
     TResult Function()? started,
     TResult Function()? getFirstTenProduce,
     TResult Function()? getNextTenProduce,
+    TResult Function()? refresh,
     TResult Function()? toggleMainHeader,
     required TResult orElse(),
   }) =>
@@ -69,6 +76,7 @@ mixin _$MainScreenEvent {
     required TResult Function(_MSEStarted value) started,
     required TResult Function(_MSEGetFirstTenProduce value) getFirstTenProduce,
     required TResult Function(_MSEGetNextTenProduce value) getNextTenProduce,
+    required TResult Function(_MSERefresh value) refresh,
     required TResult Function(_MSEToggleMainHeader value) toggleMainHeader,
   }) =>
       throw _privateConstructorUsedError;
@@ -77,6 +85,7 @@ mixin _$MainScreenEvent {
     TResult Function(_MSEStarted value)? started,
     TResult Function(_MSEGetFirstTenProduce value)? getFirstTenProduce,
     TResult Function(_MSEGetNextTenProduce value)? getNextTenProduce,
+    TResult Function(_MSERefresh value)? refresh,
     TResult Function(_MSEToggleMainHeader value)? toggleMainHeader,
   }) =>
       throw _privateConstructorUsedError;
@@ -85,6 +94,7 @@ mixin _$MainScreenEvent {
     TResult Function(_MSEStarted value)? started,
     TResult Function(_MSEGetFirstTenProduce value)? getFirstTenProduce,
     TResult Function(_MSEGetNextTenProduce value)? getNextTenProduce,
+    TResult Function(_MSERefresh value)? refresh,
     TResult Function(_MSEToggleMainHeader value)? toggleMainHeader,
     required TResult orElse(),
   }) =>
@@ -152,6 +162,7 @@ class _$_MSEStarted implements _MSEStarted {
     required TResult Function() started,
     required TResult Function() getFirstTenProduce,
     required TResult Function() getNextTenProduce,
+    required TResult Function() refresh,
     required TResult Function() toggleMainHeader,
   }) {
     return started();
@@ -163,6 +174,7 @@ class _$_MSEStarted implements _MSEStarted {
     TResult Function()? started,
     TResult Function()? getFirstTenProduce,
     TResult Function()? getNextTenProduce,
+    TResult Function()? refresh,
     TResult Function()? toggleMainHeader,
   }) {
     return started?.call();
@@ -174,6 +186,7 @@ class _$_MSEStarted implements _MSEStarted {
     TResult Function()? started,
     TResult Function()? getFirstTenProduce,
     TResult Function()? getNextTenProduce,
+    TResult Function()? refresh,
     TResult Function()? toggleMainHeader,
     required TResult orElse(),
   }) {
@@ -189,6 +202,7 @@ class _$_MSEStarted implements _MSEStarted {
     required TResult Function(_MSEStarted value) started,
     required TResult Function(_MSEGetFirstTenProduce value) getFirstTenProduce,
     required TResult Function(_MSEGetNextTenProduce value) getNextTenProduce,
+    required TResult Function(_MSERefresh value) refresh,
     required TResult Function(_MSEToggleMainHeader value) toggleMainHeader,
   }) {
     return started(this);
@@ -200,6 +214,7 @@ class _$_MSEStarted implements _MSEStarted {
     TResult Function(_MSEStarted value)? started,
     TResult Function(_MSEGetFirstTenProduce value)? getFirstTenProduce,
     TResult Function(_MSEGetNextTenProduce value)? getNextTenProduce,
+    TResult Function(_MSERefresh value)? refresh,
     TResult Function(_MSEToggleMainHeader value)? toggleMainHeader,
   }) {
     return started?.call(this);
@@ -211,6 +226,7 @@ class _$_MSEStarted implements _MSEStarted {
     TResult Function(_MSEStarted value)? started,
     TResult Function(_MSEGetFirstTenProduce value)? getFirstTenProduce,
     TResult Function(_MSEGetNextTenProduce value)? getNextTenProduce,
+    TResult Function(_MSERefresh value)? refresh,
     TResult Function(_MSEToggleMainHeader value)? toggleMainHeader,
     required TResult orElse(),
   }) {
@@ -269,6 +285,7 @@ class _$_MSEGetFirstTenProduce implements _MSEGetFirstTenProduce {
     required TResult Function() started,
     required TResult Function() getFirstTenProduce,
     required TResult Function() getNextTenProduce,
+    required TResult Function() refresh,
     required TResult Function() toggleMainHeader,
   }) {
     return getFirstTenProduce();
@@ -280,6 +297,7 @@ class _$_MSEGetFirstTenProduce implements _MSEGetFirstTenProduce {
     TResult Function()? started,
     TResult Function()? getFirstTenProduce,
     TResult Function()? getNextTenProduce,
+    TResult Function()? refresh,
     TResult Function()? toggleMainHeader,
   }) {
     return getFirstTenProduce?.call();
@@ -291,6 +309,7 @@ class _$_MSEGetFirstTenProduce implements _MSEGetFirstTenProduce {
     TResult Function()? started,
     TResult Function()? getFirstTenProduce,
     TResult Function()? getNextTenProduce,
+    TResult Function()? refresh,
     TResult Function()? toggleMainHeader,
     required TResult orElse(),
   }) {
@@ -306,6 +325,7 @@ class _$_MSEGetFirstTenProduce implements _MSEGetFirstTenProduce {
     required TResult Function(_MSEStarted value) started,
     required TResult Function(_MSEGetFirstTenProduce value) getFirstTenProduce,
     required TResult Function(_MSEGetNextTenProduce value) getNextTenProduce,
+    required TResult Function(_MSERefresh value) refresh,
     required TResult Function(_MSEToggleMainHeader value) toggleMainHeader,
   }) {
     return getFirstTenProduce(this);
@@ -317,6 +337,7 @@ class _$_MSEGetFirstTenProduce implements _MSEGetFirstTenProduce {
     TResult Function(_MSEStarted value)? started,
     TResult Function(_MSEGetFirstTenProduce value)? getFirstTenProduce,
     TResult Function(_MSEGetNextTenProduce value)? getNextTenProduce,
+    TResult Function(_MSERefresh value)? refresh,
     TResult Function(_MSEToggleMainHeader value)? toggleMainHeader,
   }) {
     return getFirstTenProduce?.call(this);
@@ -328,6 +349,7 @@ class _$_MSEGetFirstTenProduce implements _MSEGetFirstTenProduce {
     TResult Function(_MSEStarted value)? started,
     TResult Function(_MSEGetFirstTenProduce value)? getFirstTenProduce,
     TResult Function(_MSEGetNextTenProduce value)? getNextTenProduce,
+    TResult Function(_MSERefresh value)? refresh,
     TResult Function(_MSEToggleMainHeader value)? toggleMainHeader,
     required TResult orElse(),
   }) {
@@ -386,6 +408,7 @@ class _$_MSEGetNextTenProduce implements _MSEGetNextTenProduce {
     required TResult Function() started,
     required TResult Function() getFirstTenProduce,
     required TResult Function() getNextTenProduce,
+    required TResult Function() refresh,
     required TResult Function() toggleMainHeader,
   }) {
     return getNextTenProduce();
@@ -397,6 +420,7 @@ class _$_MSEGetNextTenProduce implements _MSEGetNextTenProduce {
     TResult Function()? started,
     TResult Function()? getFirstTenProduce,
     TResult Function()? getNextTenProduce,
+    TResult Function()? refresh,
     TResult Function()? toggleMainHeader,
   }) {
     return getNextTenProduce?.call();
@@ -408,6 +432,7 @@ class _$_MSEGetNextTenProduce implements _MSEGetNextTenProduce {
     TResult Function()? started,
     TResult Function()? getFirstTenProduce,
     TResult Function()? getNextTenProduce,
+    TResult Function()? refresh,
     TResult Function()? toggleMainHeader,
     required TResult orElse(),
   }) {
@@ -423,6 +448,7 @@ class _$_MSEGetNextTenProduce implements _MSEGetNextTenProduce {
     required TResult Function(_MSEStarted value) started,
     required TResult Function(_MSEGetFirstTenProduce value) getFirstTenProduce,
     required TResult Function(_MSEGetNextTenProduce value) getNextTenProduce,
+    required TResult Function(_MSERefresh value) refresh,
     required TResult Function(_MSEToggleMainHeader value) toggleMainHeader,
   }) {
     return getNextTenProduce(this);
@@ -434,6 +460,7 @@ class _$_MSEGetNextTenProduce implements _MSEGetNextTenProduce {
     TResult Function(_MSEStarted value)? started,
     TResult Function(_MSEGetFirstTenProduce value)? getFirstTenProduce,
     TResult Function(_MSEGetNextTenProduce value)? getNextTenProduce,
+    TResult Function(_MSERefresh value)? refresh,
     TResult Function(_MSEToggleMainHeader value)? toggleMainHeader,
   }) {
     return getNextTenProduce?.call(this);
@@ -445,6 +472,7 @@ class _$_MSEGetNextTenProduce implements _MSEGetNextTenProduce {
     TResult Function(_MSEStarted value)? started,
     TResult Function(_MSEGetFirstTenProduce value)? getFirstTenProduce,
     TResult Function(_MSEGetNextTenProduce value)? getNextTenProduce,
+    TResult Function(_MSERefresh value)? refresh,
     TResult Function(_MSEToggleMainHeader value)? toggleMainHeader,
     required TResult orElse(),
   }) {
@@ -457,6 +485,129 @@ class _$_MSEGetNextTenProduce implements _MSEGetNextTenProduce {
 
 abstract class _MSEGetNextTenProduce implements MainScreenEvent {
   const factory _MSEGetNextTenProduce() = _$_MSEGetNextTenProduce;
+}
+
+/// @nodoc
+abstract class _$MSERefreshCopyWith<$Res> {
+  factory _$MSERefreshCopyWith(
+          _MSERefresh value, $Res Function(_MSERefresh) then) =
+      __$MSERefreshCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$MSERefreshCopyWithImpl<$Res>
+    extends _$MainScreenEventCopyWithImpl<$Res>
+    implements _$MSERefreshCopyWith<$Res> {
+  __$MSERefreshCopyWithImpl(
+      _MSERefresh _value, $Res Function(_MSERefresh) _then)
+      : super(_value, (v) => _then(v as _MSERefresh));
+
+  @override
+  _MSERefresh get _value => super._value as _MSERefresh;
+}
+
+/// @nodoc
+
+class _$_MSERefresh implements _MSERefresh {
+  const _$_MSERefresh();
+
+  @override
+  String toString() {
+    return 'MainScreenEvent.refresh()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _MSERefresh);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() getFirstTenProduce,
+    required TResult Function() getNextTenProduce,
+    required TResult Function() refresh,
+    required TResult Function() toggleMainHeader,
+  }) {
+    return refresh();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? getFirstTenProduce,
+    TResult Function()? getNextTenProduce,
+    TResult Function()? refresh,
+    TResult Function()? toggleMainHeader,
+  }) {
+    return refresh?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? getFirstTenProduce,
+    TResult Function()? getNextTenProduce,
+    TResult Function()? refresh,
+    TResult Function()? toggleMainHeader,
+    required TResult orElse(),
+  }) {
+    if (refresh != null) {
+      return refresh();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_MSEStarted value) started,
+    required TResult Function(_MSEGetFirstTenProduce value) getFirstTenProduce,
+    required TResult Function(_MSEGetNextTenProduce value) getNextTenProduce,
+    required TResult Function(_MSERefresh value) refresh,
+    required TResult Function(_MSEToggleMainHeader value) toggleMainHeader,
+  }) {
+    return refresh(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_MSEStarted value)? started,
+    TResult Function(_MSEGetFirstTenProduce value)? getFirstTenProduce,
+    TResult Function(_MSEGetNextTenProduce value)? getNextTenProduce,
+    TResult Function(_MSERefresh value)? refresh,
+    TResult Function(_MSEToggleMainHeader value)? toggleMainHeader,
+  }) {
+    return refresh?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_MSEStarted value)? started,
+    TResult Function(_MSEGetFirstTenProduce value)? getFirstTenProduce,
+    TResult Function(_MSEGetNextTenProduce value)? getNextTenProduce,
+    TResult Function(_MSERefresh value)? refresh,
+    TResult Function(_MSEToggleMainHeader value)? toggleMainHeader,
+    required TResult orElse(),
+  }) {
+    if (refresh != null) {
+      return refresh(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _MSERefresh implements MainScreenEvent {
+  const factory _MSERefresh() = _$_MSERefresh;
 }
 
 /// @nodoc
@@ -503,6 +654,7 @@ class _$_MSEToggleMainHeader implements _MSEToggleMainHeader {
     required TResult Function() started,
     required TResult Function() getFirstTenProduce,
     required TResult Function() getNextTenProduce,
+    required TResult Function() refresh,
     required TResult Function() toggleMainHeader,
   }) {
     return toggleMainHeader();
@@ -514,6 +666,7 @@ class _$_MSEToggleMainHeader implements _MSEToggleMainHeader {
     TResult Function()? started,
     TResult Function()? getFirstTenProduce,
     TResult Function()? getNextTenProduce,
+    TResult Function()? refresh,
     TResult Function()? toggleMainHeader,
   }) {
     return toggleMainHeader?.call();
@@ -525,6 +678,7 @@ class _$_MSEToggleMainHeader implements _MSEToggleMainHeader {
     TResult Function()? started,
     TResult Function()? getFirstTenProduce,
     TResult Function()? getNextTenProduce,
+    TResult Function()? refresh,
     TResult Function()? toggleMainHeader,
     required TResult orElse(),
   }) {
@@ -540,6 +694,7 @@ class _$_MSEToggleMainHeader implements _MSEToggleMainHeader {
     required TResult Function(_MSEStarted value) started,
     required TResult Function(_MSEGetFirstTenProduce value) getFirstTenProduce,
     required TResult Function(_MSEGetNextTenProduce value) getNextTenProduce,
+    required TResult Function(_MSERefresh value) refresh,
     required TResult Function(_MSEToggleMainHeader value) toggleMainHeader,
   }) {
     return toggleMainHeader(this);
@@ -551,6 +706,7 @@ class _$_MSEToggleMainHeader implements _MSEToggleMainHeader {
     TResult Function(_MSEStarted value)? started,
     TResult Function(_MSEGetFirstTenProduce value)? getFirstTenProduce,
     TResult Function(_MSEGetNextTenProduce value)? getNextTenProduce,
+    TResult Function(_MSERefresh value)? refresh,
     TResult Function(_MSEToggleMainHeader value)? toggleMainHeader,
   }) {
     return toggleMainHeader?.call(this);
@@ -562,6 +718,7 @@ class _$_MSEToggleMainHeader implements _MSEToggleMainHeader {
     TResult Function(_MSEStarted value)? started,
     TResult Function(_MSEGetFirstTenProduce value)? getFirstTenProduce,
     TResult Function(_MSEGetNextTenProduce value)? getNextTenProduce,
+    TResult Function(_MSERefresh value)? refresh,
     TResult Function(_MSEToggleMainHeader value)? toggleMainHeader,
     required TResult orElse(),
   }) {
