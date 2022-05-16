@@ -3,7 +3,7 @@ import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
 import 'package:farmhub/features/produce_manager/bloc/produce_manager_bloc.dart';
 import 'package:farmhub/presentation/global/cubit/global_ui_cubit.dart';
 import 'package:farmhub/presentation/shared_widgets/buttons.dart';
-import 'package:farmhub/presentation/smart_widgets/produce_list_card/cubit/produce_list_card_cubit.dart';
+import 'package:farmhub/presentation/smart_widgets/produce_list_card/cubit/produce_dialog_cubit.dart';
 
 import 'package:farmhub/presentation/views/main_screen/bloc/main_screen_bloc.dart';
 import 'package:farmhub/presentation/views/main_screen/main_screen_fab.dart';
@@ -85,9 +85,6 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
                   context.read<MainScreenBloc>().add(const MainScreenEvent.refresh());
                   context.read<GlobalUICubit>().setShouldRefreshMain(false);
                 }
-              },
-              listenWhen: (state1, state2) {
-                return true;
               },
               child: Scaffold(
                 resizeToAvoidBottomInset: false,

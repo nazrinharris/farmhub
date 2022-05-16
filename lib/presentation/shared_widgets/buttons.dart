@@ -123,7 +123,7 @@ class PrimaryButton extends StatelessWidget {
   }
 }
 
-enum SecondaryButtonType { normal, red, filled }
+enum SecondaryButtonType { normal, red, filled, noBorder }
 
 class SecondaryButton extends StatelessWidget {
   final String? content;
@@ -237,6 +237,8 @@ class SecondaryButton extends StatelessWidget {
       return BorderSide(color: Theme.of(context).colorScheme.primary.withOpacity(0.30));
     } else if (type == SecondaryButtonType.red) {
       return BorderSide(color: Theme.of(context).colorScheme.error.withOpacity(0.30));
+    } else if (type == SecondaryButtonType.noBorder) {
+      return BorderSide(color: Theme.of(context).colorScheme.error.withOpacity(0));
     } else {
       return BorderSide(color: Theme.of(context).colorScheme.primary.withOpacity(0.30));
     }

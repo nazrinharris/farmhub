@@ -2,7 +2,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'produce_list_card_cubit.dart';
+part of 'produce_dialog_cubit.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,8 +14,8 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-class _$ProduceListCardStateTearOff {
-  const _$ProduceListCardStateTearOff();
+class _$ProduceDialogStateTearOff {
+  const _$ProduceDialogStateTearOff();
 
   _Initial initial() {
     return const _Initial();
@@ -41,10 +41,10 @@ class _$ProduceListCardStateTearOff {
 }
 
 /// @nodoc
-const $ProduceListCardState = _$ProduceListCardStateTearOff();
+const $ProduceDialogState = _$ProduceDialogStateTearOff();
 
 /// @nodoc
-mixin _$ProduceListCardState {
+mixin _$ProduceDialogState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
@@ -104,20 +104,20 @@ mixin _$ProduceListCardState {
 }
 
 /// @nodoc
-abstract class $ProduceListCardStateCopyWith<$Res> {
-  factory $ProduceListCardStateCopyWith(ProduceListCardState value,
-          $Res Function(ProduceListCardState) then) =
-      _$ProduceListCardStateCopyWithImpl<$Res>;
+abstract class $ProduceDialogStateCopyWith<$Res> {
+  factory $ProduceDialogStateCopyWith(
+          ProduceDialogState value, $Res Function(ProduceDialogState) then) =
+      _$ProduceDialogStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$ProduceListCardStateCopyWithImpl<$Res>
-    implements $ProduceListCardStateCopyWith<$Res> {
-  _$ProduceListCardStateCopyWithImpl(this._value, this._then);
+class _$ProduceDialogStateCopyWithImpl<$Res>
+    implements $ProduceDialogStateCopyWith<$Res> {
+  _$ProduceDialogStateCopyWithImpl(this._value, this._then);
 
-  final ProduceListCardState _value;
+  final ProduceDialogState _value;
   // ignore: unused_field
-  final $Res Function(ProduceListCardState) _then;
+  final $Res Function(ProduceDialogState) _then;
 }
 
 /// @nodoc
@@ -128,7 +128,7 @@ abstract class _$InitialCopyWith<$Res> {
 
 /// @nodoc
 class __$InitialCopyWithImpl<$Res>
-    extends _$ProduceListCardStateCopyWithImpl<$Res>
+    extends _$ProduceDialogStateCopyWithImpl<$Res>
     implements _$InitialCopyWith<$Res> {
   __$InitialCopyWithImpl(_Initial _value, $Res Function(_Initial) _then)
       : super(_value, (v) => _then(v as _Initial));
@@ -144,7 +144,7 @@ class _$_Initial implements _Initial {
 
   @override
   String toString() {
-    return 'ProduceListCardState.initial()';
+    return 'ProduceDialogState.initial()';
   }
 
   @override
@@ -237,7 +237,7 @@ class _$_Initial implements _Initial {
   }
 }
 
-abstract class _Initial implements ProduceListCardState {
+abstract class _Initial implements ProduceDialogState {
   const factory _Initial() = _$_Initial;
 }
 
@@ -250,7 +250,7 @@ abstract class $DeleteConfirmationCopyWith<$Res> {
 
 /// @nodoc
 class _$DeleteConfirmationCopyWithImpl<$Res>
-    extends _$ProduceListCardStateCopyWithImpl<$Res>
+    extends _$ProduceDialogStateCopyWithImpl<$Res>
     implements $DeleteConfirmationCopyWith<$Res> {
   _$DeleteConfirmationCopyWithImpl(
       DeleteConfirmation _value, $Res Function(DeleteConfirmation) _then)
@@ -267,7 +267,7 @@ class _$DeleteConfirmation implements DeleteConfirmation {
 
   @override
   String toString() {
-    return 'ProduceListCardState.deleteConfirmation()';
+    return 'ProduceDialogState.deleteConfirmation()';
   }
 
   @override
@@ -360,7 +360,7 @@ class _$DeleteConfirmation implements DeleteConfirmation {
   }
 }
 
-abstract class DeleteConfirmation implements ProduceListCardState {
+abstract class DeleteConfirmation implements ProduceDialogState {
   const factory DeleteConfirmation() = _$DeleteConfirmation;
 }
 
@@ -373,7 +373,7 @@ abstract class $DeleteInProgressCopyWith<$Res> {
 
 /// @nodoc
 class _$DeleteInProgressCopyWithImpl<$Res>
-    extends _$ProduceListCardStateCopyWithImpl<$Res>
+    extends _$ProduceDialogStateCopyWithImpl<$Res>
     implements $DeleteInProgressCopyWith<$Res> {
   _$DeleteInProgressCopyWithImpl(
       DeleteInProgress _value, $Res Function(DeleteInProgress) _then)
@@ -390,7 +390,7 @@ class _$DeleteInProgress implements DeleteInProgress {
 
   @override
   String toString() {
-    return 'ProduceListCardState.deleteInProgress()';
+    return 'ProduceDialogState.deleteInProgress()';
   }
 
   @override
@@ -483,7 +483,7 @@ class _$DeleteInProgress implements DeleteInProgress {
   }
 }
 
-abstract class DeleteInProgress implements ProduceListCardState {
+abstract class DeleteInProgress implements ProduceDialogState {
   const factory DeleteInProgress() = _$DeleteInProgress;
 }
 
@@ -496,7 +496,7 @@ abstract class $DeleteCompleteCopyWith<$Res> {
 
 /// @nodoc
 class _$DeleteCompleteCopyWithImpl<$Res>
-    extends _$ProduceListCardStateCopyWithImpl<$Res>
+    extends _$ProduceDialogStateCopyWithImpl<$Res>
     implements $DeleteCompleteCopyWith<$Res> {
   _$DeleteCompleteCopyWithImpl(
       DeleteComplete _value, $Res Function(DeleteComplete) _then)
@@ -513,7 +513,7 @@ class _$DeleteComplete implements DeleteComplete {
 
   @override
   String toString() {
-    return 'ProduceListCardState.deleteComplete()';
+    return 'ProduceDialogState.deleteComplete()';
   }
 
   @override
@@ -606,7 +606,7 @@ class _$DeleteComplete implements DeleteComplete {
   }
 }
 
-abstract class DeleteComplete implements ProduceListCardState {
+abstract class DeleteComplete implements ProduceDialogState {
   const factory DeleteComplete() = _$DeleteComplete;
 }
 
@@ -620,7 +620,7 @@ abstract class $DeleteErrorCopyWith<$Res> {
 
 /// @nodoc
 class _$DeleteErrorCopyWithImpl<$Res>
-    extends _$ProduceListCardStateCopyWithImpl<$Res>
+    extends _$ProduceDialogStateCopyWithImpl<$Res>
     implements $DeleteErrorCopyWith<$Res> {
   _$DeleteErrorCopyWithImpl(
       DeleteError _value, $Res Function(DeleteError) _then)
@@ -652,7 +652,7 @@ class _$DeleteError implements DeleteError {
 
   @override
   String toString() {
-    return 'ProduceListCardState.deleteError(failure: $failure)';
+    return 'ProduceDialogState.deleteError(failure: $failure)';
   }
 
   @override
@@ -660,12 +660,11 @@ class _$DeleteError implements DeleteError {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is DeleteError &&
-            const DeepCollectionEquality().equals(other.failure, failure));
+            (identical(other.failure, failure) || other.failure == failure));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(failure));
+  int get hashCode => Object.hash(runtimeType, failure);
 
   @JsonKey(ignore: true)
   @override
@@ -753,7 +752,7 @@ class _$DeleteError implements DeleteError {
   }
 }
 
-abstract class DeleteError implements ProduceListCardState {
+abstract class DeleteError implements ProduceDialogState {
   const factory DeleteError(Failure failure) = _$DeleteError;
 
   Failure get failure;

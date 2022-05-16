@@ -18,9 +18,11 @@ FirstTwoFieldsFormBloc readFirstFormBloc(BuildContext context) =>
 SecondTwoFieldsFormBloc readSecondFormBloc(BuildContext context) =>
     BlocProvider.of<SecondTwoFieldsFormBloc>(context);
 
-mixin FirstTwoFieldsFormBloc on Bloc<MultipleFieldsFormEvent, MultipleFieldsFormState> {}
+mixin FirstTwoFieldsFormBloc
+    on Bloc<MultipleFieldsFormEvent, MultipleFieldsFormState> {}
 
-mixin SecondTwoFieldsFormBloc on Bloc<MultipleFieldsFormEvent, MultipleFieldsFormState> {}
+mixin SecondTwoFieldsFormBloc
+    on Bloc<MultipleFieldsFormEvent, MultipleFieldsFormState> {}
 
 /// Some info on [MultipleFieldsFormBloc]
 ///
@@ -28,7 +30,8 @@ mixin SecondTwoFieldsFormBloc on Bloc<MultipleFieldsFormEvent, MultipleFieldsFor
 /// in conjuction with another [MultipleFieldsForm].
 ///
 /// For this conjunction to work, [isWithAnotherTwoFields] must be [true]
-class MultipleFieldsFormBloc extends Bloc<MultipleFieldsFormEvent, MultipleFieldsFormState>
+class MultipleFieldsFormBloc
+    extends Bloc<MultipleFieldsFormEvent, MultipleFieldsFormState>
     with FirstTwoFieldsFormBloc, SecondTwoFieldsFormBloc {
   MultipleFieldsFormBloc()
       : super(
@@ -60,7 +63,8 @@ class MultipleFieldsFormBloc extends Bloc<MultipleFieldsFormEvent, MultipleField
     on<_MultipleFieldsFormFirstFieldSubmitted>(firstFieldSubmittedEvent);
 
     // Second
-    on<_MultipleFieldsFormSecondFieldValueChanged>(secondFieldValueChangedEvent);
+    on<_MultipleFieldsFormSecondFieldValueChanged>(
+        secondFieldValueChangedEvent);
     on<_MultipleFieldsFormSecondFieldSubmitted>(secondFieldSubmittedEvent);
 
     // Third
@@ -68,7 +72,8 @@ class MultipleFieldsFormBloc extends Bloc<MultipleFieldsFormEvent, MultipleField
     on<_MultipleFieldsFormThirdFieldSubmitted>(thirdFieldSubmittedEvent);
 
     // Fourth
-    on<_MultipleFieldsFormFourthFieldValueChanged>(fourthFieldValueChangedEvent);
+    on<_MultipleFieldsFormFourthFieldValueChanged>(
+        fourthFieldValueChangedEvent);
     on<_MultipleFieldsFormFourthFieldSubmitted>(fourthFieldSubmittedEvent);
   }
 
@@ -186,7 +191,9 @@ class MultipleFieldsFormBloc extends Bloc<MultipleFieldsFormEvent, MultipleField
   Future<void> close() {
     state
       ..props.firstFieldFocusNode.dispose()
-      ..props.secondFieldFocusNode.dispose();
+      ..props.secondFieldFocusNode.dispose()
+      ..props.thirdFieldFocusNode.dispose()
+      ..props.fourthFieldFocusNode.dispose();
 
     return super.close();
   }

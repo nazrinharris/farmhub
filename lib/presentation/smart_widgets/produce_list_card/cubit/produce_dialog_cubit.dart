@@ -9,17 +9,17 @@ import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:ndialog/ndialog.dart';
 
-part 'produce_list_card_state.dart';
-part 'produce_list_card_cubit.freezed.dart';
+part 'produce_dialog_state.dart';
+part 'produce_dialog_cubit.freezed.dart';
 
-class ProduceListCardCubit extends Cubit<ProduceListCardState> {
+class ProduceDialogCubit extends Cubit<ProduceDialogState> {
   final IProduceManagerRepository repository;
   final GlobalUICubit globalUICubit;
 
-  ProduceListCardCubit(
+  ProduceDialogCubit(
     this.repository,
     this.globalUICubit,
-  ) : super(const ProduceListCardState.initial());
+  ) : super(const ProduceDialogState.initial());
 
   void showDeleteConfirmation({
     required BuildContext context,
@@ -36,6 +36,8 @@ class ProduceListCardCubit extends Cubit<ProduceListCardState> {
     required ProgressDialog progressDialog,
     required Function(BuildContext context, Failure failure) showErrorDialog,
   }) async {
+    // Pop the confirmation dialog
+    Navigator.of(context).pop();
     print("Delete in progress!");
     progressDialog.show();
 
@@ -55,5 +57,51 @@ class ProduceListCardCubit extends Cubit<ProduceListCardState> {
         Navigator.of(context).pop();
       },
     );
+  }
+
+  void showEditProduce({
+    required BuildContext context,
+    required NAlertDialog editProduceDialog,
+  }) async {
+    print("Edit in Progress");
+    editProduceDialog.show(context, transitionType: DialogTransitionType.Bubble);
+  }
+
+  void startEditProduce({
+    required BuildContext context,
+    required Produce produce,
+    required GlobalKey<FormState> formKey,
+    required TextEditingController textEditingController,
+    required FocusNode formFocusNode,
+    required ProgressDialog progressDialog,
+    required Function(BuildContext context, Failure failure) showErrorDialog,
+  }) async {
+    final bool isFormValid = formKey.currentState!.validate();
+
+    if (isFormValid) {
+      // Pop the edit dialog
+      Navigator.of(context).pop();
+      progressDialog.show();
+
+      await Future.delayed(Duration(seconds: 2));
+
+      final failureOrEditProduce = await repository.editProduce(
+        produce.produceId,
+        textEditingController.text,
+      );
+
+      failureOrEditProduce.fold(
+        (f) {
+          progressDialog.dismiss();
+          showErrorDialog(context, f);
+        },
+        (unit) {
+          progressDialog.dismiss();
+          globalUICubit.setShouldRefreshMain(true);
+          // Pops the [ModalBottomSheet]
+          Navigator.of(context).pop();
+        },
+      );
+    }
   }
 }

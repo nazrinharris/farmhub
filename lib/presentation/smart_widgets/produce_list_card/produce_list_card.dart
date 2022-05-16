@@ -16,7 +16,7 @@ import '../../../features/produce_manager/domain/entities/produce/produce.dart';
 import '../../../locator.dart';
 import '../../shared_widgets/app_dialogs.dart';
 import '../../shared_widgets/ui_helpers.dart';
-import 'cubit/produce_list_card_cubit.dart';
+import 'cubit/produce_dialog_cubit.dart';
 
 /// [index] is only used to decide if the top border should be rendered or not.
 /// [0] If the top border should be drawn and all other numbers will not draw it.
@@ -209,7 +209,7 @@ class BuildAdminModalBottomSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => ProduceListCardCubit(locator(), locator()),
+      create: (context) => ProduceDialogCubit(locator(), locator()),
       child: Builder(builder: (context) {
         return Container(
           height: 390,
@@ -271,7 +271,18 @@ class BuildAdminModalBottomSheet extends StatelessWidget {
                 padding: const EdgeInsets.only(top: 14, left: 46, right: 46),
                 child: SecondaryButton(
                   type: SecondaryButtonType.filled,
-                  onPressed: () {},
+                  onPressed: () {
+                    context.read<ProduceDialogCubit>().showEditProduce(
+                          context: context,
+                          editProduceDialog: returnEditProduceDialog(
+                            context: context,
+                            produce: produce,
+                            textEditingController: TextEditingController(),
+                            formKey: GlobalKey<FormState>(),
+                            formFocusNode: FocusNode(),
+                          ),
+                        );
+                  },
                   content: "Edit Produce",
                   buttonIcon: const Icon(Icons.edit, size: 20),
                 ),
@@ -281,7 +292,9 @@ class BuildAdminModalBottomSheet extends StatelessWidget {
                 child: SecondaryButton(
                   type: SecondaryButtonType.red,
                   onPressed: () async {
-                    context.read<ProduceListCardCubit>().showDeleteConfirmation(
+                    // This shows the confirmation message. This will also handle deletion and
+                    // showing the progress dialog and the like if the user decides to continue.
+                    context.read<ProduceDialogCubit>().showDeleteConfirmation(
                           context: context,
                           produce: produce,
                           confirmationDialog: returnDeleteConfirmationDialog(context, produce),

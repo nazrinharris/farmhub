@@ -87,15 +87,17 @@ ElevatedButtonThemeData _farmhubElevatedButtonThemeDataLight = ElevatedButtonThe
 class FarmhubTheme {
   static final appThemeData = {
     FarmhubThemeVariants.light: ThemeData(
-        colorScheme: _farmhubColorSchemeLight,
-        textTheme: _farmhubTextThemeLight,
-        // TODO: Temporary Fix for ColorScheme, update to use the new Seed. Or fix it so that the old one can use
-        scaffoldBackgroundColor: _farmhubColorSchemeLight.background,
-        backgroundColor: _farmhubColorSchemeLight.background,
-        elevatedButtonTheme: _farmhubElevatedButtonThemeDataLight,
-        iconTheme: IconThemeData(
-          color: _farmhubColorSchemeLight.primary,
-        )),
+      colorScheme: _farmhubColorSchemeLight,
+      textTheme: _farmhubTextThemeLight,
+      // TODO: Temporary Fix for ColorScheme, update to use the new Seed. Or fix it so that the old one can use
+      scaffoldBackgroundColor: _farmhubColorSchemeLight.background,
+      backgroundColor: _farmhubColorSchemeLight.background,
+      elevatedButtonTheme: _farmhubElevatedButtonThemeDataLight,
+      iconTheme: IconThemeData(
+        color: _farmhubColorSchemeLight.primary,
+      ),
+      primaryColor: _farmhubColorSchemeLight.primary,
+    ),
   };
 }
 
