@@ -49,7 +49,6 @@ class ProduceListCardCubit extends Cubit<ProduceListCardState> {
         showErrorDialog(context, f);
       },
       (unit) {
-        // At this point, delete should have succeeded.
         progressDialog.dismiss();
         globalUICubit.setShouldRefreshMain(true);
         // Pops the [ModalBottomSheet]

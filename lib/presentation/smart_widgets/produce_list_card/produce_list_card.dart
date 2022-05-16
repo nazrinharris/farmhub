@@ -14,6 +14,7 @@ import '../../../core/util/misc.dart';
 import '../../../features/produce_manager/domain/entities/price/price.dart';
 import '../../../features/produce_manager/domain/entities/produce/produce.dart';
 import '../../../locator.dart';
+import '../../shared_widgets/app_dialogs.dart';
 import '../../shared_widgets/ui_helpers.dart';
 import 'cubit/produce_list_card_cubit.dart';
 
@@ -255,7 +256,12 @@ class BuildAdminModalBottomSheet extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(top: 14, left: 46, right: 46),
                 child: SecondaryButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).pushNamed(
+                      "/add_new_price_second",
+                      arguments: ProduceArguments(produce),
+                    );
+                  },
                   content: "Add new Price",
                   type: SecondaryButtonType.filled,
                   buttonIcon: const Icon(Icons.attach_money, size: 20),
@@ -278,7 +284,7 @@ class BuildAdminModalBottomSheet extends StatelessWidget {
                     context.read<ProduceListCardCubit>().showDeleteConfirmation(
                           context: context,
                           produce: produce,
-                          confirmationDialog: returnConfirmationDialog(context),
+                          confirmationDialog: returnDeleteConfirmationDialog(context, produce),
                         );
                   },
                   content: "Delete Produce",
@@ -290,137 +296,6 @@ class BuildAdminModalBottomSheet extends StatelessWidget {
         );
       }),
     );
-  }
-
-  NAlertDialog returnConfirmationDialog(BuildContext context) {
-    return NAlertDialog(
-      blur: 4,
-      dialogStyle: DialogStyle(
-        titlePadding: EdgeInsets.zero,
-        titleDivider: false,
-        backgroundColor: Theme.of(context).colorScheme.background,
-      ),
-      title: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
-        color: Theme.of(context).colorScheme.errorContainer.withOpacity(0.45),
-        child: Row(
-          children: [
-            Icon(
-              Icons.warning_amber,
-              color: Theme.of(context).colorScheme.error,
-            ),
-            const UIHorizontalSpace14(),
-            Text(
-              "Woah! Are you sure?",
-              style: Theme.of(context)
-                  .textTheme
-                  .bodyText2!
-                  .copyWith(color: Theme.of(context).colorScheme.error),
-            ),
-          ],
-        ),
-      ),
-      content: Padding(
-        padding: const EdgeInsets.only(top: 14, bottom: 24, right: 24),
-        child: Text(
-          "As of now, you can't undo this action. Only do this if you are sure.",
-          style: Theme.of(context).textTheme.bodyText1,
-        ),
-      ),
-      actions: [
-        PrimaryButton(
-          backgroundColor: Theme.of(context).colorScheme.primary,
-          margin: const EdgeInsets.only(left: 14, right: 7, bottom: 14),
-          content: "Back",
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-        ),
-        SecondaryButton(
-          horizontalPadding: 0,
-          type: SecondaryButtonType.red,
-          margin: const EdgeInsets.only(right: 14, left: 7, bottom: 14),
-          content: "Delete",
-          buttonIcon: const Icon(Icons.delete, size: 20),
-          onPressed: () {
-            Navigator.of(context).pop();
-            context.read<ProduceListCardCubit>().startDeleting(
-                  context: context,
-                  produce: produce,
-                  progressDialog: returnProgressDialog(context),
-                  showErrorDialog: showErrorDialog,
-                );
-          },
-        ),
-      ],
-    );
-  }
-
-  ProgressDialog returnProgressDialog(BuildContext context) {
-    return ProgressDialog(
-      context,
-      dialogTransitionType: DialogTransitionType.Bubble,
-      title: Container(
-        padding: const EdgeInsets.only(left: 14, right: 14, top: 14),
-        child: Text(
-          "Deleting..",
-          style: Theme.of(context)
-              .textTheme
-              .bodyText2!
-              .copyWith(color: Theme.of(context).colorScheme.error),
-        ),
-      ),
-      message: Padding(
-        padding: const EdgeInsets.only(top: 14, bottom: 14, right: 14, left: 14),
-        child: Text(
-          "It may take some time, please wait..",
-          style: Theme.of(context).textTheme.bodyText1,
-        ),
-      ),
-      defaultLoadingWidget: Container(
-        padding: EdgeInsets.only(left: 14),
-        child: CircularProgressIndicator(color: Theme.of(context).colorScheme.error),
-      ),
-    );
-  }
-
-  void showErrorDialog(BuildContext context, Failure failure) async {
-    await NAlertDialog(
-      blur: 4,
-      dialogStyle: DialogStyle(
-        titlePadding: EdgeInsets.zero,
-        titleDivider: false,
-        backgroundColor: Theme.of(context).colorScheme.background,
-      ),
-      title: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
-        child: Column(
-          children: [
-            const UIVerticalSpace6(),
-            Icon(
-              Icons.error_outline,
-              color: Theme.of(context).colorScheme.error,
-            ),
-            const UIVerticalSpace14(),
-            Text(
-              "Uh oh, something went wrong.",
-              style: Theme.of(context)
-                  .textTheme
-                  .bodyText2!
-                  .copyWith(color: Theme.of(context).colorScheme.error),
-            ),
-          ],
-        ),
-      ),
-      content: Padding(
-        padding: const EdgeInsets.only(bottom: 24, right: 24, left: 24),
-        child: Text(
-          failure.message ?? "We are not sure what happened, please try again.",
-          style: Theme.of(context).textTheme.bodyText1,
-          textAlign: TextAlign.center,
-        ),
-      ),
-    ).show(context, transitionType: DialogTransitionType.Bubble);
   }
 }
 
