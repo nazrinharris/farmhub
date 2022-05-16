@@ -1,10 +1,12 @@
 import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
+import 'package:farmhub/core/errors/failures.dart';
 import 'package:farmhub/presentation/global/cubit/global_ui_cubit.dart';
 import 'package:farmhub/presentation/shared_widgets/buttons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
+import 'package:ndialog/ndialog.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 import '../../../app_router.dart';
@@ -130,142 +132,295 @@ class ProduceListCard extends StatelessWidget {
   ) {
     isAdmin ??= false;
 
-    if (isAdmin) {
-      showModalBottomSheet<void>(
-        backgroundColor: Colors.transparent,
-        context: context,
-        builder: (BuildContext context) {
-          return BlocProvider(
-            create: (context) => ProduceListCardCubit(locator(), locator()),
-            child: Builder(builder: (context) {
-              return Container(
-                height: 390,
-                decoration: BoxDecoration(
-                  color: Theme.of(context).colorScheme.background,
-                  borderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(14), topRight: Radius.circular(14)),
-                ),
-                child: Column(
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.only(top: 24),
-                      alignment: Alignment.center,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(produce.produceName),
-                          const UIVerticalSpace14(),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                "RM ${produce.currentProducePrice["price"]}/kg",
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodyText2!
-                                    .copyWith(fontWeight: FontWeight.w700),
-                              ),
-                              const UIHorizontalSpace14(),
-                              ChangeBox(produce),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 14, left: 46, right: 46),
-                      child: SecondaryButton(
-                        onPressed: () {},
-                        content: "Add to Favorites",
-                        buttonIcon: const Icon(Icons.bookmark_add_outlined, size: 20),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 14, left: 46, right: 46),
-                      child: SecondaryButton(
-                        onPressed: () {},
-                        content: "Add new Price",
-                        type: SecondaryButtonType.filled,
-                        buttonIcon: const Icon(Icons.attach_money, size: 20),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 14, left: 46, right: 46),
-                      child: SecondaryButton(
-                        type: SecondaryButtonType.filled,
-                        onPressed: () {},
-                        content: "Edit Produce",
-                        buttonIcon: const Icon(Icons.edit, size: 20),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 14, left: 46, right: 46),
-                      child: SecondaryButton(
-                        type: SecondaryButtonType.red,
-                        onPressed: () async {
-                          context
-                              .read<ProduceListCardCubit>()
-                              .showDeleteConfirmation(context: context, produce: produce);
-                        },
-                        content: "Delete Produce",
-                        buttonIcon: const Icon(Icons.delete, size: 20),
-                      ),
-                    )
-                  ],
-                ),
-              );
-            }),
-          );
-        },
-      );
-    } else {
-      showModalBottomSheet<void>(
-        backgroundColor: Colors.transparent,
-        context: context,
-        builder: (BuildContext context) {
-          return Container(
-            height: 200,
+    showModalBottomSheet<void>(
+      backgroundColor: Colors.transparent,
+      context: context,
+      builder: (BuildContext context) {
+        return isAdmin!
+            ? BuildAdminModalBottomSheet(produce: produce)
+            : BuildUserModalBottomSheet(produce: produce);
+      },
+    );
+  }
+}
+
+class BuildUserModalBottomSheet extends StatelessWidget {
+  final Produce produce;
+
+  const BuildUserModalBottomSheet({
+    Key? key,
+    required this.produce,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 200,
+      decoration: BoxDecoration(
+        color: Theme.of(context).colorScheme.background,
+        borderRadius:
+            const BorderRadius.only(topLeft: Radius.circular(14), topRight: Radius.circular(14)),
+      ),
+      child: Column(
+        children: [
+          Container(
+            padding: EdgeInsets.only(top: 24),
+            alignment: Alignment.center,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(produce.produceName),
+                UIHorizontalSpace14(),
+                ChangeBox(produce),
+              ],
+            ),
+          ),
+          Container(
+            padding: EdgeInsets.only(top: 24, bottom: 34),
             decoration: BoxDecoration(
               color: Theme.of(context).colorScheme.background,
               borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(14), topRight: Radius.circular(14)),
             ),
-            child: Column(
-              children: [
-                Container(
-                  padding: EdgeInsets.only(top: 24),
-                  alignment: Alignment.center,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(produce.produceName),
-                      UIHorizontalSpace14(),
-                      ChangeBox(produce),
-                    ],
-                  ),
-                ),
-                Container(
-                  padding: EdgeInsets.only(top: 24, bottom: 34),
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).colorScheme.background,
-                    borderRadius: const BorderRadius.only(
-                        topLeft: Radius.circular(14), topRight: Radius.circular(14)),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 46),
-                    child: SecondaryButton(
-                      onPressed: () {},
-                      content: "Add to Favorites",
-                      buttonIcon: Icon(Icons.bookmark_add_outlined, size: 20),
-                    ),
-                  ),
-                )
-              ],
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 46),
+              child: SecondaryButton(
+                onPressed: () {},
+                content: "Add to Favorites",
+                buttonIcon: Icon(Icons.bookmark_add_outlined, size: 20),
+              ),
             ),
-          );
-        },
-      );
-    }
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class BuildAdminModalBottomSheet extends StatelessWidget {
+  final Produce produce;
+
+  const BuildAdminModalBottomSheet({
+    Key? key,
+    required this.produce,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (context) => ProduceListCardCubit(locator(), locator()),
+      child: Builder(builder: (context) {
+        return Container(
+          height: 390,
+          decoration: BoxDecoration(
+            color: Theme.of(context).colorScheme.background,
+            borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(14), topRight: Radius.circular(14)),
+          ),
+          child: Column(
+            children: [
+              Container(
+                padding: const EdgeInsets.only(top: 24),
+                alignment: Alignment.center,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(produce.produceName),
+                    const UIVerticalSpace14(),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "RM ${produce.currentProducePrice["price"]}/kg",
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyText2!
+                              .copyWith(fontWeight: FontWeight.w700),
+                        ),
+                        const UIHorizontalSpace14(),
+                        ChangeBox(produce),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 14, left: 46, right: 46),
+                child: SecondaryButton(
+                  onPressed: () {},
+                  content: "Add to Favorites",
+                  buttonIcon: const Icon(Icons.bookmark_add_outlined, size: 20),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 14, left: 46, right: 46),
+                child: SecondaryButton(
+                  onPressed: () {},
+                  content: "Add new Price",
+                  type: SecondaryButtonType.filled,
+                  buttonIcon: const Icon(Icons.attach_money, size: 20),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 14, left: 46, right: 46),
+                child: SecondaryButton(
+                  type: SecondaryButtonType.filled,
+                  onPressed: () {},
+                  content: "Edit Produce",
+                  buttonIcon: const Icon(Icons.edit, size: 20),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 14, left: 46, right: 46),
+                child: SecondaryButton(
+                  type: SecondaryButtonType.red,
+                  onPressed: () async {
+                    context.read<ProduceListCardCubit>().showDeleteConfirmation(
+                          context: context,
+                          produce: produce,
+                          confirmationDialog: returnConfirmationDialog(context),
+                        );
+                  },
+                  content: "Delete Produce",
+                  buttonIcon: const Icon(Icons.delete, size: 20),
+                ),
+              )
+            ],
+          ),
+        );
+      }),
+    );
+  }
+
+  NAlertDialog returnConfirmationDialog(BuildContext context) {
+    return NAlertDialog(
+      blur: 4,
+      dialogStyle: DialogStyle(
+        titlePadding: EdgeInsets.zero,
+        titleDivider: false,
+        backgroundColor: Theme.of(context).colorScheme.background,
+      ),
+      title: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
+        color: Theme.of(context).colorScheme.errorContainer.withOpacity(0.45),
+        child: Row(
+          children: [
+            Icon(
+              Icons.warning_amber,
+              color: Theme.of(context).colorScheme.error,
+            ),
+            const UIHorizontalSpace14(),
+            Text(
+              "Woah! Are you sure?",
+              style: Theme.of(context)
+                  .textTheme
+                  .bodyText2!
+                  .copyWith(color: Theme.of(context).colorScheme.error),
+            ),
+          ],
+        ),
+      ),
+      content: Padding(
+        padding: const EdgeInsets.only(top: 14, bottom: 24, right: 24),
+        child: Text(
+          "As of now, you can't undo this action. Only do this if you are sure.",
+          style: Theme.of(context).textTheme.bodyText1,
+        ),
+      ),
+      actions: [
+        PrimaryButton(
+          backgroundColor: Theme.of(context).colorScheme.primary,
+          margin: const EdgeInsets.only(left: 14, right: 7, bottom: 14),
+          content: "Back",
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
+        SecondaryButton(
+          horizontalPadding: 0,
+          type: SecondaryButtonType.red,
+          margin: const EdgeInsets.only(right: 14, left: 7, bottom: 14),
+          content: "Delete",
+          buttonIcon: const Icon(Icons.delete, size: 20),
+          onPressed: () {
+            Navigator.of(context).pop();
+            context.read<ProduceListCardCubit>().startDeleting(
+                  context: context,
+                  produce: produce,
+                  progressDialog: returnProgressDialog(context),
+                  showErrorDialog: showErrorDialog,
+                );
+          },
+        ),
+      ],
+    );
+  }
+
+  ProgressDialog returnProgressDialog(BuildContext context) {
+    return ProgressDialog(
+      context,
+      dialogTransitionType: DialogTransitionType.Bubble,
+      title: Container(
+        padding: const EdgeInsets.only(left: 14, right: 14, top: 14),
+        child: Text(
+          "Deleting..",
+          style: Theme.of(context)
+              .textTheme
+              .bodyText2!
+              .copyWith(color: Theme.of(context).colorScheme.error),
+        ),
+      ),
+      message: Padding(
+        padding: const EdgeInsets.only(top: 14, bottom: 14, right: 14, left: 14),
+        child: Text(
+          "It may take some time, please wait..",
+          style: Theme.of(context).textTheme.bodyText1,
+        ),
+      ),
+      defaultLoadingWidget: Container(
+        padding: EdgeInsets.only(left: 14),
+        child: CircularProgressIndicator(color: Theme.of(context).colorScheme.error),
+      ),
+    );
+  }
+
+  void showErrorDialog(BuildContext context, Failure failure) async {
+    await NAlertDialog(
+      blur: 4,
+      dialogStyle: DialogStyle(
+        titlePadding: EdgeInsets.zero,
+        titleDivider: false,
+        backgroundColor: Theme.of(context).colorScheme.background,
+      ),
+      title: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
+        child: Column(
+          children: [
+            const UIVerticalSpace6(),
+            Icon(
+              Icons.error_outline,
+              color: Theme.of(context).colorScheme.error,
+            ),
+            const UIVerticalSpace14(),
+            Text(
+              "Uh oh, something went wrong.",
+              style: Theme.of(context)
+                  .textTheme
+                  .bodyText2!
+                  .copyWith(color: Theme.of(context).colorScheme.error),
+            ),
+          ],
+        ),
+      ),
+      content: Padding(
+        padding: const EdgeInsets.only(bottom: 24, right: 24, left: 24),
+        child: Text(
+          failure.message ?? "We are not sure what happened, please try again.",
+          style: Theme.of(context).textTheme.bodyText1,
+          textAlign: TextAlign.center,
+        ),
+      ),
+    ).show(context, transitionType: DialogTransitionType.Bubble);
   }
 }
 

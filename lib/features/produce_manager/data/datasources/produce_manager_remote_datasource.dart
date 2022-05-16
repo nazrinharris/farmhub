@@ -292,9 +292,11 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
 
   @override
   Future<Unit> deleteProduce(String produceId) async {
-    await firebaseFirestore.collection('produce').doc(produceId).update({"isDeleted": true});
+    //await firebaseFirestore.collection('produce').doc(produceId).update({"isDeleted": true});
 
-    return unit;
+    //return unit;
+    //TODO: Remember to remove this debug thing.
+    throw Exception("Stuff");
   }
 
   @override
