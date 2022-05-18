@@ -141,7 +141,10 @@ class _ProduceListSliverState extends State<ProduceListSliver> {
                     produceList[index],
                     onTap: () => Navigator.of(context).pushNamed(
                       '/add_new_price_second',
-                      arguments: ProduceArguments(produceList[index]),
+                      arguments: AddNewPriceScreenArguments(
+                        produceList[index],
+                        AddNewPriceFromRoute.fromAddNewPriceScreen,
+                      ),
                     ),
                     disableLongPress: true,
                     chartAnimationDuration: 0,
@@ -167,7 +170,10 @@ class _ProduceListSliverState extends State<ProduceListSliver> {
                     produceList[index],
                     onTap: () => Navigator.of(context).pushNamed(
                       '/add_new_price_second',
-                      arguments: ProduceArguments(produceList[index], isFromSearch: false),
+                      arguments: AddNewPriceScreenArguments(
+                        produceList[index],
+                        AddNewPriceFromRoute.fromAddNewPriceScreen,
+                      ),
                     ),
                     disableLongPress: true,
                     chartAnimationDuration: 0,
@@ -207,7 +213,10 @@ class _ProduceListSliverState extends State<ProduceListSliver> {
                     state.props.produceList[index],
                     onTap: () => Navigator.of(context).pushNamed(
                       '/add_new_price_second',
-                      arguments: ProduceArguments(state.props.produceList[index]),
+                      arguments: AddNewPriceScreenArguments(
+                        state.props.produceList[index],
+                        AddNewPriceFromRoute.fromAddNewPriceScreen,
+                      ),
                     ),
                     disableLongPress: true,
                     chartAnimationDuration: 0,

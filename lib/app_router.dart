@@ -20,9 +20,22 @@ import 'features/produce_manager/domain/entities/produce/produce.dart';
 
 class ProduceArguments {
   final Produce produce;
-  final bool? isFromSearch;
 
-  ProduceArguments(this.produce, {this.isFromSearch});
+  ProduceArguments(this.produce);
+}
+
+enum AddNewPriceFromRoute {
+  fromAddNewPriceScreen,
+  fromAddNewPriceSearchScreen,
+  fromMainBottomSheet,
+  fromProduceScreen
+}
+
+class AddNewPriceScreenArguments {
+  final Produce produce;
+  final AddNewPriceFromRoute fromRoute;
+
+  AddNewPriceScreenArguments(this.produce, this.fromRoute);
 }
 
 class PriceScreenArguments {
@@ -75,11 +88,13 @@ class AppRouter {
         );
       case add_new_price_second:
         return CupertinoPageRoute(
-          builder: (_) => AddNewPriceSecondScreen(routeSettings.arguments as ProduceArguments),
+          builder: (_) =>
+              AddNewPriceSecondScreen(routeSettings.arguments as AddNewPriceScreenArguments),
         );
       case '/add_new_price_third':
         return CupertinoPageRoute(
-          builder: (_) => AddNewPriceThirdScreen(routeSettings.arguments as ProduceArguments),
+          builder: (_) =>
+              AddNewPriceThirdScreen(routeSettings.arguments as AddNewPriceScreenArguments),
         );
 
       case '/search_screen':

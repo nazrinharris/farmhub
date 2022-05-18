@@ -17,9 +17,9 @@ import 'bloc/add_new_price_screen_bloc.dart';
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
 class AddNewPriceSecondScreen extends StatefulWidget {
-  final ProduceArguments produceArguments;
+  final AddNewPriceScreenArguments arguments;
 
-  const AddNewPriceSecondScreen(this.produceArguments, {Key? key}) : super(key: key);
+  const AddNewPriceSecondScreen(this.arguments, {Key? key}) : super(key: key);
 
   @override
   State<AddNewPriceSecondScreen> createState() => _AddNewPriceSecondScreenState();
@@ -77,9 +77,9 @@ class _AddNewPriceSecondScreenState extends State<AddNewPriceSecondScreen> {
                       );
                       Navigator.of(context).pushNamed(
                         '/add_new_price_third',
-                        arguments: ProduceArguments(
+                        arguments: AddNewPriceScreenArguments(
                           state.produce,
-                          isFromSearch: widget.produceArguments.isFromSearch,
+                          widget.arguments.fromRoute,
                         ),
                       );
                     }
@@ -100,7 +100,7 @@ class _AddNewPriceSecondScreenState extends State<AddNewPriceSecondScreen> {
                         children: [
                           CustomScrollView(
                             slivers: [
-                              HeaderSliver(widget.produceArguments.produce),
+                              HeaderSliver(widget.arguments.produce),
                               const ContentSliver(),
                               const SliverWhiteSpace(100)
                             ],
@@ -113,7 +113,7 @@ class _AddNewPriceSecondScreenState extends State<AddNewPriceSecondScreen> {
                               firstPageOnPressed: () => context
                                   .read<AddNewPriceScreenBloc>()
                                   .add(AddNewPriceScreenEvent.execAddNewPrice(
-                                    produce: widget.produceArguments.produce,
+                                    produce: widget.arguments.produce,
                                   )),
                               type: PrimaryButtonAwareType.onePage,
                               width: 200,

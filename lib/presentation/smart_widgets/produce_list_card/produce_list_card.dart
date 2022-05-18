@@ -259,7 +259,10 @@ class BuildAdminModalBottomSheet extends StatelessWidget {
                   onPressed: () {
                     Navigator.of(context).pushNamed(
                       "/add_new_price_second",
-                      arguments: ProduceArguments(produce),
+                      arguments: AddNewPriceScreenArguments(
+                        produce,
+                        AddNewPriceFromRoute.fromMainBottomSheet,
+                      ),
                     );
                   },
                   content: "Add new Price",

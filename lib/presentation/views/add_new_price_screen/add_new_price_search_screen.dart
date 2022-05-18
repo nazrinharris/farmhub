@@ -184,8 +184,10 @@ class _SearchProduceListState extends State<SearchProduceList> {
                       onTap: () {
                         Navigator.of(context).pushNamed(
                           '/add_new_price_second',
-                          arguments:
-                              ProduceArguments(state.props.produceList[index], isFromSearch: true),
+                          arguments: AddNewPriceScreenArguments(
+                            state.props.produceList[index],
+                            AddNewPriceFromRoute.fromAddNewPriceSearchScreen,
+                          ),
                         );
                       },
                       disableLongPress: true,
@@ -232,7 +234,10 @@ class _SearchProduceListState extends State<SearchProduceList> {
                       onTap: () {
                         Navigator.of(context).pushNamed(
                           '/add_new_price_second',
-                          arguments: ProduceArguments(state.props.produceList[index]),
+                          arguments: AddNewPriceScreenArguments(
+                            state.props.produceList[index],
+                            AddNewPriceFromRoute.fromAddNewPriceSearchScreen,
+                          ),
                         );
                       },
                       disableLongPress: true,

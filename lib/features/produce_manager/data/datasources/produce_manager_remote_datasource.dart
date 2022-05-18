@@ -262,42 +262,39 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
 
   @override
   Future<Unit> editProduce(String produceId, String newProduceName) async {
-    //TODO: Remember to remove this debug thing
-    // // Create search parameters
-    // List<String> newProduceNameSearch = [];
-    // String temp = "";
-    // for (int i = 0; i < newProduceName.length; i++) {
-    //   temp = temp + newProduceName[i].toLowerCase();
-    //   newProduceNameSearch.add(temp);
-    // }
-    // // Create per-word basis search parameters
-    // List<String> listOfWords = newProduceName.split(" ");
-    // temp = "";
-    // if (listOfWords.length > 1) {
-    //   for (String word in listOfWords) {
-    //     for (int i = 0; i < word.length; i++) {
-    //       temp = temp + word[i].toLowerCase();
-    //       newProduceNameSearch.add(temp);
-    //     }
-    //     temp = "";
-    //   }
-    // }
+    // Create search parameters
+    List<String> newProduceNameSearch = [];
+    String temp = "";
+    for (int i = 0; i < newProduceName.length; i++) {
+      temp = temp + newProduceName[i].toLowerCase();
+      newProduceNameSearch.add(temp);
+    }
+    // Create per-word basis search parameters
+    List<String> listOfWords = newProduceName.split(" ");
+    temp = "";
+    if (listOfWords.length > 1) {
+      for (String word in listOfWords) {
+        for (int i = 0; i < word.length; i++) {
+          temp = temp + word[i].toLowerCase();
+          newProduceNameSearch.add(temp);
+        }
+        temp = "";
+      }
+    }
 
-    // await firebaseFirestore.collection('produce').doc(produceId).update({
-    //   "produceName": newProduceName,
-    //   "produceNameSearch": newProduceNameSearch,
-    // });
+    await firebaseFirestore.collection('produce').doc(produceId).update({
+      "produceName": newProduceName,
+      "produceNameSearch": newProduceNameSearch,
+    });
 
-    throw Exception();
+    return unit;
   }
 
   @override
   Future<Unit> deleteProduce(String produceId) async {
-    //await firebaseFirestore.collection('produce').doc(produceId).update({"isDeleted": true});
+    await firebaseFirestore.collection('produce').doc(produceId).update({"isDeleted": true});
 
-    //return unit;
-    //TODO: Remember to remove this debug thing.
-    throw Exception("Stuff");
+    return unit;
   }
 
   @override

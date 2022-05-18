@@ -1,6 +1,7 @@
 import 'package:farmhub/app_router.dart';
 import 'package:farmhub/core/util/misc.dart';
 import 'package:farmhub/locator.dart';
+import 'package:farmhub/presentation/global/cubit/global_ui_cubit.dart';
 import 'package:farmhub/presentation/shared_widgets/appbars.dart';
 import 'package:farmhub/presentation/shared_widgets/buttons.dart';
 import 'package:farmhub/presentation/shared_widgets/texts.dart';
@@ -15,7 +16,7 @@ import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
 class AddNewPriceThirdScreen extends StatelessWidget {
-  final ProduceArguments arguments;
+  final AddNewPriceScreenArguments arguments;
 
   const AddNewPriceThirdScreen(this.arguments, {Key? key}) : super(key: key);
 
@@ -46,21 +47,7 @@ class AddNewPriceThirdScreen extends StatelessWidget {
               appBar: DefaultAppBar(
                 leadingIcon: Icon(Icons.close),
                 leadingOnPressed: () {
-                  // TODO: Make sure to refresh MainScreen
-                  if (arguments.isFromSearch == true) {
-                    Navigator.of(context)
-                      ..pop()
-                      ..pop()
-                      ..pop()
-                      ..pop()
-                      ..pushReplacementNamed('/main');
-                  } else {
-                    Navigator.of(context)
-                      ..pop()
-                      ..pop()
-                      ..pop()
-                      ..pushReplacementNamed('/main');
-                  }
+                  popToMainAndRefresh(context);
                 },
               ),
               body: SafeArea(
@@ -109,20 +96,7 @@ class AddNewPriceThirdScreen extends StatelessWidget {
                             width: 220,
                             content: 'Add another Price',
                             onPressed: () {
-                              if (arguments.isFromSearch == true) {
-                                Navigator.of(context)
-                                  ..pop()
-                                  ..pop()
-                                  ..pop()
-                                  ..pop()
-                                  ..pushNamed('/add_new_price');
-                              } else {
-                                Navigator.of(context)
-                                  ..pop()
-                                  ..pop()
-                                  ..pop()
-                                  ..pushNamed('/add_new_price');
-                              }
+                              popToAddNewPrice(context);
                             },
                           ),
                           const UIVerticalSpace14(),
@@ -130,20 +104,7 @@ class AddNewPriceThirdScreen extends StatelessWidget {
                             width: 180,
                             content: "Back to Home",
                             onPressed: () {
-                              if (arguments.isFromSearch == true) {
-                                Navigator.of(context)
-                                  ..pop()
-                                  ..pop()
-                                  ..pop()
-                                  ..pop()
-                                  ..pushReplacementNamed('/main');
-                              } else {
-                                Navigator.of(context)
-                                  ..pop()
-                                  ..pop()
-                                  ..pop()
-                                  ..pushReplacementNamed('/main');
-                              }
+                              popToMainAndRefresh(context);
                             },
                           )
                         ],
@@ -157,5 +118,65 @@ class AddNewPriceThirdScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void popToMainAndRefresh(BuildContext context) {
+    context.read<GlobalUICubit>().setShouldRefreshMain(true);
+
+    switch (arguments.fromRoute) {
+      case AddNewPriceFromRoute.fromAddNewPriceScreen:
+        Navigator.of(context)
+          ..pop()
+          ..pop()
+          ..pop();
+        break;
+      case AddNewPriceFromRoute.fromAddNewPriceSearchScreen:
+        Navigator.of(context)
+          ..pop()
+          ..pop()
+          ..pop()
+          ..pop();
+        break;
+      case AddNewPriceFromRoute.fromMainBottomSheet:
+        Navigator.of(context)
+          ..pop()
+          ..pop()
+          ..pop();
+        break;
+      case AddNewPriceFromRoute.fromProduceScreen:
+        // TODO: Handle this case.
+        break;
+      default:
+        throw (Exception("Unknown Route, ${StackTrace.current}"));
+    }
+  }
+
+  void popToAddNewPrice(BuildContext context) {
+    switch (arguments.fromRoute) {
+      case AddNewPriceFromRoute.fromAddNewPriceScreen:
+        Navigator.of(context)
+          ..pop()
+          ..pop();
+        break;
+      case AddNewPriceFromRoute.fromAddNewPriceSearchScreen:
+        Navigator.of(context)
+          ..pop()
+          ..pop()
+          ..pop();
+        break;
+      case AddNewPriceFromRoute.fromMainBottomSheet:
+        Navigator.of(context)
+          ..pop()
+          ..pop()
+          ..pop()
+          ..pushNamed("/add_new_price");
+        break;
+      case AddNewPriceFromRoute.fromProduceScreen:
+        Navigator.of(context)
+          ..pop()
+          ..pop()
+          ..pushNamed("/add_new_price");
+        break;
+    }
   }
 }
