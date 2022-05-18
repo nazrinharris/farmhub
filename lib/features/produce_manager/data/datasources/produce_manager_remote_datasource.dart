@@ -11,6 +11,8 @@ import 'package:intl/intl.dart';
 import '../../domain/entities/produce/produce.dart';
 
 abstract class IProduceManagerRemoteDatasource {
+  Future<Produce> getProduce(String produceId);
+
   Future<List<Produce>> getFirstTenProduce();
 
   Future<List<Produce>> getNextTenProduce(List<Produce> lastProduceList);
@@ -52,6 +54,19 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
   ProduceManagerRemoteDatasource({
     required this.firebaseFirestore,
   });
+
+  @override
+  Future<Produce> getProduce(String produceId) async {
+    final document = await firebaseFirestore
+        .collection('produce')
+        .doc(produceId)
+        .get()
+        .then((value) => value.data());
+
+    final Produce produce = Produce.fromMap(document);
+
+    return produce;
+  }
 
   @override
   Future<List<Produce>> getFirstTenProduce() async {

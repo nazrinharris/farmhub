@@ -127,6 +127,8 @@ class _SliverProduceHeaderState extends State<SliverProduceHeader> {
     context.read<ProduceAggregateCubit>().state.props.tabController.addListener(() {
       context.read<ProduceAggregateCubit>().tabChanged();
     });
+
+    context.read<ProduceAggregateCubit>().getAggregatePricesAndProduce(widget.produce.produceId);
   }
 
   @override
@@ -180,8 +182,6 @@ class _SliverProducePriceChartState extends State<SliverProducePriceChart> {
   @override
   void initState() {
     super.initState();
-
-    context.read<ProduceAggregateCubit>().getAggregatePrices(widget.produce.produceId);
   }
 
   @override

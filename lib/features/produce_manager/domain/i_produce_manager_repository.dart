@@ -6,7 +6,7 @@ import '../../../core/errors/failures.dart';
 import 'entities/produce/produce.dart';
 
 abstract class IProduceManagerRepository {
-  FutureEither<Produce> getSpecificProduce({
+  FutureEither<Produce> getProduce({
     required String pid,
   });
 

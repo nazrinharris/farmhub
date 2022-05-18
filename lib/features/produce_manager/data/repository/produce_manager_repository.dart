@@ -76,9 +76,22 @@ class ProduceManagerRepository implements IProduceManagerRepository {
   }
 
   @override
-  FutureEither<Produce> getSpecificProduce({required String pid}) {
-    // TODO: implement getSpecificProduce
-    throw UnimplementedError();
+  FutureEither<Produce> getProduce({required String pid}) async {
+    if (await networkInfo.isConnected) {
+      try {
+        final produce = await remoteDatasource.getProduce(pid);
+
+        return Right(produce);
+      } catch (e) {
+        return Left(ProduceManagerFailure(code: e.toString(), stackTrace: StackTrace.current));
+      }
+    } else {
+      return Left(InternetConnectionFailure(
+        code: ERROR_NO_INTERNET_CONNECTION,
+        message: MESSAGE_NO_INTERNET_CONNECTION,
+        stackTrace: StackTrace.current,
+      ));
+    }
   }
 
   @override

@@ -23,6 +23,7 @@ class ProduceAggregateProps with _$ProduceAggregateProps {
   const factory ProduceAggregateProps({
     required TabController tabController,
     required int index,
+    required Produce? produce,
     List<PriceSnippet>? twoWeeksPricesList,
     List<PriceSnippet>? oneMonthPricesList,
     List<PriceSnippet>? twoMonthPricesList,
