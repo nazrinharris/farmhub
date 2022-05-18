@@ -8,9 +8,14 @@ class GlobalUICubit extends Cubit<GlobalUIState> {
   GlobalUICubit()
       : super(const GlobalUIState.initial(GlobalUIProps(
           shouldRefreshMain: false,
+          shouldRefreshProduce: false,
         )));
 
   void setShouldRefreshMain(bool shouldRefreshMain) {
     emit(state.copyWith(props: state.props.copyWith(shouldRefreshMain: shouldRefreshMain)));
+  }
+
+  void setShouldRefreshProduce(bool shouldRefreshProduce) {
+    emit(state.copyWith(props: state.props.copyWith(shouldRefreshProduce: shouldRefreshProduce)));
   }
 }

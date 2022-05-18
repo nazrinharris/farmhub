@@ -12,5 +12,6 @@ class GlobalUIState with _$GlobalUIState {
 class GlobalUIProps with _$GlobalUIProps {
   const factory GlobalUIProps({
     required bool shouldRefreshMain,
+    required bool shouldRefreshProduce,
   }) = _GlobalUIProps;
 }

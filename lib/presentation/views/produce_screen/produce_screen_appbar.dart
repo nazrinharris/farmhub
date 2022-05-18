@@ -1,24 +1,35 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:farmhub/features/produce_manager/domain/entities/produce/produce.dart';
+import 'package:farmhub/locator.dart';
+import 'package:farmhub/presentation/shared_widgets/app_dialogs.dart';
+import 'package:farmhub/presentation/smart_widgets/produce_list_card/cubit/produce_dialog_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../shared_widgets/appbars.dart';
 
 class ProduceScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
   final bool isAdmin;
+  final Produce produce;
 
-  const ProduceScreenAppBar(this.isAdmin, {Key? key}) : super(key: key);
+  const ProduceScreenAppBar(this.isAdmin, this.produce, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return DefaultAppBar(
-      leadingIcon: const Icon(Icons.arrow_back),
-      leadingOnPressed: () {
-        Navigator.of(context).pop();
-      },
-      trailingIcon: const Icon(Icons.bookmark_add_outlined),
-      trailingOnPressed: () {},
-      secondTrailingChild: resolveSecondTrailing(context, isAdmin),
+    return BlocProvider(
+      create: (context) => ProduceDialogCubit(locator(), locator()),
+      child: Builder(builder: (context) {
+        return DefaultAppBar(
+          leadingIcon: const Icon(Icons.arrow_back),
+          leadingOnPressed: () {
+            Navigator.of(context).pop();
+          },
+          trailingIcon: const Icon(Icons.bookmark_add_outlined),
+          trailingOnPressed: () {},
+          secondTrailingChild: resolveSecondTrailing(context, isAdmin),
+        );
+      }),
     );
   }
 
@@ -46,6 +57,27 @@ class ProduceScreenAppBar extends StatelessWidget implements PreferredSizeWidget
               child: Row(
                 children: [
                   Icon(
+                    Icons.attach_money,
+                    size: 20,
+                    color: Theme.of(context).colorScheme.primary,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(left: 14),
+                    child: Text(
+                      "Add Price",
+                      style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                            color: Theme.of(context).colorScheme.primary,
+                          ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            PopupMenuItem(
+              value: 2,
+              child: Row(
+                children: [
+                  Icon(
                     Icons.delete,
                     size: 20,
                     color: Theme.of(context).colorScheme.error,
@@ -61,10 +93,40 @@ class ProduceScreenAppBar extends StatelessWidget implements PreferredSizeWidget
                   ),
                 ],
               ),
-            )
+            ),
           ];
         },
-        onSelected: (value) {},
+        onSelected: (value) {
+          switch (value) {
+            case 0:
+              context.read<ProduceDialogCubit>().showEditProduce(
+                    context: context,
+                    editProduceDialog: returnEditProduceDialog(
+                        context: context,
+                        produce: produce,
+                        textEditingController: TextEditingController(),
+                        formKey: GlobalKey<FormState>(),
+                        formFocusNode: FocusNode(),
+                        fromRoute: DialogFromRoute.fromProduce),
+                  );
+              break;
+            case 1:
+              break;
+            case 2:
+              context.read<ProduceDialogCubit>().showDeleteConfirmation(
+                    context: context,
+                    produce: produce,
+                    confirmationDialog: returnDeleteConfirmationDialog(
+                      context,
+                      produce,
+                      DialogFromRoute.fromProduce,
+                    ),
+                  );
+              break;
+            default:
+              throw UnimplementedError();
+          }
+        },
       );
     } else {
       return null;

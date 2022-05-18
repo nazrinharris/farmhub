@@ -283,6 +283,7 @@ class BuildAdminModalBottomSheet extends StatelessWidget {
                             textEditingController: TextEditingController(),
                             formKey: GlobalKey<FormState>(),
                             formFocusNode: FocusNode(),
+                            fromRoute: DialogFromRoute.fromMainBottomSheet,
                           ),
                         );
                   },
@@ -300,7 +301,11 @@ class BuildAdminModalBottomSheet extends StatelessWidget {
                     context.read<ProduceDialogCubit>().showDeleteConfirmation(
                           context: context,
                           produce: produce,
-                          confirmationDialog: returnDeleteConfirmationDialog(context, produce),
+                          confirmationDialog: returnDeleteConfirmationDialog(
+                            context,
+                            produce,
+                            DialogFromRoute.fromMainBottomSheet,
+                          ),
                         );
                   },
                   content: "Delete Produce",

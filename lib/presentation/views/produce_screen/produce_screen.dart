@@ -79,7 +79,7 @@ class _ProduceScreenState extends State<ProduceScreen> with SingleTickerProvider
                 resizeToAvoidBottomInset: false,
                 extendBodyBehindAppBar: true,
                 extendBody: true,
-                appBar: ProduceScreenAppBar(isAdmin),
+                appBar: ProduceScreenAppBar(isAdmin, widget.produceArguments.produce),
                 body: CustomScrollView(
                   controller: scrollController,
                   physics: DefaultScrollPhysics,

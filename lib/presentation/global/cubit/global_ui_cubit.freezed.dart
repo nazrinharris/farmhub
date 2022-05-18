@@ -406,9 +406,11 @@ abstract class GShouldRefreshMainChanged implements GlobalUIState {
 class _$GlobalUIPropsTearOff {
   const _$GlobalUIPropsTearOff();
 
-  _GlobalUIProps call({required bool shouldRefreshMain}) {
+  _GlobalUIProps call(
+      {required bool shouldRefreshMain, required bool shouldRefreshProduce}) {
     return _GlobalUIProps(
       shouldRefreshMain: shouldRefreshMain,
+      shouldRefreshProduce: shouldRefreshProduce,
     );
   }
 }
@@ -419,6 +421,7 @@ const $GlobalUIProps = _$GlobalUIPropsTearOff();
 /// @nodoc
 mixin _$GlobalUIProps {
   bool get shouldRefreshMain => throw _privateConstructorUsedError;
+  bool get shouldRefreshProduce => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $GlobalUIPropsCopyWith<GlobalUIProps> get copyWith =>
@@ -430,7 +433,7 @@ abstract class $GlobalUIPropsCopyWith<$Res> {
   factory $GlobalUIPropsCopyWith(
           GlobalUIProps value, $Res Function(GlobalUIProps) then) =
       _$GlobalUIPropsCopyWithImpl<$Res>;
-  $Res call({bool shouldRefreshMain});
+  $Res call({bool shouldRefreshMain, bool shouldRefreshProduce});
 }
 
 /// @nodoc
@@ -445,11 +448,16 @@ class _$GlobalUIPropsCopyWithImpl<$Res>
   @override
   $Res call({
     Object? shouldRefreshMain = freezed,
+    Object? shouldRefreshProduce = freezed,
   }) {
     return _then(_value.copyWith(
       shouldRefreshMain: shouldRefreshMain == freezed
           ? _value.shouldRefreshMain
           : shouldRefreshMain // ignore: cast_nullable_to_non_nullable
+              as bool,
+      shouldRefreshProduce: shouldRefreshProduce == freezed
+          ? _value.shouldRefreshProduce
+          : shouldRefreshProduce // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
   }
@@ -462,7 +470,7 @@ abstract class _$GlobalUIPropsCopyWith<$Res>
           _GlobalUIProps value, $Res Function(_GlobalUIProps) then) =
       __$GlobalUIPropsCopyWithImpl<$Res>;
   @override
-  $Res call({bool shouldRefreshMain});
+  $Res call({bool shouldRefreshMain, bool shouldRefreshProduce});
 }
 
 /// @nodoc
@@ -479,11 +487,16 @@ class __$GlobalUIPropsCopyWithImpl<$Res>
   @override
   $Res call({
     Object? shouldRefreshMain = freezed,
+    Object? shouldRefreshProduce = freezed,
   }) {
     return _then(_GlobalUIProps(
       shouldRefreshMain: shouldRefreshMain == freezed
           ? _value.shouldRefreshMain
           : shouldRefreshMain // ignore: cast_nullable_to_non_nullable
+              as bool,
+      shouldRefreshProduce: shouldRefreshProduce == freezed
+          ? _value.shouldRefreshProduce
+          : shouldRefreshProduce // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
   }
@@ -492,14 +505,17 @@ class __$GlobalUIPropsCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_GlobalUIProps implements _GlobalUIProps {
-  const _$_GlobalUIProps({required this.shouldRefreshMain});
+  const _$_GlobalUIProps(
+      {required this.shouldRefreshMain, required this.shouldRefreshProduce});
 
   @override
   final bool shouldRefreshMain;
+  @override
+  final bool shouldRefreshProduce;
 
   @override
   String toString() {
-    return 'GlobalUIProps(shouldRefreshMain: $shouldRefreshMain)';
+    return 'GlobalUIProps(shouldRefreshMain: $shouldRefreshMain, shouldRefreshProduce: $shouldRefreshProduce)';
   }
 
   @override
@@ -508,11 +524,14 @@ class _$_GlobalUIProps implements _GlobalUIProps {
         (other.runtimeType == runtimeType &&
             other is _GlobalUIProps &&
             (identical(other.shouldRefreshMain, shouldRefreshMain) ||
-                other.shouldRefreshMain == shouldRefreshMain));
+                other.shouldRefreshMain == shouldRefreshMain) &&
+            (identical(other.shouldRefreshProduce, shouldRefreshProduce) ||
+                other.shouldRefreshProduce == shouldRefreshProduce));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, shouldRefreshMain);
+  int get hashCode =>
+      Object.hash(runtimeType, shouldRefreshMain, shouldRefreshProduce);
 
   @JsonKey(ignore: true)
   @override
@@ -521,11 +540,14 @@ class _$_GlobalUIProps implements _GlobalUIProps {
 }
 
 abstract class _GlobalUIProps implements GlobalUIProps {
-  const factory _GlobalUIProps({required bool shouldRefreshMain}) =
-      _$_GlobalUIProps;
+  const factory _GlobalUIProps(
+      {required bool shouldRefreshMain,
+      required bool shouldRefreshProduce}) = _$_GlobalUIProps;
 
   @override
   bool get shouldRefreshMain;
+  @override
+  bool get shouldRefreshProduce;
   @override
   @JsonKey(ignore: true)
   _$GlobalUIPropsCopyWith<_GlobalUIProps> get copyWith =>

@@ -12,6 +12,8 @@ import 'package:ndialog/ndialog.dart';
 part 'produce_dialog_state.dart';
 part 'produce_dialog_cubit.freezed.dart';
 
+enum DialogFromRoute { fromMainBottomSheet, fromProduce }
+
 class ProduceDialogCubit extends Cubit<ProduceDialogState> {
   final IProduceManagerRepository repository;
   final GlobalUICubit globalUICubit;
@@ -35,6 +37,7 @@ class ProduceDialogCubit extends Cubit<ProduceDialogState> {
     required Produce produce,
     required ProgressDialog progressDialog,
     required Function(BuildContext context, Failure failure) showErrorDialog,
+    required DialogFromRoute fromRoute,
   }) async {
     // Pop the confirmation dialog
     Navigator.of(context).pop();
@@ -52,9 +55,20 @@ class ProduceDialogCubit extends Cubit<ProduceDialogState> {
       },
       (unit) {
         progressDialog.dismiss();
-        globalUICubit.setShouldRefreshMain(true);
-        // Pops the [ModalBottomSheet]
-        Navigator.of(context).pop();
+        switch (fromRoute) {
+          case DialogFromRoute.fromMainBottomSheet:
+            globalUICubit.setShouldRefreshMain(true);
+            // Pops the [ModalBottomSheet]
+            Navigator.of(context).pop();
+            break;
+          case DialogFromRoute.fromProduce:
+            Navigator.of(context)
+              ..pop()
+              ..pop();
+            break;
+          default:
+            throw UnimplementedError(StackTrace.current.toString());
+        }
       },
     );
   }
@@ -74,6 +88,7 @@ class ProduceDialogCubit extends Cubit<ProduceDialogState> {
     required TextEditingController textEditingController,
     required FocusNode formFocusNode,
     required ProgressDialog progressDialog,
+    required DialogFromRoute fromRoute,
     required Function(BuildContext context, Failure failure) showErrorDialog,
   }) async {
     final bool isFormValid = formKey.currentState!.validate();
@@ -96,10 +111,20 @@ class ProduceDialogCubit extends Cubit<ProduceDialogState> {
           showErrorDialog(context, f);
         },
         (unit) {
-          progressDialog.dismiss();
-          globalUICubit.setShouldRefreshMain(true);
-          // Pops the [ModalBottomSheet]
-          Navigator.of(context).pop();
+          switch (fromRoute) {
+            case DialogFromRoute.fromMainBottomSheet:
+              progressDialog.dismiss();
+              globalUICubit.setShouldRefreshMain(true);
+              // Pops the [ModalBottomSheet]
+              Navigator.of(context).pop();
+              break;
+            case DialogFromRoute.fromProduce:
+              progressDialog.dismiss();
+              globalUICubit.setShouldRefreshProduce(true);
+              break;
+            default:
+              throw UnimplementedError(StackTrace.current.toString());
+          }
         },
       );
     }

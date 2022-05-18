@@ -9,7 +9,11 @@ import '../../core/errors/failures.dart';
 import '../smart_widgets/produce_list_card/cubit/produce_dialog_cubit.dart';
 import 'buttons.dart';
 
-NAlertDialog returnDeleteConfirmationDialog(BuildContext context, Produce produce) {
+NAlertDialog returnDeleteConfirmationDialog(
+  BuildContext context,
+  Produce produce,
+  DialogFromRoute fromRoute,
+) {
   return NAlertDialog(
     blur: 4,
     dialogStyle: DialogStyle(
@@ -65,6 +69,7 @@ NAlertDialog returnDeleteConfirmationDialog(BuildContext context, Produce produc
                 produce: produce,
                 progressDialog: returnDeleteProgressDialog(context),
                 showErrorDialog: showErrorDialog,
+                fromRoute: fromRoute,
               );
         },
       ),
@@ -147,6 +152,7 @@ NAlertDialog returnEditProduceDialog({
   required TextEditingController textEditingController,
   required GlobalKey<FormState> formKey,
   required FocusNode formFocusNode,
+  required DialogFromRoute fromRoute,
 }) {
   return NAlertDialog(
     blur: 4,
@@ -215,6 +221,7 @@ NAlertDialog returnEditProduceDialog({
                           textEditingController: textEditingController,
                           progressDialog: returnEditProduceProgressDialog(context),
                           showErrorDialog: showErrorDialog,
+                          fromRoute: fromRoute,
                         );
                   },
                 ),
