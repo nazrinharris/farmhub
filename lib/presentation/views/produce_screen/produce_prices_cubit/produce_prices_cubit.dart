@@ -14,7 +14,7 @@ class ProducePricesCubit extends Cubit<ProducePricesState> {
 
   ProducePricesCubit({required this.repository}) : super(const ProducePricesState.initial([]));
 
-  void getFirstTenPrices(String produceId) async {
+  Future<void> getFirstTenPrices(String produceId) async {
     emit(ProducePricesState.firstTenPricesLoading(state.pricesList));
 
     final failureOrPriceList = await repository.getFirstTenPrices(produceId);

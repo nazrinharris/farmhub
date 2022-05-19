@@ -14,15 +14,17 @@ part 'produce_aggregate_cubit.freezed.dart';
 class ProduceAggregateCubit extends Cubit<ProduceAggregateState> {
   final TabController tabController;
   final IProduceManagerRepository repository;
+  final Produce produce;
 
   ProduceAggregateCubit({
     required this.tabController,
     required this.repository,
+    required this.produce,
   }) : super(ProduceAggregateState.initial(
             props: ProduceAggregateProps(
           tabController: tabController,
           index: tabController.index,
-          produce: null,
+          produce: produce,
         )));
 
   /// List of index correspondent
@@ -33,7 +35,7 @@ class ProduceAggregateCubit extends Cubit<ProduceAggregateState> {
     }
   }
 
-  void getAggregatePricesAndProduce(String produceId) async {
+  Future<void> getAggregatePricesAndProduce(String produceId) async {
     // Indicate Loading
     emit(ProduceAggregateState.loading(props: state.props));
 

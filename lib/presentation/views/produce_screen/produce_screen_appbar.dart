@@ -4,6 +4,7 @@ import 'package:farmhub/features/produce_manager/domain/entities/produce/produce
 import 'package:farmhub/locator.dart';
 import 'package:farmhub/presentation/shared_widgets/app_dialogs.dart';
 import 'package:farmhub/presentation/smart_widgets/produce_list_card/cubit/produce_dialog_cubit.dart';
+import 'package:farmhub/presentation/views/produce_screen/produce_aggregate_cubit/produce_aggregate_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -11,29 +12,34 @@ import '../../shared_widgets/appbars.dart';
 
 class ProduceScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
   final bool isAdmin;
-  final Produce produce;
 
-  const ProduceScreenAppBar(this.isAdmin, this.produce, {Key? key}) : super(key: key);
+  const ProduceScreenAppBar(this.isAdmin, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => ProduceDialogCubit(locator(), locator()),
       child: Builder(builder: (context) {
-        return DefaultAppBar(
-          leadingIcon: const Icon(Icons.arrow_back),
-          leadingOnPressed: () {
-            Navigator.of(context).pop();
+        return BlocBuilder<ProduceAggregateCubit, ProduceAggregateState>(
+          builder: (context, state) {
+            final Produce produce = state.props.produce!;
+
+            return DefaultAppBar(
+              leadingIcon: const Icon(Icons.arrow_back),
+              leadingOnPressed: () {
+                Navigator.of(context).pop();
+              },
+              trailingIcon: const Icon(Icons.bookmark_add_outlined),
+              trailingOnPressed: () {},
+              secondTrailingChild: resolveSecondTrailing(context, isAdmin, produce),
+            );
           },
-          trailingIcon: const Icon(Icons.bookmark_add_outlined),
-          trailingOnPressed: () {},
-          secondTrailingChild: resolveSecondTrailing(context, isAdmin),
         );
       }),
     );
   }
 
-  Widget? resolveSecondTrailing(BuildContext context, bool isAdmin) {
+  Widget? resolveSecondTrailing(BuildContext context, bool isAdmin, Produce produce) {
     if (isAdmin) {
       return PopupMenuButton(
         icon: const Icon(Icons.more_vert),
