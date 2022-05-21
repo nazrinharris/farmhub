@@ -171,6 +171,8 @@ class _LargeOneWeekChartState extends State<LargeOneWeekChart> {
       header: widget.produce.produceName,
       format: "point.x - RM point.y/kg",
     );
+
+    print(widget.produce.weeklyPrices);
   }
 
   @override

@@ -132,8 +132,6 @@ class _BuildProduceScreenState extends State<BuildProduceScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final Produce produce = context.read<ProduceAggregateCubit>().state.props.produce!;
-
     return Scaffold(
         resizeToAvoidBottomInset: false,
         extendBodyBehindAppBar: true,
@@ -141,27 +139,32 @@ class _BuildProduceScreenState extends State<BuildProduceScreen> {
         appBar: ProduceScreenAppBar(
           widget.isAdmin,
         ),
-        body: CustomScrollView(
-          controller: widget.scrollController,
-          physics: DefaultScrollPhysics,
-          slivers: [
-            CustomCupertinoSliverRefreshControl(
-              onRefresh: () async {
-                await context
-                    .read<ProduceAggregateCubit>()
-                    .getAggregatePricesAndProduce(produce.produceId);
-                await context.read<ProducePricesCubit>().getFirstTenPrices(produce.produceId);
-              },
-            ),
-            const SliverProduceHeader(),
-            SliverProducePriceChart(widget.tabs, produce),
-            SliverPricesListHeader(widget.scrollController, produce),
-            BlocBuilder<ProducePricesCubit, ProducePricesState>(
-              builder: (context, state) {
-                return SliverPricesListSwitcher(produce);
-              },
-            ),
-          ],
+        body: BlocBuilder<ProduceAggregateCubit, ProduceAggregateState>(
+          builder: (context, state) {
+            final Produce produce = state.props.produce!;
+            return CustomScrollView(
+              controller: widget.scrollController,
+              physics: DefaultScrollPhysics,
+              slivers: [
+                CustomCupertinoSliverRefreshControl(
+                  onRefresh: () async {
+                    await context
+                        .read<ProduceAggregateCubit>()
+                        .getAggregatePricesAndProduce(produce.produceId);
+                    await context.read<ProducePricesCubit>().getFirstTenPrices(produce.produceId);
+                  },
+                ),
+                const SliverProduceHeader(),
+                SliverProducePriceChart(widget.tabs, produce),
+                SliverPricesListHeader(widget.scrollController, produce),
+                BlocBuilder<ProducePricesCubit, ProducePricesState>(
+                  builder: (context, state) {
+                    return SliverPricesListSwitcher(produce);
+                  },
+                ),
+              ],
+            );
+          },
         ));
   }
 }
@@ -243,6 +246,7 @@ class _SliverProduceHeaderState extends State<SliverProduceHeader> {
   @override
   void dispose() {
     super.dispose();
+    context.read<ProduceAggregateCubit>().state.props.tabController.dispose();
   }
 }
 
@@ -350,7 +354,7 @@ class SliverPricesListHeader extends StatefulWidget {
   final Produce produce;
   final ScrollController scrollController;
 
-  SliverPricesListHeader(this.scrollController, this.produce, {Key? key}) : super(key: key);
+  const SliverPricesListHeader(this.scrollController, this.produce, {Key? key}) : super(key: key);
 
   @override
   State<SliverPricesListHeader> createState() => _SliverPricesListHeaderState();
@@ -384,6 +388,12 @@ class _SliverPricesListHeaderState extends State<SliverPricesListHeader> {
         ],
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    widget.scrollController.dispose();
   }
 }
 
