@@ -4,7 +4,6 @@ import 'package:clock/clock.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:farmhub/core/errors/exceptions.dart';
 import 'package:farmhub/features/produce_manager/domain/entities/price/price.dart';
-import 'package:farmhub/features/produce_manager/domain/helpers.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:intl/intl.dart';
 
@@ -326,8 +325,6 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
     }
 
     final chosenDate = DateFormat("dd-MM-yyyy").format(currentTimeStamp);
-    final chosenYear = DateFormat("yyyy").format(currentTimeStamp);
-    final formattedCurrentTimeStamp = DateFormat("yyyy-MM-dd hh:mm aaa").format(currentTimeStamp);
     num calculatedPrice;
 
     //! Begin updating Price Document and Aggregate Prices
@@ -345,83 +342,13 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
       }).toList();
     });
 
-    if (chosenDatePriceDoc.isEmpty) {
-      // Begin process of creating a new Price Document
-      print("There is no Price Document for date $chosenDate");
-
-      // Update Price Document
-      await firebaseFirestore.collection('produce').doc(produceId).collection('prices').add(
-        {
-          "currentPrice": currentPrice,
-          "priceDate": chosenDate,
-          "allPrices": [currentPrice],
-          "priceDateTimeStamp": currentTimeStamp,
-          "isAverage": false,
-          "allPricesMap": {
-            formattedCurrentTimeStamp: currentPrice,
-          }
-        },
-      ).then((doc) => doc.update({"priceId": doc.id}));
-
-      // Update Aggregate Prices
-      await firebaseFirestore
-          .collection('produce')
-          .doc(produceId)
-          .collection('prices')
-          .doc('aggregate-prices-$chosenYear')
-          .update({"prices-map.$chosenDate": currentPrice});
-
-      // Set relevant variables
-      calculatedPrice = currentPrice;
-    } else if (chosenDatePriceDoc.length == 1) {
-      // Begin process of updating the existing Price Document
-      print("There already exists a Price Document for date $chosenDate");
-      String priceId = chosenDatePriceDoc[0]["priceId"];
-      List<num> newAllPrices = List.from(chosenDatePriceDoc[0]["allPrices"]);
-      newAllPrices.add(currentPrice);
-
-      // Calculate averaged price
-      num tempSum = 0;
-      num newCurrentPrice = 0;
-      for (num price in newAllPrices) {
-        tempSum = tempSum + price;
-      }
-      newCurrentPrice = tempSum / newAllPrices.length;
-      String currentTimeStampString = currentTimeStamp.toString();
-
-      // Update Price Document
-      await firebaseFirestore
-          .collection('produce')
-          .doc(produceId)
-          .collection('prices')
-          .doc(priceId)
-          .update({
-        "allPrices": newAllPrices,
-        "currentPrice": newCurrentPrice,
-        "isAverage": true,
-        "allPricesMap.$formattedCurrentTimeStamp": currentPrice,
-      });
-
-      // Update Aggregate Prices
-      await firebaseFirestore
-          .collection('produce')
-          .doc(produceId)
-          .collection('prices')
-          .doc('aggregate-prices-$chosenYear')
-          .update({"prices-map.$chosenDate": newCurrentPrice});
-
-      // Set relevant variables
-      calculatedPrice = newCurrentPrice;
-    } else {
-      // If there are multiple documents, an error is thrown. There should never be multiple.
-      throw ProduceManagerException(
-        //TODO: Provide Proper Code
-        code: "ERR",
-        message:
-            "Unexpected structure: There should be only one or no document inside [chosenDatePriceDoc]",
-        stackTrace: StackTrace.current,
-      );
-    }
+    calculatedPrice = await returnPriceAndUpdatePriceDocAndAggregate(
+      firebaseFirestore: firebaseFirestore,
+      chosenTimeStamp: currentTimeStamp,
+      produceId: produceId,
+      newPrice: currentPrice,
+      chosenPriceDoc: chosenDatePriceDoc,
+    );
 
     //! Begin Updating Produce Document
     // From here, we will be updating [currentProducePrice], [previousProducePrice], and [weeklyPrices]
@@ -651,4 +578,134 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
 
     return combinedPricesList;
   }
+}
+
+Future<void> createPriceDocument({
+  required FirebaseFirestore firebaseFirestore,
+  required String produceId,
+  required num newPrice,
+  required DateTime chosenTimeStamp,
+}) async {
+  final chosenDate = DateFormat("dd-MM-yyyy").format(chosenTimeStamp);
+  final formattedCurrentTimeStamp = DateFormat("yyyy-MM-dd hh:mm:ss aaa").format(clock.now());
+
+  await firebaseFirestore.collection('produce').doc(produceId).collection('prices').add(
+    {
+      "currentPrice": newPrice,
+      "priceDate": chosenDate,
+      "priceDateTimeStamp": chosenTimeStamp,
+      "isAverage": false,
+      "allPricesMap": {formattedCurrentTimeStamp: newPrice}
+    },
+  ).then((doc) => doc.update({"priceId": doc.id}));
+}
+
+Future<void> updatePriceDocument({
+  required FirebaseFirestore firebaseFirestore,
+  required String produceId,
+  required num newPrice,
+  required DateTime chosenTimeStamp,
+  required Map<String, dynamic> chosenPriceDoc,
+}) async {
+  final formattedCurrentTimeStamp = DateFormat("yyyy-MM-dd hh:mm:ss aaa").format(chosenTimeStamp);
+  num newCurrentPrice = calculateNewPriceAverage(chosenPriceDoc["allPricesMap"], newPrice);
+
+  await firebaseFirestore
+      .collection('produce')
+      .doc(produceId)
+      .collection('prices')
+      .doc(chosenPriceDoc["priceId"])
+      .update({
+    "currentPrice": newCurrentPrice,
+    "isAverage": true,
+    "allPricesMap.$formattedCurrentTimeStamp": newPrice,
+  });
+}
+
+Future<void> updateAggregatePrices({
+  required FirebaseFirestore firebaseFirestore,
+  required String produceId,
+  required num newPrice,
+  required DateTime chosenTimeStamp,
+}) async {
+  final chosenDate = DateFormat("dd-MM-yyyy").format(chosenTimeStamp);
+  final chosenYear = DateFormat("yyyy").format(chosenTimeStamp);
+
+  await firebaseFirestore
+      .collection('produce')
+      .doc(produceId)
+      .collection('prices')
+      .doc('aggregate-prices-$chosenYear')
+      .update({"prices-map.$chosenDate": newPrice});
+}
+
+Future<num> returnPriceAndUpdatePriceDocAndAggregate({
+  required FirebaseFirestore firebaseFirestore,
+  required DateTime chosenTimeStamp,
+  required String produceId,
+  required num newPrice,
+  required List<Map<String, dynamic>?> chosenPriceDoc,
+}) async {
+  if (chosenPriceDoc.isEmpty) {
+    // This means the price for the chosen date does not exist.
+    await createPriceDocument(
+      firebaseFirestore: firebaseFirestore,
+      produceId: produceId,
+      newPrice: newPrice,
+      chosenTimeStamp: chosenTimeStamp,
+    );
+
+    await updateAggregatePrices(
+      firebaseFirestore: firebaseFirestore,
+      produceId: produceId,
+      newPrice: newPrice,
+      chosenTimeStamp: chosenTimeStamp,
+    );
+
+    return newPrice;
+  } else if (chosenPriceDoc.length == 1) {
+    // This means the price for the chosen date indeed exists.
+    await updatePriceDocument(
+      firebaseFirestore: firebaseFirestore,
+      produceId: produceId,
+      newPrice: newPrice,
+      chosenTimeStamp: chosenTimeStamp,
+      chosenPriceDoc: chosenPriceDoc[0]!,
+    );
+
+    await updateAggregatePrices(
+      firebaseFirestore: firebaseFirestore,
+      produceId: produceId,
+      newPrice: newPrice,
+      chosenTimeStamp: chosenTimeStamp,
+    );
+
+    return calculateNewPriceAverage(chosenPriceDoc[0]!["allPricesMap"], newPrice);
+  } else {
+    // If there are multiple documents, an error is thrown. There should never be multiple.
+    throw ProduceManagerException(
+      //TODO: Provide Proper Code
+      code: "ERR",
+      message:
+          "Unexpected structure: There should be only one or no document inside [chosenDatePriceDoc]",
+      stackTrace: StackTrace.current,
+    );
+  }
+}
+
+num calculateNewPriceAverage(Map<String, dynamic> allPricesMap, num newPrice) {
+  List<num> allPricesList = [newPrice];
+
+  allPricesMap.forEach((date, price) {
+    allPricesList.add(price);
+  });
+
+  num tempSum = 0;
+  num newCurrentPrice = 0;
+  for (num price in allPricesList) {
+    tempSum = tempSum + price;
+  }
+  newCurrentPrice = tempSum / allPricesList.length;
+
+  return newCurrentPrice;
 }
