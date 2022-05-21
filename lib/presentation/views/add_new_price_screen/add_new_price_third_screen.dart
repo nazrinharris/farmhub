@@ -104,7 +104,7 @@ class AddNewPriceThirdScreen extends StatelessWidget {
                             width: 180,
                             content: resolveBackToButton(context),
                             onPressed: () {
-                              popToMainAndRefresh(context);
+                              popToMainOrProduceAndRefresh(context);
                             },
                           )
                         ],

@@ -70,30 +70,31 @@ class _ProduceScreenState extends State<ProduceScreen> with SingleTickerProvider
         BlocProvider(create: (_) => ProducePricesCubit(repository: locator()))
       ],
       child: Builder(
-        builder: (context) => BlocBuilder<GlobalAuthCubit, GlobalAuthState>(
-          builder: (context, state) {
-            final bool isAdmin = state.isAdmin ?? false;
+        builder: (context) => BlocListener<GlobalUICubit, GlobalUIState>(
+          listener: (context, state) async {
+            if (state.props.shouldRefreshProduce) {
+              await context
+                  .read<ProduceAggregateCubit>()
+                  .getAggregatePricesAndProduce(widget.produceArguments.produce.produceId);
+              await context
+                  .read<ProducePricesCubit>()
+                  .getFirstTenPrices(widget.produceArguments.produce.produceId);
+              context.read<GlobalUICubit>().setShouldRefreshProduce(false);
+            }
+          },
+          child: BlocBuilder<GlobalAuthCubit, GlobalAuthState>(
+            builder: (context, state) {
+              final bool isAdmin = state.isAdmin ?? false;
 
-            return BlocListener<GlobalUICubit, GlobalUIState>(
-              listener: (context, state) async {
-                if (state.props.shouldRefreshProduce) {
-                  await context
-                      .read<ProduceAggregateCubit>()
-                      .getAggregatePricesAndProduce(widget.produceArguments.produce.produceId);
-                  await context
-                      .read<ProducePricesCubit>()
-                      .getFirstTenPrices(widget.produceArguments.produce.produceId);
-                }
-              },
-              child: BuildProduceScreen(
+              return BuildProduceScreen(
                 isAdmin: isAdmin,
                 widget: widget,
                 scrollController: scrollController,
                 tabs: tabs,
                 staleProduce: widget.produceArguments.produce,
-              ),
-            );
-          },
+              );
+            },
+          ),
         ),
       ),
     );
@@ -246,7 +247,6 @@ class _SliverProduceHeaderState extends State<SliverProduceHeader> {
   @override
   void dispose() {
     super.dispose();
-    context.read<ProduceAggregateCubit>().state.props.tabController.dispose();
   }
 }
 
