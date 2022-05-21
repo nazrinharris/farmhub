@@ -6,15 +6,14 @@ import '../../../core/errors/failures.dart';
 import 'entities/produce/produce.dart';
 
 abstract class IProduceManagerRepository {
-  FutureEither<Produce> getProduce({
-    required String pid,
-  });
-
+  FutureEither<Produce> getProduce({required String pid});
   FutureEither<List<Produce>> getFirstTenProduce();
   FutureEither<List<Produce>> getNextTenProduce(List<Produce> lastProduceList);
   FutureEither<List<Produce>> searchProduce(String query);
   FutureEither<List<Produce>> getNextTenSearchProduce(List<Produce> lastProduceList, String query);
 
+  FutureEither<Price> getPrice(String produceId, String priceId);
+  FutureEither<Price> editSubPrice(String produceId, String priceId, num newPrice);
   FutureEither<List<PriceSnippet>> getAggregatePrices(String produceId);
   FutureEither<List<Price>> getFirstTenPrices(String produceId);
   FutureEither<List<Price>> getNextTenPrices(List<Price> lastPriceList, String produceId);

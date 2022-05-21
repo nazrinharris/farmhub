@@ -12,11 +12,8 @@ import '../../domain/entities/produce/produce.dart';
 
 abstract class IProduceManagerRemoteDatasource {
   Future<Produce> getProduce(String produceId);
-
   Future<List<Produce>> getFirstTenProduce();
-
   Future<List<Produce>> getNextTenProduce(List<Produce> lastProduceList);
-
   Future<Produce> createNewProduce({
     required String produceName,
     required num currentProducePrice,
@@ -24,26 +21,24 @@ abstract class IProduceManagerRemoteDatasource {
   });
   Future<Unit> editProduce(String produceId, String newProduceName);
   Future<Unit> deleteProduce(String produceId);
-
-  /// This method will return a list of [PriceSnippet] which is unsorted. Use
-  /// helper methods from [helpers.dart] to filter and sort it.
-  Future<List<PriceSnippet>> getAggregatePrices(String produceId);
-
-  Future<Produce> addNewPrice({
-    required String produceId,
-    required num currentPrice,
-    num? daysFromNow,
-  });
-
   Future<List<Produce>> searchProduce({required String query});
-
   Future<List<Produce>> getNextTenSearchProduce({
     required List<Produce> lastProduceList,
     required String query,
   });
 
+  /// This method will return a list of [PriceSnippet] which is unsorted. Use
+  /// helper methods from [helpers.dart] to filter and sort it.
+  Future<List<PriceSnippet>> getAggregatePrices(String produceId);
+  Future<Produce> addNewPrice({
+    required String produceId,
+    required num currentPrice,
+    num? daysFromNow,
+  });
   Future<List<Price>> getFirstTenPrices(String produceId);
   Future<List<Price>> getNextTenPrices(List<Price> lastPricesList, String produceId);
+  Future<Price> getPrice(String produceId, String priceId);
+  Future<Price> editSubPrice(String produceId, String priceId, num newPrice);
 
   Future<void>? debugMethod(String produceId);
 }
@@ -479,6 +474,40 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
     List<Price> combinedPricesList = List.from(lastPricesList)..addAll(newPricesList);
 
     return combinedPricesList;
+  }
+
+  @override
+  Future<Price> editSubPrice(String produceId, String priceId, num newPrice) async {
+    final priceDoc = await firebaseFirestore
+        .collection('produce')
+        .doc(produceId)
+        .collection('prices')
+        .doc(priceId)
+        .get()
+        .then((value) => value.data()!);
+
+    await updatePriceDocument(
+      firebaseFirestore: firebaseFirestore,
+      produceId: produceId,
+      newPrice: newPrice,
+      chosenTimeStamp: clock.now(),
+      chosenPriceDoc: priceDoc,
+    );
+
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<Price> getPrice(String produceId, String priceId) async {
+    final Price price = await firebaseFirestore
+        .collection('produce')
+        .doc(produceId)
+        .collection('prices')
+        .doc(priceId)
+        .get()
+        .then((value) => Price.fromMap(value.data()));
+
+    return price;
   }
 }
 
