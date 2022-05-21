@@ -108,12 +108,13 @@ class ProduceScreenAppBar extends StatelessWidget implements PreferredSizeWidget
               context.read<ProduceDialogCubit>().showEditProduce(
                     context: context,
                     editProduceDialog: returnEditProduceDialog(
-                        context: context,
-                        produce: produce,
-                        textEditingController: TextEditingController(),
-                        formKey: GlobalKey<FormState>(),
-                        formFocusNode: FocusNode(),
-                        fromRoute: DialogFromRoute.fromProduce),
+                      context: context,
+                      produce: produce,
+                      textEditingController: TextEditingController(),
+                      formKey: GlobalKey<FormState>(),
+                      formFocusNode: FocusNode(),
+                      fromRoute: DialogFromRoute.fromProduce,
+                    ),
                   );
               break;
             case 1:

@@ -62,9 +62,8 @@ class ProduceDialogCubit extends Cubit<ProduceDialogState> {
             Navigator.of(context).pop();
             break;
           case DialogFromRoute.fromProduce:
-            Navigator.of(context)
-              ..pop()
-              ..pop();
+            globalUICubit.setShouldRefreshMain(true);
+            Navigator.of(context).pop();
             break;
           default:
             throw UnimplementedError(StackTrace.current.toString());
@@ -121,6 +120,7 @@ class ProduceDialogCubit extends Cubit<ProduceDialogState> {
             case DialogFromRoute.fromProduce:
               progressDialog.dismiss();
               globalUICubit.setShouldRefreshProduce(true);
+              globalUICubit.setShouldRefreshMain(true);
               break;
             default:
               throw UnimplementedError(StackTrace.current.toString());

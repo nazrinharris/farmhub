@@ -4,6 +4,7 @@ import 'package:farmhub/core/errors/exceptions.dart';
 import 'package:farmhub/core/errors/failures.dart';
 import 'package:farmhub/core/util/dates.dart';
 import 'package:farmhub/locator.dart';
+import 'package:farmhub/presentation/global/cubit/global_ui_cubit.dart';
 import 'package:farmhub/presentation/shared_widgets/scroll_physics.dart';
 import 'package:farmhub/presentation/shared_widgets/ui_helpers.dart';
 import 'package:farmhub/presentation/smart_widgets/primary_button_aware/primary_button_aware_cubit.dart';
@@ -73,12 +74,24 @@ class _ProduceScreenState extends State<ProduceScreen> with SingleTickerProvider
           builder: (context, state) {
             final bool isAdmin = state.isAdmin ?? false;
 
-            return BuildProduceScreen(
-              isAdmin: isAdmin,
-              widget: widget,
-              scrollController: scrollController,
-              tabs: tabs,
-              staleProduce: widget.produceArguments.produce,
+            return BlocListener<GlobalUICubit, GlobalUIState>(
+              listener: (context, state) async {
+                if (state.props.shouldRefreshProduce) {
+                  await context
+                      .read<ProduceAggregateCubit>()
+                      .getAggregatePricesAndProduce(widget.produceArguments.produce.produceId);
+                  await context
+                      .read<ProducePricesCubit>()
+                      .getFirstTenPrices(widget.produceArguments.produce.produceId);
+                }
+              },
+              child: BuildProduceScreen(
+                isAdmin: isAdmin,
+                widget: widget,
+                scrollController: scrollController,
+                tabs: tabs,
+                staleProduce: widget.produceArguments.produce,
+              ),
             );
           },
         ),
