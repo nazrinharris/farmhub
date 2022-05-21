@@ -314,13 +314,6 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
     );
 
     //! Begin Updating Produce Document
-    // From here, we will be updating [currentProducePrice], [previousProducePrice], and [weeklyPrices]
-    // Get most recent [currentProducePrice] and [weeklyPrice]
-    final Map<String, dynamic> staleProduce =
-        await firebaseFirestore.collection('produce').doc(produceId).get().then(
-              (doc) => doc.data()!,
-            );
-    final Map<String, dynamic> weeklyPrices = staleProduce["weeklyPrices"];
     final Map<String, dynamic> aggregatePricesMap = await firebaseFirestore
         .collection('produce')
         .doc(produceId)
