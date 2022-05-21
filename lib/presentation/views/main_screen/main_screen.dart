@@ -223,7 +223,7 @@ class SliverLoadingIndicator extends StatelessWidget {
             alignment: Alignment.center,
             width: screenWidth,
             height: screenHeight - 400,
-            child: const CircularProgressIndicator(),
+            child: const CupertinoActivityIndicator(),
           ),
         ],
       ),
@@ -257,7 +257,7 @@ class SliverProduceList extends StatelessWidget {
                 height: 100,
                 padding: const EdgeInsets.only(top: 24),
                 alignment: Alignment.center,
-                child: const CircularProgressIndicator(),
+                child: const CupertinoActivityIndicator(),
               );
             } else {
               return ProduceListCard(

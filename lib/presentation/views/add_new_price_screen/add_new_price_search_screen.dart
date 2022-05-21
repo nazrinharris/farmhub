@@ -4,6 +4,7 @@ import 'package:farmhub/presentation/shared_widgets/appbars.dart';
 import 'package:farmhub/presentation/shared_widgets/ui_helpers.dart';
 import 'package:farmhub/presentation/smart_widgets/produce_list_card/produce_list_card.dart';
 import 'package:farmhub/presentation/views/search_screen/bloc/search_screen_bloc.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -136,7 +137,7 @@ class _SearchProduceListState extends State<SearchProduceList> {
         } else if (state is SSSLoading) {
           return Container(
             padding: const EdgeInsets.only(top: 100),
-            child: const CircularProgressIndicator(),
+            child: const CupertinoActivityIndicator(),
           );
         } else if (state is SSSLoadingNextTenProduce) {
           return Expanded(
@@ -152,7 +153,7 @@ class _SearchProduceListState extends State<SearchProduceList> {
                     return Container(
                       height: 100,
                       alignment: Alignment.center,
-                      child: const CircularProgressIndicator(),
+                      child: const CupertinoActivityIndicator(),
                     );
                   } else {
                     return ProduceListCard(

@@ -1,6 +1,7 @@
 import 'package:farmhub/features/produce_manager/domain/entities/produce/produce.dart';
 import 'package:farmhub/presentation/shared_widgets/ui_helpers.dart';
 import 'package:farmhub/presentation/themes/farmhub_theme.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ndialog/ndialog.dart';
@@ -102,7 +103,7 @@ ProgressDialog returnDeleteProgressDialog(BuildContext context) {
     ),
     defaultLoadingWidget: Container(
       padding: EdgeInsets.only(left: 14),
-      child: CircularProgressIndicator(color: Theme.of(context).colorScheme.error),
+      child: CupertinoActivityIndicator(color: Theme.of(context).colorScheme.error),
     ),
   );
 }
@@ -259,7 +260,7 @@ ProgressDialog returnEditProduceProgressDialog(BuildContext context) {
     ),
     defaultLoadingWidget: Container(
       padding: EdgeInsets.only(left: 14),
-      child: CircularProgressIndicator(color: Theme.of(context).colorScheme.primary),
+      child: CupertinoActivityIndicator(color: Theme.of(context).colorScheme.primary),
     ),
   );
 }

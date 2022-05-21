@@ -119,7 +119,7 @@ class _ProduceListSliverState extends State<ProduceListSliver> {
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height - 250,
               child: const Center(
-                child: CircularProgressIndicator(),
+                child: CupertinoActivityIndicator(),
               ),
             ),
           ]));
@@ -133,7 +133,7 @@ class _ProduceListSliverState extends State<ProduceListSliver> {
                   return Container(
                     height: 100,
                     alignment: Alignment.center,
-                    child: const CircularProgressIndicator(),
+                    child: const CupertinoActivityIndicator(),
                   );
                 } else {
                   return ProduceListCard(

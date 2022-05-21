@@ -13,6 +13,7 @@ import 'package:farmhub/presentation/views/main_screen/main_screen.dart';
 import 'package:farmhub/presentation/views/produce_screen/produce_aggregate_cubit/produce_aggregate_cubit.dart';
 import 'package:farmhub/presentation/views/produce_screen/produce_prices_cubit/produce_prices_cubit.dart';
 import 'package:farmhub/presentation/views/produce_screen/produce_screen_appbar.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -301,7 +302,7 @@ class _SliverProducePriceChartState extends State<SliverProducePriceChart> {
             return Container(
               height: 250,
               alignment: Alignment.center,
-              child: const CircularProgressIndicator(),
+              child: const CupertinoActivityIndicator(),
             );
           } else if (state is PASCompleted) {
             return LargePriceChart(
@@ -495,7 +496,7 @@ class SliverPricesList extends StatelessWidget {
       return Container(
         height: 100,
         alignment: Alignment.center,
-        child: const CircularProgressIndicator(),
+        child: const CupertinoActivityIndicator(),
       );
     } else if (isError) {
       print(failure);
