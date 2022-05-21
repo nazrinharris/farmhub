@@ -168,12 +168,9 @@ class AppRouter {
     final opacityAnimation =
         Tween<double>(begin: 0, end: 1).chain(CurveTween(curve: opacityCurve)).animate(animation);
 
-    return SlideTransition(
-      position: offsetAnimation,
-      child: FadeTransition(
-        opacity: opacityAnimation,
-        child: child,
-      ),
+    return FadeTransition(
+      opacity: opacityAnimation,
+      child: child,
     );
   }
 }

@@ -47,7 +47,7 @@ class AddNewPriceThirdScreen extends StatelessWidget {
               appBar: DefaultAppBar(
                 leadingIcon: Icon(Icons.close),
                 leadingOnPressed: () {
-                  popToMainAndRefresh(context);
+                  popToMainOrProduceAndRefresh(context);
                 },
               ),
               body: SafeArea(
@@ -102,7 +102,7 @@ class AddNewPriceThirdScreen extends StatelessWidget {
                           const UIVerticalSpace14(),
                           SecondaryButton(
                             width: 180,
-                            content: "Back to Home",
+                            content: resolveBackToButton(context),
                             onPressed: () {
                               popToMainAndRefresh(context);
                             },
@@ -118,6 +118,14 @@ class AddNewPriceThirdScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  String resolveBackToButton(BuildContext context) {
+    if (arguments.fromRoute == AddNewPriceFromRoute.fromProduceScreen) {
+      return "Back to Produce";
+    } else {
+      return "Back to Home";
+    }
   }
 
   void popToMainAndRefresh(BuildContext context) {
@@ -144,7 +152,43 @@ class AddNewPriceThirdScreen extends StatelessWidget {
           ..pop();
         break;
       case AddNewPriceFromRoute.fromProduceScreen:
-        // TODO: Handle this case.
+        Navigator.of(context)
+          ..pop()
+          ..pop();
+        break;
+      default:
+        throw (Exception("Unknown Route, ${StackTrace.current}"));
+    }
+  }
+
+  void popToMainOrProduceAndRefresh(BuildContext context) {
+    context.read<GlobalUICubit>().setShouldRefreshMain(true);
+
+    switch (arguments.fromRoute) {
+      case AddNewPriceFromRoute.fromAddNewPriceScreen:
+        Navigator.of(context)
+          ..pop()
+          ..pop()
+          ..pop();
+        break;
+      case AddNewPriceFromRoute.fromAddNewPriceSearchScreen:
+        Navigator.of(context)
+          ..pop()
+          ..pop()
+          ..pop()
+          ..pop();
+        break;
+      case AddNewPriceFromRoute.fromMainBottomSheet:
+        Navigator.of(context)
+          ..pop()
+          ..pop()
+          ..pop();
+        break;
+      case AddNewPriceFromRoute.fromProduceScreen:
+        context.read<GlobalUICubit>().setShouldRefreshProduce(true);
+        Navigator.of(context)
+          ..pop()
+          ..pop();
         break;
       default:
         throw (Exception("Unknown Route, ${StackTrace.current}"));

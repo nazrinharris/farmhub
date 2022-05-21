@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:farmhub/app_router.dart';
 import 'package:farmhub/features/produce_manager/domain/entities/produce/produce.dart';
 import 'package:farmhub/locator.dart';
 import 'package:farmhub/presentation/shared_widgets/app_dialogs.dart';
@@ -118,6 +119,11 @@ class ProduceScreenAppBar extends StatelessWidget implements PreferredSizeWidget
                   );
               break;
             case 1:
+              Navigator.of(context).pushNamed("/add_new_price_second",
+                  arguments: AddNewPriceScreenArguments(
+                    produce,
+                    AddNewPriceFromRoute.fromProduceScreen,
+                  ));
               break;
             case 2:
               context.read<ProduceDialogCubit>().showDeleteConfirmation(
