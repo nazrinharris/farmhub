@@ -3,7 +3,7 @@ import 'package:farmhub/features/produce_manager/domain/entities/price/price.dar
 import 'package:intl/intl.dart';
 import 'package:clock/clock.dart';
 
-enum RangeType { twoW, oneM, twoM, sixM, oneY }
+enum RangeType { oneW, twoW, oneM, twoM, sixM, oneY }
 
 // TODO: Solve oneM until oneY to account for different length of months
 const Map<String, int> rangeTypeInDaysMap = {
@@ -40,6 +40,9 @@ List<PriceSnippet> pricesToRanged(
   // Set the range
   int? range;
   switch (rangeType) {
+    case RangeType.oneW:
+      range = rangeTypeInDaysMap["oneW"];
+      break;
     case RangeType.twoW:
       range = rangeTypeInDaysMap["twoW"];
       break;

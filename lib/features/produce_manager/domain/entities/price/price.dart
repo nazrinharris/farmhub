@@ -11,7 +11,6 @@ class Price with _$Price {
   factory Price({
     required num currentPrice,
     required String priceDate,
-    required List<num> allPrices,
     required DateTime priceDateTimeStamp,
     required bool isAverage,
     required String priceId,
@@ -38,7 +37,6 @@ class Price with _$Price {
     return Price(
       currentPrice: roundNum(map["currentPrice"], 2),
       priceDate: map["priceDate"],
-      allPrices: List<num>.from(map["allPrices"]),
       priceDateTimeStamp: priceDateTimeStamp,
       isAverage: map["isAverage"],
       priceId: map["priceId"],

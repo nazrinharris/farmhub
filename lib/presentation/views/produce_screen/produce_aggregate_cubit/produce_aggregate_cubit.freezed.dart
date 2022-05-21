@@ -833,6 +833,8 @@ abstract class $ProduceAggregatePropsCopyWith<$Res> {
       List<PriceSnippet>? twoMonthPricesList,
       List<PriceSnippet>? sixMonthPricesList,
       List<PriceSnippet>? oneYearPricesList});
+
+  $ProduceCopyWith<$Res>? get produce;
 }
 
 /// @nodoc
@@ -890,6 +892,17 @@ class _$ProduceAggregatePropsCopyWithImpl<$Res>
               as List<PriceSnippet>?,
     ));
   }
+
+  @override
+  $ProduceCopyWith<$Res>? get produce {
+    if (_value.produce == null) {
+      return null;
+    }
+
+    return $ProduceCopyWith<$Res>(_value.produce!, (value) {
+      return _then(_value.copyWith(produce: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -908,6 +921,9 @@ abstract class _$ProduceAggregatePropsCopyWith<$Res>
       List<PriceSnippet>? twoMonthPricesList,
       List<PriceSnippet>? sixMonthPricesList,
       List<PriceSnippet>? oneYearPricesList});
+
+  @override
+  $ProduceCopyWith<$Res>? get produce;
 }
 
 /// @nodoc
@@ -1012,7 +1028,7 @@ class _$_ProduceAggregateProps implements _ProduceAggregateProps {
             (identical(other.tabController, tabController) ||
                 other.tabController == tabController) &&
             (identical(other.index, index) || other.index == index) &&
-            const DeepCollectionEquality().equals(other.produce, produce) &&
+            (identical(other.produce, produce) || other.produce == produce) &&
             const DeepCollectionEquality()
                 .equals(other.twoWeeksPricesList, twoWeeksPricesList) &&
             const DeepCollectionEquality()
@@ -1030,7 +1046,7 @@ class _$_ProduceAggregateProps implements _ProduceAggregateProps {
       runtimeType,
       tabController,
       index,
-      const DeepCollectionEquality().hash(produce),
+      produce,
       const DeepCollectionEquality().hash(twoWeeksPricesList),
       const DeepCollectionEquality().hash(oneMonthPricesList),
       const DeepCollectionEquality().hash(twoMonthPricesList),

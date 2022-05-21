@@ -147,8 +147,8 @@ class _AllPriceListCardState extends State<AllPriceListCard> {
     super.initState();
 
     widget.price.allPricesWithDateList.sort((a, b) {
-      DateTime aPriceDate = DateFormat("yyyy-MM-dd hh:mm aaa").parse(a.priceDate);
-      DateTime bPriceDate = DateFormat("yyyy-MM-dd hh:mm aaa").parse(b.priceDate);
+      DateTime aPriceDate = DateFormat("yyyy-MM-dd hh:mm:ss aaa").parse(a.priceDate);
+      DateTime bPriceDate = DateFormat("yyyy-MM-dd hh:mm:ss aaa").parse(b.priceDate);
 
       return bPriceDate.compareTo(aPriceDate);
     });
@@ -156,7 +156,7 @@ class _AllPriceListCardState extends State<AllPriceListCard> {
 
   @override
   Widget build(BuildContext context) {
-    final dateTimeStamp = DateFormat("yyyy-MM-dd hh:mm aaa").parse(
+    final dateTimeStamp = DateFormat("yyyy-MM-dd hh:mm:ss aaa").parse(
       widget.price.allPricesWithDateList[widget.index].priceDate,
     );
     final date = DateFormat("dd/MM/yyyy").format(dateTimeStamp);
