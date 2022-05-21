@@ -38,7 +38,7 @@ abstract class IProduceManagerRemoteDatasource {
   Future<List<Price>> getFirstTenPrices(String produceId);
   Future<List<Price>> getNextTenPrices(List<Price> lastPricesList, String produceId);
   Future<Price> getPrice(String produceId, String priceId);
-  Future<Price> editSubPrice(String produceId, String priceId, num newPrice);
+  Future<Price> editSubPrice(String produceId, String priceId, num newPrice, String subPriceDate);
 
   Future<void>? debugMethod(String produceId);
 }
@@ -477,7 +477,8 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
   }
 
   @override
-  Future<Price> editSubPrice(String produceId, String priceId, num newPrice) async {
+  Future<Price> editSubPrice(
+      String produceId, String priceId, num newPrice, String subPriceDate) async {
     final priceDoc = await firebaseFirestore
         .collection('produce')
         .doc(produceId)
@@ -486,15 +487,23 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
         .get()
         .then((value) => value.data()!);
 
-    await updatePriceDocument(
+    final chosenDate = await updatePriceDocument(
       firebaseFirestore: firebaseFirestore,
       produceId: produceId,
       newPrice: newPrice,
-      chosenTimeStamp: clock.now(),
+      subPriceDate: subPriceDate,
       chosenPriceDoc: priceDoc,
     );
 
-    throw UnimplementedError();
+    // TODO: Fix this
+    return Price(
+      currentPrice: 11,
+      priceDate: "2",
+      priceDateTimeStamp: clock.now(),
+      isAverage: true,
+      priceId: priceId,
+      allPricesWithDateList: [],
+    );
   }
 
   @override
@@ -535,10 +544,19 @@ Future<void> updatePriceDocument({
   required FirebaseFirestore firebaseFirestore,
   required String produceId,
   required num newPrice,
-  required DateTime chosenTimeStamp,
+  DateTime? chosenTimeStamp,
+  String? subPriceDate,
   required Map<String, dynamic> chosenPriceDoc,
 }) async {
-  final formattedCurrentTimeStamp = DateFormat("yyyy-MM-dd hh:mm:ss aaa").format(chosenTimeStamp);
+  String formattedCurrentTimeStamp;
+
+  if (chosenTimeStamp != null) {
+    formattedCurrentTimeStamp = DateFormat("yyyy-MM-dd hh:mm:ss aaa").format(chosenTimeStamp);
+  } else if (subPriceDate != null) {
+    formattedCurrentTimeStamp = subPriceDate;
+  } else {
+    throw Exception();
+  }
   num newCurrentPrice = calculateNewPriceAverage(chosenPriceDoc["allPricesMap"], newPrice);
 
   await firebaseFirestore

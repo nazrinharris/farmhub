@@ -1,7 +1,9 @@
 import 'package:farmhub/app_router.dart';
 import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
+import 'package:farmhub/presentation/shared_widgets/app_dialogs.dart';
 import 'package:farmhub/presentation/shared_widgets/appbars.dart';
 import 'package:farmhub/presentation/shared_widgets/ui_helpers.dart';
+import 'package:farmhub/presentation/smart_widgets/produce_list_card/cubit/produce_dialog_cubit.dart';
 import 'package:farmhub/presentation/smart_widgets/produce_list_card/produce_list_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -9,6 +11,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 
 import '../../../features/produce_manager/domain/entities/price/price.dart';
+import '../../../features/produce_manager/domain/entities/produce/produce.dart';
+import '../../../locator.dart';
 import '../../shared_widgets/buttons.dart';
 
 class PriceScreen extends StatelessWidget {
@@ -22,67 +26,69 @@ class PriceScreen extends StatelessWidget {
     final num currentPrice = arguments.price.currentPrice;
     final String priceDate = arguments.price.priceDate.replaceAll(RegExp("-"), "/");
 
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      extendBodyBehindAppBar: true,
-      extendBody: true,
-      appBar: DefaultAppBar(
-        leadingIcon: const Icon(Icons.arrow_back),
-        leadingOnPressed: () {
-          Navigator.of(context).pop();
-        },
-      ),
-      body: ListView(
-        physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
-        children: [
-          Column(
-            children: [
-              Text(
-                produceName,
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.headline1,
-              ),
-              const UIVerticalSpace24(),
-              Column(
-                children: [
-                  Text(
-                    "Price",
-                    style: Theme.of(context).textTheme.bodyText1,
-                  ),
-                  const UIVerticalSpace6(),
-                  resolveIsAverage(context, arguments)
-                ],
-              ),
-              const UIVerticalSpace24(),
-              Column(
-                children: [
-                  Text(
-                    "Date",
-                    style: Theme.of(context).textTheme.bodyText1,
-                  ),
-                  const UIVerticalSpace6(),
-                  Text(
-                    priceDate,
-                    style: Theme.of(context)
-                        .textTheme
-                        .headline2!
-                        .copyWith(color: const Color(0xff799A61), fontSize: 23),
-                  ),
-                ],
-              ),
-              const UIVerticalSpace24(),
-              const UIBorder(margin: EdgeInsets.symmetric(horizontal: 24), opacity: 0.1),
-              Container(
-                alignment: Alignment.centerLeft,
-                margin: const EdgeInsets.only(left: 24, right: 24, bottom: 24, top: 34),
-                child: Text("All Prices", style: Theme.of(context).textTheme.bodyText1),
-              ),
-              AllPricesList(arguments.price),
-            ],
-          )
-        ],
-      ),
-    );
+    return Builder(builder: (context) {
+      return Scaffold(
+        resizeToAvoidBottomInset: false,
+        extendBodyBehindAppBar: true,
+        extendBody: true,
+        appBar: DefaultAppBar(
+          leadingIcon: const Icon(Icons.arrow_back),
+          leadingOnPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
+        body: ListView(
+          physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+          children: [
+            Column(
+              children: [
+                Text(
+                  produceName,
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.headline1,
+                ),
+                const UIVerticalSpace24(),
+                Column(
+                  children: [
+                    Text(
+                      "Price",
+                      style: Theme.of(context).textTheme.bodyText1,
+                    ),
+                    const UIVerticalSpace6(),
+                    resolveIsAverage(context, arguments)
+                  ],
+                ),
+                const UIVerticalSpace24(),
+                Column(
+                  children: [
+                    Text(
+                      "Date",
+                      style: Theme.of(context).textTheme.bodyText1,
+                    ),
+                    const UIVerticalSpace6(),
+                    Text(
+                      priceDate,
+                      style: Theme.of(context)
+                          .textTheme
+                          .headline2!
+                          .copyWith(color: const Color(0xff799A61), fontSize: 23),
+                    ),
+                  ],
+                ),
+                const UIVerticalSpace24(),
+                const UIBorder(margin: EdgeInsets.symmetric(horizontal: 24), opacity: 0.1),
+                Container(
+                  alignment: Alignment.centerLeft,
+                  margin: const EdgeInsets.only(left: 24, right: 24, bottom: 24, top: 34),
+                  child: Text("All Prices", style: Theme.of(context).textTheme.bodyText1),
+                ),
+                AllPricesList(arguments.price, arguments.produce),
+              ],
+            )
+          ],
+        ),
+      );
+    });
   }
 
   Widget resolveIsAverage(BuildContext context, PriceScreenArguments arguments) {
@@ -112,19 +118,23 @@ class PriceScreen extends StatelessWidget {
 
 class AllPricesList extends StatelessWidget {
   final Price price;
+  final Produce produce;
 
-  const AllPricesList(this.price, {Key? key}) : super(key: key);
+  const AllPricesList(this.price, this.produce, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
-      itemCount: price.allPricesWithDateList.length,
+      itemCount: price.allPricesWithDateList.length + 1,
       itemBuilder: (context, index) {
+        if (index == price.allPricesWithDateList.length) {
+          return const UICustomVertical(100);
+        }
         return Padding(
           padding: const EdgeInsets.symmetric(horizontal: 12),
-          child: AllPriceListCard(index, price),
+          child: AllPriceListCard(index, price, produce),
         );
       },
     );
@@ -132,10 +142,11 @@ class AllPricesList extends StatelessWidget {
 }
 
 class AllPriceListCard extends StatefulWidget {
+  final Produce produce;
   final Price price;
   final int index;
 
-  const AllPriceListCard(this.index, this.price, {Key? key}) : super(key: key);
+  const AllPriceListCard(this.index, this.price, this.produce, {Key? key}) : super(key: key);
 
   @override
   State<AllPriceListCard> createState() => _AllPriceListCardState();
@@ -156,6 +167,7 @@ class _AllPriceListCardState extends State<AllPriceListCard> {
 
   @override
   Widget build(BuildContext context) {
+    final subPriceDate = widget.price.allPricesWithDateList[widget.index].priceDate;
     final dateTimeStamp = DateFormat("yyyy-MM-dd hh:mm:ss aaa").parse(
       widget.price.allPricesWithDateList[widget.index].priceDate,
     );
@@ -169,7 +181,7 @@ class _AllPriceListCardState extends State<AllPriceListCard> {
       child: InkWell(
         onLongPress: () {
           HapticFeedback.heavyImpact();
-          showProduceBottomActionSheet(context, isAdmin, date, time, currentPrice);
+          showProduceBottomActionSheet(context, isAdmin, date, time, subPriceDate, currentPrice);
         },
         borderRadius: BorderRadius.circular(16),
         onTap: () {},
@@ -231,6 +243,7 @@ class _AllPriceListCardState extends State<AllPriceListCard> {
     bool? isAdmin,
     String date,
     String time,
+    String subPriceDate,
     num currentPrice,
   ) {
     isAdmin ??= false;
@@ -240,53 +253,72 @@ class _AllPriceListCardState extends State<AllPriceListCard> {
         backgroundColor: Colors.transparent,
         context: context,
         builder: (BuildContext context) {
-          return Container(
-            height: 260,
-            decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.background,
-              borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(14), topRight: Radius.circular(14)),
-            ),
-            child: Column(
-              children: [
-                Container(
-                  padding: EdgeInsets.only(top: 24),
-                  alignment: Alignment.center,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text("$date - $time", style: Theme.of(context).textTheme.bodyText1),
-                      const UIVerticalSpace14(),
-                      Text(
-                        "RM ${currentPrice.toString()}/kg",
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodyText2!
-                            .copyWith(fontWeight: FontWeight.w700),
+          return BlocProvider(
+            create: (context) => ProduceDialogCubit(locator(), locator()),
+            child: Builder(builder: (context) {
+              return Container(
+                height: 260,
+                decoration: BoxDecoration(
+                  color: Theme.of(context).colorScheme.background,
+                  borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(14), topRight: Radius.circular(14)),
+                ),
+                child: Column(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.only(top: 24),
+                      alignment: Alignment.center,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text("$date - ", style: Theme.of(context).textTheme.bodyText1),
+                          const UIVerticalSpace14(),
+                          Text(
+                            "RM ${currentPrice.toString()}/kg",
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyText2!
+                                .copyWith(fontWeight: FontWeight.w700),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 14, left: 46, right: 46),
+                      child: SecondaryButton(
+                        type: SecondaryButtonType.filled,
+                        onPressed: () {
+                          context.read<ProduceDialogCubit>().showEditSubPrice(
+                                context: context,
+                                editSubPriceDialog: returnEditSubPriceDialog(
+                                  context: context,
+                                  produce: widget.produce,
+                                  price: widget.price,
+                                  textEditingController: TextEditingController(),
+                                  formKey: GlobalKey<FormState>(),
+                                  formFocusNode: FocusNode(),
+                                  fromRoute: DialogFromRoute.fromPrice,
+                                  subPriceDate: subPriceDate,
+                                ),
+                              );
+                        },
+                        content: "Edit Price",
+                        buttonIcon: Icon(Icons.edit, size: 20),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 14, left: 46, right: 46),
+                      child: SecondaryButton(
+                        type: SecondaryButtonType.red,
+                        onPressed: () {},
+                        content: "Delete Price",
+                        buttonIcon: Icon(Icons.delete, size: 20),
+                      ),
+                    ),
+                  ],
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 14, left: 46, right: 46),
-                  child: SecondaryButton(
-                    type: SecondaryButtonType.filled,
-                    onPressed: () {},
-                    content: "Edit Price",
-                    buttonIcon: Icon(Icons.edit, size: 20),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 14, left: 46, right: 46),
-                  child: SecondaryButton(
-                    type: SecondaryButtonType.red,
-                    onPressed: () {},
-                    content: "Delete Price",
-                    buttonIcon: Icon(Icons.delete, size: 20),
-                  ),
-                ),
-              ],
-            ),
+              );
+            }),
           );
         },
       );

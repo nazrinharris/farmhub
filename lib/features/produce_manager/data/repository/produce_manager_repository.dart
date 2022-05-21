@@ -358,10 +358,20 @@ class ProduceManagerRepository implements IProduceManagerRepository {
   }
 
   @override
-  FutureEither<Price> editSubPrice(String produceId, String priceId, num newPrice) async {
+  FutureEither<Price> editSubPrice(
+    String produceId,
+    String priceId,
+    num newPrice,
+    String subPriceDate,
+  ) async {
     if (await networkInfo.isConnected) {
       try {
-        final result = await remoteDatasource.editSubPrice(produceId, priceId, newPrice);
+        final result = await remoteDatasource.editSubPrice(
+          produceId,
+          priceId,
+          newPrice,
+          subPriceDate,
+        );
 
         return Right(result);
       } catch (e) {

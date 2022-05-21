@@ -222,7 +222,7 @@ class SliverLoadingIndicator extends StatelessWidget {
           Container(
             alignment: Alignment.center,
             width: screenWidth,
-            height: screenHeight - 400,
+            height: 200,
             child: const CupertinoActivityIndicator(),
           ),
         ],

@@ -1,3 +1,4 @@
+import 'package:farmhub/features/produce_manager/domain/entities/price/price.dart';
 import 'package:farmhub/features/produce_manager/domain/entities/produce/produce.dart';
 import 'package:farmhub/presentation/shared_widgets/ui_helpers.dart';
 import 'package:farmhub/presentation/themes/farmhub_theme.dart';
@@ -265,6 +266,128 @@ ProgressDialog returnEditProduceProgressDialog(BuildContext context) {
   );
 }
 
+NAlertDialog returnEditSubPriceDialog({
+  required BuildContext context,
+  required Produce produce,
+  required Price price,
+  required String subPriceDate,
+  required TextEditingController textEditingController,
+  required GlobalKey<FormState> formKey,
+  required FocusNode formFocusNode,
+  required DialogFromRoute fromRoute,
+}) {
+  return NAlertDialog(
+    blur: 4,
+    dialogStyle: DialogStyle(
+      titlePadding: EdgeInsets.zero,
+      titleDivider: false,
+      backgroundColor: Theme.of(context).colorScheme.background,
+    ),
+    title: Container(
+      padding: const EdgeInsets.only(left: 24, right: 24, top: 34),
+      child: Row(
+        children: [
+          Icon(
+            Icons.edit,
+            color: Theme.of(context).colorScheme.primary,
+          ),
+          const UIHorizontalSpace14(),
+          Text(
+            "Change Price",
+            style: Theme.of(context).textTheme.bodyText2!.copyWith(
+                  color: Theme.of(context).colorScheme.primary,
+                ),
+          ),
+        ],
+      ),
+    ),
+    content: SizedBox(
+      height: 135,
+      child: Column(
+        children: [
+          Form(
+            key: formKey,
+            child: TextFormField(
+              focusNode: formFocusNode,
+              controller: textEditingController,
+              validator: validateCurrentPrice,
+              decoration: kInputDecoration(hintText: "What's the price?", context: context),
+              style: Theme.of(context).textTheme.bodyText1,
+              autovalidateMode: AutovalidateMode.onUserInteraction,
+            ),
+          ),
+          const UIVerticalSpace14(),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              SecondaryButton(
+                type: SecondaryButtonType.noBorder,
+                content: "Back",
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+              const UIHorizontalSpace14(),
+              Expanded(
+                child: SecondaryButton(
+                  type: SecondaryButtonType.filled,
+                  content: "Confirm",
+                  horizontalPadding: 22,
+                  buttonIcon: const Icon(Icons.check, size: 20),
+                  onPressed: () {
+                    context.read<ProduceDialogCubit>().startEditSubPrice(
+                          context: context,
+                          formKey: formKey,
+                          formFocusNode: formFocusNode,
+                          textEditingController: textEditingController,
+                          progressDialog: returnEditSubPriceProgressDialog(context),
+                          showErrorDialog: showErrorDialog,
+                          fromRoute: fromRoute,
+                          produceId: produce.produceId,
+                          priceId: price.priceId,
+                          subPriceDate: subPriceDate,
+                        );
+                  },
+                ),
+              ),
+            ],
+          )
+        ],
+      ),
+    ),
+  );
+}
+
+ProgressDialog returnEditSubPriceProgressDialog(BuildContext context) {
+  return ProgressDialog(
+    context,
+    dialogTransitionType: DialogTransitionType.Bubble,
+    blur: 4,
+    dismissable: false,
+    title: Container(
+      padding: const EdgeInsets.only(left: 14, right: 14, top: 14),
+      child: Text(
+        "Changing the price..",
+        style: Theme.of(context)
+            .textTheme
+            .bodyText2!
+            .copyWith(color: Theme.of(context).colorScheme.primary),
+      ),
+    ),
+    message: Padding(
+      padding: const EdgeInsets.only(top: 14, bottom: 14, right: 14, left: 14),
+      child: Text(
+        "It may take some time, please wait..",
+        style: Theme.of(context).textTheme.bodyText1,
+      ),
+    ),
+    defaultLoadingWidget: Container(
+      padding: const EdgeInsets.only(left: 14),
+      child: CupertinoActivityIndicator(color: Theme.of(context).colorScheme.primary),
+    ),
+  );
+}
+
 String? validateProduceName(String? value) {
   if (value == null || value.isEmpty) {
     return 'Please enter a name';
@@ -272,5 +395,15 @@ String? validateProduceName(String? value) {
     return 'Names must be at least 3 characters';
   } else {
     return null;
+  }
+}
+
+String? validateCurrentPrice(String? value) {
+  if (value == null || value.isEmpty) {
+    return 'Please enter a value';
+  } else if (double.tryParse(value) == null) {
+    return 'Please enter a valid number: e.g. 12.80';
+  } else if (double.tryParse(value)! < 0) {
+    return 'A negative price is invalid';
   }
 }

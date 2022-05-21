@@ -467,9 +467,9 @@ class SliverPricesList extends StatelessWidget {
   final bool isLoading;
   final bool isError;
   final Produce produce;
-  Failure? failure;
+  final Failure? failure;
 
-  SliverPricesList(
+  const SliverPricesList(
     this.pricesList, {
     Key? key,
     required this.isLoading,

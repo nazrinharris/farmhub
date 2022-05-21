@@ -22,14 +22,6 @@ Future<void> main() async {
       appRouter: AppRouter(),
     ),
   );
-
-  SystemChrome.setSystemUIOverlayStyle(
-    const SystemUiOverlayStyle(
-      statusBarBrightness: Brightness.light,
-      systemNavigationBarDividerColor: Colors.transparent,
-      systemNavigationBarColor: Colors.transparent,
-    ),
-  );
 }
 
 class FarmhubApp extends StatelessWidget {
@@ -71,11 +63,24 @@ class _FarmhubMaterialAppState extends State<FarmhubMaterialApp> {
     super.initState();
 
     context.read<GlobalAuthCubit>().updateGlobalAuthCubit();
+
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+      systemNavigationBarColor: Colors.transparent,
+      systemNavigationBarDividerColor: Colors.transparent,
+      systemNavigationBarIconBrightness: Brightness.dark,
+      statusBarColor: Colors.transparent,
+      statusBarIconBrightness: Brightness.dark,
+      statusBarBrightness: Brightness.dark,
+      systemStatusBarContrastEnforced: false,
+    ));
+
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
   }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: "Farmhub",
       theme: FarmhubTheme.appThemeData[FarmhubThemeVariants.light],
       onGenerateRoute: widget.appRouter.onGenerateRoute,

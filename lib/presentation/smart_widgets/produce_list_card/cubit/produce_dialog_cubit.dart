@@ -12,7 +12,7 @@ import 'package:ndialog/ndialog.dart';
 part 'produce_dialog_state.dart';
 part 'produce_dialog_cubit.freezed.dart';
 
-enum DialogFromRoute { fromMainBottomSheet, fromProduce }
+enum DialogFromRoute { fromMainBottomSheet, fromProduce, fromPrice }
 
 class ProduceDialogCubit extends Cubit<ProduceDialogState> {
   final IProduceManagerRepository repository;
@@ -125,6 +125,56 @@ class ProduceDialogCubit extends Cubit<ProduceDialogState> {
             default:
               throw UnimplementedError(StackTrace.current.toString());
           }
+        },
+      );
+    }
+  }
+
+  void showEditSubPrice({
+    required BuildContext context,
+    required NAlertDialog editSubPriceDialog,
+  }) {
+    editSubPriceDialog.show(context, transitionType: DialogTransitionType.Bubble);
+  }
+
+  void startEditSubPrice({
+    required BuildContext context,
+    required String produceId,
+    required String priceId,
+    required String subPriceDate,
+    required GlobalKey<FormState> formKey,
+    required TextEditingController textEditingController,
+    required FocusNode formFocusNode,
+    required ProgressDialog progressDialog,
+    required DialogFromRoute fromRoute,
+    required Function(BuildContext context, Failure failure) showErrorDialog,
+  }) async {
+    final bool isFormValid = formKey.currentState!.validate();
+
+    if (isFormValid) {
+      // Pop the edit dialog
+      Navigator.of(context).pop();
+      progressDialog.show();
+
+      await Future.delayed(Duration(seconds: 2));
+
+      final failurOrEditSubPrice = await repository.editSubPrice(
+        produceId,
+        priceId,
+        num.parse(textEditingController.text),
+        subPriceDate,
+      );
+      failurOrEditSubPrice.fold(
+        (f) {
+          progressDialog.dismiss();
+          showErrorDialog(context, f);
+        },
+        (unit) {
+          progressDialog.dismiss();
+          //TODO: Should refresh PriceScreen
+          globalUICubit.setShouldRefreshProduce(true);
+          // Pops the [ModalBottomSheet]
+          Navigator.of(context).pop();
         },
       );
     }
