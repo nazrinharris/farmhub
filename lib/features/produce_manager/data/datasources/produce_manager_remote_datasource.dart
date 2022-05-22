@@ -39,6 +39,7 @@ abstract class IProduceManagerRemoteDatasource {
   Future<List<Price>> getNextTenPrices(List<Price> lastPricesList, String produceId);
   Future<Price> getPrice(String produceId, String priceId);
   Future<Price> editSubPrice(String produceId, String priceId, num newPrice, String subPriceDate);
+  Future<Price> deleteSubPrice(String produceId, String priceId, String subPriceDate);
 
   Future<void>? debugMethod(String produceId);
 }
@@ -558,8 +559,80 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
 
     return price;
   }
+
+  @override
+  Future<Price> deleteSubPrice(String produceId, String priceId, String subPriceDate) async {
+    final Price price = await firebaseFirestore
+        .collection('produce')
+        .doc(produceId)
+        .collection('prices')
+        .doc(priceId)
+        .get()
+        .then((value) => Price.fromMap(value.data()));
+    final priceYear = DateFormat("yyyy").format(price.priceDateTimeStamp);
+
+    List<PriceSnippet> subPricesList = price.allPricesWithDateList;
+    List<PriceSnippet> updatedSubPricesList = [];
+
+    for (PriceSnippet priceSnippet in subPricesList) {
+      if (priceSnippet.priceDate == subPriceDate) {
+        // Do nothing, we technically "remove"
+        continue;
+      }
+      updatedSubPricesList.add(priceSnippet);
+    }
+
+    if (updatedSubPricesList.isEmpty) {
+      //? This means that the last [subPrice] was deleted and thus, the [Price] doc needs to be deleted.
+      //? Three major steps: Update [aggregate-prices], Delete [Price] document, Update [Produce]
+      //! Check if there is only one [Price] left, if yes, throw Exception.
+      // Note that this checks if it is the last price of that year.
+      final allPricesList = await firebaseFirestore
+          .collection('produce')
+          .doc(produceId)
+          .collection('prices')
+          .doc("aggregate-prices-$priceYear")
+          .get()
+          .then((value) => PriceSnippet.fromAggregateToList(value.data()!));
+      if (allPricesList.length == 1) {
+        throw ProduceManagerException(
+            code: "LAST_PRICE_PRODUCE",
+            message: "This is the last price of the Produce, so it cannot be deleted.",
+            stackTrace: StackTrace.current);
+      }
+
+      //! Delete [Price] from [aggregate-prices]
+      await firebaseFirestore
+          .collection('produce')
+          .doc(produceId)
+          .collection('prices')
+          .doc('aggregate-prices-$priceYear')
+          .update({"prices-map.${price.priceDate}": FieldValue.delete()});
+      //! Delete [Price] document
+      await firebaseFirestore
+          .collection('produce')
+          .doc(produceId)
+          .collection('prices')
+          .doc(priceId)
+          .delete();
+      //! Update [Produce]
+      updateProducePrices(
+        firebaseFirestore: firebaseFirestore,
+        produceId: produceId,
+        lastUpdateTimeStamp: lastUpdateTimeStamp,
+      );
+    } else {
+      //? This means that there are at least one [subPrice] left.
+    }
+
+    throw UnimplementedError();
+  }
 }
 
+/// This method will update [currentProducePrice], [previousProducePrice] and [aggregate-prices].
+///
+/// Note that this method assumes [aggregate-prices] is up-to-date. So update aggregate first before
+/// using this method.
 Future<void> updateProducePrices({
   required FirebaseFirestore firebaseFirestore,
   required String produceId,
@@ -609,7 +682,7 @@ Future<void> updateProducePrices({
     };
   }
 
-  //! Start updating [currentProducePrice] and [previousProducePrice] based on [weeklyPrices]
+  //! Start updating [currentProducePrice] and [previousProducePrice]
   await firebaseFirestore.collection('produce').doc(produceId).update({
     "currentProducePrice": currentProducePrice,
     "previousProducePrice": previousProducePrice,

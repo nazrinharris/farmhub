@@ -68,4 +68,13 @@ class PriceSnippet with _$PriceSnippet {
     required num price,
     required String priceDate,
   }) = _PriceSnippet;
+
+  static List<PriceSnippet> fromAggregateToList(Map<String, dynamic> map) {
+    final List<PriceSnippet> pricesList = [];
+    map["prices-map"].forEach((date, price) {
+      pricesList.add(PriceSnippet(price: price, priceDate: date));
+    });
+
+    return pricesList;
+  }
 }
