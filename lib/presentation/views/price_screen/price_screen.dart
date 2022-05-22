@@ -3,8 +3,10 @@ import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
 import 'package:farmhub/presentation/shared_widgets/app_dialogs.dart';
 import 'package:farmhub/presentation/shared_widgets/appbars.dart';
 import 'package:farmhub/presentation/shared_widgets/ui_helpers.dart';
+import 'package:farmhub/presentation/smart_widgets/custom_cupertino_sliver_refresh_control.dart';
 import 'package:farmhub/presentation/smart_widgets/produce_list_card/cubit/produce_dialog_cubit.dart';
 import 'package:farmhub/presentation/smart_widgets/produce_list_card/produce_list_card.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -37,98 +39,112 @@ class PriceScreen extends StatelessWidget {
             Navigator.of(context).pop();
           },
         ),
-        body: ListView(
+        body: CustomScrollView(
           physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
-          children: [
-            Column(
-              children: [
-                Text(
-                  produceName,
-                  textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.headline1,
-                ),
-                const UIVerticalSpace24(),
-                Column(
-                  children: [
-                    Text(
-                      "Price",
-                      style: Theme.of(context).textTheme.bodyText1,
-                    ),
-                    const UIVerticalSpace6(),
-                    resolveIsAverage(context, arguments)
-                  ],
-                ),
-                const UIVerticalSpace24(),
-                Column(
-                  children: [
-                    Text(
-                      "Date",
-                      style: Theme.of(context).textTheme.bodyText1,
-                    ),
-                    const UIVerticalSpace6(),
-                    Text(
-                      priceDate,
-                      style: Theme.of(context)
-                          .textTheme
-                          .headline2!
-                          .copyWith(color: const Color(0xff799A61), fontSize: 23),
-                    ),
-                  ],
-                ),
-                const UIVerticalSpace24(),
-                const UIBorder(margin: EdgeInsets.symmetric(horizontal: 24), opacity: 0.1),
-                Container(
-                  alignment: Alignment.centerLeft,
-                  margin: const EdgeInsets.only(left: 24, right: 24, bottom: 24, top: 34),
-                  child: Text("All Prices", style: Theme.of(context).textTheme.bodyText1),
-                ),
-                AllPricesList(arguments.price, arguments.produce),
-              ],
-            )
+          slivers: [
+            CustomCupertinoSliverRefreshControl(
+              onRefresh: () async {
+                await Future.delayed(Duration(seconds: 1));
+              },
+            ),
+            SliverPriceScreenHeader(arguments.produce, arguments.price),
+            SliverAllPricesList(arguments.produce, arguments.price),
           ],
         ),
       );
     });
   }
+}
 
-  Widget resolveIsAverage(BuildContext context, PriceScreenArguments arguments) {
-    if (arguments.price.isAverage) {
-      return Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            "RM ${arguments.price.currentPrice}/kg",
-            style: Theme.of(context).textTheme.headline2,
-          ),
-          const UIHorizontalSpace6(),
-          Text(
-            "(avg.)",
-            style: Theme.of(context).textTheme.caption,
-          )
-        ],
-      );
-    } else {
-      return Text(
-        "RM ${arguments.price.currentPrice}/kg",
-        style: Theme.of(context).textTheme.headline2,
-      );
-    }
+Widget resolveIsAverage(BuildContext context, Price price) {
+  if (price.isAverage) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text(
+          "RM ${price.currentPrice}/kg",
+          style: Theme.of(context).textTheme.headline2,
+        ),
+        const UIHorizontalSpace6(),
+        Text(
+          "(avg.)",
+          style: Theme.of(context).textTheme.caption,
+        )
+      ],
+    );
+  } else {
+    return Text(
+      "RM ${price.currentPrice}/kg",
+      style: Theme.of(context).textTheme.headline2,
+    );
   }
 }
 
-class AllPricesList extends StatelessWidget {
-  final Price price;
+class SliverPriceScreenHeader extends StatelessWidget {
   final Produce produce;
+  final Price price;
 
-  const AllPricesList(this.price, this.produce, {Key? key}) : super(key: key);
+  const SliverPriceScreenHeader(this.produce, this.price, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
-      itemCount: price.allPricesWithDateList.length + 1,
-      itemBuilder: (context, index) {
+    return SliverList(
+        delegate: SliverChildListDelegate([
+      const UITopPadding(),
+      Text(
+        produce.produceName,
+        textAlign: TextAlign.center,
+        style: Theme.of(context).textTheme.headline1,
+      ),
+      const UIVerticalSpace24(),
+      Column(
+        children: [
+          Text(
+            "Price",
+            style: Theme.of(context).textTheme.bodyText1,
+          ),
+          const UIVerticalSpace6(),
+          resolveIsAverage(context, price)
+        ],
+      ),
+      const UIVerticalSpace24(),
+      Column(
+        children: [
+          Text(
+            "Date",
+            style: Theme.of(context).textTheme.bodyText1,
+          ),
+          const UIVerticalSpace6(),
+          Text(
+            price.priceDate,
+            style: Theme.of(context)
+                .textTheme
+                .headline2!
+                .copyWith(color: const Color(0xff799A61), fontSize: 23),
+          ),
+        ],
+      ),
+      const UIVerticalSpace24(),
+      const UIBorder(margin: EdgeInsets.symmetric(horizontal: 24), opacity: 0.1),
+      Container(
+        alignment: Alignment.centerLeft,
+        margin: const EdgeInsets.only(left: 24, right: 24, bottom: 24, top: 34),
+        child: Text("All Prices", style: Theme.of(context).textTheme.bodyText1),
+      ),
+    ]));
+  }
+}
+
+class SliverAllPricesList extends StatelessWidget {
+  final Produce produce;
+  final Price price;
+
+  const SliverAllPricesList(this.produce, this.price, {Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SliverList(
+      delegate: SliverChildBuilderDelegate((context, index) {
         if (index == price.allPricesWithDateList.length) {
           return const UICustomVertical(100);
         }
@@ -136,7 +152,7 @@ class AllPricesList extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 12),
           child: AllPriceListCard(index, price, produce),
         );
-      },
+      }, childCount: price.allPricesWithDateList.length + 1),
     );
   }
 }
