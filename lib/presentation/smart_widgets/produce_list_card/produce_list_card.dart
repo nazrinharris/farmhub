@@ -216,7 +216,7 @@ class BuildAdminModalBottomSheet extends StatelessWidget {
           decoration: BoxDecoration(
             color: Theme.of(context).colorScheme.background,
             borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(14), topRight: Radius.circular(14)),
+                topLeft: Radius.circular(24), topRight: Radius.circular(24)),
           ),
           child: Column(
             children: [
@@ -232,7 +232,7 @@ class BuildAdminModalBottomSheet extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          "RM ${produce.currentProducePrice["price"]}/kg",
+                          "RM ${roundNum(produce.currentProducePrice["price"], 2)}/kg",
                           style: Theme.of(context)
                               .textTheme
                               .bodyText2!
