@@ -490,8 +490,11 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
         .doc(priceId)
         .get()
         .then((value) => Price.fromMap(value.data()!));
-
-    print(price.allPricesWithDateList);
+    final produce = await firebaseFirestore
+        .collection('produce')
+        .doc(produceId)
+        .get()
+        .then((value) => Produce.fromMap(value.data()!));
 
     final priceDateTimeStamp = price.priceDateTimeStamp;
     final chosenYear = DateFormat("yyyy").format(priceDateTimeStamp);
@@ -513,8 +516,6 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
     final updatedPrice = updateCurrentPrice(updatedSubPrice);
 
     // At this point, [updatedPrice] should be the most recent.
-    print(updatedPrice.allPricesWithDateList);
-
     // Update Price Document
     await firebaseFirestore
         .collection('produce')
@@ -531,8 +532,16 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
         .collection('prices')
         .doc('aggregate-prices-$chosenYear')
         .update({
-      "prices-map.$formattedAggregatePriceDate": newPrice,
+      "prices-map.$formattedAggregatePriceDate": updatedPrice.currentPrice,
     });
+
+    // This uses the retrieved produce last updated time stamp because realistically, we want
+    // [lastUpdateTimeStamp] to be like "last price added".
+    await updateProducePrices(
+      firebaseFirestore: firebaseFirestore,
+      produceId: produceId,
+      lastUpdateTimeStamp: produce.lastUpdateTimeStamp,
+    );
 
     return updatedPrice;
   }
@@ -551,9 +560,63 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
   }
 }
 
-Future<void> updateWeeklyPrices({
+Future<void> updateProducePrices({
   required FirebaseFirestore firebaseFirestore,
-}) async {}
+  required String produceId,
+  required DateTime lastUpdateTimeStamp,
+}) async {
+  final String chosenYear = DateFormat("yyyy").format(clock.now());
+
+  final Map<String, dynamic> aggregatePricesMap = await firebaseFirestore
+      .collection('produce')
+      .doc(produceId)
+      .collection('prices')
+      .doc("aggregate-prices-$chosenYear")
+      .get()
+      .then((value) => value.data()!);
+
+  final List<PriceSnippet> pricesList = [];
+  aggregatePricesMap["prices-map"].forEach((date, price) {
+    pricesList.add(PriceSnippet(price: price, priceDate: date));
+  });
+
+  final oneWeekPrices = pricesToRanged(pricesList, rangeType: RangeType.oneW);
+  final oneYearPrices = pricesToRanged(pricesList, rangeType: RangeType.oneY);
+
+  // At this point, [weeklyPricesSnippet] should have been fully updated. Convert it to map and update
+  Map<String, dynamic> weeklyPricesSnippetJSON = {};
+  for (PriceSnippet priceSnippet in oneWeekPrices) {
+    weeklyPricesSnippetJSON[priceSnippet.priceDate] = priceSnippet.price;
+  }
+  print(weeklyPricesSnippetJSON);
+
+  // There can be a case where [currentProducePrice] is being updated while [previousProducePrice] has
+  // not yet existed.
+  Map<String, dynamic> currentProducePrice = {
+    "price": oneYearPrices[oneYearPrices.length - 1].price,
+    "priceDate": oneYearPrices[oneYearPrices.length - 1].priceDate,
+  };
+  Map<String, dynamic> previousProducePrice = {};
+  if (oneYearPrices.length == 1) {
+    previousProducePrice = {
+      "price": null,
+      "priceDate": null,
+    };
+  } else {
+    previousProducePrice = {
+      "price": oneYearPrices[oneYearPrices.length - 2].price,
+      "priceDate": oneYearPrices[oneYearPrices.length - 2].priceDate,
+    };
+  }
+
+  //! Start updating [currentProducePrice] and [previousProducePrice] based on [weeklyPrices]
+  await firebaseFirestore.collection('produce').doc(produceId).update({
+    "currentProducePrice": currentProducePrice,
+    "previousProducePrice": previousProducePrice,
+    "lastUpdateTimeStamp": lastUpdateTimeStamp,
+    "weeklyPrices": weeklyPricesSnippetJSON,
+  });
+}
 
 Future<void> createPriceDocument({
   required FirebaseFirestore firebaseFirestore,

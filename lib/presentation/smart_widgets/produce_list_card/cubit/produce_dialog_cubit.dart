@@ -156,8 +156,6 @@ class ProduceDialogCubit extends Cubit<ProduceDialogState> {
       Navigator.of(context).pop();
       progressDialog.show();
 
-      await Future.delayed(Duration(seconds: 2));
-
       final failurOrEditSubPrice = await repository.editSubPrice(
         produceId,
         priceId,
