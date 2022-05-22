@@ -478,32 +478,63 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
 
   @override
   Future<Price> editSubPrice(
-      String produceId, String priceId, num newPrice, String subPriceDate) async {
-    final priceDoc = await firebaseFirestore
+    String produceId,
+    String priceId,
+    num newPrice,
+    String subPriceDate,
+  ) async {
+    final price = await firebaseFirestore
         .collection('produce')
         .doc(produceId)
         .collection('prices')
         .doc(priceId)
         .get()
-        .then((value) => value.data()!);
+        .then((value) => Price.fromMap(value.data()!));
 
-    final chosenDate = await updatePriceDocument(
-      firebaseFirestore: firebaseFirestore,
-      produceId: produceId,
-      newPrice: newPrice,
-      subPriceDate: subPriceDate,
-      chosenPriceDoc: priceDoc,
-    );
+    print(price.allPricesWithDateList);
 
-    // TODO: Fix this
-    return Price(
-      currentPrice: 11,
-      priceDate: "2",
-      priceDateTimeStamp: clock.now(),
-      isAverage: true,
-      priceId: priceId,
-      allPricesWithDateList: [],
-    );
+    final priceDateTimeStamp = price.priceDateTimeStamp;
+    final chosenYear = DateFormat("yyyy").format(priceDateTimeStamp);
+    final formattedAggregatePriceDate = DateFormat("dd-MM-yyyy").format(priceDateTimeStamp);
+
+    List<PriceSnippet> subPricesList = price.allPricesWithDateList;
+    List<PriceSnippet> updatedSubPricesList = [];
+
+    for (PriceSnippet priceSnippet in subPricesList) {
+      if (priceSnippet.priceDate == subPriceDate) {
+        final newPriceSnippet = priceSnippet.copyWith(price: newPrice);
+        updatedSubPricesList.add(newPriceSnippet);
+        continue;
+      }
+      updatedSubPricesList.add(priceSnippet);
+    }
+
+    final updatedSubPrice = price.copyWith(allPricesWithDateList: updatedSubPricesList);
+    final updatedPrice = updateCurrentPrice(updatedSubPrice);
+
+    // At this point, [updatedPrice] should be the most recent.
+    print(updatedPrice.allPricesWithDateList);
+
+    // Update Price Document
+    await firebaseFirestore
+        .collection('produce')
+        .doc(produceId)
+        .collection('prices')
+        .doc(priceId)
+        .update(
+          Price.toMap(updatedPrice),
+        );
+    // Update Aggregate Price
+    await firebaseFirestore
+        .collection('produce')
+        .doc(produceId)
+        .collection('prices')
+        .doc('aggregate-prices-$chosenYear')
+        .update({
+      "prices-map.$formattedAggregatePriceDate": newPrice,
+    });
+
+    return updatedPrice;
   }
 
   @override
@@ -519,6 +550,10 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
     return price;
   }
 }
+
+Future<void> updateWeeklyPrices({
+  required FirebaseFirestore firebaseFirestore,
+}) async {}
 
 Future<void> createPriceDocument({
   required FirebaseFirestore firebaseFirestore,
@@ -540,13 +575,17 @@ Future<void> createPriceDocument({
   ).then((doc) => doc.update({"priceId": doc.id}));
 }
 
+/// These [chosenTimeStamp] and [subPriceDate] must not both be specified. Only one.
+///
+/// Both of those variables are referring to a specific [subPrice]
 Future<void> updatePriceDocument({
   required FirebaseFirestore firebaseFirestore,
   required String produceId,
   required num newPrice,
+  required Map<String, dynamic> chosenPriceDoc,
+  // Refers to a specific [subPrice]
   DateTime? chosenTimeStamp,
   String? subPriceDate,
-  required Map<String, dynamic> chosenPriceDoc,
 }) async {
   String formattedCurrentTimeStamp;
 
@@ -554,9 +593,12 @@ Future<void> updatePriceDocument({
     formattedCurrentTimeStamp = DateFormat("yyyy-MM-dd hh:mm:ss aaa").format(chosenTimeStamp);
   } else if (subPriceDate != null) {
     formattedCurrentTimeStamp = subPriceDate;
+  } else if (subPriceDate != null && chosenTimeStamp != null) {
+    throw Exception();
   } else {
     throw Exception();
   }
+
   num newCurrentPrice = calculateNewPriceAverage(chosenPriceDoc["allPricesMap"], newPrice);
 
   await firebaseFirestore
@@ -645,6 +687,8 @@ Future<num> returnPriceAndUpdatePriceDocAndAggregate({
   }
 }
 
+/// This method expects [newPrice] to be a whole new sub-price, as in, it cannot be used to "edit"
+/// a price.
 num calculateNewPriceAverage(Map<String, dynamic> allPricesMap, num newPrice) {
   List<num> allPricesList = [newPrice];
 
@@ -654,6 +698,7 @@ num calculateNewPriceAverage(Map<String, dynamic> allPricesMap, num newPrice) {
 
   num tempSum = 0;
   num newCurrentPrice = 0;
+
   for (num price in allPricesList) {
     tempSum = tempSum + price;
   }
@@ -683,4 +728,22 @@ List<String> returnProduceNameSearch(String produceName) {
   }
 
   return produceNameSearch;
+}
+
+Price editSubPrice(Price price, num newPrice, String chosenSubPriceDate) {
+  List<PriceSnippet> subPricesList = price.allPricesWithDateList;
+  List<PriceSnippet> updatedSubPricesList = [];
+
+  for (PriceSnippet priceSnippet in subPricesList) {
+    if (priceSnippet.priceDate == chosenSubPriceDate) {
+      final newPriceSnippet = priceSnippet.copyWith(price: newPrice);
+      updatedSubPricesList.add(newPriceSnippet);
+      continue;
+    }
+    updatedSubPricesList.add(priceSnippet);
+  }
+
+  final updatedPrice = price.copyWith(allPricesWithDateList: updatedSubPricesList);
+
+  return updatedPrice;
 }

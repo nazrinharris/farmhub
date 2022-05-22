@@ -69,8 +69,8 @@ class _FarmhubMaterialAppState extends State<FarmhubMaterialApp> {
       systemNavigationBarDividerColor: Colors.transparent,
       systemNavigationBarIconBrightness: Brightness.dark,
       statusBarColor: Colors.transparent,
-      statusBarIconBrightness: Brightness.dark,
-      statusBarBrightness: Brightness.dark,
+      statusBarIconBrightness: Brightness.light,
+      statusBarBrightness: Brightness.light,
       systemStatusBarContrastEnforced: false,
     ));
 

@@ -85,7 +85,6 @@ class DefaultAppBar extends StatelessWidget implements PreferredSizeWidget {
         ),
       );
     } else if (trailingIcon != null && secondTrailingChild != null) {
-      print("second trailing child used");
       return Row(
         children: [
           IconButton(onPressed: trailingOnPressed, icon: trailingIcon!),

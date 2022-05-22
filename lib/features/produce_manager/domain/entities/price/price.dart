@@ -43,6 +43,23 @@ class Price with _$Price {
       allPricesWithDateList: allPricesWithDateList,
     );
   }
+
+  static Map<String, dynamic> toMap(Price price) {
+    Map<String, dynamic> allPricesMap = {};
+
+    for (PriceSnippet priceSnippet in price.allPricesWithDateList) {
+      allPricesMap[priceSnippet.priceDate] = priceSnippet.price;
+    }
+
+    return {
+      "currentPrice": price.currentPrice,
+      "isAverage": price.isAverage,
+      "priceDate": price.priceDate,
+      "priceDateTimeStamp": price.priceDateTimeStamp,
+      "priceId": price.priceId,
+      "allPricesMap": allPricesMap,
+    };
+  }
 }
 
 @freezed

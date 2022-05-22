@@ -198,6 +198,7 @@ class _AllPriceListCardState extends State<AllPriceListCard> {
         onLongPress: () {
           HapticFeedback.heavyImpact();
           showProduceBottomActionSheet(context, isAdmin, date, time, subPriceDate, currentPrice);
+          print(subPriceDate);
         },
         borderRadius: BorderRadius.circular(16),
         onTap: () {},

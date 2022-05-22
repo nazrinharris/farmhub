@@ -86,3 +86,17 @@ List<PriceSnippet> pricesToRanged(
 
   return twoWeeksPricesList.reversed.toList();
 }
+
+/// This method will loop through [allPricesWithDateList] and returns a new [Price] with an
+/// updated [currentPrice].
+Price updateCurrentPrice(Price price) {
+  final pricesList = price.allPricesWithDateList;
+
+  num sum = 0;
+  for (PriceSnippet priceSnippet in pricesList) {
+    sum = sum + priceSnippet.price;
+  }
+  num average = sum / pricesList.length;
+
+  return price.copyWith(currentPrice: average);
+}
