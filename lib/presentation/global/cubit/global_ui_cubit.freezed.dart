@@ -407,10 +407,13 @@ class _$GlobalUIPropsTearOff {
   const _$GlobalUIPropsTearOff();
 
   _GlobalUIProps call(
-      {required bool shouldRefreshMain, required bool shouldRefreshProduce}) {
+      {required bool shouldRefreshMain,
+      required bool shouldRefreshProduce,
+      required bool shouldRefreshPrice}) {
     return _GlobalUIProps(
       shouldRefreshMain: shouldRefreshMain,
       shouldRefreshProduce: shouldRefreshProduce,
+      shouldRefreshPrice: shouldRefreshPrice,
     );
   }
 }
@@ -422,6 +425,7 @@ const $GlobalUIProps = _$GlobalUIPropsTearOff();
 mixin _$GlobalUIProps {
   bool get shouldRefreshMain => throw _privateConstructorUsedError;
   bool get shouldRefreshProduce => throw _privateConstructorUsedError;
+  bool get shouldRefreshPrice => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $GlobalUIPropsCopyWith<GlobalUIProps> get copyWith =>
@@ -433,7 +437,10 @@ abstract class $GlobalUIPropsCopyWith<$Res> {
   factory $GlobalUIPropsCopyWith(
           GlobalUIProps value, $Res Function(GlobalUIProps) then) =
       _$GlobalUIPropsCopyWithImpl<$Res>;
-  $Res call({bool shouldRefreshMain, bool shouldRefreshProduce});
+  $Res call(
+      {bool shouldRefreshMain,
+      bool shouldRefreshProduce,
+      bool shouldRefreshPrice});
 }
 
 /// @nodoc
@@ -449,6 +456,7 @@ class _$GlobalUIPropsCopyWithImpl<$Res>
   $Res call({
     Object? shouldRefreshMain = freezed,
     Object? shouldRefreshProduce = freezed,
+    Object? shouldRefreshPrice = freezed,
   }) {
     return _then(_value.copyWith(
       shouldRefreshMain: shouldRefreshMain == freezed
@@ -458,6 +466,10 @@ class _$GlobalUIPropsCopyWithImpl<$Res>
       shouldRefreshProduce: shouldRefreshProduce == freezed
           ? _value.shouldRefreshProduce
           : shouldRefreshProduce // ignore: cast_nullable_to_non_nullable
+              as bool,
+      shouldRefreshPrice: shouldRefreshPrice == freezed
+          ? _value.shouldRefreshPrice
+          : shouldRefreshPrice // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
   }
@@ -470,7 +482,10 @@ abstract class _$GlobalUIPropsCopyWith<$Res>
           _GlobalUIProps value, $Res Function(_GlobalUIProps) then) =
       __$GlobalUIPropsCopyWithImpl<$Res>;
   @override
-  $Res call({bool shouldRefreshMain, bool shouldRefreshProduce});
+  $Res call(
+      {bool shouldRefreshMain,
+      bool shouldRefreshProduce,
+      bool shouldRefreshPrice});
 }
 
 /// @nodoc
@@ -488,6 +503,7 @@ class __$GlobalUIPropsCopyWithImpl<$Res>
   $Res call({
     Object? shouldRefreshMain = freezed,
     Object? shouldRefreshProduce = freezed,
+    Object? shouldRefreshPrice = freezed,
   }) {
     return _then(_GlobalUIProps(
       shouldRefreshMain: shouldRefreshMain == freezed
@@ -498,6 +514,10 @@ class __$GlobalUIPropsCopyWithImpl<$Res>
           ? _value.shouldRefreshProduce
           : shouldRefreshProduce // ignore: cast_nullable_to_non_nullable
               as bool,
+      shouldRefreshPrice: shouldRefreshPrice == freezed
+          ? _value.shouldRefreshPrice
+          : shouldRefreshPrice // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -506,16 +526,20 @@ class __$GlobalUIPropsCopyWithImpl<$Res>
 
 class _$_GlobalUIProps implements _GlobalUIProps {
   const _$_GlobalUIProps(
-      {required this.shouldRefreshMain, required this.shouldRefreshProduce});
+      {required this.shouldRefreshMain,
+      required this.shouldRefreshProduce,
+      required this.shouldRefreshPrice});
 
   @override
   final bool shouldRefreshMain;
   @override
   final bool shouldRefreshProduce;
+  @override
+  final bool shouldRefreshPrice;
 
   @override
   String toString() {
-    return 'GlobalUIProps(shouldRefreshMain: $shouldRefreshMain, shouldRefreshProduce: $shouldRefreshProduce)';
+    return 'GlobalUIProps(shouldRefreshMain: $shouldRefreshMain, shouldRefreshProduce: $shouldRefreshProduce, shouldRefreshPrice: $shouldRefreshPrice)';
   }
 
   @override
@@ -526,12 +550,14 @@ class _$_GlobalUIProps implements _GlobalUIProps {
             (identical(other.shouldRefreshMain, shouldRefreshMain) ||
                 other.shouldRefreshMain == shouldRefreshMain) &&
             (identical(other.shouldRefreshProduce, shouldRefreshProduce) ||
-                other.shouldRefreshProduce == shouldRefreshProduce));
+                other.shouldRefreshProduce == shouldRefreshProduce) &&
+            (identical(other.shouldRefreshPrice, shouldRefreshPrice) ||
+                other.shouldRefreshPrice == shouldRefreshPrice));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, shouldRefreshMain, shouldRefreshProduce);
+  int get hashCode => Object.hash(
+      runtimeType, shouldRefreshMain, shouldRefreshProduce, shouldRefreshPrice);
 
   @JsonKey(ignore: true)
   @override
@@ -542,12 +568,15 @@ class _$_GlobalUIProps implements _GlobalUIProps {
 abstract class _GlobalUIProps implements GlobalUIProps {
   const factory _GlobalUIProps(
       {required bool shouldRefreshMain,
-      required bool shouldRefreshProduce}) = _$_GlobalUIProps;
+      required bool shouldRefreshProduce,
+      required bool shouldRefreshPrice}) = _$_GlobalUIProps;
 
   @override
   bool get shouldRefreshMain;
   @override
   bool get shouldRefreshProduce;
+  @override
+  bool get shouldRefreshPrice;
   @override
   @JsonKey(ignore: true)
   _$GlobalUIPropsCopyWith<_GlobalUIProps> get copyWith =>

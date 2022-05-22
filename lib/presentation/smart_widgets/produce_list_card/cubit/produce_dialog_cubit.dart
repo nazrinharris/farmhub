@@ -169,8 +169,8 @@ class ProduceDialogCubit extends Cubit<ProduceDialogState> {
         },
         (unit) {
           progressDialog.dismiss();
-          //TODO: Should refresh PriceScreen
           globalUICubit.setShouldRefreshProduce(true);
+          globalUICubit.setShouldRefreshPrice(true);
           // Pops the [ModalBottomSheet]
           Navigator.of(context).pop();
         },

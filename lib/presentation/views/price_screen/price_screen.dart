@@ -6,6 +6,7 @@ import 'package:farmhub/presentation/shared_widgets/ui_helpers.dart';
 import 'package:farmhub/presentation/smart_widgets/custom_cupertino_sliver_refresh_control.dart';
 import 'package:farmhub/presentation/smart_widgets/produce_list_card/cubit/produce_dialog_cubit.dart';
 import 'package:farmhub/presentation/smart_widgets/produce_list_card/produce_list_card.dart';
+import 'package:farmhub/presentation/views/price_screen/cubit/price_screen_cubit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -15,6 +16,7 @@ import 'package:intl/intl.dart';
 import '../../../features/produce_manager/domain/entities/price/price.dart';
 import '../../../features/produce_manager/domain/entities/produce/produce.dart';
 import '../../../locator.dart';
+import '../../global/cubit/global_ui_cubit.dart';
 import '../../shared_widgets/buttons.dart';
 
 class PriceScreen extends StatelessWidget {
@@ -28,31 +30,51 @@ class PriceScreen extends StatelessWidget {
     final num currentPrice = arguments.price.currentPrice;
     final String priceDate = arguments.price.priceDate.replaceAll(RegExp("-"), "/");
 
-    return Builder(builder: (context) {
-      return Scaffold(
-        resizeToAvoidBottomInset: false,
-        extendBodyBehindAppBar: true,
-        extendBody: true,
-        appBar: DefaultAppBar(
-          leadingIcon: const Icon(Icons.arrow_back),
-          leadingOnPressed: () {
-            Navigator.of(context).pop();
+    return BlocProvider(
+      create: (context) => PriceScreenCubit(
+        price: arguments.price,
+        produce: arguments.produce,
+        repository: locator(),
+      ),
+      child: Builder(builder: (context) {
+        return BlocListener<GlobalUICubit, GlobalUIState>(
+          listener: (context, state) async {
+            if (state.props.shouldRefreshPrice == true) {
+              await context.read<PriceScreenCubit>().refresh();
+              context.read<GlobalUICubit>().setShouldRefreshPrice(false);
+            }
           },
-        ),
-        body: CustomScrollView(
-          physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
-          slivers: [
-            CustomCupertinoSliverRefreshControl(
-              onRefresh: () async {
-                await Future.delayed(Duration(seconds: 1));
+          child: Scaffold(
+            resizeToAvoidBottomInset: false,
+            extendBodyBehindAppBar: true,
+            extendBody: true,
+            appBar: DefaultAppBar(
+              leadingIcon: const Icon(Icons.arrow_back),
+              leadingOnPressed: () {
+                Navigator.of(context).pop();
               },
             ),
-            SliverPriceScreenHeader(arguments.produce, arguments.price),
-            SliverAllPricesList(arguments.produce, arguments.price),
-          ],
-        ),
-      );
-    });
+            body: BlocBuilder<PriceScreenCubit, PriceScreenState>(
+              builder: (context, state) {
+                return CustomScrollView(
+                  physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+                  slivers: [
+                    CustomCupertinoSliverRefreshControl(
+                      onRefresh: () async {
+                        await Future.delayed(Duration(seconds: 1));
+                        await context.read<PriceScreenCubit>().refresh();
+                      },
+                    ),
+                    SliverPriceScreenHeader(arguments.produce, state.props.price),
+                    SliverAllPricesList(arguments.produce, state.props.price),
+                  ],
+                );
+              },
+            ),
+          ),
+        );
+      }),
+    );
   }
 }
 
@@ -170,19 +192,14 @@ class AllPriceListCard extends StatefulWidget {
 
 class _AllPriceListCardState extends State<AllPriceListCard> {
   @override
-  void initState() {
-    super.initState();
-
+  Widget build(BuildContext context) {
     widget.price.allPricesWithDateList.sort((a, b) {
       DateTime aPriceDate = DateFormat("yyyy-MM-dd hh:mm:ss aaa").parse(a.priceDate);
       DateTime bPriceDate = DateFormat("yyyy-MM-dd hh:mm:ss aaa").parse(b.priceDate);
 
       return bPriceDate.compareTo(aPriceDate);
     });
-  }
 
-  @override
-  Widget build(BuildContext context) {
     final subPriceDate = widget.price.allPricesWithDateList[widget.index].priceDate;
     final dateTimeStamp = DateFormat("yyyy-MM-dd hh:mm:ss aaa").parse(
       widget.price.allPricesWithDateList[widget.index].priceDate,
@@ -274,7 +291,7 @@ class _AllPriceListCardState extends State<AllPriceListCard> {
             create: (context) => ProduceDialogCubit(locator(), locator()),
             child: Builder(builder: (context) {
               return Container(
-                height: 260,
+                height: 300,
                 decoration: BoxDecoration(
                   color: Theme.of(context).colorScheme.background,
                   borderRadius: const BorderRadius.only(
@@ -283,12 +300,13 @@ class _AllPriceListCardState extends State<AllPriceListCard> {
                 child: Column(
                   children: [
                     Container(
-                      padding: const EdgeInsets.only(top: 24),
+                      padding: const EdgeInsets.only(top: 34, bottom: 10),
                       alignment: Alignment.center,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text("$date - ", style: Theme.of(context).textTheme.bodyText1),
+                          Text("$date - $time",
+                              style: Theme.of(context).textTheme.bodyText1!.copyWith(fontSize: 22)),
                           const UIVerticalSpace14(),
                           Text(
                             "RM ${currentPrice.toString()}/kg",
