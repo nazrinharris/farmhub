@@ -619,13 +619,44 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
       updateProducePrices(
         firebaseFirestore: firebaseFirestore,
         produceId: produceId,
-        lastUpdateTimeStamp: lastUpdateTimeStamp,
       );
     } else {
       //? This means that there are at least one [subPrice] left.
+      //? steps: Update [Price]'s [currentPrice] and [allPrices], Update [aggregate-prices], Update [Produce]
+
+      //! Update [Price]'s [currentPrice] and [allPrices]
+      final updatedPrice = _deleteSubPriceAndUpdatePrice(price, subPriceDate);
+      await firebaseFirestore
+          .collection('produce')
+          .doc(produceId)
+          .collection('prices')
+          .doc(priceId)
+          .update(
+            Price.toMap(updatedPrice),
+          );
+      //! Update [aggregate-prices]
+      await firebaseFirestore
+          .collection('produce')
+          .doc(produceId)
+          .collection('prices')
+          .doc('aggregate-prices-${priceYear}')
+          .update({"prices-map.${price.priceDate}": updatedPrice.currentPrice});
+      //! Update [Produce]
+      updateProducePrices(
+        firebaseFirestore: firebaseFirestore,
+        produceId: produceId,
+      );
     }
 
-    throw UnimplementedError();
+    //TODO: Fix this
+    return Price(
+      currentPrice: 2,
+      priceDate: "",
+      priceDateTimeStamp: clock.now(),
+      isAverage: true,
+      priceId: "priceId",
+      allPricesWithDateList: [],
+    );
   }
 }
 
@@ -636,7 +667,7 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
 Future<void> updateProducePrices({
   required FirebaseFirestore firebaseFirestore,
   required String produceId,
-  required DateTime lastUpdateTimeStamp,
+  DateTime? lastUpdateTimeStamp,
 }) async {
   final String chosenYear = DateFormat("yyyy").format(clock.now());
 
@@ -682,13 +713,27 @@ Future<void> updateProducePrices({
     };
   }
 
-  //! Start updating [currentProducePrice] and [previousProducePrice]
-  await firebaseFirestore.collection('produce').doc(produceId).update({
+  Map<String, dynamic> withTimeStampMap = {
     "currentProducePrice": currentProducePrice,
     "previousProducePrice": previousProducePrice,
     "lastUpdateTimeStamp": lastUpdateTimeStamp,
     "weeklyPrices": weeklyPricesSnippetJSON,
-  });
+  };
+  Map<String, dynamic> withoutTimeStampMap = {
+    "currentProducePrice": currentProducePrice,
+    "previousProducePrice": previousProducePrice,
+    "weeklyPrices": weeklyPricesSnippetJSON,
+  };
+  Map<String, dynamic> mapUsed;
+
+  if (lastUpdateTimeStamp == null) {
+    mapUsed = withoutTimeStampMap;
+  } else {
+    mapUsed = withTimeStampMap;
+  }
+
+  //! Start updating [currentProducePrice] and [previousProducePrice]
+  await firebaseFirestore.collection('produce').doc(produceId).update(mapUsed);
 }
 
 Future<void> createPriceDocument({
@@ -866,6 +911,8 @@ List<String> returnProduceNameSearch(String produceName) {
   return produceNameSearch;
 }
 
+/// This method will update the [newPrice] associated with [chosenSubPriceDate] and return
+/// an updated [Price].
 Price editSubPrice(Price price, num newPrice, String chosenSubPriceDate) {
   List<PriceSnippet> subPricesList = price.allPricesWithDateList;
   List<PriceSnippet> updatedSubPricesList = [];
@@ -880,6 +927,23 @@ Price editSubPrice(Price price, num newPrice, String chosenSubPriceDate) {
   }
 
   final updatedPrice = price.copyWith(allPricesWithDateList: updatedSubPricesList);
+
+  return updatedPrice;
+}
+
+Price _deleteSubPriceAndUpdatePrice(Price price, String chosenSubPriceDate) {
+  List<PriceSnippet> subPricesList = price.allPricesWithDateList;
+  List<PriceSnippet> updatedSubPricesList = [];
+
+  for (PriceSnippet priceSnippet in subPricesList) {
+    if (priceSnippet.priceDate == chosenSubPriceDate) {
+      continue;
+    }
+    updatedSubPricesList.add(priceSnippet);
+  }
+
+  final updatedPrice =
+      updateCurrentPrice(price.copyWith(allPricesWithDateList: updatedSubPricesList));
 
   return updatedPrice;
 }
