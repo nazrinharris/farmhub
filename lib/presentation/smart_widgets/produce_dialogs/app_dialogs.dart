@@ -506,7 +506,7 @@ ProgressDialog returnDeleteSubPriceProgressDialog(BuildContext context) {
     title: Container(
       padding: const EdgeInsets.only(left: 14, right: 14, top: 14),
       child: Text(
-        "Changing the price..",
+        "Deleting..",
         style: Theme.of(context)
             .textTheme
             .bodyText2!
@@ -522,7 +522,7 @@ ProgressDialog returnDeleteSubPriceProgressDialog(BuildContext context) {
     ),
     defaultLoadingWidget: Container(
       padding: const EdgeInsets.only(left: 14),
-      child: CupertinoActivityIndicator(color: Theme.of(context).colorScheme.primary),
+      child: CupertinoActivityIndicator(color: Theme.of(context).colorScheme.error),
     ),
   );
 }
