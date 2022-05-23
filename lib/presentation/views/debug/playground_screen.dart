@@ -4,6 +4,7 @@ import 'package:farmhub/features/produce_manager/bloc/produce_manager_bloc.dart'
 import 'package:farmhub/locator.dart';
 import 'package:farmhub/presentation/shared_widgets/buttons.dart';
 import 'package:farmhub/presentation/shared_widgets/ui_helpers.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
@@ -27,7 +28,8 @@ class PlaygroundScreen extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => ProduceManagerBloc(repository: locator())),
-        BlocProvider(create: (context) => AuthBloc(authRepository: locator())),
+        BlocProvider(
+            create: (context) => AuthBloc(authRepository: locator(), globalAuthCubit: locator())),
       ],
       child: Builder(builder: (context) {
         return Scaffold(
@@ -40,7 +42,7 @@ class PlaygroundScreen extends StatelessWidget {
                     if (state is PMSInitial) {
                       return Text("Nothin really.");
                     } else if (state is PMSGetFirstTenProduceLoading) {
-                      return CircularProgressIndicator();
+                      return CupertinoActivityIndicator();
                     } else if (state is PMSGetFirstTenProduceSuccess) {
                       return Column(
                         children: [
@@ -107,7 +109,7 @@ class PlaygroundScreen extends StatelessWidget {
                     if (state is ASInitial) {
                       return Text('Nothing really.');
                     } else if (state is ASRetrieveUserDataLoading) {
-                      return CircularProgressIndicator();
+                      return CupertinoActivityIndicator();
                     } else if (state is ASRetrieveUserDataSuccess) {
                       return Text(state.farmhubUser.toString());
                     } else if (state is ASRetrieveUserDataError) {

@@ -2,7 +2,7 @@
 import 'package:farmhub/features/produce_manager/bloc/produce_manager_bloc.dart';
 import 'package:farmhub/presentation/shared_widgets/appbars.dart';
 import 'package:farmhub/presentation/shared_widgets/ui_helpers.dart';
-import 'package:farmhub/presentation/smart_widgets/produce_list_card.dart';
+import 'package:farmhub/presentation/smart_widgets/produce_list_card/produce_list_card.dart';
 import 'package:farmhub/presentation/views/add_new_price_screen/bloc/add_new_price_screen_bloc.dart';
 import 'package:farmhub/presentation/views/main_screen/main_screen.dart';
 import 'package:flutter/cupertino.dart';
@@ -49,8 +49,8 @@ class _AddNewPriceScreenState extends State<AddNewPriceScreen> {
                 resizeToAvoidBottomInset: false,
                 extendBodyBehindAppBar: true,
                 appBar: DefaultAppBar(
-                  trailingIcon: const Icon(Icons.close),
-                  trailingOnPressed: () => Navigator.of(context).pop(),
+                  leadingIcon: const Icon(Icons.close),
+                  leadingOnPressed: () => Navigator.of(context).pop(),
                 ),
                 body: SafeArea(
                   top: false,
@@ -119,7 +119,7 @@ class _ProduceListSliverState extends State<ProduceListSliver> {
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height - 250,
               child: const Center(
-                child: CircularProgressIndicator(),
+                child: CupertinoActivityIndicator(),
               ),
             ),
           ]));
@@ -133,7 +133,7 @@ class _ProduceListSliverState extends State<ProduceListSliver> {
                   return Container(
                     height: 100,
                     alignment: Alignment.center,
-                    child: const CircularProgressIndicator(),
+                    child: const CupertinoActivityIndicator(),
                   );
                 } else {
                   return ProduceListCard(
@@ -141,8 +141,12 @@ class _ProduceListSliverState extends State<ProduceListSliver> {
                     produceList[index],
                     onTap: () => Navigator.of(context).pushNamed(
                       '/add_new_price_second',
-                      arguments: ProduceArguments(produceList[index]),
+                      arguments: AddNewPriceScreenArguments(
+                        produceList[index],
+                        AddNewPriceFromRoute.fromAddNewPriceScreen,
+                      ),
                     ),
+                    disableLongPress: true,
                     chartAnimationDuration: 0,
                   );
                 }
@@ -166,8 +170,12 @@ class _ProduceListSliverState extends State<ProduceListSliver> {
                     produceList[index],
                     onTap: () => Navigator.of(context).pushNamed(
                       '/add_new_price_second',
-                      arguments: ProduceArguments(produceList[index], isFromSearch: false),
+                      arguments: AddNewPriceScreenArguments(
+                        produceList[index],
+                        AddNewPriceFromRoute.fromAddNewPriceScreen,
+                      ),
                     ),
+                    disableLongPress: true,
                     chartAnimationDuration: 0,
                   );
                 }
@@ -205,8 +213,12 @@ class _ProduceListSliverState extends State<ProduceListSliver> {
                     state.props.produceList[index],
                     onTap: () => Navigator.of(context).pushNamed(
                       '/add_new_price_second',
-                      arguments: ProduceArguments(state.props.produceList[index]),
+                      arguments: AddNewPriceScreenArguments(
+                        state.props.produceList[index],
+                        AddNewPriceFromRoute.fromAddNewPriceScreen,
+                      ),
                     ),
+                    disableLongPress: true,
                     chartAnimationDuration: 0,
                   );
                 }

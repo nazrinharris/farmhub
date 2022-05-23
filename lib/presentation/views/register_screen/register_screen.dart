@@ -53,8 +53,8 @@ class _RegisterScreenState extends State<RegisterScreen> with AnimationMixin {
           resizeToAvoidBottomInset: false,
           extendBodyBehindAppBar: true,
           appBar: DefaultAppBar(
-            trailingIcon: const Icon(Icons.arrow_back),
-            trailingOnPressed: () {
+            leadingIcon: const Icon(Icons.arrow_back),
+            leadingOnPressed: () {
               Navigator.of(context).pop();
             },
           ),

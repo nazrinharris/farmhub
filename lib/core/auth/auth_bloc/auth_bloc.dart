@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:farmhub/core/auth/domain/entities/farmhub_user/farmhub_user.dart';
 import 'package:farmhub/core/auth/domain/i_auth_repository.dart';
+import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'auth_event.dart';
@@ -11,8 +12,10 @@ part 'auth_bloc.freezed.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final IAuthRepository authRepository;
+  final GlobalAuthCubit globalAuthCubit;
 
-  AuthBloc({required this.authRepository}) : super(const ASInitial()) {
+  AuthBloc({required this.authRepository, required this.globalAuthCubit})
+      : super(const ASInitial()) {
     on<_AEExecLoginWithEmailAndPassword>(execLoginWithEmailAndPassword);
     on<_AEExecRegisterWithEmailAndPassword>(execRegisterWithEmailAndPassword);
     on<_AEExecRetrieveUserData>(execRetrieveUserData);
@@ -31,15 +34,33 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       password: event.password,
     );
 
-    emit(
-      failureOrLogin.fold(
-        (f) => AuthState.loginError(
+    await failureOrLogin.fold(
+      (f) async {
+        emit(AuthState.loginError(
           message: f.message!,
           code: f.code!,
           stackTrace: f.stackTrace!,
-        ),
-        (user) => AuthState.loginSuccess(user: user),
-      ),
+        ));
+      },
+      (user) async {
+        final isAdminOrFailure = await authRepository.isAdmin(uid: user.uid);
+
+        await isAdminOrFailure.fold(
+          (f) async {
+            emit(AuthState.loginError(
+              code: f.code ?? "Unknown Code",
+              message: f.message ?? "Unknown message",
+              stackTrace: f.stackTrace ?? StackTrace.current,
+            ));
+          },
+          (isAdmin) async {
+            globalAuthCubit.updateFarmhubUser(user);
+            globalAuthCubit.updateIsAdmin(isAdmin);
+
+            emit(AuthState.loginSuccess(user: user));
+          },
+        );
+      },
     );
   }
 
@@ -55,15 +76,20 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       username: event.username,
     );
 
-    emit(
-      failureOrRegister.fold(
-        (f) => AuthState.registerError(
-          code: f.code!,
+    failureOrRegister.fold(
+      (f) {
+        emit(AuthState.registerError(
           message: f.message!,
+          code: f.code!,
           stackTrace: f.stackTrace!,
-        ),
-        (user) => AuthState.registerSuccess(user: user),
-      ),
+        ));
+      },
+      (user) async {
+        globalAuthCubit.updateFarmhubUser(user);
+        globalAuthCubit.updateIsAdmin(false);
+
+        emit(AuthState.registerSuccess(user: user));
+      },
     );
   }
 
@@ -75,14 +101,21 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
     final failureOrSignOut = await authRepository.signOut();
 
-    emit(failureOrSignOut.fold(
-      (f) => AuthState.signOutError(
-        code: f.code!,
-        message: f.message!,
-        stackTrace: f.stackTrace!,
-      ),
-      (_) => const AuthState.signOutSuccess(),
-    ));
+    failureOrSignOut.fold(
+      (f) {
+        emit(AuthState.signOutError(
+          code: f.code!,
+          message: f.message!,
+          stackTrace: f.stackTrace!,
+        ));
+      },
+      (r) {
+        globalAuthCubit.updateFarmhubUser(null);
+        globalAuthCubit.updateIsAdmin(null);
+
+        emit(const AuthState.signOutSuccess());
+      },
+    );
   }
 
   FutureOr<void> execRetrieveUserData(

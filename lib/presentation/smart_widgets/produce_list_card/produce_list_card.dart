@@ -1,13 +1,22 @@
-// TODO: Extract ProduceListCard and whatever else that is needed.
+import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
+import 'package:farmhub/core/errors/failures.dart';
+import 'package:farmhub/presentation/global/cubit/global_ui_cubit.dart';
+import 'package:farmhub/presentation/shared_widgets/buttons.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
+import 'package:ndialog/ndialog.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
-import '../../app_router.dart';
-import '../../core/util/misc.dart';
-import '../../features/produce_manager/domain/entities/price/price.dart';
-import '../../features/produce_manager/domain/entities/produce/produce.dart';
-import '../shared_widgets/ui_helpers.dart';
+import '../../../app_router.dart';
+import '../../../core/util/misc.dart';
+import '../../../features/produce_manager/domain/entities/price/price.dart';
+import '../../../features/produce_manager/domain/entities/produce/produce.dart';
+import '../../../locator.dart';
+import '../../shared_widgets/ui_helpers.dart';
+import '../produce_dialogs/app_dialogs.dart';
+import '../produce_dialogs/produce_dialog_cubit/produce_dialog_cubit.dart';
 
 /// [index] is only used to decide if the top border should be rendered or not.
 /// [0] If the top border should be drawn and all other numbers will not draw it.
@@ -16,6 +25,8 @@ class ProduceListCard extends StatelessWidget {
   final Produce produce;
   final Function()? onTap;
   final double? chartAnimationDuration;
+  final bool? disableLongPress;
+  final bool? willRefreshPage;
 
   const ProduceListCard(
     this.index,
@@ -23,16 +34,27 @@ class ProduceListCard extends StatelessWidget {
     Key? key,
     this.onTap,
     this.chartAnimationDuration,
+    this.disableLongPress,
+    this.willRefreshPage = false,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     num currentProducePrice = produce.currentProducePrice["price"];
     currentProducePrice = roundNum(currentProducePrice.toDouble(), 2);
+    final bool? isAdmin = context.read<GlobalAuthCubit>().state.isAdmin;
+    final bool disableLongPress = this.disableLongPress ?? false;
 
     return Material(
       type: MaterialType.transparency,
       child: InkWell(
+        onLongPress: () {
+          HapticFeedback.heavyImpact();
+          if (disableLongPress) {
+          } else {
+            showProduceBottomActionSheet(context, isAdmin, produce);
+          }
+        },
         onTap: onTap ??
             () {
               FocusScope.of(context).unfocus();
@@ -102,6 +124,199 @@ class ProduceListCard extends StatelessWidget {
     } else {
       return BorderSide.none;
     }
+  }
+
+  void showProduceBottomActionSheet(
+    BuildContext context,
+    bool? isAdmin,
+    Produce produce,
+  ) {
+    isAdmin ??= false;
+
+    showModalBottomSheet<void>(
+      backgroundColor: Colors.transparent,
+      context: context,
+      builder: (BuildContext context) {
+        return isAdmin!
+            ? BuildAdminModalBottomSheet(produce: produce)
+            : BuildUserModalBottomSheet(produce: produce);
+      },
+    );
+  }
+}
+
+class BuildUserModalBottomSheet extends StatelessWidget {
+  final Produce produce;
+
+  const BuildUserModalBottomSheet({
+    Key? key,
+    required this.produce,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 200,
+      decoration: BoxDecoration(
+        color: Theme.of(context).colorScheme.background,
+        borderRadius:
+            const BorderRadius.only(topLeft: Radius.circular(14), topRight: Radius.circular(14)),
+      ),
+      child: Column(
+        children: [
+          Container(
+            padding: EdgeInsets.only(top: 24),
+            alignment: Alignment.center,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(produce.produceName),
+                UIHorizontalSpace14(),
+                ChangeBox(produce),
+              ],
+            ),
+          ),
+          Container(
+            padding: EdgeInsets.only(top: 24, bottom: 34),
+            decoration: BoxDecoration(
+              color: Theme.of(context).colorScheme.background,
+              borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(14), topRight: Radius.circular(14)),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 46),
+              child: SecondaryButton(
+                onPressed: () {},
+                content: "Add to Favorites",
+                buttonIcon: Icon(Icons.bookmark_add_outlined, size: 20),
+              ),
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class BuildAdminModalBottomSheet extends StatelessWidget {
+  final Produce produce;
+
+  const BuildAdminModalBottomSheet({
+    Key? key,
+    required this.produce,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (context) => ProduceDialogCubit(locator(), locator()),
+      child: Builder(builder: (context) {
+        return Container(
+          height: 390,
+          decoration: BoxDecoration(
+            color: Theme.of(context).colorScheme.background,
+            borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(24), topRight: Radius.circular(24)),
+          ),
+          child: Column(
+            children: [
+              Container(
+                padding: const EdgeInsets.only(top: 24),
+                alignment: Alignment.center,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(produce.produceName),
+                    const UIVerticalSpace14(),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "RM ${roundNum(produce.currentProducePrice["price"], 2)}/kg",
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyText2!
+                              .copyWith(fontWeight: FontWeight.w700),
+                        ),
+                        const UIHorizontalSpace14(),
+                        ChangeBox(produce),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 14, left: 46, right: 46),
+                child: SecondaryButton(
+                  onPressed: () {},
+                  content: "Add to Favorites",
+                  buttonIcon: const Icon(Icons.bookmark_add_outlined, size: 20),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 14, left: 46, right: 46),
+                child: SecondaryButton(
+                  onPressed: () {
+                    Navigator.of(context).pushNamed(
+                      "/add_new_price_second",
+                      arguments: AddNewPriceScreenArguments(
+                        produce,
+                        AddNewPriceFromRoute.fromMainBottomSheet,
+                      ),
+                    );
+                  },
+                  content: "Add new Price",
+                  type: SecondaryButtonType.filled,
+                  buttonIcon: const Icon(Icons.attach_money, size: 20),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 14, left: 46, right: 46),
+                child: SecondaryButton(
+                  type: SecondaryButtonType.filled,
+                  onPressed: () {
+                    context.read<ProduceDialogCubit>().showEditProduce(
+                          context: context,
+                          editProduceDialog: returnEditProduceDialog(
+                            context: context,
+                            produce: produce,
+                            textEditingController: TextEditingController(),
+                            formKey: GlobalKey<FormState>(),
+                            formFocusNode: FocusNode(),
+                            fromRoute: DialogFromRoute.fromMainBottomSheet,
+                          ),
+                        );
+                  },
+                  content: "Edit Produce",
+                  buttonIcon: const Icon(Icons.edit, size: 20),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 14, left: 46, right: 46),
+                child: SecondaryButton(
+                  type: SecondaryButtonType.red,
+                  onPressed: () async {
+                    // This shows the confirmation message. This will also handle deletion and
+                    // showing the progress dialog and the like if the user decides to continue.
+                    context.read<ProduceDialogCubit>().showDeleteConfirmation(
+                          context: context,
+                          produce: produce,
+                          confirmationDialog: returnProduceDeleteConfirmationDialog(
+                            context,
+                            produce,
+                            DialogFromRoute.fromMainBottomSheet,
+                          ),
+                        );
+                  },
+                  content: "Delete Produce",
+                  buttonIcon: const Icon(Icons.delete, size: 20),
+                ),
+              )
+            ],
+          ),
+        );
+      }),
+    );
   }
 }
 

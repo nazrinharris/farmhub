@@ -1,5 +1,7 @@
 import 'package:farmhub/app_router.dart';
+import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
 import 'package:farmhub/locator.dart';
+import 'package:farmhub/presentation/global/cubit/global_ui_cubit.dart';
 import 'package:farmhub/presentation/themes/farmhub_theme.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -20,14 +22,6 @@ Future<void> main() async {
       appRouter: AppRouter(),
     ),
   );
-
-  SystemChrome.setSystemUIOverlayStyle(
-    const SystemUiOverlayStyle(
-      statusBarBrightness: Brightness.light,
-      systemNavigationBarDividerColor: Colors.transparent,
-      systemNavigationBarColor: Colors.transparent,
-    ),
-  );
 }
 
 class FarmhubApp extends StatelessWidget {
@@ -43,12 +37,53 @@ class FarmhubApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => locator<AuthBloc>()),
+        BlocProvider(create: (context) => locator<GlobalAuthCubit>()),
+        BlocProvider(create: (context) => locator<GlobalUICubit>()),
       ],
-      child: MaterialApp(
-        title: "Farmhub",
-        theme: FarmhubTheme.appThemeData[FarmhubThemeVariants.light],
-        onGenerateRoute: appRouter.onGenerateRoute,
-      ),
+      child: FarmhubMaterialApp(appRouter: appRouter),
+    );
+  }
+}
+
+class FarmhubMaterialApp extends StatefulWidget {
+  const FarmhubMaterialApp({
+    Key? key,
+    required this.appRouter,
+  }) : super(key: key);
+
+  final AppRouter appRouter;
+
+  @override
+  State<FarmhubMaterialApp> createState() => _FarmhubMaterialAppState();
+}
+
+class _FarmhubMaterialAppState extends State<FarmhubMaterialApp> {
+  @override
+  void initState() {
+    super.initState();
+
+    context.read<GlobalAuthCubit>().updateGlobalAuthCubit();
+
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+      systemNavigationBarColor: Colors.transparent,
+      systemNavigationBarDividerColor: Colors.transparent,
+      systemNavigationBarIconBrightness: Brightness.dark,
+      statusBarColor: Colors.transparent,
+      statusBarIconBrightness: Brightness.light,
+      statusBarBrightness: Brightness.light,
+      systemStatusBarContrastEnforced: false,
+    ));
+
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: "Farmhub",
+      theme: FarmhubTheme.appThemeData[FarmhubThemeVariants.light],
+      onGenerateRoute: widget.appRouter.onGenerateRoute,
     );
   }
 }

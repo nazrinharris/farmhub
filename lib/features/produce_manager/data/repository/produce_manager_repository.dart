@@ -76,9 +76,22 @@ class ProduceManagerRepository implements IProduceManagerRepository {
   }
 
   @override
-  FutureEither<Produce> getSpecificProduce({required String pid}) {
-    // TODO: implement getSpecificProduce
-    throw UnimplementedError();
+  FutureEither<Produce> getProduce({required String pid}) async {
+    if (await networkInfo.isConnected) {
+      try {
+        final produce = await remoteDatasource.getProduce(pid);
+
+        return Right(produce);
+      } catch (e) {
+        return Left(ProduceManagerFailure(code: e.toString(), stackTrace: StackTrace.current));
+      }
+    } else {
+      return Left(InternetConnectionFailure(
+        code: ERROR_NO_INTERNET_CONNECTION,
+        message: MESSAGE_NO_INTERNET_CONNECTION,
+        stackTrace: StackTrace.current,
+      ));
+    }
   }
 
   @override
@@ -219,6 +232,44 @@ class ProduceManagerRepository implements IProduceManagerRepository {
   }
 
   @override
+  FutureEither<Unit> editProduce(String produceId, String newProduceName) async {
+    if (await networkInfo.isConnected) {
+      try {
+        await remoteDatasource.editProduce(produceId, newProduceName);
+
+        return const Right(unit);
+      } catch (e) {
+        return Left(UnexpectedFailure(code: e.toString(), stackTrace: StackTrace.current));
+      }
+    } else {
+      return Left(InternetConnectionFailure(
+        code: ERROR_NO_INTERNET_CONNECTION,
+        message: MESSAGE_NO_INTERNET_CONNECTION,
+        stackTrace: StackTrace.current,
+      ));
+    }
+  }
+
+  @override
+  FutureEither<Unit> deleteProduce(String produceId) async {
+    if (await networkInfo.isConnected) {
+      try {
+        await remoteDatasource.deleteProduce(produceId);
+
+        return const Right(unit);
+      } catch (e) {
+        return Left(UnexpectedFailure(code: e.toString(), stackTrace: StackTrace.current));
+      }
+    } else {
+      return Left(InternetConnectionFailure(
+        code: ERROR_NO_INTERNET_CONNECTION,
+        message: MESSAGE_NO_INTERNET_CONNECTION,
+        stackTrace: StackTrace.current,
+      ));
+    }
+  }
+
+  @override
   FutureEither<List<Produce>> getNextTenSearchProduce(
     List<Produce> lastProduceList,
     String query,
@@ -294,6 +345,77 @@ class ProduceManagerRepository implements IProduceManagerRepository {
         final result = await remoteDatasource.getNextTenPrices(lastPriceList, produceId);
 
         return Right(result);
+      } catch (e) {
+        return Left(UnexpectedFailure(code: e.toString(), stackTrace: StackTrace.current));
+      }
+    } else {
+      return Left(InternetConnectionFailure(
+        code: ERROR_NO_INTERNET_CONNECTION,
+        message: MESSAGE_NO_INTERNET_CONNECTION,
+        stackTrace: StackTrace.current,
+      ));
+    }
+  }
+
+  @override
+  FutureEither<Price> editSubPrice(
+    String produceId,
+    String priceId,
+    num newPrice,
+    String subPriceDate,
+  ) async {
+    if (await networkInfo.isConnected) {
+      try {
+        final result = await remoteDatasource.editSubPrice(
+          produceId,
+          priceId,
+          newPrice,
+          subPriceDate,
+        );
+
+        return Right(result);
+      } catch (e) {
+        return Left(UnexpectedFailure(code: e.toString(), stackTrace: StackTrace.current));
+      }
+    } else {
+      return Left(InternetConnectionFailure(
+        code: ERROR_NO_INTERNET_CONNECTION,
+        message: MESSAGE_NO_INTERNET_CONNECTION,
+        stackTrace: StackTrace.current,
+      ));
+    }
+  }
+
+  @override
+  FutureEither<Price> getPrice(String produceId, String priceId) async {
+    if (await networkInfo.isConnected) {
+      try {
+        final result = await remoteDatasource.getPrice(produceId, priceId);
+
+        return Right(result);
+      } catch (e) {
+        return Left(UnexpectedFailure(code: e.toString(), stackTrace: StackTrace.current));
+      }
+    } else {
+      return Left(InternetConnectionFailure(
+        code: ERROR_NO_INTERNET_CONNECTION,
+        message: MESSAGE_NO_INTERNET_CONNECTION,
+        stackTrace: StackTrace.current,
+      ));
+    }
+  }
+
+  @override
+  FutureEither<bool> deleteSubPrice(
+      {required String produceId, required String priceId, required String subPriceDate}) async {
+    if (await networkInfo.isConnected) {
+      try {
+        final isPriceDocDeleted =
+            await remoteDatasource.deleteSubPrice(produceId, priceId, subPriceDate);
+        return Right(isPriceDocDeleted);
+      } on ProduceManagerException catch (e) {
+        return Left(
+            ProduceManagerFailure(code: e.code, message: e.message, stackTrace: e.stackTrace));
       } catch (e) {
         return Left(UnexpectedFailure(code: e.toString(), stackTrace: StackTrace.current));
       }

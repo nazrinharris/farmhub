@@ -1,21 +1,27 @@
 import 'package:farmhub/app_router.dart';
+import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
 import 'package:farmhub/core/errors/exceptions.dart';
 import 'package:farmhub/core/errors/failures.dart';
 import 'package:farmhub/core/util/dates.dart';
 import 'package:farmhub/locator.dart';
-import 'package:farmhub/presentation/shared_widgets/appbars.dart';
+import 'package:farmhub/presentation/global/cubit/global_ui_cubit.dart';
 import 'package:farmhub/presentation/shared_widgets/scroll_physics.dart';
 import 'package:farmhub/presentation/shared_widgets/ui_helpers.dart';
 import 'package:farmhub/presentation/smart_widgets/primary_button_aware/primary_button_aware_cubit.dart';
-import 'package:farmhub/presentation/smart_widgets/produce_list_card.dart';
+import 'package:farmhub/presentation/smart_widgets/produce_list_card/produce_list_card.dart';
 import 'package:farmhub/presentation/views/main_screen/main_screen.dart';
 import 'package:farmhub/presentation/views/produce_screen/produce_aggregate_cubit/produce_aggregate_cubit.dart';
 import 'package:farmhub/presentation/views/produce_screen/produce_prices_cubit/produce_prices_cubit.dart';
+import 'package:farmhub/presentation/views/produce_screen/produce_screen_appbar.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 import '../../../core/util/misc.dart';
 import '../../../features/produce_manager/domain/entities/price/price.dart';
+
+import 'package:ndialog/ndialog.dart';
 
 import '../../smart_widgets/custom_cupertino_sliver_refresh_control.dart';
 import 'custom_tab.dart' as ct;
@@ -59,54 +65,114 @@ class _ProduceScreenState extends State<ProduceScreen> with SingleTickerProvider
         BlocProvider(create: (_) => PrimaryButtonAwareCubit()),
         BlocProvider(
             create: (_) => ProduceAggregateCubit(
-                  tabController: tabController,
-                  repository: locator(),
-                )),
+                tabController: tabController,
+                repository: locator(),
+                produce: widget.produceArguments.produce)),
         BlocProvider(create: (_) => ProducePricesCubit(repository: locator()))
       ],
       child: Builder(
-        builder: (context) => Scaffold(
-            resizeToAvoidBottomInset: false,
-            extendBodyBehindAppBar: true,
-            extendBody: true,
-            appBar: DefaultAppBar(
-              trailingIcon: const Icon(Icons.arrow_back),
-              trailingOnPressed: () {
-                Navigator.of(context).pop();
-              },
-              leadingIcon: const Icon(Icons.bookmark_add_outlined),
-              leadingOnPressed: () {},
-            ),
-            body: CustomScrollView(
-              controller: scrollController,
-              physics: DefaultScrollPhysics,
-              slivers: [
-                CustomCupertinoSliverRefreshControl(
-                  onRefresh: () async {
-                    print("Refreshed");
-                    await Future.delayed(Duration(seconds: 2));
-                  },
-                ),
-                SliverProduceHeader(widget.produceArguments.produce),
-                SliverProducePriceChart(tabs, widget.produceArguments.produce),
-                SliverPricesListHeader(scrollController, widget.produceArguments.produce),
-                BlocBuilder<ProducePricesCubit, ProducePricesState>(
-                  builder: (context, state) {
-                    return SliverPricesListSwitcher(widget.produceArguments.produce);
-                  },
-                ),
-              ],
-            )),
+        builder: (context) => BlocListener<GlobalUICubit, GlobalUIState>(
+          listener: (context, state) async {
+            if (state.props.shouldRefreshProduce) {
+              await context
+                  .read<ProduceAggregateCubit>()
+                  .getAggregatePricesAndProduce(widget.produceArguments.produce.produceId);
+              await context
+                  .read<ProducePricesCubit>()
+                  .getFirstTenPrices(widget.produceArguments.produce.produceId);
+              context.read<GlobalUICubit>().setShouldRefreshProduce(false);
+            }
+          },
+          child: BlocBuilder<GlobalAuthCubit, GlobalAuthState>(
+            builder: (context, state) {
+              final bool isAdmin = state.isAdmin ?? false;
+
+              return BuildProduceScreen(
+                isAdmin: isAdmin,
+                widget: widget,
+                scrollController: scrollController,
+                tabs: tabs,
+                staleProduce: widget.produceArguments.produce,
+              );
+            },
+          ),
+        ),
       ),
     );
   }
 }
 
-class SliverProduceHeader extends StatefulWidget {
-  final Produce produce;
+class BuildProduceScreen extends StatefulWidget {
+  const BuildProduceScreen(
+      {Key? key,
+      required this.isAdmin,
+      required this.widget,
+      required this.scrollController,
+      required this.tabs,
+      required this.staleProduce})
+      : super(key: key);
 
-  const SliverProduceHeader(
-    this.produce, {
+  final bool isAdmin;
+  final ProduceScreen widget;
+  final ScrollController scrollController;
+  final Produce staleProduce;
+  final List<ct.CustomTab> tabs;
+
+  @override
+  State<BuildProduceScreen> createState() => _BuildProduceScreenState();
+}
+
+class _BuildProduceScreenState extends State<BuildProduceScreen> {
+  @override
+  void initState() {
+    super.initState();
+
+    context
+        .read<ProduceAggregateCubit>()
+        .getAggregatePricesAndProduce(widget.staleProduce.produceId);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        resizeToAvoidBottomInset: false,
+        extendBodyBehindAppBar: true,
+        extendBody: true,
+        appBar: ProduceScreenAppBar(
+          widget.isAdmin,
+        ),
+        body: BlocBuilder<ProduceAggregateCubit, ProduceAggregateState>(
+          builder: (context, state) {
+            final Produce produce = state.props.produce!;
+            return CustomScrollView(
+              controller: widget.scrollController,
+              physics: DefaultScrollPhysics,
+              slivers: [
+                CustomCupertinoSliverRefreshControl(
+                  onRefresh: () async {
+                    await context
+                        .read<ProduceAggregateCubit>()
+                        .getAggregatePricesAndProduce(produce.produceId);
+                    await context.read<ProducePricesCubit>().getFirstTenPrices(produce.produceId);
+                  },
+                ),
+                const SliverProduceHeader(),
+                SliverProducePriceChart(widget.tabs, produce),
+                SliverPricesListHeader(widget.scrollController, produce),
+                BlocBuilder<ProducePricesCubit, ProducePricesState>(
+                  builder: (context, state) {
+                    return SliverPricesListSwitcher(produce);
+                  },
+                ),
+              ],
+            );
+          },
+        ));
+  }
+}
+
+class SliverProduceHeader extends StatefulWidget {
+  const SliverProduceHeader({
     Key? key,
   }) : super(key: key);
 
@@ -126,31 +192,55 @@ class _SliverProduceHeaderState extends State<SliverProduceHeader> {
 
   @override
   Widget build(BuildContext context) {
-    num currentProducePrice = widget.produce.currentProducePrice["price"];
-    currentProducePrice = roundNum(currentProducePrice.toDouble(), 2);
-
     return SliverList(
         delegate: SliverChildListDelegate([
-      Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 24),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const UITopPadding(),
-            Headline1(widget.produce.produceName),
-            Headline2(returnCurrentDate()),
-            const UIVerticalSpace14(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Text("RM $currentProducePrice/kg"),
-                const UIHorizontalSpace14(),
-                ChangeBox(widget.produce),
-              ],
-            ),
-            const UIVerticalSpace30(),
-          ],
-        ),
+      BlocBuilder<ProduceAggregateCubit, ProduceAggregateState>(
+        builder: (context, state) {
+          if (state is PASCompleted || state is PASLoading) {
+            final Produce produce = state.props.produce!;
+
+            num currentProducePrice = produce.currentProducePrice["price"];
+            currentProducePrice = roundNum(currentProducePrice.toDouble(), 2);
+
+            return Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const UITopPadding(),
+                  Headline1(produce.produceName),
+                  Headline2(returnCurrentDate()),
+                  const UIVerticalSpace14(),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Text("RM $currentProducePrice/kg"),
+                      const UIHorizontalSpace14(),
+                      ChangeBox(produce),
+                    ],
+                  ),
+                  const UIVerticalSpace30(),
+                ],
+              ),
+            );
+          } else if (state is PASError) {
+            return Text(
+              "ERROR!",
+              style: Theme.of(context).textTheme.bodyText1!.copyWith(color: Colors.red),
+            );
+          } else {
+            print(state);
+            return Container(
+              height: 100,
+              alignment: Alignment.center,
+              child: Text(
+                "Unexpected state was thrown",
+                style: Theme.of(context).textTheme.bodyText1,
+                textAlign: TextAlign.center,
+              ),
+            );
+          }
+        },
       ),
     ]));
   }
@@ -175,8 +265,6 @@ class _SliverProducePriceChartState extends State<SliverProducePriceChart> {
   @override
   void initState() {
     super.initState();
-
-    context.read<ProduceAggregateCubit>().getAggregatePrices(widget.produce.produceId);
   }
 
   @override
@@ -214,7 +302,7 @@ class _SliverProducePriceChartState extends State<SliverProducePriceChart> {
             return Container(
               height: 250,
               alignment: Alignment.center,
-              child: const CircularProgressIndicator(),
+              child: const CupertinoActivityIndicator(),
             );
           } else if (state is PASCompleted) {
             return LargePriceChart(
@@ -267,7 +355,7 @@ class SliverPricesListHeader extends StatefulWidget {
   final Produce produce;
   final ScrollController scrollController;
 
-  SliverPricesListHeader(this.scrollController, this.produce, {Key? key}) : super(key: key);
+  const SliverPricesListHeader(this.scrollController, this.produce, {Key? key}) : super(key: key);
 
   @override
   State<SliverPricesListHeader> createState() => _SliverPricesListHeaderState();
@@ -301,6 +389,12 @@ class _SliverPricesListHeaderState extends State<SliverPricesListHeader> {
         ],
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    widget.scrollController.dispose();
   }
 }
 
@@ -373,9 +467,9 @@ class SliverPricesList extends StatelessWidget {
   final bool isLoading;
   final bool isError;
   final Produce produce;
-  Failure? failure;
+  final Failure? failure;
 
-  SliverPricesList(
+  const SliverPricesList(
     this.pricesList, {
     Key? key,
     required this.isLoading,
@@ -402,7 +496,7 @@ class SliverPricesList extends StatelessWidget {
       return Container(
         height: 100,
         alignment: Alignment.center,
-        child: const CircularProgressIndicator(),
+        child: const CupertinoActivityIndicator(),
       );
     } else if (isError) {
       print(failure);
@@ -444,9 +538,36 @@ class PriceListCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bool isAdmin = context.read<GlobalAuthCubit>().state.isAdmin ?? false;
+
     return Material(
       type: MaterialType.transparency,
       child: InkWell(
+        onLongPress: () async {
+          HapticFeedback.heavyImpact();
+          if (isAdmin) {
+            await NDialog(
+              dialogStyle: DialogStyle(
+                titleDivider: true,
+                backgroundColor: Theme.of(context).colorScheme.background,
+              ),
+              title: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 14),
+                child: Text(
+                  "Hmm, did you long-press this price?",
+                  style: Theme.of(context).textTheme.bodyText2,
+                ),
+              ),
+              content: Padding(
+                padding: const EdgeInsets.only(top: 14, bottom: 24, right: 24),
+                child: Text(
+                  "If you want to edit a price, press the price again to go to the price screen.",
+                  style: Theme.of(context).textTheme.bodyText1,
+                ),
+              ),
+            ).show(context, transitionType: DialogTransitionType.Bubble);
+          }
+        },
         onTap: () {
           Navigator.of(context)
               .pushNamed('/price', arguments: PriceScreenArguments(produce, price));

@@ -14,11 +14,9 @@ const String ERROR_EMAIL_ALREADY_USED = 'ERROR_EMAIL_ALREADY_USED';
 /// Can be changed.
 const String MESSAGE_NO_INTERNET_CONNECTION =
     'Sorry, it seems like you are not connected to the internet, please try again';
-const String MESSAGE_NOT_SAME_PASSWORD =
-    'Sorry, the passwords you entered are not the same';
+const String MESSAGE_NOT_SAME_PASSWORD = 'Sorry, the passwords you entered are not the same';
 const String MESSAGE_USER_NOT_FOUND = 'Sorry, you are not logged in';
-const String MESSAGE_EMAIL_ALREADY_IN_USE =
-    'Sorry, this email is already in use';
+const String MESSAGE_EMAIL_ALREADY_IN_USE = 'Sorry, this email is already in use';
 
 /// Firebase [PluginCodes]
 /// These codes are meant to give context to the exception, because [FirebaseException] is used
@@ -37,3 +35,6 @@ const String FS_USER_COLLECTION = 'users';
 ///
 /// Do not change.
 const String FS_ERRCODE_JSON_NOT_FOUND = 'JSON_NOT_FOUND';
+
+/// [ProduceManager]'s [ErrorCodes]
+const String PM_ERR_LAST_PRICE = 'PM_ERR_LAST_PRICE';

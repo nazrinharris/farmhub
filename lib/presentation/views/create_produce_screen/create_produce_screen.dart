@@ -38,8 +38,8 @@ class CreateProduceScreen extends StatelessWidget {
               resizeToAvoidBottomInset: false,
               extendBodyBehindAppBar: true,
               appBar: DefaultAppBar(
-                trailingIcon: Icon(Icons.close),
-                trailingOnPressed: () => Navigator.of(context).pop(),
+                leadingIcon: Icon(Icons.close),
+                leadingOnPressed: () => Navigator.of(context).pop(),
               ),
               body: SafeArea(
                 top: false,

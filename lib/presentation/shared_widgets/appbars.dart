@@ -1,3 +1,4 @@
+import 'package:farmhub/presentation/shared_widgets/ui_helpers.dart';
 import 'package:flutter/material.dart';
 
 // TODO: Make proper layout for centering the title when there is only a trailing icon.
@@ -5,21 +6,27 @@ import 'package:flutter/material.dart';
 // transparent. Also do not specify a method for the leading icon to avoid inkwells
 
 class DefaultAppBar extends StatelessWidget implements PreferredSizeWidget {
-  final Function()? trailingOnPressed;
-  final Icon? trailingIcon;
-  final Function()? leadingOnPressed;
   final Icon? leadingIcon;
+  final Function()? leadingOnPressed;
+  final Icon? secondTrailingIcon;
+  final Function()? secondTrailingOnPressed;
+  final Widget? secondTrailingChild;
+  final Icon? trailingIcon;
+  final Function()? trailingOnPressed;
   final String? title;
   final List<Color>? backgroundColors;
 
   const DefaultAppBar({
     Key? key,
-    this.trailingOnPressed,
-    this.trailingIcon,
     this.leadingOnPressed,
     this.leadingIcon,
+    this.secondTrailingIcon,
+    this.secondTrailingOnPressed,
+    this.trailingIcon,
+    this.trailingOnPressed,
     this.title,
     this.backgroundColors,
+    this.secondTrailingChild,
   }) : super(key: key);
 
   @override
@@ -52,9 +59,9 @@ class DefaultAppBar extends StatelessWidget implements PreferredSizeWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  resolveTrailing(),
-                  resolveTitle(context),
                   resolveLeading(),
+                  resolveTitle(context),
+                  resolveTrailing(),
                 ],
               ),
             ],
@@ -65,10 +72,24 @@ class DefaultAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   Widget resolveTrailing() {
-    if (trailingIcon != null) {
-      return IconButton(
-        onPressed: trailingOnPressed,
-        icon: trailingIcon!,
+    if (trailingIcon != null && secondTrailingIcon == null && secondTrailingChild == null) {
+      return IconButton(onPressed: trailingOnPressed, icon: trailingIcon!);
+    } else if (trailingIcon != null && secondTrailingIcon != null) {
+      return Container(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            IconButton(onPressed: trailingOnPressed, icon: trailingIcon!),
+            IconButton(onPressed: secondTrailingOnPressed, icon: secondTrailingIcon!),
+          ],
+        ),
+      );
+    } else if (trailingIcon != null && secondTrailingChild != null) {
+      return Row(
+        children: [
+          IconButton(onPressed: trailingOnPressed, icon: trailingIcon!),
+          secondTrailingChild!,
+        ],
       );
     } else {
       return const SizedBox.shrink();

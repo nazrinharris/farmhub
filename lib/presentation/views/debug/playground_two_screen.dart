@@ -118,6 +118,20 @@ class PlaygroundTwoScreen extends StatelessWidget {
                       },
                     ),
                   ),
+                  UIVerticalSpace14(),
+                  Center(
+                    child: PrimaryButton(
+                      width: 200,
+                      content: "Delete subPrice",
+                      onPressed: () {
+                        context.read<PlaygroundCubit>().deletePriceFromAggregate(
+                              produceId: "4pfZr3GSkFilgggKlowp",
+                              chosenDate: "22-05-2022",
+                              chosenYear: "2022",
+                            );
+                      },
+                    ),
+                  ),
                 ],
               ),
             );

@@ -776,6 +776,7 @@ class _$ProduceAggregatePropsTearOff {
   _ProduceAggregateProps call(
       {required TabController tabController,
       required int index,
+      required Produce? produce,
       List<PriceSnippet>? twoWeeksPricesList,
       List<PriceSnippet>? oneMonthPricesList,
       List<PriceSnippet>? twoMonthPricesList,
@@ -784,6 +785,7 @@ class _$ProduceAggregatePropsTearOff {
     return _ProduceAggregateProps(
       tabController: tabController,
       index: index,
+      produce: produce,
       twoWeeksPricesList: twoWeeksPricesList,
       oneMonthPricesList: oneMonthPricesList,
       twoMonthPricesList: twoMonthPricesList,
@@ -800,6 +802,7 @@ const $ProduceAggregateProps = _$ProduceAggregatePropsTearOff();
 mixin _$ProduceAggregateProps {
   TabController get tabController => throw _privateConstructorUsedError;
   int get index => throw _privateConstructorUsedError;
+  Produce? get produce => throw _privateConstructorUsedError;
   List<PriceSnippet>? get twoWeeksPricesList =>
       throw _privateConstructorUsedError;
   List<PriceSnippet>? get oneMonthPricesList =>
@@ -824,11 +827,14 @@ abstract class $ProduceAggregatePropsCopyWith<$Res> {
   $Res call(
       {TabController tabController,
       int index,
+      Produce? produce,
       List<PriceSnippet>? twoWeeksPricesList,
       List<PriceSnippet>? oneMonthPricesList,
       List<PriceSnippet>? twoMonthPricesList,
       List<PriceSnippet>? sixMonthPricesList,
       List<PriceSnippet>? oneYearPricesList});
+
+  $ProduceCopyWith<$Res>? get produce;
 }
 
 /// @nodoc
@@ -844,6 +850,7 @@ class _$ProduceAggregatePropsCopyWithImpl<$Res>
   $Res call({
     Object? tabController = freezed,
     Object? index = freezed,
+    Object? produce = freezed,
     Object? twoWeeksPricesList = freezed,
     Object? oneMonthPricesList = freezed,
     Object? twoMonthPricesList = freezed,
@@ -859,6 +866,10 @@ class _$ProduceAggregatePropsCopyWithImpl<$Res>
           ? _value.index
           : index // ignore: cast_nullable_to_non_nullable
               as int,
+      produce: produce == freezed
+          ? _value.produce
+          : produce // ignore: cast_nullable_to_non_nullable
+              as Produce?,
       twoWeeksPricesList: twoWeeksPricesList == freezed
           ? _value.twoWeeksPricesList
           : twoWeeksPricesList // ignore: cast_nullable_to_non_nullable
@@ -881,6 +892,17 @@ class _$ProduceAggregatePropsCopyWithImpl<$Res>
               as List<PriceSnippet>?,
     ));
   }
+
+  @override
+  $ProduceCopyWith<$Res>? get produce {
+    if (_value.produce == null) {
+      return null;
+    }
+
+    return $ProduceCopyWith<$Res>(_value.produce!, (value) {
+      return _then(_value.copyWith(produce: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -893,11 +915,15 @@ abstract class _$ProduceAggregatePropsCopyWith<$Res>
   $Res call(
       {TabController tabController,
       int index,
+      Produce? produce,
       List<PriceSnippet>? twoWeeksPricesList,
       List<PriceSnippet>? oneMonthPricesList,
       List<PriceSnippet>? twoMonthPricesList,
       List<PriceSnippet>? sixMonthPricesList,
       List<PriceSnippet>? oneYearPricesList});
+
+  @override
+  $ProduceCopyWith<$Res>? get produce;
 }
 
 /// @nodoc
@@ -915,6 +941,7 @@ class __$ProduceAggregatePropsCopyWithImpl<$Res>
   $Res call({
     Object? tabController = freezed,
     Object? index = freezed,
+    Object? produce = freezed,
     Object? twoWeeksPricesList = freezed,
     Object? oneMonthPricesList = freezed,
     Object? twoMonthPricesList = freezed,
@@ -930,6 +957,10 @@ class __$ProduceAggregatePropsCopyWithImpl<$Res>
           ? _value.index
           : index // ignore: cast_nullable_to_non_nullable
               as int,
+      produce: produce == freezed
+          ? _value.produce
+          : produce // ignore: cast_nullable_to_non_nullable
+              as Produce?,
       twoWeeksPricesList: twoWeeksPricesList == freezed
           ? _value.twoWeeksPricesList
           : twoWeeksPricesList // ignore: cast_nullable_to_non_nullable
@@ -960,6 +991,7 @@ class _$_ProduceAggregateProps implements _ProduceAggregateProps {
   const _$_ProduceAggregateProps(
       {required this.tabController,
       required this.index,
+      required this.produce,
       this.twoWeeksPricesList,
       this.oneMonthPricesList,
       this.twoMonthPricesList,
@@ -970,6 +1002,8 @@ class _$_ProduceAggregateProps implements _ProduceAggregateProps {
   final TabController tabController;
   @override
   final int index;
+  @override
+  final Produce? produce;
   @override
   final List<PriceSnippet>? twoWeeksPricesList;
   @override
@@ -983,7 +1017,7 @@ class _$_ProduceAggregateProps implements _ProduceAggregateProps {
 
   @override
   String toString() {
-    return 'ProduceAggregateProps(tabController: $tabController, index: $index, twoWeeksPricesList: $twoWeeksPricesList, oneMonthPricesList: $oneMonthPricesList, twoMonthPricesList: $twoMonthPricesList, sixMonthPricesList: $sixMonthPricesList, oneYearPricesList: $oneYearPricesList)';
+    return 'ProduceAggregateProps(tabController: $tabController, index: $index, produce: $produce, twoWeeksPricesList: $twoWeeksPricesList, oneMonthPricesList: $oneMonthPricesList, twoMonthPricesList: $twoMonthPricesList, sixMonthPricesList: $sixMonthPricesList, oneYearPricesList: $oneYearPricesList)';
   }
 
   @override
@@ -994,6 +1028,7 @@ class _$_ProduceAggregateProps implements _ProduceAggregateProps {
             (identical(other.tabController, tabController) ||
                 other.tabController == tabController) &&
             (identical(other.index, index) || other.index == index) &&
+            (identical(other.produce, produce) || other.produce == produce) &&
             const DeepCollectionEquality()
                 .equals(other.twoWeeksPricesList, twoWeeksPricesList) &&
             const DeepCollectionEquality()
@@ -1011,6 +1046,7 @@ class _$_ProduceAggregateProps implements _ProduceAggregateProps {
       runtimeType,
       tabController,
       index,
+      produce,
       const DeepCollectionEquality().hash(twoWeeksPricesList),
       const DeepCollectionEquality().hash(oneMonthPricesList),
       const DeepCollectionEquality().hash(twoMonthPricesList),
@@ -1028,6 +1064,7 @@ abstract class _ProduceAggregateProps implements ProduceAggregateProps {
   const factory _ProduceAggregateProps(
       {required TabController tabController,
       required int index,
+      required Produce? produce,
       List<PriceSnippet>? twoWeeksPricesList,
       List<PriceSnippet>? oneMonthPricesList,
       List<PriceSnippet>? twoMonthPricesList,
@@ -1038,6 +1075,8 @@ abstract class _ProduceAggregateProps implements ProduceAggregateProps {
   TabController get tabController;
   @override
   int get index;
+  @override
+  Produce? get produce;
   @override
   List<PriceSnippet>? get twoWeeksPricesList;
   @override

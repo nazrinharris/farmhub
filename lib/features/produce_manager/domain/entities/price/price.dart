@@ -11,7 +11,6 @@ class Price with _$Price {
   factory Price({
     required num currentPrice,
     required String priceDate,
-    required List<num> allPrices,
     required DateTime priceDateTimeStamp,
     required bool isAverage,
     required String priceId,
@@ -38,12 +37,28 @@ class Price with _$Price {
     return Price(
       currentPrice: roundNum(map["currentPrice"], 2),
       priceDate: map["priceDate"],
-      allPrices: List<num>.from(map["allPrices"]),
       priceDateTimeStamp: priceDateTimeStamp,
       isAverage: map["isAverage"],
       priceId: map["priceId"],
       allPricesWithDateList: allPricesWithDateList,
     );
+  }
+
+  static Map<String, dynamic> toMap(Price price) {
+    Map<String, dynamic> allPricesMap = {};
+
+    for (PriceSnippet priceSnippet in price.allPricesWithDateList) {
+      allPricesMap[priceSnippet.priceDate] = priceSnippet.price;
+    }
+
+    return {
+      "currentPrice": price.currentPrice,
+      "isAverage": price.isAverage,
+      "priceDate": price.priceDate,
+      "priceDateTimeStamp": price.priceDateTimeStamp,
+      "priceId": price.priceId,
+      "allPricesMap": allPricesMap,
+    };
   }
 }
 
@@ -53,4 +68,13 @@ class PriceSnippet with _$PriceSnippet {
     required num price,
     required String priceDate,
   }) = _PriceSnippet;
+
+  static List<PriceSnippet> fromAggregateToList(Map<String, dynamic> map) {
+    final List<PriceSnippet> pricesList = [];
+    map["prices-map"].forEach((date, price) {
+      pricesList.add(PriceSnippet(price: price, priceDate: date));
+    });
+
+    return pricesList;
+  }
 }

@@ -20,7 +20,6 @@ class _$PriceTearOff {
   _Price call(
       {required num currentPrice,
       required String priceDate,
-      required List<num> allPrices,
       required DateTime priceDateTimeStamp,
       required bool isAverage,
       required String priceId,
@@ -28,7 +27,6 @@ class _$PriceTearOff {
     return _Price(
       currentPrice: currentPrice,
       priceDate: priceDate,
-      allPrices: allPrices,
       priceDateTimeStamp: priceDateTimeStamp,
       isAverage: isAverage,
       priceId: priceId,
@@ -44,7 +42,6 @@ const $Price = _$PriceTearOff();
 mixin _$Price {
   num get currentPrice => throw _privateConstructorUsedError;
   String get priceDate => throw _privateConstructorUsedError;
-  List<num> get allPrices => throw _privateConstructorUsedError;
   DateTime get priceDateTimeStamp => throw _privateConstructorUsedError;
   bool get isAverage => throw _privateConstructorUsedError;
   String get priceId => throw _privateConstructorUsedError;
@@ -62,7 +59,6 @@ abstract class $PriceCopyWith<$Res> {
   $Res call(
       {num currentPrice,
       String priceDate,
-      List<num> allPrices,
       DateTime priceDateTimeStamp,
       bool isAverage,
       String priceId,
@@ -81,7 +77,6 @@ class _$PriceCopyWithImpl<$Res> implements $PriceCopyWith<$Res> {
   $Res call({
     Object? currentPrice = freezed,
     Object? priceDate = freezed,
-    Object? allPrices = freezed,
     Object? priceDateTimeStamp = freezed,
     Object? isAverage = freezed,
     Object? priceId = freezed,
@@ -96,10 +91,6 @@ class _$PriceCopyWithImpl<$Res> implements $PriceCopyWith<$Res> {
           ? _value.priceDate
           : priceDate // ignore: cast_nullable_to_non_nullable
               as String,
-      allPrices: allPrices == freezed
-          ? _value.allPrices
-          : allPrices // ignore: cast_nullable_to_non_nullable
-              as List<num>,
       priceDateTimeStamp: priceDateTimeStamp == freezed
           ? _value.priceDateTimeStamp
           : priceDateTimeStamp // ignore: cast_nullable_to_non_nullable
@@ -128,7 +119,6 @@ abstract class _$PriceCopyWith<$Res> implements $PriceCopyWith<$Res> {
   $Res call(
       {num currentPrice,
       String priceDate,
-      List<num> allPrices,
       DateTime priceDateTimeStamp,
       bool isAverage,
       String priceId,
@@ -148,7 +138,6 @@ class __$PriceCopyWithImpl<$Res> extends _$PriceCopyWithImpl<$Res>
   $Res call({
     Object? currentPrice = freezed,
     Object? priceDate = freezed,
-    Object? allPrices = freezed,
     Object? priceDateTimeStamp = freezed,
     Object? isAverage = freezed,
     Object? priceId = freezed,
@@ -163,10 +152,6 @@ class __$PriceCopyWithImpl<$Res> extends _$PriceCopyWithImpl<$Res>
           ? _value.priceDate
           : priceDate // ignore: cast_nullable_to_non_nullable
               as String,
-      allPrices: allPrices == freezed
-          ? _value.allPrices
-          : allPrices // ignore: cast_nullable_to_non_nullable
-              as List<num>,
       priceDateTimeStamp: priceDateTimeStamp == freezed
           ? _value.priceDateTimeStamp
           : priceDateTimeStamp // ignore: cast_nullable_to_non_nullable
@@ -193,7 +178,6 @@ class _$_Price implements _Price {
   _$_Price(
       {required this.currentPrice,
       required this.priceDate,
-      required this.allPrices,
       required this.priceDateTimeStamp,
       required this.isAverage,
       required this.priceId,
@@ -203,8 +187,6 @@ class _$_Price implements _Price {
   final num currentPrice;
   @override
   final String priceDate;
-  @override
-  final List<num> allPrices;
   @override
   final DateTime priceDateTimeStamp;
   @override
@@ -216,7 +198,7 @@ class _$_Price implements _Price {
 
   @override
   String toString() {
-    return 'Price(currentPrice: $currentPrice, priceDate: $priceDate, allPrices: $allPrices, priceDateTimeStamp: $priceDateTimeStamp, isAverage: $isAverage, priceId: $priceId, allPricesWithDateList: $allPricesWithDateList)';
+    return 'Price(currentPrice: $currentPrice, priceDate: $priceDate, priceDateTimeStamp: $priceDateTimeStamp, isAverage: $isAverage, priceId: $priceId, allPricesWithDateList: $allPricesWithDateList)';
   }
 
   @override
@@ -228,7 +210,6 @@ class _$_Price implements _Price {
                 other.currentPrice == currentPrice) &&
             (identical(other.priceDate, priceDate) ||
                 other.priceDate == priceDate) &&
-            const DeepCollectionEquality().equals(other.allPrices, allPrices) &&
             (identical(other.priceDateTimeStamp, priceDateTimeStamp) ||
                 other.priceDateTimeStamp == priceDateTimeStamp) &&
             (identical(other.isAverage, isAverage) ||
@@ -243,7 +224,6 @@ class _$_Price implements _Price {
       runtimeType,
       currentPrice,
       priceDate,
-      const DeepCollectionEquality().hash(allPrices),
       priceDateTimeStamp,
       isAverage,
       priceId,
@@ -259,7 +239,6 @@ abstract class _Price implements Price {
   factory _Price(
       {required num currentPrice,
       required String priceDate,
-      required List<num> allPrices,
       required DateTime priceDateTimeStamp,
       required bool isAverage,
       required String priceId,
@@ -269,8 +248,6 @@ abstract class _Price implements Price {
   num get currentPrice;
   @override
   String get priceDate;
-  @override
-  List<num> get allPrices;
   @override
   DateTime get priceDateTimeStamp;
   @override

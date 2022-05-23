@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../features/produce_manager/domain/entities/price/price.dart';
+import '../../../../features/produce_manager/domain/entities/produce/produce.dart';
 import '../../../../features/produce_manager/domain/helpers.dart';
 
 part 'produce_aggregate_state.dart';
@@ -13,14 +14,17 @@ part 'produce_aggregate_cubit.freezed.dart';
 class ProduceAggregateCubit extends Cubit<ProduceAggregateState> {
   final TabController tabController;
   final IProduceManagerRepository repository;
+  final Produce produce;
 
   ProduceAggregateCubit({
     required this.tabController,
     required this.repository,
+    required this.produce,
   }) : super(ProduceAggregateState.initial(
             props: ProduceAggregateProps(
           tabController: tabController,
           index: tabController.index,
+          produce: produce,
         )));
 
   /// List of index correspondent
@@ -31,9 +35,23 @@ class ProduceAggregateCubit extends Cubit<ProduceAggregateState> {
     }
   }
 
-  void getAggregatePrices(String produceId) async {
+  Future<void> getAggregatePricesAndProduce(String produceId) async {
     // Indicate Loading
     emit(ProduceAggregateState.loading(props: state.props));
+
+    // Retrieve produce
+    final failureOrProduce = await repository.getProduce(pid: produceId);
+    Produce? produce;
+
+    failureOrProduce.fold(
+      (f) {
+        emit(ProduceAggregateState.error(props: state.props, failure: f));
+        produce = null;
+      },
+      (r) {
+        produce = r;
+      },
+    );
 
     // Begin retrieval of [aggregate-prices]
     final failureOrAggregatePrices = await repository.getAggregatePrices(produceId);
@@ -56,6 +74,7 @@ class ProduceAggregateCubit extends Cubit<ProduceAggregateState> {
 
         emit(ProduceAggregateState.completed(
             props: state.props.copyWith(
+          produce: produce,
           twoWeeksPricesList: twoWeeksPrices,
           oneMonthPricesList: oneMonthPrices,
           twoMonthPricesList: twoMonthPrices,

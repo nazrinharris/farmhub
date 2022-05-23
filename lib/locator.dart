@@ -4,12 +4,15 @@ import 'package:farmhub/core/auth/data/datasources/auth_local_datasource.dart';
 import 'package:farmhub/core/auth/data/datasources/auth_remote_datasource.dart';
 import 'package:farmhub/core/auth/data/repository/auth_repository.dart';
 import 'package:farmhub/core/auth/domain/i_auth_repository.dart';
+import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
 import 'package:farmhub/core/network/network_info.dart';
 import 'package:farmhub/features/produce_manager/bloc/produce_manager_bloc.dart';
 import 'package:farmhub/features/produce_manager/data/datasources/produce_manager_local_datasource.dart';
 import 'package:farmhub/features/produce_manager/data/datasources/produce_manager_remote_datasource.dart';
 import 'package:farmhub/features/produce_manager/data/repository/produce_manager_repository.dart';
 import 'package:farmhub/features/produce_manager/domain/i_produce_manager_repository.dart';
+import 'package:farmhub/presentation/global/cubit/global_ui_cubit.dart';
+import 'package:farmhub/presentation/smart_widgets/produce_dialogs/produce_dialog_cubit/produce_dialog_cubit.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get_it/get_it.dart';
 import 'package:hive/hive.dart';
@@ -23,7 +26,9 @@ void setupLocator() {
   // Blocs & Cubits
   locator.registerFactory(() => AuthBloc(
         authRepository: locator(),
+        globalAuthCubit: locator(),
       ));
+  locator.registerLazySingleton(() => GlobalAuthCubit(locator()));
   // Repository
   locator.registerLazySingleton<IAuthRepository>(() => AuthRepository(
         networkInfo: locator(),
@@ -56,6 +61,13 @@ void setupLocator() {
       () => ProduceManagerRemoteDatasource(firebaseFirestore: locator()));
   locator
       .registerLazySingleton<IProduceManagerLocalDatasource>(() => ProduceManagerLocalDatasource());
+
+  //! UI Relared
+  //* Global
+  locator.registerLazySingleton<GlobalUICubit>(() => GlobalUICubit());
+
+  //* ProduceListCard
+  locator.registerFactory<ProduceDialogCubit>(() => ProduceDialogCubit(locator(), locator()));
 
   //! External/Third Party
   //* Firebase

@@ -3,7 +3,7 @@ import 'package:farmhub/features/produce_manager/domain/entities/price/price.dar
 import 'package:intl/intl.dart';
 import 'package:clock/clock.dart';
 
-enum RangeType { twoW, oneM, twoM, sixM, oneY }
+enum RangeType { oneW, twoW, oneM, twoM, sixM, oneY }
 
 // TODO: Solve oneM until oneY to account for different length of months
 const Map<String, int> rangeTypeInDaysMap = {
@@ -40,6 +40,9 @@ List<PriceSnippet> pricesToRanged(
   // Set the range
   int? range;
   switch (rangeType) {
+    case RangeType.oneW:
+      range = rangeTypeInDaysMap["oneW"];
+      break;
     case RangeType.twoW:
       range = rangeTypeInDaysMap["twoW"];
       break;
@@ -59,7 +62,6 @@ List<PriceSnippet> pricesToRanged(
   }
 
   final List<PriceSnippet> twoWeeksPricesList = [];
-  print("Range is: $range");
   for (PriceSnippet priceSnippet in reversedPricesList) {
     final DateTime priceDate = DateFormat("dd-MM-yyyy").parse(priceSnippet.priceDate);
 
@@ -83,4 +85,18 @@ List<PriceSnippet> pricesToRanged(
   }
 
   return twoWeeksPricesList.reversed.toList();
+}
+
+/// This method will loop through [allPricesWithDateList] and returns a new [Price] with an
+/// updated [currentPrice].
+Price updateCurrentPrice(Price price) {
+  final pricesList = price.allPricesWithDateList;
+
+  num sum = 0;
+  for (PriceSnippet priceSnippet in pricesList) {
+    sum = sum + priceSnippet.price;
+  }
+  num average = sum / pricesList.length;
+
+  return price.copyWith(currentPrice: average);
 }
