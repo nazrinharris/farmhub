@@ -2,6 +2,7 @@
 
 import 'package:clock/clock.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:farmhub/core/constants/app_const.dart';
 import 'package:farmhub/core/errors/exceptions.dart';
 import 'package:farmhub/features/produce_manager/domain/entities/price/price.dart';
 import 'package:farmhub/features/produce_manager/domain/helpers.dart';
@@ -596,9 +597,10 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
           .then((value) => PriceSnippet.fromAggregateToList(value.data()!));
       if (allPricesList.length == 1) {
         throw ProduceManagerException(
-            code: "LAST_PRICE_PRODUCE",
-            message: "This is the last price of the Produce, so it cannot be deleted.",
-            stackTrace: StackTrace.current);
+          code: PM_ERR_LAST_PRICE,
+          message: "This is the last price of the Produce, so it cannot be deleted.",
+          stackTrace: StackTrace.current,
+        );
       }
 
       //! Delete [Price] from [aggregate-prices]

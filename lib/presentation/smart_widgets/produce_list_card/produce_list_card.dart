@@ -14,7 +14,7 @@ import '../../../core/util/misc.dart';
 import '../../../features/produce_manager/domain/entities/price/price.dart';
 import '../../../features/produce_manager/domain/entities/produce/produce.dart';
 import '../../../locator.dart';
-import '../../shared_widgets/app_dialogs.dart';
+import '../app_dialogs/app_dialogs.dart';
 import '../../shared_widgets/ui_helpers.dart';
 import 'cubit/produce_dialog_cubit.dart';
 

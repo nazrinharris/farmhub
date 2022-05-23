@@ -404,4 +404,26 @@ class ProduceManagerRepository implements IProduceManagerRepository {
       ));
     }
   }
+
+  @override
+  FutureEither<Unit> deleteSubPrice(
+      {required String produceId, required String priceId, required String subPriceDate}) async {
+    if (await networkInfo.isConnected) {
+      try {
+        await remoteDatasource.deleteSubPrice(produceId, priceId, subPriceDate);
+        return const Right(unit);
+      } on ProduceManagerException catch (e) {
+        return Left(
+            ProduceManagerFailure(code: e.code, message: e.message, stackTrace: e.stackTrace));
+      } catch (e) {
+        return Left(UnexpectedFailure(code: e.toString(), stackTrace: StackTrace.current));
+      }
+    } else {
+      return Left(InternetConnectionFailure(
+        code: ERROR_NO_INTERNET_CONNECTION,
+        message: MESSAGE_NO_INTERNET_CONNECTION,
+        stackTrace: StackTrace.current,
+      ));
+    }
+  }
 }

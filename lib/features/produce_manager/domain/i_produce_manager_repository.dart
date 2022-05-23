@@ -18,6 +18,11 @@ abstract class IProduceManagerRepository {
   FutureEither<List<PriceSnippet>> getAggregatePrices(String produceId);
   FutureEither<List<Price>> getFirstTenPrices(String produceId);
   FutureEither<List<Price>> getNextTenPrices(List<Price> lastPriceList, String produceId);
+  FutureEither<Unit> deleteSubPrice({
+    required String produceId,
+    required String priceId,
+    required String subPriceDate,
+  });
 
   FutureEither<Produce> createNewProduce({
     required String produceName,

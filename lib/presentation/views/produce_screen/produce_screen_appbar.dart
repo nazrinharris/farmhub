@@ -3,7 +3,7 @@
 import 'package:farmhub/app_router.dart';
 import 'package:farmhub/features/produce_manager/domain/entities/produce/produce.dart';
 import 'package:farmhub/locator.dart';
-import 'package:farmhub/presentation/shared_widgets/app_dialogs.dart';
+import 'package:farmhub/presentation/smart_widgets/app_dialogs/app_dialogs.dart';
 import 'package:farmhub/presentation/smart_widgets/produce_list_card/cubit/produce_dialog_cubit.dart';
 import 'package:farmhub/presentation/views/produce_screen/produce_aggregate_cubit/produce_aggregate_cubit.dart';
 import 'package:flutter/material.dart';

@@ -7,9 +7,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ndialog/ndialog.dart';
 
-import '../../core/errors/failures.dart';
-import '../smart_widgets/produce_list_card/cubit/produce_dialog_cubit.dart';
-import 'buttons.dart';
+import '../../../core/errors/failures.dart';
+import '../produce_list_card/cubit/produce_dialog_cubit.dart';
+import '../../shared_widgets/buttons.dart';
 
 NAlertDialog returnDeleteConfirmationDialog(
   BuildContext context,

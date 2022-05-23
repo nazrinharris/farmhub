@@ -1,6 +1,6 @@
 import 'package:farmhub/app_router.dart';
 import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
-import 'package:farmhub/presentation/shared_widgets/app_dialogs.dart';
+import 'package:farmhub/presentation/smart_widgets/app_dialogs/app_dialogs.dart';
 import 'package:farmhub/presentation/shared_widgets/appbars.dart';
 import 'package:farmhub/presentation/shared_widgets/ui_helpers.dart';
 import 'package:farmhub/presentation/smart_widgets/custom_cupertino_sliver_refresh_control.dart';
