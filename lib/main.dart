@@ -22,6 +22,8 @@ Future<void> main() async {
       appRouter: AppRouter(),
     ),
   );
+
+  // Initial comment for commit.
 }
 
 class FarmhubApp extends StatelessWidget {
