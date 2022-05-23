@@ -14,9 +14,9 @@ import '../../../core/util/misc.dart';
 import '../../../features/produce_manager/domain/entities/price/price.dart';
 import '../../../features/produce_manager/domain/entities/produce/produce.dart';
 import '../../../locator.dart';
-import '../app_dialogs/app_dialogs.dart';
 import '../../shared_widgets/ui_helpers.dart';
-import 'cubit/produce_dialog_cubit.dart';
+import '../produce_dialogs/app_dialogs.dart';
+import '../produce_dialogs/produce_dialog_cubit/produce_dialog_cubit.dart';
 
 /// [index] is only used to decide if the top border should be rendered or not.
 /// [0] If the top border should be drawn and all other numbers will not draw it.
@@ -301,7 +301,7 @@ class BuildAdminModalBottomSheet extends StatelessWidget {
                     context.read<ProduceDialogCubit>().showDeleteConfirmation(
                           context: context,
                           produce: produce,
-                          confirmationDialog: returnDeleteConfirmationDialog(
+                          confirmationDialog: returnProduceDeleteConfirmationDialog(
                             context,
                             produce,
                             DialogFromRoute.fromMainBottomSheet,

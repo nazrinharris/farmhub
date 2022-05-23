@@ -3,13 +3,13 @@
 import 'package:farmhub/app_router.dart';
 import 'package:farmhub/features/produce_manager/domain/entities/produce/produce.dart';
 import 'package:farmhub/locator.dart';
-import 'package:farmhub/presentation/smart_widgets/app_dialogs/app_dialogs.dart';
-import 'package:farmhub/presentation/smart_widgets/produce_list_card/cubit/produce_dialog_cubit.dart';
 import 'package:farmhub/presentation/views/produce_screen/produce_aggregate_cubit/produce_aggregate_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../shared_widgets/appbars.dart';
+import '../../smart_widgets/produce_dialogs/app_dialogs.dart';
+import '../../smart_widgets/produce_dialogs/produce_dialog_cubit/produce_dialog_cubit.dart';
 
 class ProduceScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
   final bool isAdmin;
@@ -129,7 +129,7 @@ class ProduceScreenAppBar extends StatelessWidget implements PreferredSizeWidget
               context.read<ProduceDialogCubit>().showDeleteConfirmation(
                     context: context,
                     produce: produce,
-                    confirmationDialog: returnDeleteConfirmationDialog(
+                    confirmationDialog: returnProduceDeleteConfirmationDialog(
                       context,
                       produce,
                       DialogFromRoute.fromProduce,

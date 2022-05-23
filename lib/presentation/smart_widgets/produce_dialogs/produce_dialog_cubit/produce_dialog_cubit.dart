@@ -32,7 +32,7 @@ class ProduceDialogCubit extends Cubit<ProduceDialogState> {
     await confirmationDialog.show(context, transitionType: DialogTransitionType.Bubble);
   }
 
-  void startDeleting({
+  void startDeletingProduce({
     required BuildContext context,
     required Produce produce,
     required ProgressDialog progressDialog,
@@ -176,5 +176,26 @@ class ProduceDialogCubit extends Cubit<ProduceDialogState> {
         },
       );
     }
+  }
+
+  void showSubPriceDeleteConfirmationDialog({
+    required BuildContext context,
+    required NAlertDialog subPriceDeleteConfirmationDialog,
+  }) {
+    subPriceDeleteConfirmationDialog.show(context, transitionType: DialogTransitionType.Bubble);
+  }
+
+  void startDeletingSubPrice({
+    required BuildContext context,
+    required String produceId,
+    required String priceId,
+    required String subPriceDate,
+    required ProgressDialog progressDialog,
+    required DialogFromRoute fromRoute,
+    required Function(BuildContext context, Failure failure) showErrorDialog,
+  }) async {
+    // Pop the edit dialog
+    Navigator.of(context).pop();
+    progressDialog.show();
   }
 }
