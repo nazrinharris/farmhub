@@ -406,12 +406,13 @@ class ProduceManagerRepository implements IProduceManagerRepository {
   }
 
   @override
-  FutureEither<Unit> deleteSubPrice(
+  FutureEither<bool> deleteSubPrice(
       {required String produceId, required String priceId, required String subPriceDate}) async {
     if (await networkInfo.isConnected) {
       try {
-        await remoteDatasource.deleteSubPrice(produceId, priceId, subPriceDate);
-        return const Right(unit);
+        final isPriceDocDeleted =
+            await remoteDatasource.deleteSubPrice(produceId, priceId, subPriceDate);
+        return Right(isPriceDocDeleted);
       } on ProduceManagerException catch (e) {
         return Left(
             ProduceManagerFailure(code: e.code, message: e.message, stackTrace: e.stackTrace));

@@ -345,7 +345,19 @@ class _AllPriceListCardState extends State<AllPriceListCard> {
                       padding: const EdgeInsets.only(top: 14, left: 46, right: 46),
                       child: SecondaryButton(
                         type: SecondaryButtonType.red,
-                        onPressed: () {},
+                        onPressed: () {
+                          context.read<ProduceDialogCubit>().showSubPriceDeleteConfirmationDialog(
+                                context: context,
+                                subPriceDeleteConfirmationDialog:
+                                    returnSubPriceDeleteConfirmationDialog(
+                                  context,
+                                  DialogFromRoute.fromPrice,
+                                  widget.produce,
+                                  widget.price,
+                                  subPriceDate,
+                                ),
+                              );
+                        },
                         content: "Delete Price",
                         buttonIcon: Icon(Icons.delete, size: 20),
                       ),

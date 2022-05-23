@@ -40,7 +40,7 @@ abstract class IProduceManagerRemoteDatasource {
   Future<List<Price>> getNextTenPrices(List<Price> lastPricesList, String produceId);
   Future<Price> getPrice(String produceId, String priceId);
   Future<Price> editSubPrice(String produceId, String priceId, num newPrice, String subPriceDate);
-  Future<Price> deleteSubPrice(String produceId, String priceId, String subPriceDate);
+  Future<bool> deleteSubPrice(String produceId, String priceId, String subPriceDate);
 
   Future<void>? debugMethod(String produceId);
 }
@@ -562,7 +562,9 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
   }
 
   @override
-  Future<Price> deleteSubPrice(String produceId, String priceId, String subPriceDate) async {
+  Future<bool> deleteSubPrice(String produceId, String priceId, String subPriceDate) async {
+    bool isPriceDocDeleted = false;
+
     final Price price = await firebaseFirestore
         .collection('produce')
         .doc(produceId)
@@ -622,6 +624,8 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
         firebaseFirestore: firebaseFirestore,
         produceId: produceId,
       );
+
+      isPriceDocDeleted = true;
     } else {
       //? This means that there are at least one [subPrice] left.
       //? steps: Update [Price]'s [currentPrice] and [allPrices], Update [aggregate-prices], Update [Produce]
@@ -650,15 +654,7 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
       );
     }
 
-    //TODO: Fix this
-    return Price(
-      currentPrice: 2,
-      priceDate: "",
-      priceDateTimeStamp: clock.now(),
-      isAverage: true,
-      priceId: "priceId",
-      allPricesWithDateList: [],
-    );
+    return isPriceDocDeleted;
   }
 }
 
@@ -936,6 +932,7 @@ Price editSubPrice(Price price, num newPrice, String chosenSubPriceDate) {
 Price _deleteSubPriceAndUpdatePrice(Price price, String chosenSubPriceDate) {
   List<PriceSnippet> subPricesList = price.allPricesWithDateList;
   List<PriceSnippet> updatedSubPricesList = [];
+  bool isAverage = price.isAverage;
 
   for (PriceSnippet priceSnippet in subPricesList) {
     if (priceSnippet.priceDate == chosenSubPriceDate) {
@@ -944,8 +941,12 @@ Price _deleteSubPriceAndUpdatePrice(Price price, String chosenSubPriceDate) {
     updatedSubPricesList.add(priceSnippet);
   }
 
-  final updatedPrice =
-      updateCurrentPrice(price.copyWith(allPricesWithDateList: updatedSubPricesList));
+  if (updatedSubPricesList.length == 1) isAverage = false;
+
+  final updatedPrice = updateCurrentPrice(price.copyWith(
+    allPricesWithDateList: updatedSubPricesList,
+    isAverage: isAverage,
+  ));
 
   return updatedPrice;
 }

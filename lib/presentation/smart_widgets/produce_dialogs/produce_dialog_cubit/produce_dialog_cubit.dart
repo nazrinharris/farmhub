@@ -1,10 +1,12 @@
 import 'package:bloc/bloc.dart';
+import 'package:farmhub/core/constants/app_const.dart';
 import 'package:farmhub/core/errors/failures.dart';
 import 'package:farmhub/features/produce_manager/domain/entities/produce/produce.dart';
 import 'package:farmhub/features/produce_manager/domain/i_produce_manager_repository.dart';
 import 'package:farmhub/presentation/global/cubit/global_ui_cubit.dart';
 import 'package:farmhub/presentation/shared_widgets/buttons.dart';
 import 'package:farmhub/presentation/shared_widgets/ui_helpers.dart';
+import 'package:farmhub/presentation/smart_widgets/produce_dialogs/app_dialogs.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:ndialog/ndialog.dart';
@@ -36,7 +38,8 @@ class ProduceDialogCubit extends Cubit<ProduceDialogState> {
     required BuildContext context,
     required Produce produce,
     required ProgressDialog progressDialog,
-    required Function(BuildContext context, Failure failure) showErrorDialog,
+    required Function({required BuildContext context, required Failure failure, String? errorTitle})
+        showErrorDialog,
     required DialogFromRoute fromRoute,
   }) async {
     // Pop the confirmation dialog
@@ -51,7 +54,7 @@ class ProduceDialogCubit extends Cubit<ProduceDialogState> {
     failureOrDeleteProduce.fold(
       (f) {
         progressDialog.dismiss();
-        showErrorDialog(context, f);
+        showErrorDialog(context: context, failure: f);
       },
       (unit) {
         progressDialog.dismiss();
@@ -88,7 +91,8 @@ class ProduceDialogCubit extends Cubit<ProduceDialogState> {
     required FocusNode formFocusNode,
     required ProgressDialog progressDialog,
     required DialogFromRoute fromRoute,
-    required Function(BuildContext context, Failure failure) showErrorDialog,
+    required Function({required BuildContext context, required Failure failure, String? errorTitle})
+        showErrorDialog,
   }) async {
     final bool isFormValid = formKey.currentState!.validate();
 
@@ -107,7 +111,7 @@ class ProduceDialogCubit extends Cubit<ProduceDialogState> {
       failureOrEditProduce.fold(
         (f) {
           progressDialog.dismiss();
-          showErrorDialog(context, f);
+          showErrorDialog(context: context, failure: f);
         },
         (unit) {
           switch (fromRoute) {
@@ -147,7 +151,8 @@ class ProduceDialogCubit extends Cubit<ProduceDialogState> {
     required FocusNode formFocusNode,
     required ProgressDialog progressDialog,
     required DialogFromRoute fromRoute,
-    required Function(BuildContext context, Failure failure) showErrorDialog,
+    required Function({required BuildContext context, required Failure failure, String? errorTitle})
+        showErrorDialog,
   }) async {
     final bool isFormValid = formKey.currentState!.validate();
 
@@ -165,10 +170,11 @@ class ProduceDialogCubit extends Cubit<ProduceDialogState> {
       failurOrEditSubPrice.fold(
         (f) {
           progressDialog.dismiss();
-          showErrorDialog(context, f);
+          showErrorDialog(context: context, failure: f);
         },
         (unit) {
           progressDialog.dismiss();
+          globalUICubit.setShouldRefreshMain(true);
           globalUICubit.setShouldRefreshProduce(true);
           globalUICubit.setShouldRefreshPrice(true);
           // Pops the [ModalBottomSheet]
@@ -192,10 +198,42 @@ class ProduceDialogCubit extends Cubit<ProduceDialogState> {
     required String subPriceDate,
     required ProgressDialog progressDialog,
     required DialogFromRoute fromRoute,
-    required Function(BuildContext context, Failure failure) showErrorDialog,
+    required Function({required BuildContext context, required Failure failure, String? errorTitle})
+        showErrorDialog,
   }) async {
     // Pop the edit dialog
     Navigator.of(context).pop();
     progressDialog.show();
+
+    final failureOrDeleteSubPrice = await repository.deleteSubPrice(
+        produceId: produceId, priceId: priceId, subPriceDate: subPriceDate);
+
+    failureOrDeleteSubPrice.fold(
+      (f) {
+        progressDialog.dismiss();
+        if (f.code != null && f.code == PM_ERR_LAST_PRICE) {
+          showErrorDialog(context: context, failure: f, errorTitle: "You can't delete this.");
+        } else {
+          showErrorDialog(context: context, failure: f);
+        }
+      },
+      (isPriceDocDeleted) {
+        if (isPriceDocDeleted) {
+          globalUICubit.setShouldRefreshProduce(true);
+          globalUICubit.setShouldRefreshMain(true);
+          progressDialog.dismiss();
+          // Pops the modal and back to Produce
+          Navigator.of(context)
+            ..pop()
+            ..pop();
+        } else {
+          globalUICubit.setShouldRefreshMain(true);
+          globalUICubit.setShouldRefreshProduce(true);
+          globalUICubit.setShouldRefreshPrice(true);
+          progressDialog.dismiss();
+          Navigator.of(context).pop();
+        }
+      },
+    );
   }
 }

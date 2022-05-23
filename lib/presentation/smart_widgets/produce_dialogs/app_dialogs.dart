@@ -109,7 +109,11 @@ ProgressDialog returnDeleteProduceProgressDialog(BuildContext context) {
   );
 }
 
-void showErrorDialog(BuildContext context, Failure failure) async {
+void showErrorDialog({
+  required BuildContext context,
+  required Failure failure,
+  String? errorTitle,
+}) async {
   await NAlertDialog(
     blur: 4,
     dialogStyle: DialogStyle(
@@ -128,7 +132,7 @@ void showErrorDialog(BuildContext context, Failure failure) async {
           ),
           const UIVerticalSpace14(),
           Text(
-            "Uh oh, something went wrong.",
+            errorTitle ?? "Uh oh, something went wrong.",
             style: Theme.of(context)
                 .textTheme
                 .bodyText2!
@@ -443,17 +447,21 @@ NAlertDialog returnSubPriceDeleteConfirmationDialog(
       ),
     ),
     content: Padding(
-      padding: const EdgeInsets.only(top: 14, bottom: 24, right: 24),
+      padding: const EdgeInsets.only(top: 14, bottom: 24, left: 24, right: 24),
       child: Wrap(
         children: [
           Text(
-            "As of now, you can't undo this action. Only do this if you are sure.",
+            "You can't undo this action. Only do this if you are sure.",
             style: Theme.of(context).textTheme.bodyText1,
+            textAlign: TextAlign.center,
           ),
-          const UIVerticalSpace6(),
-          Text(
-            "Also if this is the last Price, it will delete this whole Price.",
-            style: Theme.of(context).textTheme.bodyText1,
+          Padding(
+            padding: const EdgeInsets.only(top: 14),
+            child: Text(
+              "Also if this is the last Price, it will delete this whole Price.",
+              style: Theme.of(context).textTheme.bodyText1,
+              textAlign: TextAlign.center,
+            ),
           ),
         ],
       ),
