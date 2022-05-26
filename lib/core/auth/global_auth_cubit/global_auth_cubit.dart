@@ -20,7 +20,7 @@ class GlobalAuthCubit extends Cubit<GlobalAuthState> {
     emit(state.copyWith(isAdmin: isAdmin));
   }
 
-  void updateGlobalAuthCubit() async {
+  Future<void> updateGlobalAuthCubit() async {
     final failureOrFarmhubUser = await repository.retrieveUserData();
 
     await failureOrFarmhubUser.fold(

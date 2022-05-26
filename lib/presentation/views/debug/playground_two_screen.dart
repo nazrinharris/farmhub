@@ -87,8 +87,8 @@ class PlaygroundTwoScreen extends StatelessWidget {
                       content: "Create Random",
                       onPressed: () {
                         context.read<PlaygroundCubit>().createMorePrices(
-                              pricesAmount: 70,
-                              produceId: "WBOIwlizkFZkaokHv7OK",
+                              pricesAmount: 365,
+                              produceId: "oGItJKKddeuyv6Z1fzDC",
                             );
                       },
                     ),

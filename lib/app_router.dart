@@ -1,3 +1,4 @@
+import 'package:farmhub/core/auth/domain/entities/farmhub_user/farmhub_user.dart';
 import 'package:farmhub/features/produce_manager/domain/entities/price/price.dart';
 import 'package:farmhub/presentation/views/add_new_price_screen/add_new_price_screen.dart';
 import 'package:farmhub/presentation/views/add_new_price_screen/add_new_price_search_screen.dart';
@@ -11,6 +12,7 @@ import 'package:farmhub/presentation/views/login_screen/login_screen.dart';
 import 'package:farmhub/presentation/views/main_screen/main_screen.dart';
 import 'package:farmhub/presentation/views/price_screen/price_screen.dart';
 import 'package:farmhub/presentation/views/produce_screen/produce_screen.dart';
+import 'package:farmhub/presentation/views/profile_screen/profile_screen.dart';
 import 'package:farmhub/presentation/views/register_screen/register_screen.dart';
 import 'package:farmhub/presentation/views/search_screen/search_screen.dart';
 import 'package:farmhub/presentation/views/start_screen/start_screen.dart';
@@ -49,6 +51,12 @@ class SearchScreenArguments {
   final FocusNode mainScreenFocusNode;
 
   SearchScreenArguments(this.mainScreenFocusNode);
+}
+
+class ProfileScreenArguments {
+  final FarmhubUser user;
+
+  ProfileScreenArguments(this.user);
 }
 
 class AppRouter {
@@ -113,6 +121,9 @@ class AppRouter {
               AddNewPriceSearchScreen(routeSettings.arguments as SearchScreenArguments)),
           transitionsBuilder: searchScreenTransitionBuilder,
         );
+
+      case '/profile':
+        return CupertinoPageRoute(builder: (_) => ProfileScreen());
 
       //! DEBUG ROUTES
       case '/navigate':
