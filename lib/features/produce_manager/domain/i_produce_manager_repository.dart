@@ -12,6 +12,8 @@ abstract class IProduceManagerRepository {
   FutureEither<List<Produce>> searchProduce(String query);
   FutureEither<List<Produce>> getNextTenSearchProduce(List<Produce> lastProduceList, String query);
 
+  FutureEither<List<Produce>> getProduceAsList(List<String> produceIdList);
+
   FutureEither<Price> getPrice(String produceId, String priceId);
   FutureEither<Price> editSubPrice(
       String produceId, String priceId, num newPrice, String subPriceDate);

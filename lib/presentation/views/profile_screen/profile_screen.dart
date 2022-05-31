@@ -24,11 +24,11 @@ class ProfileScreen extends StatelessWidget {
           // TODO: Maybe allow for non-registered users!
           final FarmhubUser user = state.farmhubUser ??
               FarmhubUser(
-                uid: "xxxxxx",
-                email: "-",
-                username: "Guest",
-                createdAt: "-",
-              );
+                  uid: "xxxxxx",
+                  email: "-",
+                  username: "Guest",
+                  createdAt: "-",
+                  produceFavoritesList: []);
 
           return Scaffold(
               extendBody: true,

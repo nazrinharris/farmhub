@@ -11,8 +11,8 @@ class FarmhubUser with _$FarmhubUser {
     required String email,
     required String username,
     required String createdAt,
+    required List<String> produceFavoritesList,
   }) = _FarmhubUser;
 
-  factory FarmhubUser.fromJson(Map<String, dynamic> json) =>
-      _$FarmhubUserFromJson(json);
+  factory FarmhubUser.fromJson(Map<String, dynamic> json) => _$FarmhubUserFromJson(json);
 }

@@ -89,6 +89,7 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
       email: email,
       username: username,
       createdAt: createdAt,
+      produceFavoritesList: [],
     );
 
     /// Store account data in Cloud Firestore
@@ -97,6 +98,7 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
       "email": farmhubUser.email,
       "username": farmhubUser.username,
       "createdAt": farmhubUser.createdAt,
+      "produceFavoritesList": [],
     }, null);
 
     return farmhubUser;

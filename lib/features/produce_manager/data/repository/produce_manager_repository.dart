@@ -427,4 +427,25 @@ class ProduceManagerRepository implements IProduceManagerRepository {
       ));
     }
   }
+
+  @override
+  FutureEither<List<Produce>> getProduceAsList(List<String> produceIdList) async {
+    if (await networkInfo.isConnected) {
+      try {
+        final produceList = await remoteDatasource.getProduceAsList(produceIdList);
+        return Right(produceList);
+      } on ProduceManagerException catch (e) {
+        return Left(
+            ProduceManagerFailure(code: e.code, message: e.message, stackTrace: e.stackTrace));
+      } catch (e, stack) {
+        return Left(UnexpectedFailure(code: e.toString(), stackTrace: stack));
+      }
+    } else {
+      return Left(InternetConnectionFailure(
+        code: ERROR_NO_INTERNET_CONNECTION,
+        message: MESSAGE_NO_INTERNET_CONNECTION,
+        stackTrace: StackTrace.current,
+      ));
+    }
+  }
 }

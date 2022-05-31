@@ -20,6 +20,7 @@ abstract class IProduceManagerRemoteDatasource {
     required num currentProducePrice,
     required String authorId,
   });
+  Future<List<Produce>> getProduceAsList(List<String> produceIdList);
   Future<Unit> editProduce(String produceId, String newProduceName);
   Future<Unit> deleteProduce(String produceId);
   Future<List<Produce>> searchProduce({required String query});
@@ -656,6 +657,27 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
 
     return isPriceDocDeleted;
   }
+
+  @override
+  Future<List<Produce>> getProduceAsList(List<String> produceIdList) async {
+    List<Produce> produceList = [];
+
+    for (String produceId in produceIdList) {
+      final Map<String, dynamic>? doc = await firebaseFirestore
+          .collection('produce')
+          .doc(produceId)
+          .get()
+          .then((value) => value.data());
+      if (doc == null || doc["isDeleted"] == true) {
+        continue;
+      } else {
+        final Produce produce = Produce.fromMap(doc);
+        produceList.add(produce);
+      }
+    }
+
+    return produceList;
+  }
 }
 
 /// This method will update [currentProducePrice], [previousProducePrice] and [aggregate-prices].
@@ -929,6 +951,7 @@ Price editSubPrice(Price price, num newPrice, String chosenSubPriceDate) {
   return updatedPrice;
 }
 
+/// This method will remove the [chosenSubPriceDate] and return an updated [Price]
 Price _deleteSubPriceAndUpdatePrice(Price price, String chosenSubPriceDate) {
   List<PriceSnippet> subPricesList = price.allPricesWithDateList;
   List<PriceSnippet> updatedSubPricesList = [];

@@ -69,12 +69,7 @@ class AuthRepository implements IAuthRepository {
           username: username,
         );
         await authLocalDataSource.storeFarmhubUser(result);
-        final storaygeUser = FarmhubUser(
-            username: result.username,
-            email: result.email,
-            uid: result.uid,
-            createdAt: result.createdAt);
-        return Right(storaygeUser);
+        return Right(result);
       } on FirebaseAuthException catch (e) {
         return Left(FirebaseAuthFailure(
           code: e.code,
