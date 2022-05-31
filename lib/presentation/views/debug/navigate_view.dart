@@ -64,6 +64,18 @@ class NavigateView extends StatelessWidget {
             const UIVerticalSpace14(),
             PrimaryButton(
               onPressed: () {
+                Navigator.of(context).pushNamed('/nav_main');
+              },
+              backgroundColor: Theme.of(context).colorScheme.primaryVariant,
+              width: 200,
+              child: Text(
+                'To Nav Main',
+                style: Theme.of(context).textTheme.bodyText1!.copyWith(color: Colors.white),
+              ),
+            ),
+            const UIVerticalSpace14(),
+            PrimaryButton(
+              onPressed: () {
                 Navigator.of(context).pushNamed('/playground');
               },
               backgroundColor: Color.fromARGB(255, 137, 97, 205),

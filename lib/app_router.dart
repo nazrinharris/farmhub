@@ -8,8 +8,10 @@ import 'package:farmhub/presentation/views/create_produce_screen/create_produce_
 import 'package:farmhub/presentation/views/debug/navigate_view.dart';
 import 'package:farmhub/presentation/views/debug/playground_screen.dart';
 import 'package:farmhub/presentation/views/debug/playground_two_screen.dart';
+import 'package:farmhub/presentation/views/favorites_screen/favorites_screen.dart';
 import 'package:farmhub/presentation/views/login_screen/login_screen.dart';
 import 'package:farmhub/presentation/views/main_screen/main_screen.dart';
+import 'package:farmhub/presentation/views/nav_main_screen/nav_main_screen.dart';
 import 'package:farmhub/presentation/views/price_screen/price_screen.dart';
 import 'package:farmhub/presentation/views/produce_screen/produce_screen.dart';
 import 'package:farmhub/presentation/views/profile_screen/profile_screen.dart';
@@ -74,6 +76,8 @@ class AppRouter {
         return CupertinoPageRoute(builder: (_) => const StartScreen());
       case '/main':
         return CupertinoPageRoute(builder: (_) => const MainScreen());
+      case '/nav_main':
+        return CupertinoPageRoute(builder: (_) => const NavMainScreen());
       case '/create_produce':
         return PageRouteBuilder(
           transitionDuration: const Duration(milliseconds: 600),
@@ -123,7 +127,9 @@ class AppRouter {
         );
 
       case '/profile':
-        return CupertinoPageRoute(builder: (_) => ProfileScreen());
+        return CupertinoPageRoute(builder: (_) => const ProfileScreen());
+      case '/favorites':
+        return CupertinoPageRoute(builder: (_) => const FavoritesScreen());
 
       //! DEBUG ROUTES
       case '/navigate':
