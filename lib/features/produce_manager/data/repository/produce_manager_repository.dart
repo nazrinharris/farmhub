@@ -448,4 +448,46 @@ class ProduceManagerRepository implements IProduceManagerRepository {
       ));
     }
   }
+
+  @override
+  FutureEither<Unit> addToFavorites(String uid, String produceId) async {
+    if (await networkInfo.isConnected) {
+      try {
+        await remoteDatasource.addToFavorites(uid, produceId);
+        return const Right(unit);
+      } on ProduceManagerException catch (e) {
+        return Left(
+            ProduceManagerFailure(code: e.code, message: e.message, stackTrace: e.stackTrace));
+      } catch (e, stack) {
+        return Left(UnexpectedFailure(code: e.toString(), stackTrace: stack));
+      }
+    } else {
+      return Left(InternetConnectionFailure(
+        code: ERROR_NO_INTERNET_CONNECTION,
+        message: MESSAGE_NO_INTERNET_CONNECTION,
+        stackTrace: StackTrace.current,
+      ));
+    }
+  }
+
+  @override
+  FutureEither<Unit> removeFromFavorites(String uid, String produceId) async {
+    if (await networkInfo.isConnected) {
+      try {
+        await remoteDatasource.removeFromFavorites(uid, produceId);
+        return const Right(unit);
+      } on ProduceManagerException catch (e) {
+        return Left(
+            ProduceManagerFailure(code: e.code, message: e.message, stackTrace: e.stackTrace));
+      } catch (e, stack) {
+        return Left(UnexpectedFailure(code: e.toString(), stackTrace: stack));
+      }
+    } else {
+      return Left(InternetConnectionFailure(
+        code: ERROR_NO_INTERNET_CONNECTION,
+        message: MESSAGE_NO_INTERNET_CONNECTION,
+        stackTrace: StackTrace.current,
+      ));
+    }
+  }
 }

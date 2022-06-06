@@ -13,6 +13,8 @@ abstract class IProduceManagerRepository {
   FutureEither<List<Produce>> getNextTenSearchProduce(List<Produce> lastProduceList, String query);
 
   FutureEither<List<Produce>> getProduceAsList(List<String> produceIdList);
+  FutureEither<Unit> addToFavorites(String uid, String produceId);
+  FutureEither<Unit> removeFromFavorites(String uid, String produceId);
 
   FutureEither<Price> getPrice(String produceId, String priceId);
   FutureEither<Price> editSubPrice(

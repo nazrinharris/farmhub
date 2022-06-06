@@ -54,7 +54,7 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
         .then((snapshot) => snapshot.data())
         .then((json) {
       if (json != null) {
-        FarmhubUser toFarmhubUser = FarmhubUser.fromJson(json);
+        FarmhubUser toFarmhubUser = FarmhubUser.fromMap(json);
         return toFarmhubUser;
       } else {
         throw FirebaseException(
@@ -98,7 +98,7 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
       "email": farmhubUser.email,
       "username": farmhubUser.username,
       "createdAt": farmhubUser.createdAt,
-      "produceFavoritesList": [],
+      "produceFavoritesList": {},
     }, null);
 
     return farmhubUser;
@@ -135,7 +135,7 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
           stackTrace: StackTrace.current,
         );
       } else {
-        return FarmhubUser.fromJson(farmhubUser.data()!);
+        return FarmhubUser.fromMap(farmhubUser.data()!);
       }
     }
   }

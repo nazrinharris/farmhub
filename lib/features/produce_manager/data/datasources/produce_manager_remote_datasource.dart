@@ -21,6 +21,9 @@ abstract class IProduceManagerRemoteDatasource {
     required String authorId,
   });
   Future<List<Produce>> getProduceAsList(List<String> produceIdList);
+  Future<Unit> addToFavorites(String uid, String produceId);
+  Future<Unit> removeFromFavorites(String uid, String produceId);
+
   Future<Unit> editProduce(String produceId, String newProduceName);
   Future<Unit> deleteProduce(String produceId);
   Future<List<Produce>> searchProduce({required String query});
@@ -677,6 +680,23 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
     }
 
     return produceList;
+  }
+
+  @override
+  Future<Unit> addToFavorites(String uid, String produceId) async {
+    String currentFormattedTime = DateFormat("yyyy-MM-dd hh:mm:ss aaa").format(clock.now());
+
+    await firebaseFirestore.collection('users').doc(uid).update({
+      "produceFavorites.$produceId": currentFormattedTime,
+    });
+
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<Unit> removeFromFavorites(String uid, String produceId) {
+    // TODO: implement removeFromFavorites
+    throw UnimplementedError();
   }
 }
 

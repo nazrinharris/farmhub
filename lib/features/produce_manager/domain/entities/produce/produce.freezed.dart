@@ -306,3 +306,153 @@ abstract class _Produce implements Produce {
   _$ProduceCopyWith<_Produce> get copyWith =>
       throw _privateConstructorUsedError;
 }
+
+/// @nodoc
+class _$ProduceFavoriteTearOff {
+  const _$ProduceFavoriteTearOff();
+
+  _ProduceFavorite call(
+      {required String produceId, required DateTime dateAdded}) {
+    return _ProduceFavorite(
+      produceId: produceId,
+      dateAdded: dateAdded,
+    );
+  }
+}
+
+/// @nodoc
+const $ProduceFavorite = _$ProduceFavoriteTearOff();
+
+/// @nodoc
+mixin _$ProduceFavorite {
+  String get produceId => throw _privateConstructorUsedError;
+  DateTime get dateAdded => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $ProduceFavoriteCopyWith<ProduceFavorite> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ProduceFavoriteCopyWith<$Res> {
+  factory $ProduceFavoriteCopyWith(
+          ProduceFavorite value, $Res Function(ProduceFavorite) then) =
+      _$ProduceFavoriteCopyWithImpl<$Res>;
+  $Res call({String produceId, DateTime dateAdded});
+}
+
+/// @nodoc
+class _$ProduceFavoriteCopyWithImpl<$Res>
+    implements $ProduceFavoriteCopyWith<$Res> {
+  _$ProduceFavoriteCopyWithImpl(this._value, this._then);
+
+  final ProduceFavorite _value;
+  // ignore: unused_field
+  final $Res Function(ProduceFavorite) _then;
+
+  @override
+  $Res call({
+    Object? produceId = freezed,
+    Object? dateAdded = freezed,
+  }) {
+    return _then(_value.copyWith(
+      produceId: produceId == freezed
+          ? _value.produceId
+          : produceId // ignore: cast_nullable_to_non_nullable
+              as String,
+      dateAdded: dateAdded == freezed
+          ? _value.dateAdded
+          : dateAdded // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$ProduceFavoriteCopyWith<$Res>
+    implements $ProduceFavoriteCopyWith<$Res> {
+  factory _$ProduceFavoriteCopyWith(
+          _ProduceFavorite value, $Res Function(_ProduceFavorite) then) =
+      __$ProduceFavoriteCopyWithImpl<$Res>;
+  @override
+  $Res call({String produceId, DateTime dateAdded});
+}
+
+/// @nodoc
+class __$ProduceFavoriteCopyWithImpl<$Res>
+    extends _$ProduceFavoriteCopyWithImpl<$Res>
+    implements _$ProduceFavoriteCopyWith<$Res> {
+  __$ProduceFavoriteCopyWithImpl(
+      _ProduceFavorite _value, $Res Function(_ProduceFavorite) _then)
+      : super(_value, (v) => _then(v as _ProduceFavorite));
+
+  @override
+  _ProduceFavorite get _value => super._value as _ProduceFavorite;
+
+  @override
+  $Res call({
+    Object? produceId = freezed,
+    Object? dateAdded = freezed,
+  }) {
+    return _then(_ProduceFavorite(
+      produceId: produceId == freezed
+          ? _value.produceId
+          : produceId // ignore: cast_nullable_to_non_nullable
+              as String,
+      dateAdded: dateAdded == freezed
+          ? _value.dateAdded
+          : dateAdded // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_ProduceFavorite implements _ProduceFavorite {
+  _$_ProduceFavorite({required this.produceId, required this.dateAdded});
+
+  @override
+  final String produceId;
+  @override
+  final DateTime dateAdded;
+
+  @override
+  String toString() {
+    return 'ProduceFavorite(produceId: $produceId, dateAdded: $dateAdded)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _ProduceFavorite &&
+            (identical(other.produceId, produceId) ||
+                other.produceId == produceId) &&
+            (identical(other.dateAdded, dateAdded) ||
+                other.dateAdded == dateAdded));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, produceId, dateAdded);
+
+  @JsonKey(ignore: true)
+  @override
+  _$ProduceFavoriteCopyWith<_ProduceFavorite> get copyWith =>
+      __$ProduceFavoriteCopyWithImpl<_ProduceFavorite>(this, _$identity);
+}
+
+abstract class _ProduceFavorite implements ProduceFavorite {
+  factory _ProduceFavorite(
+      {required String produceId,
+      required DateTime dateAdded}) = _$_ProduceFavorite;
+
+  @override
+  String get produceId;
+  @override
+  DateTime get dateAdded;
+  @override
+  @JsonKey(ignore: true)
+  _$ProduceFavoriteCopyWith<_ProduceFavorite> get copyWith =>
+      throw _privateConstructorUsedError;
+}
