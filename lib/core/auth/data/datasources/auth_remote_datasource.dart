@@ -98,7 +98,7 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
       "email": farmhubUser.email,
       "username": farmhubUser.username,
       "createdAt": farmhubUser.createdAt,
-      "produceFavoritesList": {},
+      "produceFavoritesMap": {},
     }, null);
 
     return farmhubUser;

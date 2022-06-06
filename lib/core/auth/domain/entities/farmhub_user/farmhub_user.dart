@@ -1,11 +1,9 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:farmhub/features/produce_manager/domain/entities/produce/produce.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../errors/exceptions.dart';
 
 part 'farmhub_user.freezed.dart';
-part 'farmhub_user.g.dart';
 
 @freezed
 class FarmhubUser with _$FarmhubUser {
@@ -26,7 +24,7 @@ class FarmhubUser with _$FarmhubUser {
       );
     }
 
-    final Map<String, dynamic> produceFavoritesMap = map["produceFavorites"];
+    final Map<String, dynamic> produceFavoritesMap = map["produceFavoritesMap"];
     final List<ProduceFavorite> produceFavoritesList = [];
 
     produceFavoritesMap.forEach((key, value) {

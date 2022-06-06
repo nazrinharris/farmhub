@@ -150,11 +150,12 @@ class AuthRepository implements IAuthRepository {
           message: e.message,
           stackTrace: StackTrace.current,
         ));
-      } catch (e) {
-        print('Retrieval of User Information Error Occurred');
+      } catch (e, stack) {
+        print('Retrieval of User Information Error Occurred, $e');
+        print("$stack");
         return Left(UnexpectedFailure(
           message: e.toString(),
-          stackTrace: StackTrace.current,
+          stackTrace: stack,
         ));
       }
     } else {
