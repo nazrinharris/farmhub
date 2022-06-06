@@ -204,4 +204,29 @@ class AuthRepository implements IAuthRepository {
       ));
     }
   }
+
+  @override
+  Future<Either<Failure, FarmhubUser>> updateRemoteUser({required FarmhubUser newUserData}) async {
+    if (await networkInfo.isConnected) {
+      try {
+        final user = await authRemoteDataSource.updateRemoteUser(newUserData);
+        return Right(user);
+      } on FirebaseAuthException catch (e) {
+        return Left(
+            FirebaseAuthFailure(code: e.code, message: e.message, stackTrace: StackTrace.current));
+      } catch (e, stack) {
+        return Left(UnexpectedFailure(
+          code: e.toString(),
+          message: "An unexpected error occured",
+          stackTrace: stack,
+        ));
+      }
+    } else {
+      return Left(InternetConnectionFailure(
+        code: ERROR_NO_INTERNET_CONNECTION,
+        message: MESSAGE_NO_INTERNET_CONNECTION,
+        stackTrace: StackTrace.current,
+      ));
+    }
+  }
 }

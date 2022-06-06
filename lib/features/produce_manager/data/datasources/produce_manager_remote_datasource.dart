@@ -687,7 +687,7 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
     String currentFormattedTime = DateFormat("yyyy-MM-dd hh:mm:ss aaa").format(clock.now());
 
     await firebaseFirestore.collection('users').doc(uid).update({
-      "produceFavorites.$produceId": currentFormattedTime,
+      "produceFavoritesMap.$produceId": currentFormattedTime,
     });
 
     return unit;
@@ -696,7 +696,7 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
   @override
   Future<Unit> removeFromFavorites(String uid, String produceId) async {
     await firebaseFirestore.collection('users').doc(uid).update({
-      "produceFavorites.$produceId": FieldValue.delete(),
+      "produceFavoritesMap.$produceId": FieldValue.delete(),
     });
 
     return unit;

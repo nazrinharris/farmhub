@@ -26,4 +26,8 @@ abstract class IAuthRepository {
   Future<Either<Failure, bool>> isAdmin({
     required String uid,
   });
+
+  Future<Either<Failure, FarmhubUser>> updateRemoteUser({
+    required FarmhubUser newUserData,
+  });
 }

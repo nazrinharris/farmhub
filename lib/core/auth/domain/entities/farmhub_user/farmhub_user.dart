@@ -39,4 +39,20 @@ class FarmhubUser with _$FarmhubUser {
       produceFavoritesList: produceFavoritesList,
     );
   }
+
+  static Map<String, dynamic> toMap(FarmhubUser user) {
+    final produceFavoritesMap = {};
+
+    for (ProduceFavorite produceFavorite in user.produceFavoritesList) {
+      produceFavoritesMap[produceFavorite.produceId] = produceFavorite.dateAdded;
+    }
+
+    return {
+      "createdAt": user.createdAt,
+      "email": user.email,
+      "produceFavoritesMap": produceFavoritesMap,
+      "uid": user.uid,
+      "username": user.username,
+    };
+  }
 }

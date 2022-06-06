@@ -24,6 +24,8 @@ abstract class IAuthRemoteDataSource {
 
   Future<FarmhubUser> retrieveUserData();
 
+  Future<FarmhubUser> updateRemoteUser(FarmhubUser newUserData);
+
   Future<bool> isAdmin(String uid);
 
   Future<Unit> signOut();
@@ -156,5 +158,21 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
     } else {
       return true;
     }
+  }
+
+  @override
+  Future<FarmhubUser> updateRemoteUser(FarmhubUser newUserData) async {
+    await firebaseFirestore
+        .collection('users')
+        .doc(newUserData.uid)
+        .update(FarmhubUser.toMap(newUserData));
+
+    final user = await firebaseFirestore
+        .collection('users')
+        .doc(newUserData.uid)
+        .get()
+        .then((value) => FarmhubUser.fromMap(value.data()));
+
+    return user;
   }
 }
