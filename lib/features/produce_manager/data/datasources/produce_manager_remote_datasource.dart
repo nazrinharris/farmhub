@@ -690,13 +690,16 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
       "produceFavorites.$produceId": currentFormattedTime,
     });
 
-    throw UnimplementedError();
+    return unit;
   }
 
   @override
-  Future<Unit> removeFromFavorites(String uid, String produceId) {
-    // TODO: implement removeFromFavorites
-    throw UnimplementedError();
+  Future<Unit> removeFromFavorites(String uid, String produceId) async {
+    await firebaseFirestore.collection('users').doc(uid).update({
+      "produceFavorites.$produceId": FieldValue.delete(),
+    });
+
+    return unit;
   }
 }
 

@@ -459,6 +459,7 @@ class ProduceManagerRepository implements IProduceManagerRepository {
         return Left(
             ProduceManagerFailure(code: e.code, message: e.message, stackTrace: e.stackTrace));
       } catch (e, stack) {
+        print("$e => $stack");
         return Left(UnexpectedFailure(code: e.toString(), stackTrace: stack));
       }
     } else {

@@ -1,5 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:farmhub/core/auth/domain/entities/farmhub_user/farmhub_user.dart';
+import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
+import 'package:farmhub/features/produce_manager/domain/i_produce_manager_repository.dart';
 import 'package:farmhub/locator.dart';
 import 'package:farmhub/presentation/shared_widgets/buttons.dart';
 import 'package:farmhub/presentation/shared_widgets/ui_helpers.dart';
@@ -20,6 +23,9 @@ class PlaygroundTwoScreen extends StatelessWidget {
       child: Builder(builder: (context) {
         return BlocBuilder<PlaygroundCubit, PlaygroundState>(
           builder: (context, state) {
+            final IProduceManagerRepository repository = locator();
+            final FarmhubUser user = context.read<GlobalAuthCubit>().state.farmhubUser!;
+
             return Scaffold(
               body: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -129,6 +135,26 @@ class PlaygroundTwoScreen extends StatelessWidget {
                               chosenDate: "22-05-2022",
                               chosenYear: "2022",
                             );
+                      },
+                    ),
+                  ),
+                  UIVerticalSpace14(),
+                  Center(
+                    child: PrimaryButton(
+                      width: 200,
+                      content: "Add to Fav",
+                      onPressed: () async {
+                        await repository.addToFavorites(user.uid, "FS4MgEEIXsDHKS0gR0ih");
+                      },
+                    ),
+                  ),
+                  UIVerticalSpace14(),
+                  Center(
+                    child: PrimaryButton(
+                      width: 200,
+                      content: "Remove from Fav",
+                      onPressed: () async {
+                        await repository.removeFromFavorites(user.uid, "FS4MgEEIXsDHKS0gR0ih");
                       },
                     ),
                   ),
