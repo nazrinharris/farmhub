@@ -1,5 +1,6 @@
 import 'package:farmhub/features/produce_manager/domain/entities/produce/produce.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:intl/intl.dart';
 
 import '../../../../errors/exceptions.dart';
 
@@ -44,7 +45,10 @@ class FarmhubUser with _$FarmhubUser {
     final produceFavoritesMap = {};
 
     for (ProduceFavorite produceFavorite in user.produceFavoritesList) {
-      produceFavoritesMap[produceFavorite.produceId] = produceFavorite.dateAdded;
+      String currentFormattedTime =
+          DateFormat("yyyy-MM-dd hh:mm:ss aaa").format(produceFavorite.dateAdded);
+
+      produceFavoritesMap[produceFavorite.produceId] = currentFormattedTime;
     }
 
     return {

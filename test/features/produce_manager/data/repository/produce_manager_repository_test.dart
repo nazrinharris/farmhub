@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:clock/clock.dart';
 import 'package:farmhub/core/auth/domain/i_auth_repository.dart';
+import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
 import 'package:farmhub/core/network/network_info.dart';
 import 'package:farmhub/features/produce_manager/data/datasources/produce_manager_local_datasource.dart';
 import 'package:farmhub/features/produce_manager/data/datasources/produce_manager_remote_datasource.dart';
@@ -19,6 +20,8 @@ class MockAuthRepository extends Mock implements IAuthRepository {}
 
 class MockNetworkInfo extends Mock implements NetworkInfo {}
 
+class MockGlobalAuthCubit extends Mock implements GlobalAuthCubit {}
+
 class FakeProduce extends Fake implements Produce {}
 
 void main() {
@@ -28,18 +31,21 @@ void main() {
   late MockProduceManagerLocalDatasource mockLocalDatasource;
   late MockAuthRepository mockAuthRepository;
   late MockNetworkInfo mockNetworkInfo;
+  late MockGlobalAuthCubit mockGlobalAuthCubit;
 
   setUp(() {
     mockRemoteDatasource = MockProduceManagerRemoteDatasource();
     mockLocalDatasource = MockProduceManagerLocalDatasource();
     mockNetworkInfo = MockNetworkInfo();
     mockAuthRepository = MockAuthRepository();
+    mockGlobalAuthCubit = MockGlobalAuthCubit();
 
     repository = ProduceManagerRepository(
       localDatasource: mockLocalDatasource,
       networkInfo: mockNetworkInfo,
       remoteDatasource: mockRemoteDatasource,
       authRepository: mockAuthRepository,
+      globalAuthCubit: mockGlobalAuthCubit,
     );
 
     registerFallbackValue(FakeProduce());

@@ -2,6 +2,7 @@ import 'package:farmhub/core/typedefs/typedefs.dart';
 import 'package:farmhub/features/produce_manager/domain/entities/price/price.dart';
 import 'package:fpdart/fpdart.dart';
 
+import '../../../core/auth/domain/entities/farmhub_user/farmhub_user.dart';
 import '../../../core/errors/failures.dart';
 import 'entities/produce/produce.dart';
 
@@ -13,8 +14,8 @@ abstract class IProduceManagerRepository {
   FutureEither<List<Produce>> getNextTenSearchProduce(List<Produce> lastProduceList, String query);
 
   FutureEither<List<Produce>> getProduceAsList(List<String> produceIdList);
-  FutureEither<Unit> addToFavorites(String uid, String produceId);
-  FutureEither<Unit> removeFromFavorites(String uid, String produceId);
+  FutureEither<FarmhubUser> addToFavorites(FarmhubUser farmhubUser, String produceId);
+  FutureEither<FarmhubUser> removeFromFavorites(FarmhubUser farmhubUser, String produceId);
 
   FutureEither<Price> getPrice(String produceId, String priceId);
   FutureEither<Price> editSubPrice(

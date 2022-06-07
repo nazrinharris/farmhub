@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:farmhub/core/auth/domain/entities/farmhub_user/farmhub_user.dart';
 import 'package:farmhub/core/auth/domain/i_auth_repository.dart';
+import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
 import 'package:farmhub/core/constants/app_const.dart';
 import 'package:farmhub/core/errors/exceptions.dart';
 import 'package:farmhub/core/errors/failures.dart';
@@ -20,12 +21,14 @@ class ProduceManagerRepository implements IProduceManagerRepository {
   final IProduceManagerRemoteDatasource remoteDatasource;
   final IProduceManagerLocalDatasource localDatasource;
   final IAuthRepository authRepository;
+  final GlobalAuthCubit globalAuthCubit;
 
   ProduceManagerRepository({
     required this.networkInfo,
     required this.remoteDatasource,
     required this.localDatasource,
     required this.authRepository,
+    required this.globalAuthCubit,
   });
 
   @override
@@ -450,16 +453,17 @@ class ProduceManagerRepository implements IProduceManagerRepository {
   }
 
   @override
-  FutureEither<Unit> addToFavorites(String uid, String produceId) async {
+  FutureEither<FarmhubUser> addToFavorites(FarmhubUser farmhubUser, String produceId) async {
     if (await networkInfo.isConnected) {
       try {
-        await remoteDatasource.addToFavorites(uid, produceId);
-        return const Right(unit);
+        final result = await remoteDatasource.addToFavorites(farmhubUser, produceId);
+        globalAuthCubit.updateFarmhubUser(farmhubUser);
+
+        return Right(result);
       } on ProduceManagerException catch (e) {
         return Left(
             ProduceManagerFailure(code: e.code, message: e.message, stackTrace: e.stackTrace));
       } catch (e, stack) {
-        print("$e => $stack");
         return Left(UnexpectedFailure(code: e.toString(), stackTrace: stack));
       }
     } else {
@@ -472,14 +476,19 @@ class ProduceManagerRepository implements IProduceManagerRepository {
   }
 
   @override
-  FutureEither<Unit> removeFromFavorites(String uid, String produceId) async {
+  FutureEither<FarmhubUser> removeFromFavorites(FarmhubUser farmhubUser, String produceId) async {
     if (await networkInfo.isConnected) {
       try {
-        await remoteDatasource.removeFromFavorites(uid, produceId);
-        return const Right(unit);
+        final result = await remoteDatasource.removeFromFavorites(farmhubUser, produceId);
+        globalAuthCubit.updateFarmhubUser(farmhubUser);
+
+        return Right(result);
       } on ProduceManagerException catch (e) {
-        return Left(
-            ProduceManagerFailure(code: e.code, message: e.message, stackTrace: e.stackTrace));
+        return Left(ProduceManagerFailure(
+          code: e.code,
+          message: e.message,
+          stackTrace: e.stackTrace,
+        ));
       } catch (e, stack) {
         return Left(UnexpectedFailure(code: e.toString(), stackTrace: stack));
       }

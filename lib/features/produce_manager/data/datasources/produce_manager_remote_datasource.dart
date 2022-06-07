@@ -9,6 +9,7 @@ import 'package:farmhub/features/produce_manager/domain/helpers.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:intl/intl.dart';
 
+import '../../../../core/auth/domain/entities/farmhub_user/farmhub_user.dart';
 import '../../domain/entities/produce/produce.dart';
 
 abstract class IProduceManagerRemoteDatasource {
@@ -21,8 +22,8 @@ abstract class IProduceManagerRemoteDatasource {
     required String authorId,
   });
   Future<List<Produce>> getProduceAsList(List<String> produceIdList);
-  Future<Unit> addToFavorites(String uid, String produceId);
-  Future<Unit> removeFromFavorites(String uid, String produceId);
+  Future<FarmhubUser> addToFavorites(FarmhubUser farmhubUser, String produceId);
+  Future<FarmhubUser> removeFromFavorites(FarmhubUser farmhubUser, String produceId);
 
   Future<Unit> editProduce(String produceId, String newProduceName);
   Future<Unit> deleteProduce(String produceId);
@@ -683,23 +684,47 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
   }
 
   @override
-  Future<Unit> addToFavorites(String uid, String produceId) async {
-    String currentFormattedTime = DateFormat("yyyy-MM-dd hh:mm:ss aaa").format(clock.now());
+  Future<FarmhubUser> addToFavorites(FarmhubUser farmhubUser, String produceId) async {
+    final now = clock.now();
+    String formattedDateAdded = DateFormat("yyyy-MM-dd hh:mm:ss aaa").format(now);
 
-    await firebaseFirestore.collection('users').doc(uid).update({
-      "produceFavoritesMap.$produceId": currentFormattedTime,
+    await firebaseFirestore.collection('users').doc(farmhubUser.uid).update({
+      "produceFavoritesMap.$produceId": formattedDateAdded,
+    }).then((_) {
+      farmhubUser.produceFavoritesList.add(ProduceFavorite(produceId: produceId, dateAdded: now));
     });
 
-    return unit;
+    return farmhubUser;
   }
 
   @override
-  Future<Unit> removeFromFavorites(String uid, String produceId) async {
-    await firebaseFirestore.collection('users').doc(uid).update({
+  Future<FarmhubUser> removeFromFavorites(FarmhubUser farmhubUser, String produceId) async {
+    await firebaseFirestore.collection('users').doc(farmhubUser.uid).update({
       "produceFavoritesMap.$produceId": FieldValue.delete(),
+    }).then((_) {
+      ProduceFavorite? produceFavoriteToRemove;
+
+      for (ProduceFavorite favorite in farmhubUser.produceFavoritesList) {
+        if (favorite.produceId == produceId) {
+          produceFavoriteToRemove = favorite;
+          break;
+        }
+      }
+
+      if (produceFavoriteToRemove != null) {
+        farmhubUser.produceFavoritesList.remove(produceFavoriteToRemove);
+      } else {
+        throw ProduceManagerException(
+          // TODO: Proper error code.
+          code: "PM-Delete-Favorite-Does-Not-Exist",
+          message:
+              "Remove operation of a certain produce from favorites, but it doesn't exist to begin with.",
+          stackTrace: StackTrace.current,
+        );
+      }
     });
 
-    return unit;
+    return farmhubUser;
   }
 }
 

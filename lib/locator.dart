@@ -55,6 +55,7 @@ void setupLocator() {
         remoteDatasource: locator(),
         localDatasource: locator(),
         authRepository: locator(),
+        globalAuthCubit: locator(),
       ));
   // Datasources
   locator.registerLazySingleton<IProduceManagerRemoteDatasource>(

@@ -12,6 +12,8 @@ class GlobalAuthCubit extends Cubit<GlobalAuthState> {
 
   GlobalAuthCubit(this.repository) : super(const GlobalAuthState.initial());
 
+  /// This method updates the [FarmhubUser] inside of this cubit. It does not in any way
+  /// update the remote user, for that you should use [updateRemoteUser] from [auth_remote_datasource]
   void updateFarmhubUser(FarmhubUser? farmhubUser) {
     emit(state.copyWith(farmhubUser: farmhubUser));
   }

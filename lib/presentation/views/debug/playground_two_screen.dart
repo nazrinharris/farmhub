@@ -144,7 +144,7 @@ class PlaygroundTwoScreen extends StatelessWidget {
                       width: 200,
                       content: "Add to Fav",
                       onPressed: () async {
-                        await repository.addToFavorites(user.uid, "FS4MgEEIXsDHKS0gR0ih");
+                        await repository.addToFavorites(user, "FS4MgEEIXsDHKS0gR0ih");
                       },
                     ),
                   ),
@@ -154,7 +154,7 @@ class PlaygroundTwoScreen extends StatelessWidget {
                       width: 200,
                       content: "Remove from Fav",
                       onPressed: () async {
-                        await repository.removeFromFavorites(user.uid, "FS4MgEEIXsDHKS0gR0ih");
+                        await repository.removeFromFavorites(user, "FS4MgEEIXsDHKS0gR0ih");
                       },
                     ),
                   ),
