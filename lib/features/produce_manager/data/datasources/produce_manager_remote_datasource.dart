@@ -691,6 +691,16 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
     await firebaseFirestore.collection('users').doc(farmhubUser.uid).update({
       "produceFavoritesMap.$produceId": formattedDateAdded,
     }).then((_) {
+      for (ProduceFavorite favorite in farmhubUser.produceFavoritesList) {
+        if (favorite.produceId == produceId) {
+          throw ProduceManagerException(
+            code: 'PM-Add-Favorite-Should-Not-Duplicate',
+            message:
+                "Add operation of a produce to a favorites list, but it already exists, this should never happen.",
+            stackTrace: StackTrace.current,
+          );
+        }
+      }
       farmhubUser.produceFavoritesList.add(ProduceFavorite(produceId: produceId, dateAdded: now));
     });
 

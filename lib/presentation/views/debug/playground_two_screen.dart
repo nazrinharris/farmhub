@@ -144,7 +144,19 @@ class PlaygroundTwoScreen extends StatelessWidget {
                       width: 200,
                       content: "Add to Fav",
                       onPressed: () async {
-                        await repository.addToFavorites(user, "FS4MgEEIXsDHKS0gR0ih");
+                        await repository
+                            .addToFavorites(user, "FS4MgEEIXsDHKS0gR0ih")
+                            .then((foldThis) {
+                          foldThis.fold(
+                            (l) => print(l),
+                            (r) => null,
+                          );
+
+                          FarmhubUser user = context.read<GlobalAuthCubit>().state.farmhubUser!;
+
+                          print("After adding favorite");
+                          print(user.produceFavoritesList);
+                        });
                       },
                     ),
                   ),
@@ -154,7 +166,19 @@ class PlaygroundTwoScreen extends StatelessWidget {
                       width: 200,
                       content: "Remove from Fav",
                       onPressed: () async {
-                        await repository.removeFromFavorites(user, "FS4MgEEIXsDHKS0gR0ih");
+                        await repository
+                            .removeFromFavorites(user, "FS4MgEEIXsDHKS0gR0ih")
+                            .then((foldThis) {
+                          foldThis.fold(
+                            (f) => print(f),
+                            (r) => null,
+                          );
+
+                          FarmhubUser user = context.read<GlobalAuthCubit>().state.farmhubUser!;
+
+                          print("After removing favorite");
+                          print(user.produceFavoritesList);
+                        });
                       },
                     ),
                   ),
