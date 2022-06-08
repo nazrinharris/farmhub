@@ -29,7 +29,8 @@ class FarmhubUser with _$FarmhubUser {
     final List<ProduceFavorite> produceFavoritesList = [];
 
     produceFavoritesMap.forEach((key, value) {
-      produceFavoritesList.add(ProduceFavorite(produceId: key, dateAdded: value));
+      DateTime dateAddedTimeStamp = DateFormat("yyyy-MM-dd hh:mm:ss aaa").parse(value);
+      produceFavoritesList.add(ProduceFavorite(produceId: key, dateAdded: dateAddedTimeStamp));
     });
 
     return FarmhubUser(

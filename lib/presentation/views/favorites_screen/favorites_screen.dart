@@ -1,29 +1,49 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:farmhub/locator.dart';
 import 'package:farmhub/presentation/shared_widgets/scroll_physics.dart';
 import 'package:farmhub/presentation/shared_widgets/ui_helpers.dart';
 import 'package:farmhub/presentation/smart_widgets/custom_cupertino_sliver_refresh_control.dart';
+import 'package:farmhub/presentation/smart_widgets/large_price_chart.dart';
+import 'package:farmhub/presentation/views/favorites_screen/cubit/favorites_screen_cubit.dart';
+import 'package:farmhub/presentation/views/main_screen/main_screen.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../core/errors/failures.dart';
+import '../../../features/produce_manager/domain/entities/produce/produce.dart';
+import '../../smart_widgets/produce_list_card/produce_list_card.dart';
 
 class FavoritesScreen extends StatelessWidget {
   const FavoritesScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        extendBody: true,
-        extendBodyBehindAppBar: true,
-        body: CustomScrollView(
-          physics: DefaultScrollPhysics,
-          slivers: [
-            CustomCupertinoSliverRefreshControl(
-              onRefresh: () async {
-                await Future.delayed(Duration(seconds: 2));
-              },
-            ),
-            SliverFavoritesHeader(),
-          ],
-        ));
+    return BlocProvider(
+      create: (context) => FavoritesScreenCubit(
+        globalAuthCubit: locator(),
+        repository: locator(),
+      ),
+      child: Builder(builder: (context) {
+        return Scaffold(
+            extendBody: true,
+            extendBodyBehindAppBar: true,
+            body: CustomScrollView(
+              physics: DefaultScrollPhysics,
+              slivers: [
+                CustomCupertinoSliverRefreshControl(
+                  onRefresh: () async {
+                    await context.read<FavoritesScreenCubit>().getProduceFavorites();
+                  },
+                ),
+                SliverFavoritesHeader(),
+                SliverWhiteSpace(30),
+                SliverFavoritesContent(),
+              ],
+            ));
+      }),
+    );
   }
 }
 
@@ -44,5 +64,129 @@ class SliverFavoritesHeader extends StatelessWidget {
         ),
       )
     ]));
+  }
+}
+
+class SliverFavoritesContent extends StatefulWidget {
+  SliverFavoritesContent({Key? key}) : super(key: key);
+
+  @override
+  State<SliverFavoritesContent> createState() => _SliverFavoritesContentState();
+}
+
+class _SliverFavoritesContentState extends State<SliverFavoritesContent> {
+  @override
+  void initState() {
+    super.initState();
+
+    context.read<FavoritesScreenCubit>().getProduceFavorites();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<FavoritesScreenCubit, FavoritesScreenState>(
+      builder: (context, state) {
+        if (state is FSInitial) {
+          throw Exception("This state should have never been thrown");
+        } else if (state is FSLoading) {
+          // TODO: Consider making a seperate shared widget for this
+          return SliverLoadingIndicator();
+        } else if (state is FSComplete) {
+          return SliverProduceFavoritesList(
+            produceList: state.produceFavoritesList,
+            isLoading: false,
+          );
+        } else if (state is FSError) {
+          print(state.failure);
+          return SliverError(
+            failure: state.failure,
+          );
+        } else {
+          throw Exception("Unexpected state was thrown");
+        }
+      },
+    );
+  }
+}
+
+class SliverError extends StatelessWidget {
+  final Failure failure;
+
+  const SliverError({
+    Key? key,
+    required this.failure,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+
+    return SliverList(
+      delegate: SliverChildListDelegate(
+        [
+          Container(
+            alignment: Alignment.center,
+            width: screenWidth,
+            height: 200,
+            child: ErrorText(
+              message: "Uh oh, something went wrong.",
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class SliverProduceFavoritesList extends StatelessWidget {
+  final List<Produce> produceList;
+  final bool isLoading;
+  final bool? isAdmin;
+
+  const SliverProduceFavoritesList({
+    Key? key,
+    required this.isLoading,
+    required this.produceList,
+    this.isAdmin,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    BorderSide borderSide =
+        BorderSide(color: Theme.of(context).colorScheme.primary.withOpacity(0.24));
+
+    return SliverList(
+      delegate: SliverChildBuilderDelegate(
+        (context, index) {
+          if (isLoading == true) {
+            if (index == produceList.length) {
+              return Container(
+                height: 100,
+                padding: const EdgeInsets.only(top: 24),
+                alignment: Alignment.center,
+                child: const CupertinoActivityIndicator(),
+              );
+            } else {
+              return ProduceListCard(
+                index,
+                produceList[index],
+                chartAnimationDuration: 0,
+              );
+            }
+          } else {
+            return ProduceListCard(
+              index,
+              produceList[index],
+              chartAnimationDuration: 0,
+            );
+          }
+        },
+        childCount: resolveChildCount(produceList, isLoading),
+      ),
+    );
+  }
+
+  int resolveChildCount(List<Produce> produceList, bool isLoading) {
+    return isLoading ? produceList.length + 1 : produceList.length;
   }
 }

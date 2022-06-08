@@ -126,8 +126,11 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
       // TODO: Make a proper constant error code.
       throw FirebaseAuthException(code: 'user-not-signed-in', message: 'User is not signed in.');
     } else {
-      final farmhubUser =
-          await firebaseFirestore.collection(FS_USER_COLLECTION).doc(user.uid).get();
+      final farmhubUser = await firebaseFirestore
+          .collection(FS_USER_COLLECTION)
+          .doc(user.uid)
+          .get()
+          .then((value) => value.data());
 
       if (farmhubUser == null) {
         throw FirebaseException(
@@ -137,7 +140,7 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
           stackTrace: StackTrace.current,
         );
       } else {
-        return FarmhubUser.fromMap(farmhubUser.data()!);
+        return FarmhubUser.fromMap(farmhubUser);
       }
     }
   }

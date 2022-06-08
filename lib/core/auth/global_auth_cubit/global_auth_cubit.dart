@@ -7,6 +7,15 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'global_auth_state.dart';
 part 'global_auth_cubit.freezed.dart';
 
+// TODO: Temporary as guest farmhub user.
+final guestFarmhubUser = FarmhubUser(
+  uid: "xxxxxx",
+  email: "-",
+  username: "Guest",
+  createdAt: "-",
+  produceFavoritesList: [],
+);
+
 class GlobalAuthCubit extends Cubit<GlobalAuthState> {
   final IAuthRepository repository;
 
@@ -28,7 +37,7 @@ class GlobalAuthCubit extends Cubit<GlobalAuthState> {
     await failureOrFarmhubUser.fold(
       (l) {
         print("User is not logged in.");
-        emit(state.copyWith(farmhubUser: null, isAdmin: null));
+        emit(state.copyWith(farmhubUser: guestFarmhubUser, isAdmin: false));
       },
       (farmhubUser) async {
         final failureOrIsAdmin = await repository.isAdmin(uid: farmhubUser.uid);

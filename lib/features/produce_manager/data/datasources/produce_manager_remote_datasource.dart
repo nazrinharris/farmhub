@@ -680,7 +680,8 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
       }
     }
 
-    return produceList;
+    //return produceList;
+    throw Exception("Unknown Error Occured");
   }
 
   @override

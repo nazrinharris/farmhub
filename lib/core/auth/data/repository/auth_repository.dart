@@ -37,11 +37,11 @@ class AuthRepository implements IAuthRepository {
       } on FirebaseAuthException catch (e) {
         return Left(
             FirebaseAuthFailure(code: e.code, message: e.message, stackTrace: StackTrace.current));
-      } catch (e) {
+      } catch (e, stack) {
         return Left(UnexpectedFailure(
           code: e.toString(),
           message: "An unexpected error occured",
-          stackTrace: StackTrace.current,
+          stackTrace: stack,
         ));
       }
     } else {
