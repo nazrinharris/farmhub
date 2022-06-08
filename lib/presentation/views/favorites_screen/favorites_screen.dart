@@ -4,7 +4,6 @@ import 'package:farmhub/locator.dart';
 import 'package:farmhub/presentation/shared_widgets/scroll_physics.dart';
 import 'package:farmhub/presentation/shared_widgets/ui_helpers.dart';
 import 'package:farmhub/presentation/smart_widgets/custom_cupertino_sliver_refresh_control.dart';
-import 'package:farmhub/presentation/smart_widgets/large_price_chart.dart';
 import 'package:farmhub/presentation/views/favorites_screen/cubit/favorites_screen_cubit.dart';
 import 'package:farmhub/presentation/views/main_screen/main_screen.dart';
 import 'package:flutter/cupertino.dart';
@@ -92,10 +91,14 @@ class _SliverFavoritesContentState extends State<SliverFavoritesContent> {
           // TODO: Consider making a seperate shared widget for this
           return SliverLoadingIndicator();
         } else if (state is FSComplete) {
-          return SliverProduceFavoritesList(
-            produceList: state.produceFavoritesList,
-            isLoading: false,
-          );
+          if (state.produceFavoritesList.isEmpty) {
+            return SliverEmptyFavorites();
+          } else {
+            return SliverProduceFavoritesList(
+              produceList: state.produceFavoritesList,
+              isLoading: false,
+            );
+          }
         } else if (state is FSError) {
           print(state.failure);
           return SliverError(
@@ -125,13 +128,23 @@ class SliverError extends StatelessWidget {
       delegate: SliverChildListDelegate(
         [
           Container(
-            alignment: Alignment.center,
-            width: screenWidth,
-            height: 200,
-            child: ErrorText(
-              message: "Uh oh, something went wrong.",
-            ),
-          ),
+              alignment: Alignment.center,
+              width: screenWidth,
+              height: 200,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "Uh oh, something went wrong.",
+                    style: Theme.of(context).textTheme.bodyText1!.copyWith(color: Colors.red),
+                  ),
+                  const UIVerticalSpace14(),
+                  Text(
+                    "Scroll to retry",
+                    style: Theme.of(context).textTheme.caption,
+                  ),
+                ],
+              )),
         ],
       ),
     );
@@ -188,5 +201,42 @@ class SliverProduceFavoritesList extends StatelessWidget {
 
   int resolveChildCount(List<Produce> produceList, bool isLoading) {
     return isLoading ? produceList.length + 1 : produceList.length;
+  }
+}
+
+class SliverEmptyFavorites extends StatelessWidget {
+  const SliverEmptyFavorites({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SliverList(
+      delegate: SliverChildListDelegate(
+        [
+          UICustomVertical(200),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                "Hmm, this place is pretty empty  ",
+                style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                      color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
+                    ),
+              ),
+              Text("🥲", style: TextStyle(fontSize: 24))
+            ],
+          ),
+          UIVerticalSpace6(),
+          Align(
+            alignment: Alignment.center,
+            child: Text(
+              "Try adding some!",
+              style: Theme.of(context).textTheme.bodyText2!.copyWith(
+                    fontSize: 24,
+                  ),
+            ),
+          )
+        ],
+      ),
+    );
   }
 }
