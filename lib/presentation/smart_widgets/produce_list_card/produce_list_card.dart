@@ -249,13 +249,8 @@ class BuildUserModalBottomSheet extends StatelessWidget {
                   topLeft: Radius.circular(14), topRight: Radius.circular(14)),
             ),
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 46),
-              child: SecondaryButton(
-                onPressed: () {},
-                content: "Add to Favorites",
-                buttonIcon: Icon(Icons.bookmark_add_outlined, size: 20),
-              ),
-            ),
+                padding: const EdgeInsets.symmetric(horizontal: 46),
+                child: ProduceFavoritesButton(isFavorite: isFavorite)),
           )
         ],
       ),
