@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:farmhub/locator.dart';
+import 'package:farmhub/presentation/global/cubit/global_ui_cubit.dart';
 import 'package:farmhub/presentation/shared_widgets/scroll_physics.dart';
 import 'package:farmhub/presentation/shared_widgets/ui_helpers.dart';
 import 'package:farmhub/presentation/smart_widgets/custom_cupertino_sliver_refresh_control.dart';
@@ -21,26 +22,36 @@ class FavoritesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => FavoritesScreenCubit(
+        globalUICubit: locator(),
         globalAuthCubit: locator(),
         repository: locator(),
       ),
       child: Builder(builder: (context) {
-        return Scaffold(
-            extendBody: true,
-            extendBodyBehindAppBar: true,
-            body: CustomScrollView(
-              physics: DefaultScrollPhysics,
-              slivers: [
-                CustomCupertinoSliverRefreshControl(
-                  onRefresh: () async {
-                    await context.read<FavoritesScreenCubit>().getProduceFavorites();
-                  },
-                ),
-                SliverFavoritesHeader(),
-                SliverWhiteSpace(30),
-                SliverFavoritesContent(),
-              ],
-            ));
+        return BlocListener<GlobalUICubit, GlobalUIState>(
+          listener: (context, state) {
+            if (state.props.shouldRefreshFavorites) {
+              print("This line means refresh is executed!");
+              context.read<FavoritesScreenCubit>().getProduceFavorites();
+              context.read<GlobalUICubit>().setShouldRefreshFavorites(false);
+            }
+          },
+          child: Scaffold(
+              extendBody: true,
+              extendBodyBehindAppBar: true,
+              body: CustomScrollView(
+                physics: DefaultScrollPhysics,
+                slivers: [
+                  CustomCupertinoSliverRefreshControl(
+                    onRefresh: () async {
+                      await context.read<FavoritesScreenCubit>().getProduceFavorites();
+                    },
+                  ),
+                  SliverFavoritesHeader(),
+                  SliverWhiteSpace(30),
+                  SliverFavoritesContent(),
+                ],
+              )),
+        );
       }),
     );
   }

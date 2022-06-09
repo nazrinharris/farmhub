@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:farmhub/features/produce_manager/domain/i_produce_manager_repository.dart';
+import 'package:farmhub/presentation/global/cubit/global_ui_cubit.dart';
 import 'package:farmhub/presentation/smart_widgets/produce_dialogs/app_dialogs.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -14,11 +15,13 @@ class ProduceListCardCubit extends Cubit<ProduceListCardState> {
   final FarmhubUser farmhubUser;
   final Produce produce;
   final IProduceManagerRepository repository;
+  final GlobalUICubit globalUICubit;
 
   ProduceListCardCubit({
     required this.farmhubUser,
     required this.produce,
     required this.repository,
+    required this.globalUICubit,
   }) : super(ProduceListCardState.initial(
             props: ProduceListCardProps(farmhubUser: farmhubUser, produce: produce)));
 
@@ -47,6 +50,7 @@ class ProduceListCardCubit extends Cubit<ProduceListCardState> {
         emit(ProduceListCardState.addToFavoritesButton(props: state.props));
       },
       (updatedFarmhubUser) {
+        globalUICubit.setShouldRefreshFavorites(true);
         emit(ProduceListCardState.removeFromFavoritesButton(props: state.props));
       },
     );
@@ -65,6 +69,7 @@ class ProduceListCardCubit extends Cubit<ProduceListCardState> {
         emit(ProduceListCardState.removeFromFavoritesButton(props: state.props));
       },
       (updatedFarmhubUser) {
+        globalUICubit.setShouldRefreshFavorites(true);
         emit(ProduceListCardState.addToFavoritesButton(props: state.props));
       },
     );

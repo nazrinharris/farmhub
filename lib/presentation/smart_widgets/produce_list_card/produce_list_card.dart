@@ -153,6 +153,7 @@ class ProduceListCard extends StatelessWidget {
             farmhubUser: farmhubUser,
             produce: produce,
             repository: locator(),
+            globalUICubit: locator(),
           ),
           child: Builder(builder: (context) {
             return ProduceModalBottomSheet(
