@@ -1,5 +1,7 @@
+import 'package:farmhub/core/auth/domain/entities/farmhub_user/farmhub_user.dart';
 import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
 import 'package:farmhub/core/errors/failures.dart';
+import 'package:farmhub/features/produce_manager/domain/helpers.dart';
 import 'package:farmhub/presentation/global/cubit/global_ui_cubit.dart';
 import 'package:farmhub/presentation/shared_widgets/buttons.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +19,7 @@ import '../../../locator.dart';
 import '../../shared_widgets/ui_helpers.dart';
 import '../produce_dialogs/app_dialogs.dart';
 import '../produce_dialogs/produce_dialog_cubit/produce_dialog_cubit.dart';
+import 'cubit/produce_list_card_cubit.dart';
 
 /// [index] is only used to decide if the top border should be rendered or not.
 /// [0] If the top border should be drawn and all other numbers will not draw it.
@@ -26,7 +29,6 @@ class ProduceListCard extends StatelessWidget {
   final Function()? onTap;
   final double? chartAnimationDuration;
   final bool? disableLongPress;
-  final bool? willRefreshPage;
 
   const ProduceListCard(
     this.index,
@@ -35,7 +37,6 @@ class ProduceListCard extends StatelessWidget {
     this.onTap,
     this.chartAnimationDuration,
     this.disableLongPress,
-    this.willRefreshPage = false,
   }) : super(key: key);
 
   @override
@@ -44,74 +45,79 @@ class ProduceListCard extends StatelessWidget {
     currentProducePrice = roundNum(currentProducePrice.toDouble(), 2);
     final bool? isAdmin = context.read<GlobalAuthCubit>().state.isAdmin;
     final bool disableLongPress = this.disableLongPress ?? false;
+    final FarmhubUser farmhubUser = context.read<GlobalAuthCubit>().state.farmhubUser!;
 
     return Material(
       type: MaterialType.transparency,
-      child: InkWell(
-        onLongPress: () {
-          HapticFeedback.heavyImpact();
-          if (disableLongPress) {
-          } else {
-            showProduceBottomActionSheet(context, isAdmin, produce);
-          }
-        },
-        onTap: onTap ??
-            () {
-              FocusScope.of(context).unfocus();
-              Navigator.of(context).pushNamed('/produce', arguments: ProduceArguments(produce));
-            },
-        child: Container(
-          margin: const EdgeInsets.symmetric(horizontal: 24),
-          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 13),
-          decoration: BoxDecoration(
-            border: Border(
-              top: _resolveTop(context, index),
-              bottom: BorderSide(color: Theme.of(context).colorScheme.primary.withOpacity(0.24)),
-            ),
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Flexible(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      produce.produceName,
-                      maxLines: 3,
-                      overflow: TextOverflow.fade,
-                      style: Theme.of(context).textTheme.bodyText1!.copyWith(fontSize: 17),
-                    ),
-                    const UICustomVertical(2),
-                    Text(
-                      "RM $currentProducePrice/kg",
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodyText2!
-                          .copyWith(fontWeight: FontWeight.w700),
-                    ),
-                    const UICustomVertical(9),
-                    ChangeBox(produce),
-                  ],
-                ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 14),
+        child: InkWell(
+          borderRadius: BorderRadius.circular(18),
+          onLongPress: () {
+            HapticFeedback.heavyImpact();
+            if (disableLongPress) {
+            } else {
+              showProduceBottomActionSheet(context, isAdmin, produce);
+            }
+          },
+          onTap: onTap ??
+              () {
+                FocusScope.of(context).unfocus();
+                Navigator.of(context).pushNamed('/produce', arguments: ProduceArguments(produce));
+              },
+          child: Container(
+            margin: const EdgeInsets.symmetric(horizontal: 14),
+            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 13),
+            decoration: BoxDecoration(
+              border: Border(
+                top: _resolveTop(context, index),
+                bottom: BorderSide(color: Theme.of(context).colorScheme.primary.withOpacity(0.24)),
               ),
-              Flexible(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    IgnorePointer(
-                      child: SmallPriceChart(
-                        produce,
-                        index,
-                        chartAnimationDuration: chartAnimationDuration,
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Flexible(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        produce.produceName,
+                        maxLines: 3,
+                        overflow: TextOverflow.fade,
+                        style: Theme.of(context).textTheme.bodyText1!.copyWith(fontSize: 17),
                       ),
-                    ),
-                  ],
+                      const UICustomVertical(2),
+                      Text(
+                        "RM $currentProducePrice/kg",
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodyText2!
+                            .copyWith(fontWeight: FontWeight.w700),
+                      ),
+                      const UICustomVertical(9),
+                      ChangeBox(produce),
+                    ],
+                  ),
                 ),
-              )
-            ],
+                Flexible(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      IgnorePointer(
+                        child: SmallPriceChart(
+                          produce,
+                          index,
+                          chartAnimationDuration: chartAnimationDuration,
+                        ),
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            ),
           ),
         ),
       ),
@@ -131,15 +137,71 @@ class ProduceListCard extends StatelessWidget {
     bool? isAdmin,
     Produce produce,
   ) {
+    final farmhubUser = context.read<GlobalAuthCubit>().state.farmhubUser!;
+    final isProduceFavorite = determineIfInList(
+      produce.produceId,
+      produceFavoritesToProduceId(farmhubUser.produceFavoritesList),
+    );
     isAdmin ??= false;
 
     showModalBottomSheet<void>(
       backgroundColor: Colors.transparent,
       context: context,
       builder: (BuildContext context) {
-        return isAdmin!
-            ? BuildAdminModalBottomSheet(produce: produce)
-            : BuildUserModalBottomSheet(produce: produce);
+        return BlocProvider(
+          create: (context) => ProduceListCardCubit(
+            farmhubUser: farmhubUser,
+            produce: produce,
+            repository: locator(),
+          ),
+          child: Builder(builder: (context) {
+            return ProduceModalBottomSheet(
+              isProduceFavorite: isProduceFavorite,
+              isAdmin: isAdmin!,
+              produce: produce,
+            );
+          }),
+        );
+      },
+    );
+  }
+}
+
+class ProduceModalBottomSheet extends StatefulWidget {
+  final bool isAdmin;
+  final Produce produce;
+  final bool isProduceFavorite;
+
+  const ProduceModalBottomSheet({
+    Key? key,
+    required this.isProduceFavorite,
+    required this.isAdmin,
+    required this.produce,
+  }) : super(key: key);
+
+  @override
+  State<ProduceModalBottomSheet> createState() => _ProduceModalBottomSheetState();
+}
+
+class _ProduceModalBottomSheetState extends State<ProduceModalBottomSheet> {
+  @override
+  void initState() {
+    super.initState();
+
+    context.read<ProduceListCardCubit>().setIfFavorite(widget.isProduceFavorite);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<ProduceListCardCubit, ProduceListCardState>(
+      builder: (context, state) {
+        print("ProduceListCardCubit state was changed!");
+
+        return widget.isAdmin
+            ? BuildAdminModalBottomSheet(
+                produce: widget.produce, isFavorite: widget.isProduceFavorite)
+            : BuildUserModalBottomSheet(
+                produce: widget.produce, isFavorite: widget.isProduceFavorite);
       },
     );
   }
@@ -147,10 +209,12 @@ class ProduceListCard extends StatelessWidget {
 
 class BuildUserModalBottomSheet extends StatelessWidget {
   final Produce produce;
+  final bool isFavorite;
 
   const BuildUserModalBottomSheet({
     Key? key,
     required this.produce,
+    required this.isFavorite,
   }) : super(key: key);
 
   @override
@@ -200,10 +264,12 @@ class BuildUserModalBottomSheet extends StatelessWidget {
 
 class BuildAdminModalBottomSheet extends StatelessWidget {
   final Produce produce;
+  final bool isFavorite;
 
   const BuildAdminModalBottomSheet({
     Key? key,
     required this.produce,
+    required this.isFavorite,
   }) : super(key: key);
 
   @override
@@ -246,13 +312,8 @@ class BuildAdminModalBottomSheet extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 14, left: 46, right: 46),
-                child: SecondaryButton(
-                  onPressed: () {},
-                  content: "Add to Favorites",
-                  buttonIcon: const Icon(Icons.bookmark_add_outlined, size: 20),
-                ),
-              ),
+                  padding: const EdgeInsets.only(top: 14, left: 46, right: 46),
+                  child: ProduceFavoritesButton(isFavorite: isFavorite)),
               Padding(
                 padding: const EdgeInsets.only(top: 14, left: 46, right: 46),
                 child: SecondaryButton(
@@ -317,6 +378,45 @@ class BuildAdminModalBottomSheet extends StatelessWidget {
         );
       }),
     );
+  }
+}
+
+class ProduceFavoritesButton extends StatelessWidget {
+  final bool isFavorite;
+
+  const ProduceFavoritesButton({Key? key, required this.isFavorite}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final currentState = context.read<ProduceListCardCubit>().state;
+
+    if (currentState is PLCInitial) {
+      throw Exception("This state should not have been emitted");
+    } else if (currentState is PLCAddToFavoritesButton) {
+      return SecondaryButton(
+        onPressed: () {
+          context.read<ProduceListCardCubit>().addToFavorites(context);
+        },
+        content: "Add to Favorites",
+        buttonIcon: const Icon(Icons.bookmark_add_outlined, size: 20),
+      );
+    } else if (currentState is PLCRemoveFromFavoritesButton) {
+      return SecondaryButton(
+        onPressed: () {
+          context.read<ProduceListCardCubit>().removeFromFavorites(context);
+        },
+        type: SecondaryButtonType.red,
+        content: "Remove from Favorites",
+        buttonIcon: const Icon(Icons.bookmark_remove_outlined, size: 20),
+      );
+    } else if (currentState is PLCLoading) {
+      return const SecondaryButton(
+        content: "Loading...",
+        type: SecondaryButtonType.filled,
+      );
+    } else {
+      throw Exception("Unexpected state was thrown");
+    }
   }
 }
 

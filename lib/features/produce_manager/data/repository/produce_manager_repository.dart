@@ -456,10 +456,10 @@ class ProduceManagerRepository implements IProduceManagerRepository {
   FutureEither<FarmhubUser> addToFavorites(FarmhubUser farmhubUser, String produceId) async {
     if (await networkInfo.isConnected) {
       try {
-        final result = await remoteDatasource.addToFavorites(farmhubUser, produceId);
-        globalAuthCubit.updateFarmhubUser(farmhubUser);
+        final updatedFarmhubUser = await remoteDatasource.addToFavorites(farmhubUser, produceId);
+        globalAuthCubit.updateFarmhubUser(updatedFarmhubUser);
 
-        return Right(result);
+        return Right(updatedFarmhubUser);
       } on ProduceManagerException catch (e) {
         return Left(
             ProduceManagerFailure(code: e.code, message: e.message, stackTrace: e.stackTrace));
@@ -479,10 +479,11 @@ class ProduceManagerRepository implements IProduceManagerRepository {
   FutureEither<FarmhubUser> removeFromFavorites(FarmhubUser farmhubUser, String produceId) async {
     if (await networkInfo.isConnected) {
       try {
-        final result = await remoteDatasource.removeFromFavorites(farmhubUser, produceId);
-        globalAuthCubit.updateFarmhubUser(farmhubUser);
+        final updatedFarmhubUser =
+            await remoteDatasource.removeFromFavorites(farmhubUser, produceId);
+        globalAuthCubit.updateFarmhubUser(updatedFarmhubUser);
 
-        return Right(result);
+        return Right(updatedFarmhubUser);
       } on ProduceManagerException catch (e) {
         return Left(ProduceManagerFailure(
           code: e.code,
