@@ -11,6 +11,7 @@ import 'package:farmhub/features/produce_manager/data/datasources/produce_manage
 import 'package:farmhub/features/produce_manager/domain/entities/price/price.dart';
 import 'package:farmhub/features/produce_manager/domain/entities/produce/produce.dart';
 import 'package:farmhub/core/typedefs/typedefs.dart';
+import 'package:farmhub/features/produce_manager/domain/helpers.dart';
 import 'package:farmhub/features/produce_manager/domain/i_produce_manager_repository.dart';
 import 'package:fpdart/fpdart.dart';
 
@@ -484,6 +485,82 @@ class ProduceManagerRepository implements IProduceManagerRepository {
         globalAuthCubit.updateFarmhubUser(updatedFarmhubUser);
 
         return Right(updatedFarmhubUser);
+      } on ProduceManagerException catch (e) {
+        return Left(ProduceManagerFailure(
+          code: e.code,
+          message: e.message,
+          stackTrace: e.stackTrace,
+        ));
+      } catch (e, stack) {
+        return Left(UnexpectedFailure(code: e.toString(), stackTrace: stack));
+      }
+    } else {
+      return Left(InternetConnectionFailure(
+        code: ERROR_NO_INTERNET_CONNECTION,
+        message: MESSAGE_NO_INTERNET_CONNECTION,
+        stackTrace: StackTrace.current,
+      ));
+    }
+  }
+
+  @override
+  FutureEither<List<Produce>> getProduceFavorites(FarmhubUser farmhubUser) async {
+    if (await networkInfo.isConnected) {
+      try {
+        final userProduceFavoritesIdList =
+            produceFavoritesToProduceId(farmhubUser.produceFavoritesList);
+        final produceFavoritesList = await remoteDatasource
+            .getProduceAsList(userProduceFavoritesIdList)
+            .then((retrievedProduceFavoritesList) async {
+          // At this point, we need to check if any of the produce is deleted. This part of the code
+          // is only to update the favorites list of the FarmhubUser, locally and remote.
+
+          /// How do we check if the produce is deleted? It's simple, [getProduceAsList] already filters
+          /// out [Produce] which are marked as deleted. And so we just find out which [Produce] is missing
+          /// from [userProduceFavoritesIdList] based on [retrievedProduceFavoritesList]
+
+          /// Basically, we loop through [userProduceFavoritesIdList] and check it against [retrievedProduceFavoritesList],
+          /// Whenever there is a match, we keep it in [produceIdToStay].
+          final retrievedProduceIdList = produceToProduceId(retrievedProduceFavoritesList);
+
+          List<String> produceIdToDelete = [];
+          for (String produceId in userProduceFavoritesIdList) {
+            if (retrievedProduceIdList.contains(produceId)) {
+              // Do nothing
+            } else {
+              produceIdToDelete.add(produceId);
+            }
+          }
+
+          // //! Debugging Prints
+          // print("-----> Retrieved Favorites Produce");
+          // for (Produce produceFavorite in retrievedProduceFavoritesList) {
+          //   print(produceFavorite.produceId);
+          // }
+          // print("-----> Produce IDs to Delete");
+          // for (String produceId in produceIdToDelete) {
+          //   print(produceId);
+          // }
+
+          //TODO: Actually remove the produce ids from farmhub user and update the remote.
+          if (userProduceFavoritesIdList.isEmpty) {
+            // Do nothing.
+          } else {
+            // Delete the produceId from FarmhubUser
+            for (String produceId in produceIdToDelete) {
+              farmhubUser.produceFavoritesList.removeWhere(
+                (favorite) => favorite.produceId == produceId,
+              );
+            }
+
+            await authRepository.updateRemoteUser(newUserData: farmhubUser);
+            globalAuthCubit.updateFarmhubUser(farmhubUser);
+          }
+
+          return retrievedProduceFavoritesList;
+        });
+
+        return Right(produceFavoritesList);
       } on ProduceManagerException catch (e) {
         return Left(ProduceManagerFailure(
           code: e.code,

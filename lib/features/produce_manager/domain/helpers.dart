@@ -3,6 +3,7 @@ import 'package:farmhub/features/produce_manager/domain/entities/price/price.dar
 import 'package:intl/intl.dart';
 import 'package:clock/clock.dart';
 
+import '../../../core/auth/domain/entities/farmhub_user/farmhub_user.dart';
 import 'entities/produce/produce.dart';
 
 enum RangeType { oneW, twoW, oneM, twoM, sixM, oneY }
@@ -112,6 +113,17 @@ List<String> produceFavoritesToProduceId(List<ProduceFavorite> produceFavoritesL
   }
 
   return produceFavoritesIdList;
+}
+
+/// This method will loop through [Produce] and returns a [List<String>] of [produceId]s
+List<String> produceToProduceId(List<Produce> produceList) {
+  final List<String> produceIdList = [];
+
+  for (Produce produce in produceList) {
+    produceIdList.add(produce.produceId);
+  }
+
+  return produceIdList;
 }
 
 /// This method will check if the given [produceId] exists within [produceIdList] and return the corresponding

@@ -206,9 +206,14 @@ class _ProduceModalBottomSheetState extends State<ProduceModalBottomSheet> {
       },
     );
   }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
 }
 
-class BuildUserModalBottomSheet extends StatelessWidget {
+class BuildUserModalBottomSheet extends StatefulWidget {
   final Produce produce;
   final bool isFavorite;
 
@@ -218,6 +223,11 @@ class BuildUserModalBottomSheet extends StatelessWidget {
     required this.isFavorite,
   }) : super(key: key);
 
+  @override
+  State<BuildUserModalBottomSheet> createState() => _BuildUserModalBottomSheetState();
+}
+
+class _BuildUserModalBottomSheetState extends State<BuildUserModalBottomSheet> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -235,9 +245,9 @@ class BuildUserModalBottomSheet extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(produce.produceName),
+                Text(widget.produce.produceName),
                 UIHorizontalSpace14(),
-                ChangeBox(produce),
+                ChangeBox(widget.produce),
               ],
             ),
           ),
@@ -250,11 +260,16 @@ class BuildUserModalBottomSheet extends StatelessWidget {
             ),
             child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 46),
-                child: ProduceFavoritesButton(isFavorite: isFavorite)),
+                child: ProduceFavoritesButton(isFavorite: widget.isFavorite)),
           )
         ],
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
   }
 }
 

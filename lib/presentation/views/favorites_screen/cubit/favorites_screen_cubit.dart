@@ -31,7 +31,7 @@ class FavoritesScreenCubit extends Cubit<FavoritesScreenState> {
       produceIdList.add(favorite.produceId);
     }
 
-    final result = await repository.getProduceAsList(produceIdList);
+    final result = await repository.getProduceFavorites(user);
 
     result.fold(
       (f) {
