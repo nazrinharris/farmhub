@@ -777,6 +777,8 @@ class _$ProduceAggregatePropsTearOff {
       {required TabController tabController,
       required int index,
       required Produce? produce,
+      required FarmhubUser farmhubUser,
+      required bool isProduceFavorite,
       List<PriceSnippet>? twoWeeksPricesList,
       List<PriceSnippet>? oneMonthPricesList,
       List<PriceSnippet>? twoMonthPricesList,
@@ -786,6 +788,8 @@ class _$ProduceAggregatePropsTearOff {
       tabController: tabController,
       index: index,
       produce: produce,
+      farmhubUser: farmhubUser,
+      isProduceFavorite: isProduceFavorite,
       twoWeeksPricesList: twoWeeksPricesList,
       oneMonthPricesList: oneMonthPricesList,
       twoMonthPricesList: twoMonthPricesList,
@@ -803,6 +807,8 @@ mixin _$ProduceAggregateProps {
   TabController get tabController => throw _privateConstructorUsedError;
   int get index => throw _privateConstructorUsedError;
   Produce? get produce => throw _privateConstructorUsedError;
+  FarmhubUser get farmhubUser => throw _privateConstructorUsedError;
+  bool get isProduceFavorite => throw _privateConstructorUsedError;
   List<PriceSnippet>? get twoWeeksPricesList =>
       throw _privateConstructorUsedError;
   List<PriceSnippet>? get oneMonthPricesList =>
@@ -828,6 +834,8 @@ abstract class $ProduceAggregatePropsCopyWith<$Res> {
       {TabController tabController,
       int index,
       Produce? produce,
+      FarmhubUser farmhubUser,
+      bool isProduceFavorite,
       List<PriceSnippet>? twoWeeksPricesList,
       List<PriceSnippet>? oneMonthPricesList,
       List<PriceSnippet>? twoMonthPricesList,
@@ -835,6 +843,7 @@ abstract class $ProduceAggregatePropsCopyWith<$Res> {
       List<PriceSnippet>? oneYearPricesList});
 
   $ProduceCopyWith<$Res>? get produce;
+  $FarmhubUserCopyWith<$Res> get farmhubUser;
 }
 
 /// @nodoc
@@ -851,6 +860,8 @@ class _$ProduceAggregatePropsCopyWithImpl<$Res>
     Object? tabController = freezed,
     Object? index = freezed,
     Object? produce = freezed,
+    Object? farmhubUser = freezed,
+    Object? isProduceFavorite = freezed,
     Object? twoWeeksPricesList = freezed,
     Object? oneMonthPricesList = freezed,
     Object? twoMonthPricesList = freezed,
@@ -870,6 +881,14 @@ class _$ProduceAggregatePropsCopyWithImpl<$Res>
           ? _value.produce
           : produce // ignore: cast_nullable_to_non_nullable
               as Produce?,
+      farmhubUser: farmhubUser == freezed
+          ? _value.farmhubUser
+          : farmhubUser // ignore: cast_nullable_to_non_nullable
+              as FarmhubUser,
+      isProduceFavorite: isProduceFavorite == freezed
+          ? _value.isProduceFavorite
+          : isProduceFavorite // ignore: cast_nullable_to_non_nullable
+              as bool,
       twoWeeksPricesList: twoWeeksPricesList == freezed
           ? _value.twoWeeksPricesList
           : twoWeeksPricesList // ignore: cast_nullable_to_non_nullable
@@ -903,6 +922,13 @@ class _$ProduceAggregatePropsCopyWithImpl<$Res>
       return _then(_value.copyWith(produce: value));
     });
   }
+
+  @override
+  $FarmhubUserCopyWith<$Res> get farmhubUser {
+    return $FarmhubUserCopyWith<$Res>(_value.farmhubUser, (value) {
+      return _then(_value.copyWith(farmhubUser: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -916,6 +942,8 @@ abstract class _$ProduceAggregatePropsCopyWith<$Res>
       {TabController tabController,
       int index,
       Produce? produce,
+      FarmhubUser farmhubUser,
+      bool isProduceFavorite,
       List<PriceSnippet>? twoWeeksPricesList,
       List<PriceSnippet>? oneMonthPricesList,
       List<PriceSnippet>? twoMonthPricesList,
@@ -924,6 +952,8 @@ abstract class _$ProduceAggregatePropsCopyWith<$Res>
 
   @override
   $ProduceCopyWith<$Res>? get produce;
+  @override
+  $FarmhubUserCopyWith<$Res> get farmhubUser;
 }
 
 /// @nodoc
@@ -942,6 +972,8 @@ class __$ProduceAggregatePropsCopyWithImpl<$Res>
     Object? tabController = freezed,
     Object? index = freezed,
     Object? produce = freezed,
+    Object? farmhubUser = freezed,
+    Object? isProduceFavorite = freezed,
     Object? twoWeeksPricesList = freezed,
     Object? oneMonthPricesList = freezed,
     Object? twoMonthPricesList = freezed,
@@ -961,6 +993,14 @@ class __$ProduceAggregatePropsCopyWithImpl<$Res>
           ? _value.produce
           : produce // ignore: cast_nullable_to_non_nullable
               as Produce?,
+      farmhubUser: farmhubUser == freezed
+          ? _value.farmhubUser
+          : farmhubUser // ignore: cast_nullable_to_non_nullable
+              as FarmhubUser,
+      isProduceFavorite: isProduceFavorite == freezed
+          ? _value.isProduceFavorite
+          : isProduceFavorite // ignore: cast_nullable_to_non_nullable
+              as bool,
       twoWeeksPricesList: twoWeeksPricesList == freezed
           ? _value.twoWeeksPricesList
           : twoWeeksPricesList // ignore: cast_nullable_to_non_nullable
@@ -992,6 +1032,8 @@ class _$_ProduceAggregateProps implements _ProduceAggregateProps {
       {required this.tabController,
       required this.index,
       required this.produce,
+      required this.farmhubUser,
+      required this.isProduceFavorite,
       this.twoWeeksPricesList,
       this.oneMonthPricesList,
       this.twoMonthPricesList,
@@ -1005,6 +1047,10 @@ class _$_ProduceAggregateProps implements _ProduceAggregateProps {
   @override
   final Produce? produce;
   @override
+  final FarmhubUser farmhubUser;
+  @override
+  final bool isProduceFavorite;
+  @override
   final List<PriceSnippet>? twoWeeksPricesList;
   @override
   final List<PriceSnippet>? oneMonthPricesList;
@@ -1017,7 +1063,7 @@ class _$_ProduceAggregateProps implements _ProduceAggregateProps {
 
   @override
   String toString() {
-    return 'ProduceAggregateProps(tabController: $tabController, index: $index, produce: $produce, twoWeeksPricesList: $twoWeeksPricesList, oneMonthPricesList: $oneMonthPricesList, twoMonthPricesList: $twoMonthPricesList, sixMonthPricesList: $sixMonthPricesList, oneYearPricesList: $oneYearPricesList)';
+    return 'ProduceAggregateProps(tabController: $tabController, index: $index, produce: $produce, farmhubUser: $farmhubUser, isProduceFavorite: $isProduceFavorite, twoWeeksPricesList: $twoWeeksPricesList, oneMonthPricesList: $oneMonthPricesList, twoMonthPricesList: $twoMonthPricesList, sixMonthPricesList: $sixMonthPricesList, oneYearPricesList: $oneYearPricesList)';
   }
 
   @override
@@ -1029,6 +1075,10 @@ class _$_ProduceAggregateProps implements _ProduceAggregateProps {
                 other.tabController == tabController) &&
             (identical(other.index, index) || other.index == index) &&
             (identical(other.produce, produce) || other.produce == produce) &&
+            (identical(other.farmhubUser, farmhubUser) ||
+                other.farmhubUser == farmhubUser) &&
+            (identical(other.isProduceFavorite, isProduceFavorite) ||
+                other.isProduceFavorite == isProduceFavorite) &&
             const DeepCollectionEquality()
                 .equals(other.twoWeeksPricesList, twoWeeksPricesList) &&
             const DeepCollectionEquality()
@@ -1047,6 +1097,8 @@ class _$_ProduceAggregateProps implements _ProduceAggregateProps {
       tabController,
       index,
       produce,
+      farmhubUser,
+      isProduceFavorite,
       const DeepCollectionEquality().hash(twoWeeksPricesList),
       const DeepCollectionEquality().hash(oneMonthPricesList),
       const DeepCollectionEquality().hash(twoMonthPricesList),
@@ -1065,6 +1117,8 @@ abstract class _ProduceAggregateProps implements ProduceAggregateProps {
       {required TabController tabController,
       required int index,
       required Produce? produce,
+      required FarmhubUser farmhubUser,
+      required bool isProduceFavorite,
       List<PriceSnippet>? twoWeeksPricesList,
       List<PriceSnippet>? oneMonthPricesList,
       List<PriceSnippet>? twoMonthPricesList,
@@ -1077,6 +1131,10 @@ abstract class _ProduceAggregateProps implements ProduceAggregateProps {
   int get index;
   @override
   Produce? get produce;
+  @override
+  FarmhubUser get farmhubUser;
+  @override
+  bool get isProduceFavorite;
   @override
   List<PriceSnippet>? get twoWeeksPricesList;
   @override

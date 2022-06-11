@@ -40,8 +40,6 @@ class ProduceListCardCubit extends Cubit<ProduceListCardState> {
   Future<void> addToFavorites(BuildContext context) async {
     emit(ProduceListCardState.loading(props: state.props));
 
-    await Future.delayed(const Duration(seconds: 1));
-
     final result = await repository.addToFavorites(farmhubUser, produce.produceId);
 
     result.fold(
@@ -58,8 +56,6 @@ class ProduceListCardCubit extends Cubit<ProduceListCardState> {
 
   Future<void> removeFromFavorites(BuildContext context) async {
     emit(ProduceListCardState.loading(props: state.props));
-
-    await Future.delayed(const Duration(seconds: 1));
 
     final result = await repository.removeFromFavorites(farmhubUser, produce.produceId);
 
