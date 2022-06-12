@@ -24,6 +24,8 @@ abstract class IAuthRemoteDataSource {
 
   Future<FarmhubUser> retrieveUserData();
 
+  Future<FarmhubUser> updateRemoteUser(FarmhubUser newUserData);
+
   Future<bool> isAdmin(String uid);
 
   Future<Unit> signOut();
@@ -54,7 +56,7 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
         .then((snapshot) => snapshot.data())
         .then((json) {
       if (json != null) {
-        FarmhubUser toFarmhubUser = FarmhubUser.fromJson(json);
+        FarmhubUser toFarmhubUser = FarmhubUser.fromMap(json);
         return toFarmhubUser;
       } else {
         throw FirebaseException(
@@ -89,6 +91,7 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
       email: email,
       username: username,
       createdAt: createdAt,
+      produceFavoritesList: [],
     );
 
     /// Store account data in Cloud Firestore
@@ -97,6 +100,7 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
       "email": farmhubUser.email,
       "username": farmhubUser.username,
       "createdAt": farmhubUser.createdAt,
+      "produceFavoritesMap": {},
     }, null);
 
     return farmhubUser;
@@ -122,8 +126,11 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
       // TODO: Make a proper constant error code.
       throw FirebaseAuthException(code: 'user-not-signed-in', message: 'User is not signed in.');
     } else {
-      final farmhubUser =
-          await firebaseFirestore.collection(FS_USER_COLLECTION).doc(user.uid).get();
+      final farmhubUser = await firebaseFirestore
+          .collection(FS_USER_COLLECTION)
+          .doc(user.uid)
+          .get()
+          .then((value) => value.data());
 
       if (farmhubUser == null) {
         throw FirebaseException(
@@ -133,7 +140,7 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
           stackTrace: StackTrace.current,
         );
       } else {
-        return FarmhubUser.fromJson(farmhubUser.data()!);
+        return FarmhubUser.fromMap(farmhubUser);
       }
     }
   }
@@ -154,5 +161,21 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
     } else {
       return true;
     }
+  }
+
+  @override
+  Future<FarmhubUser> updateRemoteUser(FarmhubUser newUserData) async {
+    await firebaseFirestore
+        .collection('users')
+        .doc(newUserData.uid)
+        .update(FarmhubUser.toMap(newUserData));
+
+    final user = await firebaseFirestore
+        .collection('users')
+        .doc(newUserData.uid)
+        .get()
+        .then((value) => FarmhubUser.fromMap(value.data()));
+
+    return user;
   }
 }

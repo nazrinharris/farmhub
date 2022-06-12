@@ -7,11 +7,22 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'global_auth_state.dart';
 part 'global_auth_cubit.freezed.dart';
 
+// TODO: Temporary as guest farmhub user.
+final guestFarmhubUser = FarmhubUser(
+  uid: "xxxxxx",
+  email: "-",
+  username: "Guest",
+  createdAt: "-",
+  produceFavoritesList: [],
+);
+
 class GlobalAuthCubit extends Cubit<GlobalAuthState> {
   final IAuthRepository repository;
 
   GlobalAuthCubit(this.repository) : super(const GlobalAuthState.initial());
 
+  /// This method updates the [FarmhubUser] inside of this cubit. It does not in any way
+  /// update the remote user, for that you should use [updateRemoteUser] from [auth_remote_datasource]
   void updateFarmhubUser(FarmhubUser? farmhubUser) {
     emit(state.copyWith(farmhubUser: farmhubUser));
   }
@@ -20,13 +31,13 @@ class GlobalAuthCubit extends Cubit<GlobalAuthState> {
     emit(state.copyWith(isAdmin: isAdmin));
   }
 
-  void updateGlobalAuthCubit() async {
+  Future<void> updateGlobalAuthCubit() async {
     final failureOrFarmhubUser = await repository.retrieveUserData();
 
     await failureOrFarmhubUser.fold(
       (l) {
         print("User is not logged in.");
-        emit(state.copyWith(farmhubUser: null, isAdmin: null));
+        emit(state.copyWith(farmhubUser: guestFarmhubUser, isAdmin: false));
       },
       (farmhubUser) async {
         final failureOrIsAdmin = await repository.isAdmin(uid: farmhubUser.uid);

@@ -14,7 +14,10 @@ import '../../smart_widgets/produce_dialogs/produce_dialog_cubit/produce_dialog_
 class ProduceScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
   final bool isAdmin;
 
-  const ProduceScreenAppBar(this.isAdmin, {Key? key}) : super(key: key);
+  const ProduceScreenAppBar({
+    Key? key,
+    required this.isAdmin,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,20 +27,40 @@ class ProduceScreenAppBar extends StatelessWidget implements PreferredSizeWidget
         return BlocBuilder<ProduceAggregateCubit, ProduceAggregateState>(
           builder: (context, state) {
             final Produce produce = state.props.produce!;
+            print("App Bar Rebuilt -> isProduceFavorite - ${state.props.isProduceFavorite}");
 
             return DefaultAppBar(
               leadingIcon: const Icon(Icons.arrow_back),
               leadingOnPressed: () {
                 Navigator.of(context).pop();
               },
-              trailingIcon: const Icon(Icons.bookmark_add_outlined),
-              trailingOnPressed: () {},
+              trailingIcon: resolveTrailingIcon(context, state),
+              trailingOnPressed: () async {
+                if (state.props.isProduceFavorite) {
+                  // removeFromFavorites()
+                  await context.read<ProduceAggregateCubit>().removeFromFavorites(context);
+                } else {
+                  // addToFavorites()
+                  await context.read<ProduceAggregateCubit>().addToFavorites(context);
+                }
+              },
               secondTrailingChild: resolveSecondTrailing(context, isAdmin, produce),
             );
           },
         );
       }),
     );
+  }
+
+  Icon resolveTrailingIcon(BuildContext context, ProduceAggregateState state) {
+    if (state.props.isProduceFavorite) {
+      return Icon(
+        Icons.bookmark_remove_outlined,
+        color: Theme.of(context).colorScheme.error,
+      );
+    } else {
+      return const Icon(Icons.bookmark_add_outlined);
+    }
   }
 
   Widget? resolveSecondTrailing(BuildContext context, bool isAdmin, Produce produce) {

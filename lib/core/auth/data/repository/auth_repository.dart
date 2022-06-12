@@ -37,11 +37,11 @@ class AuthRepository implements IAuthRepository {
       } on FirebaseAuthException catch (e) {
         return Left(
             FirebaseAuthFailure(code: e.code, message: e.message, stackTrace: StackTrace.current));
-      } catch (e) {
+      } catch (e, stack) {
         return Left(UnexpectedFailure(
           code: e.toString(),
           message: "An unexpected error occured",
-          stackTrace: StackTrace.current,
+          stackTrace: stack,
         ));
       }
     } else {
@@ -69,12 +69,7 @@ class AuthRepository implements IAuthRepository {
           username: username,
         );
         await authLocalDataSource.storeFarmhubUser(result);
-        final storaygeUser = FarmhubUser(
-            username: result.username,
-            email: result.email,
-            uid: result.uid,
-            createdAt: result.createdAt);
-        return Right(storaygeUser);
+        return Right(result);
       } on FirebaseAuthException catch (e) {
         return Left(FirebaseAuthFailure(
           code: e.code,
@@ -155,11 +150,12 @@ class AuthRepository implements IAuthRepository {
           message: e.message,
           stackTrace: StackTrace.current,
         ));
-      } catch (e) {
-        print('Retrieval of User Information Error Occurred');
+      } catch (e, stack) {
+        print('Retrieval of User Information Error Occurred, $e');
+        print("$stack");
         return Left(UnexpectedFailure(
           message: e.toString(),
-          stackTrace: StackTrace.current,
+          stackTrace: stack,
         ));
       }
     } else {
@@ -198,6 +194,31 @@ class AuthRepository implements IAuthRepository {
         return Left(UnexpectedFailure(
           message: e.toString(),
           stackTrace: StackTrace.current,
+        ));
+      }
+    } else {
+      return Left(InternetConnectionFailure(
+        code: ERROR_NO_INTERNET_CONNECTION,
+        message: MESSAGE_NO_INTERNET_CONNECTION,
+        stackTrace: StackTrace.current,
+      ));
+    }
+  }
+
+  @override
+  Future<Either<Failure, FarmhubUser>> updateRemoteUser({required FarmhubUser newUserData}) async {
+    if (await networkInfo.isConnected) {
+      try {
+        final user = await authRemoteDataSource.updateRemoteUser(newUserData);
+        return Right(user);
+      } on FirebaseAuthException catch (e) {
+        return Left(
+            FirebaseAuthFailure(code: e.code, message: e.message, stackTrace: StackTrace.current));
+      } catch (e, stack) {
+        return Left(UnexpectedFailure(
+          code: e.toString(),
+          message: "An unexpected error occured",
+          stackTrace: stack,
         ));
       }
     } else {

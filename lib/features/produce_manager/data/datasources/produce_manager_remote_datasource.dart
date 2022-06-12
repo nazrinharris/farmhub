@@ -9,6 +9,7 @@ import 'package:farmhub/features/produce_manager/domain/helpers.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:intl/intl.dart';
 
+import '../../../../core/auth/domain/entities/farmhub_user/farmhub_user.dart';
 import '../../domain/entities/produce/produce.dart';
 
 abstract class IProduceManagerRemoteDatasource {
@@ -20,6 +21,10 @@ abstract class IProduceManagerRemoteDatasource {
     required num currentProducePrice,
     required String authorId,
   });
+  Future<List<Produce>> getProduceAsList(List<String> produceIdList);
+  Future<FarmhubUser> addToFavorites(FarmhubUser farmhubUser, String produceId);
+  Future<FarmhubUser> removeFromFavorites(FarmhubUser farmhubUser, String produceId);
+
   Future<Unit> editProduce(String produceId, String newProduceName);
   Future<Unit> deleteProduce(String produceId);
   Future<List<Produce>> searchProduce({required String query});
@@ -656,6 +661,81 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
 
     return isPriceDocDeleted;
   }
+
+  @override
+  Future<List<Produce>> getProduceAsList(List<String> produceIdList) async {
+    List<Produce> produceList = [];
+
+    for (String produceId in produceIdList) {
+      final Map<String, dynamic>? doc = await firebaseFirestore
+          .collection('produce')
+          .doc(produceId)
+          .get()
+          .then((value) => value.data());
+      if (doc == null || doc["isDeleted"] == true) {
+        continue;
+      } else {
+        final Produce produce = Produce.fromMap(doc);
+        produceList.add(produce);
+      }
+    }
+
+    return produceList;
+  }
+
+  @override
+  Future<FarmhubUser> addToFavorites(FarmhubUser farmhubUser, String produceId) async {
+    final now = clock.now();
+    String formattedDateAdded = DateFormat("yyyy-MM-dd hh:mm:ss aaa").format(now);
+
+    await firebaseFirestore.collection('users').doc(farmhubUser.uid).update({
+      "produceFavoritesMap.$produceId": formattedDateAdded,
+    }).then((_) {
+      for (ProduceFavorite favorite in farmhubUser.produceFavoritesList) {
+        if (favorite.produceId == produceId) {
+          throw ProduceManagerException(
+            code: 'PM-Add-Favorite-Should-Not-Duplicate',
+            message:
+                "Add operation of a produce to a favorites list, but it already exists, this should never happen.",
+            stackTrace: StackTrace.current,
+          );
+        }
+      }
+      farmhubUser.produceFavoritesList.add(ProduceFavorite(produceId: produceId, dateAdded: now));
+    });
+
+    return farmhubUser;
+  }
+
+  @override
+  Future<FarmhubUser> removeFromFavorites(FarmhubUser farmhubUser, String produceId) async {
+    await firebaseFirestore.collection('users').doc(farmhubUser.uid).update({
+      "produceFavoritesMap.$produceId": FieldValue.delete(),
+    }).then((_) {
+      ProduceFavorite? produceFavoriteToRemove;
+
+      for (ProduceFavorite favorite in farmhubUser.produceFavoritesList) {
+        if (favorite.produceId == produceId) {
+          produceFavoriteToRemove = favorite;
+          break;
+        }
+      }
+
+      if (produceFavoriteToRemove != null) {
+        farmhubUser.produceFavoritesList.remove(produceFavoriteToRemove);
+      } else {
+        throw ProduceManagerException(
+          // TODO: Proper error code.
+          code: "PM-Delete-Favorite-Does-Not-Exist",
+          message:
+              "Remove operation of a certain produce from favorites, but it doesn't exist to begin with.",
+          stackTrace: StackTrace.current,
+        );
+      }
+    });
+
+    return farmhubUser;
+  }
 }
 
 /// This method will update [currentProducePrice], [previousProducePrice] and [aggregate-prices].
@@ -929,6 +1009,7 @@ Price editSubPrice(Price price, num newPrice, String chosenSubPriceDate) {
   return updatedPrice;
 }
 
+/// This method will remove the [chosenSubPriceDate] and return an updated [Price]
 Price _deleteSubPriceAndUpdatePrice(Price price, String chosenSubPriceDate) {
   List<PriceSnippet> subPricesList = price.allPricesWithDateList;
   List<PriceSnippet> updatedSubPricesList = [];

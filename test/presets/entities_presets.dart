@@ -13,6 +13,7 @@ final FarmhubUser tFarmhubUser = FarmhubUser(
   uid: 'tuid',
   email: 'temail@temail.temail',
   createdAt: '2021-11-28',
+  produceFavoritesList: [],
 );
 
 final InternetConnectionFailure tInternetConnectionFailure = InternetConnectionFailure(

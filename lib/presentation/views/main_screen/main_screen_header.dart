@@ -1,3 +1,4 @@
+import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -139,13 +140,23 @@ class _MainHeaderState extends State<MainHeader> {
                   Headline2(returnCurrentDate()),
                 ],
               ),
-              Container(
-                margin: const EdgeInsets.only(right: 6),
-                height: 54,
-                width: 54,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(100),
-                  color: Theme.of(context).colorScheme.primary,
+              Padding(
+                padding: const EdgeInsets.only(right: 6),
+                child: Hero(
+                  tag: Key("profile_picture"),
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).pushNamed("/profile");
+                    },
+                    child: Container(
+                      height: 54,
+                      width: 54,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(100),
+                        color: Theme.of(context).colorScheme.primary,
+                      ),
+                    ),
+                  ),
                 ),
               )
             ],

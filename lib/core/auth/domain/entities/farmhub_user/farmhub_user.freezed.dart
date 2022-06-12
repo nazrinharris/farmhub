@@ -13,10 +13,6 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-FarmhubUser _$FarmhubUserFromJson(Map<String, dynamic> json) {
-  return _FarmhubUser.fromJson(json);
-}
-
 /// @nodoc
 class _$FarmhubUserTearOff {
   const _$FarmhubUserTearOff();
@@ -25,17 +21,15 @@ class _$FarmhubUserTearOff {
       {required String uid,
       required String email,
       required String username,
-      required String createdAt}) {
+      required String createdAt,
+      required List<ProduceFavorite> produceFavoritesList}) {
     return _FarmhubUser(
       uid: uid,
       email: email,
       username: username,
       createdAt: createdAt,
+      produceFavoritesList: produceFavoritesList,
     );
-  }
-
-  FarmhubUser fromJson(Map<String, Object?> json) {
-    return FarmhubUser.fromJson(json);
   }
 }
 
@@ -48,8 +42,9 @@ mixin _$FarmhubUser {
   String get email => throw _privateConstructorUsedError;
   String get username => throw _privateConstructorUsedError;
   String get createdAt => throw _privateConstructorUsedError;
+  List<ProduceFavorite> get produceFavoritesList =>
+      throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $FarmhubUserCopyWith<FarmhubUser> get copyWith =>
       throw _privateConstructorUsedError;
@@ -60,7 +55,12 @@ abstract class $FarmhubUserCopyWith<$Res> {
   factory $FarmhubUserCopyWith(
           FarmhubUser value, $Res Function(FarmhubUser) then) =
       _$FarmhubUserCopyWithImpl<$Res>;
-  $Res call({String uid, String email, String username, String createdAt});
+  $Res call(
+      {String uid,
+      String email,
+      String username,
+      String createdAt,
+      List<ProduceFavorite> produceFavoritesList});
 }
 
 /// @nodoc
@@ -77,6 +77,7 @@ class _$FarmhubUserCopyWithImpl<$Res> implements $FarmhubUserCopyWith<$Res> {
     Object? email = freezed,
     Object? username = freezed,
     Object? createdAt = freezed,
+    Object? produceFavoritesList = freezed,
   }) {
     return _then(_value.copyWith(
       uid: uid == freezed
@@ -95,6 +96,10 @@ class _$FarmhubUserCopyWithImpl<$Res> implements $FarmhubUserCopyWith<$Res> {
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as String,
+      produceFavoritesList: produceFavoritesList == freezed
+          ? _value.produceFavoritesList
+          : produceFavoritesList // ignore: cast_nullable_to_non_nullable
+              as List<ProduceFavorite>,
     ));
   }
 }
@@ -106,7 +111,12 @@ abstract class _$FarmhubUserCopyWith<$Res>
           _FarmhubUser value, $Res Function(_FarmhubUser) then) =
       __$FarmhubUserCopyWithImpl<$Res>;
   @override
-  $Res call({String uid, String email, String username, String createdAt});
+  $Res call(
+      {String uid,
+      String email,
+      String username,
+      String createdAt,
+      List<ProduceFavorite> produceFavoritesList});
 }
 
 /// @nodoc
@@ -125,6 +135,7 @@ class __$FarmhubUserCopyWithImpl<$Res> extends _$FarmhubUserCopyWithImpl<$Res>
     Object? email = freezed,
     Object? username = freezed,
     Object? createdAt = freezed,
+    Object? produceFavoritesList = freezed,
   }) {
     return _then(_FarmhubUser(
       uid: uid == freezed
@@ -143,21 +154,23 @@ class __$FarmhubUserCopyWithImpl<$Res> extends _$FarmhubUserCopyWithImpl<$Res>
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as String,
+      produceFavoritesList: produceFavoritesList == freezed
+          ? _value.produceFavoritesList
+          : produceFavoritesList // ignore: cast_nullable_to_non_nullable
+              as List<ProduceFavorite>,
     ));
   }
 }
 
 /// @nodoc
-@JsonSerializable()
+
 class _$_FarmhubUser implements _FarmhubUser {
   _$_FarmhubUser(
       {required this.uid,
       required this.email,
       required this.username,
-      required this.createdAt});
-
-  factory _$_FarmhubUser.fromJson(Map<String, dynamic> json) =>
-      _$$_FarmhubUserFromJson(json);
+      required this.createdAt,
+      required this.produceFavoritesList});
 
   @override
   final String uid;
@@ -167,10 +180,12 @@ class _$_FarmhubUser implements _FarmhubUser {
   final String username;
   @override
   final String createdAt;
+  @override
+  final List<ProduceFavorite> produceFavoritesList;
 
   @override
   String toString() {
-    return 'FarmhubUser(uid: $uid, email: $email, username: $username, createdAt: $createdAt)';
+    return 'FarmhubUser(uid: $uid, email: $email, username: $username, createdAt: $createdAt, produceFavoritesList: $produceFavoritesList)';
   }
 
   @override
@@ -183,21 +198,19 @@ class _$_FarmhubUser implements _FarmhubUser {
             (identical(other.username, username) ||
                 other.username == username) &&
             (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt));
+                other.createdAt == createdAt) &&
+            const DeepCollectionEquality()
+                .equals(other.produceFavoritesList, produceFavoritesList));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, uid, email, username, createdAt);
+  int get hashCode => Object.hash(runtimeType, uid, email, username, createdAt,
+      const DeepCollectionEquality().hash(produceFavoritesList));
 
   @JsonKey(ignore: true)
   @override
   _$FarmhubUserCopyWith<_FarmhubUser> get copyWith =>
       __$FarmhubUserCopyWithImpl<_FarmhubUser>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$_FarmhubUserToJson(this);
-  }
 }
 
 abstract class _FarmhubUser implements FarmhubUser {
@@ -205,10 +218,8 @@ abstract class _FarmhubUser implements FarmhubUser {
       {required String uid,
       required String email,
       required String username,
-      required String createdAt}) = _$_FarmhubUser;
-
-  factory _FarmhubUser.fromJson(Map<String, dynamic> json) =
-      _$_FarmhubUser.fromJson;
+      required String createdAt,
+      required List<ProduceFavorite> produceFavoritesList}) = _$_FarmhubUser;
 
   @override
   String get uid;
@@ -218,6 +229,8 @@ abstract class _FarmhubUser implements FarmhubUser {
   String get username;
   @override
   String get createdAt;
+  @override
+  List<ProduceFavorite> get produceFavoritesList;
   @override
   @JsonKey(ignore: true)
   _$FarmhubUserCopyWith<_FarmhubUser> get copyWith =>

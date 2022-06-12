@@ -42,21 +42,10 @@ class Produce with _$Produce {
   }
 }
 
-/*
-
-  Structure for [currentProducePrice]
-  {
-    "price" : 12.30
-    "updateDate" : "<update-date>"
-  }
-
-  Structure for [previousProducePrice]
-  {
-    "price" : 12.30
-    "updateDate" : "<update-date>"
-  }
-
-  Structure for [weeklyPrices]
-  - [0] is the latest.
-
-*/
+@freezed
+class ProduceFavorite with _$ProduceFavorite {
+  factory ProduceFavorite({
+    required String produceId,
+    required DateTime dateAdded,
+  }) = _ProduceFavorite;
+}

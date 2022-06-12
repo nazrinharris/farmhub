@@ -9,6 +9,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'core/auth/auth_bloc/auth_bloc.dart';
+import 'core/auth/domain/entities/farmhub_user/farmhub_user.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

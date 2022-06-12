@@ -1,4 +1,5 @@
 import 'package:farmhub/app_router.dart';
+import 'package:farmhub/core/auth/domain/entities/farmhub_user/farmhub_user.dart';
 import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
 import 'package:farmhub/core/errors/exceptions.dart';
 import 'package:farmhub/core/errors/failures.dart';
@@ -23,6 +24,7 @@ import '../../../features/produce_manager/domain/entities/price/price.dart';
 
 import 'package:ndialog/ndialog.dart';
 
+import '../../../features/produce_manager/domain/helpers.dart';
 import '../../smart_widgets/custom_cupertino_sliver_refresh_control.dart';
 import 'custom_tab.dart' as ct;
 
@@ -60,14 +62,24 @@ class _ProduceScreenState extends State<ProduceScreen> with SingleTickerProvider
 
   @override
   Widget build(BuildContext context) {
+    final FarmhubUser farmhubUser = context.read<GlobalAuthCubit>().state.farmhubUser!;
+    final isProduceFavorite = determineIfInList(
+      widget.produceArguments.produce.produceId,
+      produceFavoritesToProduceId(farmhubUser.produceFavoritesList),
+    );
+
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (_) => PrimaryButtonAwareCubit()),
         BlocProvider(
-            create: (_) => ProduceAggregateCubit(
-                tabController: tabController,
-                repository: locator(),
-                produce: widget.produceArguments.produce)),
+          create: (_) => ProduceAggregateCubit(
+              tabController: tabController,
+              repository: locator(),
+              produce: widget.produceArguments.produce,
+              farmhubUser: farmhubUser,
+              globalUICubit: locator(),
+              isFavorite: isProduceFavorite),
+        ),
         BlocProvider(create: (_) => ProducePricesCubit(repository: locator()))
       ],
       child: Builder(
@@ -92,7 +104,8 @@ class _ProduceScreenState extends State<ProduceScreen> with SingleTickerProvider
                 widget: widget,
                 scrollController: scrollController,
                 tabs: tabs,
-                staleProduce: widget.produceArguments.produce,
+                produce: widget.produceArguments.produce,
+                farmhubUser: farmhubUser,
               );
             },
           ),
@@ -103,20 +116,22 @@ class _ProduceScreenState extends State<ProduceScreen> with SingleTickerProvider
 }
 
 class BuildProduceScreen extends StatefulWidget {
-  const BuildProduceScreen(
-      {Key? key,
-      required this.isAdmin,
-      required this.widget,
-      required this.scrollController,
-      required this.tabs,
-      required this.staleProduce})
-      : super(key: key);
+  const BuildProduceScreen({
+    Key? key,
+    required this.isAdmin,
+    required this.widget,
+    required this.scrollController,
+    required this.tabs,
+    required this.produce,
+    required this.farmhubUser,
+  }) : super(key: key);
 
   final bool isAdmin;
   final ProduceScreen widget;
   final ScrollController scrollController;
-  final Produce staleProduce;
+  final Produce produce;
   final List<ct.CustomTab> tabs;
+  final FarmhubUser farmhubUser;
 
   @override
   State<BuildProduceScreen> createState() => _BuildProduceScreenState();
@@ -127,47 +142,51 @@ class _BuildProduceScreenState extends State<BuildProduceScreen> {
   void initState() {
     super.initState();
 
-    context
-        .read<ProduceAggregateCubit>()
-        .getAggregatePricesAndProduce(widget.staleProduce.produceId);
+    context.read<ProduceAggregateCubit>().getAggregatePricesAndProduce(widget.produce.produceId);
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        resizeToAvoidBottomInset: false,
-        extendBodyBehindAppBar: true,
-        extendBody: true,
-        appBar: ProduceScreenAppBar(
-          widget.isAdmin,
-        ),
-        body: BlocBuilder<ProduceAggregateCubit, ProduceAggregateState>(
-          builder: (context, state) {
-            final Produce produce = state.props.produce!;
-            return CustomScrollView(
-              controller: widget.scrollController,
-              physics: DefaultScrollPhysics,
-              slivers: [
-                CustomCupertinoSliverRefreshControl(
-                  onRefresh: () async {
-                    await context
-                        .read<ProduceAggregateCubit>()
-                        .getAggregatePricesAndProduce(produce.produceId);
-                    await context.read<ProducePricesCubit>().getFirstTenPrices(produce.produceId);
-                  },
-                ),
-                const SliverProduceHeader(),
-                SliverProducePriceChart(widget.tabs, produce),
-                SliverPricesListHeader(widget.scrollController, produce),
-                BlocBuilder<ProducePricesCubit, ProducePricesState>(
-                  builder: (context, state) {
-                    return SliverPricesListSwitcher(produce);
-                  },
-                ),
-              ],
-            );
-          },
-        ));
+    final isProduceFavorite = determineIfInList(
+      widget.produce.produceId,
+      produceFavoritesToProduceId(widget.farmhubUser.produceFavoritesList),
+    );
+
+    return BlocBuilder<ProduceAggregateCubit, ProduceAggregateState>(
+      builder: (context, state) {
+        final Produce produce = state.props.produce!;
+        return Scaffold(
+          resizeToAvoidBottomInset: false,
+          extendBodyBehindAppBar: true,
+          extendBody: true,
+          appBar: ProduceScreenAppBar(
+            isAdmin: widget.isAdmin,
+          ),
+          body: CustomScrollView(
+            controller: widget.scrollController,
+            physics: DefaultScrollPhysics,
+            slivers: [
+              CustomCupertinoSliverRefreshControl(
+                onRefresh: () async {
+                  await context
+                      .read<ProduceAggregateCubit>()
+                      .getAggregatePricesAndProduce(produce.produceId);
+                  await context.read<ProducePricesCubit>().getFirstTenPrices(produce.produceId);
+                },
+              ),
+              const SliverProduceHeader(),
+              SliverProducePriceChart(widget.tabs, produce),
+              SliverPricesListHeader(widget.scrollController, produce),
+              BlocBuilder<ProducePricesCubit, ProducePricesState>(
+                builder: (context, state) {
+                  return SliverPricesListSwitcher(produce);
+                },
+              ),
+            ],
+          ),
+        );
+      },
+    );
   }
 }
 

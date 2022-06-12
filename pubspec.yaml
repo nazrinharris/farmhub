@@ -43,8 +43,7 @@ dependencies:
   flutter_svg: ^1.0.0
   simple_animations: ^4.0.1
   bottom_nav_layout: ^3.0.9
-  sliver_tools: ^0.2.5
-  boxy: ^2.0.5
+  google_nav_bar: ^5.0.6
   syncfusion_flutter_charts: ^19.4.53
   sprung: ^3.0.0
   tab_indicator_styler: ^2.0.0

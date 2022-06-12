@@ -24,6 +24,8 @@ class ProduceAggregateProps with _$ProduceAggregateProps {
     required TabController tabController,
     required int index,
     required Produce? produce,
+    required FarmhubUser farmhubUser,
+    required bool isProduceFavorite,
     List<PriceSnippet>? twoWeeksPricesList,
     List<PriceSnippet>? oneMonthPricesList,
     List<PriceSnippet>? twoMonthPricesList,

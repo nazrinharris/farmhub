@@ -1,3 +1,4 @@
+import 'package:farmhub/core/auth/domain/entities/farmhub_user/farmhub_user.dart';
 import 'package:farmhub/features/produce_manager/domain/entities/price/price.dart';
 import 'package:farmhub/presentation/views/add_new_price_screen/add_new_price_screen.dart';
 import 'package:farmhub/presentation/views/add_new_price_screen/add_new_price_search_screen.dart';
@@ -7,10 +8,13 @@ import 'package:farmhub/presentation/views/create_produce_screen/create_produce_
 import 'package:farmhub/presentation/views/debug/navigate_view.dart';
 import 'package:farmhub/presentation/views/debug/playground_screen.dart';
 import 'package:farmhub/presentation/views/debug/playground_two_screen.dart';
+import 'package:farmhub/presentation/views/favorites_screen/favorites_screen.dart';
 import 'package:farmhub/presentation/views/login_screen/login_screen.dart';
 import 'package:farmhub/presentation/views/main_screen/main_screen.dart';
+import 'package:farmhub/presentation/views/nav_main_screen/nav_main_screen.dart';
 import 'package:farmhub/presentation/views/price_screen/price_screen.dart';
 import 'package:farmhub/presentation/views/produce_screen/produce_screen.dart';
+import 'package:farmhub/presentation/views/profile_screen/profile_screen.dart';
 import 'package:farmhub/presentation/views/register_screen/register_screen.dart';
 import 'package:farmhub/presentation/views/search_screen/search_screen.dart';
 import 'package:farmhub/presentation/views/start_screen/start_screen.dart';
@@ -51,6 +55,12 @@ class SearchScreenArguments {
   SearchScreenArguments(this.mainScreenFocusNode);
 }
 
+class ProfileScreenArguments {
+  final FarmhubUser user;
+
+  ProfileScreenArguments(this.user);
+}
+
 class AppRouter {
   static const add_new_price_second = "/add_new_price_second";
 
@@ -66,6 +76,8 @@ class AppRouter {
         return CupertinoPageRoute(builder: (_) => const StartScreen());
       case '/main':
         return CupertinoPageRoute(builder: (_) => const MainScreen());
+      case '/nav_main':
+        return CupertinoPageRoute(builder: (_) => const NavMainScreen());
       case '/create_produce':
         return PageRouteBuilder(
           transitionDuration: const Duration(milliseconds: 600),
@@ -113,6 +125,11 @@ class AppRouter {
               AddNewPriceSearchScreen(routeSettings.arguments as SearchScreenArguments)),
           transitionsBuilder: searchScreenTransitionBuilder,
         );
+
+      case '/profile':
+        return CupertinoPageRoute(builder: (_) => const ProfileScreen());
+      case '/favorites':
+        return CupertinoPageRoute(builder: (_) => const FavoritesScreen());
 
       //! DEBUG ROUTES
       case '/navigate':

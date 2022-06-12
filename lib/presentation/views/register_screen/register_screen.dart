@@ -50,7 +50,7 @@ class _RegisterScreenState extends State<RegisterScreen> with AnimationMixin {
       initialInfoTileBloc: initialInfoTileBloc,
       child: Builder(builder: (context) {
         return Scaffold(
-          resizeToAvoidBottomInset: false,
+          resizeToAvoidBottomInset: true,
           extendBodyBehindAppBar: true,
           appBar: DefaultAppBar(
             leadingIcon: const Icon(Icons.arrow_back),

@@ -3,6 +3,9 @@ import 'package:farmhub/features/produce_manager/domain/entities/price/price.dar
 import 'package:intl/intl.dart';
 import 'package:clock/clock.dart';
 
+import '../../../core/auth/domain/entities/farmhub_user/farmhub_user.dart';
+import 'entities/produce/produce.dart';
+
 enum RangeType { oneW, twoW, oneM, twoM, sixM, oneY }
 
 // TODO: Solve oneM until oneY to account for different length of months
@@ -99,4 +102,40 @@ Price updateCurrentPrice(Price price) {
   num average = sum / pricesList.length;
 
   return price.copyWith(currentPrice: average);
+}
+
+/// This method will loop through [produceFavoritesList] and returns a [List<String>] of [produceId]s
+List<String> produceFavoritesToProduceId(List<ProduceFavorite> produceFavoritesList) {
+  final List<String> produceFavoritesIdList = [];
+
+  for (ProduceFavorite favorite in produceFavoritesList) {
+    produceFavoritesIdList.add(favorite.produceId);
+  }
+
+  return produceFavoritesIdList;
+}
+
+/// This method will loop through [Produce] and returns a [List<String>] of [produceId]s
+List<String> produceToProduceId(List<Produce> produceList) {
+  final List<String> produceIdList = [];
+
+  for (Produce produce in produceList) {
+    produceIdList.add(produce.produceId);
+  }
+
+  return produceIdList;
+}
+
+/// This method will check if the given [produceId] exists within [produceIdList] and return the corresponding
+/// [bool]
+bool determineIfInList(String produceId, List<String> produceIdList) {
+  bool ifInList = false;
+  for (String id in produceIdList) {
+    if (id == produceId) {
+      ifInList = true;
+      break;
+    }
+  }
+
+  return ifInList;
 }
