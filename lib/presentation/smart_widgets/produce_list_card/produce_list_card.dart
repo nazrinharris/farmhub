@@ -196,8 +196,6 @@ class _ProduceModalBottomSheetState extends State<ProduceModalBottomSheet> {
   Widget build(BuildContext context) {
     return BlocBuilder<ProduceListCardCubit, ProduceListCardState>(
       builder: (context, state) {
-        print("ProduceListCardCubit state was changed!");
-
         return widget.isAdmin
             ? BuildAdminModalBottomSheet(
                 produce: widget.produce, isFavorite: widget.isProduceFavorite)

@@ -30,7 +30,6 @@ class FavoritesScreen extends StatelessWidget {
         return BlocListener<GlobalUICubit, GlobalUIState>(
           listener: (context, state) {
             if (state.props.shouldRefreshFavorites) {
-              print("This line means refresh is executed!");
               context.read<FavoritesScreenCubit>().getProduceFavorites();
               context.read<GlobalUICubit>().setShouldRefreshFavorites(false);
             }

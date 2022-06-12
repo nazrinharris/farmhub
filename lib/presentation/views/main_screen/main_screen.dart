@@ -80,7 +80,6 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
             builder: (context) => BlocListener<GlobalUICubit, GlobalUIState>(
               listener: (context, state) {
                 if (state.props.shouldRefreshMain) {
-                  print("This line means refresh is executed!");
                   context.read<MainScreenBloc>().add(const MainScreenEvent.refresh());
                   context.read<GlobalUICubit>().setShouldRefreshMain(false);
                 }
