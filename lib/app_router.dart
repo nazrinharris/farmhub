@@ -17,6 +17,7 @@ import 'package:farmhub/presentation/views/produce_screen/produce_screen.dart';
 import 'package:farmhub/presentation/views/profile_screen/profile_screen.dart';
 import 'package:farmhub/presentation/views/register_screen/register_screen.dart';
 import 'package:farmhub/presentation/views/search_screen/search_screen.dart';
+import 'package:farmhub/presentation/views/settings_screen/setting_screens.dart';
 import 'package:farmhub/presentation/views/start_screen/start_screen.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -130,6 +131,8 @@ class AppRouter {
         return CupertinoPageRoute(builder: (_) => const ProfileScreen());
       case '/favorites':
         return CupertinoPageRoute(builder: (_) => const FavoritesScreen());
+      case '/settings':
+        return CupertinoPageRoute(builder: (_) => const SettingsScreen());
 
       //! DEBUG ROUTES
       case '/navigate':

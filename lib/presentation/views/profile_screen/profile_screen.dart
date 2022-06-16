@@ -46,7 +46,9 @@ class ProfileScreen extends StatelessWidget {
                   Navigator.pop(context);
                 },
                 secondTrailingIcon: Icon(Icons.settings_outlined),
-                secondTrailingOnPressed: () {},
+                secondTrailingOnPressed: () {
+                  Navigator.of(context).pushNamed('/settings');
+                },
               ),
               body: CustomScrollView(
                 physics: DefaultScrollPhysics,
@@ -100,16 +102,16 @@ class SliverProfileHeader extends StatelessWidget {
                 child: Text(
                   "Hello,",
                   style: Theme.of(context).textTheme.headline1!.copyWith(
-                        fontSize: 40,
+                        fontSize: 30,
                       ),
                 ),
               ),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 24),
+                padding: EdgeInsets.only(left: 24, right: 54),
                 child: Text(
                   farmhubUser.username,
                   style: Theme.of(context).textTheme.headline2!.copyWith(
-                        fontSize: 40,
+                        fontSize: 30,
                       ),
                 ),
               ),
