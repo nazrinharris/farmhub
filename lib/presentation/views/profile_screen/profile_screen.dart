@@ -41,9 +41,7 @@ class ProfileScreen extends StatelessWidget {
                 },
                 trailingIcon: Icon(Icons.edit_outlined),
                 trailingOnPressed: () {
-                  Navigator.of(context).pop();
-                  Navigator.pushReplacementNamed(context, "/navigate");
-                  Navigator.pop(context);
+                  Navigator.of(context).pushNamed('/edit_profile');
                 },
                 secondTrailingIcon: Icon(Icons.settings_outlined),
                 secondTrailingOnPressed: () {

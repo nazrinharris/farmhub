@@ -8,6 +8,7 @@ import 'package:farmhub/presentation/views/create_produce_screen/create_produce_
 import 'package:farmhub/presentation/views/debug/navigate_view.dart';
 import 'package:farmhub/presentation/views/debug/playground_screen.dart';
 import 'package:farmhub/presentation/views/debug/playground_two_screen.dart';
+import 'package:farmhub/presentation/views/edit_profile_screen/edit_profile_screen.dart';
 import 'package:farmhub/presentation/views/favorites_screen/favorites_screen.dart';
 import 'package:farmhub/presentation/views/login_screen/login_screen.dart';
 import 'package:farmhub/presentation/views/main_screen/main_screen.dart';
@@ -129,6 +130,13 @@ class AppRouter {
 
       case '/profile':
         return CupertinoPageRoute(builder: (_) => const ProfileScreen());
+      case '/edit_profile':
+        return PageRouteBuilder(
+          transitionDuration: const Duration(milliseconds: 600),
+          reverseTransitionDuration: const Duration(milliseconds: 600),
+          pageBuilder: ((context, animation, secondaryAnimation) => const EditProfileScreen()),
+          transitionsBuilder: createProduceScreenTransitionBuilder,
+        );
       case '/favorites':
         return CupertinoPageRoute(builder: (_) => const FavoritesScreen());
       case '/settings':
