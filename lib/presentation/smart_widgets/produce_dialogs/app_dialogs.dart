@@ -526,3 +526,36 @@ ProgressDialog returnDeleteSubPriceProgressDialog(BuildContext context) {
     ),
   );
 }
+
+ProgressDialog returnProgressDialog(
+  BuildContext context, {
+  required String loadingTitle,
+  required String loadingMessage,
+  Color? indicatorColor,
+  Color? textColor,
+}) {
+  return ProgressDialog(
+    context,
+    dialogTransitionType: DialogTransitionType.Bubble,
+    blur: 4,
+    dismissable: false,
+    title: Container(
+      padding: const EdgeInsets.only(left: 14, right: 14, top: 14),
+      child: Text(
+        loadingTitle,
+        style: Theme.of(context).textTheme.bodyText2!.copyWith(color: textColor),
+      ),
+    ),
+    message: Padding(
+      padding: const EdgeInsets.only(top: 14, bottom: 14, right: 14, left: 14),
+      child: Text(
+        loadingMessage,
+        style: Theme.of(context).textTheme.bodyText1,
+      ),
+    ),
+    defaultLoadingWidget: Container(
+      padding: const EdgeInsets.only(left: 14),
+      child: CupertinoActivityIndicator(color: indicatorColor),
+    ),
+  );
+}
