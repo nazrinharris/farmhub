@@ -1,30 +1,50 @@
 // ignore_for_file: prefer_const_constructors
+import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
+import 'package:farmhub/locator.dart';
 import 'package:farmhub/presentation/shared_widgets/appbars.dart';
 import 'package:farmhub/presentation/shared_widgets/scroll_physics.dart';
 import 'package:farmhub/presentation/shared_widgets/ui_helpers.dart';
+import 'package:farmhub/presentation/smart_widgets/produce_dialogs/app_dialogs.dart';
+import 'package:farmhub/presentation/smart_widgets/produce_dialogs/produce_dialog_cubit/produce_dialog_cubit.dart';
+import 'package:farmhub/presentation/views/settings_screen/cubit/settings_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: DefaultAppBar(
-        title: "Settings",
-        leadingIcon: const Icon(Icons.arrow_back),
-        leadingOnPressed: () {
-          Navigator.of(context).pop();
-        },
-        trailingIcon: const Icon(Icons.error, color: Colors.transparent),
-      ),
-      body: CustomScrollView(
-        physics: DefaultScrollPhysics,
-        slivers: [
-          SliverSettingsBody(),
-        ],
-      ),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => SettingsCubit()),
+        BlocProvider(
+            create: (context) => ProduceDialogCubit(
+                  locator(),
+                  locator(),
+                  locator(),
+                  authRepository: locator(),
+                )),
+      ],
+      child: Builder(builder: (context) {
+        return Scaffold(
+          appBar: DefaultAppBar(
+            title: "Settings",
+            leadingIcon: const Icon(Icons.arrow_back),
+            leadingOnPressed: () {
+              Navigator.of(context).pop();
+            },
+            trailingIcon: const Icon(Icons.error, color: Colors.transparent),
+          ),
+          body: CustomScrollView(
+            physics: DefaultScrollPhysics,
+            slivers: [
+              SliverSettingsBody(),
+            ],
+          ),
+        );
+      }),
     );
   }
 }
@@ -46,6 +66,13 @@ class SliverSettingsBody extends StatelessWidget {
                   content: "Change Password",
                   icon: Icon(Icons.password_outlined),
                   isTop: true,
+                  onTap: () {
+                    context.read<SettingsCubit>().showResetPasswordDialog(context,
+                        resetPasswordDialog: returnResetPasswordConfirmation(
+                          context,
+                          farmhubUser: context.read<GlobalAuthCubit>().state.farmhubUser,
+                        ));
+                  },
                 ),
                 SettingsListCard(
                   content: "Sign out",

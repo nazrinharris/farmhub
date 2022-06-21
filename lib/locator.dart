@@ -68,7 +68,8 @@ void setupLocator() {
   locator.registerLazySingleton<GlobalUICubit>(() => GlobalUICubit());
 
   //* ProduceListCard
-  locator.registerFactory<ProduceDialogCubit>(() => ProduceDialogCubit(locator(), locator()));
+  locator.registerFactory<ProduceDialogCubit>(
+      () => ProduceDialogCubit(locator(), locator(), locator()));
 
   //! External/Third Party
   //* Firebase

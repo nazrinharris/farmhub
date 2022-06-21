@@ -28,7 +28,7 @@ abstract class IAuthRemoteDataSource {
 
   Future<bool> isAdmin(String uid);
 
-  Future<Unit> changePassword(String email);
+  Future<Unit> sendPasswordResetEmail(String email);
 
   Future<Unit> signOut();
 }
@@ -182,7 +182,7 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
   }
 
   @override
-  Future<Unit> changePassword(String email) async {
+  Future<Unit> sendPasswordResetEmail(String email) async {
     await firebaseAuth.sendPasswordResetEmail(email: email);
 
     return unit;

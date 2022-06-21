@@ -135,6 +135,8 @@ class SecondaryButton extends StatelessWidget {
   final double? horizontalPadding;
   final double? verticalPadding;
   final Color? backgroundColor;
+  final Color? borderColor;
+  final Color? contentColor;
   final SecondaryButtonType? type;
   final EdgeInsets? margin;
 
@@ -150,6 +152,8 @@ class SecondaryButton extends StatelessWidget {
     this.verticalPadding,
     this.backgroundColor,
     this.margin,
+    this.borderColor,
+    this.contentColor,
     this.type = SecondaryButtonType.normal,
   })  : assert(content == null || child == null,
             "You cannot specify both a [content] and a [child], choose either."),
@@ -210,9 +214,21 @@ class SecondaryButton extends StatelessWidget {
 
   Color? _resolveTextColor(BuildContext context) {
     if (type == SecondaryButtonType.normal) {
-      return Theme.of(context).colorScheme.primary;
+      if (contentColor == null) {
+        return Theme.of(context).colorScheme.primary;
+      } else {
+        print("Using $contentColor");
+        return contentColor;
+      }
     } else if (type == SecondaryButtonType.red) {
       return Theme.of(context).colorScheme.error;
+    } else if (type == SecondaryButtonType.filled) {
+      if (contentColor == null) {
+        return Theme.of(context).colorScheme.primary;
+      } else {
+        print("Using $contentColor");
+        return contentColor;
+      }
     } else {
       return null;
     }
@@ -239,6 +255,12 @@ class SecondaryButton extends StatelessWidget {
       return BorderSide(color: Theme.of(context).colorScheme.error.withOpacity(0.30));
     } else if (type == SecondaryButtonType.noBorder) {
       return BorderSide(color: Theme.of(context).colorScheme.error.withOpacity(0));
+    } else if (type == SecondaryButtonType.filled) {
+      if (borderColor == null) {
+        return BorderSide(color: Theme.of(context).colorScheme.primary.withOpacity(0.30));
+      } else {
+        return BorderSide(color: borderColor!);
+      }
     } else {
       return BorderSide(color: Theme.of(context).colorScheme.primary.withOpacity(0.30));
     }
@@ -250,7 +272,11 @@ class SecondaryButton extends StatelessWidget {
     } else if (type == SecondaryButtonType.red) {
       return Theme.of(context).colorScheme.error;
     } else {
-      return Theme.of(context).colorScheme.primary;
+      if (backgroundColor == null) {
+        return Theme.of(context).primaryColor;
+      } else {
+        return backgroundColor!;
+      }
     }
   }
 
@@ -312,7 +338,7 @@ class ThirdPartySignUpButton extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Icon(
-              Icons.golf_course,
+              Icons.tune,
               color: Colors.blue,
               size: 16,
             ),
