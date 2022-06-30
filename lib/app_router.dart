@@ -69,20 +69,26 @@ class AppRouter {
   Route<dynamic> onGenerateRoute(RouteSettings routeSettings) {
     switch (routeSettings.name) {
       case '/':
-        return navigateDebugRoute;
+        return CupertinoPageRoute(builder: (_) => const NavigateView());
       case '/login':
-        return loginRoute;
+        return CupertinoPageRoute(builder: (_) => const LoginScreen());
       case '/register':
-        return registerRoute;
+        return CupertinoPageRoute(builder: (_) => const RegisterScreen());
       case '/start':
-        return startRoute;
+        return CupertinoPageRoute(builder: (_) => const StartScreen());
       case '/nav_main':
-        return navMainRoute;
+        return CupertinoPageRoute(builder: (_) => const NavMainScreen());
       case '/create_produce':
-        return createProduceRoute;
+        return PageRouteBuilder(
+          transitionDuration: const Duration(milliseconds: 600),
+          reverseTransitionDuration: const Duration(milliseconds: 600),
+          pageBuilder: ((context, animation, secondaryAnimation) => const CreateProduceScreen()),
+          transitionsBuilder: createProduceScreenTransitionBuilder,
+        );
       case '/produce':
         return CupertinoPageRoute(
-            builder: (_) => ProduceScreen(routeSettings.arguments as ProduceArguments));
+            builder: (_) =>
+                ProduceScreen(produceArguments: routeSettings.arguments as ProduceArguments));
       case '/price':
         return CupertinoPageRoute(
             builder: (_) => PriceScreen(routeSettings.arguments as PriceScreenArguments));
@@ -117,9 +123,16 @@ class AppRouter {
         );
 
       case '/profile':
-        return profileRoute;
+        return CupertinoPageRoute(builder: (_) => const ProfileScreen());
+
       case '/edit_profile':
-        return editProfileRoute;
+        return PageRouteBuilder(
+          transitionDuration: const Duration(milliseconds: 600),
+          reverseTransitionDuration: const Duration(milliseconds: 600),
+          pageBuilder: ((context, animation, secondaryAnimation) => const EditProfileScreen()),
+          transitionsBuilder: createProduceScreenTransitionBuilder,
+        );
+
       case '/favorites':
         return CupertinoPageRoute(builder: (_) => const FavoritesScreen());
       case '/settings':
@@ -145,6 +158,8 @@ Route navigateDebugRoute = CupertinoPageRoute(builder: (_) => const NavigateView
 Route loginRoute = CupertinoPageRoute(builder: (_) => const LoginScreen());
 Route registerRoute = CupertinoPageRoute(builder: (_) => const RegisterScreen());
 Route startRoute = CupertinoPageRoute(builder: (_) => const StartScreen());
+
+Route produceRoute = CupertinoPageRoute(builder: (_) => ProduceScreen());
 
 Route createProduceRoute = PageRouteBuilder(
   transitionDuration: const Duration(milliseconds: 600),
