@@ -69,24 +69,17 @@ class AppRouter {
   Route<dynamic> onGenerateRoute(RouteSettings routeSettings) {
     switch (routeSettings.name) {
       case '/':
-        return CupertinoPageRoute(builder: (_) => const NavigateView());
+        return navigateDebugRoute;
       case '/login':
-        return CupertinoPageRoute(builder: (_) => const LoginScreen());
+        return loginRoute;
       case '/register':
-        return CupertinoPageRoute(builder: (_) => const RegisterScreen());
+        return registerRoute;
       case '/start':
-        return CupertinoPageRoute(builder: (_) => const StartScreen());
-      case '/main':
-        return CupertinoPageRoute(builder: (_) => const MainScreen());
+        return startRoute;
       case '/nav_main':
-        return CupertinoPageRoute(builder: (_) => const NavMainScreen());
+        return navMainRoute;
       case '/create_produce':
-        return PageRouteBuilder(
-          transitionDuration: const Duration(milliseconds: 600),
-          reverseTransitionDuration: const Duration(milliseconds: 600),
-          pageBuilder: ((context, animation, secondaryAnimation) => const CreateProduceScreen()),
-          transitionsBuilder: createProduceScreenTransitionBuilder,
-        );
+        return createProduceRoute;
       case '/produce':
         return CupertinoPageRoute(
             builder: (_) => ProduceScreen(routeSettings.arguments as ProduceArguments));
@@ -94,12 +87,7 @@ class AppRouter {
         return CupertinoPageRoute(
             builder: (_) => PriceScreen(routeSettings.arguments as PriceScreenArguments));
       case '/add_new_price':
-        return PageRouteBuilder(
-          transitionDuration: const Duration(milliseconds: 600),
-          reverseTransitionDuration: const Duration(milliseconds: 600),
-          pageBuilder: ((context, animation, secondaryAnimation) => const AddNewPriceScreen()),
-          transitionsBuilder: createProduceScreenTransitionBuilder,
-        );
+        return addNewPriceRoute;
       case add_new_price_second:
         return CupertinoPageRoute(
           builder: (_) =>
@@ -129,14 +117,9 @@ class AppRouter {
         );
 
       case '/profile':
-        return CupertinoPageRoute(builder: (_) => const ProfileScreen());
+        return profileRoute;
       case '/edit_profile':
-        return PageRouteBuilder(
-          transitionDuration: const Duration(milliseconds: 600),
-          reverseTransitionDuration: const Duration(milliseconds: 600),
-          pageBuilder: ((context, animation, secondaryAnimation) => const EditProfileScreen()),
-          transitionsBuilder: createProduceScreenTransitionBuilder,
-        );
+        return editProfileRoute;
       case '/favorites':
         return CupertinoPageRoute(builder: (_) => const FavoritesScreen());
       case '/settings':
@@ -154,51 +137,82 @@ class AppRouter {
         throw Exception('UnknownRoute called');
     }
   }
+}
 
-  Widget createProduceScreenTransitionBuilder(context, animation, secondaryAnimation, child) {
-    var offsetCurve =
-        animation.status == AnimationStatus.reverse ? Curves.easeInExpo : Curves.easeOutExpo;
+Route profileRoute = CupertinoPageRoute(builder: (_) => const ProfileScreen());
+Route navMainRoute = CupertinoPageRoute(builder: (_) => const NavMainScreen());
+Route navigateDebugRoute = CupertinoPageRoute(builder: (_) => const NavigateView());
+Route loginRoute = CupertinoPageRoute(builder: (_) => const LoginScreen());
+Route registerRoute = CupertinoPageRoute(builder: (_) => const RegisterScreen());
+Route startRoute = CupertinoPageRoute(builder: (_) => const StartScreen());
 
-    var opacityCurve =
-        animation.status == AnimationStatus.reverse ? Curves.easeOutQuad : Curves.easeOutExpo;
+Route createProduceRoute = PageRouteBuilder(
+  transitionDuration: const Duration(milliseconds: 600),
+  reverseTransitionDuration: const Duration(milliseconds: 600),
+  pageBuilder: ((context, animation, secondaryAnimation) => const CreateProduceScreen()),
+  transitionsBuilder: createProduceScreenTransitionBuilder,
+);
+Route addNewPriceRoute = PageRouteBuilder(
+  transitionDuration: const Duration(milliseconds: 600),
+  reverseTransitionDuration: const Duration(milliseconds: 600),
+  pageBuilder: ((context, animation, secondaryAnimation) => const AddNewPriceScreen()),
+  transitionsBuilder: createProduceScreenTransitionBuilder,
+);
+Route editProfileRoute = PageRouteBuilder(
+  transitionDuration: const Duration(milliseconds: 600),
+  reverseTransitionDuration: const Duration(milliseconds: 600),
+  pageBuilder: ((context, animation, secondaryAnimation) => const EditProfileScreen()),
+  transitionsBuilder: createProduceScreenTransitionBuilder,
+);
 
-    final offsetAnimation = Tween<Offset>(begin: const Offset(0, 1), end: Offset.zero)
-        .chain(CurveTween(
-          curve: offsetCurve,
-        ))
-        .animate(animation);
+Route favoritesRoute = CupertinoPageRoute(builder: (_) => const FavoritesScreen());
+Route settingsRoute = CupertinoPageRoute(builder: (_) => const SettingsScreen());
+Route playgroundRoute = CupertinoPageRoute(builder: (_) => const PlaygroundScreen());
+Route playgroundTwoRoute = CupertinoPageRoute(builder: (_) => const PlaygroundTwoScreen());
 
-    final opacityAnimation =
-        Tween<double>(begin: 0, end: 1).chain(CurveTween(curve: opacityCurve)).animate(animation);
+Widget createProduceScreenTransitionBuilder(context, animation, secondaryAnimation, child) {
+  var offsetCurve =
+      animation.status == AnimationStatus.reverse ? Curves.easeInExpo : Curves.easeOutExpo;
 
-    return SlideTransition(
-      position: offsetAnimation,
-      child: FadeTransition(
-        opacity: opacityAnimation,
-        child: child,
-      ),
-    );
-  }
+  var opacityCurve =
+      animation.status == AnimationStatus.reverse ? Curves.easeOutQuad : Curves.easeOutExpo;
 
-  Widget searchScreenTransitionBuilder(context, animation, secondaryAnimation, child) {
-    var offsetCurve =
-        animation.status == AnimationStatus.reverse ? Curves.easeInExpo : Curves.easeOutExpo;
+  final offsetAnimation = Tween<Offset>(begin: const Offset(0, 1), end: Offset.zero)
+      .chain(CurveTween(
+        curve: offsetCurve,
+      ))
+      .animate(animation);
 
-    var opacityCurve =
-        animation.status == AnimationStatus.reverse ? Curves.easeOutQuad : Curves.easeOutExpo;
+  final opacityAnimation =
+      Tween<double>(begin: 0, end: 1).chain(CurveTween(curve: opacityCurve)).animate(animation);
 
-    final offsetAnimation = Tween<Offset>(begin: const Offset(0, -1), end: Offset.zero)
-        .chain(CurveTween(
-          curve: offsetCurve,
-        ))
-        .animate(animation);
-
-    final opacityAnimation =
-        Tween<double>(begin: 0, end: 1).chain(CurveTween(curve: opacityCurve)).animate(animation);
-
-    return FadeTransition(
+  return SlideTransition(
+    position: offsetAnimation,
+    child: FadeTransition(
       opacity: opacityAnimation,
       child: child,
-    );
-  }
+    ),
+  );
+}
+
+Widget searchScreenTransitionBuilder(context, animation, secondaryAnimation, child) {
+  var offsetCurve =
+      animation.status == AnimationStatus.reverse ? Curves.easeInExpo : Curves.easeOutExpo;
+
+  var opacityCurve =
+      animation.status == AnimationStatus.reverse ? Curves.easeOutQuad : Curves.easeOutExpo;
+
+  final offsetAnimation = Tween<Offset>(begin: const Offset(0, -1), end: Offset.zero)
+      .chain(CurveTween(
+        curve: offsetCurve,
+      ))
+      .animate(animation);
+
+  final opacityAnimation =
+      Tween<double>(begin: 0, end: 1).chain(CurveTween(curve: opacityCurve)).animate(animation);
+
+  return FadeTransition(
+    opacity: opacityAnimation,
+    child: child,
+  );
 }

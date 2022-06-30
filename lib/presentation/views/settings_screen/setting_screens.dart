@@ -1,4 +1,5 @@
 // ignore_for_file: prefer_const_constructors
+import 'package:farmhub/app_router.dart';
 import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
 import 'package:farmhub/locator.dart';
 import 'package:farmhub/presentation/shared_widgets/appbars.dart';
@@ -18,7 +19,7 @@ class SettingsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => SettingsCubit()),
+        BlocProvider(create: (context) => SettingsCubit(authRepository: locator())),
         BlocProvider(
             create: (context) => ProduceDialogCubit(
                   locator(),
@@ -98,6 +99,14 @@ class SliverSettingsBody extends StatelessWidget {
                     Navigator.of(context).pop();
                     Navigator.pushReplacementNamed(context, "/navigate");
                     Navigator.pop(context);
+                  },
+                ),
+                SettingsListCard(
+                  content: "Navigate to Main",
+                  icon: Icon(Icons.exit_to_app),
+                  isTop: true,
+                  onTap: () {
+                    Navigator.of(context).popUntil((route) => route == navMainRoute);
                   },
                 ),
               ],
