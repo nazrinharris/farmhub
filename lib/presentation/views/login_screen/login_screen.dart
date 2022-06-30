@@ -174,6 +174,9 @@ class _LoginScreenState extends State<LoginScreen> with AnimationMixin {
                                       final resetPasswordDialog = returnResetPasswordConfirmation(
                                         context,
                                         requireEmail: true,
+                                        formKey: GlobalKey<FormState>(),
+                                        formFocusNode: FocusNode(),
+                                        textEditingController: TextEditingController(),
                                       );
 
                                       resetPasswordDialog.show(context,

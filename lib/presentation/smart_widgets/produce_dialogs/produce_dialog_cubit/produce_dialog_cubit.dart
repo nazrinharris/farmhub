@@ -250,6 +250,9 @@ class ProduceDialogCubit extends Cubit<ProduceDialogState> {
     resetPasswordDialog.show(context);
   }
 
+  /// When using this, if [email] is specified, then [formKey], [formFocusNode], and
+  /// [textEditingController] must be specified. Creating and providing instances of
+  /// their respective types is enough.
   void startSendResetPasswordLink({
     required BuildContext context,
     required Function({
@@ -265,9 +268,55 @@ class ProduceDialogCubit extends Cubit<ProduceDialogState> {
     })
         showErrorDialog,
     String? email,
+    GlobalKey<FormState>? formKey,
+    FocusNode? formFocusNode,
+    TextEditingController? textEditingController,
   }) async {
-    email ??= globalAuthCubit.state.farmhubUser!.email;
+    bool? isValid;
 
+    if (email != null) {
+      isValid = formKey!.currentState!.validate();
+      formFocusNode!.unfocus();
+
+      if (isValid) {
+        print("Sending to $email");
+
+        await sendResetPasswordAndReact(
+          context,
+          email,
+          showSuccessDialog: showSuccessDialog,
+          showErrorDialog: showErrorDialog,
+        );
+      }
+    } else {
+      // Email is not provided
+      email ??= globalAuthCubit.state.farmhubUser!.email;
+
+      await sendResetPasswordAndReact(
+        context,
+        email,
+        showErrorDialog: showErrorDialog,
+        showSuccessDialog: showSuccessDialog,
+      );
+    }
+  }
+
+  Future<void> sendResetPasswordAndReact(
+    BuildContext context,
+    String email, {
+    required Function({
+      required BuildContext context,
+      required String title,
+      required String content,
+    })
+        showSuccessDialog,
+    required Function({
+      required BuildContext context,
+      required Failure failure,
+      String? errorTitle,
+    })
+        showErrorDialog,
+  }) async {
     Navigator.of(context).pop();
     final progressDialog = returnProgressDialog(
       context,

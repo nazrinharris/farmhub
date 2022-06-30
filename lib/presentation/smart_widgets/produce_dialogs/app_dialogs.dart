@@ -10,6 +10,7 @@ import 'package:ndialog/ndialog.dart';
 
 import '../../../core/auth/domain/entities/farmhub_user/farmhub_user.dart';
 import '../../../core/errors/failures.dart';
+import '../../../core/util/validation.dart';
 import '../../shared_widgets/buttons.dart';
 
 NAlertDialog returnProduceDeleteConfirmationDialog(
@@ -601,6 +602,9 @@ void showSuccessDialog({
 NAlertDialog returnResetPasswordConfirmation(
   BuildContext context, {
   bool? requireEmail = false,
+  GlobalKey<FormState>? formKey,
+  FocusNode? formFocusNode,
+  TextEditingController? textEditingController,
   FarmhubUser? farmhubUser,
 }) {
   return NAlertDialog(
@@ -650,6 +654,21 @@ NAlertDialog returnResetPasswordConfirmation(
               textAlign: TextAlign.center,
             ),
           ),
+          if (requireEmail!)
+            Padding(
+              padding: const EdgeInsets.only(top: 14),
+              child: Form(
+                key: formKey,
+                child: TextFormField(
+                  focusNode: formFocusNode,
+                  controller: textEditingController,
+                  validator: validateEmail,
+                  decoration: kInputDecoration(hintText: "Enter your email", context: context),
+                  style: Theme.of(context).textTheme.bodyText1,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                ),
+              ),
+            ),
         ],
       ),
     ),
@@ -669,11 +688,24 @@ NAlertDialog returnResetPasswordConfirmation(
         content: "Send Link",
         buttonIcon: Icon(Icons.link, size: 20, color: Theme.of(context).primaryColor),
         onPressed: () {
-          context.read<ProduceDialogCubit>().startSendResetPasswordLink(
-                context: context,
-                showSuccessDialog: showSuccessDialog,
-                showErrorDialog: showErrorDialog,
-              );
+          if (requireEmail) {
+            context.read<ProduceDialogCubit>().startSendResetPasswordLink(
+                  context: context,
+                  formKey: formKey,
+                  formFocusNode: formFocusNode,
+                  showSuccessDialog: showSuccessDialog,
+                  showErrorDialog: showErrorDialog,
+                  email: textEditingController!.text,
+                );
+          } else {
+            context.read<ProduceDialogCubit>().startSendResetPasswordLink(
+                  context: context,
+                  formKey: formKey,
+                  formFocusNode: formFocusNode,
+                  showSuccessDialog: showSuccessDialog,
+                  showErrorDialog: showErrorDialog,
+                );
+          }
         },
         backgroundColor: Theme.of(context).primaryColor.withOpacity(0.14),
         borderColor: Theme.of(context).primaryColor.withOpacity(0.3),
