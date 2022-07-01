@@ -11,6 +11,7 @@ import 'package:farmhub/presentation/views/settings_screen/cubit/settings_cubit.
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ndialog/ndialog.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({Key? key}) : super(key: key);
@@ -78,6 +79,13 @@ class SliverSettingsBody extends StatelessWidget {
                 SettingsListCard(
                   content: "Sign out",
                   icon: Icon(Icons.logout_outlined),
+                  onTap: () {
+                    final dialog = returnSignOutConfirmationDialog(context, () {
+                      context.read<SettingsCubit>().signOut(context);
+                    });
+
+                    dialog.show(context, transitionType: DialogTransitionType.Bubble);
+                  },
                 ),
                 SettingsHeader("Others"),
                 SettingsListCard(

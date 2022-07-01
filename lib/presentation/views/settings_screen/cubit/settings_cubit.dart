@@ -20,9 +20,23 @@ class SettingsCubit extends Cubit<SettingsState> {
   void signOut(BuildContext context) async {
     final result = await authRepository.signOut();
 
+    final progressDialog = returnProgressDialog(
+      context,
+      loadingTitle: "Logging out...",
+      loadingMessage: "It might take a while...",
+    );
+
+    progressDialog.show();
+
+    await Future.delayed(Duration(seconds: 2));
+
     result.fold(
-      (f) => showErrorDialog(context: context, failure: f),
+      (f) {
+        progressDialog.dismiss();
+        showErrorDialog(context: context, failure: f);
+      },
       (r) {
+        progressDialog.dismiss();
         Navigator.of(context).pushNamedAndRemoveUntil('/start', (route) => false);
       },
     );

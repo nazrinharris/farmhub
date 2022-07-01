@@ -714,3 +714,70 @@ NAlertDialog returnResetPasswordConfirmation(
     ],
   );
 }
+
+NAlertDialog returnSignOutConfirmationDialog(
+  BuildContext context,
+  Function() onConfirm,
+) {
+  return NAlertDialog(
+    blur: 4,
+    dialogStyle: DialogStyle(
+      titlePadding: EdgeInsets.zero,
+      titleDivider: false,
+      backgroundColor: Theme.of(context).colorScheme.background,
+    ),
+    title: Container(
+      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
+      color: Theme.of(context).colorScheme.errorContainer.withOpacity(0.45),
+      child: Row(
+        children: [
+          Icon(
+            Icons.logout,
+            color: Theme.of(context).colorScheme.error,
+          ),
+          const UIHorizontalSpace14(),
+          Text(
+            "Sign Out",
+            style: Theme.of(context)
+                .textTheme
+                .bodyText2!
+                .copyWith(color: Theme.of(context).colorScheme.error),
+          ),
+        ],
+      ),
+    ),
+    content: Padding(
+      padding: const EdgeInsets.only(top: 14, bottom: 24, left: 24, right: 24),
+      child: Wrap(
+        children: [
+          Align(
+            alignment: Alignment.center,
+            child: Text(
+              "Are you sure you want to sign out?",
+              style: Theme.of(context).textTheme.bodyText1,
+              textAlign: TextAlign.center,
+            ),
+          ),
+        ],
+      ),
+    ),
+    actions: [
+      PrimaryButton(
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        margin: const EdgeInsets.only(left: 14, right: 7, bottom: 14),
+        content: "Back",
+        onPressed: () {
+          Navigator.of(context).pop();
+        },
+      ),
+      SecondaryButton(
+        horizontalPadding: 0,
+        type: SecondaryButtonType.red,
+        margin: const EdgeInsets.only(right: 14, left: 7, bottom: 14),
+        content: "Sign Out",
+        buttonIcon: Icon(Icons.logout, size: 20, color: Theme.of(context).colorScheme.error),
+        onPressed: onConfirm,
+      ),
+    ],
+  );
+}
