@@ -159,7 +159,13 @@ Route loginRoute = CupertinoPageRoute(builder: (_) => const LoginScreen());
 Route registerRoute = CupertinoPageRoute(builder: (_) => const RegisterScreen());
 Route startRoute = CupertinoPageRoute(builder: (_) => const StartScreen());
 
-Route produceRoute = CupertinoPageRoute(builder: (_) => ProduceScreen());
+Route returnProduceRoute(ProduceArguments arguments) {
+  return CupertinoPageRoute(
+    builder: (_) => ProduceScreen(
+      produceArguments: arguments,
+    ),
+  );
+}
 
 Route createProduceRoute = PageRouteBuilder(
   transitionDuration: const Duration(milliseconds: 600),
