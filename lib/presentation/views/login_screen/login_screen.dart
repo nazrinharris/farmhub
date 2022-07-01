@@ -291,7 +291,7 @@ class _BuildBottomButton extends StatelessWidget {
           PrimaryButtonAware(
             firstPageContent: 'Continue',
             firstPageOnPressed: () {
-              context.read<LoginScreenBloc>().add(LoginScreenEvent.continuePressed());
+              context.read<LoginScreenBloc>().add(LoginScreenEvent.continuePressed(context));
             },
             firstPageButtonIcon: const Icon(
               Icons.arrow_forward,
