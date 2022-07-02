@@ -21,6 +21,8 @@ abstract class IAuthRepository {
   Future<Either<Failure, FarmhubUser>> loginWithGoogleAccount();
   Future<Either<Failure, FarmhubUser>> registerWithGoogleAccount();
 
+  Future<Either<Failure, Unit>> sendPasswordResetEmail(String email);
+
   Future<Either<Failure, FarmhubUser>> retrieveUserData();
 
   Future<Either<Failure, bool>> isAdmin({

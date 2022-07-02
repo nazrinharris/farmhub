@@ -410,12 +410,14 @@ class _$GlobalUIPropsTearOff {
       {required bool shouldRefreshMain,
       required bool shouldRefreshProduce,
       required bool shouldRefreshPrice,
-      required bool shouldRefreshFavorites}) {
+      required bool shouldRefreshFavorites,
+      required bool shouldRefreshProfile}) {
     return _GlobalUIProps(
       shouldRefreshMain: shouldRefreshMain,
       shouldRefreshProduce: shouldRefreshProduce,
       shouldRefreshPrice: shouldRefreshPrice,
       shouldRefreshFavorites: shouldRefreshFavorites,
+      shouldRefreshProfile: shouldRefreshProfile,
     );
   }
 }
@@ -429,6 +431,7 @@ mixin _$GlobalUIProps {
   bool get shouldRefreshProduce => throw _privateConstructorUsedError;
   bool get shouldRefreshPrice => throw _privateConstructorUsedError;
   bool get shouldRefreshFavorites => throw _privateConstructorUsedError;
+  bool get shouldRefreshProfile => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $GlobalUIPropsCopyWith<GlobalUIProps> get copyWith =>
@@ -444,7 +447,8 @@ abstract class $GlobalUIPropsCopyWith<$Res> {
       {bool shouldRefreshMain,
       bool shouldRefreshProduce,
       bool shouldRefreshPrice,
-      bool shouldRefreshFavorites});
+      bool shouldRefreshFavorites,
+      bool shouldRefreshProfile});
 }
 
 /// @nodoc
@@ -462,6 +466,7 @@ class _$GlobalUIPropsCopyWithImpl<$Res>
     Object? shouldRefreshProduce = freezed,
     Object? shouldRefreshPrice = freezed,
     Object? shouldRefreshFavorites = freezed,
+    Object? shouldRefreshProfile = freezed,
   }) {
     return _then(_value.copyWith(
       shouldRefreshMain: shouldRefreshMain == freezed
@@ -480,6 +485,10 @@ class _$GlobalUIPropsCopyWithImpl<$Res>
           ? _value.shouldRefreshFavorites
           : shouldRefreshFavorites // ignore: cast_nullable_to_non_nullable
               as bool,
+      shouldRefreshProfile: shouldRefreshProfile == freezed
+          ? _value.shouldRefreshProfile
+          : shouldRefreshProfile // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -495,7 +504,8 @@ abstract class _$GlobalUIPropsCopyWith<$Res>
       {bool shouldRefreshMain,
       bool shouldRefreshProduce,
       bool shouldRefreshPrice,
-      bool shouldRefreshFavorites});
+      bool shouldRefreshFavorites,
+      bool shouldRefreshProfile});
 }
 
 /// @nodoc
@@ -515,6 +525,7 @@ class __$GlobalUIPropsCopyWithImpl<$Res>
     Object? shouldRefreshProduce = freezed,
     Object? shouldRefreshPrice = freezed,
     Object? shouldRefreshFavorites = freezed,
+    Object? shouldRefreshProfile = freezed,
   }) {
     return _then(_GlobalUIProps(
       shouldRefreshMain: shouldRefreshMain == freezed
@@ -533,6 +544,10 @@ class __$GlobalUIPropsCopyWithImpl<$Res>
           ? _value.shouldRefreshFavorites
           : shouldRefreshFavorites // ignore: cast_nullable_to_non_nullable
               as bool,
+      shouldRefreshProfile: shouldRefreshProfile == freezed
+          ? _value.shouldRefreshProfile
+          : shouldRefreshProfile // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -544,7 +559,8 @@ class _$_GlobalUIProps implements _GlobalUIProps {
       {required this.shouldRefreshMain,
       required this.shouldRefreshProduce,
       required this.shouldRefreshPrice,
-      required this.shouldRefreshFavorites});
+      required this.shouldRefreshFavorites,
+      required this.shouldRefreshProfile});
 
   @override
   final bool shouldRefreshMain;
@@ -554,10 +570,12 @@ class _$_GlobalUIProps implements _GlobalUIProps {
   final bool shouldRefreshPrice;
   @override
   final bool shouldRefreshFavorites;
+  @override
+  final bool shouldRefreshProfile;
 
   @override
   String toString() {
-    return 'GlobalUIProps(shouldRefreshMain: $shouldRefreshMain, shouldRefreshProduce: $shouldRefreshProduce, shouldRefreshPrice: $shouldRefreshPrice, shouldRefreshFavorites: $shouldRefreshFavorites)';
+    return 'GlobalUIProps(shouldRefreshMain: $shouldRefreshMain, shouldRefreshProduce: $shouldRefreshProduce, shouldRefreshPrice: $shouldRefreshPrice, shouldRefreshFavorites: $shouldRefreshFavorites, shouldRefreshProfile: $shouldRefreshProfile)';
   }
 
   @override
@@ -572,12 +590,19 @@ class _$_GlobalUIProps implements _GlobalUIProps {
             (identical(other.shouldRefreshPrice, shouldRefreshPrice) ||
                 other.shouldRefreshPrice == shouldRefreshPrice) &&
             (identical(other.shouldRefreshFavorites, shouldRefreshFavorites) ||
-                other.shouldRefreshFavorites == shouldRefreshFavorites));
+                other.shouldRefreshFavorites == shouldRefreshFavorites) &&
+            (identical(other.shouldRefreshProfile, shouldRefreshProfile) ||
+                other.shouldRefreshProfile == shouldRefreshProfile));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, shouldRefreshMain,
-      shouldRefreshProduce, shouldRefreshPrice, shouldRefreshFavorites);
+  int get hashCode => Object.hash(
+      runtimeType,
+      shouldRefreshMain,
+      shouldRefreshProduce,
+      shouldRefreshPrice,
+      shouldRefreshFavorites,
+      shouldRefreshProfile);
 
   @JsonKey(ignore: true)
   @override
@@ -590,7 +615,8 @@ abstract class _GlobalUIProps implements GlobalUIProps {
       {required bool shouldRefreshMain,
       required bool shouldRefreshProduce,
       required bool shouldRefreshPrice,
-      required bool shouldRefreshFavorites}) = _$_GlobalUIProps;
+      required bool shouldRefreshFavorites,
+      required bool shouldRefreshProfile}) = _$_GlobalUIProps;
 
   @override
   bool get shouldRefreshMain;
@@ -600,6 +626,8 @@ abstract class _GlobalUIProps implements GlobalUIProps {
   bool get shouldRefreshPrice;
   @override
   bool get shouldRefreshFavorites;
+  @override
+  bool get shouldRefreshProfile;
   @override
   @JsonKey(ignore: true)
   _$GlobalUIPropsCopyWith<_GlobalUIProps> get copyWith =>

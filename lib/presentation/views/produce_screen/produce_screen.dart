@@ -33,9 +33,9 @@ import '../../shared_widgets/texts.dart';
 import '../../smart_widgets/large_price_chart.dart';
 
 class ProduceScreen extends StatefulWidget {
-  final ProduceArguments produceArguments;
+  final ProduceArguments? produceArguments;
 
-  const ProduceScreen(this.produceArguments, {Key? key}) : super(key: key);
+  const ProduceScreen({Key? key, this.produceArguments}) : super(key: key);
 
   @override
   State<ProduceScreen> createState() => _ProduceScreenState();
@@ -64,7 +64,7 @@ class _ProduceScreenState extends State<ProduceScreen> with SingleTickerProvider
   Widget build(BuildContext context) {
     final FarmhubUser farmhubUser = context.read<GlobalAuthCubit>().state.farmhubUser!;
     final isProduceFavorite = determineIfInList(
-      widget.produceArguments.produce.produceId,
+      widget.produceArguments!.produce.produceId,
       produceFavoritesToProduceId(farmhubUser.produceFavoritesList),
     );
 
@@ -75,7 +75,7 @@ class _ProduceScreenState extends State<ProduceScreen> with SingleTickerProvider
           create: (_) => ProduceAggregateCubit(
               tabController: tabController,
               repository: locator(),
-              produce: widget.produceArguments.produce,
+              produce: widget.produceArguments!.produce,
               farmhubUser: farmhubUser,
               globalUICubit: locator(),
               isFavorite: isProduceFavorite),
@@ -88,10 +88,10 @@ class _ProduceScreenState extends State<ProduceScreen> with SingleTickerProvider
             if (state.props.shouldRefreshProduce) {
               await context
                   .read<ProduceAggregateCubit>()
-                  .getAggregatePricesAndProduce(widget.produceArguments.produce.produceId);
+                  .getAggregatePricesAndProduce(widget.produceArguments!.produce.produceId);
               await context
                   .read<ProducePricesCubit>()
-                  .getFirstTenPrices(widget.produceArguments.produce.produceId);
+                  .getFirstTenPrices(widget.produceArguments!.produce.produceId);
               context.read<GlobalUICubit>().setShouldRefreshProduce(false);
             }
           },
@@ -104,7 +104,7 @@ class _ProduceScreenState extends State<ProduceScreen> with SingleTickerProvider
                 widget: widget,
                 scrollController: scrollController,
                 tabs: tabs,
-                produce: widget.produceArguments.produce,
+                produce: widget.produceArguments!.produce,
                 farmhubUser: farmhubUser,
               );
             },

@@ -116,6 +116,7 @@ class LoginScreenBloc extends Bloc<LoginScreenEvent, LoginScreenState> {
             ));
 
             primaryButtonAwareCubit.triggerFirstPage();
+            Navigator.of(event.context).pushNamedAndRemoveUntil('/nav_main', (route) => false);
           } else if (state is ASLoginError) {
             debugPrintStack(stackTrace: state.stackTrace);
             updateInfoTile(InfoTileProps(

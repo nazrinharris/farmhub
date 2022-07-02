@@ -3,6 +3,7 @@
 import 'package:farmhub/core/auth/domain/entities/farmhub_user/farmhub_user.dart';
 import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
 import 'package:farmhub/locator.dart';
+import 'package:farmhub/presentation/global/cubit/global_ui_cubit.dart';
 import 'package:farmhub/presentation/shared_widgets/appbars.dart';
 import 'package:farmhub/presentation/shared_widgets/scroll_physics.dart';
 import 'package:farmhub/presentation/shared_widgets/texts.dart';
@@ -31,35 +32,43 @@ class ProfileScreen extends StatelessWidget {
                 produceFavoritesList: [],
               );
 
-          return Scaffold(
-              extendBody: true,
-              extendBodyBehindAppBar: true,
-              appBar: DefaultAppBar(
-                leadingIcon: Icon(Icons.arrow_back),
-                leadingOnPressed: () {
-                  Navigator.of(context).pop();
-                },
-                trailingIcon: Icon(Icons.edit_outlined),
-                trailingOnPressed: () {
-                  Navigator.of(context).pop();
-                  Navigator.pushReplacementNamed(context, "/navigate");
-                  Navigator.pop(context);
-                },
-                secondTrailingIcon: Icon(Icons.settings_outlined),
-                secondTrailingOnPressed: () {},
-              ),
-              body: CustomScrollView(
-                physics: DefaultScrollPhysics,
-                slivers: [
-                  CustomCupertinoSliverRefreshControl(
-                    onRefresh: () async {
-                      await context.read<GlobalAuthCubit>().updateGlobalAuthCubit();
-                    },
-                  ),
-                  SliverProfileHeader(user),
-                  SliverProfileContent(user),
-                ],
-              ));
+          return BlocListener<GlobalUICubit, GlobalUIState>(
+            listener: (context, state) {
+              if (state.props.shouldRefreshProfile) {
+                context.read<ProfileScreenCubit>().refresh();
+                context.read<GlobalUICubit>().setShouldRefreshProfile(false);
+              }
+            },
+            child: Scaffold(
+                extendBody: true,
+                extendBodyBehindAppBar: true,
+                appBar: DefaultAppBar(
+                  leadingIcon: Icon(Icons.arrow_back),
+                  leadingOnPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  trailingIcon: Icon(Icons.edit_outlined),
+                  trailingOnPressed: () {
+                    Navigator.of(context).pushNamed('/edit_profile');
+                  },
+                  secondTrailingIcon: Icon(Icons.settings_outlined),
+                  secondTrailingOnPressed: () {
+                    Navigator.of(context).pushNamed('/settings');
+                  },
+                ),
+                body: CustomScrollView(
+                  physics: DefaultScrollPhysics,
+                  slivers: [
+                    CustomCupertinoSliverRefreshControl(
+                      onRefresh: () async {
+                        await context.read<GlobalAuthCubit>().updateGlobalAuthCubit();
+                      },
+                    ),
+                    SliverProfileHeader(user),
+                    SliverProfileContent(user),
+                  ],
+                )),
+          );
         },
       ),
     );
@@ -100,16 +109,16 @@ class SliverProfileHeader extends StatelessWidget {
                 child: Text(
                   "Hello,",
                   style: Theme.of(context).textTheme.headline1!.copyWith(
-                        fontSize: 40,
+                        fontSize: 30,
                       ),
                 ),
               ),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 24),
+                padding: EdgeInsets.only(left: 24, right: 54),
                 child: Text(
                   farmhubUser.username,
                   style: Theme.of(context).textTheme.headline2!.copyWith(
-                        fontSize: 40,
+                        fontSize: 30,
                       ),
                 ),
               ),

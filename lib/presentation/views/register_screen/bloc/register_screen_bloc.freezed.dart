@@ -25,8 +25,10 @@ class _$RegisterScreenEventTearOff {
     return const _RSEIdle();
   }
 
-  _RSEContinuePressed continuePressed() {
-    return const _RSEContinuePressed();
+  _RSEContinuePressed continuePressed(BuildContext context) {
+    return _RSEContinuePressed(
+      context,
+    );
   }
 
   _RSEToggleVisible toggleInfoTileVisibility() {
@@ -43,7 +45,7 @@ mixin _$RegisterScreenEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() idle,
-    required TResult Function() continuePressed,
+    required TResult Function(BuildContext context) continuePressed,
     required TResult Function() toggleInfoTileVisibility,
   }) =>
       throw _privateConstructorUsedError;
@@ -51,7 +53,7 @@ mixin _$RegisterScreenEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? idle,
-    TResult Function()? continuePressed,
+    TResult Function(BuildContext context)? continuePressed,
     TResult Function()? toggleInfoTileVisibility,
   }) =>
       throw _privateConstructorUsedError;
@@ -59,7 +61,7 @@ mixin _$RegisterScreenEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? idle,
-    TResult Function()? continuePressed,
+    TResult Function(BuildContext context)? continuePressed,
     TResult Function()? toggleInfoTileVisibility,
     required TResult orElse(),
   }) =>
@@ -151,7 +153,7 @@ class _$_RSEStarted implements _RSEStarted {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() idle,
-    required TResult Function() continuePressed,
+    required TResult Function(BuildContext context) continuePressed,
     required TResult Function() toggleInfoTileVisibility,
   }) {
     return started();
@@ -162,7 +164,7 @@ class _$_RSEStarted implements _RSEStarted {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? idle,
-    TResult Function()? continuePressed,
+    TResult Function(BuildContext context)? continuePressed,
     TResult Function()? toggleInfoTileVisibility,
   }) {
     return started?.call();
@@ -173,7 +175,7 @@ class _$_RSEStarted implements _RSEStarted {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? idle,
-    TResult Function()? continuePressed,
+    TResult Function(BuildContext context)? continuePressed,
     TResult Function()? toggleInfoTileVisibility,
     required TResult orElse(),
   }) {
@@ -266,7 +268,7 @@ class _$_RSEIdle implements _RSEIdle {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() idle,
-    required TResult Function() continuePressed,
+    required TResult Function(BuildContext context) continuePressed,
     required TResult Function() toggleInfoTileVisibility,
   }) {
     return idle();
@@ -277,7 +279,7 @@ class _$_RSEIdle implements _RSEIdle {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? idle,
-    TResult Function()? continuePressed,
+    TResult Function(BuildContext context)? continuePressed,
     TResult Function()? toggleInfoTileVisibility,
   }) {
     return idle?.call();
@@ -288,7 +290,7 @@ class _$_RSEIdle implements _RSEIdle {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? idle,
-    TResult Function()? continuePressed,
+    TResult Function(BuildContext context)? continuePressed,
     TResult Function()? toggleInfoTileVisibility,
     required TResult orElse(),
   }) {
@@ -345,6 +347,7 @@ abstract class _$RSEContinuePressedCopyWith<$Res> {
   factory _$RSEContinuePressedCopyWith(
           _RSEContinuePressed value, $Res Function(_RSEContinuePressed) then) =
       __$RSEContinuePressedCopyWithImpl<$Res>;
+  $Res call({BuildContext context});
 }
 
 /// @nodoc
@@ -357,36 +360,58 @@ class __$RSEContinuePressedCopyWithImpl<$Res>
 
   @override
   _RSEContinuePressed get _value => super._value as _RSEContinuePressed;
+
+  @override
+  $Res call({
+    Object? context = freezed,
+  }) {
+    return _then(_RSEContinuePressed(
+      context == freezed
+          ? _value.context
+          : context // ignore: cast_nullable_to_non_nullable
+              as BuildContext,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_RSEContinuePressed implements _RSEContinuePressed {
-  const _$_RSEContinuePressed();
+  const _$_RSEContinuePressed(this.context);
+
+  @override
+  final BuildContext context;
 
   @override
   String toString() {
-    return 'RegisterScreenEvent.continuePressed()';
+    return 'RegisterScreenEvent.continuePressed(context: $context)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _RSEContinuePressed);
+        (other.runtimeType == runtimeType &&
+            other is _RSEContinuePressed &&
+            (identical(other.context, context) || other.context == context));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, context);
+
+  @JsonKey(ignore: true)
+  @override
+  _$RSEContinuePressedCopyWith<_RSEContinuePressed> get copyWith =>
+      __$RSEContinuePressedCopyWithImpl<_RSEContinuePressed>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() idle,
-    required TResult Function() continuePressed,
+    required TResult Function(BuildContext context) continuePressed,
     required TResult Function() toggleInfoTileVisibility,
   }) {
-    return continuePressed();
+    return continuePressed(context);
   }
 
   @override
@@ -394,10 +419,10 @@ class _$_RSEContinuePressed implements _RSEContinuePressed {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? idle,
-    TResult Function()? continuePressed,
+    TResult Function(BuildContext context)? continuePressed,
     TResult Function()? toggleInfoTileVisibility,
   }) {
-    return continuePressed?.call();
+    return continuePressed?.call(context);
   }
 
   @override
@@ -405,12 +430,12 @@ class _$_RSEContinuePressed implements _RSEContinuePressed {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? idle,
-    TResult Function()? continuePressed,
+    TResult Function(BuildContext context)? continuePressed,
     TResult Function()? toggleInfoTileVisibility,
     required TResult orElse(),
   }) {
     if (continuePressed != null) {
-      return continuePressed();
+      return continuePressed(context);
     }
     return orElse();
   }
@@ -454,7 +479,13 @@ class _$_RSEContinuePressed implements _RSEContinuePressed {
 }
 
 abstract class _RSEContinuePressed implements RegisterScreenEvent {
-  const factory _RSEContinuePressed() = _$_RSEContinuePressed;
+  const factory _RSEContinuePressed(BuildContext context) =
+      _$_RSEContinuePressed;
+
+  BuildContext get context;
+  @JsonKey(ignore: true)
+  _$RSEContinuePressedCopyWith<_RSEContinuePressed> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -500,7 +531,7 @@ class _$_RSEToggleVisible implements _RSEToggleVisible {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() idle,
-    required TResult Function() continuePressed,
+    required TResult Function(BuildContext context) continuePressed,
     required TResult Function() toggleInfoTileVisibility,
   }) {
     return toggleInfoTileVisibility();
@@ -511,7 +542,7 @@ class _$_RSEToggleVisible implements _RSEToggleVisible {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? idle,
-    TResult Function()? continuePressed,
+    TResult Function(BuildContext context)? continuePressed,
     TResult Function()? toggleInfoTileVisibility,
   }) {
     return toggleInfoTileVisibility?.call();
@@ -522,7 +553,7 @@ class _$_RSEToggleVisible implements _RSEToggleVisible {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? idle,
-    TResult Function()? continuePressed,
+    TResult Function(BuildContext context)? continuePressed,
     TResult Function()? toggleInfoTileVisibility,
     required TResult orElse(),
   }) {

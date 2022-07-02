@@ -1,3 +1,4 @@
+import 'package:farmhub/presentation/shared_widgets/buttons.dart';
 import 'package:flutter/material.dart';
 
 class StartScreen extends StatelessWidget {
@@ -8,7 +9,21 @@ class StartScreen extends StatelessWidget {
     return Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: [],
+        children: [
+          Text("Start Screen"),
+          PrimaryButton(
+            content: "Login",
+            onPressed: () {
+              Navigator.of(context).pushNamed('/login');
+            },
+          ),
+          PrimaryButton(
+            content: "Register",
+            onPressed: () {
+              Navigator.of(context).pushNamed('/register');
+            },
+          ),
+        ],
       ),
     );
   }

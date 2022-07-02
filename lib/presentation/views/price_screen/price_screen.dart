@@ -288,7 +288,7 @@ class _AllPriceListCardState extends State<AllPriceListCard> {
         context: context,
         builder: (BuildContext context) {
           return BlocProvider(
-            create: (context) => ProduceDialogCubit(locator(), locator()),
+            create: (context) => ProduceDialogCubit(locator(), locator(), locator()),
             child: Builder(builder: (context) {
               return Container(
                 height: 300,

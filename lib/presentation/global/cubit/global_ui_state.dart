@@ -15,5 +15,6 @@ class GlobalUIProps with _$GlobalUIProps {
     required bool shouldRefreshProduce,
     required bool shouldRefreshPrice,
     required bool shouldRefreshFavorites,
+    required bool shouldRefreshProfile,
   }) = _GlobalUIProps;
 }

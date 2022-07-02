@@ -284,7 +284,7 @@ class BuildAdminModalBottomSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => ProduceDialogCubit(locator(), locator()),
+      create: (context) => ProduceDialogCubit(locator(), locator(), locator()),
       child: Builder(builder: (context) {
         return Container(
           height: 390,

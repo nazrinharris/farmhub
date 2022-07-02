@@ -5,10 +5,13 @@ import 'package:farmhub/presentation/shared_widgets/ui_helpers.dart';
 import 'package:farmhub/presentation/smart_widgets/info_tile/bloc/info_tile_bloc.dart';
 import 'package:farmhub/presentation/smart_widgets/info_tile/info_tile.dart';
 import 'package:farmhub/presentation/smart_widgets/primary_button_aware/primary_button_aware_cubit.dart';
+import 'package:farmhub/presentation/smart_widgets/produce_dialogs/app_dialogs.dart';
+import 'package:farmhub/presentation/smart_widgets/produce_dialogs/produce_dialog_cubit/produce_dialog_cubit.dart';
 
 import 'package:farmhub/presentation/views/login_screen/bloc/login_screen_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ndialog/ndialog.dart';
 import 'package:simple_animations/simple_animations.dart';
 
 import '../../smart_widgets/multiple_fields_form/multiple_fields_form_bloc.dart';
@@ -65,6 +68,14 @@ class _LoginScreenState extends State<LoginScreen> with AnimationMixin {
         BlocProvider(
           create: (context) => PrimaryButtonAwareCubit(),
         ),
+        BlocProvider(
+          create: (context) => ProduceDialogCubit(
+            locator(),
+            locator(),
+            locator(),
+            authRepository: locator(),
+          ),
+        )
       ],
       child: Builder(
           builder: (context) => MultiBlocProvider(
@@ -151,6 +162,33 @@ class _LoginScreenState extends State<LoginScreen> with AnimationMixin {
                                           .add(const LoginScreenEvent.toggleInfoTileVisibility());
                                     },
                                     width: 100,
+                                  ),
+                                ),
+                                const UIVerticalSpace24(),
+                                Container(
+                                  alignment: Alignment.center,
+                                  child: GestureDetector(
+                                    onTap: () {
+                                      print("Tapped");
+
+                                      final resetPasswordDialog = returnResetPasswordConfirmation(
+                                        context,
+                                        requireEmail: true,
+                                        formKey: GlobalKey<FormState>(),
+                                        formFocusNode: FocusNode(),
+                                        textEditingController: TextEditingController(),
+                                      );
+
+                                      resetPasswordDialog.show(context,
+                                          transitionType: DialogTransitionType.Bubble);
+                                    },
+                                    child: Text(
+                                      "Forgot Password? Click here.",
+                                      style: Theme.of(context).textTheme.caption!.copyWith(
+                                            fontSize: 14,
+                                            decoration: TextDecoration.underline,
+                                          ),
+                                    ),
                                   ),
                                 ),
                               ],
@@ -253,10 +291,10 @@ class _BuildBottomButton extends StatelessWidget {
           PrimaryButtonAware(
             firstPageContent: 'Continue',
             firstPageOnPressed: () {
-              context.read<LoginScreenBloc>().add(LoginScreenEvent.continuePressed());
+              context.read<LoginScreenBloc>().add(LoginScreenEvent.continuePressed(context));
             },
             firstPageButtonIcon: const Icon(
-              Icons.arrow_right,
+              Icons.arrow_forward,
               color: Colors.white,
               size: 24,
             ),

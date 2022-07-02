@@ -20,7 +20,7 @@ class NavMainScreen extends StatelessWidget {
         ],
         bottomNavigationBar: (index, onTap) {
           return Container(
-            height: 110,
+            height: 90,
             decoration: BoxDecoration(
                 color: Theme.of(context).colorScheme.background,
                 borderRadius: const BorderRadius.only(
@@ -30,12 +30,10 @@ class NavMainScreen extends StatelessWidget {
                 boxShadow: [
                   BoxShadow(color: Colors.black.withOpacity(0.10), blurRadius: 10),
                 ]),
-            padding: EdgeInsets.only(
-                top: 14, left: 14, right: 14, bottom: MediaQuery.of(context).padding.bottom),
+            padding: EdgeInsets.only(top: 6, left: 14, right: 14, bottom: 14),
             child: GNav(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               padding: const EdgeInsets.symmetric(horizontal: 35),
-              tabBackgroundColor: Theme.of(context).colorScheme.primary.withOpacity(0.2),
               tabBorderRadius: 20,
               rippleColor: Theme.of(context).colorScheme.primary.withOpacity(0.35),
               hoverColor: Theme.of(context).colorScheme.primary.withOpacity(0.15),
