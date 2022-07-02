@@ -7,9 +7,9 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'dart:io';
 
 import 'core/auth/auth_bloc/auth_bloc.dart';
-import 'core/auth/domain/entities/farmhub_user/farmhub_user.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,6 +25,7 @@ Future<void> main() async {
   );
 
   // Comment for initial commit
+  // Comment for another initial commit
 }
 
 class FarmhubApp extends StatelessWidget {
@@ -67,15 +68,27 @@ class _FarmhubMaterialAppState extends State<FarmhubMaterialApp> {
 
     context.read<GlobalAuthCubit>().updateGlobalAuthCubit();
 
-    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-      systemNavigationBarColor: Colors.transparent,
-      systemNavigationBarDividerColor: Colors.transparent,
-      systemNavigationBarIconBrightness: Brightness.dark,
-      statusBarColor: Colors.transparent,
-      statusBarIconBrightness: Brightness.light,
-      statusBarBrightness: Brightness.light,
-      systemStatusBarContrastEnforced: false,
-    ));
+    if (Platform.isIOS) {
+      SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+        systemNavigationBarColor: Colors.transparent,
+        systemNavigationBarDividerColor: Colors.transparent,
+        systemNavigationBarIconBrightness: Brightness.dark,
+        statusBarColor: Colors.transparent,
+        statusBarIconBrightness: Brightness.light,
+        statusBarBrightness: Brightness.light,
+        systemStatusBarContrastEnforced: false,
+      ));
+    } else if (Platform.isAndroid) {
+      SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+        systemNavigationBarColor: Colors.transparent,
+        systemNavigationBarDividerColor: Colors.transparent,
+        systemNavigationBarIconBrightness: Brightness.dark,
+        statusBarColor: Colors.transparent,
+        statusBarIconBrightness: Brightness.dark,
+        statusBarBrightness: Brightness.light,
+        systemStatusBarContrastEnforced: false,
+      ));
+    }
 
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
   }
