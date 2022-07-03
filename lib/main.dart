@@ -63,6 +63,8 @@ class FarmhubMaterialApp extends StatefulWidget {
 }
 
 class _FarmhubMaterialAppState extends State<FarmhubMaterialApp> {
+  late String initialRoute;
+
   @override
   void initState() {
     super.initState();

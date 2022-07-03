@@ -1,3 +1,4 @@
+import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
 import 'package:farmhub/locator.dart';
 import 'package:farmhub/presentation/shared_widgets/appbars.dart';
 import 'package:farmhub/presentation/shared_widgets/buttons.dart';
@@ -157,6 +158,11 @@ class _LoginScreenState extends State<LoginScreen> with AnimationMixin {
                                   child: ThirdPartySignUpButton(
                                     content: "Debug",
                                     onPressed: () {
+                                      final user =
+                                          context.read<GlobalAuthCubit>().state.farmhubUser;
+
+                                      print("User Data -> $user");
+
                                       context
                                           .read<LoginScreenBloc>()
                                           .add(const LoginScreenEvent.toggleInfoTileVisibility());
