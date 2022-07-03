@@ -93,7 +93,13 @@ class AppRouter {
         return CupertinoPageRoute(
             builder: (_) => PriceScreen(routeSettings.arguments as PriceScreenArguments));
       case '/add_new_price':
-        return addNewPriceRoute;
+        return PageRouteBuilder(
+          transitionDuration: const Duration(milliseconds: 600),
+          reverseTransitionDuration: const Duration(milliseconds: 600),
+          pageBuilder: ((context, animation, secondaryAnimation) => const AddNewPriceScreen()),
+          transitionsBuilder: createProduceScreenTransitionBuilder,
+        );
+        ;
       case add_new_price_second:
         return CupertinoPageRoute(
           builder: (_) =>
