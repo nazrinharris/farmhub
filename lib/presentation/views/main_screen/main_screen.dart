@@ -50,6 +50,8 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
     );
     scrollController = ScrollController();
 
+    context.read<GlobalAuthCubit>().updateGlobalAuthCubit();
+
     mainHeaderController.addListener(() {
       setState(() {});
     });
@@ -100,6 +102,7 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
                       CupertinoSliverRefreshControl(
                         onRefresh: () async {
                           setState(() {});
+                          context.read<GlobalAuthCubit>().updateGlobalAuthCubit();
                           context.read<MainScreenBloc>().add(const MainScreenEvent.refresh());
 
                           await context.read<MainScreenBloc>().stream.firstWhere((state) {
