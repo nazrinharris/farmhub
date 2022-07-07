@@ -41,6 +41,8 @@ class ProduceManagerRepository implements IProduceManagerRepository {
     if (isConnected) {
       try {
         final firstTenProduce = await remoteDatasource.getFirstTenProduce();
+        await localDatasource.storeProduceList(firstTenProduce);
+
         return Right(firstTenProduce);
       } catch (e) {
         return Left(
@@ -67,6 +69,7 @@ class ProduceManagerRepository implements IProduceManagerRepository {
     if (await networkInfo.isConnected) {
       try {
         final newProduceList = await remoteDatasource.getNextTenProduce(lastProduceList);
+        await localDatasource.storeProduceList(newProduceList);
 
         return Right(newProduceList);
       } catch (e) {
@@ -561,6 +564,7 @@ class ProduceManagerRepository implements IProduceManagerRepository {
             globalAuthCubit.updateFarmhubUser(farmhubUser);
           }
 
+          await localDatasource.storeProduceFavorites(retrievedProduceFavoritesList);
           return retrievedProduceFavoritesList;
         });
 
