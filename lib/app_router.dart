@@ -19,8 +19,10 @@ import 'package:farmhub/presentation/views/profile_screen/profile_screen.dart';
 import 'package:farmhub/presentation/views/register_screen/register_screen.dart';
 import 'package:farmhub/presentation/views/search_screen/search_screen.dart';
 import 'package:farmhub/presentation/views/settings_screen/setting_screens.dart';
+import 'package:farmhub/presentation/views/splash_screen/splash_screen.dart';
 import 'package:farmhub/presentation/views/start_screen/start_screen.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 import 'features/produce_manager/domain/entities/produce/produce.dart';
 
@@ -69,15 +71,15 @@ class AppRouter {
   Route<dynamic> onGenerateRoute(RouteSettings routeSettings) {
     switch (routeSettings.name) {
       case '/':
-        return CupertinoPageRoute(builder: (_) => const NavigateView());
+        return CupertinoPageRoute(builder: (_) => const SplashScreen());
       case '/login':
         return CupertinoPageRoute(builder: (_) => const LoginScreen());
       case '/register':
         return CupertinoPageRoute(builder: (_) => const RegisterScreen());
       case '/start':
-        return CupertinoPageRoute(builder: (_) => const StartScreen());
+        return MaterialPageRoute(builder: (_) => const StartScreen());
       case '/nav_main':
-        return CupertinoPageRoute(builder: (_) => const NavMainScreen());
+        return MaterialPageRoute(builder: (_) => const NavMainScreen());
       case '/create_produce':
         return PageRouteBuilder(
           transitionDuration: const Duration(milliseconds: 600),
@@ -93,7 +95,13 @@ class AppRouter {
         return CupertinoPageRoute(
             builder: (_) => PriceScreen(routeSettings.arguments as PriceScreenArguments));
       case '/add_new_price':
-        return addNewPriceRoute;
+        return PageRouteBuilder(
+          transitionDuration: const Duration(milliseconds: 600),
+          reverseTransitionDuration: const Duration(milliseconds: 600),
+          pageBuilder: ((context, animation, secondaryAnimation) => const AddNewPriceScreen()),
+          transitionsBuilder: createProduceScreenTransitionBuilder,
+        );
+        ;
       case add_new_price_second:
         return CupertinoPageRoute(
           builder: (_) =>

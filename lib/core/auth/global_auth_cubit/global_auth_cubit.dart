@@ -9,7 +9,7 @@ part 'global_auth_cubit.freezed.dart';
 
 // TODO: Temporary as guest farmhub user.
 final guestFarmhubUser = FarmhubUser(
-  uid: "xxxxxx",
+  uid: "guest",
   email: "-",
   username: "Guest",
   createdAt: "-",

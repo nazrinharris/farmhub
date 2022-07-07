@@ -11,6 +11,7 @@ class PrimaryButton extends StatelessWidget {
   final String? content;
   final Widget? child;
   final double? width;
+  final double? height;
   final Function()? onPressed;
   final Icon? buttonIcon;
   final double? horizontalPadding;
@@ -28,6 +29,7 @@ class PrimaryButton extends StatelessWidget {
     this.horizontalPadding,
     this.verticalPadding,
     this.backgroundColor,
+    this.height,
     this.margin,
   })  : assert(content == null || child == null,
             "You cannot specify both a [content] and a [child], choose either."),
@@ -109,7 +111,7 @@ class PrimaryButton extends StatelessWidget {
           ),
         ),
         child: Container(
-          height: 46,
+          height: height ?? 46,
           padding: EdgeInsets.symmetric(
             vertical: verticalPadding ?? 14,
             horizontal: horizontalPadding ?? 34,
