@@ -33,7 +33,4 @@ abstract class IAuthRepository {
   Future<Either<Failure, FarmhubUser>> updateRemoteUser({
     required FarmhubUser newUserData,
   });
-
-  FutureEither<Unit> storeFarmhubUser(FarmhubUser farmhubUser);
-  FutureEither<FarmhubUser> retrieveFarmhubUser();
 }

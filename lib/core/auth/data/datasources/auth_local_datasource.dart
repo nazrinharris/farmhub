@@ -8,6 +8,8 @@ import 'dart:convert';
 abstract class IAuthLocalDataSource {
   Future<Unit> storeFarmhubUser(FarmhubUser farmhubUser);
   Future<FarmhubUser> retrieveFarmhubUser();
+
+  Future<Unit> clearStoredFarmhubUser();
 }
 
 class AuthLocalDataSource implements IAuthLocalDataSource {
@@ -37,5 +39,14 @@ class AuthLocalDataSource implements IAuthLocalDataSource {
     }
 
     return FarmhubUser.fromMap(farmhubUserJson);
+  }
+
+  @override
+  Future<Unit> clearStoredFarmhubUser() async {
+    final prefs = await SharedPreferences.getInstance();
+
+    prefs.remove("user");
+
+    return unit;
   }
 }

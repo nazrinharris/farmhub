@@ -98,6 +98,7 @@ class AuthRepository implements IAuthRepository {
     // TODO: tests signOut
     try {
       await authRemoteDataSource.signOut();
+      await authLocalDataSource.clearStoredFarmhubUser();
       print("Sign Out Requested");
       return const Right(unit);
     } on FirebaseAuthException catch (e) {
@@ -135,6 +136,7 @@ class AuthRepository implements IAuthRepository {
     if (await networkInfo.isConnected) {
       try {
         final FarmhubUser user = await authRemoteDataSource.retrieveUserData();
+        await authLocalDataSource.storeFarmhubUser(user);
 
         return Right(user);
       } on FirebaseAuthException catch (e) {
@@ -161,10 +163,18 @@ class AuthRepository implements IAuthRepository {
       }
     } else {
       // TODO: Retrieval of user information from local storage.
-      return Left(InternetConnectionFailure(
-          code: ERROR_NO_INTERNET_CONNECTION,
-          message: MESSAGE_NO_INTERNET_CONNECTION,
-          stackTrace: StackTrace.current));
+      try {
+        final user = await authLocalDataSource.retrieveFarmhubUser();
+
+        return Right(user);
+      } catch (e, stack) {
+        return Left(
+          UnexpectedFailure(
+            message: e.toString(),
+            stackTrace: stack,
+          ),
+        );
+      }
     }
   }
 
@@ -211,6 +221,8 @@ class AuthRepository implements IAuthRepository {
     if (await networkInfo.isConnected) {
       try {
         final user = await authRemoteDataSource.updateRemoteUser(newUserData);
+        await authLocalDataSource.storeFarmhubUser(newUserData);
+
         return Right(user);
       } on FirebaseAuthException catch (e) {
         return Left(
@@ -237,56 +249,6 @@ class AuthRepository implements IAuthRepository {
       try {
         final user = await authRemoteDataSource.sendPasswordResetEmail(email);
         return Right(unit);
-      } on FirebaseAuthException catch (e) {
-        return Left(
-            FirebaseAuthFailure(code: e.code, message: e.message, stackTrace: StackTrace.current));
-      } catch (e, stack) {
-        return Left(UnexpectedFailure(
-          code: e.toString(),
-          message: "An unexpected error occured",
-          stackTrace: stack,
-        ));
-      }
-    } else {
-      return Left(InternetConnectionFailure(
-        code: ERROR_NO_INTERNET_CONNECTION,
-        message: MESSAGE_NO_INTERNET_CONNECTION,
-        stackTrace: StackTrace.current,
-      ));
-    }
-  }
-
-  @override
-  FutureEither<FarmhubUser> retrieveFarmhubUser() async {
-    if (await networkInfo.isConnected) {
-      try {
-        final user = await authLocalDataSource.retrieveFarmhubUser();
-        return Right(user);
-      } on FirebaseAuthException catch (e) {
-        return Left(
-            FirebaseAuthFailure(code: e.code, message: e.message, stackTrace: StackTrace.current));
-      } catch (e, stack) {
-        return Left(UnexpectedFailure(
-          code: e.toString(),
-          message: "An unexpected error occured",
-          stackTrace: stack,
-        ));
-      }
-    } else {
-      return Left(InternetConnectionFailure(
-        code: ERROR_NO_INTERNET_CONNECTION,
-        message: MESSAGE_NO_INTERNET_CONNECTION,
-        stackTrace: StackTrace.current,
-      ));
-    }
-  }
-
-  @override
-  FutureEither<Unit> storeFarmhubUser(FarmhubUser farmhubUser) async {
-    if (await networkInfo.isConnected) {
-      try {
-        await authLocalDataSource.storeFarmhubUser(farmhubUser);
-        return const Right(unit);
       } on FirebaseAuthException catch (e) {
         return Left(
             FirebaseAuthFailure(code: e.code, message: e.message, stackTrace: StackTrace.current));

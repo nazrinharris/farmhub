@@ -42,7 +42,7 @@ class GlobalAuthCubit extends Cubit<GlobalAuthState> {
       (farmhubUser) async {
         final failureOrIsAdmin = await repository.isAdmin(uid: farmhubUser.uid);
 
-        await failureOrIsAdmin.fold(
+        failureOrIsAdmin.fold(
           (f) {
             print("Failed to check if user is admin");
             print(f);
