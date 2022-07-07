@@ -41,6 +41,28 @@ class Produce with _$Produce {
     );
   }
 
+  static Produce fromLocalMap(Map<String, dynamic>? map) {
+    if (map == null) {
+      throw UnexpectedException(
+        code: 'Produce-fromMap',
+        message: "Map is null.",
+        stackTrace: StackTrace.current,
+      );
+    }
+
+    DateTime lastUpdateTimeStamp = DateTime.parse(map["lastUpdateTimeStamp"]);
+
+    return Produce(
+      produceId: map['produceId'],
+      produceName: map['produceName'],
+      currentProducePrice: map['currentProducePrice'],
+      previousProducePrice: map['previousProducePrice'],
+      weeklyPrices: map['weeklyPrices'],
+      authorId: map['authorId'],
+      lastUpdateTimeStamp: lastUpdateTimeStamp,
+    );
+  }
+
   static Map<String, dynamic> toMap(Produce produce) {
     return {
       "produceId": produce.produceId,
@@ -49,7 +71,7 @@ class Produce with _$Produce {
       "previousProducePrice": produce.previousProducePrice,
       "weeklyPrices": produce.weeklyPrices,
       "authorId": produce.authorId,
-      "lastUpdateTimeStamp": produce.lastUpdateTimeStamp,
+      "lastUpdateTimeStamp": produce.lastUpdateTimeStamp.toString(),
     };
   }
 }

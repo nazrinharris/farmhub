@@ -1,8 +1,10 @@
 import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
+import 'package:farmhub/core/network/network_info.dart';
 
 import 'package:farmhub/features/produce_manager/bloc/produce_manager_bloc.dart';
 import 'package:farmhub/presentation/global/cubit/global_ui_cubit.dart';
 import 'package:farmhub/presentation/shared_widgets/buttons.dart';
+import 'package:farmhub/presentation/shared_widgets/cards.dart';
 
 import 'package:farmhub/presentation/views/main_screen/bloc/main_screen_bloc.dart';
 import 'package:farmhub/presentation/views/main_screen/main_screen_fab.dart';
@@ -82,6 +84,7 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
                 if (state.props.shouldRefreshMain) {
                   context.read<MainScreenBloc>().add(const MainScreenEvent.refresh());
                   context.read<GlobalUICubit>().setShouldRefreshMain(false);
+                  setState(() {});
                 }
               },
               child: Scaffold(
@@ -96,6 +99,7 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
                     slivers: [
                       CupertinoSliverRefreshControl(
                         onRefresh: () async {
+                          setState(() {});
                           context.read<MainScreenBloc>().add(const MainScreenEvent.refresh());
 
                           await context.read<MainScreenBloc>().stream.firstWhere((state) {
@@ -124,6 +128,7 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
                           );
                         },
                       ),
+                      const SliverNoInternetErrorCard(),
                       //const SliverDebugSlot(),
                       SliverMainScreenListView(scrollController),
                       const SliverWhiteSpace(200)
@@ -142,6 +147,50 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
   void dispose() {
     super.dispose();
     mainScreenFocusNode.dispose();
+  }
+}
+
+class SliverNoInternetErrorCard extends StatefulWidget {
+  const SliverNoInternetErrorCard({Key? key}) : super(key: key);
+
+  @override
+  State<SliverNoInternetErrorCard> createState() => _SliverNoInternetErrorCardState();
+}
+
+class _SliverNoInternetErrorCardState extends State<SliverNoInternetErrorCard> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<MainScreenBloc>().stream.listen((event) {
+      setState(() {});
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final networkInfo = locator<INetworkInfo>();
+    print("Error rebuilt");
+
+    return SliverList(
+      delegate: SliverChildListDelegate(
+        [
+          FutureBuilder(
+            future: networkInfo.isConnected,
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                if (snapshot.data as bool == false) {
+                  return const ErrorNoInternetCard(top: 14, bottom: 34, right: 24, left: 24);
+                } else {
+                  return const SizedBox.shrink();
+                }
+              } else {
+                return const SizedBox.shrink();
+              }
+            },
+          )
+        ],
+      ),
+    );
   }
 }
 

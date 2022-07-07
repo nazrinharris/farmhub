@@ -107,10 +107,7 @@ class SliverProfileHeader extends StatelessWidget {
                 final result = snapshot.data as bool;
 
                 if (!result) {
-                  return ErrorNoInternetCard(
-                    verticalMargin: 24,
-                    horizontalMargin: 24,
-                  );
+                  return ErrorNoInternetCard(top: 24, bottom: 24, right: 24, left: 24);
                 } else {
                   return UICustomVertical(50);
                 }

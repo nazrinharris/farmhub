@@ -37,7 +37,7 @@ class ProduceManagerLocalDatasource implements IProduceManagerLocalDatasource {
 
     for (String encodedProduce in encodedProduceList!) {
       final decoded = jsonDecode(encodedProduce) as Map<String, dynamic>;
-      final produce = Produce.fromMap(decoded);
+      final produce = Produce.fromLocalMap(decoded);
 
       produceList.add(produce);
     }
@@ -69,7 +69,7 @@ class ProduceManagerLocalDatasource implements IProduceManagerLocalDatasource {
 
     for (String encodedProduce in encodedProduceList!) {
       final decoded = jsonDecode(encodedProduce) as Map<String, dynamic>;
-      final produce = Produce.fromMap(decoded);
+      final produce = Produce.fromLocalMap(decoded);
 
       produceList.add(produce);
     }
