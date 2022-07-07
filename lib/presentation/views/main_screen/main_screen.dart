@@ -131,7 +131,7 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
                           );
                         },
                       ),
-                      const SliverNoInternetErrorCard(),
+                      const SliverMainScreenErrorCard(),
                       //const SliverDebugSlot(),
                       SliverMainScreenListView(scrollController),
                       const SliverWhiteSpace(200)
@@ -153,14 +153,14 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
   }
 }
 
-class SliverNoInternetErrorCard extends StatefulWidget {
-  const SliverNoInternetErrorCard({Key? key}) : super(key: key);
+class SliverMainScreenErrorCard extends StatefulWidget {
+  const SliverMainScreenErrorCard({Key? key}) : super(key: key);
 
   @override
-  State<SliverNoInternetErrorCard> createState() => _SliverNoInternetErrorCardState();
+  State<SliverMainScreenErrorCard> createState() => _SliverMainScreenErrorCardState();
 }
 
-class _SliverNoInternetErrorCardState extends State<SliverNoInternetErrorCard> {
+class _SliverMainScreenErrorCardState extends State<SliverMainScreenErrorCard> {
   @override
   void initState() {
     super.initState();

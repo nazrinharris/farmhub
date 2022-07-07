@@ -12,7 +12,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../core/errors/failures.dart';
+import '../../../core/network/network_info.dart';
 import '../../../features/produce_manager/domain/entities/produce/produce.dart';
+import '../../shared_widgets/cards.dart';
 import '../../smart_widgets/produce_list_card/produce_list_card.dart';
 
 class FavoritesScreen extends StatelessWidget {
@@ -46,12 +48,57 @@ class FavoritesScreen extends StatelessWidget {
                     },
                   ),
                   SliverFavoritesHeader(),
+                  SliverFavoritesErrorCard(),
                   SliverWhiteSpace(30),
                   SliverFavoritesContent(),
                 ],
               )),
         );
       }),
+    );
+  }
+}
+
+class SliverFavoritesErrorCard extends StatefulWidget {
+  SliverFavoritesErrorCard({Key? key}) : super(key: key);
+
+  @override
+  State<SliverFavoritesErrorCard> createState() => _SliverFavoritesErrorCardState();
+}
+
+class _SliverFavoritesErrorCardState extends State<SliverFavoritesErrorCard> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<FavoritesScreenCubit>().stream.listen((event) {
+      setState(() {});
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final networkInfo = locator<INetworkInfo>();
+    print("Error rebuilt");
+
+    return SliverList(
+      delegate: SliverChildListDelegate(
+        [
+          FutureBuilder(
+            future: networkInfo.isConnected,
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                if (snapshot.data as bool == false) {
+                  return const ErrorNoInternetCard(top: 24, right: 24, left: 24);
+                } else {
+                  return const SizedBox.shrink();
+                }
+              } else {
+                return const SizedBox.shrink();
+              }
+            },
+          )
+        ],
+      ),
     );
   }
 }
