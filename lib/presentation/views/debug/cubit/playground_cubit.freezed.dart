@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'playground_cubit.dart';
@@ -11,53 +12,7 @@ part of 'playground_cubit.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$PlaygroundStateTearOff {
-  const _$PlaygroundStateTearOff();
-
-  Initial initial() {
-    return const Initial();
-  }
-
-  Loading loading() {
-    return const Loading();
-  }
-
-  CreateCompleted createCompleted(Produce produce) {
-    return CreateCompleted(
-      produce,
-    );
-  }
-
-  AddPriceCompleted addPriceCompleted(Produce produce) {
-    return AddPriceCompleted(
-      produce,
-    );
-  }
-
-  GetPricesCompleted getPricesCompleted(List<PriceSnippet> pricesList) {
-    return GetPricesCompleted(
-      pricesList,
-    );
-  }
-
-  CreatePricesCompleted createPricesCompleted(List<PriceSnippet> pricesList) {
-    return CreatePricesCompleted(
-      pricesList,
-    );
-  }
-
-  Error error(Failure failure) {
-    return Error(
-      failure,
-    );
-  }
-}
-
-/// @nodoc
-const $PlaygroundState = _$PlaygroundStateTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$PlaygroundState {
@@ -151,19 +106,19 @@ class _$PlaygroundStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class $InitialCopyWith<$Res> {
-  factory $InitialCopyWith(Initial value, $Res Function(Initial) then) =
-      _$InitialCopyWithImpl<$Res>;
+abstract class _$$InitialCopyWith<$Res> {
+  factory _$$InitialCopyWith(_$Initial value, $Res Function(_$Initial) then) =
+      __$$InitialCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$InitialCopyWithImpl<$Res> extends _$PlaygroundStateCopyWithImpl<$Res>
-    implements $InitialCopyWith<$Res> {
-  _$InitialCopyWithImpl(Initial _value, $Res Function(Initial) _then)
-      : super(_value, (v) => _then(v as Initial));
+class __$$InitialCopyWithImpl<$Res> extends _$PlaygroundStateCopyWithImpl<$Res>
+    implements _$$InitialCopyWith<$Res> {
+  __$$InitialCopyWithImpl(_$Initial _value, $Res Function(_$Initial) _then)
+      : super(_value, (v) => _then(v as _$Initial));
 
   @override
-  Initial get _value => super._value as Initial;
+  _$Initial get _value => super._value as _$Initial;
 }
 
 /// @nodoc
@@ -179,7 +134,7 @@ class _$Initial implements Initial {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is Initial);
+        (other.runtimeType == runtimeType && other is _$Initial);
   }
 
   @override
@@ -285,19 +240,19 @@ abstract class Initial implements PlaygroundState {
 }
 
 /// @nodoc
-abstract class $LoadingCopyWith<$Res> {
-  factory $LoadingCopyWith(Loading value, $Res Function(Loading) then) =
-      _$LoadingCopyWithImpl<$Res>;
+abstract class _$$LoadingCopyWith<$Res> {
+  factory _$$LoadingCopyWith(_$Loading value, $Res Function(_$Loading) then) =
+      __$$LoadingCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$LoadingCopyWithImpl<$Res> extends _$PlaygroundStateCopyWithImpl<$Res>
-    implements $LoadingCopyWith<$Res> {
-  _$LoadingCopyWithImpl(Loading _value, $Res Function(Loading) _then)
-      : super(_value, (v) => _then(v as Loading));
+class __$$LoadingCopyWithImpl<$Res> extends _$PlaygroundStateCopyWithImpl<$Res>
+    implements _$$LoadingCopyWith<$Res> {
+  __$$LoadingCopyWithImpl(_$Loading _value, $Res Function(_$Loading) _then)
+      : super(_value, (v) => _then(v as _$Loading));
 
   @override
-  Loading get _value => super._value as Loading;
+  _$Loading get _value => super._value as _$Loading;
 }
 
 /// @nodoc
@@ -313,7 +268,7 @@ class _$Loading implements Loading {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is Loading);
+        (other.runtimeType == runtimeType && other is _$Loading);
   }
 
   @override
@@ -419,31 +374,31 @@ abstract class Loading implements PlaygroundState {
 }
 
 /// @nodoc
-abstract class $CreateCompletedCopyWith<$Res> {
-  factory $CreateCompletedCopyWith(
-          CreateCompleted value, $Res Function(CreateCompleted) then) =
-      _$CreateCompletedCopyWithImpl<$Res>;
+abstract class _$$CreateCompletedCopyWith<$Res> {
+  factory _$$CreateCompletedCopyWith(
+          _$CreateCompleted value, $Res Function(_$CreateCompleted) then) =
+      __$$CreateCompletedCopyWithImpl<$Res>;
   $Res call({Produce produce});
 
   $ProduceCopyWith<$Res> get produce;
 }
 
 /// @nodoc
-class _$CreateCompletedCopyWithImpl<$Res>
+class __$$CreateCompletedCopyWithImpl<$Res>
     extends _$PlaygroundStateCopyWithImpl<$Res>
-    implements $CreateCompletedCopyWith<$Res> {
-  _$CreateCompletedCopyWithImpl(
-      CreateCompleted _value, $Res Function(CreateCompleted) _then)
-      : super(_value, (v) => _then(v as CreateCompleted));
+    implements _$$CreateCompletedCopyWith<$Res> {
+  __$$CreateCompletedCopyWithImpl(
+      _$CreateCompleted _value, $Res Function(_$CreateCompleted) _then)
+      : super(_value, (v) => _then(v as _$CreateCompleted));
 
   @override
-  CreateCompleted get _value => super._value as CreateCompleted;
+  _$CreateCompleted get _value => super._value as _$CreateCompleted;
 
   @override
   $Res call({
     Object? produce = freezed,
   }) {
-    return _then(CreateCompleted(
+    return _then(_$CreateCompleted(
       produce == freezed
           ? _value.produce
           : produce // ignore: cast_nullable_to_non_nullable
@@ -476,17 +431,18 @@ class _$CreateCompleted implements CreateCompleted {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is CreateCompleted &&
-            (identical(other.produce, produce) || other.produce == produce));
+            other is _$CreateCompleted &&
+            const DeepCollectionEquality().equals(other.produce, produce));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, produce);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(produce));
 
   @JsonKey(ignore: true)
   @override
-  $CreateCompletedCopyWith<CreateCompleted> get copyWith =>
-      _$CreateCompletedCopyWithImpl<CreateCompleted>(this, _$identity);
+  _$$CreateCompletedCopyWith<_$CreateCompleted> get copyWith =>
+      __$$CreateCompletedCopyWithImpl<_$CreateCompleted>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -584,40 +540,40 @@ class _$CreateCompleted implements CreateCompleted {
 }
 
 abstract class CreateCompleted implements PlaygroundState {
-  const factory CreateCompleted(Produce produce) = _$CreateCompleted;
+  const factory CreateCompleted(final Produce produce) = _$CreateCompleted;
 
-  Produce get produce;
+  Produce get produce => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $CreateCompletedCopyWith<CreateCompleted> get copyWith =>
+  _$$CreateCompletedCopyWith<_$CreateCompleted> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $AddPriceCompletedCopyWith<$Res> {
-  factory $AddPriceCompletedCopyWith(
-          AddPriceCompleted value, $Res Function(AddPriceCompleted) then) =
-      _$AddPriceCompletedCopyWithImpl<$Res>;
+abstract class _$$AddPriceCompletedCopyWith<$Res> {
+  factory _$$AddPriceCompletedCopyWith(
+          _$AddPriceCompleted value, $Res Function(_$AddPriceCompleted) then) =
+      __$$AddPriceCompletedCopyWithImpl<$Res>;
   $Res call({Produce produce});
 
   $ProduceCopyWith<$Res> get produce;
 }
 
 /// @nodoc
-class _$AddPriceCompletedCopyWithImpl<$Res>
+class __$$AddPriceCompletedCopyWithImpl<$Res>
     extends _$PlaygroundStateCopyWithImpl<$Res>
-    implements $AddPriceCompletedCopyWith<$Res> {
-  _$AddPriceCompletedCopyWithImpl(
-      AddPriceCompleted _value, $Res Function(AddPriceCompleted) _then)
-      : super(_value, (v) => _then(v as AddPriceCompleted));
+    implements _$$AddPriceCompletedCopyWith<$Res> {
+  __$$AddPriceCompletedCopyWithImpl(
+      _$AddPriceCompleted _value, $Res Function(_$AddPriceCompleted) _then)
+      : super(_value, (v) => _then(v as _$AddPriceCompleted));
 
   @override
-  AddPriceCompleted get _value => super._value as AddPriceCompleted;
+  _$AddPriceCompleted get _value => super._value as _$AddPriceCompleted;
 
   @override
   $Res call({
     Object? produce = freezed,
   }) {
-    return _then(AddPriceCompleted(
+    return _then(_$AddPriceCompleted(
       produce == freezed
           ? _value.produce
           : produce // ignore: cast_nullable_to_non_nullable
@@ -650,17 +606,18 @@ class _$AddPriceCompleted implements AddPriceCompleted {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is AddPriceCompleted &&
-            (identical(other.produce, produce) || other.produce == produce));
+            other is _$AddPriceCompleted &&
+            const DeepCollectionEquality().equals(other.produce, produce));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, produce);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(produce));
 
   @JsonKey(ignore: true)
   @override
-  $AddPriceCompletedCopyWith<AddPriceCompleted> get copyWith =>
-      _$AddPriceCompletedCopyWithImpl<AddPriceCompleted>(this, _$identity);
+  _$$AddPriceCompletedCopyWith<_$AddPriceCompleted> get copyWith =>
+      __$$AddPriceCompletedCopyWithImpl<_$AddPriceCompleted>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -758,40 +715,40 @@ class _$AddPriceCompleted implements AddPriceCompleted {
 }
 
 abstract class AddPriceCompleted implements PlaygroundState {
-  const factory AddPriceCompleted(Produce produce) = _$AddPriceCompleted;
+  const factory AddPriceCompleted(final Produce produce) = _$AddPriceCompleted;
 
-  Produce get produce;
+  Produce get produce => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $AddPriceCompletedCopyWith<AddPriceCompleted> get copyWith =>
+  _$$AddPriceCompletedCopyWith<_$AddPriceCompleted> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $GetPricesCompletedCopyWith<$Res> {
-  factory $GetPricesCompletedCopyWith(
-          GetPricesCompleted value, $Res Function(GetPricesCompleted) then) =
-      _$GetPricesCompletedCopyWithImpl<$Res>;
+abstract class _$$GetPricesCompletedCopyWith<$Res> {
+  factory _$$GetPricesCompletedCopyWith(_$GetPricesCompleted value,
+          $Res Function(_$GetPricesCompleted) then) =
+      __$$GetPricesCompletedCopyWithImpl<$Res>;
   $Res call({List<PriceSnippet> pricesList});
 }
 
 /// @nodoc
-class _$GetPricesCompletedCopyWithImpl<$Res>
+class __$$GetPricesCompletedCopyWithImpl<$Res>
     extends _$PlaygroundStateCopyWithImpl<$Res>
-    implements $GetPricesCompletedCopyWith<$Res> {
-  _$GetPricesCompletedCopyWithImpl(
-      GetPricesCompleted _value, $Res Function(GetPricesCompleted) _then)
-      : super(_value, (v) => _then(v as GetPricesCompleted));
+    implements _$$GetPricesCompletedCopyWith<$Res> {
+  __$$GetPricesCompletedCopyWithImpl(
+      _$GetPricesCompleted _value, $Res Function(_$GetPricesCompleted) _then)
+      : super(_value, (v) => _then(v as _$GetPricesCompleted));
 
   @override
-  GetPricesCompleted get _value => super._value as GetPricesCompleted;
+  _$GetPricesCompleted get _value => super._value as _$GetPricesCompleted;
 
   @override
   $Res call({
     Object? pricesList = freezed,
   }) {
-    return _then(GetPricesCompleted(
+    return _then(_$GetPricesCompleted(
       pricesList == freezed
-          ? _value.pricesList
+          ? _value._pricesList
           : pricesList // ignore: cast_nullable_to_non_nullable
               as List<PriceSnippet>,
     ));
@@ -801,10 +758,15 @@ class _$GetPricesCompletedCopyWithImpl<$Res>
 /// @nodoc
 
 class _$GetPricesCompleted implements GetPricesCompleted {
-  const _$GetPricesCompleted(this.pricesList);
+  const _$GetPricesCompleted(final List<PriceSnippet> pricesList)
+      : _pricesList = pricesList;
 
+  final List<PriceSnippet> _pricesList;
   @override
-  final List<PriceSnippet> pricesList;
+  List<PriceSnippet> get pricesList {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_pricesList);
+  }
 
   @override
   String toString() {
@@ -815,19 +777,20 @@ class _$GetPricesCompleted implements GetPricesCompleted {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is GetPricesCompleted &&
+            other is _$GetPricesCompleted &&
             const DeepCollectionEquality()
-                .equals(other.pricesList, pricesList));
+                .equals(other._pricesList, _pricesList));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(pricesList));
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_pricesList));
 
   @JsonKey(ignore: true)
   @override
-  $GetPricesCompletedCopyWith<GetPricesCompleted> get copyWith =>
-      _$GetPricesCompletedCopyWithImpl<GetPricesCompleted>(this, _$identity);
+  _$$GetPricesCompletedCopyWith<_$GetPricesCompleted> get copyWith =>
+      __$$GetPricesCompletedCopyWithImpl<_$GetPricesCompleted>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -925,41 +888,41 @@ class _$GetPricesCompleted implements GetPricesCompleted {
 }
 
 abstract class GetPricesCompleted implements PlaygroundState {
-  const factory GetPricesCompleted(List<PriceSnippet> pricesList) =
+  const factory GetPricesCompleted(final List<PriceSnippet> pricesList) =
       _$GetPricesCompleted;
 
-  List<PriceSnippet> get pricesList;
+  List<PriceSnippet> get pricesList => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $GetPricesCompletedCopyWith<GetPricesCompleted> get copyWith =>
+  _$$GetPricesCompletedCopyWith<_$GetPricesCompleted> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $CreatePricesCompletedCopyWith<$Res> {
-  factory $CreatePricesCompletedCopyWith(CreatePricesCompleted value,
-          $Res Function(CreatePricesCompleted) then) =
-      _$CreatePricesCompletedCopyWithImpl<$Res>;
+abstract class _$$CreatePricesCompletedCopyWith<$Res> {
+  factory _$$CreatePricesCompletedCopyWith(_$CreatePricesCompleted value,
+          $Res Function(_$CreatePricesCompleted) then) =
+      __$$CreatePricesCompletedCopyWithImpl<$Res>;
   $Res call({List<PriceSnippet> pricesList});
 }
 
 /// @nodoc
-class _$CreatePricesCompletedCopyWithImpl<$Res>
+class __$$CreatePricesCompletedCopyWithImpl<$Res>
     extends _$PlaygroundStateCopyWithImpl<$Res>
-    implements $CreatePricesCompletedCopyWith<$Res> {
-  _$CreatePricesCompletedCopyWithImpl(
-      CreatePricesCompleted _value, $Res Function(CreatePricesCompleted) _then)
-      : super(_value, (v) => _then(v as CreatePricesCompleted));
+    implements _$$CreatePricesCompletedCopyWith<$Res> {
+  __$$CreatePricesCompletedCopyWithImpl(_$CreatePricesCompleted _value,
+      $Res Function(_$CreatePricesCompleted) _then)
+      : super(_value, (v) => _then(v as _$CreatePricesCompleted));
 
   @override
-  CreatePricesCompleted get _value => super._value as CreatePricesCompleted;
+  _$CreatePricesCompleted get _value => super._value as _$CreatePricesCompleted;
 
   @override
   $Res call({
     Object? pricesList = freezed,
   }) {
-    return _then(CreatePricesCompleted(
+    return _then(_$CreatePricesCompleted(
       pricesList == freezed
-          ? _value.pricesList
+          ? _value._pricesList
           : pricesList // ignore: cast_nullable_to_non_nullable
               as List<PriceSnippet>,
     ));
@@ -969,10 +932,15 @@ class _$CreatePricesCompletedCopyWithImpl<$Res>
 /// @nodoc
 
 class _$CreatePricesCompleted implements CreatePricesCompleted {
-  const _$CreatePricesCompleted(this.pricesList);
+  const _$CreatePricesCompleted(final List<PriceSnippet> pricesList)
+      : _pricesList = pricesList;
 
+  final List<PriceSnippet> _pricesList;
   @override
-  final List<PriceSnippet> pricesList;
+  List<PriceSnippet> get pricesList {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_pricesList);
+  }
 
   @override
   String toString() {
@@ -983,19 +951,19 @@ class _$CreatePricesCompleted implements CreatePricesCompleted {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is CreatePricesCompleted &&
+            other is _$CreatePricesCompleted &&
             const DeepCollectionEquality()
-                .equals(other.pricesList, pricesList));
+                .equals(other._pricesList, _pricesList));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(pricesList));
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_pricesList));
 
   @JsonKey(ignore: true)
   @override
-  $CreatePricesCompletedCopyWith<CreatePricesCompleted> get copyWith =>
-      _$CreatePricesCompletedCopyWithImpl<CreatePricesCompleted>(
+  _$$CreatePricesCompletedCopyWith<_$CreatePricesCompleted> get copyWith =>
+      __$$CreatePricesCompletedCopyWithImpl<_$CreatePricesCompleted>(
           this, _$identity);
 
   @override
@@ -1094,36 +1062,36 @@ class _$CreatePricesCompleted implements CreatePricesCompleted {
 }
 
 abstract class CreatePricesCompleted implements PlaygroundState {
-  const factory CreatePricesCompleted(List<PriceSnippet> pricesList) =
+  const factory CreatePricesCompleted(final List<PriceSnippet> pricesList) =
       _$CreatePricesCompleted;
 
-  List<PriceSnippet> get pricesList;
+  List<PriceSnippet> get pricesList => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $CreatePricesCompletedCopyWith<CreatePricesCompleted> get copyWith =>
+  _$$CreatePricesCompletedCopyWith<_$CreatePricesCompleted> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ErrorCopyWith<$Res> {
-  factory $ErrorCopyWith(Error value, $Res Function(Error) then) =
-      _$ErrorCopyWithImpl<$Res>;
+abstract class _$$ErrorCopyWith<$Res> {
+  factory _$$ErrorCopyWith(_$Error value, $Res Function(_$Error) then) =
+      __$$ErrorCopyWithImpl<$Res>;
   $Res call({Failure failure});
 }
 
 /// @nodoc
-class _$ErrorCopyWithImpl<$Res> extends _$PlaygroundStateCopyWithImpl<$Res>
-    implements $ErrorCopyWith<$Res> {
-  _$ErrorCopyWithImpl(Error _value, $Res Function(Error) _then)
-      : super(_value, (v) => _then(v as Error));
+class __$$ErrorCopyWithImpl<$Res> extends _$PlaygroundStateCopyWithImpl<$Res>
+    implements _$$ErrorCopyWith<$Res> {
+  __$$ErrorCopyWithImpl(_$Error _value, $Res Function(_$Error) _then)
+      : super(_value, (v) => _then(v as _$Error));
 
   @override
-  Error get _value => super._value as Error;
+  _$Error get _value => super._value as _$Error;
 
   @override
   $Res call({
     Object? failure = freezed,
   }) {
-    return _then(Error(
+    return _then(_$Error(
       failure == freezed
           ? _value.failure
           : failure // ignore: cast_nullable_to_non_nullable
@@ -1149,17 +1117,18 @@ class _$Error implements Error {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is Error &&
-            (identical(other.failure, failure) || other.failure == failure));
+            other is _$Error &&
+            const DeepCollectionEquality().equals(other.failure, failure));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, failure);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(failure));
 
   @JsonKey(ignore: true)
   @override
-  $ErrorCopyWith<Error> get copyWith =>
-      _$ErrorCopyWithImpl<Error>(this, _$identity);
+  _$$ErrorCopyWith<_$Error> get copyWith =>
+      __$$ErrorCopyWithImpl<_$Error>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1257,9 +1226,9 @@ class _$Error implements Error {
 }
 
 abstract class Error implements PlaygroundState {
-  const factory Error(Failure failure) = _$Error;
+  const factory Error(final Failure failure) = _$Error;
 
-  Failure get failure;
+  Failure get failure => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ErrorCopyWith<Error> get copyWith => throw _privateConstructorUsedError;
+  _$$ErrorCopyWith<_$Error> get copyWith => throw _privateConstructorUsedError;
 }

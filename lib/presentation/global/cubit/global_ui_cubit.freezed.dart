@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'global_ui_cubit.dart';
@@ -11,32 +12,11 @@ part of 'global_ui_cubit.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$GlobalUIStateTearOff {
-  const _$GlobalUIStateTearOff();
-
-  GInitial initial(GlobalUIProps props) {
-    return GInitial(
-      props,
-    );
-  }
-
-  GShouldRefreshMainChanged shouldRefreshMainChanged(GlobalUIProps props) {
-    return GShouldRefreshMainChanged(
-      props,
-    );
-  }
-}
-
-/// @nodoc
-const $GlobalUIState = _$GlobalUIStateTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$GlobalUIState {
   GlobalUIProps get props => throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(GlobalUIProps props) initial,
@@ -122,9 +102,11 @@ class _$GlobalUIStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class $GInitialCopyWith<$Res> implements $GlobalUIStateCopyWith<$Res> {
-  factory $GInitialCopyWith(GInitial value, $Res Function(GInitial) then) =
-      _$GInitialCopyWithImpl<$Res>;
+abstract class _$$GInitialCopyWith<$Res>
+    implements $GlobalUIStateCopyWith<$Res> {
+  factory _$$GInitialCopyWith(
+          _$GInitial value, $Res Function(_$GInitial) then) =
+      __$$GInitialCopyWithImpl<$Res>;
   @override
   $Res call({GlobalUIProps props});
 
@@ -133,19 +115,19 @@ abstract class $GInitialCopyWith<$Res> implements $GlobalUIStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$GInitialCopyWithImpl<$Res> extends _$GlobalUIStateCopyWithImpl<$Res>
-    implements $GInitialCopyWith<$Res> {
-  _$GInitialCopyWithImpl(GInitial _value, $Res Function(GInitial) _then)
-      : super(_value, (v) => _then(v as GInitial));
+class __$$GInitialCopyWithImpl<$Res> extends _$GlobalUIStateCopyWithImpl<$Res>
+    implements _$$GInitialCopyWith<$Res> {
+  __$$GInitialCopyWithImpl(_$GInitial _value, $Res Function(_$GInitial) _then)
+      : super(_value, (v) => _then(v as _$GInitial));
 
   @override
-  GInitial get _value => super._value as GInitial;
+  _$GInitial get _value => super._value as _$GInitial;
 
   @override
   $Res call({
     Object? props = freezed,
   }) {
-    return _then(GInitial(
+    return _then(_$GInitial(
       props == freezed
           ? _value.props
           : props // ignore: cast_nullable_to_non_nullable
@@ -171,17 +153,18 @@ class _$GInitial implements GInitial {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is GInitial &&
-            (identical(other.props, props) || other.props == props));
+            other is _$GInitial &&
+            const DeepCollectionEquality().equals(other.props, props));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, props);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(props));
 
   @JsonKey(ignore: true)
   @override
-  $GInitialCopyWith<GInitial> get copyWith =>
-      _$GInitialCopyWithImpl<GInitial>(this, _$identity);
+  _$$GInitialCopyWith<_$GInitial> get copyWith =>
+      __$$GInitialCopyWithImpl<_$GInitial>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -248,22 +231,23 @@ class _$GInitial implements GInitial {
 }
 
 abstract class GInitial implements GlobalUIState {
-  const factory GInitial(GlobalUIProps props) = _$GInitial;
+  const factory GInitial(final GlobalUIProps props) = _$GInitial;
 
   @override
-  GlobalUIProps get props;
+  GlobalUIProps get props => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  $GInitialCopyWith<GInitial> get copyWith =>
+  _$$GInitialCopyWith<_$GInitial> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $GShouldRefreshMainChangedCopyWith<$Res>
+abstract class _$$GShouldRefreshMainChangedCopyWith<$Res>
     implements $GlobalUIStateCopyWith<$Res> {
-  factory $GShouldRefreshMainChangedCopyWith(GShouldRefreshMainChanged value,
-          $Res Function(GShouldRefreshMainChanged) then) =
-      _$GShouldRefreshMainChangedCopyWithImpl<$Res>;
+  factory _$$GShouldRefreshMainChangedCopyWith(
+          _$GShouldRefreshMainChanged value,
+          $Res Function(_$GShouldRefreshMainChanged) then) =
+      __$$GShouldRefreshMainChangedCopyWithImpl<$Res>;
   @override
   $Res call({GlobalUIProps props});
 
@@ -272,22 +256,22 @@ abstract class $GShouldRefreshMainChangedCopyWith<$Res>
 }
 
 /// @nodoc
-class _$GShouldRefreshMainChangedCopyWithImpl<$Res>
+class __$$GShouldRefreshMainChangedCopyWithImpl<$Res>
     extends _$GlobalUIStateCopyWithImpl<$Res>
-    implements $GShouldRefreshMainChangedCopyWith<$Res> {
-  _$GShouldRefreshMainChangedCopyWithImpl(GShouldRefreshMainChanged _value,
-      $Res Function(GShouldRefreshMainChanged) _then)
-      : super(_value, (v) => _then(v as GShouldRefreshMainChanged));
+    implements _$$GShouldRefreshMainChangedCopyWith<$Res> {
+  __$$GShouldRefreshMainChangedCopyWithImpl(_$GShouldRefreshMainChanged _value,
+      $Res Function(_$GShouldRefreshMainChanged) _then)
+      : super(_value, (v) => _then(v as _$GShouldRefreshMainChanged));
 
   @override
-  GShouldRefreshMainChanged get _value =>
-      super._value as GShouldRefreshMainChanged;
+  _$GShouldRefreshMainChanged get _value =>
+      super._value as _$GShouldRefreshMainChanged;
 
   @override
   $Res call({
     Object? props = freezed,
   }) {
-    return _then(GShouldRefreshMainChanged(
+    return _then(_$GShouldRefreshMainChanged(
       props == freezed
           ? _value.props
           : props // ignore: cast_nullable_to_non_nullable
@@ -313,18 +297,19 @@ class _$GShouldRefreshMainChanged implements GShouldRefreshMainChanged {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is GShouldRefreshMainChanged &&
-            (identical(other.props, props) || other.props == props));
+            other is _$GShouldRefreshMainChanged &&
+            const DeepCollectionEquality().equals(other.props, props));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, props);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(props));
 
   @JsonKey(ignore: true)
   @override
-  $GShouldRefreshMainChangedCopyWith<GShouldRefreshMainChanged> get copyWith =>
-      _$GShouldRefreshMainChangedCopyWithImpl<GShouldRefreshMainChanged>(
-          this, _$identity);
+  _$$GShouldRefreshMainChangedCopyWith<_$GShouldRefreshMainChanged>
+      get copyWith => __$$GShouldRefreshMainChangedCopyWithImpl<
+          _$GShouldRefreshMainChanged>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -391,39 +376,16 @@ class _$GShouldRefreshMainChanged implements GShouldRefreshMainChanged {
 }
 
 abstract class GShouldRefreshMainChanged implements GlobalUIState {
-  const factory GShouldRefreshMainChanged(GlobalUIProps props) =
+  const factory GShouldRefreshMainChanged(final GlobalUIProps props) =
       _$GShouldRefreshMainChanged;
 
   @override
-  GlobalUIProps get props;
+  GlobalUIProps get props => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  $GShouldRefreshMainChangedCopyWith<GShouldRefreshMainChanged> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$GShouldRefreshMainChangedCopyWith<_$GShouldRefreshMainChanged>
+      get copyWith => throw _privateConstructorUsedError;
 }
-
-/// @nodoc
-class _$GlobalUIPropsTearOff {
-  const _$GlobalUIPropsTearOff();
-
-  _GlobalUIProps call(
-      {required bool shouldRefreshMain,
-      required bool shouldRefreshProduce,
-      required bool shouldRefreshPrice,
-      required bool shouldRefreshFavorites,
-      required bool shouldRefreshProfile}) {
-    return _GlobalUIProps(
-      shouldRefreshMain: shouldRefreshMain,
-      shouldRefreshProduce: shouldRefreshProduce,
-      shouldRefreshPrice: shouldRefreshPrice,
-      shouldRefreshFavorites: shouldRefreshFavorites,
-      shouldRefreshProfile: shouldRefreshProfile,
-    );
-  }
-}
-
-/// @nodoc
-const $GlobalUIProps = _$GlobalUIPropsTearOff();
 
 /// @nodoc
 mixin _$GlobalUIProps {
@@ -494,11 +456,11 @@ class _$GlobalUIPropsCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$GlobalUIPropsCopyWith<$Res>
+abstract class _$$_GlobalUIPropsCopyWith<$Res>
     implements $GlobalUIPropsCopyWith<$Res> {
-  factory _$GlobalUIPropsCopyWith(
-          _GlobalUIProps value, $Res Function(_GlobalUIProps) then) =
-      __$GlobalUIPropsCopyWithImpl<$Res>;
+  factory _$$_GlobalUIPropsCopyWith(
+          _$_GlobalUIProps value, $Res Function(_$_GlobalUIProps) then) =
+      __$$_GlobalUIPropsCopyWithImpl<$Res>;
   @override
   $Res call(
       {bool shouldRefreshMain,
@@ -509,15 +471,15 @@ abstract class _$GlobalUIPropsCopyWith<$Res>
 }
 
 /// @nodoc
-class __$GlobalUIPropsCopyWithImpl<$Res>
+class __$$_GlobalUIPropsCopyWithImpl<$Res>
     extends _$GlobalUIPropsCopyWithImpl<$Res>
-    implements _$GlobalUIPropsCopyWith<$Res> {
-  __$GlobalUIPropsCopyWithImpl(
-      _GlobalUIProps _value, $Res Function(_GlobalUIProps) _then)
-      : super(_value, (v) => _then(v as _GlobalUIProps));
+    implements _$$_GlobalUIPropsCopyWith<$Res> {
+  __$$_GlobalUIPropsCopyWithImpl(
+      _$_GlobalUIProps _value, $Res Function(_$_GlobalUIProps) _then)
+      : super(_value, (v) => _then(v as _$_GlobalUIProps));
 
   @override
-  _GlobalUIProps get _value => super._value as _GlobalUIProps;
+  _$_GlobalUIProps get _value => super._value as _$_GlobalUIProps;
 
   @override
   $Res call({
@@ -527,7 +489,7 @@ class __$GlobalUIPropsCopyWithImpl<$Res>
     Object? shouldRefreshFavorites = freezed,
     Object? shouldRefreshProfile = freezed,
   }) {
-    return _then(_GlobalUIProps(
+    return _then(_$_GlobalUIProps(
       shouldRefreshMain: shouldRefreshMain == freezed
           ? _value.shouldRefreshMain
           : shouldRefreshMain // ignore: cast_nullable_to_non_nullable
@@ -582,54 +544,54 @@ class _$_GlobalUIProps implements _GlobalUIProps {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _GlobalUIProps &&
-            (identical(other.shouldRefreshMain, shouldRefreshMain) ||
-                other.shouldRefreshMain == shouldRefreshMain) &&
-            (identical(other.shouldRefreshProduce, shouldRefreshProduce) ||
-                other.shouldRefreshProduce == shouldRefreshProduce) &&
-            (identical(other.shouldRefreshPrice, shouldRefreshPrice) ||
-                other.shouldRefreshPrice == shouldRefreshPrice) &&
-            (identical(other.shouldRefreshFavorites, shouldRefreshFavorites) ||
-                other.shouldRefreshFavorites == shouldRefreshFavorites) &&
-            (identical(other.shouldRefreshProfile, shouldRefreshProfile) ||
-                other.shouldRefreshProfile == shouldRefreshProfile));
+            other is _$_GlobalUIProps &&
+            const DeepCollectionEquality()
+                .equals(other.shouldRefreshMain, shouldRefreshMain) &&
+            const DeepCollectionEquality()
+                .equals(other.shouldRefreshProduce, shouldRefreshProduce) &&
+            const DeepCollectionEquality()
+                .equals(other.shouldRefreshPrice, shouldRefreshPrice) &&
+            const DeepCollectionEquality()
+                .equals(other.shouldRefreshFavorites, shouldRefreshFavorites) &&
+            const DeepCollectionEquality()
+                .equals(other.shouldRefreshProfile, shouldRefreshProfile));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      shouldRefreshMain,
-      shouldRefreshProduce,
-      shouldRefreshPrice,
-      shouldRefreshFavorites,
-      shouldRefreshProfile);
+      const DeepCollectionEquality().hash(shouldRefreshMain),
+      const DeepCollectionEquality().hash(shouldRefreshProduce),
+      const DeepCollectionEquality().hash(shouldRefreshPrice),
+      const DeepCollectionEquality().hash(shouldRefreshFavorites),
+      const DeepCollectionEquality().hash(shouldRefreshProfile));
 
   @JsonKey(ignore: true)
   @override
-  _$GlobalUIPropsCopyWith<_GlobalUIProps> get copyWith =>
-      __$GlobalUIPropsCopyWithImpl<_GlobalUIProps>(this, _$identity);
+  _$$_GlobalUIPropsCopyWith<_$_GlobalUIProps> get copyWith =>
+      __$$_GlobalUIPropsCopyWithImpl<_$_GlobalUIProps>(this, _$identity);
 }
 
 abstract class _GlobalUIProps implements GlobalUIProps {
   const factory _GlobalUIProps(
-      {required bool shouldRefreshMain,
-      required bool shouldRefreshProduce,
-      required bool shouldRefreshPrice,
-      required bool shouldRefreshFavorites,
-      required bool shouldRefreshProfile}) = _$_GlobalUIProps;
+      {required final bool shouldRefreshMain,
+      required final bool shouldRefreshProduce,
+      required final bool shouldRefreshPrice,
+      required final bool shouldRefreshFavorites,
+      required final bool shouldRefreshProfile}) = _$_GlobalUIProps;
 
   @override
-  bool get shouldRefreshMain;
+  bool get shouldRefreshMain => throw _privateConstructorUsedError;
   @override
-  bool get shouldRefreshProduce;
+  bool get shouldRefreshProduce => throw _privateConstructorUsedError;
   @override
-  bool get shouldRefreshPrice;
+  bool get shouldRefreshPrice => throw _privateConstructorUsedError;
   @override
-  bool get shouldRefreshFavorites;
+  bool get shouldRefreshFavorites => throw _privateConstructorUsedError;
   @override
-  bool get shouldRefreshProfile;
+  bool get shouldRefreshProfile => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$GlobalUIPropsCopyWith<_GlobalUIProps> get copyWith =>
+  _$$_GlobalUIPropsCopyWith<_$_GlobalUIProps> get copyWith =>
       throw _privateConstructorUsedError;
 }

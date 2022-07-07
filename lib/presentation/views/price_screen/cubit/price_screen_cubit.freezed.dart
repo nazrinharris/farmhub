@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'price_screen_cubit.dart';
@@ -11,46 +12,11 @@ part of 'price_screen_cubit.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$PriceScreenStateTearOff {
-  const _$PriceScreenStateTearOff();
-
-  PriceInitial initial({required PriceScreenProps props}) {
-    return PriceInitial(
-      props: props,
-    );
-  }
-
-  PriceLoading loading({required PriceScreenProps props}) {
-    return PriceLoading(
-      props: props,
-    );
-  }
-
-  PriceCompleted completed({required PriceScreenProps props}) {
-    return PriceCompleted(
-      props: props,
-    );
-  }
-
-  PriceError error(
-      {required PriceScreenProps props, required Failure failure}) {
-    return PriceError(
-      props: props,
-      failure: failure,
-    );
-  }
-}
-
-/// @nodoc
-const $PriceScreenState = _$PriceScreenStateTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$PriceScreenState {
   PriceScreenProps get props => throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(PriceScreenProps props) initial,
@@ -147,11 +113,11 @@ class _$PriceScreenStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class $PriceInitialCopyWith<$Res>
+abstract class _$$PriceInitialCopyWith<$Res>
     implements $PriceScreenStateCopyWith<$Res> {
-  factory $PriceInitialCopyWith(
-          PriceInitial value, $Res Function(PriceInitial) then) =
-      _$PriceInitialCopyWithImpl<$Res>;
+  factory _$$PriceInitialCopyWith(
+          _$PriceInitial value, $Res Function(_$PriceInitial) then) =
+      __$$PriceInitialCopyWithImpl<$Res>;
   @override
   $Res call({PriceScreenProps props});
 
@@ -160,21 +126,21 @@ abstract class $PriceInitialCopyWith<$Res>
 }
 
 /// @nodoc
-class _$PriceInitialCopyWithImpl<$Res>
+class __$$PriceInitialCopyWithImpl<$Res>
     extends _$PriceScreenStateCopyWithImpl<$Res>
-    implements $PriceInitialCopyWith<$Res> {
-  _$PriceInitialCopyWithImpl(
-      PriceInitial _value, $Res Function(PriceInitial) _then)
-      : super(_value, (v) => _then(v as PriceInitial));
+    implements _$$PriceInitialCopyWith<$Res> {
+  __$$PriceInitialCopyWithImpl(
+      _$PriceInitial _value, $Res Function(_$PriceInitial) _then)
+      : super(_value, (v) => _then(v as _$PriceInitial));
 
   @override
-  PriceInitial get _value => super._value as PriceInitial;
+  _$PriceInitial get _value => super._value as _$PriceInitial;
 
   @override
   $Res call({
     Object? props = freezed,
   }) {
-    return _then(PriceInitial(
+    return _then(_$PriceInitial(
       props: props == freezed
           ? _value.props
           : props // ignore: cast_nullable_to_non_nullable
@@ -200,17 +166,18 @@ class _$PriceInitial implements PriceInitial {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is PriceInitial &&
-            (identical(other.props, props) || other.props == props));
+            other is _$PriceInitial &&
+            const DeepCollectionEquality().equals(other.props, props));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, props);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(props));
 
   @JsonKey(ignore: true)
   @override
-  $PriceInitialCopyWith<PriceInitial> get copyWith =>
-      _$PriceInitialCopyWithImpl<PriceInitial>(this, _$identity);
+  _$$PriceInitialCopyWith<_$PriceInitial> get copyWith =>
+      __$$PriceInitialCopyWithImpl<_$PriceInitial>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -288,23 +255,23 @@ class _$PriceInitial implements PriceInitial {
 }
 
 abstract class PriceInitial implements PriceScreenState {
-  const factory PriceInitial({required PriceScreenProps props}) =
+  const factory PriceInitial({required final PriceScreenProps props}) =
       _$PriceInitial;
 
   @override
-  PriceScreenProps get props;
+  PriceScreenProps get props => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  $PriceInitialCopyWith<PriceInitial> get copyWith =>
+  _$$PriceInitialCopyWith<_$PriceInitial> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $PriceLoadingCopyWith<$Res>
+abstract class _$$PriceLoadingCopyWith<$Res>
     implements $PriceScreenStateCopyWith<$Res> {
-  factory $PriceLoadingCopyWith(
-          PriceLoading value, $Res Function(PriceLoading) then) =
-      _$PriceLoadingCopyWithImpl<$Res>;
+  factory _$$PriceLoadingCopyWith(
+          _$PriceLoading value, $Res Function(_$PriceLoading) then) =
+      __$$PriceLoadingCopyWithImpl<$Res>;
   @override
   $Res call({PriceScreenProps props});
 
@@ -313,21 +280,21 @@ abstract class $PriceLoadingCopyWith<$Res>
 }
 
 /// @nodoc
-class _$PriceLoadingCopyWithImpl<$Res>
+class __$$PriceLoadingCopyWithImpl<$Res>
     extends _$PriceScreenStateCopyWithImpl<$Res>
-    implements $PriceLoadingCopyWith<$Res> {
-  _$PriceLoadingCopyWithImpl(
-      PriceLoading _value, $Res Function(PriceLoading) _then)
-      : super(_value, (v) => _then(v as PriceLoading));
+    implements _$$PriceLoadingCopyWith<$Res> {
+  __$$PriceLoadingCopyWithImpl(
+      _$PriceLoading _value, $Res Function(_$PriceLoading) _then)
+      : super(_value, (v) => _then(v as _$PriceLoading));
 
   @override
-  PriceLoading get _value => super._value as PriceLoading;
+  _$PriceLoading get _value => super._value as _$PriceLoading;
 
   @override
   $Res call({
     Object? props = freezed,
   }) {
-    return _then(PriceLoading(
+    return _then(_$PriceLoading(
       props: props == freezed
           ? _value.props
           : props // ignore: cast_nullable_to_non_nullable
@@ -353,17 +320,18 @@ class _$PriceLoading implements PriceLoading {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is PriceLoading &&
-            (identical(other.props, props) || other.props == props));
+            other is _$PriceLoading &&
+            const DeepCollectionEquality().equals(other.props, props));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, props);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(props));
 
   @JsonKey(ignore: true)
   @override
-  $PriceLoadingCopyWith<PriceLoading> get copyWith =>
-      _$PriceLoadingCopyWithImpl<PriceLoading>(this, _$identity);
+  _$$PriceLoadingCopyWith<_$PriceLoading> get copyWith =>
+      __$$PriceLoadingCopyWithImpl<_$PriceLoading>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -441,23 +409,23 @@ class _$PriceLoading implements PriceLoading {
 }
 
 abstract class PriceLoading implements PriceScreenState {
-  const factory PriceLoading({required PriceScreenProps props}) =
+  const factory PriceLoading({required final PriceScreenProps props}) =
       _$PriceLoading;
 
   @override
-  PriceScreenProps get props;
+  PriceScreenProps get props => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  $PriceLoadingCopyWith<PriceLoading> get copyWith =>
+  _$$PriceLoadingCopyWith<_$PriceLoading> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $PriceCompletedCopyWith<$Res>
+abstract class _$$PriceCompletedCopyWith<$Res>
     implements $PriceScreenStateCopyWith<$Res> {
-  factory $PriceCompletedCopyWith(
-          PriceCompleted value, $Res Function(PriceCompleted) then) =
-      _$PriceCompletedCopyWithImpl<$Res>;
+  factory _$$PriceCompletedCopyWith(
+          _$PriceCompleted value, $Res Function(_$PriceCompleted) then) =
+      __$$PriceCompletedCopyWithImpl<$Res>;
   @override
   $Res call({PriceScreenProps props});
 
@@ -466,21 +434,21 @@ abstract class $PriceCompletedCopyWith<$Res>
 }
 
 /// @nodoc
-class _$PriceCompletedCopyWithImpl<$Res>
+class __$$PriceCompletedCopyWithImpl<$Res>
     extends _$PriceScreenStateCopyWithImpl<$Res>
-    implements $PriceCompletedCopyWith<$Res> {
-  _$PriceCompletedCopyWithImpl(
-      PriceCompleted _value, $Res Function(PriceCompleted) _then)
-      : super(_value, (v) => _then(v as PriceCompleted));
+    implements _$$PriceCompletedCopyWith<$Res> {
+  __$$PriceCompletedCopyWithImpl(
+      _$PriceCompleted _value, $Res Function(_$PriceCompleted) _then)
+      : super(_value, (v) => _then(v as _$PriceCompleted));
 
   @override
-  PriceCompleted get _value => super._value as PriceCompleted;
+  _$PriceCompleted get _value => super._value as _$PriceCompleted;
 
   @override
   $Res call({
     Object? props = freezed,
   }) {
-    return _then(PriceCompleted(
+    return _then(_$PriceCompleted(
       props: props == freezed
           ? _value.props
           : props // ignore: cast_nullable_to_non_nullable
@@ -506,17 +474,18 @@ class _$PriceCompleted implements PriceCompleted {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is PriceCompleted &&
-            (identical(other.props, props) || other.props == props));
+            other is _$PriceCompleted &&
+            const DeepCollectionEquality().equals(other.props, props));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, props);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(props));
 
   @JsonKey(ignore: true)
   @override
-  $PriceCompletedCopyWith<PriceCompleted> get copyWith =>
-      _$PriceCompletedCopyWithImpl<PriceCompleted>(this, _$identity);
+  _$$PriceCompletedCopyWith<_$PriceCompleted> get copyWith =>
+      __$$PriceCompletedCopyWithImpl<_$PriceCompleted>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -594,23 +563,23 @@ class _$PriceCompleted implements PriceCompleted {
 }
 
 abstract class PriceCompleted implements PriceScreenState {
-  const factory PriceCompleted({required PriceScreenProps props}) =
+  const factory PriceCompleted({required final PriceScreenProps props}) =
       _$PriceCompleted;
 
   @override
-  PriceScreenProps get props;
+  PriceScreenProps get props => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  $PriceCompletedCopyWith<PriceCompleted> get copyWith =>
+  _$$PriceCompletedCopyWith<_$PriceCompleted> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $PriceErrorCopyWith<$Res>
+abstract class _$$PriceErrorCopyWith<$Res>
     implements $PriceScreenStateCopyWith<$Res> {
-  factory $PriceErrorCopyWith(
-          PriceError value, $Res Function(PriceError) then) =
-      _$PriceErrorCopyWithImpl<$Res>;
+  factory _$$PriceErrorCopyWith(
+          _$PriceError value, $Res Function(_$PriceError) then) =
+      __$$PriceErrorCopyWithImpl<$Res>;
   @override
   $Res call({PriceScreenProps props, Failure failure});
 
@@ -619,21 +588,22 @@ abstract class $PriceErrorCopyWith<$Res>
 }
 
 /// @nodoc
-class _$PriceErrorCopyWithImpl<$Res>
+class __$$PriceErrorCopyWithImpl<$Res>
     extends _$PriceScreenStateCopyWithImpl<$Res>
-    implements $PriceErrorCopyWith<$Res> {
-  _$PriceErrorCopyWithImpl(PriceError _value, $Res Function(PriceError) _then)
-      : super(_value, (v) => _then(v as PriceError));
+    implements _$$PriceErrorCopyWith<$Res> {
+  __$$PriceErrorCopyWithImpl(
+      _$PriceError _value, $Res Function(_$PriceError) _then)
+      : super(_value, (v) => _then(v as _$PriceError));
 
   @override
-  PriceError get _value => super._value as PriceError;
+  _$PriceError get _value => super._value as _$PriceError;
 
   @override
   $Res call({
     Object? props = freezed,
     Object? failure = freezed,
   }) {
-    return _then(PriceError(
+    return _then(_$PriceError(
       props: props == freezed
           ? _value.props
           : props // ignore: cast_nullable_to_non_nullable
@@ -665,18 +635,21 @@ class _$PriceError implements PriceError {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is PriceError &&
-            (identical(other.props, props) || other.props == props) &&
-            (identical(other.failure, failure) || other.failure == failure));
+            other is _$PriceError &&
+            const DeepCollectionEquality().equals(other.props, props) &&
+            const DeepCollectionEquality().equals(other.failure, failure));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, props, failure);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(props),
+      const DeepCollectionEquality().hash(failure));
 
   @JsonKey(ignore: true)
   @override
-  $PriceErrorCopyWith<PriceError> get copyWith =>
-      _$PriceErrorCopyWithImpl<PriceError>(this, _$identity);
+  _$$PriceErrorCopyWith<_$PriceError> get copyWith =>
+      __$$PriceErrorCopyWithImpl<_$PriceError>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -755,31 +728,17 @@ class _$PriceError implements PriceError {
 
 abstract class PriceError implements PriceScreenState {
   const factory PriceError(
-      {required PriceScreenProps props,
-      required Failure failure}) = _$PriceError;
+      {required final PriceScreenProps props,
+      required final Failure failure}) = _$PriceError;
 
   @override
-  PriceScreenProps get props;
-  Failure get failure;
+  PriceScreenProps get props => throw _privateConstructorUsedError;
+  Failure get failure => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  $PriceErrorCopyWith<PriceError> get copyWith =>
+  _$$PriceErrorCopyWith<_$PriceError> get copyWith =>
       throw _privateConstructorUsedError;
 }
-
-/// @nodoc
-class _$PriceScreenPropsTearOff {
-  const _$PriceScreenPropsTearOff();
-
-  _PriceScreenProps call({required Price price}) {
-    return _PriceScreenProps(
-      price: price,
-    );
-  }
-}
-
-/// @nodoc
-const $PriceScreenProps = _$PriceScreenPropsTearOff();
 
 /// @nodoc
 mixin _$PriceScreenProps {
@@ -830,11 +789,11 @@ class _$PriceScreenPropsCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$PriceScreenPropsCopyWith<$Res>
+abstract class _$$_PriceScreenPropsCopyWith<$Res>
     implements $PriceScreenPropsCopyWith<$Res> {
-  factory _$PriceScreenPropsCopyWith(
-          _PriceScreenProps value, $Res Function(_PriceScreenProps) then) =
-      __$PriceScreenPropsCopyWithImpl<$Res>;
+  factory _$$_PriceScreenPropsCopyWith(
+          _$_PriceScreenProps value, $Res Function(_$_PriceScreenProps) then) =
+      __$$_PriceScreenPropsCopyWithImpl<$Res>;
   @override
   $Res call({Price price});
 
@@ -843,21 +802,21 @@ abstract class _$PriceScreenPropsCopyWith<$Res>
 }
 
 /// @nodoc
-class __$PriceScreenPropsCopyWithImpl<$Res>
+class __$$_PriceScreenPropsCopyWithImpl<$Res>
     extends _$PriceScreenPropsCopyWithImpl<$Res>
-    implements _$PriceScreenPropsCopyWith<$Res> {
-  __$PriceScreenPropsCopyWithImpl(
-      _PriceScreenProps _value, $Res Function(_PriceScreenProps) _then)
-      : super(_value, (v) => _then(v as _PriceScreenProps));
+    implements _$$_PriceScreenPropsCopyWith<$Res> {
+  __$$_PriceScreenPropsCopyWithImpl(
+      _$_PriceScreenProps _value, $Res Function(_$_PriceScreenProps) _then)
+      : super(_value, (v) => _then(v as _$_PriceScreenProps));
 
   @override
-  _PriceScreenProps get _value => super._value as _PriceScreenProps;
+  _$_PriceScreenProps get _value => super._value as _$_PriceScreenProps;
 
   @override
   $Res call({
     Object? price = freezed,
   }) {
-    return _then(_PriceScreenProps(
+    return _then(_$_PriceScreenProps(
       price: price == freezed
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
@@ -883,26 +842,28 @@ class _$_PriceScreenProps implements _PriceScreenProps {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _PriceScreenProps &&
-            (identical(other.price, price) || other.price == price));
+            other is _$_PriceScreenProps &&
+            const DeepCollectionEquality().equals(other.price, price));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, price);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(price));
 
   @JsonKey(ignore: true)
   @override
-  _$PriceScreenPropsCopyWith<_PriceScreenProps> get copyWith =>
-      __$PriceScreenPropsCopyWithImpl<_PriceScreenProps>(this, _$identity);
+  _$$_PriceScreenPropsCopyWith<_$_PriceScreenProps> get copyWith =>
+      __$$_PriceScreenPropsCopyWithImpl<_$_PriceScreenProps>(this, _$identity);
 }
 
 abstract class _PriceScreenProps implements PriceScreenProps {
-  const factory _PriceScreenProps({required Price price}) = _$_PriceScreenProps;
+  const factory _PriceScreenProps({required final Price price}) =
+      _$_PriceScreenProps;
 
   @override
-  Price get price;
+  Price get price => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$PriceScreenPropsCopyWith<_PriceScreenProps> get copyWith =>
+  _$$_PriceScreenPropsCopyWith<_$_PriceScreenProps> get copyWith =>
       throw _privateConstructorUsedError;
 }

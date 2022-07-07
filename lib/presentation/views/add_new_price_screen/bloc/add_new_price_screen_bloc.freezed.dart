@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'add_new_price_screen_bloc.dart';
@@ -11,33 +12,7 @@ part of 'add_new_price_screen_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$AddNewPriceScreenEventTearOff {
-  const _$AddNewPriceScreenEventTearOff();
-
-  _ANPEStarted started() {
-    return const _ANPEStarted();
-  }
-
-  _ANPEGetFirstTenProduce getFirstTenProduce() {
-    return const _ANPEGetFirstTenProduce();
-  }
-
-  _ANPEGetNextTenProduce getNextTenProduce() {
-    return const _ANPEGetNextTenProduce();
-  }
-
-  _ANPEExecAddNewPrice execAddNewPrice({required Produce produce}) {
-    return _ANPEExecAddNewPrice(
-      produce: produce,
-    );
-  }
-}
-
-/// @nodoc
-const $AddNewPriceScreenEvent = _$AddNewPriceScreenEventTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$AddNewPriceScreenEvent {
@@ -111,22 +86,22 @@ class _$AddNewPriceScreenEventCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$ANPEStartedCopyWith<$Res> {
-  factory _$ANPEStartedCopyWith(
-          _ANPEStarted value, $Res Function(_ANPEStarted) then) =
-      __$ANPEStartedCopyWithImpl<$Res>;
+abstract class _$$_ANPEStartedCopyWith<$Res> {
+  factory _$$_ANPEStartedCopyWith(
+          _$_ANPEStarted value, $Res Function(_$_ANPEStarted) then) =
+      __$$_ANPEStartedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$ANPEStartedCopyWithImpl<$Res>
+class __$$_ANPEStartedCopyWithImpl<$Res>
     extends _$AddNewPriceScreenEventCopyWithImpl<$Res>
-    implements _$ANPEStartedCopyWith<$Res> {
-  __$ANPEStartedCopyWithImpl(
-      _ANPEStarted _value, $Res Function(_ANPEStarted) _then)
-      : super(_value, (v) => _then(v as _ANPEStarted));
+    implements _$$_ANPEStartedCopyWith<$Res> {
+  __$$_ANPEStartedCopyWithImpl(
+      _$_ANPEStarted _value, $Res Function(_$_ANPEStarted) _then)
+      : super(_value, (v) => _then(v as _$_ANPEStarted));
 
   @override
-  _ANPEStarted get _value => super._value as _ANPEStarted;
+  _$_ANPEStarted get _value => super._value as _$_ANPEStarted;
 }
 
 /// @nodoc
@@ -143,13 +118,13 @@ class _$_ANPEStarted with DiagnosticableTreeMixin implements _ANPEStarted {
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'AddNewPriceScreenEvent.started'));
+        .add(DiagnosticsProperty('type', 'AddNewPriceScreenEvent.started'));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _ANPEStarted);
+        (other.runtimeType == runtimeType && other is _$_ANPEStarted);
   }
 
   @override
@@ -235,22 +210,23 @@ abstract class _ANPEStarted implements AddNewPriceScreenEvent {
 }
 
 /// @nodoc
-abstract class _$ANPEGetFirstTenProduceCopyWith<$Res> {
-  factory _$ANPEGetFirstTenProduceCopyWith(_ANPEGetFirstTenProduce value,
-          $Res Function(_ANPEGetFirstTenProduce) then) =
-      __$ANPEGetFirstTenProduceCopyWithImpl<$Res>;
+abstract class _$$_ANPEGetFirstTenProduceCopyWith<$Res> {
+  factory _$$_ANPEGetFirstTenProduceCopyWith(_$_ANPEGetFirstTenProduce value,
+          $Res Function(_$_ANPEGetFirstTenProduce) then) =
+      __$$_ANPEGetFirstTenProduceCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$ANPEGetFirstTenProduceCopyWithImpl<$Res>
+class __$$_ANPEGetFirstTenProduceCopyWithImpl<$Res>
     extends _$AddNewPriceScreenEventCopyWithImpl<$Res>
-    implements _$ANPEGetFirstTenProduceCopyWith<$Res> {
-  __$ANPEGetFirstTenProduceCopyWithImpl(_ANPEGetFirstTenProduce _value,
-      $Res Function(_ANPEGetFirstTenProduce) _then)
-      : super(_value, (v) => _then(v as _ANPEGetFirstTenProduce));
+    implements _$$_ANPEGetFirstTenProduceCopyWith<$Res> {
+  __$$_ANPEGetFirstTenProduceCopyWithImpl(_$_ANPEGetFirstTenProduce _value,
+      $Res Function(_$_ANPEGetFirstTenProduce) _then)
+      : super(_value, (v) => _then(v as _$_ANPEGetFirstTenProduce));
 
   @override
-  _ANPEGetFirstTenProduce get _value => super._value as _ANPEGetFirstTenProduce;
+  _$_ANPEGetFirstTenProduce get _value =>
+      super._value as _$_ANPEGetFirstTenProduce;
 }
 
 /// @nodoc
@@ -268,15 +244,15 @@ class _$_ANPEGetFirstTenProduce
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty(
-          'type', 'AddNewPriceScreenEvent.getFirstTenProduce'));
+    properties.add(DiagnosticsProperty(
+        'type', 'AddNewPriceScreenEvent.getFirstTenProduce'));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _ANPEGetFirstTenProduce);
+        (other.runtimeType == runtimeType &&
+            other is _$_ANPEGetFirstTenProduce);
   }
 
   @override
@@ -362,22 +338,23 @@ abstract class _ANPEGetFirstTenProduce implements AddNewPriceScreenEvent {
 }
 
 /// @nodoc
-abstract class _$ANPEGetNextTenProduceCopyWith<$Res> {
-  factory _$ANPEGetNextTenProduceCopyWith(_ANPEGetNextTenProduce value,
-          $Res Function(_ANPEGetNextTenProduce) then) =
-      __$ANPEGetNextTenProduceCopyWithImpl<$Res>;
+abstract class _$$_ANPEGetNextTenProduceCopyWith<$Res> {
+  factory _$$_ANPEGetNextTenProduceCopyWith(_$_ANPEGetNextTenProduce value,
+          $Res Function(_$_ANPEGetNextTenProduce) then) =
+      __$$_ANPEGetNextTenProduceCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$ANPEGetNextTenProduceCopyWithImpl<$Res>
+class __$$_ANPEGetNextTenProduceCopyWithImpl<$Res>
     extends _$AddNewPriceScreenEventCopyWithImpl<$Res>
-    implements _$ANPEGetNextTenProduceCopyWith<$Res> {
-  __$ANPEGetNextTenProduceCopyWithImpl(_ANPEGetNextTenProduce _value,
-      $Res Function(_ANPEGetNextTenProduce) _then)
-      : super(_value, (v) => _then(v as _ANPEGetNextTenProduce));
+    implements _$$_ANPEGetNextTenProduceCopyWith<$Res> {
+  __$$_ANPEGetNextTenProduceCopyWithImpl(_$_ANPEGetNextTenProduce _value,
+      $Res Function(_$_ANPEGetNextTenProduce) _then)
+      : super(_value, (v) => _then(v as _$_ANPEGetNextTenProduce));
 
   @override
-  _ANPEGetNextTenProduce get _value => super._value as _ANPEGetNextTenProduce;
+  _$_ANPEGetNextTenProduce get _value =>
+      super._value as _$_ANPEGetNextTenProduce;
 }
 
 /// @nodoc
@@ -395,15 +372,14 @@ class _$_ANPEGetNextTenProduce
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty(
-          'type', 'AddNewPriceScreenEvent.getNextTenProduce'));
+    properties.add(DiagnosticsProperty(
+        'type', 'AddNewPriceScreenEvent.getNextTenProduce'));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _ANPEGetNextTenProduce);
+        (other.runtimeType == runtimeType && other is _$_ANPEGetNextTenProduce);
   }
 
   @override
@@ -489,31 +465,31 @@ abstract class _ANPEGetNextTenProduce implements AddNewPriceScreenEvent {
 }
 
 /// @nodoc
-abstract class _$ANPEExecAddNewPriceCopyWith<$Res> {
-  factory _$ANPEExecAddNewPriceCopyWith(_ANPEExecAddNewPrice value,
-          $Res Function(_ANPEExecAddNewPrice) then) =
-      __$ANPEExecAddNewPriceCopyWithImpl<$Res>;
+abstract class _$$_ANPEExecAddNewPriceCopyWith<$Res> {
+  factory _$$_ANPEExecAddNewPriceCopyWith(_$_ANPEExecAddNewPrice value,
+          $Res Function(_$_ANPEExecAddNewPrice) then) =
+      __$$_ANPEExecAddNewPriceCopyWithImpl<$Res>;
   $Res call({Produce produce});
 
   $ProduceCopyWith<$Res> get produce;
 }
 
 /// @nodoc
-class __$ANPEExecAddNewPriceCopyWithImpl<$Res>
+class __$$_ANPEExecAddNewPriceCopyWithImpl<$Res>
     extends _$AddNewPriceScreenEventCopyWithImpl<$Res>
-    implements _$ANPEExecAddNewPriceCopyWith<$Res> {
-  __$ANPEExecAddNewPriceCopyWithImpl(
-      _ANPEExecAddNewPrice _value, $Res Function(_ANPEExecAddNewPrice) _then)
-      : super(_value, (v) => _then(v as _ANPEExecAddNewPrice));
+    implements _$$_ANPEExecAddNewPriceCopyWith<$Res> {
+  __$$_ANPEExecAddNewPriceCopyWithImpl(_$_ANPEExecAddNewPrice _value,
+      $Res Function(_$_ANPEExecAddNewPrice) _then)
+      : super(_value, (v) => _then(v as _$_ANPEExecAddNewPrice));
 
   @override
-  _ANPEExecAddNewPrice get _value => super._value as _ANPEExecAddNewPrice;
+  _$_ANPEExecAddNewPrice get _value => super._value as _$_ANPEExecAddNewPrice;
 
   @override
   $Res call({
     Object? produce = freezed,
   }) {
-    return _then(_ANPEExecAddNewPrice(
+    return _then(_$_ANPEExecAddNewPrice(
       produce: produce == freezed
           ? _value.produce
           : produce // ignore: cast_nullable_to_non_nullable
@@ -557,17 +533,18 @@ class _$_ANPEExecAddNewPrice
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _ANPEExecAddNewPrice &&
-            (identical(other.produce, produce) || other.produce == produce));
+            other is _$_ANPEExecAddNewPrice &&
+            const DeepCollectionEquality().equals(other.produce, produce));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, produce);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(produce));
 
   @JsonKey(ignore: true)
   @override
-  _$ANPEExecAddNewPriceCopyWith<_ANPEExecAddNewPrice> get copyWith =>
-      __$ANPEExecAddNewPriceCopyWithImpl<_ANPEExecAddNewPrice>(
+  _$$_ANPEExecAddNewPriceCopyWith<_$_ANPEExecAddNewPrice> get copyWith =>
+      __$$_ANPEExecAddNewPriceCopyWithImpl<_$_ANPEExecAddNewPrice>(
           this, _$identity);
 
   @override
@@ -646,81 +623,18 @@ class _$_ANPEExecAddNewPrice
 }
 
 abstract class _ANPEExecAddNewPrice implements AddNewPriceScreenEvent {
-  const factory _ANPEExecAddNewPrice({required Produce produce}) =
+  const factory _ANPEExecAddNewPrice({required final Produce produce}) =
       _$_ANPEExecAddNewPrice;
 
-  Produce get produce;
+  Produce get produce => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$ANPEExecAddNewPriceCopyWith<_ANPEExecAddNewPrice> get copyWith =>
+  _$$_ANPEExecAddNewPriceCopyWith<_$_ANPEExecAddNewPrice> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-class _$AddNewPriceScreenStateTearOff {
-  const _$AddNewPriceScreenStateTearOff();
-
-  ANPSInitial initial({required AddNewPriceScreenProps props}) {
-    return ANPSInitial(
-      props: props,
-    );
-  }
-
-  ANPSPricesLoading pricesLoading({required AddNewPriceScreenProps props}) {
-    return ANPSPricesLoading(
-      props: props,
-    );
-  }
-
-  ANPSNextPricesLoading nextPricesLoading(
-      {required AddNewPriceScreenProps props}) {
-    return ANPSNextPricesLoading(
-      props: props,
-    );
-  }
-
-  ANPSPricesCompleted pricesCompleted({required AddNewPriceScreenProps props}) {
-    return ANPSPricesCompleted(
-      props: props,
-    );
-  }
-
-  ANPSPricesError pricesError(
-      {required String message,
-      required String code,
-      required StackTrace stackTrace,
-      required AddNewPriceScreenProps props}) {
-    return ANPSPricesError(
-      message: message,
-      code: code,
-      stackTrace: stackTrace,
-      props: props,
-    );
-  }
-
-  ANPSAddNewPriceSuccess addNewPriceSuccess(
-      {required Produce produce, required AddNewPriceScreenProps props}) {
-    return ANPSAddNewPriceSuccess(
-      produce: produce,
-      props: props,
-    );
-  }
-
-  ANPSAddNewPriceError addNewPriceError(
-      {required AddNewPriceScreenProps props, required Failure failure}) {
-    return ANPSAddNewPriceError(
-      props: props,
-      failure: failure,
-    );
-  }
-}
-
-/// @nodoc
-const $AddNewPriceScreenState = _$AddNewPriceScreenStateTearOff();
-
-/// @nodoc
 mixin _$AddNewPriceScreenState {
   AddNewPriceScreenProps get props => throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(AddNewPriceScreenProps props) initial,
@@ -847,11 +761,11 @@ class _$AddNewPriceScreenStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class $ANPSInitialCopyWith<$Res>
+abstract class _$$ANPSInitialCopyWith<$Res>
     implements $AddNewPriceScreenStateCopyWith<$Res> {
-  factory $ANPSInitialCopyWith(
-          ANPSInitial value, $Res Function(ANPSInitial) then) =
-      _$ANPSInitialCopyWithImpl<$Res>;
+  factory _$$ANPSInitialCopyWith(
+          _$ANPSInitial value, $Res Function(_$ANPSInitial) then) =
+      __$$ANPSInitialCopyWithImpl<$Res>;
   @override
   $Res call({AddNewPriceScreenProps props});
 
@@ -860,21 +774,21 @@ abstract class $ANPSInitialCopyWith<$Res>
 }
 
 /// @nodoc
-class _$ANPSInitialCopyWithImpl<$Res>
+class __$$ANPSInitialCopyWithImpl<$Res>
     extends _$AddNewPriceScreenStateCopyWithImpl<$Res>
-    implements $ANPSInitialCopyWith<$Res> {
-  _$ANPSInitialCopyWithImpl(
-      ANPSInitial _value, $Res Function(ANPSInitial) _then)
-      : super(_value, (v) => _then(v as ANPSInitial));
+    implements _$$ANPSInitialCopyWith<$Res> {
+  __$$ANPSInitialCopyWithImpl(
+      _$ANPSInitial _value, $Res Function(_$ANPSInitial) _then)
+      : super(_value, (v) => _then(v as _$ANPSInitial));
 
   @override
-  ANPSInitial get _value => super._value as ANPSInitial;
+  _$ANPSInitial get _value => super._value as _$ANPSInitial;
 
   @override
   $Res call({
     Object? props = freezed,
   }) {
-    return _then(ANPSInitial(
+    return _then(_$ANPSInitial(
       props: props == freezed
           ? _value.props
           : props // ignore: cast_nullable_to_non_nullable
@@ -908,17 +822,18 @@ class _$ANPSInitial with DiagnosticableTreeMixin implements ANPSInitial {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is ANPSInitial &&
-            (identical(other.props, props) || other.props == props));
+            other is _$ANPSInitial &&
+            const DeepCollectionEquality().equals(other.props, props));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, props);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(props));
 
   @JsonKey(ignore: true)
   @override
-  $ANPSInitialCopyWith<ANPSInitial> get copyWith =>
-      _$ANPSInitialCopyWithImpl<ANPSInitial>(this, _$identity);
+  _$$ANPSInitialCopyWith<_$ANPSInitial> get copyWith =>
+      __$$ANPSInitialCopyWithImpl<_$ANPSInitial>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1026,23 +941,23 @@ class _$ANPSInitial with DiagnosticableTreeMixin implements ANPSInitial {
 }
 
 abstract class ANPSInitial implements AddNewPriceScreenState {
-  const factory ANPSInitial({required AddNewPriceScreenProps props}) =
+  const factory ANPSInitial({required final AddNewPriceScreenProps props}) =
       _$ANPSInitial;
 
   @override
-  AddNewPriceScreenProps get props;
+  AddNewPriceScreenProps get props => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  $ANPSInitialCopyWith<ANPSInitial> get copyWith =>
+  _$$ANPSInitialCopyWith<_$ANPSInitial> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ANPSPricesLoadingCopyWith<$Res>
+abstract class _$$ANPSPricesLoadingCopyWith<$Res>
     implements $AddNewPriceScreenStateCopyWith<$Res> {
-  factory $ANPSPricesLoadingCopyWith(
-          ANPSPricesLoading value, $Res Function(ANPSPricesLoading) then) =
-      _$ANPSPricesLoadingCopyWithImpl<$Res>;
+  factory _$$ANPSPricesLoadingCopyWith(
+          _$ANPSPricesLoading value, $Res Function(_$ANPSPricesLoading) then) =
+      __$$ANPSPricesLoadingCopyWithImpl<$Res>;
   @override
   $Res call({AddNewPriceScreenProps props});
 
@@ -1051,21 +966,21 @@ abstract class $ANPSPricesLoadingCopyWith<$Res>
 }
 
 /// @nodoc
-class _$ANPSPricesLoadingCopyWithImpl<$Res>
+class __$$ANPSPricesLoadingCopyWithImpl<$Res>
     extends _$AddNewPriceScreenStateCopyWithImpl<$Res>
-    implements $ANPSPricesLoadingCopyWith<$Res> {
-  _$ANPSPricesLoadingCopyWithImpl(
-      ANPSPricesLoading _value, $Res Function(ANPSPricesLoading) _then)
-      : super(_value, (v) => _then(v as ANPSPricesLoading));
+    implements _$$ANPSPricesLoadingCopyWith<$Res> {
+  __$$ANPSPricesLoadingCopyWithImpl(
+      _$ANPSPricesLoading _value, $Res Function(_$ANPSPricesLoading) _then)
+      : super(_value, (v) => _then(v as _$ANPSPricesLoading));
 
   @override
-  ANPSPricesLoading get _value => super._value as ANPSPricesLoading;
+  _$ANPSPricesLoading get _value => super._value as _$ANPSPricesLoading;
 
   @override
   $Res call({
     Object? props = freezed,
   }) {
-    return _then(ANPSPricesLoading(
+    return _then(_$ANPSPricesLoading(
       props: props == freezed
           ? _value.props
           : props // ignore: cast_nullable_to_non_nullable
@@ -1101,17 +1016,18 @@ class _$ANPSPricesLoading
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is ANPSPricesLoading &&
-            (identical(other.props, props) || other.props == props));
+            other is _$ANPSPricesLoading &&
+            const DeepCollectionEquality().equals(other.props, props));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, props);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(props));
 
   @JsonKey(ignore: true)
   @override
-  $ANPSPricesLoadingCopyWith<ANPSPricesLoading> get copyWith =>
-      _$ANPSPricesLoadingCopyWithImpl<ANPSPricesLoading>(this, _$identity);
+  _$$ANPSPricesLoadingCopyWith<_$ANPSPricesLoading> get copyWith =>
+      __$$ANPSPricesLoadingCopyWithImpl<_$ANPSPricesLoading>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1219,23 +1135,23 @@ class _$ANPSPricesLoading
 }
 
 abstract class ANPSPricesLoading implements AddNewPriceScreenState {
-  const factory ANPSPricesLoading({required AddNewPriceScreenProps props}) =
-      _$ANPSPricesLoading;
+  const factory ANPSPricesLoading(
+      {required final AddNewPriceScreenProps props}) = _$ANPSPricesLoading;
 
   @override
-  AddNewPriceScreenProps get props;
+  AddNewPriceScreenProps get props => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  $ANPSPricesLoadingCopyWith<ANPSPricesLoading> get copyWith =>
+  _$$ANPSPricesLoadingCopyWith<_$ANPSPricesLoading> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ANPSNextPricesLoadingCopyWith<$Res>
+abstract class _$$ANPSNextPricesLoadingCopyWith<$Res>
     implements $AddNewPriceScreenStateCopyWith<$Res> {
-  factory $ANPSNextPricesLoadingCopyWith(ANPSNextPricesLoading value,
-          $Res Function(ANPSNextPricesLoading) then) =
-      _$ANPSNextPricesLoadingCopyWithImpl<$Res>;
+  factory _$$ANPSNextPricesLoadingCopyWith(_$ANPSNextPricesLoading value,
+          $Res Function(_$ANPSNextPricesLoading) then) =
+      __$$ANPSNextPricesLoadingCopyWithImpl<$Res>;
   @override
   $Res call({AddNewPriceScreenProps props});
 
@@ -1244,21 +1160,21 @@ abstract class $ANPSNextPricesLoadingCopyWith<$Res>
 }
 
 /// @nodoc
-class _$ANPSNextPricesLoadingCopyWithImpl<$Res>
+class __$$ANPSNextPricesLoadingCopyWithImpl<$Res>
     extends _$AddNewPriceScreenStateCopyWithImpl<$Res>
-    implements $ANPSNextPricesLoadingCopyWith<$Res> {
-  _$ANPSNextPricesLoadingCopyWithImpl(
-      ANPSNextPricesLoading _value, $Res Function(ANPSNextPricesLoading) _then)
-      : super(_value, (v) => _then(v as ANPSNextPricesLoading));
+    implements _$$ANPSNextPricesLoadingCopyWith<$Res> {
+  __$$ANPSNextPricesLoadingCopyWithImpl(_$ANPSNextPricesLoading _value,
+      $Res Function(_$ANPSNextPricesLoading) _then)
+      : super(_value, (v) => _then(v as _$ANPSNextPricesLoading));
 
   @override
-  ANPSNextPricesLoading get _value => super._value as ANPSNextPricesLoading;
+  _$ANPSNextPricesLoading get _value => super._value as _$ANPSNextPricesLoading;
 
   @override
   $Res call({
     Object? props = freezed,
   }) {
-    return _then(ANPSNextPricesLoading(
+    return _then(_$ANPSNextPricesLoading(
       props: props == freezed
           ? _value.props
           : props // ignore: cast_nullable_to_non_nullable
@@ -1295,17 +1211,18 @@ class _$ANPSNextPricesLoading
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is ANPSNextPricesLoading &&
-            (identical(other.props, props) || other.props == props));
+            other is _$ANPSNextPricesLoading &&
+            const DeepCollectionEquality().equals(other.props, props));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, props);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(props));
 
   @JsonKey(ignore: true)
   @override
-  $ANPSNextPricesLoadingCopyWith<ANPSNextPricesLoading> get copyWith =>
-      _$ANPSNextPricesLoadingCopyWithImpl<ANPSNextPricesLoading>(
+  _$$ANPSNextPricesLoadingCopyWith<_$ANPSNextPricesLoading> get copyWith =>
+      __$$ANPSNextPricesLoadingCopyWithImpl<_$ANPSNextPricesLoading>(
           this, _$identity);
 
   @override
@@ -1414,23 +1331,23 @@ class _$ANPSNextPricesLoading
 }
 
 abstract class ANPSNextPricesLoading implements AddNewPriceScreenState {
-  const factory ANPSNextPricesLoading({required AddNewPriceScreenProps props}) =
-      _$ANPSNextPricesLoading;
+  const factory ANPSNextPricesLoading(
+      {required final AddNewPriceScreenProps props}) = _$ANPSNextPricesLoading;
 
   @override
-  AddNewPriceScreenProps get props;
+  AddNewPriceScreenProps get props => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  $ANPSNextPricesLoadingCopyWith<ANPSNextPricesLoading> get copyWith =>
+  _$$ANPSNextPricesLoadingCopyWith<_$ANPSNextPricesLoading> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ANPSPricesCompletedCopyWith<$Res>
+abstract class _$$ANPSPricesCompletedCopyWith<$Res>
     implements $AddNewPriceScreenStateCopyWith<$Res> {
-  factory $ANPSPricesCompletedCopyWith(
-          ANPSPricesCompleted value, $Res Function(ANPSPricesCompleted) then) =
-      _$ANPSPricesCompletedCopyWithImpl<$Res>;
+  factory _$$ANPSPricesCompletedCopyWith(_$ANPSPricesCompleted value,
+          $Res Function(_$ANPSPricesCompleted) then) =
+      __$$ANPSPricesCompletedCopyWithImpl<$Res>;
   @override
   $Res call({AddNewPriceScreenProps props});
 
@@ -1439,21 +1356,21 @@ abstract class $ANPSPricesCompletedCopyWith<$Res>
 }
 
 /// @nodoc
-class _$ANPSPricesCompletedCopyWithImpl<$Res>
+class __$$ANPSPricesCompletedCopyWithImpl<$Res>
     extends _$AddNewPriceScreenStateCopyWithImpl<$Res>
-    implements $ANPSPricesCompletedCopyWith<$Res> {
-  _$ANPSPricesCompletedCopyWithImpl(
-      ANPSPricesCompleted _value, $Res Function(ANPSPricesCompleted) _then)
-      : super(_value, (v) => _then(v as ANPSPricesCompleted));
+    implements _$$ANPSPricesCompletedCopyWith<$Res> {
+  __$$ANPSPricesCompletedCopyWithImpl(
+      _$ANPSPricesCompleted _value, $Res Function(_$ANPSPricesCompleted) _then)
+      : super(_value, (v) => _then(v as _$ANPSPricesCompleted));
 
   @override
-  ANPSPricesCompleted get _value => super._value as ANPSPricesCompleted;
+  _$ANPSPricesCompleted get _value => super._value as _$ANPSPricesCompleted;
 
   @override
   $Res call({
     Object? props = freezed,
   }) {
-    return _then(ANPSPricesCompleted(
+    return _then(_$ANPSPricesCompleted(
       props: props == freezed
           ? _value.props
           : props // ignore: cast_nullable_to_non_nullable
@@ -1490,17 +1407,19 @@ class _$ANPSPricesCompleted
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is ANPSPricesCompleted &&
-            (identical(other.props, props) || other.props == props));
+            other is _$ANPSPricesCompleted &&
+            const DeepCollectionEquality().equals(other.props, props));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, props);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(props));
 
   @JsonKey(ignore: true)
   @override
-  $ANPSPricesCompletedCopyWith<ANPSPricesCompleted> get copyWith =>
-      _$ANPSPricesCompletedCopyWithImpl<ANPSPricesCompleted>(this, _$identity);
+  _$$ANPSPricesCompletedCopyWith<_$ANPSPricesCompleted> get copyWith =>
+      __$$ANPSPricesCompletedCopyWithImpl<_$ANPSPricesCompleted>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1608,23 +1527,23 @@ class _$ANPSPricesCompleted
 }
 
 abstract class ANPSPricesCompleted implements AddNewPriceScreenState {
-  const factory ANPSPricesCompleted({required AddNewPriceScreenProps props}) =
-      _$ANPSPricesCompleted;
+  const factory ANPSPricesCompleted(
+      {required final AddNewPriceScreenProps props}) = _$ANPSPricesCompleted;
 
   @override
-  AddNewPriceScreenProps get props;
+  AddNewPriceScreenProps get props => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  $ANPSPricesCompletedCopyWith<ANPSPricesCompleted> get copyWith =>
+  _$$ANPSPricesCompletedCopyWith<_$ANPSPricesCompleted> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ANPSPricesErrorCopyWith<$Res>
+abstract class _$$ANPSPricesErrorCopyWith<$Res>
     implements $AddNewPriceScreenStateCopyWith<$Res> {
-  factory $ANPSPricesErrorCopyWith(
-          ANPSPricesError value, $Res Function(ANPSPricesError) then) =
-      _$ANPSPricesErrorCopyWithImpl<$Res>;
+  factory _$$ANPSPricesErrorCopyWith(
+          _$ANPSPricesError value, $Res Function(_$ANPSPricesError) then) =
+      __$$ANPSPricesErrorCopyWithImpl<$Res>;
   @override
   $Res call(
       {String message,
@@ -1637,15 +1556,15 @@ abstract class $ANPSPricesErrorCopyWith<$Res>
 }
 
 /// @nodoc
-class _$ANPSPricesErrorCopyWithImpl<$Res>
+class __$$ANPSPricesErrorCopyWithImpl<$Res>
     extends _$AddNewPriceScreenStateCopyWithImpl<$Res>
-    implements $ANPSPricesErrorCopyWith<$Res> {
-  _$ANPSPricesErrorCopyWithImpl(
-      ANPSPricesError _value, $Res Function(ANPSPricesError) _then)
-      : super(_value, (v) => _then(v as ANPSPricesError));
+    implements _$$ANPSPricesErrorCopyWith<$Res> {
+  __$$ANPSPricesErrorCopyWithImpl(
+      _$ANPSPricesError _value, $Res Function(_$ANPSPricesError) _then)
+      : super(_value, (v) => _then(v as _$ANPSPricesError));
 
   @override
-  ANPSPricesError get _value => super._value as ANPSPricesError;
+  _$ANPSPricesError get _value => super._value as _$ANPSPricesError;
 
   @override
   $Res call({
@@ -1654,7 +1573,7 @@ class _$ANPSPricesErrorCopyWithImpl<$Res>
     Object? stackTrace = freezed,
     Object? props = freezed,
   }) {
-    return _then(ANPSPricesError(
+    return _then(_$ANPSPricesError(
       message: message == freezed
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -1715,22 +1634,26 @@ class _$ANPSPricesError
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is ANPSPricesError &&
-            (identical(other.message, message) || other.message == message) &&
-            (identical(other.code, code) || other.code == code) &&
-            (identical(other.stackTrace, stackTrace) ||
-                other.stackTrace == stackTrace) &&
-            (identical(other.props, props) || other.props == props));
+            other is _$ANPSPricesError &&
+            const DeepCollectionEquality().equals(other.message, message) &&
+            const DeepCollectionEquality().equals(other.code, code) &&
+            const DeepCollectionEquality()
+                .equals(other.stackTrace, stackTrace) &&
+            const DeepCollectionEquality().equals(other.props, props));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, message, code, stackTrace, props);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(message),
+      const DeepCollectionEquality().hash(code),
+      const DeepCollectionEquality().hash(stackTrace),
+      const DeepCollectionEquality().hash(props));
 
   @JsonKey(ignore: true)
   @override
-  $ANPSPricesErrorCopyWith<ANPSPricesError> get copyWith =>
-      _$ANPSPricesErrorCopyWithImpl<ANPSPricesError>(this, _$identity);
+  _$$ANPSPricesErrorCopyWith<_$ANPSPricesError> get copyWith =>
+      __$$ANPSPricesErrorCopyWithImpl<_$ANPSPricesError>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1839,28 +1762,28 @@ class _$ANPSPricesError
 
 abstract class ANPSPricesError implements AddNewPriceScreenState {
   const factory ANPSPricesError(
-      {required String message,
-      required String code,
-      required StackTrace stackTrace,
-      required AddNewPriceScreenProps props}) = _$ANPSPricesError;
+      {required final String message,
+      required final String code,
+      required final StackTrace stackTrace,
+      required final AddNewPriceScreenProps props}) = _$ANPSPricesError;
 
-  String get message;
-  String get code;
-  StackTrace get stackTrace;
+  String get message => throw _privateConstructorUsedError;
+  String get code => throw _privateConstructorUsedError;
+  StackTrace get stackTrace => throw _privateConstructorUsedError;
   @override
-  AddNewPriceScreenProps get props;
+  AddNewPriceScreenProps get props => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  $ANPSPricesErrorCopyWith<ANPSPricesError> get copyWith =>
+  _$$ANPSPricesErrorCopyWith<_$ANPSPricesError> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ANPSAddNewPriceSuccessCopyWith<$Res>
+abstract class _$$ANPSAddNewPriceSuccessCopyWith<$Res>
     implements $AddNewPriceScreenStateCopyWith<$Res> {
-  factory $ANPSAddNewPriceSuccessCopyWith(ANPSAddNewPriceSuccess value,
-          $Res Function(ANPSAddNewPriceSuccess) then) =
-      _$ANPSAddNewPriceSuccessCopyWithImpl<$Res>;
+  factory _$$ANPSAddNewPriceSuccessCopyWith(_$ANPSAddNewPriceSuccess value,
+          $Res Function(_$ANPSAddNewPriceSuccess) then) =
+      __$$ANPSAddNewPriceSuccessCopyWithImpl<$Res>;
   @override
   $Res call({Produce produce, AddNewPriceScreenProps props});
 
@@ -1870,22 +1793,23 @@ abstract class $ANPSAddNewPriceSuccessCopyWith<$Res>
 }
 
 /// @nodoc
-class _$ANPSAddNewPriceSuccessCopyWithImpl<$Res>
+class __$$ANPSAddNewPriceSuccessCopyWithImpl<$Res>
     extends _$AddNewPriceScreenStateCopyWithImpl<$Res>
-    implements $ANPSAddNewPriceSuccessCopyWith<$Res> {
-  _$ANPSAddNewPriceSuccessCopyWithImpl(ANPSAddNewPriceSuccess _value,
-      $Res Function(ANPSAddNewPriceSuccess) _then)
-      : super(_value, (v) => _then(v as ANPSAddNewPriceSuccess));
+    implements _$$ANPSAddNewPriceSuccessCopyWith<$Res> {
+  __$$ANPSAddNewPriceSuccessCopyWithImpl(_$ANPSAddNewPriceSuccess _value,
+      $Res Function(_$ANPSAddNewPriceSuccess) _then)
+      : super(_value, (v) => _then(v as _$ANPSAddNewPriceSuccess));
 
   @override
-  ANPSAddNewPriceSuccess get _value => super._value as ANPSAddNewPriceSuccess;
+  _$ANPSAddNewPriceSuccess get _value =>
+      super._value as _$ANPSAddNewPriceSuccess;
 
   @override
   $Res call({
     Object? produce = freezed,
     Object? props = freezed,
   }) {
-    return _then(ANPSAddNewPriceSuccess(
+    return _then(_$ANPSAddNewPriceSuccess(
       produce: produce == freezed
           ? _value.produce
           : produce // ignore: cast_nullable_to_non_nullable
@@ -1936,18 +1860,21 @@ class _$ANPSAddNewPriceSuccess
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is ANPSAddNewPriceSuccess &&
-            (identical(other.produce, produce) || other.produce == produce) &&
-            (identical(other.props, props) || other.props == props));
+            other is _$ANPSAddNewPriceSuccess &&
+            const DeepCollectionEquality().equals(other.produce, produce) &&
+            const DeepCollectionEquality().equals(other.props, props));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, produce, props);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(produce),
+      const DeepCollectionEquality().hash(props));
 
   @JsonKey(ignore: true)
   @override
-  $ANPSAddNewPriceSuccessCopyWith<ANPSAddNewPriceSuccess> get copyWith =>
-      _$ANPSAddNewPriceSuccessCopyWithImpl<ANPSAddNewPriceSuccess>(
+  _$$ANPSAddNewPriceSuccessCopyWith<_$ANPSAddNewPriceSuccess> get copyWith =>
+      __$$ANPSAddNewPriceSuccessCopyWithImpl<_$ANPSAddNewPriceSuccess>(
           this, _$identity);
 
   @override
@@ -2057,24 +1984,24 @@ class _$ANPSAddNewPriceSuccess
 
 abstract class ANPSAddNewPriceSuccess implements AddNewPriceScreenState {
   const factory ANPSAddNewPriceSuccess(
-      {required Produce produce,
-      required AddNewPriceScreenProps props}) = _$ANPSAddNewPriceSuccess;
+      {required final Produce produce,
+      required final AddNewPriceScreenProps props}) = _$ANPSAddNewPriceSuccess;
 
-  Produce get produce;
+  Produce get produce => throw _privateConstructorUsedError;
   @override
-  AddNewPriceScreenProps get props;
+  AddNewPriceScreenProps get props => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  $ANPSAddNewPriceSuccessCopyWith<ANPSAddNewPriceSuccess> get copyWith =>
+  _$$ANPSAddNewPriceSuccessCopyWith<_$ANPSAddNewPriceSuccess> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ANPSAddNewPriceErrorCopyWith<$Res>
+abstract class _$$ANPSAddNewPriceErrorCopyWith<$Res>
     implements $AddNewPriceScreenStateCopyWith<$Res> {
-  factory $ANPSAddNewPriceErrorCopyWith(ANPSAddNewPriceError value,
-          $Res Function(ANPSAddNewPriceError) then) =
-      _$ANPSAddNewPriceErrorCopyWithImpl<$Res>;
+  factory _$$ANPSAddNewPriceErrorCopyWith(_$ANPSAddNewPriceError value,
+          $Res Function(_$ANPSAddNewPriceError) then) =
+      __$$ANPSAddNewPriceErrorCopyWithImpl<$Res>;
   @override
   $Res call({AddNewPriceScreenProps props, Failure failure});
 
@@ -2083,22 +2010,22 @@ abstract class $ANPSAddNewPriceErrorCopyWith<$Res>
 }
 
 /// @nodoc
-class _$ANPSAddNewPriceErrorCopyWithImpl<$Res>
+class __$$ANPSAddNewPriceErrorCopyWithImpl<$Res>
     extends _$AddNewPriceScreenStateCopyWithImpl<$Res>
-    implements $ANPSAddNewPriceErrorCopyWith<$Res> {
-  _$ANPSAddNewPriceErrorCopyWithImpl(
-      ANPSAddNewPriceError _value, $Res Function(ANPSAddNewPriceError) _then)
-      : super(_value, (v) => _then(v as ANPSAddNewPriceError));
+    implements _$$ANPSAddNewPriceErrorCopyWith<$Res> {
+  __$$ANPSAddNewPriceErrorCopyWithImpl(_$ANPSAddNewPriceError _value,
+      $Res Function(_$ANPSAddNewPriceError) _then)
+      : super(_value, (v) => _then(v as _$ANPSAddNewPriceError));
 
   @override
-  ANPSAddNewPriceError get _value => super._value as ANPSAddNewPriceError;
+  _$ANPSAddNewPriceError get _value => super._value as _$ANPSAddNewPriceError;
 
   @override
   $Res call({
     Object? props = freezed,
     Object? failure = freezed,
   }) {
-    return _then(ANPSAddNewPriceError(
+    return _then(_$ANPSAddNewPriceError(
       props: props == freezed
           ? _value.props
           : props // ignore: cast_nullable_to_non_nullable
@@ -2142,18 +2069,21 @@ class _$ANPSAddNewPriceError
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is ANPSAddNewPriceError &&
-            (identical(other.props, props) || other.props == props) &&
-            (identical(other.failure, failure) || other.failure == failure));
+            other is _$ANPSAddNewPriceError &&
+            const DeepCollectionEquality().equals(other.props, props) &&
+            const DeepCollectionEquality().equals(other.failure, failure));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, props, failure);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(props),
+      const DeepCollectionEquality().hash(failure));
 
   @JsonKey(ignore: true)
   @override
-  $ANPSAddNewPriceErrorCopyWith<ANPSAddNewPriceError> get copyWith =>
-      _$ANPSAddNewPriceErrorCopyWithImpl<ANPSAddNewPriceError>(
+  _$$ANPSAddNewPriceErrorCopyWith<_$ANPSAddNewPriceError> get copyWith =>
+      __$$ANPSAddNewPriceErrorCopyWithImpl<_$ANPSAddNewPriceError>(
           this, _$identity);
 
   @override
@@ -2263,31 +2193,17 @@ class _$ANPSAddNewPriceError
 
 abstract class ANPSAddNewPriceError implements AddNewPriceScreenState {
   const factory ANPSAddNewPriceError(
-      {required AddNewPriceScreenProps props,
-      required Failure failure}) = _$ANPSAddNewPriceError;
+      {required final AddNewPriceScreenProps props,
+      required final Failure failure}) = _$ANPSAddNewPriceError;
 
   @override
-  AddNewPriceScreenProps get props;
-  Failure get failure;
+  AddNewPriceScreenProps get props => throw _privateConstructorUsedError;
+  Failure get failure => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  $ANPSAddNewPriceErrorCopyWith<ANPSAddNewPriceError> get copyWith =>
+  _$$ANPSAddNewPriceErrorCopyWith<_$ANPSAddNewPriceError> get copyWith =>
       throw _privateConstructorUsedError;
 }
-
-/// @nodoc
-class _$AddNewPriceScreenPropsTearOff {
-  const _$AddNewPriceScreenPropsTearOff();
-
-  _AddNewPriceScreenProps call({required List<Produce> produceList}) {
-    return _AddNewPriceScreenProps(
-      produceList: produceList,
-    );
-  }
-}
-
-/// @nodoc
-const $AddNewPriceScreenProps = _$AddNewPriceScreenPropsTearOff();
 
 /// @nodoc
 mixin _$AddNewPriceScreenProps {
@@ -2329,33 +2245,34 @@ class _$AddNewPriceScreenPropsCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$AddNewPriceScreenPropsCopyWith<$Res>
+abstract class _$$_AddNewPriceScreenPropsCopyWith<$Res>
     implements $AddNewPriceScreenPropsCopyWith<$Res> {
-  factory _$AddNewPriceScreenPropsCopyWith(_AddNewPriceScreenProps value,
-          $Res Function(_AddNewPriceScreenProps) then) =
-      __$AddNewPriceScreenPropsCopyWithImpl<$Res>;
+  factory _$$_AddNewPriceScreenPropsCopyWith(_$_AddNewPriceScreenProps value,
+          $Res Function(_$_AddNewPriceScreenProps) then) =
+      __$$_AddNewPriceScreenPropsCopyWithImpl<$Res>;
   @override
   $Res call({List<Produce> produceList});
 }
 
 /// @nodoc
-class __$AddNewPriceScreenPropsCopyWithImpl<$Res>
+class __$$_AddNewPriceScreenPropsCopyWithImpl<$Res>
     extends _$AddNewPriceScreenPropsCopyWithImpl<$Res>
-    implements _$AddNewPriceScreenPropsCopyWith<$Res> {
-  __$AddNewPriceScreenPropsCopyWithImpl(_AddNewPriceScreenProps _value,
-      $Res Function(_AddNewPriceScreenProps) _then)
-      : super(_value, (v) => _then(v as _AddNewPriceScreenProps));
+    implements _$$_AddNewPriceScreenPropsCopyWith<$Res> {
+  __$$_AddNewPriceScreenPropsCopyWithImpl(_$_AddNewPriceScreenProps _value,
+      $Res Function(_$_AddNewPriceScreenProps) _then)
+      : super(_value, (v) => _then(v as _$_AddNewPriceScreenProps));
 
   @override
-  _AddNewPriceScreenProps get _value => super._value as _AddNewPriceScreenProps;
+  _$_AddNewPriceScreenProps get _value =>
+      super._value as _$_AddNewPriceScreenProps;
 
   @override
   $Res call({
     Object? produceList = freezed,
   }) {
-    return _then(_AddNewPriceScreenProps(
+    return _then(_$_AddNewPriceScreenProps(
       produceList: produceList == freezed
-          ? _value.produceList
+          ? _value._produceList
           : produceList // ignore: cast_nullable_to_non_nullable
               as List<Produce>,
     ));
@@ -2367,10 +2284,15 @@ class __$AddNewPriceScreenPropsCopyWithImpl<$Res>
 class _$_AddNewPriceScreenProps
     with DiagnosticableTreeMixin
     implements _AddNewPriceScreenProps {
-  const _$_AddNewPriceScreenProps({required this.produceList});
+  const _$_AddNewPriceScreenProps({required final List<Produce> produceList})
+      : _produceList = produceList;
 
+  final List<Produce> _produceList;
   @override
-  final List<Produce> produceList;
+  List<Produce> get produceList {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_produceList);
+  }
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -2389,30 +2311,30 @@ class _$_AddNewPriceScreenProps
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _AddNewPriceScreenProps &&
+            other is _$_AddNewPriceScreenProps &&
             const DeepCollectionEquality()
-                .equals(other.produceList, produceList));
+                .equals(other._produceList, _produceList));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(produceList));
+      runtimeType, const DeepCollectionEquality().hash(_produceList));
 
   @JsonKey(ignore: true)
   @override
-  _$AddNewPriceScreenPropsCopyWith<_AddNewPriceScreenProps> get copyWith =>
-      __$AddNewPriceScreenPropsCopyWithImpl<_AddNewPriceScreenProps>(
+  _$$_AddNewPriceScreenPropsCopyWith<_$_AddNewPriceScreenProps> get copyWith =>
+      __$$_AddNewPriceScreenPropsCopyWithImpl<_$_AddNewPriceScreenProps>(
           this, _$identity);
 }
 
 abstract class _AddNewPriceScreenProps implements AddNewPriceScreenProps {
-  const factory _AddNewPriceScreenProps({required List<Produce> produceList}) =
-      _$_AddNewPriceScreenProps;
+  const factory _AddNewPriceScreenProps(
+      {required final List<Produce> produceList}) = _$_AddNewPriceScreenProps;
 
   @override
-  List<Produce> get produceList;
+  List<Produce> get produceList => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$AddNewPriceScreenPropsCopyWith<_AddNewPriceScreenProps> get copyWith =>
+  _$$_AddNewPriceScreenPropsCopyWith<_$_AddNewPriceScreenProps> get copyWith =>
       throw _privateConstructorUsedError;
 }

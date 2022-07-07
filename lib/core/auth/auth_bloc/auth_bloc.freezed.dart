@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'auth_bloc.dart';
@@ -11,52 +12,7 @@ part of 'auth_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$AuthEventTearOff {
-  const _$AuthEventTearOff();
-
-  _AEStarted started() {
-    return const _AEStarted();
-  }
-
-  _AEExecLoginWithEmailAndPassword execLoginWithEmailAndPassword(
-      {required String email, required String password}) {
-    return _AEExecLoginWithEmailAndPassword(
-      email: email,
-      password: password,
-    );
-  }
-
-  _AEExecRegisterWithEmailAndPassword execRegisterWithEmailAndPassword(
-      {required String email,
-      required String password,
-      required String username}) {
-    return _AEExecRegisterWithEmailAndPassword(
-      email: email,
-      password: password,
-      username: username,
-    );
-  }
-
-  _AEExecRetrieveUserData execRetrieveUserData() {
-    return const _AEExecRetrieveUserData();
-  }
-
-  _AEExecSignOut execSignOut() {
-    return const _AEExecSignOut();
-  }
-
-  _AEExecIsAdmin execIsAdmin(String uid) {
-    return _AEExecIsAdmin(
-      uid,
-    );
-  }
-}
-
-/// @nodoc
-const $AuthEvent = _$AuthEventTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$AuthEvent {
@@ -153,20 +109,21 @@ class _$AuthEventCopyWithImpl<$Res> implements $AuthEventCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$AEStartedCopyWith<$Res> {
-  factory _$AEStartedCopyWith(
-          _AEStarted value, $Res Function(_AEStarted) then) =
-      __$AEStartedCopyWithImpl<$Res>;
+abstract class _$$_AEStartedCopyWith<$Res> {
+  factory _$$_AEStartedCopyWith(
+          _$_AEStarted value, $Res Function(_$_AEStarted) then) =
+      __$$_AEStartedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$AEStartedCopyWithImpl<$Res> extends _$AuthEventCopyWithImpl<$Res>
-    implements _$AEStartedCopyWith<$Res> {
-  __$AEStartedCopyWithImpl(_AEStarted _value, $Res Function(_AEStarted) _then)
-      : super(_value, (v) => _then(v as _AEStarted));
+class __$$_AEStartedCopyWithImpl<$Res> extends _$AuthEventCopyWithImpl<$Res>
+    implements _$$_AEStartedCopyWith<$Res> {
+  __$$_AEStartedCopyWithImpl(
+      _$_AEStarted _value, $Res Function(_$_AEStarted) _then)
+      : super(_value, (v) => _then(v as _$_AEStarted));
 
   @override
-  _AEStarted get _value => super._value as _AEStarted;
+  _$_AEStarted get _value => super._value as _$_AEStarted;
 }
 
 /// @nodoc
@@ -182,7 +139,7 @@ class _$_AEStarted implements _AEStarted {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _AEStarted);
+        (other.runtimeType == runtimeType && other is _$_AEStarted);
   }
 
   @override
@@ -293,33 +250,33 @@ abstract class _AEStarted implements AuthEvent {
 }
 
 /// @nodoc
-abstract class _$AEExecLoginWithEmailAndPasswordCopyWith<$Res> {
-  factory _$AEExecLoginWithEmailAndPasswordCopyWith(
-          _AEExecLoginWithEmailAndPassword value,
-          $Res Function(_AEExecLoginWithEmailAndPassword) then) =
-      __$AEExecLoginWithEmailAndPasswordCopyWithImpl<$Res>;
+abstract class _$$_AEExecLoginWithEmailAndPasswordCopyWith<$Res> {
+  factory _$$_AEExecLoginWithEmailAndPasswordCopyWith(
+          _$_AEExecLoginWithEmailAndPassword value,
+          $Res Function(_$_AEExecLoginWithEmailAndPassword) then) =
+      __$$_AEExecLoginWithEmailAndPasswordCopyWithImpl<$Res>;
   $Res call({String email, String password});
 }
 
 /// @nodoc
-class __$AEExecLoginWithEmailAndPasswordCopyWithImpl<$Res>
+class __$$_AEExecLoginWithEmailAndPasswordCopyWithImpl<$Res>
     extends _$AuthEventCopyWithImpl<$Res>
-    implements _$AEExecLoginWithEmailAndPasswordCopyWith<$Res> {
-  __$AEExecLoginWithEmailAndPasswordCopyWithImpl(
-      _AEExecLoginWithEmailAndPassword _value,
-      $Res Function(_AEExecLoginWithEmailAndPassword) _then)
-      : super(_value, (v) => _then(v as _AEExecLoginWithEmailAndPassword));
+    implements _$$_AEExecLoginWithEmailAndPasswordCopyWith<$Res> {
+  __$$_AEExecLoginWithEmailAndPasswordCopyWithImpl(
+      _$_AEExecLoginWithEmailAndPassword _value,
+      $Res Function(_$_AEExecLoginWithEmailAndPassword) _then)
+      : super(_value, (v) => _then(v as _$_AEExecLoginWithEmailAndPassword));
 
   @override
-  _AEExecLoginWithEmailAndPassword get _value =>
-      super._value as _AEExecLoginWithEmailAndPassword;
+  _$_AEExecLoginWithEmailAndPassword get _value =>
+      super._value as _$_AEExecLoginWithEmailAndPassword;
 
   @override
   $Res call({
     Object? email = freezed,
     Object? password = freezed,
   }) {
-    return _then(_AEExecLoginWithEmailAndPassword(
+    return _then(_$_AEExecLoginWithEmailAndPassword(
       email: email == freezed
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
@@ -353,20 +310,23 @@ class _$_AEExecLoginWithEmailAndPassword
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _AEExecLoginWithEmailAndPassword &&
-            (identical(other.email, email) || other.email == email) &&
-            (identical(other.password, password) ||
-                other.password == password));
+            other is _$_AEExecLoginWithEmailAndPassword &&
+            const DeepCollectionEquality().equals(other.email, email) &&
+            const DeepCollectionEquality().equals(other.password, password));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, email, password);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(email),
+      const DeepCollectionEquality().hash(password));
 
   @JsonKey(ignore: true)
   @override
-  _$AEExecLoginWithEmailAndPasswordCopyWith<_AEExecLoginWithEmailAndPassword>
-      get copyWith => __$AEExecLoginWithEmailAndPasswordCopyWithImpl<
-          _AEExecLoginWithEmailAndPassword>(this, _$identity);
+  _$$_AEExecLoginWithEmailAndPasswordCopyWith<
+          _$_AEExecLoginWithEmailAndPassword>
+      get copyWith => __$$_AEExecLoginWithEmailAndPasswordCopyWithImpl<
+          _$_AEExecLoginWithEmailAndPassword>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -470,37 +430,38 @@ class _$_AEExecLoginWithEmailAndPassword
 
 abstract class _AEExecLoginWithEmailAndPassword implements AuthEvent {
   const factory _AEExecLoginWithEmailAndPassword(
-      {required String email,
-      required String password}) = _$_AEExecLoginWithEmailAndPassword;
+      {required final String email,
+      required final String password}) = _$_AEExecLoginWithEmailAndPassword;
 
-  String get email;
-  String get password;
+  String get email => throw _privateConstructorUsedError;
+  String get password => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$AEExecLoginWithEmailAndPasswordCopyWith<_AEExecLoginWithEmailAndPassword>
+  _$$_AEExecLoginWithEmailAndPasswordCopyWith<
+          _$_AEExecLoginWithEmailAndPassword>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$AEExecRegisterWithEmailAndPasswordCopyWith<$Res> {
-  factory _$AEExecRegisterWithEmailAndPasswordCopyWith(
-          _AEExecRegisterWithEmailAndPassword value,
-          $Res Function(_AEExecRegisterWithEmailAndPassword) then) =
-      __$AEExecRegisterWithEmailAndPasswordCopyWithImpl<$Res>;
+abstract class _$$_AEExecRegisterWithEmailAndPasswordCopyWith<$Res> {
+  factory _$$_AEExecRegisterWithEmailAndPasswordCopyWith(
+          _$_AEExecRegisterWithEmailAndPassword value,
+          $Res Function(_$_AEExecRegisterWithEmailAndPassword) then) =
+      __$$_AEExecRegisterWithEmailAndPasswordCopyWithImpl<$Res>;
   $Res call({String email, String password, String username});
 }
 
 /// @nodoc
-class __$AEExecRegisterWithEmailAndPasswordCopyWithImpl<$Res>
+class __$$_AEExecRegisterWithEmailAndPasswordCopyWithImpl<$Res>
     extends _$AuthEventCopyWithImpl<$Res>
-    implements _$AEExecRegisterWithEmailAndPasswordCopyWith<$Res> {
-  __$AEExecRegisterWithEmailAndPasswordCopyWithImpl(
-      _AEExecRegisterWithEmailAndPassword _value,
-      $Res Function(_AEExecRegisterWithEmailAndPassword) _then)
-      : super(_value, (v) => _then(v as _AEExecRegisterWithEmailAndPassword));
+    implements _$$_AEExecRegisterWithEmailAndPasswordCopyWith<$Res> {
+  __$$_AEExecRegisterWithEmailAndPasswordCopyWithImpl(
+      _$_AEExecRegisterWithEmailAndPassword _value,
+      $Res Function(_$_AEExecRegisterWithEmailAndPassword) _then)
+      : super(_value, (v) => _then(v as _$_AEExecRegisterWithEmailAndPassword));
 
   @override
-  _AEExecRegisterWithEmailAndPassword get _value =>
-      super._value as _AEExecRegisterWithEmailAndPassword;
+  _$_AEExecRegisterWithEmailAndPassword get _value =>
+      super._value as _$_AEExecRegisterWithEmailAndPassword;
 
   @override
   $Res call({
@@ -508,7 +469,7 @@ class __$AEExecRegisterWithEmailAndPasswordCopyWithImpl<$Res>
     Object? password = freezed,
     Object? username = freezed,
   }) {
-    return _then(_AEExecRegisterWithEmailAndPassword(
+    return _then(_$_AEExecRegisterWithEmailAndPassword(
       email: email == freezed
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
@@ -548,23 +509,25 @@ class _$_AEExecRegisterWithEmailAndPassword
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _AEExecRegisterWithEmailAndPassword &&
-            (identical(other.email, email) || other.email == email) &&
-            (identical(other.password, password) ||
-                other.password == password) &&
-            (identical(other.username, username) ||
-                other.username == username));
+            other is _$_AEExecRegisterWithEmailAndPassword &&
+            const DeepCollectionEquality().equals(other.email, email) &&
+            const DeepCollectionEquality().equals(other.password, password) &&
+            const DeepCollectionEquality().equals(other.username, username));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, email, password, username);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(email),
+      const DeepCollectionEquality().hash(password),
+      const DeepCollectionEquality().hash(username));
 
   @JsonKey(ignore: true)
   @override
-  _$AEExecRegisterWithEmailAndPasswordCopyWith<
-          _AEExecRegisterWithEmailAndPassword>
-      get copyWith => __$AEExecRegisterWithEmailAndPasswordCopyWithImpl<
-          _AEExecRegisterWithEmailAndPassword>(this, _$identity);
+  _$$_AEExecRegisterWithEmailAndPasswordCopyWith<
+          _$_AEExecRegisterWithEmailAndPassword>
+      get copyWith => __$$_AEExecRegisterWithEmailAndPasswordCopyWithImpl<
+          _$_AEExecRegisterWithEmailAndPassword>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -668,36 +631,37 @@ class _$_AEExecRegisterWithEmailAndPassword
 
 abstract class _AEExecRegisterWithEmailAndPassword implements AuthEvent {
   const factory _AEExecRegisterWithEmailAndPassword(
-      {required String email,
-      required String password,
-      required String username}) = _$_AEExecRegisterWithEmailAndPassword;
+      {required final String email,
+      required final String password,
+      required final String username}) = _$_AEExecRegisterWithEmailAndPassword;
 
-  String get email;
-  String get password;
-  String get username;
+  String get email => throw _privateConstructorUsedError;
+  String get password => throw _privateConstructorUsedError;
+  String get username => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$AEExecRegisterWithEmailAndPasswordCopyWith<
-          _AEExecRegisterWithEmailAndPassword>
+  _$$_AEExecRegisterWithEmailAndPasswordCopyWith<
+          _$_AEExecRegisterWithEmailAndPassword>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$AEExecRetrieveUserDataCopyWith<$Res> {
-  factory _$AEExecRetrieveUserDataCopyWith(_AEExecRetrieveUserData value,
-          $Res Function(_AEExecRetrieveUserData) then) =
-      __$AEExecRetrieveUserDataCopyWithImpl<$Res>;
+abstract class _$$_AEExecRetrieveUserDataCopyWith<$Res> {
+  factory _$$_AEExecRetrieveUserDataCopyWith(_$_AEExecRetrieveUserData value,
+          $Res Function(_$_AEExecRetrieveUserData) then) =
+      __$$_AEExecRetrieveUserDataCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$AEExecRetrieveUserDataCopyWithImpl<$Res>
+class __$$_AEExecRetrieveUserDataCopyWithImpl<$Res>
     extends _$AuthEventCopyWithImpl<$Res>
-    implements _$AEExecRetrieveUserDataCopyWith<$Res> {
-  __$AEExecRetrieveUserDataCopyWithImpl(_AEExecRetrieveUserData _value,
-      $Res Function(_AEExecRetrieveUserData) _then)
-      : super(_value, (v) => _then(v as _AEExecRetrieveUserData));
+    implements _$$_AEExecRetrieveUserDataCopyWith<$Res> {
+  __$$_AEExecRetrieveUserDataCopyWithImpl(_$_AEExecRetrieveUserData _value,
+      $Res Function(_$_AEExecRetrieveUserData) _then)
+      : super(_value, (v) => _then(v as _$_AEExecRetrieveUserData));
 
   @override
-  _AEExecRetrieveUserData get _value => super._value as _AEExecRetrieveUserData;
+  _$_AEExecRetrieveUserData get _value =>
+      super._value as _$_AEExecRetrieveUserData;
 }
 
 /// @nodoc
@@ -713,7 +677,8 @@ class _$_AEExecRetrieveUserData implements _AEExecRetrieveUserData {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _AEExecRetrieveUserData);
+        (other.runtimeType == runtimeType &&
+            other is _$_AEExecRetrieveUserData);
   }
 
   @override
@@ -824,21 +789,21 @@ abstract class _AEExecRetrieveUserData implements AuthEvent {
 }
 
 /// @nodoc
-abstract class _$AEExecSignOutCopyWith<$Res> {
-  factory _$AEExecSignOutCopyWith(
-          _AEExecSignOut value, $Res Function(_AEExecSignOut) then) =
-      __$AEExecSignOutCopyWithImpl<$Res>;
+abstract class _$$_AEExecSignOutCopyWith<$Res> {
+  factory _$$_AEExecSignOutCopyWith(
+          _$_AEExecSignOut value, $Res Function(_$_AEExecSignOut) then) =
+      __$$_AEExecSignOutCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$AEExecSignOutCopyWithImpl<$Res> extends _$AuthEventCopyWithImpl<$Res>
-    implements _$AEExecSignOutCopyWith<$Res> {
-  __$AEExecSignOutCopyWithImpl(
-      _AEExecSignOut _value, $Res Function(_AEExecSignOut) _then)
-      : super(_value, (v) => _then(v as _AEExecSignOut));
+class __$$_AEExecSignOutCopyWithImpl<$Res> extends _$AuthEventCopyWithImpl<$Res>
+    implements _$$_AEExecSignOutCopyWith<$Res> {
+  __$$_AEExecSignOutCopyWithImpl(
+      _$_AEExecSignOut _value, $Res Function(_$_AEExecSignOut) _then)
+      : super(_value, (v) => _then(v as _$_AEExecSignOut));
 
   @override
-  _AEExecSignOut get _value => super._value as _AEExecSignOut;
+  _$_AEExecSignOut get _value => super._value as _$_AEExecSignOut;
 }
 
 /// @nodoc
@@ -854,7 +819,7 @@ class _$_AEExecSignOut implements _AEExecSignOut {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _AEExecSignOut);
+        (other.runtimeType == runtimeType && other is _$_AEExecSignOut);
   }
 
   @override
@@ -965,28 +930,28 @@ abstract class _AEExecSignOut implements AuthEvent {
 }
 
 /// @nodoc
-abstract class _$AEExecIsAdminCopyWith<$Res> {
-  factory _$AEExecIsAdminCopyWith(
-          _AEExecIsAdmin value, $Res Function(_AEExecIsAdmin) then) =
-      __$AEExecIsAdminCopyWithImpl<$Res>;
+abstract class _$$_AEExecIsAdminCopyWith<$Res> {
+  factory _$$_AEExecIsAdminCopyWith(
+          _$_AEExecIsAdmin value, $Res Function(_$_AEExecIsAdmin) then) =
+      __$$_AEExecIsAdminCopyWithImpl<$Res>;
   $Res call({String uid});
 }
 
 /// @nodoc
-class __$AEExecIsAdminCopyWithImpl<$Res> extends _$AuthEventCopyWithImpl<$Res>
-    implements _$AEExecIsAdminCopyWith<$Res> {
-  __$AEExecIsAdminCopyWithImpl(
-      _AEExecIsAdmin _value, $Res Function(_AEExecIsAdmin) _then)
-      : super(_value, (v) => _then(v as _AEExecIsAdmin));
+class __$$_AEExecIsAdminCopyWithImpl<$Res> extends _$AuthEventCopyWithImpl<$Res>
+    implements _$$_AEExecIsAdminCopyWith<$Res> {
+  __$$_AEExecIsAdminCopyWithImpl(
+      _$_AEExecIsAdmin _value, $Res Function(_$_AEExecIsAdmin) _then)
+      : super(_value, (v) => _then(v as _$_AEExecIsAdmin));
 
   @override
-  _AEExecIsAdmin get _value => super._value as _AEExecIsAdmin;
+  _$_AEExecIsAdmin get _value => super._value as _$_AEExecIsAdmin;
 
   @override
   $Res call({
     Object? uid = freezed,
   }) {
-    return _then(_AEExecIsAdmin(
+    return _then(_$_AEExecIsAdmin(
       uid == freezed
           ? _value.uid
           : uid // ignore: cast_nullable_to_non_nullable
@@ -1012,17 +977,18 @@ class _$_AEExecIsAdmin implements _AEExecIsAdmin {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _AEExecIsAdmin &&
-            (identical(other.uid, uid) || other.uid == uid));
+            other is _$_AEExecIsAdmin &&
+            const DeepCollectionEquality().equals(other.uid, uid));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, uid);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(uid));
 
   @JsonKey(ignore: true)
   @override
-  _$AEExecIsAdminCopyWith<_AEExecIsAdmin> get copyWith =>
-      __$AEExecIsAdminCopyWithImpl<_AEExecIsAdmin>(this, _$identity);
+  _$$_AEExecIsAdminCopyWith<_$_AEExecIsAdmin> get copyWith =>
+      __$$_AEExecIsAdminCopyWithImpl<_$_AEExecIsAdmin>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1125,137 +1091,13 @@ class _$_AEExecIsAdmin implements _AEExecIsAdmin {
 }
 
 abstract class _AEExecIsAdmin implements AuthEvent {
-  const factory _AEExecIsAdmin(String uid) = _$_AEExecIsAdmin;
+  const factory _AEExecIsAdmin(final String uid) = _$_AEExecIsAdmin;
 
-  String get uid;
+  String get uid => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$AEExecIsAdminCopyWith<_AEExecIsAdmin> get copyWith =>
+  _$$_AEExecIsAdminCopyWith<_$_AEExecIsAdmin> get copyWith =>
       throw _privateConstructorUsedError;
 }
-
-/// @nodoc
-class _$AuthStateTearOff {
-  const _$AuthStateTearOff();
-
-  ASInitial initial() {
-    return const ASInitial();
-  }
-
-  ASIdle idle() {
-    return const ASIdle();
-  }
-
-  ASLoading loading() {
-    return const ASLoading();
-  }
-
-  ASLoginLoading loginLoading() {
-    return const ASLoginLoading();
-  }
-
-  ASLoginSuccess loginSuccess({required FarmhubUser user}) {
-    return ASLoginSuccess(
-      user: user,
-    );
-  }
-
-  ASLoginError loginError(
-      {required String code,
-      required String message,
-      required StackTrace stackTrace}) {
-    return ASLoginError(
-      code: code,
-      message: message,
-      stackTrace: stackTrace,
-    );
-  }
-
-  ASRegisterLoading registerLoading() {
-    return const ASRegisterLoading();
-  }
-
-  ASRegisterSuccess registerSuccess({required FarmhubUser user}) {
-    return ASRegisterSuccess(
-      user: user,
-    );
-  }
-
-  ASRegisterError registerError(
-      {required String code,
-      required String message,
-      required StackTrace stackTrace}) {
-    return ASRegisterError(
-      code: code,
-      message: message,
-      stackTrace: stackTrace,
-    );
-  }
-
-  ASSignOutLoading signOutLoading() {
-    return const ASSignOutLoading();
-  }
-
-  ASSignOutSuccess signOutSuccess() {
-    return const ASSignOutSuccess();
-  }
-
-  ASSignOutError signOutError(
-      {required String code,
-      required String message,
-      required StackTrace stackTrace}) {
-    return ASSignOutError(
-      code: code,
-      message: message,
-      stackTrace: stackTrace,
-    );
-  }
-
-  ASRetrieveUserDataLoading retrieveUserDataLoading() {
-    return const ASRetrieveUserDataLoading();
-  }
-
-  ASRetrieveUserDataSuccess retrieveUserDataSuccess(
-      {required FarmhubUser farmhubUser}) {
-    return ASRetrieveUserDataSuccess(
-      farmhubUser: farmhubUser,
-    );
-  }
-
-  ASRetrieveUserDataError retrieveUserDataError(
-      {required String code,
-      required String message,
-      required StackTrace stackTrace}) {
-    return ASRetrieveUserDataError(
-      code: code,
-      message: message,
-      stackTrace: stackTrace,
-    );
-  }
-
-  ASIsAdminLoading isAdminLoading() {
-    return const ASIsAdminLoading();
-  }
-
-  ASIsAdminSuccess isAdminSuccess({required bool isAdmin}) {
-    return ASIsAdminSuccess(
-      isAdmin: isAdmin,
-    );
-  }
-
-  ASIsAdminError isAdminError(
-      {required String code,
-      required String message,
-      required StackTrace stackTrace}) {
-    return ASIsAdminError(
-      code: code,
-      message: message,
-      stackTrace: stackTrace,
-    );
-  }
-}
-
-/// @nodoc
-const $AuthState = _$AuthStateTearOff();
 
 /// @nodoc
 mixin _$AuthState {
@@ -1434,19 +1276,21 @@ class _$AuthStateCopyWithImpl<$Res> implements $AuthStateCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class $ASInitialCopyWith<$Res> {
-  factory $ASInitialCopyWith(ASInitial value, $Res Function(ASInitial) then) =
-      _$ASInitialCopyWithImpl<$Res>;
+abstract class _$$ASInitialCopyWith<$Res> {
+  factory _$$ASInitialCopyWith(
+          _$ASInitial value, $Res Function(_$ASInitial) then) =
+      __$$ASInitialCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$ASInitialCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
-    implements $ASInitialCopyWith<$Res> {
-  _$ASInitialCopyWithImpl(ASInitial _value, $Res Function(ASInitial) _then)
-      : super(_value, (v) => _then(v as ASInitial));
+class __$$ASInitialCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
+    implements _$$ASInitialCopyWith<$Res> {
+  __$$ASInitialCopyWithImpl(
+      _$ASInitial _value, $Res Function(_$ASInitial) _then)
+      : super(_value, (v) => _then(v as _$ASInitial));
 
   @override
-  ASInitial get _value => super._value as ASInitial;
+  _$ASInitial get _value => super._value as _$ASInitial;
 }
 
 /// @nodoc
@@ -1462,7 +1306,7 @@ class _$ASInitial implements ASInitial {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is ASInitial);
+        (other.runtimeType == runtimeType && other is _$ASInitial);
   }
 
   @override
@@ -1655,19 +1499,19 @@ abstract class ASInitial implements AuthState {
 }
 
 /// @nodoc
-abstract class $ASIdleCopyWith<$Res> {
-  factory $ASIdleCopyWith(ASIdle value, $Res Function(ASIdle) then) =
-      _$ASIdleCopyWithImpl<$Res>;
+abstract class _$$ASIdleCopyWith<$Res> {
+  factory _$$ASIdleCopyWith(_$ASIdle value, $Res Function(_$ASIdle) then) =
+      __$$ASIdleCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$ASIdleCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
-    implements $ASIdleCopyWith<$Res> {
-  _$ASIdleCopyWithImpl(ASIdle _value, $Res Function(ASIdle) _then)
-      : super(_value, (v) => _then(v as ASIdle));
+class __$$ASIdleCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
+    implements _$$ASIdleCopyWith<$Res> {
+  __$$ASIdleCopyWithImpl(_$ASIdle _value, $Res Function(_$ASIdle) _then)
+      : super(_value, (v) => _then(v as _$ASIdle));
 
   @override
-  ASIdle get _value => super._value as ASIdle;
+  _$ASIdle get _value => super._value as _$ASIdle;
 }
 
 /// @nodoc
@@ -1683,7 +1527,7 @@ class _$ASIdle implements ASIdle {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is ASIdle);
+        (other.runtimeType == runtimeType && other is _$ASIdle);
   }
 
   @override
@@ -1876,19 +1720,21 @@ abstract class ASIdle implements AuthState {
 }
 
 /// @nodoc
-abstract class $ASLoadingCopyWith<$Res> {
-  factory $ASLoadingCopyWith(ASLoading value, $Res Function(ASLoading) then) =
-      _$ASLoadingCopyWithImpl<$Res>;
+abstract class _$$ASLoadingCopyWith<$Res> {
+  factory _$$ASLoadingCopyWith(
+          _$ASLoading value, $Res Function(_$ASLoading) then) =
+      __$$ASLoadingCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$ASLoadingCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
-    implements $ASLoadingCopyWith<$Res> {
-  _$ASLoadingCopyWithImpl(ASLoading _value, $Res Function(ASLoading) _then)
-      : super(_value, (v) => _then(v as ASLoading));
+class __$$ASLoadingCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
+    implements _$$ASLoadingCopyWith<$Res> {
+  __$$ASLoadingCopyWithImpl(
+      _$ASLoading _value, $Res Function(_$ASLoading) _then)
+      : super(_value, (v) => _then(v as _$ASLoading));
 
   @override
-  ASLoading get _value => super._value as ASLoading;
+  _$ASLoading get _value => super._value as _$ASLoading;
 }
 
 /// @nodoc
@@ -1904,7 +1750,7 @@ class _$ASLoading implements ASLoading {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is ASLoading);
+        (other.runtimeType == runtimeType && other is _$ASLoading);
   }
 
   @override
@@ -2097,21 +1943,21 @@ abstract class ASLoading implements AuthState {
 }
 
 /// @nodoc
-abstract class $ASLoginLoadingCopyWith<$Res> {
-  factory $ASLoginLoadingCopyWith(
-          ASLoginLoading value, $Res Function(ASLoginLoading) then) =
-      _$ASLoginLoadingCopyWithImpl<$Res>;
+abstract class _$$ASLoginLoadingCopyWith<$Res> {
+  factory _$$ASLoginLoadingCopyWith(
+          _$ASLoginLoading value, $Res Function(_$ASLoginLoading) then) =
+      __$$ASLoginLoadingCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$ASLoginLoadingCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
-    implements $ASLoginLoadingCopyWith<$Res> {
-  _$ASLoginLoadingCopyWithImpl(
-      ASLoginLoading _value, $Res Function(ASLoginLoading) _then)
-      : super(_value, (v) => _then(v as ASLoginLoading));
+class __$$ASLoginLoadingCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
+    implements _$$ASLoginLoadingCopyWith<$Res> {
+  __$$ASLoginLoadingCopyWithImpl(
+      _$ASLoginLoading _value, $Res Function(_$ASLoginLoading) _then)
+      : super(_value, (v) => _then(v as _$ASLoginLoading));
 
   @override
-  ASLoginLoading get _value => super._value as ASLoginLoading;
+  _$ASLoginLoading get _value => super._value as _$ASLoginLoading;
 }
 
 /// @nodoc
@@ -2127,7 +1973,7 @@ class _$ASLoginLoading implements ASLoginLoading {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is ASLoginLoading);
+        (other.runtimeType == runtimeType && other is _$ASLoginLoading);
   }
 
   @override
@@ -2320,30 +2166,30 @@ abstract class ASLoginLoading implements AuthState {
 }
 
 /// @nodoc
-abstract class $ASLoginSuccessCopyWith<$Res> {
-  factory $ASLoginSuccessCopyWith(
-          ASLoginSuccess value, $Res Function(ASLoginSuccess) then) =
-      _$ASLoginSuccessCopyWithImpl<$Res>;
+abstract class _$$ASLoginSuccessCopyWith<$Res> {
+  factory _$$ASLoginSuccessCopyWith(
+          _$ASLoginSuccess value, $Res Function(_$ASLoginSuccess) then) =
+      __$$ASLoginSuccessCopyWithImpl<$Res>;
   $Res call({FarmhubUser user});
 
   $FarmhubUserCopyWith<$Res> get user;
 }
 
 /// @nodoc
-class _$ASLoginSuccessCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
-    implements $ASLoginSuccessCopyWith<$Res> {
-  _$ASLoginSuccessCopyWithImpl(
-      ASLoginSuccess _value, $Res Function(ASLoginSuccess) _then)
-      : super(_value, (v) => _then(v as ASLoginSuccess));
+class __$$ASLoginSuccessCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
+    implements _$$ASLoginSuccessCopyWith<$Res> {
+  __$$ASLoginSuccessCopyWithImpl(
+      _$ASLoginSuccess _value, $Res Function(_$ASLoginSuccess) _then)
+      : super(_value, (v) => _then(v as _$ASLoginSuccess));
 
   @override
-  ASLoginSuccess get _value => super._value as ASLoginSuccess;
+  _$ASLoginSuccess get _value => super._value as _$ASLoginSuccess;
 
   @override
   $Res call({
     Object? user = freezed,
   }) {
-    return _then(ASLoginSuccess(
+    return _then(_$ASLoginSuccess(
       user: user == freezed
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
@@ -2376,17 +2222,18 @@ class _$ASLoginSuccess implements ASLoginSuccess {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is ASLoginSuccess &&
-            (identical(other.user, user) || other.user == user));
+            other is _$ASLoginSuccess &&
+            const DeepCollectionEquality().equals(other.user, user));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, user);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(user));
 
   @JsonKey(ignore: true)
   @override
-  $ASLoginSuccessCopyWith<ASLoginSuccess> get copyWith =>
-      _$ASLoginSuccessCopyWithImpl<ASLoginSuccess>(this, _$identity);
+  _$$ASLoginSuccessCopyWith<_$ASLoginSuccess> get copyWith =>
+      __$$ASLoginSuccessCopyWithImpl<_$ASLoginSuccess>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -2571,31 +2418,32 @@ class _$ASLoginSuccess implements ASLoginSuccess {
 }
 
 abstract class ASLoginSuccess implements AuthState {
-  const factory ASLoginSuccess({required FarmhubUser user}) = _$ASLoginSuccess;
+  const factory ASLoginSuccess({required final FarmhubUser user}) =
+      _$ASLoginSuccess;
 
-  FarmhubUser get user;
+  FarmhubUser get user => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ASLoginSuccessCopyWith<ASLoginSuccess> get copyWith =>
+  _$$ASLoginSuccessCopyWith<_$ASLoginSuccess> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ASLoginErrorCopyWith<$Res> {
-  factory $ASLoginErrorCopyWith(
-          ASLoginError value, $Res Function(ASLoginError) then) =
-      _$ASLoginErrorCopyWithImpl<$Res>;
+abstract class _$$ASLoginErrorCopyWith<$Res> {
+  factory _$$ASLoginErrorCopyWith(
+          _$ASLoginError value, $Res Function(_$ASLoginError) then) =
+      __$$ASLoginErrorCopyWithImpl<$Res>;
   $Res call({String code, String message, StackTrace stackTrace});
 }
 
 /// @nodoc
-class _$ASLoginErrorCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
-    implements $ASLoginErrorCopyWith<$Res> {
-  _$ASLoginErrorCopyWithImpl(
-      ASLoginError _value, $Res Function(ASLoginError) _then)
-      : super(_value, (v) => _then(v as ASLoginError));
+class __$$ASLoginErrorCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
+    implements _$$ASLoginErrorCopyWith<$Res> {
+  __$$ASLoginErrorCopyWithImpl(
+      _$ASLoginError _value, $Res Function(_$ASLoginError) _then)
+      : super(_value, (v) => _then(v as _$ASLoginError));
 
   @override
-  ASLoginError get _value => super._value as ASLoginError;
+  _$ASLoginError get _value => super._value as _$ASLoginError;
 
   @override
   $Res call({
@@ -2603,7 +2451,7 @@ class _$ASLoginErrorCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
     Object? message = freezed,
     Object? stackTrace = freezed,
   }) {
-    return _then(ASLoginError(
+    return _then(_$ASLoginError(
       code: code == freezed
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
@@ -2642,20 +2490,24 @@ class _$ASLoginError implements ASLoginError {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is ASLoginError &&
-            (identical(other.code, code) || other.code == code) &&
-            (identical(other.message, message) || other.message == message) &&
-            (identical(other.stackTrace, stackTrace) ||
-                other.stackTrace == stackTrace));
+            other is _$ASLoginError &&
+            const DeepCollectionEquality().equals(other.code, code) &&
+            const DeepCollectionEquality().equals(other.message, message) &&
+            const DeepCollectionEquality()
+                .equals(other.stackTrace, stackTrace));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, code, message, stackTrace);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(code),
+      const DeepCollectionEquality().hash(message),
+      const DeepCollectionEquality().hash(stackTrace));
 
   @JsonKey(ignore: true)
   @override
-  $ASLoginErrorCopyWith<ASLoginError> get copyWith =>
-      _$ASLoginErrorCopyWithImpl<ASLoginError>(this, _$identity);
+  _$$ASLoginErrorCopyWith<_$ASLoginError> get copyWith =>
+      __$$ASLoginErrorCopyWithImpl<_$ASLoginError>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -2841,35 +2693,35 @@ class _$ASLoginError implements ASLoginError {
 
 abstract class ASLoginError implements AuthState {
   const factory ASLoginError(
-      {required String code,
-      required String message,
-      required StackTrace stackTrace}) = _$ASLoginError;
+      {required final String code,
+      required final String message,
+      required final StackTrace stackTrace}) = _$ASLoginError;
 
-  String get code;
-  String get message;
-  StackTrace get stackTrace;
+  String get code => throw _privateConstructorUsedError;
+  String get message => throw _privateConstructorUsedError;
+  StackTrace get stackTrace => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ASLoginErrorCopyWith<ASLoginError> get copyWith =>
+  _$$ASLoginErrorCopyWith<_$ASLoginError> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ASRegisterLoadingCopyWith<$Res> {
-  factory $ASRegisterLoadingCopyWith(
-          ASRegisterLoading value, $Res Function(ASRegisterLoading) then) =
-      _$ASRegisterLoadingCopyWithImpl<$Res>;
+abstract class _$$ASRegisterLoadingCopyWith<$Res> {
+  factory _$$ASRegisterLoadingCopyWith(
+          _$ASRegisterLoading value, $Res Function(_$ASRegisterLoading) then) =
+      __$$ASRegisterLoadingCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$ASRegisterLoadingCopyWithImpl<$Res>
+class __$$ASRegisterLoadingCopyWithImpl<$Res>
     extends _$AuthStateCopyWithImpl<$Res>
-    implements $ASRegisterLoadingCopyWith<$Res> {
-  _$ASRegisterLoadingCopyWithImpl(
-      ASRegisterLoading _value, $Res Function(ASRegisterLoading) _then)
-      : super(_value, (v) => _then(v as ASRegisterLoading));
+    implements _$$ASRegisterLoadingCopyWith<$Res> {
+  __$$ASRegisterLoadingCopyWithImpl(
+      _$ASRegisterLoading _value, $Res Function(_$ASRegisterLoading) _then)
+      : super(_value, (v) => _then(v as _$ASRegisterLoading));
 
   @override
-  ASRegisterLoading get _value => super._value as ASRegisterLoading;
+  _$ASRegisterLoading get _value => super._value as _$ASRegisterLoading;
 }
 
 /// @nodoc
@@ -2885,7 +2737,7 @@ class _$ASRegisterLoading implements ASRegisterLoading {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is ASRegisterLoading);
+        (other.runtimeType == runtimeType && other is _$ASRegisterLoading);
   }
 
   @override
@@ -3078,31 +2930,31 @@ abstract class ASRegisterLoading implements AuthState {
 }
 
 /// @nodoc
-abstract class $ASRegisterSuccessCopyWith<$Res> {
-  factory $ASRegisterSuccessCopyWith(
-          ASRegisterSuccess value, $Res Function(ASRegisterSuccess) then) =
-      _$ASRegisterSuccessCopyWithImpl<$Res>;
+abstract class _$$ASRegisterSuccessCopyWith<$Res> {
+  factory _$$ASRegisterSuccessCopyWith(
+          _$ASRegisterSuccess value, $Res Function(_$ASRegisterSuccess) then) =
+      __$$ASRegisterSuccessCopyWithImpl<$Res>;
   $Res call({FarmhubUser user});
 
   $FarmhubUserCopyWith<$Res> get user;
 }
 
 /// @nodoc
-class _$ASRegisterSuccessCopyWithImpl<$Res>
+class __$$ASRegisterSuccessCopyWithImpl<$Res>
     extends _$AuthStateCopyWithImpl<$Res>
-    implements $ASRegisterSuccessCopyWith<$Res> {
-  _$ASRegisterSuccessCopyWithImpl(
-      ASRegisterSuccess _value, $Res Function(ASRegisterSuccess) _then)
-      : super(_value, (v) => _then(v as ASRegisterSuccess));
+    implements _$$ASRegisterSuccessCopyWith<$Res> {
+  __$$ASRegisterSuccessCopyWithImpl(
+      _$ASRegisterSuccess _value, $Res Function(_$ASRegisterSuccess) _then)
+      : super(_value, (v) => _then(v as _$ASRegisterSuccess));
 
   @override
-  ASRegisterSuccess get _value => super._value as ASRegisterSuccess;
+  _$ASRegisterSuccess get _value => super._value as _$ASRegisterSuccess;
 
   @override
   $Res call({
     Object? user = freezed,
   }) {
-    return _then(ASRegisterSuccess(
+    return _then(_$ASRegisterSuccess(
       user: user == freezed
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
@@ -3135,17 +2987,18 @@ class _$ASRegisterSuccess implements ASRegisterSuccess {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is ASRegisterSuccess &&
-            (identical(other.user, user) || other.user == user));
+            other is _$ASRegisterSuccess &&
+            const DeepCollectionEquality().equals(other.user, user));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, user);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(user));
 
   @JsonKey(ignore: true)
   @override
-  $ASRegisterSuccessCopyWith<ASRegisterSuccess> get copyWith =>
-      _$ASRegisterSuccessCopyWithImpl<ASRegisterSuccess>(this, _$identity);
+  _$$ASRegisterSuccessCopyWith<_$ASRegisterSuccess> get copyWith =>
+      __$$ASRegisterSuccessCopyWithImpl<_$ASRegisterSuccess>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -3330,32 +3183,33 @@ class _$ASRegisterSuccess implements ASRegisterSuccess {
 }
 
 abstract class ASRegisterSuccess implements AuthState {
-  const factory ASRegisterSuccess({required FarmhubUser user}) =
+  const factory ASRegisterSuccess({required final FarmhubUser user}) =
       _$ASRegisterSuccess;
 
-  FarmhubUser get user;
+  FarmhubUser get user => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ASRegisterSuccessCopyWith<ASRegisterSuccess> get copyWith =>
+  _$$ASRegisterSuccessCopyWith<_$ASRegisterSuccess> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ASRegisterErrorCopyWith<$Res> {
-  factory $ASRegisterErrorCopyWith(
-          ASRegisterError value, $Res Function(ASRegisterError) then) =
-      _$ASRegisterErrorCopyWithImpl<$Res>;
+abstract class _$$ASRegisterErrorCopyWith<$Res> {
+  factory _$$ASRegisterErrorCopyWith(
+          _$ASRegisterError value, $Res Function(_$ASRegisterError) then) =
+      __$$ASRegisterErrorCopyWithImpl<$Res>;
   $Res call({String code, String message, StackTrace stackTrace});
 }
 
 /// @nodoc
-class _$ASRegisterErrorCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
-    implements $ASRegisterErrorCopyWith<$Res> {
-  _$ASRegisterErrorCopyWithImpl(
-      ASRegisterError _value, $Res Function(ASRegisterError) _then)
-      : super(_value, (v) => _then(v as ASRegisterError));
+class __$$ASRegisterErrorCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res>
+    implements _$$ASRegisterErrorCopyWith<$Res> {
+  __$$ASRegisterErrorCopyWithImpl(
+      _$ASRegisterError _value, $Res Function(_$ASRegisterError) _then)
+      : super(_value, (v) => _then(v as _$ASRegisterError));
 
   @override
-  ASRegisterError get _value => super._value as ASRegisterError;
+  _$ASRegisterError get _value => super._value as _$ASRegisterError;
 
   @override
   $Res call({
@@ -3363,7 +3217,7 @@ class _$ASRegisterErrorCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
     Object? message = freezed,
     Object? stackTrace = freezed,
   }) {
-    return _then(ASRegisterError(
+    return _then(_$ASRegisterError(
       code: code == freezed
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
@@ -3402,20 +3256,24 @@ class _$ASRegisterError implements ASRegisterError {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is ASRegisterError &&
-            (identical(other.code, code) || other.code == code) &&
-            (identical(other.message, message) || other.message == message) &&
-            (identical(other.stackTrace, stackTrace) ||
-                other.stackTrace == stackTrace));
+            other is _$ASRegisterError &&
+            const DeepCollectionEquality().equals(other.code, code) &&
+            const DeepCollectionEquality().equals(other.message, message) &&
+            const DeepCollectionEquality()
+                .equals(other.stackTrace, stackTrace));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, code, message, stackTrace);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(code),
+      const DeepCollectionEquality().hash(message),
+      const DeepCollectionEquality().hash(stackTrace));
 
   @JsonKey(ignore: true)
   @override
-  $ASRegisterErrorCopyWith<ASRegisterError> get copyWith =>
-      _$ASRegisterErrorCopyWithImpl<ASRegisterError>(this, _$identity);
+  _$$ASRegisterErrorCopyWith<_$ASRegisterError> get copyWith =>
+      __$$ASRegisterErrorCopyWithImpl<_$ASRegisterError>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -3601,34 +3459,35 @@ class _$ASRegisterError implements ASRegisterError {
 
 abstract class ASRegisterError implements AuthState {
   const factory ASRegisterError(
-      {required String code,
-      required String message,
-      required StackTrace stackTrace}) = _$ASRegisterError;
+      {required final String code,
+      required final String message,
+      required final StackTrace stackTrace}) = _$ASRegisterError;
 
-  String get code;
-  String get message;
-  StackTrace get stackTrace;
+  String get code => throw _privateConstructorUsedError;
+  String get message => throw _privateConstructorUsedError;
+  StackTrace get stackTrace => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ASRegisterErrorCopyWith<ASRegisterError> get copyWith =>
+  _$$ASRegisterErrorCopyWith<_$ASRegisterError> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ASSignOutLoadingCopyWith<$Res> {
-  factory $ASSignOutLoadingCopyWith(
-          ASSignOutLoading value, $Res Function(ASSignOutLoading) then) =
-      _$ASSignOutLoadingCopyWithImpl<$Res>;
+abstract class _$$ASSignOutLoadingCopyWith<$Res> {
+  factory _$$ASSignOutLoadingCopyWith(
+          _$ASSignOutLoading value, $Res Function(_$ASSignOutLoading) then) =
+      __$$ASSignOutLoadingCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$ASSignOutLoadingCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
-    implements $ASSignOutLoadingCopyWith<$Res> {
-  _$ASSignOutLoadingCopyWithImpl(
-      ASSignOutLoading _value, $Res Function(ASSignOutLoading) _then)
-      : super(_value, (v) => _then(v as ASSignOutLoading));
+class __$$ASSignOutLoadingCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res>
+    implements _$$ASSignOutLoadingCopyWith<$Res> {
+  __$$ASSignOutLoadingCopyWithImpl(
+      _$ASSignOutLoading _value, $Res Function(_$ASSignOutLoading) _then)
+      : super(_value, (v) => _then(v as _$ASSignOutLoading));
 
   @override
-  ASSignOutLoading get _value => super._value as ASSignOutLoading;
+  _$ASSignOutLoading get _value => super._value as _$ASSignOutLoading;
 }
 
 /// @nodoc
@@ -3644,7 +3503,7 @@ class _$ASSignOutLoading implements ASSignOutLoading {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is ASSignOutLoading);
+        (other.runtimeType == runtimeType && other is _$ASSignOutLoading);
   }
 
   @override
@@ -3837,21 +3696,22 @@ abstract class ASSignOutLoading implements AuthState {
 }
 
 /// @nodoc
-abstract class $ASSignOutSuccessCopyWith<$Res> {
-  factory $ASSignOutSuccessCopyWith(
-          ASSignOutSuccess value, $Res Function(ASSignOutSuccess) then) =
-      _$ASSignOutSuccessCopyWithImpl<$Res>;
+abstract class _$$ASSignOutSuccessCopyWith<$Res> {
+  factory _$$ASSignOutSuccessCopyWith(
+          _$ASSignOutSuccess value, $Res Function(_$ASSignOutSuccess) then) =
+      __$$ASSignOutSuccessCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$ASSignOutSuccessCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
-    implements $ASSignOutSuccessCopyWith<$Res> {
-  _$ASSignOutSuccessCopyWithImpl(
-      ASSignOutSuccess _value, $Res Function(ASSignOutSuccess) _then)
-      : super(_value, (v) => _then(v as ASSignOutSuccess));
+class __$$ASSignOutSuccessCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res>
+    implements _$$ASSignOutSuccessCopyWith<$Res> {
+  __$$ASSignOutSuccessCopyWithImpl(
+      _$ASSignOutSuccess _value, $Res Function(_$ASSignOutSuccess) _then)
+      : super(_value, (v) => _then(v as _$ASSignOutSuccess));
 
   @override
-  ASSignOutSuccess get _value => super._value as ASSignOutSuccess;
+  _$ASSignOutSuccess get _value => super._value as _$ASSignOutSuccess;
 }
 
 /// @nodoc
@@ -3867,7 +3727,7 @@ class _$ASSignOutSuccess implements ASSignOutSuccess {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is ASSignOutSuccess);
+        (other.runtimeType == runtimeType && other is _$ASSignOutSuccess);
   }
 
   @override
@@ -4060,22 +3920,22 @@ abstract class ASSignOutSuccess implements AuthState {
 }
 
 /// @nodoc
-abstract class $ASSignOutErrorCopyWith<$Res> {
-  factory $ASSignOutErrorCopyWith(
-          ASSignOutError value, $Res Function(ASSignOutError) then) =
-      _$ASSignOutErrorCopyWithImpl<$Res>;
+abstract class _$$ASSignOutErrorCopyWith<$Res> {
+  factory _$$ASSignOutErrorCopyWith(
+          _$ASSignOutError value, $Res Function(_$ASSignOutError) then) =
+      __$$ASSignOutErrorCopyWithImpl<$Res>;
   $Res call({String code, String message, StackTrace stackTrace});
 }
 
 /// @nodoc
-class _$ASSignOutErrorCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
-    implements $ASSignOutErrorCopyWith<$Res> {
-  _$ASSignOutErrorCopyWithImpl(
-      ASSignOutError _value, $Res Function(ASSignOutError) _then)
-      : super(_value, (v) => _then(v as ASSignOutError));
+class __$$ASSignOutErrorCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
+    implements _$$ASSignOutErrorCopyWith<$Res> {
+  __$$ASSignOutErrorCopyWithImpl(
+      _$ASSignOutError _value, $Res Function(_$ASSignOutError) _then)
+      : super(_value, (v) => _then(v as _$ASSignOutError));
 
   @override
-  ASSignOutError get _value => super._value as ASSignOutError;
+  _$ASSignOutError get _value => super._value as _$ASSignOutError;
 
   @override
   $Res call({
@@ -4083,7 +3943,7 @@ class _$ASSignOutErrorCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
     Object? message = freezed,
     Object? stackTrace = freezed,
   }) {
-    return _then(ASSignOutError(
+    return _then(_$ASSignOutError(
       code: code == freezed
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
@@ -4122,20 +3982,24 @@ class _$ASSignOutError implements ASSignOutError {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is ASSignOutError &&
-            (identical(other.code, code) || other.code == code) &&
-            (identical(other.message, message) || other.message == message) &&
-            (identical(other.stackTrace, stackTrace) ||
-                other.stackTrace == stackTrace));
+            other is _$ASSignOutError &&
+            const DeepCollectionEquality().equals(other.code, code) &&
+            const DeepCollectionEquality().equals(other.message, message) &&
+            const DeepCollectionEquality()
+                .equals(other.stackTrace, stackTrace));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, code, message, stackTrace);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(code),
+      const DeepCollectionEquality().hash(message),
+      const DeepCollectionEquality().hash(stackTrace));
 
   @JsonKey(ignore: true)
   @override
-  $ASSignOutErrorCopyWith<ASSignOutError> get copyWith =>
-      _$ASSignOutErrorCopyWithImpl<ASSignOutError>(this, _$identity);
+  _$$ASSignOutErrorCopyWith<_$ASSignOutError> get copyWith =>
+      __$$ASSignOutErrorCopyWithImpl<_$ASSignOutError>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -4321,36 +4185,37 @@ class _$ASSignOutError implements ASSignOutError {
 
 abstract class ASSignOutError implements AuthState {
   const factory ASSignOutError(
-      {required String code,
-      required String message,
-      required StackTrace stackTrace}) = _$ASSignOutError;
+      {required final String code,
+      required final String message,
+      required final StackTrace stackTrace}) = _$ASSignOutError;
 
-  String get code;
-  String get message;
-  StackTrace get stackTrace;
+  String get code => throw _privateConstructorUsedError;
+  String get message => throw _privateConstructorUsedError;
+  StackTrace get stackTrace => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ASSignOutErrorCopyWith<ASSignOutError> get copyWith =>
+  _$$ASSignOutErrorCopyWith<_$ASSignOutError> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ASRetrieveUserDataLoadingCopyWith<$Res> {
-  factory $ASRetrieveUserDataLoadingCopyWith(ASRetrieveUserDataLoading value,
-          $Res Function(ASRetrieveUserDataLoading) then) =
-      _$ASRetrieveUserDataLoadingCopyWithImpl<$Res>;
+abstract class _$$ASRetrieveUserDataLoadingCopyWith<$Res> {
+  factory _$$ASRetrieveUserDataLoadingCopyWith(
+          _$ASRetrieveUserDataLoading value,
+          $Res Function(_$ASRetrieveUserDataLoading) then) =
+      __$$ASRetrieveUserDataLoadingCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$ASRetrieveUserDataLoadingCopyWithImpl<$Res>
+class __$$ASRetrieveUserDataLoadingCopyWithImpl<$Res>
     extends _$AuthStateCopyWithImpl<$Res>
-    implements $ASRetrieveUserDataLoadingCopyWith<$Res> {
-  _$ASRetrieveUserDataLoadingCopyWithImpl(ASRetrieveUserDataLoading _value,
-      $Res Function(ASRetrieveUserDataLoading) _then)
-      : super(_value, (v) => _then(v as ASRetrieveUserDataLoading));
+    implements _$$ASRetrieveUserDataLoadingCopyWith<$Res> {
+  __$$ASRetrieveUserDataLoadingCopyWithImpl(_$ASRetrieveUserDataLoading _value,
+      $Res Function(_$ASRetrieveUserDataLoading) _then)
+      : super(_value, (v) => _then(v as _$ASRetrieveUserDataLoading));
 
   @override
-  ASRetrieveUserDataLoading get _value =>
-      super._value as ASRetrieveUserDataLoading;
+  _$ASRetrieveUserDataLoading get _value =>
+      super._value as _$ASRetrieveUserDataLoading;
 }
 
 /// @nodoc
@@ -4367,7 +4232,7 @@ class _$ASRetrieveUserDataLoading implements ASRetrieveUserDataLoading {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is ASRetrieveUserDataLoading);
+            other is _$ASRetrieveUserDataLoading);
   }
 
   @override
@@ -4560,32 +4425,33 @@ abstract class ASRetrieveUserDataLoading implements AuthState {
 }
 
 /// @nodoc
-abstract class $ASRetrieveUserDataSuccessCopyWith<$Res> {
-  factory $ASRetrieveUserDataSuccessCopyWith(ASRetrieveUserDataSuccess value,
-          $Res Function(ASRetrieveUserDataSuccess) then) =
-      _$ASRetrieveUserDataSuccessCopyWithImpl<$Res>;
+abstract class _$$ASRetrieveUserDataSuccessCopyWith<$Res> {
+  factory _$$ASRetrieveUserDataSuccessCopyWith(
+          _$ASRetrieveUserDataSuccess value,
+          $Res Function(_$ASRetrieveUserDataSuccess) then) =
+      __$$ASRetrieveUserDataSuccessCopyWithImpl<$Res>;
   $Res call({FarmhubUser farmhubUser});
 
   $FarmhubUserCopyWith<$Res> get farmhubUser;
 }
 
 /// @nodoc
-class _$ASRetrieveUserDataSuccessCopyWithImpl<$Res>
+class __$$ASRetrieveUserDataSuccessCopyWithImpl<$Res>
     extends _$AuthStateCopyWithImpl<$Res>
-    implements $ASRetrieveUserDataSuccessCopyWith<$Res> {
-  _$ASRetrieveUserDataSuccessCopyWithImpl(ASRetrieveUserDataSuccess _value,
-      $Res Function(ASRetrieveUserDataSuccess) _then)
-      : super(_value, (v) => _then(v as ASRetrieveUserDataSuccess));
+    implements _$$ASRetrieveUserDataSuccessCopyWith<$Res> {
+  __$$ASRetrieveUserDataSuccessCopyWithImpl(_$ASRetrieveUserDataSuccess _value,
+      $Res Function(_$ASRetrieveUserDataSuccess) _then)
+      : super(_value, (v) => _then(v as _$ASRetrieveUserDataSuccess));
 
   @override
-  ASRetrieveUserDataSuccess get _value =>
-      super._value as ASRetrieveUserDataSuccess;
+  _$ASRetrieveUserDataSuccess get _value =>
+      super._value as _$ASRetrieveUserDataSuccess;
 
   @override
   $Res call({
     Object? farmhubUser = freezed,
   }) {
-    return _then(ASRetrieveUserDataSuccess(
+    return _then(_$ASRetrieveUserDataSuccess(
       farmhubUser: farmhubUser == freezed
           ? _value.farmhubUser
           : farmhubUser // ignore: cast_nullable_to_non_nullable
@@ -4618,19 +4484,20 @@ class _$ASRetrieveUserDataSuccess implements ASRetrieveUserDataSuccess {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is ASRetrieveUserDataSuccess &&
-            (identical(other.farmhubUser, farmhubUser) ||
-                other.farmhubUser == farmhubUser));
+            other is _$ASRetrieveUserDataSuccess &&
+            const DeepCollectionEquality()
+                .equals(other.farmhubUser, farmhubUser));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, farmhubUser);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(farmhubUser));
 
   @JsonKey(ignore: true)
   @override
-  $ASRetrieveUserDataSuccessCopyWith<ASRetrieveUserDataSuccess> get copyWith =>
-      _$ASRetrieveUserDataSuccessCopyWithImpl<ASRetrieveUserDataSuccess>(
-          this, _$identity);
+  _$$ASRetrieveUserDataSuccessCopyWith<_$ASRetrieveUserDataSuccess>
+      get copyWith => __$$ASRetrieveUserDataSuccessCopyWithImpl<
+          _$ASRetrieveUserDataSuccess>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -4815,33 +4682,34 @@ class _$ASRetrieveUserDataSuccess implements ASRetrieveUserDataSuccess {
 }
 
 abstract class ASRetrieveUserDataSuccess implements AuthState {
-  const factory ASRetrieveUserDataSuccess({required FarmhubUser farmhubUser}) =
-      _$ASRetrieveUserDataSuccess;
+  const factory ASRetrieveUserDataSuccess(
+      {required final FarmhubUser farmhubUser}) = _$ASRetrieveUserDataSuccess;
 
-  FarmhubUser get farmhubUser;
+  FarmhubUser get farmhubUser => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ASRetrieveUserDataSuccessCopyWith<ASRetrieveUserDataSuccess> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$ASRetrieveUserDataSuccessCopyWith<_$ASRetrieveUserDataSuccess>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ASRetrieveUserDataErrorCopyWith<$Res> {
-  factory $ASRetrieveUserDataErrorCopyWith(ASRetrieveUserDataError value,
-          $Res Function(ASRetrieveUserDataError) then) =
-      _$ASRetrieveUserDataErrorCopyWithImpl<$Res>;
+abstract class _$$ASRetrieveUserDataErrorCopyWith<$Res> {
+  factory _$$ASRetrieveUserDataErrorCopyWith(_$ASRetrieveUserDataError value,
+          $Res Function(_$ASRetrieveUserDataError) then) =
+      __$$ASRetrieveUserDataErrorCopyWithImpl<$Res>;
   $Res call({String code, String message, StackTrace stackTrace});
 }
 
 /// @nodoc
-class _$ASRetrieveUserDataErrorCopyWithImpl<$Res>
+class __$$ASRetrieveUserDataErrorCopyWithImpl<$Res>
     extends _$AuthStateCopyWithImpl<$Res>
-    implements $ASRetrieveUserDataErrorCopyWith<$Res> {
-  _$ASRetrieveUserDataErrorCopyWithImpl(ASRetrieveUserDataError _value,
-      $Res Function(ASRetrieveUserDataError) _then)
-      : super(_value, (v) => _then(v as ASRetrieveUserDataError));
+    implements _$$ASRetrieveUserDataErrorCopyWith<$Res> {
+  __$$ASRetrieveUserDataErrorCopyWithImpl(_$ASRetrieveUserDataError _value,
+      $Res Function(_$ASRetrieveUserDataError) _then)
+      : super(_value, (v) => _then(v as _$ASRetrieveUserDataError));
 
   @override
-  ASRetrieveUserDataError get _value => super._value as ASRetrieveUserDataError;
+  _$ASRetrieveUserDataError get _value =>
+      super._value as _$ASRetrieveUserDataError;
 
   @override
   $Res call({
@@ -4849,7 +4717,7 @@ class _$ASRetrieveUserDataErrorCopyWithImpl<$Res>
     Object? message = freezed,
     Object? stackTrace = freezed,
   }) {
-    return _then(ASRetrieveUserDataError(
+    return _then(_$ASRetrieveUserDataError(
       code: code == freezed
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
@@ -4888,20 +4756,24 @@ class _$ASRetrieveUserDataError implements ASRetrieveUserDataError {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is ASRetrieveUserDataError &&
-            (identical(other.code, code) || other.code == code) &&
-            (identical(other.message, message) || other.message == message) &&
-            (identical(other.stackTrace, stackTrace) ||
-                other.stackTrace == stackTrace));
+            other is _$ASRetrieveUserDataError &&
+            const DeepCollectionEquality().equals(other.code, code) &&
+            const DeepCollectionEquality().equals(other.message, message) &&
+            const DeepCollectionEquality()
+                .equals(other.stackTrace, stackTrace));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, code, message, stackTrace);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(code),
+      const DeepCollectionEquality().hash(message),
+      const DeepCollectionEquality().hash(stackTrace));
 
   @JsonKey(ignore: true)
   @override
-  $ASRetrieveUserDataErrorCopyWith<ASRetrieveUserDataError> get copyWith =>
-      _$ASRetrieveUserDataErrorCopyWithImpl<ASRetrieveUserDataError>(
+  _$$ASRetrieveUserDataErrorCopyWith<_$ASRetrieveUserDataError> get copyWith =>
+      __$$ASRetrieveUserDataErrorCopyWithImpl<_$ASRetrieveUserDataError>(
           this, _$identity);
 
   @override
@@ -5088,34 +4960,35 @@ class _$ASRetrieveUserDataError implements ASRetrieveUserDataError {
 
 abstract class ASRetrieveUserDataError implements AuthState {
   const factory ASRetrieveUserDataError(
-      {required String code,
-      required String message,
-      required StackTrace stackTrace}) = _$ASRetrieveUserDataError;
+      {required final String code,
+      required final String message,
+      required final StackTrace stackTrace}) = _$ASRetrieveUserDataError;
 
-  String get code;
-  String get message;
-  StackTrace get stackTrace;
+  String get code => throw _privateConstructorUsedError;
+  String get message => throw _privateConstructorUsedError;
+  StackTrace get stackTrace => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ASRetrieveUserDataErrorCopyWith<ASRetrieveUserDataError> get copyWith =>
+  _$$ASRetrieveUserDataErrorCopyWith<_$ASRetrieveUserDataError> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ASIsAdminLoadingCopyWith<$Res> {
-  factory $ASIsAdminLoadingCopyWith(
-          ASIsAdminLoading value, $Res Function(ASIsAdminLoading) then) =
-      _$ASIsAdminLoadingCopyWithImpl<$Res>;
+abstract class _$$ASIsAdminLoadingCopyWith<$Res> {
+  factory _$$ASIsAdminLoadingCopyWith(
+          _$ASIsAdminLoading value, $Res Function(_$ASIsAdminLoading) then) =
+      __$$ASIsAdminLoadingCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$ASIsAdminLoadingCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
-    implements $ASIsAdminLoadingCopyWith<$Res> {
-  _$ASIsAdminLoadingCopyWithImpl(
-      ASIsAdminLoading _value, $Res Function(ASIsAdminLoading) _then)
-      : super(_value, (v) => _then(v as ASIsAdminLoading));
+class __$$ASIsAdminLoadingCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res>
+    implements _$$ASIsAdminLoadingCopyWith<$Res> {
+  __$$ASIsAdminLoadingCopyWithImpl(
+      _$ASIsAdminLoading _value, $Res Function(_$ASIsAdminLoading) _then)
+      : super(_value, (v) => _then(v as _$ASIsAdminLoading));
 
   @override
-  ASIsAdminLoading get _value => super._value as ASIsAdminLoading;
+  _$ASIsAdminLoading get _value => super._value as _$ASIsAdminLoading;
 }
 
 /// @nodoc
@@ -5131,7 +5004,7 @@ class _$ASIsAdminLoading implements ASIsAdminLoading {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is ASIsAdminLoading);
+        (other.runtimeType == runtimeType && other is _$ASIsAdminLoading);
   }
 
   @override
@@ -5324,28 +5197,29 @@ abstract class ASIsAdminLoading implements AuthState {
 }
 
 /// @nodoc
-abstract class $ASIsAdminSuccessCopyWith<$Res> {
-  factory $ASIsAdminSuccessCopyWith(
-          ASIsAdminSuccess value, $Res Function(ASIsAdminSuccess) then) =
-      _$ASIsAdminSuccessCopyWithImpl<$Res>;
+abstract class _$$ASIsAdminSuccessCopyWith<$Res> {
+  factory _$$ASIsAdminSuccessCopyWith(
+          _$ASIsAdminSuccess value, $Res Function(_$ASIsAdminSuccess) then) =
+      __$$ASIsAdminSuccessCopyWithImpl<$Res>;
   $Res call({bool isAdmin});
 }
 
 /// @nodoc
-class _$ASIsAdminSuccessCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
-    implements $ASIsAdminSuccessCopyWith<$Res> {
-  _$ASIsAdminSuccessCopyWithImpl(
-      ASIsAdminSuccess _value, $Res Function(ASIsAdminSuccess) _then)
-      : super(_value, (v) => _then(v as ASIsAdminSuccess));
+class __$$ASIsAdminSuccessCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res>
+    implements _$$ASIsAdminSuccessCopyWith<$Res> {
+  __$$ASIsAdminSuccessCopyWithImpl(
+      _$ASIsAdminSuccess _value, $Res Function(_$ASIsAdminSuccess) _then)
+      : super(_value, (v) => _then(v as _$ASIsAdminSuccess));
 
   @override
-  ASIsAdminSuccess get _value => super._value as ASIsAdminSuccess;
+  _$ASIsAdminSuccess get _value => super._value as _$ASIsAdminSuccess;
 
   @override
   $Res call({
     Object? isAdmin = freezed,
   }) {
-    return _then(ASIsAdminSuccess(
+    return _then(_$ASIsAdminSuccess(
       isAdmin: isAdmin == freezed
           ? _value.isAdmin
           : isAdmin // ignore: cast_nullable_to_non_nullable
@@ -5371,17 +5245,18 @@ class _$ASIsAdminSuccess implements ASIsAdminSuccess {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is ASIsAdminSuccess &&
-            (identical(other.isAdmin, isAdmin) || other.isAdmin == isAdmin));
+            other is _$ASIsAdminSuccess &&
+            const DeepCollectionEquality().equals(other.isAdmin, isAdmin));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isAdmin);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(isAdmin));
 
   @JsonKey(ignore: true)
   @override
-  $ASIsAdminSuccessCopyWith<ASIsAdminSuccess> get copyWith =>
-      _$ASIsAdminSuccessCopyWithImpl<ASIsAdminSuccess>(this, _$identity);
+  _$$ASIsAdminSuccessCopyWith<_$ASIsAdminSuccess> get copyWith =>
+      __$$ASIsAdminSuccessCopyWithImpl<_$ASIsAdminSuccess>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -5566,31 +5441,32 @@ class _$ASIsAdminSuccess implements ASIsAdminSuccess {
 }
 
 abstract class ASIsAdminSuccess implements AuthState {
-  const factory ASIsAdminSuccess({required bool isAdmin}) = _$ASIsAdminSuccess;
+  const factory ASIsAdminSuccess({required final bool isAdmin}) =
+      _$ASIsAdminSuccess;
 
-  bool get isAdmin;
+  bool get isAdmin => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ASIsAdminSuccessCopyWith<ASIsAdminSuccess> get copyWith =>
+  _$$ASIsAdminSuccessCopyWith<_$ASIsAdminSuccess> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ASIsAdminErrorCopyWith<$Res> {
-  factory $ASIsAdminErrorCopyWith(
-          ASIsAdminError value, $Res Function(ASIsAdminError) then) =
-      _$ASIsAdminErrorCopyWithImpl<$Res>;
+abstract class _$$ASIsAdminErrorCopyWith<$Res> {
+  factory _$$ASIsAdminErrorCopyWith(
+          _$ASIsAdminError value, $Res Function(_$ASIsAdminError) then) =
+      __$$ASIsAdminErrorCopyWithImpl<$Res>;
   $Res call({String code, String message, StackTrace stackTrace});
 }
 
 /// @nodoc
-class _$ASIsAdminErrorCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
-    implements $ASIsAdminErrorCopyWith<$Res> {
-  _$ASIsAdminErrorCopyWithImpl(
-      ASIsAdminError _value, $Res Function(ASIsAdminError) _then)
-      : super(_value, (v) => _then(v as ASIsAdminError));
+class __$$ASIsAdminErrorCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
+    implements _$$ASIsAdminErrorCopyWith<$Res> {
+  __$$ASIsAdminErrorCopyWithImpl(
+      _$ASIsAdminError _value, $Res Function(_$ASIsAdminError) _then)
+      : super(_value, (v) => _then(v as _$ASIsAdminError));
 
   @override
-  ASIsAdminError get _value => super._value as ASIsAdminError;
+  _$ASIsAdminError get _value => super._value as _$ASIsAdminError;
 
   @override
   $Res call({
@@ -5598,7 +5474,7 @@ class _$ASIsAdminErrorCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
     Object? message = freezed,
     Object? stackTrace = freezed,
   }) {
-    return _then(ASIsAdminError(
+    return _then(_$ASIsAdminError(
       code: code == freezed
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
@@ -5637,20 +5513,24 @@ class _$ASIsAdminError implements ASIsAdminError {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is ASIsAdminError &&
-            (identical(other.code, code) || other.code == code) &&
-            (identical(other.message, message) || other.message == message) &&
-            (identical(other.stackTrace, stackTrace) ||
-                other.stackTrace == stackTrace));
+            other is _$ASIsAdminError &&
+            const DeepCollectionEquality().equals(other.code, code) &&
+            const DeepCollectionEquality().equals(other.message, message) &&
+            const DeepCollectionEquality()
+                .equals(other.stackTrace, stackTrace));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, code, message, stackTrace);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(code),
+      const DeepCollectionEquality().hash(message),
+      const DeepCollectionEquality().hash(stackTrace));
 
   @JsonKey(ignore: true)
   @override
-  $ASIsAdminErrorCopyWith<ASIsAdminError> get copyWith =>
-      _$ASIsAdminErrorCopyWithImpl<ASIsAdminError>(this, _$identity);
+  _$$ASIsAdminErrorCopyWith<_$ASIsAdminError> get copyWith =>
+      __$$ASIsAdminErrorCopyWithImpl<_$ASIsAdminError>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -5836,14 +5716,14 @@ class _$ASIsAdminError implements ASIsAdminError {
 
 abstract class ASIsAdminError implements AuthState {
   const factory ASIsAdminError(
-      {required String code,
-      required String message,
-      required StackTrace stackTrace}) = _$ASIsAdminError;
+      {required final String code,
+      required final String message,
+      required final StackTrace stackTrace}) = _$ASIsAdminError;
 
-  String get code;
-  String get message;
-  StackTrace get stackTrace;
+  String get code => throw _privateConstructorUsedError;
+  String get message => throw _privateConstructorUsedError;
+  StackTrace get stackTrace => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ASIsAdminErrorCopyWith<ASIsAdminError> get copyWith =>
+  _$$ASIsAdminErrorCopyWith<_$ASIsAdminError> get copyWith =>
       throw _privateConstructorUsedError;
 }

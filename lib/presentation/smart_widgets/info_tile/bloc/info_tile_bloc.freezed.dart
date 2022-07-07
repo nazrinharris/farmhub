@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'info_tile_bloc.dart';
@@ -11,25 +12,7 @@ part of 'info_tile_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$InfoTileEventTearOff {
-  const _$InfoTileEventTearOff();
-
-  _ToggleExpansion toggleExpansion() {
-    return const _ToggleExpansion();
-  }
-
-  _TriggerStateChange triggerStateChange(InfoTileProps infoTileProps) {
-    return _TriggerStateChange(
-      infoTileProps,
-    );
-  }
-}
-
-/// @nodoc
-const $InfoTileEvent = _$InfoTileEventTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$InfoTileEvent {
@@ -91,22 +74,22 @@ class _$InfoTileEventCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$ToggleExpansionCopyWith<$Res> {
-  factory _$ToggleExpansionCopyWith(
-          _ToggleExpansion value, $Res Function(_ToggleExpansion) then) =
-      __$ToggleExpansionCopyWithImpl<$Res>;
+abstract class _$$_ToggleExpansionCopyWith<$Res> {
+  factory _$$_ToggleExpansionCopyWith(
+          _$_ToggleExpansion value, $Res Function(_$_ToggleExpansion) then) =
+      __$$_ToggleExpansionCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$ToggleExpansionCopyWithImpl<$Res>
+class __$$_ToggleExpansionCopyWithImpl<$Res>
     extends _$InfoTileEventCopyWithImpl<$Res>
-    implements _$ToggleExpansionCopyWith<$Res> {
-  __$ToggleExpansionCopyWithImpl(
-      _ToggleExpansion _value, $Res Function(_ToggleExpansion) _then)
-      : super(_value, (v) => _then(v as _ToggleExpansion));
+    implements _$$_ToggleExpansionCopyWith<$Res> {
+  __$$_ToggleExpansionCopyWithImpl(
+      _$_ToggleExpansion _value, $Res Function(_$_ToggleExpansion) _then)
+      : super(_value, (v) => _then(v as _$_ToggleExpansion));
 
   @override
-  _ToggleExpansion get _value => super._value as _ToggleExpansion;
+  _$_ToggleExpansion get _value => super._value as _$_ToggleExpansion;
 }
 
 /// @nodoc
@@ -122,7 +105,7 @@ class _$_ToggleExpansion implements _ToggleExpansion {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _ToggleExpansion);
+        (other.runtimeType == runtimeType && other is _$_ToggleExpansion);
   }
 
   @override
@@ -196,31 +179,31 @@ abstract class _ToggleExpansion implements InfoTileEvent {
 }
 
 /// @nodoc
-abstract class _$TriggerStateChangeCopyWith<$Res> {
-  factory _$TriggerStateChangeCopyWith(
-          _TriggerStateChange value, $Res Function(_TriggerStateChange) then) =
-      __$TriggerStateChangeCopyWithImpl<$Res>;
+abstract class _$$_TriggerStateChangeCopyWith<$Res> {
+  factory _$$_TriggerStateChangeCopyWith(_$_TriggerStateChange value,
+          $Res Function(_$_TriggerStateChange) then) =
+      __$$_TriggerStateChangeCopyWithImpl<$Res>;
   $Res call({InfoTileProps infoTileProps});
 
   $InfoTilePropsCopyWith<$Res> get infoTileProps;
 }
 
 /// @nodoc
-class __$TriggerStateChangeCopyWithImpl<$Res>
+class __$$_TriggerStateChangeCopyWithImpl<$Res>
     extends _$InfoTileEventCopyWithImpl<$Res>
-    implements _$TriggerStateChangeCopyWith<$Res> {
-  __$TriggerStateChangeCopyWithImpl(
-      _TriggerStateChange _value, $Res Function(_TriggerStateChange) _then)
-      : super(_value, (v) => _then(v as _TriggerStateChange));
+    implements _$$_TriggerStateChangeCopyWith<$Res> {
+  __$$_TriggerStateChangeCopyWithImpl(
+      _$_TriggerStateChange _value, $Res Function(_$_TriggerStateChange) _then)
+      : super(_value, (v) => _then(v as _$_TriggerStateChange));
 
   @override
-  _TriggerStateChange get _value => super._value as _TriggerStateChange;
+  _$_TriggerStateChange get _value => super._value as _$_TriggerStateChange;
 
   @override
   $Res call({
     Object? infoTileProps = freezed,
   }) {
-    return _then(_TriggerStateChange(
+    return _then(_$_TriggerStateChange(
       infoTileProps == freezed
           ? _value.infoTileProps
           : infoTileProps // ignore: cast_nullable_to_non_nullable
@@ -253,18 +236,20 @@ class _$_TriggerStateChange implements _TriggerStateChange {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _TriggerStateChange &&
-            (identical(other.infoTileProps, infoTileProps) ||
-                other.infoTileProps == infoTileProps));
+            other is _$_TriggerStateChange &&
+            const DeepCollectionEquality()
+                .equals(other.infoTileProps, infoTileProps));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, infoTileProps);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(infoTileProps));
 
   @JsonKey(ignore: true)
   @override
-  _$TriggerStateChangeCopyWith<_TriggerStateChange> get copyWith =>
-      __$TriggerStateChangeCopyWithImpl<_TriggerStateChange>(this, _$identity);
+  _$$_TriggerStateChangeCopyWith<_$_TriggerStateChange> get copyWith =>
+      __$$_TriggerStateChangeCopyWithImpl<_$_TriggerStateChange>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -330,69 +315,18 @@ class _$_TriggerStateChange implements _TriggerStateChange {
 }
 
 abstract class _TriggerStateChange implements InfoTileEvent {
-  const factory _TriggerStateChange(InfoTileProps infoTileProps) =
+  const factory _TriggerStateChange(final InfoTileProps infoTileProps) =
       _$_TriggerStateChange;
 
-  InfoTileProps get infoTileProps;
+  InfoTileProps get infoTileProps => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$TriggerStateChangeCopyWith<_TriggerStateChange> get copyWith =>
+  _$$_TriggerStateChangeCopyWith<_$_TriggerStateChange> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-class _$InfoTileStateTearOff {
-  const _$InfoTileStateTearOff();
-
-  _Invisible invisible(InfoTileProps infoTileProps) {
-    return _Invisible(
-      infoTileProps,
-    );
-  }
-
-  _Loading loading(InfoTileProps infoTileProps) {
-    return _Loading(
-      infoTileProps,
-    );
-  }
-
-  _LoadingExpanded loadingExpanded(InfoTileProps infoTileProps) {
-    return _LoadingExpanded(
-      infoTileProps,
-    );
-  }
-
-  _Success success(InfoTileProps infoTileProps) {
-    return _Success(
-      infoTileProps,
-    );
-  }
-
-  _SuccessExpanded successExpanded(InfoTileProps infoTileProps) {
-    return _SuccessExpanded(
-      infoTileProps,
-    );
-  }
-
-  _Failure failure(InfoTileProps infoTileProps) {
-    return _Failure(
-      infoTileProps,
-    );
-  }
-
-  _FailureExpanded failureExpanded(InfoTileProps infoTileProps) {
-    return _FailureExpanded(
-      infoTileProps,
-    );
-  }
-}
-
-/// @nodoc
-const $InfoTileState = _$InfoTileStateTearOff();
-
-/// @nodoc
 mixin _$InfoTileState {
   InfoTileProps get infoTileProps => throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(InfoTileProps infoTileProps) invisible,
@@ -507,11 +441,11 @@ class _$InfoTileStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$InvisibleCopyWith<$Res>
+abstract class _$$_InvisibleCopyWith<$Res>
     implements $InfoTileStateCopyWith<$Res> {
-  factory _$InvisibleCopyWith(
-          _Invisible value, $Res Function(_Invisible) then) =
-      __$InvisibleCopyWithImpl<$Res>;
+  factory _$$_InvisibleCopyWith(
+          _$_Invisible value, $Res Function(_$_Invisible) then) =
+      __$$_InvisibleCopyWithImpl<$Res>;
   @override
   $Res call({InfoTileProps infoTileProps});
 
@@ -520,19 +454,20 @@ abstract class _$InvisibleCopyWith<$Res>
 }
 
 /// @nodoc
-class __$InvisibleCopyWithImpl<$Res> extends _$InfoTileStateCopyWithImpl<$Res>
-    implements _$InvisibleCopyWith<$Res> {
-  __$InvisibleCopyWithImpl(_Invisible _value, $Res Function(_Invisible) _then)
-      : super(_value, (v) => _then(v as _Invisible));
+class __$$_InvisibleCopyWithImpl<$Res> extends _$InfoTileStateCopyWithImpl<$Res>
+    implements _$$_InvisibleCopyWith<$Res> {
+  __$$_InvisibleCopyWithImpl(
+      _$_Invisible _value, $Res Function(_$_Invisible) _then)
+      : super(_value, (v) => _then(v as _$_Invisible));
 
   @override
-  _Invisible get _value => super._value as _Invisible;
+  _$_Invisible get _value => super._value as _$_Invisible;
 
   @override
   $Res call({
     Object? infoTileProps = freezed,
   }) {
-    return _then(_Invisible(
+    return _then(_$_Invisible(
       infoTileProps == freezed
           ? _value.infoTileProps
           : infoTileProps // ignore: cast_nullable_to_non_nullable
@@ -558,18 +493,19 @@ class _$_Invisible implements _Invisible {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Invisible &&
-            (identical(other.infoTileProps, infoTileProps) ||
-                other.infoTileProps == infoTileProps));
+            other is _$_Invisible &&
+            const DeepCollectionEquality()
+                .equals(other.infoTileProps, infoTileProps));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, infoTileProps);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(infoTileProps));
 
   @JsonKey(ignore: true)
   @override
-  _$InvisibleCopyWith<_Invisible> get copyWith =>
-      __$InvisibleCopyWithImpl<_Invisible>(this, _$identity);
+  _$$_InvisibleCopyWith<_$_Invisible> get copyWith =>
+      __$$_InvisibleCopyWithImpl<_$_Invisible>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -665,20 +601,22 @@ class _$_Invisible implements _Invisible {
 }
 
 abstract class _Invisible implements InfoTileState {
-  const factory _Invisible(InfoTileProps infoTileProps) = _$_Invisible;
+  const factory _Invisible(final InfoTileProps infoTileProps) = _$_Invisible;
 
   @override
-  InfoTileProps get infoTileProps;
+  InfoTileProps get infoTileProps => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$InvisibleCopyWith<_Invisible> get copyWith =>
+  _$$_InvisibleCopyWith<_$_Invisible> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$LoadingCopyWith<$Res> implements $InfoTileStateCopyWith<$Res> {
-  factory _$LoadingCopyWith(_Loading value, $Res Function(_Loading) then) =
-      __$LoadingCopyWithImpl<$Res>;
+abstract class _$$_LoadingCopyWith<$Res>
+    implements $InfoTileStateCopyWith<$Res> {
+  factory _$$_LoadingCopyWith(
+          _$_Loading value, $Res Function(_$_Loading) then) =
+      __$$_LoadingCopyWithImpl<$Res>;
   @override
   $Res call({InfoTileProps infoTileProps});
 
@@ -687,19 +625,19 @@ abstract class _$LoadingCopyWith<$Res> implements $InfoTileStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$LoadingCopyWithImpl<$Res> extends _$InfoTileStateCopyWithImpl<$Res>
-    implements _$LoadingCopyWith<$Res> {
-  __$LoadingCopyWithImpl(_Loading _value, $Res Function(_Loading) _then)
-      : super(_value, (v) => _then(v as _Loading));
+class __$$_LoadingCopyWithImpl<$Res> extends _$InfoTileStateCopyWithImpl<$Res>
+    implements _$$_LoadingCopyWith<$Res> {
+  __$$_LoadingCopyWithImpl(_$_Loading _value, $Res Function(_$_Loading) _then)
+      : super(_value, (v) => _then(v as _$_Loading));
 
   @override
-  _Loading get _value => super._value as _Loading;
+  _$_Loading get _value => super._value as _$_Loading;
 
   @override
   $Res call({
     Object? infoTileProps = freezed,
   }) {
-    return _then(_Loading(
+    return _then(_$_Loading(
       infoTileProps == freezed
           ? _value.infoTileProps
           : infoTileProps // ignore: cast_nullable_to_non_nullable
@@ -725,18 +663,19 @@ class _$_Loading implements _Loading {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Loading &&
-            (identical(other.infoTileProps, infoTileProps) ||
-                other.infoTileProps == infoTileProps));
+            other is _$_Loading &&
+            const DeepCollectionEquality()
+                .equals(other.infoTileProps, infoTileProps));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, infoTileProps);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(infoTileProps));
 
   @JsonKey(ignore: true)
   @override
-  _$LoadingCopyWith<_Loading> get copyWith =>
-      __$LoadingCopyWithImpl<_Loading>(this, _$identity);
+  _$$_LoadingCopyWith<_$_Loading> get copyWith =>
+      __$$_LoadingCopyWithImpl<_$_Loading>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -832,22 +771,22 @@ class _$_Loading implements _Loading {
 }
 
 abstract class _Loading implements InfoTileState {
-  const factory _Loading(InfoTileProps infoTileProps) = _$_Loading;
+  const factory _Loading(final InfoTileProps infoTileProps) = _$_Loading;
 
   @override
-  InfoTileProps get infoTileProps;
+  InfoTileProps get infoTileProps => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$LoadingCopyWith<_Loading> get copyWith =>
+  _$$_LoadingCopyWith<_$_Loading> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$LoadingExpandedCopyWith<$Res>
+abstract class _$$_LoadingExpandedCopyWith<$Res>
     implements $InfoTileStateCopyWith<$Res> {
-  factory _$LoadingExpandedCopyWith(
-          _LoadingExpanded value, $Res Function(_LoadingExpanded) then) =
-      __$LoadingExpandedCopyWithImpl<$Res>;
+  factory _$$_LoadingExpandedCopyWith(
+          _$_LoadingExpanded value, $Res Function(_$_LoadingExpanded) then) =
+      __$$_LoadingExpandedCopyWithImpl<$Res>;
   @override
   $Res call({InfoTileProps infoTileProps});
 
@@ -856,21 +795,21 @@ abstract class _$LoadingExpandedCopyWith<$Res>
 }
 
 /// @nodoc
-class __$LoadingExpandedCopyWithImpl<$Res>
+class __$$_LoadingExpandedCopyWithImpl<$Res>
     extends _$InfoTileStateCopyWithImpl<$Res>
-    implements _$LoadingExpandedCopyWith<$Res> {
-  __$LoadingExpandedCopyWithImpl(
-      _LoadingExpanded _value, $Res Function(_LoadingExpanded) _then)
-      : super(_value, (v) => _then(v as _LoadingExpanded));
+    implements _$$_LoadingExpandedCopyWith<$Res> {
+  __$$_LoadingExpandedCopyWithImpl(
+      _$_LoadingExpanded _value, $Res Function(_$_LoadingExpanded) _then)
+      : super(_value, (v) => _then(v as _$_LoadingExpanded));
 
   @override
-  _LoadingExpanded get _value => super._value as _LoadingExpanded;
+  _$_LoadingExpanded get _value => super._value as _$_LoadingExpanded;
 
   @override
   $Res call({
     Object? infoTileProps = freezed,
   }) {
-    return _then(_LoadingExpanded(
+    return _then(_$_LoadingExpanded(
       infoTileProps == freezed
           ? _value.infoTileProps
           : infoTileProps // ignore: cast_nullable_to_non_nullable
@@ -896,18 +835,19 @@ class _$_LoadingExpanded implements _LoadingExpanded {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _LoadingExpanded &&
-            (identical(other.infoTileProps, infoTileProps) ||
-                other.infoTileProps == infoTileProps));
+            other is _$_LoadingExpanded &&
+            const DeepCollectionEquality()
+                .equals(other.infoTileProps, infoTileProps));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, infoTileProps);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(infoTileProps));
 
   @JsonKey(ignore: true)
   @override
-  _$LoadingExpandedCopyWith<_LoadingExpanded> get copyWith =>
-      __$LoadingExpandedCopyWithImpl<_LoadingExpanded>(this, _$identity);
+  _$$_LoadingExpandedCopyWith<_$_LoadingExpanded> get copyWith =>
+      __$$_LoadingExpandedCopyWithImpl<_$_LoadingExpanded>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1003,21 +943,23 @@ class _$_LoadingExpanded implements _LoadingExpanded {
 }
 
 abstract class _LoadingExpanded implements InfoTileState {
-  const factory _LoadingExpanded(InfoTileProps infoTileProps) =
+  const factory _LoadingExpanded(final InfoTileProps infoTileProps) =
       _$_LoadingExpanded;
 
   @override
-  InfoTileProps get infoTileProps;
+  InfoTileProps get infoTileProps => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$LoadingExpandedCopyWith<_LoadingExpanded> get copyWith =>
+  _$$_LoadingExpandedCopyWith<_$_LoadingExpanded> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$SuccessCopyWith<$Res> implements $InfoTileStateCopyWith<$Res> {
-  factory _$SuccessCopyWith(_Success value, $Res Function(_Success) then) =
-      __$SuccessCopyWithImpl<$Res>;
+abstract class _$$_SuccessCopyWith<$Res>
+    implements $InfoTileStateCopyWith<$Res> {
+  factory _$$_SuccessCopyWith(
+          _$_Success value, $Res Function(_$_Success) then) =
+      __$$_SuccessCopyWithImpl<$Res>;
   @override
   $Res call({InfoTileProps infoTileProps});
 
@@ -1026,19 +968,19 @@ abstract class _$SuccessCopyWith<$Res> implements $InfoTileStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$SuccessCopyWithImpl<$Res> extends _$InfoTileStateCopyWithImpl<$Res>
-    implements _$SuccessCopyWith<$Res> {
-  __$SuccessCopyWithImpl(_Success _value, $Res Function(_Success) _then)
-      : super(_value, (v) => _then(v as _Success));
+class __$$_SuccessCopyWithImpl<$Res> extends _$InfoTileStateCopyWithImpl<$Res>
+    implements _$$_SuccessCopyWith<$Res> {
+  __$$_SuccessCopyWithImpl(_$_Success _value, $Res Function(_$_Success) _then)
+      : super(_value, (v) => _then(v as _$_Success));
 
   @override
-  _Success get _value => super._value as _Success;
+  _$_Success get _value => super._value as _$_Success;
 
   @override
   $Res call({
     Object? infoTileProps = freezed,
   }) {
-    return _then(_Success(
+    return _then(_$_Success(
       infoTileProps == freezed
           ? _value.infoTileProps
           : infoTileProps // ignore: cast_nullable_to_non_nullable
@@ -1064,18 +1006,19 @@ class _$_Success implements _Success {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Success &&
-            (identical(other.infoTileProps, infoTileProps) ||
-                other.infoTileProps == infoTileProps));
+            other is _$_Success &&
+            const DeepCollectionEquality()
+                .equals(other.infoTileProps, infoTileProps));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, infoTileProps);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(infoTileProps));
 
   @JsonKey(ignore: true)
   @override
-  _$SuccessCopyWith<_Success> get copyWith =>
-      __$SuccessCopyWithImpl<_Success>(this, _$identity);
+  _$$_SuccessCopyWith<_$_Success> get copyWith =>
+      __$$_SuccessCopyWithImpl<_$_Success>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1171,22 +1114,22 @@ class _$_Success implements _Success {
 }
 
 abstract class _Success implements InfoTileState {
-  const factory _Success(InfoTileProps infoTileProps) = _$_Success;
+  const factory _Success(final InfoTileProps infoTileProps) = _$_Success;
 
   @override
-  InfoTileProps get infoTileProps;
+  InfoTileProps get infoTileProps => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$SuccessCopyWith<_Success> get copyWith =>
+  _$$_SuccessCopyWith<_$_Success> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$SuccessExpandedCopyWith<$Res>
+abstract class _$$_SuccessExpandedCopyWith<$Res>
     implements $InfoTileStateCopyWith<$Res> {
-  factory _$SuccessExpandedCopyWith(
-          _SuccessExpanded value, $Res Function(_SuccessExpanded) then) =
-      __$SuccessExpandedCopyWithImpl<$Res>;
+  factory _$$_SuccessExpandedCopyWith(
+          _$_SuccessExpanded value, $Res Function(_$_SuccessExpanded) then) =
+      __$$_SuccessExpandedCopyWithImpl<$Res>;
   @override
   $Res call({InfoTileProps infoTileProps});
 
@@ -1195,21 +1138,21 @@ abstract class _$SuccessExpandedCopyWith<$Res>
 }
 
 /// @nodoc
-class __$SuccessExpandedCopyWithImpl<$Res>
+class __$$_SuccessExpandedCopyWithImpl<$Res>
     extends _$InfoTileStateCopyWithImpl<$Res>
-    implements _$SuccessExpandedCopyWith<$Res> {
-  __$SuccessExpandedCopyWithImpl(
-      _SuccessExpanded _value, $Res Function(_SuccessExpanded) _then)
-      : super(_value, (v) => _then(v as _SuccessExpanded));
+    implements _$$_SuccessExpandedCopyWith<$Res> {
+  __$$_SuccessExpandedCopyWithImpl(
+      _$_SuccessExpanded _value, $Res Function(_$_SuccessExpanded) _then)
+      : super(_value, (v) => _then(v as _$_SuccessExpanded));
 
   @override
-  _SuccessExpanded get _value => super._value as _SuccessExpanded;
+  _$_SuccessExpanded get _value => super._value as _$_SuccessExpanded;
 
   @override
   $Res call({
     Object? infoTileProps = freezed,
   }) {
-    return _then(_SuccessExpanded(
+    return _then(_$_SuccessExpanded(
       infoTileProps == freezed
           ? _value.infoTileProps
           : infoTileProps // ignore: cast_nullable_to_non_nullable
@@ -1235,18 +1178,19 @@ class _$_SuccessExpanded implements _SuccessExpanded {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _SuccessExpanded &&
-            (identical(other.infoTileProps, infoTileProps) ||
-                other.infoTileProps == infoTileProps));
+            other is _$_SuccessExpanded &&
+            const DeepCollectionEquality()
+                .equals(other.infoTileProps, infoTileProps));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, infoTileProps);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(infoTileProps));
 
   @JsonKey(ignore: true)
   @override
-  _$SuccessExpandedCopyWith<_SuccessExpanded> get copyWith =>
-      __$SuccessExpandedCopyWithImpl<_SuccessExpanded>(this, _$identity);
+  _$$_SuccessExpandedCopyWith<_$_SuccessExpanded> get copyWith =>
+      __$$_SuccessExpandedCopyWithImpl<_$_SuccessExpanded>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1342,21 +1286,23 @@ class _$_SuccessExpanded implements _SuccessExpanded {
 }
 
 abstract class _SuccessExpanded implements InfoTileState {
-  const factory _SuccessExpanded(InfoTileProps infoTileProps) =
+  const factory _SuccessExpanded(final InfoTileProps infoTileProps) =
       _$_SuccessExpanded;
 
   @override
-  InfoTileProps get infoTileProps;
+  InfoTileProps get infoTileProps => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$SuccessExpandedCopyWith<_SuccessExpanded> get copyWith =>
+  _$$_SuccessExpandedCopyWith<_$_SuccessExpanded> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$FailureCopyWith<$Res> implements $InfoTileStateCopyWith<$Res> {
-  factory _$FailureCopyWith(_Failure value, $Res Function(_Failure) then) =
-      __$FailureCopyWithImpl<$Res>;
+abstract class _$$_FailureCopyWith<$Res>
+    implements $InfoTileStateCopyWith<$Res> {
+  factory _$$_FailureCopyWith(
+          _$_Failure value, $Res Function(_$_Failure) then) =
+      __$$_FailureCopyWithImpl<$Res>;
   @override
   $Res call({InfoTileProps infoTileProps});
 
@@ -1365,19 +1311,19 @@ abstract class _$FailureCopyWith<$Res> implements $InfoTileStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$FailureCopyWithImpl<$Res> extends _$InfoTileStateCopyWithImpl<$Res>
-    implements _$FailureCopyWith<$Res> {
-  __$FailureCopyWithImpl(_Failure _value, $Res Function(_Failure) _then)
-      : super(_value, (v) => _then(v as _Failure));
+class __$$_FailureCopyWithImpl<$Res> extends _$InfoTileStateCopyWithImpl<$Res>
+    implements _$$_FailureCopyWith<$Res> {
+  __$$_FailureCopyWithImpl(_$_Failure _value, $Res Function(_$_Failure) _then)
+      : super(_value, (v) => _then(v as _$_Failure));
 
   @override
-  _Failure get _value => super._value as _Failure;
+  _$_Failure get _value => super._value as _$_Failure;
 
   @override
   $Res call({
     Object? infoTileProps = freezed,
   }) {
-    return _then(_Failure(
+    return _then(_$_Failure(
       infoTileProps == freezed
           ? _value.infoTileProps
           : infoTileProps // ignore: cast_nullable_to_non_nullable
@@ -1403,18 +1349,19 @@ class _$_Failure implements _Failure {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Failure &&
-            (identical(other.infoTileProps, infoTileProps) ||
-                other.infoTileProps == infoTileProps));
+            other is _$_Failure &&
+            const DeepCollectionEquality()
+                .equals(other.infoTileProps, infoTileProps));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, infoTileProps);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(infoTileProps));
 
   @JsonKey(ignore: true)
   @override
-  _$FailureCopyWith<_Failure> get copyWith =>
-      __$FailureCopyWithImpl<_Failure>(this, _$identity);
+  _$$_FailureCopyWith<_$_Failure> get copyWith =>
+      __$$_FailureCopyWithImpl<_$_Failure>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1510,22 +1457,22 @@ class _$_Failure implements _Failure {
 }
 
 abstract class _Failure implements InfoTileState {
-  const factory _Failure(InfoTileProps infoTileProps) = _$_Failure;
+  const factory _Failure(final InfoTileProps infoTileProps) = _$_Failure;
 
   @override
-  InfoTileProps get infoTileProps;
+  InfoTileProps get infoTileProps => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$FailureCopyWith<_Failure> get copyWith =>
+  _$$_FailureCopyWith<_$_Failure> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$FailureExpandedCopyWith<$Res>
+abstract class _$$_FailureExpandedCopyWith<$Res>
     implements $InfoTileStateCopyWith<$Res> {
-  factory _$FailureExpandedCopyWith(
-          _FailureExpanded value, $Res Function(_FailureExpanded) then) =
-      __$FailureExpandedCopyWithImpl<$Res>;
+  factory _$$_FailureExpandedCopyWith(
+          _$_FailureExpanded value, $Res Function(_$_FailureExpanded) then) =
+      __$$_FailureExpandedCopyWithImpl<$Res>;
   @override
   $Res call({InfoTileProps infoTileProps});
 
@@ -1534,21 +1481,21 @@ abstract class _$FailureExpandedCopyWith<$Res>
 }
 
 /// @nodoc
-class __$FailureExpandedCopyWithImpl<$Res>
+class __$$_FailureExpandedCopyWithImpl<$Res>
     extends _$InfoTileStateCopyWithImpl<$Res>
-    implements _$FailureExpandedCopyWith<$Res> {
-  __$FailureExpandedCopyWithImpl(
-      _FailureExpanded _value, $Res Function(_FailureExpanded) _then)
-      : super(_value, (v) => _then(v as _FailureExpanded));
+    implements _$$_FailureExpandedCopyWith<$Res> {
+  __$$_FailureExpandedCopyWithImpl(
+      _$_FailureExpanded _value, $Res Function(_$_FailureExpanded) _then)
+      : super(_value, (v) => _then(v as _$_FailureExpanded));
 
   @override
-  _FailureExpanded get _value => super._value as _FailureExpanded;
+  _$_FailureExpanded get _value => super._value as _$_FailureExpanded;
 
   @override
   $Res call({
     Object? infoTileProps = freezed,
   }) {
-    return _then(_FailureExpanded(
+    return _then(_$_FailureExpanded(
       infoTileProps == freezed
           ? _value.infoTileProps
           : infoTileProps // ignore: cast_nullable_to_non_nullable
@@ -1574,18 +1521,19 @@ class _$_FailureExpanded implements _FailureExpanded {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _FailureExpanded &&
-            (identical(other.infoTileProps, infoTileProps) ||
-                other.infoTileProps == infoTileProps));
+            other is _$_FailureExpanded &&
+            const DeepCollectionEquality()
+                .equals(other.infoTileProps, infoTileProps));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, infoTileProps);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(infoTileProps));
 
   @JsonKey(ignore: true)
   @override
-  _$FailureExpandedCopyWith<_FailureExpanded> get copyWith =>
-      __$FailureExpandedCopyWithImpl<_FailureExpanded>(this, _$identity);
+  _$$_FailureExpandedCopyWith<_$_FailureExpanded> get copyWith =>
+      __$$_FailureExpandedCopyWithImpl<_$_FailureExpanded>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1681,41 +1629,16 @@ class _$_FailureExpanded implements _FailureExpanded {
 }
 
 abstract class _FailureExpanded implements InfoTileState {
-  const factory _FailureExpanded(InfoTileProps infoTileProps) =
+  const factory _FailureExpanded(final InfoTileProps infoTileProps) =
       _$_FailureExpanded;
 
   @override
-  InfoTileProps get infoTileProps;
+  InfoTileProps get infoTileProps => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$FailureExpandedCopyWith<_FailureExpanded> get copyWith =>
+  _$$_FailureExpandedCopyWith<_$_FailureExpanded> get copyWith =>
       throw _privateConstructorUsedError;
 }
-
-/// @nodoc
-class _$InfoTilePropsTearOff {
-  const _$InfoTilePropsTearOff();
-
-  _InfoTileProps call(
-      {required String leadingText,
-      required Widget child,
-      required bool isAbleToExpand,
-      required bool isExpanded,
-      required InfoTileStatus currentStatus,
-      AnimationController? animationController}) {
-    return _InfoTileProps(
-      leadingText: leadingText,
-      child: child,
-      isAbleToExpand: isAbleToExpand,
-      isExpanded: isExpanded,
-      currentStatus: currentStatus,
-      animationController: animationController,
-    );
-  }
-}
-
-/// @nodoc
-const $InfoTileProps = _$InfoTilePropsTearOff();
 
 /// @nodoc
 mixin _$InfoTileProps {
@@ -1794,11 +1717,11 @@ class _$InfoTilePropsCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$InfoTilePropsCopyWith<$Res>
+abstract class _$$_InfoTilePropsCopyWith<$Res>
     implements $InfoTilePropsCopyWith<$Res> {
-  factory _$InfoTilePropsCopyWith(
-          _InfoTileProps value, $Res Function(_InfoTileProps) then) =
-      __$InfoTilePropsCopyWithImpl<$Res>;
+  factory _$$_InfoTilePropsCopyWith(
+          _$_InfoTileProps value, $Res Function(_$_InfoTileProps) then) =
+      __$$_InfoTilePropsCopyWithImpl<$Res>;
   @override
   $Res call(
       {String leadingText,
@@ -1810,15 +1733,15 @@ abstract class _$InfoTilePropsCopyWith<$Res>
 }
 
 /// @nodoc
-class __$InfoTilePropsCopyWithImpl<$Res>
+class __$$_InfoTilePropsCopyWithImpl<$Res>
     extends _$InfoTilePropsCopyWithImpl<$Res>
-    implements _$InfoTilePropsCopyWith<$Res> {
-  __$InfoTilePropsCopyWithImpl(
-      _InfoTileProps _value, $Res Function(_InfoTileProps) _then)
-      : super(_value, (v) => _then(v as _InfoTileProps));
+    implements _$$_InfoTilePropsCopyWith<$Res> {
+  __$$_InfoTilePropsCopyWithImpl(
+      _$_InfoTileProps _value, $Res Function(_$_InfoTileProps) _then)
+      : super(_value, (v) => _then(v as _$_InfoTileProps));
 
   @override
-  _InfoTileProps get _value => super._value as _InfoTileProps;
+  _$_InfoTileProps get _value => super._value as _$_InfoTileProps;
 
   @override
   $Res call({
@@ -1829,7 +1752,7 @@ class __$InfoTilePropsCopyWithImpl<$Res>
     Object? currentStatus = freezed,
     Object? animationController = freezed,
   }) {
-    return _then(_InfoTileProps(
+    return _then(_$_InfoTileProps(
       leadingText: leadingText == freezed
           ? _value.leadingText
           : leadingText // ignore: cast_nullable_to_non_nullable
@@ -1891,53 +1814,60 @@ class _$_InfoTileProps implements _InfoTileProps {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _InfoTileProps &&
-            (identical(other.leadingText, leadingText) ||
-                other.leadingText == leadingText) &&
-            (identical(other.child, child) || other.child == child) &&
-            (identical(other.isAbleToExpand, isAbleToExpand) ||
-                other.isAbleToExpand == isAbleToExpand) &&
-            (identical(other.isExpanded, isExpanded) ||
-                other.isExpanded == isExpanded) &&
-            (identical(other.currentStatus, currentStatus) ||
-                other.currentStatus == currentStatus) &&
-            (identical(other.animationController, animationController) ||
-                other.animationController == animationController));
+            other is _$_InfoTileProps &&
+            const DeepCollectionEquality()
+                .equals(other.leadingText, leadingText) &&
+            const DeepCollectionEquality().equals(other.child, child) &&
+            const DeepCollectionEquality()
+                .equals(other.isAbleToExpand, isAbleToExpand) &&
+            const DeepCollectionEquality()
+                .equals(other.isExpanded, isExpanded) &&
+            const DeepCollectionEquality()
+                .equals(other.currentStatus, currentStatus) &&
+            const DeepCollectionEquality()
+                .equals(other.animationController, animationController));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, leadingText, child,
-      isAbleToExpand, isExpanded, currentStatus, animationController);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(leadingText),
+      const DeepCollectionEquality().hash(child),
+      const DeepCollectionEquality().hash(isAbleToExpand),
+      const DeepCollectionEquality().hash(isExpanded),
+      const DeepCollectionEquality().hash(currentStatus),
+      const DeepCollectionEquality().hash(animationController));
 
   @JsonKey(ignore: true)
   @override
-  _$InfoTilePropsCopyWith<_InfoTileProps> get copyWith =>
-      __$InfoTilePropsCopyWithImpl<_InfoTileProps>(this, _$identity);
+  _$$_InfoTilePropsCopyWith<_$_InfoTileProps> get copyWith =>
+      __$$_InfoTilePropsCopyWithImpl<_$_InfoTileProps>(this, _$identity);
 }
 
 abstract class _InfoTileProps implements InfoTileProps {
   const factory _InfoTileProps(
-      {required String leadingText,
-      required Widget child,
-      required bool isAbleToExpand,
-      required bool isExpanded,
-      required InfoTileStatus currentStatus,
-      AnimationController? animationController}) = _$_InfoTileProps;
+      {required final String leadingText,
+      required final Widget child,
+      required final bool isAbleToExpand,
+      required final bool isExpanded,
+      required final InfoTileStatus currentStatus,
+      final AnimationController? animationController}) = _$_InfoTileProps;
 
   @override
-  String get leadingText;
+  String get leadingText => throw _privateConstructorUsedError;
   @override
-  Widget get child;
+  Widget get child => throw _privateConstructorUsedError;
   @override
-  bool get isAbleToExpand;
+  bool get isAbleToExpand => throw _privateConstructorUsedError;
   @override
-  bool get isExpanded;
+  bool get isExpanded => throw _privateConstructorUsedError;
   @override
-  InfoTileStatus get currentStatus;
+  InfoTileStatus get currentStatus => throw _privateConstructorUsedError;
   @override
-  AnimationController? get animationController;
+  AnimationController? get animationController =>
+      throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$InfoTilePropsCopyWith<_InfoTileProps> get copyWith =>
+  _$$_InfoTilePropsCopyWith<_$_InfoTileProps> get copyWith =>
       throw _privateConstructorUsedError;
 }

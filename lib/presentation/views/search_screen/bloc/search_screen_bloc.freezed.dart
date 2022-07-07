@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'search_screen_bloc.dart';
@@ -11,35 +12,7 @@ part of 'search_screen_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$SearchScreenEventTearOff {
-  const _$SearchScreenEventTearOff();
-
-  _SSEStarted started() {
-    return const _SSEStarted();
-  }
-
-  _SSEOnChanged onChanged({required String query}) {
-    return _SSEOnChanged(
-      query: query,
-    );
-  }
-
-  _SSEOnSubmitted onSubmitted({required String query}) {
-    return _SSEOnSubmitted(
-      query: query,
-    );
-  }
-
-  _SSEGetNextTenProduce getNextTenProduce() {
-    return const _SSEGetNextTenProduce();
-  }
-}
-
-/// @nodoc
-const $SearchScreenEvent = _$SearchScreenEventTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$SearchScreenEvent {
@@ -113,22 +86,22 @@ class _$SearchScreenEventCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$SSEStartedCopyWith<$Res> {
-  factory _$SSEStartedCopyWith(
-          _SSEStarted value, $Res Function(_SSEStarted) then) =
-      __$SSEStartedCopyWithImpl<$Res>;
+abstract class _$$_SSEStartedCopyWith<$Res> {
+  factory _$$_SSEStartedCopyWith(
+          _$_SSEStarted value, $Res Function(_$_SSEStarted) then) =
+      __$$_SSEStartedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$SSEStartedCopyWithImpl<$Res>
+class __$$_SSEStartedCopyWithImpl<$Res>
     extends _$SearchScreenEventCopyWithImpl<$Res>
-    implements _$SSEStartedCopyWith<$Res> {
-  __$SSEStartedCopyWithImpl(
-      _SSEStarted _value, $Res Function(_SSEStarted) _then)
-      : super(_value, (v) => _then(v as _SSEStarted));
+    implements _$$_SSEStartedCopyWith<$Res> {
+  __$$_SSEStartedCopyWithImpl(
+      _$_SSEStarted _value, $Res Function(_$_SSEStarted) _then)
+      : super(_value, (v) => _then(v as _$_SSEStarted));
 
   @override
-  _SSEStarted get _value => super._value as _SSEStarted;
+  _$_SSEStarted get _value => super._value as _$_SSEStarted;
 }
 
 /// @nodoc
@@ -144,7 +117,7 @@ class _$_SSEStarted implements _SSEStarted {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _SSEStarted);
+        (other.runtimeType == runtimeType && other is _$_SSEStarted);
   }
 
   @override
@@ -230,29 +203,29 @@ abstract class _SSEStarted implements SearchScreenEvent {
 }
 
 /// @nodoc
-abstract class _$SSEOnChangedCopyWith<$Res> {
-  factory _$SSEOnChangedCopyWith(
-          _SSEOnChanged value, $Res Function(_SSEOnChanged) then) =
-      __$SSEOnChangedCopyWithImpl<$Res>;
+abstract class _$$_SSEOnChangedCopyWith<$Res> {
+  factory _$$_SSEOnChangedCopyWith(
+          _$_SSEOnChanged value, $Res Function(_$_SSEOnChanged) then) =
+      __$$_SSEOnChangedCopyWithImpl<$Res>;
   $Res call({String query});
 }
 
 /// @nodoc
-class __$SSEOnChangedCopyWithImpl<$Res>
+class __$$_SSEOnChangedCopyWithImpl<$Res>
     extends _$SearchScreenEventCopyWithImpl<$Res>
-    implements _$SSEOnChangedCopyWith<$Res> {
-  __$SSEOnChangedCopyWithImpl(
-      _SSEOnChanged _value, $Res Function(_SSEOnChanged) _then)
-      : super(_value, (v) => _then(v as _SSEOnChanged));
+    implements _$$_SSEOnChangedCopyWith<$Res> {
+  __$$_SSEOnChangedCopyWithImpl(
+      _$_SSEOnChanged _value, $Res Function(_$_SSEOnChanged) _then)
+      : super(_value, (v) => _then(v as _$_SSEOnChanged));
 
   @override
-  _SSEOnChanged get _value => super._value as _SSEOnChanged;
+  _$_SSEOnChanged get _value => super._value as _$_SSEOnChanged;
 
   @override
   $Res call({
     Object? query = freezed,
   }) {
-    return _then(_SSEOnChanged(
+    return _then(_$_SSEOnChanged(
       query: query == freezed
           ? _value.query
           : query // ignore: cast_nullable_to_non_nullable
@@ -278,17 +251,18 @@ class _$_SSEOnChanged implements _SSEOnChanged {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _SSEOnChanged &&
-            (identical(other.query, query) || other.query == query));
+            other is _$_SSEOnChanged &&
+            const DeepCollectionEquality().equals(other.query, query));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, query);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(query));
 
   @JsonKey(ignore: true)
   @override
-  _$SSEOnChangedCopyWith<_SSEOnChanged> get copyWith =>
-      __$SSEOnChangedCopyWithImpl<_SSEOnChanged>(this, _$identity);
+  _$$_SSEOnChangedCopyWith<_$_SSEOnChanged> get copyWith =>
+      __$$_SSEOnChangedCopyWithImpl<_$_SSEOnChanged>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -366,38 +340,38 @@ class _$_SSEOnChanged implements _SSEOnChanged {
 }
 
 abstract class _SSEOnChanged implements SearchScreenEvent {
-  const factory _SSEOnChanged({required String query}) = _$_SSEOnChanged;
+  const factory _SSEOnChanged({required final String query}) = _$_SSEOnChanged;
 
-  String get query;
+  String get query => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$SSEOnChangedCopyWith<_SSEOnChanged> get copyWith =>
+  _$$_SSEOnChangedCopyWith<_$_SSEOnChanged> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$SSEOnSubmittedCopyWith<$Res> {
-  factory _$SSEOnSubmittedCopyWith(
-          _SSEOnSubmitted value, $Res Function(_SSEOnSubmitted) then) =
-      __$SSEOnSubmittedCopyWithImpl<$Res>;
+abstract class _$$_SSEOnSubmittedCopyWith<$Res> {
+  factory _$$_SSEOnSubmittedCopyWith(
+          _$_SSEOnSubmitted value, $Res Function(_$_SSEOnSubmitted) then) =
+      __$$_SSEOnSubmittedCopyWithImpl<$Res>;
   $Res call({String query});
 }
 
 /// @nodoc
-class __$SSEOnSubmittedCopyWithImpl<$Res>
+class __$$_SSEOnSubmittedCopyWithImpl<$Res>
     extends _$SearchScreenEventCopyWithImpl<$Res>
-    implements _$SSEOnSubmittedCopyWith<$Res> {
-  __$SSEOnSubmittedCopyWithImpl(
-      _SSEOnSubmitted _value, $Res Function(_SSEOnSubmitted) _then)
-      : super(_value, (v) => _then(v as _SSEOnSubmitted));
+    implements _$$_SSEOnSubmittedCopyWith<$Res> {
+  __$$_SSEOnSubmittedCopyWithImpl(
+      _$_SSEOnSubmitted _value, $Res Function(_$_SSEOnSubmitted) _then)
+      : super(_value, (v) => _then(v as _$_SSEOnSubmitted));
 
   @override
-  _SSEOnSubmitted get _value => super._value as _SSEOnSubmitted;
+  _$_SSEOnSubmitted get _value => super._value as _$_SSEOnSubmitted;
 
   @override
   $Res call({
     Object? query = freezed,
   }) {
-    return _then(_SSEOnSubmitted(
+    return _then(_$_SSEOnSubmitted(
       query: query == freezed
           ? _value.query
           : query // ignore: cast_nullable_to_non_nullable
@@ -423,17 +397,18 @@ class _$_SSEOnSubmitted implements _SSEOnSubmitted {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _SSEOnSubmitted &&
-            (identical(other.query, query) || other.query == query));
+            other is _$_SSEOnSubmitted &&
+            const DeepCollectionEquality().equals(other.query, query));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, query);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(query));
 
   @JsonKey(ignore: true)
   @override
-  _$SSEOnSubmittedCopyWith<_SSEOnSubmitted> get copyWith =>
-      __$SSEOnSubmittedCopyWithImpl<_SSEOnSubmitted>(this, _$identity);
+  _$$_SSEOnSubmittedCopyWith<_$_SSEOnSubmitted> get copyWith =>
+      __$$_SSEOnSubmittedCopyWithImpl<_$_SSEOnSubmitted>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -511,31 +486,32 @@ class _$_SSEOnSubmitted implements _SSEOnSubmitted {
 }
 
 abstract class _SSEOnSubmitted implements SearchScreenEvent {
-  const factory _SSEOnSubmitted({required String query}) = _$_SSEOnSubmitted;
+  const factory _SSEOnSubmitted({required final String query}) =
+      _$_SSEOnSubmitted;
 
-  String get query;
+  String get query => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$SSEOnSubmittedCopyWith<_SSEOnSubmitted> get copyWith =>
+  _$$_SSEOnSubmittedCopyWith<_$_SSEOnSubmitted> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$SSEGetNextTenProduceCopyWith<$Res> {
-  factory _$SSEGetNextTenProduceCopyWith(_SSEGetNextTenProduce value,
-          $Res Function(_SSEGetNextTenProduce) then) =
-      __$SSEGetNextTenProduceCopyWithImpl<$Res>;
+abstract class _$$_SSEGetNextTenProduceCopyWith<$Res> {
+  factory _$$_SSEGetNextTenProduceCopyWith(_$_SSEGetNextTenProduce value,
+          $Res Function(_$_SSEGetNextTenProduce) then) =
+      __$$_SSEGetNextTenProduceCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$SSEGetNextTenProduceCopyWithImpl<$Res>
+class __$$_SSEGetNextTenProduceCopyWithImpl<$Res>
     extends _$SearchScreenEventCopyWithImpl<$Res>
-    implements _$SSEGetNextTenProduceCopyWith<$Res> {
-  __$SSEGetNextTenProduceCopyWithImpl(
-      _SSEGetNextTenProduce _value, $Res Function(_SSEGetNextTenProduce) _then)
-      : super(_value, (v) => _then(v as _SSEGetNextTenProduce));
+    implements _$$_SSEGetNextTenProduceCopyWith<$Res> {
+  __$$_SSEGetNextTenProduceCopyWithImpl(_$_SSEGetNextTenProduce _value,
+      $Res Function(_$_SSEGetNextTenProduce) _then)
+      : super(_value, (v) => _then(v as _$_SSEGetNextTenProduce));
 
   @override
-  _SSEGetNextTenProduce get _value => super._value as _SSEGetNextTenProduce;
+  _$_SSEGetNextTenProduce get _value => super._value as _$_SSEGetNextTenProduce;
 }
 
 /// @nodoc
@@ -551,7 +527,7 @@ class _$_SSEGetNextTenProduce implements _SSEGetNextTenProduce {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _SSEGetNextTenProduce);
+        (other.runtimeType == runtimeType && other is _$_SSEGetNextTenProduce);
   }
 
   @override
@@ -637,48 +613,8 @@ abstract class _SSEGetNextTenProduce implements SearchScreenEvent {
 }
 
 /// @nodoc
-class _$SearchScreenStateTearOff {
-  const _$SearchScreenStateTearOff();
-
-  SSSInitial initial(SearchScreenProps props) {
-    return SSSInitial(
-      props,
-    );
-  }
-
-  SSSLoading loading(SearchScreenProps props) {
-    return SSSLoading(
-      props,
-    );
-  }
-
-  SSSLoadingNextTenProduce loadingNextTenProduce(SearchScreenProps props) {
-    return SSSLoadingNextTenProduce(
-      props,
-    );
-  }
-
-  SSSCompleted completed(SearchScreenProps props) {
-    return SSSCompleted(
-      props,
-    );
-  }
-
-  SSSError error({required SearchScreenProps props, required Failure failure}) {
-    return SSSError(
-      props: props,
-      failure: failure,
-    );
-  }
-}
-
-/// @nodoc
-const $SearchScreenState = _$SearchScreenStateTearOff();
-
-/// @nodoc
 mixin _$SearchScreenState {
   SearchScreenProps get props => throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(SearchScreenProps props) initial,
@@ -782,11 +718,11 @@ class _$SearchScreenStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class $SSSInitialCopyWith<$Res>
+abstract class _$$SSSInitialCopyWith<$Res>
     implements $SearchScreenStateCopyWith<$Res> {
-  factory $SSSInitialCopyWith(
-          SSSInitial value, $Res Function(SSSInitial) then) =
-      _$SSSInitialCopyWithImpl<$Res>;
+  factory _$$SSSInitialCopyWith(
+          _$SSSInitial value, $Res Function(_$SSSInitial) then) =
+      __$$SSSInitialCopyWithImpl<$Res>;
   @override
   $Res call({SearchScreenProps props});
 
@@ -795,20 +731,21 @@ abstract class $SSSInitialCopyWith<$Res>
 }
 
 /// @nodoc
-class _$SSSInitialCopyWithImpl<$Res>
+class __$$SSSInitialCopyWithImpl<$Res>
     extends _$SearchScreenStateCopyWithImpl<$Res>
-    implements $SSSInitialCopyWith<$Res> {
-  _$SSSInitialCopyWithImpl(SSSInitial _value, $Res Function(SSSInitial) _then)
-      : super(_value, (v) => _then(v as SSSInitial));
+    implements _$$SSSInitialCopyWith<$Res> {
+  __$$SSSInitialCopyWithImpl(
+      _$SSSInitial _value, $Res Function(_$SSSInitial) _then)
+      : super(_value, (v) => _then(v as _$SSSInitial));
 
   @override
-  SSSInitial get _value => super._value as SSSInitial;
+  _$SSSInitial get _value => super._value as _$SSSInitial;
 
   @override
   $Res call({
     Object? props = freezed,
   }) {
-    return _then(SSSInitial(
+    return _then(_$SSSInitial(
       props == freezed
           ? _value.props
           : props // ignore: cast_nullable_to_non_nullable
@@ -834,17 +771,18 @@ class _$SSSInitial implements SSSInitial {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is SSSInitial &&
-            (identical(other.props, props) || other.props == props));
+            other is _$SSSInitial &&
+            const DeepCollectionEquality().equals(other.props, props));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, props);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(props));
 
   @JsonKey(ignore: true)
   @override
-  $SSSInitialCopyWith<SSSInitial> get copyWith =>
-      _$SSSInitialCopyWithImpl<SSSInitial>(this, _$identity);
+  _$$SSSInitialCopyWith<_$SSSInitial> get copyWith =>
+      __$$SSSInitialCopyWithImpl<_$SSSInitial>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -929,22 +867,22 @@ class _$SSSInitial implements SSSInitial {
 }
 
 abstract class SSSInitial implements SearchScreenState {
-  const factory SSSInitial(SearchScreenProps props) = _$SSSInitial;
+  const factory SSSInitial(final SearchScreenProps props) = _$SSSInitial;
 
   @override
-  SearchScreenProps get props;
+  SearchScreenProps get props => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  $SSSInitialCopyWith<SSSInitial> get copyWith =>
+  _$$SSSInitialCopyWith<_$SSSInitial> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $SSSLoadingCopyWith<$Res>
+abstract class _$$SSSLoadingCopyWith<$Res>
     implements $SearchScreenStateCopyWith<$Res> {
-  factory $SSSLoadingCopyWith(
-          SSSLoading value, $Res Function(SSSLoading) then) =
-      _$SSSLoadingCopyWithImpl<$Res>;
+  factory _$$SSSLoadingCopyWith(
+          _$SSSLoading value, $Res Function(_$SSSLoading) then) =
+      __$$SSSLoadingCopyWithImpl<$Res>;
   @override
   $Res call({SearchScreenProps props});
 
@@ -953,20 +891,21 @@ abstract class $SSSLoadingCopyWith<$Res>
 }
 
 /// @nodoc
-class _$SSSLoadingCopyWithImpl<$Res>
+class __$$SSSLoadingCopyWithImpl<$Res>
     extends _$SearchScreenStateCopyWithImpl<$Res>
-    implements $SSSLoadingCopyWith<$Res> {
-  _$SSSLoadingCopyWithImpl(SSSLoading _value, $Res Function(SSSLoading) _then)
-      : super(_value, (v) => _then(v as SSSLoading));
+    implements _$$SSSLoadingCopyWith<$Res> {
+  __$$SSSLoadingCopyWithImpl(
+      _$SSSLoading _value, $Res Function(_$SSSLoading) _then)
+      : super(_value, (v) => _then(v as _$SSSLoading));
 
   @override
-  SSSLoading get _value => super._value as SSSLoading;
+  _$SSSLoading get _value => super._value as _$SSSLoading;
 
   @override
   $Res call({
     Object? props = freezed,
   }) {
-    return _then(SSSLoading(
+    return _then(_$SSSLoading(
       props == freezed
           ? _value.props
           : props // ignore: cast_nullable_to_non_nullable
@@ -992,17 +931,18 @@ class _$SSSLoading implements SSSLoading {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is SSSLoading &&
-            (identical(other.props, props) || other.props == props));
+            other is _$SSSLoading &&
+            const DeepCollectionEquality().equals(other.props, props));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, props);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(props));
 
   @JsonKey(ignore: true)
   @override
-  $SSSLoadingCopyWith<SSSLoading> get copyWith =>
-      _$SSSLoadingCopyWithImpl<SSSLoading>(this, _$identity);
+  _$$SSSLoadingCopyWith<_$SSSLoading> get copyWith =>
+      __$$SSSLoadingCopyWithImpl<_$SSSLoading>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1087,22 +1027,22 @@ class _$SSSLoading implements SSSLoading {
 }
 
 abstract class SSSLoading implements SearchScreenState {
-  const factory SSSLoading(SearchScreenProps props) = _$SSSLoading;
+  const factory SSSLoading(final SearchScreenProps props) = _$SSSLoading;
 
   @override
-  SearchScreenProps get props;
+  SearchScreenProps get props => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  $SSSLoadingCopyWith<SSSLoading> get copyWith =>
+  _$$SSSLoadingCopyWith<_$SSSLoading> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $SSSLoadingNextTenProduceCopyWith<$Res>
+abstract class _$$SSSLoadingNextTenProduceCopyWith<$Res>
     implements $SearchScreenStateCopyWith<$Res> {
-  factory $SSSLoadingNextTenProduceCopyWith(SSSLoadingNextTenProduce value,
-          $Res Function(SSSLoadingNextTenProduce) then) =
-      _$SSSLoadingNextTenProduceCopyWithImpl<$Res>;
+  factory _$$SSSLoadingNextTenProduceCopyWith(_$SSSLoadingNextTenProduce value,
+          $Res Function(_$SSSLoadingNextTenProduce) then) =
+      __$$SSSLoadingNextTenProduceCopyWithImpl<$Res>;
   @override
   $Res call({SearchScreenProps props});
 
@@ -1111,22 +1051,22 @@ abstract class $SSSLoadingNextTenProduceCopyWith<$Res>
 }
 
 /// @nodoc
-class _$SSSLoadingNextTenProduceCopyWithImpl<$Res>
+class __$$SSSLoadingNextTenProduceCopyWithImpl<$Res>
     extends _$SearchScreenStateCopyWithImpl<$Res>
-    implements $SSSLoadingNextTenProduceCopyWith<$Res> {
-  _$SSSLoadingNextTenProduceCopyWithImpl(SSSLoadingNextTenProduce _value,
-      $Res Function(SSSLoadingNextTenProduce) _then)
-      : super(_value, (v) => _then(v as SSSLoadingNextTenProduce));
+    implements _$$SSSLoadingNextTenProduceCopyWith<$Res> {
+  __$$SSSLoadingNextTenProduceCopyWithImpl(_$SSSLoadingNextTenProduce _value,
+      $Res Function(_$SSSLoadingNextTenProduce) _then)
+      : super(_value, (v) => _then(v as _$SSSLoadingNextTenProduce));
 
   @override
-  SSSLoadingNextTenProduce get _value =>
-      super._value as SSSLoadingNextTenProduce;
+  _$SSSLoadingNextTenProduce get _value =>
+      super._value as _$SSSLoadingNextTenProduce;
 
   @override
   $Res call({
     Object? props = freezed,
   }) {
-    return _then(SSSLoadingNextTenProduce(
+    return _then(_$SSSLoadingNextTenProduce(
       props == freezed
           ? _value.props
           : props // ignore: cast_nullable_to_non_nullable
@@ -1152,18 +1092,20 @@ class _$SSSLoadingNextTenProduce implements SSSLoadingNextTenProduce {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is SSSLoadingNextTenProduce &&
-            (identical(other.props, props) || other.props == props));
+            other is _$SSSLoadingNextTenProduce &&
+            const DeepCollectionEquality().equals(other.props, props));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, props);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(props));
 
   @JsonKey(ignore: true)
   @override
-  $SSSLoadingNextTenProduceCopyWith<SSSLoadingNextTenProduce> get copyWith =>
-      _$SSSLoadingNextTenProduceCopyWithImpl<SSSLoadingNextTenProduce>(
-          this, _$identity);
+  _$$SSSLoadingNextTenProduceCopyWith<_$SSSLoadingNextTenProduce>
+      get copyWith =>
+          __$$SSSLoadingNextTenProduceCopyWithImpl<_$SSSLoadingNextTenProduce>(
+              this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1248,23 +1190,23 @@ class _$SSSLoadingNextTenProduce implements SSSLoadingNextTenProduce {
 }
 
 abstract class SSSLoadingNextTenProduce implements SearchScreenState {
-  const factory SSSLoadingNextTenProduce(SearchScreenProps props) =
+  const factory SSSLoadingNextTenProduce(final SearchScreenProps props) =
       _$SSSLoadingNextTenProduce;
 
   @override
-  SearchScreenProps get props;
+  SearchScreenProps get props => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  $SSSLoadingNextTenProduceCopyWith<SSSLoadingNextTenProduce> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$SSSLoadingNextTenProduceCopyWith<_$SSSLoadingNextTenProduce>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $SSSCompletedCopyWith<$Res>
+abstract class _$$SSSCompletedCopyWith<$Res>
     implements $SearchScreenStateCopyWith<$Res> {
-  factory $SSSCompletedCopyWith(
-          SSSCompleted value, $Res Function(SSSCompleted) then) =
-      _$SSSCompletedCopyWithImpl<$Res>;
+  factory _$$SSSCompletedCopyWith(
+          _$SSSCompleted value, $Res Function(_$SSSCompleted) then) =
+      __$$SSSCompletedCopyWithImpl<$Res>;
   @override
   $Res call({SearchScreenProps props});
 
@@ -1273,21 +1215,21 @@ abstract class $SSSCompletedCopyWith<$Res>
 }
 
 /// @nodoc
-class _$SSSCompletedCopyWithImpl<$Res>
+class __$$SSSCompletedCopyWithImpl<$Res>
     extends _$SearchScreenStateCopyWithImpl<$Res>
-    implements $SSSCompletedCopyWith<$Res> {
-  _$SSSCompletedCopyWithImpl(
-      SSSCompleted _value, $Res Function(SSSCompleted) _then)
-      : super(_value, (v) => _then(v as SSSCompleted));
+    implements _$$SSSCompletedCopyWith<$Res> {
+  __$$SSSCompletedCopyWithImpl(
+      _$SSSCompleted _value, $Res Function(_$SSSCompleted) _then)
+      : super(_value, (v) => _then(v as _$SSSCompleted));
 
   @override
-  SSSCompleted get _value => super._value as SSSCompleted;
+  _$SSSCompleted get _value => super._value as _$SSSCompleted;
 
   @override
   $Res call({
     Object? props = freezed,
   }) {
-    return _then(SSSCompleted(
+    return _then(_$SSSCompleted(
       props == freezed
           ? _value.props
           : props // ignore: cast_nullable_to_non_nullable
@@ -1313,17 +1255,18 @@ class _$SSSCompleted implements SSSCompleted {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is SSSCompleted &&
-            (identical(other.props, props) || other.props == props));
+            other is _$SSSCompleted &&
+            const DeepCollectionEquality().equals(other.props, props));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, props);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(props));
 
   @JsonKey(ignore: true)
   @override
-  $SSSCompletedCopyWith<SSSCompleted> get copyWith =>
-      _$SSSCompletedCopyWithImpl<SSSCompleted>(this, _$identity);
+  _$$SSSCompletedCopyWith<_$SSSCompleted> get copyWith =>
+      __$$SSSCompletedCopyWithImpl<_$SSSCompleted>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1408,21 +1351,22 @@ class _$SSSCompleted implements SSSCompleted {
 }
 
 abstract class SSSCompleted implements SearchScreenState {
-  const factory SSSCompleted(SearchScreenProps props) = _$SSSCompleted;
+  const factory SSSCompleted(final SearchScreenProps props) = _$SSSCompleted;
 
   @override
-  SearchScreenProps get props;
+  SearchScreenProps get props => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  $SSSCompletedCopyWith<SSSCompleted> get copyWith =>
+  _$$SSSCompletedCopyWith<_$SSSCompleted> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $SSSErrorCopyWith<$Res>
+abstract class _$$SSSErrorCopyWith<$Res>
     implements $SearchScreenStateCopyWith<$Res> {
-  factory $SSSErrorCopyWith(SSSError value, $Res Function(SSSError) then) =
-      _$SSSErrorCopyWithImpl<$Res>;
+  factory _$$SSSErrorCopyWith(
+          _$SSSError value, $Res Function(_$SSSError) then) =
+      __$$SSSErrorCopyWithImpl<$Res>;
   @override
   $Res call({SearchScreenProps props, Failure failure});
 
@@ -1431,20 +1375,21 @@ abstract class $SSSErrorCopyWith<$Res>
 }
 
 /// @nodoc
-class _$SSSErrorCopyWithImpl<$Res> extends _$SearchScreenStateCopyWithImpl<$Res>
-    implements $SSSErrorCopyWith<$Res> {
-  _$SSSErrorCopyWithImpl(SSSError _value, $Res Function(SSSError) _then)
-      : super(_value, (v) => _then(v as SSSError));
+class __$$SSSErrorCopyWithImpl<$Res>
+    extends _$SearchScreenStateCopyWithImpl<$Res>
+    implements _$$SSSErrorCopyWith<$Res> {
+  __$$SSSErrorCopyWithImpl(_$SSSError _value, $Res Function(_$SSSError) _then)
+      : super(_value, (v) => _then(v as _$SSSError));
 
   @override
-  SSSError get _value => super._value as SSSError;
+  _$SSSError get _value => super._value as _$SSSError;
 
   @override
   $Res call({
     Object? props = freezed,
     Object? failure = freezed,
   }) {
-    return _then(SSSError(
+    return _then(_$SSSError(
       props: props == freezed
           ? _value.props
           : props // ignore: cast_nullable_to_non_nullable
@@ -1476,18 +1421,21 @@ class _$SSSError implements SSSError {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is SSSError &&
-            (identical(other.props, props) || other.props == props) &&
-            (identical(other.failure, failure) || other.failure == failure));
+            other is _$SSSError &&
+            const DeepCollectionEquality().equals(other.props, props) &&
+            const DeepCollectionEquality().equals(other.failure, failure));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, props, failure);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(props),
+      const DeepCollectionEquality().hash(failure));
 
   @JsonKey(ignore: true)
   @override
-  $SSSErrorCopyWith<SSSError> get copyWith =>
-      _$SSSErrorCopyWithImpl<SSSError>(this, _$identity);
+  _$$SSSErrorCopyWith<_$SSSError> get copyWith =>
+      __$$SSSErrorCopyWithImpl<_$SSSError>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1573,33 +1521,17 @@ class _$SSSError implements SSSError {
 
 abstract class SSSError implements SearchScreenState {
   const factory SSSError(
-      {required SearchScreenProps props,
-      required Failure failure}) = _$SSSError;
+      {required final SearchScreenProps props,
+      required final Failure failure}) = _$SSSError;
 
   @override
-  SearchScreenProps get props;
-  Failure get failure;
+  SearchScreenProps get props => throw _privateConstructorUsedError;
+  Failure get failure => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  $SSSErrorCopyWith<SSSError> get copyWith =>
+  _$$SSSErrorCopyWith<_$SSSError> get copyWith =>
       throw _privateConstructorUsedError;
 }
-
-/// @nodoc
-class _$SearchScreenPropsTearOff {
-  const _$SearchScreenPropsTearOff();
-
-  _SearchScreenProps call(
-      {required String query, required List<Produce> produceList}) {
-    return _SearchScreenProps(
-      query: query,
-      produceList: produceList,
-    );
-  }
-}
-
-/// @nodoc
-const $SearchScreenProps = _$SearchScreenPropsTearOff();
 
 /// @nodoc
 mixin _$SearchScreenProps {
@@ -1647,38 +1579,38 @@ class _$SearchScreenPropsCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$SearchScreenPropsCopyWith<$Res>
+abstract class _$$_SearchScreenPropsCopyWith<$Res>
     implements $SearchScreenPropsCopyWith<$Res> {
-  factory _$SearchScreenPropsCopyWith(
-          _SearchScreenProps value, $Res Function(_SearchScreenProps) then) =
-      __$SearchScreenPropsCopyWithImpl<$Res>;
+  factory _$$_SearchScreenPropsCopyWith(_$_SearchScreenProps value,
+          $Res Function(_$_SearchScreenProps) then) =
+      __$$_SearchScreenPropsCopyWithImpl<$Res>;
   @override
   $Res call({String query, List<Produce> produceList});
 }
 
 /// @nodoc
-class __$SearchScreenPropsCopyWithImpl<$Res>
+class __$$_SearchScreenPropsCopyWithImpl<$Res>
     extends _$SearchScreenPropsCopyWithImpl<$Res>
-    implements _$SearchScreenPropsCopyWith<$Res> {
-  __$SearchScreenPropsCopyWithImpl(
-      _SearchScreenProps _value, $Res Function(_SearchScreenProps) _then)
-      : super(_value, (v) => _then(v as _SearchScreenProps));
+    implements _$$_SearchScreenPropsCopyWith<$Res> {
+  __$$_SearchScreenPropsCopyWithImpl(
+      _$_SearchScreenProps _value, $Res Function(_$_SearchScreenProps) _then)
+      : super(_value, (v) => _then(v as _$_SearchScreenProps));
 
   @override
-  _SearchScreenProps get _value => super._value as _SearchScreenProps;
+  _$_SearchScreenProps get _value => super._value as _$_SearchScreenProps;
 
   @override
   $Res call({
     Object? query = freezed,
     Object? produceList = freezed,
   }) {
-    return _then(_SearchScreenProps(
+    return _then(_$_SearchScreenProps(
       query: query == freezed
           ? _value.query
           : query // ignore: cast_nullable_to_non_nullable
               as String,
       produceList: produceList == freezed
-          ? _value.produceList
+          ? _value._produceList
           : produceList // ignore: cast_nullable_to_non_nullable
               as List<Produce>,
     ));
@@ -1688,12 +1620,18 @@ class __$SearchScreenPropsCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_SearchScreenProps implements _SearchScreenProps {
-  const _$_SearchScreenProps({required this.query, required this.produceList});
+  const _$_SearchScreenProps(
+      {required this.query, required final List<Produce> produceList})
+      : _produceList = produceList;
 
   @override
   final String query;
+  final List<Produce> _produceList;
   @override
-  final List<Produce> produceList;
+  List<Produce> get produceList {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_produceList);
+  }
 
   @override
   String toString() {
@@ -1704,33 +1642,36 @@ class _$_SearchScreenProps implements _SearchScreenProps {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _SearchScreenProps &&
-            (identical(other.query, query) || other.query == query) &&
+            other is _$_SearchScreenProps &&
+            const DeepCollectionEquality().equals(other.query, query) &&
             const DeepCollectionEquality()
-                .equals(other.produceList, produceList));
+                .equals(other._produceList, _produceList));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, query, const DeepCollectionEquality().hash(produceList));
+      runtimeType,
+      const DeepCollectionEquality().hash(query),
+      const DeepCollectionEquality().hash(_produceList));
 
   @JsonKey(ignore: true)
   @override
-  _$SearchScreenPropsCopyWith<_SearchScreenProps> get copyWith =>
-      __$SearchScreenPropsCopyWithImpl<_SearchScreenProps>(this, _$identity);
+  _$$_SearchScreenPropsCopyWith<_$_SearchScreenProps> get copyWith =>
+      __$$_SearchScreenPropsCopyWithImpl<_$_SearchScreenProps>(
+          this, _$identity);
 }
 
 abstract class _SearchScreenProps implements SearchScreenProps {
   const factory _SearchScreenProps(
-      {required String query,
-      required List<Produce> produceList}) = _$_SearchScreenProps;
+      {required final String query,
+      required final List<Produce> produceList}) = _$_SearchScreenProps;
 
   @override
-  String get query;
+  String get query => throw _privateConstructorUsedError;
   @override
-  List<Produce> get produceList;
+  List<Produce> get produceList => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$SearchScreenPropsCopyWith<_SearchScreenProps> get copyWith =>
+  _$$_SearchScreenPropsCopyWith<_$_SearchScreenProps> get copyWith =>
       throw _privateConstructorUsedError;
 }

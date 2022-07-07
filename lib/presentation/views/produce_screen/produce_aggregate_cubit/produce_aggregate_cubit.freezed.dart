@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'produce_aggregate_cubit.dart';
@@ -11,46 +12,11 @@ part of 'produce_aggregate_cubit.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$ProduceAggregateStateTearOff {
-  const _$ProduceAggregateStateTearOff();
-
-  PASInitial initial({required ProduceAggregateProps props}) {
-    return PASInitial(
-      props: props,
-    );
-  }
-
-  PASLoading loading({required ProduceAggregateProps props}) {
-    return PASLoading(
-      props: props,
-    );
-  }
-
-  PASCompleted completed({required ProduceAggregateProps props}) {
-    return PASCompleted(
-      props: props,
-    );
-  }
-
-  PASError error(
-      {required ProduceAggregateProps props, required Failure failure}) {
-    return PASError(
-      props: props,
-      failure: failure,
-    );
-  }
-}
-
-/// @nodoc
-const $ProduceAggregateState = _$ProduceAggregateStateTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$ProduceAggregateState {
   ProduceAggregateProps get props => throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(ProduceAggregateProps props) initial,
@@ -148,11 +114,11 @@ class _$ProduceAggregateStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class $PASInitialCopyWith<$Res>
+abstract class _$$PASInitialCopyWith<$Res>
     implements $ProduceAggregateStateCopyWith<$Res> {
-  factory $PASInitialCopyWith(
-          PASInitial value, $Res Function(PASInitial) then) =
-      _$PASInitialCopyWithImpl<$Res>;
+  factory _$$PASInitialCopyWith(
+          _$PASInitial value, $Res Function(_$PASInitial) then) =
+      __$$PASInitialCopyWithImpl<$Res>;
   @override
   $Res call({ProduceAggregateProps props});
 
@@ -161,20 +127,21 @@ abstract class $PASInitialCopyWith<$Res>
 }
 
 /// @nodoc
-class _$PASInitialCopyWithImpl<$Res>
+class __$$PASInitialCopyWithImpl<$Res>
     extends _$ProduceAggregateStateCopyWithImpl<$Res>
-    implements $PASInitialCopyWith<$Res> {
-  _$PASInitialCopyWithImpl(PASInitial _value, $Res Function(PASInitial) _then)
-      : super(_value, (v) => _then(v as PASInitial));
+    implements _$$PASInitialCopyWith<$Res> {
+  __$$PASInitialCopyWithImpl(
+      _$PASInitial _value, $Res Function(_$PASInitial) _then)
+      : super(_value, (v) => _then(v as _$PASInitial));
 
   @override
-  PASInitial get _value => super._value as PASInitial;
+  _$PASInitial get _value => super._value as _$PASInitial;
 
   @override
   $Res call({
     Object? props = freezed,
   }) {
-    return _then(PASInitial(
+    return _then(_$PASInitial(
       props: props == freezed
           ? _value.props
           : props // ignore: cast_nullable_to_non_nullable
@@ -200,17 +167,18 @@ class _$PASInitial implements PASInitial {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is PASInitial &&
-            (identical(other.props, props) || other.props == props));
+            other is _$PASInitial &&
+            const DeepCollectionEquality().equals(other.props, props));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, props);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(props));
 
   @JsonKey(ignore: true)
   @override
-  $PASInitialCopyWith<PASInitial> get copyWith =>
-      _$PASInitialCopyWithImpl<PASInitial>(this, _$identity);
+  _$$PASInitialCopyWith<_$PASInitial> get copyWith =>
+      __$$PASInitialCopyWithImpl<_$PASInitial>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -289,23 +257,23 @@ class _$PASInitial implements PASInitial {
 }
 
 abstract class PASInitial implements ProduceAggregateState {
-  const factory PASInitial({required ProduceAggregateProps props}) =
+  const factory PASInitial({required final ProduceAggregateProps props}) =
       _$PASInitial;
 
   @override
-  ProduceAggregateProps get props;
+  ProduceAggregateProps get props => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  $PASInitialCopyWith<PASInitial> get copyWith =>
+  _$$PASInitialCopyWith<_$PASInitial> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $PASLoadingCopyWith<$Res>
+abstract class _$$PASLoadingCopyWith<$Res>
     implements $ProduceAggregateStateCopyWith<$Res> {
-  factory $PASLoadingCopyWith(
-          PASLoading value, $Res Function(PASLoading) then) =
-      _$PASLoadingCopyWithImpl<$Res>;
+  factory _$$PASLoadingCopyWith(
+          _$PASLoading value, $Res Function(_$PASLoading) then) =
+      __$$PASLoadingCopyWithImpl<$Res>;
   @override
   $Res call({ProduceAggregateProps props});
 
@@ -314,20 +282,21 @@ abstract class $PASLoadingCopyWith<$Res>
 }
 
 /// @nodoc
-class _$PASLoadingCopyWithImpl<$Res>
+class __$$PASLoadingCopyWithImpl<$Res>
     extends _$ProduceAggregateStateCopyWithImpl<$Res>
-    implements $PASLoadingCopyWith<$Res> {
-  _$PASLoadingCopyWithImpl(PASLoading _value, $Res Function(PASLoading) _then)
-      : super(_value, (v) => _then(v as PASLoading));
+    implements _$$PASLoadingCopyWith<$Res> {
+  __$$PASLoadingCopyWithImpl(
+      _$PASLoading _value, $Res Function(_$PASLoading) _then)
+      : super(_value, (v) => _then(v as _$PASLoading));
 
   @override
-  PASLoading get _value => super._value as PASLoading;
+  _$PASLoading get _value => super._value as _$PASLoading;
 
   @override
   $Res call({
     Object? props = freezed,
   }) {
-    return _then(PASLoading(
+    return _then(_$PASLoading(
       props: props == freezed
           ? _value.props
           : props // ignore: cast_nullable_to_non_nullable
@@ -353,17 +322,18 @@ class _$PASLoading implements PASLoading {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is PASLoading &&
-            (identical(other.props, props) || other.props == props));
+            other is _$PASLoading &&
+            const DeepCollectionEquality().equals(other.props, props));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, props);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(props));
 
   @JsonKey(ignore: true)
   @override
-  $PASLoadingCopyWith<PASLoading> get copyWith =>
-      _$PASLoadingCopyWithImpl<PASLoading>(this, _$identity);
+  _$$PASLoadingCopyWith<_$PASLoading> get copyWith =>
+      __$$PASLoadingCopyWithImpl<_$PASLoading>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -442,23 +412,23 @@ class _$PASLoading implements PASLoading {
 }
 
 abstract class PASLoading implements ProduceAggregateState {
-  const factory PASLoading({required ProduceAggregateProps props}) =
+  const factory PASLoading({required final ProduceAggregateProps props}) =
       _$PASLoading;
 
   @override
-  ProduceAggregateProps get props;
+  ProduceAggregateProps get props => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  $PASLoadingCopyWith<PASLoading> get copyWith =>
+  _$$PASLoadingCopyWith<_$PASLoading> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $PASCompletedCopyWith<$Res>
+abstract class _$$PASCompletedCopyWith<$Res>
     implements $ProduceAggregateStateCopyWith<$Res> {
-  factory $PASCompletedCopyWith(
-          PASCompleted value, $Res Function(PASCompleted) then) =
-      _$PASCompletedCopyWithImpl<$Res>;
+  factory _$$PASCompletedCopyWith(
+          _$PASCompleted value, $Res Function(_$PASCompleted) then) =
+      __$$PASCompletedCopyWithImpl<$Res>;
   @override
   $Res call({ProduceAggregateProps props});
 
@@ -467,21 +437,21 @@ abstract class $PASCompletedCopyWith<$Res>
 }
 
 /// @nodoc
-class _$PASCompletedCopyWithImpl<$Res>
+class __$$PASCompletedCopyWithImpl<$Res>
     extends _$ProduceAggregateStateCopyWithImpl<$Res>
-    implements $PASCompletedCopyWith<$Res> {
-  _$PASCompletedCopyWithImpl(
-      PASCompleted _value, $Res Function(PASCompleted) _then)
-      : super(_value, (v) => _then(v as PASCompleted));
+    implements _$$PASCompletedCopyWith<$Res> {
+  __$$PASCompletedCopyWithImpl(
+      _$PASCompleted _value, $Res Function(_$PASCompleted) _then)
+      : super(_value, (v) => _then(v as _$PASCompleted));
 
   @override
-  PASCompleted get _value => super._value as PASCompleted;
+  _$PASCompleted get _value => super._value as _$PASCompleted;
 
   @override
   $Res call({
     Object? props = freezed,
   }) {
-    return _then(PASCompleted(
+    return _then(_$PASCompleted(
       props: props == freezed
           ? _value.props
           : props // ignore: cast_nullable_to_non_nullable
@@ -507,17 +477,18 @@ class _$PASCompleted implements PASCompleted {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is PASCompleted &&
-            (identical(other.props, props) || other.props == props));
+            other is _$PASCompleted &&
+            const DeepCollectionEquality().equals(other.props, props));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, props);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(props));
 
   @JsonKey(ignore: true)
   @override
-  $PASCompletedCopyWith<PASCompleted> get copyWith =>
-      _$PASCompletedCopyWithImpl<PASCompleted>(this, _$identity);
+  _$$PASCompletedCopyWith<_$PASCompleted> get copyWith =>
+      __$$PASCompletedCopyWithImpl<_$PASCompleted>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -596,22 +567,23 @@ class _$PASCompleted implements PASCompleted {
 }
 
 abstract class PASCompleted implements ProduceAggregateState {
-  const factory PASCompleted({required ProduceAggregateProps props}) =
+  const factory PASCompleted({required final ProduceAggregateProps props}) =
       _$PASCompleted;
 
   @override
-  ProduceAggregateProps get props;
+  ProduceAggregateProps get props => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  $PASCompletedCopyWith<PASCompleted> get copyWith =>
+  _$$PASCompletedCopyWith<_$PASCompleted> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $PASErrorCopyWith<$Res>
+abstract class _$$PASErrorCopyWith<$Res>
     implements $ProduceAggregateStateCopyWith<$Res> {
-  factory $PASErrorCopyWith(PASError value, $Res Function(PASError) then) =
-      _$PASErrorCopyWithImpl<$Res>;
+  factory _$$PASErrorCopyWith(
+          _$PASError value, $Res Function(_$PASError) then) =
+      __$$PASErrorCopyWithImpl<$Res>;
   @override
   $Res call({ProduceAggregateProps props, Failure failure});
 
@@ -620,21 +592,21 @@ abstract class $PASErrorCopyWith<$Res>
 }
 
 /// @nodoc
-class _$PASErrorCopyWithImpl<$Res>
+class __$$PASErrorCopyWithImpl<$Res>
     extends _$ProduceAggregateStateCopyWithImpl<$Res>
-    implements $PASErrorCopyWith<$Res> {
-  _$PASErrorCopyWithImpl(PASError _value, $Res Function(PASError) _then)
-      : super(_value, (v) => _then(v as PASError));
+    implements _$$PASErrorCopyWith<$Res> {
+  __$$PASErrorCopyWithImpl(_$PASError _value, $Res Function(_$PASError) _then)
+      : super(_value, (v) => _then(v as _$PASError));
 
   @override
-  PASError get _value => super._value as PASError;
+  _$PASError get _value => super._value as _$PASError;
 
   @override
   $Res call({
     Object? props = freezed,
     Object? failure = freezed,
   }) {
-    return _then(PASError(
+    return _then(_$PASError(
       props: props == freezed
           ? _value.props
           : props // ignore: cast_nullable_to_non_nullable
@@ -666,18 +638,21 @@ class _$PASError implements PASError {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is PASError &&
-            (identical(other.props, props) || other.props == props) &&
-            (identical(other.failure, failure) || other.failure == failure));
+            other is _$PASError &&
+            const DeepCollectionEquality().equals(other.props, props) &&
+            const DeepCollectionEquality().equals(other.failure, failure));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, props, failure);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(props),
+      const DeepCollectionEquality().hash(failure));
 
   @JsonKey(ignore: true)
   @override
-  $PASErrorCopyWith<PASError> get copyWith =>
-      _$PASErrorCopyWithImpl<PASError>(this, _$identity);
+  _$$PASErrorCopyWith<_$PASError> get copyWith =>
+      __$$PASErrorCopyWithImpl<_$PASError>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -757,50 +732,17 @@ class _$PASError implements PASError {
 
 abstract class PASError implements ProduceAggregateState {
   const factory PASError(
-      {required ProduceAggregateProps props,
-      required Failure failure}) = _$PASError;
+      {required final ProduceAggregateProps props,
+      required final Failure failure}) = _$PASError;
 
   @override
-  ProduceAggregateProps get props;
-  Failure get failure;
+  ProduceAggregateProps get props => throw _privateConstructorUsedError;
+  Failure get failure => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  $PASErrorCopyWith<PASError> get copyWith =>
+  _$$PASErrorCopyWith<_$PASError> get copyWith =>
       throw _privateConstructorUsedError;
 }
-
-/// @nodoc
-class _$ProduceAggregatePropsTearOff {
-  const _$ProduceAggregatePropsTearOff();
-
-  _ProduceAggregateProps call(
-      {required TabController tabController,
-      required int index,
-      required Produce? produce,
-      required FarmhubUser farmhubUser,
-      required bool isProduceFavorite,
-      List<PriceSnippet>? twoWeeksPricesList,
-      List<PriceSnippet>? oneMonthPricesList,
-      List<PriceSnippet>? twoMonthPricesList,
-      List<PriceSnippet>? sixMonthPricesList,
-      List<PriceSnippet>? oneYearPricesList}) {
-    return _ProduceAggregateProps(
-      tabController: tabController,
-      index: index,
-      produce: produce,
-      farmhubUser: farmhubUser,
-      isProduceFavorite: isProduceFavorite,
-      twoWeeksPricesList: twoWeeksPricesList,
-      oneMonthPricesList: oneMonthPricesList,
-      twoMonthPricesList: twoMonthPricesList,
-      sixMonthPricesList: sixMonthPricesList,
-      oneYearPricesList: oneYearPricesList,
-    );
-  }
-}
-
-/// @nodoc
-const $ProduceAggregateProps = _$ProduceAggregatePropsTearOff();
 
 /// @nodoc
 mixin _$ProduceAggregateProps {
@@ -932,11 +874,11 @@ class _$ProduceAggregatePropsCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$ProduceAggregatePropsCopyWith<$Res>
+abstract class _$$_ProduceAggregatePropsCopyWith<$Res>
     implements $ProduceAggregatePropsCopyWith<$Res> {
-  factory _$ProduceAggregatePropsCopyWith(_ProduceAggregateProps value,
-          $Res Function(_ProduceAggregateProps) then) =
-      __$ProduceAggregatePropsCopyWithImpl<$Res>;
+  factory _$$_ProduceAggregatePropsCopyWith(_$_ProduceAggregateProps value,
+          $Res Function(_$_ProduceAggregateProps) then) =
+      __$$_ProduceAggregatePropsCopyWithImpl<$Res>;
   @override
   $Res call(
       {TabController tabController,
@@ -957,15 +899,16 @@ abstract class _$ProduceAggregatePropsCopyWith<$Res>
 }
 
 /// @nodoc
-class __$ProduceAggregatePropsCopyWithImpl<$Res>
+class __$$_ProduceAggregatePropsCopyWithImpl<$Res>
     extends _$ProduceAggregatePropsCopyWithImpl<$Res>
-    implements _$ProduceAggregatePropsCopyWith<$Res> {
-  __$ProduceAggregatePropsCopyWithImpl(_ProduceAggregateProps _value,
-      $Res Function(_ProduceAggregateProps) _then)
-      : super(_value, (v) => _then(v as _ProduceAggregateProps));
+    implements _$$_ProduceAggregatePropsCopyWith<$Res> {
+  __$$_ProduceAggregatePropsCopyWithImpl(_$_ProduceAggregateProps _value,
+      $Res Function(_$_ProduceAggregateProps) _then)
+      : super(_value, (v) => _then(v as _$_ProduceAggregateProps));
 
   @override
-  _ProduceAggregateProps get _value => super._value as _ProduceAggregateProps;
+  _$_ProduceAggregateProps get _value =>
+      super._value as _$_ProduceAggregateProps;
 
   @override
   $Res call({
@@ -980,7 +923,7 @@ class __$ProduceAggregatePropsCopyWithImpl<$Res>
     Object? sixMonthPricesList = freezed,
     Object? oneYearPricesList = freezed,
   }) {
-    return _then(_ProduceAggregateProps(
+    return _then(_$_ProduceAggregateProps(
       tabController: tabController == freezed
           ? _value.tabController
           : tabController // ignore: cast_nullable_to_non_nullable
@@ -1002,23 +945,23 @@ class __$ProduceAggregatePropsCopyWithImpl<$Res>
           : isProduceFavorite // ignore: cast_nullable_to_non_nullable
               as bool,
       twoWeeksPricesList: twoWeeksPricesList == freezed
-          ? _value.twoWeeksPricesList
+          ? _value._twoWeeksPricesList
           : twoWeeksPricesList // ignore: cast_nullable_to_non_nullable
               as List<PriceSnippet>?,
       oneMonthPricesList: oneMonthPricesList == freezed
-          ? _value.oneMonthPricesList
+          ? _value._oneMonthPricesList
           : oneMonthPricesList // ignore: cast_nullable_to_non_nullable
               as List<PriceSnippet>?,
       twoMonthPricesList: twoMonthPricesList == freezed
-          ? _value.twoMonthPricesList
+          ? _value._twoMonthPricesList
           : twoMonthPricesList // ignore: cast_nullable_to_non_nullable
               as List<PriceSnippet>?,
       sixMonthPricesList: sixMonthPricesList == freezed
-          ? _value.sixMonthPricesList
+          ? _value._sixMonthPricesList
           : sixMonthPricesList // ignore: cast_nullable_to_non_nullable
               as List<PriceSnippet>?,
       oneYearPricesList: oneYearPricesList == freezed
-          ? _value.oneYearPricesList
+          ? _value._oneYearPricesList
           : oneYearPricesList // ignore: cast_nullable_to_non_nullable
               as List<PriceSnippet>?,
     ));
@@ -1034,11 +977,16 @@ class _$_ProduceAggregateProps implements _ProduceAggregateProps {
       required this.produce,
       required this.farmhubUser,
       required this.isProduceFavorite,
-      this.twoWeeksPricesList,
-      this.oneMonthPricesList,
-      this.twoMonthPricesList,
-      this.sixMonthPricesList,
-      this.oneYearPricesList});
+      final List<PriceSnippet>? twoWeeksPricesList,
+      final List<PriceSnippet>? oneMonthPricesList,
+      final List<PriceSnippet>? twoMonthPricesList,
+      final List<PriceSnippet>? sixMonthPricesList,
+      final List<PriceSnippet>? oneYearPricesList})
+      : _twoWeeksPricesList = twoWeeksPricesList,
+        _oneMonthPricesList = oneMonthPricesList,
+        _twoMonthPricesList = twoMonthPricesList,
+        _sixMonthPricesList = sixMonthPricesList,
+        _oneYearPricesList = oneYearPricesList;
 
   @override
   final TabController tabController;
@@ -1050,16 +998,50 @@ class _$_ProduceAggregateProps implements _ProduceAggregateProps {
   final FarmhubUser farmhubUser;
   @override
   final bool isProduceFavorite;
+  final List<PriceSnippet>? _twoWeeksPricesList;
   @override
-  final List<PriceSnippet>? twoWeeksPricesList;
+  List<PriceSnippet>? get twoWeeksPricesList {
+    final value = _twoWeeksPricesList;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  final List<PriceSnippet>? _oneMonthPricesList;
   @override
-  final List<PriceSnippet>? oneMonthPricesList;
+  List<PriceSnippet>? get oneMonthPricesList {
+    final value = _oneMonthPricesList;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  final List<PriceSnippet>? _twoMonthPricesList;
   @override
-  final List<PriceSnippet>? twoMonthPricesList;
+  List<PriceSnippet>? get twoMonthPricesList {
+    final value = _twoMonthPricesList;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  final List<PriceSnippet>? _sixMonthPricesList;
   @override
-  final List<PriceSnippet>? sixMonthPricesList;
+  List<PriceSnippet>? get sixMonthPricesList {
+    final value = _sixMonthPricesList;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  final List<PriceSnippet>? _oneYearPricesList;
   @override
-  final List<PriceSnippet>? oneYearPricesList;
+  List<PriceSnippet>? get oneYearPricesList {
+    final value = _oneYearPricesList;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
@@ -1070,83 +1052,88 @@ class _$_ProduceAggregateProps implements _ProduceAggregateProps {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _ProduceAggregateProps &&
-            (identical(other.tabController, tabController) ||
-                other.tabController == tabController) &&
-            (identical(other.index, index) || other.index == index) &&
-            (identical(other.produce, produce) || other.produce == produce) &&
-            (identical(other.farmhubUser, farmhubUser) ||
-                other.farmhubUser == farmhubUser) &&
-            (identical(other.isProduceFavorite, isProduceFavorite) ||
-                other.isProduceFavorite == isProduceFavorite) &&
+            other is _$_ProduceAggregateProps &&
             const DeepCollectionEquality()
-                .equals(other.twoWeeksPricesList, twoWeeksPricesList) &&
+                .equals(other.tabController, tabController) &&
+            const DeepCollectionEquality().equals(other.index, index) &&
+            const DeepCollectionEquality().equals(other.produce, produce) &&
             const DeepCollectionEquality()
-                .equals(other.oneMonthPricesList, oneMonthPricesList) &&
+                .equals(other.farmhubUser, farmhubUser) &&
             const DeepCollectionEquality()
-                .equals(other.twoMonthPricesList, twoMonthPricesList) &&
+                .equals(other.isProduceFavorite, isProduceFavorite) &&
             const DeepCollectionEquality()
-                .equals(other.sixMonthPricesList, sixMonthPricesList) &&
+                .equals(other._twoWeeksPricesList, _twoWeeksPricesList) &&
             const DeepCollectionEquality()
-                .equals(other.oneYearPricesList, oneYearPricesList));
+                .equals(other._oneMonthPricesList, _oneMonthPricesList) &&
+            const DeepCollectionEquality()
+                .equals(other._twoMonthPricesList, _twoMonthPricesList) &&
+            const DeepCollectionEquality()
+                .equals(other._sixMonthPricesList, _sixMonthPricesList) &&
+            const DeepCollectionEquality()
+                .equals(other._oneYearPricesList, _oneYearPricesList));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      tabController,
-      index,
-      produce,
-      farmhubUser,
-      isProduceFavorite,
-      const DeepCollectionEquality().hash(twoWeeksPricesList),
-      const DeepCollectionEquality().hash(oneMonthPricesList),
-      const DeepCollectionEquality().hash(twoMonthPricesList),
-      const DeepCollectionEquality().hash(sixMonthPricesList),
-      const DeepCollectionEquality().hash(oneYearPricesList));
+      const DeepCollectionEquality().hash(tabController),
+      const DeepCollectionEquality().hash(index),
+      const DeepCollectionEquality().hash(produce),
+      const DeepCollectionEquality().hash(farmhubUser),
+      const DeepCollectionEquality().hash(isProduceFavorite),
+      const DeepCollectionEquality().hash(_twoWeeksPricesList),
+      const DeepCollectionEquality().hash(_oneMonthPricesList),
+      const DeepCollectionEquality().hash(_twoMonthPricesList),
+      const DeepCollectionEquality().hash(_sixMonthPricesList),
+      const DeepCollectionEquality().hash(_oneYearPricesList));
 
   @JsonKey(ignore: true)
   @override
-  _$ProduceAggregatePropsCopyWith<_ProduceAggregateProps> get copyWith =>
-      __$ProduceAggregatePropsCopyWithImpl<_ProduceAggregateProps>(
+  _$$_ProduceAggregatePropsCopyWith<_$_ProduceAggregateProps> get copyWith =>
+      __$$_ProduceAggregatePropsCopyWithImpl<_$_ProduceAggregateProps>(
           this, _$identity);
 }
 
 abstract class _ProduceAggregateProps implements ProduceAggregateProps {
   const factory _ProduceAggregateProps(
-      {required TabController tabController,
-      required int index,
-      required Produce? produce,
-      required FarmhubUser farmhubUser,
-      required bool isProduceFavorite,
-      List<PriceSnippet>? twoWeeksPricesList,
-      List<PriceSnippet>? oneMonthPricesList,
-      List<PriceSnippet>? twoMonthPricesList,
-      List<PriceSnippet>? sixMonthPricesList,
-      List<PriceSnippet>? oneYearPricesList}) = _$_ProduceAggregateProps;
+      {required final TabController tabController,
+      required final int index,
+      required final Produce? produce,
+      required final FarmhubUser farmhubUser,
+      required final bool isProduceFavorite,
+      final List<PriceSnippet>? twoWeeksPricesList,
+      final List<PriceSnippet>? oneMonthPricesList,
+      final List<PriceSnippet>? twoMonthPricesList,
+      final List<PriceSnippet>? sixMonthPricesList,
+      final List<PriceSnippet>? oneYearPricesList}) = _$_ProduceAggregateProps;
 
   @override
-  TabController get tabController;
+  TabController get tabController => throw _privateConstructorUsedError;
   @override
-  int get index;
+  int get index => throw _privateConstructorUsedError;
   @override
-  Produce? get produce;
+  Produce? get produce => throw _privateConstructorUsedError;
   @override
-  FarmhubUser get farmhubUser;
+  FarmhubUser get farmhubUser => throw _privateConstructorUsedError;
   @override
-  bool get isProduceFavorite;
+  bool get isProduceFavorite => throw _privateConstructorUsedError;
   @override
-  List<PriceSnippet>? get twoWeeksPricesList;
+  List<PriceSnippet>? get twoWeeksPricesList =>
+      throw _privateConstructorUsedError;
   @override
-  List<PriceSnippet>? get oneMonthPricesList;
+  List<PriceSnippet>? get oneMonthPricesList =>
+      throw _privateConstructorUsedError;
   @override
-  List<PriceSnippet>? get twoMonthPricesList;
+  List<PriceSnippet>? get twoMonthPricesList =>
+      throw _privateConstructorUsedError;
   @override
-  List<PriceSnippet>? get sixMonthPricesList;
+  List<PriceSnippet>? get sixMonthPricesList =>
+      throw _privateConstructorUsedError;
   @override
-  List<PriceSnippet>? get oneYearPricesList;
+  List<PriceSnippet>? get oneYearPricesList =>
+      throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$ProduceAggregatePropsCopyWith<_ProduceAggregateProps> get copyWith =>
+  _$$_ProduceAggregatePropsCopyWith<_$_ProduceAggregateProps> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -40,6 +40,18 @@ class Produce with _$Produce {
       lastUpdateTimeStamp: lastUpdateTimeStamp,
     );
   }
+
+  static Map<String, dynamic> toMap(Produce produce) {
+    return {
+      "produceId": produce.produceId,
+      "produceName": produce.produceName,
+      "currentProducePrice": produce.currentProducePrice,
+      "previousProducePrice": produce.previousProducePrice,
+      "weeklyPrices": produce.weeklyPrices,
+      "authorId": produce.authorId,
+      "lastUpdateTimeStamp": produce.lastUpdateTimeStamp,
+    };
+  }
 }
 
 @freezed

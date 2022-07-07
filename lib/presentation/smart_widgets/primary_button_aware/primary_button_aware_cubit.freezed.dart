@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'primary_button_aware_cubit.dart';
@@ -11,31 +12,7 @@ part of 'primary_button_aware_cubit.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$PrimaryButtonAwareStateTearOff {
-  const _$PrimaryButtonAwareStateTearOff();
-
-  _InitialPage initialPage() {
-    return const _InitialPage();
-  }
-
-  _SecondPage secondPage() {
-    return const _SecondPage();
-  }
-
-  _ThirdPage thirdPage() {
-    return const _ThirdPage();
-  }
-
-  _Loading loading() {
-    return const _Loading();
-  }
-}
-
-/// @nodoc
-const $PrimaryButtonAwareState = _$PrimaryButtonAwareStateTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$PrimaryButtonAwareState {
@@ -109,22 +86,22 @@ class _$PrimaryButtonAwareStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$InitialPageCopyWith<$Res> {
-  factory _$InitialPageCopyWith(
-          _InitialPage value, $Res Function(_InitialPage) then) =
-      __$InitialPageCopyWithImpl<$Res>;
+abstract class _$$_InitialPageCopyWith<$Res> {
+  factory _$$_InitialPageCopyWith(
+          _$_InitialPage value, $Res Function(_$_InitialPage) then) =
+      __$$_InitialPageCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$InitialPageCopyWithImpl<$Res>
+class __$$_InitialPageCopyWithImpl<$Res>
     extends _$PrimaryButtonAwareStateCopyWithImpl<$Res>
-    implements _$InitialPageCopyWith<$Res> {
-  __$InitialPageCopyWithImpl(
-      _InitialPage _value, $Res Function(_InitialPage) _then)
-      : super(_value, (v) => _then(v as _InitialPage));
+    implements _$$_InitialPageCopyWith<$Res> {
+  __$$_InitialPageCopyWithImpl(
+      _$_InitialPage _value, $Res Function(_$_InitialPage) _then)
+      : super(_value, (v) => _then(v as _$_InitialPage));
 
   @override
-  _InitialPage get _value => super._value as _InitialPage;
+  _$_InitialPage get _value => super._value as _$_InitialPage;
 }
 
 /// @nodoc
@@ -140,7 +117,7 @@ class _$_InitialPage implements _InitialPage {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _InitialPage);
+        (other.runtimeType == runtimeType && other is _$_InitialPage);
   }
 
   @override
@@ -226,22 +203,22 @@ abstract class _InitialPage implements PrimaryButtonAwareState {
 }
 
 /// @nodoc
-abstract class _$SecondPageCopyWith<$Res> {
-  factory _$SecondPageCopyWith(
-          _SecondPage value, $Res Function(_SecondPage) then) =
-      __$SecondPageCopyWithImpl<$Res>;
+abstract class _$$_SecondPageCopyWith<$Res> {
+  factory _$$_SecondPageCopyWith(
+          _$_SecondPage value, $Res Function(_$_SecondPage) then) =
+      __$$_SecondPageCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$SecondPageCopyWithImpl<$Res>
+class __$$_SecondPageCopyWithImpl<$Res>
     extends _$PrimaryButtonAwareStateCopyWithImpl<$Res>
-    implements _$SecondPageCopyWith<$Res> {
-  __$SecondPageCopyWithImpl(
-      _SecondPage _value, $Res Function(_SecondPage) _then)
-      : super(_value, (v) => _then(v as _SecondPage));
+    implements _$$_SecondPageCopyWith<$Res> {
+  __$$_SecondPageCopyWithImpl(
+      _$_SecondPage _value, $Res Function(_$_SecondPage) _then)
+      : super(_value, (v) => _then(v as _$_SecondPage));
 
   @override
-  _SecondPage get _value => super._value as _SecondPage;
+  _$_SecondPage get _value => super._value as _$_SecondPage;
 }
 
 /// @nodoc
@@ -257,7 +234,7 @@ class _$_SecondPage implements _SecondPage {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _SecondPage);
+        (other.runtimeType == runtimeType && other is _$_SecondPage);
   }
 
   @override
@@ -343,21 +320,22 @@ abstract class _SecondPage implements PrimaryButtonAwareState {
 }
 
 /// @nodoc
-abstract class _$ThirdPageCopyWith<$Res> {
-  factory _$ThirdPageCopyWith(
-          _ThirdPage value, $Res Function(_ThirdPage) then) =
-      __$ThirdPageCopyWithImpl<$Res>;
+abstract class _$$_ThirdPageCopyWith<$Res> {
+  factory _$$_ThirdPageCopyWith(
+          _$_ThirdPage value, $Res Function(_$_ThirdPage) then) =
+      __$$_ThirdPageCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$ThirdPageCopyWithImpl<$Res>
+class __$$_ThirdPageCopyWithImpl<$Res>
     extends _$PrimaryButtonAwareStateCopyWithImpl<$Res>
-    implements _$ThirdPageCopyWith<$Res> {
-  __$ThirdPageCopyWithImpl(_ThirdPage _value, $Res Function(_ThirdPage) _then)
-      : super(_value, (v) => _then(v as _ThirdPage));
+    implements _$$_ThirdPageCopyWith<$Res> {
+  __$$_ThirdPageCopyWithImpl(
+      _$_ThirdPage _value, $Res Function(_$_ThirdPage) _then)
+      : super(_value, (v) => _then(v as _$_ThirdPage));
 
   @override
-  _ThirdPage get _value => super._value as _ThirdPage;
+  _$_ThirdPage get _value => super._value as _$_ThirdPage;
 }
 
 /// @nodoc
@@ -373,7 +351,7 @@ class _$_ThirdPage implements _ThirdPage {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _ThirdPage);
+        (other.runtimeType == runtimeType && other is _$_ThirdPage);
   }
 
   @override
@@ -459,20 +437,21 @@ abstract class _ThirdPage implements PrimaryButtonAwareState {
 }
 
 /// @nodoc
-abstract class _$LoadingCopyWith<$Res> {
-  factory _$LoadingCopyWith(_Loading value, $Res Function(_Loading) then) =
-      __$LoadingCopyWithImpl<$Res>;
+abstract class _$$_LoadingCopyWith<$Res> {
+  factory _$$_LoadingCopyWith(
+          _$_Loading value, $Res Function(_$_Loading) then) =
+      __$$_LoadingCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$LoadingCopyWithImpl<$Res>
+class __$$_LoadingCopyWithImpl<$Res>
     extends _$PrimaryButtonAwareStateCopyWithImpl<$Res>
-    implements _$LoadingCopyWith<$Res> {
-  __$LoadingCopyWithImpl(_Loading _value, $Res Function(_Loading) _then)
-      : super(_value, (v) => _then(v as _Loading));
+    implements _$$_LoadingCopyWith<$Res> {
+  __$$_LoadingCopyWithImpl(_$_Loading _value, $Res Function(_$_Loading) _then)
+      : super(_value, (v) => _then(v as _$_Loading));
 
   @override
-  _Loading get _value => super._value as _Loading;
+  _$_Loading get _value => super._value as _$_Loading;
 }
 
 /// @nodoc
@@ -488,7 +467,7 @@ class _$_Loading implements _Loading {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _Loading);
+        (other.runtimeType == runtimeType && other is _$_Loading);
   }
 
   @override

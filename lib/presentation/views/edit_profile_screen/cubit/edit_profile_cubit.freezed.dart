@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'edit_profile_cubit.dart';
@@ -11,33 +12,7 @@ part of 'edit_profile_cubit.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$EditProfileStateTearOff {
-  const _$EditProfileStateTearOff();
-
-  EditProfileInitial initial() {
-    return const EditProfileInitial();
-  }
-
-  EditProfileLoading loading() {
-    return const EditProfileLoading();
-  }
-
-  EditProfileSuccess success() {
-    return const EditProfileSuccess();
-  }
-
-  EditProfileError error(Failure failure) {
-    return EditProfileError(
-      failure,
-    );
-  }
-}
-
-/// @nodoc
-const $EditProfileState = _$EditProfileStateTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$EditProfileState {
@@ -111,22 +86,22 @@ class _$EditProfileStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class $EditProfileInitialCopyWith<$Res> {
-  factory $EditProfileInitialCopyWith(
-          EditProfileInitial value, $Res Function(EditProfileInitial) then) =
-      _$EditProfileInitialCopyWithImpl<$Res>;
+abstract class _$$EditProfileInitialCopyWith<$Res> {
+  factory _$$EditProfileInitialCopyWith(_$EditProfileInitial value,
+          $Res Function(_$EditProfileInitial) then) =
+      __$$EditProfileInitialCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$EditProfileInitialCopyWithImpl<$Res>
+class __$$EditProfileInitialCopyWithImpl<$Res>
     extends _$EditProfileStateCopyWithImpl<$Res>
-    implements $EditProfileInitialCopyWith<$Res> {
-  _$EditProfileInitialCopyWithImpl(
-      EditProfileInitial _value, $Res Function(EditProfileInitial) _then)
-      : super(_value, (v) => _then(v as EditProfileInitial));
+    implements _$$EditProfileInitialCopyWith<$Res> {
+  __$$EditProfileInitialCopyWithImpl(
+      _$EditProfileInitial _value, $Res Function(_$EditProfileInitial) _then)
+      : super(_value, (v) => _then(v as _$EditProfileInitial));
 
   @override
-  EditProfileInitial get _value => super._value as EditProfileInitial;
+  _$EditProfileInitial get _value => super._value as _$EditProfileInitial;
 }
 
 /// @nodoc
@@ -142,7 +117,7 @@ class _$EditProfileInitial implements EditProfileInitial {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is EditProfileInitial);
+        (other.runtimeType == runtimeType && other is _$EditProfileInitial);
   }
 
   @override
@@ -228,22 +203,22 @@ abstract class EditProfileInitial implements EditProfileState {
 }
 
 /// @nodoc
-abstract class $EditProfileLoadingCopyWith<$Res> {
-  factory $EditProfileLoadingCopyWith(
-          EditProfileLoading value, $Res Function(EditProfileLoading) then) =
-      _$EditProfileLoadingCopyWithImpl<$Res>;
+abstract class _$$EditProfileLoadingCopyWith<$Res> {
+  factory _$$EditProfileLoadingCopyWith(_$EditProfileLoading value,
+          $Res Function(_$EditProfileLoading) then) =
+      __$$EditProfileLoadingCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$EditProfileLoadingCopyWithImpl<$Res>
+class __$$EditProfileLoadingCopyWithImpl<$Res>
     extends _$EditProfileStateCopyWithImpl<$Res>
-    implements $EditProfileLoadingCopyWith<$Res> {
-  _$EditProfileLoadingCopyWithImpl(
-      EditProfileLoading _value, $Res Function(EditProfileLoading) _then)
-      : super(_value, (v) => _then(v as EditProfileLoading));
+    implements _$$EditProfileLoadingCopyWith<$Res> {
+  __$$EditProfileLoadingCopyWithImpl(
+      _$EditProfileLoading _value, $Res Function(_$EditProfileLoading) _then)
+      : super(_value, (v) => _then(v as _$EditProfileLoading));
 
   @override
-  EditProfileLoading get _value => super._value as EditProfileLoading;
+  _$EditProfileLoading get _value => super._value as _$EditProfileLoading;
 }
 
 /// @nodoc
@@ -259,7 +234,7 @@ class _$EditProfileLoading implements EditProfileLoading {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is EditProfileLoading);
+        (other.runtimeType == runtimeType && other is _$EditProfileLoading);
   }
 
   @override
@@ -345,22 +320,22 @@ abstract class EditProfileLoading implements EditProfileState {
 }
 
 /// @nodoc
-abstract class $EditProfileSuccessCopyWith<$Res> {
-  factory $EditProfileSuccessCopyWith(
-          EditProfileSuccess value, $Res Function(EditProfileSuccess) then) =
-      _$EditProfileSuccessCopyWithImpl<$Res>;
+abstract class _$$EditProfileSuccessCopyWith<$Res> {
+  factory _$$EditProfileSuccessCopyWith(_$EditProfileSuccess value,
+          $Res Function(_$EditProfileSuccess) then) =
+      __$$EditProfileSuccessCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$EditProfileSuccessCopyWithImpl<$Res>
+class __$$EditProfileSuccessCopyWithImpl<$Res>
     extends _$EditProfileStateCopyWithImpl<$Res>
-    implements $EditProfileSuccessCopyWith<$Res> {
-  _$EditProfileSuccessCopyWithImpl(
-      EditProfileSuccess _value, $Res Function(EditProfileSuccess) _then)
-      : super(_value, (v) => _then(v as EditProfileSuccess));
+    implements _$$EditProfileSuccessCopyWith<$Res> {
+  __$$EditProfileSuccessCopyWithImpl(
+      _$EditProfileSuccess _value, $Res Function(_$EditProfileSuccess) _then)
+      : super(_value, (v) => _then(v as _$EditProfileSuccess));
 
   @override
-  EditProfileSuccess get _value => super._value as EditProfileSuccess;
+  _$EditProfileSuccess get _value => super._value as _$EditProfileSuccess;
 }
 
 /// @nodoc
@@ -376,7 +351,7 @@ class _$EditProfileSuccess implements EditProfileSuccess {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is EditProfileSuccess);
+        (other.runtimeType == runtimeType && other is _$EditProfileSuccess);
   }
 
   @override
@@ -462,29 +437,29 @@ abstract class EditProfileSuccess implements EditProfileState {
 }
 
 /// @nodoc
-abstract class $EditProfileErrorCopyWith<$Res> {
-  factory $EditProfileErrorCopyWith(
-          EditProfileError value, $Res Function(EditProfileError) then) =
-      _$EditProfileErrorCopyWithImpl<$Res>;
+abstract class _$$EditProfileErrorCopyWith<$Res> {
+  factory _$$EditProfileErrorCopyWith(
+          _$EditProfileError value, $Res Function(_$EditProfileError) then) =
+      __$$EditProfileErrorCopyWithImpl<$Res>;
   $Res call({Failure failure});
 }
 
 /// @nodoc
-class _$EditProfileErrorCopyWithImpl<$Res>
+class __$$EditProfileErrorCopyWithImpl<$Res>
     extends _$EditProfileStateCopyWithImpl<$Res>
-    implements $EditProfileErrorCopyWith<$Res> {
-  _$EditProfileErrorCopyWithImpl(
-      EditProfileError _value, $Res Function(EditProfileError) _then)
-      : super(_value, (v) => _then(v as EditProfileError));
+    implements _$$EditProfileErrorCopyWith<$Res> {
+  __$$EditProfileErrorCopyWithImpl(
+      _$EditProfileError _value, $Res Function(_$EditProfileError) _then)
+      : super(_value, (v) => _then(v as _$EditProfileError));
 
   @override
-  EditProfileError get _value => super._value as EditProfileError;
+  _$EditProfileError get _value => super._value as _$EditProfileError;
 
   @override
   $Res call({
     Object? failure = freezed,
   }) {
-    return _then(EditProfileError(
+    return _then(_$EditProfileError(
       failure == freezed
           ? _value.failure
           : failure // ignore: cast_nullable_to_non_nullable
@@ -510,17 +485,18 @@ class _$EditProfileError implements EditProfileError {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is EditProfileError &&
-            (identical(other.failure, failure) || other.failure == failure));
+            other is _$EditProfileError &&
+            const DeepCollectionEquality().equals(other.failure, failure));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, failure);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(failure));
 
   @JsonKey(ignore: true)
   @override
-  $EditProfileErrorCopyWith<EditProfileError> get copyWith =>
-      _$EditProfileErrorCopyWithImpl<EditProfileError>(this, _$identity);
+  _$$EditProfileErrorCopyWith<_$EditProfileError> get copyWith =>
+      __$$EditProfileErrorCopyWithImpl<_$EditProfileError>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -598,10 +574,10 @@ class _$EditProfileError implements EditProfileError {
 }
 
 abstract class EditProfileError implements EditProfileState {
-  const factory EditProfileError(Failure failure) = _$EditProfileError;
+  const factory EditProfileError(final Failure failure) = _$EditProfileError;
 
-  Failure get failure;
+  Failure get failure => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $EditProfileErrorCopyWith<EditProfileError> get copyWith =>
+  _$$EditProfileErrorCopyWith<_$EditProfileError> get copyWith =>
       throw _privateConstructorUsedError;
 }

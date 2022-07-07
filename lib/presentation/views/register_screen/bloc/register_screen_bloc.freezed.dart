@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'register_screen_bloc.dart';
@@ -11,33 +12,7 @@ part of 'register_screen_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$RegisterScreenEventTearOff {
-  const _$RegisterScreenEventTearOff();
-
-  _RSEStarted started() {
-    return const _RSEStarted();
-  }
-
-  _RSEIdle idle() {
-    return const _RSEIdle();
-  }
-
-  _RSEContinuePressed continuePressed(BuildContext context) {
-    return _RSEContinuePressed(
-      context,
-    );
-  }
-
-  _RSEToggleVisible toggleInfoTileVisibility() {
-    return const _RSEToggleVisible();
-  }
-}
-
-/// @nodoc
-const $RegisterScreenEvent = _$RegisterScreenEventTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$RegisterScreenEvent {
@@ -111,22 +86,22 @@ class _$RegisterScreenEventCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$RSEStartedCopyWith<$Res> {
-  factory _$RSEStartedCopyWith(
-          _RSEStarted value, $Res Function(_RSEStarted) then) =
-      __$RSEStartedCopyWithImpl<$Res>;
+abstract class _$$_RSEStartedCopyWith<$Res> {
+  factory _$$_RSEStartedCopyWith(
+          _$_RSEStarted value, $Res Function(_$_RSEStarted) then) =
+      __$$_RSEStartedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$RSEStartedCopyWithImpl<$Res>
+class __$$_RSEStartedCopyWithImpl<$Res>
     extends _$RegisterScreenEventCopyWithImpl<$Res>
-    implements _$RSEStartedCopyWith<$Res> {
-  __$RSEStartedCopyWithImpl(
-      _RSEStarted _value, $Res Function(_RSEStarted) _then)
-      : super(_value, (v) => _then(v as _RSEStarted));
+    implements _$$_RSEStartedCopyWith<$Res> {
+  __$$_RSEStartedCopyWithImpl(
+      _$_RSEStarted _value, $Res Function(_$_RSEStarted) _then)
+      : super(_value, (v) => _then(v as _$_RSEStarted));
 
   @override
-  _RSEStarted get _value => super._value as _RSEStarted;
+  _$_RSEStarted get _value => super._value as _$_RSEStarted;
 }
 
 /// @nodoc
@@ -142,7 +117,7 @@ class _$_RSEStarted implements _RSEStarted {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _RSEStarted);
+        (other.runtimeType == runtimeType && other is _$_RSEStarted);
   }
 
   @override
@@ -228,20 +203,21 @@ abstract class _RSEStarted implements RegisterScreenEvent {
 }
 
 /// @nodoc
-abstract class _$RSEIdleCopyWith<$Res> {
-  factory _$RSEIdleCopyWith(_RSEIdle value, $Res Function(_RSEIdle) then) =
-      __$RSEIdleCopyWithImpl<$Res>;
+abstract class _$$_RSEIdleCopyWith<$Res> {
+  factory _$$_RSEIdleCopyWith(
+          _$_RSEIdle value, $Res Function(_$_RSEIdle) then) =
+      __$$_RSEIdleCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$RSEIdleCopyWithImpl<$Res>
+class __$$_RSEIdleCopyWithImpl<$Res>
     extends _$RegisterScreenEventCopyWithImpl<$Res>
-    implements _$RSEIdleCopyWith<$Res> {
-  __$RSEIdleCopyWithImpl(_RSEIdle _value, $Res Function(_RSEIdle) _then)
-      : super(_value, (v) => _then(v as _RSEIdle));
+    implements _$$_RSEIdleCopyWith<$Res> {
+  __$$_RSEIdleCopyWithImpl(_$_RSEIdle _value, $Res Function(_$_RSEIdle) _then)
+      : super(_value, (v) => _then(v as _$_RSEIdle));
 
   @override
-  _RSEIdle get _value => super._value as _RSEIdle;
+  _$_RSEIdle get _value => super._value as _$_RSEIdle;
 }
 
 /// @nodoc
@@ -257,7 +233,7 @@ class _$_RSEIdle implements _RSEIdle {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _RSEIdle);
+        (other.runtimeType == runtimeType && other is _$_RSEIdle);
   }
 
   @override
@@ -343,29 +319,29 @@ abstract class _RSEIdle implements RegisterScreenEvent {
 }
 
 /// @nodoc
-abstract class _$RSEContinuePressedCopyWith<$Res> {
-  factory _$RSEContinuePressedCopyWith(
-          _RSEContinuePressed value, $Res Function(_RSEContinuePressed) then) =
-      __$RSEContinuePressedCopyWithImpl<$Res>;
+abstract class _$$_RSEContinuePressedCopyWith<$Res> {
+  factory _$$_RSEContinuePressedCopyWith(_$_RSEContinuePressed value,
+          $Res Function(_$_RSEContinuePressed) then) =
+      __$$_RSEContinuePressedCopyWithImpl<$Res>;
   $Res call({BuildContext context});
 }
 
 /// @nodoc
-class __$RSEContinuePressedCopyWithImpl<$Res>
+class __$$_RSEContinuePressedCopyWithImpl<$Res>
     extends _$RegisterScreenEventCopyWithImpl<$Res>
-    implements _$RSEContinuePressedCopyWith<$Res> {
-  __$RSEContinuePressedCopyWithImpl(
-      _RSEContinuePressed _value, $Res Function(_RSEContinuePressed) _then)
-      : super(_value, (v) => _then(v as _RSEContinuePressed));
+    implements _$$_RSEContinuePressedCopyWith<$Res> {
+  __$$_RSEContinuePressedCopyWithImpl(
+      _$_RSEContinuePressed _value, $Res Function(_$_RSEContinuePressed) _then)
+      : super(_value, (v) => _then(v as _$_RSEContinuePressed));
 
   @override
-  _RSEContinuePressed get _value => super._value as _RSEContinuePressed;
+  _$_RSEContinuePressed get _value => super._value as _$_RSEContinuePressed;
 
   @override
   $Res call({
     Object? context = freezed,
   }) {
-    return _then(_RSEContinuePressed(
+    return _then(_$_RSEContinuePressed(
       context == freezed
           ? _value.context
           : context // ignore: cast_nullable_to_non_nullable
@@ -391,17 +367,19 @@ class _$_RSEContinuePressed implements _RSEContinuePressed {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _RSEContinuePressed &&
-            (identical(other.context, context) || other.context == context));
+            other is _$_RSEContinuePressed &&
+            const DeepCollectionEquality().equals(other.context, context));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, context);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(context));
 
   @JsonKey(ignore: true)
   @override
-  _$RSEContinuePressedCopyWith<_RSEContinuePressed> get copyWith =>
-      __$RSEContinuePressedCopyWithImpl<_RSEContinuePressed>(this, _$identity);
+  _$$_RSEContinuePressedCopyWith<_$_RSEContinuePressed> get copyWith =>
+      __$$_RSEContinuePressedCopyWithImpl<_$_RSEContinuePressed>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -479,32 +457,32 @@ class _$_RSEContinuePressed implements _RSEContinuePressed {
 }
 
 abstract class _RSEContinuePressed implements RegisterScreenEvent {
-  const factory _RSEContinuePressed(BuildContext context) =
+  const factory _RSEContinuePressed(final BuildContext context) =
       _$_RSEContinuePressed;
 
-  BuildContext get context;
+  BuildContext get context => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$RSEContinuePressedCopyWith<_RSEContinuePressed> get copyWith =>
+  _$$_RSEContinuePressedCopyWith<_$_RSEContinuePressed> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$RSEToggleVisibleCopyWith<$Res> {
-  factory _$RSEToggleVisibleCopyWith(
-          _RSEToggleVisible value, $Res Function(_RSEToggleVisible) then) =
-      __$RSEToggleVisibleCopyWithImpl<$Res>;
+abstract class _$$_RSEToggleVisibleCopyWith<$Res> {
+  factory _$$_RSEToggleVisibleCopyWith(
+          _$_RSEToggleVisible value, $Res Function(_$_RSEToggleVisible) then) =
+      __$$_RSEToggleVisibleCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$RSEToggleVisibleCopyWithImpl<$Res>
+class __$$_RSEToggleVisibleCopyWithImpl<$Res>
     extends _$RegisterScreenEventCopyWithImpl<$Res>
-    implements _$RSEToggleVisibleCopyWith<$Res> {
-  __$RSEToggleVisibleCopyWithImpl(
-      _RSEToggleVisible _value, $Res Function(_RSEToggleVisible) _then)
-      : super(_value, (v) => _then(v as _RSEToggleVisible));
+    implements _$$_RSEToggleVisibleCopyWith<$Res> {
+  __$$_RSEToggleVisibleCopyWithImpl(
+      _$_RSEToggleVisible _value, $Res Function(_$_RSEToggleVisible) _then)
+      : super(_value, (v) => _then(v as _$_RSEToggleVisible));
 
   @override
-  _RSEToggleVisible get _value => super._value as _RSEToggleVisible;
+  _$_RSEToggleVisible get _value => super._value as _$_RSEToggleVisible;
 }
 
 /// @nodoc
@@ -520,7 +498,7 @@ class _$_RSEToggleVisible implements _RSEToggleVisible {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _RSEToggleVisible);
+        (other.runtimeType == runtimeType && other is _$_RSEToggleVisible);
   }
 
   @override
@@ -606,35 +584,8 @@ abstract class _RSEToggleVisible implements RegisterScreenEvent {
 }
 
 /// @nodoc
-class _$RegisterScreenStateTearOff {
-  const _$RegisterScreenStateTearOff();
-
-  _RSSInitial initial(RegisterScreenProps props) {
-    return _RSSInitial(
-      props,
-    );
-  }
-
-  _RSSLoading loading(RegisterScreenProps props) {
-    return _RSSLoading(
-      props,
-    );
-  }
-
-  _RSSIdle idle(RegisterScreenProps props) {
-    return _RSSIdle(
-      props,
-    );
-  }
-}
-
-/// @nodoc
-const $RegisterScreenState = _$RegisterScreenStateTearOff();
-
-/// @nodoc
 mixin _$RegisterScreenState {
   RegisterScreenProps get props => throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(RegisterScreenProps props) initial,
@@ -725,11 +676,11 @@ class _$RegisterScreenStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$RSSInitialCopyWith<$Res>
+abstract class _$$_RSSInitialCopyWith<$Res>
     implements $RegisterScreenStateCopyWith<$Res> {
-  factory _$RSSInitialCopyWith(
-          _RSSInitial value, $Res Function(_RSSInitial) then) =
-      __$RSSInitialCopyWithImpl<$Res>;
+  factory _$$_RSSInitialCopyWith(
+          _$_RSSInitial value, $Res Function(_$_RSSInitial) then) =
+      __$$_RSSInitialCopyWithImpl<$Res>;
   @override
   $Res call({RegisterScreenProps props});
 
@@ -738,21 +689,21 @@ abstract class _$RSSInitialCopyWith<$Res>
 }
 
 /// @nodoc
-class __$RSSInitialCopyWithImpl<$Res>
+class __$$_RSSInitialCopyWithImpl<$Res>
     extends _$RegisterScreenStateCopyWithImpl<$Res>
-    implements _$RSSInitialCopyWith<$Res> {
-  __$RSSInitialCopyWithImpl(
-      _RSSInitial _value, $Res Function(_RSSInitial) _then)
-      : super(_value, (v) => _then(v as _RSSInitial));
+    implements _$$_RSSInitialCopyWith<$Res> {
+  __$$_RSSInitialCopyWithImpl(
+      _$_RSSInitial _value, $Res Function(_$_RSSInitial) _then)
+      : super(_value, (v) => _then(v as _$_RSSInitial));
 
   @override
-  _RSSInitial get _value => super._value as _RSSInitial;
+  _$_RSSInitial get _value => super._value as _$_RSSInitial;
 
   @override
   $Res call({
     Object? props = freezed,
   }) {
-    return _then(_RSSInitial(
+    return _then(_$_RSSInitial(
       props == freezed
           ? _value.props
           : props // ignore: cast_nullable_to_non_nullable
@@ -778,17 +729,18 @@ class _$_RSSInitial implements _RSSInitial {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _RSSInitial &&
-            (identical(other.props, props) || other.props == props));
+            other is _$_RSSInitial &&
+            const DeepCollectionEquality().equals(other.props, props));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, props);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(props));
 
   @JsonKey(ignore: true)
   @override
-  _$RSSInitialCopyWith<_RSSInitial> get copyWith =>
-      __$RSSInitialCopyWithImpl<_RSSInitial>(this, _$identity);
+  _$$_RSSInitialCopyWith<_$_RSSInitial> get copyWith =>
+      __$$_RSSInitialCopyWithImpl<_$_RSSInitial>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -860,22 +812,22 @@ class _$_RSSInitial implements _RSSInitial {
 }
 
 abstract class _RSSInitial implements RegisterScreenState {
-  const factory _RSSInitial(RegisterScreenProps props) = _$_RSSInitial;
+  const factory _RSSInitial(final RegisterScreenProps props) = _$_RSSInitial;
 
   @override
-  RegisterScreenProps get props;
+  RegisterScreenProps get props => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$RSSInitialCopyWith<_RSSInitial> get copyWith =>
+  _$$_RSSInitialCopyWith<_$_RSSInitial> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$RSSLoadingCopyWith<$Res>
+abstract class _$$_RSSLoadingCopyWith<$Res>
     implements $RegisterScreenStateCopyWith<$Res> {
-  factory _$RSSLoadingCopyWith(
-          _RSSLoading value, $Res Function(_RSSLoading) then) =
-      __$RSSLoadingCopyWithImpl<$Res>;
+  factory _$$_RSSLoadingCopyWith(
+          _$_RSSLoading value, $Res Function(_$_RSSLoading) then) =
+      __$$_RSSLoadingCopyWithImpl<$Res>;
   @override
   $Res call({RegisterScreenProps props});
 
@@ -884,21 +836,21 @@ abstract class _$RSSLoadingCopyWith<$Res>
 }
 
 /// @nodoc
-class __$RSSLoadingCopyWithImpl<$Res>
+class __$$_RSSLoadingCopyWithImpl<$Res>
     extends _$RegisterScreenStateCopyWithImpl<$Res>
-    implements _$RSSLoadingCopyWith<$Res> {
-  __$RSSLoadingCopyWithImpl(
-      _RSSLoading _value, $Res Function(_RSSLoading) _then)
-      : super(_value, (v) => _then(v as _RSSLoading));
+    implements _$$_RSSLoadingCopyWith<$Res> {
+  __$$_RSSLoadingCopyWithImpl(
+      _$_RSSLoading _value, $Res Function(_$_RSSLoading) _then)
+      : super(_value, (v) => _then(v as _$_RSSLoading));
 
   @override
-  _RSSLoading get _value => super._value as _RSSLoading;
+  _$_RSSLoading get _value => super._value as _$_RSSLoading;
 
   @override
   $Res call({
     Object? props = freezed,
   }) {
-    return _then(_RSSLoading(
+    return _then(_$_RSSLoading(
       props == freezed
           ? _value.props
           : props // ignore: cast_nullable_to_non_nullable
@@ -924,17 +876,18 @@ class _$_RSSLoading implements _RSSLoading {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _RSSLoading &&
-            (identical(other.props, props) || other.props == props));
+            other is _$_RSSLoading &&
+            const DeepCollectionEquality().equals(other.props, props));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, props);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(props));
 
   @JsonKey(ignore: true)
   @override
-  _$RSSLoadingCopyWith<_RSSLoading> get copyWith =>
-      __$RSSLoadingCopyWithImpl<_RSSLoading>(this, _$identity);
+  _$$_RSSLoadingCopyWith<_$_RSSLoading> get copyWith =>
+      __$$_RSSLoadingCopyWithImpl<_$_RSSLoading>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1006,21 +959,22 @@ class _$_RSSLoading implements _RSSLoading {
 }
 
 abstract class _RSSLoading implements RegisterScreenState {
-  const factory _RSSLoading(RegisterScreenProps props) = _$_RSSLoading;
+  const factory _RSSLoading(final RegisterScreenProps props) = _$_RSSLoading;
 
   @override
-  RegisterScreenProps get props;
+  RegisterScreenProps get props => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$RSSLoadingCopyWith<_RSSLoading> get copyWith =>
+  _$$_RSSLoadingCopyWith<_$_RSSLoading> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$RSSIdleCopyWith<$Res>
+abstract class _$$_RSSIdleCopyWith<$Res>
     implements $RegisterScreenStateCopyWith<$Res> {
-  factory _$RSSIdleCopyWith(_RSSIdle value, $Res Function(_RSSIdle) then) =
-      __$RSSIdleCopyWithImpl<$Res>;
+  factory _$$_RSSIdleCopyWith(
+          _$_RSSIdle value, $Res Function(_$_RSSIdle) then) =
+      __$$_RSSIdleCopyWithImpl<$Res>;
   @override
   $Res call({RegisterScreenProps props});
 
@@ -1029,20 +983,20 @@ abstract class _$RSSIdleCopyWith<$Res>
 }
 
 /// @nodoc
-class __$RSSIdleCopyWithImpl<$Res>
+class __$$_RSSIdleCopyWithImpl<$Res>
     extends _$RegisterScreenStateCopyWithImpl<$Res>
-    implements _$RSSIdleCopyWith<$Res> {
-  __$RSSIdleCopyWithImpl(_RSSIdle _value, $Res Function(_RSSIdle) _then)
-      : super(_value, (v) => _then(v as _RSSIdle));
+    implements _$$_RSSIdleCopyWith<$Res> {
+  __$$_RSSIdleCopyWithImpl(_$_RSSIdle _value, $Res Function(_$_RSSIdle) _then)
+      : super(_value, (v) => _then(v as _$_RSSIdle));
 
   @override
-  _RSSIdle get _value => super._value as _RSSIdle;
+  _$_RSSIdle get _value => super._value as _$_RSSIdle;
 
   @override
   $Res call({
     Object? props = freezed,
   }) {
-    return _then(_RSSIdle(
+    return _then(_$_RSSIdle(
       props == freezed
           ? _value.props
           : props // ignore: cast_nullable_to_non_nullable
@@ -1068,17 +1022,18 @@ class _$_RSSIdle implements _RSSIdle {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _RSSIdle &&
-            (identical(other.props, props) || other.props == props));
+            other is _$_RSSIdle &&
+            const DeepCollectionEquality().equals(other.props, props));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, props);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(props));
 
   @JsonKey(ignore: true)
   @override
-  _$RSSIdleCopyWith<_RSSIdle> get copyWith =>
-      __$RSSIdleCopyWithImpl<_RSSIdle>(this, _$identity);
+  _$$_RSSIdleCopyWith<_$_RSSIdle> get copyWith =>
+      __$$_RSSIdleCopyWithImpl<_$_RSSIdle>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1150,29 +1105,15 @@ class _$_RSSIdle implements _RSSIdle {
 }
 
 abstract class _RSSIdle implements RegisterScreenState {
-  const factory _RSSIdle(RegisterScreenProps props) = _$_RSSIdle;
+  const factory _RSSIdle(final RegisterScreenProps props) = _$_RSSIdle;
 
   @override
-  RegisterScreenProps get props;
+  RegisterScreenProps get props => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$RSSIdleCopyWith<_RSSIdle> get copyWith =>
+  _$$_RSSIdleCopyWith<_$_RSSIdle> get copyWith =>
       throw _privateConstructorUsedError;
 }
-
-/// @nodoc
-class _$RegisterScreenPropsTearOff {
-  const _$RegisterScreenPropsTearOff();
-
-  _RegisterScreenProps call({required bool isInfoTileVisible}) {
-    return _RegisterScreenProps(
-      isInfoTileVisible: isInfoTileVisible,
-    );
-  }
-}
-
-/// @nodoc
-const $RegisterScreenProps = _$RegisterScreenPropsTearOff();
 
 /// @nodoc
 mixin _$RegisterScreenProps {
@@ -1214,31 +1155,31 @@ class _$RegisterScreenPropsCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$RegisterScreenPropsCopyWith<$Res>
+abstract class _$$_RegisterScreenPropsCopyWith<$Res>
     implements $RegisterScreenPropsCopyWith<$Res> {
-  factory _$RegisterScreenPropsCopyWith(_RegisterScreenProps value,
-          $Res Function(_RegisterScreenProps) then) =
-      __$RegisterScreenPropsCopyWithImpl<$Res>;
+  factory _$$_RegisterScreenPropsCopyWith(_$_RegisterScreenProps value,
+          $Res Function(_$_RegisterScreenProps) then) =
+      __$$_RegisterScreenPropsCopyWithImpl<$Res>;
   @override
   $Res call({bool isInfoTileVisible});
 }
 
 /// @nodoc
-class __$RegisterScreenPropsCopyWithImpl<$Res>
+class __$$_RegisterScreenPropsCopyWithImpl<$Res>
     extends _$RegisterScreenPropsCopyWithImpl<$Res>
-    implements _$RegisterScreenPropsCopyWith<$Res> {
-  __$RegisterScreenPropsCopyWithImpl(
-      _RegisterScreenProps _value, $Res Function(_RegisterScreenProps) _then)
-      : super(_value, (v) => _then(v as _RegisterScreenProps));
+    implements _$$_RegisterScreenPropsCopyWith<$Res> {
+  __$$_RegisterScreenPropsCopyWithImpl(_$_RegisterScreenProps _value,
+      $Res Function(_$_RegisterScreenProps) _then)
+      : super(_value, (v) => _then(v as _$_RegisterScreenProps));
 
   @override
-  _RegisterScreenProps get _value => super._value as _RegisterScreenProps;
+  _$_RegisterScreenProps get _value => super._value as _$_RegisterScreenProps;
 
   @override
   $Res call({
     Object? isInfoTileVisible = freezed,
   }) {
-    return _then(_RegisterScreenProps(
+    return _then(_$_RegisterScreenProps(
       isInfoTileVisible: isInfoTileVisible == freezed
           ? _value.isInfoTileVisible
           : isInfoTileVisible // ignore: cast_nullable_to_non_nullable
@@ -1264,29 +1205,30 @@ class _$_RegisterScreenProps implements _RegisterScreenProps {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _RegisterScreenProps &&
-            (identical(other.isInfoTileVisible, isInfoTileVisible) ||
-                other.isInfoTileVisible == isInfoTileVisible));
+            other is _$_RegisterScreenProps &&
+            const DeepCollectionEquality()
+                .equals(other.isInfoTileVisible, isInfoTileVisible));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isInfoTileVisible);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(isInfoTileVisible));
 
   @JsonKey(ignore: true)
   @override
-  _$RegisterScreenPropsCopyWith<_RegisterScreenProps> get copyWith =>
-      __$RegisterScreenPropsCopyWithImpl<_RegisterScreenProps>(
+  _$$_RegisterScreenPropsCopyWith<_$_RegisterScreenProps> get copyWith =>
+      __$$_RegisterScreenPropsCopyWithImpl<_$_RegisterScreenProps>(
           this, _$identity);
 }
 
 abstract class _RegisterScreenProps implements RegisterScreenProps {
-  const factory _RegisterScreenProps({required bool isInfoTileVisible}) =
+  const factory _RegisterScreenProps({required final bool isInfoTileVisible}) =
       _$_RegisterScreenProps;
 
   @override
-  bool get isInfoTileVisible;
+  bool get isInfoTileVisible => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$RegisterScreenPropsCopyWith<_RegisterScreenProps> get copyWith =>
+  _$$_RegisterScreenPropsCopyWith<_$_RegisterScreenProps> get copyWith =>
       throw _privateConstructorUsedError;
 }

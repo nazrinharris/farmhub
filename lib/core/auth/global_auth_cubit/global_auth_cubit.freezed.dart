@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'global_auth_cubit.dart';
@@ -11,28 +12,12 @@ part of 'global_auth_cubit.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$GlobalAuthStateTearOff {
-  const _$GlobalAuthStateTearOff();
-
-  _Initial initial({FarmhubUser? farmhubUser, bool? isAdmin}) {
-    return _Initial(
-      farmhubUser: farmhubUser,
-      isAdmin: isAdmin,
-    );
-  }
-}
-
-/// @nodoc
-const $GlobalAuthState = _$GlobalAuthStateTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$GlobalAuthState {
   FarmhubUser? get farmhubUser => throw _privateConstructorUsedError;
   bool? get isAdmin => throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(FarmhubUser? farmhubUser, bool? isAdmin) initial,
@@ -120,10 +105,11 @@ class _$GlobalAuthStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$InitialCopyWith<$Res>
+abstract class _$$_InitialCopyWith<$Res>
     implements $GlobalAuthStateCopyWith<$Res> {
-  factory _$InitialCopyWith(_Initial value, $Res Function(_Initial) then) =
-      __$InitialCopyWithImpl<$Res>;
+  factory _$$_InitialCopyWith(
+          _$_Initial value, $Res Function(_$_Initial) then) =
+      __$$_InitialCopyWithImpl<$Res>;
   @override
   $Res call({FarmhubUser? farmhubUser, bool? isAdmin});
 
@@ -132,20 +118,20 @@ abstract class _$InitialCopyWith<$Res>
 }
 
 /// @nodoc
-class __$InitialCopyWithImpl<$Res> extends _$GlobalAuthStateCopyWithImpl<$Res>
-    implements _$InitialCopyWith<$Res> {
-  __$InitialCopyWithImpl(_Initial _value, $Res Function(_Initial) _then)
-      : super(_value, (v) => _then(v as _Initial));
+class __$$_InitialCopyWithImpl<$Res> extends _$GlobalAuthStateCopyWithImpl<$Res>
+    implements _$$_InitialCopyWith<$Res> {
+  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
+      : super(_value, (v) => _then(v as _$_Initial));
 
   @override
-  _Initial get _value => super._value as _Initial;
+  _$_Initial get _value => super._value as _$_Initial;
 
   @override
   $Res call({
     Object? farmhubUser = freezed,
     Object? isAdmin = freezed,
   }) {
-    return _then(_Initial(
+    return _then(_$_Initial(
       farmhubUser: farmhubUser == freezed
           ? _value.farmhubUser
           : farmhubUser // ignore: cast_nullable_to_non_nullable
@@ -177,19 +163,22 @@ class _$_Initial implements _Initial {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Initial &&
-            (identical(other.farmhubUser, farmhubUser) ||
-                other.farmhubUser == farmhubUser) &&
-            (identical(other.isAdmin, isAdmin) || other.isAdmin == isAdmin));
+            other is _$_Initial &&
+            const DeepCollectionEquality()
+                .equals(other.farmhubUser, farmhubUser) &&
+            const DeepCollectionEquality().equals(other.isAdmin, isAdmin));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, farmhubUser, isAdmin);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(farmhubUser),
+      const DeepCollectionEquality().hash(isAdmin));
 
   @JsonKey(ignore: true)
   @override
-  _$InitialCopyWith<_Initial> get copyWith =>
-      __$InitialCopyWithImpl<_Initial>(this, _$identity);
+  _$$_InitialCopyWith<_$_Initial> get copyWith =>
+      __$$_InitialCopyWithImpl<_$_Initial>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -249,15 +238,15 @@ class _$_Initial implements _Initial {
 }
 
 abstract class _Initial implements GlobalAuthState {
-  const factory _Initial({FarmhubUser? farmhubUser, bool? isAdmin}) =
-      _$_Initial;
+  const factory _Initial(
+      {final FarmhubUser? farmhubUser, final bool? isAdmin}) = _$_Initial;
 
   @override
-  FarmhubUser? get farmhubUser;
+  FarmhubUser? get farmhubUser => throw _privateConstructorUsedError;
   @override
-  bool? get isAdmin;
+  bool? get isAdmin => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$InitialCopyWith<_Initial> get copyWith =>
+  _$$_InitialCopyWith<_$_Initial> get copyWith =>
       throw _privateConstructorUsedError;
 }

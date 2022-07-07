@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'produce_dialog_cubit.dart';
@@ -11,37 +12,7 @@ part of 'produce_dialog_cubit.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$ProduceDialogStateTearOff {
-  const _$ProduceDialogStateTearOff();
-
-  _Initial initial() {
-    return const _Initial();
-  }
-
-  DeleteConfirmation deleteConfirmation() {
-    return const DeleteConfirmation();
-  }
-
-  DeleteInProgress deleteInProgress() {
-    return const DeleteInProgress();
-  }
-
-  DeleteComplete deleteComplete() {
-    return const DeleteComplete();
-  }
-
-  DeleteError deleteError(Failure failure) {
-    return DeleteError(
-      failure,
-    );
-  }
-}
-
-/// @nodoc
-const $ProduceDialogState = _$ProduceDialogStateTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$ProduceDialogState {
@@ -121,20 +92,21 @@ class _$ProduceDialogStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$InitialCopyWith<$Res> {
-  factory _$InitialCopyWith(_Initial value, $Res Function(_Initial) then) =
-      __$InitialCopyWithImpl<$Res>;
+abstract class _$$_InitialCopyWith<$Res> {
+  factory _$$_InitialCopyWith(
+          _$_Initial value, $Res Function(_$_Initial) then) =
+      __$$_InitialCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$InitialCopyWithImpl<$Res>
+class __$$_InitialCopyWithImpl<$Res>
     extends _$ProduceDialogStateCopyWithImpl<$Res>
-    implements _$InitialCopyWith<$Res> {
-  __$InitialCopyWithImpl(_Initial _value, $Res Function(_Initial) _then)
-      : super(_value, (v) => _then(v as _Initial));
+    implements _$$_InitialCopyWith<$Res> {
+  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
+      : super(_value, (v) => _then(v as _$_Initial));
 
   @override
-  _Initial get _value => super._value as _Initial;
+  _$_Initial get _value => super._value as _$_Initial;
 }
 
 /// @nodoc
@@ -150,7 +122,7 @@ class _$_Initial implements _Initial {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _Initial);
+        (other.runtimeType == runtimeType && other is _$_Initial);
   }
 
   @override
@@ -242,22 +214,22 @@ abstract class _Initial implements ProduceDialogState {
 }
 
 /// @nodoc
-abstract class $DeleteConfirmationCopyWith<$Res> {
-  factory $DeleteConfirmationCopyWith(
-          DeleteConfirmation value, $Res Function(DeleteConfirmation) then) =
-      _$DeleteConfirmationCopyWithImpl<$Res>;
+abstract class _$$DeleteConfirmationCopyWith<$Res> {
+  factory _$$DeleteConfirmationCopyWith(_$DeleteConfirmation value,
+          $Res Function(_$DeleteConfirmation) then) =
+      __$$DeleteConfirmationCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$DeleteConfirmationCopyWithImpl<$Res>
+class __$$DeleteConfirmationCopyWithImpl<$Res>
     extends _$ProduceDialogStateCopyWithImpl<$Res>
-    implements $DeleteConfirmationCopyWith<$Res> {
-  _$DeleteConfirmationCopyWithImpl(
-      DeleteConfirmation _value, $Res Function(DeleteConfirmation) _then)
-      : super(_value, (v) => _then(v as DeleteConfirmation));
+    implements _$$DeleteConfirmationCopyWith<$Res> {
+  __$$DeleteConfirmationCopyWithImpl(
+      _$DeleteConfirmation _value, $Res Function(_$DeleteConfirmation) _then)
+      : super(_value, (v) => _then(v as _$DeleteConfirmation));
 
   @override
-  DeleteConfirmation get _value => super._value as DeleteConfirmation;
+  _$DeleteConfirmation get _value => super._value as _$DeleteConfirmation;
 }
 
 /// @nodoc
@@ -273,7 +245,7 @@ class _$DeleteConfirmation implements DeleteConfirmation {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is DeleteConfirmation);
+        (other.runtimeType == runtimeType && other is _$DeleteConfirmation);
   }
 
   @override
@@ -365,22 +337,22 @@ abstract class DeleteConfirmation implements ProduceDialogState {
 }
 
 /// @nodoc
-abstract class $DeleteInProgressCopyWith<$Res> {
-  factory $DeleteInProgressCopyWith(
-          DeleteInProgress value, $Res Function(DeleteInProgress) then) =
-      _$DeleteInProgressCopyWithImpl<$Res>;
+abstract class _$$DeleteInProgressCopyWith<$Res> {
+  factory _$$DeleteInProgressCopyWith(
+          _$DeleteInProgress value, $Res Function(_$DeleteInProgress) then) =
+      __$$DeleteInProgressCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$DeleteInProgressCopyWithImpl<$Res>
+class __$$DeleteInProgressCopyWithImpl<$Res>
     extends _$ProduceDialogStateCopyWithImpl<$Res>
-    implements $DeleteInProgressCopyWith<$Res> {
-  _$DeleteInProgressCopyWithImpl(
-      DeleteInProgress _value, $Res Function(DeleteInProgress) _then)
-      : super(_value, (v) => _then(v as DeleteInProgress));
+    implements _$$DeleteInProgressCopyWith<$Res> {
+  __$$DeleteInProgressCopyWithImpl(
+      _$DeleteInProgress _value, $Res Function(_$DeleteInProgress) _then)
+      : super(_value, (v) => _then(v as _$DeleteInProgress));
 
   @override
-  DeleteInProgress get _value => super._value as DeleteInProgress;
+  _$DeleteInProgress get _value => super._value as _$DeleteInProgress;
 }
 
 /// @nodoc
@@ -396,7 +368,7 @@ class _$DeleteInProgress implements DeleteInProgress {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is DeleteInProgress);
+        (other.runtimeType == runtimeType && other is _$DeleteInProgress);
   }
 
   @override
@@ -488,22 +460,22 @@ abstract class DeleteInProgress implements ProduceDialogState {
 }
 
 /// @nodoc
-abstract class $DeleteCompleteCopyWith<$Res> {
-  factory $DeleteCompleteCopyWith(
-          DeleteComplete value, $Res Function(DeleteComplete) then) =
-      _$DeleteCompleteCopyWithImpl<$Res>;
+abstract class _$$DeleteCompleteCopyWith<$Res> {
+  factory _$$DeleteCompleteCopyWith(
+          _$DeleteComplete value, $Res Function(_$DeleteComplete) then) =
+      __$$DeleteCompleteCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$DeleteCompleteCopyWithImpl<$Res>
+class __$$DeleteCompleteCopyWithImpl<$Res>
     extends _$ProduceDialogStateCopyWithImpl<$Res>
-    implements $DeleteCompleteCopyWith<$Res> {
-  _$DeleteCompleteCopyWithImpl(
-      DeleteComplete _value, $Res Function(DeleteComplete) _then)
-      : super(_value, (v) => _then(v as DeleteComplete));
+    implements _$$DeleteCompleteCopyWith<$Res> {
+  __$$DeleteCompleteCopyWithImpl(
+      _$DeleteComplete _value, $Res Function(_$DeleteComplete) _then)
+      : super(_value, (v) => _then(v as _$DeleteComplete));
 
   @override
-  DeleteComplete get _value => super._value as DeleteComplete;
+  _$DeleteComplete get _value => super._value as _$DeleteComplete;
 }
 
 /// @nodoc
@@ -519,7 +491,7 @@ class _$DeleteComplete implements DeleteComplete {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is DeleteComplete);
+        (other.runtimeType == runtimeType && other is _$DeleteComplete);
   }
 
   @override
@@ -611,29 +583,29 @@ abstract class DeleteComplete implements ProduceDialogState {
 }
 
 /// @nodoc
-abstract class $DeleteErrorCopyWith<$Res> {
-  factory $DeleteErrorCopyWith(
-          DeleteError value, $Res Function(DeleteError) then) =
-      _$DeleteErrorCopyWithImpl<$Res>;
+abstract class _$$DeleteErrorCopyWith<$Res> {
+  factory _$$DeleteErrorCopyWith(
+          _$DeleteError value, $Res Function(_$DeleteError) then) =
+      __$$DeleteErrorCopyWithImpl<$Res>;
   $Res call({Failure failure});
 }
 
 /// @nodoc
-class _$DeleteErrorCopyWithImpl<$Res>
+class __$$DeleteErrorCopyWithImpl<$Res>
     extends _$ProduceDialogStateCopyWithImpl<$Res>
-    implements $DeleteErrorCopyWith<$Res> {
-  _$DeleteErrorCopyWithImpl(
-      DeleteError _value, $Res Function(DeleteError) _then)
-      : super(_value, (v) => _then(v as DeleteError));
+    implements _$$DeleteErrorCopyWith<$Res> {
+  __$$DeleteErrorCopyWithImpl(
+      _$DeleteError _value, $Res Function(_$DeleteError) _then)
+      : super(_value, (v) => _then(v as _$DeleteError));
 
   @override
-  DeleteError get _value => super._value as DeleteError;
+  _$DeleteError get _value => super._value as _$DeleteError;
 
   @override
   $Res call({
     Object? failure = freezed,
   }) {
-    return _then(DeleteError(
+    return _then(_$DeleteError(
       failure == freezed
           ? _value.failure
           : failure // ignore: cast_nullable_to_non_nullable
@@ -659,17 +631,18 @@ class _$DeleteError implements DeleteError {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is DeleteError &&
-            (identical(other.failure, failure) || other.failure == failure));
+            other is _$DeleteError &&
+            const DeepCollectionEquality().equals(other.failure, failure));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, failure);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(failure));
 
   @JsonKey(ignore: true)
   @override
-  $DeleteErrorCopyWith<DeleteError> get copyWith =>
-      _$DeleteErrorCopyWithImpl<DeleteError>(this, _$identity);
+  _$$DeleteErrorCopyWith<_$DeleteError> get copyWith =>
+      __$$DeleteErrorCopyWithImpl<_$DeleteError>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -753,10 +726,10 @@ class _$DeleteError implements DeleteError {
 }
 
 abstract class DeleteError implements ProduceDialogState {
-  const factory DeleteError(Failure failure) = _$DeleteError;
+  const factory DeleteError(final Failure failure) = _$DeleteError;
 
-  Failure get failure;
+  Failure get failure => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $DeleteErrorCopyWith<DeleteError> get copyWith =>
+  _$$DeleteErrorCopyWith<_$DeleteError> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'produce.dart';
@@ -11,42 +12,11 @@ part of 'produce.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 Produce _$ProduceFromJson(Map<String, dynamic> json) {
   return _Produce.fromJson(json);
 }
-
-/// @nodoc
-class _$ProduceTearOff {
-  const _$ProduceTearOff();
-
-  _Produce call(
-      {required String produceId,
-      required String produceName,
-      required String authorId,
-      required Map<String, dynamic> currentProducePrice,
-      required Map<String, dynamic> previousProducePrice,
-      required Map<String, dynamic> weeklyPrices,
-      required DateTime lastUpdateTimeStamp}) {
-    return _Produce(
-      produceId: produceId,
-      produceName: produceName,
-      authorId: authorId,
-      currentProducePrice: currentProducePrice,
-      previousProducePrice: previousProducePrice,
-      weeklyPrices: weeklyPrices,
-      lastUpdateTimeStamp: lastUpdateTimeStamp,
-    );
-  }
-
-  Produce fromJson(Map<String, Object?> json) {
-    return Produce.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $Produce = _$ProduceTearOff();
 
 /// @nodoc
 mixin _$Produce {
@@ -131,9 +101,10 @@ class _$ProduceCopyWithImpl<$Res> implements $ProduceCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$ProduceCopyWith<$Res> implements $ProduceCopyWith<$Res> {
-  factory _$ProduceCopyWith(_Produce value, $Res Function(_Produce) then) =
-      __$ProduceCopyWithImpl<$Res>;
+abstract class _$$_ProduceCopyWith<$Res> implements $ProduceCopyWith<$Res> {
+  factory _$$_ProduceCopyWith(
+          _$_Produce value, $Res Function(_$_Produce) then) =
+      __$$_ProduceCopyWithImpl<$Res>;
   @override
   $Res call(
       {String produceId,
@@ -146,13 +117,13 @@ abstract class _$ProduceCopyWith<$Res> implements $ProduceCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$ProduceCopyWithImpl<$Res> extends _$ProduceCopyWithImpl<$Res>
-    implements _$ProduceCopyWith<$Res> {
-  __$ProduceCopyWithImpl(_Produce _value, $Res Function(_Produce) _then)
-      : super(_value, (v) => _then(v as _Produce));
+class __$$_ProduceCopyWithImpl<$Res> extends _$ProduceCopyWithImpl<$Res>
+    implements _$$_ProduceCopyWith<$Res> {
+  __$$_ProduceCopyWithImpl(_$_Produce _value, $Res Function(_$_Produce) _then)
+      : super(_value, (v) => _then(v as _$_Produce));
 
   @override
-  _Produce get _value => super._value as _Produce;
+  _$_Produce get _value => super._value as _$_Produce;
 
   @override
   $Res call({
@@ -164,7 +135,7 @@ class __$ProduceCopyWithImpl<$Res> extends _$ProduceCopyWithImpl<$Res>
     Object? weeklyPrices = freezed,
     Object? lastUpdateTimeStamp = freezed,
   }) {
-    return _then(_Produce(
+    return _then(_$_Produce(
       produceId: produceId == freezed
           ? _value.produceId
           : produceId // ignore: cast_nullable_to_non_nullable
@@ -178,15 +149,15 @@ class __$ProduceCopyWithImpl<$Res> extends _$ProduceCopyWithImpl<$Res>
           : authorId // ignore: cast_nullable_to_non_nullable
               as String,
       currentProducePrice: currentProducePrice == freezed
-          ? _value.currentProducePrice
+          ? _value._currentProducePrice
           : currentProducePrice // ignore: cast_nullable_to_non_nullable
               as Map<String, dynamic>,
       previousProducePrice: previousProducePrice == freezed
-          ? _value.previousProducePrice
+          ? _value._previousProducePrice
           : previousProducePrice // ignore: cast_nullable_to_non_nullable
               as Map<String, dynamic>,
       weeklyPrices: weeklyPrices == freezed
-          ? _value.weeklyPrices
+          ? _value._weeklyPrices
           : weeklyPrices // ignore: cast_nullable_to_non_nullable
               as Map<String, dynamic>,
       lastUpdateTimeStamp: lastUpdateTimeStamp == freezed
@@ -204,10 +175,13 @@ class _$_Produce implements _Produce {
       {required this.produceId,
       required this.produceName,
       required this.authorId,
-      required this.currentProducePrice,
-      required this.previousProducePrice,
-      required this.weeklyPrices,
-      required this.lastUpdateTimeStamp});
+      required final Map<String, dynamic> currentProducePrice,
+      required final Map<String, dynamic> previousProducePrice,
+      required final Map<String, dynamic> weeklyPrices,
+      required this.lastUpdateTimeStamp})
+      : _currentProducePrice = currentProducePrice,
+        _previousProducePrice = previousProducePrice,
+        _weeklyPrices = weeklyPrices;
 
   factory _$_Produce.fromJson(Map<String, dynamic> json) =>
       _$$_ProduceFromJson(json);
@@ -218,12 +192,27 @@ class _$_Produce implements _Produce {
   final String produceName;
   @override
   final String authorId;
+  final Map<String, dynamic> _currentProducePrice;
   @override
-  final Map<String, dynamic> currentProducePrice;
+  Map<String, dynamic> get currentProducePrice {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_currentProducePrice);
+  }
+
+  final Map<String, dynamic> _previousProducePrice;
   @override
-  final Map<String, dynamic> previousProducePrice;
+  Map<String, dynamic> get previousProducePrice {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_previousProducePrice);
+  }
+
+  final Map<String, dynamic> _weeklyPrices;
   @override
-  final Map<String, dynamic> weeklyPrices;
+  Map<String, dynamic> get weeklyPrices {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_weeklyPrices);
+  }
+
   @override
   final DateTime lastUpdateTimeStamp;
 
@@ -236,38 +225,37 @@ class _$_Produce implements _Produce {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Produce &&
-            (identical(other.produceId, produceId) ||
-                other.produceId == produceId) &&
-            (identical(other.produceName, produceName) ||
-                other.produceName == produceName) &&
-            (identical(other.authorId, authorId) ||
-                other.authorId == authorId) &&
+            other is _$_Produce &&
+            const DeepCollectionEquality().equals(other.produceId, produceId) &&
             const DeepCollectionEquality()
-                .equals(other.currentProducePrice, currentProducePrice) &&
+                .equals(other.produceName, produceName) &&
+            const DeepCollectionEquality().equals(other.authorId, authorId) &&
             const DeepCollectionEquality()
-                .equals(other.previousProducePrice, previousProducePrice) &&
+                .equals(other._currentProducePrice, _currentProducePrice) &&
             const DeepCollectionEquality()
-                .equals(other.weeklyPrices, weeklyPrices) &&
-            (identical(other.lastUpdateTimeStamp, lastUpdateTimeStamp) ||
-                other.lastUpdateTimeStamp == lastUpdateTimeStamp));
+                .equals(other._previousProducePrice, _previousProducePrice) &&
+            const DeepCollectionEquality()
+                .equals(other._weeklyPrices, _weeklyPrices) &&
+            const DeepCollectionEquality()
+                .equals(other.lastUpdateTimeStamp, lastUpdateTimeStamp));
   }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      produceId,
-      produceName,
-      authorId,
-      const DeepCollectionEquality().hash(currentProducePrice),
-      const DeepCollectionEquality().hash(previousProducePrice),
-      const DeepCollectionEquality().hash(weeklyPrices),
-      lastUpdateTimeStamp);
 
   @JsonKey(ignore: true)
   @override
-  _$ProduceCopyWith<_Produce> get copyWith =>
-      __$ProduceCopyWithImpl<_Produce>(this, _$identity);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(produceId),
+      const DeepCollectionEquality().hash(produceName),
+      const DeepCollectionEquality().hash(authorId),
+      const DeepCollectionEquality().hash(_currentProducePrice),
+      const DeepCollectionEquality().hash(_previousProducePrice),
+      const DeepCollectionEquality().hash(_weeklyPrices),
+      const DeepCollectionEquality().hash(lastUpdateTimeStamp));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_ProduceCopyWith<_$_Produce> get copyWith =>
+      __$$_ProduceCopyWithImpl<_$_Produce>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -277,51 +265,37 @@ class _$_Produce implements _Produce {
 
 abstract class _Produce implements Produce {
   factory _Produce(
-      {required String produceId,
-      required String produceName,
-      required String authorId,
-      required Map<String, dynamic> currentProducePrice,
-      required Map<String, dynamic> previousProducePrice,
-      required Map<String, dynamic> weeklyPrices,
-      required DateTime lastUpdateTimeStamp}) = _$_Produce;
+      {required final String produceId,
+      required final String produceName,
+      required final String authorId,
+      required final Map<String, dynamic> currentProducePrice,
+      required final Map<String, dynamic> previousProducePrice,
+      required final Map<String, dynamic> weeklyPrices,
+      required final DateTime lastUpdateTimeStamp}) = _$_Produce;
 
   factory _Produce.fromJson(Map<String, dynamic> json) = _$_Produce.fromJson;
 
   @override
-  String get produceId;
+  String get produceId => throw _privateConstructorUsedError;
   @override
-  String get produceName;
+  String get produceName => throw _privateConstructorUsedError;
   @override
-  String get authorId;
+  String get authorId => throw _privateConstructorUsedError;
   @override
-  Map<String, dynamic> get currentProducePrice;
+  Map<String, dynamic> get currentProducePrice =>
+      throw _privateConstructorUsedError;
   @override
-  Map<String, dynamic> get previousProducePrice;
+  Map<String, dynamic> get previousProducePrice =>
+      throw _privateConstructorUsedError;
   @override
-  Map<String, dynamic> get weeklyPrices;
+  Map<String, dynamic> get weeklyPrices => throw _privateConstructorUsedError;
   @override
-  DateTime get lastUpdateTimeStamp;
+  DateTime get lastUpdateTimeStamp => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$ProduceCopyWith<_Produce> get copyWith =>
+  _$$_ProduceCopyWith<_$_Produce> get copyWith =>
       throw _privateConstructorUsedError;
 }
-
-/// @nodoc
-class _$ProduceFavoriteTearOff {
-  const _$ProduceFavoriteTearOff();
-
-  _ProduceFavorite call(
-      {required String produceId, required DateTime dateAdded}) {
-    return _ProduceFavorite(
-      produceId: produceId,
-      dateAdded: dateAdded,
-    );
-  }
-}
-
-/// @nodoc
-const $ProduceFavorite = _$ProduceFavoriteTearOff();
 
 /// @nodoc
 mixin _$ProduceFavorite {
@@ -369,32 +343,32 @@ class _$ProduceFavoriteCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$ProduceFavoriteCopyWith<$Res>
+abstract class _$$_ProduceFavoriteCopyWith<$Res>
     implements $ProduceFavoriteCopyWith<$Res> {
-  factory _$ProduceFavoriteCopyWith(
-          _ProduceFavorite value, $Res Function(_ProduceFavorite) then) =
-      __$ProduceFavoriteCopyWithImpl<$Res>;
+  factory _$$_ProduceFavoriteCopyWith(
+          _$_ProduceFavorite value, $Res Function(_$_ProduceFavorite) then) =
+      __$$_ProduceFavoriteCopyWithImpl<$Res>;
   @override
   $Res call({String produceId, DateTime dateAdded});
 }
 
 /// @nodoc
-class __$ProduceFavoriteCopyWithImpl<$Res>
+class __$$_ProduceFavoriteCopyWithImpl<$Res>
     extends _$ProduceFavoriteCopyWithImpl<$Res>
-    implements _$ProduceFavoriteCopyWith<$Res> {
-  __$ProduceFavoriteCopyWithImpl(
-      _ProduceFavorite _value, $Res Function(_ProduceFavorite) _then)
-      : super(_value, (v) => _then(v as _ProduceFavorite));
+    implements _$$_ProduceFavoriteCopyWith<$Res> {
+  __$$_ProduceFavoriteCopyWithImpl(
+      _$_ProduceFavorite _value, $Res Function(_$_ProduceFavorite) _then)
+      : super(_value, (v) => _then(v as _$_ProduceFavorite));
 
   @override
-  _ProduceFavorite get _value => super._value as _ProduceFavorite;
+  _$_ProduceFavorite get _value => super._value as _$_ProduceFavorite;
 
   @override
   $Res call({
     Object? produceId = freezed,
     Object? dateAdded = freezed,
   }) {
-    return _then(_ProduceFavorite(
+    return _then(_$_ProduceFavorite(
       produceId: produceId == freezed
           ? _value.produceId
           : produceId // ignore: cast_nullable_to_non_nullable
@@ -426,33 +400,34 @@ class _$_ProduceFavorite implements _ProduceFavorite {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _ProduceFavorite &&
-            (identical(other.produceId, produceId) ||
-                other.produceId == produceId) &&
-            (identical(other.dateAdded, dateAdded) ||
-                other.dateAdded == dateAdded));
+            other is _$_ProduceFavorite &&
+            const DeepCollectionEquality().equals(other.produceId, produceId) &&
+            const DeepCollectionEquality().equals(other.dateAdded, dateAdded));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, produceId, dateAdded);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(produceId),
+      const DeepCollectionEquality().hash(dateAdded));
 
   @JsonKey(ignore: true)
   @override
-  _$ProduceFavoriteCopyWith<_ProduceFavorite> get copyWith =>
-      __$ProduceFavoriteCopyWithImpl<_ProduceFavorite>(this, _$identity);
+  _$$_ProduceFavoriteCopyWith<_$_ProduceFavorite> get copyWith =>
+      __$$_ProduceFavoriteCopyWithImpl<_$_ProduceFavorite>(this, _$identity);
 }
 
 abstract class _ProduceFavorite implements ProduceFavorite {
   factory _ProduceFavorite(
-      {required String produceId,
-      required DateTime dateAdded}) = _$_ProduceFavorite;
+      {required final String produceId,
+      required final DateTime dateAdded}) = _$_ProduceFavorite;
 
   @override
-  String get produceId;
+  String get produceId => throw _privateConstructorUsedError;
   @override
-  DateTime get dateAdded;
+  DateTime get dateAdded => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$ProduceFavoriteCopyWith<_ProduceFavorite> get copyWith =>
+  _$$_ProduceFavoriteCopyWith<_$_ProduceFavorite> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'main_screen_bloc.dart';
@@ -11,35 +12,7 @@ part of 'main_screen_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$MainScreenEventTearOff {
-  const _$MainScreenEventTearOff();
-
-  _MSEStarted started() {
-    return const _MSEStarted();
-  }
-
-  _MSEGetFirstTenProduce getFirstTenProduce() {
-    return const _MSEGetFirstTenProduce();
-  }
-
-  _MSEGetNextTenProduce getNextTenProduce() {
-    return const _MSEGetNextTenProduce();
-  }
-
-  _MSERefresh refresh() {
-    return const _MSERefresh();
-  }
-
-  _MSEToggleMainHeader toggleMainHeader() {
-    return const _MSEToggleMainHeader();
-  }
-}
-
-/// @nodoc
-const $MainScreenEvent = _$MainScreenEventTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$MainScreenEvent {
@@ -119,22 +92,22 @@ class _$MainScreenEventCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$MSEStartedCopyWith<$Res> {
-  factory _$MSEStartedCopyWith(
-          _MSEStarted value, $Res Function(_MSEStarted) then) =
-      __$MSEStartedCopyWithImpl<$Res>;
+abstract class _$$_MSEStartedCopyWith<$Res> {
+  factory _$$_MSEStartedCopyWith(
+          _$_MSEStarted value, $Res Function(_$_MSEStarted) then) =
+      __$$_MSEStartedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$MSEStartedCopyWithImpl<$Res>
+class __$$_MSEStartedCopyWithImpl<$Res>
     extends _$MainScreenEventCopyWithImpl<$Res>
-    implements _$MSEStartedCopyWith<$Res> {
-  __$MSEStartedCopyWithImpl(
-      _MSEStarted _value, $Res Function(_MSEStarted) _then)
-      : super(_value, (v) => _then(v as _MSEStarted));
+    implements _$$_MSEStartedCopyWith<$Res> {
+  __$$_MSEStartedCopyWithImpl(
+      _$_MSEStarted _value, $Res Function(_$_MSEStarted) _then)
+      : super(_value, (v) => _then(v as _$_MSEStarted));
 
   @override
-  _MSEStarted get _value => super._value as _MSEStarted;
+  _$_MSEStarted get _value => super._value as _$_MSEStarted;
 }
 
 /// @nodoc
@@ -150,7 +123,7 @@ class _$_MSEStarted implements _MSEStarted {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _MSEStarted);
+        (other.runtimeType == runtimeType && other is _$_MSEStarted);
   }
 
   @override
@@ -242,22 +215,23 @@ abstract class _MSEStarted implements MainScreenEvent {
 }
 
 /// @nodoc
-abstract class _$MSEGetFirstTenProduceCopyWith<$Res> {
-  factory _$MSEGetFirstTenProduceCopyWith(_MSEGetFirstTenProduce value,
-          $Res Function(_MSEGetFirstTenProduce) then) =
-      __$MSEGetFirstTenProduceCopyWithImpl<$Res>;
+abstract class _$$_MSEGetFirstTenProduceCopyWith<$Res> {
+  factory _$$_MSEGetFirstTenProduceCopyWith(_$_MSEGetFirstTenProduce value,
+          $Res Function(_$_MSEGetFirstTenProduce) then) =
+      __$$_MSEGetFirstTenProduceCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$MSEGetFirstTenProduceCopyWithImpl<$Res>
+class __$$_MSEGetFirstTenProduceCopyWithImpl<$Res>
     extends _$MainScreenEventCopyWithImpl<$Res>
-    implements _$MSEGetFirstTenProduceCopyWith<$Res> {
-  __$MSEGetFirstTenProduceCopyWithImpl(_MSEGetFirstTenProduce _value,
-      $Res Function(_MSEGetFirstTenProduce) _then)
-      : super(_value, (v) => _then(v as _MSEGetFirstTenProduce));
+    implements _$$_MSEGetFirstTenProduceCopyWith<$Res> {
+  __$$_MSEGetFirstTenProduceCopyWithImpl(_$_MSEGetFirstTenProduce _value,
+      $Res Function(_$_MSEGetFirstTenProduce) _then)
+      : super(_value, (v) => _then(v as _$_MSEGetFirstTenProduce));
 
   @override
-  _MSEGetFirstTenProduce get _value => super._value as _MSEGetFirstTenProduce;
+  _$_MSEGetFirstTenProduce get _value =>
+      super._value as _$_MSEGetFirstTenProduce;
 }
 
 /// @nodoc
@@ -273,7 +247,7 @@ class _$_MSEGetFirstTenProduce implements _MSEGetFirstTenProduce {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _MSEGetFirstTenProduce);
+        (other.runtimeType == runtimeType && other is _$_MSEGetFirstTenProduce);
   }
 
   @override
@@ -365,22 +339,22 @@ abstract class _MSEGetFirstTenProduce implements MainScreenEvent {
 }
 
 /// @nodoc
-abstract class _$MSEGetNextTenProduceCopyWith<$Res> {
-  factory _$MSEGetNextTenProduceCopyWith(_MSEGetNextTenProduce value,
-          $Res Function(_MSEGetNextTenProduce) then) =
-      __$MSEGetNextTenProduceCopyWithImpl<$Res>;
+abstract class _$$_MSEGetNextTenProduceCopyWith<$Res> {
+  factory _$$_MSEGetNextTenProduceCopyWith(_$_MSEGetNextTenProduce value,
+          $Res Function(_$_MSEGetNextTenProduce) then) =
+      __$$_MSEGetNextTenProduceCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$MSEGetNextTenProduceCopyWithImpl<$Res>
+class __$$_MSEGetNextTenProduceCopyWithImpl<$Res>
     extends _$MainScreenEventCopyWithImpl<$Res>
-    implements _$MSEGetNextTenProduceCopyWith<$Res> {
-  __$MSEGetNextTenProduceCopyWithImpl(
-      _MSEGetNextTenProduce _value, $Res Function(_MSEGetNextTenProduce) _then)
-      : super(_value, (v) => _then(v as _MSEGetNextTenProduce));
+    implements _$$_MSEGetNextTenProduceCopyWith<$Res> {
+  __$$_MSEGetNextTenProduceCopyWithImpl(_$_MSEGetNextTenProduce _value,
+      $Res Function(_$_MSEGetNextTenProduce) _then)
+      : super(_value, (v) => _then(v as _$_MSEGetNextTenProduce));
 
   @override
-  _MSEGetNextTenProduce get _value => super._value as _MSEGetNextTenProduce;
+  _$_MSEGetNextTenProduce get _value => super._value as _$_MSEGetNextTenProduce;
 }
 
 /// @nodoc
@@ -396,7 +370,7 @@ class _$_MSEGetNextTenProduce implements _MSEGetNextTenProduce {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _MSEGetNextTenProduce);
+        (other.runtimeType == runtimeType && other is _$_MSEGetNextTenProduce);
   }
 
   @override
@@ -488,22 +462,22 @@ abstract class _MSEGetNextTenProduce implements MainScreenEvent {
 }
 
 /// @nodoc
-abstract class _$MSERefreshCopyWith<$Res> {
-  factory _$MSERefreshCopyWith(
-          _MSERefresh value, $Res Function(_MSERefresh) then) =
-      __$MSERefreshCopyWithImpl<$Res>;
+abstract class _$$_MSERefreshCopyWith<$Res> {
+  factory _$$_MSERefreshCopyWith(
+          _$_MSERefresh value, $Res Function(_$_MSERefresh) then) =
+      __$$_MSERefreshCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$MSERefreshCopyWithImpl<$Res>
+class __$$_MSERefreshCopyWithImpl<$Res>
     extends _$MainScreenEventCopyWithImpl<$Res>
-    implements _$MSERefreshCopyWith<$Res> {
-  __$MSERefreshCopyWithImpl(
-      _MSERefresh _value, $Res Function(_MSERefresh) _then)
-      : super(_value, (v) => _then(v as _MSERefresh));
+    implements _$$_MSERefreshCopyWith<$Res> {
+  __$$_MSERefreshCopyWithImpl(
+      _$_MSERefresh _value, $Res Function(_$_MSERefresh) _then)
+      : super(_value, (v) => _then(v as _$_MSERefresh));
 
   @override
-  _MSERefresh get _value => super._value as _MSERefresh;
+  _$_MSERefresh get _value => super._value as _$_MSERefresh;
 }
 
 /// @nodoc
@@ -519,7 +493,7 @@ class _$_MSERefresh implements _MSERefresh {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _MSERefresh);
+        (other.runtimeType == runtimeType && other is _$_MSERefresh);
   }
 
   @override
@@ -611,22 +585,22 @@ abstract class _MSERefresh implements MainScreenEvent {
 }
 
 /// @nodoc
-abstract class _$MSEToggleMainHeaderCopyWith<$Res> {
-  factory _$MSEToggleMainHeaderCopyWith(_MSEToggleMainHeader value,
-          $Res Function(_MSEToggleMainHeader) then) =
-      __$MSEToggleMainHeaderCopyWithImpl<$Res>;
+abstract class _$$_MSEToggleMainHeaderCopyWith<$Res> {
+  factory _$$_MSEToggleMainHeaderCopyWith(_$_MSEToggleMainHeader value,
+          $Res Function(_$_MSEToggleMainHeader) then) =
+      __$$_MSEToggleMainHeaderCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$MSEToggleMainHeaderCopyWithImpl<$Res>
+class __$$_MSEToggleMainHeaderCopyWithImpl<$Res>
     extends _$MainScreenEventCopyWithImpl<$Res>
-    implements _$MSEToggleMainHeaderCopyWith<$Res> {
-  __$MSEToggleMainHeaderCopyWithImpl(
-      _MSEToggleMainHeader _value, $Res Function(_MSEToggleMainHeader) _then)
-      : super(_value, (v) => _then(v as _MSEToggleMainHeader));
+    implements _$$_MSEToggleMainHeaderCopyWith<$Res> {
+  __$$_MSEToggleMainHeaderCopyWithImpl(_$_MSEToggleMainHeader _value,
+      $Res Function(_$_MSEToggleMainHeader) _then)
+      : super(_value, (v) => _then(v as _$_MSEToggleMainHeader));
 
   @override
-  _MSEToggleMainHeader get _value => super._value as _MSEToggleMainHeader;
+  _$_MSEToggleMainHeader get _value => super._value as _$_MSEToggleMainHeader;
 }
 
 /// @nodoc
@@ -642,7 +616,7 @@ class _$_MSEToggleMainHeader implements _MSEToggleMainHeader {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _MSEToggleMainHeader);
+        (other.runtimeType == runtimeType && other is _$_MSEToggleMainHeader);
   }
 
   @override
@@ -734,49 +708,8 @@ abstract class _MSEToggleMainHeader implements MainScreenEvent {
 }
 
 /// @nodoc
-class _$MainScreenStateTearOff {
-  const _$MainScreenStateTearOff();
-
-  MSSInitial initial({required MainScreenProps props}) {
-    return MSSInitial(
-      props: props,
-    );
-  }
-
-  MSSPricesLoading pricesLoading({required MainScreenProps props}) {
-    return MSSPricesLoading(
-      props: props,
-    );
-  }
-
-  MSSNextPricesLoading nextPricesLoading({required MainScreenProps props}) {
-    return MSSNextPricesLoading(
-      props: props,
-    );
-  }
-
-  MSSPricesCompleted pricesCompleted({required MainScreenProps props}) {
-    return MSSPricesCompleted(
-      props: props,
-    );
-  }
-
-  MSSPricesError pricesError(
-      {required MainScreenProps props, required Failure failure}) {
-    return MSSPricesError(
-      props: props,
-      failure: failure,
-    );
-  }
-}
-
-/// @nodoc
-const $MainScreenState = _$MainScreenStateTearOff();
-
-/// @nodoc
 mixin _$MainScreenState {
   MainScreenProps get props => throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(MainScreenProps props) initial,
@@ -880,11 +813,11 @@ class _$MainScreenStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class $MSSInitialCopyWith<$Res>
+abstract class _$$MSSInitialCopyWith<$Res>
     implements $MainScreenStateCopyWith<$Res> {
-  factory $MSSInitialCopyWith(
-          MSSInitial value, $Res Function(MSSInitial) then) =
-      _$MSSInitialCopyWithImpl<$Res>;
+  factory _$$MSSInitialCopyWith(
+          _$MSSInitial value, $Res Function(_$MSSInitial) then) =
+      __$$MSSInitialCopyWithImpl<$Res>;
   @override
   $Res call({MainScreenProps props});
 
@@ -893,19 +826,21 @@ abstract class $MSSInitialCopyWith<$Res>
 }
 
 /// @nodoc
-class _$MSSInitialCopyWithImpl<$Res> extends _$MainScreenStateCopyWithImpl<$Res>
-    implements $MSSInitialCopyWith<$Res> {
-  _$MSSInitialCopyWithImpl(MSSInitial _value, $Res Function(MSSInitial) _then)
-      : super(_value, (v) => _then(v as MSSInitial));
+class __$$MSSInitialCopyWithImpl<$Res>
+    extends _$MainScreenStateCopyWithImpl<$Res>
+    implements _$$MSSInitialCopyWith<$Res> {
+  __$$MSSInitialCopyWithImpl(
+      _$MSSInitial _value, $Res Function(_$MSSInitial) _then)
+      : super(_value, (v) => _then(v as _$MSSInitial));
 
   @override
-  MSSInitial get _value => super._value as MSSInitial;
+  _$MSSInitial get _value => super._value as _$MSSInitial;
 
   @override
   $Res call({
     Object? props = freezed,
   }) {
-    return _then(MSSInitial(
+    return _then(_$MSSInitial(
       props: props == freezed
           ? _value.props
           : props // ignore: cast_nullable_to_non_nullable
@@ -931,17 +866,18 @@ class _$MSSInitial implements MSSInitial {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is MSSInitial &&
-            (identical(other.props, props) || other.props == props));
+            other is _$MSSInitial &&
+            const DeepCollectionEquality().equals(other.props, props));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, props);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(props));
 
   @JsonKey(ignore: true)
   @override
-  $MSSInitialCopyWith<MSSInitial> get copyWith =>
-      _$MSSInitialCopyWithImpl<MSSInitial>(this, _$identity);
+  _$$MSSInitialCopyWith<_$MSSInitial> get copyWith =>
+      __$$MSSInitialCopyWithImpl<_$MSSInitial>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1026,22 +962,23 @@ class _$MSSInitial implements MSSInitial {
 }
 
 abstract class MSSInitial implements MainScreenState {
-  const factory MSSInitial({required MainScreenProps props}) = _$MSSInitial;
+  const factory MSSInitial({required final MainScreenProps props}) =
+      _$MSSInitial;
 
   @override
-  MainScreenProps get props;
+  MainScreenProps get props => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  $MSSInitialCopyWith<MSSInitial> get copyWith =>
+  _$$MSSInitialCopyWith<_$MSSInitial> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $MSSPricesLoadingCopyWith<$Res>
+abstract class _$$MSSPricesLoadingCopyWith<$Res>
     implements $MainScreenStateCopyWith<$Res> {
-  factory $MSSPricesLoadingCopyWith(
-          MSSPricesLoading value, $Res Function(MSSPricesLoading) then) =
-      _$MSSPricesLoadingCopyWithImpl<$Res>;
+  factory _$$MSSPricesLoadingCopyWith(
+          _$MSSPricesLoading value, $Res Function(_$MSSPricesLoading) then) =
+      __$$MSSPricesLoadingCopyWithImpl<$Res>;
   @override
   $Res call({MainScreenProps props});
 
@@ -1050,21 +987,21 @@ abstract class $MSSPricesLoadingCopyWith<$Res>
 }
 
 /// @nodoc
-class _$MSSPricesLoadingCopyWithImpl<$Res>
+class __$$MSSPricesLoadingCopyWithImpl<$Res>
     extends _$MainScreenStateCopyWithImpl<$Res>
-    implements $MSSPricesLoadingCopyWith<$Res> {
-  _$MSSPricesLoadingCopyWithImpl(
-      MSSPricesLoading _value, $Res Function(MSSPricesLoading) _then)
-      : super(_value, (v) => _then(v as MSSPricesLoading));
+    implements _$$MSSPricesLoadingCopyWith<$Res> {
+  __$$MSSPricesLoadingCopyWithImpl(
+      _$MSSPricesLoading _value, $Res Function(_$MSSPricesLoading) _then)
+      : super(_value, (v) => _then(v as _$MSSPricesLoading));
 
   @override
-  MSSPricesLoading get _value => super._value as MSSPricesLoading;
+  _$MSSPricesLoading get _value => super._value as _$MSSPricesLoading;
 
   @override
   $Res call({
     Object? props = freezed,
   }) {
-    return _then(MSSPricesLoading(
+    return _then(_$MSSPricesLoading(
       props: props == freezed
           ? _value.props
           : props // ignore: cast_nullable_to_non_nullable
@@ -1090,17 +1027,18 @@ class _$MSSPricesLoading implements MSSPricesLoading {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is MSSPricesLoading &&
-            (identical(other.props, props) || other.props == props));
+            other is _$MSSPricesLoading &&
+            const DeepCollectionEquality().equals(other.props, props));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, props);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(props));
 
   @JsonKey(ignore: true)
   @override
-  $MSSPricesLoadingCopyWith<MSSPricesLoading> get copyWith =>
-      _$MSSPricesLoadingCopyWithImpl<MSSPricesLoading>(this, _$identity);
+  _$$MSSPricesLoadingCopyWith<_$MSSPricesLoading> get copyWith =>
+      __$$MSSPricesLoadingCopyWithImpl<_$MSSPricesLoading>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1185,23 +1123,23 @@ class _$MSSPricesLoading implements MSSPricesLoading {
 }
 
 abstract class MSSPricesLoading implements MainScreenState {
-  const factory MSSPricesLoading({required MainScreenProps props}) =
+  const factory MSSPricesLoading({required final MainScreenProps props}) =
       _$MSSPricesLoading;
 
   @override
-  MainScreenProps get props;
+  MainScreenProps get props => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  $MSSPricesLoadingCopyWith<MSSPricesLoading> get copyWith =>
+  _$$MSSPricesLoadingCopyWith<_$MSSPricesLoading> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $MSSNextPricesLoadingCopyWith<$Res>
+abstract class _$$MSSNextPricesLoadingCopyWith<$Res>
     implements $MainScreenStateCopyWith<$Res> {
-  factory $MSSNextPricesLoadingCopyWith(MSSNextPricesLoading value,
-          $Res Function(MSSNextPricesLoading) then) =
-      _$MSSNextPricesLoadingCopyWithImpl<$Res>;
+  factory _$$MSSNextPricesLoadingCopyWith(_$MSSNextPricesLoading value,
+          $Res Function(_$MSSNextPricesLoading) then) =
+      __$$MSSNextPricesLoadingCopyWithImpl<$Res>;
   @override
   $Res call({MainScreenProps props});
 
@@ -1210,21 +1148,21 @@ abstract class $MSSNextPricesLoadingCopyWith<$Res>
 }
 
 /// @nodoc
-class _$MSSNextPricesLoadingCopyWithImpl<$Res>
+class __$$MSSNextPricesLoadingCopyWithImpl<$Res>
     extends _$MainScreenStateCopyWithImpl<$Res>
-    implements $MSSNextPricesLoadingCopyWith<$Res> {
-  _$MSSNextPricesLoadingCopyWithImpl(
-      MSSNextPricesLoading _value, $Res Function(MSSNextPricesLoading) _then)
-      : super(_value, (v) => _then(v as MSSNextPricesLoading));
+    implements _$$MSSNextPricesLoadingCopyWith<$Res> {
+  __$$MSSNextPricesLoadingCopyWithImpl(_$MSSNextPricesLoading _value,
+      $Res Function(_$MSSNextPricesLoading) _then)
+      : super(_value, (v) => _then(v as _$MSSNextPricesLoading));
 
   @override
-  MSSNextPricesLoading get _value => super._value as MSSNextPricesLoading;
+  _$MSSNextPricesLoading get _value => super._value as _$MSSNextPricesLoading;
 
   @override
   $Res call({
     Object? props = freezed,
   }) {
-    return _then(MSSNextPricesLoading(
+    return _then(_$MSSNextPricesLoading(
       props: props == freezed
           ? _value.props
           : props // ignore: cast_nullable_to_non_nullable
@@ -1250,17 +1188,18 @@ class _$MSSNextPricesLoading implements MSSNextPricesLoading {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is MSSNextPricesLoading &&
-            (identical(other.props, props) || other.props == props));
+            other is _$MSSNextPricesLoading &&
+            const DeepCollectionEquality().equals(other.props, props));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, props);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(props));
 
   @JsonKey(ignore: true)
   @override
-  $MSSNextPricesLoadingCopyWith<MSSNextPricesLoading> get copyWith =>
-      _$MSSNextPricesLoadingCopyWithImpl<MSSNextPricesLoading>(
+  _$$MSSNextPricesLoadingCopyWith<_$MSSNextPricesLoading> get copyWith =>
+      __$$MSSNextPricesLoadingCopyWithImpl<_$MSSNextPricesLoading>(
           this, _$identity);
 
   @override
@@ -1346,23 +1285,23 @@ class _$MSSNextPricesLoading implements MSSNextPricesLoading {
 }
 
 abstract class MSSNextPricesLoading implements MainScreenState {
-  const factory MSSNextPricesLoading({required MainScreenProps props}) =
+  const factory MSSNextPricesLoading({required final MainScreenProps props}) =
       _$MSSNextPricesLoading;
 
   @override
-  MainScreenProps get props;
+  MainScreenProps get props => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  $MSSNextPricesLoadingCopyWith<MSSNextPricesLoading> get copyWith =>
+  _$$MSSNextPricesLoadingCopyWith<_$MSSNextPricesLoading> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $MSSPricesCompletedCopyWith<$Res>
+abstract class _$$MSSPricesCompletedCopyWith<$Res>
     implements $MainScreenStateCopyWith<$Res> {
-  factory $MSSPricesCompletedCopyWith(
-          MSSPricesCompleted value, $Res Function(MSSPricesCompleted) then) =
-      _$MSSPricesCompletedCopyWithImpl<$Res>;
+  factory _$$MSSPricesCompletedCopyWith(_$MSSPricesCompleted value,
+          $Res Function(_$MSSPricesCompleted) then) =
+      __$$MSSPricesCompletedCopyWithImpl<$Res>;
   @override
   $Res call({MainScreenProps props});
 
@@ -1371,21 +1310,21 @@ abstract class $MSSPricesCompletedCopyWith<$Res>
 }
 
 /// @nodoc
-class _$MSSPricesCompletedCopyWithImpl<$Res>
+class __$$MSSPricesCompletedCopyWithImpl<$Res>
     extends _$MainScreenStateCopyWithImpl<$Res>
-    implements $MSSPricesCompletedCopyWith<$Res> {
-  _$MSSPricesCompletedCopyWithImpl(
-      MSSPricesCompleted _value, $Res Function(MSSPricesCompleted) _then)
-      : super(_value, (v) => _then(v as MSSPricesCompleted));
+    implements _$$MSSPricesCompletedCopyWith<$Res> {
+  __$$MSSPricesCompletedCopyWithImpl(
+      _$MSSPricesCompleted _value, $Res Function(_$MSSPricesCompleted) _then)
+      : super(_value, (v) => _then(v as _$MSSPricesCompleted));
 
   @override
-  MSSPricesCompleted get _value => super._value as MSSPricesCompleted;
+  _$MSSPricesCompleted get _value => super._value as _$MSSPricesCompleted;
 
   @override
   $Res call({
     Object? props = freezed,
   }) {
-    return _then(MSSPricesCompleted(
+    return _then(_$MSSPricesCompleted(
       props: props == freezed
           ? _value.props
           : props // ignore: cast_nullable_to_non_nullable
@@ -1411,17 +1350,19 @@ class _$MSSPricesCompleted implements MSSPricesCompleted {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is MSSPricesCompleted &&
-            (identical(other.props, props) || other.props == props));
+            other is _$MSSPricesCompleted &&
+            const DeepCollectionEquality().equals(other.props, props));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, props);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(props));
 
   @JsonKey(ignore: true)
   @override
-  $MSSPricesCompletedCopyWith<MSSPricesCompleted> get copyWith =>
-      _$MSSPricesCompletedCopyWithImpl<MSSPricesCompleted>(this, _$identity);
+  _$$MSSPricesCompletedCopyWith<_$MSSPricesCompleted> get copyWith =>
+      __$$MSSPricesCompletedCopyWithImpl<_$MSSPricesCompleted>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1506,23 +1447,23 @@ class _$MSSPricesCompleted implements MSSPricesCompleted {
 }
 
 abstract class MSSPricesCompleted implements MainScreenState {
-  const factory MSSPricesCompleted({required MainScreenProps props}) =
+  const factory MSSPricesCompleted({required final MainScreenProps props}) =
       _$MSSPricesCompleted;
 
   @override
-  MainScreenProps get props;
+  MainScreenProps get props => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  $MSSPricesCompletedCopyWith<MSSPricesCompleted> get copyWith =>
+  _$$MSSPricesCompletedCopyWith<_$MSSPricesCompleted> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $MSSPricesErrorCopyWith<$Res>
+abstract class _$$MSSPricesErrorCopyWith<$Res>
     implements $MainScreenStateCopyWith<$Res> {
-  factory $MSSPricesErrorCopyWith(
-          MSSPricesError value, $Res Function(MSSPricesError) then) =
-      _$MSSPricesErrorCopyWithImpl<$Res>;
+  factory _$$MSSPricesErrorCopyWith(
+          _$MSSPricesError value, $Res Function(_$MSSPricesError) then) =
+      __$$MSSPricesErrorCopyWithImpl<$Res>;
   @override
   $Res call({MainScreenProps props, Failure failure});
 
@@ -1531,22 +1472,22 @@ abstract class $MSSPricesErrorCopyWith<$Res>
 }
 
 /// @nodoc
-class _$MSSPricesErrorCopyWithImpl<$Res>
+class __$$MSSPricesErrorCopyWithImpl<$Res>
     extends _$MainScreenStateCopyWithImpl<$Res>
-    implements $MSSPricesErrorCopyWith<$Res> {
-  _$MSSPricesErrorCopyWithImpl(
-      MSSPricesError _value, $Res Function(MSSPricesError) _then)
-      : super(_value, (v) => _then(v as MSSPricesError));
+    implements _$$MSSPricesErrorCopyWith<$Res> {
+  __$$MSSPricesErrorCopyWithImpl(
+      _$MSSPricesError _value, $Res Function(_$MSSPricesError) _then)
+      : super(_value, (v) => _then(v as _$MSSPricesError));
 
   @override
-  MSSPricesError get _value => super._value as MSSPricesError;
+  _$MSSPricesError get _value => super._value as _$MSSPricesError;
 
   @override
   $Res call({
     Object? props = freezed,
     Object? failure = freezed,
   }) {
-    return _then(MSSPricesError(
+    return _then(_$MSSPricesError(
       props: props == freezed
           ? _value.props
           : props // ignore: cast_nullable_to_non_nullable
@@ -1578,18 +1519,21 @@ class _$MSSPricesError implements MSSPricesError {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is MSSPricesError &&
-            (identical(other.props, props) || other.props == props) &&
-            (identical(other.failure, failure) || other.failure == failure));
+            other is _$MSSPricesError &&
+            const DeepCollectionEquality().equals(other.props, props) &&
+            const DeepCollectionEquality().equals(other.failure, failure));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, props, failure);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(props),
+      const DeepCollectionEquality().hash(failure));
 
   @JsonKey(ignore: true)
   @override
-  $MSSPricesErrorCopyWith<MSSPricesError> get copyWith =>
-      _$MSSPricesErrorCopyWithImpl<MSSPricesError>(this, _$identity);
+  _$$MSSPricesErrorCopyWith<_$MSSPricesError> get copyWith =>
+      __$$MSSPricesErrorCopyWithImpl<_$MSSPricesError>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1675,33 +1619,17 @@ class _$MSSPricesError implements MSSPricesError {
 
 abstract class MSSPricesError implements MainScreenState {
   const factory MSSPricesError(
-      {required MainScreenProps props,
-      required Failure failure}) = _$MSSPricesError;
+      {required final MainScreenProps props,
+      required final Failure failure}) = _$MSSPricesError;
 
   @override
-  MainScreenProps get props;
-  Failure get failure;
+  MainScreenProps get props => throw _privateConstructorUsedError;
+  Failure get failure => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  $MSSPricesErrorCopyWith<MSSPricesError> get copyWith =>
+  _$$MSSPricesErrorCopyWith<_$MSSPricesError> get copyWith =>
       throw _privateConstructorUsedError;
 }
-
-/// @nodoc
-class _$MainScreenPropsTearOff {
-  const _$MainScreenPropsTearOff();
-
-  _MainScreenProps call(
-      {required bool isMainHeaderVisible, required List<Produce> produceList}) {
-    return _MainScreenProps(
-      isMainHeaderVisible: isMainHeaderVisible,
-      produceList: produceList,
-    );
-  }
-}
-
-/// @nodoc
-const $MainScreenProps = _$MainScreenPropsTearOff();
 
 /// @nodoc
 mixin _$MainScreenProps {
@@ -1749,38 +1677,38 @@ class _$MainScreenPropsCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$MainScreenPropsCopyWith<$Res>
+abstract class _$$_MainScreenPropsCopyWith<$Res>
     implements $MainScreenPropsCopyWith<$Res> {
-  factory _$MainScreenPropsCopyWith(
-          _MainScreenProps value, $Res Function(_MainScreenProps) then) =
-      __$MainScreenPropsCopyWithImpl<$Res>;
+  factory _$$_MainScreenPropsCopyWith(
+          _$_MainScreenProps value, $Res Function(_$_MainScreenProps) then) =
+      __$$_MainScreenPropsCopyWithImpl<$Res>;
   @override
   $Res call({bool isMainHeaderVisible, List<Produce> produceList});
 }
 
 /// @nodoc
-class __$MainScreenPropsCopyWithImpl<$Res>
+class __$$_MainScreenPropsCopyWithImpl<$Res>
     extends _$MainScreenPropsCopyWithImpl<$Res>
-    implements _$MainScreenPropsCopyWith<$Res> {
-  __$MainScreenPropsCopyWithImpl(
-      _MainScreenProps _value, $Res Function(_MainScreenProps) _then)
-      : super(_value, (v) => _then(v as _MainScreenProps));
+    implements _$$_MainScreenPropsCopyWith<$Res> {
+  __$$_MainScreenPropsCopyWithImpl(
+      _$_MainScreenProps _value, $Res Function(_$_MainScreenProps) _then)
+      : super(_value, (v) => _then(v as _$_MainScreenProps));
 
   @override
-  _MainScreenProps get _value => super._value as _MainScreenProps;
+  _$_MainScreenProps get _value => super._value as _$_MainScreenProps;
 
   @override
   $Res call({
     Object? isMainHeaderVisible = freezed,
     Object? produceList = freezed,
   }) {
-    return _then(_MainScreenProps(
+    return _then(_$_MainScreenProps(
       isMainHeaderVisible: isMainHeaderVisible == freezed
           ? _value.isMainHeaderVisible
           : isMainHeaderVisible // ignore: cast_nullable_to_non_nullable
               as bool,
       produceList: produceList == freezed
-          ? _value.produceList
+          ? _value._produceList
           : produceList // ignore: cast_nullable_to_non_nullable
               as List<Produce>,
     ));
@@ -1791,12 +1719,18 @@ class __$MainScreenPropsCopyWithImpl<$Res>
 
 class _$_MainScreenProps implements _MainScreenProps {
   const _$_MainScreenProps(
-      {required this.isMainHeaderVisible, required this.produceList});
+      {required this.isMainHeaderVisible,
+      required final List<Produce> produceList})
+      : _produceList = produceList;
 
   @override
   final bool isMainHeaderVisible;
+  final List<Produce> _produceList;
   @override
-  final List<Produce> produceList;
+  List<Produce> get produceList {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_produceList);
+  }
 
   @override
   String toString() {
@@ -1807,34 +1741,36 @@ class _$_MainScreenProps implements _MainScreenProps {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _MainScreenProps &&
-            (identical(other.isMainHeaderVisible, isMainHeaderVisible) ||
-                other.isMainHeaderVisible == isMainHeaderVisible) &&
+            other is _$_MainScreenProps &&
             const DeepCollectionEquality()
-                .equals(other.produceList, produceList));
+                .equals(other.isMainHeaderVisible, isMainHeaderVisible) &&
+            const DeepCollectionEquality()
+                .equals(other._produceList, _produceList));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isMainHeaderVisible,
-      const DeepCollectionEquality().hash(produceList));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(isMainHeaderVisible),
+      const DeepCollectionEquality().hash(_produceList));
 
   @JsonKey(ignore: true)
   @override
-  _$MainScreenPropsCopyWith<_MainScreenProps> get copyWith =>
-      __$MainScreenPropsCopyWithImpl<_MainScreenProps>(this, _$identity);
+  _$$_MainScreenPropsCopyWith<_$_MainScreenProps> get copyWith =>
+      __$$_MainScreenPropsCopyWithImpl<_$_MainScreenProps>(this, _$identity);
 }
 
 abstract class _MainScreenProps implements MainScreenProps {
   const factory _MainScreenProps(
-      {required bool isMainHeaderVisible,
-      required List<Produce> produceList}) = _$_MainScreenProps;
+      {required final bool isMainHeaderVisible,
+      required final List<Produce> produceList}) = _$_MainScreenProps;
 
   @override
-  bool get isMainHeaderVisible;
+  bool get isMainHeaderVisible => throw _privateConstructorUsedError;
   @override
-  List<Produce> get produceList;
+  List<Produce> get produceList => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$MainScreenPropsCopyWith<_MainScreenProps> get copyWith =>
+  _$$_MainScreenPropsCopyWith<_$_MainScreenProps> get copyWith =>
       throw _privateConstructorUsedError;
 }

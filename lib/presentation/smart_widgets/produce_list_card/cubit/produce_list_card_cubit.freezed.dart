@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'produce_list_card_cubit.dart';
@@ -11,46 +12,11 @@ part of 'produce_list_card_cubit.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$ProduceListCardStateTearOff {
-  const _$ProduceListCardStateTearOff();
-
-  PLCInitial initial({required ProduceListCardProps props}) {
-    return PLCInitial(
-      props: props,
-    );
-  }
-
-  PLCLoading loading({required ProduceListCardProps props}) {
-    return PLCLoading(
-      props: props,
-    );
-  }
-
-  PLCAddToFavoritesButton addToFavoritesButton(
-      {required ProduceListCardProps props}) {
-    return PLCAddToFavoritesButton(
-      props: props,
-    );
-  }
-
-  PLCRemoveFromFavoritesButton removeFromFavoritesButton(
-      {required ProduceListCardProps props}) {
-    return PLCRemoveFromFavoritesButton(
-      props: props,
-    );
-  }
-}
-
-/// @nodoc
-const $ProduceListCardState = _$ProduceListCardStateTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$ProduceListCardState {
   ProduceListCardProps get props => throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(ProduceListCardProps props) initial,
@@ -152,11 +118,11 @@ class _$ProduceListCardStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class $PLCInitialCopyWith<$Res>
+abstract class _$$PLCInitialCopyWith<$Res>
     implements $ProduceListCardStateCopyWith<$Res> {
-  factory $PLCInitialCopyWith(
-          PLCInitial value, $Res Function(PLCInitial) then) =
-      _$PLCInitialCopyWithImpl<$Res>;
+  factory _$$PLCInitialCopyWith(
+          _$PLCInitial value, $Res Function(_$PLCInitial) then) =
+      __$$PLCInitialCopyWithImpl<$Res>;
   @override
   $Res call({ProduceListCardProps props});
 
@@ -165,20 +131,21 @@ abstract class $PLCInitialCopyWith<$Res>
 }
 
 /// @nodoc
-class _$PLCInitialCopyWithImpl<$Res>
+class __$$PLCInitialCopyWithImpl<$Res>
     extends _$ProduceListCardStateCopyWithImpl<$Res>
-    implements $PLCInitialCopyWith<$Res> {
-  _$PLCInitialCopyWithImpl(PLCInitial _value, $Res Function(PLCInitial) _then)
-      : super(_value, (v) => _then(v as PLCInitial));
+    implements _$$PLCInitialCopyWith<$Res> {
+  __$$PLCInitialCopyWithImpl(
+      _$PLCInitial _value, $Res Function(_$PLCInitial) _then)
+      : super(_value, (v) => _then(v as _$PLCInitial));
 
   @override
-  PLCInitial get _value => super._value as PLCInitial;
+  _$PLCInitial get _value => super._value as _$PLCInitial;
 
   @override
   $Res call({
     Object? props = freezed,
   }) {
-    return _then(PLCInitial(
+    return _then(_$PLCInitial(
       props: props == freezed
           ? _value.props
           : props // ignore: cast_nullable_to_non_nullable
@@ -204,17 +171,18 @@ class _$PLCInitial implements PLCInitial {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is PLCInitial &&
-            (identical(other.props, props) || other.props == props));
+            other is _$PLCInitial &&
+            const DeepCollectionEquality().equals(other.props, props));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, props);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(props));
 
   @JsonKey(ignore: true)
   @override
-  $PLCInitialCopyWith<PLCInitial> get copyWith =>
-      _$PLCInitialCopyWithImpl<PLCInitial>(this, _$identity);
+  _$$PLCInitialCopyWith<_$PLCInitial> get copyWith =>
+      __$$PLCInitialCopyWithImpl<_$PLCInitial>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -297,23 +265,23 @@ class _$PLCInitial implements PLCInitial {
 }
 
 abstract class PLCInitial implements ProduceListCardState {
-  const factory PLCInitial({required ProduceListCardProps props}) =
+  const factory PLCInitial({required final ProduceListCardProps props}) =
       _$PLCInitial;
 
   @override
-  ProduceListCardProps get props;
+  ProduceListCardProps get props => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  $PLCInitialCopyWith<PLCInitial> get copyWith =>
+  _$$PLCInitialCopyWith<_$PLCInitial> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $PLCLoadingCopyWith<$Res>
+abstract class _$$PLCLoadingCopyWith<$Res>
     implements $ProduceListCardStateCopyWith<$Res> {
-  factory $PLCLoadingCopyWith(
-          PLCLoading value, $Res Function(PLCLoading) then) =
-      _$PLCLoadingCopyWithImpl<$Res>;
+  factory _$$PLCLoadingCopyWith(
+          _$PLCLoading value, $Res Function(_$PLCLoading) then) =
+      __$$PLCLoadingCopyWithImpl<$Res>;
   @override
   $Res call({ProduceListCardProps props});
 
@@ -322,20 +290,21 @@ abstract class $PLCLoadingCopyWith<$Res>
 }
 
 /// @nodoc
-class _$PLCLoadingCopyWithImpl<$Res>
+class __$$PLCLoadingCopyWithImpl<$Res>
     extends _$ProduceListCardStateCopyWithImpl<$Res>
-    implements $PLCLoadingCopyWith<$Res> {
-  _$PLCLoadingCopyWithImpl(PLCLoading _value, $Res Function(PLCLoading) _then)
-      : super(_value, (v) => _then(v as PLCLoading));
+    implements _$$PLCLoadingCopyWith<$Res> {
+  __$$PLCLoadingCopyWithImpl(
+      _$PLCLoading _value, $Res Function(_$PLCLoading) _then)
+      : super(_value, (v) => _then(v as _$PLCLoading));
 
   @override
-  PLCLoading get _value => super._value as PLCLoading;
+  _$PLCLoading get _value => super._value as _$PLCLoading;
 
   @override
   $Res call({
     Object? props = freezed,
   }) {
-    return _then(PLCLoading(
+    return _then(_$PLCLoading(
       props: props == freezed
           ? _value.props
           : props // ignore: cast_nullable_to_non_nullable
@@ -361,17 +330,18 @@ class _$PLCLoading implements PLCLoading {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is PLCLoading &&
-            (identical(other.props, props) || other.props == props));
+            other is _$PLCLoading &&
+            const DeepCollectionEquality().equals(other.props, props));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, props);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(props));
 
   @JsonKey(ignore: true)
   @override
-  $PLCLoadingCopyWith<PLCLoading> get copyWith =>
-      _$PLCLoadingCopyWithImpl<PLCLoading>(this, _$identity);
+  _$$PLCLoadingCopyWith<_$PLCLoading> get copyWith =>
+      __$$PLCLoadingCopyWithImpl<_$PLCLoading>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -454,23 +424,23 @@ class _$PLCLoading implements PLCLoading {
 }
 
 abstract class PLCLoading implements ProduceListCardState {
-  const factory PLCLoading({required ProduceListCardProps props}) =
+  const factory PLCLoading({required final ProduceListCardProps props}) =
       _$PLCLoading;
 
   @override
-  ProduceListCardProps get props;
+  ProduceListCardProps get props => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  $PLCLoadingCopyWith<PLCLoading> get copyWith =>
+  _$$PLCLoadingCopyWith<_$PLCLoading> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $PLCAddToFavoritesButtonCopyWith<$Res>
+abstract class _$$PLCAddToFavoritesButtonCopyWith<$Res>
     implements $ProduceListCardStateCopyWith<$Res> {
-  factory $PLCAddToFavoritesButtonCopyWith(PLCAddToFavoritesButton value,
-          $Res Function(PLCAddToFavoritesButton) then) =
-      _$PLCAddToFavoritesButtonCopyWithImpl<$Res>;
+  factory _$$PLCAddToFavoritesButtonCopyWith(_$PLCAddToFavoritesButton value,
+          $Res Function(_$PLCAddToFavoritesButton) then) =
+      __$$PLCAddToFavoritesButtonCopyWithImpl<$Res>;
   @override
   $Res call({ProduceListCardProps props});
 
@@ -479,21 +449,22 @@ abstract class $PLCAddToFavoritesButtonCopyWith<$Res>
 }
 
 /// @nodoc
-class _$PLCAddToFavoritesButtonCopyWithImpl<$Res>
+class __$$PLCAddToFavoritesButtonCopyWithImpl<$Res>
     extends _$ProduceListCardStateCopyWithImpl<$Res>
-    implements $PLCAddToFavoritesButtonCopyWith<$Res> {
-  _$PLCAddToFavoritesButtonCopyWithImpl(PLCAddToFavoritesButton _value,
-      $Res Function(PLCAddToFavoritesButton) _then)
-      : super(_value, (v) => _then(v as PLCAddToFavoritesButton));
+    implements _$$PLCAddToFavoritesButtonCopyWith<$Res> {
+  __$$PLCAddToFavoritesButtonCopyWithImpl(_$PLCAddToFavoritesButton _value,
+      $Res Function(_$PLCAddToFavoritesButton) _then)
+      : super(_value, (v) => _then(v as _$PLCAddToFavoritesButton));
 
   @override
-  PLCAddToFavoritesButton get _value => super._value as PLCAddToFavoritesButton;
+  _$PLCAddToFavoritesButton get _value =>
+      super._value as _$PLCAddToFavoritesButton;
 
   @override
   $Res call({
     Object? props = freezed,
   }) {
-    return _then(PLCAddToFavoritesButton(
+    return _then(_$PLCAddToFavoritesButton(
       props: props == freezed
           ? _value.props
           : props // ignore: cast_nullable_to_non_nullable
@@ -519,17 +490,18 @@ class _$PLCAddToFavoritesButton implements PLCAddToFavoritesButton {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is PLCAddToFavoritesButton &&
-            (identical(other.props, props) || other.props == props));
+            other is _$PLCAddToFavoritesButton &&
+            const DeepCollectionEquality().equals(other.props, props));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, props);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(props));
 
   @JsonKey(ignore: true)
   @override
-  $PLCAddToFavoritesButtonCopyWith<PLCAddToFavoritesButton> get copyWith =>
-      _$PLCAddToFavoritesButtonCopyWithImpl<PLCAddToFavoritesButton>(
+  _$$PLCAddToFavoritesButtonCopyWith<_$PLCAddToFavoritesButton> get copyWith =>
+      __$$PLCAddToFavoritesButtonCopyWithImpl<_$PLCAddToFavoritesButton>(
           this, _$identity);
 
   @override
@@ -613,24 +585,24 @@ class _$PLCAddToFavoritesButton implements PLCAddToFavoritesButton {
 }
 
 abstract class PLCAddToFavoritesButton implements ProduceListCardState {
-  const factory PLCAddToFavoritesButton({required ProduceListCardProps props}) =
-      _$PLCAddToFavoritesButton;
+  const factory PLCAddToFavoritesButton(
+      {required final ProduceListCardProps props}) = _$PLCAddToFavoritesButton;
 
   @override
-  ProduceListCardProps get props;
+  ProduceListCardProps get props => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  $PLCAddToFavoritesButtonCopyWith<PLCAddToFavoritesButton> get copyWith =>
+  _$$PLCAddToFavoritesButtonCopyWith<_$PLCAddToFavoritesButton> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $PLCRemoveFromFavoritesButtonCopyWith<$Res>
+abstract class _$$PLCRemoveFromFavoritesButtonCopyWith<$Res>
     implements $ProduceListCardStateCopyWith<$Res> {
-  factory $PLCRemoveFromFavoritesButtonCopyWith(
-          PLCRemoveFromFavoritesButton value,
-          $Res Function(PLCRemoveFromFavoritesButton) then) =
-      _$PLCRemoveFromFavoritesButtonCopyWithImpl<$Res>;
+  factory _$$PLCRemoveFromFavoritesButtonCopyWith(
+          _$PLCRemoveFromFavoritesButton value,
+          $Res Function(_$PLCRemoveFromFavoritesButton) then) =
+      __$$PLCRemoveFromFavoritesButtonCopyWithImpl<$Res>;
   @override
   $Res call({ProduceListCardProps props});
 
@@ -639,23 +611,23 @@ abstract class $PLCRemoveFromFavoritesButtonCopyWith<$Res>
 }
 
 /// @nodoc
-class _$PLCRemoveFromFavoritesButtonCopyWithImpl<$Res>
+class __$$PLCRemoveFromFavoritesButtonCopyWithImpl<$Res>
     extends _$ProduceListCardStateCopyWithImpl<$Res>
-    implements $PLCRemoveFromFavoritesButtonCopyWith<$Res> {
-  _$PLCRemoveFromFavoritesButtonCopyWithImpl(
-      PLCRemoveFromFavoritesButton _value,
-      $Res Function(PLCRemoveFromFavoritesButton) _then)
-      : super(_value, (v) => _then(v as PLCRemoveFromFavoritesButton));
+    implements _$$PLCRemoveFromFavoritesButtonCopyWith<$Res> {
+  __$$PLCRemoveFromFavoritesButtonCopyWithImpl(
+      _$PLCRemoveFromFavoritesButton _value,
+      $Res Function(_$PLCRemoveFromFavoritesButton) _then)
+      : super(_value, (v) => _then(v as _$PLCRemoveFromFavoritesButton));
 
   @override
-  PLCRemoveFromFavoritesButton get _value =>
-      super._value as PLCRemoveFromFavoritesButton;
+  _$PLCRemoveFromFavoritesButton get _value =>
+      super._value as _$PLCRemoveFromFavoritesButton;
 
   @override
   $Res call({
     Object? props = freezed,
   }) {
-    return _then(PLCRemoveFromFavoritesButton(
+    return _then(_$PLCRemoveFromFavoritesButton(
       props: props == freezed
           ? _value.props
           : props // ignore: cast_nullable_to_non_nullable
@@ -681,18 +653,19 @@ class _$PLCRemoveFromFavoritesButton implements PLCRemoveFromFavoritesButton {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is PLCRemoveFromFavoritesButton &&
-            (identical(other.props, props) || other.props == props));
+            other is _$PLCRemoveFromFavoritesButton &&
+            const DeepCollectionEquality().equals(other.props, props));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, props);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(props));
 
   @JsonKey(ignore: true)
   @override
-  $PLCRemoveFromFavoritesButtonCopyWith<PLCRemoveFromFavoritesButton>
-      get copyWith => _$PLCRemoveFromFavoritesButtonCopyWithImpl<
-          PLCRemoveFromFavoritesButton>(this, _$identity);
+  _$$PLCRemoveFromFavoritesButtonCopyWith<_$PLCRemoveFromFavoritesButton>
+      get copyWith => __$$PLCRemoveFromFavoritesButtonCopyWithImpl<
+          _$PLCRemoveFromFavoritesButton>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -776,31 +749,16 @@ class _$PLCRemoveFromFavoritesButton implements PLCRemoveFromFavoritesButton {
 
 abstract class PLCRemoveFromFavoritesButton implements ProduceListCardState {
   const factory PLCRemoveFromFavoritesButton(
-      {required ProduceListCardProps props}) = _$PLCRemoveFromFavoritesButton;
+          {required final ProduceListCardProps props}) =
+      _$PLCRemoveFromFavoritesButton;
 
   @override
-  ProduceListCardProps get props;
+  ProduceListCardProps get props => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  $PLCRemoveFromFavoritesButtonCopyWith<PLCRemoveFromFavoritesButton>
+  _$$PLCRemoveFromFavoritesButtonCopyWith<_$PLCRemoveFromFavoritesButton>
       get copyWith => throw _privateConstructorUsedError;
 }
-
-/// @nodoc
-class _$ProduceListCardPropsTearOff {
-  const _$ProduceListCardPropsTearOff();
-
-  _ProduceListCardProps call(
-      {required FarmhubUser farmhubUser, required Produce produce}) {
-    return _ProduceListCardProps(
-      farmhubUser: farmhubUser,
-      produce: produce,
-    );
-  }
-}
-
-/// @nodoc
-const $ProduceListCardProps = _$ProduceListCardPropsTearOff();
 
 /// @nodoc
 mixin _$ProduceListCardProps {
@@ -865,11 +823,11 @@ class _$ProduceListCardPropsCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$ProduceListCardPropsCopyWith<$Res>
+abstract class _$$_ProduceListCardPropsCopyWith<$Res>
     implements $ProduceListCardPropsCopyWith<$Res> {
-  factory _$ProduceListCardPropsCopyWith(_ProduceListCardProps value,
-          $Res Function(_ProduceListCardProps) then) =
-      __$ProduceListCardPropsCopyWithImpl<$Res>;
+  factory _$$_ProduceListCardPropsCopyWith(_$_ProduceListCardProps value,
+          $Res Function(_$_ProduceListCardProps) then) =
+      __$$_ProduceListCardPropsCopyWithImpl<$Res>;
   @override
   $Res call({FarmhubUser farmhubUser, Produce produce});
 
@@ -880,22 +838,22 @@ abstract class _$ProduceListCardPropsCopyWith<$Res>
 }
 
 /// @nodoc
-class __$ProduceListCardPropsCopyWithImpl<$Res>
+class __$$_ProduceListCardPropsCopyWithImpl<$Res>
     extends _$ProduceListCardPropsCopyWithImpl<$Res>
-    implements _$ProduceListCardPropsCopyWith<$Res> {
-  __$ProduceListCardPropsCopyWithImpl(
-      _ProduceListCardProps _value, $Res Function(_ProduceListCardProps) _then)
-      : super(_value, (v) => _then(v as _ProduceListCardProps));
+    implements _$$_ProduceListCardPropsCopyWith<$Res> {
+  __$$_ProduceListCardPropsCopyWithImpl(_$_ProduceListCardProps _value,
+      $Res Function(_$_ProduceListCardProps) _then)
+      : super(_value, (v) => _then(v as _$_ProduceListCardProps));
 
   @override
-  _ProduceListCardProps get _value => super._value as _ProduceListCardProps;
+  _$_ProduceListCardProps get _value => super._value as _$_ProduceListCardProps;
 
   @override
   $Res call({
     Object? farmhubUser = freezed,
     Object? produce = freezed,
   }) {
-    return _then(_ProduceListCardProps(
+    return _then(_$_ProduceListCardProps(
       farmhubUser: farmhubUser == freezed
           ? _value.farmhubUser
           : farmhubUser // ignore: cast_nullable_to_non_nullable
@@ -928,33 +886,36 @@ class _$_ProduceListCardProps implements _ProduceListCardProps {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _ProduceListCardProps &&
-            (identical(other.farmhubUser, farmhubUser) ||
-                other.farmhubUser == farmhubUser) &&
-            (identical(other.produce, produce) || other.produce == produce));
+            other is _$_ProduceListCardProps &&
+            const DeepCollectionEquality()
+                .equals(other.farmhubUser, farmhubUser) &&
+            const DeepCollectionEquality().equals(other.produce, produce));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, farmhubUser, produce);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(farmhubUser),
+      const DeepCollectionEquality().hash(produce));
 
   @JsonKey(ignore: true)
   @override
-  _$ProduceListCardPropsCopyWith<_ProduceListCardProps> get copyWith =>
-      __$ProduceListCardPropsCopyWithImpl<_ProduceListCardProps>(
+  _$$_ProduceListCardPropsCopyWith<_$_ProduceListCardProps> get copyWith =>
+      __$$_ProduceListCardPropsCopyWithImpl<_$_ProduceListCardProps>(
           this, _$identity);
 }
 
 abstract class _ProduceListCardProps implements ProduceListCardProps {
   const factory _ProduceListCardProps(
-      {required FarmhubUser farmhubUser,
-      required Produce produce}) = _$_ProduceListCardProps;
+      {required final FarmhubUser farmhubUser,
+      required final Produce produce}) = _$_ProduceListCardProps;
 
   @override
-  FarmhubUser get farmhubUser;
+  FarmhubUser get farmhubUser => throw _privateConstructorUsedError;
   @override
-  Produce get produce;
+  Produce get produce => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$ProduceListCardPropsCopyWith<_ProduceListCardProps> get copyWith =>
+  _$$_ProduceListCardPropsCopyWith<_$_ProduceListCardProps> get copyWith =>
       throw _privateConstructorUsedError;
 }
