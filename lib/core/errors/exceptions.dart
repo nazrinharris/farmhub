@@ -36,3 +36,15 @@ class ProduceManagerException implements Exception {
     required this.stackTrace,
   });
 }
+
+class AuthLocalDatasourceException implements Exception {
+  final String code;
+  final String message;
+  final StackTrace? stackTrace;
+
+  AuthLocalDatasourceException({
+    required this.code,
+    required this.message,
+    required this.stackTrace,
+  });
+}

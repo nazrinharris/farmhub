@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:farmhub/core/auth/domain/entities/farmhub_user/farmhub_user.dart';
-import 'package:farmhub/core/constants/app_const.dart';
+import 'package:farmhub/core/util/app_const.dart';
 import 'package:farmhub/core/errors/failures.dart';
 import 'package:intl/intl.dart';
 import 'dart:convert';

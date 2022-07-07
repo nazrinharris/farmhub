@@ -1,3 +1,4 @@
+import 'package:farmhub/core/typedefs/typedefs.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:fpdart/fpdart.dart';
@@ -6,7 +7,7 @@ import 'package:farmhub/core/auth/data/datasources/auth_local_datasource.dart';
 import 'package:farmhub/core/auth/data/datasources/auth_remote_datasource.dart';
 import 'package:farmhub/core/auth/domain/entities/farmhub_user/farmhub_user.dart';
 import 'package:farmhub/core/auth/domain/i_auth_repository.dart';
-import 'package:farmhub/core/constants/app_const.dart';
+import 'package:farmhub/core/util/app_const.dart';
 import 'package:farmhub/core/errors/failures.dart';
 import 'package:farmhub/core/network/network_info.dart';
 
@@ -236,6 +237,56 @@ class AuthRepository implements IAuthRepository {
       try {
         final user = await authRemoteDataSource.sendPasswordResetEmail(email);
         return Right(unit);
+      } on FirebaseAuthException catch (e) {
+        return Left(
+            FirebaseAuthFailure(code: e.code, message: e.message, stackTrace: StackTrace.current));
+      } catch (e, stack) {
+        return Left(UnexpectedFailure(
+          code: e.toString(),
+          message: "An unexpected error occured",
+          stackTrace: stack,
+        ));
+      }
+    } else {
+      return Left(InternetConnectionFailure(
+        code: ERROR_NO_INTERNET_CONNECTION,
+        message: MESSAGE_NO_INTERNET_CONNECTION,
+        stackTrace: StackTrace.current,
+      ));
+    }
+  }
+
+  @override
+  FutureEither<FarmhubUser> retrieveFarmhubUser() async {
+    if (await networkInfo.isConnected) {
+      try {
+        final user = await authLocalDataSource.retrieveFarmhubUser();
+        return Right(user);
+      } on FirebaseAuthException catch (e) {
+        return Left(
+            FirebaseAuthFailure(code: e.code, message: e.message, stackTrace: StackTrace.current));
+      } catch (e, stack) {
+        return Left(UnexpectedFailure(
+          code: e.toString(),
+          message: "An unexpected error occured",
+          stackTrace: stack,
+        ));
+      }
+    } else {
+      return Left(InternetConnectionFailure(
+        code: ERROR_NO_INTERNET_CONNECTION,
+        message: MESSAGE_NO_INTERNET_CONNECTION,
+        stackTrace: StackTrace.current,
+      ));
+    }
+  }
+
+  @override
+  FutureEither<Unit> storeFarmhubUser(FarmhubUser farmhubUser) async {
+    if (await networkInfo.isConnected) {
+      try {
+        await authLocalDataSource.storeFarmhubUser(farmhubUser);
+        return const Right(unit);
       } on FirebaseAuthException catch (e) {
         return Left(
             FirebaseAuthFailure(code: e.code, message: e.message, stackTrace: StackTrace.current));

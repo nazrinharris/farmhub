@@ -5,7 +5,7 @@
 import 'package:clock/clock.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:farmhub/core/auth/data/datasources/auth_remote_datasource.dart';
-import 'package:farmhub/core/constants/app_const.dart';
+import 'package:farmhub/core/util/app_const.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:intl/intl.dart';
@@ -48,15 +48,12 @@ void main() {
         void setupSuccesfullQuery() {
           when(() => mockFirebaseFirestore.collection(any()))
               .thenAnswer((_) => mockCollectionReference);
-          when(() => mockCollectionReference.doc(any()))
-              .thenAnswer((_) => mockDocumentReference);
-          when(() => mockDocumentReference.get())
-              .thenAnswer((_) async => mockDocumentSnapshot);
-          when(() => mockDocumentSnapshot.data())
-              .thenAnswer((_) => tFarmhubUserJSON);
+          when(() => mockCollectionReference.doc(any())).thenAnswer((_) => mockDocumentReference);
+          when(() => mockDocumentReference.get()).thenAnswer((_) async => mockDocumentSnapshot);
+          when(() => mockDocumentSnapshot.data()).thenAnswer((_) => tFarmhubUserJSON);
           when(() => mockFirebaseAuth.signInWithEmailAndPassword(
-                  email: any(named: 'email'), password: any(named: 'password')))
-              .thenAnswer((_) async => mockUserCredential);
+              email: any(named: 'email'),
+              password: any(named: 'password'))).thenAnswer((_) async => mockUserCredential);
           when(() => mockUserCredential.user).thenReturn(mockUser);
           when(() => mockUser.uid).thenReturn(tUid);
         }
@@ -64,14 +61,12 @@ void main() {
         void setupFailureQuery() {
           when(() => mockFirebaseFirestore.collection(any()))
               .thenAnswer((_) => mockCollectionReference);
-          when(() => mockCollectionReference.doc(any()))
-              .thenAnswer((_) => mockDocumentReference);
+          when(() => mockCollectionReference.doc(any())).thenAnswer((_) => mockDocumentReference);
           when(() => mockDocumentReference.get()).thenThrow(tFirebaseException);
-          when(() => mockDocumentSnapshot.data())
-              .thenAnswer((_) => tFarmhubUserJSON);
+          when(() => mockDocumentSnapshot.data()).thenAnswer((_) => tFarmhubUserJSON);
           when(() => mockFirebaseAuth.signInWithEmailAndPassword(
-                  email: any(named: 'email'), password: any(named: 'password')))
-              .thenAnswer((_) async => mockUserCredential);
+              email: any(named: 'email'),
+              password: any(named: 'password'))).thenAnswer((_) async => mockUserCredential);
           when(() => mockUserCredential.user).thenReturn(mockUser);
           when(() => mockUser.uid).thenReturn(tUid);
         }
@@ -79,10 +74,8 @@ void main() {
         void setupNoDocumentQuery() {
           when(() => mockFirebaseFirestore.collection(any()))
               .thenAnswer((_) => mockCollectionReference);
-          when(() => mockCollectionReference.doc(any()))
-              .thenAnswer((_) => mockDocumentReference);
-          when(() => mockDocumentReference.get())
-              .thenAnswer((_) async => Future.value());
+          when(() => mockCollectionReference.doc(any())).thenAnswer((_) => mockDocumentReference);
+          when(() => mockDocumentReference.get()).thenAnswer((_) async => Future.value());
           // when(() => mockDocumentSnapshot.data())
           //     .thenAnswer((_) => tStoraygeUserJSON);
         }
@@ -127,15 +120,12 @@ void main() {
             // arrange
             when(() => mockFirebaseFirestore.collection(any()))
                 .thenAnswer((_) => mockCollectionReference);
-            when(() => mockCollectionReference.doc(any()))
-                .thenAnswer((_) => mockDocumentReference);
-            when(() => mockDocumentReference.get())
-                .thenAnswer((_) async => mockDocumentSnapshot);
+            when(() => mockCollectionReference.doc(any())).thenAnswer((_) => mockDocumentReference);
+            when(() => mockDocumentReference.get()).thenAnswer((_) async => mockDocumentSnapshot);
             when(() => mockDocumentSnapshot.data()).thenAnswer((_) => tnullMap);
             when(() => mockFirebaseAuth.signInWithEmailAndPassword(
-                    email: any(named: 'email'),
-                    password: any(named: 'password')))
-                .thenAnswer((_) async => mockUserCredential);
+                email: any(named: 'email'),
+                password: any(named: 'password'))).thenAnswer((_) async => mockUserCredential);
             when(() => mockUserCredential.user).thenReturn(mockUser);
             when(() => mockUser.uid).thenReturn(tUid);
             // act
@@ -174,19 +164,15 @@ void main() {
         void setupSuccesfullQuery() {
           when(() => mockFirebaseFirestore.collection(any()))
               .thenAnswer((_) => mockCollectionReference);
-          when(() => mockCollectionReference.doc(any()))
-              .thenAnswer((_) => mockDocumentReference);
-          when(() => mockDocumentReference.get())
-              .thenAnswer((_) async => mockDocumentSnapshot);
-          when(() => mockDocumentReference.set(any()))
-              .thenAnswer((_) async => Future.value());
+          when(() => mockCollectionReference.doc(any())).thenAnswer((_) => mockDocumentReference);
+          when(() => mockDocumentReference.get()).thenAnswer((_) async => mockDocumentSnapshot);
+          when(() => mockDocumentReference.set(any())).thenAnswer((_) async => Future.value());
           when(() => mockDocumentReference.collection(any()))
               .thenAnswer((_) => mockCollectionReference);
-          when(() => mockDocumentSnapshot.data())
-              .thenAnswer((_) => tFarmhubUserJSON);
+          when(() => mockDocumentSnapshot.data()).thenAnswer((_) => tFarmhubUserJSON);
           when(() => mockFirebaseAuth.createUserWithEmailAndPassword(
-                  email: any(named: 'email'), password: any(named: 'password')))
-              .thenAnswer((_) async => mockUserCredential);
+              email: any(named: 'email'),
+              password: any(named: 'password'))).thenAnswer((_) async => mockUserCredential);
           when(() => mockUserCredential.user).thenReturn(mockUser);
           when(() => mockUser.uid).thenReturn(tUid);
         }
@@ -199,8 +185,7 @@ void main() {
             // act
             final result = await withClock(
                 Clock.fixed(DateTime(2021, 11, 28)),
-                () async =>
-                    await authRemoteDataSource.registerWithEmailAndPassword(
+                () async => await authRemoteDataSource.registerWithEmailAndPassword(
                       email: tEmail,
                       password: tPassword,
                       username: tUsername,
@@ -218,17 +203,13 @@ void main() {
             // act
             final result = await withClock(
                 Clock.fixed(DateTime(2021, 11, 28)),
-                () async =>
-                    await authRemoteDataSource.registerWithEmailAndPassword(
+                () async => await authRemoteDataSource.registerWithEmailAndPassword(
                       email: tEmail,
                       password: tPassword,
                       username: tUsername,
                     ));
             // assert
-            verifyInOrder([
-              () => clock.now(),
-              () => DateFormat('yyyy-MM-dd').format(tCurrentDate)
-            ]);
+            verifyInOrder([() => clock.now(), () => DateFormat('yyyy-MM-dd').format(tCurrentDate)]);
             expect(result, tFarmhubUser);
           },
         );
@@ -241,8 +222,7 @@ void main() {
             // act
             await withClock(
                 Clock.fixed(DateTime(2021, 11, 28)),
-                () async =>
-                    await authRemoteDataSource.registerWithEmailAndPassword(
+                () async => await authRemoteDataSource.registerWithEmailAndPassword(
                       email: tEmail,
                       password: tPassword,
                       username: tUsername,

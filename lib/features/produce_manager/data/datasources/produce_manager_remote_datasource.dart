@@ -2,7 +2,7 @@
 
 import 'package:clock/clock.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:farmhub/core/constants/app_const.dart';
+import 'package:farmhub/core/util/app_const.dart';
 import 'package:farmhub/core/errors/exceptions.dart';
 import 'package:farmhub/features/produce_manager/domain/entities/price/price.dart';
 import 'package:farmhub/features/produce_manager/domain/helpers.dart';

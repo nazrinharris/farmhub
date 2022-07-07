@@ -1,4 +1,5 @@
 import 'package:farmhub/core/errors/failures.dart';
+import 'package:farmhub/core/typedefs/typedefs.dart';
 import 'package:fpdart/fpdart.dart';
 
 import 'entities/farmhub_user/farmhub_user.dart';
@@ -32,4 +33,7 @@ abstract class IAuthRepository {
   Future<Either<Failure, FarmhubUser>> updateRemoteUser({
     required FarmhubUser newUserData,
   });
+
+  FutureEither<Unit> storeFarmhubUser(FarmhubUser farmhubUser);
+  FutureEither<FarmhubUser> retrieveFarmhubUser();
 }

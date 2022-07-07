@@ -1,4 +1,4 @@
-import 'package:farmhub/core/constants/app_const.dart';
+import 'package:farmhub/core/util/app_const.dart';
 import 'package:farmhub/presentation/shared_widgets/ui_helpers.dart';
 import 'package:flutter/material.dart';
 
