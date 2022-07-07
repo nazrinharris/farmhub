@@ -36,31 +36,30 @@ class ProduceManagerRepository implements IProduceManagerRepository {
   FutureEither<List<Produce>> getFirstTenProduce() async {
     final isConnected = await networkInfo.isConnected;
 
-    await Future.delayed(Duration(seconds: 3));
-
     if (isConnected) {
       try {
         final firstTenProduce = await remoteDatasource.getFirstTenProduce();
         await localDatasource.storeProduceList(firstTenProduce);
 
         return Right(firstTenProduce);
-      } catch (e) {
+      } catch (e, stack) {
         return Left(
           UnexpectedFailure(
             code: (ProduceManagerRepositoryCode + 'getFirstTenProduce()'),
             message: e.toString(),
-            stackTrace: StackTrace.current,
+            stackTrace: stack,
           ),
         );
       }
     } else {
-      return Left(
-        InternetConnectionFailure(
-          code: ProduceManagerRepositoryCode + ERROR_NO_INTERNET_CONNECTION,
-          message: MESSAGE_NO_INTERNET_CONNECTION,
-          stackTrace: StackTrace.current,
-        ),
-      );
+      print("Not connected - getFirstTenProduce()");
+      try {
+        final produceList = await localDatasource.retrieveProduceList();
+
+        return Right(produceList);
+      } catch (e, stack) {
+        return Left(UnexpectedFailure(message: e.toString(), stackTrace: stack));
+      }
     }
   }
 
@@ -76,11 +75,14 @@ class ProduceManagerRepository implements IProduceManagerRepository {
         return Left(ProduceManagerFailure(code: e.toString(), stackTrace: StackTrace.current));
       }
     } else {
-      return Left(InternetConnectionFailure(
-        code: ERROR_NO_INTERNET_CONNECTION,
-        message: MESSAGE_NO_INTERNET_CONNECTION,
-        stackTrace: StackTrace.current,
-      ));
+      print("Not connected - getNextTenProduce()");
+      try {
+        final produceList = await localDatasource.retrieveProduceList();
+
+        return Right(produceList);
+      } catch (e, stack) {
+        return Left(UnexpectedFailure(message: e.toString(), stackTrace: stack));
+      }
     }
   }
 
@@ -579,11 +581,14 @@ class ProduceManagerRepository implements IProduceManagerRepository {
         return Left(UnexpectedFailure(code: e.toString(), stackTrace: stack));
       }
     } else {
-      return Left(InternetConnectionFailure(
-        code: ERROR_NO_INTERNET_CONNECTION,
-        message: MESSAGE_NO_INTERNET_CONNECTION,
-        stackTrace: StackTrace.current,
-      ));
+      print("Not connected - getFirstTenProduce()");
+      try {
+        final produceList = await localDatasource.retrieveProduceFavorites();
+
+        return Right(produceList);
+      } catch (e, stack) {
+        return Left(UnexpectedFailure(message: e.toString(), stackTrace: stack));
+      }
     }
   }
 }

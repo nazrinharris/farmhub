@@ -170,12 +170,7 @@ class AuthRepository implements IAuthRepository {
 
         return Right(user);
       } catch (e, stack) {
-        return Left(
-          UnexpectedFailure(
-            message: e.toString(),
-            stackTrace: stack,
-          ),
-        );
+        return Left(UnexpectedFailure(message: e.toString(), stackTrace: stack));
       }
     }
   }
