@@ -18,7 +18,8 @@ class AuthLocalDataSource implements IAuthLocalDataSource {
     final prefs = await SharedPreferences.getInstance();
     final jsonUser = FarmhubUser.toMap(farmhubUser);
 
-    await prefs.setString("user", jsonEncode(farmhubUser));
+    await prefs.setString("user", jsonEncode(jsonUser));
+
     return unit;
   }
 
@@ -35,7 +36,7 @@ class AuthLocalDataSource implements IAuthLocalDataSource {
         stackTrace: StackTrace.current,
       );
     } else {
-      farmhubUserJson == jsonDecode(farmhubUserString) as Map<String, dynamic>;
+      farmhubUserJson = jsonDecode(farmhubUserString) as Map<String, dynamic>;
     }
 
     return FarmhubUser.fromMap(farmhubUserJson);

@@ -2,9 +2,11 @@
 
 import 'package:farmhub/core/auth/domain/entities/farmhub_user/farmhub_user.dart';
 import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
+import 'package:farmhub/core/network/network_info.dart';
 import 'package:farmhub/locator.dart';
 import 'package:farmhub/presentation/global/cubit/global_ui_cubit.dart';
 import 'package:farmhub/presentation/shared_widgets/appbars.dart';
+import 'package:farmhub/presentation/shared_widgets/cards.dart';
 import 'package:farmhub/presentation/shared_widgets/scroll_physics.dart';
 import 'package:farmhub/presentation/shared_widgets/texts.dart';
 import 'package:farmhub/presentation/shared_widgets/ui_helpers.dart';
@@ -13,8 +15,18 @@ import 'package:farmhub/presentation/views/profile_screen/profile_screen_cubit/p
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class ProfileScreen extends StatelessWidget {
+class ProfileScreen extends StatefulWidget {
   const ProfileScreen({Key? key}) : super(key: key);
+
+  @override
+  State<ProfileScreen> createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends State<ProfileScreen> {
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -82,11 +94,31 @@ class SliverProfileHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final INetworkInfo networkInfo = locator();
+
     return SliverList(
       delegate: SliverChildListDelegate(
         [
           UITopPadding(),
-          UICustomVertical(50),
+          FutureBuilder(
+            future: networkInfo.isConnected,
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                final result = snapshot.data as bool;
+
+                if (!result) {
+                  return ErrorNoInternetCard(
+                    verticalMargin: 24,
+                    horizontalMargin: 24,
+                  );
+                } else {
+                  return UICustomVertical(50);
+                }
+              } else {
+                return UICustomVertical(50);
+              }
+            },
+          ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

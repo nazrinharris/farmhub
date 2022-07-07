@@ -11,11 +11,17 @@ Widget determineErrorCard(String errorCode) {
 }
 
 class ErrorNoInternetCard extends StatelessWidget {
-  const ErrorNoInternetCard({Key? key}) : super(key: key);
+  final double? verticalMargin;
+  final double? horizontalMargin;
+
+  const ErrorNoInternetCard({Key? key, this.verticalMargin, this.horizontalMargin})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin:
+          EdgeInsets.symmetric(horizontal: horizontalMargin ?? 0, vertical: verticalMargin ?? 0),
       padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),

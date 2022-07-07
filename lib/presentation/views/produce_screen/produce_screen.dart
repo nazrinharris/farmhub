@@ -374,10 +374,13 @@ class _SliverProducePriceChartState extends State<SliverProducePriceChart> {
                     style: Theme.of(context).textTheme.bodyText1!.copyWith(color: Colors.red),
                     textAlign: TextAlign.center,
                   ),
-                  const UIVerticalSpace6(),
+                  const UIVerticalSpace14(),
                   Text(
                     "${state.failure.message}",
-                    style: Theme.of(context).textTheme.bodyText1,
+                    style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                          fontSize: 12,
+                          color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
+                        ),
                     textAlign: TextAlign.center,
                   ),
                 ],

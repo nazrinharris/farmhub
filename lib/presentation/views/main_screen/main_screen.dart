@@ -99,7 +99,13 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
                           context.read<MainScreenBloc>().add(const MainScreenEvent.refresh());
 
                           await context.read<MainScreenBloc>().stream.firstWhere((state) {
-                            return (state is MSSPricesCompleted);
+                            if (state is MSSPricesCompleted) {
+                              return true;
+                            } else if (state is MSSPricesError) {
+                              return true;
+                            } else {
+                              return false;
+                            }
                           });
                         },
                       ),

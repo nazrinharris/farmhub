@@ -136,6 +136,7 @@ class AuthRepository implements IAuthRepository {
     if (await networkInfo.isConnected) {
       try {
         final FarmhubUser user = await authRemoteDataSource.retrieveUserData();
+        print(user);
         await authLocalDataSource.storeFarmhubUser(user);
 
         return Right(user);
@@ -162,6 +163,7 @@ class AuthRepository implements IAuthRepository {
         ));
       }
     } else {
+      print("Not connected");
       // TODO: Retrieval of user information from local storage.
       try {
         final user = await authLocalDataSource.retrieveFarmhubUser();
