@@ -36,6 +36,8 @@ class ProduceManagerRepository implements IProduceManagerRepository {
   FutureEither<List<Produce>> getFirstTenProduce() async {
     final isConnected = await networkInfo.isConnected;
 
+    await Future.delayed(Duration(seconds: 3));
+
     if (isConnected) {
       try {
         final firstTenProduce = await remoteDatasource.getFirstTenProduce();
