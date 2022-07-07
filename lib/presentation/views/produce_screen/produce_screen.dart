@@ -6,6 +6,7 @@ import 'package:farmhub/core/errors/failures.dart';
 import 'package:farmhub/core/util/dates.dart';
 import 'package:farmhub/locator.dart';
 import 'package:farmhub/presentation/global/cubit/global_ui_cubit.dart';
+import 'package:farmhub/presentation/shared_widgets/cards.dart';
 import 'package:farmhub/presentation/shared_widgets/scroll_physics.dart';
 import 'package:farmhub/presentation/shared_widgets/ui_helpers.dart';
 import 'package:farmhub/presentation/smart_widgets/primary_button_aware/primary_button_aware_cubit.dart';
@@ -89,9 +90,13 @@ class _ProduceScreenState extends State<ProduceScreen> with SingleTickerProvider
               await context
                   .read<ProduceAggregateCubit>()
                   .getAggregatePricesAndProduce(widget.produceArguments!.produce.produceId);
+
+              if (!mounted) return;
               await context
                   .read<ProducePricesCubit>()
                   .getFirstTenPrices(widget.produceArguments!.produce.produceId);
+
+              if (!mounted) return;
               context.read<GlobalUICubit>().setShouldRefreshProduce(false);
             }
           },
@@ -171,6 +176,8 @@ class _BuildProduceScreenState extends State<BuildProduceScreen> {
                   await context
                       .read<ProduceAggregateCubit>()
                       .getAggregatePricesAndProduce(produce.produceId);
+
+                  if (!mounted) return;
                   await context.read<ProducePricesCubit>().getFirstTenPrices(produce.produceId);
                 },
               ),
@@ -243,9 +250,30 @@ class _SliverProduceHeaderState extends State<SliverProduceHeader> {
               ),
             );
           } else if (state is PASError) {
-            return Text(
-              "ERROR!",
-              style: Theme.of(context).textTheme.bodyText1!.copyWith(color: Colors.red),
+            final Produce produce = state.props.produce!;
+
+            return Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const UITopPadding(),
+                  Headline1(produce.produceName),
+                  Headline2(returnCurrentDate()),
+                  const UIVerticalSpace14(),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Text("RM ${produce.currentProducePrice["price"]}/kg"),
+                      const UIHorizontalSpace14(),
+                      ChangeBox(produce),
+                    ],
+                  ),
+                  const UIVerticalSpace30(),
+                  determineErrorCard(state.failure.code ?? "UNKNOWN"),
+                  const UIVerticalSpace30(),
+                ],
+              ),
             );
           } else {
             print(state);
@@ -335,9 +363,11 @@ class _SliverProducePriceChartState extends State<SliverProducePriceChart> {
             );
           } else if (state is PASError) {
             return Container(
+              padding: const EdgeInsets.symmetric(horizontal: 24),
               height: 250,
               alignment: Alignment.center,
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
                     "Uh oh, something went wrong.",
@@ -521,7 +551,7 @@ class SliverPricesList extends StatelessWidget {
       print(failure);
 
       return Container(
-        height: 100,
+        padding: const EdgeInsets.only(top: 50, bottom: 150),
         alignment: Alignment.center,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

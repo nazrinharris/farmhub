@@ -459,6 +459,8 @@ class ProduceManagerRepository implements IProduceManagerRepository {
   FutureEither<FarmhubUser> addToFavorites(FarmhubUser farmhubUser, String produceId) async {
     if (await networkInfo.isConnected) {
       try {
+        await Future.delayed(Duration(seconds: 1));
+
         final updatedFarmhubUser = await remoteDatasource.addToFavorites(farmhubUser, produceId);
         globalAuthCubit.updateFarmhubUser(updatedFarmhubUser);
 
