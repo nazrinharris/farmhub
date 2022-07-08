@@ -307,14 +307,22 @@ class SliverProduceList extends StatelessWidget {
     return SliverList(
       delegate: SliverChildBuilderDelegate(
         (context, index) {
-          if (isLoading == true) {
-            if (index == props.produceList.length) {
-              return Container(
-                height: 100,
-                padding: const EdgeInsets.only(top: 24),
-                alignment: Alignment.center,
-                child: const CupertinoActivityIndicator(),
-              );
+          if (props.produceList.isNotEmpty) {
+            if (isLoading == true) {
+              if (index == props.produceList.length) {
+                return Container(
+                  height: 100,
+                  padding: const EdgeInsets.only(top: 24),
+                  alignment: Alignment.center,
+                  child: const CupertinoActivityIndicator(),
+                );
+              } else {
+                return ProduceListCard(
+                  index,
+                  props.produceList[index],
+                  chartAnimationDuration: 0,
+                );
+              }
             } else {
               return ProduceListCard(
                 index,
@@ -323,11 +331,31 @@ class SliverProduceList extends StatelessWidget {
               );
             }
           } else {
-            return ProduceListCard(
-              index,
-              props.produceList[index],
-              chartAnimationDuration: 0,
-            );
+            return Container(
+                height: 350,
+                alignment: Alignment.center,
+                child: Column(
+                  children: [
+                    const UICustomVertical(100),
+                    Text(
+                      "Uh oh..  Something's wrong..",
+                      style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                            color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
+                          ),
+                    ),
+                    const UIVerticalSpace6(),
+                    Align(
+                      alignment: Alignment.center,
+                      child: Text(
+                        "Please try again",
+                        style: Theme.of(context).textTheme.bodyText2!.copyWith(
+                              fontSize: 24,
+                              color: Theme.of(context).colorScheme.error,
+                            ),
+                      ),
+                    ),
+                  ],
+                ));
           }
         },
         childCount: resolveChildCount(props.produceList, isLoading),
@@ -336,7 +364,11 @@ class SliverProduceList extends StatelessWidget {
   }
 
   int resolveChildCount(List<Produce> produceList, bool isLoading) {
-    return isLoading ? produceList.length + 1 : produceList.length;
+    if (produceList.isEmpty) {
+      return 1;
+    } else {
+      return isLoading ? produceList.length + 1 : produceList.length;
+    }
   }
 }
 

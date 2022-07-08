@@ -72,6 +72,8 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
 
   @override
   Future<List<Produce>> getFirstTenProduce() async {
+    return [];
+
     final documentsList = await firebaseFirestore
         .collection('produce')
         .where("isDeleted", isEqualTo: false)
