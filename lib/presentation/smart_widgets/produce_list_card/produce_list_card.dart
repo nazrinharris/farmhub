@@ -75,26 +75,44 @@ class ProduceListCard extends StatelessWidget {
               ),
             ),
             child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Flexible(
+                Expanded(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        produce.produceName,
-                        maxLines: 3,
-                        overflow: TextOverflow.fade,
-                        style: Theme.of(context).textTheme.bodyText1!.copyWith(fontSize: 17),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            produce.produceName,
+                            maxLines: 3,
+                            overflow: TextOverflow.fade,
+                            style: Theme.of(context).textTheme.bodyText1!.copyWith(fontSize: 17),
+                          ),
+                          const UICustomVertical(2),
+                          Text(
+                            "RM $currentProducePrice/kg",
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyText2!
+                                .copyWith(fontWeight: FontWeight.w700),
+                          ),
+                        ],
                       ),
-                      const UICustomVertical(2),
-                      Text(
-                        "RM $currentProducePrice/kg",
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodyText2!
-                            .copyWith(fontWeight: FontWeight.w700),
+                      Container(
+                        padding: const EdgeInsets.only(top: 4, bottom: 4),
+                        child: Text(
+                          produce.currentProducePrice["priceDate"]
+                              .toString()
+                              .replaceAll(RegExp("-"), "/"),
+                          style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                                color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
+                                fontSize: 13,
+                              ),
+                        ),
                       ),
                       const UICustomVertical(9),
                       ChangeBox(produce),
@@ -104,7 +122,7 @@ class ProduceListCard extends StatelessWidget {
                 Flexible(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       IgnorePointer(
                         child: SmallPriceChart(

@@ -27,7 +27,7 @@ List<PriceSnippet> pricesToRanged(
   List<PriceSnippet> pricesList, {
   RangeType? rangeType = RangeType.twoW,
 }) {
-  print("All Unsorted Prices Length: ${pricesList.length}");
+  //?"All Unsorted Prices Length: ${pricesList.length}");
 
   final DateTime todayTimeStamp = clock.now();
 
@@ -89,8 +89,8 @@ List<PriceSnippet> pricesToRanged(
     }
   }
 
-  print("Unsorted - $rangeType - Amount: ${rangedPricesList.length}");
-  printList(rangedPricesList);
+  //?print("Unsorted - $rangeType - Amount: ${rangedPricesList.length}");
+  //?printList(rangedPricesList);
 
   rangedPricesList.sort((a, b) {
     DateTime aPriceDate = DateFormat("dd-MM-yyyy").parse(a.priceDate);
@@ -99,8 +99,8 @@ List<PriceSnippet> pricesToRanged(
     return aPriceDate.compareTo(bPriceDate);
   });
 
-  print("Sorted - $rangeType - Amount: ${rangedPricesList.length}");
-  printList(rangedPricesList);
+  //?print("Sorted - $rangeType - Amount: ${rangedPricesList.length}");
+  //?printList(rangedPricesList);
 
   return List.from(rangedPricesList);
 }
