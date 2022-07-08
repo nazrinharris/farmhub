@@ -83,6 +83,8 @@ class ProduceAggregateCubit extends Cubit<ProduceAggregateState> {
         final List<PriceSnippet> oneYearPrices =
             pricesToRanged(pricesList, rangeType: RangeType.oneY);
 
+        print("${twoWeeksPrices.length}");
+
         emit(ProduceAggregateState.completed(
             props: state.props.copyWith(
           produce: produce,
