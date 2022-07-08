@@ -38,3 +38,7 @@ const String FS_ERRCODE_JSON_NOT_FOUND = 'JSON_NOT_FOUND';
 
 /// [ProduceManager]'s [ErrorCodes]
 const String PM_ERR_LAST_PRICE = 'PM_ERR_LAST_PRICE';
+const String PM_ERR_SAME_PRODUCE_NAME = 'PM_ERR_SAME_PRODUCE_NAME';
+
+/// [AuthLocalDatasource]'s [ErrorCodes]
+const String AL_ERR_NO_USER = 'ERR_NO_USER';

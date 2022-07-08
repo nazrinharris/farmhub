@@ -8,7 +8,7 @@ import '../../shared_widgets/texts.dart';
 import '../../smart_widgets/custom_search_field.dart';
 import 'bloc/main_screen_bloc.dart';
 
-class SliverMainScreenHeader extends StatelessWidget {
+class SliverMainScreenHeader extends StatefulWidget {
   final Animation<double> extent;
   final FocusNode mainScreenFocusNode;
   final bool isAdmin;
@@ -17,9 +17,14 @@ class SliverMainScreenHeader extends StatelessWidget {
       : super(key: key);
 
   @override
+  State<SliverMainScreenHeader> createState() => _SliverMainScreenHeaderState();
+}
+
+class _SliverMainScreenHeaderState extends State<SliverMainScreenHeader> {
+  @override
   Widget build(BuildContext context) {
     return SliverPersistentHeader(
-      delegate: MainScreenHeaderDelegate(extent, mainScreenFocusNode, isAdmin),
+      delegate: MainScreenHeaderDelegate(widget.extent, widget.mainScreenFocusNode, widget.isAdmin),
     );
   }
 }

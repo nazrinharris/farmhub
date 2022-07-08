@@ -1,4 +1,5 @@
 import 'package:farmhub/core/errors/exceptions.dart';
+import 'package:farmhub/core/util/misc.dart';
 import 'package:farmhub/features/produce_manager/domain/entities/price/price.dart';
 import 'package:intl/intl.dart';
 import 'package:clock/clock.dart';
@@ -14,8 +15,8 @@ const Map<String, int> rangeTypeInDaysMap = {
   "twoW": 14,
   "oneM": 31,
   "twoM": 62,
-  "sixM": 62,
-  "oneY": 62,
+  "sixM": 186,
+  "oneY": 365,
 };
 
 /// This method converts the given [pricesList] which should be an unsorted list converted from
@@ -26,6 +27,8 @@ List<PriceSnippet> pricesToRanged(
   List<PriceSnippet> pricesList, {
   RangeType? rangeType = RangeType.twoW,
 }) {
+  print("All Unsorted Prices Length: ${pricesList.length}");
+
   final DateTime todayTimeStamp = clock.now();
 
   // This will sort it in such a way that the first index will be the lower bound (oldest date)
@@ -64,7 +67,7 @@ List<PriceSnippet> pricesToRanged(
     default:
   }
 
-  final List<PriceSnippet> twoWeeksPricesList = [];
+  final List<PriceSnippet> rangedPricesList = [];
   for (PriceSnippet priceSnippet in reversedPricesList) {
     final DateTime priceDate = DateFormat("dd-MM-yyyy").parse(priceSnippet.priceDate);
 
@@ -79,15 +82,27 @@ List<PriceSnippet> pricesToRanged(
       );
     }
 
-    // This means that [priceDate] is within two weeks from [todayTimeStamp]
     if (diff.inDays <= range!) {
-      twoWeeksPricesList.add(priceSnippet);
+      rangedPricesList.add(priceSnippet);
     } else {
       break;
     }
   }
 
-  return twoWeeksPricesList.reversed.toList();
+  print("Unsorted - $rangeType - Amount: ${rangedPricesList.length}");
+  printList(rangedPricesList);
+
+  rangedPricesList.sort((a, b) {
+    DateTime aPriceDate = DateFormat("dd-MM-yyyy").parse(a.priceDate);
+    DateTime bPriceDate = DateFormat("dd-MM-yyyy").parse(b.priceDate);
+
+    return aPriceDate.compareTo(bPriceDate);
+  });
+
+  print("Sorted - $rangeType - Amount: ${rangedPricesList.length}");
+  printList(rangedPricesList);
+
+  return List.from(rangedPricesList);
 }
 
 /// This method will loop through [allPricesWithDateList] and returns a new [Price] with an

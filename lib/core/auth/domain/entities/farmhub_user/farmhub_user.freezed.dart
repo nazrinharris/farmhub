@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'farmhub_user.dart';
@@ -11,30 +12,7 @@ part of 'farmhub_user.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$FarmhubUserTearOff {
-  const _$FarmhubUserTearOff();
-
-  _FarmhubUser call(
-      {required String uid,
-      required String email,
-      required String username,
-      required String createdAt,
-      required List<ProduceFavorite> produceFavoritesList}) {
-    return _FarmhubUser(
-      uid: uid,
-      email: email,
-      username: username,
-      createdAt: createdAt,
-      produceFavoritesList: produceFavoritesList,
-    );
-  }
-}
-
-/// @nodoc
-const $FarmhubUser = _$FarmhubUserTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$FarmhubUser {
@@ -105,11 +83,11 @@ class _$FarmhubUserCopyWithImpl<$Res> implements $FarmhubUserCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$FarmhubUserCopyWith<$Res>
+abstract class _$$_FarmhubUserCopyWith<$Res>
     implements $FarmhubUserCopyWith<$Res> {
-  factory _$FarmhubUserCopyWith(
-          _FarmhubUser value, $Res Function(_FarmhubUser) then) =
-      __$FarmhubUserCopyWithImpl<$Res>;
+  factory _$$_FarmhubUserCopyWith(
+          _$_FarmhubUser value, $Res Function(_$_FarmhubUser) then) =
+      __$$_FarmhubUserCopyWithImpl<$Res>;
   @override
   $Res call(
       {String uid,
@@ -120,14 +98,14 @@ abstract class _$FarmhubUserCopyWith<$Res>
 }
 
 /// @nodoc
-class __$FarmhubUserCopyWithImpl<$Res> extends _$FarmhubUserCopyWithImpl<$Res>
-    implements _$FarmhubUserCopyWith<$Res> {
-  __$FarmhubUserCopyWithImpl(
-      _FarmhubUser _value, $Res Function(_FarmhubUser) _then)
-      : super(_value, (v) => _then(v as _FarmhubUser));
+class __$$_FarmhubUserCopyWithImpl<$Res> extends _$FarmhubUserCopyWithImpl<$Res>
+    implements _$$_FarmhubUserCopyWith<$Res> {
+  __$$_FarmhubUserCopyWithImpl(
+      _$_FarmhubUser _value, $Res Function(_$_FarmhubUser) _then)
+      : super(_value, (v) => _then(v as _$_FarmhubUser));
 
   @override
-  _FarmhubUser get _value => super._value as _FarmhubUser;
+  _$_FarmhubUser get _value => super._value as _$_FarmhubUser;
 
   @override
   $Res call({
@@ -137,7 +115,7 @@ class __$FarmhubUserCopyWithImpl<$Res> extends _$FarmhubUserCopyWithImpl<$Res>
     Object? createdAt = freezed,
     Object? produceFavoritesList = freezed,
   }) {
-    return _then(_FarmhubUser(
+    return _then(_$_FarmhubUser(
       uid: uid == freezed
           ? _value.uid
           : uid // ignore: cast_nullable_to_non_nullable
@@ -155,7 +133,7 @@ class __$FarmhubUserCopyWithImpl<$Res> extends _$FarmhubUserCopyWithImpl<$Res>
           : createdAt // ignore: cast_nullable_to_non_nullable
               as String,
       produceFavoritesList: produceFavoritesList == freezed
-          ? _value.produceFavoritesList
+          ? _value._produceFavoritesList
           : produceFavoritesList // ignore: cast_nullable_to_non_nullable
               as List<ProduceFavorite>,
     ));
@@ -170,7 +148,8 @@ class _$_FarmhubUser implements _FarmhubUser {
       required this.email,
       required this.username,
       required this.createdAt,
-      required this.produceFavoritesList});
+      required final List<ProduceFavorite> produceFavoritesList})
+      : _produceFavoritesList = produceFavoritesList;
 
   @override
   final String uid;
@@ -180,8 +159,12 @@ class _$_FarmhubUser implements _FarmhubUser {
   final String username;
   @override
   final String createdAt;
+  final List<ProduceFavorite> _produceFavoritesList;
   @override
-  final List<ProduceFavorite> produceFavoritesList;
+  List<ProduceFavorite> get produceFavoritesList {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_produceFavoritesList);
+  }
 
   @override
   String toString() {
@@ -192,47 +175,52 @@ class _$_FarmhubUser implements _FarmhubUser {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _FarmhubUser &&
-            (identical(other.uid, uid) || other.uid == uid) &&
-            (identical(other.email, email) || other.email == email) &&
-            (identical(other.username, username) ||
-                other.username == username) &&
-            (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt) &&
+            other is _$_FarmhubUser &&
+            const DeepCollectionEquality().equals(other.uid, uid) &&
+            const DeepCollectionEquality().equals(other.email, email) &&
+            const DeepCollectionEquality().equals(other.username, username) &&
+            const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
             const DeepCollectionEquality()
-                .equals(other.produceFavoritesList, produceFavoritesList));
+                .equals(other._produceFavoritesList, _produceFavoritesList));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, uid, email, username, createdAt,
-      const DeepCollectionEquality().hash(produceFavoritesList));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(uid),
+      const DeepCollectionEquality().hash(email),
+      const DeepCollectionEquality().hash(username),
+      const DeepCollectionEquality().hash(createdAt),
+      const DeepCollectionEquality().hash(_produceFavoritesList));
 
   @JsonKey(ignore: true)
   @override
-  _$FarmhubUserCopyWith<_FarmhubUser> get copyWith =>
-      __$FarmhubUserCopyWithImpl<_FarmhubUser>(this, _$identity);
+  _$$_FarmhubUserCopyWith<_$_FarmhubUser> get copyWith =>
+      __$$_FarmhubUserCopyWithImpl<_$_FarmhubUser>(this, _$identity);
 }
 
 abstract class _FarmhubUser implements FarmhubUser {
   factory _FarmhubUser(
-      {required String uid,
-      required String email,
-      required String username,
-      required String createdAt,
-      required List<ProduceFavorite> produceFavoritesList}) = _$_FarmhubUser;
+          {required final String uid,
+          required final String email,
+          required final String username,
+          required final String createdAt,
+          required final List<ProduceFavorite> produceFavoritesList}) =
+      _$_FarmhubUser;
 
   @override
-  String get uid;
+  String get uid => throw _privateConstructorUsedError;
   @override
-  String get email;
+  String get email => throw _privateConstructorUsedError;
   @override
-  String get username;
+  String get username => throw _privateConstructorUsedError;
   @override
-  String get createdAt;
+  String get createdAt => throw _privateConstructorUsedError;
   @override
-  List<ProduceFavorite> get produceFavoritesList;
+  List<ProduceFavorite> get produceFavoritesList =>
+      throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$FarmhubUserCopyWith<_FarmhubUser> get copyWith =>
+  _$$_FarmhubUserCopyWith<_$_FarmhubUser> get copyWith =>
       throw _privateConstructorUsedError;
 }

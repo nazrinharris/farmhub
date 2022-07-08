@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:farmhub/core/auth/domain/entities/farmhub_user/farmhub_user.dart';
 import 'package:farmhub/core/auth/domain/i_auth_repository.dart';
 import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
-import 'package:farmhub/core/constants/app_const.dart';
+import 'package:farmhub/core/util/app_const.dart';
 import 'package:farmhub/core/errors/exceptions.dart';
 import 'package:farmhub/core/errors/failures.dart';
 import 'package:farmhub/core/network/network_info.dart';
@@ -39,24 +39,27 @@ class ProduceManagerRepository implements IProduceManagerRepository {
     if (isConnected) {
       try {
         final firstTenProduce = await remoteDatasource.getFirstTenProduce();
+        await localDatasource.storeProduceList(firstTenProduce);
+
         return Right(firstTenProduce);
-      } catch (e) {
+      } catch (e, stack) {
         return Left(
           UnexpectedFailure(
             code: (ProduceManagerRepositoryCode + 'getFirstTenProduce()'),
             message: e.toString(),
-            stackTrace: StackTrace.current,
+            stackTrace: stack,
           ),
         );
       }
     } else {
-      return Left(
-        InternetConnectionFailure(
-          code: ProduceManagerRepositoryCode + ERROR_NO_INTERNET_CONNECTION,
-          message: MESSAGE_NO_INTERNET_CONNECTION,
-          stackTrace: StackTrace.current,
-        ),
-      );
+      print("Not connected - getFirstTenProduce()");
+      try {
+        final produceList = await localDatasource.retrieveProduceList();
+
+        return Right(produceList);
+      } catch (e, stack) {
+        return Left(UnexpectedFailure(message: e.toString(), stackTrace: stack));
+      }
     }
   }
 
@@ -65,17 +68,21 @@ class ProduceManagerRepository implements IProduceManagerRepository {
     if (await networkInfo.isConnected) {
       try {
         final newProduceList = await remoteDatasource.getNextTenProduce(lastProduceList);
+        await localDatasource.storeProduceList(newProduceList);
 
         return Right(newProduceList);
       } catch (e) {
         return Left(ProduceManagerFailure(code: e.toString(), stackTrace: StackTrace.current));
       }
     } else {
-      return Left(InternetConnectionFailure(
-        code: ERROR_NO_INTERNET_CONNECTION,
-        message: MESSAGE_NO_INTERNET_CONNECTION,
-        stackTrace: StackTrace.current,
-      ));
+      print("Not connected - getNextTenProduce()");
+      try {
+        final produceList = await localDatasource.retrieveProduceList();
+
+        return Right(produceList);
+      } catch (e, stack) {
+        return Left(UnexpectedFailure(message: e.toString(), stackTrace: stack));
+      }
     }
   }
 
@@ -171,6 +178,12 @@ class ProduceManagerRepository implements IProduceManagerRepository {
           message: e.message,
           code: e.code,
           stackTrace: StackTrace.current,
+        ));
+      } on ProduceManagerException catch (e) {
+        return Left(UnexpectedFailure(
+          message: e.message,
+          code: e.code,
+          stackTrace: e.stackTrace,
         ));
       } catch (e) {
         return Left(UnexpectedFailure(
@@ -457,6 +470,8 @@ class ProduceManagerRepository implements IProduceManagerRepository {
   FutureEither<FarmhubUser> addToFavorites(FarmhubUser farmhubUser, String produceId) async {
     if (await networkInfo.isConnected) {
       try {
+        await Future.delayed(Duration(seconds: 1));
+
         final updatedFarmhubUser = await remoteDatasource.addToFavorites(farmhubUser, produceId);
         globalAuthCubit.updateFarmhubUser(updatedFarmhubUser);
 
@@ -557,6 +572,7 @@ class ProduceManagerRepository implements IProduceManagerRepository {
             globalAuthCubit.updateFarmhubUser(farmhubUser);
           }
 
+          await localDatasource.storeProduceFavorites(retrievedProduceFavoritesList);
           return retrievedProduceFavoritesList;
         });
 
@@ -571,11 +587,14 @@ class ProduceManagerRepository implements IProduceManagerRepository {
         return Left(UnexpectedFailure(code: e.toString(), stackTrace: stack));
       }
     } else {
-      return Left(InternetConnectionFailure(
-        code: ERROR_NO_INTERNET_CONNECTION,
-        message: MESSAGE_NO_INTERNET_CONNECTION,
-        stackTrace: StackTrace.current,
-      ));
+      print("Not connected - getFirstTenProduce()");
+      try {
+        final produceList = await localDatasource.retrieveProduceFavorites();
+
+        return Right(produceList);
+      } catch (e, stack) {
+        return Left(UnexpectedFailure(message: e.toString(), stackTrace: stack));
+      }
     }
   }
 }

@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'favorites_screen_cubit.dart';
@@ -11,45 +12,11 @@ part of 'favorites_screen_cubit.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$FavoritesScreenStateTearOff {
-  const _$FavoritesScreenStateTearOff();
-
-  FSInitial initial(List<Produce> produceFavoritesList) {
-    return FSInitial(
-      produceFavoritesList,
-    );
-  }
-
-  FSLoading loading(List<Produce> produceFavoritesList) {
-    return FSLoading(
-      produceFavoritesList,
-    );
-  }
-
-  FSComplete complete(List<Produce> produceFavoritesList) {
-    return FSComplete(
-      produceFavoritesList,
-    );
-  }
-
-  FSError error(List<Produce> produceFavoritesList, Failure failure) {
-    return FSError(
-      produceFavoritesList,
-      failure,
-    );
-  }
-}
-
-/// @nodoc
-const $FavoritesScreenState = _$FavoritesScreenStateTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$FavoritesScreenState {
   List<Produce> get produceFavoritesList => throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(List<Produce> produceFavoritesList) initial,
@@ -141,31 +108,33 @@ class _$FavoritesScreenStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class $FSInitialCopyWith<$Res>
+abstract class _$$FSInitialCopyWith<$Res>
     implements $FavoritesScreenStateCopyWith<$Res> {
-  factory $FSInitialCopyWith(FSInitial value, $Res Function(FSInitial) then) =
-      _$FSInitialCopyWithImpl<$Res>;
+  factory _$$FSInitialCopyWith(
+          _$FSInitial value, $Res Function(_$FSInitial) then) =
+      __$$FSInitialCopyWithImpl<$Res>;
   @override
   $Res call({List<Produce> produceFavoritesList});
 }
 
 /// @nodoc
-class _$FSInitialCopyWithImpl<$Res>
+class __$$FSInitialCopyWithImpl<$Res>
     extends _$FavoritesScreenStateCopyWithImpl<$Res>
-    implements $FSInitialCopyWith<$Res> {
-  _$FSInitialCopyWithImpl(FSInitial _value, $Res Function(FSInitial) _then)
-      : super(_value, (v) => _then(v as FSInitial));
+    implements _$$FSInitialCopyWith<$Res> {
+  __$$FSInitialCopyWithImpl(
+      _$FSInitial _value, $Res Function(_$FSInitial) _then)
+      : super(_value, (v) => _then(v as _$FSInitial));
 
   @override
-  FSInitial get _value => super._value as FSInitial;
+  _$FSInitial get _value => super._value as _$FSInitial;
 
   @override
   $Res call({
     Object? produceFavoritesList = freezed,
   }) {
-    return _then(FSInitial(
+    return _then(_$FSInitial(
       produceFavoritesList == freezed
-          ? _value.produceFavoritesList
+          ? _value._produceFavoritesList
           : produceFavoritesList // ignore: cast_nullable_to_non_nullable
               as List<Produce>,
     ));
@@ -175,10 +144,15 @@ class _$FSInitialCopyWithImpl<$Res>
 /// @nodoc
 
 class _$FSInitial implements FSInitial {
-  const _$FSInitial(this.produceFavoritesList);
+  const _$FSInitial(final List<Produce> produceFavoritesList)
+      : _produceFavoritesList = produceFavoritesList;
 
+  final List<Produce> _produceFavoritesList;
   @override
-  final List<Produce> produceFavoritesList;
+  List<Produce> get produceFavoritesList {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_produceFavoritesList);
+  }
 
   @override
   String toString() {
@@ -189,19 +163,19 @@ class _$FSInitial implements FSInitial {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is FSInitial &&
+            other is _$FSInitial &&
             const DeepCollectionEquality()
-                .equals(other.produceFavoritesList, produceFavoritesList));
+                .equals(other._produceFavoritesList, _produceFavoritesList));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(produceFavoritesList));
+      runtimeType, const DeepCollectionEquality().hash(_produceFavoritesList));
 
   @JsonKey(ignore: true)
   @override
-  $FSInitialCopyWith<FSInitial> get copyWith =>
-      _$FSInitialCopyWithImpl<FSInitial>(this, _$identity);
+  _$$FSInitialCopyWith<_$FSInitial> get copyWith =>
+      __$$FSInitialCopyWithImpl<_$FSInitial>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -283,42 +257,45 @@ class _$FSInitial implements FSInitial {
 }
 
 abstract class FSInitial implements FavoritesScreenState {
-  const factory FSInitial(List<Produce> produceFavoritesList) = _$FSInitial;
+  const factory FSInitial(final List<Produce> produceFavoritesList) =
+      _$FSInitial;
 
   @override
-  List<Produce> get produceFavoritesList;
+  List<Produce> get produceFavoritesList => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  $FSInitialCopyWith<FSInitial> get copyWith =>
+  _$$FSInitialCopyWith<_$FSInitial> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $FSLoadingCopyWith<$Res>
+abstract class _$$FSLoadingCopyWith<$Res>
     implements $FavoritesScreenStateCopyWith<$Res> {
-  factory $FSLoadingCopyWith(FSLoading value, $Res Function(FSLoading) then) =
-      _$FSLoadingCopyWithImpl<$Res>;
+  factory _$$FSLoadingCopyWith(
+          _$FSLoading value, $Res Function(_$FSLoading) then) =
+      __$$FSLoadingCopyWithImpl<$Res>;
   @override
   $Res call({List<Produce> produceFavoritesList});
 }
 
 /// @nodoc
-class _$FSLoadingCopyWithImpl<$Res>
+class __$$FSLoadingCopyWithImpl<$Res>
     extends _$FavoritesScreenStateCopyWithImpl<$Res>
-    implements $FSLoadingCopyWith<$Res> {
-  _$FSLoadingCopyWithImpl(FSLoading _value, $Res Function(FSLoading) _then)
-      : super(_value, (v) => _then(v as FSLoading));
+    implements _$$FSLoadingCopyWith<$Res> {
+  __$$FSLoadingCopyWithImpl(
+      _$FSLoading _value, $Res Function(_$FSLoading) _then)
+      : super(_value, (v) => _then(v as _$FSLoading));
 
   @override
-  FSLoading get _value => super._value as FSLoading;
+  _$FSLoading get _value => super._value as _$FSLoading;
 
   @override
   $Res call({
     Object? produceFavoritesList = freezed,
   }) {
-    return _then(FSLoading(
+    return _then(_$FSLoading(
       produceFavoritesList == freezed
-          ? _value.produceFavoritesList
+          ? _value._produceFavoritesList
           : produceFavoritesList // ignore: cast_nullable_to_non_nullable
               as List<Produce>,
     ));
@@ -328,10 +305,15 @@ class _$FSLoadingCopyWithImpl<$Res>
 /// @nodoc
 
 class _$FSLoading implements FSLoading {
-  const _$FSLoading(this.produceFavoritesList);
+  const _$FSLoading(final List<Produce> produceFavoritesList)
+      : _produceFavoritesList = produceFavoritesList;
 
+  final List<Produce> _produceFavoritesList;
   @override
-  final List<Produce> produceFavoritesList;
+  List<Produce> get produceFavoritesList {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_produceFavoritesList);
+  }
 
   @override
   String toString() {
@@ -342,19 +324,19 @@ class _$FSLoading implements FSLoading {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is FSLoading &&
+            other is _$FSLoading &&
             const DeepCollectionEquality()
-                .equals(other.produceFavoritesList, produceFavoritesList));
+                .equals(other._produceFavoritesList, _produceFavoritesList));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(produceFavoritesList));
+      runtimeType, const DeepCollectionEquality().hash(_produceFavoritesList));
 
   @JsonKey(ignore: true)
   @override
-  $FSLoadingCopyWith<FSLoading> get copyWith =>
-      _$FSLoadingCopyWithImpl<FSLoading>(this, _$identity);
+  _$$FSLoadingCopyWith<_$FSLoading> get copyWith =>
+      __$$FSLoadingCopyWithImpl<_$FSLoading>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -436,43 +418,45 @@ class _$FSLoading implements FSLoading {
 }
 
 abstract class FSLoading implements FavoritesScreenState {
-  const factory FSLoading(List<Produce> produceFavoritesList) = _$FSLoading;
+  const factory FSLoading(final List<Produce> produceFavoritesList) =
+      _$FSLoading;
 
   @override
-  List<Produce> get produceFavoritesList;
+  List<Produce> get produceFavoritesList => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  $FSLoadingCopyWith<FSLoading> get copyWith =>
+  _$$FSLoadingCopyWith<_$FSLoading> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $FSCompleteCopyWith<$Res>
+abstract class _$$FSCompleteCopyWith<$Res>
     implements $FavoritesScreenStateCopyWith<$Res> {
-  factory $FSCompleteCopyWith(
-          FSComplete value, $Res Function(FSComplete) then) =
-      _$FSCompleteCopyWithImpl<$Res>;
+  factory _$$FSCompleteCopyWith(
+          _$FSComplete value, $Res Function(_$FSComplete) then) =
+      __$$FSCompleteCopyWithImpl<$Res>;
   @override
   $Res call({List<Produce> produceFavoritesList});
 }
 
 /// @nodoc
-class _$FSCompleteCopyWithImpl<$Res>
+class __$$FSCompleteCopyWithImpl<$Res>
     extends _$FavoritesScreenStateCopyWithImpl<$Res>
-    implements $FSCompleteCopyWith<$Res> {
-  _$FSCompleteCopyWithImpl(FSComplete _value, $Res Function(FSComplete) _then)
-      : super(_value, (v) => _then(v as FSComplete));
+    implements _$$FSCompleteCopyWith<$Res> {
+  __$$FSCompleteCopyWithImpl(
+      _$FSComplete _value, $Res Function(_$FSComplete) _then)
+      : super(_value, (v) => _then(v as _$FSComplete));
 
   @override
-  FSComplete get _value => super._value as FSComplete;
+  _$FSComplete get _value => super._value as _$FSComplete;
 
   @override
   $Res call({
     Object? produceFavoritesList = freezed,
   }) {
-    return _then(FSComplete(
+    return _then(_$FSComplete(
       produceFavoritesList == freezed
-          ? _value.produceFavoritesList
+          ? _value._produceFavoritesList
           : produceFavoritesList // ignore: cast_nullable_to_non_nullable
               as List<Produce>,
     ));
@@ -482,10 +466,15 @@ class _$FSCompleteCopyWithImpl<$Res>
 /// @nodoc
 
 class _$FSComplete implements FSComplete {
-  const _$FSComplete(this.produceFavoritesList);
+  const _$FSComplete(final List<Produce> produceFavoritesList)
+      : _produceFavoritesList = produceFavoritesList;
 
+  final List<Produce> _produceFavoritesList;
   @override
-  final List<Produce> produceFavoritesList;
+  List<Produce> get produceFavoritesList {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_produceFavoritesList);
+  }
 
   @override
   String toString() {
@@ -496,19 +485,19 @@ class _$FSComplete implements FSComplete {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is FSComplete &&
+            other is _$FSComplete &&
             const DeepCollectionEquality()
-                .equals(other.produceFavoritesList, produceFavoritesList));
+                .equals(other._produceFavoritesList, _produceFavoritesList));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(produceFavoritesList));
+      runtimeType, const DeepCollectionEquality().hash(_produceFavoritesList));
 
   @JsonKey(ignore: true)
   @override
-  $FSCompleteCopyWith<FSComplete> get copyWith =>
-      _$FSCompleteCopyWithImpl<FSComplete>(this, _$identity);
+  _$$FSCompleteCopyWith<_$FSComplete> get copyWith =>
+      __$$FSCompleteCopyWithImpl<_$FSComplete>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -590,43 +579,44 @@ class _$FSComplete implements FSComplete {
 }
 
 abstract class FSComplete implements FavoritesScreenState {
-  const factory FSComplete(List<Produce> produceFavoritesList) = _$FSComplete;
+  const factory FSComplete(final List<Produce> produceFavoritesList) =
+      _$FSComplete;
 
   @override
-  List<Produce> get produceFavoritesList;
+  List<Produce> get produceFavoritesList => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  $FSCompleteCopyWith<FSComplete> get copyWith =>
+  _$$FSCompleteCopyWith<_$FSComplete> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $FSErrorCopyWith<$Res>
+abstract class _$$FSErrorCopyWith<$Res>
     implements $FavoritesScreenStateCopyWith<$Res> {
-  factory $FSErrorCopyWith(FSError value, $Res Function(FSError) then) =
-      _$FSErrorCopyWithImpl<$Res>;
+  factory _$$FSErrorCopyWith(_$FSError value, $Res Function(_$FSError) then) =
+      __$$FSErrorCopyWithImpl<$Res>;
   @override
   $Res call({List<Produce> produceFavoritesList, Failure failure});
 }
 
 /// @nodoc
-class _$FSErrorCopyWithImpl<$Res>
+class __$$FSErrorCopyWithImpl<$Res>
     extends _$FavoritesScreenStateCopyWithImpl<$Res>
-    implements $FSErrorCopyWith<$Res> {
-  _$FSErrorCopyWithImpl(FSError _value, $Res Function(FSError) _then)
-      : super(_value, (v) => _then(v as FSError));
+    implements _$$FSErrorCopyWith<$Res> {
+  __$$FSErrorCopyWithImpl(_$FSError _value, $Res Function(_$FSError) _then)
+      : super(_value, (v) => _then(v as _$FSError));
 
   @override
-  FSError get _value => super._value as FSError;
+  _$FSError get _value => super._value as _$FSError;
 
   @override
   $Res call({
     Object? produceFavoritesList = freezed,
     Object? failure = freezed,
   }) {
-    return _then(FSError(
+    return _then(_$FSError(
       produceFavoritesList == freezed
-          ? _value.produceFavoritesList
+          ? _value._produceFavoritesList
           : produceFavoritesList // ignore: cast_nullable_to_non_nullable
               as List<Produce>,
       failure == freezed
@@ -640,10 +630,16 @@ class _$FSErrorCopyWithImpl<$Res>
 /// @nodoc
 
 class _$FSError implements FSError {
-  const _$FSError(this.produceFavoritesList, this.failure);
+  const _$FSError(final List<Produce> produceFavoritesList, this.failure)
+      : _produceFavoritesList = produceFavoritesList;
 
+  final List<Produce> _produceFavoritesList;
   @override
-  final List<Produce> produceFavoritesList;
+  List<Produce> get produceFavoritesList {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_produceFavoritesList);
+  }
+
   @override
   final Failure failure;
 
@@ -656,20 +652,22 @@ class _$FSError implements FSError {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is FSError &&
+            other is _$FSError &&
             const DeepCollectionEquality()
-                .equals(other.produceFavoritesList, produceFavoritesList) &&
-            (identical(other.failure, failure) || other.failure == failure));
+                .equals(other._produceFavoritesList, _produceFavoritesList) &&
+            const DeepCollectionEquality().equals(other.failure, failure));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(produceFavoritesList), failure);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_produceFavoritesList),
+      const DeepCollectionEquality().hash(failure));
 
   @JsonKey(ignore: true)
   @override
-  $FSErrorCopyWith<FSError> get copyWith =>
-      _$FSErrorCopyWithImpl<FSError>(this, _$identity);
+  _$$FSErrorCopyWith<_$FSError> get copyWith =>
+      __$$FSErrorCopyWithImpl<_$FSError>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -751,13 +749,15 @@ class _$FSError implements FSError {
 }
 
 abstract class FSError implements FavoritesScreenState {
-  const factory FSError(List<Produce> produceFavoritesList, Failure failure) =
+  const factory FSError(
+          final List<Produce> produceFavoritesList, final Failure failure) =
       _$FSError;
 
   @override
-  List<Produce> get produceFavoritesList;
-  Failure get failure;
+  List<Produce> get produceFavoritesList => throw _privateConstructorUsedError;
+  Failure get failure => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  $FSErrorCopyWith<FSError> get copyWith => throw _privateConstructorUsedError;
+  _$$FSErrorCopyWith<_$FSError> get copyWith =>
+      throw _privateConstructorUsedError;
 }

@@ -6,7 +6,7 @@ import '../../../../../core/errors/exceptions.dart';
 
 part 'price.freezed.dart';
 
-@freezed
+@Freezed(makeCollectionsUnmodifiable: false)
 class Price with _$Price {
   factory Price({
     required num currentPrice,

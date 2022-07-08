@@ -4,5 +4,6 @@ part of 'create_produce_screen_bloc.dart';
 class CreateProduceScreenEvent with _$CreateProduceScreenEvent {
   const factory CreateProduceScreenEvent.started() = _Started;
 
-  const factory CreateProduceScreenEvent.execCreateNewProduce() = _CPSEExecCreateNewProduce;
+  const factory CreateProduceScreenEvent.execCreateNewProduce(BuildContext context) =
+      _CPSEExecCreateNewProduce;
 }

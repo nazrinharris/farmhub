@@ -192,14 +192,19 @@ class AllPriceListCard extends StatefulWidget {
 
 class _AllPriceListCardState extends State<AllPriceListCard> {
   @override
-  Widget build(BuildContext context) {
+  void initState() {
+    super.initState();
+
     widget.price.allPricesWithDateList.sort((a, b) {
       DateTime aPriceDate = DateFormat("yyyy-MM-dd hh:mm:ss aaa").parse(a.priceDate);
       DateTime bPriceDate = DateFormat("yyyy-MM-dd hh:mm:ss aaa").parse(b.priceDate);
 
       return bPriceDate.compareTo(aPriceDate);
     });
+  }
 
+  @override
+  Widget build(BuildContext context) {
     final subPriceDate = widget.price.allPricesWithDateList[widget.index].priceDate;
     final dateTimeStamp = DateFormat("yyyy-MM-dd hh:mm:ss aaa").parse(
       widget.price.allPricesWithDateList[widget.index].priceDate,

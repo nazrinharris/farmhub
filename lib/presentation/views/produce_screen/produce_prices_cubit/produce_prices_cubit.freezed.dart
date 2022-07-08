@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'produce_prices_cubit.dart';
@@ -11,57 +12,11 @@ part of 'produce_prices_cubit.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$ProducePricesStateTearOff {
-  const _$ProducePricesStateTearOff();
-
-  PPSInitial initial(List<Price> pricesList) {
-    return PPSInitial(
-      pricesList,
-    );
-  }
-
-  PPSFirstTenPricesLoading firstTenPricesLoading(List<Price> pricesList) {
-    return PPSFirstTenPricesLoading(
-      pricesList,
-    );
-  }
-
-  PPSFirstTenPricesCompleted firstTenPricesCompleted(List<Price> pricesList) {
-    return PPSFirstTenPricesCompleted(
-      pricesList,
-    );
-  }
-
-  PPSNextTenPricesLoading nextTenPricesLoading(List<Price> pricesList) {
-    return PPSNextTenPricesLoading(
-      pricesList,
-    );
-  }
-
-  PPSNextTenPricesCompleted nextTenPricesCompleted(List<Price> pricesList) {
-    return PPSNextTenPricesCompleted(
-      pricesList,
-    );
-  }
-
-  PPSPricesError pricesError(List<Price> pricesList, Failure failure) {
-    return PPSPricesError(
-      pricesList,
-      failure,
-    );
-  }
-}
-
-/// @nodoc
-const $ProducePricesState = _$ProducePricesStateTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$ProducePricesState {
   List<Price> get pricesList => throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(List<Price> pricesList) initial,
@@ -166,32 +121,33 @@ class _$ProducePricesStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class $PPSInitialCopyWith<$Res>
+abstract class _$$PPSInitialCopyWith<$Res>
     implements $ProducePricesStateCopyWith<$Res> {
-  factory $PPSInitialCopyWith(
-          PPSInitial value, $Res Function(PPSInitial) then) =
-      _$PPSInitialCopyWithImpl<$Res>;
+  factory _$$PPSInitialCopyWith(
+          _$PPSInitial value, $Res Function(_$PPSInitial) then) =
+      __$$PPSInitialCopyWithImpl<$Res>;
   @override
   $Res call({List<Price> pricesList});
 }
 
 /// @nodoc
-class _$PPSInitialCopyWithImpl<$Res>
+class __$$PPSInitialCopyWithImpl<$Res>
     extends _$ProducePricesStateCopyWithImpl<$Res>
-    implements $PPSInitialCopyWith<$Res> {
-  _$PPSInitialCopyWithImpl(PPSInitial _value, $Res Function(PPSInitial) _then)
-      : super(_value, (v) => _then(v as PPSInitial));
+    implements _$$PPSInitialCopyWith<$Res> {
+  __$$PPSInitialCopyWithImpl(
+      _$PPSInitial _value, $Res Function(_$PPSInitial) _then)
+      : super(_value, (v) => _then(v as _$PPSInitial));
 
   @override
-  PPSInitial get _value => super._value as PPSInitial;
+  _$PPSInitial get _value => super._value as _$PPSInitial;
 
   @override
   $Res call({
     Object? pricesList = freezed,
   }) {
-    return _then(PPSInitial(
+    return _then(_$PPSInitial(
       pricesList == freezed
-          ? _value.pricesList
+          ? _value._pricesList
           : pricesList // ignore: cast_nullable_to_non_nullable
               as List<Price>,
     ));
@@ -201,10 +157,14 @@ class _$PPSInitialCopyWithImpl<$Res>
 /// @nodoc
 
 class _$PPSInitial implements PPSInitial {
-  const _$PPSInitial(this.pricesList);
+  const _$PPSInitial(final List<Price> pricesList) : _pricesList = pricesList;
 
+  final List<Price> _pricesList;
   @override
-  final List<Price> pricesList;
+  List<Price> get pricesList {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_pricesList);
+  }
 
   @override
   String toString() {
@@ -215,19 +175,19 @@ class _$PPSInitial implements PPSInitial {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is PPSInitial &&
+            other is _$PPSInitial &&
             const DeepCollectionEquality()
-                .equals(other.pricesList, pricesList));
+                .equals(other._pricesList, _pricesList));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(pricesList));
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_pricesList));
 
   @JsonKey(ignore: true)
   @override
-  $PPSInitialCopyWith<PPSInitial> get copyWith =>
-      _$PPSInitialCopyWithImpl<PPSInitial>(this, _$identity);
+  _$$PPSInitialCopyWith<_$PPSInitial> get copyWith =>
+      __$$PPSInitialCopyWithImpl<_$PPSInitial>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -322,45 +282,45 @@ class _$PPSInitial implements PPSInitial {
 }
 
 abstract class PPSInitial implements ProducePricesState {
-  const factory PPSInitial(List<Price> pricesList) = _$PPSInitial;
+  const factory PPSInitial(final List<Price> pricesList) = _$PPSInitial;
 
   @override
-  List<Price> get pricesList;
+  List<Price> get pricesList => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  $PPSInitialCopyWith<PPSInitial> get copyWith =>
+  _$$PPSInitialCopyWith<_$PPSInitial> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $PPSFirstTenPricesLoadingCopyWith<$Res>
+abstract class _$$PPSFirstTenPricesLoadingCopyWith<$Res>
     implements $ProducePricesStateCopyWith<$Res> {
-  factory $PPSFirstTenPricesLoadingCopyWith(PPSFirstTenPricesLoading value,
-          $Res Function(PPSFirstTenPricesLoading) then) =
-      _$PPSFirstTenPricesLoadingCopyWithImpl<$Res>;
+  factory _$$PPSFirstTenPricesLoadingCopyWith(_$PPSFirstTenPricesLoading value,
+          $Res Function(_$PPSFirstTenPricesLoading) then) =
+      __$$PPSFirstTenPricesLoadingCopyWithImpl<$Res>;
   @override
   $Res call({List<Price> pricesList});
 }
 
 /// @nodoc
-class _$PPSFirstTenPricesLoadingCopyWithImpl<$Res>
+class __$$PPSFirstTenPricesLoadingCopyWithImpl<$Res>
     extends _$ProducePricesStateCopyWithImpl<$Res>
-    implements $PPSFirstTenPricesLoadingCopyWith<$Res> {
-  _$PPSFirstTenPricesLoadingCopyWithImpl(PPSFirstTenPricesLoading _value,
-      $Res Function(PPSFirstTenPricesLoading) _then)
-      : super(_value, (v) => _then(v as PPSFirstTenPricesLoading));
+    implements _$$PPSFirstTenPricesLoadingCopyWith<$Res> {
+  __$$PPSFirstTenPricesLoadingCopyWithImpl(_$PPSFirstTenPricesLoading _value,
+      $Res Function(_$PPSFirstTenPricesLoading) _then)
+      : super(_value, (v) => _then(v as _$PPSFirstTenPricesLoading));
 
   @override
-  PPSFirstTenPricesLoading get _value =>
-      super._value as PPSFirstTenPricesLoading;
+  _$PPSFirstTenPricesLoading get _value =>
+      super._value as _$PPSFirstTenPricesLoading;
 
   @override
   $Res call({
     Object? pricesList = freezed,
   }) {
-    return _then(PPSFirstTenPricesLoading(
+    return _then(_$PPSFirstTenPricesLoading(
       pricesList == freezed
-          ? _value.pricesList
+          ? _value._pricesList
           : pricesList // ignore: cast_nullable_to_non_nullable
               as List<Price>,
     ));
@@ -370,10 +330,15 @@ class _$PPSFirstTenPricesLoadingCopyWithImpl<$Res>
 /// @nodoc
 
 class _$PPSFirstTenPricesLoading implements PPSFirstTenPricesLoading {
-  const _$PPSFirstTenPricesLoading(this.pricesList);
+  const _$PPSFirstTenPricesLoading(final List<Price> pricesList)
+      : _pricesList = pricesList;
 
+  final List<Price> _pricesList;
   @override
-  final List<Price> pricesList;
+  List<Price> get pricesList {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_pricesList);
+  }
 
   @override
   String toString() {
@@ -384,20 +349,21 @@ class _$PPSFirstTenPricesLoading implements PPSFirstTenPricesLoading {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is PPSFirstTenPricesLoading &&
+            other is _$PPSFirstTenPricesLoading &&
             const DeepCollectionEquality()
-                .equals(other.pricesList, pricesList));
+                .equals(other._pricesList, _pricesList));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(pricesList));
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_pricesList));
 
   @JsonKey(ignore: true)
   @override
-  $PPSFirstTenPricesLoadingCopyWith<PPSFirstTenPricesLoading> get copyWith =>
-      _$PPSFirstTenPricesLoadingCopyWithImpl<PPSFirstTenPricesLoading>(
-          this, _$identity);
+  _$$PPSFirstTenPricesLoadingCopyWith<_$PPSFirstTenPricesLoading>
+      get copyWith =>
+          __$$PPSFirstTenPricesLoadingCopyWithImpl<_$PPSFirstTenPricesLoading>(
+              this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -492,46 +458,48 @@ class _$PPSFirstTenPricesLoading implements PPSFirstTenPricesLoading {
 }
 
 abstract class PPSFirstTenPricesLoading implements ProducePricesState {
-  const factory PPSFirstTenPricesLoading(List<Price> pricesList) =
+  const factory PPSFirstTenPricesLoading(final List<Price> pricesList) =
       _$PPSFirstTenPricesLoading;
 
   @override
-  List<Price> get pricesList;
+  List<Price> get pricesList => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  $PPSFirstTenPricesLoadingCopyWith<PPSFirstTenPricesLoading> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$PPSFirstTenPricesLoadingCopyWith<_$PPSFirstTenPricesLoading>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $PPSFirstTenPricesCompletedCopyWith<$Res>
+abstract class _$$PPSFirstTenPricesCompletedCopyWith<$Res>
     implements $ProducePricesStateCopyWith<$Res> {
-  factory $PPSFirstTenPricesCompletedCopyWith(PPSFirstTenPricesCompleted value,
-          $Res Function(PPSFirstTenPricesCompleted) then) =
-      _$PPSFirstTenPricesCompletedCopyWithImpl<$Res>;
+  factory _$$PPSFirstTenPricesCompletedCopyWith(
+          _$PPSFirstTenPricesCompleted value,
+          $Res Function(_$PPSFirstTenPricesCompleted) then) =
+      __$$PPSFirstTenPricesCompletedCopyWithImpl<$Res>;
   @override
   $Res call({List<Price> pricesList});
 }
 
 /// @nodoc
-class _$PPSFirstTenPricesCompletedCopyWithImpl<$Res>
+class __$$PPSFirstTenPricesCompletedCopyWithImpl<$Res>
     extends _$ProducePricesStateCopyWithImpl<$Res>
-    implements $PPSFirstTenPricesCompletedCopyWith<$Res> {
-  _$PPSFirstTenPricesCompletedCopyWithImpl(PPSFirstTenPricesCompleted _value,
-      $Res Function(PPSFirstTenPricesCompleted) _then)
-      : super(_value, (v) => _then(v as PPSFirstTenPricesCompleted));
+    implements _$$PPSFirstTenPricesCompletedCopyWith<$Res> {
+  __$$PPSFirstTenPricesCompletedCopyWithImpl(
+      _$PPSFirstTenPricesCompleted _value,
+      $Res Function(_$PPSFirstTenPricesCompleted) _then)
+      : super(_value, (v) => _then(v as _$PPSFirstTenPricesCompleted));
 
   @override
-  PPSFirstTenPricesCompleted get _value =>
-      super._value as PPSFirstTenPricesCompleted;
+  _$PPSFirstTenPricesCompleted get _value =>
+      super._value as _$PPSFirstTenPricesCompleted;
 
   @override
   $Res call({
     Object? pricesList = freezed,
   }) {
-    return _then(PPSFirstTenPricesCompleted(
+    return _then(_$PPSFirstTenPricesCompleted(
       pricesList == freezed
-          ? _value.pricesList
+          ? _value._pricesList
           : pricesList // ignore: cast_nullable_to_non_nullable
               as List<Price>,
     ));
@@ -541,10 +509,15 @@ class _$PPSFirstTenPricesCompletedCopyWithImpl<$Res>
 /// @nodoc
 
 class _$PPSFirstTenPricesCompleted implements PPSFirstTenPricesCompleted {
-  const _$PPSFirstTenPricesCompleted(this.pricesList);
+  const _$PPSFirstTenPricesCompleted(final List<Price> pricesList)
+      : _pricesList = pricesList;
 
+  final List<Price> _pricesList;
   @override
-  final List<Price> pricesList;
+  List<Price> get pricesList {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_pricesList);
+  }
 
   @override
   String toString() {
@@ -555,21 +528,20 @@ class _$PPSFirstTenPricesCompleted implements PPSFirstTenPricesCompleted {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is PPSFirstTenPricesCompleted &&
+            other is _$PPSFirstTenPricesCompleted &&
             const DeepCollectionEquality()
-                .equals(other.pricesList, pricesList));
+                .equals(other._pricesList, _pricesList));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(pricesList));
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_pricesList));
 
   @JsonKey(ignore: true)
   @override
-  $PPSFirstTenPricesCompletedCopyWith<PPSFirstTenPricesCompleted>
-      get copyWith =>
-          _$PPSFirstTenPricesCompletedCopyWithImpl<PPSFirstTenPricesCompleted>(
-              this, _$identity);
+  _$$PPSFirstTenPricesCompletedCopyWith<_$PPSFirstTenPricesCompleted>
+      get copyWith => __$$PPSFirstTenPricesCompletedCopyWithImpl<
+          _$PPSFirstTenPricesCompleted>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -664,45 +636,46 @@ class _$PPSFirstTenPricesCompleted implements PPSFirstTenPricesCompleted {
 }
 
 abstract class PPSFirstTenPricesCompleted implements ProducePricesState {
-  const factory PPSFirstTenPricesCompleted(List<Price> pricesList) =
+  const factory PPSFirstTenPricesCompleted(final List<Price> pricesList) =
       _$PPSFirstTenPricesCompleted;
 
   @override
-  List<Price> get pricesList;
+  List<Price> get pricesList => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  $PPSFirstTenPricesCompletedCopyWith<PPSFirstTenPricesCompleted>
+  _$$PPSFirstTenPricesCompletedCopyWith<_$PPSFirstTenPricesCompleted>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $PPSNextTenPricesLoadingCopyWith<$Res>
+abstract class _$$PPSNextTenPricesLoadingCopyWith<$Res>
     implements $ProducePricesStateCopyWith<$Res> {
-  factory $PPSNextTenPricesLoadingCopyWith(PPSNextTenPricesLoading value,
-          $Res Function(PPSNextTenPricesLoading) then) =
-      _$PPSNextTenPricesLoadingCopyWithImpl<$Res>;
+  factory _$$PPSNextTenPricesLoadingCopyWith(_$PPSNextTenPricesLoading value,
+          $Res Function(_$PPSNextTenPricesLoading) then) =
+      __$$PPSNextTenPricesLoadingCopyWithImpl<$Res>;
   @override
   $Res call({List<Price> pricesList});
 }
 
 /// @nodoc
-class _$PPSNextTenPricesLoadingCopyWithImpl<$Res>
+class __$$PPSNextTenPricesLoadingCopyWithImpl<$Res>
     extends _$ProducePricesStateCopyWithImpl<$Res>
-    implements $PPSNextTenPricesLoadingCopyWith<$Res> {
-  _$PPSNextTenPricesLoadingCopyWithImpl(PPSNextTenPricesLoading _value,
-      $Res Function(PPSNextTenPricesLoading) _then)
-      : super(_value, (v) => _then(v as PPSNextTenPricesLoading));
+    implements _$$PPSNextTenPricesLoadingCopyWith<$Res> {
+  __$$PPSNextTenPricesLoadingCopyWithImpl(_$PPSNextTenPricesLoading _value,
+      $Res Function(_$PPSNextTenPricesLoading) _then)
+      : super(_value, (v) => _then(v as _$PPSNextTenPricesLoading));
 
   @override
-  PPSNextTenPricesLoading get _value => super._value as PPSNextTenPricesLoading;
+  _$PPSNextTenPricesLoading get _value =>
+      super._value as _$PPSNextTenPricesLoading;
 
   @override
   $Res call({
     Object? pricesList = freezed,
   }) {
-    return _then(PPSNextTenPricesLoading(
+    return _then(_$PPSNextTenPricesLoading(
       pricesList == freezed
-          ? _value.pricesList
+          ? _value._pricesList
           : pricesList // ignore: cast_nullable_to_non_nullable
               as List<Price>,
     ));
@@ -712,10 +685,15 @@ class _$PPSNextTenPricesLoadingCopyWithImpl<$Res>
 /// @nodoc
 
 class _$PPSNextTenPricesLoading implements PPSNextTenPricesLoading {
-  const _$PPSNextTenPricesLoading(this.pricesList);
+  const _$PPSNextTenPricesLoading(final List<Price> pricesList)
+      : _pricesList = pricesList;
 
+  final List<Price> _pricesList;
   @override
-  final List<Price> pricesList;
+  List<Price> get pricesList {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_pricesList);
+  }
 
   @override
   String toString() {
@@ -726,19 +704,19 @@ class _$PPSNextTenPricesLoading implements PPSNextTenPricesLoading {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is PPSNextTenPricesLoading &&
+            other is _$PPSNextTenPricesLoading &&
             const DeepCollectionEquality()
-                .equals(other.pricesList, pricesList));
+                .equals(other._pricesList, _pricesList));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(pricesList));
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_pricesList));
 
   @JsonKey(ignore: true)
   @override
-  $PPSNextTenPricesLoadingCopyWith<PPSNextTenPricesLoading> get copyWith =>
-      _$PPSNextTenPricesLoadingCopyWithImpl<PPSNextTenPricesLoading>(
+  _$$PPSNextTenPricesLoadingCopyWith<_$PPSNextTenPricesLoading> get copyWith =>
+      __$$PPSNextTenPricesLoadingCopyWithImpl<_$PPSNextTenPricesLoading>(
           this, _$identity);
 
   @override
@@ -834,46 +812,47 @@ class _$PPSNextTenPricesLoading implements PPSNextTenPricesLoading {
 }
 
 abstract class PPSNextTenPricesLoading implements ProducePricesState {
-  const factory PPSNextTenPricesLoading(List<Price> pricesList) =
+  const factory PPSNextTenPricesLoading(final List<Price> pricesList) =
       _$PPSNextTenPricesLoading;
 
   @override
-  List<Price> get pricesList;
+  List<Price> get pricesList => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  $PPSNextTenPricesLoadingCopyWith<PPSNextTenPricesLoading> get copyWith =>
+  _$$PPSNextTenPricesLoadingCopyWith<_$PPSNextTenPricesLoading> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $PPSNextTenPricesCompletedCopyWith<$Res>
+abstract class _$$PPSNextTenPricesCompletedCopyWith<$Res>
     implements $ProducePricesStateCopyWith<$Res> {
-  factory $PPSNextTenPricesCompletedCopyWith(PPSNextTenPricesCompleted value,
-          $Res Function(PPSNextTenPricesCompleted) then) =
-      _$PPSNextTenPricesCompletedCopyWithImpl<$Res>;
+  factory _$$PPSNextTenPricesCompletedCopyWith(
+          _$PPSNextTenPricesCompleted value,
+          $Res Function(_$PPSNextTenPricesCompleted) then) =
+      __$$PPSNextTenPricesCompletedCopyWithImpl<$Res>;
   @override
   $Res call({List<Price> pricesList});
 }
 
 /// @nodoc
-class _$PPSNextTenPricesCompletedCopyWithImpl<$Res>
+class __$$PPSNextTenPricesCompletedCopyWithImpl<$Res>
     extends _$ProducePricesStateCopyWithImpl<$Res>
-    implements $PPSNextTenPricesCompletedCopyWith<$Res> {
-  _$PPSNextTenPricesCompletedCopyWithImpl(PPSNextTenPricesCompleted _value,
-      $Res Function(PPSNextTenPricesCompleted) _then)
-      : super(_value, (v) => _then(v as PPSNextTenPricesCompleted));
+    implements _$$PPSNextTenPricesCompletedCopyWith<$Res> {
+  __$$PPSNextTenPricesCompletedCopyWithImpl(_$PPSNextTenPricesCompleted _value,
+      $Res Function(_$PPSNextTenPricesCompleted) _then)
+      : super(_value, (v) => _then(v as _$PPSNextTenPricesCompleted));
 
   @override
-  PPSNextTenPricesCompleted get _value =>
-      super._value as PPSNextTenPricesCompleted;
+  _$PPSNextTenPricesCompleted get _value =>
+      super._value as _$PPSNextTenPricesCompleted;
 
   @override
   $Res call({
     Object? pricesList = freezed,
   }) {
-    return _then(PPSNextTenPricesCompleted(
+    return _then(_$PPSNextTenPricesCompleted(
       pricesList == freezed
-          ? _value.pricesList
+          ? _value._pricesList
           : pricesList // ignore: cast_nullable_to_non_nullable
               as List<Price>,
     ));
@@ -883,10 +862,15 @@ class _$PPSNextTenPricesCompletedCopyWithImpl<$Res>
 /// @nodoc
 
 class _$PPSNextTenPricesCompleted implements PPSNextTenPricesCompleted {
-  const _$PPSNextTenPricesCompleted(this.pricesList);
+  const _$PPSNextTenPricesCompleted(final List<Price> pricesList)
+      : _pricesList = pricesList;
 
+  final List<Price> _pricesList;
   @override
-  final List<Price> pricesList;
+  List<Price> get pricesList {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_pricesList);
+  }
 
   @override
   String toString() {
@@ -897,20 +881,20 @@ class _$PPSNextTenPricesCompleted implements PPSNextTenPricesCompleted {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is PPSNextTenPricesCompleted &&
+            other is _$PPSNextTenPricesCompleted &&
             const DeepCollectionEquality()
-                .equals(other.pricesList, pricesList));
+                .equals(other._pricesList, _pricesList));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(pricesList));
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_pricesList));
 
   @JsonKey(ignore: true)
   @override
-  $PPSNextTenPricesCompletedCopyWith<PPSNextTenPricesCompleted> get copyWith =>
-      _$PPSNextTenPricesCompletedCopyWithImpl<PPSNextTenPricesCompleted>(
-          this, _$identity);
+  _$$PPSNextTenPricesCompletedCopyWith<_$PPSNextTenPricesCompleted>
+      get copyWith => __$$PPSNextTenPricesCompletedCopyWithImpl<
+          _$PPSNextTenPricesCompleted>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1005,46 +989,46 @@ class _$PPSNextTenPricesCompleted implements PPSNextTenPricesCompleted {
 }
 
 abstract class PPSNextTenPricesCompleted implements ProducePricesState {
-  const factory PPSNextTenPricesCompleted(List<Price> pricesList) =
+  const factory PPSNextTenPricesCompleted(final List<Price> pricesList) =
       _$PPSNextTenPricesCompleted;
 
   @override
-  List<Price> get pricesList;
+  List<Price> get pricesList => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  $PPSNextTenPricesCompletedCopyWith<PPSNextTenPricesCompleted> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$PPSNextTenPricesCompletedCopyWith<_$PPSNextTenPricesCompleted>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $PPSPricesErrorCopyWith<$Res>
+abstract class _$$PPSPricesErrorCopyWith<$Res>
     implements $ProducePricesStateCopyWith<$Res> {
-  factory $PPSPricesErrorCopyWith(
-          PPSPricesError value, $Res Function(PPSPricesError) then) =
-      _$PPSPricesErrorCopyWithImpl<$Res>;
+  factory _$$PPSPricesErrorCopyWith(
+          _$PPSPricesError value, $Res Function(_$PPSPricesError) then) =
+      __$$PPSPricesErrorCopyWithImpl<$Res>;
   @override
   $Res call({List<Price> pricesList, Failure failure});
 }
 
 /// @nodoc
-class _$PPSPricesErrorCopyWithImpl<$Res>
+class __$$PPSPricesErrorCopyWithImpl<$Res>
     extends _$ProducePricesStateCopyWithImpl<$Res>
-    implements $PPSPricesErrorCopyWith<$Res> {
-  _$PPSPricesErrorCopyWithImpl(
-      PPSPricesError _value, $Res Function(PPSPricesError) _then)
-      : super(_value, (v) => _then(v as PPSPricesError));
+    implements _$$PPSPricesErrorCopyWith<$Res> {
+  __$$PPSPricesErrorCopyWithImpl(
+      _$PPSPricesError _value, $Res Function(_$PPSPricesError) _then)
+      : super(_value, (v) => _then(v as _$PPSPricesError));
 
   @override
-  PPSPricesError get _value => super._value as PPSPricesError;
+  _$PPSPricesError get _value => super._value as _$PPSPricesError;
 
   @override
   $Res call({
     Object? pricesList = freezed,
     Object? failure = freezed,
   }) {
-    return _then(PPSPricesError(
+    return _then(_$PPSPricesError(
       pricesList == freezed
-          ? _value.pricesList
+          ? _value._pricesList
           : pricesList // ignore: cast_nullable_to_non_nullable
               as List<Price>,
       failure == freezed
@@ -1058,10 +1042,16 @@ class _$PPSPricesErrorCopyWithImpl<$Res>
 /// @nodoc
 
 class _$PPSPricesError implements PPSPricesError {
-  const _$PPSPricesError(this.pricesList, this.failure);
+  const _$PPSPricesError(final List<Price> pricesList, this.failure)
+      : _pricesList = pricesList;
 
+  final List<Price> _pricesList;
   @override
-  final List<Price> pricesList;
+  List<Price> get pricesList {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_pricesList);
+  }
+
   @override
   final Failure failure;
 
@@ -1074,20 +1064,22 @@ class _$PPSPricesError implements PPSPricesError {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is PPSPricesError &&
+            other is _$PPSPricesError &&
             const DeepCollectionEquality()
-                .equals(other.pricesList, pricesList) &&
-            (identical(other.failure, failure) || other.failure == failure));
+                .equals(other._pricesList, _pricesList) &&
+            const DeepCollectionEquality().equals(other.failure, failure));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(pricesList), failure);
+      runtimeType,
+      const DeepCollectionEquality().hash(_pricesList),
+      const DeepCollectionEquality().hash(failure));
 
   @JsonKey(ignore: true)
   @override
-  $PPSPricesErrorCopyWith<PPSPricesError> get copyWith =>
-      _$PPSPricesErrorCopyWithImpl<PPSPricesError>(this, _$identity);
+  _$$PPSPricesErrorCopyWith<_$PPSPricesError> get copyWith =>
+      __$$PPSPricesErrorCopyWithImpl<_$PPSPricesError>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1182,14 +1174,14 @@ class _$PPSPricesError implements PPSPricesError {
 }
 
 abstract class PPSPricesError implements ProducePricesState {
-  const factory PPSPricesError(List<Price> pricesList, Failure failure) =
-      _$PPSPricesError;
+  const factory PPSPricesError(
+      final List<Price> pricesList, final Failure failure) = _$PPSPricesError;
 
   @override
-  List<Price> get pricesList;
-  Failure get failure;
+  List<Price> get pricesList => throw _privateConstructorUsedError;
+  Failure get failure => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  $PPSPricesErrorCopyWith<PPSPricesError> get copyWith =>
+  _$$PPSPricesErrorCopyWith<_$PPSPricesError> get copyWith =>
       throw _privateConstructorUsedError;
 }

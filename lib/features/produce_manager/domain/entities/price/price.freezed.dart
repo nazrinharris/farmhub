@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'price.dart';
@@ -11,32 +12,7 @@ part of 'price.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$PriceTearOff {
-  const _$PriceTearOff();
-
-  _Price call(
-      {required num currentPrice,
-      required String priceDate,
-      required DateTime priceDateTimeStamp,
-      required bool isAverage,
-      required String priceId,
-      required List<PriceSnippet> allPricesWithDateList}) {
-    return _Price(
-      currentPrice: currentPrice,
-      priceDate: priceDate,
-      priceDateTimeStamp: priceDateTimeStamp,
-      isAverage: isAverage,
-      priceId: priceId,
-      allPricesWithDateList: allPricesWithDateList,
-    );
-  }
-}
-
-/// @nodoc
-const $Price = _$PriceTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$Price {
@@ -112,9 +88,9 @@ class _$PriceCopyWithImpl<$Res> implements $PriceCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$PriceCopyWith<$Res> implements $PriceCopyWith<$Res> {
-  factory _$PriceCopyWith(_Price value, $Res Function(_Price) then) =
-      __$PriceCopyWithImpl<$Res>;
+abstract class _$$_PriceCopyWith<$Res> implements $PriceCopyWith<$Res> {
+  factory _$$_PriceCopyWith(_$_Price value, $Res Function(_$_Price) then) =
+      __$$_PriceCopyWithImpl<$Res>;
   @override
   $Res call(
       {num currentPrice,
@@ -126,13 +102,13 @@ abstract class _$PriceCopyWith<$Res> implements $PriceCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$PriceCopyWithImpl<$Res> extends _$PriceCopyWithImpl<$Res>
-    implements _$PriceCopyWith<$Res> {
-  __$PriceCopyWithImpl(_Price _value, $Res Function(_Price) _then)
-      : super(_value, (v) => _then(v as _Price));
+class __$$_PriceCopyWithImpl<$Res> extends _$PriceCopyWithImpl<$Res>
+    implements _$$_PriceCopyWith<$Res> {
+  __$$_PriceCopyWithImpl(_$_Price _value, $Res Function(_$_Price) _then)
+      : super(_value, (v) => _then(v as _$_Price));
 
   @override
-  _Price get _value => super._value as _Price;
+  _$_Price get _value => super._value as _$_Price;
 
   @override
   $Res call({
@@ -143,7 +119,7 @@ class __$PriceCopyWithImpl<$Res> extends _$PriceCopyWithImpl<$Res>
     Object? priceId = freezed,
     Object? allPricesWithDateList = freezed,
   }) {
-    return _then(_Price(
+    return _then(_$_Price(
       currentPrice: currentPrice == freezed
           ? _value.currentPrice
           : currentPrice // ignore: cast_nullable_to_non_nullable
@@ -205,16 +181,14 @@ class _$_Price implements _Price {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Price &&
-            (identical(other.currentPrice, currentPrice) ||
-                other.currentPrice == currentPrice) &&
-            (identical(other.priceDate, priceDate) ||
-                other.priceDate == priceDate) &&
-            (identical(other.priceDateTimeStamp, priceDateTimeStamp) ||
-                other.priceDateTimeStamp == priceDateTimeStamp) &&
-            (identical(other.isAverage, isAverage) ||
-                other.isAverage == isAverage) &&
-            (identical(other.priceId, priceId) || other.priceId == priceId) &&
+            other is _$_Price &&
+            const DeepCollectionEquality()
+                .equals(other.currentPrice, currentPrice) &&
+            const DeepCollectionEquality().equals(other.priceDate, priceDate) &&
+            const DeepCollectionEquality()
+                .equals(other.priceDateTimeStamp, priceDateTimeStamp) &&
+            const DeepCollectionEquality().equals(other.isAverage, isAverage) &&
+            const DeepCollectionEquality().equals(other.priceId, priceId) &&
             const DeepCollectionEquality()
                 .equals(other.allPricesWithDateList, allPricesWithDateList));
   }
@@ -222,59 +196,46 @@ class _$_Price implements _Price {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      currentPrice,
-      priceDate,
-      priceDateTimeStamp,
-      isAverage,
-      priceId,
+      const DeepCollectionEquality().hash(currentPrice),
+      const DeepCollectionEquality().hash(priceDate),
+      const DeepCollectionEquality().hash(priceDateTimeStamp),
+      const DeepCollectionEquality().hash(isAverage),
+      const DeepCollectionEquality().hash(priceId),
       const DeepCollectionEquality().hash(allPricesWithDateList));
 
   @JsonKey(ignore: true)
   @override
-  _$PriceCopyWith<_Price> get copyWith =>
-      __$PriceCopyWithImpl<_Price>(this, _$identity);
+  _$$_PriceCopyWith<_$_Price> get copyWith =>
+      __$$_PriceCopyWithImpl<_$_Price>(this, _$identity);
 }
 
 abstract class _Price implements Price {
   factory _Price(
-      {required num currentPrice,
-      required String priceDate,
-      required DateTime priceDateTimeStamp,
-      required bool isAverage,
-      required String priceId,
-      required List<PriceSnippet> allPricesWithDateList}) = _$_Price;
+      {required final num currentPrice,
+      required final String priceDate,
+      required final DateTime priceDateTimeStamp,
+      required final bool isAverage,
+      required final String priceId,
+      required final List<PriceSnippet> allPricesWithDateList}) = _$_Price;
 
   @override
-  num get currentPrice;
+  num get currentPrice => throw _privateConstructorUsedError;
   @override
-  String get priceDate;
+  String get priceDate => throw _privateConstructorUsedError;
   @override
-  DateTime get priceDateTimeStamp;
+  DateTime get priceDateTimeStamp => throw _privateConstructorUsedError;
   @override
-  bool get isAverage;
+  bool get isAverage => throw _privateConstructorUsedError;
   @override
-  String get priceId;
+  String get priceId => throw _privateConstructorUsedError;
   @override
-  List<PriceSnippet> get allPricesWithDateList;
+  List<PriceSnippet> get allPricesWithDateList =>
+      throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$PriceCopyWith<_Price> get copyWith => throw _privateConstructorUsedError;
+  _$$_PriceCopyWith<_$_Price> get copyWith =>
+      throw _privateConstructorUsedError;
 }
-
-/// @nodoc
-class _$PriceSnippetTearOff {
-  const _$PriceSnippetTearOff();
-
-  _PriceSnippet call({required num price, required String priceDate}) {
-    return _PriceSnippet(
-      price: price,
-      priceDate: priceDate,
-    );
-  }
-}
-
-/// @nodoc
-const $PriceSnippet = _$PriceSnippetTearOff();
 
 /// @nodoc
 mixin _$PriceSnippet {
@@ -321,31 +282,32 @@ class _$PriceSnippetCopyWithImpl<$Res> implements $PriceSnippetCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$PriceSnippetCopyWith<$Res>
+abstract class _$$_PriceSnippetCopyWith<$Res>
     implements $PriceSnippetCopyWith<$Res> {
-  factory _$PriceSnippetCopyWith(
-          _PriceSnippet value, $Res Function(_PriceSnippet) then) =
-      __$PriceSnippetCopyWithImpl<$Res>;
+  factory _$$_PriceSnippetCopyWith(
+          _$_PriceSnippet value, $Res Function(_$_PriceSnippet) then) =
+      __$$_PriceSnippetCopyWithImpl<$Res>;
   @override
   $Res call({num price, String priceDate});
 }
 
 /// @nodoc
-class __$PriceSnippetCopyWithImpl<$Res> extends _$PriceSnippetCopyWithImpl<$Res>
-    implements _$PriceSnippetCopyWith<$Res> {
-  __$PriceSnippetCopyWithImpl(
-      _PriceSnippet _value, $Res Function(_PriceSnippet) _then)
-      : super(_value, (v) => _then(v as _PriceSnippet));
+class __$$_PriceSnippetCopyWithImpl<$Res>
+    extends _$PriceSnippetCopyWithImpl<$Res>
+    implements _$$_PriceSnippetCopyWith<$Res> {
+  __$$_PriceSnippetCopyWithImpl(
+      _$_PriceSnippet _value, $Res Function(_$_PriceSnippet) _then)
+      : super(_value, (v) => _then(v as _$_PriceSnippet));
 
   @override
-  _PriceSnippet get _value => super._value as _PriceSnippet;
+  _$_PriceSnippet get _value => super._value as _$_PriceSnippet;
 
   @override
   $Res call({
     Object? price = freezed,
     Object? priceDate = freezed,
   }) {
-    return _then(_PriceSnippet(
+    return _then(_$_PriceSnippet(
       price: price == freezed
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
@@ -377,31 +339,34 @@ class _$_PriceSnippet implements _PriceSnippet {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _PriceSnippet &&
-            (identical(other.price, price) || other.price == price) &&
-            (identical(other.priceDate, priceDate) ||
-                other.priceDate == priceDate));
+            other is _$_PriceSnippet &&
+            const DeepCollectionEquality().equals(other.price, price) &&
+            const DeepCollectionEquality().equals(other.priceDate, priceDate));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, price, priceDate);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(price),
+      const DeepCollectionEquality().hash(priceDate));
 
   @JsonKey(ignore: true)
   @override
-  _$PriceSnippetCopyWith<_PriceSnippet> get copyWith =>
-      __$PriceSnippetCopyWithImpl<_PriceSnippet>(this, _$identity);
+  _$$_PriceSnippetCopyWith<_$_PriceSnippet> get copyWith =>
+      __$$_PriceSnippetCopyWithImpl<_$_PriceSnippet>(this, _$identity);
 }
 
 abstract class _PriceSnippet implements PriceSnippet {
-  factory _PriceSnippet({required num price, required String priceDate}) =
-      _$_PriceSnippet;
+  factory _PriceSnippet(
+      {required final num price,
+      required final String priceDate}) = _$_PriceSnippet;
 
   @override
-  num get price;
+  num get price => throw _privateConstructorUsedError;
   @override
-  String get priceDate;
+  String get priceDate => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$PriceSnippetCopyWith<_PriceSnippet> get copyWith =>
+  _$$_PriceSnippetCopyWith<_$_PriceSnippet> get copyWith =>
       throw _privateConstructorUsedError;
 }

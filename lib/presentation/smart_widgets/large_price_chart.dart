@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'dart:math';
 import 'package:intl/intl.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
+import 'dart:developer';
 
 import '../../features/produce_manager/domain/entities/produce/produce.dart';
 
@@ -219,7 +220,7 @@ class _LargeOneWeekChartState extends State<LargeOneWeekChart> {
       DateTime aPriceDate = DateFormat("dd-MM-yyyy").parse(a.priceDate);
       DateTime bPriceDate = DateFormat("dd-MM-yyyy").parse(b.priceDate);
 
-      return aPriceDate.compareTo(bPriceDate);
+      return bPriceDate.compareTo(bPriceDate);
     });
 
     final month = DateFormat('LLLL')
@@ -325,13 +326,6 @@ class _LargeTwoWeekChartState extends State<LargeTwoWeekChart> {
       borderColor = Color.fromARGB(255, 85, 189, 202);
     }
 
-    widget.twoWeeksPricesList.sort((a, b) {
-      DateTime aPriceDate = DateFormat("dd-MM-yyyy").parse(a.priceDate);
-      DateTime bPriceDate = DateFormat("dd-MM-yyyy").parse(b.priceDate);
-
-      return aPriceDate.compareTo(bPriceDate);
-    });
-
     final random = Random();
     final randomInt = random.nextInt(10000);
 
@@ -435,13 +429,6 @@ class _LargeOneMonthChartState extends State<LargeOneMonthChart> {
       borderColor = Color.fromARGB(255, 85, 189, 202);
     }
 
-    widget.oneMonthPricesList.sort((a, b) {
-      DateTime aPriceDate = DateFormat("dd-MM-yyyy").parse(a.priceDate);
-      DateTime bPriceDate = DateFormat("dd-MM-yyyy").parse(b.priceDate);
-
-      return aPriceDate.compareTo(bPriceDate);
-    });
-
     final random = Random();
     final randomInt = random.nextInt(10000);
 
@@ -489,9 +476,9 @@ class _LargeOneMonthChartState extends State<LargeOneMonthChart> {
 
 class LargeTwoMonthChart extends StatefulWidget {
   final Produce produce;
-  final List<PriceSnippet> oneMonthPricesList;
+  final List<PriceSnippet> twoMonthPricesList;
 
-  const LargeTwoMonthChart(this.produce, this.oneMonthPricesList, {Key? key}) : super(key: key);
+  const LargeTwoMonthChart(this.produce, this.twoMonthPricesList, {Key? key}) : super(key: key);
 
   @override
   State<LargeTwoMonthChart> createState() => _LargeTwoMonthChartState();
@@ -517,10 +504,10 @@ class _LargeTwoMonthChartState extends State<LargeTwoMonthChart> {
     late LinearGradient gradient;
     late Color borderColor;
 
-    if (widget.oneMonthPricesList.length < 2) {
+    if (widget.twoMonthPricesList.length < 2) {
       isNegative = false;
     } else {
-      isNegative = resolveIsNegative(widget.oneMonthPricesList);
+      isNegative = resolveIsNegative(widget.twoMonthPricesList);
     }
 
     if (isNegative) {
@@ -545,13 +532,6 @@ class _LargeTwoMonthChartState extends State<LargeTwoMonthChart> {
       borderColor = Color.fromARGB(255, 85, 189, 202);
     }
 
-    widget.oneMonthPricesList.sort((a, b) {
-      DateTime aPriceDate = DateFormat("dd-MM-yyyy").parse(a.priceDate);
-      DateTime bPriceDate = DateFormat("dd-MM-yyyy").parse(b.priceDate);
-
-      return aPriceDate.compareTo(bPriceDate);
-    });
-
     final random = Random();
     final randomInt = random.nextInt(10000);
 
@@ -569,7 +549,7 @@ class _LargeTwoMonthChartState extends State<LargeTwoMonthChart> {
           SplineAreaSeries<PriceSnippet, String>(
             enableTooltip: true,
             key: ValueKey("$randomInt"),
-            dataSource: widget.oneMonthPricesList,
+            dataSource: widget.twoMonthPricesList,
             xValueMapper: (priceSnippet, index) {
               DateTime priceDate = DateFormat("dd-MM-yyyy").parse(priceSnippet.priceDate);
               return DateFormat('d/M').format(priceDate);
@@ -584,9 +564,9 @@ class _LargeTwoMonthChartState extends State<LargeTwoMonthChart> {
     );
   }
 
-  bool resolveIsNegative(List<PriceSnippet> oneMonthPricesList) {
-    final num currentPrice = oneMonthPricesList[oneMonthPricesList.length - 1].price;
-    final num previousPrice = oneMonthPricesList[oneMonthPricesList.length - 2].price;
+  bool resolveIsNegative(List<PriceSnippet> twoMonthPricesList) {
+    final num currentPrice = twoMonthPricesList[twoMonthPricesList.length - 1].price;
+    final num previousPrice = twoMonthPricesList[twoMonthPricesList.length - 2].price;
     final num change = currentPrice - previousPrice;
 
     if (change < 0) {
@@ -599,9 +579,9 @@ class _LargeTwoMonthChartState extends State<LargeTwoMonthChart> {
 
 class LargeSixMonthChart extends StatefulWidget {
   final Produce produce;
-  final List<PriceSnippet> oneMonthPricesList;
+  final List<PriceSnippet> sixMonthPricesList;
 
-  const LargeSixMonthChart(this.produce, this.oneMonthPricesList, {Key? key}) : super(key: key);
+  const LargeSixMonthChart(this.produce, this.sixMonthPricesList, {Key? key}) : super(key: key);
 
   @override
   State<LargeSixMonthChart> createState() => _LargeSixMonthChartState();
@@ -627,10 +607,10 @@ class _LargeSixMonthChartState extends State<LargeSixMonthChart> {
     late LinearGradient gradient;
     late Color borderColor;
 
-    if (widget.oneMonthPricesList.length < 2) {
+    if (widget.sixMonthPricesList.length < 2) {
       isNegative = false;
     } else {
-      isNegative = resolveIsNegative(widget.oneMonthPricesList);
+      isNegative = resolveIsNegative(widget.sixMonthPricesList);
     }
 
     if (isNegative) {
@@ -655,13 +635,6 @@ class _LargeSixMonthChartState extends State<LargeSixMonthChart> {
       borderColor = Color.fromARGB(255, 85, 189, 202);
     }
 
-    widget.oneMonthPricesList.sort((a, b) {
-      DateTime aPriceDate = DateFormat("dd-MM-yyyy").parse(a.priceDate);
-      DateTime bPriceDate = DateFormat("dd-MM-yyyy").parse(b.priceDate);
-
-      return aPriceDate.compareTo(bPriceDate);
-    });
-
     final random = Random();
     final randomInt = random.nextInt(10000);
 
@@ -679,7 +652,7 @@ class _LargeSixMonthChartState extends State<LargeSixMonthChart> {
           SplineAreaSeries<PriceSnippet, String>(
             enableTooltip: true,
             key: ValueKey("$randomInt"),
-            dataSource: widget.oneMonthPricesList,
+            dataSource: widget.sixMonthPricesList,
             xValueMapper: (priceSnippet, index) {
               DateTime priceDate = DateFormat("dd-MM-yyyy").parse(priceSnippet.priceDate);
               return DateFormat('d/M').format(priceDate);
@@ -694,9 +667,9 @@ class _LargeSixMonthChartState extends State<LargeSixMonthChart> {
     );
   }
 
-  bool resolveIsNegative(List<PriceSnippet> oneMonthPricesList) {
-    final num currentPrice = oneMonthPricesList[oneMonthPricesList.length - 1].price;
-    final num previousPrice = oneMonthPricesList[oneMonthPricesList.length - 2].price;
+  bool resolveIsNegative(List<PriceSnippet> sixMonthPricesList) {
+    final num currentPrice = sixMonthPricesList[sixMonthPricesList.length - 1].price;
+    final num previousPrice = sixMonthPricesList[sixMonthPricesList.length - 2].price;
     final num change = currentPrice - previousPrice;
 
     if (change < 0) {
@@ -709,9 +682,9 @@ class _LargeSixMonthChartState extends State<LargeSixMonthChart> {
 
 class LargeOneYearChart extends StatefulWidget {
   final Produce produce;
-  final List<PriceSnippet> oneMonthPricesList;
+  final List<PriceSnippet> oneYearPricesList;
 
-  const LargeOneYearChart(this.produce, this.oneMonthPricesList, {Key? key}) : super(key: key);
+  const LargeOneYearChart(this.produce, this.oneYearPricesList, {Key? key}) : super(key: key);
 
   @override
   State<LargeOneYearChart> createState() => _LargeOneYearChartState();
@@ -737,10 +710,10 @@ class _LargeOneYearChartState extends State<LargeOneYearChart> {
     late LinearGradient gradient;
     late Color borderColor;
 
-    if (widget.oneMonthPricesList.length < 2) {
+    if (widget.oneYearPricesList.length < 2) {
       isNegative = false;
     } else {
-      isNegative = resolveIsNegative(widget.oneMonthPricesList);
+      isNegative = resolveIsNegative(widget.oneYearPricesList);
     }
 
     if (isNegative) {
@@ -765,13 +738,6 @@ class _LargeOneYearChartState extends State<LargeOneYearChart> {
       borderColor = Color.fromARGB(255, 85, 189, 202);
     }
 
-    widget.oneMonthPricesList.sort((a, b) {
-      DateTime aPriceDate = DateFormat("dd-MM-yyyy").parse(a.priceDate);
-      DateTime bPriceDate = DateFormat("dd-MM-yyyy").parse(b.priceDate);
-
-      return aPriceDate.compareTo(bPriceDate);
-    });
-
     final random = Random();
     final randomInt = random.nextInt(10000);
 
@@ -789,7 +755,7 @@ class _LargeOneYearChartState extends State<LargeOneYearChart> {
           SplineAreaSeries<PriceSnippet, String>(
             enableTooltip: true,
             key: ValueKey("$randomInt"),
-            dataSource: widget.oneMonthPricesList,
+            dataSource: widget.oneYearPricesList,
             xValueMapper: (priceSnippet, index) {
               DateTime priceDate = DateFormat("dd-MM-yyyy").parse(priceSnippet.priceDate);
               return DateFormat('d/M').format(priceDate);
@@ -804,9 +770,9 @@ class _LargeOneYearChartState extends State<LargeOneYearChart> {
     );
   }
 
-  bool resolveIsNegative(List<PriceSnippet> oneMonthPricesList) {
-    final num currentPrice = oneMonthPricesList[oneMonthPricesList.length - 1].price;
-    final num previousPrice = oneMonthPricesList[oneMonthPricesList.length - 2].price;
+  bool resolveIsNegative(List<PriceSnippet> oneYearPricesList) {
+    final num currentPrice = oneYearPricesList[oneYearPricesList.length - 1].price;
+    final num previousPrice = oneYearPricesList[oneYearPricesList.length - 2].price;
     final num change = currentPrice - previousPrice;
 
     if (change < 0) {

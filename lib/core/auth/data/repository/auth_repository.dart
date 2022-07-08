@@ -1,3 +1,4 @@
+import 'package:farmhub/core/typedefs/typedefs.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:fpdart/fpdart.dart';
@@ -6,7 +7,7 @@ import 'package:farmhub/core/auth/data/datasources/auth_local_datasource.dart';
 import 'package:farmhub/core/auth/data/datasources/auth_remote_datasource.dart';
 import 'package:farmhub/core/auth/domain/entities/farmhub_user/farmhub_user.dart';
 import 'package:farmhub/core/auth/domain/i_auth_repository.dart';
-import 'package:farmhub/core/constants/app_const.dart';
+import 'package:farmhub/core/util/app_const.dart';
 import 'package:farmhub/core/errors/failures.dart';
 import 'package:farmhub/core/network/network_info.dart';
 
@@ -97,6 +98,7 @@ class AuthRepository implements IAuthRepository {
     // TODO: tests signOut
     try {
       await authRemoteDataSource.signOut();
+      await authLocalDataSource.clearStoredFarmhubUser();
       print("Sign Out Requested");
       return const Right(unit);
     } on FirebaseAuthException catch (e) {
@@ -134,6 +136,8 @@ class AuthRepository implements IAuthRepository {
     if (await networkInfo.isConnected) {
       try {
         final FarmhubUser user = await authRemoteDataSource.retrieveUserData();
+        print(user);
+        await authLocalDataSource.storeFarmhubUser(user);
 
         return Right(user);
       } on FirebaseAuthException catch (e) {
@@ -159,11 +163,15 @@ class AuthRepository implements IAuthRepository {
         ));
       }
     } else {
+      print("Not connected");
       // TODO: Retrieval of user information from local storage.
-      return Left(InternetConnectionFailure(
-          code: ERROR_NO_INTERNET_CONNECTION,
-          message: MESSAGE_NO_INTERNET_CONNECTION,
-          stackTrace: StackTrace.current));
+      try {
+        final user = await authLocalDataSource.retrieveFarmhubUser();
+
+        return Right(user);
+      } catch (e, stack) {
+        return Left(UnexpectedFailure(message: e.toString(), stackTrace: stack));
+      }
     }
   }
 
@@ -210,6 +218,8 @@ class AuthRepository implements IAuthRepository {
     if (await networkInfo.isConnected) {
       try {
         final user = await authRemoteDataSource.updateRemoteUser(newUserData);
+        await authLocalDataSource.storeFarmhubUser(newUserData);
+
         return Right(user);
       } on FirebaseAuthException catch (e) {
         return Left(

@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'login_screen_bloc.dart';
@@ -11,33 +12,7 @@ part of 'login_screen_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$LoginScreenEventTearOff {
-  const _$LoginScreenEventTearOff();
-
-  _LSEStarted started() {
-    return const _LSEStarted();
-  }
-
-  _LSEIdle idle() {
-    return const _LSEIdle();
-  }
-
-  _LSEContinuePressed continuePressed(BuildContext context) {
-    return _LSEContinuePressed(
-      context,
-    );
-  }
-
-  _LSEToggleVisible toggleInfoTileVisibility() {
-    return const _LSEToggleVisible();
-  }
-}
-
-/// @nodoc
-const $LoginScreenEvent = _$LoginScreenEventTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$LoginScreenEvent {
@@ -111,22 +86,22 @@ class _$LoginScreenEventCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$LSEStartedCopyWith<$Res> {
-  factory _$LSEStartedCopyWith(
-          _LSEStarted value, $Res Function(_LSEStarted) then) =
-      __$LSEStartedCopyWithImpl<$Res>;
+abstract class _$$_LSEStartedCopyWith<$Res> {
+  factory _$$_LSEStartedCopyWith(
+          _$_LSEStarted value, $Res Function(_$_LSEStarted) then) =
+      __$$_LSEStartedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$LSEStartedCopyWithImpl<$Res>
+class __$$_LSEStartedCopyWithImpl<$Res>
     extends _$LoginScreenEventCopyWithImpl<$Res>
-    implements _$LSEStartedCopyWith<$Res> {
-  __$LSEStartedCopyWithImpl(
-      _LSEStarted _value, $Res Function(_LSEStarted) _then)
-      : super(_value, (v) => _then(v as _LSEStarted));
+    implements _$$_LSEStartedCopyWith<$Res> {
+  __$$_LSEStartedCopyWithImpl(
+      _$_LSEStarted _value, $Res Function(_$_LSEStarted) _then)
+      : super(_value, (v) => _then(v as _$_LSEStarted));
 
   @override
-  _LSEStarted get _value => super._value as _LSEStarted;
+  _$_LSEStarted get _value => super._value as _$_LSEStarted;
 }
 
 /// @nodoc
@@ -142,7 +117,7 @@ class _$_LSEStarted implements _LSEStarted {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _LSEStarted);
+        (other.runtimeType == runtimeType && other is _$_LSEStarted);
   }
 
   @override
@@ -228,19 +203,21 @@ abstract class _LSEStarted implements LoginScreenEvent {
 }
 
 /// @nodoc
-abstract class _$LSEIdleCopyWith<$Res> {
-  factory _$LSEIdleCopyWith(_LSEIdle value, $Res Function(_LSEIdle) then) =
-      __$LSEIdleCopyWithImpl<$Res>;
+abstract class _$$_LSEIdleCopyWith<$Res> {
+  factory _$$_LSEIdleCopyWith(
+          _$_LSEIdle value, $Res Function(_$_LSEIdle) then) =
+      __$$_LSEIdleCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$LSEIdleCopyWithImpl<$Res> extends _$LoginScreenEventCopyWithImpl<$Res>
-    implements _$LSEIdleCopyWith<$Res> {
-  __$LSEIdleCopyWithImpl(_LSEIdle _value, $Res Function(_LSEIdle) _then)
-      : super(_value, (v) => _then(v as _LSEIdle));
+class __$$_LSEIdleCopyWithImpl<$Res>
+    extends _$LoginScreenEventCopyWithImpl<$Res>
+    implements _$$_LSEIdleCopyWith<$Res> {
+  __$$_LSEIdleCopyWithImpl(_$_LSEIdle _value, $Res Function(_$_LSEIdle) _then)
+      : super(_value, (v) => _then(v as _$_LSEIdle));
 
   @override
-  _LSEIdle get _value => super._value as _LSEIdle;
+  _$_LSEIdle get _value => super._value as _$_LSEIdle;
 }
 
 /// @nodoc
@@ -256,7 +233,7 @@ class _$_LSEIdle implements _LSEIdle {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _LSEIdle);
+        (other.runtimeType == runtimeType && other is _$_LSEIdle);
   }
 
   @override
@@ -342,29 +319,29 @@ abstract class _LSEIdle implements LoginScreenEvent {
 }
 
 /// @nodoc
-abstract class _$LSEContinuePressedCopyWith<$Res> {
-  factory _$LSEContinuePressedCopyWith(
-          _LSEContinuePressed value, $Res Function(_LSEContinuePressed) then) =
-      __$LSEContinuePressedCopyWithImpl<$Res>;
+abstract class _$$_LSEContinuePressedCopyWith<$Res> {
+  factory _$$_LSEContinuePressedCopyWith(_$_LSEContinuePressed value,
+          $Res Function(_$_LSEContinuePressed) then) =
+      __$$_LSEContinuePressedCopyWithImpl<$Res>;
   $Res call({BuildContext context});
 }
 
 /// @nodoc
-class __$LSEContinuePressedCopyWithImpl<$Res>
+class __$$_LSEContinuePressedCopyWithImpl<$Res>
     extends _$LoginScreenEventCopyWithImpl<$Res>
-    implements _$LSEContinuePressedCopyWith<$Res> {
-  __$LSEContinuePressedCopyWithImpl(
-      _LSEContinuePressed _value, $Res Function(_LSEContinuePressed) _then)
-      : super(_value, (v) => _then(v as _LSEContinuePressed));
+    implements _$$_LSEContinuePressedCopyWith<$Res> {
+  __$$_LSEContinuePressedCopyWithImpl(
+      _$_LSEContinuePressed _value, $Res Function(_$_LSEContinuePressed) _then)
+      : super(_value, (v) => _then(v as _$_LSEContinuePressed));
 
   @override
-  _LSEContinuePressed get _value => super._value as _LSEContinuePressed;
+  _$_LSEContinuePressed get _value => super._value as _$_LSEContinuePressed;
 
   @override
   $Res call({
     Object? context = freezed,
   }) {
-    return _then(_LSEContinuePressed(
+    return _then(_$_LSEContinuePressed(
       context == freezed
           ? _value.context
           : context // ignore: cast_nullable_to_non_nullable
@@ -390,17 +367,19 @@ class _$_LSEContinuePressed implements _LSEContinuePressed {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _LSEContinuePressed &&
-            (identical(other.context, context) || other.context == context));
+            other is _$_LSEContinuePressed &&
+            const DeepCollectionEquality().equals(other.context, context));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, context);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(context));
 
   @JsonKey(ignore: true)
   @override
-  _$LSEContinuePressedCopyWith<_LSEContinuePressed> get copyWith =>
-      __$LSEContinuePressedCopyWithImpl<_LSEContinuePressed>(this, _$identity);
+  _$$_LSEContinuePressedCopyWith<_$_LSEContinuePressed> get copyWith =>
+      __$$_LSEContinuePressedCopyWithImpl<_$_LSEContinuePressed>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -478,32 +457,32 @@ class _$_LSEContinuePressed implements _LSEContinuePressed {
 }
 
 abstract class _LSEContinuePressed implements LoginScreenEvent {
-  const factory _LSEContinuePressed(BuildContext context) =
+  const factory _LSEContinuePressed(final BuildContext context) =
       _$_LSEContinuePressed;
 
-  BuildContext get context;
+  BuildContext get context => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$LSEContinuePressedCopyWith<_LSEContinuePressed> get copyWith =>
+  _$$_LSEContinuePressedCopyWith<_$_LSEContinuePressed> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$LSEToggleVisibleCopyWith<$Res> {
-  factory _$LSEToggleVisibleCopyWith(
-          _LSEToggleVisible value, $Res Function(_LSEToggleVisible) then) =
-      __$LSEToggleVisibleCopyWithImpl<$Res>;
+abstract class _$$_LSEToggleVisibleCopyWith<$Res> {
+  factory _$$_LSEToggleVisibleCopyWith(
+          _$_LSEToggleVisible value, $Res Function(_$_LSEToggleVisible) then) =
+      __$$_LSEToggleVisibleCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$LSEToggleVisibleCopyWithImpl<$Res>
+class __$$_LSEToggleVisibleCopyWithImpl<$Res>
     extends _$LoginScreenEventCopyWithImpl<$Res>
-    implements _$LSEToggleVisibleCopyWith<$Res> {
-  __$LSEToggleVisibleCopyWithImpl(
-      _LSEToggleVisible _value, $Res Function(_LSEToggleVisible) _then)
-      : super(_value, (v) => _then(v as _LSEToggleVisible));
+    implements _$$_LSEToggleVisibleCopyWith<$Res> {
+  __$$_LSEToggleVisibleCopyWithImpl(
+      _$_LSEToggleVisible _value, $Res Function(_$_LSEToggleVisible) _then)
+      : super(_value, (v) => _then(v as _$_LSEToggleVisible));
 
   @override
-  _LSEToggleVisible get _value => super._value as _LSEToggleVisible;
+  _$_LSEToggleVisible get _value => super._value as _$_LSEToggleVisible;
 }
 
 /// @nodoc
@@ -519,7 +498,7 @@ class _$_LSEToggleVisible implements _LSEToggleVisible {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _LSEToggleVisible);
+        (other.runtimeType == runtimeType && other is _$_LSEToggleVisible);
   }
 
   @override
@@ -605,35 +584,8 @@ abstract class _LSEToggleVisible implements LoginScreenEvent {
 }
 
 /// @nodoc
-class _$LoginScreenStateTearOff {
-  const _$LoginScreenStateTearOff();
-
-  _LSSInitial initial(LoginScreenProps props) {
-    return _LSSInitial(
-      props,
-    );
-  }
-
-  _LSSLoading loading(LoginScreenProps props) {
-    return _LSSLoading(
-      props,
-    );
-  }
-
-  _LSSIdle idle(LoginScreenProps props) {
-    return _LSSIdle(
-      props,
-    );
-  }
-}
-
-/// @nodoc
-const $LoginScreenState = _$LoginScreenStateTearOff();
-
-/// @nodoc
 mixin _$LoginScreenState {
   LoginScreenProps get props => throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(LoginScreenProps props) initial,
@@ -724,11 +676,11 @@ class _$LoginScreenStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$LSSInitialCopyWith<$Res>
+abstract class _$$_LSSInitialCopyWith<$Res>
     implements $LoginScreenStateCopyWith<$Res> {
-  factory _$LSSInitialCopyWith(
-          _LSSInitial value, $Res Function(_LSSInitial) then) =
-      __$LSSInitialCopyWithImpl<$Res>;
+  factory _$$_LSSInitialCopyWith(
+          _$_LSSInitial value, $Res Function(_$_LSSInitial) then) =
+      __$$_LSSInitialCopyWithImpl<$Res>;
   @override
   $Res call({LoginScreenProps props});
 
@@ -737,21 +689,21 @@ abstract class _$LSSInitialCopyWith<$Res>
 }
 
 /// @nodoc
-class __$LSSInitialCopyWithImpl<$Res>
+class __$$_LSSInitialCopyWithImpl<$Res>
     extends _$LoginScreenStateCopyWithImpl<$Res>
-    implements _$LSSInitialCopyWith<$Res> {
-  __$LSSInitialCopyWithImpl(
-      _LSSInitial _value, $Res Function(_LSSInitial) _then)
-      : super(_value, (v) => _then(v as _LSSInitial));
+    implements _$$_LSSInitialCopyWith<$Res> {
+  __$$_LSSInitialCopyWithImpl(
+      _$_LSSInitial _value, $Res Function(_$_LSSInitial) _then)
+      : super(_value, (v) => _then(v as _$_LSSInitial));
 
   @override
-  _LSSInitial get _value => super._value as _LSSInitial;
+  _$_LSSInitial get _value => super._value as _$_LSSInitial;
 
   @override
   $Res call({
     Object? props = freezed,
   }) {
-    return _then(_LSSInitial(
+    return _then(_$_LSSInitial(
       props == freezed
           ? _value.props
           : props // ignore: cast_nullable_to_non_nullable
@@ -777,17 +729,18 @@ class _$_LSSInitial implements _LSSInitial {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _LSSInitial &&
-            (identical(other.props, props) || other.props == props));
+            other is _$_LSSInitial &&
+            const DeepCollectionEquality().equals(other.props, props));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, props);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(props));
 
   @JsonKey(ignore: true)
   @override
-  _$LSSInitialCopyWith<_LSSInitial> get copyWith =>
-      __$LSSInitialCopyWithImpl<_LSSInitial>(this, _$identity);
+  _$$_LSSInitialCopyWith<_$_LSSInitial> get copyWith =>
+      __$$_LSSInitialCopyWithImpl<_$_LSSInitial>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -859,22 +812,22 @@ class _$_LSSInitial implements _LSSInitial {
 }
 
 abstract class _LSSInitial implements LoginScreenState {
-  const factory _LSSInitial(LoginScreenProps props) = _$_LSSInitial;
+  const factory _LSSInitial(final LoginScreenProps props) = _$_LSSInitial;
 
   @override
-  LoginScreenProps get props;
+  LoginScreenProps get props => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$LSSInitialCopyWith<_LSSInitial> get copyWith =>
+  _$$_LSSInitialCopyWith<_$_LSSInitial> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$LSSLoadingCopyWith<$Res>
+abstract class _$$_LSSLoadingCopyWith<$Res>
     implements $LoginScreenStateCopyWith<$Res> {
-  factory _$LSSLoadingCopyWith(
-          _LSSLoading value, $Res Function(_LSSLoading) then) =
-      __$LSSLoadingCopyWithImpl<$Res>;
+  factory _$$_LSSLoadingCopyWith(
+          _$_LSSLoading value, $Res Function(_$_LSSLoading) then) =
+      __$$_LSSLoadingCopyWithImpl<$Res>;
   @override
   $Res call({LoginScreenProps props});
 
@@ -883,21 +836,21 @@ abstract class _$LSSLoadingCopyWith<$Res>
 }
 
 /// @nodoc
-class __$LSSLoadingCopyWithImpl<$Res>
+class __$$_LSSLoadingCopyWithImpl<$Res>
     extends _$LoginScreenStateCopyWithImpl<$Res>
-    implements _$LSSLoadingCopyWith<$Res> {
-  __$LSSLoadingCopyWithImpl(
-      _LSSLoading _value, $Res Function(_LSSLoading) _then)
-      : super(_value, (v) => _then(v as _LSSLoading));
+    implements _$$_LSSLoadingCopyWith<$Res> {
+  __$$_LSSLoadingCopyWithImpl(
+      _$_LSSLoading _value, $Res Function(_$_LSSLoading) _then)
+      : super(_value, (v) => _then(v as _$_LSSLoading));
 
   @override
-  _LSSLoading get _value => super._value as _LSSLoading;
+  _$_LSSLoading get _value => super._value as _$_LSSLoading;
 
   @override
   $Res call({
     Object? props = freezed,
   }) {
-    return _then(_LSSLoading(
+    return _then(_$_LSSLoading(
       props == freezed
           ? _value.props
           : props // ignore: cast_nullable_to_non_nullable
@@ -923,17 +876,18 @@ class _$_LSSLoading implements _LSSLoading {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _LSSLoading &&
-            (identical(other.props, props) || other.props == props));
+            other is _$_LSSLoading &&
+            const DeepCollectionEquality().equals(other.props, props));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, props);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(props));
 
   @JsonKey(ignore: true)
   @override
-  _$LSSLoadingCopyWith<_LSSLoading> get copyWith =>
-      __$LSSLoadingCopyWithImpl<_LSSLoading>(this, _$identity);
+  _$$_LSSLoadingCopyWith<_$_LSSLoading> get copyWith =>
+      __$$_LSSLoadingCopyWithImpl<_$_LSSLoading>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1005,21 +959,22 @@ class _$_LSSLoading implements _LSSLoading {
 }
 
 abstract class _LSSLoading implements LoginScreenState {
-  const factory _LSSLoading(LoginScreenProps props) = _$_LSSLoading;
+  const factory _LSSLoading(final LoginScreenProps props) = _$_LSSLoading;
 
   @override
-  LoginScreenProps get props;
+  LoginScreenProps get props => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$LSSLoadingCopyWith<_LSSLoading> get copyWith =>
+  _$$_LSSLoadingCopyWith<_$_LSSLoading> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$LSSIdleCopyWith<$Res>
+abstract class _$$_LSSIdleCopyWith<$Res>
     implements $LoginScreenStateCopyWith<$Res> {
-  factory _$LSSIdleCopyWith(_LSSIdle value, $Res Function(_LSSIdle) then) =
-      __$LSSIdleCopyWithImpl<$Res>;
+  factory _$$_LSSIdleCopyWith(
+          _$_LSSIdle value, $Res Function(_$_LSSIdle) then) =
+      __$$_LSSIdleCopyWithImpl<$Res>;
   @override
   $Res call({LoginScreenProps props});
 
@@ -1028,19 +983,20 @@ abstract class _$LSSIdleCopyWith<$Res>
 }
 
 /// @nodoc
-class __$LSSIdleCopyWithImpl<$Res> extends _$LoginScreenStateCopyWithImpl<$Res>
-    implements _$LSSIdleCopyWith<$Res> {
-  __$LSSIdleCopyWithImpl(_LSSIdle _value, $Res Function(_LSSIdle) _then)
-      : super(_value, (v) => _then(v as _LSSIdle));
+class __$$_LSSIdleCopyWithImpl<$Res>
+    extends _$LoginScreenStateCopyWithImpl<$Res>
+    implements _$$_LSSIdleCopyWith<$Res> {
+  __$$_LSSIdleCopyWithImpl(_$_LSSIdle _value, $Res Function(_$_LSSIdle) _then)
+      : super(_value, (v) => _then(v as _$_LSSIdle));
 
   @override
-  _LSSIdle get _value => super._value as _LSSIdle;
+  _$_LSSIdle get _value => super._value as _$_LSSIdle;
 
   @override
   $Res call({
     Object? props = freezed,
   }) {
-    return _then(_LSSIdle(
+    return _then(_$_LSSIdle(
       props == freezed
           ? _value.props
           : props // ignore: cast_nullable_to_non_nullable
@@ -1066,17 +1022,18 @@ class _$_LSSIdle implements _LSSIdle {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _LSSIdle &&
-            (identical(other.props, props) || other.props == props));
+            other is _$_LSSIdle &&
+            const DeepCollectionEquality().equals(other.props, props));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, props);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(props));
 
   @JsonKey(ignore: true)
   @override
-  _$LSSIdleCopyWith<_LSSIdle> get copyWith =>
-      __$LSSIdleCopyWithImpl<_LSSIdle>(this, _$identity);
+  _$$_LSSIdleCopyWith<_$_LSSIdle> get copyWith =>
+      __$$_LSSIdleCopyWithImpl<_$_LSSIdle>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1148,29 +1105,15 @@ class _$_LSSIdle implements _LSSIdle {
 }
 
 abstract class _LSSIdle implements LoginScreenState {
-  const factory _LSSIdle(LoginScreenProps props) = _$_LSSIdle;
+  const factory _LSSIdle(final LoginScreenProps props) = _$_LSSIdle;
 
   @override
-  LoginScreenProps get props;
+  LoginScreenProps get props => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$LSSIdleCopyWith<_LSSIdle> get copyWith =>
+  _$$_LSSIdleCopyWith<_$_LSSIdle> get copyWith =>
       throw _privateConstructorUsedError;
 }
-
-/// @nodoc
-class _$LoginScreenPropsTearOff {
-  const _$LoginScreenPropsTearOff();
-
-  _LoginScreenProps call({required bool isInfoTileVisible}) {
-    return _LoginScreenProps(
-      isInfoTileVisible: isInfoTileVisible,
-    );
-  }
-}
-
-/// @nodoc
-const $LoginScreenProps = _$LoginScreenPropsTearOff();
 
 /// @nodoc
 mixin _$LoginScreenProps {
@@ -1212,31 +1155,31 @@ class _$LoginScreenPropsCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$LoginScreenPropsCopyWith<$Res>
+abstract class _$$_LoginScreenPropsCopyWith<$Res>
     implements $LoginScreenPropsCopyWith<$Res> {
-  factory _$LoginScreenPropsCopyWith(
-          _LoginScreenProps value, $Res Function(_LoginScreenProps) then) =
-      __$LoginScreenPropsCopyWithImpl<$Res>;
+  factory _$$_LoginScreenPropsCopyWith(
+          _$_LoginScreenProps value, $Res Function(_$_LoginScreenProps) then) =
+      __$$_LoginScreenPropsCopyWithImpl<$Res>;
   @override
   $Res call({bool isInfoTileVisible});
 }
 
 /// @nodoc
-class __$LoginScreenPropsCopyWithImpl<$Res>
+class __$$_LoginScreenPropsCopyWithImpl<$Res>
     extends _$LoginScreenPropsCopyWithImpl<$Res>
-    implements _$LoginScreenPropsCopyWith<$Res> {
-  __$LoginScreenPropsCopyWithImpl(
-      _LoginScreenProps _value, $Res Function(_LoginScreenProps) _then)
-      : super(_value, (v) => _then(v as _LoginScreenProps));
+    implements _$$_LoginScreenPropsCopyWith<$Res> {
+  __$$_LoginScreenPropsCopyWithImpl(
+      _$_LoginScreenProps _value, $Res Function(_$_LoginScreenProps) _then)
+      : super(_value, (v) => _then(v as _$_LoginScreenProps));
 
   @override
-  _LoginScreenProps get _value => super._value as _LoginScreenProps;
+  _$_LoginScreenProps get _value => super._value as _$_LoginScreenProps;
 
   @override
   $Res call({
     Object? isInfoTileVisible = freezed,
   }) {
-    return _then(_LoginScreenProps(
+    return _then(_$_LoginScreenProps(
       isInfoTileVisible: isInfoTileVisible == freezed
           ? _value.isInfoTileVisible
           : isInfoTileVisible // ignore: cast_nullable_to_non_nullable
@@ -1262,28 +1205,29 @@ class _$_LoginScreenProps implements _LoginScreenProps {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _LoginScreenProps &&
-            (identical(other.isInfoTileVisible, isInfoTileVisible) ||
-                other.isInfoTileVisible == isInfoTileVisible));
+            other is _$_LoginScreenProps &&
+            const DeepCollectionEquality()
+                .equals(other.isInfoTileVisible, isInfoTileVisible));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isInfoTileVisible);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(isInfoTileVisible));
 
   @JsonKey(ignore: true)
   @override
-  _$LoginScreenPropsCopyWith<_LoginScreenProps> get copyWith =>
-      __$LoginScreenPropsCopyWithImpl<_LoginScreenProps>(this, _$identity);
+  _$$_LoginScreenPropsCopyWith<_$_LoginScreenProps> get copyWith =>
+      __$$_LoginScreenPropsCopyWithImpl<_$_LoginScreenProps>(this, _$identity);
 }
 
 abstract class _LoginScreenProps implements LoginScreenProps {
-  const factory _LoginScreenProps({required bool isInfoTileVisible}) =
+  const factory _LoginScreenProps({required final bool isInfoTileVisible}) =
       _$_LoginScreenProps;
 
   @override
-  bool get isInfoTileVisible;
+  bool get isInfoTileVisible => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$LoginScreenPropsCopyWith<_LoginScreenProps> get copyWith =>
+  _$$_LoginScreenPropsCopyWith<_$_LoginScreenProps> get copyWith =>
       throw _privateConstructorUsedError;
 }

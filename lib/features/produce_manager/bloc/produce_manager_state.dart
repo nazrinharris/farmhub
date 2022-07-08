@@ -20,9 +20,6 @@ class ProduceManagerState with _$ProduceManagerState {
   const factory ProduceManagerState.createNewProduceSuccess({
     required Produce produce,
   }) = PMSCreateNewProduceSuccess;
-  const factory ProduceManagerState.createNewProduceError({
-    required String code,
-    required String message,
-    required StackTrace stackTrace,
-  }) = PMSCreateNewProduceError;
+  const factory ProduceManagerState.createNewProduceError({required Failure failure}) =
+      PMSCreateNewProduceError;
 }

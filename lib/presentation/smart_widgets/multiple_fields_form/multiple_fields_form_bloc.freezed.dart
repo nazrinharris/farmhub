@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'multiple_fields_form_bloc.dart';
@@ -11,71 +12,7 @@ part of 'multiple_fields_form_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$MultipleFieldsFormEventTearOff {
-  const _$MultipleFieldsFormEventTearOff();
-
-  _MultipleFieldsFormStarted started() {
-    return const _MultipleFieldsFormStarted();
-  }
-
-  _MultipleFieldsFormUnfocusAllNodes unfocusAllNodes() {
-    return const _MultipleFieldsFormUnfocusAllNodes();
-  }
-
-  _MultipleFieldsFormEnableAlwaysValidation enableAlwaysValidation() {
-    return const _MultipleFieldsFormEnableAlwaysValidation();
-  }
-
-  _MultipleFieldsFormFirstFieldValueChanged firstFieldValueChanged(
-      {required String input}) {
-    return _MultipleFieldsFormFirstFieldValueChanged(
-      input: input,
-    );
-  }
-
-  _MultipleFieldsFormFirstFieldSubmitted firstFieldSubmitted() {
-    return const _MultipleFieldsFormFirstFieldSubmitted();
-  }
-
-  _MultipleFieldsFormSecondFieldValueChanged secondFieldValueChanged(
-      {required String input}) {
-    return _MultipleFieldsFormSecondFieldValueChanged(
-      input: input,
-    );
-  }
-
-  _MultipleFieldsFormSecondFieldSubmitted secondFieldSubmitted() {
-    return const _MultipleFieldsFormSecondFieldSubmitted();
-  }
-
-  _MultipleFieldsFormThirdFieldValueChanged thirdFieldValueChanged(
-      {required String input}) {
-    return _MultipleFieldsFormThirdFieldValueChanged(
-      input: input,
-    );
-  }
-
-  _MultipleFieldsFormThirdFieldSubmitted thirdFieldSubmitted() {
-    return const _MultipleFieldsFormThirdFieldSubmitted();
-  }
-
-  _MultipleFieldsFormFourthFieldValueChanged fourthFieldValueChanged(
-      {required String input}) {
-    return _MultipleFieldsFormFourthFieldValueChanged(
-      input: input,
-    );
-  }
-
-  _MultipleFieldsFormFourthFieldSubmitted fourthFieldSubmitted() {
-    return const _MultipleFieldsFormFourthFieldSubmitted();
-  }
-}
-
-/// @nodoc
-const $MultipleFieldsFormEvent = _$MultipleFieldsFormEventTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$MultipleFieldsFormEvent {
@@ -219,23 +156,25 @@ class _$MultipleFieldsFormEventCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$MultipleFieldsFormStartedCopyWith<$Res> {
-  factory _$MultipleFieldsFormStartedCopyWith(_MultipleFieldsFormStarted value,
-          $Res Function(_MultipleFieldsFormStarted) then) =
-      __$MultipleFieldsFormStartedCopyWithImpl<$Res>;
+abstract class _$$_MultipleFieldsFormStartedCopyWith<$Res> {
+  factory _$$_MultipleFieldsFormStartedCopyWith(
+          _$_MultipleFieldsFormStarted value,
+          $Res Function(_$_MultipleFieldsFormStarted) then) =
+      __$$_MultipleFieldsFormStartedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$MultipleFieldsFormStartedCopyWithImpl<$Res>
+class __$$_MultipleFieldsFormStartedCopyWithImpl<$Res>
     extends _$MultipleFieldsFormEventCopyWithImpl<$Res>
-    implements _$MultipleFieldsFormStartedCopyWith<$Res> {
-  __$MultipleFieldsFormStartedCopyWithImpl(_MultipleFieldsFormStarted _value,
-      $Res Function(_MultipleFieldsFormStarted) _then)
-      : super(_value, (v) => _then(v as _MultipleFieldsFormStarted));
+    implements _$$_MultipleFieldsFormStartedCopyWith<$Res> {
+  __$$_MultipleFieldsFormStartedCopyWithImpl(
+      _$_MultipleFieldsFormStarted _value,
+      $Res Function(_$_MultipleFieldsFormStarted) _then)
+      : super(_value, (v) => _then(v as _$_MultipleFieldsFormStarted));
 
   @override
-  _MultipleFieldsFormStarted get _value =>
-      super._value as _MultipleFieldsFormStarted;
+  _$_MultipleFieldsFormStarted get _value =>
+      super._value as _$_MultipleFieldsFormStarted;
 }
 
 /// @nodoc
@@ -252,7 +191,7 @@ class _$_MultipleFieldsFormStarted implements _MultipleFieldsFormStarted {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _MultipleFieldsFormStarted);
+            other is _$_MultipleFieldsFormStarted);
   }
 
   @override
@@ -408,25 +347,25 @@ abstract class _MultipleFieldsFormStarted implements MultipleFieldsFormEvent {
 }
 
 /// @nodoc
-abstract class _$MultipleFieldsFormUnfocusAllNodesCopyWith<$Res> {
-  factory _$MultipleFieldsFormUnfocusAllNodesCopyWith(
-          _MultipleFieldsFormUnfocusAllNodes value,
-          $Res Function(_MultipleFieldsFormUnfocusAllNodes) then) =
-      __$MultipleFieldsFormUnfocusAllNodesCopyWithImpl<$Res>;
+abstract class _$$_MultipleFieldsFormUnfocusAllNodesCopyWith<$Res> {
+  factory _$$_MultipleFieldsFormUnfocusAllNodesCopyWith(
+          _$_MultipleFieldsFormUnfocusAllNodes value,
+          $Res Function(_$_MultipleFieldsFormUnfocusAllNodes) then) =
+      __$$_MultipleFieldsFormUnfocusAllNodesCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$MultipleFieldsFormUnfocusAllNodesCopyWithImpl<$Res>
+class __$$_MultipleFieldsFormUnfocusAllNodesCopyWithImpl<$Res>
     extends _$MultipleFieldsFormEventCopyWithImpl<$Res>
-    implements _$MultipleFieldsFormUnfocusAllNodesCopyWith<$Res> {
-  __$MultipleFieldsFormUnfocusAllNodesCopyWithImpl(
-      _MultipleFieldsFormUnfocusAllNodes _value,
-      $Res Function(_MultipleFieldsFormUnfocusAllNodes) _then)
-      : super(_value, (v) => _then(v as _MultipleFieldsFormUnfocusAllNodes));
+    implements _$$_MultipleFieldsFormUnfocusAllNodesCopyWith<$Res> {
+  __$$_MultipleFieldsFormUnfocusAllNodesCopyWithImpl(
+      _$_MultipleFieldsFormUnfocusAllNodes _value,
+      $Res Function(_$_MultipleFieldsFormUnfocusAllNodes) _then)
+      : super(_value, (v) => _then(v as _$_MultipleFieldsFormUnfocusAllNodes));
 
   @override
-  _MultipleFieldsFormUnfocusAllNodes get _value =>
-      super._value as _MultipleFieldsFormUnfocusAllNodes;
+  _$_MultipleFieldsFormUnfocusAllNodes get _value =>
+      super._value as _$_MultipleFieldsFormUnfocusAllNodes;
 }
 
 /// @nodoc
@@ -444,7 +383,7 @@ class _$_MultipleFieldsFormUnfocusAllNodes
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _MultipleFieldsFormUnfocusAllNodes);
+            other is _$_MultipleFieldsFormUnfocusAllNodes);
   }
 
   @override
@@ -602,26 +541,26 @@ abstract class _MultipleFieldsFormUnfocusAllNodes
 }
 
 /// @nodoc
-abstract class _$MultipleFieldsFormEnableAlwaysValidationCopyWith<$Res> {
-  factory _$MultipleFieldsFormEnableAlwaysValidationCopyWith(
-          _MultipleFieldsFormEnableAlwaysValidation value,
-          $Res Function(_MultipleFieldsFormEnableAlwaysValidation) then) =
-      __$MultipleFieldsFormEnableAlwaysValidationCopyWithImpl<$Res>;
+abstract class _$$_MultipleFieldsFormEnableAlwaysValidationCopyWith<$Res> {
+  factory _$$_MultipleFieldsFormEnableAlwaysValidationCopyWith(
+          _$_MultipleFieldsFormEnableAlwaysValidation value,
+          $Res Function(_$_MultipleFieldsFormEnableAlwaysValidation) then) =
+      __$$_MultipleFieldsFormEnableAlwaysValidationCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$MultipleFieldsFormEnableAlwaysValidationCopyWithImpl<$Res>
+class __$$_MultipleFieldsFormEnableAlwaysValidationCopyWithImpl<$Res>
     extends _$MultipleFieldsFormEventCopyWithImpl<$Res>
-    implements _$MultipleFieldsFormEnableAlwaysValidationCopyWith<$Res> {
-  __$MultipleFieldsFormEnableAlwaysValidationCopyWithImpl(
-      _MultipleFieldsFormEnableAlwaysValidation _value,
-      $Res Function(_MultipleFieldsFormEnableAlwaysValidation) _then)
+    implements _$$_MultipleFieldsFormEnableAlwaysValidationCopyWith<$Res> {
+  __$$_MultipleFieldsFormEnableAlwaysValidationCopyWithImpl(
+      _$_MultipleFieldsFormEnableAlwaysValidation _value,
+      $Res Function(_$_MultipleFieldsFormEnableAlwaysValidation) _then)
       : super(_value,
-            (v) => _then(v as _MultipleFieldsFormEnableAlwaysValidation));
+            (v) => _then(v as _$_MultipleFieldsFormEnableAlwaysValidation));
 
   @override
-  _MultipleFieldsFormEnableAlwaysValidation get _value =>
-      super._value as _MultipleFieldsFormEnableAlwaysValidation;
+  _$_MultipleFieldsFormEnableAlwaysValidation get _value =>
+      super._value as _$_MultipleFieldsFormEnableAlwaysValidation;
 }
 
 /// @nodoc
@@ -639,7 +578,7 @@ class _$_MultipleFieldsFormEnableAlwaysValidation
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _MultipleFieldsFormEnableAlwaysValidation);
+            other is _$_MultipleFieldsFormEnableAlwaysValidation);
   }
 
   @override
@@ -797,33 +736,33 @@ abstract class _MultipleFieldsFormEnableAlwaysValidation
 }
 
 /// @nodoc
-abstract class _$MultipleFieldsFormFirstFieldValueChangedCopyWith<$Res> {
-  factory _$MultipleFieldsFormFirstFieldValueChangedCopyWith(
-          _MultipleFieldsFormFirstFieldValueChanged value,
-          $Res Function(_MultipleFieldsFormFirstFieldValueChanged) then) =
-      __$MultipleFieldsFormFirstFieldValueChangedCopyWithImpl<$Res>;
+abstract class _$$_MultipleFieldsFormFirstFieldValueChangedCopyWith<$Res> {
+  factory _$$_MultipleFieldsFormFirstFieldValueChangedCopyWith(
+          _$_MultipleFieldsFormFirstFieldValueChanged value,
+          $Res Function(_$_MultipleFieldsFormFirstFieldValueChanged) then) =
+      __$$_MultipleFieldsFormFirstFieldValueChangedCopyWithImpl<$Res>;
   $Res call({String input});
 }
 
 /// @nodoc
-class __$MultipleFieldsFormFirstFieldValueChangedCopyWithImpl<$Res>
+class __$$_MultipleFieldsFormFirstFieldValueChangedCopyWithImpl<$Res>
     extends _$MultipleFieldsFormEventCopyWithImpl<$Res>
-    implements _$MultipleFieldsFormFirstFieldValueChangedCopyWith<$Res> {
-  __$MultipleFieldsFormFirstFieldValueChangedCopyWithImpl(
-      _MultipleFieldsFormFirstFieldValueChanged _value,
-      $Res Function(_MultipleFieldsFormFirstFieldValueChanged) _then)
+    implements _$$_MultipleFieldsFormFirstFieldValueChangedCopyWith<$Res> {
+  __$$_MultipleFieldsFormFirstFieldValueChangedCopyWithImpl(
+      _$_MultipleFieldsFormFirstFieldValueChanged _value,
+      $Res Function(_$_MultipleFieldsFormFirstFieldValueChanged) _then)
       : super(_value,
-            (v) => _then(v as _MultipleFieldsFormFirstFieldValueChanged));
+            (v) => _then(v as _$_MultipleFieldsFormFirstFieldValueChanged));
 
   @override
-  _MultipleFieldsFormFirstFieldValueChanged get _value =>
-      super._value as _MultipleFieldsFormFirstFieldValueChanged;
+  _$_MultipleFieldsFormFirstFieldValueChanged get _value =>
+      super._value as _$_MultipleFieldsFormFirstFieldValueChanged;
 
   @override
   $Res call({
     Object? input = freezed,
   }) {
-    return _then(_MultipleFieldsFormFirstFieldValueChanged(
+    return _then(_$_MultipleFieldsFormFirstFieldValueChanged(
       input: input == freezed
           ? _value.input
           : input // ignore: cast_nullable_to_non_nullable
@@ -850,19 +789,20 @@ class _$_MultipleFieldsFormFirstFieldValueChanged
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _MultipleFieldsFormFirstFieldValueChanged &&
-            (identical(other.input, input) || other.input == input));
+            other is _$_MultipleFieldsFormFirstFieldValueChanged &&
+            const DeepCollectionEquality().equals(other.input, input));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, input);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(input));
 
   @JsonKey(ignore: true)
   @override
-  _$MultipleFieldsFormFirstFieldValueChangedCopyWith<
-          _MultipleFieldsFormFirstFieldValueChanged>
-      get copyWith => __$MultipleFieldsFormFirstFieldValueChangedCopyWithImpl<
-          _MultipleFieldsFormFirstFieldValueChanged>(this, _$identity);
+  _$$_MultipleFieldsFormFirstFieldValueChangedCopyWith<
+          _$_MultipleFieldsFormFirstFieldValueChanged>
+      get copyWith => __$$_MultipleFieldsFormFirstFieldValueChangedCopyWithImpl<
+          _$_MultipleFieldsFormFirstFieldValueChanged>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1012,36 +952,37 @@ class _$_MultipleFieldsFormFirstFieldValueChanged
 abstract class _MultipleFieldsFormFirstFieldValueChanged
     implements MultipleFieldsFormEvent {
   const factory _MultipleFieldsFormFirstFieldValueChanged(
-      {required String input}) = _$_MultipleFieldsFormFirstFieldValueChanged;
+          {required final String input}) =
+      _$_MultipleFieldsFormFirstFieldValueChanged;
 
-  String get input;
+  String get input => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$MultipleFieldsFormFirstFieldValueChangedCopyWith<
-          _MultipleFieldsFormFirstFieldValueChanged>
+  _$$_MultipleFieldsFormFirstFieldValueChangedCopyWith<
+          _$_MultipleFieldsFormFirstFieldValueChanged>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$MultipleFieldsFormFirstFieldSubmittedCopyWith<$Res> {
-  factory _$MultipleFieldsFormFirstFieldSubmittedCopyWith(
-          _MultipleFieldsFormFirstFieldSubmitted value,
-          $Res Function(_MultipleFieldsFormFirstFieldSubmitted) then) =
-      __$MultipleFieldsFormFirstFieldSubmittedCopyWithImpl<$Res>;
+abstract class _$$_MultipleFieldsFormFirstFieldSubmittedCopyWith<$Res> {
+  factory _$$_MultipleFieldsFormFirstFieldSubmittedCopyWith(
+          _$_MultipleFieldsFormFirstFieldSubmitted value,
+          $Res Function(_$_MultipleFieldsFormFirstFieldSubmitted) then) =
+      __$$_MultipleFieldsFormFirstFieldSubmittedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$MultipleFieldsFormFirstFieldSubmittedCopyWithImpl<$Res>
+class __$$_MultipleFieldsFormFirstFieldSubmittedCopyWithImpl<$Res>
     extends _$MultipleFieldsFormEventCopyWithImpl<$Res>
-    implements _$MultipleFieldsFormFirstFieldSubmittedCopyWith<$Res> {
-  __$MultipleFieldsFormFirstFieldSubmittedCopyWithImpl(
-      _MultipleFieldsFormFirstFieldSubmitted _value,
-      $Res Function(_MultipleFieldsFormFirstFieldSubmitted) _then)
-      : super(
-            _value, (v) => _then(v as _MultipleFieldsFormFirstFieldSubmitted));
+    implements _$$_MultipleFieldsFormFirstFieldSubmittedCopyWith<$Res> {
+  __$$_MultipleFieldsFormFirstFieldSubmittedCopyWithImpl(
+      _$_MultipleFieldsFormFirstFieldSubmitted _value,
+      $Res Function(_$_MultipleFieldsFormFirstFieldSubmitted) _then)
+      : super(_value,
+            (v) => _then(v as _$_MultipleFieldsFormFirstFieldSubmitted));
 
   @override
-  _MultipleFieldsFormFirstFieldSubmitted get _value =>
-      super._value as _MultipleFieldsFormFirstFieldSubmitted;
+  _$_MultipleFieldsFormFirstFieldSubmitted get _value =>
+      super._value as _$_MultipleFieldsFormFirstFieldSubmitted;
 }
 
 /// @nodoc
@@ -1059,7 +1000,7 @@ class _$_MultipleFieldsFormFirstFieldSubmitted
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _MultipleFieldsFormFirstFieldSubmitted);
+            other is _$_MultipleFieldsFormFirstFieldSubmitted);
   }
 
   @override
@@ -1217,33 +1158,33 @@ abstract class _MultipleFieldsFormFirstFieldSubmitted
 }
 
 /// @nodoc
-abstract class _$MultipleFieldsFormSecondFieldValueChangedCopyWith<$Res> {
-  factory _$MultipleFieldsFormSecondFieldValueChangedCopyWith(
-          _MultipleFieldsFormSecondFieldValueChanged value,
-          $Res Function(_MultipleFieldsFormSecondFieldValueChanged) then) =
-      __$MultipleFieldsFormSecondFieldValueChangedCopyWithImpl<$Res>;
+abstract class _$$_MultipleFieldsFormSecondFieldValueChangedCopyWith<$Res> {
+  factory _$$_MultipleFieldsFormSecondFieldValueChangedCopyWith(
+          _$_MultipleFieldsFormSecondFieldValueChanged value,
+          $Res Function(_$_MultipleFieldsFormSecondFieldValueChanged) then) =
+      __$$_MultipleFieldsFormSecondFieldValueChangedCopyWithImpl<$Res>;
   $Res call({String input});
 }
 
 /// @nodoc
-class __$MultipleFieldsFormSecondFieldValueChangedCopyWithImpl<$Res>
+class __$$_MultipleFieldsFormSecondFieldValueChangedCopyWithImpl<$Res>
     extends _$MultipleFieldsFormEventCopyWithImpl<$Res>
-    implements _$MultipleFieldsFormSecondFieldValueChangedCopyWith<$Res> {
-  __$MultipleFieldsFormSecondFieldValueChangedCopyWithImpl(
-      _MultipleFieldsFormSecondFieldValueChanged _value,
-      $Res Function(_MultipleFieldsFormSecondFieldValueChanged) _then)
+    implements _$$_MultipleFieldsFormSecondFieldValueChangedCopyWith<$Res> {
+  __$$_MultipleFieldsFormSecondFieldValueChangedCopyWithImpl(
+      _$_MultipleFieldsFormSecondFieldValueChanged _value,
+      $Res Function(_$_MultipleFieldsFormSecondFieldValueChanged) _then)
       : super(_value,
-            (v) => _then(v as _MultipleFieldsFormSecondFieldValueChanged));
+            (v) => _then(v as _$_MultipleFieldsFormSecondFieldValueChanged));
 
   @override
-  _MultipleFieldsFormSecondFieldValueChanged get _value =>
-      super._value as _MultipleFieldsFormSecondFieldValueChanged;
+  _$_MultipleFieldsFormSecondFieldValueChanged get _value =>
+      super._value as _$_MultipleFieldsFormSecondFieldValueChanged;
 
   @override
   $Res call({
     Object? input = freezed,
   }) {
-    return _then(_MultipleFieldsFormSecondFieldValueChanged(
+    return _then(_$_MultipleFieldsFormSecondFieldValueChanged(
       input: input == freezed
           ? _value.input
           : input // ignore: cast_nullable_to_non_nullable
@@ -1270,19 +1211,21 @@ class _$_MultipleFieldsFormSecondFieldValueChanged
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _MultipleFieldsFormSecondFieldValueChanged &&
-            (identical(other.input, input) || other.input == input));
+            other is _$_MultipleFieldsFormSecondFieldValueChanged &&
+            const DeepCollectionEquality().equals(other.input, input));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, input);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(input));
 
   @JsonKey(ignore: true)
   @override
-  _$MultipleFieldsFormSecondFieldValueChangedCopyWith<
-          _MultipleFieldsFormSecondFieldValueChanged>
-      get copyWith => __$MultipleFieldsFormSecondFieldValueChangedCopyWithImpl<
-          _MultipleFieldsFormSecondFieldValueChanged>(this, _$identity);
+  _$$_MultipleFieldsFormSecondFieldValueChangedCopyWith<
+          _$_MultipleFieldsFormSecondFieldValueChanged>
+      get copyWith =>
+          __$$_MultipleFieldsFormSecondFieldValueChangedCopyWithImpl<
+              _$_MultipleFieldsFormSecondFieldValueChanged>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1432,36 +1375,37 @@ class _$_MultipleFieldsFormSecondFieldValueChanged
 abstract class _MultipleFieldsFormSecondFieldValueChanged
     implements MultipleFieldsFormEvent {
   const factory _MultipleFieldsFormSecondFieldValueChanged(
-      {required String input}) = _$_MultipleFieldsFormSecondFieldValueChanged;
+          {required final String input}) =
+      _$_MultipleFieldsFormSecondFieldValueChanged;
 
-  String get input;
+  String get input => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$MultipleFieldsFormSecondFieldValueChangedCopyWith<
-          _MultipleFieldsFormSecondFieldValueChanged>
+  _$$_MultipleFieldsFormSecondFieldValueChangedCopyWith<
+          _$_MultipleFieldsFormSecondFieldValueChanged>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$MultipleFieldsFormSecondFieldSubmittedCopyWith<$Res> {
-  factory _$MultipleFieldsFormSecondFieldSubmittedCopyWith(
-          _MultipleFieldsFormSecondFieldSubmitted value,
-          $Res Function(_MultipleFieldsFormSecondFieldSubmitted) then) =
-      __$MultipleFieldsFormSecondFieldSubmittedCopyWithImpl<$Res>;
+abstract class _$$_MultipleFieldsFormSecondFieldSubmittedCopyWith<$Res> {
+  factory _$$_MultipleFieldsFormSecondFieldSubmittedCopyWith(
+          _$_MultipleFieldsFormSecondFieldSubmitted value,
+          $Res Function(_$_MultipleFieldsFormSecondFieldSubmitted) then) =
+      __$$_MultipleFieldsFormSecondFieldSubmittedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$MultipleFieldsFormSecondFieldSubmittedCopyWithImpl<$Res>
+class __$$_MultipleFieldsFormSecondFieldSubmittedCopyWithImpl<$Res>
     extends _$MultipleFieldsFormEventCopyWithImpl<$Res>
-    implements _$MultipleFieldsFormSecondFieldSubmittedCopyWith<$Res> {
-  __$MultipleFieldsFormSecondFieldSubmittedCopyWithImpl(
-      _MultipleFieldsFormSecondFieldSubmitted _value,
-      $Res Function(_MultipleFieldsFormSecondFieldSubmitted) _then)
-      : super(
-            _value, (v) => _then(v as _MultipleFieldsFormSecondFieldSubmitted));
+    implements _$$_MultipleFieldsFormSecondFieldSubmittedCopyWith<$Res> {
+  __$$_MultipleFieldsFormSecondFieldSubmittedCopyWithImpl(
+      _$_MultipleFieldsFormSecondFieldSubmitted _value,
+      $Res Function(_$_MultipleFieldsFormSecondFieldSubmitted) _then)
+      : super(_value,
+            (v) => _then(v as _$_MultipleFieldsFormSecondFieldSubmitted));
 
   @override
-  _MultipleFieldsFormSecondFieldSubmitted get _value =>
-      super._value as _MultipleFieldsFormSecondFieldSubmitted;
+  _$_MultipleFieldsFormSecondFieldSubmitted get _value =>
+      super._value as _$_MultipleFieldsFormSecondFieldSubmitted;
 }
 
 /// @nodoc
@@ -1479,7 +1423,7 @@ class _$_MultipleFieldsFormSecondFieldSubmitted
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _MultipleFieldsFormSecondFieldSubmitted);
+            other is _$_MultipleFieldsFormSecondFieldSubmitted);
   }
 
   @override
@@ -1637,33 +1581,33 @@ abstract class _MultipleFieldsFormSecondFieldSubmitted
 }
 
 /// @nodoc
-abstract class _$MultipleFieldsFormThirdFieldValueChangedCopyWith<$Res> {
-  factory _$MultipleFieldsFormThirdFieldValueChangedCopyWith(
-          _MultipleFieldsFormThirdFieldValueChanged value,
-          $Res Function(_MultipleFieldsFormThirdFieldValueChanged) then) =
-      __$MultipleFieldsFormThirdFieldValueChangedCopyWithImpl<$Res>;
+abstract class _$$_MultipleFieldsFormThirdFieldValueChangedCopyWith<$Res> {
+  factory _$$_MultipleFieldsFormThirdFieldValueChangedCopyWith(
+          _$_MultipleFieldsFormThirdFieldValueChanged value,
+          $Res Function(_$_MultipleFieldsFormThirdFieldValueChanged) then) =
+      __$$_MultipleFieldsFormThirdFieldValueChangedCopyWithImpl<$Res>;
   $Res call({String input});
 }
 
 /// @nodoc
-class __$MultipleFieldsFormThirdFieldValueChangedCopyWithImpl<$Res>
+class __$$_MultipleFieldsFormThirdFieldValueChangedCopyWithImpl<$Res>
     extends _$MultipleFieldsFormEventCopyWithImpl<$Res>
-    implements _$MultipleFieldsFormThirdFieldValueChangedCopyWith<$Res> {
-  __$MultipleFieldsFormThirdFieldValueChangedCopyWithImpl(
-      _MultipleFieldsFormThirdFieldValueChanged _value,
-      $Res Function(_MultipleFieldsFormThirdFieldValueChanged) _then)
+    implements _$$_MultipleFieldsFormThirdFieldValueChangedCopyWith<$Res> {
+  __$$_MultipleFieldsFormThirdFieldValueChangedCopyWithImpl(
+      _$_MultipleFieldsFormThirdFieldValueChanged _value,
+      $Res Function(_$_MultipleFieldsFormThirdFieldValueChanged) _then)
       : super(_value,
-            (v) => _then(v as _MultipleFieldsFormThirdFieldValueChanged));
+            (v) => _then(v as _$_MultipleFieldsFormThirdFieldValueChanged));
 
   @override
-  _MultipleFieldsFormThirdFieldValueChanged get _value =>
-      super._value as _MultipleFieldsFormThirdFieldValueChanged;
+  _$_MultipleFieldsFormThirdFieldValueChanged get _value =>
+      super._value as _$_MultipleFieldsFormThirdFieldValueChanged;
 
   @override
   $Res call({
     Object? input = freezed,
   }) {
-    return _then(_MultipleFieldsFormThirdFieldValueChanged(
+    return _then(_$_MultipleFieldsFormThirdFieldValueChanged(
       input: input == freezed
           ? _value.input
           : input // ignore: cast_nullable_to_non_nullable
@@ -1690,19 +1634,20 @@ class _$_MultipleFieldsFormThirdFieldValueChanged
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _MultipleFieldsFormThirdFieldValueChanged &&
-            (identical(other.input, input) || other.input == input));
+            other is _$_MultipleFieldsFormThirdFieldValueChanged &&
+            const DeepCollectionEquality().equals(other.input, input));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, input);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(input));
 
   @JsonKey(ignore: true)
   @override
-  _$MultipleFieldsFormThirdFieldValueChangedCopyWith<
-          _MultipleFieldsFormThirdFieldValueChanged>
-      get copyWith => __$MultipleFieldsFormThirdFieldValueChangedCopyWithImpl<
-          _MultipleFieldsFormThirdFieldValueChanged>(this, _$identity);
+  _$$_MultipleFieldsFormThirdFieldValueChangedCopyWith<
+          _$_MultipleFieldsFormThirdFieldValueChanged>
+      get copyWith => __$$_MultipleFieldsFormThirdFieldValueChangedCopyWithImpl<
+          _$_MultipleFieldsFormThirdFieldValueChanged>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1852,36 +1797,37 @@ class _$_MultipleFieldsFormThirdFieldValueChanged
 abstract class _MultipleFieldsFormThirdFieldValueChanged
     implements MultipleFieldsFormEvent {
   const factory _MultipleFieldsFormThirdFieldValueChanged(
-      {required String input}) = _$_MultipleFieldsFormThirdFieldValueChanged;
+          {required final String input}) =
+      _$_MultipleFieldsFormThirdFieldValueChanged;
 
-  String get input;
+  String get input => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$MultipleFieldsFormThirdFieldValueChangedCopyWith<
-          _MultipleFieldsFormThirdFieldValueChanged>
+  _$$_MultipleFieldsFormThirdFieldValueChangedCopyWith<
+          _$_MultipleFieldsFormThirdFieldValueChanged>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$MultipleFieldsFormThirdFieldSubmittedCopyWith<$Res> {
-  factory _$MultipleFieldsFormThirdFieldSubmittedCopyWith(
-          _MultipleFieldsFormThirdFieldSubmitted value,
-          $Res Function(_MultipleFieldsFormThirdFieldSubmitted) then) =
-      __$MultipleFieldsFormThirdFieldSubmittedCopyWithImpl<$Res>;
+abstract class _$$_MultipleFieldsFormThirdFieldSubmittedCopyWith<$Res> {
+  factory _$$_MultipleFieldsFormThirdFieldSubmittedCopyWith(
+          _$_MultipleFieldsFormThirdFieldSubmitted value,
+          $Res Function(_$_MultipleFieldsFormThirdFieldSubmitted) then) =
+      __$$_MultipleFieldsFormThirdFieldSubmittedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$MultipleFieldsFormThirdFieldSubmittedCopyWithImpl<$Res>
+class __$$_MultipleFieldsFormThirdFieldSubmittedCopyWithImpl<$Res>
     extends _$MultipleFieldsFormEventCopyWithImpl<$Res>
-    implements _$MultipleFieldsFormThirdFieldSubmittedCopyWith<$Res> {
-  __$MultipleFieldsFormThirdFieldSubmittedCopyWithImpl(
-      _MultipleFieldsFormThirdFieldSubmitted _value,
-      $Res Function(_MultipleFieldsFormThirdFieldSubmitted) _then)
-      : super(
-            _value, (v) => _then(v as _MultipleFieldsFormThirdFieldSubmitted));
+    implements _$$_MultipleFieldsFormThirdFieldSubmittedCopyWith<$Res> {
+  __$$_MultipleFieldsFormThirdFieldSubmittedCopyWithImpl(
+      _$_MultipleFieldsFormThirdFieldSubmitted _value,
+      $Res Function(_$_MultipleFieldsFormThirdFieldSubmitted) _then)
+      : super(_value,
+            (v) => _then(v as _$_MultipleFieldsFormThirdFieldSubmitted));
 
   @override
-  _MultipleFieldsFormThirdFieldSubmitted get _value =>
-      super._value as _MultipleFieldsFormThirdFieldSubmitted;
+  _$_MultipleFieldsFormThirdFieldSubmitted get _value =>
+      super._value as _$_MultipleFieldsFormThirdFieldSubmitted;
 }
 
 /// @nodoc
@@ -1899,7 +1845,7 @@ class _$_MultipleFieldsFormThirdFieldSubmitted
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _MultipleFieldsFormThirdFieldSubmitted);
+            other is _$_MultipleFieldsFormThirdFieldSubmitted);
   }
 
   @override
@@ -2057,33 +2003,33 @@ abstract class _MultipleFieldsFormThirdFieldSubmitted
 }
 
 /// @nodoc
-abstract class _$MultipleFieldsFormFourthFieldValueChangedCopyWith<$Res> {
-  factory _$MultipleFieldsFormFourthFieldValueChangedCopyWith(
-          _MultipleFieldsFormFourthFieldValueChanged value,
-          $Res Function(_MultipleFieldsFormFourthFieldValueChanged) then) =
-      __$MultipleFieldsFormFourthFieldValueChangedCopyWithImpl<$Res>;
+abstract class _$$_MultipleFieldsFormFourthFieldValueChangedCopyWith<$Res> {
+  factory _$$_MultipleFieldsFormFourthFieldValueChangedCopyWith(
+          _$_MultipleFieldsFormFourthFieldValueChanged value,
+          $Res Function(_$_MultipleFieldsFormFourthFieldValueChanged) then) =
+      __$$_MultipleFieldsFormFourthFieldValueChangedCopyWithImpl<$Res>;
   $Res call({String input});
 }
 
 /// @nodoc
-class __$MultipleFieldsFormFourthFieldValueChangedCopyWithImpl<$Res>
+class __$$_MultipleFieldsFormFourthFieldValueChangedCopyWithImpl<$Res>
     extends _$MultipleFieldsFormEventCopyWithImpl<$Res>
-    implements _$MultipleFieldsFormFourthFieldValueChangedCopyWith<$Res> {
-  __$MultipleFieldsFormFourthFieldValueChangedCopyWithImpl(
-      _MultipleFieldsFormFourthFieldValueChanged _value,
-      $Res Function(_MultipleFieldsFormFourthFieldValueChanged) _then)
+    implements _$$_MultipleFieldsFormFourthFieldValueChangedCopyWith<$Res> {
+  __$$_MultipleFieldsFormFourthFieldValueChangedCopyWithImpl(
+      _$_MultipleFieldsFormFourthFieldValueChanged _value,
+      $Res Function(_$_MultipleFieldsFormFourthFieldValueChanged) _then)
       : super(_value,
-            (v) => _then(v as _MultipleFieldsFormFourthFieldValueChanged));
+            (v) => _then(v as _$_MultipleFieldsFormFourthFieldValueChanged));
 
   @override
-  _MultipleFieldsFormFourthFieldValueChanged get _value =>
-      super._value as _MultipleFieldsFormFourthFieldValueChanged;
+  _$_MultipleFieldsFormFourthFieldValueChanged get _value =>
+      super._value as _$_MultipleFieldsFormFourthFieldValueChanged;
 
   @override
   $Res call({
     Object? input = freezed,
   }) {
-    return _then(_MultipleFieldsFormFourthFieldValueChanged(
+    return _then(_$_MultipleFieldsFormFourthFieldValueChanged(
       input: input == freezed
           ? _value.input
           : input // ignore: cast_nullable_to_non_nullable
@@ -2110,19 +2056,21 @@ class _$_MultipleFieldsFormFourthFieldValueChanged
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _MultipleFieldsFormFourthFieldValueChanged &&
-            (identical(other.input, input) || other.input == input));
+            other is _$_MultipleFieldsFormFourthFieldValueChanged &&
+            const DeepCollectionEquality().equals(other.input, input));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, input);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(input));
 
   @JsonKey(ignore: true)
   @override
-  _$MultipleFieldsFormFourthFieldValueChangedCopyWith<
-          _MultipleFieldsFormFourthFieldValueChanged>
-      get copyWith => __$MultipleFieldsFormFourthFieldValueChangedCopyWithImpl<
-          _MultipleFieldsFormFourthFieldValueChanged>(this, _$identity);
+  _$$_MultipleFieldsFormFourthFieldValueChangedCopyWith<
+          _$_MultipleFieldsFormFourthFieldValueChanged>
+      get copyWith =>
+          __$$_MultipleFieldsFormFourthFieldValueChangedCopyWithImpl<
+              _$_MultipleFieldsFormFourthFieldValueChanged>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -2272,36 +2220,37 @@ class _$_MultipleFieldsFormFourthFieldValueChanged
 abstract class _MultipleFieldsFormFourthFieldValueChanged
     implements MultipleFieldsFormEvent {
   const factory _MultipleFieldsFormFourthFieldValueChanged(
-      {required String input}) = _$_MultipleFieldsFormFourthFieldValueChanged;
+          {required final String input}) =
+      _$_MultipleFieldsFormFourthFieldValueChanged;
 
-  String get input;
+  String get input => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$MultipleFieldsFormFourthFieldValueChangedCopyWith<
-          _MultipleFieldsFormFourthFieldValueChanged>
+  _$$_MultipleFieldsFormFourthFieldValueChangedCopyWith<
+          _$_MultipleFieldsFormFourthFieldValueChanged>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$MultipleFieldsFormFourthFieldSubmittedCopyWith<$Res> {
-  factory _$MultipleFieldsFormFourthFieldSubmittedCopyWith(
-          _MultipleFieldsFormFourthFieldSubmitted value,
-          $Res Function(_MultipleFieldsFormFourthFieldSubmitted) then) =
-      __$MultipleFieldsFormFourthFieldSubmittedCopyWithImpl<$Res>;
+abstract class _$$_MultipleFieldsFormFourthFieldSubmittedCopyWith<$Res> {
+  factory _$$_MultipleFieldsFormFourthFieldSubmittedCopyWith(
+          _$_MultipleFieldsFormFourthFieldSubmitted value,
+          $Res Function(_$_MultipleFieldsFormFourthFieldSubmitted) then) =
+      __$$_MultipleFieldsFormFourthFieldSubmittedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$MultipleFieldsFormFourthFieldSubmittedCopyWithImpl<$Res>
+class __$$_MultipleFieldsFormFourthFieldSubmittedCopyWithImpl<$Res>
     extends _$MultipleFieldsFormEventCopyWithImpl<$Res>
-    implements _$MultipleFieldsFormFourthFieldSubmittedCopyWith<$Res> {
-  __$MultipleFieldsFormFourthFieldSubmittedCopyWithImpl(
-      _MultipleFieldsFormFourthFieldSubmitted _value,
-      $Res Function(_MultipleFieldsFormFourthFieldSubmitted) _then)
-      : super(
-            _value, (v) => _then(v as _MultipleFieldsFormFourthFieldSubmitted));
+    implements _$$_MultipleFieldsFormFourthFieldSubmittedCopyWith<$Res> {
+  __$$_MultipleFieldsFormFourthFieldSubmittedCopyWithImpl(
+      _$_MultipleFieldsFormFourthFieldSubmitted _value,
+      $Res Function(_$_MultipleFieldsFormFourthFieldSubmitted) _then)
+      : super(_value,
+            (v) => _then(v as _$_MultipleFieldsFormFourthFieldSubmitted));
 
   @override
-  _MultipleFieldsFormFourthFieldSubmitted get _value =>
-      super._value as _MultipleFieldsFormFourthFieldSubmitted;
+  _$_MultipleFieldsFormFourthFieldSubmitted get _value =>
+      super._value as _$_MultipleFieldsFormFourthFieldSubmitted;
 }
 
 /// @nodoc
@@ -2319,7 +2268,7 @@ class _$_MultipleFieldsFormFourthFieldSubmitted
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _MultipleFieldsFormFourthFieldSubmitted);
+            other is _$_MultipleFieldsFormFourthFieldSubmitted);
   }
 
   @override
@@ -2477,30 +2426,8 @@ abstract class _MultipleFieldsFormFourthFieldSubmitted
 }
 
 /// @nodoc
-class _$MultipleFieldsFormStateTearOff {
-  const _$MultipleFieldsFormStateTearOff();
-
-  _FormInitial initial({required MultipleFieldsFormProps props}) {
-    return _FormInitial(
-      props: props,
-    );
-  }
-
-  _FormValidationSuccess formValidationSuccess(
-      {required MultipleFieldsFormProps props}) {
-    return _FormValidationSuccess(
-      props: props,
-    );
-  }
-}
-
-/// @nodoc
-const $MultipleFieldsFormState = _$MultipleFieldsFormStateTearOff();
-
-/// @nodoc
 mixin _$MultipleFieldsFormState {
   MultipleFieldsFormProps get props => throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(MultipleFieldsFormProps props) initial,
@@ -2587,11 +2514,11 @@ class _$MultipleFieldsFormStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$FormInitialCopyWith<$Res>
+abstract class _$$_FormInitialCopyWith<$Res>
     implements $MultipleFieldsFormStateCopyWith<$Res> {
-  factory _$FormInitialCopyWith(
-          _FormInitial value, $Res Function(_FormInitial) then) =
-      __$FormInitialCopyWithImpl<$Res>;
+  factory _$$_FormInitialCopyWith(
+          _$_FormInitial value, $Res Function(_$_FormInitial) then) =
+      __$$_FormInitialCopyWithImpl<$Res>;
   @override
   $Res call({MultipleFieldsFormProps props});
 
@@ -2600,21 +2527,21 @@ abstract class _$FormInitialCopyWith<$Res>
 }
 
 /// @nodoc
-class __$FormInitialCopyWithImpl<$Res>
+class __$$_FormInitialCopyWithImpl<$Res>
     extends _$MultipleFieldsFormStateCopyWithImpl<$Res>
-    implements _$FormInitialCopyWith<$Res> {
-  __$FormInitialCopyWithImpl(
-      _FormInitial _value, $Res Function(_FormInitial) _then)
-      : super(_value, (v) => _then(v as _FormInitial));
+    implements _$$_FormInitialCopyWith<$Res> {
+  __$$_FormInitialCopyWithImpl(
+      _$_FormInitial _value, $Res Function(_$_FormInitial) _then)
+      : super(_value, (v) => _then(v as _$_FormInitial));
 
   @override
-  _FormInitial get _value => super._value as _FormInitial;
+  _$_FormInitial get _value => super._value as _$_FormInitial;
 
   @override
   $Res call({
     Object? props = freezed,
   }) {
-    return _then(_FormInitial(
+    return _then(_$_FormInitial(
       props: props == freezed
           ? _value.props
           : props // ignore: cast_nullable_to_non_nullable
@@ -2640,17 +2567,18 @@ class _$_FormInitial implements _FormInitial {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _FormInitial &&
-            (identical(other.props, props) || other.props == props));
+            other is _$_FormInitial &&
+            const DeepCollectionEquality().equals(other.props, props));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, props);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(props));
 
   @JsonKey(ignore: true)
   @override
-  _$FormInitialCopyWith<_FormInitial> get copyWith =>
-      __$FormInitialCopyWithImpl<_FormInitial>(this, _$identity);
+  _$$_FormInitialCopyWith<_$_FormInitial> get copyWith =>
+      __$$_FormInitialCopyWithImpl<_$_FormInitial>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -2718,23 +2646,23 @@ class _$_FormInitial implements _FormInitial {
 }
 
 abstract class _FormInitial implements MultipleFieldsFormState {
-  const factory _FormInitial({required MultipleFieldsFormProps props}) =
+  const factory _FormInitial({required final MultipleFieldsFormProps props}) =
       _$_FormInitial;
 
   @override
-  MultipleFieldsFormProps get props;
+  MultipleFieldsFormProps get props => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$FormInitialCopyWith<_FormInitial> get copyWith =>
+  _$$_FormInitialCopyWith<_$_FormInitial> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$FormValidationSuccessCopyWith<$Res>
+abstract class _$$_FormValidationSuccessCopyWith<$Res>
     implements $MultipleFieldsFormStateCopyWith<$Res> {
-  factory _$FormValidationSuccessCopyWith(_FormValidationSuccess value,
-          $Res Function(_FormValidationSuccess) then) =
-      __$FormValidationSuccessCopyWithImpl<$Res>;
+  factory _$$_FormValidationSuccessCopyWith(_$_FormValidationSuccess value,
+          $Res Function(_$_FormValidationSuccess) then) =
+      __$$_FormValidationSuccessCopyWithImpl<$Res>;
   @override
   $Res call({MultipleFieldsFormProps props});
 
@@ -2743,21 +2671,22 @@ abstract class _$FormValidationSuccessCopyWith<$Res>
 }
 
 /// @nodoc
-class __$FormValidationSuccessCopyWithImpl<$Res>
+class __$$_FormValidationSuccessCopyWithImpl<$Res>
     extends _$MultipleFieldsFormStateCopyWithImpl<$Res>
-    implements _$FormValidationSuccessCopyWith<$Res> {
-  __$FormValidationSuccessCopyWithImpl(_FormValidationSuccess _value,
-      $Res Function(_FormValidationSuccess) _then)
-      : super(_value, (v) => _then(v as _FormValidationSuccess));
+    implements _$$_FormValidationSuccessCopyWith<$Res> {
+  __$$_FormValidationSuccessCopyWithImpl(_$_FormValidationSuccess _value,
+      $Res Function(_$_FormValidationSuccess) _then)
+      : super(_value, (v) => _then(v as _$_FormValidationSuccess));
 
   @override
-  _FormValidationSuccess get _value => super._value as _FormValidationSuccess;
+  _$_FormValidationSuccess get _value =>
+      super._value as _$_FormValidationSuccess;
 
   @override
   $Res call({
     Object? props = freezed,
   }) {
-    return _then(_FormValidationSuccess(
+    return _then(_$_FormValidationSuccess(
       props: props == freezed
           ? _value.props
           : props // ignore: cast_nullable_to_non_nullable
@@ -2783,17 +2712,18 @@ class _$_FormValidationSuccess implements _FormValidationSuccess {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _FormValidationSuccess &&
-            (identical(other.props, props) || other.props == props));
+            other is _$_FormValidationSuccess &&
+            const DeepCollectionEquality().equals(other.props, props));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, props);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(props));
 
   @JsonKey(ignore: true)
   @override
-  _$FormValidationSuccessCopyWith<_FormValidationSuccess> get copyWith =>
-      __$FormValidationSuccessCopyWithImpl<_FormValidationSuccess>(
+  _$$_FormValidationSuccessCopyWith<_$_FormValidationSuccess> get copyWith =>
+      __$$_FormValidationSuccessCopyWithImpl<_$_FormValidationSuccess>(
           this, _$identity);
 
   @override
@@ -2863,54 +2793,16 @@ class _$_FormValidationSuccess implements _FormValidationSuccess {
 
 abstract class _FormValidationSuccess implements MultipleFieldsFormState {
   const factory _FormValidationSuccess(
-      {required MultipleFieldsFormProps props}) = _$_FormValidationSuccess;
+          {required final MultipleFieldsFormProps props}) =
+      _$_FormValidationSuccess;
 
   @override
-  MultipleFieldsFormProps get props;
+  MultipleFieldsFormProps get props => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$FormValidationSuccessCopyWith<_FormValidationSuccess> get copyWith =>
+  _$$_FormValidationSuccessCopyWith<_$_FormValidationSuccess> get copyWith =>
       throw _privateConstructorUsedError;
 }
-
-/// @nodoc
-class _$MultipleFieldsFormPropsTearOff {
-  const _$MultipleFieldsFormPropsTearOff();
-
-  _MultipleFieldsFormProps call(
-      {required AutovalidateMode autovalidateModeFirstField,
-      required AutovalidateMode autovalidateModeSecondField,
-      required AutovalidateMode autovalidateModeThirdField,
-      required AutovalidateMode autovalidateModeFourthField,
-      required FocusNode firstFieldFocusNode,
-      required FocusNode secondFieldFocusNode,
-      required FocusNode thirdFieldFocusNode,
-      required FocusNode fourthFieldFocusNode,
-      required String? firstFieldValue,
-      required String? secondFieldValue,
-      required String? thirdFieldValue,
-      required String? fourthFieldValue,
-      required GlobalKey<FormState> formKey}) {
-    return _MultipleFieldsFormProps(
-      autovalidateModeFirstField: autovalidateModeFirstField,
-      autovalidateModeSecondField: autovalidateModeSecondField,
-      autovalidateModeThirdField: autovalidateModeThirdField,
-      autovalidateModeFourthField: autovalidateModeFourthField,
-      firstFieldFocusNode: firstFieldFocusNode,
-      secondFieldFocusNode: secondFieldFocusNode,
-      thirdFieldFocusNode: thirdFieldFocusNode,
-      fourthFieldFocusNode: fourthFieldFocusNode,
-      firstFieldValue: firstFieldValue,
-      secondFieldValue: secondFieldValue,
-      thirdFieldValue: thirdFieldValue,
-      fourthFieldValue: fourthFieldValue,
-      formKey: formKey,
-    );
-  }
-}
-
-/// @nodoc
-const $MultipleFieldsFormProps = _$MultipleFieldsFormPropsTearOff();
 
 /// @nodoc
 mixin _$MultipleFieldsFormProps {
@@ -3041,11 +2933,11 @@ class _$MultipleFieldsFormPropsCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$MultipleFieldsFormPropsCopyWith<$Res>
+abstract class _$$_MultipleFieldsFormPropsCopyWith<$Res>
     implements $MultipleFieldsFormPropsCopyWith<$Res> {
-  factory _$MultipleFieldsFormPropsCopyWith(_MultipleFieldsFormProps value,
-          $Res Function(_MultipleFieldsFormProps) then) =
-      __$MultipleFieldsFormPropsCopyWithImpl<$Res>;
+  factory _$$_MultipleFieldsFormPropsCopyWith(_$_MultipleFieldsFormProps value,
+          $Res Function(_$_MultipleFieldsFormProps) then) =
+      __$$_MultipleFieldsFormPropsCopyWithImpl<$Res>;
   @override
   $Res call(
       {AutovalidateMode autovalidateModeFirstField,
@@ -3064,16 +2956,16 @@ abstract class _$MultipleFieldsFormPropsCopyWith<$Res>
 }
 
 /// @nodoc
-class __$MultipleFieldsFormPropsCopyWithImpl<$Res>
+class __$$_MultipleFieldsFormPropsCopyWithImpl<$Res>
     extends _$MultipleFieldsFormPropsCopyWithImpl<$Res>
-    implements _$MultipleFieldsFormPropsCopyWith<$Res> {
-  __$MultipleFieldsFormPropsCopyWithImpl(_MultipleFieldsFormProps _value,
-      $Res Function(_MultipleFieldsFormProps) _then)
-      : super(_value, (v) => _then(v as _MultipleFieldsFormProps));
+    implements _$$_MultipleFieldsFormPropsCopyWith<$Res> {
+  __$$_MultipleFieldsFormPropsCopyWithImpl(_$_MultipleFieldsFormProps _value,
+      $Res Function(_$_MultipleFieldsFormProps) _then)
+      : super(_value, (v) => _then(v as _$_MultipleFieldsFormProps));
 
   @override
-  _MultipleFieldsFormProps get _value =>
-      super._value as _MultipleFieldsFormProps;
+  _$_MultipleFieldsFormProps get _value =>
+      super._value as _$_MultipleFieldsFormProps;
 
   @override
   $Res call({
@@ -3091,7 +2983,7 @@ class __$MultipleFieldsFormPropsCopyWithImpl<$Res>
     Object? fourthFieldValue = freezed,
     Object? formKey = freezed,
   }) {
-    return _then(_MultipleFieldsFormProps(
+    return _then(_$_MultipleFieldsFormProps(
       autovalidateModeFirstField: autovalidateModeFirstField == freezed
           ? _value.autovalidateModeFirstField
           : autovalidateModeFirstField // ignore: cast_nullable_to_non_nullable
@@ -3202,110 +3094,110 @@ class _$_MultipleFieldsFormProps implements _MultipleFieldsFormProps {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _MultipleFieldsFormProps &&
-            (identical(other.autovalidateModeFirstField,
-                    autovalidateModeFirstField) ||
-                other.autovalidateModeFirstField ==
-                    autovalidateModeFirstField) &&
-            (identical(other.autovalidateModeSecondField,
-                    autovalidateModeSecondField) ||
-                other.autovalidateModeSecondField ==
-                    autovalidateModeSecondField) &&
-            (identical(other.autovalidateModeThirdField,
-                    autovalidateModeThirdField) ||
-                other.autovalidateModeThirdField ==
-                    autovalidateModeThirdField) &&
-            (identical(other.autovalidateModeFourthField,
-                    autovalidateModeFourthField) ||
-                other.autovalidateModeFourthField ==
-                    autovalidateModeFourthField) &&
-            (identical(other.firstFieldFocusNode, firstFieldFocusNode) ||
-                other.firstFieldFocusNode == firstFieldFocusNode) &&
-            (identical(other.secondFieldFocusNode, secondFieldFocusNode) ||
-                other.secondFieldFocusNode == secondFieldFocusNode) &&
-            (identical(other.thirdFieldFocusNode, thirdFieldFocusNode) ||
-                other.thirdFieldFocusNode == thirdFieldFocusNode) &&
-            (identical(other.fourthFieldFocusNode, fourthFieldFocusNode) ||
-                other.fourthFieldFocusNode == fourthFieldFocusNode) &&
-            (identical(other.firstFieldValue, firstFieldValue) ||
-                other.firstFieldValue == firstFieldValue) &&
-            (identical(other.secondFieldValue, secondFieldValue) ||
-                other.secondFieldValue == secondFieldValue) &&
-            (identical(other.thirdFieldValue, thirdFieldValue) ||
-                other.thirdFieldValue == thirdFieldValue) &&
-            (identical(other.fourthFieldValue, fourthFieldValue) ||
-                other.fourthFieldValue == fourthFieldValue) &&
-            (identical(other.formKey, formKey) || other.formKey == formKey));
+            other is _$_MultipleFieldsFormProps &&
+            const DeepCollectionEquality().equals(
+                other.autovalidateModeFirstField, autovalidateModeFirstField) &&
+            const DeepCollectionEquality().equals(
+                other.autovalidateModeSecondField,
+                autovalidateModeSecondField) &&
+            const DeepCollectionEquality().equals(
+                other.autovalidateModeThirdField, autovalidateModeThirdField) &&
+            const DeepCollectionEquality().equals(
+                other.autovalidateModeFourthField,
+                autovalidateModeFourthField) &&
+            const DeepCollectionEquality()
+                .equals(other.firstFieldFocusNode, firstFieldFocusNode) &&
+            const DeepCollectionEquality()
+                .equals(other.secondFieldFocusNode, secondFieldFocusNode) &&
+            const DeepCollectionEquality()
+                .equals(other.thirdFieldFocusNode, thirdFieldFocusNode) &&
+            const DeepCollectionEquality()
+                .equals(other.fourthFieldFocusNode, fourthFieldFocusNode) &&
+            const DeepCollectionEquality()
+                .equals(other.firstFieldValue, firstFieldValue) &&
+            const DeepCollectionEquality()
+                .equals(other.secondFieldValue, secondFieldValue) &&
+            const DeepCollectionEquality()
+                .equals(other.thirdFieldValue, thirdFieldValue) &&
+            const DeepCollectionEquality()
+                .equals(other.fourthFieldValue, fourthFieldValue) &&
+            const DeepCollectionEquality().equals(other.formKey, formKey));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      autovalidateModeFirstField,
-      autovalidateModeSecondField,
-      autovalidateModeThirdField,
-      autovalidateModeFourthField,
-      firstFieldFocusNode,
-      secondFieldFocusNode,
-      thirdFieldFocusNode,
-      fourthFieldFocusNode,
-      firstFieldValue,
-      secondFieldValue,
-      thirdFieldValue,
-      fourthFieldValue,
-      formKey);
+      const DeepCollectionEquality().hash(autovalidateModeFirstField),
+      const DeepCollectionEquality().hash(autovalidateModeSecondField),
+      const DeepCollectionEquality().hash(autovalidateModeThirdField),
+      const DeepCollectionEquality().hash(autovalidateModeFourthField),
+      const DeepCollectionEquality().hash(firstFieldFocusNode),
+      const DeepCollectionEquality().hash(secondFieldFocusNode),
+      const DeepCollectionEquality().hash(thirdFieldFocusNode),
+      const DeepCollectionEquality().hash(fourthFieldFocusNode),
+      const DeepCollectionEquality().hash(firstFieldValue),
+      const DeepCollectionEquality().hash(secondFieldValue),
+      const DeepCollectionEquality().hash(thirdFieldValue),
+      const DeepCollectionEquality().hash(fourthFieldValue),
+      const DeepCollectionEquality().hash(formKey));
 
   @JsonKey(ignore: true)
   @override
-  _$MultipleFieldsFormPropsCopyWith<_MultipleFieldsFormProps> get copyWith =>
-      __$MultipleFieldsFormPropsCopyWithImpl<_MultipleFieldsFormProps>(
-          this, _$identity);
+  _$$_MultipleFieldsFormPropsCopyWith<_$_MultipleFieldsFormProps>
+      get copyWith =>
+          __$$_MultipleFieldsFormPropsCopyWithImpl<_$_MultipleFieldsFormProps>(
+              this, _$identity);
 }
 
 abstract class _MultipleFieldsFormProps implements MultipleFieldsFormProps {
   const factory _MultipleFieldsFormProps(
-      {required AutovalidateMode autovalidateModeFirstField,
-      required AutovalidateMode autovalidateModeSecondField,
-      required AutovalidateMode autovalidateModeThirdField,
-      required AutovalidateMode autovalidateModeFourthField,
-      required FocusNode firstFieldFocusNode,
-      required FocusNode secondFieldFocusNode,
-      required FocusNode thirdFieldFocusNode,
-      required FocusNode fourthFieldFocusNode,
-      required String? firstFieldValue,
-      required String? secondFieldValue,
-      required String? thirdFieldValue,
-      required String? fourthFieldValue,
-      required GlobalKey<FormState> formKey}) = _$_MultipleFieldsFormProps;
+          {required final AutovalidateMode autovalidateModeFirstField,
+          required final AutovalidateMode autovalidateModeSecondField,
+          required final AutovalidateMode autovalidateModeThirdField,
+          required final AutovalidateMode autovalidateModeFourthField,
+          required final FocusNode firstFieldFocusNode,
+          required final FocusNode secondFieldFocusNode,
+          required final FocusNode thirdFieldFocusNode,
+          required final FocusNode fourthFieldFocusNode,
+          required final String? firstFieldValue,
+          required final String? secondFieldValue,
+          required final String? thirdFieldValue,
+          required final String? fourthFieldValue,
+          required final GlobalKey<FormState> formKey}) =
+      _$_MultipleFieldsFormProps;
 
   @override
-  AutovalidateMode get autovalidateModeFirstField;
+  AutovalidateMode get autovalidateModeFirstField =>
+      throw _privateConstructorUsedError;
   @override
-  AutovalidateMode get autovalidateModeSecondField;
+  AutovalidateMode get autovalidateModeSecondField =>
+      throw _privateConstructorUsedError;
   @override
-  AutovalidateMode get autovalidateModeThirdField;
+  AutovalidateMode get autovalidateModeThirdField =>
+      throw _privateConstructorUsedError;
   @override
-  AutovalidateMode get autovalidateModeFourthField;
+  AutovalidateMode get autovalidateModeFourthField =>
+      throw _privateConstructorUsedError;
   @override
-  FocusNode get firstFieldFocusNode;
+  FocusNode get firstFieldFocusNode => throw _privateConstructorUsedError;
   @override
-  FocusNode get secondFieldFocusNode;
+  FocusNode get secondFieldFocusNode => throw _privateConstructorUsedError;
   @override
-  FocusNode get thirdFieldFocusNode;
+  FocusNode get thirdFieldFocusNode => throw _privateConstructorUsedError;
   @override
-  FocusNode get fourthFieldFocusNode;
+  FocusNode get fourthFieldFocusNode => throw _privateConstructorUsedError;
   @override
-  String? get firstFieldValue;
+  String? get firstFieldValue => throw _privateConstructorUsedError;
   @override
-  String? get secondFieldValue;
+  String? get secondFieldValue => throw _privateConstructorUsedError;
   @override
-  String? get thirdFieldValue;
+  String? get thirdFieldValue => throw _privateConstructorUsedError;
   @override
-  String? get fourthFieldValue;
+  String? get fourthFieldValue => throw _privateConstructorUsedError;
   @override
-  GlobalKey<FormState> get formKey;
+  GlobalKey<FormState> get formKey => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$MultipleFieldsFormPropsCopyWith<_MultipleFieldsFormProps> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_MultipleFieldsFormPropsCopyWith<_$_MultipleFieldsFormProps>
+      get copyWith => throw _privateConstructorUsedError;
 }

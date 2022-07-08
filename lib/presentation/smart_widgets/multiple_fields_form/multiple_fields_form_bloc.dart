@@ -18,11 +18,9 @@ FirstTwoFieldsFormBloc readFirstFormBloc(BuildContext context) =>
 SecondTwoFieldsFormBloc readSecondFormBloc(BuildContext context) =>
     BlocProvider.of<SecondTwoFieldsFormBloc>(context);
 
-mixin FirstTwoFieldsFormBloc
-    on Bloc<MultipleFieldsFormEvent, MultipleFieldsFormState> {}
+mixin FirstTwoFieldsFormBloc on Bloc<MultipleFieldsFormEvent, MultipleFieldsFormState> {}
 
-mixin SecondTwoFieldsFormBloc
-    on Bloc<MultipleFieldsFormEvent, MultipleFieldsFormState> {}
+mixin SecondTwoFieldsFormBloc on Bloc<MultipleFieldsFormEvent, MultipleFieldsFormState> {}
 
 /// Some info on [MultipleFieldsFormBloc]
 ///
@@ -30,8 +28,7 @@ mixin SecondTwoFieldsFormBloc
 /// in conjuction with another [MultipleFieldsForm].
 ///
 /// For this conjunction to work, [isWithAnotherTwoFields] must be [true]
-class MultipleFieldsFormBloc
-    extends Bloc<MultipleFieldsFormEvent, MultipleFieldsFormState>
+class MultipleFieldsFormBloc extends Bloc<MultipleFieldsFormEvent, MultipleFieldsFormState>
     with FirstTwoFieldsFormBloc, SecondTwoFieldsFormBloc {
   MultipleFieldsFormBloc()
       : super(
@@ -63,8 +60,7 @@ class MultipleFieldsFormBloc
     on<_MultipleFieldsFormFirstFieldSubmitted>(firstFieldSubmittedEvent);
 
     // Second
-    on<_MultipleFieldsFormSecondFieldValueChanged>(
-        secondFieldValueChangedEvent);
+    on<_MultipleFieldsFormSecondFieldValueChanged>(secondFieldValueChangedEvent);
     on<_MultipleFieldsFormSecondFieldSubmitted>(secondFieldSubmittedEvent);
 
     // Third
@@ -72,8 +68,7 @@ class MultipleFieldsFormBloc
     on<_MultipleFieldsFormThirdFieldSubmitted>(thirdFieldSubmittedEvent);
 
     // Fourth
-    on<_MultipleFieldsFormFourthFieldValueChanged>(
-        fourthFieldValueChangedEvent);
+    on<_MultipleFieldsFormFourthFieldValueChanged>(fourthFieldValueChangedEvent);
     on<_MultipleFieldsFormFourthFieldSubmitted>(fourthFieldSubmittedEvent);
   }
 
@@ -142,6 +137,7 @@ class MultipleFieldsFormBloc
     _MultipleFieldsFormSecondFieldSubmitted event,
     Emitter<MultipleFieldsFormState> emit,
   ) {
+    state.props.thirdFieldFocusNode.requestFocus();
     emit(
       state.copyWith.props(
         autovalidateModeSecondField: AutovalidateMode.always,
@@ -161,6 +157,7 @@ class MultipleFieldsFormBloc
     _MultipleFieldsFormThirdFieldSubmitted event,
     Emitter<MultipleFieldsFormState> emit,
   ) {
+    state.props.fourthFieldFocusNode.requestFocus();
     emit(
       state.copyWith.props(
         autovalidateModeThirdField: AutovalidateMode.always,

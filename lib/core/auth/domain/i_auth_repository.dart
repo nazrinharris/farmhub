@@ -1,4 +1,5 @@
 import 'package:farmhub/core/errors/failures.dart';
+import 'package:farmhub/core/typedefs/typedefs.dart';
 import 'package:fpdart/fpdart.dart';
 
 import 'entities/farmhub_user/farmhub_user.dart';

@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'produce_manager_bloc.dart';
@@ -11,31 +12,7 @@ part of 'produce_manager_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$ProduceManagerEventTearOff {
-  const _$ProduceManagerEventTearOff();
-
-  _Started started() {
-    return const _Started();
-  }
-
-  _PMEExecGetFirstTenProduce execGetFirstTenProduce() {
-    return const _PMEExecGetFirstTenProduce();
-  }
-
-  _PMEExecCreateProduce execCreateProduce(
-      {required String produceName, required num currentProducePrice}) {
-    return _PMEExecCreateProduce(
-      produceName: produceName,
-      currentProducePrice: currentProducePrice,
-    );
-  }
-}
-
-/// @nodoc
-const $ProduceManagerEvent = _$ProduceManagerEventTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$ProduceManagerEvent {
@@ -107,20 +84,21 @@ class _$ProduceManagerEventCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$StartedCopyWith<$Res> {
-  factory _$StartedCopyWith(_Started value, $Res Function(_Started) then) =
-      __$StartedCopyWithImpl<$Res>;
+abstract class _$$_StartedCopyWith<$Res> {
+  factory _$$_StartedCopyWith(
+          _$_Started value, $Res Function(_$_Started) then) =
+      __$$_StartedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$StartedCopyWithImpl<$Res>
+class __$$_StartedCopyWithImpl<$Res>
     extends _$ProduceManagerEventCopyWithImpl<$Res>
-    implements _$StartedCopyWith<$Res> {
-  __$StartedCopyWithImpl(_Started _value, $Res Function(_Started) _then)
-      : super(_value, (v) => _then(v as _Started));
+    implements _$$_StartedCopyWith<$Res> {
+  __$$_StartedCopyWithImpl(_$_Started _value, $Res Function(_$_Started) _then)
+      : super(_value, (v) => _then(v as _$_Started));
 
   @override
-  _Started get _value => super._value as _Started;
+  _$_Started get _value => super._value as _$_Started;
 }
 
 /// @nodoc
@@ -136,7 +114,7 @@ class _$_Started implements _Started {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _Started);
+        (other.runtimeType == runtimeType && other is _$_Started);
   }
 
   @override
@@ -220,23 +198,25 @@ abstract class _Started implements ProduceManagerEvent {
 }
 
 /// @nodoc
-abstract class _$PMEExecGetFirstTenProduceCopyWith<$Res> {
-  factory _$PMEExecGetFirstTenProduceCopyWith(_PMEExecGetFirstTenProduce value,
-          $Res Function(_PMEExecGetFirstTenProduce) then) =
-      __$PMEExecGetFirstTenProduceCopyWithImpl<$Res>;
+abstract class _$$_PMEExecGetFirstTenProduceCopyWith<$Res> {
+  factory _$$_PMEExecGetFirstTenProduceCopyWith(
+          _$_PMEExecGetFirstTenProduce value,
+          $Res Function(_$_PMEExecGetFirstTenProduce) then) =
+      __$$_PMEExecGetFirstTenProduceCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$PMEExecGetFirstTenProduceCopyWithImpl<$Res>
+class __$$_PMEExecGetFirstTenProduceCopyWithImpl<$Res>
     extends _$ProduceManagerEventCopyWithImpl<$Res>
-    implements _$PMEExecGetFirstTenProduceCopyWith<$Res> {
-  __$PMEExecGetFirstTenProduceCopyWithImpl(_PMEExecGetFirstTenProduce _value,
-      $Res Function(_PMEExecGetFirstTenProduce) _then)
-      : super(_value, (v) => _then(v as _PMEExecGetFirstTenProduce));
+    implements _$$_PMEExecGetFirstTenProduceCopyWith<$Res> {
+  __$$_PMEExecGetFirstTenProduceCopyWithImpl(
+      _$_PMEExecGetFirstTenProduce _value,
+      $Res Function(_$_PMEExecGetFirstTenProduce) _then)
+      : super(_value, (v) => _then(v as _$_PMEExecGetFirstTenProduce));
 
   @override
-  _PMEExecGetFirstTenProduce get _value =>
-      super._value as _PMEExecGetFirstTenProduce;
+  _$_PMEExecGetFirstTenProduce get _value =>
+      super._value as _$_PMEExecGetFirstTenProduce;
 }
 
 /// @nodoc
@@ -253,7 +233,7 @@ class _$_PMEExecGetFirstTenProduce implements _PMEExecGetFirstTenProduce {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _PMEExecGetFirstTenProduce);
+            other is _$_PMEExecGetFirstTenProduce);
   }
 
   @override
@@ -337,30 +317,30 @@ abstract class _PMEExecGetFirstTenProduce implements ProduceManagerEvent {
 }
 
 /// @nodoc
-abstract class _$PMEExecCreateProduceCopyWith<$Res> {
-  factory _$PMEExecCreateProduceCopyWith(_PMEExecCreateProduce value,
-          $Res Function(_PMEExecCreateProduce) then) =
-      __$PMEExecCreateProduceCopyWithImpl<$Res>;
+abstract class _$$_PMEExecCreateProduceCopyWith<$Res> {
+  factory _$$_PMEExecCreateProduceCopyWith(_$_PMEExecCreateProduce value,
+          $Res Function(_$_PMEExecCreateProduce) then) =
+      __$$_PMEExecCreateProduceCopyWithImpl<$Res>;
   $Res call({String produceName, num currentProducePrice});
 }
 
 /// @nodoc
-class __$PMEExecCreateProduceCopyWithImpl<$Res>
+class __$$_PMEExecCreateProduceCopyWithImpl<$Res>
     extends _$ProduceManagerEventCopyWithImpl<$Res>
-    implements _$PMEExecCreateProduceCopyWith<$Res> {
-  __$PMEExecCreateProduceCopyWithImpl(
-      _PMEExecCreateProduce _value, $Res Function(_PMEExecCreateProduce) _then)
-      : super(_value, (v) => _then(v as _PMEExecCreateProduce));
+    implements _$$_PMEExecCreateProduceCopyWith<$Res> {
+  __$$_PMEExecCreateProduceCopyWithImpl(_$_PMEExecCreateProduce _value,
+      $Res Function(_$_PMEExecCreateProduce) _then)
+      : super(_value, (v) => _then(v as _$_PMEExecCreateProduce));
 
   @override
-  _PMEExecCreateProduce get _value => super._value as _PMEExecCreateProduce;
+  _$_PMEExecCreateProduce get _value => super._value as _$_PMEExecCreateProduce;
 
   @override
   $Res call({
     Object? produceName = freezed,
     Object? currentProducePrice = freezed,
   }) {
-    return _then(_PMEExecCreateProduce(
+    return _then(_$_PMEExecCreateProduce(
       produceName: produceName == freezed
           ? _value.produceName
           : produceName // ignore: cast_nullable_to_non_nullable
@@ -393,21 +373,23 @@ class _$_PMEExecCreateProduce implements _PMEExecCreateProduce {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _PMEExecCreateProduce &&
-            (identical(other.produceName, produceName) ||
-                other.produceName == produceName) &&
-            (identical(other.currentProducePrice, currentProducePrice) ||
-                other.currentProducePrice == currentProducePrice));
+            other is _$_PMEExecCreateProduce &&
+            const DeepCollectionEquality()
+                .equals(other.produceName, produceName) &&
+            const DeepCollectionEquality()
+                .equals(other.currentProducePrice, currentProducePrice));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, produceName, currentProducePrice);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(produceName),
+      const DeepCollectionEquality().hash(currentProducePrice));
 
   @JsonKey(ignore: true)
   @override
-  _$PMEExecCreateProduceCopyWith<_PMEExecCreateProduce> get copyWith =>
-      __$PMEExecCreateProduceCopyWithImpl<_PMEExecCreateProduce>(
+  _$$_PMEExecCreateProduceCopyWith<_$_PMEExecCreateProduce> get copyWith =>
+      __$$_PMEExecCreateProduceCopyWithImpl<_$_PMEExecCreateProduce>(
           this, _$identity);
 
   @override
@@ -485,71 +467,15 @@ class _$_PMEExecCreateProduce implements _PMEExecCreateProduce {
 
 abstract class _PMEExecCreateProduce implements ProduceManagerEvent {
   const factory _PMEExecCreateProduce(
-      {required String produceName,
-      required num currentProducePrice}) = _$_PMEExecCreateProduce;
+      {required final String produceName,
+      required final num currentProducePrice}) = _$_PMEExecCreateProduce;
 
-  String get produceName;
-  num get currentProducePrice;
+  String get produceName => throw _privateConstructorUsedError;
+  num get currentProducePrice => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$PMEExecCreateProduceCopyWith<_PMEExecCreateProduce> get copyWith =>
+  _$$_PMEExecCreateProduceCopyWith<_$_PMEExecCreateProduce> get copyWith =>
       throw _privateConstructorUsedError;
 }
-
-/// @nodoc
-class _$ProduceManagerStateTearOff {
-  const _$ProduceManagerStateTearOff();
-
-  PMSInitial initial() {
-    return const PMSInitial();
-  }
-
-  PMSGetFirstTenProduceLoading getFirstTenProduceLoading() {
-    return const PMSGetFirstTenProduceLoading();
-  }
-
-  PMSGetFirstTenProduceSuccess getFirstTenProduceSuccess(
-      {required List<Produce> produceList}) {
-    return PMSGetFirstTenProduceSuccess(
-      produceList: produceList,
-    );
-  }
-
-  PMSGetFirstTenProduceError getFirstTenProduceError(
-      {required String code,
-      required String message,
-      required StackTrace stackTrace}) {
-    return PMSGetFirstTenProduceError(
-      code: code,
-      message: message,
-      stackTrace: stackTrace,
-    );
-  }
-
-  PMSCreateNewProduceLoading createNewProduceLoading() {
-    return const PMSCreateNewProduceLoading();
-  }
-
-  PMSCreateNewProduceSuccess createNewProduceSuccess(
-      {required Produce produce}) {
-    return PMSCreateNewProduceSuccess(
-      produce: produce,
-    );
-  }
-
-  PMSCreateNewProduceError createNewProduceError(
-      {required String code,
-      required String message,
-      required StackTrace stackTrace}) {
-    return PMSCreateNewProduceError(
-      code: code,
-      message: message,
-      stackTrace: stackTrace,
-    );
-  }
-}
-
-/// @nodoc
-const $ProduceManagerState = _$ProduceManagerStateTearOff();
 
 /// @nodoc
 mixin _$ProduceManagerState {
@@ -564,9 +490,7 @@ mixin _$ProduceManagerState {
         getFirstTenProduceError,
     required TResult Function() createNewProduceLoading,
     required TResult Function(Produce produce) createNewProduceSuccess,
-    required TResult Function(
-            String code, String message, StackTrace stackTrace)
-        createNewProduceError,
+    required TResult Function(Failure failure) createNewProduceError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -578,8 +502,7 @@ mixin _$ProduceManagerState {
         getFirstTenProduceError,
     TResult Function()? createNewProduceLoading,
     TResult Function(Produce produce)? createNewProduceSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        createNewProduceError,
+    TResult Function(Failure failure)? createNewProduceError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -591,8 +514,7 @@ mixin _$ProduceManagerState {
         getFirstTenProduceError,
     TResult Function()? createNewProduceLoading,
     TResult Function(Produce produce)? createNewProduceSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        createNewProduceError,
+    TResult Function(Failure failure)? createNewProduceError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -660,21 +582,22 @@ class _$ProduceManagerStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class $PMSInitialCopyWith<$Res> {
-  factory $PMSInitialCopyWith(
-          PMSInitial value, $Res Function(PMSInitial) then) =
-      _$PMSInitialCopyWithImpl<$Res>;
+abstract class _$$PMSInitialCopyWith<$Res> {
+  factory _$$PMSInitialCopyWith(
+          _$PMSInitial value, $Res Function(_$PMSInitial) then) =
+      __$$PMSInitialCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$PMSInitialCopyWithImpl<$Res>
+class __$$PMSInitialCopyWithImpl<$Res>
     extends _$ProduceManagerStateCopyWithImpl<$Res>
-    implements $PMSInitialCopyWith<$Res> {
-  _$PMSInitialCopyWithImpl(PMSInitial _value, $Res Function(PMSInitial) _then)
-      : super(_value, (v) => _then(v as PMSInitial));
+    implements _$$PMSInitialCopyWith<$Res> {
+  __$$PMSInitialCopyWithImpl(
+      _$PMSInitial _value, $Res Function(_$PMSInitial) _then)
+      : super(_value, (v) => _then(v as _$PMSInitial));
 
   @override
-  PMSInitial get _value => super._value as PMSInitial;
+  _$PMSInitial get _value => super._value as _$PMSInitial;
 }
 
 /// @nodoc
@@ -690,7 +613,7 @@ class _$PMSInitial implements PMSInitial {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is PMSInitial);
+        (other.runtimeType == runtimeType && other is _$PMSInitial);
   }
 
   @override
@@ -708,9 +631,7 @@ class _$PMSInitial implements PMSInitial {
         getFirstTenProduceError,
     required TResult Function() createNewProduceLoading,
     required TResult Function(Produce produce) createNewProduceSuccess,
-    required TResult Function(
-            String code, String message, StackTrace stackTrace)
-        createNewProduceError,
+    required TResult Function(Failure failure) createNewProduceError,
   }) {
     return initial();
   }
@@ -725,8 +646,7 @@ class _$PMSInitial implements PMSInitial {
         getFirstTenProduceError,
     TResult Function()? createNewProduceLoading,
     TResult Function(Produce produce)? createNewProduceSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        createNewProduceError,
+    TResult Function(Failure failure)? createNewProduceError,
   }) {
     return initial?.call();
   }
@@ -741,8 +661,7 @@ class _$PMSInitial implements PMSInitial {
         getFirstTenProduceError,
     TResult Function()? createNewProduceLoading,
     TResult Function(Produce produce)? createNewProduceSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        createNewProduceError,
+    TResult Function(Failure failure)? createNewProduceError,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -813,25 +732,25 @@ abstract class PMSInitial implements ProduceManagerState {
 }
 
 /// @nodoc
-abstract class $PMSGetFirstTenProduceLoadingCopyWith<$Res> {
-  factory $PMSGetFirstTenProduceLoadingCopyWith(
-          PMSGetFirstTenProduceLoading value,
-          $Res Function(PMSGetFirstTenProduceLoading) then) =
-      _$PMSGetFirstTenProduceLoadingCopyWithImpl<$Res>;
+abstract class _$$PMSGetFirstTenProduceLoadingCopyWith<$Res> {
+  factory _$$PMSGetFirstTenProduceLoadingCopyWith(
+          _$PMSGetFirstTenProduceLoading value,
+          $Res Function(_$PMSGetFirstTenProduceLoading) then) =
+      __$$PMSGetFirstTenProduceLoadingCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$PMSGetFirstTenProduceLoadingCopyWithImpl<$Res>
+class __$$PMSGetFirstTenProduceLoadingCopyWithImpl<$Res>
     extends _$ProduceManagerStateCopyWithImpl<$Res>
-    implements $PMSGetFirstTenProduceLoadingCopyWith<$Res> {
-  _$PMSGetFirstTenProduceLoadingCopyWithImpl(
-      PMSGetFirstTenProduceLoading _value,
-      $Res Function(PMSGetFirstTenProduceLoading) _then)
-      : super(_value, (v) => _then(v as PMSGetFirstTenProduceLoading));
+    implements _$$PMSGetFirstTenProduceLoadingCopyWith<$Res> {
+  __$$PMSGetFirstTenProduceLoadingCopyWithImpl(
+      _$PMSGetFirstTenProduceLoading _value,
+      $Res Function(_$PMSGetFirstTenProduceLoading) _then)
+      : super(_value, (v) => _then(v as _$PMSGetFirstTenProduceLoading));
 
   @override
-  PMSGetFirstTenProduceLoading get _value =>
-      super._value as PMSGetFirstTenProduceLoading;
+  _$PMSGetFirstTenProduceLoading get _value =>
+      super._value as _$PMSGetFirstTenProduceLoading;
 }
 
 /// @nodoc
@@ -848,7 +767,7 @@ class _$PMSGetFirstTenProduceLoading implements PMSGetFirstTenProduceLoading {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is PMSGetFirstTenProduceLoading);
+            other is _$PMSGetFirstTenProduceLoading);
   }
 
   @override
@@ -866,9 +785,7 @@ class _$PMSGetFirstTenProduceLoading implements PMSGetFirstTenProduceLoading {
         getFirstTenProduceError,
     required TResult Function() createNewProduceLoading,
     required TResult Function(Produce produce) createNewProduceSuccess,
-    required TResult Function(
-            String code, String message, StackTrace stackTrace)
-        createNewProduceError,
+    required TResult Function(Failure failure) createNewProduceError,
   }) {
     return getFirstTenProduceLoading();
   }
@@ -883,8 +800,7 @@ class _$PMSGetFirstTenProduceLoading implements PMSGetFirstTenProduceLoading {
         getFirstTenProduceError,
     TResult Function()? createNewProduceLoading,
     TResult Function(Produce produce)? createNewProduceSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        createNewProduceError,
+    TResult Function(Failure failure)? createNewProduceError,
   }) {
     return getFirstTenProduceLoading?.call();
   }
@@ -899,8 +815,7 @@ class _$PMSGetFirstTenProduceLoading implements PMSGetFirstTenProduceLoading {
         getFirstTenProduceError,
     TResult Function()? createNewProduceLoading,
     TResult Function(Produce produce)? createNewProduceSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        createNewProduceError,
+    TResult Function(Failure failure)? createNewProduceError,
     required TResult orElse(),
   }) {
     if (getFirstTenProduceLoading != null) {
@@ -971,34 +886,34 @@ abstract class PMSGetFirstTenProduceLoading implements ProduceManagerState {
 }
 
 /// @nodoc
-abstract class $PMSGetFirstTenProduceSuccessCopyWith<$Res> {
-  factory $PMSGetFirstTenProduceSuccessCopyWith(
-          PMSGetFirstTenProduceSuccess value,
-          $Res Function(PMSGetFirstTenProduceSuccess) then) =
-      _$PMSGetFirstTenProduceSuccessCopyWithImpl<$Res>;
+abstract class _$$PMSGetFirstTenProduceSuccessCopyWith<$Res> {
+  factory _$$PMSGetFirstTenProduceSuccessCopyWith(
+          _$PMSGetFirstTenProduceSuccess value,
+          $Res Function(_$PMSGetFirstTenProduceSuccess) then) =
+      __$$PMSGetFirstTenProduceSuccessCopyWithImpl<$Res>;
   $Res call({List<Produce> produceList});
 }
 
 /// @nodoc
-class _$PMSGetFirstTenProduceSuccessCopyWithImpl<$Res>
+class __$$PMSGetFirstTenProduceSuccessCopyWithImpl<$Res>
     extends _$ProduceManagerStateCopyWithImpl<$Res>
-    implements $PMSGetFirstTenProduceSuccessCopyWith<$Res> {
-  _$PMSGetFirstTenProduceSuccessCopyWithImpl(
-      PMSGetFirstTenProduceSuccess _value,
-      $Res Function(PMSGetFirstTenProduceSuccess) _then)
-      : super(_value, (v) => _then(v as PMSGetFirstTenProduceSuccess));
+    implements _$$PMSGetFirstTenProduceSuccessCopyWith<$Res> {
+  __$$PMSGetFirstTenProduceSuccessCopyWithImpl(
+      _$PMSGetFirstTenProduceSuccess _value,
+      $Res Function(_$PMSGetFirstTenProduceSuccess) _then)
+      : super(_value, (v) => _then(v as _$PMSGetFirstTenProduceSuccess));
 
   @override
-  PMSGetFirstTenProduceSuccess get _value =>
-      super._value as PMSGetFirstTenProduceSuccess;
+  _$PMSGetFirstTenProduceSuccess get _value =>
+      super._value as _$PMSGetFirstTenProduceSuccess;
 
   @override
   $Res call({
     Object? produceList = freezed,
   }) {
-    return _then(PMSGetFirstTenProduceSuccess(
+    return _then(_$PMSGetFirstTenProduceSuccess(
       produceList: produceList == freezed
-          ? _value.produceList
+          ? _value._produceList
           : produceList // ignore: cast_nullable_to_non_nullable
               as List<Produce>,
     ));
@@ -1008,10 +923,16 @@ class _$PMSGetFirstTenProduceSuccessCopyWithImpl<$Res>
 /// @nodoc
 
 class _$PMSGetFirstTenProduceSuccess implements PMSGetFirstTenProduceSuccess {
-  const _$PMSGetFirstTenProduceSuccess({required this.produceList});
+  const _$PMSGetFirstTenProduceSuccess(
+      {required final List<Produce> produceList})
+      : _produceList = produceList;
 
+  final List<Produce> _produceList;
   @override
-  final List<Produce> produceList;
+  List<Produce> get produceList {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_produceList);
+  }
 
   @override
   String toString() {
@@ -1022,20 +943,20 @@ class _$PMSGetFirstTenProduceSuccess implements PMSGetFirstTenProduceSuccess {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is PMSGetFirstTenProduceSuccess &&
+            other is _$PMSGetFirstTenProduceSuccess &&
             const DeepCollectionEquality()
-                .equals(other.produceList, produceList));
+                .equals(other._produceList, _produceList));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(produceList));
+      runtimeType, const DeepCollectionEquality().hash(_produceList));
 
   @JsonKey(ignore: true)
   @override
-  $PMSGetFirstTenProduceSuccessCopyWith<PMSGetFirstTenProduceSuccess>
-      get copyWith => _$PMSGetFirstTenProduceSuccessCopyWithImpl<
-          PMSGetFirstTenProduceSuccess>(this, _$identity);
+  _$$PMSGetFirstTenProduceSuccessCopyWith<_$PMSGetFirstTenProduceSuccess>
+      get copyWith => __$$PMSGetFirstTenProduceSuccessCopyWithImpl<
+          _$PMSGetFirstTenProduceSuccess>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1049,9 +970,7 @@ class _$PMSGetFirstTenProduceSuccess implements PMSGetFirstTenProduceSuccess {
         getFirstTenProduceError,
     required TResult Function() createNewProduceLoading,
     required TResult Function(Produce produce) createNewProduceSuccess,
-    required TResult Function(
-            String code, String message, StackTrace stackTrace)
-        createNewProduceError,
+    required TResult Function(Failure failure) createNewProduceError,
   }) {
     return getFirstTenProduceSuccess(produceList);
   }
@@ -1066,8 +985,7 @@ class _$PMSGetFirstTenProduceSuccess implements PMSGetFirstTenProduceSuccess {
         getFirstTenProduceError,
     TResult Function()? createNewProduceLoading,
     TResult Function(Produce produce)? createNewProduceSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        createNewProduceError,
+    TResult Function(Failure failure)? createNewProduceError,
   }) {
     return getFirstTenProduceSuccess?.call(produceList);
   }
@@ -1082,8 +1000,7 @@ class _$PMSGetFirstTenProduceSuccess implements PMSGetFirstTenProduceSuccess {
         getFirstTenProduceError,
     TResult Function()? createNewProduceLoading,
     TResult Function(Produce produce)? createNewProduceSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        createNewProduceError,
+    TResult Function(Failure failure)? createNewProduceError,
     required TResult orElse(),
   }) {
     if (getFirstTenProduceSuccess != null) {
@@ -1151,33 +1068,36 @@ class _$PMSGetFirstTenProduceSuccess implements PMSGetFirstTenProduceSuccess {
 
 abstract class PMSGetFirstTenProduceSuccess implements ProduceManagerState {
   const factory PMSGetFirstTenProduceSuccess(
-      {required List<Produce> produceList}) = _$PMSGetFirstTenProduceSuccess;
+          {required final List<Produce> produceList}) =
+      _$PMSGetFirstTenProduceSuccess;
 
-  List<Produce> get produceList;
+  List<Produce> get produceList => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $PMSGetFirstTenProduceSuccessCopyWith<PMSGetFirstTenProduceSuccess>
+  _$$PMSGetFirstTenProduceSuccessCopyWith<_$PMSGetFirstTenProduceSuccess>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $PMSGetFirstTenProduceErrorCopyWith<$Res> {
-  factory $PMSGetFirstTenProduceErrorCopyWith(PMSGetFirstTenProduceError value,
-          $Res Function(PMSGetFirstTenProduceError) then) =
-      _$PMSGetFirstTenProduceErrorCopyWithImpl<$Res>;
+abstract class _$$PMSGetFirstTenProduceErrorCopyWith<$Res> {
+  factory _$$PMSGetFirstTenProduceErrorCopyWith(
+          _$PMSGetFirstTenProduceError value,
+          $Res Function(_$PMSGetFirstTenProduceError) then) =
+      __$$PMSGetFirstTenProduceErrorCopyWithImpl<$Res>;
   $Res call({String code, String message, StackTrace stackTrace});
 }
 
 /// @nodoc
-class _$PMSGetFirstTenProduceErrorCopyWithImpl<$Res>
+class __$$PMSGetFirstTenProduceErrorCopyWithImpl<$Res>
     extends _$ProduceManagerStateCopyWithImpl<$Res>
-    implements $PMSGetFirstTenProduceErrorCopyWith<$Res> {
-  _$PMSGetFirstTenProduceErrorCopyWithImpl(PMSGetFirstTenProduceError _value,
-      $Res Function(PMSGetFirstTenProduceError) _then)
-      : super(_value, (v) => _then(v as PMSGetFirstTenProduceError));
+    implements _$$PMSGetFirstTenProduceErrorCopyWith<$Res> {
+  __$$PMSGetFirstTenProduceErrorCopyWithImpl(
+      _$PMSGetFirstTenProduceError _value,
+      $Res Function(_$PMSGetFirstTenProduceError) _then)
+      : super(_value, (v) => _then(v as _$PMSGetFirstTenProduceError));
 
   @override
-  PMSGetFirstTenProduceError get _value =>
-      super._value as PMSGetFirstTenProduceError;
+  _$PMSGetFirstTenProduceError get _value =>
+      super._value as _$PMSGetFirstTenProduceError;
 
   @override
   $Res call({
@@ -1185,7 +1105,7 @@ class _$PMSGetFirstTenProduceErrorCopyWithImpl<$Res>
     Object? message = freezed,
     Object? stackTrace = freezed,
   }) {
-    return _then(PMSGetFirstTenProduceError(
+    return _then(_$PMSGetFirstTenProduceError(
       code: code == freezed
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
@@ -1224,22 +1144,25 @@ class _$PMSGetFirstTenProduceError implements PMSGetFirstTenProduceError {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is PMSGetFirstTenProduceError &&
-            (identical(other.code, code) || other.code == code) &&
-            (identical(other.message, message) || other.message == message) &&
-            (identical(other.stackTrace, stackTrace) ||
-                other.stackTrace == stackTrace));
+            other is _$PMSGetFirstTenProduceError &&
+            const DeepCollectionEquality().equals(other.code, code) &&
+            const DeepCollectionEquality().equals(other.message, message) &&
+            const DeepCollectionEquality()
+                .equals(other.stackTrace, stackTrace));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, code, message, stackTrace);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(code),
+      const DeepCollectionEquality().hash(message),
+      const DeepCollectionEquality().hash(stackTrace));
 
   @JsonKey(ignore: true)
   @override
-  $PMSGetFirstTenProduceErrorCopyWith<PMSGetFirstTenProduceError>
-      get copyWith =>
-          _$PMSGetFirstTenProduceErrorCopyWithImpl<PMSGetFirstTenProduceError>(
-              this, _$identity);
+  _$$PMSGetFirstTenProduceErrorCopyWith<_$PMSGetFirstTenProduceError>
+      get copyWith => __$$PMSGetFirstTenProduceErrorCopyWithImpl<
+          _$PMSGetFirstTenProduceError>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1253,9 +1176,7 @@ class _$PMSGetFirstTenProduceError implements PMSGetFirstTenProduceError {
         getFirstTenProduceError,
     required TResult Function() createNewProduceLoading,
     required TResult Function(Produce produce) createNewProduceSuccess,
-    required TResult Function(
-            String code, String message, StackTrace stackTrace)
-        createNewProduceError,
+    required TResult Function(Failure failure) createNewProduceError,
   }) {
     return getFirstTenProduceError(code, message, stackTrace);
   }
@@ -1270,8 +1191,7 @@ class _$PMSGetFirstTenProduceError implements PMSGetFirstTenProduceError {
         getFirstTenProduceError,
     TResult Function()? createNewProduceLoading,
     TResult Function(Produce produce)? createNewProduceSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        createNewProduceError,
+    TResult Function(Failure failure)? createNewProduceError,
   }) {
     return getFirstTenProduceError?.call(code, message, stackTrace);
   }
@@ -1286,8 +1206,7 @@ class _$PMSGetFirstTenProduceError implements PMSGetFirstTenProduceError {
         getFirstTenProduceError,
     TResult Function()? createNewProduceLoading,
     TResult Function(Produce produce)? createNewProduceSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        createNewProduceError,
+    TResult Function(Failure failure)? createNewProduceError,
     required TResult orElse(),
   }) {
     if (getFirstTenProduceError != null) {
@@ -1355,36 +1274,38 @@ class _$PMSGetFirstTenProduceError implements PMSGetFirstTenProduceError {
 
 abstract class PMSGetFirstTenProduceError implements ProduceManagerState {
   const factory PMSGetFirstTenProduceError(
-      {required String code,
-      required String message,
-      required StackTrace stackTrace}) = _$PMSGetFirstTenProduceError;
+      {required final String code,
+      required final String message,
+      required final StackTrace stackTrace}) = _$PMSGetFirstTenProduceError;
 
-  String get code;
-  String get message;
-  StackTrace get stackTrace;
+  String get code => throw _privateConstructorUsedError;
+  String get message => throw _privateConstructorUsedError;
+  StackTrace get stackTrace => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $PMSGetFirstTenProduceErrorCopyWith<PMSGetFirstTenProduceError>
+  _$$PMSGetFirstTenProduceErrorCopyWith<_$PMSGetFirstTenProduceError>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $PMSCreateNewProduceLoadingCopyWith<$Res> {
-  factory $PMSCreateNewProduceLoadingCopyWith(PMSCreateNewProduceLoading value,
-          $Res Function(PMSCreateNewProduceLoading) then) =
-      _$PMSCreateNewProduceLoadingCopyWithImpl<$Res>;
+abstract class _$$PMSCreateNewProduceLoadingCopyWith<$Res> {
+  factory _$$PMSCreateNewProduceLoadingCopyWith(
+          _$PMSCreateNewProduceLoading value,
+          $Res Function(_$PMSCreateNewProduceLoading) then) =
+      __$$PMSCreateNewProduceLoadingCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$PMSCreateNewProduceLoadingCopyWithImpl<$Res>
+class __$$PMSCreateNewProduceLoadingCopyWithImpl<$Res>
     extends _$ProduceManagerStateCopyWithImpl<$Res>
-    implements $PMSCreateNewProduceLoadingCopyWith<$Res> {
-  _$PMSCreateNewProduceLoadingCopyWithImpl(PMSCreateNewProduceLoading _value,
-      $Res Function(PMSCreateNewProduceLoading) _then)
-      : super(_value, (v) => _then(v as PMSCreateNewProduceLoading));
+    implements _$$PMSCreateNewProduceLoadingCopyWith<$Res> {
+  __$$PMSCreateNewProduceLoadingCopyWithImpl(
+      _$PMSCreateNewProduceLoading _value,
+      $Res Function(_$PMSCreateNewProduceLoading) _then)
+      : super(_value, (v) => _then(v as _$PMSCreateNewProduceLoading));
 
   @override
-  PMSCreateNewProduceLoading get _value =>
-      super._value as PMSCreateNewProduceLoading;
+  _$PMSCreateNewProduceLoading get _value =>
+      super._value as _$PMSCreateNewProduceLoading;
 }
 
 /// @nodoc
@@ -1401,7 +1322,7 @@ class _$PMSCreateNewProduceLoading implements PMSCreateNewProduceLoading {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is PMSCreateNewProduceLoading);
+            other is _$PMSCreateNewProduceLoading);
   }
 
   @override
@@ -1419,9 +1340,7 @@ class _$PMSCreateNewProduceLoading implements PMSCreateNewProduceLoading {
         getFirstTenProduceError,
     required TResult Function() createNewProduceLoading,
     required TResult Function(Produce produce) createNewProduceSuccess,
-    required TResult Function(
-            String code, String message, StackTrace stackTrace)
-        createNewProduceError,
+    required TResult Function(Failure failure) createNewProduceError,
   }) {
     return createNewProduceLoading();
   }
@@ -1436,8 +1355,7 @@ class _$PMSCreateNewProduceLoading implements PMSCreateNewProduceLoading {
         getFirstTenProduceError,
     TResult Function()? createNewProduceLoading,
     TResult Function(Produce produce)? createNewProduceSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        createNewProduceError,
+    TResult Function(Failure failure)? createNewProduceError,
   }) {
     return createNewProduceLoading?.call();
   }
@@ -1452,8 +1370,7 @@ class _$PMSCreateNewProduceLoading implements PMSCreateNewProduceLoading {
         getFirstTenProduceError,
     TResult Function()? createNewProduceLoading,
     TResult Function(Produce produce)? createNewProduceSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        createNewProduceError,
+    TResult Function(Failure failure)? createNewProduceError,
     required TResult orElse(),
   }) {
     if (createNewProduceLoading != null) {
@@ -1524,32 +1441,34 @@ abstract class PMSCreateNewProduceLoading implements ProduceManagerState {
 }
 
 /// @nodoc
-abstract class $PMSCreateNewProduceSuccessCopyWith<$Res> {
-  factory $PMSCreateNewProduceSuccessCopyWith(PMSCreateNewProduceSuccess value,
-          $Res Function(PMSCreateNewProduceSuccess) then) =
-      _$PMSCreateNewProduceSuccessCopyWithImpl<$Res>;
+abstract class _$$PMSCreateNewProduceSuccessCopyWith<$Res> {
+  factory _$$PMSCreateNewProduceSuccessCopyWith(
+          _$PMSCreateNewProduceSuccess value,
+          $Res Function(_$PMSCreateNewProduceSuccess) then) =
+      __$$PMSCreateNewProduceSuccessCopyWithImpl<$Res>;
   $Res call({Produce produce});
 
   $ProduceCopyWith<$Res> get produce;
 }
 
 /// @nodoc
-class _$PMSCreateNewProduceSuccessCopyWithImpl<$Res>
+class __$$PMSCreateNewProduceSuccessCopyWithImpl<$Res>
     extends _$ProduceManagerStateCopyWithImpl<$Res>
-    implements $PMSCreateNewProduceSuccessCopyWith<$Res> {
-  _$PMSCreateNewProduceSuccessCopyWithImpl(PMSCreateNewProduceSuccess _value,
-      $Res Function(PMSCreateNewProduceSuccess) _then)
-      : super(_value, (v) => _then(v as PMSCreateNewProduceSuccess));
+    implements _$$PMSCreateNewProduceSuccessCopyWith<$Res> {
+  __$$PMSCreateNewProduceSuccessCopyWithImpl(
+      _$PMSCreateNewProduceSuccess _value,
+      $Res Function(_$PMSCreateNewProduceSuccess) _then)
+      : super(_value, (v) => _then(v as _$PMSCreateNewProduceSuccess));
 
   @override
-  PMSCreateNewProduceSuccess get _value =>
-      super._value as PMSCreateNewProduceSuccess;
+  _$PMSCreateNewProduceSuccess get _value =>
+      super._value as _$PMSCreateNewProduceSuccess;
 
   @override
   $Res call({
     Object? produce = freezed,
   }) {
-    return _then(PMSCreateNewProduceSuccess(
+    return _then(_$PMSCreateNewProduceSuccess(
       produce: produce == freezed
           ? _value.produce
           : produce // ignore: cast_nullable_to_non_nullable
@@ -1582,19 +1501,19 @@ class _$PMSCreateNewProduceSuccess implements PMSCreateNewProduceSuccess {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is PMSCreateNewProduceSuccess &&
-            (identical(other.produce, produce) || other.produce == produce));
+            other is _$PMSCreateNewProduceSuccess &&
+            const DeepCollectionEquality().equals(other.produce, produce));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, produce);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(produce));
 
   @JsonKey(ignore: true)
   @override
-  $PMSCreateNewProduceSuccessCopyWith<PMSCreateNewProduceSuccess>
-      get copyWith =>
-          _$PMSCreateNewProduceSuccessCopyWithImpl<PMSCreateNewProduceSuccess>(
-              this, _$identity);
+  _$$PMSCreateNewProduceSuccessCopyWith<_$PMSCreateNewProduceSuccess>
+      get copyWith => __$$PMSCreateNewProduceSuccessCopyWithImpl<
+          _$PMSCreateNewProduceSuccess>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1608,9 +1527,7 @@ class _$PMSCreateNewProduceSuccess implements PMSCreateNewProduceSuccess {
         getFirstTenProduceError,
     required TResult Function() createNewProduceLoading,
     required TResult Function(Produce produce) createNewProduceSuccess,
-    required TResult Function(
-            String code, String message, StackTrace stackTrace)
-        createNewProduceError,
+    required TResult Function(Failure failure) createNewProduceError,
   }) {
     return createNewProduceSuccess(produce);
   }
@@ -1625,8 +1542,7 @@ class _$PMSCreateNewProduceSuccess implements PMSCreateNewProduceSuccess {
         getFirstTenProduceError,
     TResult Function()? createNewProduceLoading,
     TResult Function(Produce produce)? createNewProduceSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        createNewProduceError,
+    TResult Function(Failure failure)? createNewProduceError,
   }) {
     return createNewProduceSuccess?.call(produce);
   }
@@ -1641,8 +1557,7 @@ class _$PMSCreateNewProduceSuccess implements PMSCreateNewProduceSuccess {
         getFirstTenProduceError,
     TResult Function()? createNewProduceLoading,
     TResult Function(Produce produce)? createNewProduceSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        createNewProduceError,
+    TResult Function(Failure failure)? createNewProduceError,
     required TResult orElse(),
   }) {
     if (createNewProduceSuccess != null) {
@@ -1709,54 +1624,44 @@ class _$PMSCreateNewProduceSuccess implements PMSCreateNewProduceSuccess {
 }
 
 abstract class PMSCreateNewProduceSuccess implements ProduceManagerState {
-  const factory PMSCreateNewProduceSuccess({required Produce produce}) =
+  const factory PMSCreateNewProduceSuccess({required final Produce produce}) =
       _$PMSCreateNewProduceSuccess;
 
-  Produce get produce;
+  Produce get produce => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $PMSCreateNewProduceSuccessCopyWith<PMSCreateNewProduceSuccess>
+  _$$PMSCreateNewProduceSuccessCopyWith<_$PMSCreateNewProduceSuccess>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $PMSCreateNewProduceErrorCopyWith<$Res> {
-  factory $PMSCreateNewProduceErrorCopyWith(PMSCreateNewProduceError value,
-          $Res Function(PMSCreateNewProduceError) then) =
-      _$PMSCreateNewProduceErrorCopyWithImpl<$Res>;
-  $Res call({String code, String message, StackTrace stackTrace});
+abstract class _$$PMSCreateNewProduceErrorCopyWith<$Res> {
+  factory _$$PMSCreateNewProduceErrorCopyWith(_$PMSCreateNewProduceError value,
+          $Res Function(_$PMSCreateNewProduceError) then) =
+      __$$PMSCreateNewProduceErrorCopyWithImpl<$Res>;
+  $Res call({Failure failure});
 }
 
 /// @nodoc
-class _$PMSCreateNewProduceErrorCopyWithImpl<$Res>
+class __$$PMSCreateNewProduceErrorCopyWithImpl<$Res>
     extends _$ProduceManagerStateCopyWithImpl<$Res>
-    implements $PMSCreateNewProduceErrorCopyWith<$Res> {
-  _$PMSCreateNewProduceErrorCopyWithImpl(PMSCreateNewProduceError _value,
-      $Res Function(PMSCreateNewProduceError) _then)
-      : super(_value, (v) => _then(v as PMSCreateNewProduceError));
+    implements _$$PMSCreateNewProduceErrorCopyWith<$Res> {
+  __$$PMSCreateNewProduceErrorCopyWithImpl(_$PMSCreateNewProduceError _value,
+      $Res Function(_$PMSCreateNewProduceError) _then)
+      : super(_value, (v) => _then(v as _$PMSCreateNewProduceError));
 
   @override
-  PMSCreateNewProduceError get _value =>
-      super._value as PMSCreateNewProduceError;
+  _$PMSCreateNewProduceError get _value =>
+      super._value as _$PMSCreateNewProduceError;
 
   @override
   $Res call({
-    Object? code = freezed,
-    Object? message = freezed,
-    Object? stackTrace = freezed,
+    Object? failure = freezed,
   }) {
-    return _then(PMSCreateNewProduceError(
-      code: code == freezed
-          ? _value.code
-          : code // ignore: cast_nullable_to_non_nullable
-              as String,
-      message: message == freezed
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-      stackTrace: stackTrace == freezed
-          ? _value.stackTrace
-          : stackTrace // ignore: cast_nullable_to_non_nullable
-              as StackTrace,
+    return _then(_$PMSCreateNewProduceError(
+      failure: failure == freezed
+          ? _value.failure
+          : failure // ignore: cast_nullable_to_non_nullable
+              as Failure,
     ));
   }
 }
@@ -1764,40 +1669,34 @@ class _$PMSCreateNewProduceErrorCopyWithImpl<$Res>
 /// @nodoc
 
 class _$PMSCreateNewProduceError implements PMSCreateNewProduceError {
-  const _$PMSCreateNewProduceError(
-      {required this.code, required this.message, required this.stackTrace});
+  const _$PMSCreateNewProduceError({required this.failure});
 
   @override
-  final String code;
-  @override
-  final String message;
-  @override
-  final StackTrace stackTrace;
+  final Failure failure;
 
   @override
   String toString() {
-    return 'ProduceManagerState.createNewProduceError(code: $code, message: $message, stackTrace: $stackTrace)';
+    return 'ProduceManagerState.createNewProduceError(failure: $failure)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is PMSCreateNewProduceError &&
-            (identical(other.code, code) || other.code == code) &&
-            (identical(other.message, message) || other.message == message) &&
-            (identical(other.stackTrace, stackTrace) ||
-                other.stackTrace == stackTrace));
+            other is _$PMSCreateNewProduceError &&
+            const DeepCollectionEquality().equals(other.failure, failure));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, code, message, stackTrace);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(failure));
 
   @JsonKey(ignore: true)
   @override
-  $PMSCreateNewProduceErrorCopyWith<PMSCreateNewProduceError> get copyWith =>
-      _$PMSCreateNewProduceErrorCopyWithImpl<PMSCreateNewProduceError>(
-          this, _$identity);
+  _$$PMSCreateNewProduceErrorCopyWith<_$PMSCreateNewProduceError>
+      get copyWith =>
+          __$$PMSCreateNewProduceErrorCopyWithImpl<_$PMSCreateNewProduceError>(
+              this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1811,11 +1710,9 @@ class _$PMSCreateNewProduceError implements PMSCreateNewProduceError {
         getFirstTenProduceError,
     required TResult Function() createNewProduceLoading,
     required TResult Function(Produce produce) createNewProduceSuccess,
-    required TResult Function(
-            String code, String message, StackTrace stackTrace)
-        createNewProduceError,
+    required TResult Function(Failure failure) createNewProduceError,
   }) {
-    return createNewProduceError(code, message, stackTrace);
+    return createNewProduceError(failure);
   }
 
   @override
@@ -1828,10 +1725,9 @@ class _$PMSCreateNewProduceError implements PMSCreateNewProduceError {
         getFirstTenProduceError,
     TResult Function()? createNewProduceLoading,
     TResult Function(Produce produce)? createNewProduceSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        createNewProduceError,
+    TResult Function(Failure failure)? createNewProduceError,
   }) {
-    return createNewProduceError?.call(code, message, stackTrace);
+    return createNewProduceError?.call(failure);
   }
 
   @override
@@ -1844,12 +1740,11 @@ class _$PMSCreateNewProduceError implements PMSCreateNewProduceError {
         getFirstTenProduceError,
     TResult Function()? createNewProduceLoading,
     TResult Function(Produce produce)? createNewProduceSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        createNewProduceError,
+    TResult Function(Failure failure)? createNewProduceError,
     required TResult orElse(),
   }) {
     if (createNewProduceError != null) {
-      return createNewProduceError(code, message, stackTrace);
+      return createNewProduceError(failure);
     }
     return orElse();
   }
@@ -1912,15 +1807,11 @@ class _$PMSCreateNewProduceError implements PMSCreateNewProduceError {
 }
 
 abstract class PMSCreateNewProduceError implements ProduceManagerState {
-  const factory PMSCreateNewProduceError(
-      {required String code,
-      required String message,
-      required StackTrace stackTrace}) = _$PMSCreateNewProduceError;
+  const factory PMSCreateNewProduceError({required final Failure failure}) =
+      _$PMSCreateNewProduceError;
 
-  String get code;
-  String get message;
-  StackTrace get stackTrace;
+  Failure get failure => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $PMSCreateNewProduceErrorCopyWith<PMSCreateNewProduceError> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$PMSCreateNewProduceErrorCopyWith<_$PMSCreateNewProduceError>
+      get copyWith => throw _privateConstructorUsedError;
 }
