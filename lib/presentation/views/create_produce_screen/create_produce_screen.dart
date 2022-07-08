@@ -31,7 +31,8 @@ class CreateProduceScreen extends StatelessWidget {
           create: (_) => CreateProduceScreenBloc(
             firstTwoFieldsFormBloc: context.read<FirstTwoFieldsFormBloc>(),
             primaryButtonAwareCubit: context.read<PrimaryButtonAwareCubit>(),
-            produceManagerBloc: context.read<ProduceManagerBloc>(),
+            produceManagerRepository: locator(),
+            globalUICubit: locator(),
           ),
           child: Builder(builder: (context) {
             return Scaffold(
@@ -73,6 +74,7 @@ class CreateProduceScreen extends StatelessWidget {
                       ],
                     ),
                     Container(
+                      padding: EdgeInsets.only(bottom: 24),
                       constraints: BoxConstraints.expand(),
                       alignment: Alignment.bottomCenter,
                       child: PrimaryButtonAware(
@@ -84,7 +86,7 @@ class CreateProduceScreen extends StatelessWidget {
                         firstPageOnPressed: () {
                           context
                               .read<CreateProduceScreenBloc>()
-                              .add(CreateProduceScreenEvent.execCreateNewProduce());
+                              .add(CreateProduceScreenEvent.execCreateNewProduce(context));
                         },
                         type: PrimaryButtonAwareType.onePage,
                         width: 200,

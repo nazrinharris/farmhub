@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:farmhub/core/errors/failures.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../domain/entities/price/price.dart';
@@ -49,9 +50,7 @@ class ProduceManagerBloc extends Bloc<ProduceManagerEvent, ProduceManagerState> 
 
     emit(failureOrProduce.fold(
       (f) => ProduceManagerState.createNewProduceError(
-        code: f.code!,
-        message: f.message!,
-        stackTrace: f.stackTrace!,
+        failure: f,
       ),
       (produce) => ProduceManagerState.createNewProduceSuccess(produce: produce),
     ));

@@ -19,19 +19,19 @@ mixin _$CreateProduceScreenEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() execCreateNewProduce,
+    required TResult Function(BuildContext context) execCreateNewProduce,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? execCreateNewProduce,
+    TResult Function(BuildContext context)? execCreateNewProduce,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? execCreateNewProduce,
+    TResult Function(BuildContext context)? execCreateNewProduce,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -122,7 +122,7 @@ class _$_Started with DiagnosticableTreeMixin implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() execCreateNewProduce,
+    required TResult Function(BuildContext context) execCreateNewProduce,
   }) {
     return started();
   }
@@ -131,7 +131,7 @@ class _$_Started with DiagnosticableTreeMixin implements _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? execCreateNewProduce,
+    TResult Function(BuildContext context)? execCreateNewProduce,
   }) {
     return started?.call();
   }
@@ -140,7 +140,7 @@ class _$_Started with DiagnosticableTreeMixin implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? execCreateNewProduce,
+    TResult Function(BuildContext context)? execCreateNewProduce,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -192,6 +192,7 @@ abstract class _$$_CPSEExecCreateNewProduceCopyWith<$Res> {
           _$_CPSEExecCreateNewProduce value,
           $Res Function(_$_CPSEExecCreateNewProduce) then) =
       __$$_CPSEExecCreateNewProduceCopyWithImpl<$Res>;
+  $Res call({BuildContext context});
 }
 
 /// @nodoc
@@ -205,6 +206,18 @@ class __$$_CPSEExecCreateNewProduceCopyWithImpl<$Res>
   @override
   _$_CPSEExecCreateNewProduce get _value =>
       super._value as _$_CPSEExecCreateNewProduce;
+
+  @override
+  $Res call({
+    Object? context = freezed,
+  }) {
+    return _then(_$_CPSEExecCreateNewProduce(
+      context == freezed
+          ? _value.context
+          : context // ignore: cast_nullable_to_non_nullable
+              as BuildContext,
+    ));
+  }
 }
 
 /// @nodoc
@@ -212,57 +225,70 @@ class __$$_CPSEExecCreateNewProduceCopyWithImpl<$Res>
 class _$_CPSEExecCreateNewProduce
     with DiagnosticableTreeMixin
     implements _CPSEExecCreateNewProduce {
-  const _$_CPSEExecCreateNewProduce();
+  const _$_CPSEExecCreateNewProduce(this.context);
+
+  @override
+  final BuildContext context;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'CreateProduceScreenEvent.execCreateNewProduce()';
+    return 'CreateProduceScreenEvent.execCreateNewProduce(context: $context)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty(
-        'type', 'CreateProduceScreenEvent.execCreateNewProduce'));
+    properties
+      ..add(DiagnosticsProperty(
+          'type', 'CreateProduceScreenEvent.execCreateNewProduce'))
+      ..add(DiagnosticsProperty('context', context));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CPSEExecCreateNewProduce);
+            other is _$_CPSEExecCreateNewProduce &&
+            const DeepCollectionEquality().equals(other.context, context));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(context));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_CPSEExecCreateNewProduceCopyWith<_$_CPSEExecCreateNewProduce>
+      get copyWith => __$$_CPSEExecCreateNewProduceCopyWithImpl<
+          _$_CPSEExecCreateNewProduce>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() execCreateNewProduce,
+    required TResult Function(BuildContext context) execCreateNewProduce,
   }) {
-    return execCreateNewProduce();
+    return execCreateNewProduce(context);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? execCreateNewProduce,
+    TResult Function(BuildContext context)? execCreateNewProduce,
   }) {
-    return execCreateNewProduce?.call();
+    return execCreateNewProduce?.call(context);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? execCreateNewProduce,
+    TResult Function(BuildContext context)? execCreateNewProduce,
     required TResult orElse(),
   }) {
     if (execCreateNewProduce != null) {
-      return execCreateNewProduce();
+      return execCreateNewProduce(context);
     }
     return orElse();
   }
@@ -301,7 +327,13 @@ class _$_CPSEExecCreateNewProduce
 }
 
 abstract class _CPSEExecCreateNewProduce implements CreateProduceScreenEvent {
-  const factory _CPSEExecCreateNewProduce() = _$_CPSEExecCreateNewProduce;
+  const factory _CPSEExecCreateNewProduce(final BuildContext context) =
+      _$_CPSEExecCreateNewProduce;
+
+  BuildContext get context => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$$_CPSEExecCreateNewProduceCopyWith<_$_CPSEExecCreateNewProduce>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc

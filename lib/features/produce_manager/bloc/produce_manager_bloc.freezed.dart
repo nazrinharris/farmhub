@@ -490,9 +490,7 @@ mixin _$ProduceManagerState {
         getFirstTenProduceError,
     required TResult Function() createNewProduceLoading,
     required TResult Function(Produce produce) createNewProduceSuccess,
-    required TResult Function(
-            String code, String message, StackTrace stackTrace)
-        createNewProduceError,
+    required TResult Function(Failure failure) createNewProduceError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -504,8 +502,7 @@ mixin _$ProduceManagerState {
         getFirstTenProduceError,
     TResult Function()? createNewProduceLoading,
     TResult Function(Produce produce)? createNewProduceSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        createNewProduceError,
+    TResult Function(Failure failure)? createNewProduceError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -517,8 +514,7 @@ mixin _$ProduceManagerState {
         getFirstTenProduceError,
     TResult Function()? createNewProduceLoading,
     TResult Function(Produce produce)? createNewProduceSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        createNewProduceError,
+    TResult Function(Failure failure)? createNewProduceError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -635,9 +631,7 @@ class _$PMSInitial implements PMSInitial {
         getFirstTenProduceError,
     required TResult Function() createNewProduceLoading,
     required TResult Function(Produce produce) createNewProduceSuccess,
-    required TResult Function(
-            String code, String message, StackTrace stackTrace)
-        createNewProduceError,
+    required TResult Function(Failure failure) createNewProduceError,
   }) {
     return initial();
   }
@@ -652,8 +646,7 @@ class _$PMSInitial implements PMSInitial {
         getFirstTenProduceError,
     TResult Function()? createNewProduceLoading,
     TResult Function(Produce produce)? createNewProduceSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        createNewProduceError,
+    TResult Function(Failure failure)? createNewProduceError,
   }) {
     return initial?.call();
   }
@@ -668,8 +661,7 @@ class _$PMSInitial implements PMSInitial {
         getFirstTenProduceError,
     TResult Function()? createNewProduceLoading,
     TResult Function(Produce produce)? createNewProduceSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        createNewProduceError,
+    TResult Function(Failure failure)? createNewProduceError,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -793,9 +785,7 @@ class _$PMSGetFirstTenProduceLoading implements PMSGetFirstTenProduceLoading {
         getFirstTenProduceError,
     required TResult Function() createNewProduceLoading,
     required TResult Function(Produce produce) createNewProduceSuccess,
-    required TResult Function(
-            String code, String message, StackTrace stackTrace)
-        createNewProduceError,
+    required TResult Function(Failure failure) createNewProduceError,
   }) {
     return getFirstTenProduceLoading();
   }
@@ -810,8 +800,7 @@ class _$PMSGetFirstTenProduceLoading implements PMSGetFirstTenProduceLoading {
         getFirstTenProduceError,
     TResult Function()? createNewProduceLoading,
     TResult Function(Produce produce)? createNewProduceSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        createNewProduceError,
+    TResult Function(Failure failure)? createNewProduceError,
   }) {
     return getFirstTenProduceLoading?.call();
   }
@@ -826,8 +815,7 @@ class _$PMSGetFirstTenProduceLoading implements PMSGetFirstTenProduceLoading {
         getFirstTenProduceError,
     TResult Function()? createNewProduceLoading,
     TResult Function(Produce produce)? createNewProduceSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        createNewProduceError,
+    TResult Function(Failure failure)? createNewProduceError,
     required TResult orElse(),
   }) {
     if (getFirstTenProduceLoading != null) {
@@ -982,9 +970,7 @@ class _$PMSGetFirstTenProduceSuccess implements PMSGetFirstTenProduceSuccess {
         getFirstTenProduceError,
     required TResult Function() createNewProduceLoading,
     required TResult Function(Produce produce) createNewProduceSuccess,
-    required TResult Function(
-            String code, String message, StackTrace stackTrace)
-        createNewProduceError,
+    required TResult Function(Failure failure) createNewProduceError,
   }) {
     return getFirstTenProduceSuccess(produceList);
   }
@@ -999,8 +985,7 @@ class _$PMSGetFirstTenProduceSuccess implements PMSGetFirstTenProduceSuccess {
         getFirstTenProduceError,
     TResult Function()? createNewProduceLoading,
     TResult Function(Produce produce)? createNewProduceSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        createNewProduceError,
+    TResult Function(Failure failure)? createNewProduceError,
   }) {
     return getFirstTenProduceSuccess?.call(produceList);
   }
@@ -1015,8 +1000,7 @@ class _$PMSGetFirstTenProduceSuccess implements PMSGetFirstTenProduceSuccess {
         getFirstTenProduceError,
     TResult Function()? createNewProduceLoading,
     TResult Function(Produce produce)? createNewProduceSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        createNewProduceError,
+    TResult Function(Failure failure)? createNewProduceError,
     required TResult orElse(),
   }) {
     if (getFirstTenProduceSuccess != null) {
@@ -1192,9 +1176,7 @@ class _$PMSGetFirstTenProduceError implements PMSGetFirstTenProduceError {
         getFirstTenProduceError,
     required TResult Function() createNewProduceLoading,
     required TResult Function(Produce produce) createNewProduceSuccess,
-    required TResult Function(
-            String code, String message, StackTrace stackTrace)
-        createNewProduceError,
+    required TResult Function(Failure failure) createNewProduceError,
   }) {
     return getFirstTenProduceError(code, message, stackTrace);
   }
@@ -1209,8 +1191,7 @@ class _$PMSGetFirstTenProduceError implements PMSGetFirstTenProduceError {
         getFirstTenProduceError,
     TResult Function()? createNewProduceLoading,
     TResult Function(Produce produce)? createNewProduceSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        createNewProduceError,
+    TResult Function(Failure failure)? createNewProduceError,
   }) {
     return getFirstTenProduceError?.call(code, message, stackTrace);
   }
@@ -1225,8 +1206,7 @@ class _$PMSGetFirstTenProduceError implements PMSGetFirstTenProduceError {
         getFirstTenProduceError,
     TResult Function()? createNewProduceLoading,
     TResult Function(Produce produce)? createNewProduceSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        createNewProduceError,
+    TResult Function(Failure failure)? createNewProduceError,
     required TResult orElse(),
   }) {
     if (getFirstTenProduceError != null) {
@@ -1360,9 +1340,7 @@ class _$PMSCreateNewProduceLoading implements PMSCreateNewProduceLoading {
         getFirstTenProduceError,
     required TResult Function() createNewProduceLoading,
     required TResult Function(Produce produce) createNewProduceSuccess,
-    required TResult Function(
-            String code, String message, StackTrace stackTrace)
-        createNewProduceError,
+    required TResult Function(Failure failure) createNewProduceError,
   }) {
     return createNewProduceLoading();
   }
@@ -1377,8 +1355,7 @@ class _$PMSCreateNewProduceLoading implements PMSCreateNewProduceLoading {
         getFirstTenProduceError,
     TResult Function()? createNewProduceLoading,
     TResult Function(Produce produce)? createNewProduceSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        createNewProduceError,
+    TResult Function(Failure failure)? createNewProduceError,
   }) {
     return createNewProduceLoading?.call();
   }
@@ -1393,8 +1370,7 @@ class _$PMSCreateNewProduceLoading implements PMSCreateNewProduceLoading {
         getFirstTenProduceError,
     TResult Function()? createNewProduceLoading,
     TResult Function(Produce produce)? createNewProduceSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        createNewProduceError,
+    TResult Function(Failure failure)? createNewProduceError,
     required TResult orElse(),
   }) {
     if (createNewProduceLoading != null) {
@@ -1551,9 +1527,7 @@ class _$PMSCreateNewProduceSuccess implements PMSCreateNewProduceSuccess {
         getFirstTenProduceError,
     required TResult Function() createNewProduceLoading,
     required TResult Function(Produce produce) createNewProduceSuccess,
-    required TResult Function(
-            String code, String message, StackTrace stackTrace)
-        createNewProduceError,
+    required TResult Function(Failure failure) createNewProduceError,
   }) {
     return createNewProduceSuccess(produce);
   }
@@ -1568,8 +1542,7 @@ class _$PMSCreateNewProduceSuccess implements PMSCreateNewProduceSuccess {
         getFirstTenProduceError,
     TResult Function()? createNewProduceLoading,
     TResult Function(Produce produce)? createNewProduceSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        createNewProduceError,
+    TResult Function(Failure failure)? createNewProduceError,
   }) {
     return createNewProduceSuccess?.call(produce);
   }
@@ -1584,8 +1557,7 @@ class _$PMSCreateNewProduceSuccess implements PMSCreateNewProduceSuccess {
         getFirstTenProduceError,
     TResult Function()? createNewProduceLoading,
     TResult Function(Produce produce)? createNewProduceSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        createNewProduceError,
+    TResult Function(Failure failure)? createNewProduceError,
     required TResult orElse(),
   }) {
     if (createNewProduceSuccess != null) {
@@ -1666,7 +1638,7 @@ abstract class _$$PMSCreateNewProduceErrorCopyWith<$Res> {
   factory _$$PMSCreateNewProduceErrorCopyWith(_$PMSCreateNewProduceError value,
           $Res Function(_$PMSCreateNewProduceError) then) =
       __$$PMSCreateNewProduceErrorCopyWithImpl<$Res>;
-  $Res call({String code, String message, StackTrace stackTrace});
+  $Res call({Failure failure});
 }
 
 /// @nodoc
@@ -1683,23 +1655,13 @@ class __$$PMSCreateNewProduceErrorCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? code = freezed,
-    Object? message = freezed,
-    Object? stackTrace = freezed,
+    Object? failure = freezed,
   }) {
     return _then(_$PMSCreateNewProduceError(
-      code: code == freezed
-          ? _value.code
-          : code // ignore: cast_nullable_to_non_nullable
-              as String,
-      message: message == freezed
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-      stackTrace: stackTrace == freezed
-          ? _value.stackTrace
-          : stackTrace // ignore: cast_nullable_to_non_nullable
-              as StackTrace,
+      failure: failure == freezed
+          ? _value.failure
+          : failure // ignore: cast_nullable_to_non_nullable
+              as Failure,
     ));
   }
 }
@@ -1707,19 +1669,14 @@ class __$$PMSCreateNewProduceErrorCopyWithImpl<$Res>
 /// @nodoc
 
 class _$PMSCreateNewProduceError implements PMSCreateNewProduceError {
-  const _$PMSCreateNewProduceError(
-      {required this.code, required this.message, required this.stackTrace});
+  const _$PMSCreateNewProduceError({required this.failure});
 
   @override
-  final String code;
-  @override
-  final String message;
-  @override
-  final StackTrace stackTrace;
+  final Failure failure;
 
   @override
   String toString() {
-    return 'ProduceManagerState.createNewProduceError(code: $code, message: $message, stackTrace: $stackTrace)';
+    return 'ProduceManagerState.createNewProduceError(failure: $failure)';
   }
 
   @override
@@ -1727,18 +1684,12 @@ class _$PMSCreateNewProduceError implements PMSCreateNewProduceError {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PMSCreateNewProduceError &&
-            const DeepCollectionEquality().equals(other.code, code) &&
-            const DeepCollectionEquality().equals(other.message, message) &&
-            const DeepCollectionEquality()
-                .equals(other.stackTrace, stackTrace));
+            const DeepCollectionEquality().equals(other.failure, failure));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(code),
-      const DeepCollectionEquality().hash(message),
-      const DeepCollectionEquality().hash(stackTrace));
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(failure));
 
   @JsonKey(ignore: true)
   @override
@@ -1759,11 +1710,9 @@ class _$PMSCreateNewProduceError implements PMSCreateNewProduceError {
         getFirstTenProduceError,
     required TResult Function() createNewProduceLoading,
     required TResult Function(Produce produce) createNewProduceSuccess,
-    required TResult Function(
-            String code, String message, StackTrace stackTrace)
-        createNewProduceError,
+    required TResult Function(Failure failure) createNewProduceError,
   }) {
-    return createNewProduceError(code, message, stackTrace);
+    return createNewProduceError(failure);
   }
 
   @override
@@ -1776,10 +1725,9 @@ class _$PMSCreateNewProduceError implements PMSCreateNewProduceError {
         getFirstTenProduceError,
     TResult Function()? createNewProduceLoading,
     TResult Function(Produce produce)? createNewProduceSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        createNewProduceError,
+    TResult Function(Failure failure)? createNewProduceError,
   }) {
-    return createNewProduceError?.call(code, message, stackTrace);
+    return createNewProduceError?.call(failure);
   }
 
   @override
@@ -1792,12 +1740,11 @@ class _$PMSCreateNewProduceError implements PMSCreateNewProduceError {
         getFirstTenProduceError,
     TResult Function()? createNewProduceLoading,
     TResult Function(Produce produce)? createNewProduceSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        createNewProduceError,
+    TResult Function(Failure failure)? createNewProduceError,
     required TResult orElse(),
   }) {
     if (createNewProduceError != null) {
-      return createNewProduceError(code, message, stackTrace);
+      return createNewProduceError(failure);
     }
     return orElse();
   }
@@ -1860,14 +1807,10 @@ class _$PMSCreateNewProduceError implements PMSCreateNewProduceError {
 }
 
 abstract class PMSCreateNewProduceError implements ProduceManagerState {
-  const factory PMSCreateNewProduceError(
-      {required final String code,
-      required final String message,
-      required final StackTrace stackTrace}) = _$PMSCreateNewProduceError;
+  const factory PMSCreateNewProduceError({required final Failure failure}) =
+      _$PMSCreateNewProduceError;
 
-  String get code => throw _privateConstructorUsedError;
-  String get message => throw _privateConstructorUsedError;
-  StackTrace get stackTrace => throw _privateConstructorUsedError;
+  Failure get failure => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$$PMSCreateNewProduceErrorCopyWith<_$PMSCreateNewProduceError>
       get copyWith => throw _privateConstructorUsedError;
