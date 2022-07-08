@@ -23,7 +23,6 @@ class RegisterScreenBloc extends Bloc<RegisterScreenEvent, RegisterScreenState> 
 
   // UI-Specific Blocs
   final FirstTwoFieldsFormBloc firstTwoFieldsFormBloc;
-  final SecondTwoFieldsFormBloc secondTwoFieldsFormBloc;
   final InfoTileBloc infoTileBloc;
   final PrimaryButtonAwareCubit primaryButtonAwareCubit;
   final AnimationController infoTileVisibilityController;
@@ -34,7 +33,6 @@ class RegisterScreenBloc extends Bloc<RegisterScreenEvent, RegisterScreenState> 
     required this.infoTileBloc,
     required this.primaryButtonAwareCubit,
     required this.registerScreenProps,
-    required this.secondTwoFieldsFormBloc,
     required this.infoTileVisibilityController,
   }) : super(_RSSInitial(registerScreenProps)) {
     on<_RSEStarted>(started);
@@ -85,20 +83,16 @@ class RegisterScreenBloc extends Bloc<RegisterScreenEvent, RegisterScreenState> 
     firstTwoFieldsFormBloc.add(unfocusAllNodes);
     firstTwoFieldsFormBloc.add(enableAlwaysValidation);
 
-    secondTwoFieldsFormBloc.add(unfocusAllNodes);
-    secondTwoFieldsFormBloc.add(enableAlwaysValidation);
-
     void updateInfoTile(InfoTileProps infoTileProps) {
       infoTileBloc.add(InfoTileEvent.triggerStateChange(infoTileProps));
     }
 
-    final bool isFormValid = firstTwoFieldsFormBloc.state.props.formKey.currentState!.validate() &&
-        secondTwoFieldsFormBloc.state.props.formKey.currentState!.validate();
+    final bool isFormValid = firstTwoFieldsFormBloc.state.props.formKey.currentState!.validate();
 
     if (isFormValid) {
       final String username = firstTwoFieldsFormBloc.state.props.firstFieldValue!;
       final String email = firstTwoFieldsFormBloc.state.props.secondFieldValue!;
-      final String password = secondTwoFieldsFormBloc.state.props.secondFieldValue!;
+      final String password = firstTwoFieldsFormBloc.state.props.fourthFieldValue!;
 
       // Update UI to indicate Loading
       infoTileVisibilityController.play(

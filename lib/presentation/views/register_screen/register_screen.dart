@@ -144,26 +144,22 @@ class _RegisterFieldsState extends State<RegisterFields> {
     return Column(
       children: [
         MultipleFieldsForm<FirstTwoFieldsFormBloc>(
-          type: MultipleFieldsFormType.twoField,
+          type: MultipleFieldsFormType.fourField,
           firstFieldLabel: 'Username',
           firstFieldHintText: 'Enter your desired username',
           secondFieldLabel: 'Email',
           secondFieldHintText: 'Enter your email',
           validateFirstField: validateUsername,
           validateSecondField: validateEmail,
+          thirdFieldLabel: 'Password',
+          thirdFieldHintText: 'Enter a secure password',
+          fourthFieldLabel: 'Confirm Password',
+          fourthFieldHintText: 'Make sure it\'s the same',
+          validateThirdField: validatePassword,
+          validateFourthField: validateConfirmPassword,
+          isThirdFieldObscured: true,
+          isFourthFieldObscured: true,
         ),
-        const UIVerticalSpace14(),
-        MultipleFieldsForm<SecondTwoFieldsFormBloc>(
-          type: MultipleFieldsFormType.twoField,
-          firstFieldLabel: 'Password',
-          firstFieldHintText: 'Enter a secure password',
-          secondFieldLabel: 'Confirm Password',
-          secondFieldHintText: 'Make sure it\'s the same',
-          validateFirstField: validatePassword,
-          validateSecondField: validateConfirmPassword,
-          isFirstFieldObscured: true,
-          isSecondFieldObscured: true,
-        )
       ],
     );
   }
@@ -194,7 +190,7 @@ class _RegisterFieldsState extends State<RegisterFields> {
   String? validateConfirmPassword(String? value) {
     if (value == null || value.isEmpty) {
       return "This cannot be empty";
-    } else if (value != context.read<SecondTwoFieldsFormBloc>().state.props.firstFieldValue) {
+    } else if (value != context.read<FirstTwoFieldsFormBloc>().state.props.thirdFieldValue) {
       return "The passwords are not the same";
     } else {
       return null;
@@ -310,7 +306,6 @@ class RegisterScreenBlocProviders extends StatelessWidget {
                 infoTileBloc: context.read<InfoTileBloc>(),
                 primaryButtonAwareCubit: context.read<PrimaryButtonAwareCubit>(),
                 firstTwoFieldsFormBloc: context.read<FirstTwoFieldsFormBloc>(),
-                secondTwoFieldsFormBloc: context.read<SecondTwoFieldsFormBloc>(),
               ),
             ),
           ],

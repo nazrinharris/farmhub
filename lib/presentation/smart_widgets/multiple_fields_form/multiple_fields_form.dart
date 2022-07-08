@@ -37,8 +37,7 @@ enum MultipleFieldsFormType { oneField, twoField, threeField, fourField }
 /// [firstFieldFocusNode] & [secondFieldFocusNode]
 /// [firstFieldValue] & [secondFieldValue]
 /// [formKey]
-class MultipleFieldsForm<
-        T extends Bloc<MultipleFieldsFormEvent, MultipleFieldsFormState>>
+class MultipleFieldsForm<T extends Bloc<MultipleFieldsFormEvent, MultipleFieldsFormState>>
     extends StatelessWidget {
   final MultipleFieldsFormType type;
 
@@ -103,8 +102,7 @@ class MultipleFieldsForm<
         MultipleFieldsFormState _readBlocState(BuildContext mainContext) =>
             BlocProvider.of<T>(mainContext).state;
 
-        T _readBloc(BuildContext mainContext) =>
-            BlocProvider.of<T>(mainContext);
+        T _readBloc(BuildContext mainContext) => BlocProvider.of<T>(mainContext);
 
         return Form(
           key: _readBlocState(context).props.formKey,
@@ -116,20 +114,17 @@ class MultipleFieldsForm<
                   focusNode: _readBlocState(context).props.firstFieldFocusNode,
                   onChanged: (input) {
                     // Should update the cubit's local username value.
-                    _readBloc(context).add(
-                        MultipleFieldsFormEvent.firstFieldValueChanged(
-                            input: input));
+                    _readBloc(context)
+                        .add(MultipleFieldsFormEvent.firstFieldValueChanged(input: input));
                   },
                   onFieldSubmitted: (value) {
                     // Should validate the current value and proceed to focus on the next field.
-                    _readBloc(context).add(
-                        const MultipleFieldsFormEvent.firstFieldSubmitted());
+                    _readBloc(context).add(const MultipleFieldsFormEvent.firstFieldSubmitted());
                   },
                   textInputAction: TextInputAction.next,
                   validator: validateFirstField,
                   // Should read this TextField's validation mode from cubit.
-                  autovalidateMode:
-                      _readBlocState(context).props.autovalidateModeFirstField,
+                  autovalidateMode: _readBlocState(context).props.autovalidateModeFirstField,
                   // Should read the cubit's local username value
                   initialValue: _readBlocState(context).props.firstFieldValue,
                   style: Theme.of(context).textTheme.bodyText1,
@@ -146,14 +141,14 @@ class MultipleFieldsForm<
                 secondFieldHintText: secondFieldHintText,
                 secondFieldInputType: secondFieldInputType,
               ),
-              BuildThirdField(
+              BuildThirdField<T>(
                 type: type,
                 thirdFieldLabel: thirdFieldLabel,
                 validateThirdField: validateThirdField,
                 isThirdFieldObscured: isThirdFieldObscured,
                 thirdFieldHintText: thirdFieldHintText,
               ),
-              BuildFourthField(
+              BuildFourthField<T>(
                 type: type,
                 fourthFieldLabel: fourthFieldLabel,
                 validateFourthField: validateFourthField,
@@ -169,8 +164,7 @@ class MultipleFieldsForm<
   }
 }
 
-class BuildSecondField<
-        T extends Bloc<MultipleFieldsFormEvent, MultipleFieldsFormState>>
+class BuildSecondField<T extends Bloc<MultipleFieldsFormEvent, MultipleFieldsFormState>>
     extends StatelessWidget {
   const BuildSecondField({
     Key? key,
@@ -206,17 +200,13 @@ class BuildSecondField<
           TextFormField(
             focusNode: _readBlocState(context).props.secondFieldFocusNode,
             onChanged: (input) {
-              _readBloc(context).add(
-                  MultipleFieldsFormEvent.secondFieldValueChanged(
-                      input: input));
+              _readBloc(context).add(MultipleFieldsFormEvent.secondFieldValueChanged(input: input));
             },
             onFieldSubmitted: (value) {
-              _readBloc(context)
-                  .add(const MultipleFieldsFormEvent.secondFieldSubmitted());
+              _readBloc(context).add(const MultipleFieldsFormEvent.secondFieldSubmitted());
             },
             validator: validateSecondField,
-            autovalidateMode:
-                _readBlocState(context).props.autovalidateModeSecondField,
+            autovalidateMode: _readBlocState(context).props.autovalidateModeSecondField,
             initialValue: _readBlocState(context).props.secondFieldValue,
             style: Theme.of(context).textTheme.bodyText1,
             obscureText: isSecondFieldObscured ?? false,
@@ -232,8 +222,7 @@ class BuildSecondField<
   }
 }
 
-class BuildThirdField<
-        T extends Bloc<MultipleFieldsFormEvent, MultipleFieldsFormState>>
+class BuildThirdField<T extends Bloc<MultipleFieldsFormEvent, MultipleFieldsFormState>>
     extends StatelessWidget {
   const BuildThirdField({
     Key? key,
@@ -271,16 +260,13 @@ class BuildThirdField<
           TextFormField(
             focusNode: _readBlocState(context).props.thirdFieldFocusNode,
             onChanged: (input) {
-              _readBloc(context).add(
-                  MultipleFieldsFormEvent.thirdFieldValueChanged(input: input));
+              _readBloc(context).add(MultipleFieldsFormEvent.thirdFieldValueChanged(input: input));
             },
             onFieldSubmitted: (value) {
-              _readBloc(context)
-                  .add(const MultipleFieldsFormEvent.thirdFieldSubmitted());
+              _readBloc(context).add(const MultipleFieldsFormEvent.thirdFieldSubmitted());
             },
             validator: validateThirdField,
-            autovalidateMode:
-                _readBlocState(context).props.autovalidateModeThirdField,
+            autovalidateMode: _readBlocState(context).props.autovalidateModeThirdField,
             initialValue: _readBlocState(context).props.thirdFieldValue,
             style: Theme.of(context).textTheme.bodyText1,
             obscureText: isThirdFieldObscured ?? false,
@@ -296,8 +282,7 @@ class BuildThirdField<
   }
 }
 
-class BuildFourthField<
-        T extends Bloc<MultipleFieldsFormEvent, MultipleFieldsFormState>>
+class BuildFourthField<T extends Bloc<MultipleFieldsFormEvent, MultipleFieldsFormState>>
     extends StatelessWidget {
   const BuildFourthField({
     Key? key,
@@ -337,17 +322,13 @@ class BuildFourthField<
           TextFormField(
             focusNode: _readBlocState(context).props.fourthFieldFocusNode,
             onChanged: (input) {
-              _readBloc(context).add(
-                  MultipleFieldsFormEvent.fourthFieldValueChanged(
-                      input: input));
+              _readBloc(context).add(MultipleFieldsFormEvent.fourthFieldValueChanged(input: input));
             },
             onFieldSubmitted: (value) {
-              _readBloc(context)
-                  .add(const MultipleFieldsFormEvent.fourthFieldSubmitted());
+              _readBloc(context).add(const MultipleFieldsFormEvent.fourthFieldSubmitted());
             },
             validator: validateFourthField,
-            autovalidateMode:
-                _readBlocState(context).props.autovalidateModeFourthField,
+            autovalidateMode: _readBlocState(context).props.autovalidateModeFourthField,
             initialValue: _readBlocState(context).props.fourthFieldValue,
             style: Theme.of(context).textTheme.bodyText1,
             obscureText: isFourthFieldObscured ?? false,
