@@ -154,3 +154,15 @@ bool determineIfInList(String produceId, List<String> produceIdList) {
 
   return ifInList;
 }
+
+bool resolveIsNegative(Produce produce) {
+  final num currentPrice = produce.currentProducePrice["price"];
+  final num previousPrice = produce.previousProducePrice["price"];
+  final num change = currentPrice - previousPrice;
+
+  if (change < 0) {
+    return true;
+  } else {
+    return false;
+  }
+}

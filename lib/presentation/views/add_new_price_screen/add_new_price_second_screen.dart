@@ -1,5 +1,6 @@
 import 'package:farmhub/app_router.dart';
 import 'package:farmhub/locator.dart';
+import 'package:farmhub/presentation/shared_widgets/cards.dart';
 import 'package:farmhub/presentation/smart_widgets/primary_button_aware/primary_button_aware_cubit.dart';
 import 'package:farmhub/presentation/smart_widgets/produce_list_card/produce_list_card.dart';
 import 'package:flutter/foundation.dart';
@@ -102,7 +103,7 @@ class _AddNewPriceSecondScreenState extends State<AddNewPriceSecondScreen> {
                             slivers: [
                               HeaderSliver(widget.arguments.produce),
                               const ContentSliver(),
-                              const SliverWhiteSpace(100)
+                              const SliverWhiteSpace(400)
                             ],
                           ),
                           Container(
@@ -172,8 +173,9 @@ class HeaderSliver extends StatelessWidget {
                 const UIVerticalSpace24(),
                 const UIBorder(),
                 const UIVerticalSpace24(),
-                Text("Current Price: RM$currentProducePrice/kg"),
-                Text("Previous Price: RM$previousProducePrice/kg"),
+                CurrentPriceCard(produce),
+                const UIVerticalSpace14(),
+                PreviousPriceCard(produce),
                 const UIVerticalSpace24(),
                 const UIBorder(),
               ],

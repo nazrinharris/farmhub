@@ -21,7 +21,7 @@ ColorScheme _farmhubColorSchemeLight = const ColorScheme(
   onSecondary: Colors.transparent,
   onSurface: Colors.transparent,
   onBackground: Colors.transparent,
-  onError: Colors.transparent,
+  onError: Color(0xff9B3F3F),
   errorContainer: Color(0xffFFB4B4),
   brightness: Brightness.light,
 );
