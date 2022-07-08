@@ -72,8 +72,6 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
 
   @override
   Future<List<Produce>> getFirstTenProduce() async {
-    return [];
-
     final documentsList = await firebaseFirestore
         .collection('produce')
         .where("isDeleted", isEqualTo: false)
@@ -90,6 +88,14 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
 
   @override
   Future<List<Produce>> getNextTenProduce(List<Produce> lastProduceList) async {
+    if (lastProduceList.isEmpty) {
+      throw ProduceManagerException(
+        code: PM_ERR_EMPTY_PREVIOUS_PRODUCE_LIST,
+        message: "Something went wrong when retrieving produce...",
+        stackTrace: StackTrace.current,
+      );
+    }
+
     final lastDocument = await firebaseFirestore
         .collection('produce')
         .doc(lastProduceList[lastProduceList.length - 1].produceId)
