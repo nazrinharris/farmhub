@@ -182,77 +182,90 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
     required num currentProducePrice,
     required String authorId,
   }) async {
-    // Basic setups
-    DateTime currentTimeStamp = clock.now();
-    String currentDate = DateFormat("dd-MM-yyyy").format(currentTimeStamp);
-    String currentYear = DateFormat("yyyy").format(currentTimeStamp);
-    Map<String, dynamic> weeklyPrices = {currentDate: currentProducePrice};
+    //! Check if a Produce of the same name already exists.
+    final result = await firebaseFirestore
+        .collection('produce')
+        .where("produceName", isEqualTo: produceName)
+        .get();
+    if (result.docs.isNotEmpty) {
+      throw ProduceManagerException(
+        code: PM_ERR_SAME_PRODUCE_NAME,
+        message: "Sorry, there is already a produce with this name, try using another name.",
+        stackTrace: StackTrace.current,
+      );
+    } else {
+      // Basic setups
+      DateTime currentTimeStamp = clock.now();
+      String currentDate = DateFormat("dd-MM-yyyy").format(currentTimeStamp);
+      String currentYear = DateFormat("yyyy").format(currentTimeStamp);
+      Map<String, dynamic> weeklyPrices = {currentDate: currentProducePrice};
 
-    List<String> produceNameSearch = returnProduceNameSearch(produceName);
+      List<String> produceNameSearch = returnProduceNameSearch(produceName);
 
-    // Create produce and store in Firestore
-    final String resultingId = await firebaseFirestore.collection('produce').add({
-      "currentProducePrice": {
-        "price": currentProducePrice,
-        "priceDate": currentDate,
-      },
-      "previousProducePrice": {
-        "price": null,
-        "priceDate": null,
-      },
-      "produceId": "not-yet-updated",
-      "produceName": produceName,
-      "produceNameSearch": produceNameSearch,
-      "weeklyPrices": weeklyPrices,
-      "lastUpdateTimeStamp": currentTimeStamp,
-      "isDeleted": false,
-      "authorId": authorId,
-    }).then((doc) async {
-      doc.update({
-        "produceId": doc.id,
+      // Create produce and store in Firestore
+      final String resultingId = await firebaseFirestore.collection('produce').add({
+        "currentProducePrice": {
+          "price": currentProducePrice,
+          "priceDate": currentDate,
+        },
+        "previousProducePrice": {
+          "price": null,
+          "priceDate": null,
+        },
+        "produceId": "not-yet-updated",
+        "produceName": produceName,
+        "produceNameSearch": produceNameSearch,
+        "weeklyPrices": weeklyPrices,
+        "lastUpdateTimeStamp": currentTimeStamp,
+        "isDeleted": false,
+        "authorId": authorId,
+      }).then((doc) async {
+        doc.update({
+          "produceId": doc.id,
+        });
+
+        // Create Prices Sub-Collection and Price Document
+        await createPriceDocument(
+          firebaseFirestore: firebaseFirestore,
+          produceId: doc.id,
+          newPrice: currentProducePrice,
+          chosenTimeStamp: currentTimeStamp,
+        );
+
+        // Create Aggregate Prices
+        await firebaseFirestore
+            .collection('produce')
+            .doc(doc.id)
+            .collection('prices')
+            .doc("aggregate-prices-$currentYear")
+            .set({
+          "prices-map": {
+            currentDate: currentProducePrice,
+          }
+        });
+
+        return doc.id;
       });
 
-      // Create Prices Sub-Collection and Price Document
-      await createPriceDocument(
-        firebaseFirestore: firebaseFirestore,
-        produceId: doc.id,
-        newPrice: currentProducePrice,
-        chosenTimeStamp: currentTimeStamp,
+      // Create [Produce] to return to caller.
+      final produce = Produce(
+        produceId: resultingId,
+        produceName: produceName,
+        currentProducePrice: {
+          "price": currentProducePrice,
+          "updateDate": clock.now().toString(),
+        },
+        previousProducePrice: {
+          "price": null,
+          "updateDate": null,
+        },
+        weeklyPrices: weeklyPrices,
+        authorId: authorId,
+        lastUpdateTimeStamp: currentTimeStamp,
       );
 
-      // Create Aggregate Prices
-      await firebaseFirestore
-          .collection('produce')
-          .doc(doc.id)
-          .collection('prices')
-          .doc("aggregate-prices-$currentYear")
-          .set({
-        "prices-map": {
-          currentDate: currentProducePrice,
-        }
-      });
-
-      return doc.id;
-    });
-
-    // Create [Produce] to return to caller.
-    final produce = Produce(
-      produceId: resultingId,
-      produceName: produceName,
-      currentProducePrice: {
-        "price": currentProducePrice,
-        "updateDate": clock.now().toString(),
-      },
-      previousProducePrice: {
-        "price": null,
-        "updateDate": null,
-      },
-      weeklyPrices: weeklyPrices,
-      authorId: authorId,
-      lastUpdateTimeStamp: currentTimeStamp,
-    );
-
-    return produce;
+      return produce;
+    }
   }
 
   @override

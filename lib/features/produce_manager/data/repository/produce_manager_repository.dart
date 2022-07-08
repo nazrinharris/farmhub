@@ -179,6 +179,12 @@ class ProduceManagerRepository implements IProduceManagerRepository {
           code: e.code,
           stackTrace: StackTrace.current,
         ));
+      } on ProduceManagerException catch (e) {
+        return Left(UnexpectedFailure(
+          message: e.message,
+          code: e.code,
+          stackTrace: e.stackTrace,
+        ));
       } catch (e) {
         return Left(UnexpectedFailure(
           code: e.toString(),
