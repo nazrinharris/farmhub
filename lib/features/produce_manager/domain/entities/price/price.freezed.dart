@@ -141,7 +141,7 @@ class __$$_PriceCopyWithImpl<$Res> extends _$PriceCopyWithImpl<$Res>
           : priceId // ignore: cast_nullable_to_non_nullable
               as String,
       allPricesWithDateList: allPricesWithDateList == freezed
-          ? _value._allPricesWithDateList
+          ? _value.allPricesWithDateList
           : allPricesWithDateList // ignore: cast_nullable_to_non_nullable
               as List<PriceSnippet>,
     ));
@@ -157,8 +157,7 @@ class _$_Price implements _Price {
       required this.priceDateTimeStamp,
       required this.isAverage,
       required this.priceId,
-      required final List<PriceSnippet> allPricesWithDateList})
-      : _allPricesWithDateList = allPricesWithDateList;
+      required this.allPricesWithDateList});
 
   @override
   final num currentPrice;
@@ -170,12 +169,8 @@ class _$_Price implements _Price {
   final bool isAverage;
   @override
   final String priceId;
-  final List<PriceSnippet> _allPricesWithDateList;
   @override
-  List<PriceSnippet> get allPricesWithDateList {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_allPricesWithDateList);
-  }
+  final List<PriceSnippet> allPricesWithDateList;
 
   @override
   String toString() {
@@ -195,7 +190,7 @@ class _$_Price implements _Price {
             const DeepCollectionEquality().equals(other.isAverage, isAverage) &&
             const DeepCollectionEquality().equals(other.priceId, priceId) &&
             const DeepCollectionEquality()
-                .equals(other._allPricesWithDateList, _allPricesWithDateList));
+                .equals(other.allPricesWithDateList, allPricesWithDateList));
   }
 
   @override
@@ -206,7 +201,7 @@ class _$_Price implements _Price {
       const DeepCollectionEquality().hash(priceDateTimeStamp),
       const DeepCollectionEquality().hash(isAverage),
       const DeepCollectionEquality().hash(priceId),
-      const DeepCollectionEquality().hash(_allPricesWithDateList));
+      const DeepCollectionEquality().hash(allPricesWithDateList));
 
   @JsonKey(ignore: true)
   @override
