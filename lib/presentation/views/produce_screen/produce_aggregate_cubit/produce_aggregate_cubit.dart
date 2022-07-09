@@ -104,6 +104,7 @@ class ProduceAggregateCubit extends Cubit<ProduceAggregateState> {
     result.fold(
       (f) {
         showErrorDialog(context: context, failure: f);
+        print(f);
       },
       (updatedFarmhubUser) {
         final isFavorite = !state.props.isProduceFavorite;

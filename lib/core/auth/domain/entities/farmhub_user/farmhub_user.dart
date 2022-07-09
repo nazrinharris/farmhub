@@ -6,7 +6,7 @@ import '../../../../errors/exceptions.dart';
 
 part 'farmhub_user.freezed.dart';
 
-@freezed
+@Freezed(makeCollectionsUnmodifiable: false)
 class FarmhubUser with _$FarmhubUser {
   factory FarmhubUser({
     required String uid,
