@@ -78,7 +78,6 @@ class _SliverFavoritesErrorCardState extends State<SliverFavoritesErrorCard> {
   @override
   Widget build(BuildContext context) {
     final networkInfo = locator<INetworkInfo>();
-    print("Error rebuilt");
 
     return SliverList(
       delegate: SliverChildListDelegate(

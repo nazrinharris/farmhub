@@ -172,7 +172,6 @@ class _SliverMainScreenErrorCardState extends State<SliverMainScreenErrorCard> {
   @override
   Widget build(BuildContext context) {
     final networkInfo = locator<INetworkInfo>();
-    print("Error rebuilt");
 
     return SliverList(
       delegate: SliverChildListDelegate(

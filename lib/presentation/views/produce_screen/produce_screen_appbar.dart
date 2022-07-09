@@ -27,7 +27,7 @@ class ProduceScreenAppBar extends StatelessWidget implements PreferredSizeWidget
         return BlocBuilder<ProduceAggregateCubit, ProduceAggregateState>(
           builder: (context, state) {
             final Produce produce = state.props.produce!;
-            print("App Bar Rebuilt -> isProduceFavorite - ${state.props.isProduceFavorite}");
+            //print("App Bar Rebuilt -> isProduceFavorite - ${state.props.isProduceFavorite}");
 
             return DefaultAppBar(
               leadingIcon: const Icon(Icons.arrow_back),

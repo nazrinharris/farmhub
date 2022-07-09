@@ -55,14 +55,18 @@ class LargePriceChart extends StatelessWidget {
   Widget build(BuildContext context) {
     switch (type) {
       case LargePriceChartType.oneW:
-        if (produce.weeklyPrices.length == 1) {
+        print("One Week Prices");
+        print(produce.weeklyPrices);
+        if (produce.weeklyPrices.length <= 1) {
           return const TwoLinedErrorText(
             firstLineMessage: "Uh oh, we can't draw the chart",
-            secondLineMessage: "This is because there is only one price for this Produce.",
+            secondLineMessage: "There is not enough prices this week",
           );
         }
         return LargeOneWeekChart(produce);
       case LargePriceChartType.twoW:
+        print("Two Week Prices");
+
         if (twoWeeksPricesList == null) {
           return const TwoLinedErrorText(
             firstLineMessage: "It seems like there are no prices.",
@@ -820,13 +824,14 @@ class TwoLinedErrorText extends StatelessWidget {
             Text(
               firstLineMessage ?? "Not Implemented",
               textAlign: TextAlign.center,
+              style: Theme.of(context).textTheme.bodyText2!.copyWith(fontSize: 19),
             ),
             UIVerticalSpace6(),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 14),
               child: Text(
                 secondLineMessage ?? "Not Implemented",
-                style: Theme.of(context).textTheme.caption,
+                style: Theme.of(context).textTheme.caption!.copyWith(fontSize: 14),
                 textAlign: TextAlign.center,
               ),
             ),
