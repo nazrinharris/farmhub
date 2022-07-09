@@ -143,7 +143,7 @@ class LargePriceChart extends StatelessWidget {
             return TwoLinedErrorText(
               firstLineMessage: "There are not enough prices for the last year",
               secondLineMessage: "",
-              bottomWidget: ProducePricesAmountMessageCard(produce),
+              bottomWidget: WarningCard(produce),
             );
           }
           return LargeOneYearChart(produce, oneYearPricesList!);

@@ -181,7 +181,9 @@ class _SliverMainScreenErrorCardState extends State<SliverMainScreenErrorCard> {
             builder: (context, snapshot) {
               if (snapshot.hasData) {
                 if (snapshot.data as bool == false) {
-                  return const ErrorNoInternetCard(top: 14, bottom: 34, right: 24, left: 24);
+                  return const ErrorNoInternetCard(
+                    margin: EdgeInsets.only(top: 14, bottom: 34, right: 24, left: 24),
+                  );
                 } else {
                   return const SizedBox.shrink();
                 }

@@ -17,23 +17,14 @@ Widget determineErrorCard(String errorCode) {
 }
 
 class ErrorNoInternetCard extends StatelessWidget {
-  final double? top;
-  final double? bottom;
-  final double? right;
-  final double? left;
+  final EdgeInsetsGeometry? margin;
 
-  const ErrorNoInternetCard({Key? key, this.top, this.bottom, this.right, this.left})
-      : super(key: key);
+  const ErrorNoInternetCard({Key? key, this.margin}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(
-        top: top ?? 0,
-        bottom: bottom ?? 0,
-        right: right ?? 0,
-        left: left ?? 0,
-      ),
+      margin: margin,
       padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
@@ -58,32 +49,28 @@ class ErrorNoInternetCard extends StatelessWidget {
 }
 
 class CurrentPriceCard extends StatelessWidget {
-  final double? top;
-  final double? bottom;
-  final double? right;
-  final double? left;
+  final EdgeInsetsGeometry? margin;
   final Produce produce;
 
   const CurrentPriceCard(
     this.produce, {
     Key? key,
-    this.top,
-    this.bottom,
-    this.right,
-    this.left,
+    this.margin,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final num currentProducePrice = roundNum(produce.currentProducePrice["price"] as num, 2);
+    if (produce.previousProducePrice["price"] == null) {
+      return GreyCard(
+        "Current Price",
+        roundNum(produce.currentProducePrice["price"], 2),
+        smallTitle:
+            produce.currentProducePrice["priceDate"].toString().replaceAll(RegExp("-"), "/"),
+      );
+    }
 
     return Container(
-      margin: EdgeInsets.only(
-        top: top ?? 0,
-        bottom: bottom ?? 0,
-        right: right ?? 0,
-        left: left ?? 0,
-      ),
+      margin: margin,
       padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
@@ -161,7 +148,9 @@ class PreviousPriceCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final num previousProducePrice = roundNum(produce.previousProducePrice["price"] as num, 2);
+    if (produce.previousProducePrice["price"] == null) {
+      return const SizedBox.shrink();
+    }
 
     return Container(
       margin: margin ?? const EdgeInsets.symmetric(horizontal: 14),
@@ -195,11 +184,55 @@ class PreviousPriceCard extends StatelessWidget {
   }
 }
 
-class ProducePricesAmountMessageCard extends StatelessWidget {
+class GreyCard extends StatelessWidget {
+  final EdgeInsetsGeometry? margin;
+  final String title;
+  final String? smallTitle;
+  final num price;
+
+  const GreyCard(this.title, this.price, {Key? key, this.margin, this.smallTitle})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: margin ?? const EdgeInsets.symmetric(horizontal: 14),
+      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(16), color: Colors.grey.withOpacity(0.15)),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Text(title, style: Theme.of(context).textTheme.bodyText1),
+              const UICustomHorizontal(6),
+              if (smallTitle != null)
+                Text(
+                  smallTitle!,
+                  style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                        color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
+                        fontSize: 13,
+                      ),
+                ),
+            ],
+          ),
+          const UIVerticalSpace14(),
+          Text(
+            "RM${price}",
+            style: Theme.of(context).textTheme.bodyText2,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class WarningCard extends StatelessWidget {
   final Produce produce;
   final EdgeInsetsGeometry? margin;
 
-  const ProducePricesAmountMessageCard(
+  const WarningCard(
     this.produce, {
     Key? key,
     this.margin,

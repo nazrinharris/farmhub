@@ -87,7 +87,9 @@ class _SliverFavoritesErrorCardState extends State<SliverFavoritesErrorCard> {
             builder: (context, snapshot) {
               if (snapshot.hasData) {
                 if (snapshot.data as bool == false) {
-                  return const ErrorNoInternetCard(top: 24, right: 24, left: 24);
+                  return const ErrorNoInternetCard(
+                    margin: EdgeInsets.only(top: 24, right: 24, left: 24),
+                  );
                 } else {
                   return const SizedBox.shrink();
                 }
