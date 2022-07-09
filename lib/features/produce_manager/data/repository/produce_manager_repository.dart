@@ -298,6 +298,10 @@ class ProduceManagerRepository implements IProduceManagerRepository {
           query: query,
         );
         return Right(result);
+      } on ProduceManagerException catch (e) {
+        return Left(
+          ProduceManagerFailure(code: e.code, message: e.message, stackTrace: e.stackTrace),
+        );
       } catch (e, stack) {
         return Left(UnexpectedFailure(code: e.toString(), stackTrace: stack));
       }

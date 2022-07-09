@@ -137,26 +137,35 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
   @override
   Future<List<Produce>> getNextTenSearchProduce(
       {required List<Produce> lastProduceList, required String query}) async {
-    final lastDocument = await firebaseFirestore
-        .collection('produce')
-        .doc(lastProduceList[lastProduceList.length - 1].produceId)
-        .get();
+    if (lastProduceList.isEmpty) {
+      // Do nothing
+      throw ProduceManagerException(
+        code: PM_ERR_EMPTY_PREVIOUS_PRODUCE_LIST,
+        message: "Something went wrong when retrieving produce...",
+        stackTrace: StackTrace.current,
+      );
+    } else {
+      final lastDocument = await firebaseFirestore
+          .collection('produce')
+          .doc(lastProduceList[lastProduceList.length - 1].produceId)
+          .get();
 
-    final newQueryList = await firebaseFirestore
-        .collection('produce')
-        .startAfterDocument(lastDocument)
-        .where("isDeleted", isEqualTo: false)
-        .where('produceNameSearch', arrayContains: query.toLowerCase())
-        .limit(10)
-        .get();
+      final newQueryList = await firebaseFirestore
+          .collection('produce')
+          .startAfterDocument(lastDocument)
+          .where("isDeleted", isEqualTo: false)
+          .where('produceNameSearch', arrayContains: query.toLowerCase())
+          .limit(10)
+          .get();
 
-    final List<Produce> newProduceList = newQueryList.docs.map((documentSnapshot) {
-      return Produce.fromMap(documentSnapshot.data());
-    }).toList();
+      final List<Produce> newProduceList = newQueryList.docs.map((documentSnapshot) {
+        return Produce.fromMap(documentSnapshot.data());
+      }).toList();
 
-    List<Produce> combinedProduceList = List.from(lastProduceList)..addAll(newProduceList);
+      List<Produce> combinedProduceList = List.from(lastProduceList)..addAll(newProduceList);
 
-    return combinedProduceList;
+      return combinedProduceList;
+    }
   }
 
   @override

@@ -1,4 +1,5 @@
 import 'package:farmhub/app_router.dart';
+import 'package:farmhub/core/util/app_const.dart';
 import 'package:farmhub/locator.dart';
 import 'package:farmhub/presentation/shared_widgets/appbars.dart';
 import 'package:farmhub/presentation/shared_widgets/ui_helpers.dart';
@@ -161,6 +162,42 @@ class _SearchProduceListState extends State<SearchProduceList> {
             ),
           );
         } else if (state is SSSCompleted) {
+          if (state.props.produceList.isEmpty) {
+            return Expanded(
+              child: MediaQuery.removePadding(
+                context: context,
+                removeTop: true,
+                child: Container(
+                  padding: const EdgeInsets.only(top: 100, left: 50, right: 50),
+                  alignment: Alignment.topCenter,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      const Text("😥", style: TextStyle(fontSize: 44)),
+                      const UIVerticalSpace14(),
+                      Text(
+                        "Hmm, we can't find anything with the name:",
+                        style: Theme.of(context).textTheme.bodyText1,
+                        textAlign: TextAlign.center,
+                      ),
+                      const UIVerticalSpace14(),
+                      Text(
+                        state.props.query,
+                        style: Theme.of(context).textTheme.bodyText2,
+                        textAlign: TextAlign.center,
+                      ),
+                      const UIVerticalSpace14(),
+                      Text(
+                        "Try searching with other words",
+                        style: Theme.of(context).textTheme.caption,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            );
+          }
+
           return Expanded(
             child: MediaQuery.removePadding(
               context: context,
@@ -180,42 +217,78 @@ class _SearchProduceListState extends State<SearchProduceList> {
             ),
           );
         } else if (state is SSSError) {
-          return Expanded(
-            child: MediaQuery.removePadding(
-              context: context,
-              removeTop: true,
-              child: ListView.builder(
-                controller: widget.scrollController,
-                physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
-                itemCount: state.props.produceList.length + 1,
-                itemBuilder: (context, index) {
-                  if (index == state.props.produceList.length) {
-                    return Container(
-                      height: 100,
-                      alignment: Alignment.center,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            "Uh oh, something went wrong.",
-                            style:
-                                Theme.of(context).textTheme.bodyText1!.copyWith(color: Colors.red),
-                          ),
-                          const UIVerticalSpace14(),
-                          Text(
-                            "Scroll to retry",
-                            style: Theme.of(context).textTheme.caption,
-                          ),
-                        ],
+          if (state.failure.code == PM_ERR_EMPTY_PREVIOUS_PRODUCE_LIST) {
+            return Expanded(
+              child: MediaQuery.removePadding(
+                context: context,
+                removeTop: true,
+                child: Container(
+                  padding: const EdgeInsets.only(top: 100, left: 50, right: 50),
+                  alignment: Alignment.topCenter,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Hmm, we can't find anything with the name:",
+                        style: Theme.of(context).textTheme.bodyText1,
+                        textAlign: TextAlign.center,
                       ),
-                    );
-                  } else {
-                    return ProduceListCard(index, state.props.produceList[index]);
-                  }
-                },
+                      const UIVerticalSpace14(),
+                      Text(
+                        state.props.query,
+                        style: Theme.of(context).textTheme.bodyText2,
+                        textAlign: TextAlign.center,
+                      ),
+                      const UIVerticalSpace14(),
+                      Text(
+                        "Try searching with other words",
+                        style: Theme.of(context).textTheme.caption,
+                      ),
+                    ],
+                  ),
+                ),
               ),
-            ),
-          );
+            );
+          } else {
+            return Expanded(
+              child: MediaQuery.removePadding(
+                context: context,
+                removeTop: true,
+                child: ListView.builder(
+                  controller: widget.scrollController,
+                  physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+                  itemCount: state.props.produceList.length + 1,
+                  itemBuilder: (context, index) {
+                    if (index == state.props.produceList.length) {
+                      return Container(
+                        height: 100,
+                        alignment: Alignment.center,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "Uh oh, something went wrong.",
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyText1!
+                                  .copyWith(color: Colors.red),
+                            ),
+                            const UIVerticalSpace14(),
+                            Text(
+                              "Scroll to retry",
+                              style: Theme.of(context).textTheme.caption,
+                            ),
+                          ],
+                        ),
+                      );
+                    } else {
+                      return ProduceListCard(index, state.props.produceList[index]);
+                    }
+                  },
+                ),
+              ),
+            );
+          }
         } else {
           return Center(
             child: Text("Unexpected"),

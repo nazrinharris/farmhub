@@ -81,7 +81,7 @@ class CurrentPriceCard extends StatelessWidget {
         right: right ?? 0,
         left: left ?? 0,
       ),
-      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
+      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
         color: resolveBackground(context),
@@ -162,7 +162,7 @@ class PreviousPriceCard extends StatelessWidget {
 
     return Container(
       margin: margin ?? const EdgeInsets.symmetric(horizontal: 14),
-      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
+      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16), color: Colors.grey.withOpacity(0.15)),
       child: Column(
