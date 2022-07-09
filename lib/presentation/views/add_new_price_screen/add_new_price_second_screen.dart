@@ -34,102 +34,96 @@ class _AddNewPriceSecondScreenState extends State<AddNewPriceSecondScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async {
-        FocusScope.of(context).unfocus();
-        return true;
-      },
-      child: MultiBlocProvider(
-        providers: [
-          BlocProvider(
-            create: (context) => MultipleFieldsFormBloc(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => MultipleFieldsFormBloc(),
+        ),
+        BlocProvider(
+          create: (context) => PrimaryButtonAwareCubit(),
+        ),
+      ],
+      child: Builder(builder: (context) {
+        return BlocProvider(
+          create: (context) => AddNewPriceScreenBloc(
+            produceManagerRepository: locator(),
+            multipleFieldsFormBloc: context.read<MultipleFieldsFormBloc>(),
+            primaryButtonAwareCubit: context.read<PrimaryButtonAwareCubit>(),
           ),
-          BlocProvider(
-            create: (context) => PrimaryButtonAwareCubit(),
-          ),
-        ],
-        child: Builder(builder: (context) {
-          return BlocProvider(
-            create: (context) => AddNewPriceScreenBloc(
-              produceManagerRepository: locator(),
-              multipleFieldsFormBloc: context.read<MultipleFieldsFormBloc>(),
-              primaryButtonAwareCubit: context.read<PrimaryButtonAwareCubit>(),
-            ),
-            child: Builder(
-              builder: (context) {
-                return BlocListener<AddNewPriceScreenBloc, AddNewPriceScreenState>(
-                  listener: (context, state) {
-                    if (state is ANPSAddNewPriceError) {
-                      showTopSnackBar(
-                        context,
-                        CustomSnackBar.error(
-                            message:
-                                "Uh oh! An error occured. Code: ${state.failure.code}, Message: ${state.failure.message}"),
-                      );
-                      print(state.failure);
-                      print(state.failure.stackTrace);
-                    } else if (state is ANPSAddNewPriceSuccess) {
-                      showTopSnackBar(
-                        context,
-                        CustomSnackBar.success(
+          child: Builder(
+            builder: (context) {
+              return BlocListener<AddNewPriceScreenBloc, AddNewPriceScreenState>(
+                listener: (context, state) {
+                  if (state is ANPSAddNewPriceError) {
+                    showTopSnackBar(
+                      context,
+                      CustomSnackBar.error(
                           message:
-                              "Price of RM${context.read<MultipleFieldsFormBloc>().state.props.firstFieldValue} is succesfully added to ${state.produce.produceName}",
-                        ),
-                      );
-                      Navigator.of(context).pushNamed(
-                        '/add_new_price_third',
-                        arguments: AddNewPriceScreenArguments(
-                          state.produce,
-                          widget.arguments.fromRoute,
-                        ),
-                      );
-                    }
-                  },
-                  child: Scaffold(
-                    // resizeToAvoidBottomInset: false,
-                    extendBodyBehindAppBar: true,
-                    appBar: DefaultAppBar(
-                      leadingIcon: const Icon(Icons.arrow_back),
-                      leadingOnPressed: () {
-                        FocusScope.of(context).unfocus();
-                        Navigator.of(context).pop();
-                      },
-                    ),
-                    body: SafeArea(
-                      top: false,
-                      child: Stack(
-                        children: [
-                          CustomScrollView(
-                            slivers: [
-                              HeaderSliver(widget.arguments.produce),
-                              const ContentSliver(),
-                              const SliverWhiteSpace(400)
-                            ],
-                          ),
-                          Container(
-                            alignment: Alignment.bottomCenter,
-                            padding: const EdgeInsets.symmetric(vertical: 24),
-                            child: PrimaryButtonAware(
-                              firstPageContent: 'Continue',
-                              firstPageOnPressed: () => context
-                                  .read<AddNewPriceScreenBloc>()
-                                  .add(AddNewPriceScreenEvent.execAddNewPrice(
-                                    produce: widget.arguments.produce,
-                                  )),
-                              type: PrimaryButtonAwareType.onePage,
-                              width: 200,
-                            ),
-                          ),
-                        ],
+                              "Uh oh! An error occured. Code: ${state.failure.code}, Message: ${state.failure.message}"),
+                    );
+                    print(state.failure);
+                    print(state.failure.stackTrace);
+                  } else if (state is ANPSAddNewPriceSuccess) {
+                    showTopSnackBar(
+                      context,
+                      CustomSnackBar.success(
+                        message:
+                            "Price of RM${context.read<MultipleFieldsFormBloc>().state.props.firstFieldValue} is succesfully added to ${state.produce.produceName}",
                       ),
+                    );
+                    Navigator.of(context).pushNamed(
+                      '/add_new_price_third',
+                      arguments: AddNewPriceScreenArguments(
+                        state.produce,
+                        widget.arguments.fromRoute,
+                      ),
+                    );
+                  }
+                },
+                child: Scaffold(
+                  // resizeToAvoidBottomInset: false,
+                  extendBodyBehindAppBar: true,
+                  appBar: DefaultAppBar(
+                    leadingIcon: const Icon(Icons.arrow_back),
+                    leadingOnPressed: () {
+                      FocusScope.of(context).unfocus();
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                  body: SafeArea(
+                    top: false,
+                    child: Stack(
+                      children: [
+                        CustomScrollView(
+                          slivers: [
+                            HeaderSliver(widget.arguments.produce),
+                            const ContentSliver(),
+                            const SliverWhiteSpace(400)
+                          ],
+                        ),
+                        Container(
+                          alignment: Alignment.bottomCenter,
+                          padding: const EdgeInsets.symmetric(vertical: 24),
+                          child: PrimaryButtonAware(
+                            firstPageContent: 'Continue',
+                            firstPageOnPressed: () => context
+                                .read<AddNewPriceScreenBloc>()
+                                .add(AddNewPriceScreenEvent.execAddNewPrice(
+                                  produce: widget.arguments.produce,
+                                )),
+                            type: PrimaryButtonAwareType.onePage,
+                            width: 200,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-                );
-              },
-            ),
-          );
-        }),
-      ),
+                ),
+              );
+            },
+          ),
+        );
+      }),
     );
   }
 }
