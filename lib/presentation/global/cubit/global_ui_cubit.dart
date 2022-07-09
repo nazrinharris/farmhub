@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'global_ui_state.dart';
@@ -36,5 +37,11 @@ class GlobalUICubit extends Cubit<GlobalUIState> {
 
   void setShouldRefreshProfile(bool shouldRefresh) {
     emit(state.copyWith(props: state.props.copyWith(shouldRefreshProfile: shouldRefresh)));
+  }
+
+  void setSafeAreaPadding(BuildContext context) {
+    final padding = MediaQuery.of(context).padding;
+
+    emit(state.copyWith(props: state.props.copyWith(safeAreaPadding: padding)));
   }
 }

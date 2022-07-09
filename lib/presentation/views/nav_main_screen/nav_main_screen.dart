@@ -1,7 +1,9 @@
 import 'package:bottom_nav_layout/bottom_nav_layout.dart';
+import 'package:farmhub/presentation/global/cubit/global_ui_cubit.dart';
 import 'package:farmhub/presentation/views/favorites_screen/favorites_screen.dart';
 import 'package:farmhub/presentation/views/main_screen/main_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
 import '../../themes/farmhub_theme.dart';
@@ -11,7 +13,7 @@ class NavMainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bottomPadding = MediaQuery.of(context).padding.bottom;
+    final bottomPadding = context.read<GlobalUICubit>().state.props.safeAreaPadding!.bottom;
 
     return Scaffold(
       resizeToAvoidBottomInset: false,

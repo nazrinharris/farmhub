@@ -11,6 +11,7 @@ import 'package:farmhub/presentation/shared_widgets/scroll_physics.dart';
 import 'package:farmhub/presentation/shared_widgets/ui_helpers.dart';
 import 'package:farmhub/presentation/smart_widgets/primary_button_aware/primary_button_aware_cubit.dart';
 import 'package:farmhub/presentation/smart_widgets/produce_list_card/produce_list_card.dart';
+import 'package:farmhub/presentation/themes/farmhub_theme.dart';
 import 'package:farmhub/presentation/views/main_screen/main_screen.dart';
 import 'package:farmhub/presentation/views/produce_screen/produce_aggregate_cubit/produce_aggregate_cubit.dart';
 import 'package:farmhub/presentation/views/produce_screen/produce_prices_cubit/produce_prices_cubit.dart';
@@ -44,12 +45,12 @@ class ProduceScreen extends StatefulWidget {
 
 class _ProduceScreenState extends State<ProduceScreen> with SingleTickerProviderStateMixin {
   final List<ct.CustomTab> tabs = <ct.CustomTab>[
-    const ct.CustomTab(text: '1W'),
-    const ct.CustomTab(text: '2W'),
-    const ct.CustomTab(text: '1M'),
-    const ct.CustomTab(text: '2M'),
-    const ct.CustomTab(text: '6M'),
-    const ct.CustomTab(text: '1Y'),
+    const ct.CustomTab(text: ' 1W '),
+    const ct.CustomTab(text: ' 2W '),
+    const ct.CustomTab(text: ' 1M '),
+    const ct.CustomTab(text: ' 2M '),
+    const ct.CustomTab(text: ' 6M '),
+    const ct.CustomTab(text: ' 1Y '),
   ];
   late TabController tabController;
   late ScrollController scrollController;
@@ -316,30 +317,56 @@ class _SliverProducePriceChartState extends State<SliverProducePriceChart> {
 
   @override
   Widget build(BuildContext context) {
+    final tabBackgroundColor = Theme.of(context).extension<ExtendedColors>()!.onBackgroundPale!;
+
     return SliverList(
         delegate: SliverChildListDelegate([
       Container(
+        alignment: Alignment.center,
         margin: const EdgeInsets.symmetric(horizontal: 24),
         decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.primary.withOpacity(0.08),
-            borderRadius: BorderRadius.circular(16)),
-        child: ct.TabBar(
-          onTap: (value) {
-            HapticFeedback.lightImpact();
+          color: tabBackgroundColor,
+          borderRadius: BorderRadius.circular(16),
+        ),
+        child: ShaderMask(
+          blendMode: BlendMode.dstOut,
+          shaderCallback: (bounds) {
+            return LinearGradient(
+              begin: Alignment.centerLeft,
+              end: Alignment.centerRight,
+              colors: <Color>[
+                tabBackgroundColor,
+                Colors.transparent,
+                Colors.transparent,
+                tabBackgroundColor,
+              ],
+              stops: [0.0, 0.03, 0.97, 1.0],
+            ).createShader(bounds);
           },
-          controller: context.read<ProduceAggregateCubit>().state.props.tabController,
-          tabs: widget.tabs,
-          labelColor: Theme.of(context).colorScheme.primary,
-          indicatorSize: ct.TabBarIndicatorSize.tab,
-          indicator: RectangularIndicator(
-            color: Theme.of(context).colorScheme.secondary,
-            verticalPadding: 4,
-            horizontalPadding: 4,
-            bottomLeftRadius: 12,
-            bottomRightRadius: 12,
-            topLeftRadius: 12,
-            topRightRadius: 12,
-            paintingStyle: PaintingStyle.fill,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(16),
+            child: ct.TabBar(
+              onTap: (value) {
+                HapticFeedback.lightImpact();
+              },
+              padding: EdgeInsets.symmetric(horizontal: 14),
+              physics: DefaultScrollPhysics,
+              isScrollable: true,
+              controller: context.read<ProduceAggregateCubit>().state.props.tabController,
+              tabs: widget.tabs,
+              labelColor: Theme.of(context).colorScheme.primary,
+              indicatorSize: ct.TabBarIndicatorSize.tab,
+              indicator: RectangularIndicator(
+                color: Theme.of(context).colorScheme.secondary,
+                verticalPadding: 4,
+                horizontalPadding: 4,
+                bottomLeftRadius: 12,
+                bottomRightRadius: 12,
+                topLeftRadius: 12,
+                topRightRadius: 12,
+                paintingStyle: PaintingStyle.fill,
+              ),
+            ),
           ),
         ),
       ),
@@ -403,6 +430,15 @@ class _SliverProducePriceChartState extends State<SliverProducePriceChart> {
         },
       ),
     ]));
+  }
+}
+
+class ScrollableLargePriceChart extends StatelessWidget {
+  const ScrollableLargePriceChart({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container();
   }
 }
 

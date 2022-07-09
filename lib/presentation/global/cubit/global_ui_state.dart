@@ -16,5 +16,6 @@ class GlobalUIProps with _$GlobalUIProps {
     required bool shouldRefreshPrice,
     required bool shouldRefreshFavorites,
     required bool shouldRefreshProfile,
+    EdgeInsets? safeAreaPadding,
   }) = _GlobalUIProps;
 }
