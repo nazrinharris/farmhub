@@ -98,7 +98,7 @@ class _AddNewPriceSecondScreenState extends State<AddNewPriceSecondScreen> {
                           slivers: [
                             HeaderSliver(widget.arguments.produce),
                             const ContentSliver(),
-                            const SliverWhiteSpace(400)
+                            const SliverWhiteSpace(150)
                           ],
                         ),
                         Container(

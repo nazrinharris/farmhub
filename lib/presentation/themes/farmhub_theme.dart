@@ -87,18 +87,59 @@ ElevatedButtonThemeData _farmhubElevatedButtonThemeDataLight = ElevatedButtonThe
 class FarmhubTheme {
   static final appThemeData = {
     FarmhubThemeVariants.light: ThemeData(
-      colorScheme: _farmhubColorSchemeLight,
-      textTheme: _farmhubTextThemeLight,
-      // TODO: Temporary Fix for ColorScheme, update to use the new Seed. Or fix it so that the old one can use
-      scaffoldBackgroundColor: _farmhubColorSchemeLight.background,
-      backgroundColor: _farmhubColorSchemeLight.background,
-      elevatedButtonTheme: _farmhubElevatedButtonThemeDataLight,
-      iconTheme: IconThemeData(
-        color: _farmhubColorSchemeLight.primary,
-      ),
-      primaryColor: _farmhubColorSchemeLight.primary,
-    ),
+        colorScheme: _farmhubColorSchemeLight,
+        textTheme: _farmhubTextThemeLight,
+        // TODO: Temporary Fix for ColorScheme, update to use the new Seed. Or fix it so that the old one can use
+        scaffoldBackgroundColor: _farmhubColorSchemeLight.background,
+        backgroundColor: _farmhubColorSchemeLight.background,
+        elevatedButtonTheme: _farmhubElevatedButtonThemeDataLight,
+        iconTheme: IconThemeData(
+          color: _farmhubColorSchemeLight.primary,
+        ),
+        primaryColor: _farmhubColorSchemeLight.primary,
+        extensions: <ThemeExtension<dynamic>>{
+          ExtendedColors(
+            warning: const Color(0xffFDE9A4),
+            onWarning: const Color(0xffAA8400),
+            onWarningFade: const Color(0xffAA8400).withOpacity(0.5),
+          )
+        }),
   };
+}
+
+class ExtendedColors extends ThemeExtension<ExtendedColors> {
+  const ExtendedColors({
+    required this.warning,
+    required this.onWarning,
+    required this.onWarningFade,
+  });
+
+  final Color? warning;
+  final Color? onWarning;
+  final Color? onWarningFade;
+
+  @override
+  ThemeExtension<ExtendedColors> copyWith(
+      {Color? warning, Color? onWarning, Color? onWarningFade}) {
+    return ExtendedColors(
+      warning: warning ?? this.warning,
+      onWarning: onWarning ?? this.onWarning,
+      onWarningFade: onWarningFade ?? this.onWarningFade,
+    );
+  }
+
+  @override
+  ThemeExtension<ExtendedColors> lerp(ThemeExtension<ExtendedColors>? other, double t) {
+    if (other is! ExtendedColors) {
+      return this;
+    }
+
+    return ExtendedColors(
+      warning: Color.lerp(warning, other.warning, t),
+      onWarning: Color.lerp(onWarning, other.onWarning, t),
+      onWarningFade: Color.lerp(onWarningFade, other.onWarningFade, t),
+    );
+  }
 }
 
 InputDecoration kInputDecoration({

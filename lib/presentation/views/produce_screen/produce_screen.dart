@@ -325,7 +325,7 @@ class _SliverProducePriceChartState extends State<SliverProducePriceChart> {
             borderRadius: BorderRadius.circular(16)),
         child: ct.TabBar(
           onTap: (value) {
-            HapticFeedback.mediumImpact();
+            HapticFeedback.lightImpact();
           },
           controller: context.read<ProduceAggregateCubit>().state.props.tabController,
           tabs: widget.tabs,

@@ -103,7 +103,7 @@ class ProduceListCard extends StatelessWidget {
                         ],
                       ),
                       Container(
-                        padding: const EdgeInsets.only(top: 1, bottom: 4),
+                        padding: const EdgeInsets.only(top: 2, bottom: 4),
                         child: Text(
                           produce.currentProducePrice["priceDate"]
                               .toString()

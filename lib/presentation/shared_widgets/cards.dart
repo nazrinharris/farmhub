@@ -3,7 +3,10 @@ import 'package:farmhub/core/util/misc.dart';
 import 'package:farmhub/features/produce_manager/domain/entities/produce/produce.dart';
 import 'package:farmhub/features/produce_manager/domain/helpers.dart';
 import 'package:farmhub/presentation/shared_widgets/ui_helpers.dart';
+import 'package:farmhub/presentation/themes/farmhub_theme.dart';
 import 'package:flutter/material.dart';
+
+import '../../features/produce_manager/domain/entities/price/price.dart';
 
 Widget determineErrorCard(String errorCode) {
   if (errorCode == ERROR_NO_INTERNET_CONNECTION) {
@@ -187,6 +190,39 @@ class PreviousPriceCard extends StatelessWidget {
             style: Theme.of(context).textTheme.bodyText2,
           ),
         ],
+      ),
+    );
+  }
+}
+
+class ProducePricesAmountMessageCard extends StatelessWidget {
+  final Produce produce;
+  final EdgeInsetsGeometry? margin;
+
+  const ProducePricesAmountMessageCard(
+    this.produce, {
+    Key? key,
+    this.margin,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final ExtendedColors colors = Theme.of(context).extension<ExtendedColors>()!;
+
+    return Container(
+      margin: margin,
+      alignment: Alignment.center,
+      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(16),
+        color: colors.warning,
+      ),
+      child: Text(
+        "There is only one price for ${produce.produceName}",
+        style: Theme.of(context).textTheme.bodyText1!.copyWith(
+              color: colors.onWarning,
+            ),
+        textAlign: TextAlign.center,
       ),
     );
   }

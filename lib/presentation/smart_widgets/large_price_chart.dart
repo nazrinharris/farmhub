@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:farmhub/features/produce_manager/domain/entities/price/price.dart';
+import 'package:farmhub/presentation/shared_widgets/cards.dart';
 import 'package:farmhub/presentation/shared_widgets/ui_helpers.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
@@ -139,9 +140,10 @@ class LargePriceChart extends StatelessWidget {
           );
         } else {
           if (oneYearPricesList!.length == 1) {
-            return const TwoLinedErrorText(
+            return TwoLinedErrorText(
               firstLineMessage: "There are not enough prices for the last year",
               secondLineMessage: "",
+              bottomWidget: ProducePricesAmountMessageCard(produce),
             );
           }
           return LargeOneYearChart(produce, oneYearPricesList!);
@@ -807,9 +809,14 @@ class ErrorText extends StatelessWidget {
 class TwoLinedErrorText extends StatelessWidget {
   final String? firstLineMessage;
   final String? secondLineMessage;
+  final Widget? bottomWidget;
 
-  const TwoLinedErrorText({Key? key, this.firstLineMessage, this.secondLineMessage})
-      : super(key: key);
+  const TwoLinedErrorText({
+    Key? key,
+    this.firstLineMessage,
+    this.secondLineMessage,
+    this.bottomWidget,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -841,6 +848,8 @@ class TwoLinedErrorText extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
             ),
+            UIVerticalSpace14(),
+            bottomWidget ?? SizedBox.shrink(),
           ],
         ),
       ),
