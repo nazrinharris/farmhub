@@ -84,8 +84,10 @@ class _FarmhubMaterialAppState extends State<FarmhubMaterialApp> {
         systemStatusBarContrastEnforced: false,
       ));
     } else if (Platform.isAndroid) {
-      SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-        systemNavigationBarColor: Colors.transparent,
+      SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+        systemNavigationBarColor: FarmhubTheme.appThemeData[FarmhubThemeVariants.light]!
+            .extension<ExtendedColors>()!
+            .onBackgroundPale,
         systemNavigationBarDividerColor: Colors.transparent,
         systemNavigationBarIconBrightness: Brightness.dark,
         statusBarColor: Colors.transparent,

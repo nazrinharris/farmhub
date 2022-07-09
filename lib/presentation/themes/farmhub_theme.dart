@@ -102,6 +102,7 @@ class FarmhubTheme {
             warning: const Color(0xffFDE9A4),
             onWarning: const Color(0xffAA8400),
             onWarningFade: const Color(0xffAA8400).withOpacity(0.5),
+            onBackgroundPale: const Color(0xffEBFFDD),
           )
         }),
   };
@@ -112,19 +113,22 @@ class ExtendedColors extends ThemeExtension<ExtendedColors> {
     required this.warning,
     required this.onWarning,
     required this.onWarningFade,
+    required this.onBackgroundPale,
   });
 
   final Color? warning;
   final Color? onWarning;
   final Color? onWarningFade;
+  final Color? onBackgroundPale;
 
   @override
   ThemeExtension<ExtendedColors> copyWith(
-      {Color? warning, Color? onWarning, Color? onWarningFade}) {
+      {Color? warning, Color? onWarning, Color? onWarningFade, Color? onBackgroundPale}) {
     return ExtendedColors(
       warning: warning ?? this.warning,
       onWarning: onWarning ?? this.onWarning,
       onWarningFade: onWarningFade ?? this.onWarningFade,
+      onBackgroundPale: onBackgroundPale ?? this.onBackgroundPale,
     );
   }
 
@@ -138,6 +142,7 @@ class ExtendedColors extends ThemeExtension<ExtendedColors> {
       warning: Color.lerp(warning, other.warning, t),
       onWarning: Color.lerp(onWarning, other.onWarning, t),
       onWarningFade: Color.lerp(onWarningFade, other.onWarningFade, t),
+      onBackgroundPale: Color.lerp(onBackgroundPale, other.onBackgroundPale, t),
     );
   }
 }
