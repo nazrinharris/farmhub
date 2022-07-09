@@ -183,7 +183,7 @@ class PreviousPriceCard extends StatelessWidget {
           ),
           const UIVerticalSpace14(),
           Text(
-            "RM${produce.currentProducePrice["price"]}",
+            "RM${produce.previousProducePrice["price"]}",
             style: Theme.of(context).textTheme.bodyText2,
           ),
         ],
