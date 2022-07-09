@@ -595,74 +595,78 @@ class PriceListCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final bool isAdmin = context.read<GlobalAuthCubit>().state.isAdmin ?? false;
 
-    return Material(
-      type: MaterialType.transparency,
-      child: InkWell(
-        onLongPress: () async {
-          HapticFeedback.heavyImpact();
-          if (isAdmin) {
-            await NDialog(
-              dialogStyle: DialogStyle(
-                titleDivider: true,
-                backgroundColor: Theme.of(context).colorScheme.background,
-              ),
-              title: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 14),
-                child: Text(
-                  "Hmm, did you long-press this price?",
-                  style: Theme.of(context).textTheme.bodyText2,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 14),
+      child: Material(
+        type: MaterialType.transparency,
+        child: InkWell(
+          borderRadius: BorderRadius.circular(16),
+          onLongPress: () async {
+            HapticFeedback.heavyImpact();
+            if (isAdmin) {
+              await NDialog(
+                dialogStyle: DialogStyle(
+                  titleDivider: true,
+                  backgroundColor: Theme.of(context).colorScheme.background,
                 ),
-              ),
-              content: Padding(
-                padding: const EdgeInsets.only(top: 14, bottom: 24, right: 24),
-                child: Text(
-                  "If you want to edit a price, press the price again to go to the price screen.",
-                  style: Theme.of(context).textTheme.bodyText1,
+                title: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 14),
+                  child: Text(
+                    "Hmm, did you long-press this price?",
+                    style: Theme.of(context).textTheme.bodyText2,
+                  ),
                 ),
+                content: Padding(
+                  padding: const EdgeInsets.only(top: 14, bottom: 24, right: 24),
+                  child: Text(
+                    "If you want to edit a price, press the price again to go to the price screen.",
+                    style: Theme.of(context).textTheme.bodyText1,
+                  ),
+                ),
+              ).show(context, transitionType: DialogTransitionType.Bubble);
+            }
+          },
+          onTap: () {
+            Navigator.of(context)
+                .pushNamed('/price', arguments: PriceScreenArguments(produce, price));
+          },
+          child: Container(
+            margin: const EdgeInsets.symmetric(horizontal: 14),
+            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 24),
+            decoration: BoxDecoration(
+              border: Border(
+                top: _resolveTop(context, index),
+                bottom: BorderSide(color: Theme.of(context).colorScheme.primary.withOpacity(0.24)),
               ),
-            ).show(context, transitionType: DialogTransitionType.Bubble);
-          }
-        },
-        onTap: () {
-          Navigator.of(context)
-              .pushNamed('/price', arguments: PriceScreenArguments(produce, price));
-        },
-        child: Container(
-          margin: const EdgeInsets.symmetric(horizontal: 24),
-          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 24),
-          decoration: BoxDecoration(
-            border: Border(
-              top: _resolveTop(context, index),
-              bottom: BorderSide(color: Theme.of(context).colorScheme.primary.withOpacity(0.24)),
             ),
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Flexible(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      price.priceDate.replaceAll(RegExp("-"), "/"),
-                      maxLines: 3,
-                      overflow: TextOverflow.fade,
-                      style: Theme.of(context).textTheme.bodyText1!.copyWith(fontSize: 17),
-                    ),
-                  ],
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Flexible(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        price.priceDate.replaceAll(RegExp("-"), "/"),
+                        maxLines: 3,
+                        overflow: TextOverflow.fade,
+                        style: Theme.of(context).textTheme.bodyText1!.copyWith(fontSize: 17),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-              Flexible(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    resolveIsAverage(context, price),
-                  ],
-                ),
-              )
-            ],
+                Flexible(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      resolveIsAverage(context, price),
+                    ],
+                  ),
+                )
+              ],
+            ),
           ),
         ),
       ),
