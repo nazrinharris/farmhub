@@ -322,7 +322,8 @@ class _SliverProducePriceChartState extends State<SliverProducePriceChart> {
     return SliverList(
         delegate: SliverChildListDelegate([
       Container(
-        alignment: Alignment.center,
+        alignment: Alignment.centerLeft,
+        padding: EdgeInsets.symmetric(vertical: 2),
         margin: const EdgeInsets.symmetric(horizontal: 24),
         decoration: BoxDecoration(
           color: tabBackgroundColor,
@@ -349,7 +350,7 @@ class _SliverProducePriceChartState extends State<SliverProducePriceChart> {
               onTap: (value) {
                 HapticFeedback.lightImpact();
               },
-              padding: EdgeInsets.symmetric(horizontal: 14),
+              padding: EdgeInsets.symmetric(horizontal: 4),
               physics: DefaultScrollPhysics,
               isScrollable: true,
               controller: context.read<ProduceAggregateCubit>().state.props.tabController,

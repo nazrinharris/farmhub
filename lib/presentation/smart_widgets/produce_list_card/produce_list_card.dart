@@ -4,6 +4,7 @@ import 'package:farmhub/core/errors/failures.dart';
 import 'package:farmhub/features/produce_manager/domain/helpers.dart';
 import 'package:farmhub/presentation/global/cubit/global_ui_cubit.dart';
 import 'package:farmhub/presentation/shared_widgets/buttons.dart';
+import 'package:farmhub/presentation/themes/farmhub_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -249,7 +250,7 @@ class _BuildUserModalBottomSheetState extends State<BuildUserModalBottomSheet> {
     return Container(
       height: 200,
       decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.background,
+        color: Theme.of(context).extension<ExtendedColors>()!.onBackgroundPale,
         borderRadius:
             const BorderRadius.only(topLeft: Radius.circular(14), topRight: Radius.circular(14)),
       ),
@@ -307,7 +308,7 @@ class BuildAdminModalBottomSheet extends StatelessWidget {
         return Container(
           height: 390,
           decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.background,
+            color: Theme.of(context).extension<ExtendedColors>()!.onBackgroundPale,
             borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(24), topRight: Radius.circular(24)),
           ),
