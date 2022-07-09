@@ -59,8 +59,8 @@ class LargePriceChart extends StatelessWidget {
         print(produce.weeklyPrices);
         if (produce.weeklyPrices.length <= 1) {
           return const TwoLinedErrorText(
-            firstLineMessage: "Uh oh, we can't draw the chart",
-            secondLineMessage: "There is not enough prices this week",
+            firstLineMessage: "There are not enough prices this week",
+            secondLineMessage: "Try checking the two weeks graph",
           );
         }
         return LargeOneWeekChart(produce);
@@ -74,10 +74,10 @@ class LargePriceChart extends StatelessWidget {
                 "This is most likely because this produce is very new and has not yet been updated",
           );
         } else {
-          if (twoWeeksPricesList!.length == 1) {
+          if (twoWeeksPricesList!.length <= 1) {
             return const TwoLinedErrorText(
-              firstLineMessage: "Uh oh, we can't draw the chart",
-              secondLineMessage: "This is because there is only one price for this Produce.",
+              firstLineMessage: "There are not enough prices for the last two weeks",
+              secondLineMessage: "Try checking the one month graph",
             );
           }
           return LargeTwoWeekChart(produce, twoWeeksPricesList!);
@@ -90,10 +90,10 @@ class LargePriceChart extends StatelessWidget {
                 "This is most likely because this produce is very new and has not yet been updated",
           );
         } else {
-          if (oneMonthPricesList!.length == 1) {
+          if (oneMonthPricesList!.length <= 1) {
             return const TwoLinedErrorText(
-              firstLineMessage: "Uh oh, we can't draw the chart",
-              secondLineMessage: "This is because there is only one price for this Produce.",
+              firstLineMessage: "There are not enough prices for the last month",
+              secondLineMessage: "Try checking the two months graph",
             );
           }
           return LargeOneMonthChart(produce, oneMonthPricesList!);
@@ -106,10 +106,10 @@ class LargePriceChart extends StatelessWidget {
                 "This is most likely because this produce is very new and has not yet been updated",
           );
         } else {
-          if (twoMonthPricesList!.length == 1) {
+          if (twoMonthPricesList!.length <= 1) {
             return const TwoLinedErrorText(
-              firstLineMessage: "Uh oh, we can't draw the chart",
-              secondLineMessage: "This is because there is only one price for this Produce.",
+              firstLineMessage: "There are not enough prices for the last two months",
+              secondLineMessage: "Try checking the six months graph",
             );
           }
           return LargeTwoMonthChart(produce, twoMonthPricesList!);
@@ -124,8 +124,8 @@ class LargePriceChart extends StatelessWidget {
         } else {
           if (sixMonthPricesList!.length == 1) {
             return const TwoLinedErrorText(
-              firstLineMessage: "Uh oh, we can't draw the chart",
-              secondLineMessage: "This is because there is only one price for this Produce.",
+              firstLineMessage: "There are not enough prices for the last six months",
+              secondLineMessage: "Try checking the one year graph",
             );
           }
           return LargeSixMonthChart(produce, sixMonthPricesList!);
@@ -140,8 +140,8 @@ class LargePriceChart extends StatelessWidget {
         } else {
           if (oneYearPricesList!.length == 1) {
             return const TwoLinedErrorText(
-              firstLineMessage: "Uh oh, we can't draw the chart",
-              secondLineMessage: "This is because there is only one price for this Produce.",
+              firstLineMessage: "There are not enough prices for the last year",
+              secondLineMessage: "",
             );
           }
           return LargeOneYearChart(produce, oneYearPricesList!);
@@ -821,6 +821,12 @@ class TwoLinedErrorText extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            Icon(
+              Icons.money_off,
+              color: Theme.of(context).colorScheme.error,
+              size: 34,
+            ),
+            UIVerticalSpace14(),
             Text(
               firstLineMessage ?? "Not Implemented",
               textAlign: TextAlign.center,
