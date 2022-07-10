@@ -520,26 +520,35 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
     num newPrice,
     String subPriceDate,
   ) async {
-    final price = await firebaseFirestore
+    /// Retrieve the [Price] document and return a [Price] object
+    final Price price = await firebaseFirestore
         .collection('produce')
         .doc(produceId)
         .collection('prices')
         .doc(priceId)
         .get()
         .then((value) => Price.fromMap(value.data()!));
-    final produce = await firebaseFirestore
+
+    /// Retrieve the [Produce] document and return a [Produce] object
+    final Produce produce = await firebaseFirestore
         .collection('produce')
         .doc(produceId)
         .get()
         .then((value) => Produce.fromMap(value.data()!));
 
+    /// [priceDateTimeStamp] refers to the date associated with the price, NOT when it was updated.
     final priceDateTimeStamp = price.priceDateTimeStamp;
     final chosenYear = DateFormat("yyyy").format(priceDateTimeStamp);
+
+    /// [formattedAggregatePriceDate] refers to the date of THIS price which will be kept in [aggregate-prices]
     final formattedAggregatePriceDate = DateFormat("dd-MM-yyyy").format(priceDateTimeStamp);
 
+    /// [subPricesList] refers to the prices associated with this [Price] object
     List<PriceSnippet> subPricesList = price.allPricesWithDateList;
     List<PriceSnippet> updatedSubPricesList = [];
 
+    /// Loop through [subPricesList] to find the date of the [subPrice] to edit, when it is found,
+    /// it is added to the [updatedSubPricesList]
     for (PriceSnippet priceSnippet in subPricesList) {
       if (priceSnippet.priceDate == subPriceDate) {
         final newPriceSnippet = priceSnippet.copyWith(price: newPrice);
@@ -549,8 +558,13 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
       updatedSubPricesList.add(priceSnippet);
     }
 
-    final updatedSubPrice = price.copyWith(allPricesWithDateList: updatedSubPricesList);
-    final updatedPrice = updateCurrentPrice(updatedSubPrice);
+    /// [updatedSubPrice]'s name might be a bit misleading, but here, it means the [Price] object
+    /// supplied, but with an updated [allPricesWithDateList]
+    ///
+    /// But the [currentPrice] for the [Price] document has not yet been updated, therefore
+    /// updateCurrentPrice() is called.
+    final Price updatedSubPrice = price.copyWith(allPricesWithDateList: updatedSubPricesList);
+    final Price updatedPrice = updateCurrentPrice(updatedSubPrice);
 
     // At this point, [updatedPrice] should be the most recent.
     // Update Price Document
@@ -566,7 +580,7 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
     await firebaseFirestore
         .collection('produce')
         .doc(produceId)
-        .collection('prices')
+        .collection('aggregate-prices')
         .doc('aggregate-prices-$chosenYear')
         .update({
       "prices-map.$formattedAggregatePriceDate": updatedPrice.currentPrice,
