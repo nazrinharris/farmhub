@@ -7,15 +7,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'global_auth_state.dart';
 part 'global_auth_cubit.freezed.dart';
 
-// TODO: Temporary as guest farmhub user.
-final guestFarmhubUser = FarmhubUser(
-  uid: "guest",
-  email: "-",
-  username: "Guest",
-  createdAt: "-",
-  produceFavoritesList: [],
-);
-
 class GlobalAuthCubit extends Cubit<GlobalAuthState> {
   final IAuthRepository repository;
 

@@ -17,6 +17,7 @@ abstract class IAuthRepository {
     required String email,
     required String password,
     required String username,
+    required UserType userType,
   });
 
   Future<Either<Failure, FarmhubUser>> loginWithGoogleAccount();

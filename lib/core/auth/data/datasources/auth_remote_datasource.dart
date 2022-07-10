@@ -16,6 +16,7 @@ abstract class IAuthRemoteDataSource {
     required String email,
     required String password,
     required String username,
+    required UserType userType,
   });
 
   Future<FarmhubUser> loginWithGoogleAccount();
@@ -74,8 +75,12 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
   }
 
   @override
-  Future<FarmhubUser> registerWithEmailAndPassword(
-      {required String email, required String password, required String username}) async {
+  Future<FarmhubUser> registerWithEmailAndPassword({
+    required String email,
+    required String password,
+    required String username,
+    required UserType userType,
+  }) async {
     /// Start Registration Process - Register Method at FirebaseAuth
     final resultUid = await firebaseAuth
         .createUserWithEmailAndPassword(email: email, password: password)
@@ -94,6 +99,7 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
       username: username,
       createdAt: createdAt,
       produceFavoritesList: [],
+      userType: userType,
     );
 
     /// Store account data in Cloud Firestore

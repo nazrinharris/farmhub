@@ -22,6 +22,7 @@ mixin _$FarmhubUser {
   String get createdAt => throw _privateConstructorUsedError;
   List<ProduceFavorite> get produceFavoritesList =>
       throw _privateConstructorUsedError;
+  UserType get userType => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $FarmhubUserCopyWith<FarmhubUser> get copyWith =>
@@ -38,7 +39,8 @@ abstract class $FarmhubUserCopyWith<$Res> {
       String email,
       String username,
       String createdAt,
-      List<ProduceFavorite> produceFavoritesList});
+      List<ProduceFavorite> produceFavoritesList,
+      UserType userType});
 }
 
 /// @nodoc
@@ -56,6 +58,7 @@ class _$FarmhubUserCopyWithImpl<$Res> implements $FarmhubUserCopyWith<$Res> {
     Object? username = freezed,
     Object? createdAt = freezed,
     Object? produceFavoritesList = freezed,
+    Object? userType = freezed,
   }) {
     return _then(_value.copyWith(
       uid: uid == freezed
@@ -78,6 +81,10 @@ class _$FarmhubUserCopyWithImpl<$Res> implements $FarmhubUserCopyWith<$Res> {
           ? _value.produceFavoritesList
           : produceFavoritesList // ignore: cast_nullable_to_non_nullable
               as List<ProduceFavorite>,
+      userType: userType == freezed
+          ? _value.userType
+          : userType // ignore: cast_nullable_to_non_nullable
+              as UserType,
     ));
   }
 }
@@ -94,7 +101,8 @@ abstract class _$$_FarmhubUserCopyWith<$Res>
       String email,
       String username,
       String createdAt,
-      List<ProduceFavorite> produceFavoritesList});
+      List<ProduceFavorite> produceFavoritesList,
+      UserType userType});
 }
 
 /// @nodoc
@@ -114,6 +122,7 @@ class __$$_FarmhubUserCopyWithImpl<$Res> extends _$FarmhubUserCopyWithImpl<$Res>
     Object? username = freezed,
     Object? createdAt = freezed,
     Object? produceFavoritesList = freezed,
+    Object? userType = freezed,
   }) {
     return _then(_$_FarmhubUser(
       uid: uid == freezed
@@ -136,6 +145,10 @@ class __$$_FarmhubUserCopyWithImpl<$Res> extends _$FarmhubUserCopyWithImpl<$Res>
           ? _value.produceFavoritesList
           : produceFavoritesList // ignore: cast_nullable_to_non_nullable
               as List<ProduceFavorite>,
+      userType: userType == freezed
+          ? _value.userType
+          : userType // ignore: cast_nullable_to_non_nullable
+              as UserType,
     ));
   }
 }
@@ -148,7 +161,8 @@ class _$_FarmhubUser implements _FarmhubUser {
       required this.email,
       required this.username,
       required this.createdAt,
-      required this.produceFavoritesList});
+      required this.produceFavoritesList,
+      required this.userType});
 
   @override
   final String uid;
@@ -160,10 +174,12 @@ class _$_FarmhubUser implements _FarmhubUser {
   final String createdAt;
   @override
   final List<ProduceFavorite> produceFavoritesList;
+  @override
+  final UserType userType;
 
   @override
   String toString() {
-    return 'FarmhubUser(uid: $uid, email: $email, username: $username, createdAt: $createdAt, produceFavoritesList: $produceFavoritesList)';
+    return 'FarmhubUser(uid: $uid, email: $email, username: $username, createdAt: $createdAt, produceFavoritesList: $produceFavoritesList, userType: $userType)';
   }
 
   @override
@@ -176,7 +192,8 @@ class _$_FarmhubUser implements _FarmhubUser {
             const DeepCollectionEquality().equals(other.username, username) &&
             const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
             const DeepCollectionEquality()
-                .equals(other.produceFavoritesList, produceFavoritesList));
+                .equals(other.produceFavoritesList, produceFavoritesList) &&
+            const DeepCollectionEquality().equals(other.userType, userType));
   }
 
   @override
@@ -186,7 +203,8 @@ class _$_FarmhubUser implements _FarmhubUser {
       const DeepCollectionEquality().hash(email),
       const DeepCollectionEquality().hash(username),
       const DeepCollectionEquality().hash(createdAt),
-      const DeepCollectionEquality().hash(produceFavoritesList));
+      const DeepCollectionEquality().hash(produceFavoritesList),
+      const DeepCollectionEquality().hash(userType));
 
   @JsonKey(ignore: true)
   @override
@@ -196,12 +214,12 @@ class _$_FarmhubUser implements _FarmhubUser {
 
 abstract class _FarmhubUser implements FarmhubUser {
   factory _FarmhubUser(
-          {required final String uid,
-          required final String email,
-          required final String username,
-          required final String createdAt,
-          required final List<ProduceFavorite> produceFavoritesList}) =
-      _$_FarmhubUser;
+      {required final String uid,
+      required final String email,
+      required final String username,
+      required final String createdAt,
+      required final List<ProduceFavorite> produceFavoritesList,
+      required final UserType userType}) = _$_FarmhubUser;
 
   @override
   String get uid => throw _privateConstructorUsedError;
@@ -214,6 +232,8 @@ abstract class _FarmhubUser implements FarmhubUser {
   @override
   List<ProduceFavorite> get produceFavoritesList =>
       throw _privateConstructorUsedError;
+  @override
+  UserType get userType => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_FarmhubUserCopyWith<_$_FarmhubUser> get copyWith =>

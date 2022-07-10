@@ -62,6 +62,7 @@ class AuthRepository implements IAuthRepository {
     required String email,
     required String password,
     required String username,
+    required UserType userType,
   }) async {
     // TODO: implement registerWithEmailAndPassword
     // TODO: tests registerWithEmailAndPassword
@@ -71,6 +72,7 @@ class AuthRepository implements IAuthRepository {
           email: email,
           password: password,
           username: username,
+          userType: userType,
         );
         await authLocalDataSource.storeFarmhubUser(result);
         return Right(result);
@@ -139,7 +141,7 @@ class AuthRepository implements IAuthRepository {
     if (await networkInfo.isConnected) {
       try {
         final FarmhubUser user = await authRemoteDataSource.retrieveUserData();
-        print(user);
+        print("UID -> ${user.uid}");
         await authLocalDataSource.storeFarmhubUser(user);
 
         return Right(user);

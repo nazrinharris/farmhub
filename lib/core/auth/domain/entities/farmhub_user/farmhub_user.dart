@@ -1,3 +1,4 @@
+import 'package:farmhub/core/util/app_const.dart';
 import 'package:farmhub/features/produce_manager/domain/entities/produce/produce.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:intl/intl.dart';
@@ -5,6 +6,44 @@ import 'package:intl/intl.dart';
 import '../../../../errors/exceptions.dart';
 
 part 'farmhub_user.freezed.dart';
+
+enum UserType { farmer, business, regular, admin }
+
+extension UserTypeExt on UserType {
+  String get typeAsString {
+    switch (this) {
+      case UserType.farmer:
+        return "farmer";
+      case UserType.business:
+        return "business";
+      case UserType.regular:
+        return "regular";
+      case UserType.admin:
+        return "admin";
+      default:
+        throw Exception();
+    }
+  }
+}
+
+UserType returnType(String typeAsString) {
+  switch (typeAsString) {
+    case "farmer":
+      return UserType.farmer;
+    case "business":
+      return UserType.business;
+    case "regular":
+      return UserType.regular;
+    case "admin":
+      return UserType.admin;
+    default:
+      throw UnexpectedException(
+        code: FU_ERR_STR_TYPE,
+        message: "Unexpected String as a UserType",
+        stackTrace: StackTrace.current,
+      );
+  }
+}
 
 @Freezed(makeCollectionsUnmodifiable: false)
 class FarmhubUser with _$FarmhubUser {
@@ -14,6 +53,7 @@ class FarmhubUser with _$FarmhubUser {
     required String username,
     required String createdAt,
     required List<ProduceFavorite> produceFavoritesList,
+    required UserType userType,
   }) = _FarmhubUser;
 
   static FarmhubUser fromMap(Map<String, dynamic>? map) {
@@ -39,6 +79,7 @@ class FarmhubUser with _$FarmhubUser {
       username: map["username"],
       createdAt: map["createdAt"],
       produceFavoritesList: produceFavoritesList,
+      userType: returnType(map["userType"]),
     );
   }
 
@@ -58,6 +99,7 @@ class FarmhubUser with _$FarmhubUser {
       "produceFavoritesMap": produceFavoritesMap,
       "uid": user.uid,
       "username": user.username,
+      "userType": user.userType.typeAsString,
     };
   }
 }

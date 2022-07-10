@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:farmhub/core/auth/auth_bloc/auth_bloc.dart';
+import 'package:farmhub/core/auth/domain/entities/farmhub_user/farmhub_user.dart';
 import 'package:farmhub/presentation/smart_widgets/info_tile/bloc/info_tile_bloc.dart';
 import 'package:farmhub/presentation/smart_widgets/info_tile/info_tile.dart';
 import 'package:farmhub/presentation/smart_widgets/primary_button_aware/primary_button_aware_cubit.dart';
@@ -112,6 +113,7 @@ class RegisterScreenBloc extends Bloc<RegisterScreenEvent, RegisterScreenState> 
         email: email,
         password: password,
         username: username,
+        userType: UserType.regular,
       ));
 
       await emit.onEach(authBloc.stream, onData: (AuthState state) {

@@ -43,3 +43,6 @@ const String PM_ERR_EMPTY_PREVIOUS_PRODUCE_LIST = 'PM_ERR_EMPTY_PREVIOUS_PRODUCE
 
 /// [AuthLocalDatasource]'s [ErrorCodes]
 const String AL_ERR_NO_USER = 'ERR_NO_USER';
+
+/// [FarmhubUser] error codes
+const String FU_ERR_STR_TYPE = "FU_ERR_STR_TYPE";

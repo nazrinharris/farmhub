@@ -42,6 +42,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 username: "Guest",
                 createdAt: "-",
                 produceFavoritesList: [],
+                userType: UserType.regular,
               );
 
           return BlocListener<GlobalUICubit, GlobalUIState>(
