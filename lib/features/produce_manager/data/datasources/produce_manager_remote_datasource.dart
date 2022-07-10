@@ -349,7 +349,7 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
     final Map<String, dynamic> aggregatePricesMap = await firebaseFirestore
         .collection('produce')
         .doc(produceId)
-        .collection('prices')
+        .collection('aggregate-prices')
         .doc("aggregate-prices-$chosenYear")
         .get()
         .then((value) => value.data()!);
@@ -796,7 +796,7 @@ Future<void> updateProducePrices({
   final Map<String, dynamic> aggregatePricesMap = await firebaseFirestore
       .collection('produce')
       .doc(produceId)
-      .collection('prices')
+      .collection('aggregate-prices')
       .doc("aggregate-prices-$chosenYear")
       .get()
       .then((value) => value.data()!);
@@ -846,6 +846,9 @@ Future<void> updateProducePrices({
     "previousProducePrice": previousProducePrice,
     "weeklyPrices": weeklyPricesSnippetJSON,
   };
+
+  /// This variable basically keeps the decision whether to include time stamp or not in the
+  /// [Produce] document update
   Map<String, dynamic> mapUsed;
 
   if (lastUpdateTimeStamp == null) {
@@ -929,7 +932,7 @@ Future<void> updateAggregatePrices({
   await firebaseFirestore
       .collection('produce')
       .doc(produceId)
-      .collection('prices')
+      .collection('aggregate-prices')
       .doc('aggregate-prices-$chosenYear')
       .update({"prices-map.$chosenDate": newPrice});
 }
