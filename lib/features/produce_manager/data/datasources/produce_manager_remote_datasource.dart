@@ -642,7 +642,7 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
       final allPricesList = await firebaseFirestore
           .collection('produce')
           .doc(produceId)
-          .collection('prices')
+          .collection('aggregate-prices')
           .doc("aggregate-prices-$priceYear")
           .get()
           .then((value) => PriceSnippet.fromAggregateToList(value.data()!));
@@ -658,7 +658,7 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
       await firebaseFirestore
           .collection('produce')
           .doc(produceId)
-          .collection('prices')
+          .collection('aggregate-prices')
           .doc('aggregate-prices-$priceYear')
           .update({"prices-map.${price.priceDate}": FieldValue.delete()});
       //! Delete [Price] document
@@ -693,8 +693,8 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
       await firebaseFirestore
           .collection('produce')
           .doc(produceId)
-          .collection('prices')
-          .doc('aggregate-prices-${priceYear}')
+          .collection('aggregate-prices')
+          .doc('aggregate-prices-$priceYear')
           .update({"prices-map.${price.priceDate}": updatedPrice.currentPrice});
       //! Update [Produce]
       updateProducePrices(
