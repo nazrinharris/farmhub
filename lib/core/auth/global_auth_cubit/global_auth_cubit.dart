@@ -40,7 +40,10 @@ class GlobalAuthCubit extends Cubit<GlobalAuthState> {
             emit(state.copyWith(farmhubUser: farmhubUser, isAdmin: null));
           },
           (isAdmin) {
-            emit(state.copyWith(farmhubUser: farmhubUser, isAdmin: isAdmin));
+            emit(state.copyWith(
+              farmhubUser: farmhubUser.copyWith(userType: UserType.admin),
+              isAdmin: isAdmin,
+            ));
           },
         );
       },
