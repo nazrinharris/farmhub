@@ -41,7 +41,7 @@ class NavigateView extends StatelessWidget {
             const UIVerticalSpace14(),
             PrimaryButton(
               onPressed: () {
-                Navigator.of(context).pushNamed('/register_second');
+                Navigator.of(context).pushNamed('/choose_user_type');
               },
               width: 200,
               child: Text(

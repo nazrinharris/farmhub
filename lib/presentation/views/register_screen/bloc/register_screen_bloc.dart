@@ -138,7 +138,7 @@ class RegisterScreenBloc extends Bloc<RegisterScreenEvent, RegisterScreenState> 
 
           primaryButtonAwareCubit.triggerFirstPage();
           Navigator.of(event.context).pushNamedAndRemoveUntil('/nav_main', (route) => false);
-          Navigator.of(event.context).pushNamed("/register_second");
+          Navigator.of(event.context).pushNamed("/choose_user_type");
         } else if (state is ASRegisterError) {
           debugPrintStack(stackTrace: state.stackTrace);
           updateInfoTile(InfoTileProps(
