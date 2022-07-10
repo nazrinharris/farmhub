@@ -253,7 +253,7 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
         await firebaseFirestore
             .collection('produce')
             .doc(doc.id)
-            .collection('prices')
+            .collection('aggregate-prices')
             .doc("aggregate-prices-$currentYear")
             .set({
           "prices-map": {
@@ -1010,6 +1010,8 @@ num calculateNewPriceAverage(Map<String, dynamic> allPricesMap, num newPrice) {
   return newCurrentPrice;
 }
 
+/// This method generates a list of search cases for the given name. Cases for the whole phrase, as
+/// well as a word by word basis.
 List<String> returnProduceNameSearch(String produceName) {
   List<String> produceNameSearch = [];
   String temp = "";
