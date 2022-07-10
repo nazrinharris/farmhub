@@ -133,7 +133,7 @@ class __$$_FarmhubUserCopyWithImpl<$Res> extends _$FarmhubUserCopyWithImpl<$Res>
           : createdAt // ignore: cast_nullable_to_non_nullable
               as String,
       produceFavoritesList: produceFavoritesList == freezed
-          ? _value._produceFavoritesList
+          ? _value.produceFavoritesList
           : produceFavoritesList // ignore: cast_nullable_to_non_nullable
               as List<ProduceFavorite>,
     ));
@@ -148,8 +148,7 @@ class _$_FarmhubUser implements _FarmhubUser {
       required this.email,
       required this.username,
       required this.createdAt,
-      required final List<ProduceFavorite> produceFavoritesList})
-      : _produceFavoritesList = produceFavoritesList;
+      required this.produceFavoritesList});
 
   @override
   final String uid;
@@ -159,12 +158,8 @@ class _$_FarmhubUser implements _FarmhubUser {
   final String username;
   @override
   final String createdAt;
-  final List<ProduceFavorite> _produceFavoritesList;
   @override
-  List<ProduceFavorite> get produceFavoritesList {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_produceFavoritesList);
-  }
+  final List<ProduceFavorite> produceFavoritesList;
 
   @override
   String toString() {
@@ -181,7 +176,7 @@ class _$_FarmhubUser implements _FarmhubUser {
             const DeepCollectionEquality().equals(other.username, username) &&
             const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
             const DeepCollectionEquality()
-                .equals(other._produceFavoritesList, _produceFavoritesList));
+                .equals(other.produceFavoritesList, produceFavoritesList));
   }
 
   @override
@@ -191,7 +186,7 @@ class _$_FarmhubUser implements _FarmhubUser {
       const DeepCollectionEquality().hash(email),
       const DeepCollectionEquality().hash(username),
       const DeepCollectionEquality().hash(createdAt),
-      const DeepCollectionEquality().hash(_produceFavoritesList));
+      const DeepCollectionEquality().hash(produceFavoritesList));
 
   @JsonKey(ignore: true)
   @override

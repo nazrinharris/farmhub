@@ -91,29 +91,33 @@ class MainScreenBloc extends Bloc<MainScreenEvent, MainScreenState> {
     if (state is MSSNextPricesLoading || state is MSSPricesLoading) {
       // Do nothing
     } else {
-      print("Adding getNextTenProduce event...");
-      emit(MainScreenState.nextPricesLoading(props: state.props));
+      if (state.props.produceList.isEmpty) {
+        // Do nothing
+      } else {
+        print("Adding getNextTenProduce event...");
+        emit(MainScreenState.nextPricesLoading(props: state.props));
 
-      // Start getting next ten produce
-      final failureOrNewProduceList =
-          await produceManagerRepository.getNextTenProduce(state.props.produceList);
+        // Start getting next ten produce
+        final failureOrNewProduceList =
+            await produceManagerRepository.getNextTenProduce(state.props.produceList);
 
-      // Check if there are more produce
-      failureOrNewProduceList.fold((f) {
-        print(f.toString());
-        emit(MainScreenState.pricesError(
-          props: state.props,
-          failure: f,
-        ));
-      }, (produceList) {
-        int index = 1;
-        for (Produce produce in produceList) {
-          print(index.toString() + " " + produce.produceName + "   " + produce.produceId + "\n");
-          index++;
-        }
-        emit(
-            MainScreenState.pricesCompleted(props: state.props.copyWith(produceList: produceList)));
-      });
+        // Check if there are more produce
+        failureOrNewProduceList.fold((f) {
+          print(f.toString());
+          emit(MainScreenState.pricesError(
+            props: state.props,
+            failure: f,
+          ));
+        }, (produceList) {
+          int index = 1;
+          for (Produce produce in produceList) {
+            print(index.toString() + " " + produce.produceName + "   " + produce.produceId + "\n");
+            index++;
+          }
+          emit(MainScreenState.pricesCompleted(
+              props: state.props.copyWith(produceList: produceList)));
+        });
+      }
     }
   }
 

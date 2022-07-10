@@ -36,8 +36,11 @@ class AuthRepository implements IAuthRepository {
         await authLocalDataSource.storeFarmhubUser(user);
         return Right(user);
       } on FirebaseAuthException catch (e) {
-        return Left(
-            FirebaseAuthFailure(code: e.code, message: e.message, stackTrace: StackTrace.current));
+        return Left(FirebaseAuthFailure(
+          code: e.code,
+          message: e.message,
+          stackTrace: e.stackTrace,
+        ));
       } catch (e, stack) {
         return Left(UnexpectedFailure(
           code: e.toString(),
@@ -75,12 +78,12 @@ class AuthRepository implements IAuthRepository {
         return Left(FirebaseAuthFailure(
           code: e.code,
           message: e.message,
-          stackTrace: StackTrace.current,
+          stackTrace: e.stackTrace,
         ));
-      } catch (e) {
+      } catch (e, stack) {
         return Left(UnexpectedFailure(
           message: e.toString(),
-          stackTrace: StackTrace.current,
+          stackTrace: stack,
         ));
       }
     } else {
@@ -108,11 +111,11 @@ class AuthRepository implements IAuthRepository {
         message: e.message,
         stackTrace: StackTrace.current,
       ));
-    } catch (e) {
+    } catch (e, stack) {
       return Left(UnexpectedFailure(
         code: e.toString(),
         message: "An unexpected error occured",
-        stackTrace: StackTrace.current,
+        stackTrace: stack,
       ));
     }
   }
@@ -145,14 +148,14 @@ class AuthRepository implements IAuthRepository {
         return Left(FirebaseAuthFailure(
           code: e.code,
           message: e.message,
-          stackTrace: StackTrace.current,
+          stackTrace: e.stackTrace,
         ));
       } on FirebaseException catch (e) {
         print('Retrieval of User Information Error Occurred, ${e.code}, ${e.message}');
         return Left(FirebaseFirestoreFailure(
           code: e.code,
           message: e.message,
-          stackTrace: StackTrace.current,
+          stackTrace: e.stackTrace,
         ));
       } catch (e, stack) {
         print('Retrieval of User Information Error Occurred, $e');
@@ -188,20 +191,20 @@ class AuthRepository implements IAuthRepository {
         return Left(FirebaseAuthFailure(
           code: e.code,
           message: e.message,
-          stackTrace: StackTrace.current,
+          stackTrace: e.stackTrace,
         ));
       } on FirebaseException catch (e) {
         print('isAdmin Check Error Occurred, ${e.code}, ${e.message}');
         return Left(FirebaseFirestoreFailure(
           code: e.code,
           message: e.message,
-          stackTrace: StackTrace.current,
+          stackTrace: e.stackTrace,
         ));
-      } catch (e) {
+      } catch (e, stack) {
         print('isAdmin Check Error Occurred, $e');
         return Left(UnexpectedFailure(
           message: e.toString(),
-          stackTrace: StackTrace.current,
+          stackTrace: stack,
         ));
       }
     } else {
@@ -223,7 +226,7 @@ class AuthRepository implements IAuthRepository {
         return Right(user);
       } on FirebaseAuthException catch (e) {
         return Left(
-            FirebaseAuthFailure(code: e.code, message: e.message, stackTrace: StackTrace.current));
+            FirebaseAuthFailure(code: e.code, message: e.message, stackTrace: e.stackTrace));
       } catch (e, stack) {
         return Left(UnexpectedFailure(
           code: e.toString(),
@@ -247,8 +250,11 @@ class AuthRepository implements IAuthRepository {
         final user = await authRemoteDataSource.sendPasswordResetEmail(email);
         return Right(unit);
       } on FirebaseAuthException catch (e) {
-        return Left(
-            FirebaseAuthFailure(code: e.code, message: e.message, stackTrace: StackTrace.current));
+        return Left(FirebaseAuthFailure(
+          code: e.code,
+          message: e.message,
+          stackTrace: e.stackTrace,
+        ));
       } catch (e, stack) {
         return Left(UnexpectedFailure(
           code: e.toString(),

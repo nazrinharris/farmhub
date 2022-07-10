@@ -64,7 +64,7 @@ class ProduceAggregateCubit extends Cubit<ProduceAggregateState> {
       },
     );
 
-    // Begin retrieval of [aggregate-prices]
+    // Begin retrieval of [aggregatePrices]
     final failureOrAggregatePrices = await repository.getAggregatePrices(produceId);
 
     failureOrAggregatePrices.fold(
@@ -104,6 +104,7 @@ class ProduceAggregateCubit extends Cubit<ProduceAggregateState> {
     result.fold(
       (f) {
         showErrorDialog(context: context, failure: f);
+        print(f);
       },
       (updatedFarmhubUser) {
         final isFavorite = !state.props.isProduceFavorite;

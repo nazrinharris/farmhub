@@ -394,6 +394,7 @@ mixin _$GlobalUIProps {
   bool get shouldRefreshPrice => throw _privateConstructorUsedError;
   bool get shouldRefreshFavorites => throw _privateConstructorUsedError;
   bool get shouldRefreshProfile => throw _privateConstructorUsedError;
+  EdgeInsets? get safeAreaPadding => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $GlobalUIPropsCopyWith<GlobalUIProps> get copyWith =>
@@ -410,7 +411,8 @@ abstract class $GlobalUIPropsCopyWith<$Res> {
       bool shouldRefreshProduce,
       bool shouldRefreshPrice,
       bool shouldRefreshFavorites,
-      bool shouldRefreshProfile});
+      bool shouldRefreshProfile,
+      EdgeInsets? safeAreaPadding});
 }
 
 /// @nodoc
@@ -429,6 +431,7 @@ class _$GlobalUIPropsCopyWithImpl<$Res>
     Object? shouldRefreshPrice = freezed,
     Object? shouldRefreshFavorites = freezed,
     Object? shouldRefreshProfile = freezed,
+    Object? safeAreaPadding = freezed,
   }) {
     return _then(_value.copyWith(
       shouldRefreshMain: shouldRefreshMain == freezed
@@ -451,6 +454,10 @@ class _$GlobalUIPropsCopyWithImpl<$Res>
           ? _value.shouldRefreshProfile
           : shouldRefreshProfile // ignore: cast_nullable_to_non_nullable
               as bool,
+      safeAreaPadding: safeAreaPadding == freezed
+          ? _value.safeAreaPadding
+          : safeAreaPadding // ignore: cast_nullable_to_non_nullable
+              as EdgeInsets?,
     ));
   }
 }
@@ -467,7 +474,8 @@ abstract class _$$_GlobalUIPropsCopyWith<$Res>
       bool shouldRefreshProduce,
       bool shouldRefreshPrice,
       bool shouldRefreshFavorites,
-      bool shouldRefreshProfile});
+      bool shouldRefreshProfile,
+      EdgeInsets? safeAreaPadding});
 }
 
 /// @nodoc
@@ -488,6 +496,7 @@ class __$$_GlobalUIPropsCopyWithImpl<$Res>
     Object? shouldRefreshPrice = freezed,
     Object? shouldRefreshFavorites = freezed,
     Object? shouldRefreshProfile = freezed,
+    Object? safeAreaPadding = freezed,
   }) {
     return _then(_$_GlobalUIProps(
       shouldRefreshMain: shouldRefreshMain == freezed
@@ -510,6 +519,10 @@ class __$$_GlobalUIPropsCopyWithImpl<$Res>
           ? _value.shouldRefreshProfile
           : shouldRefreshProfile // ignore: cast_nullable_to_non_nullable
               as bool,
+      safeAreaPadding: safeAreaPadding == freezed
+          ? _value.safeAreaPadding
+          : safeAreaPadding // ignore: cast_nullable_to_non_nullable
+              as EdgeInsets?,
     ));
   }
 }
@@ -522,7 +535,8 @@ class _$_GlobalUIProps implements _GlobalUIProps {
       required this.shouldRefreshProduce,
       required this.shouldRefreshPrice,
       required this.shouldRefreshFavorites,
-      required this.shouldRefreshProfile});
+      required this.shouldRefreshProfile,
+      this.safeAreaPadding});
 
   @override
   final bool shouldRefreshMain;
@@ -534,10 +548,12 @@ class _$_GlobalUIProps implements _GlobalUIProps {
   final bool shouldRefreshFavorites;
   @override
   final bool shouldRefreshProfile;
+  @override
+  final EdgeInsets? safeAreaPadding;
 
   @override
   String toString() {
-    return 'GlobalUIProps(shouldRefreshMain: $shouldRefreshMain, shouldRefreshProduce: $shouldRefreshProduce, shouldRefreshPrice: $shouldRefreshPrice, shouldRefreshFavorites: $shouldRefreshFavorites, shouldRefreshProfile: $shouldRefreshProfile)';
+    return 'GlobalUIProps(shouldRefreshMain: $shouldRefreshMain, shouldRefreshProduce: $shouldRefreshProduce, shouldRefreshPrice: $shouldRefreshPrice, shouldRefreshFavorites: $shouldRefreshFavorites, shouldRefreshProfile: $shouldRefreshProfile, safeAreaPadding: $safeAreaPadding)';
   }
 
   @override
@@ -554,7 +570,9 @@ class _$_GlobalUIProps implements _GlobalUIProps {
             const DeepCollectionEquality()
                 .equals(other.shouldRefreshFavorites, shouldRefreshFavorites) &&
             const DeepCollectionEquality()
-                .equals(other.shouldRefreshProfile, shouldRefreshProfile));
+                .equals(other.shouldRefreshProfile, shouldRefreshProfile) &&
+            const DeepCollectionEquality()
+                .equals(other.safeAreaPadding, safeAreaPadding));
   }
 
   @override
@@ -564,7 +582,8 @@ class _$_GlobalUIProps implements _GlobalUIProps {
       const DeepCollectionEquality().hash(shouldRefreshProduce),
       const DeepCollectionEquality().hash(shouldRefreshPrice),
       const DeepCollectionEquality().hash(shouldRefreshFavorites),
-      const DeepCollectionEquality().hash(shouldRefreshProfile));
+      const DeepCollectionEquality().hash(shouldRefreshProfile),
+      const DeepCollectionEquality().hash(safeAreaPadding));
 
   @JsonKey(ignore: true)
   @override
@@ -578,7 +597,8 @@ abstract class _GlobalUIProps implements GlobalUIProps {
       required final bool shouldRefreshProduce,
       required final bool shouldRefreshPrice,
       required final bool shouldRefreshFavorites,
-      required final bool shouldRefreshProfile}) = _$_GlobalUIProps;
+      required final bool shouldRefreshProfile,
+      final EdgeInsets? safeAreaPadding}) = _$_GlobalUIProps;
 
   @override
   bool get shouldRefreshMain => throw _privateConstructorUsedError;
@@ -590,6 +610,8 @@ abstract class _GlobalUIProps implements GlobalUIProps {
   bool get shouldRefreshFavorites => throw _privateConstructorUsedError;
   @override
   bool get shouldRefreshProfile => throw _privateConstructorUsedError;
+  @override
+  EdgeInsets? get safeAreaPadding => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_GlobalUIPropsCopyWith<_$_GlobalUIProps> get copyWith =>

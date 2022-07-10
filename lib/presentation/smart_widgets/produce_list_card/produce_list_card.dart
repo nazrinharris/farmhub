@@ -4,6 +4,7 @@ import 'package:farmhub/core/errors/failures.dart';
 import 'package:farmhub/features/produce_manager/domain/helpers.dart';
 import 'package:farmhub/presentation/global/cubit/global_ui_cubit.dart';
 import 'package:farmhub/presentation/shared_widgets/buttons.dart';
+import 'package:farmhub/presentation/themes/farmhub_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -75,26 +76,44 @@ class ProduceListCard extends StatelessWidget {
               ),
             ),
             child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Flexible(
+                Expanded(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        produce.produceName,
-                        maxLines: 3,
-                        overflow: TextOverflow.fade,
-                        style: Theme.of(context).textTheme.bodyText1!.copyWith(fontSize: 17),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            produce.produceName,
+                            maxLines: 3,
+                            overflow: TextOverflow.fade,
+                            style: Theme.of(context).textTheme.bodyText1!.copyWith(fontSize: 17),
+                          ),
+                          const UICustomVertical(2),
+                          Text(
+                            "RM $currentProducePrice/kg",
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyText2!
+                                .copyWith(fontWeight: FontWeight.w700),
+                          ),
+                        ],
                       ),
-                      const UICustomVertical(2),
-                      Text(
-                        "RM $currentProducePrice/kg",
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodyText2!
-                            .copyWith(fontWeight: FontWeight.w700),
+                      Container(
+                        padding: const EdgeInsets.only(top: 2, bottom: 4),
+                        child: Text(
+                          produce.currentProducePrice["priceDate"]
+                              .toString()
+                              .replaceAll(RegExp("-"), "/"),
+                          style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                                color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
+                                fontSize: 13,
+                              ),
+                        ),
                       ),
                       const UICustomVertical(9),
                       ChangeBox(produce),
@@ -104,7 +123,7 @@ class ProduceListCard extends StatelessWidget {
                 Flexible(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       IgnorePointer(
                         child: SmallPriceChart(
@@ -231,7 +250,7 @@ class _BuildUserModalBottomSheetState extends State<BuildUserModalBottomSheet> {
     return Container(
       height: 200,
       decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.background,
+        color: Theme.of(context).extension<ExtendedColors>()!.onBackgroundPale,
         borderRadius:
             const BorderRadius.only(topLeft: Radius.circular(14), topRight: Radius.circular(14)),
       ),
@@ -289,7 +308,7 @@ class BuildAdminModalBottomSheet extends StatelessWidget {
         return Container(
           height: 390,
           decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.background,
+            color: Theme.of(context).extension<ExtendedColors>()!.onBackgroundPale,
             borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(24), topRight: Radius.circular(24)),
           ),

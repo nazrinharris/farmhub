@@ -4,6 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:farmhub/core/errors/failures.dart';
 import 'package:farmhub/features/produce_manager/domain/i_produce_manager_repository.dart';
 import 'package:farmhub/presentation/views/main_screen/bloc/main_screen_bloc.dart';
+import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../features/produce_manager/domain/entities/produce/produce.dart';
@@ -83,7 +84,8 @@ class SearchScreenBloc extends Bloc<SearchScreenEvent, SearchScreenState> {
     failureOrNewProduceList.fold(
       (f) {
         emit(SearchScreenState.error(props: state.props, failure: f));
-        print(f.toString());
+        print(f.code);
+        debugPrintStack(stackTrace: f.stackTrace);
       },
       (produceList) {
         emit(SearchScreenState.completed(state.props.copyWith(produceList: produceList)));

@@ -1,14 +1,20 @@
 import 'package:bottom_nav_layout/bottom_nav_layout.dart';
+import 'package:farmhub/presentation/global/cubit/global_ui_cubit.dart';
 import 'package:farmhub/presentation/views/favorites_screen/favorites_screen.dart';
 import 'package:farmhub/presentation/views/main_screen/main_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+
+import '../../themes/farmhub_theme.dart';
 
 class NavMainScreen extends StatelessWidget {
   const NavMainScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final bottomPadding = context.read<GlobalUICubit>().state.props.safeAreaPadding!.bottom;
+
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: BottomNavLayout(
@@ -20,17 +26,17 @@ class NavMainScreen extends StatelessWidget {
         ],
         bottomNavigationBar: (index, onTap) {
           return Container(
-            height: 90,
+            height: bottomPadding + 74,
             decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.background,
+                color: Theme.of(context).extension<ExtendedColors>()!.onBackgroundPale,
                 borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(30),
-                  topRight: Radius.circular(30),
+                  topLeft: Radius.circular(15),
+                  topRight: Radius.circular(15),
                 ),
                 boxShadow: [
                   BoxShadow(color: Colors.black.withOpacity(0.10), blurRadius: 10),
                 ]),
-            padding: EdgeInsets.only(top: 6, left: 14, right: 14, bottom: 14),
+            padding: EdgeInsets.only(left: 14, right: 14, bottom: bottomPadding - 5),
             child: GNav(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               padding: const EdgeInsets.symmetric(horizontal: 35),

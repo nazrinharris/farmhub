@@ -1,7 +1,6 @@
 import 'package:flutter/gestures.dart' show DragStartBehavior;
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter/foundation.dart';
 import 'dart:ui';
 import 'dart:math' as math;
@@ -110,12 +109,13 @@ class CustomTab extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Size get preferredSize {
-    if (height != null)
+    if (height != null) {
       return Size.fromHeight(height!);
-    else if ((text != null || child != null) && icon != null)
+    } else if ((text != null || child != null) && icon != null) {
       return const Size.fromHeight(_kTextAndIconTabHeight);
-    else
+    } else {
       return const Size.fromHeight(_kTabHeight);
+    }
   }
 }
 

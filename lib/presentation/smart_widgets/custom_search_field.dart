@@ -54,7 +54,7 @@ class _CustomSearchFieldState extends State<CustomSearchField> {
       type: MaterialType.transparency,
       child: Container(
         margin: widget.margin ?? const EdgeInsets.symmetric(horizontal: 30),
-        padding: const EdgeInsets.only(bottom: 1, left: 10, right: 10),
+        padding: const EdgeInsets.only(bottom: 2, left: 10, right: 10),
         height: 36,
         decoration: BoxDecoration(
           color: Colors.grey.withOpacity(0.2),

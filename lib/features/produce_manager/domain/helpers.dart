@@ -20,14 +20,14 @@ const Map<String, int> rangeTypeInDaysMap = {
 };
 
 /// This method converts the given [pricesList] which should be an unsorted list converted from
-/// [aggregate-prices].
+/// [aggregatePrices].
 ///
 /// If [rangeType] is not specified, it defaults to [twoW]
 List<PriceSnippet> pricesToRanged(
   List<PriceSnippet> pricesList, {
   RangeType? rangeType = RangeType.twoW,
 }) {
-  print("All Unsorted Prices Length: ${pricesList.length}");
+  //?"All Unsorted Prices Length: ${pricesList.length}");
 
   final DateTime todayTimeStamp = clock.now();
 
@@ -89,8 +89,8 @@ List<PriceSnippet> pricesToRanged(
     }
   }
 
-  print("Unsorted - $rangeType - Amount: ${rangedPricesList.length}");
-  printList(rangedPricesList);
+  //?print("Unsorted - $rangeType - Amount: ${rangedPricesList.length}");
+  //?printList(rangedPricesList);
 
   rangedPricesList.sort((a, b) {
     DateTime aPriceDate = DateFormat("dd-MM-yyyy").parse(a.priceDate);
@@ -99,8 +99,8 @@ List<PriceSnippet> pricesToRanged(
     return aPriceDate.compareTo(bPriceDate);
   });
 
-  print("Sorted - $rangeType - Amount: ${rangedPricesList.length}");
-  printList(rangedPricesList);
+  //?print("Sorted - $rangeType - Amount: ${rangedPricesList.length}");
+  //?printList(rangedPricesList);
 
   return List.from(rangedPricesList);
 }
@@ -153,4 +153,16 @@ bool determineIfInList(String produceId, List<String> produceIdList) {
   }
 
   return ifInList;
+}
+
+bool resolveIsNegative(Produce produce) {
+  final num currentPrice = produce.currentProducePrice["price"];
+  final num previousPrice = produce.previousProducePrice["price"];
+  final num change = currentPrice - previousPrice;
+
+  if (change < 0) {
+    return true;
+  } else {
+    return false;
+  }
 }

@@ -71,8 +71,8 @@ class ProduceManagerRepository implements IProduceManagerRepository {
         await localDatasource.storeProduceList(newProduceList);
 
         return Right(newProduceList);
-      } catch (e) {
-        return Left(ProduceManagerFailure(code: e.toString(), stackTrace: StackTrace.current));
+      } catch (e, stack) {
+        return Left(UnexpectedFailure(code: e.toString(), stackTrace: stack));
       }
     } else {
       print("Not connected - getNextTenProduce()");
@@ -81,7 +81,7 @@ class ProduceManagerRepository implements IProduceManagerRepository {
 
         return Right(produceList);
       } catch (e, stack) {
-        return Left(UnexpectedFailure(message: e.toString(), stackTrace: stack));
+        return Left(UnexpectedFailure(code: e.toString(), stackTrace: stack));
       }
     }
   }
@@ -93,8 +93,8 @@ class ProduceManagerRepository implements IProduceManagerRepository {
         final produce = await remoteDatasource.getProduce(pid);
 
         return Right(produce);
-      } catch (e) {
-        return Left(ProduceManagerFailure(code: e.toString(), stackTrace: StackTrace.current));
+      } catch (e, stack) {
+        return Left(UnexpectedFailure(code: e.toString(), stackTrace: stack));
       }
     } else {
       return Left(InternetConnectionFailure(
@@ -150,7 +150,7 @@ class ProduceManagerRepository implements IProduceManagerRepository {
             return Left(ProduceManagerFailure(
               code: failureOrIsAdmin.code,
               message: failureOrIsAdmin.message,
-              stackTrace: StackTrace.current,
+              stackTrace: failureOrIsAdmin.stackTrace,
             ));
           } else {
             throw UnexpectedException(
@@ -164,7 +164,7 @@ class ProduceManagerRepository implements IProduceManagerRepository {
           return Left(ProduceManagerFailure(
             code: failureOrUserData.code,
             message: failureOrUserData.message,
-            stackTrace: StackTrace.current,
+            stackTrace: failureOrUserData.stackTrace,
           ));
         } else {
           throw UnexpectedException(
@@ -173,11 +173,11 @@ class ProduceManagerRepository implements IProduceManagerRepository {
             stackTrace: StackTrace.current,
           );
         }
-      } on FirebaseException catch (e) {
+      } on FirebaseException catch (e, stack) {
         return Left(FirebaseFirestoreFailure(
           message: e.message,
           code: e.code,
-          stackTrace: StackTrace.current,
+          stackTrace: stack,
         ));
       } on ProduceManagerException catch (e) {
         return Left(UnexpectedFailure(
@@ -185,10 +185,10 @@ class ProduceManagerRepository implements IProduceManagerRepository {
           code: e.code,
           stackTrace: e.stackTrace,
         ));
-      } catch (e) {
+      } catch (e, stack) {
         return Left(UnexpectedFailure(
           code: e.toString(),
-          stackTrace: StackTrace.current,
+          stackTrace: stack,
         ));
       }
     } else {
@@ -215,10 +215,10 @@ class ProduceManagerRepository implements IProduceManagerRepository {
         );
 
         return Right(result);
-      } catch (e) {
+      } catch (e, stack) {
         return Left(UnexpectedFailure(
           code: e.toString(),
-          stackTrace: StackTrace.current,
+          stackTrace: stack,
         ));
       }
     } else {
@@ -236,8 +236,8 @@ class ProduceManagerRepository implements IProduceManagerRepository {
       try {
         final result = await remoteDatasource.searchProduce(query: query);
         return Right(result);
-      } catch (e) {
-        return Left(UnexpectedFailure(code: e.toString(), stackTrace: StackTrace.current));
+      } catch (e, stack) {
+        return Left(UnexpectedFailure(code: e.toString(), stackTrace: stack));
       }
     } else {
       return Left(InternetConnectionFailure(
@@ -255,8 +255,8 @@ class ProduceManagerRepository implements IProduceManagerRepository {
         await remoteDatasource.editProduce(produceId, newProduceName);
 
         return const Right(unit);
-      } catch (e) {
-        return Left(UnexpectedFailure(code: e.toString(), stackTrace: StackTrace.current));
+      } catch (e, stack) {
+        return Left(UnexpectedFailure(code: e.toString(), stackTrace: stack));
       }
     } else {
       return Left(InternetConnectionFailure(
@@ -274,8 +274,8 @@ class ProduceManagerRepository implements IProduceManagerRepository {
         await remoteDatasource.deleteProduce(produceId);
 
         return const Right(unit);
-      } catch (e) {
-        return Left(UnexpectedFailure(code: e.toString(), stackTrace: StackTrace.current));
+      } catch (e, stack) {
+        return Left(UnexpectedFailure(code: e.toString(), stackTrace: stack));
       }
     } else {
       return Left(InternetConnectionFailure(
@@ -298,8 +298,12 @@ class ProduceManagerRepository implements IProduceManagerRepository {
           query: query,
         );
         return Right(result);
-      } catch (e) {
-        return Left(UnexpectedFailure(code: e.toString(), stackTrace: StackTrace.current));
+      } on ProduceManagerException catch (e) {
+        return Left(
+          ProduceManagerFailure(code: e.code, message: e.message, stackTrace: e.stackTrace),
+        );
+      } catch (e, stack) {
+        return Left(UnexpectedFailure(code: e.toString(), stackTrace: stack));
       }
     } else {
       return Left(InternetConnectionFailure(
@@ -324,8 +328,8 @@ class ProduceManagerRepository implements IProduceManagerRepository {
         final result = await remoteDatasource.getAggregatePrices(produceId);
 
         return Right(result);
-      } catch (e) {
-        return Left(UnexpectedFailure(code: e.toString(), stackTrace: StackTrace.current));
+      } catch (e, stack) {
+        return Left(UnexpectedFailure(code: e.toString(), stackTrace: stack));
       }
     } else {
       return Left(InternetConnectionFailure(
@@ -343,8 +347,8 @@ class ProduceManagerRepository implements IProduceManagerRepository {
         final result = await remoteDatasource.getFirstTenPrices(produceId);
 
         return Right(result);
-      } catch (e) {
-        return Left(UnexpectedFailure(code: e.toString(), stackTrace: StackTrace.current));
+      } catch (e, stack) {
+        return Left(UnexpectedFailure(code: e.toString(), stackTrace: stack));
       }
     } else {
       return Left(InternetConnectionFailure(
@@ -362,8 +366,8 @@ class ProduceManagerRepository implements IProduceManagerRepository {
         final result = await remoteDatasource.getNextTenPrices(lastPriceList, produceId);
 
         return Right(result);
-      } catch (e) {
-        return Left(UnexpectedFailure(code: e.toString(), stackTrace: StackTrace.current));
+      } catch (e, stack) {
+        return Left(UnexpectedFailure(code: e.toString(), stackTrace: stack));
       }
     } else {
       return Left(InternetConnectionFailure(
@@ -391,8 +395,8 @@ class ProduceManagerRepository implements IProduceManagerRepository {
         );
 
         return Right(result);
-      } catch (e) {
-        return Left(UnexpectedFailure(code: e.toString(), stackTrace: StackTrace.current));
+      } catch (e, stack) {
+        return Left(UnexpectedFailure(code: e.toString(), stackTrace: stack));
       }
     } else {
       return Left(InternetConnectionFailure(
@@ -410,8 +414,8 @@ class ProduceManagerRepository implements IProduceManagerRepository {
         final result = await remoteDatasource.getPrice(produceId, priceId);
 
         return Right(result);
-      } catch (e) {
-        return Left(UnexpectedFailure(code: e.toString(), stackTrace: StackTrace.current));
+      } catch (e, stack) {
+        return Left(UnexpectedFailure(code: e.toString(), stackTrace: stack));
       }
     } else {
       return Left(InternetConnectionFailure(
@@ -433,8 +437,8 @@ class ProduceManagerRepository implements IProduceManagerRepository {
       } on ProduceManagerException catch (e) {
         return Left(
             ProduceManagerFailure(code: e.code, message: e.message, stackTrace: e.stackTrace));
-      } catch (e) {
-        return Left(UnexpectedFailure(code: e.toString(), stackTrace: StackTrace.current));
+      } catch (e, stack) {
+        return Left(UnexpectedFailure(code: e.toString(), stackTrace: stack));
       }
     } else {
       return Left(InternetConnectionFailure(

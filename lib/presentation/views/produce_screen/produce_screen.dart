@@ -11,6 +11,7 @@ import 'package:farmhub/presentation/shared_widgets/scroll_physics.dart';
 import 'package:farmhub/presentation/shared_widgets/ui_helpers.dart';
 import 'package:farmhub/presentation/smart_widgets/primary_button_aware/primary_button_aware_cubit.dart';
 import 'package:farmhub/presentation/smart_widgets/produce_list_card/produce_list_card.dart';
+import 'package:farmhub/presentation/themes/farmhub_theme.dart';
 import 'package:farmhub/presentation/views/main_screen/main_screen.dart';
 import 'package:farmhub/presentation/views/produce_screen/produce_aggregate_cubit/produce_aggregate_cubit.dart';
 import 'package:farmhub/presentation/views/produce_screen/produce_prices_cubit/produce_prices_cubit.dart';
@@ -44,12 +45,12 @@ class ProduceScreen extends StatefulWidget {
 
 class _ProduceScreenState extends State<ProduceScreen> with SingleTickerProviderStateMixin {
   final List<ct.CustomTab> tabs = <ct.CustomTab>[
-    const ct.CustomTab(text: '1W'),
-    const ct.CustomTab(text: '2W'),
-    const ct.CustomTab(text: '1M'),
-    const ct.CustomTab(text: '2M'),
-    const ct.CustomTab(text: '6M'),
-    const ct.CustomTab(text: '1Y'),
+    const ct.CustomTab(text: ' 1W '),
+    const ct.CustomTab(text: ' 2W '),
+    const ct.CustomTab(text: ' 1M '),
+    const ct.CustomTab(text: ' 2M '),
+    const ct.CustomTab(text: ' 6M '),
+    const ct.CustomTab(text: ' 1Y '),
   ];
   late TabController tabController;
   late ScrollController scrollController;
@@ -316,30 +317,57 @@ class _SliverProducePriceChartState extends State<SliverProducePriceChart> {
 
   @override
   Widget build(BuildContext context) {
+    final tabBackgroundColor = Theme.of(context).extension<ExtendedColors>()!.onBackgroundPale!;
+
     return SliverList(
         delegate: SliverChildListDelegate([
       Container(
+        alignment: Alignment.centerLeft,
+        padding: EdgeInsets.symmetric(vertical: 2),
         margin: const EdgeInsets.symmetric(horizontal: 24),
         decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.primary.withOpacity(0.08),
-            borderRadius: BorderRadius.circular(16)),
-        child: ct.TabBar(
-          onTap: (value) {
-            HapticFeedback.mediumImpact();
+          color: tabBackgroundColor,
+          borderRadius: BorderRadius.circular(16),
+        ),
+        child: ShaderMask(
+          blendMode: BlendMode.dstOut,
+          shaderCallback: (bounds) {
+            return LinearGradient(
+              begin: Alignment.centerLeft,
+              end: Alignment.centerRight,
+              colors: <Color>[
+                tabBackgroundColor,
+                Colors.transparent,
+                Colors.transparent,
+                tabBackgroundColor,
+              ],
+              stops: [0.0, 0.03, 0.97, 1.0],
+            ).createShader(bounds);
           },
-          controller: context.read<ProduceAggregateCubit>().state.props.tabController,
-          tabs: widget.tabs,
-          labelColor: Theme.of(context).colorScheme.primary,
-          indicatorSize: ct.TabBarIndicatorSize.tab,
-          indicator: RectangularIndicator(
-            color: Theme.of(context).colorScheme.secondary,
-            verticalPadding: 4,
-            horizontalPadding: 4,
-            bottomLeftRadius: 12,
-            bottomRightRadius: 12,
-            topLeftRadius: 12,
-            topRightRadius: 12,
-            paintingStyle: PaintingStyle.fill,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(16),
+            child: ct.TabBar(
+              onTap: (value) {
+                HapticFeedback.lightImpact();
+              },
+              padding: EdgeInsets.symmetric(horizontal: 4),
+              physics: DefaultScrollPhysics,
+              isScrollable: true,
+              controller: context.read<ProduceAggregateCubit>().state.props.tabController,
+              tabs: widget.tabs,
+              labelColor: Theme.of(context).colorScheme.primary,
+              indicatorSize: ct.TabBarIndicatorSize.tab,
+              indicator: RectangularIndicator(
+                color: Theme.of(context).colorScheme.secondary,
+                verticalPadding: 4,
+                horizontalPadding: 4,
+                bottomLeftRadius: 12,
+                bottomRightRadius: 12,
+                topLeftRadius: 12,
+                topRightRadius: 12,
+                paintingStyle: PaintingStyle.fill,
+              ),
+            ),
           ),
         ),
       ),
@@ -403,6 +431,15 @@ class _SliverProducePriceChartState extends State<SliverProducePriceChart> {
         },
       ),
     ]));
+  }
+}
+
+class ScrollableLargePriceChart extends StatelessWidget {
+  const ScrollableLargePriceChart({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container();
   }
 }
 
@@ -595,74 +632,78 @@ class PriceListCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final bool isAdmin = context.read<GlobalAuthCubit>().state.isAdmin ?? false;
 
-    return Material(
-      type: MaterialType.transparency,
-      child: InkWell(
-        onLongPress: () async {
-          HapticFeedback.heavyImpact();
-          if (isAdmin) {
-            await NDialog(
-              dialogStyle: DialogStyle(
-                titleDivider: true,
-                backgroundColor: Theme.of(context).colorScheme.background,
-              ),
-              title: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 14),
-                child: Text(
-                  "Hmm, did you long-press this price?",
-                  style: Theme.of(context).textTheme.bodyText2,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 14),
+      child: Material(
+        type: MaterialType.transparency,
+        child: InkWell(
+          borderRadius: BorderRadius.circular(16),
+          onLongPress: () async {
+            HapticFeedback.heavyImpact();
+            if (isAdmin) {
+              await NDialog(
+                dialogStyle: DialogStyle(
+                  titleDivider: true,
+                  backgroundColor: Theme.of(context).colorScheme.background,
                 ),
-              ),
-              content: Padding(
-                padding: const EdgeInsets.only(top: 14, bottom: 24, right: 24),
-                child: Text(
-                  "If you want to edit a price, press the price again to go to the price screen.",
-                  style: Theme.of(context).textTheme.bodyText1,
+                title: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 14),
+                  child: Text(
+                    "Hmm, did you long-press this price?",
+                    style: Theme.of(context).textTheme.bodyText2,
+                  ),
                 ),
+                content: Padding(
+                  padding: const EdgeInsets.only(top: 14, bottom: 24, right: 24),
+                  child: Text(
+                    "If you want to edit a price, press the price again to go to the price screen.",
+                    style: Theme.of(context).textTheme.bodyText1,
+                  ),
+                ),
+              ).show(context, transitionType: DialogTransitionType.Bubble);
+            }
+          },
+          onTap: () {
+            Navigator.of(context)
+                .pushNamed('/price', arguments: PriceScreenArguments(produce, price));
+          },
+          child: Container(
+            margin: const EdgeInsets.symmetric(horizontal: 14),
+            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 24),
+            decoration: BoxDecoration(
+              border: Border(
+                top: _resolveTop(context, index),
+                bottom: BorderSide(color: Theme.of(context).colorScheme.primary.withOpacity(0.24)),
               ),
-            ).show(context, transitionType: DialogTransitionType.Bubble);
-          }
-        },
-        onTap: () {
-          Navigator.of(context)
-              .pushNamed('/price', arguments: PriceScreenArguments(produce, price));
-        },
-        child: Container(
-          margin: const EdgeInsets.symmetric(horizontal: 24),
-          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 24),
-          decoration: BoxDecoration(
-            border: Border(
-              top: _resolveTop(context, index),
-              bottom: BorderSide(color: Theme.of(context).colorScheme.primary.withOpacity(0.24)),
             ),
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Flexible(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      price.priceDate.replaceAll(RegExp("-"), "/"),
-                      maxLines: 3,
-                      overflow: TextOverflow.fade,
-                      style: Theme.of(context).textTheme.bodyText1!.copyWith(fontSize: 17),
-                    ),
-                  ],
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Flexible(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        price.priceDate.replaceAll(RegExp("-"), "/"),
+                        maxLines: 3,
+                        overflow: TextOverflow.fade,
+                        style: Theme.of(context).textTheme.bodyText1!.copyWith(fontSize: 17),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-              Flexible(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    resolveIsAverage(context, price),
-                  ],
-                ),
-              )
-            ],
+                Flexible(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      resolveIsAverage(context, price),
+                    ],
+                  ),
+                )
+              ],
+            ),
           ),
         ),
       ),

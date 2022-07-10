@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:farmhub/features/produce_manager/domain/entities/price/price.dart';
+import 'package:farmhub/presentation/shared_widgets/cards.dart';
 import 'package:farmhub/presentation/shared_widgets/ui_helpers.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
@@ -55,14 +56,18 @@ class LargePriceChart extends StatelessWidget {
   Widget build(BuildContext context) {
     switch (type) {
       case LargePriceChartType.oneW:
-        if (produce.weeklyPrices.length == 1) {
+        print("One Week Prices");
+        print(produce.weeklyPrices);
+        if (produce.weeklyPrices.length <= 1) {
           return const TwoLinedErrorText(
-            firstLineMessage: "Uh oh, we can't draw the chart",
-            secondLineMessage: "This is because there is only one price for this Produce.",
+            firstLineMessage: "There are not enough prices this week",
+            secondLineMessage: "Try checking the two weeks graph",
           );
         }
         return LargeOneWeekChart(produce);
       case LargePriceChartType.twoW:
+        print("Two Week Prices");
+
         if (twoWeeksPricesList == null) {
           return const TwoLinedErrorText(
             firstLineMessage: "It seems like there are no prices.",
@@ -70,10 +75,10 @@ class LargePriceChart extends StatelessWidget {
                 "This is most likely because this produce is very new and has not yet been updated",
           );
         } else {
-          if (twoWeeksPricesList!.length == 1) {
+          if (twoWeeksPricesList!.length <= 1) {
             return const TwoLinedErrorText(
-              firstLineMessage: "Uh oh, we can't draw the chart",
-              secondLineMessage: "This is because there is only one price for this Produce.",
+              firstLineMessage: "There are not enough prices for the last two weeks",
+              secondLineMessage: "Try checking the one month graph",
             );
           }
           return LargeTwoWeekChart(produce, twoWeeksPricesList!);
@@ -86,10 +91,10 @@ class LargePriceChart extends StatelessWidget {
                 "This is most likely because this produce is very new and has not yet been updated",
           );
         } else {
-          if (oneMonthPricesList!.length == 1) {
+          if (oneMonthPricesList!.length <= 1) {
             return const TwoLinedErrorText(
-              firstLineMessage: "Uh oh, we can't draw the chart",
-              secondLineMessage: "This is because there is only one price for this Produce.",
+              firstLineMessage: "There are not enough prices for the last month",
+              secondLineMessage: "Try checking the two months graph",
             );
           }
           return LargeOneMonthChart(produce, oneMonthPricesList!);
@@ -102,10 +107,10 @@ class LargePriceChart extends StatelessWidget {
                 "This is most likely because this produce is very new and has not yet been updated",
           );
         } else {
-          if (twoMonthPricesList!.length == 1) {
+          if (twoMonthPricesList!.length <= 1) {
             return const TwoLinedErrorText(
-              firstLineMessage: "Uh oh, we can't draw the chart",
-              secondLineMessage: "This is because there is only one price for this Produce.",
+              firstLineMessage: "There are not enough prices for the last two months",
+              secondLineMessage: "Try checking the six months graph",
             );
           }
           return LargeTwoMonthChart(produce, twoMonthPricesList!);
@@ -120,8 +125,8 @@ class LargePriceChart extends StatelessWidget {
         } else {
           if (sixMonthPricesList!.length == 1) {
             return const TwoLinedErrorText(
-              firstLineMessage: "Uh oh, we can't draw the chart",
-              secondLineMessage: "This is because there is only one price for this Produce.",
+              firstLineMessage: "There are not enough prices for the last six months",
+              secondLineMessage: "Try checking the one year graph",
             );
           }
           return LargeSixMonthChart(produce, sixMonthPricesList!);
@@ -135,9 +140,10 @@ class LargePriceChart extends StatelessWidget {
           );
         } else {
           if (oneYearPricesList!.length == 1) {
-            return const TwoLinedErrorText(
-              firstLineMessage: "Uh oh, we can't draw the chart",
-              secondLineMessage: "This is because there is only one price for this Produce.",
+            return TwoLinedErrorText(
+              firstLineMessage: "There are not enough prices for the last year",
+              secondLineMessage: "",
+              bottomWidget: WarningCard(produce),
             );
           }
           return LargeOneYearChart(produce, oneYearPricesList!);
@@ -803,9 +809,14 @@ class ErrorText extends StatelessWidget {
 class TwoLinedErrorText extends StatelessWidget {
   final String? firstLineMessage;
   final String? secondLineMessage;
+  final Widget? bottomWidget;
 
-  const TwoLinedErrorText({Key? key, this.firstLineMessage, this.secondLineMessage})
-      : super(key: key);
+  const TwoLinedErrorText({
+    Key? key,
+    this.firstLineMessage,
+    this.secondLineMessage,
+    this.bottomWidget,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -817,19 +828,28 @@ class TwoLinedErrorText extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            Icon(
+              Icons.money_off,
+              color: Theme.of(context).colorScheme.error,
+              size: 34,
+            ),
+            UIVerticalSpace14(),
             Text(
               firstLineMessage ?? "Not Implemented",
               textAlign: TextAlign.center,
+              style: Theme.of(context).textTheme.bodyText2!.copyWith(fontSize: 19),
             ),
             UIVerticalSpace6(),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 14),
               child: Text(
                 secondLineMessage ?? "Not Implemented",
-                style: Theme.of(context).textTheme.caption,
+                style: Theme.of(context).textTheme.caption!.copyWith(fontSize: 14),
                 textAlign: TextAlign.center,
               ),
             ),
+            UIVerticalSpace14(),
+            bottomWidget ?? SizedBox.shrink(),
           ],
         ),
       ),
