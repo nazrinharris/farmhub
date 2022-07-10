@@ -286,4 +286,25 @@ class AuthRepository implements IAuthRepository {
       ));
     }
   }
+
+  @override
+  FutureEither<Unit> chooseUserType(String uid, UserType userType) async {
+    if (await networkInfo.isConnected) {
+      try {
+        await authRemoteDataSource.chooseUserType(uid, userType);
+        return Right(unit);
+      } catch (e, stack) {
+        return Left(UnexpectedFailure(
+          code: e.toString(),
+          stackTrace: stack,
+        ));
+      }
+    } else {
+      return Left(InternetConnectionFailure(
+        code: ERROR_NO_INTERNET_CONNECTION,
+        message: MESSAGE_NO_INTERNET_CONNECTION,
+        stackTrace: StackTrace.current,
+      ));
+    }
+  }
 }

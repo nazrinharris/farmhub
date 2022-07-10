@@ -20,6 +20,8 @@ abstract class IAuthRemoteDataSource {
     required UserType userType,
   });
 
+  Future<Unit> chooseUserType(String uid, UserType userType);
+
   Future<FarmhubUser> loginWithGoogleAccount();
 
   Future<FarmhubUser> registerWithGoogleAccount();
@@ -210,6 +212,15 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
   @override
   Future<Unit> sendPasswordResetEmail(String email) async {
     await firebaseAuth.sendPasswordResetEmail(email: email);
+
+    return unit;
+  }
+
+  @override
+  Future<Unit> chooseUserType(String uid, UserType userType) async {
+    await firebaseFirestore.collection('users').doc(uid).update({
+      "userType": userType.typeAsString,
+    });
 
     return unit;
   }

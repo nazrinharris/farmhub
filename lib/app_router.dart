@@ -17,6 +17,7 @@ import 'package:farmhub/presentation/views/price_screen/price_screen.dart';
 import 'package:farmhub/presentation/views/produce_screen/produce_screen.dart';
 import 'package:farmhub/presentation/views/profile_screen/profile_screen.dart';
 import 'package:farmhub/presentation/views/register_screen/register_screen.dart';
+import 'package:farmhub/presentation/views/register_screen/register_screen_second.dart';
 import 'package:farmhub/presentation/views/search_screen/search_screen.dart';
 import 'package:farmhub/presentation/views/settings_screen/setting_screens.dart';
 import 'package:farmhub/presentation/views/splash_screen/splash_screen.dart';
@@ -76,6 +77,13 @@ class AppRouter {
         return CupertinoPageRoute(builder: (_) => const LoginScreen());
       case '/register':
         return CupertinoPageRoute(builder: (_) => const RegisterScreen());
+      case '/register_second':
+        return PageRouteBuilder(
+          transitionDuration: const Duration(milliseconds: 600),
+          reverseTransitionDuration: const Duration(milliseconds: 600),
+          pageBuilder: ((context, animation, secondaryAnimation) => const RegisterScreenSecond()),
+          transitionsBuilder: createProduceScreenTransitionBuilder,
+        );
       case '/start':
         return MaterialPageRoute(builder: (_) => const StartScreen());
       case '/nav_main':

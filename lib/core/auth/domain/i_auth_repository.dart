@@ -31,6 +31,8 @@ abstract class IAuthRepository {
     required String uid,
   });
 
+  FutureEither<Unit> chooseUserType(String uid, UserType userType);
+
   Future<Either<Failure, FarmhubUser>> updateRemoteUser({
     required FarmhubUser newUserData,
   });

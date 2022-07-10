@@ -2,16 +2,19 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:farmhub/core/auth/auth_bloc/auth_bloc.dart';
+import 'package:farmhub/core/auth/data/repository/auth_repository.dart';
 import 'package:farmhub/core/auth/domain/entities/farmhub_user/farmhub_user.dart';
 import 'package:farmhub/presentation/smart_widgets/info_tile/bloc/info_tile_bloc.dart';
 import 'package:farmhub/presentation/smart_widgets/info_tile/info_tile.dart';
 import 'package:farmhub/presentation/smart_widgets/primary_button_aware/primary_button_aware_cubit.dart';
+import 'package:farmhub/presentation/smart_widgets/produce_dialogs/app_dialogs.dart';
 
 import 'package:flutter/animation.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:simple_animations/simple_animations.dart';
 
+import '../../../../core/auth/domain/i_auth_repository.dart';
 import '../../../smart_widgets/multiple_fields_form/multiple_fields_form_bloc.dart';
 
 part 'register_screen_event.dart';
@@ -19,27 +22,30 @@ part 'register_screen_state.dart';
 part 'register_screen_bloc.freezed.dart';
 
 class RegisterScreenBloc extends Bloc<RegisterScreenEvent, RegisterScreenState> {
-  final RegisterScreenProps registerScreenProps;
-  final AuthBloc authBloc;
+  final RegisterScreenProps? registerScreenProps;
+  final AuthBloc? authBloc;
+  final IAuthRepository authRepository;
 
   // UI-Specific Blocs
-  final FirstTwoFieldsFormBloc firstTwoFieldsFormBloc;
-  final InfoTileBloc infoTileBloc;
-  final PrimaryButtonAwareCubit primaryButtonAwareCubit;
-  final AnimationController infoTileVisibilityController;
+  final FirstTwoFieldsFormBloc? firstTwoFieldsFormBloc;
+  final InfoTileBloc? infoTileBloc;
+  final PrimaryButtonAwareCubit? primaryButtonAwareCubit;
+  final AnimationController? infoTileVisibilityController;
 
   RegisterScreenBloc({
-    required this.authBloc,
-    required this.firstTwoFieldsFormBloc,
-    required this.infoTileBloc,
-    required this.primaryButtonAwareCubit,
+    this.authBloc,
+    this.firstTwoFieldsFormBloc,
+    this.infoTileBloc,
+    this.primaryButtonAwareCubit,
     required this.registerScreenProps,
-    required this.infoTileVisibilityController,
-  }) : super(_RSSInitial(registerScreenProps)) {
+    this.infoTileVisibilityController,
+    required this.authRepository,
+  }) : super(_RSSInitial(registerScreenProps!)) {
     on<_RSEStarted>(started);
     on<_RSEIdle>(idle);
     on<_RSEToggleVisible>(toggleVisible);
     on<_RSEContinuePressed>(continuePressed);
+    on<_RSEChooseUserType>(chooseUserType);
   }
 
   FutureOr<void> started(
@@ -65,9 +71,9 @@ class RegisterScreenBloc extends Bloc<RegisterScreenEvent, RegisterScreenState> 
     print("InfoTile is $isVisible");
 
     if (isVisible) {
-      infoTileVisibilityController.playReverse(duration: const Duration(milliseconds: 500));
+      infoTileVisibilityController!.playReverse(duration: const Duration(milliseconds: 500));
     } else {
-      infoTileVisibilityController.play(duration: const Duration(milliseconds: 500));
+      infoTileVisibilityController!.play(duration: const Duration(milliseconds: 500));
     }
 
     emit(
@@ -77,26 +83,54 @@ class RegisterScreenBloc extends Bloc<RegisterScreenEvent, RegisterScreenState> 
     );
   }
 
+  FutureOr<void> chooseUserType(
+    _RSEChooseUserType event,
+    Emitter<RegisterScreenState> emit,
+  ) async {
+    final progress = returnProgressDialog(
+      event.context,
+      loadingTitle: "Updating profile...",
+      loadingMessage: "It should only take a couple seconds...",
+    );
+
+    progress.show();
+
+    await Future.delayed(const Duration(seconds: 2));
+
+    final result = await authRepository.chooseUserType(event.uid, event.userType);
+
+    result.fold(
+      (f) {
+        showErrorDialog(context: event.context, failure: f);
+        progress.dismiss();
+      },
+      (r) {
+        Navigator.of(event.context).pop();
+        progress.dismiss();
+      },
+    );
+  }
+
   FutureOr<void> continuePressed(
     _RSEContinuePressed event,
     Emitter<RegisterScreenState> emit,
   ) async {
-    firstTwoFieldsFormBloc.add(unfocusAllNodes);
-    firstTwoFieldsFormBloc.add(enableAlwaysValidation);
+    firstTwoFieldsFormBloc!.add(unfocusAllNodes);
+    firstTwoFieldsFormBloc!.add(enableAlwaysValidation);
 
     void updateInfoTile(InfoTileProps infoTileProps) {
-      infoTileBloc.add(InfoTileEvent.triggerStateChange(infoTileProps));
+      infoTileBloc!.add(InfoTileEvent.triggerStateChange(infoTileProps));
     }
 
-    final bool isFormValid = firstTwoFieldsFormBloc.state.props.formKey.currentState!.validate();
+    final bool isFormValid = firstTwoFieldsFormBloc!.state.props.formKey.currentState!.validate();
 
     if (isFormValid) {
-      final String username = firstTwoFieldsFormBloc.state.props.firstFieldValue!;
-      final String email = firstTwoFieldsFormBloc.state.props.secondFieldValue!;
-      final String password = firstTwoFieldsFormBloc.state.props.fourthFieldValue!;
+      final String username = firstTwoFieldsFormBloc!.state.props.firstFieldValue!;
+      final String email = firstTwoFieldsFormBloc!.state.props.secondFieldValue!;
+      final String password = firstTwoFieldsFormBloc!.state.props.fourthFieldValue!;
 
       // Update UI to indicate Loading
-      infoTileVisibilityController.play(
+      infoTileVisibilityController!.play(
         duration: const Duration(milliseconds: 500),
       );
       updateInfoTile(const InfoTileProps(
@@ -106,17 +140,17 @@ class RegisterScreenBloc extends Bloc<RegisterScreenEvent, RegisterScreenState> 
         isExpanded: false,
         currentStatus: InfoTileStatus.loading,
       ));
-      primaryButtonAwareCubit.triggerLoading();
+      primaryButtonAwareCubit!.triggerLoading();
 
       // Start Registration Process
-      authBloc.add(AuthEvent.execRegisterWithEmailAndPassword(
+      authBloc!.add(AuthEvent.execRegisterWithEmailAndPassword(
         email: email,
         password: password,
         username: username,
         userType: UserType.regular,
       ));
 
-      await emit.onEach(authBloc.stream, onData: (AuthState state) {
+      await emit.onEach(authBloc!.stream, onData: (AuthState state) {
         if (state is ASRegisterSuccess) {
           updateInfoTile(InfoTileProps(
             leadingText: 'Registration Success!',
@@ -131,8 +165,9 @@ class RegisterScreenBloc extends Bloc<RegisterScreenEvent, RegisterScreenState> 
             currentStatus: InfoTileStatus.success,
           ));
 
-          primaryButtonAwareCubit.triggerFirstPage();
+          primaryButtonAwareCubit!.triggerFirstPage();
           Navigator.of(event.context).pushNamedAndRemoveUntil('/nav_main', (route) => false);
+          Navigator.of(event.context).pushNamed("/register_second");
         } else if (state is ASRegisterError) {
           debugPrintStack(stackTrace: state.stackTrace);
           updateInfoTile(InfoTileProps(
@@ -148,7 +183,7 @@ class RegisterScreenBloc extends Bloc<RegisterScreenEvent, RegisterScreenState> 
             currentStatus: InfoTileStatus.error,
           ));
 
-          primaryButtonAwareCubit.triggerFirstPage();
+          primaryButtonAwareCubit!.triggerFirstPage();
         } else {}
       });
     }
