@@ -5,21 +5,19 @@ import 'package:farmhub/presentation/shared_widgets/appbars.dart';
 import 'package:farmhub/presentation/shared_widgets/buttons.dart';
 import 'package:farmhub/presentation/shared_widgets/scroll_physics.dart';
 import 'package:farmhub/presentation/shared_widgets/ui_helpers.dart';
+import 'package:farmhub/presentation/views/user_management_screens/cubit/user_management_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'bloc/register_screen_bloc.dart';
+import '../register_screen/bloc/register_screen_bloc.dart';
 
-class RegisterScreenSecond extends StatelessWidget {
-  const RegisterScreenSecond({Key? key}) : super(key: key);
+class ChooseUserTypeScreen extends StatelessWidget {
+  const ChooseUserTypeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => RegisterScreenBloc(
-        authRepository: locator(),
-        registerScreenProps: const RegisterScreenProps(isInfoTileVisible: false),
-      ),
+      create: (context) => UserManagementCubit(authRepository: locator()),
       child: Scaffold(
         extendBodyBehindAppBar: true,
         extendBody: true,
@@ -34,7 +32,7 @@ class RegisterScreenSecond extends StatelessWidget {
           child: ListView(
             physics: DefaultScrollPhysics,
             children: [
-              const RegisterScreenSecondTitle(),
+              const ChooseUserType(),
               const UICustomVertical(80),
               const AccountTypeChooser(),
             ],
@@ -45,8 +43,8 @@ class RegisterScreenSecond extends StatelessWidget {
   }
 }
 
-class RegisterScreenSecondTitle extends StatelessWidget {
-  const RegisterScreenSecondTitle({Key? key}) : super(key: key);
+class ChooseUserType extends StatelessWidget {
+  const ChooseUserType({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -82,13 +80,11 @@ class AccountTypeChooser extends StatelessWidget {
         children: [
           PrimaryButton(
             content: "Farmer",
-            onPressed: () {
-              context.read<RegisterScreenBloc>().add(
-                    RegisterScreenEvent.chooseUserType(
-                      userType: UserType.farmer,
-                      context: context,
-                      uid: context.read<GlobalAuthCubit>().state.farmhubUser!.uid,
-                    ),
+            onPressed: () async {
+              await context.read<UserManagementCubit>().chooseUserType(
+                    uid: context.read<GlobalAuthCubit>().state.farmhubUser!.uid,
+                    userType: UserType.farmer,
+                    context: context,
                   );
             },
             width: 200,
@@ -96,13 +92,11 @@ class AccountTypeChooser extends StatelessWidget {
           const UIVerticalSpace14(),
           PrimaryButton(
             content: "Business",
-            onPressed: () {
-              context.read<RegisterScreenBloc>().add(
-                    RegisterScreenEvent.chooseUserType(
-                      userType: UserType.business,
-                      context: context,
-                      uid: context.read<GlobalAuthCubit>().state.farmhubUser!.uid,
-                    ),
+            onPressed: () async {
+              await context.read<UserManagementCubit>().chooseUserType(
+                    uid: context.read<GlobalAuthCubit>().state.farmhubUser!.uid,
+                    userType: UserType.business,
+                    context: context,
                   );
             },
             width: 200,
@@ -110,13 +104,11 @@ class AccountTypeChooser extends StatelessWidget {
           const UIVerticalSpace14(),
           PrimaryButton(
             content: "Regular",
-            onPressed: () {
-              context.read<RegisterScreenBloc>().add(
-                    RegisterScreenEvent.chooseUserType(
-                      userType: UserType.regular,
-                      context: context,
-                      uid: context.read<GlobalAuthCubit>().state.farmhubUser!.uid,
-                    ),
+            onPressed: () async {
+              await context.read<UserManagementCubit>().chooseUserType(
+                    uid: context.read<GlobalAuthCubit>().state.farmhubUser!.uid,
+                    userType: UserType.regular,
+                    context: context,
                   );
             },
             width: 200,

@@ -22,9 +22,6 @@ mixin _$RegisterScreenEvent {
     required TResult Function() idle,
     required TResult Function(BuildContext context) continuePressed,
     required TResult Function() toggleInfoTileVisibility,
-    required TResult Function(
-            UserType userType, BuildContext context, String uid)
-        chooseUserType,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -33,8 +30,6 @@ mixin _$RegisterScreenEvent {
     TResult Function()? idle,
     TResult Function(BuildContext context)? continuePressed,
     TResult Function()? toggleInfoTileVisibility,
-    TResult Function(UserType userType, BuildContext context, String uid)?
-        chooseUserType,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -43,8 +38,6 @@ mixin _$RegisterScreenEvent {
     TResult Function()? idle,
     TResult Function(BuildContext context)? continuePressed,
     TResult Function()? toggleInfoTileVisibility,
-    TResult Function(UserType userType, BuildContext context, String uid)?
-        chooseUserType,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -54,7 +47,6 @@ mixin _$RegisterScreenEvent {
     required TResult Function(_RSEIdle value) idle,
     required TResult Function(_RSEContinuePressed value) continuePressed,
     required TResult Function(_RSEToggleVisible value) toggleInfoTileVisibility,
-    required TResult Function(_RSEChooseUserType value) chooseUserType,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -63,7 +55,6 @@ mixin _$RegisterScreenEvent {
     TResult Function(_RSEIdle value)? idle,
     TResult Function(_RSEContinuePressed value)? continuePressed,
     TResult Function(_RSEToggleVisible value)? toggleInfoTileVisibility,
-    TResult Function(_RSEChooseUserType value)? chooseUserType,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -72,7 +63,6 @@ mixin _$RegisterScreenEvent {
     TResult Function(_RSEIdle value)? idle,
     TResult Function(_RSEContinuePressed value)? continuePressed,
     TResult Function(_RSEToggleVisible value)? toggleInfoTileVisibility,
-    TResult Function(_RSEChooseUserType value)? chooseUserType,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -140,9 +130,6 @@ class _$_RSEStarted implements _RSEStarted {
     required TResult Function() idle,
     required TResult Function(BuildContext context) continuePressed,
     required TResult Function() toggleInfoTileVisibility,
-    required TResult Function(
-            UserType userType, BuildContext context, String uid)
-        chooseUserType,
   }) {
     return started();
   }
@@ -154,8 +141,6 @@ class _$_RSEStarted implements _RSEStarted {
     TResult Function()? idle,
     TResult Function(BuildContext context)? continuePressed,
     TResult Function()? toggleInfoTileVisibility,
-    TResult Function(UserType userType, BuildContext context, String uid)?
-        chooseUserType,
   }) {
     return started?.call();
   }
@@ -167,8 +152,6 @@ class _$_RSEStarted implements _RSEStarted {
     TResult Function()? idle,
     TResult Function(BuildContext context)? continuePressed,
     TResult Function()? toggleInfoTileVisibility,
-    TResult Function(UserType userType, BuildContext context, String uid)?
-        chooseUserType,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -184,7 +167,6 @@ class _$_RSEStarted implements _RSEStarted {
     required TResult Function(_RSEIdle value) idle,
     required TResult Function(_RSEContinuePressed value) continuePressed,
     required TResult Function(_RSEToggleVisible value) toggleInfoTileVisibility,
-    required TResult Function(_RSEChooseUserType value) chooseUserType,
   }) {
     return started(this);
   }
@@ -196,7 +178,6 @@ class _$_RSEStarted implements _RSEStarted {
     TResult Function(_RSEIdle value)? idle,
     TResult Function(_RSEContinuePressed value)? continuePressed,
     TResult Function(_RSEToggleVisible value)? toggleInfoTileVisibility,
-    TResult Function(_RSEChooseUserType value)? chooseUserType,
   }) {
     return started?.call(this);
   }
@@ -208,7 +189,6 @@ class _$_RSEStarted implements _RSEStarted {
     TResult Function(_RSEIdle value)? idle,
     TResult Function(_RSEContinuePressed value)? continuePressed,
     TResult Function(_RSEToggleVisible value)? toggleInfoTileVisibility,
-    TResult Function(_RSEChooseUserType value)? chooseUserType,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -266,9 +246,6 @@ class _$_RSEIdle implements _RSEIdle {
     required TResult Function() idle,
     required TResult Function(BuildContext context) continuePressed,
     required TResult Function() toggleInfoTileVisibility,
-    required TResult Function(
-            UserType userType, BuildContext context, String uid)
-        chooseUserType,
   }) {
     return idle();
   }
@@ -280,8 +257,6 @@ class _$_RSEIdle implements _RSEIdle {
     TResult Function()? idle,
     TResult Function(BuildContext context)? continuePressed,
     TResult Function()? toggleInfoTileVisibility,
-    TResult Function(UserType userType, BuildContext context, String uid)?
-        chooseUserType,
   }) {
     return idle?.call();
   }
@@ -293,8 +268,6 @@ class _$_RSEIdle implements _RSEIdle {
     TResult Function()? idle,
     TResult Function(BuildContext context)? continuePressed,
     TResult Function()? toggleInfoTileVisibility,
-    TResult Function(UserType userType, BuildContext context, String uid)?
-        chooseUserType,
     required TResult orElse(),
   }) {
     if (idle != null) {
@@ -310,7 +283,6 @@ class _$_RSEIdle implements _RSEIdle {
     required TResult Function(_RSEIdle value) idle,
     required TResult Function(_RSEContinuePressed value) continuePressed,
     required TResult Function(_RSEToggleVisible value) toggleInfoTileVisibility,
-    required TResult Function(_RSEChooseUserType value) chooseUserType,
   }) {
     return idle(this);
   }
@@ -322,7 +294,6 @@ class _$_RSEIdle implements _RSEIdle {
     TResult Function(_RSEIdle value)? idle,
     TResult Function(_RSEContinuePressed value)? continuePressed,
     TResult Function(_RSEToggleVisible value)? toggleInfoTileVisibility,
-    TResult Function(_RSEChooseUserType value)? chooseUserType,
   }) {
     return idle?.call(this);
   }
@@ -334,7 +305,6 @@ class _$_RSEIdle implements _RSEIdle {
     TResult Function(_RSEIdle value)? idle,
     TResult Function(_RSEContinuePressed value)? continuePressed,
     TResult Function(_RSEToggleVisible value)? toggleInfoTileVisibility,
-    TResult Function(_RSEChooseUserType value)? chooseUserType,
     required TResult orElse(),
   }) {
     if (idle != null) {
@@ -418,9 +388,6 @@ class _$_RSEContinuePressed implements _RSEContinuePressed {
     required TResult Function() idle,
     required TResult Function(BuildContext context) continuePressed,
     required TResult Function() toggleInfoTileVisibility,
-    required TResult Function(
-            UserType userType, BuildContext context, String uid)
-        chooseUserType,
   }) {
     return continuePressed(context);
   }
@@ -432,8 +399,6 @@ class _$_RSEContinuePressed implements _RSEContinuePressed {
     TResult Function()? idle,
     TResult Function(BuildContext context)? continuePressed,
     TResult Function()? toggleInfoTileVisibility,
-    TResult Function(UserType userType, BuildContext context, String uid)?
-        chooseUserType,
   }) {
     return continuePressed?.call(context);
   }
@@ -445,8 +410,6 @@ class _$_RSEContinuePressed implements _RSEContinuePressed {
     TResult Function()? idle,
     TResult Function(BuildContext context)? continuePressed,
     TResult Function()? toggleInfoTileVisibility,
-    TResult Function(UserType userType, BuildContext context, String uid)?
-        chooseUserType,
     required TResult orElse(),
   }) {
     if (continuePressed != null) {
@@ -462,7 +425,6 @@ class _$_RSEContinuePressed implements _RSEContinuePressed {
     required TResult Function(_RSEIdle value) idle,
     required TResult Function(_RSEContinuePressed value) continuePressed,
     required TResult Function(_RSEToggleVisible value) toggleInfoTileVisibility,
-    required TResult Function(_RSEChooseUserType value) chooseUserType,
   }) {
     return continuePressed(this);
   }
@@ -474,7 +436,6 @@ class _$_RSEContinuePressed implements _RSEContinuePressed {
     TResult Function(_RSEIdle value)? idle,
     TResult Function(_RSEContinuePressed value)? continuePressed,
     TResult Function(_RSEToggleVisible value)? toggleInfoTileVisibility,
-    TResult Function(_RSEChooseUserType value)? chooseUserType,
   }) {
     return continuePressed?.call(this);
   }
@@ -486,7 +447,6 @@ class _$_RSEContinuePressed implements _RSEContinuePressed {
     TResult Function(_RSEIdle value)? idle,
     TResult Function(_RSEContinuePressed value)? continuePressed,
     TResult Function(_RSEToggleVisible value)? toggleInfoTileVisibility,
-    TResult Function(_RSEChooseUserType value)? chooseUserType,
     required TResult orElse(),
   }) {
     if (continuePressed != null) {
@@ -551,9 +511,6 @@ class _$_RSEToggleVisible implements _RSEToggleVisible {
     required TResult Function() idle,
     required TResult Function(BuildContext context) continuePressed,
     required TResult Function() toggleInfoTileVisibility,
-    required TResult Function(
-            UserType userType, BuildContext context, String uid)
-        chooseUserType,
   }) {
     return toggleInfoTileVisibility();
   }
@@ -565,8 +522,6 @@ class _$_RSEToggleVisible implements _RSEToggleVisible {
     TResult Function()? idle,
     TResult Function(BuildContext context)? continuePressed,
     TResult Function()? toggleInfoTileVisibility,
-    TResult Function(UserType userType, BuildContext context, String uid)?
-        chooseUserType,
   }) {
     return toggleInfoTileVisibility?.call();
   }
@@ -578,8 +533,6 @@ class _$_RSEToggleVisible implements _RSEToggleVisible {
     TResult Function()? idle,
     TResult Function(BuildContext context)? continuePressed,
     TResult Function()? toggleInfoTileVisibility,
-    TResult Function(UserType userType, BuildContext context, String uid)?
-        chooseUserType,
     required TResult orElse(),
   }) {
     if (toggleInfoTileVisibility != null) {
@@ -595,7 +548,6 @@ class _$_RSEToggleVisible implements _RSEToggleVisible {
     required TResult Function(_RSEIdle value) idle,
     required TResult Function(_RSEContinuePressed value) continuePressed,
     required TResult Function(_RSEToggleVisible value) toggleInfoTileVisibility,
-    required TResult Function(_RSEChooseUserType value) chooseUserType,
   }) {
     return toggleInfoTileVisibility(this);
   }
@@ -607,7 +559,6 @@ class _$_RSEToggleVisible implements _RSEToggleVisible {
     TResult Function(_RSEIdle value)? idle,
     TResult Function(_RSEContinuePressed value)? continuePressed,
     TResult Function(_RSEToggleVisible value)? toggleInfoTileVisibility,
-    TResult Function(_RSEChooseUserType value)? chooseUserType,
   }) {
     return toggleInfoTileVisibility?.call(this);
   }
@@ -619,7 +570,6 @@ class _$_RSEToggleVisible implements _RSEToggleVisible {
     TResult Function(_RSEIdle value)? idle,
     TResult Function(_RSEContinuePressed value)? continuePressed,
     TResult Function(_RSEToggleVisible value)? toggleInfoTileVisibility,
-    TResult Function(_RSEChooseUserType value)? chooseUserType,
     required TResult orElse(),
   }) {
     if (toggleInfoTileVisibility != null) {
@@ -631,188 +581,6 @@ class _$_RSEToggleVisible implements _RSEToggleVisible {
 
 abstract class _RSEToggleVisible implements RegisterScreenEvent {
   const factory _RSEToggleVisible() = _$_RSEToggleVisible;
-}
-
-/// @nodoc
-abstract class _$$_RSEChooseUserTypeCopyWith<$Res> {
-  factory _$$_RSEChooseUserTypeCopyWith(_$_RSEChooseUserType value,
-          $Res Function(_$_RSEChooseUserType) then) =
-      __$$_RSEChooseUserTypeCopyWithImpl<$Res>;
-  $Res call({UserType userType, BuildContext context, String uid});
-}
-
-/// @nodoc
-class __$$_RSEChooseUserTypeCopyWithImpl<$Res>
-    extends _$RegisterScreenEventCopyWithImpl<$Res>
-    implements _$$_RSEChooseUserTypeCopyWith<$Res> {
-  __$$_RSEChooseUserTypeCopyWithImpl(
-      _$_RSEChooseUserType _value, $Res Function(_$_RSEChooseUserType) _then)
-      : super(_value, (v) => _then(v as _$_RSEChooseUserType));
-
-  @override
-  _$_RSEChooseUserType get _value => super._value as _$_RSEChooseUserType;
-
-  @override
-  $Res call({
-    Object? userType = freezed,
-    Object? context = freezed,
-    Object? uid = freezed,
-  }) {
-    return _then(_$_RSEChooseUserType(
-      userType: userType == freezed
-          ? _value.userType
-          : userType // ignore: cast_nullable_to_non_nullable
-              as UserType,
-      context: context == freezed
-          ? _value.context
-          : context // ignore: cast_nullable_to_non_nullable
-              as BuildContext,
-      uid: uid == freezed
-          ? _value.uid
-          : uid // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_RSEChooseUserType implements _RSEChooseUserType {
-  const _$_RSEChooseUserType(
-      {required this.userType, required this.context, required this.uid});
-
-  @override
-  final UserType userType;
-  @override
-  final BuildContext context;
-  @override
-  final String uid;
-
-  @override
-  String toString() {
-    return 'RegisterScreenEvent.chooseUserType(userType: $userType, context: $context, uid: $uid)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_RSEChooseUserType &&
-            const DeepCollectionEquality().equals(other.userType, userType) &&
-            const DeepCollectionEquality().equals(other.context, context) &&
-            const DeepCollectionEquality().equals(other.uid, uid));
-  }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(userType),
-      const DeepCollectionEquality().hash(context),
-      const DeepCollectionEquality().hash(uid));
-
-  @JsonKey(ignore: true)
-  @override
-  _$$_RSEChooseUserTypeCopyWith<_$_RSEChooseUserType> get copyWith =>
-      __$$_RSEChooseUserTypeCopyWithImpl<_$_RSEChooseUserType>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function() idle,
-    required TResult Function(BuildContext context) continuePressed,
-    required TResult Function() toggleInfoTileVisibility,
-    required TResult Function(
-            UserType userType, BuildContext context, String uid)
-        chooseUserType,
-  }) {
-    return chooseUserType(userType, context, uid);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function()? idle,
-    TResult Function(BuildContext context)? continuePressed,
-    TResult Function()? toggleInfoTileVisibility,
-    TResult Function(UserType userType, BuildContext context, String uid)?
-        chooseUserType,
-  }) {
-    return chooseUserType?.call(userType, context, uid);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function()? idle,
-    TResult Function(BuildContext context)? continuePressed,
-    TResult Function()? toggleInfoTileVisibility,
-    TResult Function(UserType userType, BuildContext context, String uid)?
-        chooseUserType,
-    required TResult orElse(),
-  }) {
-    if (chooseUserType != null) {
-      return chooseUserType(userType, context, uid);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_RSEStarted value) started,
-    required TResult Function(_RSEIdle value) idle,
-    required TResult Function(_RSEContinuePressed value) continuePressed,
-    required TResult Function(_RSEToggleVisible value) toggleInfoTileVisibility,
-    required TResult Function(_RSEChooseUserType value) chooseUserType,
-  }) {
-    return chooseUserType(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_RSEStarted value)? started,
-    TResult Function(_RSEIdle value)? idle,
-    TResult Function(_RSEContinuePressed value)? continuePressed,
-    TResult Function(_RSEToggleVisible value)? toggleInfoTileVisibility,
-    TResult Function(_RSEChooseUserType value)? chooseUserType,
-  }) {
-    return chooseUserType?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_RSEStarted value)? started,
-    TResult Function(_RSEIdle value)? idle,
-    TResult Function(_RSEContinuePressed value)? continuePressed,
-    TResult Function(_RSEToggleVisible value)? toggleInfoTileVisibility,
-    TResult Function(_RSEChooseUserType value)? chooseUserType,
-    required TResult orElse(),
-  }) {
-    if (chooseUserType != null) {
-      return chooseUserType(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _RSEChooseUserType implements RegisterScreenEvent {
-  const factory _RSEChooseUserType(
-      {required final UserType userType,
-      required final BuildContext context,
-      required final String uid}) = _$_RSEChooseUserType;
-
-  UserType get userType => throw _privateConstructorUsedError;
-  BuildContext get context => throw _privateConstructorUsedError;
-  String get uid => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  _$$_RSEChooseUserTypeCopyWith<_$_RSEChooseUserType> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
