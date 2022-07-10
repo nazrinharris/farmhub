@@ -37,6 +37,18 @@ class ProduceManagerException implements Exception {
   });
 }
 
+class AuthException implements Exception {
+  final String code;
+  final String message;
+  final StackTrace? stackTrace;
+
+  AuthException({
+    required this.code,
+    required this.message,
+    required this.stackTrace,
+  });
+}
+
 class AuthLocalDatasourceException implements Exception {
   final String code;
   final String message;

@@ -176,7 +176,7 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
     final Map<String, dynamic>? aggregatePricesMap = await firebaseFirestore
         .collection('produce')
         .doc(produceId)
-        .collection('prices')
+        .collection('aggregatePrices')
         .doc('aggregatePrices${currentYear.toString()}')
         .get()
         .then((doc) => doc.data());

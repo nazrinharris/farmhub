@@ -67,7 +67,7 @@ class LargePriceChart extends StatelessWidget {
         return LargeOneWeekChart(produce);
       case LargePriceChartType.twoW:
         print("Two Week Prices");
-
+        print(twoWeeksPricesList);
         if (twoWeeksPricesList == null) {
           return const TwoLinedErrorText(
             firstLineMessage: "It seems like there are no prices.",
@@ -84,6 +84,8 @@ class LargePriceChart extends StatelessWidget {
           return LargeTwoWeekChart(produce, twoWeeksPricesList!);
         }
       case LargePriceChartType.oneM:
+        print("One Month Prices");
+        print(oneMonthPricesList);
         if (oneMonthPricesList == null) {
           return const TwoLinedErrorText(
             firstLineMessage: "It seems like there are no prices.",

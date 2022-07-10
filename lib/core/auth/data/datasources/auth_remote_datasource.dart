@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:farmhub/core/auth/domain/entities/farmhub_user/farmhub_user.dart';
+import 'package:farmhub/core/errors/exceptions.dart';
 import 'package:farmhub/core/util/app_const.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fpdart/fpdart.dart';
@@ -81,6 +82,22 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
     required String username,
     required UserType userType,
   }) async {
+    /// Check if there already exists the username.
+    final resultingQuery = await firebaseFirestore
+        .collection('users')
+        .where("username", isEqualTo: username)
+        .get()
+        .then(
+          (value) => value.docs,
+        );
+    if (resultingQuery.isNotEmpty) {
+      throw AuthException(
+        code: ERR_USERNAME_UNAVAILABLE,
+        message: "Sorry, this username is not available",
+        stackTrace: StackTrace.current,
+      );
+    }
+
     /// Start Registration Process - Register Method at FirebaseAuth
     final resultUid = await firebaseAuth
         .createUserWithEmailAndPassword(email: email, password: password)
@@ -109,6 +126,7 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
       "username": farmhubUser.username,
       "createdAt": farmhubUser.createdAt,
       "produceFavoritesMap": {},
+      "userType": userType.typeAsString,
     }, null);
 
     return farmhubUser;
