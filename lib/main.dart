@@ -29,6 +29,7 @@ Future<void> main() async {
   // Comment for even more commits
   // Comment for offline capability
   // Comment for enhancements and touch ups
+  // Comment for farm and account types
 }
 
 class FarmhubApp extends StatelessWidget {
