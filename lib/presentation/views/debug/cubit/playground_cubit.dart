@@ -172,8 +172,8 @@ class PlaygroundCubit extends Cubit<PlaygroundState> {
     await firebaseFirestore
         .collection('produce')
         .doc(produceId)
-        .collection('prices')
-        .doc('aggregate-prices-$chosenYear')
+        .collection('aggregatePrices')
+        .doc('aggregatePrices$chosenYear')
         .update({"prices-map.$chosenDate": FieldValue.delete()});
   }
 }

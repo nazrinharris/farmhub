@@ -177,7 +177,7 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
         .collection('produce')
         .doc(produceId)
         .collection('prices')
-        .doc('aggregate-prices-${currentYear.toString()}')
+        .doc('aggregatePrices${currentYear.toString()}')
         .get()
         .then((doc) => doc.data());
 
@@ -253,8 +253,8 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
         await firebaseFirestore
             .collection('produce')
             .doc(doc.id)
-            .collection('aggregate-prices')
-            .doc("aggregate-prices-$currentYear")
+            .collection('aggregatePrices')
+            .doc("aggregatePrices$currentYear")
             .set({
           "prices-map": {
             currentDate: currentProducePrice,
@@ -349,8 +349,8 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
     final Map<String, dynamic> aggregatePricesMap = await firebaseFirestore
         .collection('produce')
         .doc(produceId)
-        .collection('aggregate-prices')
-        .doc("aggregate-prices-$chosenYear")
+        .collection('aggregatePrices')
+        .doc("aggregatePrices$chosenYear")
         .get()
         .then((value) => value.data()!);
 
@@ -540,7 +540,7 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
     final priceDateTimeStamp = price.priceDateTimeStamp;
     final chosenYear = DateFormat("yyyy").format(priceDateTimeStamp);
 
-    /// [formattedAggregatePriceDate] refers to the date of THIS price which will be kept in [aggregate-prices]
+    /// [formattedAggregatePriceDate] refers to the date of THIS price which will be kept in [aggregatePrices]
     final formattedAggregatePriceDate = DateFormat("dd-MM-yyyy").format(priceDateTimeStamp);
 
     /// [subPricesList] refers to the prices associated with this [Price] object
@@ -580,8 +580,8 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
     await firebaseFirestore
         .collection('produce')
         .doc(produceId)
-        .collection('aggregate-prices')
-        .doc('aggregate-prices-$chosenYear')
+        .collection('aggregatePrices')
+        .doc('aggregatePrices$chosenYear')
         .update({
       "prices-map.$formattedAggregatePriceDate": updatedPrice.currentPrice,
     });
@@ -636,14 +636,14 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
 
     if (updatedSubPricesList.isEmpty) {
       //? This means that the last [subPrice] was deleted and thus, the [Price] doc needs to be deleted.
-      //? Three major steps: Update [aggregate-prices], Delete [Price] document, Update [Produce]
+      //? Three major steps: Update [aggregatePrices], Delete [Price] document, Update [Produce]
       //! Check if there is only one [Price] left, if yes, throw Exception.
       // Note that this checks if it is the last price of that year.
       final allPricesList = await firebaseFirestore
           .collection('produce')
           .doc(produceId)
-          .collection('aggregate-prices')
-          .doc("aggregate-prices-$priceYear")
+          .collection('aggregatePrices')
+          .doc("aggregatePrices$priceYear")
           .get()
           .then((value) => PriceSnippet.fromAggregateToList(value.data()!));
       if (allPricesList.length == 1) {
@@ -654,12 +654,12 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
         );
       }
 
-      //! Delete [Price] from [aggregate-prices]
+      //! Delete [Price] from [aggregatePrices]
       await firebaseFirestore
           .collection('produce')
           .doc(produceId)
-          .collection('aggregate-prices')
-          .doc('aggregate-prices-$priceYear')
+          .collection('aggregatePrices')
+          .doc('aggregatePrices$priceYear')
           .update({"prices-map.${price.priceDate}": FieldValue.delete()});
       //! Delete [Price] document
       await firebaseFirestore
@@ -677,7 +677,7 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
       isPriceDocDeleted = true;
     } else {
       //? This means that there are at least one [subPrice] left.
-      //? steps: Update [Price]'s [currentPrice] and [allPrices], Update [aggregate-prices], Update [Produce]
+      //? steps: Update [Price]'s [currentPrice] and [allPrices], Update [aggregatePrices], Update [Produce]
 
       //! Update [Price]'s [currentPrice] and [allPrices]
       final updatedPrice = _deleteSubPriceAndUpdatePrice(price, subPriceDate);
@@ -689,12 +689,12 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
           .update(
             Price.toMap(updatedPrice),
           );
-      //! Update [aggregate-prices]
+      //! Update [aggregatePrices]
       await firebaseFirestore
           .collection('produce')
           .doc(produceId)
-          .collection('aggregate-prices')
-          .doc('aggregate-prices-$priceYear')
+          .collection('aggregatePrices')
+          .doc('aggregatePrices$priceYear')
           .update({"prices-map.${price.priceDate}": updatedPrice.currentPrice});
       //! Update [Produce]
       updateProducePrices(
@@ -782,9 +782,9 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
   }
 }
 
-/// This method will update [currentProducePrice], [previousProducePrice] and [aggregate-prices].
+/// This method will update [currentProducePrice], [previousProducePrice] and [aggregatePrices].
 ///
-/// Note that this method assumes [aggregate-prices] is up-to-date. So update aggregate first before
+/// Note that this method assumes [aggregatePrices] is up-to-date. So update aggregate first before
 /// using this method.
 Future<void> updateProducePrices({
   required FirebaseFirestore firebaseFirestore,
@@ -796,8 +796,8 @@ Future<void> updateProducePrices({
   final Map<String, dynamic> aggregatePricesMap = await firebaseFirestore
       .collection('produce')
       .doc(produceId)
-      .collection('aggregate-prices')
-      .doc("aggregate-prices-$chosenYear")
+      .collection('aggregatePrices')
+      .doc("aggregatePrices$chosenYear")
       .get()
       .then((value) => value.data()!);
 
@@ -932,8 +932,8 @@ Future<void> updateAggregatePrices({
   await firebaseFirestore
       .collection('produce')
       .doc(produceId)
-      .collection('aggregate-prices')
-      .doc('aggregate-prices-$chosenYear')
+      .collection('aggregatePrices')
+      .doc('aggregatePrices$chosenYear')
       .update({"prices-map.$chosenDate": newPrice});
 }
 

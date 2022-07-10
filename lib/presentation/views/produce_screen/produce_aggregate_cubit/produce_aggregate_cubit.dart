@@ -64,7 +64,7 @@ class ProduceAggregateCubit extends Cubit<ProduceAggregateState> {
       },
     );
 
-    // Begin retrieval of [aggregate-prices]
+    // Begin retrieval of [aggregatePrices]
     final failureOrAggregatePrices = await repository.getAggregatePrices(produceId);
 
     failureOrAggregatePrices.fold(

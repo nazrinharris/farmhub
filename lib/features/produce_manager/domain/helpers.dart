@@ -20,7 +20,7 @@ const Map<String, int> rangeTypeInDaysMap = {
 };
 
 /// This method converts the given [pricesList] which should be an unsorted list converted from
-/// [aggregate-prices].
+/// [aggregatePrices].
 ///
 /// If [rangeType] is not specified, it defaults to [twoW]
 List<PriceSnippet> pricesToRanged(
