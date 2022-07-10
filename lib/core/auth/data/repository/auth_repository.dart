@@ -11,6 +11,8 @@ import 'package:farmhub/core/util/app_const.dart';
 import 'package:farmhub/core/errors/failures.dart';
 import 'package:farmhub/core/network/network_info.dart';
 
+import '../../../errors/exceptions.dart';
+
 class AuthRepository implements IAuthRepository {
   final IAuthRemoteDataSource authRemoteDataSource;
   final IAuthLocalDataSource authLocalDataSource;
@@ -80,6 +82,12 @@ class AuthRepository implements IAuthRepository {
         return Left(FirebaseAuthFailure(
           code: e.code,
           message: e.message,
+          stackTrace: e.stackTrace,
+        ));
+      } on AuthException catch (e) {
+        return Left(AuthFailure(
+          message: e.message,
+          code: e.code,
           stackTrace: e.stackTrace,
         ));
       } catch (e, stack) {
@@ -200,6 +208,12 @@ class AuthRepository implements IAuthRepository {
         return Left(FirebaseFirestoreFailure(
           code: e.code,
           message: e.message,
+          stackTrace: e.stackTrace,
+        ));
+      } on AuthException catch (e) {
+        return Left(AuthFailure(
+          message: e.message,
+          code: e.code,
           stackTrace: e.stackTrace,
         ));
       } catch (e, stack) {

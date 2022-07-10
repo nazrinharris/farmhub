@@ -138,7 +138,7 @@ class RegisterScreenBloc extends Bloc<RegisterScreenEvent, RegisterScreenState> 
           updateInfoTile(InfoTileProps(
             leadingText: 'Uh oh, Something\'s wrong!',
             child: Text(
-              "Code: ${state.code}, Message: ${state.message}",
+              state.message,
               style: const TextStyle(
                 color: Colors.white,
               ),
