@@ -1,5 +1,6 @@
-import 'package:farmhub/core/auth/domain/entities/address/address.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+
+import '../address/address.dart';
 
 part 'farm_shop.freezed.dart';
 

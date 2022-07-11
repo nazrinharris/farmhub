@@ -5,8 +5,8 @@ import 'package:farmhub/features/produce_manager/domain/entities/produce/produce
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:intl/intl.dart';
 
+import '../../../../../features/farm_shop_manager/domain/entities/farm_shop/farm_shop.dart';
 import '../../../../errors/exceptions.dart';
-import 'farm_shop.dart';
 
 part 'farmhub_user.freezed.dart';
 
