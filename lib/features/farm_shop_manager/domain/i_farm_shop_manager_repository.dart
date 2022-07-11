@@ -13,6 +13,8 @@ abstract class IFarmShopManagerRepository {
     required String farmId,
   });
   FutureEither<Unit> updateFarm({required Farm farm});
+  // TODO: This method can technically give the list of farms associated with the logged in user, but a little modification needs to be made
+  FutureEither<Farm> getUserFarms();
 
   FutureEither<Shop> createShop({
     required String shopName,
@@ -22,4 +24,5 @@ abstract class IFarmShopManagerRepository {
     required String shopId,
   });
   FutureEither<Unit> updateShop({required Shop shop});
+  FutureEither<Shop> getUserShops();
 }

@@ -15,6 +15,7 @@ abstract class IFarmShopManagerRemoteDatasource {
   });
   Future<Unit> deleteFarm({required FarmhubUser farmhubUser, required String farmId});
   Future<Unit> updateFarm({required FarmhubUser farmhubUser, required Farm farm});
+  Future<Farm> getUserFarms({required FarmhubUser farmhubUser});
 
   Future<Shop> createShop({
     required FarmhubUser farmhubUser,
@@ -23,6 +24,7 @@ abstract class IFarmShopManagerRemoteDatasource {
   });
   Future<Unit> deleteShop({required FarmhubUser farmhubUser, required String shopId});
   Future<Unit> updateShop({required FarmhubUser farmhubUser, required Shop shop});
+  Future<Shop> getUserShops({required FarmhubUser farmhubUser});
 }
 
 class FarmShopManagerRemoteDatasource implements IFarmShopManagerRemoteDatasource {
@@ -200,5 +202,33 @@ class FarmShopManagerRemoteDatasource implements IFarmShopManagerRemoteDatasourc
     await firebaseFirestore.collection(FS_GLOBAL_SHOP).doc(shop.shopId).update(shop.toJson());
 
     return unit;
+  }
+
+  @override
+  Future<Farm> getUserFarms({required FarmhubUser farmhubUser}) async {
+    final Farm retrievedFarm = await firebaseFirestore
+        .collection(FS_USER)
+        .doc(farmhubUser.uid)
+        .collection(FS_USER_FARM)
+        .get()
+        .then((querySnapshot) {
+      return Farm.fromJson(querySnapshot.docs[0].data());
+    });
+
+    return retrievedFarm;
+  }
+
+  @override
+  Future<Shop> getUserShops({required FarmhubUser farmhubUser}) async {
+    final Shop retrievedShop = await firebaseFirestore
+        .collection(FS_USER)
+        .doc(farmhubUser.uid)
+        .collection(FS_USER_SHOP)
+        .get()
+        .then((querySnapshot) {
+      return Shop.fromJson(querySnapshot.docs[0].data());
+    });
+
+    return retrievedShop;
   }
 }

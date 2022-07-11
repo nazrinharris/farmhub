@@ -185,4 +185,54 @@ class FarmShopManagerRepository implements IFarmShopManagerRepository {
       ));
     }
   }
+
+  @override
+  FutureEither<Farm> getUserFarms() async {
+    if (await networkInfo.isConnected) {
+      try {
+        final user = globalAuthCubit.state.farmhubUser!;
+
+        final result = await remoteDatasource.getUserFarms(farmhubUser: user);
+
+        return Right(result);
+      } catch (e, stack) {
+        return Left(FarmShopManagerFailure(
+          code: e.toString(),
+          message: "Uh oh, something went wrong",
+          stackTrace: stack,
+        ));
+      }
+    } else {
+      return Left(InternetConnectionFailure(
+        code: ERROR_NO_INTERNET_CONNECTION,
+        message: MESSAGE_NO_INTERNET_CONNECTION,
+        stackTrace: StackTrace.current,
+      ));
+    }
+  }
+
+  @override
+  FutureEither<Shop> getUserShops() async {
+    if (await networkInfo.isConnected) {
+      try {
+        final user = globalAuthCubit.state.farmhubUser!;
+
+        final result = await remoteDatasource.getUserShops(farmhubUser: user);
+
+        return Right(result);
+      } catch (e, stack) {
+        return Left(FarmShopManagerFailure(
+          code: e.toString(),
+          message: "Uh oh, something went wrong",
+          stackTrace: stack,
+        ));
+      }
+    } else {
+      return Left(InternetConnectionFailure(
+        code: ERROR_NO_INTERNET_CONNECTION,
+        message: MESSAGE_NO_INTERNET_CONNECTION,
+        stackTrace: StackTrace.current,
+      ));
+    }
+  }
 }
