@@ -13,16 +13,16 @@ abstract class IFarmShopManagerRemoteDatasource {
     required String farmName,
     required Address farmAddress,
   });
-
   Future<Unit> deleteFarm({required FarmhubUser farmhubUser, required String farmId});
+  Future<Unit> updateFarm({required FarmhubUser farmhubUser, required Farm farm});
 
   Future<Shop> createShop({
     required FarmhubUser farmhubUser,
     required String shopName,
     required Address shopAddress,
   });
-
   Future<Unit> deleteShop({required FarmhubUser farmhubUser, required String shopId});
+  Future<Unit> updateShop({required FarmhubUser farmhubUser, required Shop shop});
 }
 
 class FarmShopManagerRemoteDatasource implements IFarmShopManagerRemoteDatasource {
@@ -108,6 +108,14 @@ class FarmShopManagerRemoteDatasource implements IFarmShopManagerRemoteDatasourc
 
   @override
   Future<Unit> deleteFarm({required FarmhubUser farmhubUser, required String farmId}) async {
+    if (farmhubUser.userType != UserType.farmer || farmhubUser.userType != UserType.business) {
+      throw FarmShopManagerException(
+        code: FSM_ERR_NOT_FARMER_OR_BUSINESS,
+        message: "You don't have permission to create a Farm.",
+        stackTrace: StackTrace.current,
+      );
+    }
+
     //! Delete the [Farm] in [farms] global collection
     await firebaseFirestore.collection(FS_GLOBAL_FARM).doc(farmId).delete();
 
@@ -124,6 +132,14 @@ class FarmShopManagerRemoteDatasource implements IFarmShopManagerRemoteDatasourc
 
   @override
   Future<Unit> deleteShop({required FarmhubUser farmhubUser, required String shopId}) async {
+    if (farmhubUser.userType != UserType.farmer || farmhubUser.userType != UserType.business) {
+      throw FarmShopManagerException(
+        code: FSM_ERR_NOT_FARMER_OR_BUSINESS,
+        message: "You don't have permission to create a Farm.",
+        stackTrace: StackTrace.current,
+      );
+    }
+
     //! Delete the [Shop] in [shops] global collection
     await firebaseFirestore.collection(FS_GLOBAL_SHOP).doc(shopId).delete();
 
@@ -134,6 +150,54 @@ class FarmShopManagerRemoteDatasource implements IFarmShopManagerRemoteDatasourc
         .collection(FS_USER_SHOP)
         .doc(shopId)
         .delete();
+
+    return unit;
+  }
+
+  @override
+  Future<Unit> updateFarm({required FarmhubUser farmhubUser, required Farm farm}) async {
+    if (farmhubUser.userType != UserType.farmer || farmhubUser.userType != UserType.business) {
+      throw FarmShopManagerException(
+        code: FSM_ERR_NOT_FARMER_OR_BUSINESS,
+        message: "You don't have permission to create a Farm.",
+        stackTrace: StackTrace.current,
+      );
+    }
+
+    //! Update [Farm] in [userFarms] sub-collection
+    await firebaseFirestore
+        .collection(FS_USER)
+        .doc(farmhubUser.uid)
+        .collection(FS_USER_FARM)
+        .doc(farm.farmId)
+        .update(farm.toJson());
+
+    //! Update [Farm] is [farms] global collection
+    await firebaseFirestore.collection(FS_GLOBAL_FARM).doc(farm.farmId).update(farm.toJson());
+
+    return unit;
+  }
+
+  @override
+  Future<Unit> updateShop({required FarmhubUser farmhubUser, required Shop shop}) async {
+    if (farmhubUser.userType != UserType.farmer || farmhubUser.userType != UserType.business) {
+      throw FarmShopManagerException(
+        code: FSM_ERR_NOT_FARMER_OR_BUSINESS,
+        message: "You don't have permission to create a Farm.",
+        stackTrace: StackTrace.current,
+      );
+    }
+
+    //! Update [Shop] in [userShops] sub-collection
+    await firebaseFirestore
+        .collection(FS_USER)
+        .doc(farmhubUser.uid)
+        .collection(FS_USER_SHOP)
+        .doc(shop.shopId)
+        .update(shop.toJson());
+
+    //! Update [Shop] in [shops] global collection
+    await firebaseFirestore.collection(FS_GLOBAL_SHOP).doc(shop.shopId).update(shop.toJson());
 
     return unit;
   }

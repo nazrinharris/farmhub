@@ -9,16 +9,17 @@ abstract class IFarmShopManagerRepository {
     required String farmName,
     required Address farmAddress,
   });
+  FutureEither<Unit> deleteFarm({
+    required String farmId,
+  });
+  FutureEither<Unit> updateFarm({required Farm farm});
+
   FutureEither<Shop> createShop({
     required String shopName,
     required Address shopAddress,
   });
-
-  FutureEither<Unit> deleteFarm({
-    required String farmId,
-  });
-
   FutureEither<Unit> deleteShop({
     required String shopId,
   });
+  FutureEither<Unit> updateShop({required Shop shop});
 }
