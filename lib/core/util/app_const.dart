@@ -30,7 +30,11 @@ const String UNSPECIFIED_PLUGIN = 'UNSPECIFIED_PLUGIN';
 /// Firestore Permanent [CollectionPaths]
 ///
 /// Do not change.
-const String FS_USER_COLLECTION = 'users';
+const String FS_USER = 'users';
+const String FS_FARM = 'farms';
+const String FS_STORE = 'stores';
+const String FS_USER_FARM = 'userFarms';
+const String FS_USER_STORE = 'userStores';
 
 /// Firestore Error Codes [FirestoreCode]
 ///
@@ -41,6 +45,9 @@ const String FS_ERRCODE_JSON_NOT_FOUND = 'JSON_NOT_FOUND';
 const String PM_ERR_LAST_PRICE = 'PM_ERR_LAST_PRICE';
 const String PM_ERR_SAME_PRODUCE_NAME = 'PM_ERR_SAME_PRODUCE_NAME';
 const String PM_ERR_EMPTY_PREVIOUS_PRODUCE_LIST = 'PM_ERR_EMPTY_PREVIOUS_PRODUCE_LIST';
+
+/// [FarmShopManager]'s [ErrorCodes]
+const String FSM_ERR_NOT_FARMER_OR_BUSINESS = 'FSM_ERR_NOT_FARMER_OR_BUSINESS';
 
 /// [AuthLocalDatasource]'s [ErrorCodes]
 const String AL_ERR_NO_USER = 'ERR_NO_USER';

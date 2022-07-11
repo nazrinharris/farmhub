@@ -92,7 +92,7 @@ void main() {
             );
             // assert
             verifyInOrder([
-              () => mockFirebaseFirestore.collection(FS_USER_COLLECTION),
+              () => mockFirebaseFirestore.collection(FS_USER),
               () => mockCollectionReference.doc(tUid),
               () => mockDocumentReference.get(),
             ]);
@@ -231,7 +231,7 @@ void main() {
                       userType: tUserType,
                     ));
             // assert
-            verify(() => mockFirebaseFirestore.collection(FS_USER_COLLECTION));
+            verify(() => mockFirebaseFirestore.collection(FS_USER));
             verify(() => mockCollectionReference.doc(tUid));
             verify(() => mockDocumentReference.set({
                   "uid": tUid,

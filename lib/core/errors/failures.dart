@@ -96,3 +96,15 @@ class ProduceManagerFailure extends Failure {
           stackTrace: stackTrace,
         );
 }
+
+class FarmShopManagerFailure extends Failure {
+  const FarmShopManagerFailure({
+    String? code,
+    String? message,
+    required StackTrace? stackTrace,
+  }) : super(
+          code: code,
+          message: message,
+          stackTrace: stackTrace,
+        );
+}

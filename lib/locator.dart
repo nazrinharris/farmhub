@@ -72,7 +72,9 @@ void setupLocator() {
   locator.registerLazySingleton<IFarmShopManagerRepository>(() => FarmShopManagerRepository());
   // Datasources
   locator.registerLazySingleton<IFarmShopManagerRemoteDatasource>(
-      () => FarmShopManagerRemoteDatasource());
+      () => FarmShopManagerRemoteDatasource(
+            firebaseFirestore: locator(),
+          ));
   locator.registerLazySingleton<IFarmShopManagerLocalDatasource>(
       () => FarmShopManagerLocalDatasource());
 

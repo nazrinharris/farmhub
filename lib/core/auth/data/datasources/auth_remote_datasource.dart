@@ -56,7 +56,7 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
         )
         .then((user) => user.user!.uid);
     final FarmhubUser farmhubUser = await firebaseFirestore
-        .collection(FS_USER_COLLECTION)
+        .collection(FS_USER)
         .doc(resultUid)
         .get()
         .then((snapshot) => snapshot.data())
@@ -122,7 +122,7 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
     );
 
     /// Store account data in Cloud Firestore
-    await firebaseFirestore.collection(FS_USER_COLLECTION).doc(resultUid).set({
+    await firebaseFirestore.collection(FS_USER).doc(resultUid).set({
       "uid": farmhubUser.uid,
       "email": farmhubUser.email,
       "username": farmhubUser.username,
@@ -155,7 +155,7 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
       throw FirebaseAuthException(code: 'user-not-signed-in', message: 'User is not signed in.');
     } else {
       final farmhubUser = await firebaseFirestore
-          .collection(FS_USER_COLLECTION)
+          .collection(FS_USER)
           .doc(user.uid)
           .get()
           .then((value) => value.data());
