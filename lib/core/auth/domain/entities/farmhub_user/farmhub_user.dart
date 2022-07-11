@@ -1,9 +1,12 @@
+// ignore_for_file: unused_element
+
 import 'package:farmhub/core/util/app_const.dart';
 import 'package:farmhub/features/produce_manager/domain/entities/produce/produce.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:intl/intl.dart';
 
 import '../../../../errors/exceptions.dart';
+import 'farm_shop.dart';
 
 part 'farmhub_user.freezed.dart';
 
@@ -47,6 +50,8 @@ UserType returnType(String typeAsString) {
 
 @Freezed(makeCollectionsUnmodifiable: false)
 class FarmhubUser with _$FarmhubUser {
+  const FarmhubUser._();
+
   factory FarmhubUser({
     required String uid,
     required String email,
@@ -102,4 +107,26 @@ class FarmhubUser with _$FarmhubUser {
       "userType": user.userType.typeAsString,
     };
   }
+
+  const factory FarmhubUser.farmer({
+    required String uid,
+    required String email,
+    required String username,
+    required String createdAt,
+    required List<ProduceFavorite> produceFavoritesList,
+    required UserType userType,
+    required List<Farm> farmList,
+    required List<Shop> shopList,
+  }) = FarmhubUserFarmer;
+
+  const factory FarmhubUser.business({
+    required String uid,
+    required String email,
+    required String username,
+    required String createdAt,
+    required List<ProduceFavorite> produceFavoritesList,
+    required UserType userType,
+    required List<Farm> farmList,
+    required List<Shop> shopList,
+  }) = FarmhubUserBusiness;
 }

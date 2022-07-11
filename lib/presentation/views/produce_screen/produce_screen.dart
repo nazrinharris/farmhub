@@ -345,6 +345,7 @@ class _SliverProducePriceChartState extends State<SliverProducePriceChart> {
             ).createShader(bounds);
           },
           child: ClipRRect(
+            clipBehavior: Clip.antiAlias,
             borderRadius: BorderRadius.circular(16),
             child: ct.TabBar(
               onTap: (value) {

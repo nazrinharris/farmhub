@@ -271,7 +271,6 @@ class _BuildUserModalBottomSheetState extends State<BuildUserModalBottomSheet> {
           Container(
             padding: EdgeInsets.only(top: 24, bottom: 34),
             decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.background,
               borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(14), topRight: Radius.circular(14)),
             ),

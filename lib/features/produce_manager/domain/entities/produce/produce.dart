@@ -1,3 +1,5 @@
+// ignore_for_file: unused_element
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:farmhub/core/errors/exceptions.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -7,6 +9,8 @@ part 'produce.g.dart';
 
 @freezed
 class Produce with _$Produce {
+  const Produce._();
+
   factory Produce({
     required String produceId,
     required String produceName,

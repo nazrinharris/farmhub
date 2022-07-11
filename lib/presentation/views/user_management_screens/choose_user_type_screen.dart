@@ -1,5 +1,6 @@
 import 'package:farmhub/core/auth/domain/entities/farmhub_user/farmhub_user.dart';
 import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
+import 'package:farmhub/core/util/farmhub_icons.dart';
 import 'package:farmhub/locator.dart';
 import 'package:farmhub/presentation/shared_widgets/appbars.dart';
 import 'package:farmhub/presentation/shared_widgets/buttons.dart';
@@ -80,6 +81,7 @@ class AccountTypeChooser extends StatelessWidget {
         children: [
           PrimaryButton(
             content: "Farmer",
+            buttonIcon: Icon(FarmhubIcons.farmhub_corn_icon, size: 18),
             onPressed: () async {
               await context.read<UserManagementCubit>().chooseUserType(
                     uid: context.read<GlobalAuthCubit>().state.farmhubUser!.uid,
@@ -92,6 +94,7 @@ class AccountTypeChooser extends StatelessWidget {
           const UIVerticalSpace14(),
           PrimaryButton(
             content: "Business",
+            buttonIcon: Icon(Icons.store, size: 21),
             onPressed: () async {
               await context.read<UserManagementCubit>().chooseUserType(
                     uid: context.read<GlobalAuthCubit>().state.farmhubUser!.uid,
@@ -104,6 +107,7 @@ class AccountTypeChooser extends StatelessWidget {
           const UIVerticalSpace14(),
           PrimaryButton(
             content: "Regular",
+            buttonIcon: Icon(Icons.face, size: 21),
             onPressed: () async {
               await context.read<UserManagementCubit>().chooseUserType(
                     uid: context.read<GlobalAuthCubit>().state.farmhubUser!.uid,

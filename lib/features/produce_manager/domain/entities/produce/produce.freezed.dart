@@ -170,7 +170,7 @@ class __$$_ProduceCopyWithImpl<$Res> extends _$ProduceCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Produce implements _Produce {
+class _$_Produce extends _Produce {
   _$_Produce(
       {required this.produceId,
       required this.produceName,
@@ -181,7 +181,8 @@ class _$_Produce implements _Produce {
       required this.lastUpdateTimeStamp})
       : _currentProducePrice = currentProducePrice,
         _previousProducePrice = previousProducePrice,
-        _weeklyPrices = weeklyPrices;
+        _weeklyPrices = weeklyPrices,
+        super._();
 
   factory _$_Produce.fromJson(Map<String, dynamic> json) =>
       _$$_ProduceFromJson(json);
@@ -263,7 +264,7 @@ class _$_Produce implements _Produce {
   }
 }
 
-abstract class _Produce implements Produce {
+abstract class _Produce extends Produce {
   factory _Produce(
       {required final String produceId,
       required final String produceName,
@@ -272,6 +273,7 @@ abstract class _Produce implements Produce {
       required final Map<String, dynamic> previousProducePrice,
       required final Map<String, dynamic> weeklyPrices,
       required final DateTime lastUpdateTimeStamp}) = _$_Produce;
+  _Produce._() : super._();
 
   factory _Produce.fromJson(Map<String, dynamic> json) = _$_Produce.fromJson;
 
