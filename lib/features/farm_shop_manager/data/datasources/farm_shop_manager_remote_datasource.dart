@@ -44,6 +44,8 @@ class FarmShopManagerRemoteDatasource implements IFarmShopManagerRemoteDatasourc
     //! Start with updating the [farm] sub-collection of the given user
     final resultingId =
         await firebaseFirestore.collection(FS_USER).doc(farmhubUser.uid).collection(FS_FARM);
+
+    throw UnimplementedError();
   }
 
   @override

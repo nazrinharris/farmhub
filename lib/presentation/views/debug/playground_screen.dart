@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:farmhub/core/auth/auth_bloc/auth_bloc.dart';
+import 'package:farmhub/features/farm_shop_manager/domain/entities/address/address.dart';
+import 'package:farmhub/features/farm_shop_manager/domain/entities/farm_shop/farm_shop.dart';
 import 'package:farmhub/features/produce_manager/bloc/produce_manager_bloc.dart';
 import 'package:farmhub/locator.dart';
 import 'package:farmhub/presentation/shared_widgets/buttons.dart';
@@ -139,8 +141,16 @@ class PlaygroundScreen extends StatelessWidget {
                   alignment: Alignment.center,
                   child: PrimaryButton(
                     width: 250,
-                    content: "Retrieve first 10 produce!",
-                    onPressed: () {},
+                    content: "Debug for Farm",
+                    onPressed: () {
+                      final Farm farm = Farm(
+                        fid: 'UNKNOWN',
+                        farmName: "Fake Farm",
+                        address: Address(rawAddress: "7th Street of Mayhingway"),
+                      );
+
+                      print(farm.toJson());
+                    },
                   ),
                 ),
                 Container(

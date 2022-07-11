@@ -14,12 +14,17 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+Farm _$FarmFromJson(Map<String, dynamic> json) {
+  return _Farm.fromJson(json);
+}
+
 /// @nodoc
 mixin _$Farm {
   String get fid => throw _privateConstructorUsedError;
   String get farmName => throw _privateConstructorUsedError;
   Address get address => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $FarmCopyWith<Farm> get copyWith => throw _privateConstructorUsedError;
 }
@@ -116,9 +121,12 @@ class __$$_FarmCopyWithImpl<$Res> extends _$FarmCopyWithImpl<$Res>
 
 /// @nodoc
 
+@JsonSerializable(explicitToJson: true)
 class _$_Farm implements _Farm {
   const _$_Farm(
       {required this.fid, required this.farmName, required this.address});
+
+  factory _$_Farm.fromJson(Map<String, dynamic> json) => _$$_FarmFromJson(json);
 
   @override
   final String fid;
@@ -142,6 +150,7 @@ class _$_Farm implements _Farm {
             const DeepCollectionEquality().equals(other.address, address));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -153,6 +162,11 @@ class _$_Farm implements _Farm {
   @override
   _$$_FarmCopyWith<_$_Farm> get copyWith =>
       __$$_FarmCopyWithImpl<_$_Farm>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_FarmToJson(this);
+  }
 }
 
 abstract class _Farm implements Farm {
@@ -160,6 +174,8 @@ abstract class _Farm implements Farm {
       {required final String fid,
       required final String farmName,
       required final Address address}) = _$_Farm;
+
+  factory _Farm.fromJson(Map<String, dynamic> json) = _$_Farm.fromJson;
 
   @override
   String get fid => throw _privateConstructorUsedError;
@@ -172,12 +188,17 @@ abstract class _Farm implements Farm {
   _$$_FarmCopyWith<_$_Farm> get copyWith => throw _privateConstructorUsedError;
 }
 
+Shop _$ShopFromJson(Map<String, dynamic> json) {
+  return _Shop.fromJson(json);
+}
+
 /// @nodoc
 mixin _$Shop {
   String get sid => throw _privateConstructorUsedError;
   String get shopName => throw _privateConstructorUsedError;
   Address get address => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $ShopCopyWith<Shop> get copyWith => throw _privateConstructorUsedError;
 }
@@ -274,9 +295,12 @@ class __$$_ShopCopyWithImpl<$Res> extends _$ShopCopyWithImpl<$Res>
 
 /// @nodoc
 
+@JsonSerializable(explicitToJson: true)
 class _$_Shop implements _Shop {
   const _$_Shop(
       {required this.sid, required this.shopName, required this.address});
+
+  factory _$_Shop.fromJson(Map<String, dynamic> json) => _$$_ShopFromJson(json);
 
   @override
   final String sid;
@@ -300,6 +324,7 @@ class _$_Shop implements _Shop {
             const DeepCollectionEquality().equals(other.address, address));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -311,6 +336,11 @@ class _$_Shop implements _Shop {
   @override
   _$$_ShopCopyWith<_$_Shop> get copyWith =>
       __$$_ShopCopyWithImpl<_$_Shop>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_ShopToJson(this);
+  }
 }
 
 abstract class _Shop implements Shop {
@@ -318,6 +348,8 @@ abstract class _Shop implements Shop {
       {required final String sid,
       required final String shopName,
       required final Address address}) = _$_Shop;
+
+  factory _Shop.fromJson(Map<String, dynamic> json) = _$_Shop.fromJson;
 
   @override
   String get sid => throw _privateConstructorUsedError;
