@@ -69,7 +69,13 @@ void setupLocator() {
 
   //* FarmShopManager
   // Repository
-  locator.registerLazySingleton<IFarmShopManagerRepository>(() => FarmShopManagerRepository());
+  locator.registerLazySingleton<IFarmShopManagerRepository>(() => FarmShopManagerRepository(
+        networkInfo: locator(),
+        remoteDatasource: locator(),
+        localDatasource: locator(),
+        authRepository: locator(),
+        globalAuthCubit: locator(),
+      ));
   // Datasources
   locator.registerLazySingleton<IFarmShopManagerRemoteDatasource>(
       () => FarmShopManagerRemoteDatasource(
