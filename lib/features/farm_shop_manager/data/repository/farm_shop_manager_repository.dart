@@ -1,3 +1,4 @@
+import 'package:farmhub/core/auth/domain/entities/farmhub_user/farmhub_user.dart';
 import 'package:farmhub/core/auth/domain/i_auth_repository.dart';
 import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
 import 'package:farmhub/core/network/network_info.dart';
@@ -69,6 +70,56 @@ class FarmShopManagerRepository implements IFarmShopManagerRepository {
         );
 
         return Right(result);
+      } catch (e, stack) {
+        return Left(FarmShopManagerFailure(
+          code: e.toString(),
+          message: "Uh oh, something went wrong",
+          stackTrace: stack,
+        ));
+      }
+    } else {
+      return Left(InternetConnectionFailure(
+        code: ERROR_NO_INTERNET_CONNECTION,
+        message: MESSAGE_NO_INTERNET_CONNECTION,
+        stackTrace: StackTrace.current,
+      ));
+    }
+  }
+
+  @override
+  FutureEither<Unit> deleteFarm({required String farmId}) async {
+    if (await networkInfo.isConnected) {
+      try {
+        final user = globalAuthCubit.state.farmhubUser!;
+
+        await remoteDatasource.deleteFarm(farmhubUser: user, farmId: farmId);
+
+        return const Right(unit);
+      } catch (e, stack) {
+        return Left(FarmShopManagerFailure(
+          code: e.toString(),
+          message: "Uh oh, something went wrong",
+          stackTrace: stack,
+        ));
+      }
+    } else {
+      return Left(InternetConnectionFailure(
+        code: ERROR_NO_INTERNET_CONNECTION,
+        message: MESSAGE_NO_INTERNET_CONNECTION,
+        stackTrace: StackTrace.current,
+      ));
+    }
+  }
+
+  @override
+  FutureEither<Unit> deleteShop({required String shopId}) async {
+    if (await networkInfo.isConnected) {
+      try {
+        final user = globalAuthCubit.state.farmhubUser!;
+
+        await remoteDatasource.deleteShop(farmhubUser: user, shopId: shopId);
+
+        return const Right(unit);
       } catch (e, stack) {
         return Left(FarmShopManagerFailure(
           code: e.toString(),

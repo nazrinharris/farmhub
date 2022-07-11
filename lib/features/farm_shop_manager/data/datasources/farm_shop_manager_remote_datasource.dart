@@ -3,6 +3,7 @@ import 'package:farmhub/core/auth/domain/entities/farmhub_user/farmhub_user.dart
 import 'package:farmhub/core/errors/exceptions.dart';
 import 'package:farmhub/core/util/app_const.dart';
 import 'package:farmhub/features/farm_shop_manager/domain/entities/farm_shop/farm_shop.dart';
+import 'package:fpdart/fpdart.dart';
 
 import '../../domain/entities/address/address.dart';
 
@@ -13,11 +14,15 @@ abstract class IFarmShopManagerRemoteDatasource {
     required Address farmAddress,
   });
 
+  Future<Unit> deleteFarm({required FarmhubUser farmhubUser, required String farmId});
+
   Future<Shop> createShop({
     required FarmhubUser farmhubUser,
     required String shopName,
     required Address shopAddress,
   });
+
+  Future<Unit> deleteShop({required FarmhubUser farmhubUser, required String shopId});
 }
 
 class FarmShopManagerRemoteDatasource implements IFarmShopManagerRemoteDatasource {
@@ -31,7 +36,12 @@ class FarmShopManagerRemoteDatasource implements IFarmShopManagerRemoteDatasourc
     required Address farmAddress,
     required FarmhubUser farmhubUser,
   }) async {
-    final Farm newFarm = Farm(farmId: "UNKNOWN_ID", farmName: farmName, address: farmAddress);
+    final Farm newFarm = Farm(
+      creatorUserId: farmhubUser.uid,
+      farmId: "UNKNOWN_ID",
+      farmName: farmName,
+      address: farmAddress,
+    );
 
     if (farmhubUser.userType != UserType.farmer || farmhubUser.userType != UserType.business) {
       throw FarmShopManagerException(
@@ -64,7 +74,12 @@ class FarmShopManagerRemoteDatasource implements IFarmShopManagerRemoteDatasourc
     required String shopName,
     required Address shopAddress,
   }) async {
-    final Shop newShop = Shop(shopId: "UNKNOWN_ID", shopName: shopName, address: shopAddress);
+    final Shop newShop = Shop(
+      creatorUserId: farmhubUser.uid,
+      shopId: "UNKNOWN_ID",
+      shopName: shopName,
+      address: shopAddress,
+    );
 
     if (farmhubUser.userType != UserType.farmer || farmhubUser.userType != UserType.business) {
       throw FarmShopManagerException(
@@ -89,5 +104,37 @@ class FarmShopManagerRemoteDatasource implements IFarmShopManagerRemoteDatasourc
     await firebaseFirestore.collection(FS_GLOBAL_SHOP).doc(newShopId).set(newShop.toJson());
 
     return newShop.copyWith(shopId: newShopId);
+  }
+
+  @override
+  Future<Unit> deleteFarm({required FarmhubUser farmhubUser, required String farmId}) async {
+    //! Delete the [Farm] in [farms] global collection
+    await firebaseFirestore.collection(FS_GLOBAL_FARM).doc(farmId).delete();
+
+    //! Delete the [Farm] in [userFarms] sub-collection
+    await firebaseFirestore
+        .collection(FS_USER)
+        .doc(farmhubUser.uid)
+        .collection(FS_USER_FARM)
+        .doc(farmId)
+        .delete();
+
+    return unit;
+  }
+
+  @override
+  Future<Unit> deleteShop({required FarmhubUser farmhubUser, required String shopId}) async {
+    //! Delete the [Shop] in [shops] global collection
+    await firebaseFirestore.collection(FS_GLOBAL_SHOP).doc(shopId).delete();
+
+    //! Delete the [Shop] in [userShops] sub-collection
+    await firebaseFirestore
+        .collection(FS_USER)
+        .doc(farmhubUser.uid)
+        .collection(FS_USER_SHOP)
+        .doc(shopId)
+        .delete();
+
+    return unit;
   }
 }

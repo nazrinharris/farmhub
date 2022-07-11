@@ -20,6 +20,7 @@ Farm _$FarmFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Farm {
+  String get creatorUserId => throw _privateConstructorUsedError;
   String get farmId => throw _privateConstructorUsedError;
   String get farmName => throw _privateConstructorUsedError;
   Address get address => throw _privateConstructorUsedError;
@@ -33,7 +34,8 @@ mixin _$Farm {
 abstract class $FarmCopyWith<$Res> {
   factory $FarmCopyWith(Farm value, $Res Function(Farm) then) =
       _$FarmCopyWithImpl<$Res>;
-  $Res call({String farmId, String farmName, Address address});
+  $Res call(
+      {String creatorUserId, String farmId, String farmName, Address address});
 
   $AddressCopyWith<$Res> get address;
 }
@@ -48,11 +50,16 @@ class _$FarmCopyWithImpl<$Res> implements $FarmCopyWith<$Res> {
 
   @override
   $Res call({
+    Object? creatorUserId = freezed,
     Object? farmId = freezed,
     Object? farmName = freezed,
     Object? address = freezed,
   }) {
     return _then(_value.copyWith(
+      creatorUserId: creatorUserId == freezed
+          ? _value.creatorUserId
+          : creatorUserId // ignore: cast_nullable_to_non_nullable
+              as String,
       farmId: farmId == freezed
           ? _value.farmId
           : farmId // ignore: cast_nullable_to_non_nullable
@@ -81,7 +88,8 @@ abstract class _$$_FarmCopyWith<$Res> implements $FarmCopyWith<$Res> {
   factory _$$_FarmCopyWith(_$_Farm value, $Res Function(_$_Farm) then) =
       __$$_FarmCopyWithImpl<$Res>;
   @override
-  $Res call({String farmId, String farmName, Address address});
+  $Res call(
+      {String creatorUserId, String farmId, String farmName, Address address});
 
   @override
   $AddressCopyWith<$Res> get address;
@@ -98,11 +106,16 @@ class __$$_FarmCopyWithImpl<$Res> extends _$FarmCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? creatorUserId = freezed,
     Object? farmId = freezed,
     Object? farmName = freezed,
     Object? address = freezed,
   }) {
     return _then(_$_Farm(
+      creatorUserId: creatorUserId == freezed
+          ? _value.creatorUserId
+          : creatorUserId // ignore: cast_nullable_to_non_nullable
+              as String,
       farmId: farmId == freezed
           ? _value.farmId
           : farmId // ignore: cast_nullable_to_non_nullable
@@ -124,10 +137,15 @@ class __$$_FarmCopyWithImpl<$Res> extends _$FarmCopyWithImpl<$Res>
 @JsonSerializable(explicitToJson: true)
 class _$_Farm implements _Farm {
   const _$_Farm(
-      {required this.farmId, required this.farmName, required this.address});
+      {required this.creatorUserId,
+      required this.farmId,
+      required this.farmName,
+      required this.address});
 
   factory _$_Farm.fromJson(Map<String, dynamic> json) => _$$_FarmFromJson(json);
 
+  @override
+  final String creatorUserId;
   @override
   final String farmId;
   @override
@@ -137,7 +155,7 @@ class _$_Farm implements _Farm {
 
   @override
   String toString() {
-    return 'Farm(farmId: $farmId, farmName: $farmName, address: $address)';
+    return 'Farm(creatorUserId: $creatorUserId, farmId: $farmId, farmName: $farmName, address: $address)';
   }
 
   @override
@@ -145,6 +163,8 @@ class _$_Farm implements _Farm {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Farm &&
+            const DeepCollectionEquality()
+                .equals(other.creatorUserId, creatorUserId) &&
             const DeepCollectionEquality().equals(other.farmId, farmId) &&
             const DeepCollectionEquality().equals(other.farmName, farmName) &&
             const DeepCollectionEquality().equals(other.address, address));
@@ -154,6 +174,7 @@ class _$_Farm implements _Farm {
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      const DeepCollectionEquality().hash(creatorUserId),
       const DeepCollectionEquality().hash(farmId),
       const DeepCollectionEquality().hash(farmName),
       const DeepCollectionEquality().hash(address));
@@ -171,12 +192,15 @@ class _$_Farm implements _Farm {
 
 abstract class _Farm implements Farm {
   const factory _Farm(
-      {required final String farmId,
+      {required final String creatorUserId,
+      required final String farmId,
       required final String farmName,
       required final Address address}) = _$_Farm;
 
   factory _Farm.fromJson(Map<String, dynamic> json) = _$_Farm.fromJson;
 
+  @override
+  String get creatorUserId => throw _privateConstructorUsedError;
   @override
   String get farmId => throw _privateConstructorUsedError;
   @override
@@ -194,6 +218,7 @@ Shop _$ShopFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Shop {
+  String get creatorUserId => throw _privateConstructorUsedError;
   String get shopId => throw _privateConstructorUsedError;
   String get shopName => throw _privateConstructorUsedError;
   Address get address => throw _privateConstructorUsedError;
@@ -207,7 +232,8 @@ mixin _$Shop {
 abstract class $ShopCopyWith<$Res> {
   factory $ShopCopyWith(Shop value, $Res Function(Shop) then) =
       _$ShopCopyWithImpl<$Res>;
-  $Res call({String shopId, String shopName, Address address});
+  $Res call(
+      {String creatorUserId, String shopId, String shopName, Address address});
 
   $AddressCopyWith<$Res> get address;
 }
@@ -222,11 +248,16 @@ class _$ShopCopyWithImpl<$Res> implements $ShopCopyWith<$Res> {
 
   @override
   $Res call({
+    Object? creatorUserId = freezed,
     Object? shopId = freezed,
     Object? shopName = freezed,
     Object? address = freezed,
   }) {
     return _then(_value.copyWith(
+      creatorUserId: creatorUserId == freezed
+          ? _value.creatorUserId
+          : creatorUserId // ignore: cast_nullable_to_non_nullable
+              as String,
       shopId: shopId == freezed
           ? _value.shopId
           : shopId // ignore: cast_nullable_to_non_nullable
@@ -255,7 +286,8 @@ abstract class _$$_ShopCopyWith<$Res> implements $ShopCopyWith<$Res> {
   factory _$$_ShopCopyWith(_$_Shop value, $Res Function(_$_Shop) then) =
       __$$_ShopCopyWithImpl<$Res>;
   @override
-  $Res call({String shopId, String shopName, Address address});
+  $Res call(
+      {String creatorUserId, String shopId, String shopName, Address address});
 
   @override
   $AddressCopyWith<$Res> get address;
@@ -272,11 +304,16 @@ class __$$_ShopCopyWithImpl<$Res> extends _$ShopCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? creatorUserId = freezed,
     Object? shopId = freezed,
     Object? shopName = freezed,
     Object? address = freezed,
   }) {
     return _then(_$_Shop(
+      creatorUserId: creatorUserId == freezed
+          ? _value.creatorUserId
+          : creatorUserId // ignore: cast_nullable_to_non_nullable
+              as String,
       shopId: shopId == freezed
           ? _value.shopId
           : shopId // ignore: cast_nullable_to_non_nullable
@@ -298,10 +335,15 @@ class __$$_ShopCopyWithImpl<$Res> extends _$ShopCopyWithImpl<$Res>
 @JsonSerializable(explicitToJson: true)
 class _$_Shop implements _Shop {
   const _$_Shop(
-      {required this.shopId, required this.shopName, required this.address});
+      {required this.creatorUserId,
+      required this.shopId,
+      required this.shopName,
+      required this.address});
 
   factory _$_Shop.fromJson(Map<String, dynamic> json) => _$$_ShopFromJson(json);
 
+  @override
+  final String creatorUserId;
   @override
   final String shopId;
   @override
@@ -311,7 +353,7 @@ class _$_Shop implements _Shop {
 
   @override
   String toString() {
-    return 'Shop(shopId: $shopId, shopName: $shopName, address: $address)';
+    return 'Shop(creatorUserId: $creatorUserId, shopId: $shopId, shopName: $shopName, address: $address)';
   }
 
   @override
@@ -319,6 +361,8 @@ class _$_Shop implements _Shop {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Shop &&
+            const DeepCollectionEquality()
+                .equals(other.creatorUserId, creatorUserId) &&
             const DeepCollectionEquality().equals(other.shopId, shopId) &&
             const DeepCollectionEquality().equals(other.shopName, shopName) &&
             const DeepCollectionEquality().equals(other.address, address));
@@ -328,6 +372,7 @@ class _$_Shop implements _Shop {
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      const DeepCollectionEquality().hash(creatorUserId),
       const DeepCollectionEquality().hash(shopId),
       const DeepCollectionEquality().hash(shopName),
       const DeepCollectionEquality().hash(address));
@@ -345,12 +390,15 @@ class _$_Shop implements _Shop {
 
 abstract class _Shop implements Shop {
   const factory _Shop(
-      {required final String shopId,
+      {required final String creatorUserId,
+      required final String shopId,
       required final String shopName,
       required final Address address}) = _$_Shop;
 
   factory _Shop.fromJson(Map<String, dynamic> json) = _$_Shop.fromJson;
 
+  @override
+  String get creatorUserId => throw _privateConstructorUsedError;
   @override
   String get shopId => throw _privateConstructorUsedError;
   @override

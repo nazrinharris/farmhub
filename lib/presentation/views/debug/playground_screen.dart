@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:farmhub/core/auth/auth_bloc/auth_bloc.dart';
+import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
 import 'package:farmhub/features/farm_shop_manager/domain/entities/address/address.dart';
 import 'package:farmhub/features/farm_shop_manager/domain/entities/farm_shop/farm_shop.dart';
 import 'package:farmhub/features/produce_manager/bloc/produce_manager_bloc.dart';
@@ -144,6 +145,7 @@ class PlaygroundScreen extends StatelessWidget {
                     content: "Debug for Farm",
                     onPressed: () {
                       final Farm farm = Farm(
+                        creatorUserId: context.read<GlobalAuthCubit>().state.farmhubUser!.uid,
                         farmId: 'UNKNOWN',
                         farmName: "Fake Farm",
                         address: Address(rawAddress: "7th Street of Mayhingway"),
