@@ -31,7 +31,7 @@ class FarmShopManagerRemoteDatasource implements IFarmShopManagerRemoteDatasourc
     required Address farmAddress,
     required FarmhubUser farmhubUser,
   }) async {
-    final Farm farm = Farm(fid: "UNKNOWN_ID", farmName: farmName, address: farmAddress);
+    final Farm newFarm = Farm(farmId: "UNKNOWN_ID", farmName: farmName, address: farmAddress);
 
     if (farmhubUser.userType != UserType.farmer || farmhubUser.userType != UserType.business) {
       throw FarmShopManagerException(
@@ -42,10 +42,20 @@ class FarmShopManagerRemoteDatasource implements IFarmShopManagerRemoteDatasourc
     }
 
     //! Start with updating the [farm] sub-collection of the given user
-    final resultingId =
-        await firebaseFirestore.collection(FS_USER).doc(farmhubUser.uid).collection(FS_FARM);
+    final newFarmId = await firebaseFirestore
+        .collection(FS_USER)
+        .doc(farmhubUser.uid)
+        .collection(FS_USER_FARM)
+        .add(newFarm.toJson())
+        .then((doc) async {
+      doc.update({"farmId": doc.id});
+      return doc.id;
+    });
 
-    throw UnimplementedError();
+    //! Create the new [Farm] in the [farm] global collection
+    await firebaseFirestore.collection(FS_GLOBAL_FARM).doc(newFarmId).set(newFarm.toJson());
+
+    return newFarm.copyWith(farmId: newFarmId);
   }
 
   @override

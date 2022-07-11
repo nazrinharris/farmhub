@@ -144,7 +144,7 @@ class PlaygroundScreen extends StatelessWidget {
                     content: "Debug for Farm",
                     onPressed: () {
                       final Farm farm = Farm(
-                        fid: 'UNKNOWN',
+                        farmId: 'UNKNOWN',
                         farmName: "Fake Farm",
                         address: Address(rawAddress: "7th Street of Mayhingway"),
                       );

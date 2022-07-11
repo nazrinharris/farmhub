@@ -31,8 +31,8 @@ const String UNSPECIFIED_PLUGIN = 'UNSPECIFIED_PLUGIN';
 ///
 /// Do not change.
 const String FS_USER = 'users';
-const String FS_FARM = 'farms';
-const String FS_STORE = 'stores';
+const String FS_GLOBAL_FARM = 'farms';
+const String FS_GLOBAL_STORE = 'stores';
 const String FS_USER_FARM = 'userFarms';
 const String FS_USER_STORE = 'userStores';
 

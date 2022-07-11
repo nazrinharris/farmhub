@@ -11,7 +11,7 @@ part 'farm_shop.g.dart';
 class Farm with _$Farm {
   @JsonSerializable(explicitToJson: true)
   const factory Farm({
-    required String fid,
+    required String farmId,
     required String farmName,
     required Address address,
   }) = _Farm;
@@ -23,7 +23,7 @@ class Farm with _$Farm {
 class Shop with _$Shop {
   @JsonSerializable(explicitToJson: true)
   const factory Shop({
-    required String sid,
+    required String shopId,
     required String shopName,
     required Address address,
   }) = _Shop;
