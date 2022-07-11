@@ -13,7 +13,7 @@ abstract class IFarmShopManagerRemoteDatasource {
     required Address farmAddress,
   });
 
-  Future<Farm> createShop({
+  Future<Shop> createShop({
     required FarmhubUser farmhubUser,
     required String shopName,
     required Address shopAddress,
@@ -41,7 +41,7 @@ class FarmShopManagerRemoteDatasource implements IFarmShopManagerRemoteDatasourc
       );
     }
 
-    //! Start with updating the [farm] sub-collection of the given user
+    //! Start with updating the [userFarms] sub-collection of the given user
     final newFarmId = await firebaseFirestore
         .collection(FS_USER)
         .doc(farmhubUser.uid)
@@ -52,19 +52,42 @@ class FarmShopManagerRemoteDatasource implements IFarmShopManagerRemoteDatasourc
       return doc.id;
     });
 
-    //! Create the new [Farm] in the [farm] global collection
+    //! Create the new [Farm] in the [farms] global collection
     await firebaseFirestore.collection(FS_GLOBAL_FARM).doc(newFarmId).set(newFarm.toJson());
 
     return newFarm.copyWith(farmId: newFarmId);
   }
 
   @override
-  Future<Farm> createShop({
+  Future<Shop> createShop({
     required FarmhubUser farmhubUser,
     required String shopName,
     required Address shopAddress,
-  }) {
-    // TODO: implement createShop
-    throw UnimplementedError();
+  }) async {
+    final Shop newShop = Shop(shopId: "UNKNOWN_ID", shopName: shopName, address: shopAddress);
+
+    if (farmhubUser.userType != UserType.farmer || farmhubUser.userType != UserType.business) {
+      throw FarmShopManagerException(
+        code: FSM_ERR_NOT_FARMER_OR_BUSINESS,
+        message: "You don't have permission to create a Farm.",
+        stackTrace: StackTrace.current,
+      );
+    }
+
+    //! Start with updating the [userShops] sub-collection of the given user
+    final newShopId = await firebaseFirestore
+        .collection(FS_USER)
+        .doc(farmhubUser.uid)
+        .collection(FS_USER_SHOP)
+        .add(newShop.toJson())
+        .then((doc) async {
+      doc.update({"shopId": doc.id});
+      return doc.id;
+    });
+
+    //! Create the new [Shop] in the [shops] global collection
+    await firebaseFirestore.collection(FS_GLOBAL_SHOP).doc(newShopId).set(newShop.toJson());
+
+    return newShop.copyWith(shopId: newShopId);
   }
 }
