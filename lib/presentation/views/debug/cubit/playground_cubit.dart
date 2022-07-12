@@ -12,7 +12,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:intl/intl.dart';
 
 import '../../../../features/produce_manager/domain/entities/price/price.dart';
-import '../../../../features/produce_manager/domain/helpers.dart';
+import '../../../../features/produce_manager/data/repository/produce_manager_helpers.dart';
 
 part 'playground_state.dart';
 part 'playground_cubit.freezed.dart';

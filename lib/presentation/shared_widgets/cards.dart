@@ -1,7 +1,7 @@
 import 'package:farmhub/core/util/app_const.dart';
 import 'package:farmhub/core/util/misc.dart';
 import 'package:farmhub/features/produce_manager/domain/entities/produce/produce.dart';
-import 'package:farmhub/features/produce_manager/domain/helpers.dart';
+import 'package:farmhub/features/produce_manager/data/repository/produce_manager_helpers.dart';
 import 'package:farmhub/presentation/shared_widgets/ui_helpers.dart';
 import 'package:farmhub/presentation/themes/farmhub_theme.dart';
 import 'package:flutter/material.dart';

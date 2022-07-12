@@ -14,15 +14,18 @@ void main() {
   late MockAuthRemoteDataSource mockAuthRemoteDataSource;
   late MockAuthLocalDataSource mockAuthLocalDataSource;
   late MockNetworkInfo mockNetworkInfo;
+  late MockFarmShopManagerRepository mockFarmShopManagerRepository;
 
   setUp(() {
     mockAuthRemoteDataSource = MockAuthRemoteDataSource();
     mockAuthLocalDataSource = MockAuthLocalDataSource();
+    mockFarmShopManagerRepository = MockFarmShopManagerRepository();
     mockNetworkInfo = MockNetworkInfo();
     authRepository = AuthRepository(
       networkInfo: mockNetworkInfo,
       authRemoteDataSource: mockAuthRemoteDataSource,
       authLocalDataSource: mockAuthLocalDataSource,
+      farmShopManagerRepository: mockFarmShopManagerRepository,
     );
     registerFallbackValue(FakeFarmhubUser());
 

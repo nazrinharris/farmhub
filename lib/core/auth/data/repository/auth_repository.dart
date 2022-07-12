@@ -1,4 +1,5 @@
 import 'package:farmhub/core/typedefs/typedefs.dart';
+import 'package:farmhub/features/farm_shop_manager/domain/i_farm_shop_manager_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:fpdart/fpdart.dart';
@@ -16,12 +17,14 @@ import '../../../errors/exceptions.dart';
 class AuthRepository implements IAuthRepository {
   final IAuthRemoteDataSource authRemoteDataSource;
   final IAuthLocalDataSource authLocalDataSource;
+  final IFarmShopManagerRepository farmShopManagerRepository;
   final INetworkInfo networkInfo;
 
   AuthRepository({
     required this.networkInfo,
     required this.authRemoteDataSource,
     required this.authLocalDataSource,
+    required this.farmShopManagerRepository,
   });
 
   @override
@@ -36,6 +39,7 @@ class AuthRepository implements IAuthRepository {
           password: password,
         );
         await authLocalDataSource.storeFarmhubUser(user);
+
         return Right(user);
       } on FirebaseAuthException catch (e) {
         return Left(FirebaseAuthFailure(
@@ -149,27 +153,24 @@ class AuthRepository implements IAuthRepository {
     if (await networkInfo.isConnected) {
       try {
         final FarmhubUser user = await authRemoteDataSource.retrieveUserData();
+
         print("UID -> ${user.uid}");
         await authLocalDataSource.storeFarmhubUser(user);
 
         return Right(user);
       } on FirebaseAuthException catch (e) {
-        print('Retrieval of User Information Error Occurred, ${e.code}, ${e.message}');
         return Left(FirebaseAuthFailure(
           code: e.code,
           message: e.message,
           stackTrace: e.stackTrace,
         ));
       } on FirebaseException catch (e) {
-        print('Retrieval of User Information Error Occurred, ${e.code}, ${e.message}');
         return Left(FirebaseFirestoreFailure(
           code: e.code,
           message: e.message,
           stackTrace: e.stackTrace,
         ));
       } catch (e, stack) {
-        print('Retrieval of User Information Error Occurred, $e');
-        print("$stack");
         return Left(UnexpectedFailure(
           message: e.toString(),
           stackTrace: stack,

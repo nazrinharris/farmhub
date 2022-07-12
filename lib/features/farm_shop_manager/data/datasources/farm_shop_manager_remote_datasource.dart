@@ -206,6 +206,7 @@ class FarmShopManagerRemoteDatasource implements IFarmShopManagerRemoteDatasourc
 
   @override
   Future<Farm> getUserFarms({required FarmhubUser farmhubUser}) async {
+    //! This can return a list of [Farm]s, if need to, change when implementing multiple farms
     final Farm retrievedFarm = await firebaseFirestore
         .collection(FS_USER)
         .doc(farmhubUser.uid)

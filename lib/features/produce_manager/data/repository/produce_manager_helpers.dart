@@ -4,8 +4,8 @@ import 'package:farmhub/features/produce_manager/domain/entities/price/price.dar
 import 'package:intl/intl.dart';
 import 'package:clock/clock.dart';
 
-import '../../../core/auth/domain/entities/farmhub_user/farmhub_user.dart';
-import 'entities/produce/produce.dart';
+import '../../../../core/auth/domain/entities/farmhub_user/farmhub_user.dart';
+import '../../domain/entities/produce/produce.dart';
 
 enum RangeType { oneW, twoW, oneM, twoM, sixM, oneY }
 
