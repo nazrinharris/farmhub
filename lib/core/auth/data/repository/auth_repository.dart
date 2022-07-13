@@ -1,4 +1,5 @@
 import 'package:farmhub/core/typedefs/typedefs.dart';
+import 'package:farmhub/features/farm_shop_manager/data/datasources/farm_shop_manager_remote_datasource.dart';
 import 'package:farmhub/features/farm_shop_manager/domain/i_farm_shop_manager_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -17,14 +18,14 @@ import '../../../errors/exceptions.dart';
 class AuthRepository implements IAuthRepository {
   final IAuthRemoteDataSource authRemoteDataSource;
   final IAuthLocalDataSource authLocalDataSource;
-  final IFarmShopManagerRepository farmShopManagerRepository;
+  final IFarmShopManagerRemoteDatasource farmShopManagerRemoteDatasource;
   final INetworkInfo networkInfo;
 
   AuthRepository({
     required this.networkInfo,
     required this.authRemoteDataSource,
     required this.authLocalDataSource,
-    required this.farmShopManagerRepository,
+    required this.farmShopManagerRemoteDatasource,
   });
 
   @override
@@ -152,9 +153,21 @@ class AuthRepository implements IAuthRepository {
   Future<Either<Failure, FarmhubUser>> retrieveUserData() async {
     if (await networkInfo.isConnected) {
       try {
-        final FarmhubUser user = await authRemoteDataSource.retrieveUserData();
+        FarmhubUser user = await authRemoteDataSource.retrieveUserData();
 
-        print("UID -> ${user.uid}");
+        if (user is FarmhubUserFarmer || user is FarmhubUserBusiness) {
+          final farmList = await farmShopManagerRemoteDatasource.getUserFarms(farmhubUser: user);
+          final shopList = await farmShopManagerRemoteDatasource.getUserShops(farmhubUser: user);
+
+          user = user.map(
+            (user) => user,
+            farmer: (farmer) => farmer.copyWith(farmList: [farmList], shopList: [shopList]),
+            business: (business) => business.copyWith(farmList: [farmList], shopList: [shopList]),
+          );
+        }
+
+        print("User Data ->");
+        print(user);
         await authLocalDataSource.storeFarmhubUser(user);
 
         return Right(user);

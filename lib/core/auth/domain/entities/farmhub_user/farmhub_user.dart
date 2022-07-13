@@ -119,6 +119,19 @@ class FarmhubUser with _$FarmhubUser {
     required List<Shop> shopList,
   }) = FarmhubUserFarmer;
 
+  static FarmhubUserFarmer farmerFromFarmhubUser(FarmhubUser user) {
+    return FarmhubUserFarmer(
+      uid: user.uid,
+      email: user.email,
+      username: user.username,
+      createdAt: user.createdAt,
+      produceFavoritesList: user.produceFavoritesList,
+      userType: user.userType,
+      farmList: [],
+      shopList: [],
+    );
+  }
+
   const factory FarmhubUser.business({
     required String uid,
     required String email,
@@ -129,4 +142,29 @@ class FarmhubUser with _$FarmhubUser {
     required List<Farm> farmList,
     required List<Shop> shopList,
   }) = FarmhubUserBusiness;
+
+  static FarmhubUserBusiness businessFromFarmhubUser(FarmhubUser user) {
+    return FarmhubUserBusiness(
+      uid: user.uid,
+      email: user.email,
+      username: user.username,
+      createdAt: user.createdAt,
+      produceFavoritesList: user.produceFavoritesList,
+      userType: user.userType,
+      farmList: [],
+      shopList: [],
+    );
+  }
+
+  static FarmhubUser returnRespectiveUserType(FarmhubUser farmhubUser) {
+    final UserType userType = farmhubUser.userType;
+
+    if (userType == UserType.farmer) {
+      return FarmhubUser.farmerFromFarmhubUser(farmhubUser);
+    } else if (userType == UserType.business) {
+      return FarmhubUser.businessFromFarmhubUser(farmhubUser);
+    } else {
+      return farmhubUser;
+    }
+  }
 }

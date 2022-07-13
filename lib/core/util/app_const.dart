@@ -49,6 +49,9 @@ const String PM_ERR_EMPTY_PREVIOUS_PRODUCE_LIST = 'PM_ERR_EMPTY_PREVIOUS_PRODUCE
 /// [FarmShopManager]'s [ErrorCodes]
 const String FSM_ERR_NOT_FARMER_OR_BUSINESS = 'FSM_ERR_NOT_FARMER_OR_BUSINESS';
 
+/// [Auth]'s [ErrorCodes]
+const String AUTH_NOT_SIGNED_IN = 'AUTH_NOT_SIGNED_IN';
+
 /// [AuthLocalDatasource]'s [ErrorCodes]
 const String AL_ERR_NO_USER = 'ERR_NO_USER';
 

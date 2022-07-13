@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:farmhub/core/auth/data/repository/auth_repository_helpers.dart';
 import 'package:farmhub/core/auth/domain/entities/farmhub_user/farmhub_user.dart';
 import 'package:farmhub/core/errors/exceptions.dart';
 import 'package:farmhub/core/util/app_const.dart';
@@ -152,15 +153,15 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
 
     if (user == null) {
       // TODO: Make a proper constant error code.
-      throw FirebaseAuthException(code: 'user-not-signed-in', message: 'User is not signed in.');
+      throw FirebaseAuthException(code: AUTH_NOT_SIGNED_IN, message: 'User is not signed in.');
     } else {
-      final farmhubUser = await firebaseFirestore
+      final farmhubUserJson = await firebaseFirestore
           .collection(FS_USER)
           .doc(user.uid)
           .get()
           .then((value) => value.data());
 
-      if (farmhubUser == null) {
+      if (farmhubUserJson == null) {
         throw FirebaseException(
           plugin: FS_PLUGIN,
           code: FS_ERRCODE_JSON_NOT_FOUND,
@@ -168,7 +169,7 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
           stackTrace: StackTrace.current,
         );
       } else {
-        return FarmhubUser.fromMap(farmhubUser);
+        return FarmhubUser.returnRespectiveUserType(FarmhubUser.fromMap(farmhubUserJson));
       }
     }
   }

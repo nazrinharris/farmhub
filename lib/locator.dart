@@ -38,7 +38,7 @@ void setupLocator() {
         networkInfo: locator(),
         authRemoteDataSource: locator(),
         authLocalDataSource: locator(),
-        farmShopManagerRepository: locator(),
+        farmShopManagerRemoteDatasource: locator(),
       ));
   // Datasources
   locator.registerLazySingleton<IAuthLocalDataSource>(() => AuthLocalDataSource());
