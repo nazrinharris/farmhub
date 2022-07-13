@@ -48,6 +48,56 @@ class ErrorNoInternetCard extends StatelessWidget {
   }
 }
 
+class ErrorCard extends StatelessWidget {
+  final EdgeInsetsGeometry? margin;
+  final Icon icon;
+  final String mainContent;
+  final String? subContent;
+
+  const ErrorCard(
+      {Key? key, this.margin, required this.icon, required this.mainContent, this.subContent})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: margin,
+      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(16),
+        color: Theme.of(context).colorScheme.error.withOpacity(0.15),
+      ),
+      child: Row(
+        children: [
+          icon,
+          const UIHorizontalSpace14(),
+          Flexible(
+            child: Column(
+              children: [
+                Text(
+                  mainContent,
+                  style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                        color: Theme.of(context).colorScheme.error,
+                      ),
+                ),
+                if (subContent != null) const UIVerticalSpace14(),
+                if (subContent != null)
+                  Text(
+                    subContent!,
+                    style: Theme.of(context).textTheme.caption!.copyWith(
+                          color: Theme.of(context).colorScheme.error,
+                          fontSize: 13,
+                        ),
+                  )
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
 class CurrentPriceCard extends StatelessWidget {
   final EdgeInsetsGeometry? margin;
   final Produce produce;
