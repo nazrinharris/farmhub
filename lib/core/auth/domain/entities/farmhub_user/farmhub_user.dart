@@ -9,6 +9,7 @@ import '../../../../../features/farm_shop_manager/domain/entities/farm_shop/farm
 import '../../../../errors/exceptions.dart';
 
 part 'farmhub_user.freezed.dart';
+part 'farmhub_user.g.dart';
 
 enum UserType { farmer, business, regular, admin }
 
@@ -52,6 +53,7 @@ UserType returnType(String typeAsString) {
 class FarmhubUser with _$FarmhubUser {
   const FarmhubUser._();
 
+  @JsonSerializable(explicitToJson: true)
   factory FarmhubUser({
     required String uid,
     required String email,
@@ -60,6 +62,8 @@ class FarmhubUser with _$FarmhubUser {
     required List<ProduceFavorite> produceFavoritesList,
     required UserType userType,
   }) = _FarmhubUser;
+
+  factory FarmhubUser.fromJson(Map<String, dynamic> json) => _$FarmhubUserFromJson(json);
 
   static FarmhubUser fromMap(Map<String, dynamic>? map) {
     if (map == null) {
@@ -108,6 +112,7 @@ class FarmhubUser with _$FarmhubUser {
     };
   }
 
+  @JsonSerializable(explicitToJson: true)
   const factory FarmhubUser.farmer({
     required String uid,
     required String email,
@@ -118,6 +123,18 @@ class FarmhubUser with _$FarmhubUser {
     required List<Farm> farmList,
     required List<Shop> shopList,
   }) = FarmhubUserFarmer;
+
+  @JsonSerializable(explicitToJson: true)
+  const factory FarmhubUser.business({
+    required String uid,
+    required String email,
+    required String username,
+    required String createdAt,
+    required List<ProduceFavorite> produceFavoritesList,
+    required UserType userType,
+    required List<Farm> farmList,
+    required List<Shop> shopList,
+  }) = FarmhubUserBusiness;
 
   static FarmhubUserFarmer farmerFromFarmhubUser(FarmhubUser user) {
     return FarmhubUserFarmer(
@@ -131,17 +148,6 @@ class FarmhubUser with _$FarmhubUser {
       shopList: [],
     );
   }
-
-  const factory FarmhubUser.business({
-    required String uid,
-    required String email,
-    required String username,
-    required String createdAt,
-    required List<ProduceFavorite> produceFavoritesList,
-    required UserType userType,
-    required List<Farm> farmList,
-    required List<Shop> shopList,
-  }) = FarmhubUserBusiness;
 
   static FarmhubUserBusiness businessFromFarmhubUser(FarmhubUser user) {
     return FarmhubUserBusiness(
@@ -168,3 +174,21 @@ class FarmhubUser with _$FarmhubUser {
     }
   }
 }
+
+// class FarmhubUserConverter implements JsonConverter<FarmhubUser, Map<String, dynamic>> {
+//   const FarmhubUserConverter();
+
+//   @override
+//   FarmhubUser fromJson(Map<String, dynamic> json) {
+//     return FarmhubUser.fromJson(json);
+//   }
+
+//   @override
+//   Map<String, dynamic> toJson(FarmhubUser user) {
+//     if (user is FarmhubUserFarmer) {
+//       return {
+
+//       };
+//     }
+//   }
+// }

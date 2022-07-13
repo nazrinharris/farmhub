@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'dart:math';
 
 import 'package:bloc/bloc.dart';
@@ -30,6 +28,7 @@ class PlaygroundCubit extends Cubit<PlaygroundState> {
     required String produceName,
     required num currentProducePrice,
   }) async {
+    return;
     emit(const PlaygroundState.loading());
 
     print("Creating produce...");
@@ -54,6 +53,7 @@ class PlaygroundCubit extends Cubit<PlaygroundState> {
     required String produceId,
     required num currentPrice,
   }) async {
+    return;
     emit(const PlaygroundState.loading());
 
     print("Adding new price to Produce with ID: $produceId");
@@ -74,6 +74,7 @@ class PlaygroundCubit extends Cubit<PlaygroundState> {
   void debugMethod({
     required String produceId,
   }) async {
+    return;
     emit(const PlaygroundState.loading());
 
     print("Adding new price to Produce with ID: $produceId");
@@ -112,6 +113,7 @@ class PlaygroundCubit extends Cubit<PlaygroundState> {
     required int pricesAmount,
     required String produceId,
   }) async {
+    return;
     emit(const PlaygroundState.loading());
 
     final List<PriceSnippet> createdPricesList = [];
@@ -135,6 +137,7 @@ class PlaygroundCubit extends Cubit<PlaygroundState> {
   void retrieveProduce({
     required String produceId,
   }) async {
+    return;
     emit(const PlaygroundState.loading());
 
     final produceDoc = await firebaseFirestore.collection('produce').doc(produceId).get();
@@ -148,6 +151,7 @@ class PlaygroundCubit extends Cubit<PlaygroundState> {
     required String produceId,
     required String priceId,
   }) async {
+    return;
     print("Get Price Started");
     emit(const PlaygroundState.loading());
 
@@ -169,6 +173,8 @@ class PlaygroundCubit extends Cubit<PlaygroundState> {
     required String chosenDate,
     required String chosenYear,
   }) async {
+    return;
+
     await firebaseFirestore
         .collection('produce')
         .doc(produceId)

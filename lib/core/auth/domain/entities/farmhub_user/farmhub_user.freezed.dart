@@ -14,6 +14,21 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+FarmhubUser _$FarmhubUserFromJson(Map<String, dynamic> json) {
+  switch (json['runtimeType']) {
+    case 'default':
+      return _FarmhubUser.fromJson(json);
+    case 'farmer':
+      return FarmhubUserFarmer.fromJson(json);
+    case 'business':
+      return FarmhubUserBusiness.fromJson(json);
+
+    default:
+      throw CheckedFromJsonException(json, 'runtimeType', 'FarmhubUser',
+          'Invalid union type "${json['runtimeType']}"!');
+  }
+}
+
 /// @nodoc
 mixin _$FarmhubUser {
   String get uid => throw _privateConstructorUsedError;
@@ -142,7 +157,7 @@ mixin _$FarmhubUser {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
-
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $FarmhubUserCopyWith<FarmhubUser> get copyWith =>
       throw _privateConstructorUsedError;
@@ -274,6 +289,7 @@ class __$$_FarmhubUserCopyWithImpl<$Res> extends _$FarmhubUserCopyWithImpl<$Res>
 
 /// @nodoc
 
+@JsonSerializable(explicitToJson: true)
 class _$_FarmhubUser extends _FarmhubUser {
   _$_FarmhubUser(
       {required this.uid,
@@ -281,8 +297,13 @@ class _$_FarmhubUser extends _FarmhubUser {
       required this.username,
       required this.createdAt,
       required this.produceFavoritesList,
-      required this.userType})
-      : super._();
+      required this.userType,
+      final String? $type})
+      : $type = $type ?? 'default',
+        super._();
+
+  factory _$_FarmhubUser.fromJson(Map<String, dynamic> json) =>
+      _$$_FarmhubUserFromJson(json);
 
   @override
   final String uid;
@@ -296,6 +317,9 @@ class _$_FarmhubUser extends _FarmhubUser {
   final List<ProduceFavorite> produceFavoritesList;
   @override
   final UserType userType;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -316,6 +340,7 @@ class _$_FarmhubUser extends _FarmhubUser {
             const DeepCollectionEquality().equals(other.userType, userType));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -476,6 +501,11 @@ class _$_FarmhubUser extends _FarmhubUser {
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_FarmhubUserToJson(this);
+  }
 }
 
 abstract class _FarmhubUser extends FarmhubUser {
@@ -487,6 +517,9 @@ abstract class _FarmhubUser extends FarmhubUser {
       required final List<ProduceFavorite> produceFavoritesList,
       required final UserType userType}) = _$_FarmhubUser;
   _FarmhubUser._() : super._();
+
+  factory _FarmhubUser.fromJson(Map<String, dynamic> json) =
+      _$_FarmhubUser.fromJson;
 
   @override
   String get uid => throw _privateConstructorUsedError;
@@ -586,6 +619,7 @@ class __$$FarmhubUserFarmerCopyWithImpl<$Res>
 
 /// @nodoc
 
+@JsonSerializable(explicitToJson: true)
 class _$FarmhubUserFarmer extends FarmhubUserFarmer {
   const _$FarmhubUserFarmer(
       {required this.uid,
@@ -595,8 +629,13 @@ class _$FarmhubUserFarmer extends FarmhubUserFarmer {
       required this.produceFavoritesList,
       required this.userType,
       required this.farmList,
-      required this.shopList})
-      : super._();
+      required this.shopList,
+      final String? $type})
+      : $type = $type ?? 'farmer',
+        super._();
+
+  factory _$FarmhubUserFarmer.fromJson(Map<String, dynamic> json) =>
+      _$$FarmhubUserFarmerFromJson(json);
 
   @override
   final String uid;
@@ -614,6 +653,9 @@ class _$FarmhubUserFarmer extends FarmhubUserFarmer {
   final List<Farm> farmList;
   @override
   final List<Shop> shopList;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -636,6 +678,7 @@ class _$FarmhubUserFarmer extends FarmhubUserFarmer {
             const DeepCollectionEquality().equals(other.shopList, shopList));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -798,6 +841,11 @@ class _$FarmhubUserFarmer extends FarmhubUserFarmer {
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$FarmhubUserFarmerToJson(this);
+  }
 }
 
 abstract class FarmhubUserFarmer extends FarmhubUser {
@@ -811,6 +859,9 @@ abstract class FarmhubUserFarmer extends FarmhubUser {
       required final List<Farm> farmList,
       required final List<Shop> shopList}) = _$FarmhubUserFarmer;
   const FarmhubUserFarmer._() : super._();
+
+  factory FarmhubUserFarmer.fromJson(Map<String, dynamic> json) =
+      _$FarmhubUserFarmer.fromJson;
 
   @override
   String get uid => throw _privateConstructorUsedError;
@@ -912,6 +963,7 @@ class __$$FarmhubUserBusinessCopyWithImpl<$Res>
 
 /// @nodoc
 
+@JsonSerializable(explicitToJson: true)
 class _$FarmhubUserBusiness extends FarmhubUserBusiness {
   const _$FarmhubUserBusiness(
       {required this.uid,
@@ -921,8 +973,13 @@ class _$FarmhubUserBusiness extends FarmhubUserBusiness {
       required this.produceFavoritesList,
       required this.userType,
       required this.farmList,
-      required this.shopList})
-      : super._();
+      required this.shopList,
+      final String? $type})
+      : $type = $type ?? 'business',
+        super._();
+
+  factory _$FarmhubUserBusiness.fromJson(Map<String, dynamic> json) =>
+      _$$FarmhubUserBusinessFromJson(json);
 
   @override
   final String uid;
@@ -940,6 +997,9 @@ class _$FarmhubUserBusiness extends FarmhubUserBusiness {
   final List<Farm> farmList;
   @override
   final List<Shop> shopList;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -962,6 +1022,7 @@ class _$FarmhubUserBusiness extends FarmhubUserBusiness {
             const DeepCollectionEquality().equals(other.shopList, shopList));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -1125,6 +1186,11 @@ class _$FarmhubUserBusiness extends FarmhubUserBusiness {
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$FarmhubUserBusinessToJson(this);
+  }
 }
 
 abstract class FarmhubUserBusiness extends FarmhubUser {
@@ -1138,6 +1204,9 @@ abstract class FarmhubUserBusiness extends FarmhubUser {
       required final List<Farm> farmList,
       required final List<Shop> shopList}) = _$FarmhubUserBusiness;
   const FarmhubUserBusiness._() : super._();
+
+  factory FarmhubUserBusiness.fromJson(Map<String, dynamic> json) =
+      _$FarmhubUserBusiness.fromJson;
 
   @override
   String get uid => throw _privateConstructorUsedError;

@@ -26,6 +26,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'features/produce_manager/domain/entities/produce/produce.dart';
+import 'locator.dart';
 
 class ProduceArguments {
   final Produce produce;
@@ -158,7 +159,7 @@ class AppRouter {
       case '/navigate':
         return CupertinoPageRoute(builder: (_) => const NavigateView());
       case '/playground':
-        return CupertinoPageRoute(builder: (_) => const PlaygroundScreen());
+        return CupertinoPageRoute(builder: (_) => PlaygroundScreen(authLocalDataSource: locator()));
       case '/playground_two':
         return CupertinoPageRoute(builder: (_) => const PlaygroundTwoScreen());
 
@@ -204,7 +205,10 @@ Route editProfileRoute = PageRouteBuilder(
 
 Route favoritesRoute = CupertinoPageRoute(builder: (_) => const FavoritesScreen());
 Route settingsRoute = CupertinoPageRoute(builder: (_) => const SettingsScreen());
-Route playgroundRoute = CupertinoPageRoute(builder: (_) => const PlaygroundScreen());
+Route playgroundRoute = CupertinoPageRoute(
+    builder: (_) => PlaygroundScreen(
+          authLocalDataSource: locator(),
+        ));
 Route playgroundTwoRoute = CupertinoPageRoute(builder: (_) => const PlaygroundTwoScreen());
 
 Widget createProduceScreenTransitionBuilder(context, animation, secondaryAnimation, child) {

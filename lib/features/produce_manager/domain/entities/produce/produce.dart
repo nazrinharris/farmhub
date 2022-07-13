@@ -82,8 +82,11 @@ class Produce with _$Produce {
 
 @freezed
 class ProduceFavorite with _$ProduceFavorite {
+  @JsonSerializable(explicitToJson: true)
   factory ProduceFavorite({
     required String produceId,
     required DateTime dateAdded,
   }) = _ProduceFavorite;
+
+  factory ProduceFavorite.fromJson(Map<String, dynamic> json) => _$ProduceFavoriteFromJson(json);
 }
