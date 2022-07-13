@@ -136,7 +136,11 @@ class FarmhubUser with _$FarmhubUser {
     required List<Shop> shopList,
   }) = FarmhubUserBusiness;
 
-  static FarmhubUserFarmer farmerFromFarmhubUser(FarmhubUser user) {
+  static FarmhubUserFarmer farmerFromFarmhubUser(
+    FarmhubUser user,
+    List<Farm> farmList,
+    List<Shop> shopList,
+  ) {
     return FarmhubUserFarmer(
       uid: user.uid,
       email: user.email,
@@ -144,12 +148,16 @@ class FarmhubUser with _$FarmhubUser {
       createdAt: user.createdAt,
       produceFavoritesList: user.produceFavoritesList,
       userType: user.userType,
-      farmList: [],
-      shopList: [],
+      farmList: farmList,
+      shopList: shopList,
     );
   }
 
-  static FarmhubUserBusiness businessFromFarmhubUser(FarmhubUser user) {
+  static FarmhubUserBusiness businessFromFarmhubUser(
+    FarmhubUser user,
+    List<Farm> farmList,
+    List<Shop> shopList,
+  ) {
     return FarmhubUserBusiness(
       uid: user.uid,
       email: user.email,
@@ -157,18 +165,22 @@ class FarmhubUser with _$FarmhubUser {
       createdAt: user.createdAt,
       produceFavoritesList: user.produceFavoritesList,
       userType: user.userType,
-      farmList: [],
-      shopList: [],
+      farmList: farmList,
+      shopList: shopList,
     );
   }
 
-  static FarmhubUser returnRespectiveUserType(FarmhubUser farmhubUser) {
+  static FarmhubUser returnRespectiveUserType(
+    FarmhubUser farmhubUser, {
+    List<Farm>? farmList,
+    List<Shop>? shopList,
+  }) {
     final UserType userType = farmhubUser.userType;
 
     if (userType == UserType.farmer) {
-      return FarmhubUser.farmerFromFarmhubUser(farmhubUser);
+      return FarmhubUser.farmerFromFarmhubUser(farmhubUser, farmList!, shopList!);
     } else if (userType == UserType.business) {
-      return FarmhubUser.businessFromFarmhubUser(farmhubUser);
+      return FarmhubUser.businessFromFarmhubUser(farmhubUser, farmList!, shopList!);
     } else {
       return farmhubUser;
     }
