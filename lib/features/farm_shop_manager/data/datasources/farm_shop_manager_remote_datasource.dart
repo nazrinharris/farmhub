@@ -15,7 +15,7 @@ abstract class IFarmShopManagerRemoteDatasource {
   });
   Future<Unit> deleteFarm({required FarmhubUser farmhubUser, required String farmId});
   Future<Unit> updateFarm({required FarmhubUser farmhubUser, required Farm farm});
-  Future<Farm> getUserFarms({required FarmhubUser farmhubUser});
+  Future<List<Farm>> getUserFarms({required FarmhubUser farmhubUser});
 
   Future<Shop> createShop({
     required FarmhubUser farmhubUser,
@@ -24,7 +24,7 @@ abstract class IFarmShopManagerRemoteDatasource {
   });
   Future<Unit> deleteShop({required FarmhubUser farmhubUser, required String shopId});
   Future<Unit> updateShop({required FarmhubUser farmhubUser, required Shop shop});
-  Future<Shop> getUserShops({required FarmhubUser farmhubUser});
+  Future<List<Shop>> getUserShops({required FarmhubUser farmhubUser});
 }
 
 class FarmShopManagerRemoteDatasource implements IFarmShopManagerRemoteDatasource {
@@ -205,29 +205,39 @@ class FarmShopManagerRemoteDatasource implements IFarmShopManagerRemoteDatasourc
   }
 
   @override
-  Future<Farm> getUserFarms({required FarmhubUser farmhubUser}) async {
+  Future<List<Farm>> getUserFarms({required FarmhubUser farmhubUser}) async {
     //! This can return a list of [Farm]s, if need to, change when implementing multiple farms
-    final Farm retrievedFarm = await firebaseFirestore
+    final List<Farm> retrievedFarmList = await firebaseFirestore
         .collection(FS_USER)
         .doc(farmhubUser.uid)
         .collection(FS_USER_FARM)
         .get()
         .then((querySnapshot) {
-      return Farm.fromJson(querySnapshot.docs[0].data());
+      final List<Farm> farmList = [];
+
+      for (QueryDocumentSnapshot<Map<String, dynamic>> doc in querySnapshot.docs) {
+        farmList.add(Farm.fromJson(doc.data()));
+      }
+      return farmList;
     });
 
-    return retrievedFarm;
+    return retrievedFarmList;
   }
 
   @override
-  Future<Shop> getUserShops({required FarmhubUser farmhubUser}) async {
-    final Shop retrievedShop = await firebaseFirestore
+  Future<List<Shop>> getUserShops({required FarmhubUser farmhubUser}) async {
+    final List<Shop> retrievedShop = await firebaseFirestore
         .collection(FS_USER)
         .doc(farmhubUser.uid)
         .collection(FS_USER_SHOP)
         .get()
         .then((querySnapshot) {
-      return Shop.fromJson(querySnapshot.docs[0].data());
+      final List<Shop> shopList = [];
+
+      for (QueryDocumentSnapshot<Map<String, dynamic>> doc in querySnapshot.docs) {
+        shopList.add(Shop.fromJson(doc.data()));
+      }
+      return shopList;
     });
 
     return retrievedShop;

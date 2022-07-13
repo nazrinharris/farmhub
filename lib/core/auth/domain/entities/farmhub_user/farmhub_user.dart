@@ -120,8 +120,8 @@ class FarmhubUser with _$FarmhubUser {
     required String createdAt,
     required List<ProduceFavorite> produceFavoritesList,
     required UserType userType,
-    required List<Farm> farmList,
-    required List<Shop> shopList,
+    required List<Farm> userFarms,
+    required List<Shop> userShops,
   }) = FarmhubUserFarmer;
 
   @JsonSerializable(explicitToJson: true)
@@ -132,15 +132,11 @@ class FarmhubUser with _$FarmhubUser {
     required String createdAt,
     required List<ProduceFavorite> produceFavoritesList,
     required UserType userType,
-    required List<Farm> farmList,
-    required List<Shop> shopList,
+    required List<Farm> userFarms,
+    required List<Shop> userShops,
   }) = FarmhubUserBusiness;
 
-  static FarmhubUserFarmer farmerFromFarmhubUser(
-    FarmhubUser user,
-    List<Farm> farmList,
-    List<Shop> shopList,
-  ) {
+  static FarmhubUserFarmer farmerFromFarmhubUser(FarmhubUser user) {
     return FarmhubUserFarmer(
       uid: user.uid,
       email: user.email,
@@ -148,16 +144,12 @@ class FarmhubUser with _$FarmhubUser {
       createdAt: user.createdAt,
       produceFavoritesList: user.produceFavoritesList,
       userType: user.userType,
-      farmList: farmList,
-      shopList: shopList,
+      userFarms: [],
+      userShops: [],
     );
   }
 
-  static FarmhubUserBusiness businessFromFarmhubUser(
-    FarmhubUser user,
-    List<Farm> farmList,
-    List<Shop> shopList,
-  ) {
+  static FarmhubUserBusiness businessFromFarmhubUser(FarmhubUser user) {
     return FarmhubUserBusiness(
       uid: user.uid,
       email: user.email,
@@ -165,42 +157,26 @@ class FarmhubUser with _$FarmhubUser {
       createdAt: user.createdAt,
       produceFavoritesList: user.produceFavoritesList,
       userType: user.userType,
-      farmList: farmList,
-      shopList: shopList,
+      userFarms: [],
+      userShops: [],
     );
   }
 
+  /// This method will only return the respective FarmhubUser type from [UserType], its
+  /// [userFarms] and [userShops] should be provided after.
   static FarmhubUser returnRespectiveUserType(
     FarmhubUser farmhubUser, {
-    List<Farm>? farmList,
-    List<Shop>? shopList,
+    List<Farm>? userFarms,
+    List<Shop>? userShops,
   }) {
     final UserType userType = farmhubUser.userType;
 
     if (userType == UserType.farmer) {
-      return FarmhubUser.farmerFromFarmhubUser(farmhubUser, farmList!, shopList!);
+      return FarmhubUser.farmerFromFarmhubUser(farmhubUser);
     } else if (userType == UserType.business) {
-      return FarmhubUser.businessFromFarmhubUser(farmhubUser, farmList!, shopList!);
+      return FarmhubUser.businessFromFarmhubUser(farmhubUser);
     } else {
       return farmhubUser;
     }
   }
 }
-
-// class FarmhubUserConverter implements JsonConverter<FarmhubUser, Map<String, dynamic>> {
-//   const FarmhubUserConverter();
-
-//   @override
-//   FarmhubUser fromJson(Map<String, dynamic> json) {
-//     return FarmhubUser.fromJson(json);
-//   }
-
-//   @override
-//   Map<String, dynamic> toJson(FarmhubUser user) {
-//     if (user is FarmhubUserFarmer) {
-//       return {
-
-//       };
-//     }
-//   }
-// }

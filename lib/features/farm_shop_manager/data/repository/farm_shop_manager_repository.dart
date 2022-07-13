@@ -187,7 +187,7 @@ class FarmShopManagerRepository implements IFarmShopManagerRepository {
   }
 
   @override
-  FutureEither<Farm> getUserFarms() async {
+  FutureEither<List<Farm>> getUserFarms() async {
     if (await networkInfo.isConnected) {
       try {
         final user = globalAuthCubit.state.farmhubUser!;
@@ -212,7 +212,7 @@ class FarmShopManagerRepository implements IFarmShopManagerRepository {
   }
 
   @override
-  FutureEither<Shop> getUserShops() async {
+  FutureEither<List<Shop>> getUserShops() async {
     if (await networkInfo.isConnected) {
       try {
         final user = globalAuthCubit.state.farmhubUser!;

@@ -36,7 +36,7 @@ final farmer = FarmhubUser.farmer(
     ProduceFavorite(produceId: "produceId", dateAdded: DateTime.now()),
   ],
   userType: UserType.farmer,
-  farmList: [
+  userFarms: [
     Farm(
       creatorUserId: "creatorUserId",
       farmId: "farmId",
@@ -44,7 +44,7 @@ final farmer = FarmhubUser.farmer(
       address: Address(rawAddress: "rawAddress"),
     ),
   ],
-  shopList: [
+  userShops: [
     Shop(
       creatorUserId: "creatorUserId",
       shopId: "shopId",

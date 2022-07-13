@@ -155,14 +155,16 @@ class AuthRepository implements IAuthRepository {
       try {
         FarmhubUser user = await authRemoteDataSource.retrieveUserData();
 
+        /// When we retrieve [user], it only retrieves [FarmhubUser], as such, [farmList] and
+        /// [shopList] will be empty, here, we will retrieve it.
         if (user is FarmhubUserFarmer || user is FarmhubUserBusiness) {
           final farmList = await farmShopManagerRemoteDatasource.getUserFarms(farmhubUser: user);
           final shopList = await farmShopManagerRemoteDatasource.getUserShops(farmhubUser: user);
 
           user = user.map(
             (user) => user,
-            farmer: (farmer) => farmer.copyWith(farmList: [farmList], shopList: [shopList]),
-            business: (business) => business.copyWith(farmList: [farmList], shopList: [shopList]),
+            farmer: (farmer) => farmer.copyWith(userFarms: farmList, userShops: shopList),
+            business: (business) => business.copyWith(userFarms: farmList, userShops: shopList),
           );
         }
 
@@ -177,11 +179,11 @@ class AuthRepository implements IAuthRepository {
           message: e.message,
           stackTrace: e.stackTrace,
         ));
-      } on FirebaseException catch (e) {
+      } on FirebaseException catch (e, stack) {
         return Left(FirebaseFirestoreFailure(
           code: e.code,
           message: e.message,
-          stackTrace: e.stackTrace,
+          stackTrace: stack,
         ));
       } catch (e, stack) {
         return Left(UnexpectedFailure(

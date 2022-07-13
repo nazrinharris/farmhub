@@ -168,9 +168,8 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
           message: 'User document not found.',
           stackTrace: StackTrace.current,
         );
-      } else {
-        return FarmhubUser.returnRespectiveUserType(FarmhubUser.fromMap(farmhubUserJson));
       }
+      return FarmhubUser.returnRespectiveUserType(FarmhubUser.fromMap(farmhubUserJson));
     }
   }
 

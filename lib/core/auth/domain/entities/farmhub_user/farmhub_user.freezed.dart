@@ -55,8 +55,8 @@ mixin _$FarmhubUser {
             String createdAt,
             List<ProduceFavorite> produceFavoritesList,
             UserType userType,
-            List<Farm> farmList,
-            List<Shop> shopList)
+            List<Farm> userFarms,
+            List<Shop> userShops)
         farmer,
     required TResult Function(
             String uid,
@@ -65,8 +65,8 @@ mixin _$FarmhubUser {
             String createdAt,
             List<ProduceFavorite> produceFavoritesList,
             UserType userType,
-            List<Farm> farmList,
-            List<Shop> shopList)
+            List<Farm> userFarms,
+            List<Shop> userShops)
         business,
   }) =>
       throw _privateConstructorUsedError;
@@ -87,8 +87,8 @@ mixin _$FarmhubUser {
             String createdAt,
             List<ProduceFavorite> produceFavoritesList,
             UserType userType,
-            List<Farm> farmList,
-            List<Shop> shopList)?
+            List<Farm> userFarms,
+            List<Shop> userShops)?
         farmer,
     TResult Function(
             String uid,
@@ -97,8 +97,8 @@ mixin _$FarmhubUser {
             String createdAt,
             List<ProduceFavorite> produceFavoritesList,
             UserType userType,
-            List<Farm> farmList,
-            List<Shop> shopList)?
+            List<Farm> userFarms,
+            List<Shop> userShops)?
         business,
   }) =>
       throw _privateConstructorUsedError;
@@ -119,8 +119,8 @@ mixin _$FarmhubUser {
             String createdAt,
             List<ProduceFavorite> produceFavoritesList,
             UserType userType,
-            List<Farm> farmList,
-            List<Shop> shopList)?
+            List<Farm> userFarms,
+            List<Shop> userShops)?
         farmer,
     TResult Function(
             String uid,
@@ -129,8 +129,8 @@ mixin _$FarmhubUser {
             String createdAt,
             List<ProduceFavorite> produceFavoritesList,
             UserType userType,
-            List<Farm> farmList,
-            List<Shop> shopList)?
+            List<Farm> userFarms,
+            List<Shop> userShops)?
         business,
     required TResult orElse(),
   }) =>
@@ -374,8 +374,8 @@ class _$_FarmhubUser extends _FarmhubUser {
             String createdAt,
             List<ProduceFavorite> produceFavoritesList,
             UserType userType,
-            List<Farm> farmList,
-            List<Shop> shopList)
+            List<Farm> userFarms,
+            List<Shop> userShops)
         farmer,
     required TResult Function(
             String uid,
@@ -384,8 +384,8 @@ class _$_FarmhubUser extends _FarmhubUser {
             String createdAt,
             List<ProduceFavorite> produceFavoritesList,
             UserType userType,
-            List<Farm> farmList,
-            List<Shop> shopList)
+            List<Farm> userFarms,
+            List<Shop> userShops)
         business,
   }) {
     return $default(
@@ -410,8 +410,8 @@ class _$_FarmhubUser extends _FarmhubUser {
             String createdAt,
             List<ProduceFavorite> produceFavoritesList,
             UserType userType,
-            List<Farm> farmList,
-            List<Shop> shopList)?
+            List<Farm> userFarms,
+            List<Shop> userShops)?
         farmer,
     TResult Function(
             String uid,
@@ -420,8 +420,8 @@ class _$_FarmhubUser extends _FarmhubUser {
             String createdAt,
             List<ProduceFavorite> produceFavoritesList,
             UserType userType,
-            List<Farm> farmList,
-            List<Shop> shopList)?
+            List<Farm> userFarms,
+            List<Shop> userShops)?
         business,
   }) {
     return $default?.call(
@@ -446,8 +446,8 @@ class _$_FarmhubUser extends _FarmhubUser {
             String createdAt,
             List<ProduceFavorite> produceFavoritesList,
             UserType userType,
-            List<Farm> farmList,
-            List<Shop> shopList)?
+            List<Farm> userFarms,
+            List<Shop> userShops)?
         farmer,
     TResult Function(
             String uid,
@@ -456,8 +456,8 @@ class _$_FarmhubUser extends _FarmhubUser {
             String createdAt,
             List<ProduceFavorite> produceFavoritesList,
             UserType userType,
-            List<Farm> farmList,
-            List<Shop> shopList)?
+            List<Farm> userFarms,
+            List<Shop> userShops)?
         business,
     required TResult orElse(),
   }) {
@@ -554,8 +554,8 @@ abstract class _$$FarmhubUserFarmerCopyWith<$Res>
       String createdAt,
       List<ProduceFavorite> produceFavoritesList,
       UserType userType,
-      List<Farm> farmList,
-      List<Shop> shopList});
+      List<Farm> userFarms,
+      List<Shop> userShops});
 }
 
 /// @nodoc
@@ -577,8 +577,8 @@ class __$$FarmhubUserFarmerCopyWithImpl<$Res>
     Object? createdAt = freezed,
     Object? produceFavoritesList = freezed,
     Object? userType = freezed,
-    Object? farmList = freezed,
-    Object? shopList = freezed,
+    Object? userFarms = freezed,
+    Object? userShops = freezed,
   }) {
     return _then(_$FarmhubUserFarmer(
       uid: uid == freezed
@@ -605,13 +605,13 @@ class __$$FarmhubUserFarmerCopyWithImpl<$Res>
           ? _value.userType
           : userType // ignore: cast_nullable_to_non_nullable
               as UserType,
-      farmList: farmList == freezed
-          ? _value.farmList
-          : farmList // ignore: cast_nullable_to_non_nullable
+      userFarms: userFarms == freezed
+          ? _value.userFarms
+          : userFarms // ignore: cast_nullable_to_non_nullable
               as List<Farm>,
-      shopList: shopList == freezed
-          ? _value.shopList
-          : shopList // ignore: cast_nullable_to_non_nullable
+      userShops: userShops == freezed
+          ? _value.userShops
+          : userShops // ignore: cast_nullable_to_non_nullable
               as List<Shop>,
     ));
   }
@@ -628,8 +628,8 @@ class _$FarmhubUserFarmer extends FarmhubUserFarmer {
       required this.createdAt,
       required this.produceFavoritesList,
       required this.userType,
-      required this.farmList,
-      required this.shopList,
+      required this.userFarms,
+      required this.userShops,
       final String? $type})
       : $type = $type ?? 'farmer',
         super._();
@@ -650,16 +650,16 @@ class _$FarmhubUserFarmer extends FarmhubUserFarmer {
   @override
   final UserType userType;
   @override
-  final List<Farm> farmList;
+  final List<Farm> userFarms;
   @override
-  final List<Shop> shopList;
+  final List<Shop> userShops;
 
   @JsonKey(name: 'runtimeType')
   final String $type;
 
   @override
   String toString() {
-    return 'FarmhubUser.farmer(uid: $uid, email: $email, username: $username, createdAt: $createdAt, produceFavoritesList: $produceFavoritesList, userType: $userType, farmList: $farmList, shopList: $shopList)';
+    return 'FarmhubUser.farmer(uid: $uid, email: $email, username: $username, createdAt: $createdAt, produceFavoritesList: $produceFavoritesList, userType: $userType, userFarms: $userFarms, userShops: $userShops)';
   }
 
   @override
@@ -674,8 +674,8 @@ class _$FarmhubUserFarmer extends FarmhubUserFarmer {
             const DeepCollectionEquality()
                 .equals(other.produceFavoritesList, produceFavoritesList) &&
             const DeepCollectionEquality().equals(other.userType, userType) &&
-            const DeepCollectionEquality().equals(other.farmList, farmList) &&
-            const DeepCollectionEquality().equals(other.shopList, shopList));
+            const DeepCollectionEquality().equals(other.userFarms, userFarms) &&
+            const DeepCollectionEquality().equals(other.userShops, userShops));
   }
 
   @JsonKey(ignore: true)
@@ -688,8 +688,8 @@ class _$FarmhubUserFarmer extends FarmhubUserFarmer {
       const DeepCollectionEquality().hash(createdAt),
       const DeepCollectionEquality().hash(produceFavoritesList),
       const DeepCollectionEquality().hash(userType),
-      const DeepCollectionEquality().hash(farmList),
-      const DeepCollectionEquality().hash(shopList));
+      const DeepCollectionEquality().hash(userFarms),
+      const DeepCollectionEquality().hash(userShops));
 
   @JsonKey(ignore: true)
   @override
@@ -714,8 +714,8 @@ class _$FarmhubUserFarmer extends FarmhubUserFarmer {
             String createdAt,
             List<ProduceFavorite> produceFavoritesList,
             UserType userType,
-            List<Farm> farmList,
-            List<Shop> shopList)
+            List<Farm> userFarms,
+            List<Shop> userShops)
         farmer,
     required TResult Function(
             String uid,
@@ -724,12 +724,12 @@ class _$FarmhubUserFarmer extends FarmhubUserFarmer {
             String createdAt,
             List<ProduceFavorite> produceFavoritesList,
             UserType userType,
-            List<Farm> farmList,
-            List<Shop> shopList)
+            List<Farm> userFarms,
+            List<Shop> userShops)
         business,
   }) {
     return farmer(uid, email, username, createdAt, produceFavoritesList,
-        userType, farmList, shopList);
+        userType, userFarms, userShops);
   }
 
   @override
@@ -750,8 +750,8 @@ class _$FarmhubUserFarmer extends FarmhubUserFarmer {
             String createdAt,
             List<ProduceFavorite> produceFavoritesList,
             UserType userType,
-            List<Farm> farmList,
-            List<Shop> shopList)?
+            List<Farm> userFarms,
+            List<Shop> userShops)?
         farmer,
     TResult Function(
             String uid,
@@ -760,12 +760,12 @@ class _$FarmhubUserFarmer extends FarmhubUserFarmer {
             String createdAt,
             List<ProduceFavorite> produceFavoritesList,
             UserType userType,
-            List<Farm> farmList,
-            List<Shop> shopList)?
+            List<Farm> userFarms,
+            List<Shop> userShops)?
         business,
   }) {
     return farmer?.call(uid, email, username, createdAt, produceFavoritesList,
-        userType, farmList, shopList);
+        userType, userFarms, userShops);
   }
 
   @override
@@ -786,8 +786,8 @@ class _$FarmhubUserFarmer extends FarmhubUserFarmer {
             String createdAt,
             List<ProduceFavorite> produceFavoritesList,
             UserType userType,
-            List<Farm> farmList,
-            List<Shop> shopList)?
+            List<Farm> userFarms,
+            List<Shop> userShops)?
         farmer,
     TResult Function(
             String uid,
@@ -796,14 +796,14 @@ class _$FarmhubUserFarmer extends FarmhubUserFarmer {
             String createdAt,
             List<ProduceFavorite> produceFavoritesList,
             UserType userType,
-            List<Farm> farmList,
-            List<Shop> shopList)?
+            List<Farm> userFarms,
+            List<Shop> userShops)?
         business,
     required TResult orElse(),
   }) {
     if (farmer != null) {
       return farmer(uid, email, username, createdAt, produceFavoritesList,
-          userType, farmList, shopList);
+          userType, userFarms, userShops);
     }
     return orElse();
   }
@@ -856,8 +856,8 @@ abstract class FarmhubUserFarmer extends FarmhubUser {
       required final String createdAt,
       required final List<ProduceFavorite> produceFavoritesList,
       required final UserType userType,
-      required final List<Farm> farmList,
-      required final List<Shop> shopList}) = _$FarmhubUserFarmer;
+      required final List<Farm> userFarms,
+      required final List<Shop> userShops}) = _$FarmhubUserFarmer;
   const FarmhubUserFarmer._() : super._();
 
   factory FarmhubUserFarmer.fromJson(Map<String, dynamic> json) =
@@ -876,8 +876,8 @@ abstract class FarmhubUserFarmer extends FarmhubUser {
       throw _privateConstructorUsedError;
   @override
   UserType get userType => throw _privateConstructorUsedError;
-  List<Farm> get farmList => throw _privateConstructorUsedError;
-  List<Shop> get shopList => throw _privateConstructorUsedError;
+  List<Farm> get userFarms => throw _privateConstructorUsedError;
+  List<Shop> get userShops => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$FarmhubUserFarmerCopyWith<_$FarmhubUserFarmer> get copyWith =>
@@ -898,8 +898,8 @@ abstract class _$$FarmhubUserBusinessCopyWith<$Res>
       String createdAt,
       List<ProduceFavorite> produceFavoritesList,
       UserType userType,
-      List<Farm> farmList,
-      List<Shop> shopList});
+      List<Farm> userFarms,
+      List<Shop> userShops});
 }
 
 /// @nodoc
@@ -921,8 +921,8 @@ class __$$FarmhubUserBusinessCopyWithImpl<$Res>
     Object? createdAt = freezed,
     Object? produceFavoritesList = freezed,
     Object? userType = freezed,
-    Object? farmList = freezed,
-    Object? shopList = freezed,
+    Object? userFarms = freezed,
+    Object? userShops = freezed,
   }) {
     return _then(_$FarmhubUserBusiness(
       uid: uid == freezed
@@ -949,13 +949,13 @@ class __$$FarmhubUserBusinessCopyWithImpl<$Res>
           ? _value.userType
           : userType // ignore: cast_nullable_to_non_nullable
               as UserType,
-      farmList: farmList == freezed
-          ? _value.farmList
-          : farmList // ignore: cast_nullable_to_non_nullable
+      userFarms: userFarms == freezed
+          ? _value.userFarms
+          : userFarms // ignore: cast_nullable_to_non_nullable
               as List<Farm>,
-      shopList: shopList == freezed
-          ? _value.shopList
-          : shopList // ignore: cast_nullable_to_non_nullable
+      userShops: userShops == freezed
+          ? _value.userShops
+          : userShops // ignore: cast_nullable_to_non_nullable
               as List<Shop>,
     ));
   }
@@ -972,8 +972,8 @@ class _$FarmhubUserBusiness extends FarmhubUserBusiness {
       required this.createdAt,
       required this.produceFavoritesList,
       required this.userType,
-      required this.farmList,
-      required this.shopList,
+      required this.userFarms,
+      required this.userShops,
       final String? $type})
       : $type = $type ?? 'business',
         super._();
@@ -994,16 +994,16 @@ class _$FarmhubUserBusiness extends FarmhubUserBusiness {
   @override
   final UserType userType;
   @override
-  final List<Farm> farmList;
+  final List<Farm> userFarms;
   @override
-  final List<Shop> shopList;
+  final List<Shop> userShops;
 
   @JsonKey(name: 'runtimeType')
   final String $type;
 
   @override
   String toString() {
-    return 'FarmhubUser.business(uid: $uid, email: $email, username: $username, createdAt: $createdAt, produceFavoritesList: $produceFavoritesList, userType: $userType, farmList: $farmList, shopList: $shopList)';
+    return 'FarmhubUser.business(uid: $uid, email: $email, username: $username, createdAt: $createdAt, produceFavoritesList: $produceFavoritesList, userType: $userType, userFarms: $userFarms, userShops: $userShops)';
   }
 
   @override
@@ -1018,8 +1018,8 @@ class _$FarmhubUserBusiness extends FarmhubUserBusiness {
             const DeepCollectionEquality()
                 .equals(other.produceFavoritesList, produceFavoritesList) &&
             const DeepCollectionEquality().equals(other.userType, userType) &&
-            const DeepCollectionEquality().equals(other.farmList, farmList) &&
-            const DeepCollectionEquality().equals(other.shopList, shopList));
+            const DeepCollectionEquality().equals(other.userFarms, userFarms) &&
+            const DeepCollectionEquality().equals(other.userShops, userShops));
   }
 
   @JsonKey(ignore: true)
@@ -1032,8 +1032,8 @@ class _$FarmhubUserBusiness extends FarmhubUserBusiness {
       const DeepCollectionEquality().hash(createdAt),
       const DeepCollectionEquality().hash(produceFavoritesList),
       const DeepCollectionEquality().hash(userType),
-      const DeepCollectionEquality().hash(farmList),
-      const DeepCollectionEquality().hash(shopList));
+      const DeepCollectionEquality().hash(userFarms),
+      const DeepCollectionEquality().hash(userShops));
 
   @JsonKey(ignore: true)
   @override
@@ -1059,8 +1059,8 @@ class _$FarmhubUserBusiness extends FarmhubUserBusiness {
             String createdAt,
             List<ProduceFavorite> produceFavoritesList,
             UserType userType,
-            List<Farm> farmList,
-            List<Shop> shopList)
+            List<Farm> userFarms,
+            List<Shop> userShops)
         farmer,
     required TResult Function(
             String uid,
@@ -1069,12 +1069,12 @@ class _$FarmhubUserBusiness extends FarmhubUserBusiness {
             String createdAt,
             List<ProduceFavorite> produceFavoritesList,
             UserType userType,
-            List<Farm> farmList,
-            List<Shop> shopList)
+            List<Farm> userFarms,
+            List<Shop> userShops)
         business,
   }) {
     return business(uid, email, username, createdAt, produceFavoritesList,
-        userType, farmList, shopList);
+        userType, userFarms, userShops);
   }
 
   @override
@@ -1095,8 +1095,8 @@ class _$FarmhubUserBusiness extends FarmhubUserBusiness {
             String createdAt,
             List<ProduceFavorite> produceFavoritesList,
             UserType userType,
-            List<Farm> farmList,
-            List<Shop> shopList)?
+            List<Farm> userFarms,
+            List<Shop> userShops)?
         farmer,
     TResult Function(
             String uid,
@@ -1105,12 +1105,12 @@ class _$FarmhubUserBusiness extends FarmhubUserBusiness {
             String createdAt,
             List<ProduceFavorite> produceFavoritesList,
             UserType userType,
-            List<Farm> farmList,
-            List<Shop> shopList)?
+            List<Farm> userFarms,
+            List<Shop> userShops)?
         business,
   }) {
     return business?.call(uid, email, username, createdAt, produceFavoritesList,
-        userType, farmList, shopList);
+        userType, userFarms, userShops);
   }
 
   @override
@@ -1131,8 +1131,8 @@ class _$FarmhubUserBusiness extends FarmhubUserBusiness {
             String createdAt,
             List<ProduceFavorite> produceFavoritesList,
             UserType userType,
-            List<Farm> farmList,
-            List<Shop> shopList)?
+            List<Farm> userFarms,
+            List<Shop> userShops)?
         farmer,
     TResult Function(
             String uid,
@@ -1141,14 +1141,14 @@ class _$FarmhubUserBusiness extends FarmhubUserBusiness {
             String createdAt,
             List<ProduceFavorite> produceFavoritesList,
             UserType userType,
-            List<Farm> farmList,
-            List<Shop> shopList)?
+            List<Farm> userFarms,
+            List<Shop> userShops)?
         business,
     required TResult orElse(),
   }) {
     if (business != null) {
       return business(uid, email, username, createdAt, produceFavoritesList,
-          userType, farmList, shopList);
+          userType, userFarms, userShops);
     }
     return orElse();
   }
@@ -1201,8 +1201,8 @@ abstract class FarmhubUserBusiness extends FarmhubUser {
       required final String createdAt,
       required final List<ProduceFavorite> produceFavoritesList,
       required final UserType userType,
-      required final List<Farm> farmList,
-      required final List<Shop> shopList}) = _$FarmhubUserBusiness;
+      required final List<Farm> userFarms,
+      required final List<Shop> userShops}) = _$FarmhubUserBusiness;
   const FarmhubUserBusiness._() : super._();
 
   factory FarmhubUserBusiness.fromJson(Map<String, dynamic> json) =
@@ -1221,8 +1221,8 @@ abstract class FarmhubUserBusiness extends FarmhubUser {
       throw _privateConstructorUsedError;
   @override
   UserType get userType => throw _privateConstructorUsedError;
-  List<Farm> get farmList => throw _privateConstructorUsedError;
-  List<Shop> get shopList => throw _privateConstructorUsedError;
+  List<Farm> get userFarms => throw _privateConstructorUsedError;
+  List<Shop> get userShops => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$FarmhubUserBusinessCopyWith<_$FarmhubUserBusiness> get copyWith =>

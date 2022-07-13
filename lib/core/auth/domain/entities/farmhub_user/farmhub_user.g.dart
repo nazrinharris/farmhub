@@ -48,10 +48,10 @@ _$FarmhubUserFarmer _$$FarmhubUserFarmerFromJson(Map<String, dynamic> json) =>
           .map((e) => ProduceFavorite.fromJson(e as Map<String, dynamic>))
           .toList(),
       userType: $enumDecode(_$UserTypeEnumMap, json['userType']),
-      farmList: (json['farmList'] as List<dynamic>)
+      userFarms: (json['userFarms'] as List<dynamic>)
           .map((e) => Farm.fromJson(e as Map<String, dynamic>))
           .toList(),
-      shopList: (json['shopList'] as List<dynamic>)
+      userShops: (json['userShops'] as List<dynamic>)
           .map((e) => Shop.fromJson(e as Map<String, dynamic>))
           .toList(),
       $type: json['runtimeType'] as String?,
@@ -66,8 +66,8 @@ Map<String, dynamic> _$$FarmhubUserFarmerToJson(_$FarmhubUserFarmer instance) =>
       'produceFavoritesList':
           instance.produceFavoritesList.map((e) => e.toJson()).toList(),
       'userType': _$UserTypeEnumMap[instance.userType],
-      'farmList': instance.farmList.map((e) => e.toJson()).toList(),
-      'shopList': instance.shopList.map((e) => e.toJson()).toList(),
+      'userFarms': instance.userFarms.map((e) => e.toJson()).toList(),
+      'userShops': instance.userShops.map((e) => e.toJson()).toList(),
       'runtimeType': instance.$type,
     };
 
@@ -82,10 +82,10 @@ _$FarmhubUserBusiness _$$FarmhubUserBusinessFromJson(
           .map((e) => ProduceFavorite.fromJson(e as Map<String, dynamic>))
           .toList(),
       userType: $enumDecode(_$UserTypeEnumMap, json['userType']),
-      farmList: (json['farmList'] as List<dynamic>)
+      userFarms: (json['userFarms'] as List<dynamic>)
           .map((e) => Farm.fromJson(e as Map<String, dynamic>))
           .toList(),
-      shopList: (json['shopList'] as List<dynamic>)
+      userShops: (json['userShops'] as List<dynamic>)
           .map((e) => Shop.fromJson(e as Map<String, dynamic>))
           .toList(),
       $type: json['runtimeType'] as String?,
@@ -101,7 +101,7 @@ Map<String, dynamic> _$$FarmhubUserBusinessToJson(
       'produceFavoritesList':
           instance.produceFavoritesList.map((e) => e.toJson()).toList(),
       'userType': _$UserTypeEnumMap[instance.userType],
-      'farmList': instance.farmList.map((e) => e.toJson()).toList(),
-      'shopList': instance.shopList.map((e) => e.toJson()).toList(),
+      'userFarms': instance.userFarms.map((e) => e.toJson()).toList(),
+      'userShops': instance.userShops.map((e) => e.toJson()).toList(),
       'runtimeType': instance.$type,
     };
