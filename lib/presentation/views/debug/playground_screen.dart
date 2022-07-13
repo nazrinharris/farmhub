@@ -237,6 +237,31 @@ class PlaygroundScreen extends StatelessWidget {
                     },
                   ),
                 ),
+                UIVerticalSpace14(),
+                UIBorder(),
+                UIVerticalSpace14(),
+                Container(
+                  alignment: Alignment.center,
+                  child: PrimaryButton(
+                    width: 250,
+                    content: "Create Farm Screen",
+                    onPressed: () async {
+                      Navigator.of(context).pushNamed('/create_farm');
+                    },
+                  ),
+                ),
+                UIVerticalSpace14(),
+                Container(
+                  alignment: Alignment.center,
+                  child: PrimaryButton(
+                    width: 250,
+                    content: "Create Shop Screen",
+                    onPressed: () async {
+                      Navigator.of(context).pushNamed('/create_shop');
+                    },
+                  ),
+                ),
+                UIVerticalSpace14(),
               ],
             ),
           ),

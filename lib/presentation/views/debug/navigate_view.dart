@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:farmhub/core/auth/auth_bloc/auth_bloc.dart';
+import 'package:farmhub/presentation/shared_widgets/appbars.dart';
 import 'package:farmhub/presentation/shared_widgets/buttons.dart';
 import 'package:farmhub/presentation/shared_widgets/cards.dart';
 import 'package:farmhub/presentation/shared_widgets/scroll_physics.dart';
@@ -14,8 +15,9 @@ class NavigateView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      extendBody: true,
-      extendBodyBehindAppBar: true,
+      appBar: DefaultAppBar(
+        title: "Debug Navigation Page",
+      ),
       body: Center(
         child: SingleChildScrollView(
           physics: DefaultScrollPhysics,
@@ -30,6 +32,9 @@ class NavigateView extends StatelessWidget {
                     "Warning, this is a debug screen, and there is no guarantee of functionality of the app from here on.",
                 subContent: "If you encounter an issue, simply restart the app.",
               ),
+              const UIVerticalSpace14(),
+              const UIBorder(),
+              const UIVerticalSpace14(),
               PrimaryButton(
                 onPressed: () {
                   Navigator.of(context).pushNamed('/login');
@@ -98,6 +103,8 @@ class NavigateView extends StatelessWidget {
                 ),
               ),
               const UIVerticalSpace14(),
+              const UIBorder(),
+              const UIVerticalSpace14(),
               PrimaryButton(
                 onPressed: () {
                   Navigator.of(context).pushNamed('/playground');
@@ -122,6 +129,8 @@ class NavigateView extends StatelessWidget {
                 ),
               ),
               const UIVerticalSpace14(),
+              const UIBorder(),
+              const UIVerticalSpace14(),
               PrimaryButton(
                 onPressed: () {
                   context.read<AuthBloc>().add(AuthEvent.execSignOut());
@@ -134,6 +143,7 @@ class NavigateView extends StatelessWidget {
                 ),
               ),
               const UIVerticalSpace14(),
+              UICustomVertical(100),
             ],
           ),
         ),
