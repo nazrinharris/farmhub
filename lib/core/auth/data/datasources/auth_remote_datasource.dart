@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:farmhub/core/auth/data/repository/auth_repository_helpers.dart';
 import 'package:farmhub/core/auth/domain/entities/farmhub_user/farmhub_user.dart';
 import 'package:farmhub/core/errors/exceptions.dart';
 import 'package:farmhub/core/util/app_const.dart';
@@ -220,7 +219,7 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
   Future<Unit> chooseUserType(String uid, UserType userType) async {
     await firebaseFirestore.collection('users').doc(uid).update({
       "userType": userType.typeAsString,
-    });
+    }).then((value) => print("Change Success!"));
 
     return unit;
   }

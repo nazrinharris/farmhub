@@ -1,7 +1,11 @@
 import 'package:farmhub/core/util/farmhub_icons.dart';
+import 'package:farmhub/presentation/global/cubit/global_ui_cubit.dart';
+import 'package:farmhub/presentation/smart_widgets/produce_dialogs/app_dialogs.dart';
+import 'package:farmhub/presentation/views/all_farm_screens/cubit/farm_screen_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../locator.dart';
 import '../../shared_widgets/appbars.dart';
 import '../../shared_widgets/texts.dart';
 import '../../shared_widgets/ui_helpers.dart';
@@ -46,92 +50,118 @@ class _CreateFarmScreenState extends State<CreateFarmScreen> {
         BlocProvider(create: (context) => PrimaryButtonAwareCubit())
       ],
       child: Builder(builder: (context) {
-        return Scaffold(
-          resizeToAvoidBottomInset: false,
-          extendBodyBehindAppBar: true,
-          appBar: DefaultAppBar(
-            leadingIcon: Icon(Icons.close),
-            leadingOnPressed: () => Navigator.of(context).pop(),
+        return BlocProvider(
+          create: (context) => FarmScreenCubit(
+            firstTwoFieldsFormBloc: context.read<FirstTwoFieldsFormBloc>(),
+            secondTwoFieldsFormBloc: context.read<SecondTwoFieldsFormBloc>(),
+            buttonAwareCubit: context.read<PrimaryButtonAwareCubit>(),
+            farmShopManagerRepository: locator(),
           ),
-          body: SafeArea(
-            top: false,
-            child: Stack(
-              children: [
-                ListView(
-                  children: [
-                    Container(
-                      padding: EdgeInsets.symmetric(horizontal: 24),
-                      alignment: Alignment.centerLeft,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+          child: Builder(builder: (context) {
+            return BlocListener<FarmScreenCubit, FarmScreenState>(
+              listener: (context, state) {
+                reactToFarmScreenCubit(context, state);
+              },
+              child: Scaffold(
+                resizeToAvoidBottomInset: false,
+                extendBodyBehindAppBar: true,
+                appBar: DefaultAppBar(
+                  leadingIcon: Icon(Icons.close),
+                  leadingOnPressed: () => Navigator.of(context).pop(),
+                ),
+                body: SafeArea(
+                  top: false,
+                  child: Stack(
+                    children: [
+                      ListView(
                         children: [
-                          const UIVerticalSpace14(),
-                          const Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 7),
-                            child: Icon(FarmhubIcons.farmhub_corn_icon, size: 34),
+                          Container(
+                            padding: EdgeInsets.symmetric(horizontal: 24),
+                            alignment: Alignment.centerLeft,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const UIVerticalSpace14(),
+                                const Padding(
+                                  padding: EdgeInsets.symmetric(horizontal: 7),
+                                  child: Icon(FarmhubIcons.farmhub_corn_icon, size: 34),
+                                ),
+                                const UIVerticalSpace14(),
+                                const Headline1('Create a Farm'),
+                              ],
+                            ),
+                          ),
+                          const UIVerticalSpace30(),
+                          const UIBorder(opacity: 0.1),
+                          const UIVerticalSpace30(),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 30),
+                            child: MultipleFieldsForm<FirstTwoFieldsFormBloc>(
+                              type: MultipleFieldsFormType.oneField,
+                              firstFieldLabel: 'Farm Name',
+                              firstFieldHintText: 'Enter the name of your farm',
+                              validateFirstField: validateFarmName,
+                            ),
                           ),
                           const UIVerticalSpace14(),
-                          const Headline1('Create a Farm'),
+                          const UIBorder(opacity: 0.1),
+                          const UIVerticalSpace24(),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 30),
+                            child: MultipleFieldsForm<SecondTwoFieldsFormBloc>(
+                              type: MultipleFieldsFormType.fourField,
+                              firstFieldLabel: 'Address Line',
+                              firstFieldHintText: 'Enter your farm\'s address line',
+                              validateFirstField: validateAddress,
+                              secondFieldLabel: 'City',
+                              secondFieldHintText: 'Enter your farm\'s city',
+                              validateSecondField: validateCity,
+                              thirdFieldLabel: 'State',
+                              thirdFieldHintText: 'Enter your farm\'s state, e.g Selangor',
+                              validateThirdField: validateState,
+                              fourthFieldLabel: "Postcode",
+                              fourthFieldHintText: "Enter your farm\'s postcode, e.g 43200",
+                              validateFourthField: validatePostcode,
+                            ),
+                          ),
+                          const UICustomVertical(400),
                         ],
                       ),
-                    ),
-                    const UIVerticalSpace30(),
-                    const UIBorder(opacity: 0.1),
-                    const UIVerticalSpace30(),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 30),
-                      child: MultipleFieldsForm<FirstTwoFieldsFormBloc>(
-                        type: MultipleFieldsFormType.oneField,
-                        firstFieldLabel: 'Farm Name',
-                        firstFieldHintText: 'Enter the name of your farm',
-                        validateFirstField: validateFarmName,
-                      ),
-                    ),
-                    const UIVerticalSpace14(),
-                    const UIBorder(opacity: 0.1),
-                    const UIVerticalSpace24(),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 30),
-                      child: MultipleFieldsForm<SecondTwoFieldsFormBloc>(
-                        type: MultipleFieldsFormType.fourField,
-                        firstFieldLabel: 'Address Line',
-                        firstFieldHintText: 'Enter your farm\'s address line',
-                        validateFirstField: validateAddress,
-                        secondFieldLabel: 'City',
-                        secondFieldHintText: 'Enter your farm\'s city',
-                        validateSecondField: validateCity,
-                        thirdFieldLabel: 'State',
-                        thirdFieldHintText: 'Enter your farm\'s state, e.g Selangor',
-                        validateThirdField: validateState,
-                        fourthFieldLabel: "Postcode",
-                        fourthFieldHintText: "Enter your farm\'s postcode, e.g 43200",
-                        validateFourthField: validatePostcode,
-                      ),
-                    ),
-                    const UICustomVertical(400),
-                  ],
-                ),
-                Container(
-                  padding: EdgeInsets.only(bottom: 24),
-                  constraints: BoxConstraints.expand(),
-                  alignment: Alignment.bottomCenter,
-                  child: PrimaryButtonAware(
-                    firstPageContent: 'Confirm',
-                    firstPageButtonIcon: Icon(
-                      Icons.done,
-                      color: Colors.white,
-                    ),
-                    firstPageOnPressed: () {},
-                    type: PrimaryButtonAwareType.onePage,
-                    width: 200,
+                      Container(
+                        padding: const EdgeInsets.only(bottom: 24),
+                        constraints: const BoxConstraints.expand(),
+                        alignment: Alignment.bottomCenter,
+                        child: PrimaryButtonAware(
+                          firstPageContent: 'Confirm',
+                          firstPageButtonIcon: const Icon(Icons.done, color: Colors.white),
+                          firstPageOnPressed: () async {
+                            await context.read<FarmScreenCubit>().createFarm(context);
+                          },
+                          type: PrimaryButtonAwareType.onePage,
+                          width: 200,
+                        ),
+                      )
+                    ],
                   ),
-                )
-              ],
-            ),
-          ),
+                ),
+              ),
+            );
+          }),
         );
       }),
     );
+  }
+
+  void reactToFarmScreenCubit(BuildContext context, FarmScreenState state) {
+    if (state is CreateFarmSuccess) {
+      context.read<PrimaryButtonAwareCubit>().triggerFirstPage();
+      context.read<GlobalUICubit>().setShouldRefreshProfile(true);
+      Navigator.of(context).pushReplacementNamed('/profile');
+    } else if (state is CreateFarmError) {
+      print(state.failure);
+      context.read<PrimaryButtonAwareCubit>().triggerFirstPage();
+      showErrorDialog(context: context, failure: state.failure);
+    }
   }
 
   String? validateFarmName(String? value) {

@@ -272,7 +272,7 @@ class LoginFields extends StatelessWidget {
   String? validatePassword(String? value) {
     if (value == null || value.isEmpty) {
       return "Sorry but this cannot be empty";
-    } else if (value.length <= 6) {
+    } else if (value.length < 6) {
       return "Passwords must be 6 characters or longer";
     } else {
       return null;

@@ -10,6 +10,7 @@ import 'package:farmhub/core/typedefs/typedefs.dart';
 import 'package:farmhub/features/farm_shop_manager/domain/i_farm_shop_manager_repository.dart';
 import 'package:fpdart/fpdart.dart';
 
+import '../../../../core/errors/exceptions.dart';
 import '../../../../core/errors/failures.dart';
 import '../../../../core/util/app_const.dart';
 
@@ -41,10 +42,16 @@ class FarmShopManagerRepository implements IFarmShopManagerRepository {
         );
 
         return Right(result);
+      } on FarmShopManagerException catch (e) {
+        return Left(FarmShopManagerFailure(
+          message: e.message,
+          code: e.code,
+          stackTrace: e.stackTrace,
+        ));
       } catch (e, stack) {
         return Left(FarmShopManagerFailure(
           code: e.toString(),
-          message: "Uh oh, something went wrong",
+          message: "We encountered an error, please try again.",
           stackTrace: stack,
         ));
       }

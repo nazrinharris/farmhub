@@ -36,6 +36,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
     await failureOrLogin.fold(
       (f) async {
+        print(f);
         emit(AuthState.loginError(
           message: f.message!,
           code: f.code!,

@@ -308,7 +308,7 @@ class AuthRepository implements IAuthRepository {
     if (await networkInfo.isConnected) {
       try {
         await authRemoteDataSource.chooseUserType(uid, userType);
-        return Right(unit);
+        return const Right(unit);
       } catch (e, stack) {
         return Left(UnexpectedFailure(
           code: e.toString(),

@@ -45,7 +45,9 @@ class FarmShopManagerRemoteDatasource implements IFarmShopManagerRemoteDatasourc
       address: farmAddress,
     );
 
-    if (farmhubUser.userType != UserType.farmer || farmhubUser.userType != UserType.business) {
+    print(farmhubUser.userType);
+
+    if (farmhubUser.userType != UserType.farmer && farmhubUser.userType != UserType.business) {
       throw FarmShopManagerException(
         code: FSM_ERR_NOT_FARMER_OR_BUSINESS,
         message: "You don't have permission to create a Farm.",

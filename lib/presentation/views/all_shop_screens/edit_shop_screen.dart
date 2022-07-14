@@ -75,8 +75,8 @@ class _EditShopScreenState extends State<EditShopScreen> {
                         children: [
                           const UIVerticalSpace14(),
                           const Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 7),
-                            child: Icon(FarmhubIcons.farmhub_corn_icon, size: 34),
+                            padding: EdgeInsets.zero,
+                            child: Icon(Icons.store, size: 34),
                           ),
                           const UIVerticalSpace14(),
                           Text("Editing:", style: Theme.of(context).textTheme.headline1!),
