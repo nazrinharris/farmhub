@@ -27,6 +27,30 @@ final user = FarmhubUser(
   userType: UserType.regular,
 );
 
+final farm = Farm(
+  creatorUserId: "creatorUserId",
+  farmId: "farmId",
+  farmName: "Rockmelon Selayang",
+  address: Address(
+      rawAddress: "rawAddress",
+      addressLine: "1st Mayhingway Street",
+      city: "Gumalia",
+      state: "Lyria",
+      postcode: 254600),
+);
+
+final shop = Shop(
+  creatorUserId: "creatorUserId",
+  shopId: "shopId",
+  shopName: "shopName",
+  address: Address(
+      rawAddress: "rawAddress",
+      addressLine: "1st Mayhingway Street",
+      city: "Gumalia",
+      state: "Lyria",
+      postcode: 254600),
+);
+
 final farmer = FarmhubUser.farmer(
   uid: "uid",
   email: "email",
@@ -36,22 +60,8 @@ final farmer = FarmhubUser.farmer(
     ProduceFavorite(produceId: "produceId", dateAdded: DateTime.now()),
   ],
   userType: UserType.farmer,
-  userFarms: [
-    Farm(
-      creatorUserId: "creatorUserId",
-      farmId: "farmId",
-      farmName: "farmName",
-      address: Address(rawAddress: "rawAddress"),
-    ),
-  ],
-  userShops: [
-    Shop(
-      creatorUserId: "creatorUserId",
-      shopId: "shopId",
-      shopName: "shopName",
-      address: Address(rawAddress: "rawAddress"),
-    ),
-  ],
+  userFarms: [farm],
+  userShops: [shop],
 );
 
 class PlaygroundScreen extends StatelessWidget {
@@ -81,6 +91,55 @@ class PlaygroundScreen extends StatelessWidget {
           body: Center(
             child: ListView(
               children: [
+                UIVerticalSpace14(),
+                UIBorder(),
+                UIVerticalSpace14(),
+                Container(
+                  alignment: Alignment.center,
+                  child: PrimaryButton(
+                    width: 250,
+                    content: "Create Farm Screen",
+                    onPressed: () async {
+                      Navigator.of(context).pushNamed('/create_farm');
+                    },
+                  ),
+                ),
+                UIVerticalSpace14(),
+                Container(
+                  alignment: Alignment.center,
+                  child: PrimaryButton(
+                    width: 250,
+                    content: "Create Shop Screen",
+                    onPressed: () async {
+                      Navigator.of(context).pushNamed('/create_shop');
+                    },
+                  ),
+                ),
+                UIVerticalSpace14(),
+                Container(
+                  alignment: Alignment.center,
+                  child: SecondaryButton(
+                    width: 200,
+                    content: "Edit Farm Screen",
+                    onPressed: () async {
+                      Navigator.of(context).pushNamed('/edit_farm', arguments: farm);
+                    },
+                  ),
+                ),
+                UIVerticalSpace14(),
+                Container(
+                  alignment: Alignment.center,
+                  child: SecondaryButton(
+                    width: 200,
+                    content: "Edit Shop Screen",
+                    onPressed: () async {
+                      Navigator.of(context).pushNamed('/edit_shop', arguments: shop);
+                    },
+                  ),
+                ),
+                UIVerticalSpace30(),
+                UIBorder(),
+                UIVerticalSpace30(),
                 Container(
                   child: BlocBuilder<ProduceManagerBloc, ProduceManagerState>(
                       builder: (context, state) {
@@ -190,7 +249,12 @@ class PlaygroundScreen extends StatelessWidget {
                         creatorUserId: context.read<GlobalAuthCubit>().state.farmhubUser!.uid,
                         farmId: 'UNKNOWN',
                         farmName: "Fake Farm",
-                        address: Address(rawAddress: "7th Street of Mayhingway"),
+                        address: Address(
+                            rawAddress: "rawAddress",
+                            addressLine: "1st Mayhingway Street",
+                            city: "Gumalia",
+                            state: "Lyria",
+                            postcode: 254600),
                       );
 
                       print(farm.toJson());
@@ -237,31 +301,7 @@ class PlaygroundScreen extends StatelessWidget {
                     },
                   ),
                 ),
-                UIVerticalSpace14(),
-                UIBorder(),
-                UIVerticalSpace14(),
-                Container(
-                  alignment: Alignment.center,
-                  child: PrimaryButton(
-                    width: 250,
-                    content: "Create Farm Screen",
-                    onPressed: () async {
-                      Navigator.of(context).pushNamed('/create_farm');
-                    },
-                  ),
-                ),
-                UIVerticalSpace14(),
-                Container(
-                  alignment: Alignment.center,
-                  child: PrimaryButton(
-                    width: 250,
-                    content: "Create Shop Screen",
-                    onPressed: () async {
-                      Navigator.of(context).pushNamed('/create_shop');
-                    },
-                  ),
-                ),
-                UIVerticalSpace14(),
+                UICustomVertical(200),
               ],
             ),
           ),

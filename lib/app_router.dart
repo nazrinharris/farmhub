@@ -5,7 +5,9 @@ import 'package:farmhub/presentation/views/add_new_price_screen/add_new_price_se
 import 'package:farmhub/presentation/views/add_new_price_screen/add_new_price_second_screen.dart';
 import 'package:farmhub/presentation/views/add_new_price_screen/add_new_price_third_screen.dart';
 import 'package:farmhub/presentation/views/all_farm_screens/create_farm_screen.dart';
+import 'package:farmhub/presentation/views/all_farm_screens/edit_farm_screen.dart';
 import 'package:farmhub/presentation/views/all_shop_screens/create_shop_screen.dart';
+import 'package:farmhub/presentation/views/all_shop_screens/edit_shop_screen.dart';
 import 'package:farmhub/presentation/views/create_produce_screen/create_produce_screen.dart';
 import 'package:farmhub/presentation/views/debug/navigate_view.dart';
 import 'package:farmhub/presentation/views/debug/playground_screen.dart';
@@ -27,6 +29,7 @@ import 'package:farmhub/presentation/views/user_management_screens/choose_user_t
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'features/farm_shop_manager/domain/entities/farm_shop/farm_shop.dart';
 import 'features/produce_manager/domain/entities/produce/produce.dart';
 import 'locator.dart';
 
@@ -148,12 +151,28 @@ class AppRouter {
           pageBuilder: ((context, animation, secondaryAnimation) => const CreateFarmScreen()),
           transitionsBuilder: slideUpTransitionBuilder,
         );
+      case '/edit_farm':
+        return PageRouteBuilder(
+          transitionDuration: const Duration(milliseconds: 600),
+          reverseTransitionDuration: const Duration(milliseconds: 600),
+          pageBuilder: ((context, animation, secondaryAnimation) =>
+              EditFarmScreen(routeSettings.arguments as Farm)),
+          transitionsBuilder: slideUpTransitionBuilder,
+        );
 
       case '/create_shop':
         return PageRouteBuilder(
           transitionDuration: const Duration(milliseconds: 600),
           reverseTransitionDuration: const Duration(milliseconds: 600),
           pageBuilder: ((context, animation, secondaryAnimation) => const CreateShopScreen()),
+          transitionsBuilder: slideUpTransitionBuilder,
+        );
+      case '/edit_shop':
+        return PageRouteBuilder(
+          transitionDuration: const Duration(milliseconds: 600),
+          reverseTransitionDuration: const Duration(milliseconds: 600),
+          pageBuilder: ((context, animation, secondaryAnimation) =>
+              EditShopScreen(routeSettings.arguments as Shop)),
           transitionsBuilder: slideUpTransitionBuilder,
         );
 

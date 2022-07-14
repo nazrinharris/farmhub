@@ -21,6 +21,10 @@ Address _$AddressFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Address {
   String get rawAddress => throw _privateConstructorUsedError;
+  String get addressLine => throw _privateConstructorUsedError;
+  String get city => throw _privateConstructorUsedError;
+  String get state => throw _privateConstructorUsedError;
+  int get postcode => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -31,7 +35,12 @@ mixin _$Address {
 abstract class $AddressCopyWith<$Res> {
   factory $AddressCopyWith(Address value, $Res Function(Address) then) =
       _$AddressCopyWithImpl<$Res>;
-  $Res call({String rawAddress});
+  $Res call(
+      {String rawAddress,
+      String addressLine,
+      String city,
+      String state,
+      int postcode});
 }
 
 /// @nodoc
@@ -45,12 +54,32 @@ class _$AddressCopyWithImpl<$Res> implements $AddressCopyWith<$Res> {
   @override
   $Res call({
     Object? rawAddress = freezed,
+    Object? addressLine = freezed,
+    Object? city = freezed,
+    Object? state = freezed,
+    Object? postcode = freezed,
   }) {
     return _then(_value.copyWith(
       rawAddress: rawAddress == freezed
           ? _value.rawAddress
           : rawAddress // ignore: cast_nullable_to_non_nullable
               as String,
+      addressLine: addressLine == freezed
+          ? _value.addressLine
+          : addressLine // ignore: cast_nullable_to_non_nullable
+              as String,
+      city: city == freezed
+          ? _value.city
+          : city // ignore: cast_nullable_to_non_nullable
+              as String,
+      state: state == freezed
+          ? _value.state
+          : state // ignore: cast_nullable_to_non_nullable
+              as String,
+      postcode: postcode == freezed
+          ? _value.postcode
+          : postcode // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -61,7 +90,12 @@ abstract class _$$_AddressCopyWith<$Res> implements $AddressCopyWith<$Res> {
           _$_Address value, $Res Function(_$_Address) then) =
       __$$_AddressCopyWithImpl<$Res>;
   @override
-  $Res call({String rawAddress});
+  $Res call(
+      {String rawAddress,
+      String addressLine,
+      String city,
+      String state,
+      int postcode});
 }
 
 /// @nodoc
@@ -76,12 +110,32 @@ class __$$_AddressCopyWithImpl<$Res> extends _$AddressCopyWithImpl<$Res>
   @override
   $Res call({
     Object? rawAddress = freezed,
+    Object? addressLine = freezed,
+    Object? city = freezed,
+    Object? state = freezed,
+    Object? postcode = freezed,
   }) {
     return _then(_$_Address(
       rawAddress: rawAddress == freezed
           ? _value.rawAddress
           : rawAddress // ignore: cast_nullable_to_non_nullable
               as String,
+      addressLine: addressLine == freezed
+          ? _value.addressLine
+          : addressLine // ignore: cast_nullable_to_non_nullable
+              as String,
+      city: city == freezed
+          ? _value.city
+          : city // ignore: cast_nullable_to_non_nullable
+              as String,
+      state: state == freezed
+          ? _value.state
+          : state // ignore: cast_nullable_to_non_nullable
+              as String,
+      postcode: postcode == freezed
+          ? _value.postcode
+          : postcode // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -90,17 +144,30 @@ class __$$_AddressCopyWithImpl<$Res> extends _$AddressCopyWithImpl<$Res>
 
 @JsonSerializable(explicitToJson: true)
 class _$_Address implements _Address {
-  const _$_Address({required this.rawAddress});
+  const _$_Address(
+      {required this.rawAddress,
+      required this.addressLine,
+      required this.city,
+      required this.state,
+      required this.postcode});
 
   factory _$_Address.fromJson(Map<String, dynamic> json) =>
       _$$_AddressFromJson(json);
 
   @override
   final String rawAddress;
+  @override
+  final String addressLine;
+  @override
+  final String city;
+  @override
+  final String state;
+  @override
+  final int postcode;
 
   @override
   String toString() {
-    return 'Address(rawAddress: $rawAddress)';
+    return 'Address(rawAddress: $rawAddress, addressLine: $addressLine, city: $city, state: $state, postcode: $postcode)';
   }
 
   @override
@@ -109,13 +176,23 @@ class _$_Address implements _Address {
         (other.runtimeType == runtimeType &&
             other is _$_Address &&
             const DeepCollectionEquality()
-                .equals(other.rawAddress, rawAddress));
+                .equals(other.rawAddress, rawAddress) &&
+            const DeepCollectionEquality()
+                .equals(other.addressLine, addressLine) &&
+            const DeepCollectionEquality().equals(other.city, city) &&
+            const DeepCollectionEquality().equals(other.state, state) &&
+            const DeepCollectionEquality().equals(other.postcode, postcode));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(rawAddress));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(rawAddress),
+      const DeepCollectionEquality().hash(addressLine),
+      const DeepCollectionEquality().hash(city),
+      const DeepCollectionEquality().hash(state),
+      const DeepCollectionEquality().hash(postcode));
 
   @JsonKey(ignore: true)
   @override
@@ -129,12 +206,25 @@ class _$_Address implements _Address {
 }
 
 abstract class _Address implements Address {
-  const factory _Address({required final String rawAddress}) = _$_Address;
+  const factory _Address(
+      {required final String rawAddress,
+      required final String addressLine,
+      required final String city,
+      required final String state,
+      required final int postcode}) = _$_Address;
 
   factory _Address.fromJson(Map<String, dynamic> json) = _$_Address.fromJson;
 
   @override
   String get rawAddress => throw _privateConstructorUsedError;
+  @override
+  String get addressLine => throw _privateConstructorUsedError;
+  @override
+  String get city => throw _privateConstructorUsedError;
+  @override
+  String get state => throw _privateConstructorUsedError;
+  @override
+  int get postcode => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_AddressCopyWith<_$_Address> get copyWith =>
