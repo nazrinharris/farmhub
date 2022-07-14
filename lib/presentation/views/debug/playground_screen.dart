@@ -64,11 +64,16 @@ final farmer = FarmhubUser.farmer(
   userShops: [shop],
 );
 
-class PlaygroundScreen extends StatelessWidget {
+class PlaygroundScreen extends StatefulWidget {
   final IAuthLocalDataSource authLocalDataSource;
 
   const PlaygroundScreen({Key? key, required this.authLocalDataSource}) : super(key: key);
 
+  @override
+  State<PlaygroundScreen> createState() => _PlaygroundScreenState();
+}
+
+class _PlaygroundScreenState extends State<PlaygroundScreen> {
   @override
   Widget build(BuildContext context) {
     final LinearGradient gradient = LinearGradient(
@@ -201,10 +206,15 @@ class PlaygroundScreen extends StatelessWidget {
                   padding: EdgeInsets.only(top: 14, bottom: 14),
                   alignment: Alignment.center,
                   child: PrimaryButton(
-                    width: 250,
-                    content: "Retrieve User Data!",
-                    onPressed: () {
+                    width: 270,
+                    content: "Retrieve and Update User",
+                    onPressed: () async {
                       context.read<AuthBloc>().add(AuthEvent.execRetrieveUserData());
+
+                      await Future.delayed(Duration(seconds: 1));
+
+                      if (!mounted) return;
+                      await context.read<GlobalAuthCubit>().updateGlobalAuthCubit();
                     },
                   ),
                 ),
@@ -284,7 +294,7 @@ class PlaygroundScreen extends StatelessWidget {
                     width: 250,
                     content: "Store Farmer",
                     onPressed: () async {
-                      await authLocalDataSource.storeFarmhubUser(farmer);
+                      await widget.authLocalDataSource.storeFarmhubUser(farmer);
                     },
                   ),
                 ),
@@ -294,7 +304,7 @@ class PlaygroundScreen extends StatelessWidget {
                     width: 250,
                     content: "Retrieve Farmer",
                     onPressed: () async {
-                      final result = await authLocalDataSource.retrieveFarmhubUser();
+                      final result = await widget.authLocalDataSource.retrieveFarmhubUser();
 
                       print(result);
                       prettyPrintJson(result.toJson());
