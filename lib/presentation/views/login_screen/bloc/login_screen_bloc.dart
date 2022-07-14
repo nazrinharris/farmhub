@@ -118,11 +118,12 @@ class LoginScreenBloc extends Bloc<LoginScreenEvent, LoginScreenState> {
             primaryButtonAwareCubit.triggerFirstPage();
             Navigator.of(event.context).pushNamedAndRemoveUntil('/nav_main', (route) => false);
           } else if (state is ASLoginError) {
+            print(state.message);
             updateInfoTile(InfoTileProps(
               leadingText: 'Uh oh, Something\'s wrong!',
               child: Text(
-                "Code: ${state.code}, Message: ${state.message}",
-                style: TextStyle(
+                state.message,
+                style: const TextStyle(
                   color: Colors.white,
                 ),
               ),

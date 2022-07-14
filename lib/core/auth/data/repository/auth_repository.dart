@@ -42,11 +42,11 @@ class AuthRepository implements IAuthRepository {
         await authLocalDataSource.storeFarmhubUser(user);
 
         return Right(user);
-      } on FirebaseAuthException catch (e) {
+      } on FirebaseAuthException catch (e, stack) {
         return Left(FirebaseAuthFailure(
           code: e.code,
           message: e.message,
-          stackTrace: e.stackTrace,
+          stackTrace: stack,
         ));
       } catch (e, stack) {
         return Left(UnexpectedFailure(
