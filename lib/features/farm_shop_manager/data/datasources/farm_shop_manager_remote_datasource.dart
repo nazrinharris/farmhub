@@ -46,28 +46,29 @@ class FarmShopManagerRemoteDatasource implements IFarmShopManagerRemoteDatasourc
     );
 
     print(farmhubUser.userType);
+    late String newFarmId;
 
-    if (!(farmhubUser.userType == UserType.farmer || farmhubUser.userType == UserType.business)) {
+    if (farmhubUser.userType == UserType.farmer || farmhubUser.userType == UserType.business) {
+      //! Start with creating the [Farm] in the global collection
+      newFarmId = await firebaseFirestore
+          .collection(FS_GLOBAL_FARM)
+          .add(newFarm.toJson())
+          .then((doc) async {
+        await doc.update({"farmId": doc.id});
+        return doc.id;
+      });
+
+      //! Update the [userFarms] map inside the user doc
+      await firebaseFirestore.collection(FS_USER).doc(farmhubUser.uid).update({
+        "userFarms.$newFarmId": farmName,
+      });
+    } else {
       throw FarmShopManagerException(
         code: FSM_ERR_NOT_FARMER_OR_BUSINESS,
         message: "You don't have permission to create a Farm.",
         stackTrace: StackTrace.current,
       );
     }
-
-    //! Start with updating the [userFarms] sub-collection of the given user
-    final newFarmId = await firebaseFirestore
-        .collection(FS_USER)
-        .doc(farmhubUser.uid)
-        .collection(FS_USER_FARM)
-        .add(newFarm.toJson())
-        .then((doc) async {
-      doc.update({"farmId": doc.id});
-      return doc.id;
-    });
-
-    //! Create the new [Farm] in the [farms] global collection
-    await firebaseFirestore.collection(FS_GLOBAL_FARM).doc(newFarmId).set(newFarm.toJson());
 
     return newFarm.copyWith(farmId: newFarmId);
   }
@@ -85,27 +86,29 @@ class FarmShopManagerRemoteDatasource implements IFarmShopManagerRemoteDatasourc
       address: shopAddress,
     );
 
-    if (farmhubUser.userType != UserType.farmer || farmhubUser.userType != UserType.business) {
+    late String newShopId;
+
+    if (farmhubUser.userType == UserType.farmer || farmhubUser.userType == UserType.business) {
+      //! Start with creating the [Shop] in the global collection
+      newShopId = await firebaseFirestore
+          .collection(FS_GLOBAL_SHOP)
+          .add(newShop.toJson())
+          .then((doc) async {
+        await doc.update({"shopId": doc.id});
+        return doc.id;
+      });
+
+      //! Update the [userShops] map inside the user doc
+      await firebaseFirestore.collection(FS_USER).doc(farmhubUser.uid).update({
+        "userShops.$newShopId": shopName,
+      });
+    } else {
       throw FarmShopManagerException(
         code: FSM_ERR_NOT_FARMER_OR_BUSINESS,
-        message: "You don't have permission to create a Farm.",
+        message: "You don't have permission to create a Shop.",
         stackTrace: StackTrace.current,
       );
     }
-
-    //! Start with updating the [userShops] sub-collection of the given user
-    final newShopId = await firebaseFirestore
-        .collection(FS_USER)
-        .doc(farmhubUser.uid)
-        .collection(FS_USER_SHOP)
-        .add(newShop.toJson())
-        .then((doc) async {
-      doc.update({"shopId": doc.id});
-      return doc.id;
-    });
-
-    //! Create the new [Shop] in the [shops] global collection
-    await firebaseFirestore.collection(FS_GLOBAL_SHOP).doc(newShopId).set(newShop.toJson());
 
     return newShop.copyWith(shopId: newShopId);
   }
@@ -210,9 +213,8 @@ class FarmShopManagerRemoteDatasource implements IFarmShopManagerRemoteDatasourc
   Future<List<Farm>> getUserFarms({required FarmhubUser farmhubUser}) async {
     //! This can return a list of [Farm]s, if need to, change when implementing multiple farms
     final List<Farm> retrievedFarmList = await firebaseFirestore
-        .collection(FS_USER)
-        .doc(farmhubUser.uid)
-        .collection(FS_USER_FARM)
+        .collection(FS_GLOBAL_FARM)
+        .where("creatorUserId", isEqualTo: farmhubUser.uid)
         .get()
         .then((querySnapshot) {
       final List<Farm> farmList = [];
@@ -229,9 +231,8 @@ class FarmShopManagerRemoteDatasource implements IFarmShopManagerRemoteDatasourc
   @override
   Future<List<Shop>> getUserShops({required FarmhubUser farmhubUser}) async {
     final List<Shop> retrievedShop = await firebaseFirestore
-        .collection(FS_USER)
-        .doc(farmhubUser.uid)
-        .collection(FS_USER_SHOP)
+        .collection(FS_GLOBAL_SHOP)
+        .where("creatorUserId", isEqualTo: farmhubUser.uid)
         .get()
         .then((querySnapshot) {
       final List<Shop> shopList = [];

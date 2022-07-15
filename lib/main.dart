@@ -15,7 +15,7 @@ import 'dart:io';
 
 import 'core/auth/auth_bloc/auth_bloc.dart';
 
-const bool USE_EMULATOR = false;
+const bool USE_EMULATOR = true;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
