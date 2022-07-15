@@ -3,7 +3,6 @@ import 'package:farmhub/core/auth/domain/entities/farmhub_user/farmhub_user.dart
 import 'package:farmhub/core/errors/exceptions.dart';
 import 'package:farmhub/core/util/app_const.dart';
 import 'package:farmhub/features/farm_shop_manager/domain/entities/farm_shop/farm_shop.dart';
-import 'package:farmhub/presentation/views/debug/playground_screen.dart';
 import 'package:fpdart/fpdart.dart';
 
 import '../../domain/entities/address/address.dart';
@@ -158,48 +157,42 @@ class FarmShopManagerRemoteDatasource implements IFarmShopManagerRemoteDatasourc
 
   @override
   Future<Unit> updateFarm({required FarmhubUser farmhubUser, required Farm farm}) async {
-    if (farmhubUser.userType != UserType.farmer || farmhubUser.userType != UserType.business) {
+    if (farmhubUser.userType == UserType.farmer || farmhubUser.userType == UserType.business) {
+      //! Update the [Farm] in the global collection
+      await firebaseFirestore.collection(FS_GLOBAL_FARM).doc(farm.farmId).update(farm.toJson());
+
+      //! Update the [farmName] in the [userFarms] map inside the user document
+      await firebaseFirestore.collection(FS_USER).doc(farmhubUser.uid).update({
+        "userFarms.${farm.farmId}": farm.farmName,
+      });
+    } else {
       throw FarmShopManagerException(
         code: FSM_ERR_NOT_FARMER_OR_BUSINESS,
         message: "You don't have permission to create a Farm.",
         stackTrace: StackTrace.current,
       );
     }
-
-    //! Update [Farm] in [userFarms] sub-collection
-    await firebaseFirestore
-        .collection(FS_USER)
-        .doc(farmhubUser.uid)
-        .collection(FS_USER_FARM)
-        .doc(farm.farmId)
-        .update(farm.toJson());
-
-    //! Update [Farm] is [farms] global collection
-    await firebaseFirestore.collection(FS_GLOBAL_FARM).doc(farm.farmId).update(farm.toJson());
 
     return unit;
   }
 
   @override
   Future<Unit> updateShop({required FarmhubUser farmhubUser, required Shop shop}) async {
-    if (farmhubUser.userType != UserType.farmer || farmhubUser.userType != UserType.business) {
+    if (farmhubUser.userType == UserType.farmer || farmhubUser.userType == UserType.business) {
+      //! Update the [Shop] in the global collection
+      await firebaseFirestore.collection(FS_GLOBAL_SHOP).doc(shop.shopId).update(shop.toJson());
+
+      //! Update the [shopName] in the [userShop] map inside the user document
+      await firebaseFirestore.collection(FS_USER).doc(farmhubUser.uid).update({
+        "userShops.${shop.shopId}": shop.shopName,
+      });
+    } else {
       throw FarmShopManagerException(
         code: FSM_ERR_NOT_FARMER_OR_BUSINESS,
         message: "You don't have permission to create a Farm.",
         stackTrace: StackTrace.current,
       );
     }
-
-    //! Update [Shop] in [userShops] sub-collection
-    await firebaseFirestore
-        .collection(FS_USER)
-        .doc(farmhubUser.uid)
-        .collection(FS_USER_SHOP)
-        .doc(shop.shopId)
-        .update(shop.toJson());
-
-    //! Update [Shop] in [shops] global collection
-    await firebaseFirestore.collection(FS_GLOBAL_SHOP).doc(shop.shopId).update(shop.toJson());
 
     return unit;
   }
