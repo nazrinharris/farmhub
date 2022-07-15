@@ -1,16 +1,21 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:farmhub/app_router.dart';
 import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
 import 'package:farmhub/locator.dart';
 import 'package:farmhub/presentation/global/cubit/global_ui_cubit.dart';
 import 'package:farmhub/presentation/themes/farmhub_theme.dart';
 import 'package:farmhub/presentation/views/debug/navigate_view.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'dart:io';
 
 import 'core/auth/auth_bloc/auth_bloc.dart';
+
+const bool USE_EMULATOR = false;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -100,6 +105,12 @@ class _FarmhubMaterialAppState extends State<FarmhubMaterialApp> {
     }
 
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
+
+    SchedulerBinding.instance.addPostFrameCallback((timeStamp) async {
+      if (USE_EMULATOR) {
+        await _connectToEmulator();
+      }
+    });
   }
 
   @override
@@ -112,4 +123,17 @@ class _FarmhubMaterialAppState extends State<FarmhubMaterialApp> {
       //home: NavigateView(),
     );
   }
+}
+
+Future<void> _connectToEmulator() async {
+  String host = Platform.isAndroid ? "10.0.2.2" : 'localhost';
+
+  FirebaseFirestore.instance.settings = Settings(
+    host: '$host:8080',
+    sslEnabled: false,
+    persistenceEnabled: false,
+  );
+
+  await FirebaseAuth.instance.useAuthEmulator(host, 9099);
+  FirebaseFirestore.instance.useFirestoreEmulator(host, 8080);
 }

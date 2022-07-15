@@ -33,11 +33,7 @@ class FarmShopManagerRepository implements IFarmShopManagerRepository {
   FutureEither<Farm> createFarm({required String farmName, required Address farmAddress}) async {
     if (await networkInfo.isConnected) {
       try {
-        late FarmhubUser user;
-
-        await globalAuthCubit
-            .updateGlobalAuthCubit()
-            .then((_) => user = globalAuthCubit.state.farmhubUser!);
+        final user = globalAuthCubit.state.farmhubUser!;
 
         final result = await remoteDatasource.createFarm(
           farmhubUser: user,

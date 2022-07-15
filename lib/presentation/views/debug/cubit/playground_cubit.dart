@@ -24,6 +24,17 @@ class PlaygroundCubit extends Cubit<PlaygroundState> {
     required this.firebaseFirestore,
   }) : super(PlaygroundState.initial());
 
+  void updateFarmId() async {
+    await firebaseFirestore
+        .collection('users')
+        .doc("9K8BXevqrCd2qrTe50NVzLs9bRR2")
+        .collection('userFarms')
+        .doc("EEgBmwkB1E461CxncqpY")
+        .update({
+      "farmId": "EEgBmwkB1E461CxncqpY",
+    });
+  }
+
   void createProduce({
     required String produceName,
     required num currentProducePrice,

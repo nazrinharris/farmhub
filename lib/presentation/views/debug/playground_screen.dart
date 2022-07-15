@@ -11,6 +11,7 @@ import 'package:farmhub/features/produce_manager/domain/entities/produce/produce
 import 'package:farmhub/locator.dart';
 import 'package:farmhub/presentation/shared_widgets/buttons.dart';
 import 'package:farmhub/presentation/shared_widgets/ui_helpers.dart';
+import 'package:farmhub/presentation/views/debug/cubit/playground_cubit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -90,6 +91,11 @@ class _PlaygroundScreenState extends State<PlaygroundScreen> {
         BlocProvider(create: (context) => ProduceManagerBloc(repository: locator())),
         BlocProvider(
             create: (context) => AuthBloc(authRepository: locator(), globalAuthCubit: locator())),
+        BlocProvider(
+            create: (context) => PlaygroundCubit(
+                  repository: locator(),
+                  firebaseFirestore: locator(),
+                ))
       ],
       child: Builder(builder: (context) {
         return Scaffold(
@@ -139,6 +145,17 @@ class _PlaygroundScreenState extends State<PlaygroundScreen> {
                     content: "Edit Shop Screen",
                     onPressed: () async {
                       Navigator.of(context).pushNamed('/edit_shop', arguments: shop);
+                    },
+                  ),
+                ),
+                UIVerticalSpace14(),
+                Container(
+                  alignment: Alignment.center,
+                  child: PrimaryButton(
+                    width: 250,
+                    content: "Update FarmID",
+                    onPressed: () async {
+                      context.read<PlaygroundCubit>().updateFarmId();
                     },
                   ),
                 ),
