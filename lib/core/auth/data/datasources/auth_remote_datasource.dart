@@ -217,9 +217,26 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
 
   @override
   Future<Unit> chooseUserType(String uid, UserType userType) async {
-    await firebaseFirestore.collection('users').doc(uid).update({
+    final Map<String, dynamic> regularMap = {"userType": userType.typeAsString};
+    final Map<String, dynamic> farmOrBusinessMap = {
       "userType": userType.typeAsString,
-    }).then((value) => print("Change Success!"));
+      "userFarms": {},
+      "userShops": {},
+    };
+
+    late Map<String, dynamic> mapToUpdate;
+
+    if (userType == UserType.farmer || userType == UserType.business) {
+      mapToUpdate = farmOrBusinessMap;
+    } else {
+      mapToUpdate = regularMap;
+    }
+
+    await firebaseFirestore
+        .collection('users')
+        .doc(uid)
+        .update(mapToUpdate)
+        .then((value) => print("Change Success!"));
 
     return unit;
   }
