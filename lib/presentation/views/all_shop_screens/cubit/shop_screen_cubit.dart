@@ -1,11 +1,15 @@
 import 'package:bloc/bloc.dart';
+import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
 import 'package:farmhub/core/errors/failures.dart';
 import 'package:farmhub/features/farm_shop_manager/domain/entities/farm_shop/farm_shop.dart';
+import 'package:farmhub/presentation/smart_widgets/produce_dialogs/app_dialogs.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../features/farm_shop_manager/domain/entities/address/address.dart';
 import '../../../../features/farm_shop_manager/domain/i_farm_shop_manager_repository.dart';
+import '../../../global/cubit/global_ui_cubit.dart';
 import '../../../smart_widgets/multiple_fields_form/multiple_fields_form_bloc.dart';
 import '../../../smart_widgets/primary_button_aware/primary_button_aware_cubit.dart';
 
@@ -57,9 +61,14 @@ class ShopScreenCubit extends Cubit<ShopScreenState> {
 
       result.fold(
         (f) {
+          buttonAwareCubit.triggerFirstPage();
+          showErrorDialog(context: context, failure: f);
           emit(ShopScreenState.createShopError(f));
         },
         (shop) {
+          buttonAwareCubit.triggerFirstPage();
+          context.read<GlobalUICubit>().setShouldRefreshProfile(true);
+          Navigator.of(context).pushReplacementNamed('/profile');
           emit(ShopScreenState.createShopSuccess(shop));
         },
       );

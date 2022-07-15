@@ -1,7 +1,9 @@
 import 'package:farmhub/core/util/farmhub_icons.dart';
+import 'package:farmhub/presentation/views/all_shop_screens/cubit/shop_screen_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../locator.dart';
 import '../../shared_widgets/appbars.dart';
 import '../../shared_widgets/texts.dart';
 import '../../shared_widgets/ui_helpers.dart';
@@ -46,86 +48,98 @@ class _CreateShopScreenState extends State<CreateShopScreen> {
         BlocProvider(create: (context) => PrimaryButtonAwareCubit())
       ],
       child: Builder(builder: (context) {
-        return Scaffold(
-          resizeToAvoidBottomInset: false,
-          extendBodyBehindAppBar: true,
-          appBar: DefaultAppBar(
-            leadingIcon: Icon(Icons.close),
-            leadingOnPressed: () => Navigator.of(context).pop(),
+        return BlocProvider(
+          create: (context) => ShopScreenCubit(
+            firstTwoFieldsFormBloc: context.read<FirstTwoFieldsFormBloc>(),
+            secondTwoFieldsFormBloc: context.read<SecondTwoFieldsFormBloc>(),
+            buttonAwareCubit: context.read<PrimaryButtonAwareCubit>(),
+            farmShopManagerRepository: locator(),
           ),
-          body: SafeArea(
-            top: false,
-            child: Stack(
-              children: [
-                ListView(
+          child: Builder(builder: (context) {
+            return Scaffold(
+              resizeToAvoidBottomInset: false,
+              extendBodyBehindAppBar: true,
+              appBar: DefaultAppBar(
+                leadingIcon: Icon(Icons.close),
+                leadingOnPressed: () => Navigator.of(context).pop(),
+              ),
+              body: SafeArea(
+                top: false,
+                child: Stack(
                   children: [
-                    Container(
-                      padding: EdgeInsets.symmetric(horizontal: 24),
-                      alignment: Alignment.centerLeft,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const UIVerticalSpace14(),
-                          const Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 7),
-                            child: Icon(Icons.store, size: 34),
+                    ListView(
+                      children: [
+                        Container(
+                          padding: EdgeInsets.symmetric(horizontal: 24),
+                          alignment: Alignment.centerLeft,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const UIVerticalSpace14(),
+                              const Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 7),
+                                child: Icon(Icons.store, size: 34),
+                              ),
+                              const UIVerticalSpace14(),
+                              const Headline1('Create a Shop'),
+                            ],
                           ),
-                          const UIVerticalSpace14(),
-                          const Headline1('Create a Shop'),
-                        ],
-                      ),
+                        ),
+                        const UIVerticalSpace30(),
+                        const UIBorder(opacity: 0.1),
+                        const UIVerticalSpace30(),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 30),
+                          child: MultipleFieldsForm<FirstTwoFieldsFormBloc>(
+                            type: MultipleFieldsFormType.oneField,
+                            firstFieldLabel: 'Shop Name',
+                            firstFieldHintText: 'Enter the name of your shop',
+                            validateFirstField: validateShopName,
+                          ),
+                        ),
+                        const UIVerticalSpace14(),
+                        const UIBorder(opacity: 0.1),
+                        const UIVerticalSpace24(),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 30),
+                          child: MultipleFieldsForm<SecondTwoFieldsFormBloc>(
+                            type: MultipleFieldsFormType.fourField,
+                            firstFieldLabel: 'Address Line',
+                            firstFieldHintText: 'Enter your shop\'s address line',
+                            validateFirstField: validateShopName,
+                            secondFieldLabel: 'City',
+                            secondFieldHintText: 'Enter your shop\'s city',
+                            validateSecondField: validateCity,
+                            thirdFieldLabel: 'State',
+                            thirdFieldHintText: 'Enter your shop\'s state, e.g Selangor',
+                            validateThirdField: validateState,
+                            fourthFieldLabel: "Postcode",
+                            fourthFieldHintText: "Enter your shop's postcode, e.g 43200",
+                            validateFourthField: validatePostcode,
+                          ),
+                        ),
+                        const UICustomVertical(400),
+                      ],
                     ),
-                    const UIVerticalSpace30(),
-                    const UIBorder(opacity: 0.1),
-                    const UIVerticalSpace30(),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 30),
-                      child: MultipleFieldsForm<FirstTwoFieldsFormBloc>(
-                        type: MultipleFieldsFormType.oneField,
-                        firstFieldLabel: 'Shop Name',
-                        firstFieldHintText: 'Enter the name of your shop',
-                        validateFirstField: validateShopName,
+                    Container(
+                      padding: const EdgeInsets.only(bottom: 24),
+                      constraints: const BoxConstraints.expand(),
+                      alignment: Alignment.bottomCenter,
+                      child: PrimaryButtonAware(
+                        firstPageContent: 'Confirm',
+                        firstPageButtonIcon: const Icon(Icons.done, color: Colors.white),
+                        firstPageOnPressed: () {
+                          context.read<ShopScreenCubit>().createShop(context);
+                        },
+                        type: PrimaryButtonAwareType.onePage,
+                        width: 200,
                       ),
-                    ),
-                    const UIVerticalSpace14(),
-                    const UIBorder(opacity: 0.1),
-                    const UIVerticalSpace24(),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 30),
-                      child: MultipleFieldsForm<SecondTwoFieldsFormBloc>(
-                        type: MultipleFieldsFormType.fourField,
-                        firstFieldLabel: 'Address Line',
-                        firstFieldHintText: 'Enter your shop\'s address line',
-                        validateFirstField: validateShopName,
-                        secondFieldLabel: 'City',
-                        secondFieldHintText: 'Enter your shop\'s city',
-                        validateSecondField: validateCity,
-                        thirdFieldLabel: 'State',
-                        thirdFieldHintText: 'Enter your shop\'s state, e.g Selangor',
-                        validateThirdField: validateState,
-                        fourthFieldLabel: "Postcode",
-                        fourthFieldHintText: "Enter your shop's postcode, e.g 43200",
-                        validateFourthField: validatePostcode,
-                      ),
-                    ),
-                    const UICustomVertical(400),
+                    )
                   ],
                 ),
-                Container(
-                  padding: const EdgeInsets.only(bottom: 24),
-                  constraints: const BoxConstraints.expand(),
-                  alignment: Alignment.bottomCenter,
-                  child: PrimaryButtonAware(
-                    firstPageContent: 'Confirm',
-                    firstPageButtonIcon: const Icon(Icons.done, color: Colors.white),
-                    firstPageOnPressed: () {},
-                    type: PrimaryButtonAwareType.onePage,
-                    width: 200,
-                  ),
-                )
-              ],
-            ),
-          ),
+              ),
+            );
+          }),
         );
       }),
     );
