@@ -3,6 +3,7 @@ import 'package:farmhub/core/auth/domain/entities/farmhub_user/farmhub_user.dart
 import 'package:farmhub/core/errors/exceptions.dart';
 import 'package:farmhub/core/util/app_const.dart';
 import 'package:farmhub/features/farm_shop_manager/domain/entities/farm_shop/farm_shop.dart';
+import 'package:farmhub/presentation/views/debug/playground_screen.dart';
 import 'package:fpdart/fpdart.dart';
 
 import '../../domain/entities/address/address.dart';
@@ -115,48 +116,42 @@ class FarmShopManagerRemoteDatasource implements IFarmShopManagerRemoteDatasourc
 
   @override
   Future<Unit> deleteFarm({required FarmhubUser farmhubUser, required String farmId}) async {
-    if (farmhubUser.userType != UserType.farmer || farmhubUser.userType != UserType.business) {
+    if (farmhubUser.userType == UserType.farmer || farmhubUser.userType == UserType.business) {
+      //! Delete the [Farm] in the global collection
+      await firebaseFirestore.collection(FS_GLOBAL_FARM).doc(farmId).delete();
+
+      //! Remove the [Farm] from [userFarms] map inside the user doc
+      await firebaseFirestore.collection(FS_USER).doc(farmhubUser.uid).update({
+        "userFarms.$farmId": FieldValue.delete(),
+      });
+    } else {
       throw FarmShopManagerException(
         code: FSM_ERR_NOT_FARMER_OR_BUSINESS,
-        message: "You don't have permission to create a Farm.",
+        message: "You don't have permission to delete this farm",
         stackTrace: StackTrace.current,
       );
     }
-
-    //! Delete the [Farm] in [farms] global collection
-    await firebaseFirestore.collection(FS_GLOBAL_FARM).doc(farmId).delete();
-
-    //! Delete the [Farm] in [userFarms] sub-collection
-    await firebaseFirestore
-        .collection(FS_USER)
-        .doc(farmhubUser.uid)
-        .collection(FS_USER_FARM)
-        .doc(farmId)
-        .delete();
 
     return unit;
   }
 
   @override
   Future<Unit> deleteShop({required FarmhubUser farmhubUser, required String shopId}) async {
-    if (farmhubUser.userType != UserType.farmer || farmhubUser.userType != UserType.business) {
+    if (farmhubUser.userType == UserType.farmer || farmhubUser.userType == UserType.business) {
+      //! Delete the [Shop] in the global collection
+      await firebaseFirestore.collection(FS_GLOBAL_SHOP).doc(shopId).delete();
+
+      //! Remove the [Shop] from [userShops] map inside the user doc
+      await firebaseFirestore.collection(FS_USER).doc(farmhubUser.uid).update({
+        "userShops.$shopId": FieldValue.delete(),
+      });
+    } else {
       throw FarmShopManagerException(
         code: FSM_ERR_NOT_FARMER_OR_BUSINESS,
-        message: "You don't have permission to create a Farm.",
+        message: "You don't have permission to delete this shop",
         stackTrace: StackTrace.current,
       );
     }
-
-    //! Delete the [Shop] in [shops] global collection
-    await firebaseFirestore.collection(FS_GLOBAL_SHOP).doc(shopId).delete();
-
-    //! Delete the [Shop] in [userShops] sub-collection
-    await firebaseFirestore
-        .collection(FS_USER)
-        .doc(farmhubUser.uid)
-        .collection(FS_USER_SHOP)
-        .doc(shopId)
-        .delete();
 
     return unit;
   }
