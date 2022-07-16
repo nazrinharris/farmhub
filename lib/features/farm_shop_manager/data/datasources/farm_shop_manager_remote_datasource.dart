@@ -157,6 +157,8 @@ class FarmShopManagerRemoteDatasource implements IFarmShopManagerRemoteDatasourc
 
   @override
   Future<Unit> updateFarm({required FarmhubUser farmhubUser, required Farm farm}) async {
+    print("UID -> ${farmhubUser.uid}");
+
     if (farmhubUser.userType == UserType.farmer || farmhubUser.userType == UserType.business) {
       //! Update the [Farm] in the global collection
       await firebaseFirestore.collection(FS_GLOBAL_FARM).doc(farm.farmId).update(farm.toJson());

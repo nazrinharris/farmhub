@@ -28,9 +28,9 @@ final user = FarmhubUser(
   userType: UserType.regular,
 );
 
-final farm = Farm(
-  creatorUserId: "creatorUserId",
-  farmId: "farmId",
+final farmToEdit = Farm(
+  creatorUserId: "BXF8kvBSTZAGjnSgT8iSE1Lh8lA5",
+  farmId: "Gso3a0knrXkZBbDNjtLM",
   farmName: "Rockmelon Selayang",
   address: Address(
       rawAddress: "rawAddress",
@@ -41,9 +41,9 @@ final farm = Farm(
 );
 
 final shop = Shop(
-  creatorUserId: "creatorUserId",
-  shopId: "shopId",
-  shopName: "shopName",
+  creatorUserId: "BXF8kvBSTZAGjnSgT8iSE1Lh8lA5",
+  shopId: "8FxdKadY0TACebcJxPsb",
+  shopName: "Shopping Endeavor",
   address: Address(
       rawAddress: "rawAddress",
       addressLine: "1st Mayhingway Street",
@@ -61,7 +61,7 @@ final farmer = FarmhubUser.farmer(
     ProduceFavorite(produceId: "produceId", dateAdded: DateTime.now()),
   ],
   userType: UserType.farmer,
-  userFarms: [farm],
+  userFarms: [farmToEdit],
   userShops: [shop],
 );
 
@@ -133,7 +133,7 @@ class _PlaygroundScreenState extends State<PlaygroundScreen> {
                     width: 200,
                     content: "Edit Farm Screen",
                     onPressed: () async {
-                      Navigator.of(context).pushNamed('/edit_farm', arguments: farm);
+                      Navigator.of(context).pushNamed('/edit_farm', arguments: farmToEdit);
                     },
                   ),
                 ),

@@ -74,4 +74,54 @@ class ShopScreenCubit extends Cubit<ShopScreenState> {
       );
     }
   }
+
+  Future<void> updateShop(BuildContext context, Shop shop) async {
+    firstTwoFieldsFormBloc.add(enableAlwaysValidation);
+    secondTwoFieldsFormBloc.add(enableAlwaysValidation);
+
+    final isValid = firstTwoFieldsFormBloc.state.props.formKey.currentState!.validate() &&
+        secondTwoFieldsFormBloc.state.props.formKey.currentState!.validate();
+
+    if (isValid) {
+      // Assign respective fields
+      final String shopName = firstTwoFieldsFormBloc.state.props.firstFieldValue!;
+      final String addressLine = secondTwoFieldsFormBloc.state.props.firstFieldValue!;
+      final String city = secondTwoFieldsFormBloc.state.props.secondFieldValue!;
+      final String state = secondTwoFieldsFormBloc.state.props.thirdFieldValue!;
+      final int postcode = int.parse(secondTwoFieldsFormBloc.state.props.fourthFieldValue!);
+      final String rawAddress = "$addressLine, $city, $state, $postcode";
+      final Address shopAddress = Address(
+        rawAddress: rawAddress,
+        addressLine: addressLine,
+        city: city,
+        state: state,
+        postcode: postcode,
+      );
+      final Shop updatedShop = Shop(
+        creatorUserId: shop.creatorUserId,
+        shopId: shop.shopId,
+        shopName: shopName,
+        address: shopAddress,
+      );
+
+      // Indicate Loading
+      buttonAwareCubit.triggerLoading();
+
+      // Do the thang
+      final result = await farmShopManagerRepository.updateShop(shop: updatedShop);
+
+      result.fold(
+        (f) {
+          print(f);
+          context.read<PrimaryButtonAwareCubit>().triggerFirstPage();
+          showErrorDialog(context: context, failure: f);
+        },
+        (shop) {
+          context.read<PrimaryButtonAwareCubit>().triggerFirstPage();
+          context.read<GlobalUICubit>().setShouldRefreshProfile(true);
+          Navigator.of(context).pushReplacementNamed('/profile');
+        },
+      );
+    }
+  }
 }
