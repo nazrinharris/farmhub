@@ -485,15 +485,100 @@ class ShopList extends StatelessWidget {
           UIVerticalSpace14(),
           SecondaryButton(
             content: "Create a Shop",
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).pushNamed("/create_shop");
+            },
           ),
         ],
       );
     } else {
-      return Container(
-        height: 100,
-        color: Colors.red,
-      );
+      return ShopCard(shopList: shopList);
     }
+  }
+}
+
+class ShopCard extends StatelessWidget {
+  const ShopCard({
+    Key? key,
+    required this.shopList,
+  }) : super(key: key);
+
+  final List<Shop> shopList;
+
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      elevation: 20,
+      shadowColor: Theme.of(context).colorScheme.primary.withOpacity(0.2),
+      color: Theme.of(context).extension<ExtendedColors>()!.evenPalerPurple,
+      borderRadius: BorderRadius.circular(16),
+      child: InkWell(
+        onTap: () {},
+        borderRadius: BorderRadius.circular(16),
+        child: Container(
+          width: MediaQuery.of(context).size.width,
+          padding: EdgeInsets.symmetric(horizontal: 14, vertical: 20),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 4),
+                    child: Icon(Icons.store, size: 24),
+                  ),
+                  UIVerticalSpace14(),
+                  Text(
+                    shopList[0].shopName,
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodyText1!
+                        .copyWith(fontWeight: FontWeight.bold),
+                  ),
+                  UIVerticalSpace6(),
+                  Text(
+                    "${shopList[0].address.addressLine},",
+                    style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                          color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
+                        ),
+                  ),
+                  Text(
+                    "${shopList[0].address.city},",
+                    style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                          color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
+                        ),
+                  ),
+                  Text(
+                    "${shopList[0].address.state}.",
+                    style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                          color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
+                        ),
+                  ),
+                ],
+              ),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  IconButton(
+                    onPressed: () {
+                      Navigator.of(context).pushNamed("/edit_shop", arguments: shopList[0]);
+                    },
+                    icon: Icon(Icons.edit),
+                  ),
+                  IconButton(
+                      onPressed: () {
+                        final dialog = returnDeleteShopDialog(context, shopList[0]);
+
+                        dialog.show(context, transitionType: DialogTransitionType.Bubble);
+                      },
+                      icon: Icon(Icons.delete, color: Theme.of(context).colorScheme.error)),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }

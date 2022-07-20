@@ -374,4 +374,30 @@ class ProduceDialogCubit extends Cubit<ProduceDialogState> {
       },
     );
   }
+
+  Future<void> startDeleteShop(BuildContext context, Shop shop) async {
+    Navigator.of(context).pop();
+
+    final progress = returnProgressDialog(
+      context,
+      loadingTitle: "Deleting Shop...",
+      loadingMessage: "This may take a few seconds...",
+    );
+
+    progress.show();
+
+    final result = await farmShopManagerRepository!.deleteShop(shopId: shop.shopId);
+
+    result.fold(
+      (f) {
+        print(f);
+        progress.dismiss();
+        showErrorDialog(context: context, failure: f);
+      },
+      (_) {
+        progress.dismiss();
+        globalUICubit.setShouldRefreshProfile(true);
+      },
+    );
+  }
 }

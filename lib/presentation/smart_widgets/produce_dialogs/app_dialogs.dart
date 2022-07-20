@@ -843,3 +843,64 @@ NAlertDialog returnDeleteFarmDialog(
     ],
   );
 }
+
+NAlertDialog returnDeleteShopDialog(
+  BuildContext context,
+  Shop shop,
+) {
+  return NAlertDialog(
+    blur: 4,
+    dialogStyle: DialogStyle(
+      titlePadding: EdgeInsets.zero,
+      titleDivider: false,
+      backgroundColor: Theme.of(context).colorScheme.background,
+    ),
+    title: Container(
+      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
+      color: Theme.of(context).colorScheme.errorContainer.withOpacity(0.45),
+      child: Row(
+        children: [
+          Icon(
+            Icons.warning_amber,
+            color: Theme.of(context).colorScheme.error,
+          ),
+          const UIHorizontalSpace14(),
+          Text(
+            "Are you sure?",
+            style: Theme.of(context)
+                .textTheme
+                .bodyText2!
+                .copyWith(color: Theme.of(context).colorScheme.error),
+          ),
+        ],
+      ),
+    ),
+    content: Padding(
+      padding: const EdgeInsets.only(top: 14, bottom: 24, right: 24),
+      child: Text(
+        "${shop.shopName} will be deleted, this cannot be undone.",
+        style: Theme.of(context).textTheme.bodyText1,
+      ),
+    ),
+    actions: [
+      PrimaryButton(
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        margin: const EdgeInsets.only(left: 14, right: 7, bottom: 14),
+        content: "Back",
+        onPressed: () {
+          Navigator.of(context).pop();
+        },
+      ),
+      SecondaryButton(
+        horizontalPadding: 0,
+        type: SecondaryButtonType.red,
+        margin: const EdgeInsets.only(right: 14, left: 7, bottom: 14),
+        content: "Delete",
+        buttonIcon: const Icon(Icons.delete, size: 20),
+        onPressed: () async {
+          await context.read<ProduceDialogCubit>().startDeleteShop(context, shop);
+        },
+      ),
+    ],
+  );
+}

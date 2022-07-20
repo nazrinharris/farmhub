@@ -106,6 +106,7 @@ class FarmhubTheme {
           paleYellow: const Color(0xffFFEDB2),
           paleBlue: const Color(0xffB7D0FE),
           palePurple: const Color(0xffDDBAFF),
+          evenPalerPurple: const Color(0xffEDF3FF),
         )
       },
     ),
@@ -121,6 +122,7 @@ class ExtendedColors extends ThemeExtension<ExtendedColors> {
     required this.paleYellow,
     required this.paleBlue,
     required this.palePurple,
+    required this.evenPalerPurple,
   });
 
   final Color? warning;
@@ -130,6 +132,7 @@ class ExtendedColors extends ThemeExtension<ExtendedColors> {
   final Color? paleYellow;
   final Color? paleBlue;
   final Color? palePurple;
+  final Color? evenPalerPurple;
 
   @override
   ThemeExtension<ExtendedColors> copyWith({
@@ -140,6 +143,7 @@ class ExtendedColors extends ThemeExtension<ExtendedColors> {
     Color? paleYellow,
     Color? paleBlue,
     Color? palePurple,
+    Color? evenPalerPurple,
   }) {
     return ExtendedColors(
       warning: warning ?? this.warning,
@@ -149,6 +153,7 @@ class ExtendedColors extends ThemeExtension<ExtendedColors> {
       paleYellow: paleYellow ?? this.paleYellow,
       paleBlue: paleBlue ?? this.paleBlue,
       palePurple: palePurple ?? this.palePurple,
+      evenPalerPurple: evenPalerPurple ?? this.evenPalerPurple,
     );
   }
 
@@ -166,6 +171,7 @@ class ExtendedColors extends ThemeExtension<ExtendedColors> {
       paleBlue: Color.lerp(paleBlue, other.paleBlue, t),
       paleYellow: Color.lerp(paleYellow, other.paleYellow, t),
       palePurple: Color.lerp(palePurple, other.palePurple, t),
+      evenPalerPurple: Color.lerp(evenPalerPurple, other.evenPalerPurple, t),
     );
   }
 }
