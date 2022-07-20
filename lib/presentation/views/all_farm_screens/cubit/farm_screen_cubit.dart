@@ -113,7 +113,7 @@ class FarmScreenCubit extends Cubit<FarmScreenState> {
         (farm) {
           context.read<PrimaryButtonAwareCubit>().triggerFirstPage();
           context.read<GlobalUICubit>().setShouldRefreshProfile(true);
-          Navigator.of(context).pushReplacementNamed('/profile');
+          Navigator.of(context).pop();
         },
       );
     }

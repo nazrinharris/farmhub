@@ -68,7 +68,7 @@ class ShopScreenCubit extends Cubit<ShopScreenState> {
         (shop) {
           buttonAwareCubit.triggerFirstPage();
           context.read<GlobalUICubit>().setShouldRefreshProfile(true);
-          Navigator.of(context).pushReplacementNamed('/profile');
+          Navigator.of(context).pop();
           emit(ShopScreenState.createShopSuccess(shop));
         },
       );
@@ -119,7 +119,7 @@ class ShopScreenCubit extends Cubit<ShopScreenState> {
         (shop) {
           context.read<PrimaryButtonAwareCubit>().triggerFirstPage();
           context.read<GlobalUICubit>().setShouldRefreshProfile(true);
-          Navigator.of(context).pushReplacementNamed('/profile');
+          Navigator.of(context).pop();
         },
       );
     }

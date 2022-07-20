@@ -87,24 +87,28 @@ ElevatedButtonThemeData _farmhubElevatedButtonThemeDataLight = ElevatedButtonThe
 class FarmhubTheme {
   static final appThemeData = {
     FarmhubThemeVariants.light: ThemeData(
-        colorScheme: _farmhubColorSchemeLight,
-        textTheme: _farmhubTextThemeLight,
-        // TODO: Temporary Fix for ColorScheme, update to use the new Seed. Or fix it so that the old one can use
-        scaffoldBackgroundColor: _farmhubColorSchemeLight.background,
-        backgroundColor: _farmhubColorSchemeLight.background,
-        elevatedButtonTheme: _farmhubElevatedButtonThemeDataLight,
-        iconTheme: IconThemeData(
-          color: _farmhubColorSchemeLight.primary,
-        ),
-        primaryColor: _farmhubColorSchemeLight.primary,
-        extensions: <ThemeExtension<dynamic>>{
-          ExtendedColors(
-            warning: const Color(0xffFDE9A4),
-            onWarning: const Color(0xffAA8400),
-            onWarningFade: const Color(0xffAA8400).withOpacity(0.5),
-            onBackgroundPale: const Color(0xffEBFFDD),
-          )
-        }),
+      colorScheme: _farmhubColorSchemeLight,
+      textTheme: _farmhubTextThemeLight,
+      // TODO: Temporary Fix for ColorScheme, update to use the new Seed. Or fix it so that the old one can use
+      scaffoldBackgroundColor: _farmhubColorSchemeLight.background,
+      backgroundColor: _farmhubColorSchemeLight.background,
+      elevatedButtonTheme: _farmhubElevatedButtonThemeDataLight,
+      iconTheme: IconThemeData(
+        color: _farmhubColorSchemeLight.primary,
+      ),
+      primaryColor: _farmhubColorSchemeLight.primary,
+      extensions: <ThemeExtension<dynamic>>{
+        ExtendedColors(
+          warning: const Color(0xffFDE9A4),
+          onWarning: const Color(0xffAA8400),
+          onWarningFade: const Color(0xffAA8400).withOpacity(0.5),
+          onBackgroundPale: const Color(0xffEBFFDD),
+          paleYellow: const Color(0xffFFEDB2),
+          paleBlue: const Color(0xffB7D0FE),
+          palePurple: const Color(0xffDDBAFF),
+        )
+      },
+    ),
   };
 }
 
@@ -114,21 +118,37 @@ class ExtendedColors extends ThemeExtension<ExtendedColors> {
     required this.onWarning,
     required this.onWarningFade,
     required this.onBackgroundPale,
+    required this.paleYellow,
+    required this.paleBlue,
+    required this.palePurple,
   });
 
   final Color? warning;
   final Color? onWarning;
   final Color? onWarningFade;
   final Color? onBackgroundPale;
+  final Color? paleYellow;
+  final Color? paleBlue;
+  final Color? palePurple;
 
   @override
-  ThemeExtension<ExtendedColors> copyWith(
-      {Color? warning, Color? onWarning, Color? onWarningFade, Color? onBackgroundPale}) {
+  ThemeExtension<ExtendedColors> copyWith({
+    Color? warning,
+    Color? onWarning,
+    Color? onWarningFade,
+    Color? onBackgroundPale,
+    Color? paleYellow,
+    Color? paleBlue,
+    Color? palePurple,
+  }) {
     return ExtendedColors(
       warning: warning ?? this.warning,
       onWarning: onWarning ?? this.onWarning,
       onWarningFade: onWarningFade ?? this.onWarningFade,
       onBackgroundPale: onBackgroundPale ?? this.onBackgroundPale,
+      paleYellow: paleYellow ?? this.paleYellow,
+      paleBlue: paleBlue ?? this.paleBlue,
+      palePurple: palePurple ?? this.palePurple,
     );
   }
 
@@ -143,6 +163,9 @@ class ExtendedColors extends ThemeExtension<ExtendedColors> {
       onWarning: Color.lerp(onWarning, other.onWarning, t),
       onWarningFade: Color.lerp(onWarningFade, other.onWarningFade, t),
       onBackgroundPale: Color.lerp(onBackgroundPale, other.onBackgroundPale, t),
+      paleBlue: Color.lerp(paleBlue, other.paleBlue, t),
+      paleYellow: Color.lerp(paleYellow, other.paleYellow, t),
+      palePurple: Color.lerp(palePurple, other.palePurple, t),
     );
   }
 }

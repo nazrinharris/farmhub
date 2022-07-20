@@ -156,7 +156,7 @@ class _CreateFarmScreenState extends State<CreateFarmScreen> {
     if (state is CreateFarmSuccess) {
       context.read<PrimaryButtonAwareCubit>().triggerFirstPage();
       context.read<GlobalUICubit>().setShouldRefreshProfile(true);
-      Navigator.of(context).pushReplacementNamed('/profile');
+      Navigator.of(context).pop();
     } else if (state is CreateFarmError) {
       print(state.failure);
       context.read<PrimaryButtonAwareCubit>().triggerFirstPage();

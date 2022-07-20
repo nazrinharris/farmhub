@@ -166,6 +166,8 @@ class _LoginScreenState extends State<LoginScreen> with AnimationMixin {
                                       context
                                           .read<LoginScreenBloc>()
                                           .add(const LoginScreenEvent.toggleInfoTileVisibility());
+
+                                      Navigator.of(context).pushNamed("/navigate");
                                     },
                                     width: 100,
                                   ),

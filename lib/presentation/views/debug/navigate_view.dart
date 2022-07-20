@@ -6,6 +6,7 @@ import 'package:farmhub/presentation/shared_widgets/buttons.dart';
 import 'package:farmhub/presentation/shared_widgets/cards.dart';
 import 'package:farmhub/presentation/shared_widgets/scroll_physics.dart';
 import 'package:farmhub/presentation/shared_widgets/ui_helpers.dart';
+import 'package:farmhub/presentation/themes/farmhub_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -101,6 +102,15 @@ class NavigateView extends StatelessWidget {
                   'To Nav Main',
                   style: Theme.of(context).textTheme.bodyText1!.copyWith(color: Colors.white),
                 ),
+              ),
+              const UIVerticalSpace14(),
+              PrimaryButton(
+                onPressed: () {
+                  Navigator.of(context).pushNamed('/profile');
+                },
+                backgroundColor: Theme.of(context).extension<ExtendedColors>()!.paleYellow,
+                width: 200,
+                child: Text('To Profile', style: Theme.of(context).textTheme.bodyText1),
               ),
               const UIVerticalSpace14(),
               const UIBorder(),

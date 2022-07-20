@@ -25,6 +25,7 @@ class GlobalAuthCubit extends Cubit<GlobalAuthState> {
   }
 
   Future<void> updateGlobalAuthCubit() async {
+    print("Updating Global Auth Cubit");
     final failureOrFarmhubUser = await repository.retrieveUserData();
 
     await failureOrFarmhubUser.fold(
