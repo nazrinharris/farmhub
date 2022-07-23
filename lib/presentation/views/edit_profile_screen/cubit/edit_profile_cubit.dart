@@ -9,6 +9,7 @@ import 'package:farmhub/presentation/smart_widgets/primary_button_aware/primary_
 import 'package:farmhub/presentation/smart_widgets/produce_dialogs/app_dialogs.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:ndialog/ndialog.dart';
 
 part 'edit_profile_state.dart';
 part 'edit_profile_cubit.freezed.dart';
@@ -28,13 +29,26 @@ class EditProfileCubit extends Cubit<EditProfileState> {
     required this.formBloc,
   }) : super(EditProfileState.initial());
 
-  Future<void> execEditProfile(BuildContext context) async {
+  Future<void> checkUserTypeChange(
+      BuildContext context, UserType newUserType, FarmhubUser user) async {
+    if (newUserType == UserType.regular &&
+        (user.userType == UserType.farmer || user.userType == UserType.business)) {
+      final dialog = returnChangeToRegularConfirmationDialog(context, newUserType, user);
+
+      dialog.show(context, transitionType: DialogTransitionType.Bubble);
+    } else {
+      await execEditProfile(context, newUserType, user);
+    }
+  }
+
+  Future<void> execEditProfile(BuildContext context, UserType newUserType, FarmhubUser user) async {
     formBloc.add(enableAlwaysValidation);
     formBloc.add(unfocusAllNodes);
 
     final bool isFormValid = formBloc.state.props.formKey.currentState!.validate();
 
     if (isFormValid) {
+      //! Check if the userType changed to [Regular] from either [Farmer] or [Business]
       final newUsername = formBloc.state.props.firstFieldValue;
 
       final progressDialog = returnProgressDialog(context,
@@ -45,7 +59,8 @@ class EditProfileCubit extends Cubit<EditProfileState> {
       progressDialog.show();
 
       final FarmhubUser farmhubUser = globalAuthCubit.state.farmhubUser!;
-      final updatedFarmhubUser = farmhubUser.copyWith(username: newUsername!);
+      final updatedFarmhubUser =
+          farmhubUser.copyWith(username: newUsername!, userType: newUserType);
 
       final result = await authRepository.updateRemoteUser(newUserData: updatedFarmhubUser);
 
@@ -59,7 +74,7 @@ class EditProfileCubit extends Cubit<EditProfileState> {
           showErrorDialog(context: context, failure: f);
         },
         (user) {
-          emit(EditProfileState.success());
+          emit(const EditProfileState.success());
           primaryButtonAwareCubit.triggerFirstPage();
           progressDialog.dismiss();
           globalUICubit.setShouldRefreshProfile(true);

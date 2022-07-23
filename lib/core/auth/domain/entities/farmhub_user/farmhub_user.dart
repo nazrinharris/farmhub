@@ -11,19 +11,34 @@ import '../../../../errors/exceptions.dart';
 part 'farmhub_user.freezed.dart';
 part 'farmhub_user.g.dart';
 
-enum UserType { farmer, business, regular, admin }
+enum UserType { regular, admin, farmer, business }
 
 extension UserTypeExt on UserType {
   String get typeAsString {
     switch (this) {
-      case UserType.farmer:
-        return "farmer";
-      case UserType.business:
-        return "business";
       case UserType.regular:
         return "regular";
       case UserType.admin:
         return "admin";
+      case UserType.farmer:
+        return "farmer";
+      case UserType.business:
+        return "business";
+      default:
+        throw Exception();
+    }
+  }
+
+  int get typeAsInt {
+    switch (this) {
+      case UserType.regular:
+        return 0;
+      case UserType.farmer:
+        return 1;
+      case UserType.business:
+        return 2;
+      case UserType.admin:
+        return 3;
       default:
         throw Exception();
     }
@@ -44,6 +59,25 @@ UserType returnType(String typeAsString) {
       throw UnexpectedException(
         code: FU_ERR_STR_TYPE,
         message: "Unexpected String as a UserType",
+        stackTrace: StackTrace.current,
+      );
+  }
+}
+
+UserType returnTypeFromInt(int typeAsInt) {
+  switch (typeAsInt) {
+    case 0:
+      return UserType.regular;
+    case 1:
+      return UserType.farmer;
+    case 2:
+      return UserType.business;
+    case 3:
+      return UserType.admin;
+    default:
+      throw UnexpectedException(
+        code: FU_ERR_STR_TYPE,
+        message: "Unexpected Int as a UserType",
         stackTrace: StackTrace.current,
       );
   }

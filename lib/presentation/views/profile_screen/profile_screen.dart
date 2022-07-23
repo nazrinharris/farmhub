@@ -18,6 +18,7 @@ import 'package:farmhub/presentation/smart_widgets/produce_dialogs/produce_dialo
 import 'package:farmhub/presentation/themes/farmhub_theme.dart';
 import 'package:farmhub/presentation/views/profile_screen/profile_screen_cubit/profile_screen_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ndialog/ndialog.dart';
 
@@ -82,7 +83,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   },
                   trailingIcon: Icon(Icons.edit_outlined),
                   trailingOnPressed: () {
-                    Navigator.of(context).pushNamed('/edit_profile');
+                    Navigator.of(context).pushNamed('/edit_profile', arguments: user);
                   },
                   secondTrailingIcon: Icon(Icons.settings_outlined),
                   secondTrailingOnPressed: () {
@@ -245,6 +246,15 @@ class UserTypeCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        print("Yes");
+      },
+      child: chooseType(context),
+    );
+  }
+
+  Widget chooseType(BuildContext context) {
     if (userType == UserType.regular) {
       return Container(
         padding: EdgeInsets.symmetric(horizontal: 24, vertical: 14),
@@ -302,6 +312,7 @@ class SliverProfileContent extends StatelessWidget {
         if (user.userType == UserType.regular || user.userType == UserType.admin)
           RegularProfileContent(),
         if (user.userType == UserType.business) BusinessProfileContent(user as FarmhubUserBusiness),
+        if (user.userType == UserType.farmer) FarmerProfileContent(user as FarmhubUserFarmer),
         UICustomVertical(200),
       ]),
     );
@@ -315,10 +326,17 @@ class RegularProfileContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 300,
+      padding: EdgeInsets.symmetric(horizontal: 44, vertical: 44),
       alignment: Alignment.center,
       child: Column(
         children: [
-          Text("🧐"),
+          Text(
+            "Not much to see here...",
+            style: Theme.of(context).textTheme.headline1!.copyWith(
+                  color: Theme.of(context).colorScheme.primary.withOpacity(0.4),
+                ),
+            textAlign: TextAlign.center,
+          ),
         ],
       ),
     );
@@ -329,6 +347,32 @@ class BusinessProfileContent extends StatelessWidget {
   final FarmhubUserBusiness farmhubUser;
 
   const BusinessProfileContent(this.farmhubUser, {Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 24),
+      alignment: Alignment.topLeft,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text("Farm"),
+          UIVerticalSpace14(),
+          FarmList(farmhubUser.userFarms),
+          UICustomVertical(64),
+          Text("Shop"),
+          UIVerticalSpace14(),
+          ShopList(farmhubUser.userShops),
+        ],
+      ),
+    );
+  }
+}
+
+class FarmerProfileContent extends StatelessWidget {
+  final FarmhubUserFarmer farmhubUser;
+
+  const FarmerProfileContent(this.farmhubUser, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -398,6 +442,9 @@ class FarmCard extends StatelessWidget {
       borderRadius: BorderRadius.circular(16),
       child: InkWell(
         onTap: () {},
+        onLongPress: () {
+          HapticFeedback.heavyImpact();
+        },
         borderRadius: BorderRadius.circular(16),
         child: Container(
           width: MediaQuery.of(context).size.width,
@@ -405,41 +452,43 @@ class FarmCard extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 4),
-                    child: Icon(FarmhubIcons.farmhub_corn_icon, size: 24),
-                  ),
-                  UIVerticalSpace14(),
-                  Text(
-                    farmList[0].farmName,
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodyText1!
-                        .copyWith(fontWeight: FontWeight.bold),
-                  ),
-                  UIVerticalSpace6(),
-                  Text(
-                    "${farmList[0].address.addressLine},",
-                    style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                          color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
-                        ),
-                  ),
-                  Text(
-                    "${farmList[0].address.city},",
-                    style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                          color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
-                        ),
-                  ),
-                  Text(
-                    "${farmList[0].address.state}.",
-                    style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                          color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
-                        ),
-                  ),
-                ],
+              Flexible(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 4),
+                      child: Icon(FarmhubIcons.farmhub_corn_icon, size: 24),
+                    ),
+                    UIVerticalSpace14(),
+                    Text(
+                      farmList[0].farmName,
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodyText1!
+                          .copyWith(fontWeight: FontWeight.bold),
+                    ),
+                    UIVerticalSpace6(),
+                    Text(
+                      "${farmList[0].address.addressLine},",
+                      style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                            color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
+                          ),
+                    ),
+                    Text(
+                      "${farmList[0].address.city},",
+                      style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                            color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
+                          ),
+                    ),
+                    Text(
+                      "${farmList[0].address.state}.",
+                      style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                            color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
+                          ),
+                    ),
+                  ],
+                ),
               ),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -514,6 +563,9 @@ class ShopCard extends StatelessWidget {
       borderRadius: BorderRadius.circular(16),
       child: InkWell(
         onTap: () {},
+        onLongPress: () {
+          HapticFeedback.heavyImpact();
+        },
         borderRadius: BorderRadius.circular(16),
         child: Container(
           width: MediaQuery.of(context).size.width,
@@ -521,41 +573,43 @@ class ShopCard extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 4),
-                    child: Icon(Icons.store, size: 24),
-                  ),
-                  UIVerticalSpace14(),
-                  Text(
-                    shopList[0].shopName,
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodyText1!
-                        .copyWith(fontWeight: FontWeight.bold),
-                  ),
-                  UIVerticalSpace6(),
-                  Text(
-                    "${shopList[0].address.addressLine},",
-                    style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                          color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
-                        ),
-                  ),
-                  Text(
-                    "${shopList[0].address.city},",
-                    style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                          color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
-                        ),
-                  ),
-                  Text(
-                    "${shopList[0].address.state}.",
-                    style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                          color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
-                        ),
-                  ),
-                ],
+              Flexible(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 4),
+                      child: Icon(Icons.store, size: 24),
+                    ),
+                    UIVerticalSpace14(),
+                    Text(
+                      shopList[0].shopName,
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodyText1!
+                          .copyWith(fontWeight: FontWeight.bold),
+                    ),
+                    UIVerticalSpace6(),
+                    Text(
+                      "${shopList[0].address.addressLine},",
+                      style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                            color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
+                          ),
+                    ),
+                    Text(
+                      "${shopList[0].address.city},",
+                      style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                            color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
+                          ),
+                    ),
+                    Text(
+                      "${shopList[0].address.state}.",
+                      style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                            color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
+                          ),
+                    ),
+                  ],
+                ),
               ),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,

@@ -183,7 +183,8 @@ class AppRouter {
         return PageRouteBuilder(
           transitionDuration: const Duration(milliseconds: 600),
           reverseTransitionDuration: const Duration(milliseconds: 600),
-          pageBuilder: ((context, animation, secondaryAnimation) => const EditProfileScreen()),
+          pageBuilder: ((context, animation, secondaryAnimation) =>
+              EditProfileScreen(routeSettings.arguments as FarmhubUser)),
           transitionsBuilder: slideUpTransitionBuilder,
         );
 
@@ -231,12 +232,6 @@ Route addNewPriceRoute = PageRouteBuilder(
   transitionDuration: const Duration(milliseconds: 600),
   reverseTransitionDuration: const Duration(milliseconds: 600),
   pageBuilder: ((context, animation, secondaryAnimation) => const AddNewPriceScreen()),
-  transitionsBuilder: slideUpTransitionBuilder,
-);
-Route editProfileRoute = PageRouteBuilder(
-  transitionDuration: const Duration(milliseconds: 600),
-  reverseTransitionDuration: const Duration(milliseconds: 600),
-  pageBuilder: ((context, animation, secondaryAnimation) => const EditProfileScreen()),
   transitionsBuilder: slideUpTransitionBuilder,
 );
 
