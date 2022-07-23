@@ -14,6 +14,7 @@ final FarmhubUser tFarmhubUser = FarmhubUser(
   email: 'temail@temail.temail',
   createdAt: '2021-11-28',
   produceFavoritesList: [],
+  userType: UserType.regular,
 );
 
 final InternetConnectionFailure tInternetConnectionFailure = InternetConnectionFailure(
@@ -26,6 +27,7 @@ const String tPassword = 'tpassword';
 const String tUsername = 'tusername';
 const String tUid = 'tuid';
 const String tCreatedAt = '2021-11-28';
+const UserType tUserType = UserType.regular;
 String todayCreatedAt = DateFormat('yyyy-MM-dd').format(DateTime.now());
 DateTime tCurrentDate = DateTime.parse('2021-11-28');
 

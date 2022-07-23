@@ -1,6 +1,6 @@
 name: farmhub
 description: A new Flutter project.
-version: 0.1.0
+version: 0.2.0
 
 publish_to: "none"
 
@@ -52,10 +52,10 @@ dependencies:
   dropdown_button2: ^1.6.3
   ndialog: ^4.1.1+1
   flutter_speed_dial: ^6.0.0
+  toggle_switch: ^2.0.1
 
   # Misc
   lint: ^1.8.2
-  logger: ^1.1.0
   path_provider: ^2.0.11
   intl: ^0.17.0
   clock: ^1.1.0
@@ -79,6 +79,27 @@ dev_dependencies:
   bloc_test: ^9.0.3
 
   flutter_lints: ^2.0.1
+  logger: ^1.1.0
+  flutter_launcher_icons: ^0.9.3
+  flutter_native_splash: ^2.2.5
+
+flutter_icons:
+  image_path: "assets/images/farmhub_icon.png"
+  #image_path_android: "insert path"
+  #image_path_ios: "insert path"
+  android: true
+  adaptive_icon_background: "#F2FFF6"
+  adaptive_icon_foreground: "assets/images/farmhub_icon_foreground.png"
+  ios: true
+  remove_alpha_ios: true
+
+flutter_native_splash:
+  color: "#F2FFF6"
+  image: assets/images/farmhub_icon_transparent.png
+
+  android_12:
+    image: assets/images/farmhub_icon_transparent.png
+    icon_background_color: "#F2FFF6"
 
 flutter:
   uses-material-design: true

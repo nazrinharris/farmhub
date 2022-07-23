@@ -17,6 +17,7 @@ abstract class IAuthRepository {
     required String email,
     required String password,
     required String username,
+    required UserType userType,
   });
 
   Future<Either<Failure, FarmhubUser>> loginWithGoogleAccount();
@@ -29,6 +30,8 @@ abstract class IAuthRepository {
   Future<Either<Failure, bool>> isAdmin({
     required String uid,
   });
+
+  FutureEither<Unit> chooseUserType(String uid, UserType userType);
 
   Future<Either<Failure, FarmhubUser>> updateRemoteUser({
     required FarmhubUser newUserData,

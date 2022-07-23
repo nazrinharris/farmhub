@@ -26,7 +26,7 @@ import '../../../features/produce_manager/domain/entities/price/price.dart';
 
 import 'package:ndialog/ndialog.dart';
 
-import '../../../features/produce_manager/domain/helpers.dart';
+import '../../../features/produce_manager/data/repository/produce_manager_helpers.dart';
 import '../../smart_widgets/custom_cupertino_sliver_refresh_control.dart';
 import 'custom_tab.dart' as ct;
 
@@ -345,6 +345,7 @@ class _SliverProducePriceChartState extends State<SliverProducePriceChart> {
             ).createShader(bounds);
           },
           child: ClipRRect(
+            clipBehavior: Clip.antiAlias,
             borderRadius: BorderRadius.circular(16),
             child: ct.TabBar(
               onTap: (value) {

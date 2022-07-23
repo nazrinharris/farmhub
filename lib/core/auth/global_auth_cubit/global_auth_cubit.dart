@@ -2,19 +2,12 @@ import 'package:bloc/bloc.dart';
 import 'package:farmhub/core/auth/data/repository/auth_repository.dart';
 import 'package:farmhub/core/auth/domain/entities/farmhub_user/farmhub_user.dart';
 import 'package:farmhub/core/auth/domain/i_auth_repository.dart';
+import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:logger/logger.dart';
 
 part 'global_auth_state.dart';
 part 'global_auth_cubit.freezed.dart';
-
-// TODO: Temporary as guest farmhub user.
-final guestFarmhubUser = FarmhubUser(
-  uid: "guest",
-  email: "-",
-  username: "Guest",
-  createdAt: "-",
-  produceFavoritesList: [],
-);
 
 class GlobalAuthCubit extends Cubit<GlobalAuthState> {
   final IAuthRepository repository;
@@ -32,12 +25,13 @@ class GlobalAuthCubit extends Cubit<GlobalAuthState> {
   }
 
   Future<void> updateGlobalAuthCubit() async {
+    print("Updating Global Auth Cubit");
     final failureOrFarmhubUser = await repository.retrieveUserData();
 
     await failureOrFarmhubUser.fold(
       (f) {
         print("User is not logged in.");
-        print(f);
+        debugPrint(f.toString());
       },
       (farmhubUser) async {
         final failureOrIsAdmin = await repository.isAdmin(uid: farmhubUser.uid);
@@ -49,7 +43,17 @@ class GlobalAuthCubit extends Cubit<GlobalAuthState> {
             emit(state.copyWith(farmhubUser: farmhubUser, isAdmin: null));
           },
           (isAdmin) {
-            emit(state.copyWith(farmhubUser: farmhubUser, isAdmin: isAdmin));
+            if (isAdmin) {
+              emit(state.copyWith(
+                farmhubUser: farmhubUser.copyWith(userType: UserType.admin),
+                isAdmin: isAdmin,
+              ));
+            } else {
+              emit(state.copyWith(
+                farmhubUser: farmhubUser,
+                isAdmin: isAdmin,
+              ));
+            }
           },
         );
       },

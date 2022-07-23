@@ -14,15 +14,21 @@ void main() {
   late MockAuthRemoteDataSource mockAuthRemoteDataSource;
   late MockAuthLocalDataSource mockAuthLocalDataSource;
   late MockNetworkInfo mockNetworkInfo;
+  late MockFarmShopManagerRepository mockFarmShopManagerRepository;
+  late MockFarmShopManagerRemoteDatasource mockFarmShopManagerRemoteDatasource;
 
   setUp(() {
     mockAuthRemoteDataSource = MockAuthRemoteDataSource();
     mockAuthLocalDataSource = MockAuthLocalDataSource();
+    mockFarmShopManagerRepository = MockFarmShopManagerRepository();
+    mockFarmShopManagerRemoteDatasource = MockFarmShopManagerRemoteDatasource();
     mockNetworkInfo = MockNetworkInfo();
+
     authRepository = AuthRepository(
       networkInfo: mockNetworkInfo,
       authRemoteDataSource: mockAuthRemoteDataSource,
       authLocalDataSource: mockAuthLocalDataSource,
+      farmShopManagerRemoteDatasource: mockFarmShopManagerRemoteDatasource,
     );
     registerFallbackValue(FakeFarmhubUser());
 
@@ -177,12 +183,14 @@ void main() {
                   email: any(named: 'email'),
                   password: any(named: 'password'),
                   username: any(named: 'username'),
+                  userType: any(named: 'userType'),
                 )).thenAnswer((_) async => tFarmhubUser);
             // act
             authRepository.registerWithEmailAndPassword(
               email: tEmail,
               password: tPassword,
               username: tUsername,
+              userType: tUserType,
             );
             // assert
             verify(() => mockNetworkInfo.isConnected);
@@ -197,12 +205,14 @@ void main() {
                   email: any(named: 'email'),
                   password: any(named: 'password'),
                   username: any(named: 'username'),
+                  userType: any(named: 'userType'),
                 )).thenAnswer((_) async => tFarmhubUser);
             // act
             final result = await authRepository.registerWithEmailAndPassword(
               email: tEmail,
               password: tPassword,
               username: tUsername,
+              userType: tUserType,
             );
             // assert
             expect(result, equals(Right(tFarmhubUser)));
@@ -217,12 +227,14 @@ void main() {
                   email: any(named: 'email'),
                   password: any(named: 'password'),
                   username: any(named: 'username'),
+                  userType: any(named: 'userType'),
                 )).thenAnswer((_) async => tFarmhubUser);
             // act
             await authRepository.registerWithEmailAndPassword(
               email: tEmail,
               password: tPassword,
               username: tUsername,
+              userType: tUserType,
             );
             // assert
             verify(() => mockAuthLocalDataSource.storeFarmhubUser(tFarmhubUser));
@@ -237,12 +249,14 @@ void main() {
                   email: any(named: 'email'),
                   password: any(named: 'password'),
                   username: any(named: 'username'),
+                  userType: any(named: 'userType'),
                 )).thenThrow(tFirebaseAuthException);
             // act
             final result = await authRepository.registerWithEmailAndPassword(
               email: tEmail,
               password: tPassword,
               username: tUsername,
+              userType: tUserType,
             );
             // assert
             expect(result, equals(Left(tFirebaseAuthFailure)));

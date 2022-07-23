@@ -74,6 +74,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       email: event.email,
       password: event.password,
       username: event.username,
+      userType: event.userType,
     );
 
     failureOrRegister.fold(

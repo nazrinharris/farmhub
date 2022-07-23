@@ -105,8 +105,8 @@ class SliverSettingsBody extends StatelessWidget {
                   onTap: () {
                     Navigator.of(context).pop();
                     Navigator.of(context).pop();
-                    Navigator.pushReplacementNamed(context, "/navigate");
-                    Navigator.pop(context);
+                    Navigator.of(context).pop();
+                    Navigator.pushNamed(context, "/navigate");
                   },
                 ),
                 SettingsListCard(

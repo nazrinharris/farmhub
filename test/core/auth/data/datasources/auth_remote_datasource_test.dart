@@ -92,7 +92,7 @@ void main() {
             );
             // assert
             verifyInOrder([
-              () => mockFirebaseFirestore.collection(FS_USER_COLLECTION),
+              () => mockFirebaseFirestore.collection(FS_USER),
               () => mockCollectionReference.doc(tUid),
               () => mockDocumentReference.get(),
             ]);
@@ -189,6 +189,7 @@ void main() {
                       email: tEmail,
                       password: tPassword,
                       username: tUsername,
+                      userType: tUserType,
                     ));
             // assert
             expect(result, equals(tFarmhubUser));
@@ -207,6 +208,7 @@ void main() {
                       email: tEmail,
                       password: tPassword,
                       username: tUsername,
+                      userType: tUserType,
                     ));
             // assert
             verifyInOrder([() => clock.now(), () => DateFormat('yyyy-MM-dd').format(tCurrentDate)]);
@@ -226,9 +228,10 @@ void main() {
                       email: tEmail,
                       password: tPassword,
                       username: tUsername,
+                      userType: tUserType,
                     ));
             // assert
-            verify(() => mockFirebaseFirestore.collection(FS_USER_COLLECTION));
+            verify(() => mockFirebaseFirestore.collection(FS_USER));
             verify(() => mockCollectionReference.doc(tUid));
             verify(() => mockDocumentReference.set({
                   "uid": tUid,

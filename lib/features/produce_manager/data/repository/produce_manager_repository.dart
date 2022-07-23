@@ -11,7 +11,7 @@ import 'package:farmhub/features/produce_manager/data/datasources/produce_manage
 import 'package:farmhub/features/produce_manager/domain/entities/price/price.dart';
 import 'package:farmhub/features/produce_manager/domain/entities/produce/produce.dart';
 import 'package:farmhub/core/typedefs/typedefs.dart';
-import 'package:farmhub/features/produce_manager/domain/helpers.dart';
+import 'package:farmhub/features/produce_manager/data/repository/produce_manager_helpers.dart';
 import 'package:farmhub/features/produce_manager/domain/i_produce_manager_repository.dart';
 import 'package:fpdart/fpdart.dart';
 

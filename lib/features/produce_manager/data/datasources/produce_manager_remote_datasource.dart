@@ -5,7 +5,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:farmhub/core/util/app_const.dart';
 import 'package:farmhub/core/errors/exceptions.dart';
 import 'package:farmhub/features/produce_manager/domain/entities/price/price.dart';
-import 'package:farmhub/features/produce_manager/domain/helpers.dart';
+import 'package:farmhub/features/produce_manager/data/repository/produce_manager_helpers.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:intl/intl.dart';
 
@@ -176,7 +176,7 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
     final Map<String, dynamic>? aggregatePricesMap = await firebaseFirestore
         .collection('produce')
         .doc(produceId)
-        .collection('prices')
+        .collection('aggregatePrices')
         .doc('aggregatePrices${currentYear.toString()}')
         .get()
         .then((doc) => doc.data());

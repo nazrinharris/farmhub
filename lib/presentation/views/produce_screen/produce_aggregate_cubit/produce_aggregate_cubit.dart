@@ -8,7 +8,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../features/produce_manager/domain/entities/price/price.dart';
 import '../../../../features/produce_manager/domain/entities/produce/produce.dart';
-import '../../../../features/produce_manager/domain/helpers.dart';
+import '../../../../features/produce_manager/data/repository/produce_manager_helpers.dart';
 import '../../../smart_widgets/produce_dialogs/app_dialogs.dart';
 
 part 'produce_aggregate_state.dart';

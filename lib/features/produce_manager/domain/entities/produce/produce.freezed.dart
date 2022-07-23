@@ -170,7 +170,7 @@ class __$$_ProduceCopyWithImpl<$Res> extends _$ProduceCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Produce implements _Produce {
+class _$_Produce extends _Produce {
   _$_Produce(
       {required this.produceId,
       required this.produceName,
@@ -181,7 +181,8 @@ class _$_Produce implements _Produce {
       required this.lastUpdateTimeStamp})
       : _currentProducePrice = currentProducePrice,
         _previousProducePrice = previousProducePrice,
-        _weeklyPrices = weeklyPrices;
+        _weeklyPrices = weeklyPrices,
+        super._();
 
   factory _$_Produce.fromJson(Map<String, dynamic> json) =>
       _$$_ProduceFromJson(json);
@@ -263,7 +264,7 @@ class _$_Produce implements _Produce {
   }
 }
 
-abstract class _Produce implements Produce {
+abstract class _Produce extends Produce {
   factory _Produce(
       {required final String produceId,
       required final String produceName,
@@ -272,6 +273,7 @@ abstract class _Produce implements Produce {
       required final Map<String, dynamic> previousProducePrice,
       required final Map<String, dynamic> weeklyPrices,
       required final DateTime lastUpdateTimeStamp}) = _$_Produce;
+  _Produce._() : super._();
 
   factory _Produce.fromJson(Map<String, dynamic> json) = _$_Produce.fromJson;
 
@@ -297,11 +299,16 @@ abstract class _Produce implements Produce {
       throw _privateConstructorUsedError;
 }
 
+ProduceFavorite _$ProduceFavoriteFromJson(Map<String, dynamic> json) {
+  return _ProduceFavorite.fromJson(json);
+}
+
 /// @nodoc
 mixin _$ProduceFavorite {
   String get produceId => throw _privateConstructorUsedError;
   DateTime get dateAdded => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $ProduceFavoriteCopyWith<ProduceFavorite> get copyWith =>
       throw _privateConstructorUsedError;
@@ -383,8 +390,12 @@ class __$$_ProduceFavoriteCopyWithImpl<$Res>
 
 /// @nodoc
 
+@JsonSerializable(explicitToJson: true)
 class _$_ProduceFavorite implements _ProduceFavorite {
   _$_ProduceFavorite({required this.produceId, required this.dateAdded});
+
+  factory _$_ProduceFavorite.fromJson(Map<String, dynamic> json) =>
+      _$$_ProduceFavoriteFromJson(json);
 
   @override
   final String produceId;
@@ -405,6 +416,7 @@ class _$_ProduceFavorite implements _ProduceFavorite {
             const DeepCollectionEquality().equals(other.dateAdded, dateAdded));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -415,12 +427,20 @@ class _$_ProduceFavorite implements _ProduceFavorite {
   @override
   _$$_ProduceFavoriteCopyWith<_$_ProduceFavorite> get copyWith =>
       __$$_ProduceFavoriteCopyWithImpl<_$_ProduceFavorite>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_ProduceFavoriteToJson(this);
+  }
 }
 
 abstract class _ProduceFavorite implements ProduceFavorite {
   factory _ProduceFavorite(
       {required final String produceId,
       required final DateTime dateAdded}) = _$_ProduceFavorite;
+
+  factory _ProduceFavorite.fromJson(Map<String, dynamic> json) =
+      _$_ProduceFavorite.fromJson;
 
   @override
   String get produceId => throw _privateConstructorUsedError;

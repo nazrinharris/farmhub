@@ -22,31 +22,59 @@ mixin FirstTwoFieldsFormBloc on Bloc<MultipleFieldsFormEvent, MultipleFieldsForm
 
 mixin SecondTwoFieldsFormBloc on Bloc<MultipleFieldsFormEvent, MultipleFieldsFormState> {}
 
-/// Some info on [MultipleFieldsFormBloc]
-///
-/// The [SecondTwoFieldsFormBloc] is not required, but it can be provided to be used
-/// in conjuction with another [MultipleFieldsForm].
-///
-/// For this conjunction to work, [isWithAnotherTwoFields] must be [true]
 class MultipleFieldsFormBloc extends Bloc<MultipleFieldsFormEvent, MultipleFieldsFormState>
     with FirstTwoFieldsFormBloc, SecondTwoFieldsFormBloc {
-  MultipleFieldsFormBloc()
-      : super(
+  final GlobalKey<FormState>? formKey;
+
+  final FocusNode? firstFieldFocusNode;
+  final FocusNode? secondFieldFocusNode;
+  final FocusNode? thirdFieldFocusNode;
+  final FocusNode? fourthFieldFocusNode;
+
+  final Function()? onSubmitFirstField;
+  final Function()? onSubmitSecondField;
+  final Function()? onSubmitThirdField;
+  final Function()? onSubmitFourthField;
+
+  final String? firstFieldValue;
+  final String? secondFieldValue;
+  final String? thirdFieldValue;
+  final String? fourthFieldValue;
+
+  MultipleFieldsFormBloc({
+    // Nodes
+    this.firstFieldFocusNode,
+    this.secondFieldFocusNode,
+    this.thirdFieldFocusNode,
+    this.fourthFieldFocusNode,
+    // onSubmit
+    this.onSubmitFirstField,
+    this.onSubmitSecondField,
+    this.onSubmitThirdField,
+    this.onSubmitFourthField,
+    // FormKey
+    this.formKey,
+    // Default Fields
+    this.firstFieldValue,
+    this.secondFieldValue,
+    this.thirdFieldValue,
+    this.fourthFieldValue,
+  }) : super(
           MultipleFieldsFormState.initial(
             props: MultipleFieldsFormProps(
               autovalidateModeFirstField: AutovalidateMode.disabled,
               autovalidateModeSecondField: AutovalidateMode.disabled,
               autovalidateModeThirdField: AutovalidateMode.disabled,
               autovalidateModeFourthField: AutovalidateMode.disabled,
-              firstFieldFocusNode: FocusNode(),
-              secondFieldFocusNode: FocusNode(),
-              thirdFieldFocusNode: FocusNode(),
-              fourthFieldFocusNode: FocusNode(),
-              firstFieldValue: null,
-              secondFieldValue: null,
-              thirdFieldValue: null,
-              fourthFieldValue: null,
-              formKey: GlobalKey<FormState>(),
+              firstFieldFocusNode: firstFieldFocusNode ?? FocusNode(),
+              secondFieldFocusNode: secondFieldFocusNode ?? FocusNode(),
+              thirdFieldFocusNode: thirdFieldFocusNode ?? FocusNode(),
+              fourthFieldFocusNode: fourthFieldFocusNode ?? FocusNode(),
+              firstFieldValue: firstFieldValue,
+              secondFieldValue: secondFieldValue,
+              thirdFieldValue: thirdFieldValue,
+              fourthFieldValue: fourthFieldValue,
+              formKey: formKey ?? GlobalKey<FormState>(),
             ),
           ),
         ) {
@@ -118,6 +146,9 @@ class MultipleFieldsFormBloc extends Bloc<MultipleFieldsFormEvent, MultipleField
     Emitter<MultipleFieldsFormState> emit,
   ) {
     state.props.secondFieldFocusNode.requestFocus();
+    if (onSubmitFirstField != null) {
+      onSubmitFirstField!();
+    }
     emit(
       state.copyWith.props(
         autovalidateModeFirstField: AutovalidateMode.always,
@@ -138,6 +169,9 @@ class MultipleFieldsFormBloc extends Bloc<MultipleFieldsFormEvent, MultipleField
     Emitter<MultipleFieldsFormState> emit,
   ) {
     state.props.thirdFieldFocusNode.requestFocus();
+    if (onSubmitSecondField != null) {
+      onSubmitSecondField!();
+    }
     emit(
       state.copyWith.props(
         autovalidateModeSecondField: AutovalidateMode.always,
@@ -158,6 +192,9 @@ class MultipleFieldsFormBloc extends Bloc<MultipleFieldsFormEvent, MultipleField
     Emitter<MultipleFieldsFormState> emit,
   ) {
     state.props.fourthFieldFocusNode.requestFocus();
+    if (onSubmitThirdField != null) {
+      onSubmitThirdField!();
+    }
     emit(
       state.copyWith.props(
         autovalidateModeThirdField: AutovalidateMode.always,
@@ -177,6 +214,9 @@ class MultipleFieldsFormBloc extends Bloc<MultipleFieldsFormEvent, MultipleField
     _MultipleFieldsFormFourthFieldSubmitted event,
     Emitter<MultipleFieldsFormState> emit,
   ) {
+    if (onSubmitFourthField != null) {
+      onSubmitFourthField!();
+    }
     emit(
       state.copyWith.props(
         autovalidateModeFourthField: AutovalidateMode.always,

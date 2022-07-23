@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'dart:math';
 
 import 'package:bloc/bloc.dart';
@@ -12,7 +10,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:intl/intl.dart';
 
 import '../../../../features/produce_manager/domain/entities/price/price.dart';
-import '../../../../features/produce_manager/domain/helpers.dart';
+import '../../../../features/produce_manager/data/repository/produce_manager_helpers.dart';
 
 part 'playground_state.dart';
 part 'playground_cubit.freezed.dart';
@@ -26,10 +24,22 @@ class PlaygroundCubit extends Cubit<PlaygroundState> {
     required this.firebaseFirestore,
   }) : super(PlaygroundState.initial());
 
+  void updateFarmId() async {
+    await firebaseFirestore
+        .collection('users')
+        .doc("9K8BXevqrCd2qrTe50NVzLs9bRR2")
+        .collection('userFarms')
+        .doc("EEgBmwkB1E461CxncqpY")
+        .update({
+      "farmId": "EEgBmwkB1E461CxncqpY",
+    });
+  }
+
   void createProduce({
     required String produceName,
     required num currentProducePrice,
   }) async {
+    return;
     emit(const PlaygroundState.loading());
 
     print("Creating produce...");
@@ -54,6 +64,7 @@ class PlaygroundCubit extends Cubit<PlaygroundState> {
     required String produceId,
     required num currentPrice,
   }) async {
+    return;
     emit(const PlaygroundState.loading());
 
     print("Adding new price to Produce with ID: $produceId");
@@ -74,6 +85,7 @@ class PlaygroundCubit extends Cubit<PlaygroundState> {
   void debugMethod({
     required String produceId,
   }) async {
+    return;
     emit(const PlaygroundState.loading());
 
     print("Adding new price to Produce with ID: $produceId");
@@ -112,6 +124,7 @@ class PlaygroundCubit extends Cubit<PlaygroundState> {
     required int pricesAmount,
     required String produceId,
   }) async {
+    return;
     emit(const PlaygroundState.loading());
 
     final List<PriceSnippet> createdPricesList = [];
@@ -135,6 +148,7 @@ class PlaygroundCubit extends Cubit<PlaygroundState> {
   void retrieveProduce({
     required String produceId,
   }) async {
+    return;
     emit(const PlaygroundState.loading());
 
     final produceDoc = await firebaseFirestore.collection('produce').doc(produceId).get();
@@ -148,6 +162,7 @@ class PlaygroundCubit extends Cubit<PlaygroundState> {
     required String produceId,
     required String priceId,
   }) async {
+    return;
     print("Get Price Started");
     emit(const PlaygroundState.loading());
 
@@ -169,6 +184,8 @@ class PlaygroundCubit extends Cubit<PlaygroundState> {
     required String chosenDate,
     required String chosenYear,
   }) async {
+    return;
+
     await firebaseFirestore
         .collection('produce')
         .doc(produceId)

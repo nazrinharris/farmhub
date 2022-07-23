@@ -4,6 +4,10 @@ import 'package:farmhub/presentation/views/add_new_price_screen/add_new_price_sc
 import 'package:farmhub/presentation/views/add_new_price_screen/add_new_price_search_screen.dart';
 import 'package:farmhub/presentation/views/add_new_price_screen/add_new_price_second_screen.dart';
 import 'package:farmhub/presentation/views/add_new_price_screen/add_new_price_third_screen.dart';
+import 'package:farmhub/presentation/views/all_farm_screens/create_farm_screen.dart';
+import 'package:farmhub/presentation/views/all_farm_screens/edit_farm_screen.dart';
+import 'package:farmhub/presentation/views/all_shop_screens/create_shop_screen.dart';
+import 'package:farmhub/presentation/views/all_shop_screens/edit_shop_screen.dart';
 import 'package:farmhub/presentation/views/create_produce_screen/create_produce_screen.dart';
 import 'package:farmhub/presentation/views/debug/navigate_view.dart';
 import 'package:farmhub/presentation/views/debug/playground_screen.dart';
@@ -21,10 +25,13 @@ import 'package:farmhub/presentation/views/search_screen/search_screen.dart';
 import 'package:farmhub/presentation/views/settings_screen/setting_screens.dart';
 import 'package:farmhub/presentation/views/splash_screen/splash_screen.dart';
 import 'package:farmhub/presentation/views/start_screen/start_screen.dart';
+import 'package:farmhub/presentation/views/user_management_screens/choose_user_type_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'features/farm_shop_manager/domain/entities/farm_shop/farm_shop.dart';
 import 'features/produce_manager/domain/entities/produce/produce.dart';
+import 'locator.dart';
 
 class ProduceArguments {
   final Produce produce;
@@ -76,6 +83,13 @@ class AppRouter {
         return CupertinoPageRoute(builder: (_) => const LoginScreen());
       case '/register':
         return CupertinoPageRoute(builder: (_) => const RegisterScreen());
+      case '/choose_user_type':
+        return PageRouteBuilder(
+          transitionDuration: const Duration(milliseconds: 600),
+          reverseTransitionDuration: const Duration(milliseconds: 600),
+          pageBuilder: ((context, animation, secondaryAnimation) => const ChooseUserTypeScreen()),
+          transitionsBuilder: slideUpTransitionBuilder,
+        );
       case '/start':
         return MaterialPageRoute(builder: (_) => const StartScreen());
       case '/nav_main':
@@ -85,7 +99,7 @@ class AppRouter {
           transitionDuration: const Duration(milliseconds: 600),
           reverseTransitionDuration: const Duration(milliseconds: 600),
           pageBuilder: ((context, animation, secondaryAnimation) => const CreateProduceScreen()),
-          transitionsBuilder: createProduceScreenTransitionBuilder,
+          transitionsBuilder: slideUpTransitionBuilder,
         );
       case '/produce':
         return CupertinoPageRoute(
@@ -99,9 +113,9 @@ class AppRouter {
           transitionDuration: const Duration(milliseconds: 600),
           reverseTransitionDuration: const Duration(milliseconds: 600),
           pageBuilder: ((context, animation, secondaryAnimation) => const AddNewPriceScreen()),
-          transitionsBuilder: createProduceScreenTransitionBuilder,
+          transitionsBuilder: slideUpTransitionBuilder,
         );
-        ;
+
       case add_new_price_second:
         return CupertinoPageRoute(
           builder: (_) =>
@@ -119,7 +133,7 @@ class AppRouter {
           reverseTransitionDuration: const Duration(milliseconds: 300),
           pageBuilder: ((context, animation, secondaryAnimation) =>
               SearchScreen(routeSettings.arguments as SearchScreenArguments)),
-          transitionsBuilder: searchScreenTransitionBuilder,
+          transitionsBuilder: fadeInTransitionBuilder,
         );
       case '/add_new_price_search_screen':
         return PageRouteBuilder(
@@ -127,7 +141,39 @@ class AppRouter {
           reverseTransitionDuration: const Duration(milliseconds: 300),
           pageBuilder: ((context, animation, secondaryAnimation) =>
               AddNewPriceSearchScreen(routeSettings.arguments as SearchScreenArguments)),
-          transitionsBuilder: searchScreenTransitionBuilder,
+          transitionsBuilder: fadeInTransitionBuilder,
+        );
+
+      case '/create_farm':
+        return PageRouteBuilder(
+          transitionDuration: const Duration(milliseconds: 600),
+          reverseTransitionDuration: const Duration(milliseconds: 600),
+          pageBuilder: ((context, animation, secondaryAnimation) => const CreateFarmScreen()),
+          transitionsBuilder: slideUpTransitionBuilder,
+        );
+      case '/edit_farm':
+        return PageRouteBuilder(
+          transitionDuration: const Duration(milliseconds: 600),
+          reverseTransitionDuration: const Duration(milliseconds: 600),
+          pageBuilder: ((context, animation, secondaryAnimation) =>
+              EditFarmScreen(routeSettings.arguments as Farm)),
+          transitionsBuilder: slideUpTransitionBuilder,
+        );
+
+      case '/create_shop':
+        return PageRouteBuilder(
+          transitionDuration: const Duration(milliseconds: 600),
+          reverseTransitionDuration: const Duration(milliseconds: 600),
+          pageBuilder: ((context, animation, secondaryAnimation) => const CreateShopScreen()),
+          transitionsBuilder: slideUpTransitionBuilder,
+        );
+      case '/edit_shop':
+        return PageRouteBuilder(
+          transitionDuration: const Duration(milliseconds: 600),
+          reverseTransitionDuration: const Duration(milliseconds: 600),
+          pageBuilder: ((context, animation, secondaryAnimation) =>
+              EditShopScreen(routeSettings.arguments as Shop)),
+          transitionsBuilder: slideUpTransitionBuilder,
         );
 
       case '/profile':
@@ -137,8 +183,9 @@ class AppRouter {
         return PageRouteBuilder(
           transitionDuration: const Duration(milliseconds: 600),
           reverseTransitionDuration: const Duration(milliseconds: 600),
-          pageBuilder: ((context, animation, secondaryAnimation) => const EditProfileScreen()),
-          transitionsBuilder: createProduceScreenTransitionBuilder,
+          pageBuilder: ((context, animation, secondaryAnimation) =>
+              EditProfileScreen(routeSettings.arguments as FarmhubUser)),
+          transitionsBuilder: slideUpTransitionBuilder,
         );
 
       case '/favorites':
@@ -150,7 +197,7 @@ class AppRouter {
       case '/navigate':
         return CupertinoPageRoute(builder: (_) => const NavigateView());
       case '/playground':
-        return CupertinoPageRoute(builder: (_) => const PlaygroundScreen());
+        return CupertinoPageRoute(builder: (_) => PlaygroundScreen(authLocalDataSource: locator()));
       case '/playground_two':
         return CupertinoPageRoute(builder: (_) => const PlaygroundTwoScreen());
 
@@ -179,27 +226,24 @@ Route createProduceRoute = PageRouteBuilder(
   transitionDuration: const Duration(milliseconds: 600),
   reverseTransitionDuration: const Duration(milliseconds: 600),
   pageBuilder: ((context, animation, secondaryAnimation) => const CreateProduceScreen()),
-  transitionsBuilder: createProduceScreenTransitionBuilder,
+  transitionsBuilder: slideUpTransitionBuilder,
 );
 Route addNewPriceRoute = PageRouteBuilder(
   transitionDuration: const Duration(milliseconds: 600),
   reverseTransitionDuration: const Duration(milliseconds: 600),
   pageBuilder: ((context, animation, secondaryAnimation) => const AddNewPriceScreen()),
-  transitionsBuilder: createProduceScreenTransitionBuilder,
-);
-Route editProfileRoute = PageRouteBuilder(
-  transitionDuration: const Duration(milliseconds: 600),
-  reverseTransitionDuration: const Duration(milliseconds: 600),
-  pageBuilder: ((context, animation, secondaryAnimation) => const EditProfileScreen()),
-  transitionsBuilder: createProduceScreenTransitionBuilder,
+  transitionsBuilder: slideUpTransitionBuilder,
 );
 
 Route favoritesRoute = CupertinoPageRoute(builder: (_) => const FavoritesScreen());
 Route settingsRoute = CupertinoPageRoute(builder: (_) => const SettingsScreen());
-Route playgroundRoute = CupertinoPageRoute(builder: (_) => const PlaygroundScreen());
+Route playgroundRoute = CupertinoPageRoute(
+    builder: (_) => PlaygroundScreen(
+          authLocalDataSource: locator(),
+        ));
 Route playgroundTwoRoute = CupertinoPageRoute(builder: (_) => const PlaygroundTwoScreen());
 
-Widget createProduceScreenTransitionBuilder(context, animation, secondaryAnimation, child) {
+Widget slideUpTransitionBuilder(context, animation, secondaryAnimation, child) {
   var offsetCurve =
       animation.status == AnimationStatus.reverse ? Curves.easeInExpo : Curves.easeOutExpo;
 
@@ -224,7 +268,7 @@ Widget createProduceScreenTransitionBuilder(context, animation, secondaryAnimati
   );
 }
 
-Widget searchScreenTransitionBuilder(context, animation, secondaryAnimation, child) {
+Widget fadeInTransitionBuilder(context, animation, secondaryAnimation, child) {
   var offsetCurve =
       animation.status == AnimationStatus.reverse ? Curves.easeInExpo : Curves.easeOutExpo;
 

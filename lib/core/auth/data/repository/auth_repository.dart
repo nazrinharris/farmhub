@@ -1,4 +1,6 @@
 import 'package:farmhub/core/typedefs/typedefs.dart';
+import 'package:farmhub/features/farm_shop_manager/data/datasources/farm_shop_manager_remote_datasource.dart';
+import 'package:farmhub/features/farm_shop_manager/domain/i_farm_shop_manager_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:fpdart/fpdart.dart';
@@ -11,15 +13,19 @@ import 'package:farmhub/core/util/app_const.dart';
 import 'package:farmhub/core/errors/failures.dart';
 import 'package:farmhub/core/network/network_info.dart';
 
+import '../../../errors/exceptions.dart';
+
 class AuthRepository implements IAuthRepository {
   final IAuthRemoteDataSource authRemoteDataSource;
   final IAuthLocalDataSource authLocalDataSource;
+  final IFarmShopManagerRemoteDatasource farmShopManagerRemoteDatasource;
   final INetworkInfo networkInfo;
 
   AuthRepository({
     required this.networkInfo,
     required this.authRemoteDataSource,
     required this.authLocalDataSource,
+    required this.farmShopManagerRemoteDatasource,
   });
 
   @override
@@ -34,12 +40,13 @@ class AuthRepository implements IAuthRepository {
           password: password,
         );
         await authLocalDataSource.storeFarmhubUser(user);
+
         return Right(user);
-      } on FirebaseAuthException catch (e) {
+      } on FirebaseAuthException catch (e, stack) {
         return Left(FirebaseAuthFailure(
           code: e.code,
           message: e.message,
-          stackTrace: e.stackTrace,
+          stackTrace: stack,
         ));
       } catch (e, stack) {
         return Left(UnexpectedFailure(
@@ -62,6 +69,7 @@ class AuthRepository implements IAuthRepository {
     required String email,
     required String password,
     required String username,
+    required UserType userType,
   }) async {
     // TODO: implement registerWithEmailAndPassword
     // TODO: tests registerWithEmailAndPassword
@@ -71,6 +79,7 @@ class AuthRepository implements IAuthRepository {
           email: email,
           password: password,
           username: username,
+          userType: userType,
         );
         await authLocalDataSource.storeFarmhubUser(result);
         return Right(result);
@@ -78,6 +87,12 @@ class AuthRepository implements IAuthRepository {
         return Left(FirebaseAuthFailure(
           code: e.code,
           message: e.message,
+          stackTrace: e.stackTrace,
+        ));
+      } on AuthException catch (e) {
+        return Left(AuthFailure(
+          message: e.message,
+          code: e.code,
           stackTrace: e.stackTrace,
         ));
       } catch (e, stack) {
@@ -138,28 +153,39 @@ class AuthRepository implements IAuthRepository {
   Future<Either<Failure, FarmhubUser>> retrieveUserData() async {
     if (await networkInfo.isConnected) {
       try {
-        final FarmhubUser user = await authRemoteDataSource.retrieveUserData();
+        FarmhubUser user = await authRemoteDataSource.retrieveUserData();
+
+        /// When we retrieve [user], it only retrieves [FarmhubUser], as such, [farmList] and
+        /// [shopList] will be empty, here, we will retrieve it.
+        if (user is FarmhubUserFarmer || user is FarmhubUserBusiness) {
+          final farmList = await farmShopManagerRemoteDatasource.getUserFarms(farmhubUser: user);
+          final shopList = await farmShopManagerRemoteDatasource.getUserShops(farmhubUser: user);
+
+          user = user.map(
+            (user) => user,
+            farmer: (farmer) => farmer.copyWith(userFarms: farmList, userShops: shopList),
+            business: (business) => business.copyWith(userFarms: farmList, userShops: shopList),
+          );
+        }
+
+        print("User Data ->");
         print(user);
         await authLocalDataSource.storeFarmhubUser(user);
 
         return Right(user);
       } on FirebaseAuthException catch (e) {
-        print('Retrieval of User Information Error Occurred, ${e.code}, ${e.message}');
         return Left(FirebaseAuthFailure(
           code: e.code,
           message: e.message,
           stackTrace: e.stackTrace,
         ));
-      } on FirebaseException catch (e) {
-        print('Retrieval of User Information Error Occurred, ${e.code}, ${e.message}');
+      } on FirebaseException catch (e, stack) {
         return Left(FirebaseFirestoreFailure(
           code: e.code,
           message: e.message,
-          stackTrace: e.stackTrace,
+          stackTrace: stack,
         ));
       } catch (e, stack) {
-        print('Retrieval of User Information Error Occurred, $e');
-        print("$stack");
         return Left(UnexpectedFailure(
           message: e.toString(),
           stackTrace: stack,
@@ -198,6 +224,12 @@ class AuthRepository implements IAuthRepository {
         return Left(FirebaseFirestoreFailure(
           code: e.code,
           message: e.message,
+          stackTrace: e.stackTrace,
+        ));
+      } on AuthException catch (e) {
+        return Left(AuthFailure(
+          message: e.message,
+          code: e.code,
           stackTrace: e.stackTrace,
         ));
       } catch (e, stack) {
@@ -259,6 +291,27 @@ class AuthRepository implements IAuthRepository {
         return Left(UnexpectedFailure(
           code: e.toString(),
           message: "An unexpected error occured",
+          stackTrace: stack,
+        ));
+      }
+    } else {
+      return Left(InternetConnectionFailure(
+        code: ERROR_NO_INTERNET_CONNECTION,
+        message: MESSAGE_NO_INTERNET_CONNECTION,
+        stackTrace: StackTrace.current,
+      ));
+    }
+  }
+
+  @override
+  FutureEither<Unit> chooseUserType(String uid, UserType userType) async {
+    if (await networkInfo.isConnected) {
+      try {
+        await authRemoteDataSource.chooseUserType(uid, userType);
+        return const Right(unit);
+      } catch (e, stack) {
+        return Left(UnexpectedFailure(
+          code: e.toString(),
           stackTrace: stack,
         ));
       }

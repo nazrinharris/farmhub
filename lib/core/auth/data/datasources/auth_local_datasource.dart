@@ -16,7 +16,7 @@ class AuthLocalDataSource implements IAuthLocalDataSource {
   @override
   Future<Unit> storeFarmhubUser(FarmhubUser farmhubUser) async {
     final prefs = await SharedPreferences.getInstance();
-    final jsonUser = FarmhubUser.toMap(farmhubUser);
+    final jsonUser = farmhubUser.toJson();
 
     await prefs.setString("user", jsonEncode(jsonUser));
 
@@ -39,7 +39,7 @@ class AuthLocalDataSource implements IAuthLocalDataSource {
       farmhubUserJson = jsonDecode(farmhubUserString) as Map<String, dynamic>;
     }
 
-    return FarmhubUser.fromMap(farmhubUserJson);
+    return FarmhubUser.fromJson(farmhubUserJson);
   }
 
   @override

@@ -1,3 +1,5 @@
+// ignore_for_file: unused_element
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:farmhub/core/errors/exceptions.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -7,6 +9,8 @@ part 'produce.g.dart';
 
 @freezed
 class Produce with _$Produce {
+  const Produce._();
+
   factory Produce({
     required String produceId,
     required String produceName,
@@ -78,8 +82,11 @@ class Produce with _$Produce {
 
 @freezed
 class ProduceFavorite with _$ProduceFavorite {
+  @JsonSerializable(explicitToJson: true)
   factory ProduceFavorite({
     required String produceId,
     required DateTime dateAdded,
   }) = _ProduceFavorite;
+
+  factory ProduceFavorite.fromJson(Map<String, dynamic> json) => _$ProduceFavoriteFromJson(json);
 }

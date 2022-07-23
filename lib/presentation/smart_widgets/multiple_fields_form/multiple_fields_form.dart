@@ -354,7 +354,9 @@ class _TextFieldLabelText extends StatelessWidget {
       alignment: Alignment.centerLeft,
       child: Text(
         labelText,
-        style: Theme.of(context).textTheme.bodyText1,
+        style: Theme.of(context).textTheme.bodyText1!.copyWith(
+              fontWeight: FontWeight.bold,
+            ),
       ),
     );
   }

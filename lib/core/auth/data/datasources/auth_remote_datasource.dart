@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:farmhub/core/auth/domain/entities/farmhub_user/farmhub_user.dart';
+import 'package:farmhub/core/errors/exceptions.dart';
 import 'package:farmhub/core/util/app_const.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fpdart/fpdart.dart';
@@ -16,7 +17,10 @@ abstract class IAuthRemoteDataSource {
     required String email,
     required String password,
     required String username,
+    required UserType userType,
   });
+
+  Future<Unit> chooseUserType(String uid, UserType userType);
 
   Future<FarmhubUser> loginWithGoogleAccount();
 
@@ -52,7 +56,7 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
         )
         .then((user) => user.user!.uid);
     final FarmhubUser farmhubUser = await firebaseFirestore
-        .collection(FS_USER_COLLECTION)
+        .collection(FS_USER)
         .doc(resultUid)
         .get()
         .then((snapshot) => snapshot.data())
@@ -74,8 +78,28 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
   }
 
   @override
-  Future<FarmhubUser> registerWithEmailAndPassword(
-      {required String email, required String password, required String username}) async {
+  Future<FarmhubUser> registerWithEmailAndPassword({
+    required String email,
+    required String password,
+    required String username,
+    required UserType userType,
+  }) async {
+    /// Check if there already exists the username.
+    final resultingQuery = await firebaseFirestore
+        .collection('users')
+        .where("username", isEqualTo: username)
+        .get()
+        .then(
+          (value) => value.docs,
+        );
+    if (resultingQuery.isNotEmpty) {
+      throw AuthException(
+        code: ERR_USERNAME_UNAVAILABLE,
+        message: "Sorry, this username is not available",
+        stackTrace: StackTrace.current,
+      );
+    }
+
     /// Start Registration Process - Register Method at FirebaseAuth
     final resultUid = await firebaseAuth
         .createUserWithEmailAndPassword(email: email, password: password)
@@ -94,15 +118,17 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
       username: username,
       createdAt: createdAt,
       produceFavoritesList: [],
+      userType: userType,
     );
 
     /// Store account data in Cloud Firestore
-    await firebaseFirestore.collection(FS_USER_COLLECTION).doc(resultUid).set({
+    await firebaseFirestore.collection(FS_USER).doc(resultUid).set({
       "uid": farmhubUser.uid,
       "email": farmhubUser.email,
       "username": farmhubUser.username,
       "createdAt": farmhubUser.createdAt,
       "produceFavoritesMap": {},
+      "userType": userType.typeAsString,
     }, null);
 
     return farmhubUser;
@@ -126,24 +152,23 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
 
     if (user == null) {
       // TODO: Make a proper constant error code.
-      throw FirebaseAuthException(code: 'user-not-signed-in', message: 'User is not signed in.');
+      throw FirebaseAuthException(code: AUTH_NOT_SIGNED_IN, message: 'User is not signed in.');
     } else {
-      final farmhubUser = await firebaseFirestore
-          .collection(FS_USER_COLLECTION)
+      final farmhubUserJson = await firebaseFirestore
+          .collection(FS_USER)
           .doc(user.uid)
           .get()
           .then((value) => value.data());
 
-      if (farmhubUser == null) {
+      if (farmhubUserJson == null) {
         throw FirebaseException(
           plugin: FS_PLUGIN,
           code: FS_ERRCODE_JSON_NOT_FOUND,
           message: 'User document not found.',
           stackTrace: StackTrace.current,
         );
-      } else {
-        return FarmhubUser.fromMap(farmhubUser);
       }
+      return FarmhubUser.returnRespectiveUserType(FarmhubUser.fromMap(farmhubUserJson));
     }
   }
 
@@ -186,6 +211,32 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
   @override
   Future<Unit> sendPasswordResetEmail(String email) async {
     await firebaseAuth.sendPasswordResetEmail(email: email);
+
+    return unit;
+  }
+
+  @override
+  Future<Unit> chooseUserType(String uid, UserType userType) async {
+    final Map<String, dynamic> regularMap = {"userType": userType.typeAsString};
+    final Map<String, dynamic> farmOrBusinessMap = {
+      "userType": userType.typeAsString,
+      "userFarms": {},
+      "userShops": {},
+    };
+
+    late Map<String, dynamic> mapToUpdate;
+
+    if (userType == UserType.farmer || userType == UserType.business) {
+      mapToUpdate = farmOrBusinessMap;
+    } else {
+      mapToUpdate = regularMap;
+    }
+
+    await firebaseFirestore
+        .collection('users')
+        .doc(uid)
+        .update(mapToUpdate)
+        .then((value) => print("Change Success!"));
 
     return unit;
   }

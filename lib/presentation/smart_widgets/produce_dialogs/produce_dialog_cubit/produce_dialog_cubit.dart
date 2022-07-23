@@ -3,6 +3,8 @@ import 'package:farmhub/core/auth/domain/i_auth_repository.dart';
 import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
 import 'package:farmhub/core/util/app_const.dart';
 import 'package:farmhub/core/errors/failures.dart';
+import 'package:farmhub/features/farm_shop_manager/data/repository/farm_shop_manager_repository.dart';
+import 'package:farmhub/features/farm_shop_manager/domain/entities/farm_shop/farm_shop.dart';
 import 'package:farmhub/features/produce_manager/domain/entities/produce/produce.dart';
 import 'package:farmhub/features/produce_manager/domain/i_produce_manager_repository.dart';
 import 'package:farmhub/presentation/global/cubit/global_ui_cubit.dart';
@@ -12,6 +14,8 @@ import 'package:farmhub/presentation/smart_widgets/produce_dialogs/app_dialogs.d
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:ndialog/ndialog.dart';
+
+import '../../../../features/farm_shop_manager/domain/i_farm_shop_manager_repository.dart';
 
 part 'produce_dialog_state.dart';
 part 'produce_dialog_cubit.freezed.dart';
@@ -23,12 +27,14 @@ class ProduceDialogCubit extends Cubit<ProduceDialogState> {
   final IAuthRepository? authRepository;
   final GlobalUICubit globalUICubit;
   final GlobalAuthCubit globalAuthCubit;
+  final IFarmShopManagerRepository? farmShopManagerRepository;
 
   ProduceDialogCubit(
     this.repository,
     this.globalUICubit,
     this.globalAuthCubit, {
     this.authRepository,
+    this.farmShopManagerRepository,
   }) : super(const ProduceDialogState.initial());
 
   void showDeleteConfirmation({
@@ -339,6 +345,58 @@ class ProduceDialogCubit extends Cubit<ProduceDialogState> {
             title: "Email Sent!",
             content:
                 "Please check your email inbox. If the email is not found, please check your spam.");
+      },
+    );
+  }
+
+  Future<void> startDeleteFarm(BuildContext context, Farm farm) async {
+    Navigator.of(context).pop();
+
+    final progress = returnProgressDialog(
+      context,
+      loadingTitle: "Deleting Farm...",
+      loadingMessage: "This may take a few seconds...",
+    );
+
+    progress.show();
+
+    final result = await farmShopManagerRepository!.deleteFarm(farmId: farm.farmId);
+
+    result.fold(
+      (f) {
+        print(f);
+        progress.dismiss();
+        showErrorDialog(context: context, failure: f);
+      },
+      (_) {
+        progress.dismiss();
+        globalUICubit.setShouldRefreshProfile(true);
+      },
+    );
+  }
+
+  Future<void> startDeleteShop(BuildContext context, Shop shop) async {
+    Navigator.of(context).pop();
+
+    final progress = returnProgressDialog(
+      context,
+      loadingTitle: "Deleting Shop...",
+      loadingMessage: "This may take a few seconds...",
+    );
+
+    progress.show();
+
+    final result = await farmShopManagerRepository!.deleteShop(shopId: shop.shopId);
+
+    result.fold(
+      (f) {
+        print(f);
+        progress.dismiss();
+        showErrorDialog(context: context, failure: f);
+      },
+      (_) {
+        progress.dismiss();
+        globalUICubit.setShouldRefreshProfile(true);
       },
     );
   }

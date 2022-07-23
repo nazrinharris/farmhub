@@ -303,6 +303,7 @@ class RegisterScreenBlocProviders extends StatelessWidget {
                 infoTileVisibilityController: infoTileVisibilityController,
                 registerScreenProps: const RegisterScreenProps(isInfoTileVisible: false),
                 authBloc: locator(),
+                authRepository: locator(),
                 infoTileBloc: context.read<InfoTileBloc>(),
                 primaryButtonAwareCubit: context.read<PrimaryButtonAwareCubit>(),
                 firstTwoFieldsFormBloc: context.read<FirstTwoFieldsFormBloc>(),

@@ -6,6 +6,10 @@ import 'package:farmhub/core/auth/data/repository/auth_repository.dart';
 import 'package:farmhub/core/auth/domain/i_auth_repository.dart';
 import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
 import 'package:farmhub/core/network/network_info.dart';
+import 'package:farmhub/features/farm_shop_manager/data/datasources/farm_shop_manager_local_datasource.dart';
+import 'package:farmhub/features/farm_shop_manager/data/datasources/farm_shop_manager_remote_datasource.dart';
+import 'package:farmhub/features/farm_shop_manager/data/repository/farm_shop_manager_repository.dart';
+import 'package:farmhub/features/farm_shop_manager/domain/i_farm_shop_manager_repository.dart';
 import 'package:farmhub/features/produce_manager/bloc/produce_manager_bloc.dart';
 import 'package:farmhub/features/produce_manager/data/datasources/produce_manager_local_datasource.dart';
 import 'package:farmhub/features/produce_manager/data/datasources/produce_manager_remote_datasource.dart';
@@ -34,6 +38,7 @@ void setupLocator() {
         networkInfo: locator(),
         authRemoteDataSource: locator(),
         authLocalDataSource: locator(),
+        farmShopManagerRemoteDatasource: locator(),
       ));
   // Datasources
   locator.registerLazySingleton<IAuthLocalDataSource>(() => AuthLocalDataSource());
@@ -62,6 +67,23 @@ void setupLocator() {
       () => ProduceManagerRemoteDatasource(firebaseFirestore: locator()));
   locator
       .registerLazySingleton<IProduceManagerLocalDatasource>(() => ProduceManagerLocalDatasource());
+
+  //* FarmShopManager
+  // Repository
+  locator.registerLazySingleton<IFarmShopManagerRepository>(() => FarmShopManagerRepository(
+        networkInfo: locator(),
+        remoteDatasource: locator(),
+        localDatasource: locator(),
+        authRepository: locator(),
+        globalAuthCubit: locator(),
+      ));
+  // Datasources
+  locator.registerLazySingleton<IFarmShopManagerRemoteDatasource>(
+      () => FarmShopManagerRemoteDatasource(
+            firebaseFirestore: locator(),
+          ));
+  locator.registerLazySingleton<IFarmShopManagerLocalDatasource>(
+      () => FarmShopManagerLocalDatasource());
 
   //! UI Relared
   //* Global

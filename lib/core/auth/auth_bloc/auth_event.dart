@@ -15,6 +15,7 @@ class AuthEvent with _$AuthEvent {
     required String email,
     required String password,
     required String username,
+    required UserType userType,
   }) = _AEExecRegisterWithEmailAndPassword;
 
   // Others

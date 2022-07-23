@@ -21,7 +21,8 @@ mixin _$AuthEvent {
     required TResult Function() started,
     required TResult Function(String email, String password)
         execLoginWithEmailAndPassword,
-    required TResult Function(String email, String password, String username)
+    required TResult Function(
+            String email, String password, String username, UserType userType)
         execRegisterWithEmailAndPassword,
     required TResult Function() execRetrieveUserData,
     required TResult Function() execSignOut,
@@ -33,7 +34,8 @@ mixin _$AuthEvent {
     TResult Function()? started,
     TResult Function(String email, String password)?
         execLoginWithEmailAndPassword,
-    TResult Function(String email, String password, String username)?
+    TResult Function(
+            String email, String password, String username, UserType userType)?
         execRegisterWithEmailAndPassword,
     TResult Function()? execRetrieveUserData,
     TResult Function()? execSignOut,
@@ -45,7 +47,8 @@ mixin _$AuthEvent {
     TResult Function()? started,
     TResult Function(String email, String password)?
         execLoginWithEmailAndPassword,
-    TResult Function(String email, String password, String username)?
+    TResult Function(
+            String email, String password, String username, UserType userType)?
         execRegisterWithEmailAndPassword,
     TResult Function()? execRetrieveUserData,
     TResult Function()? execSignOut,
@@ -151,7 +154,8 @@ class _$_AEStarted implements _AEStarted {
     required TResult Function() started,
     required TResult Function(String email, String password)
         execLoginWithEmailAndPassword,
-    required TResult Function(String email, String password, String username)
+    required TResult Function(
+            String email, String password, String username, UserType userType)
         execRegisterWithEmailAndPassword,
     required TResult Function() execRetrieveUserData,
     required TResult Function() execSignOut,
@@ -166,7 +170,8 @@ class _$_AEStarted implements _AEStarted {
     TResult Function()? started,
     TResult Function(String email, String password)?
         execLoginWithEmailAndPassword,
-    TResult Function(String email, String password, String username)?
+    TResult Function(
+            String email, String password, String username, UserType userType)?
         execRegisterWithEmailAndPassword,
     TResult Function()? execRetrieveUserData,
     TResult Function()? execSignOut,
@@ -181,7 +186,8 @@ class _$_AEStarted implements _AEStarted {
     TResult Function()? started,
     TResult Function(String email, String password)?
         execLoginWithEmailAndPassword,
-    TResult Function(String email, String password, String username)?
+    TResult Function(
+            String email, String password, String username, UserType userType)?
         execRegisterWithEmailAndPassword,
     TResult Function()? execRetrieveUserData,
     TResult Function()? execSignOut,
@@ -334,7 +340,8 @@ class _$_AEExecLoginWithEmailAndPassword
     required TResult Function() started,
     required TResult Function(String email, String password)
         execLoginWithEmailAndPassword,
-    required TResult Function(String email, String password, String username)
+    required TResult Function(
+            String email, String password, String username, UserType userType)
         execRegisterWithEmailAndPassword,
     required TResult Function() execRetrieveUserData,
     required TResult Function() execSignOut,
@@ -349,7 +356,8 @@ class _$_AEExecLoginWithEmailAndPassword
     TResult Function()? started,
     TResult Function(String email, String password)?
         execLoginWithEmailAndPassword,
-    TResult Function(String email, String password, String username)?
+    TResult Function(
+            String email, String password, String username, UserType userType)?
         execRegisterWithEmailAndPassword,
     TResult Function()? execRetrieveUserData,
     TResult Function()? execSignOut,
@@ -364,7 +372,8 @@ class _$_AEExecLoginWithEmailAndPassword
     TResult Function()? started,
     TResult Function(String email, String password)?
         execLoginWithEmailAndPassword,
-    TResult Function(String email, String password, String username)?
+    TResult Function(
+            String email, String password, String username, UserType userType)?
         execRegisterWithEmailAndPassword,
     TResult Function()? execRetrieveUserData,
     TResult Function()? execSignOut,
@@ -447,7 +456,8 @@ abstract class _$$_AEExecRegisterWithEmailAndPasswordCopyWith<$Res> {
           _$_AEExecRegisterWithEmailAndPassword value,
           $Res Function(_$_AEExecRegisterWithEmailAndPassword) then) =
       __$$_AEExecRegisterWithEmailAndPasswordCopyWithImpl<$Res>;
-  $Res call({String email, String password, String username});
+  $Res call(
+      {String email, String password, String username, UserType userType});
 }
 
 /// @nodoc
@@ -468,6 +478,7 @@ class __$$_AEExecRegisterWithEmailAndPasswordCopyWithImpl<$Res>
     Object? email = freezed,
     Object? password = freezed,
     Object? username = freezed,
+    Object? userType = freezed,
   }) {
     return _then(_$_AEExecRegisterWithEmailAndPassword(
       email: email == freezed
@@ -482,6 +493,10 @@ class __$$_AEExecRegisterWithEmailAndPasswordCopyWithImpl<$Res>
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
               as String,
+      userType: userType == freezed
+          ? _value.userType
+          : userType // ignore: cast_nullable_to_non_nullable
+              as UserType,
     ));
   }
 }
@@ -491,7 +506,10 @@ class __$$_AEExecRegisterWithEmailAndPasswordCopyWithImpl<$Res>
 class _$_AEExecRegisterWithEmailAndPassword
     implements _AEExecRegisterWithEmailAndPassword {
   const _$_AEExecRegisterWithEmailAndPassword(
-      {required this.email, required this.password, required this.username});
+      {required this.email,
+      required this.password,
+      required this.username,
+      required this.userType});
 
   @override
   final String email;
@@ -499,10 +517,12 @@ class _$_AEExecRegisterWithEmailAndPassword
   final String password;
   @override
   final String username;
+  @override
+  final UserType userType;
 
   @override
   String toString() {
-    return 'AuthEvent.execRegisterWithEmailAndPassword(email: $email, password: $password, username: $username)';
+    return 'AuthEvent.execRegisterWithEmailAndPassword(email: $email, password: $password, username: $username, userType: $userType)';
   }
 
   @override
@@ -512,7 +532,8 @@ class _$_AEExecRegisterWithEmailAndPassword
             other is _$_AEExecRegisterWithEmailAndPassword &&
             const DeepCollectionEquality().equals(other.email, email) &&
             const DeepCollectionEquality().equals(other.password, password) &&
-            const DeepCollectionEquality().equals(other.username, username));
+            const DeepCollectionEquality().equals(other.username, username) &&
+            const DeepCollectionEquality().equals(other.userType, userType));
   }
 
   @override
@@ -520,7 +541,8 @@ class _$_AEExecRegisterWithEmailAndPassword
       runtimeType,
       const DeepCollectionEquality().hash(email),
       const DeepCollectionEquality().hash(password),
-      const DeepCollectionEquality().hash(username));
+      const DeepCollectionEquality().hash(username),
+      const DeepCollectionEquality().hash(userType));
 
   @JsonKey(ignore: true)
   @override
@@ -535,13 +557,15 @@ class _$_AEExecRegisterWithEmailAndPassword
     required TResult Function() started,
     required TResult Function(String email, String password)
         execLoginWithEmailAndPassword,
-    required TResult Function(String email, String password, String username)
+    required TResult Function(
+            String email, String password, String username, UserType userType)
         execRegisterWithEmailAndPassword,
     required TResult Function() execRetrieveUserData,
     required TResult Function() execSignOut,
     required TResult Function(String uid) execIsAdmin,
   }) {
-    return execRegisterWithEmailAndPassword(email, password, username);
+    return execRegisterWithEmailAndPassword(
+        email, password, username, userType);
   }
 
   @override
@@ -550,13 +574,15 @@ class _$_AEExecRegisterWithEmailAndPassword
     TResult Function()? started,
     TResult Function(String email, String password)?
         execLoginWithEmailAndPassword,
-    TResult Function(String email, String password, String username)?
+    TResult Function(
+            String email, String password, String username, UserType userType)?
         execRegisterWithEmailAndPassword,
     TResult Function()? execRetrieveUserData,
     TResult Function()? execSignOut,
     TResult Function(String uid)? execIsAdmin,
   }) {
-    return execRegisterWithEmailAndPassword?.call(email, password, username);
+    return execRegisterWithEmailAndPassword?.call(
+        email, password, username, userType);
   }
 
   @override
@@ -565,7 +591,8 @@ class _$_AEExecRegisterWithEmailAndPassword
     TResult Function()? started,
     TResult Function(String email, String password)?
         execLoginWithEmailAndPassword,
-    TResult Function(String email, String password, String username)?
+    TResult Function(
+            String email, String password, String username, UserType userType)?
         execRegisterWithEmailAndPassword,
     TResult Function()? execRetrieveUserData,
     TResult Function()? execSignOut,
@@ -573,7 +600,8 @@ class _$_AEExecRegisterWithEmailAndPassword
     required TResult orElse(),
   }) {
     if (execRegisterWithEmailAndPassword != null) {
-      return execRegisterWithEmailAndPassword(email, password, username);
+      return execRegisterWithEmailAndPassword(
+          email, password, username, userType);
     }
     return orElse();
   }
@@ -631,13 +659,16 @@ class _$_AEExecRegisterWithEmailAndPassword
 
 abstract class _AEExecRegisterWithEmailAndPassword implements AuthEvent {
   const factory _AEExecRegisterWithEmailAndPassword(
-      {required final String email,
-      required final String password,
-      required final String username}) = _$_AEExecRegisterWithEmailAndPassword;
+          {required final String email,
+          required final String password,
+          required final String username,
+          required final UserType userType}) =
+      _$_AEExecRegisterWithEmailAndPassword;
 
   String get email => throw _privateConstructorUsedError;
   String get password => throw _privateConstructorUsedError;
   String get username => throw _privateConstructorUsedError;
+  UserType get userType => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$$_AEExecRegisterWithEmailAndPasswordCopyWith<
           _$_AEExecRegisterWithEmailAndPassword>
@@ -690,7 +721,8 @@ class _$_AEExecRetrieveUserData implements _AEExecRetrieveUserData {
     required TResult Function() started,
     required TResult Function(String email, String password)
         execLoginWithEmailAndPassword,
-    required TResult Function(String email, String password, String username)
+    required TResult Function(
+            String email, String password, String username, UserType userType)
         execRegisterWithEmailAndPassword,
     required TResult Function() execRetrieveUserData,
     required TResult Function() execSignOut,
@@ -705,7 +737,8 @@ class _$_AEExecRetrieveUserData implements _AEExecRetrieveUserData {
     TResult Function()? started,
     TResult Function(String email, String password)?
         execLoginWithEmailAndPassword,
-    TResult Function(String email, String password, String username)?
+    TResult Function(
+            String email, String password, String username, UserType userType)?
         execRegisterWithEmailAndPassword,
     TResult Function()? execRetrieveUserData,
     TResult Function()? execSignOut,
@@ -720,7 +753,8 @@ class _$_AEExecRetrieveUserData implements _AEExecRetrieveUserData {
     TResult Function()? started,
     TResult Function(String email, String password)?
         execLoginWithEmailAndPassword,
-    TResult Function(String email, String password, String username)?
+    TResult Function(
+            String email, String password, String username, UserType userType)?
         execRegisterWithEmailAndPassword,
     TResult Function()? execRetrieveUserData,
     TResult Function()? execSignOut,
@@ -831,7 +865,8 @@ class _$_AEExecSignOut implements _AEExecSignOut {
     required TResult Function() started,
     required TResult Function(String email, String password)
         execLoginWithEmailAndPassword,
-    required TResult Function(String email, String password, String username)
+    required TResult Function(
+            String email, String password, String username, UserType userType)
         execRegisterWithEmailAndPassword,
     required TResult Function() execRetrieveUserData,
     required TResult Function() execSignOut,
@@ -846,7 +881,8 @@ class _$_AEExecSignOut implements _AEExecSignOut {
     TResult Function()? started,
     TResult Function(String email, String password)?
         execLoginWithEmailAndPassword,
-    TResult Function(String email, String password, String username)?
+    TResult Function(
+            String email, String password, String username, UserType userType)?
         execRegisterWithEmailAndPassword,
     TResult Function()? execRetrieveUserData,
     TResult Function()? execSignOut,
@@ -861,7 +897,8 @@ class _$_AEExecSignOut implements _AEExecSignOut {
     TResult Function()? started,
     TResult Function(String email, String password)?
         execLoginWithEmailAndPassword,
-    TResult Function(String email, String password, String username)?
+    TResult Function(
+            String email, String password, String username, UserType userType)?
         execRegisterWithEmailAndPassword,
     TResult Function()? execRetrieveUserData,
     TResult Function()? execSignOut,
@@ -996,7 +1033,8 @@ class _$_AEExecIsAdmin implements _AEExecIsAdmin {
     required TResult Function() started,
     required TResult Function(String email, String password)
         execLoginWithEmailAndPassword,
-    required TResult Function(String email, String password, String username)
+    required TResult Function(
+            String email, String password, String username, UserType userType)
         execRegisterWithEmailAndPassword,
     required TResult Function() execRetrieveUserData,
     required TResult Function() execSignOut,
@@ -1011,7 +1049,8 @@ class _$_AEExecIsAdmin implements _AEExecIsAdmin {
     TResult Function()? started,
     TResult Function(String email, String password)?
         execLoginWithEmailAndPassword,
-    TResult Function(String email, String password, String username)?
+    TResult Function(
+            String email, String password, String username, UserType userType)?
         execRegisterWithEmailAndPassword,
     TResult Function()? execRetrieveUserData,
     TResult Function()? execSignOut,
@@ -1026,7 +1065,8 @@ class _$_AEExecIsAdmin implements _AEExecIsAdmin {
     TResult Function()? started,
     TResult Function(String email, String password)?
         execLoginWithEmailAndPassword,
-    TResult Function(String email, String password, String username)?
+    TResult Function(
+            String email, String password, String username, UserType userType)?
         execRegisterWithEmailAndPassword,
     TResult Function()? execRetrieveUserData,
     TResult Function()? execSignOut,

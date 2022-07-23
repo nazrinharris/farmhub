@@ -1,8 +1,10 @@
+import 'package:farmhub/features/farm_shop_manager/domain/entities/farm_shop/farm_shop.dart';
 import 'package:farmhub/features/produce_manager/domain/entities/price/price.dart';
 import 'package:farmhub/features/produce_manager/domain/entities/produce/produce.dart';
 import 'package:farmhub/presentation/shared_widgets/ui_helpers.dart';
 import 'package:farmhub/presentation/smart_widgets/produce_dialogs/produce_dialog_cubit/produce_dialog_cubit.dart';
 import 'package:farmhub/presentation/themes/farmhub_theme.dart';
+import 'package:farmhub/presentation/views/edit_profile_screen/cubit/edit_profile_cubit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -19,7 +21,6 @@ NAlertDialog returnProduceDeleteConfirmationDialog(
   DialogFromRoute fromRoute,
 ) {
   return NAlertDialog(
-    blur: 4,
     dialogStyle: DialogStyle(
       titlePadding: EdgeInsets.zero,
       titleDivider: false,
@@ -85,7 +86,6 @@ ProgressDialog returnDeleteProduceProgressDialog(BuildContext context) {
   return ProgressDialog(
     context,
     dialogTransitionType: DialogTransitionType.Bubble,
-    blur: 4,
     dismissable: false,
     title: Container(
       padding: const EdgeInsets.only(left: 14, right: 14, top: 14),
@@ -117,7 +117,6 @@ void showErrorDialog({
   String? errorTitle,
 }) async {
   await NAlertDialog(
-    blur: 4,
     dialogStyle: DialogStyle(
       titlePadding: EdgeInsets.zero,
       titleDivider: false,
@@ -163,7 +162,6 @@ NAlertDialog returnEditProduceDialog({
   required DialogFromRoute fromRoute,
 }) {
   return NAlertDialog(
-    blur: 4,
     dialogStyle: DialogStyle(
       titlePadding: EdgeInsets.zero,
       titleDivider: false,
@@ -246,7 +244,6 @@ ProgressDialog returnEditProduceProgressDialog(BuildContext context) {
   return ProgressDialog(
     context,
     dialogTransitionType: DialogTransitionType.Bubble,
-    blur: 4,
     dismissable: false,
     title: Container(
       padding: const EdgeInsets.only(left: 14, right: 14, top: 14),
@@ -283,7 +280,6 @@ NAlertDialog returnEditSubPriceDialog({
   required DialogFromRoute fromRoute,
 }) {
   return NAlertDialog(
-    blur: 4,
     dialogStyle: DialogStyle(
       titlePadding: EdgeInsets.zero,
       titleDivider: false,
@@ -368,7 +364,6 @@ ProgressDialog returnEditSubPriceProgressDialog(BuildContext context) {
   return ProgressDialog(
     context,
     dialogTransitionType: DialogTransitionType.Bubble,
-    blur: 4,
     dismissable: false,
     title: Container(
       padding: const EdgeInsets.only(left: 14, right: 14, top: 14),
@@ -422,7 +417,6 @@ NAlertDialog returnSubPriceDeleteConfirmationDialog(
   String subPriceDate,
 ) {
   return NAlertDialog(
-    blur: 4,
     dialogStyle: DialogStyle(
       titlePadding: EdgeInsets.zero,
       titleDivider: false,
@@ -503,7 +497,6 @@ ProgressDialog returnDeleteSubPriceProgressDialog(BuildContext context) {
   return ProgressDialog(
     context,
     dialogTransitionType: DialogTransitionType.Bubble,
-    blur: 4,
     dismissable: false,
     title: Container(
       padding: const EdgeInsets.only(left: 14, right: 14, top: 14),
@@ -539,7 +532,6 @@ ProgressDialog returnProgressDialog(
   return ProgressDialog(
     context,
     dialogTransitionType: DialogTransitionType.Bubble,
-    blur: 4,
     dismissable: false,
     title: Container(
       padding: const EdgeInsets.only(left: 14, right: 14, top: 14),
@@ -568,7 +560,6 @@ void showSuccessDialog({
   required String content,
 }) async {
   await NAlertDialog(
-    blur: 4,
     dialogStyle: DialogStyle(
       titlePadding: EdgeInsets.zero,
       titleDivider: false,
@@ -608,7 +599,6 @@ NAlertDialog returnResetPasswordConfirmation(
   FarmhubUser? farmhubUser,
 }) {
   return NAlertDialog(
-    blur: 4,
     dialogStyle: DialogStyle(
       titlePadding: EdgeInsets.zero,
       titleDivider: false,
@@ -720,7 +710,6 @@ NAlertDialog returnSignOutConfirmationDialog(
   Function() onConfirm,
 ) {
   return NAlertDialog(
-    blur: 4,
     dialogStyle: DialogStyle(
       titlePadding: EdgeInsets.zero,
       titleDivider: false,
@@ -777,6 +766,217 @@ NAlertDialog returnSignOutConfirmationDialog(
         content: "Sign Out",
         buttonIcon: Icon(Icons.logout, size: 20, color: Theme.of(context).colorScheme.error),
         onPressed: onConfirm,
+      ),
+    ],
+  );
+}
+
+NAlertDialog returnDeleteFarmDialog(
+  BuildContext context,
+  Farm farm,
+) {
+  return NAlertDialog(
+    dialogStyle: DialogStyle(
+      titlePadding: EdgeInsets.zero,
+      titleDivider: false,
+      backgroundColor: Theme.of(context).colorScheme.background,
+    ),
+    title: Container(
+      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
+      color: Theme.of(context).colorScheme.errorContainer.withOpacity(0.45),
+      child: Row(
+        children: [
+          Icon(
+            Icons.warning_amber,
+            color: Theme.of(context).colorScheme.error,
+          ),
+          const UIHorizontalSpace14(),
+          Text(
+            "Are you sure?",
+            style: Theme.of(context)
+                .textTheme
+                .bodyText2!
+                .copyWith(color: Theme.of(context).colorScheme.error),
+          ),
+        ],
+      ),
+    ),
+    content: Padding(
+      padding: const EdgeInsets.only(top: 14, bottom: 24, right: 24),
+      child: Text(
+        "${farm.farmName} will be deleted, this cannot be undone.",
+        style: Theme.of(context).textTheme.bodyText1,
+      ),
+    ),
+    actions: [
+      PrimaryButton(
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        margin: const EdgeInsets.only(left: 14, right: 7, bottom: 14),
+        content: "Back",
+        onPressed: () {
+          Navigator.of(context).pop();
+        },
+      ),
+      SecondaryButton(
+        horizontalPadding: 0,
+        type: SecondaryButtonType.red,
+        margin: const EdgeInsets.only(right: 14, left: 7, bottom: 14),
+        content: "Delete",
+        buttonIcon: const Icon(Icons.delete, size: 20),
+        onPressed: () async {
+          await context.read<ProduceDialogCubit>().startDeleteFarm(context, farm);
+        },
+      ),
+    ],
+  );
+}
+
+NAlertDialog returnDeleteShopDialog(
+  BuildContext context,
+  Shop shop,
+) {
+  return NAlertDialog(
+    dialogStyle: DialogStyle(
+      titlePadding: EdgeInsets.zero,
+      titleDivider: false,
+      backgroundColor: Theme.of(context).colorScheme.background,
+    ),
+    title: Container(
+      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
+      color: Theme.of(context).colorScheme.errorContainer.withOpacity(0.45),
+      child: Row(
+        children: [
+          Icon(
+            Icons.warning_amber,
+            color: Theme.of(context).colorScheme.error,
+          ),
+          const UIHorizontalSpace14(),
+          Text(
+            "Are you sure?",
+            style: Theme.of(context)
+                .textTheme
+                .bodyText2!
+                .copyWith(color: Theme.of(context).colorScheme.error),
+          ),
+        ],
+      ),
+    ),
+    content: Padding(
+      padding: const EdgeInsets.only(top: 14, bottom: 24, right: 24),
+      child: Text(
+        "${shop.shopName} will be deleted, this cannot be undone.",
+        style: Theme.of(context).textTheme.bodyText1,
+      ),
+    ),
+    actions: [
+      PrimaryButton(
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        margin: const EdgeInsets.only(left: 14, right: 7, bottom: 14),
+        content: "Back",
+        onPressed: () {
+          Navigator.of(context).pop();
+        },
+      ),
+      SecondaryButton(
+        horizontalPadding: 0,
+        type: SecondaryButtonType.red,
+        margin: const EdgeInsets.only(right: 14, left: 7, bottom: 14),
+        content: "Delete",
+        buttonIcon: const Icon(Icons.delete, size: 20),
+        onPressed: () async {
+          await context.read<ProduceDialogCubit>().startDeleteShop(context, shop);
+        },
+      ),
+    ],
+  );
+}
+
+NAlertDialog returnChangeToRegularConfirmationDialog(
+  BuildContext context,
+  UserType newUserType,
+  FarmhubUser user,
+) {
+  return NAlertDialog(
+    dialogStyle: DialogStyle(
+      titlePadding: EdgeInsets.zero,
+      titleDivider: false,
+      backgroundColor: Theme.of(context).colorScheme.background,
+    ),
+    title: Container(
+      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
+      color: Theme.of(context).colorScheme.errorContainer.withOpacity(0.45),
+      child: Row(
+        children: [
+          Icon(
+            Icons.warning_amber,
+            color: Theme.of(context).colorScheme.error,
+          ),
+          const UIHorizontalSpace14(),
+          Text(
+            "Wait! Are you sure?",
+            style: Theme.of(context)
+                .textTheme
+                .bodyText2!
+                .copyWith(color: Theme.of(context).colorScheme.error),
+          ),
+        ],
+      ),
+    ),
+    content: Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Flexible(
+          child: Padding(
+            padding: const EdgeInsets.only(top: 14, bottom: 24),
+            child: Text(
+              "You are changing your user type to Regular",
+              style: Theme.of(context).textTheme.bodyText1,
+              textAlign: TextAlign.center,
+            ),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(left: 14, right: 14, bottom: 14),
+          child: Text(
+            "This will NOT delete your present Farms and Shops",
+            textAlign: TextAlign.center,
+            style: Theme.of(context)
+                .textTheme
+                .bodyText1!
+                .copyWith(color: Theme.of(context).colorScheme.error),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(top: 14, bottom: 14),
+          child: Text(
+            "Change your type to Farmer or Business to access your Farms and Shops",
+            textAlign: TextAlign.center,
+            style: Theme.of(context)
+                .textTheme
+                .bodyText1!
+                .copyWith(color: Theme.of(context).colorScheme.error, fontWeight: FontWeight.bold),
+          ),
+        )
+      ],
+    ),
+    actions: [
+      PrimaryButton(
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        margin: const EdgeInsets.only(left: 14, right: 7, bottom: 14),
+        content: "Back",
+        onPressed: () {
+          Navigator.of(context).pop();
+        },
+      ),
+      SecondaryButton(
+        horizontalPadding: 0,
+        type: SecondaryButtonType.red,
+        margin: const EdgeInsets.only(right: 14, left: 7, bottom: 14),
+        content: "Confirm",
+        onPressed: () async {
+          Navigator.of(context).pop();
+          await context.read<EditProfileCubit>().execEditProfile(context, newUserType, user);
+        },
       ),
     ],
   );
