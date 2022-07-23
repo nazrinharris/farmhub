@@ -1,6 +1,7 @@
 import 'package:farmhub/core/util/farmhub_icons.dart';
 import 'package:farmhub/features/farm_shop_manager/domain/entities/farm_shop/farm_shop.dart';
 import 'package:farmhub/locator.dart';
+import 'package:farmhub/presentation/shared_widgets/scroll_physics.dart';
 import 'package:farmhub/presentation/views/all_farm_screens/cubit/farm_screen_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -78,6 +79,7 @@ class _EditFarmScreenState extends State<EditFarmScreen> {
                 child: Stack(
                   children: [
                     ListView(
+                      physics: DefaultScrollPhysics,
                       children: [
                         Container(
                           padding: EdgeInsets.symmetric(horizontal: 24),

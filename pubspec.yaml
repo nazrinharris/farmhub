@@ -81,14 +81,25 @@ dev_dependencies:
   flutter_lints: ^2.0.1
   logger: ^1.1.0
   flutter_launcher_icons: ^0.9.3
+  flutter_native_splash: ^2.2.5
 
 flutter_icons:
   image_path: "assets/images/farmhub_icon.png"
   #image_path_android: "insert path"
   #image_path_ios: "insert path"
   android: true
+  adaptive_icon_background: "#F2FFF6"
+  adaptive_icon_foreground: "assets/images/farmhub_icon_foreground.png"
   ios: true
   remove_alpha_ios: true
+
+flutter_native_splash:
+  color: "#F2FFF6"
+  image: assets/images/farmhub_icon_transparent.png
+
+  android_12:
+    image: assets/images/farmhub_icon_transparent.png
+    icon_background_color: "#F2FFF6"
 
 flutter:
   uses-material-design: true

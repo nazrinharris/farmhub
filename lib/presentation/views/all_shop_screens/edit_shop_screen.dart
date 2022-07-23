@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../shared_widgets/appbars.dart';
+import '../../shared_widgets/scroll_physics.dart';
 import '../../shared_widgets/texts.dart';
 import '../../shared_widgets/ui_helpers.dart';
 import '../../smart_widgets/multiple_fields_form/multiple_fields_form_bloc.dart';
@@ -76,6 +77,7 @@ class _EditShopScreenState extends State<EditShopScreen> {
                 child: Stack(
                   children: [
                     ListView(
+                      physics: DefaultScrollPhysics,
                       children: [
                         Container(
                           padding: EdgeInsets.symmetric(horizontal: 24),
