@@ -32,10 +32,10 @@ Map<String, dynamic> _$$_FarmhubUserToJson(_$_FarmhubUser instance) =>
     };
 
 const _$UserTypeEnumMap = {
-  UserType.farmer: 'farmer',
-  UserType.business: 'business',
   UserType.regular: 'regular',
   UserType.admin: 'admin',
+  UserType.farmer: 'farmer',
+  UserType.business: 'business',
 };
 
 _$FarmhubUserFarmer _$$FarmhubUserFarmerFromJson(Map<String, dynamic> json) =>

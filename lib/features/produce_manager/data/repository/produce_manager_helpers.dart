@@ -40,8 +40,8 @@ List<PriceSnippet> pricesToRanged(
     return aPriceDate.compareTo(bPriceDate);
   });
 
-  // We reverse the list because we want the first index to be the upper bound (latest/newest date)
-  final reversedPricesList = pricesList.reversed.toList();
+  // // We reverse the list because we want the first index to be the upper bound (latest/newest date)
+  // final reversedPricesList = pricesList.reversed.toList();
 
   // Set the range
   int? range;
@@ -68,7 +68,7 @@ List<PriceSnippet> pricesToRanged(
   }
 
   final List<PriceSnippet> rangedPricesList = [];
-  for (PriceSnippet priceSnippet in reversedPricesList) {
+  for (PriceSnippet priceSnippet in pricesList) {
     final DateTime priceDate = DateFormat("dd-MM-yyyy").parse(priceSnippet.priceDate);
 
     // This will check the difference from [today] to [priceDate]
@@ -92,12 +92,12 @@ List<PriceSnippet> pricesToRanged(
   //?print("Unsorted - $rangeType - Amount: ${rangedPricesList.length}");
   //?printList(rangedPricesList);
 
-  rangedPricesList.sort((a, b) {
-    DateTime aPriceDate = DateFormat("dd-MM-yyyy").parse(a.priceDate);
-    DateTime bPriceDate = DateFormat("dd-MM-yyyy").parse(b.priceDate);
+  // rangedPricesList.sort((a, b) {
+  //   DateTime aPriceDate = DateFormat("dd-MM-yyyy").parse(a.priceDate);
+  //   DateTime bPriceDate = DateFormat("dd-MM-yyyy").parse(b.priceDate);
 
-    return aPriceDate.compareTo(bPriceDate);
-  });
+  //   return aPriceDate.compareTo(bPriceDate);
+  // });
 
   //?print("Sorted - $rangeType - Amount: ${rangedPricesList.length}");
   //?printList(rangedPricesList);

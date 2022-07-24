@@ -751,6 +751,8 @@ mixin _$ProduceAggregateProps {
   Produce? get produce => throw _privateConstructorUsedError;
   FarmhubUser get farmhubUser => throw _privateConstructorUsedError;
   bool get isProduceFavorite => throw _privateConstructorUsedError;
+  List<PriceSnippet>? get oneWeekPricesList =>
+      throw _privateConstructorUsedError;
   List<PriceSnippet>? get twoWeeksPricesList =>
       throw _privateConstructorUsedError;
   List<PriceSnippet>? get oneMonthPricesList =>
@@ -778,6 +780,7 @@ abstract class $ProduceAggregatePropsCopyWith<$Res> {
       Produce? produce,
       FarmhubUser farmhubUser,
       bool isProduceFavorite,
+      List<PriceSnippet>? oneWeekPricesList,
       List<PriceSnippet>? twoWeeksPricesList,
       List<PriceSnippet>? oneMonthPricesList,
       List<PriceSnippet>? twoMonthPricesList,
@@ -804,6 +807,7 @@ class _$ProduceAggregatePropsCopyWithImpl<$Res>
     Object? produce = freezed,
     Object? farmhubUser = freezed,
     Object? isProduceFavorite = freezed,
+    Object? oneWeekPricesList = freezed,
     Object? twoWeeksPricesList = freezed,
     Object? oneMonthPricesList = freezed,
     Object? twoMonthPricesList = freezed,
@@ -831,6 +835,10 @@ class _$ProduceAggregatePropsCopyWithImpl<$Res>
           ? _value.isProduceFavorite
           : isProduceFavorite // ignore: cast_nullable_to_non_nullable
               as bool,
+      oneWeekPricesList: oneWeekPricesList == freezed
+          ? _value.oneWeekPricesList
+          : oneWeekPricesList // ignore: cast_nullable_to_non_nullable
+              as List<PriceSnippet>?,
       twoWeeksPricesList: twoWeeksPricesList == freezed
           ? _value.twoWeeksPricesList
           : twoWeeksPricesList // ignore: cast_nullable_to_non_nullable
@@ -886,6 +894,7 @@ abstract class _$$_ProduceAggregatePropsCopyWith<$Res>
       Produce? produce,
       FarmhubUser farmhubUser,
       bool isProduceFavorite,
+      List<PriceSnippet>? oneWeekPricesList,
       List<PriceSnippet>? twoWeeksPricesList,
       List<PriceSnippet>? oneMonthPricesList,
       List<PriceSnippet>? twoMonthPricesList,
@@ -917,6 +926,7 @@ class __$$_ProduceAggregatePropsCopyWithImpl<$Res>
     Object? produce = freezed,
     Object? farmhubUser = freezed,
     Object? isProduceFavorite = freezed,
+    Object? oneWeekPricesList = freezed,
     Object? twoWeeksPricesList = freezed,
     Object? oneMonthPricesList = freezed,
     Object? twoMonthPricesList = freezed,
@@ -944,6 +954,10 @@ class __$$_ProduceAggregatePropsCopyWithImpl<$Res>
           ? _value.isProduceFavorite
           : isProduceFavorite // ignore: cast_nullable_to_non_nullable
               as bool,
+      oneWeekPricesList: oneWeekPricesList == freezed
+          ? _value._oneWeekPricesList
+          : oneWeekPricesList // ignore: cast_nullable_to_non_nullable
+              as List<PriceSnippet>?,
       twoWeeksPricesList: twoWeeksPricesList == freezed
           ? _value._twoWeeksPricesList
           : twoWeeksPricesList // ignore: cast_nullable_to_non_nullable
@@ -977,12 +991,14 @@ class _$_ProduceAggregateProps implements _ProduceAggregateProps {
       required this.produce,
       required this.farmhubUser,
       required this.isProduceFavorite,
+      final List<PriceSnippet>? oneWeekPricesList,
       final List<PriceSnippet>? twoWeeksPricesList,
       final List<PriceSnippet>? oneMonthPricesList,
       final List<PriceSnippet>? twoMonthPricesList,
       final List<PriceSnippet>? sixMonthPricesList,
       final List<PriceSnippet>? oneYearPricesList})
-      : _twoWeeksPricesList = twoWeeksPricesList,
+      : _oneWeekPricesList = oneWeekPricesList,
+        _twoWeeksPricesList = twoWeeksPricesList,
         _oneMonthPricesList = oneMonthPricesList,
         _twoMonthPricesList = twoMonthPricesList,
         _sixMonthPricesList = sixMonthPricesList,
@@ -998,6 +1014,15 @@ class _$_ProduceAggregateProps implements _ProduceAggregateProps {
   final FarmhubUser farmhubUser;
   @override
   final bool isProduceFavorite;
+  final List<PriceSnippet>? _oneWeekPricesList;
+  @override
+  List<PriceSnippet>? get oneWeekPricesList {
+    final value = _oneWeekPricesList;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   final List<PriceSnippet>? _twoWeeksPricesList;
   @override
   List<PriceSnippet>? get twoWeeksPricesList {
@@ -1045,7 +1070,7 @@ class _$_ProduceAggregateProps implements _ProduceAggregateProps {
 
   @override
   String toString() {
-    return 'ProduceAggregateProps(tabController: $tabController, index: $index, produce: $produce, farmhubUser: $farmhubUser, isProduceFavorite: $isProduceFavorite, twoWeeksPricesList: $twoWeeksPricesList, oneMonthPricesList: $oneMonthPricesList, twoMonthPricesList: $twoMonthPricesList, sixMonthPricesList: $sixMonthPricesList, oneYearPricesList: $oneYearPricesList)';
+    return 'ProduceAggregateProps(tabController: $tabController, index: $index, produce: $produce, farmhubUser: $farmhubUser, isProduceFavorite: $isProduceFavorite, oneWeekPricesList: $oneWeekPricesList, twoWeeksPricesList: $twoWeeksPricesList, oneMonthPricesList: $oneMonthPricesList, twoMonthPricesList: $twoMonthPricesList, sixMonthPricesList: $sixMonthPricesList, oneYearPricesList: $oneYearPricesList)';
   }
 
   @override
@@ -1061,6 +1086,8 @@ class _$_ProduceAggregateProps implements _ProduceAggregateProps {
                 .equals(other.farmhubUser, farmhubUser) &&
             const DeepCollectionEquality()
                 .equals(other.isProduceFavorite, isProduceFavorite) &&
+            const DeepCollectionEquality()
+                .equals(other._oneWeekPricesList, _oneWeekPricesList) &&
             const DeepCollectionEquality()
                 .equals(other._twoWeeksPricesList, _twoWeeksPricesList) &&
             const DeepCollectionEquality()
@@ -1081,6 +1108,7 @@ class _$_ProduceAggregateProps implements _ProduceAggregateProps {
       const DeepCollectionEquality().hash(produce),
       const DeepCollectionEquality().hash(farmhubUser),
       const DeepCollectionEquality().hash(isProduceFavorite),
+      const DeepCollectionEquality().hash(_oneWeekPricesList),
       const DeepCollectionEquality().hash(_twoWeeksPricesList),
       const DeepCollectionEquality().hash(_oneMonthPricesList),
       const DeepCollectionEquality().hash(_twoMonthPricesList),
@@ -1101,6 +1129,7 @@ abstract class _ProduceAggregateProps implements ProduceAggregateProps {
       required final Produce? produce,
       required final FarmhubUser farmhubUser,
       required final bool isProduceFavorite,
+      final List<PriceSnippet>? oneWeekPricesList,
       final List<PriceSnippet>? twoWeeksPricesList,
       final List<PriceSnippet>? oneMonthPricesList,
       final List<PriceSnippet>? twoMonthPricesList,
@@ -1117,6 +1146,9 @@ abstract class _ProduceAggregateProps implements ProduceAggregateProps {
   FarmhubUser get farmhubUser => throw _privateConstructorUsedError;
   @override
   bool get isProduceFavorite => throw _privateConstructorUsedError;
+  @override
+  List<PriceSnippet>? get oneWeekPricesList =>
+      throw _privateConstructorUsedError;
   @override
   List<PriceSnippet>? get twoWeeksPricesList =>
       throw _privateConstructorUsedError;

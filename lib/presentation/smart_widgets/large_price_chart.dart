@@ -228,7 +228,7 @@ class _LargeOneWeekChartState extends State<LargeOneWeekChart> {
       DateTime aPriceDate = DateFormat("dd-MM-yyyy").parse(a.priceDate);
       DateTime bPriceDate = DateFormat("dd-MM-yyyy").parse(b.priceDate);
 
-      return bPriceDate.compareTo(bPriceDate);
+      return aPriceDate.compareTo(bPriceDate);
     });
 
     final month = DateFormat('LLLL')

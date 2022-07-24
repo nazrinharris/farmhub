@@ -72,6 +72,9 @@ class ProduceAggregateCubit extends Cubit<ProduceAggregateState> {
         emit(ProduceAggregateState.error(props: state.props, failure: f));
       },
       (pricesList) {
+        print(pricesList);
+        final List<PriceSnippet> oneWeekPrices =
+            pricesToRanged(pricesList, rangeType: RangeType.oneW);
         final List<PriceSnippet> twoWeeksPrices =
             pricesToRanged(pricesList, rangeType: RangeType.twoW);
         final List<PriceSnippet> oneMonthPrices =
@@ -83,11 +86,10 @@ class ProduceAggregateCubit extends Cubit<ProduceAggregateState> {
         final List<PriceSnippet> oneYearPrices =
             pricesToRanged(pricesList, rangeType: RangeType.oneY);
 
-        print("${twoWeeksPrices.length}");
-
         emit(ProduceAggregateState.completed(
             props: state.props.copyWith(
           produce: produce,
+          oneWeekPricesList: oneWeekPrices,
           twoWeeksPricesList: twoWeeksPrices,
           oneMonthPricesList: oneMonthPrices,
           twoMonthPricesList: twoMonthPrices,

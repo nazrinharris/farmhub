@@ -26,6 +26,7 @@ class ProduceAggregateProps with _$ProduceAggregateProps {
     required Produce? produce,
     required FarmhubUser farmhubUser,
     required bool isProduceFavorite,
+    List<PriceSnippet>? oneWeekPricesList,
     List<PriceSnippet>? twoWeeksPricesList,
     List<PriceSnippet>? oneMonthPricesList,
     List<PriceSnippet>? twoMonthPricesList,
