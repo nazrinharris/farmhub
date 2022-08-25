@@ -23,6 +23,11 @@ abstract class IAuthRepository {
   Future<Either<Failure, FarmhubUser>> loginWithGoogleAccount();
   Future<Either<Failure, FarmhubUser>> registerWithGoogleAccount();
 
+  FutureEither<FarmhubUser> createAccountWithPhone({
+    required String uid,
+    required String phoneNumber,
+  });
+
   Future<Either<Failure, Unit>> sendPasswordResetEmail(String email);
 
   Future<Either<Failure, FarmhubUser>> retrieveUserData();

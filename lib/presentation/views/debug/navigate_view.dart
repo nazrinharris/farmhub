@@ -7,8 +7,11 @@ import 'package:farmhub/presentation/shared_widgets/cards.dart';
 import 'package:farmhub/presentation/shared_widgets/scroll_physics.dart';
 import 'package:farmhub/presentation/shared_widgets/ui_helpers.dart';
 import 'package:farmhub/presentation/themes/farmhub_theme.dart';
+import 'package:farmhub/presentation/views/phone_auth_screens/verify_code_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:phone_numbers_parser/phone_numbers_parser.dart';
 
 class NavigateView extends StatelessWidget {
   const NavigateView({Key? key}) : super(key: key);
@@ -65,6 +68,32 @@ class NavigateView extends StatelessWidget {
                 width: 200,
                 child: Text(
                   'To 2nd Register',
+                  style: Theme.of(context).textTheme.bodyText1!.copyWith(color: Colors.white),
+                ),
+              ),
+              const UIVerticalSpace14(),
+              PrimaryButton(
+                onPressed: () {
+                  Navigator.of(context).pushNamed('/verify_phone');
+                },
+                width: 200,
+                child: Text(
+                  'To Verify Phone',
+                  style: Theme.of(context).textTheme.bodyText1!.copyWith(color: Colors.white),
+                ),
+              ),
+              const UIVerticalSpace14(),
+              PrimaryButton(
+                onPressed: () {
+                  Navigator.of(context).pushNamed('/verify_code',
+                      arguments: VerifyCodeScreenArguments(
+                        verificationId: "Verification ID",
+                        phoneNumber: PhoneNumber(isoCode: IsoCode.MY, nsn: "182184537"),
+                      ));
+                },
+                width: 200,
+                child: Text(
+                  'To Verify Code',
                   style: Theme.of(context).textTheme.bodyText1!.copyWith(color: Colors.white),
                 ),
               ),
@@ -135,6 +164,18 @@ class NavigateView extends StatelessWidget {
                 width: 200,
                 child: Text(
                   'To Playground2',
+                  style: Theme.of(context).textTheme.bodyText1!.copyWith(color: Colors.white),
+                ),
+              ),
+              const UIVerticalSpace14(),
+              PrimaryButton(
+                onPressed: () {
+                  print(FirebaseAuth.instance.currentUser);
+                },
+                backgroundColor: Colors.teal,
+                width: 200,
+                child: Text(
+                  'Print Current User',
                   style: Theme.of(context).textTheme.bodyText1!.copyWith(color: Colors.white),
                 ),
               ),

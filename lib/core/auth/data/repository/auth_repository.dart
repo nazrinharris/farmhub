@@ -323,4 +323,30 @@ class AuthRepository implements IAuthRepository {
       ));
     }
   }
+
+  @override
+  FutureEither<FarmhubUser> createAccountWithPhone({
+    required String uid,
+    required String phoneNumber,
+  }) async {
+    if (await networkInfo.isConnected) {
+      try {
+        final result =
+            await authRemoteDataSource.createAccountWithPhone(uid: uid, phoneNumber: phoneNumber);
+
+        return Right(result);
+      } catch (e, stack) {
+        return Left(UnexpectedFailure(
+          code: e.toString(),
+          stackTrace: stack,
+        ));
+      }
+    } else {
+      return Left(InternetConnectionFailure(
+        code: ERROR_NO_INTERNET_CONNECTION,
+        message: MESSAGE_NO_INTERNET_CONNECTION,
+        stackTrace: StackTrace.current,
+      ));
+    }
+  }
 }

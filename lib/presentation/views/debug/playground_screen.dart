@@ -15,8 +15,11 @@ import 'package:farmhub/presentation/views/debug/cubit/playground_cubit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_styled_toast/flutter_styled_toast.dart';
 import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
+
+import '../../shared_widgets/toasts.dart';
 
 final user = FarmhubUser(
   uid: "uid",
@@ -89,7 +92,11 @@ class _PlaygroundScreenState extends State<PlaygroundScreen> {
       providers: [
         BlocProvider(create: (context) => ProduceManagerBloc(repository: locator())),
         BlocProvider(
-            create: (context) => AuthBloc(authRepository: locator(), globalAuthCubit: locator())),
+            create: (context) => AuthBloc(
+                  authRepository: locator(),
+                  globalAuthCubit: locator(),
+                  firebaseAuth: locator(),
+                )),
         BlocProvider(
             create: (context) => PlaygroundCubit(
                   repository: locator(),
@@ -259,6 +266,27 @@ class _PlaygroundScreenState extends State<PlaygroundScreen> {
                       showTopSnackBar(
                         context,
                         CustomSnackBar.info(message: "Test!"),
+                      );
+                    },
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.only(bottom: 14),
+                  alignment: Alignment.center,
+                  child: PrimaryButton(
+                    width: 200,
+                    content: "Show Toast",
+                    onPressed: () {
+                      showToastWidget(
+                        ErrorToast(),
+                        context: context,
+                        animation: StyledToastAnimation.slideFromTopFade,
+                        reverseAnimation: StyledToastAnimation.slideToTopFade,
+                        position: StyledToastPosition.top,
+                        animDuration: Duration(milliseconds: 800),
+                        curve: Curves.easeOutExpo,
+                        reverseCurve: Curves.easeInExpo,
+                        duration: Duration(seconds: 5),
                       );
                     },
                   ),

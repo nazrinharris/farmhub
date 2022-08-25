@@ -1,10 +1,17 @@
+// ignore_for_file: library_private_types_in_public_api, avoid_print
+
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:farmhub/core/auth/domain/entities/farmhub_user/farmhub_user.dart';
 import 'package:farmhub/core/auth/domain/i_auth_repository.dart';
 import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:phone_numbers_parser/phone_numbers_parser.dart';
+import 'dart:io';
+
+import '../../errors/failures.dart';
 
 part 'auth_event.dart';
 part 'auth_state.dart';
@@ -13,14 +20,20 @@ part 'auth_bloc.freezed.dart';
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final IAuthRepository authRepository;
   final GlobalAuthCubit globalAuthCubit;
+  final FirebaseAuth firebaseAuth;
 
-  AuthBloc({required this.authRepository, required this.globalAuthCubit})
-      : super(const ASInitial()) {
+  AuthBloc({
+    required this.authRepository,
+    required this.globalAuthCubit,
+    required this.firebaseAuth,
+  }) : super(const ASInitial()) {
     on<_AEExecLoginWithEmailAndPassword>(execLoginWithEmailAndPassword);
     on<_AEExecRegisterWithEmailAndPassword>(execRegisterWithEmailAndPassword);
     on<_AEExecRetrieveUserData>(execRetrieveUserData);
     on<_AEExecSignOut>(execSignOut);
     on<_AEExecIsAdmin>(execIsAdmin);
+    on<_AEVerifyPhoneNumber>(verifyPhoneNumber);
+    on<_AESendCodeAndSignIn>(sendCodeAndSignIn);
   }
 
   FutureOr<void> execLoginWithEmailAndPassword(
@@ -153,5 +166,72 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       ),
       (isAdmin) => AuthState.isAdminSuccess(isAdmin: isAdmin),
     ));
+  }
+
+  /// [verifyPhoneNumber] will essentially verify the phone, as in to check whether it is a valid
+  /// number or not.
+  ///
+  /// If it confirms that the phone number is a valid number, it will emit [SMSCodeSentToClient], and
+  /// [PhoneVerificationError] if anything goes wrong.
+  FutureOr<void> verifyPhoneNumber(
+    _AEVerifyPhoneNumber event,
+    Emitter<AuthState> emit,
+  ) async {
+    Completer<AuthState> c = Completer<AuthState>();
+
+    emit(const AuthState.verifyPhoneLoading());
+
+    await firebaseAuth.verifyPhoneNumber(
+      phoneNumber: "+60 ${event.phoneNumber.nsn}",
+      timeout: const Duration(minutes: 1),
+      verificationFailed: (FirebaseAuthException e) async {
+        print("Verification Failed!");
+        c.complete(
+          AuthState.verifyPhoneError(
+            FirebaseAuthFailure(code: e.code, message: e.message, stackTrace: e.stackTrace),
+          ),
+        );
+      },
+      codeSent: (String verificationId, int? resendToken) async {
+        print("Code Sent!");
+        c.complete(
+          AuthState.phoneCodeSent(
+            verificationId: verificationId,
+            phoneNumber: event.phoneNumber,
+            resendToken: resendToken,
+          ),
+        );
+      },
+      verificationCompleted: (credential) async {},
+      codeAutoRetrievalTimeout: (String verificationId) async {},
+    );
+
+    var state = c.future;
+
+    emit(await state);
+  }
+
+  FutureOr<void> sendCodeAndSignIn(_AESendCodeAndSignIn event, Emitter<AuthState> emit) async {
+    PhoneAuthCredential credential =
+        PhoneAuthProvider.credential(verificationId: event.verificationId, smsCode: event.code);
+
+    try {
+      await firebaseAuth.signInWithCredential(credential).then((value) async {
+        await _createAccount(value);
+      });
+    } catch (e, stack) {
+      emit(AuthState.phoneCodeLoginError(AuthFailure(
+        message: "An error occured while logging in with phone",
+        stackTrace: stack,
+        code: e.toString(),
+      )));
+    }
+  }
+
+  Future<void> _createAccount(UserCredential user) async {
+    final result = await authRepository.createAccountWithPhone(
+      uid: user.user!.uid,
+      phoneNumber: "",
+    );
   }
 }

@@ -6,6 +6,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:intl/intl.dart';
 import 'package:clock/clock.dart';
+import 'package:english_words/english_words.dart';
 
 abstract class IAuthRemoteDataSource {
   Future<FarmhubUser> loginWithEmailAndPassword({
@@ -20,11 +21,12 @@ abstract class IAuthRemoteDataSource {
     required UserType userType,
   });
 
+  Future<FarmhubUser> createAccountWithPhone({
+    required String uid,
+    required String phoneNumber,
+  });
+
   Future<Unit> chooseUserType(String uid, UserType userType);
-
-  Future<FarmhubUser> loginWithGoogleAccount();
-
-  Future<FarmhubUser> registerWithGoogleAccount();
 
   Future<FarmhubUser> retrieveUserData();
 
@@ -135,18 +137,6 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
   }
 
   @override
-  Future<FarmhubUser> loginWithGoogleAccount() {
-    // TODO: implement loginWithGoogleAccount
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<FarmhubUser> registerWithGoogleAccount() {
-    // TODO: implement registerWithGoogleAccount
-    throw UnimplementedError();
-  }
-
-  @override
   Future<FarmhubUser> retrieveUserData() async {
     final user = firebaseAuth.currentUser;
 
@@ -239,5 +229,39 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
         .then((value) => print("Change Success!"));
 
     return unit;
+  }
+
+  @override
+  Future<FarmhubUser> createAccountWithPhone({
+    required String uid,
+    required String phoneNumber,
+  }) async {
+    final generatedRandom = generateWordPairs().take(1).toList();
+    final String tempName = "${generatedRandom[0]} ${generatedRandom[1]}";
+
+    String createdAt = DateFormat('yyyy-MM-dd').format(clock.now());
+
+    await firebaseFirestore.collection(FS_USER).doc(uid).set({
+      "uid": uid,
+      "email": null,
+      "username": "${tempName[0]} ${tempName[1]}",
+      "createdAt": createdAt,
+      "produceFavoritesMap": {},
+      "phoneNumber": phoneNumber,
+      "userType": UserType.regular.typeAsString,
+    });
+
+    final user = FarmhubUser(
+      uid: uid,
+      //TODO: Allow nullable emails
+      email: "fakeemail",
+      username: tempName,
+      //TODO: Add phone number
+      createdAt: createdAt,
+      produceFavoritesList: [],
+      userType: UserType.regular,
+    );
+
+    return user;
   }
 }

@@ -310,3 +310,77 @@ class WarningCard extends StatelessWidget {
     );
   }
 }
+
+enum PhoneAuthCardType { login, register }
+
+class PhoneAuthCard extends StatelessWidget {
+  final EdgeInsetsGeometry? margin;
+  final PhoneAuthCardType type;
+
+  const PhoneAuthCard({
+    this.margin,
+    required this.type,
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: margin ?? const EdgeInsets.symmetric(horizontal: 14),
+      child: Material(
+        elevation: 7,
+        shadowColor: Theme.of(context).colorScheme.primary.withOpacity(0.18),
+        borderRadius: BorderRadius.circular(16),
+        color: Theme.of(context).extension<ExtendedColors>()!.onBackgroundPale,
+        child: InkWell(
+          borderRadius: BorderRadius.circular(16),
+          onTap: () {
+            resolveOnTap(context);
+          },
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const Icon(Icons.phone),
+                    const UIHorizontalSpace14(),
+                    Flexible(
+                      child: Column(
+                        children: [
+                          Text(
+                            returnText(),
+                            style: Theme.of(context).textTheme.bodyText1,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                const Icon(Icons.arrow_right_alt),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  String returnText() {
+    if (type == PhoneAuthCardType.login) {
+      return "Login with Phone Number";
+    } else if (type == PhoneAuthCardType.register) {
+      return "Register with Phone Number";
+    } else {
+      return "Error";
+    }
+  }
+
+  void resolveOnTap(BuildContext context) {
+    FocusScope.of(context).unfocus();
+    Navigator.of(context).pushNamed("/verify_phone_screen");
+  }
+}

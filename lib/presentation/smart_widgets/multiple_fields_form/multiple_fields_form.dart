@@ -5,6 +5,8 @@ enum MultipleFieldsFormType { oneField, twoField, threeField, fourField }
 //TODO: Update Documentation
 /// Guide on using [MultipleFieldsForm]
 ///
+/// ## This Doc is OUTDATED
+///
 /// [MultipleFieldsForm] is a widget which has two fields, as it name implies.
 ///
 /// Using this form requires the supply of either [FirstTwoFieldsFormBloc]
@@ -108,7 +110,7 @@ class MultipleFieldsForm<T extends Bloc<MultipleFieldsFormEvent, MultipleFieldsF
           key: _readBlocState(context).props.formKey,
           child: Column(
             children: [
-              _TextFieldLabelText(firstFieldLabel),
+              TextFieldLabelText(firstFieldLabel),
               TextFormField(
                   keyboardType: firstFieldInputType,
                   focusNode: _readBlocState(context).props.firstFieldFocusNode,
@@ -196,7 +198,7 @@ class BuildSecondField<T extends Bloc<MultipleFieldsFormEvent, MultipleFieldsFor
       return Column(
         children: [
           const UIVerticalSpace30(),
-          _TextFieldLabelText(secondFieldLabel!),
+          TextFieldLabelText(secondFieldLabel!),
           TextFormField(
             focusNode: _readBlocState(context).props.secondFieldFocusNode,
             onChanged: (input) {
@@ -256,7 +258,7 @@ class BuildThirdField<T extends Bloc<MultipleFieldsFormEvent, MultipleFieldsForm
       return Column(
         children: [
           const UIVerticalSpace30(),
-          _TextFieldLabelText(thirdFieldLabel!),
+          TextFieldLabelText(thirdFieldLabel!),
           TextFormField(
             focusNode: _readBlocState(context).props.thirdFieldFocusNode,
             onChanged: (input) {
@@ -318,7 +320,7 @@ class BuildFourthField<T extends Bloc<MultipleFieldsFormEvent, MultipleFieldsFor
       return Column(
         children: [
           const UIVerticalSpace30(),
-          _TextFieldLabelText(fourthFieldLabel!),
+          TextFieldLabelText(fourthFieldLabel!),
           TextFormField(
             focusNode: _readBlocState(context).props.fourthFieldFocusNode,
             onChanged: (input) {
@@ -344,9 +346,9 @@ class BuildFourthField<T extends Bloc<MultipleFieldsFormEvent, MultipleFieldsFor
   }
 }
 
-class _TextFieldLabelText extends StatelessWidget {
+class TextFieldLabelText extends StatelessWidget {
   final String labelText;
-  const _TextFieldLabelText(this.labelText, {Key? key}) : super(key: key);
+  const TextFieldLabelText(this.labelText, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

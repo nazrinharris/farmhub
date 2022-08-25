@@ -31,6 +31,7 @@ void setupLocator() {
   locator.registerFactory(() => AuthBloc(
         authRepository: locator(),
         globalAuthCubit: locator(),
+        firebaseAuth: locator(),
       ));
   locator.registerLazySingleton(() => GlobalAuthCubit(locator()));
   // Repository
