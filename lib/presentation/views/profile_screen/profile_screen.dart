@@ -185,7 +185,7 @@ class SliverProfileHeader extends StatelessWidget {
               ),
               UIVerticalSpace6(),
               Text(
-                farmhubUser.email,
+                farmhubUser.email ?? "Email not set",
                 style: Theme.of(context).textTheme.bodyText1!.copyWith(fontSize: 14),
                 overflow: TextOverflow.fade,
               ),

@@ -32,7 +32,8 @@ class AuthCubit extends Cubit<AuthState> {
     Completer<AuthState> c = Completer();
 
     await firebaseAuth.verifyPhoneNumber(
-      phoneNumber: "+60 ${phoneNumber.nsn}",
+      // TODO: Change to MY
+      phoneNumber: "+1 ${phoneNumber.nsn}",
       timeout: const Duration(minutes: 1),
       verificationFailed: (FirebaseAuthException e) async {
         print("Verification Failed!");

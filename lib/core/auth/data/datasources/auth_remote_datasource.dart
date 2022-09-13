@@ -7,6 +7,7 @@ import 'package:fpdart/fpdart.dart';
 import 'package:intl/intl.dart';
 import 'package:clock/clock.dart';
 import 'package:english_words/english_words.dart';
+import 'package:phone_numbers_parser/phone_numbers_parser.dart';
 
 abstract class IAuthRemoteDataSource {
   Future<FarmhubUser> loginWithEmailAndPassword({
@@ -121,6 +122,7 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
       createdAt: createdAt,
       produceFavoritesList: [],
       userType: userType,
+      phoneNumber: null,
     );
 
     /// Store account data in Cloud Firestore
@@ -131,6 +133,7 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
       "createdAt": farmhubUser.createdAt,
       "produceFavoritesMap": {},
       "userType": userType.typeAsString,
+      "phoneNumber": null,
     }, null);
 
     return farmhubUser;
@@ -241,6 +244,8 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
 
     String createdAt = DateFormat('yyyy-MM-dd').format(clock.now());
 
+    final splitPhone = phoneNumber.split(" ");
+
     await firebaseFirestore.collection(FS_USER).doc(uid).set({
       "uid": uid,
       "email": null,
@@ -253,10 +258,9 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
 
     final user = FarmhubUser(
       uid: uid,
-      //TODO: Allow nullable emails
       email: "fakeemail",
       username: tempName,
-      //TODO: Add phone number
+      //phoneNumber: PhoneNumber(isoCode: IsoCode.MY, nsn: phoneNumber),
       createdAt: createdAt,
       produceFavoritesList: [],
       userType: UserType.regular,

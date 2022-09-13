@@ -11,7 +11,7 @@ import 'package:phone_numbers_parser/phone_numbers_parser.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../core/auth/auth_bloc/auth_bloc.dart';
+import '../../../core/auth/auth_cubit/auth_cubit.dart';
 import '../../../locator.dart';
 
 class VerifyPhoneScreen extends StatefulWidget {
@@ -31,9 +31,8 @@ class _VerifyPhoneScreenState extends State<VerifyPhoneScreen> {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => AuthBloc(
+          create: (context) => AuthCubit(
             authRepository: locator(),
-            globalAuthCubit: locator(),
             firebaseAuth: locator(),
           ),
         ),
@@ -45,9 +44,9 @@ class _VerifyPhoneScreenState extends State<VerifyPhoneScreen> {
         ),
       ],
       child: Builder(builder: (context) {
-        return BlocListener<AuthBloc, AuthState>(
+        return BlocListener<AuthCubit, AuthState>(
           listener: (context, state) {
-            if (state is ASPhoneCodeSent) {
+            if (state is SMSCodeSentToClient) {
               verificationId = state.verificationId;
 
               context.read<PrimaryButtonAwareCubit>().triggerFirstPage();
@@ -58,7 +57,7 @@ class _VerifyPhoneScreenState extends State<VerifyPhoneScreen> {
                   phoneNumber: myPhone,
                 ),
               );
-            } else if (state is ASVerifyPhoneError) {
+            } else if (state is PhoneVerificationError) {
               context.read<PrimaryButtonAwareCubit>().triggerFirstPage();
               showToastWidget(
                 ErrorToast(),
@@ -148,7 +147,7 @@ class _VerifyPhoneScreenState extends State<VerifyPhoneScreen> {
                         myPhone = PhoneNumber.fromNational(IsoCode.MY, value!);
                         print(myPhone.toString());
 
-                        context.read<AuthBloc>().add(AuthEvent.verifyPhoneNumber(myPhone));
+                        context.read<AuthCubit>().verifyPhoneAndSendSMS(phoneNumber: myPhone);
                       }
                     },
                   ),

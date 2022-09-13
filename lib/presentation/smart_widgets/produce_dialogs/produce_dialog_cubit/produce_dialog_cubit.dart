@@ -300,7 +300,8 @@ class ProduceDialogCubit extends Cubit<ProduceDialogState> {
 
       await sendResetPasswordAndReact(
         context,
-        email,
+        //TODO: If the user doesn't have an email, they shouldn't be allowed to do this
+        email!,
         showErrorDialog: showErrorDialog,
         showSuccessDialog: showSuccessDialog,
       );

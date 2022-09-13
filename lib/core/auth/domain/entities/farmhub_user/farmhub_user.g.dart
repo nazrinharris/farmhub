@@ -9,13 +9,16 @@ part of 'farmhub_user.dart';
 _$_FarmhubUser _$$_FarmhubUserFromJson(Map<String, dynamic> json) =>
     _$_FarmhubUser(
       uid: json['uid'] as String,
-      email: json['email'] as String,
+      email: json['email'] as String?,
       username: json['username'] as String,
       createdAt: json['createdAt'] as String,
       produceFavoritesList: (json['produceFavoritesList'] as List<dynamic>)
           .map((e) => ProduceFavorite.fromJson(e as Map<String, dynamic>))
           .toList(),
       userType: $enumDecode(_$UserTypeEnumMap, json['userType']),
+      phoneNumber: json['phoneNumber'] == null
+          ? null
+          : PhoneNumber.fromJson(json['phoneNumber'] as Map<String, dynamic>),
       $type: json['runtimeType'] as String?,
     );
 
@@ -28,6 +31,7 @@ Map<String, dynamic> _$$_FarmhubUserToJson(_$_FarmhubUser instance) =>
       'produceFavoritesList':
           instance.produceFavoritesList.map((e) => e.toJson()).toList(),
       'userType': _$UserTypeEnumMap[instance.userType],
+      'phoneNumber': instance.phoneNumber?.toJson(),
       'runtimeType': instance.$type,
     };
 
@@ -41,7 +45,7 @@ const _$UserTypeEnumMap = {
 _$FarmhubUserFarmer _$$FarmhubUserFarmerFromJson(Map<String, dynamic> json) =>
     _$FarmhubUserFarmer(
       uid: json['uid'] as String,
-      email: json['email'] as String,
+      email: json['email'] as String?,
       username: json['username'] as String,
       createdAt: json['createdAt'] as String,
       produceFavoritesList: (json['produceFavoritesList'] as List<dynamic>)
@@ -54,6 +58,9 @@ _$FarmhubUserFarmer _$$FarmhubUserFarmerFromJson(Map<String, dynamic> json) =>
       userShops: (json['userShops'] as List<dynamic>)
           .map((e) => Shop.fromJson(e as Map<String, dynamic>))
           .toList(),
+      phoneNumber: json['phoneNumber'] == null
+          ? null
+          : PhoneNumber.fromJson(json['phoneNumber'] as Map<String, dynamic>),
       $type: json['runtimeType'] as String?,
     );
 
@@ -68,6 +75,7 @@ Map<String, dynamic> _$$FarmhubUserFarmerToJson(_$FarmhubUserFarmer instance) =>
       'userType': _$UserTypeEnumMap[instance.userType],
       'userFarms': instance.userFarms.map((e) => e.toJson()).toList(),
       'userShops': instance.userShops.map((e) => e.toJson()).toList(),
+      'phoneNumber': instance.phoneNumber?.toJson(),
       'runtimeType': instance.$type,
     };
 
@@ -75,7 +83,7 @@ _$FarmhubUserBusiness _$$FarmhubUserBusinessFromJson(
         Map<String, dynamic> json) =>
     _$FarmhubUserBusiness(
       uid: json['uid'] as String,
-      email: json['email'] as String,
+      email: json['email'] as String?,
       username: json['username'] as String,
       createdAt: json['createdAt'] as String,
       produceFavoritesList: (json['produceFavoritesList'] as List<dynamic>)
@@ -88,6 +96,9 @@ _$FarmhubUserBusiness _$$FarmhubUserBusinessFromJson(
       userShops: (json['userShops'] as List<dynamic>)
           .map((e) => Shop.fromJson(e as Map<String, dynamic>))
           .toList(),
+      phoneNumber: json['phoneNumber'] == null
+          ? null
+          : PhoneNumber.fromJson(json['phoneNumber'] as Map<String, dynamic>),
       $type: json['runtimeType'] as String?,
     );
 
@@ -103,5 +114,6 @@ Map<String, dynamic> _$$FarmhubUserBusinessToJson(
       'userType': _$UserTypeEnumMap[instance.userType],
       'userFarms': instance.userFarms.map((e) => e.toJson()).toList(),
       'userShops': instance.userShops.map((e) => e.toJson()).toList(),
+      'phoneNumber': instance.phoneNumber?.toJson(),
       'runtimeType': instance.$type,
     };

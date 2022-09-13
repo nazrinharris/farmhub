@@ -23,12 +23,4 @@ class AuthEvent with _$AuthEvent {
   const factory AuthEvent.execSignOut() = _AEExecSignOut;
 
   const factory AuthEvent.execIsAdmin(String uid) = _AEExecIsAdmin;
-
-  // Phone Sign In
-  const factory AuthEvent.verifyPhoneNumber(PhoneNumber phoneNumber) = _AEVerifyPhoneNumber;
-  const factory AuthEvent.sendCodeAndSignIn({
-    required String verificationId,
-    required String code,
-    required PhoneNumber phoneNumber,
-  }) = _AESendCodeAndSignIn;
 }

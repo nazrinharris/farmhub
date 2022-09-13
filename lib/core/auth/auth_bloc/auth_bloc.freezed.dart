@@ -27,10 +27,6 @@ mixin _$AuthEvent {
     required TResult Function() execRetrieveUserData,
     required TResult Function() execSignOut,
     required TResult Function(String uid) execIsAdmin,
-    required TResult Function(PhoneNumber phoneNumber) verifyPhoneNumber,
-    required TResult Function(
-            String verificationId, String code, PhoneNumber phoneNumber)
-        sendCodeAndSignIn,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -44,10 +40,6 @@ mixin _$AuthEvent {
     TResult Function()? execRetrieveUserData,
     TResult Function()? execSignOut,
     TResult Function(String uid)? execIsAdmin,
-    TResult Function(PhoneNumber phoneNumber)? verifyPhoneNumber,
-    TResult Function(
-            String verificationId, String code, PhoneNumber phoneNumber)?
-        sendCodeAndSignIn,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -61,10 +53,6 @@ mixin _$AuthEvent {
     TResult Function()? execRetrieveUserData,
     TResult Function()? execSignOut,
     TResult Function(String uid)? execIsAdmin,
-    TResult Function(PhoneNumber phoneNumber)? verifyPhoneNumber,
-    TResult Function(
-            String verificationId, String code, PhoneNumber phoneNumber)?
-        sendCodeAndSignIn,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -79,8 +67,6 @@ mixin _$AuthEvent {
         execRetrieveUserData,
     required TResult Function(_AEExecSignOut value) execSignOut,
     required TResult Function(_AEExecIsAdmin value) execIsAdmin,
-    required TResult Function(_AEVerifyPhoneNumber value) verifyPhoneNumber,
-    required TResult Function(_AESendCodeAndSignIn value) sendCodeAndSignIn,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -93,8 +79,6 @@ mixin _$AuthEvent {
     TResult Function(_AEExecRetrieveUserData value)? execRetrieveUserData,
     TResult Function(_AEExecSignOut value)? execSignOut,
     TResult Function(_AEExecIsAdmin value)? execIsAdmin,
-    TResult Function(_AEVerifyPhoneNumber value)? verifyPhoneNumber,
-    TResult Function(_AESendCodeAndSignIn value)? sendCodeAndSignIn,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -107,8 +91,6 @@ mixin _$AuthEvent {
     TResult Function(_AEExecRetrieveUserData value)? execRetrieveUserData,
     TResult Function(_AEExecSignOut value)? execSignOut,
     TResult Function(_AEExecIsAdmin value)? execIsAdmin,
-    TResult Function(_AEVerifyPhoneNumber value)? verifyPhoneNumber,
-    TResult Function(_AESendCodeAndSignIn value)? sendCodeAndSignIn,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -178,10 +160,6 @@ class _$_AEStarted implements _AEStarted {
     required TResult Function() execRetrieveUserData,
     required TResult Function() execSignOut,
     required TResult Function(String uid) execIsAdmin,
-    required TResult Function(PhoneNumber phoneNumber) verifyPhoneNumber,
-    required TResult Function(
-            String verificationId, String code, PhoneNumber phoneNumber)
-        sendCodeAndSignIn,
   }) {
     return started();
   }
@@ -198,10 +176,6 @@ class _$_AEStarted implements _AEStarted {
     TResult Function()? execRetrieveUserData,
     TResult Function()? execSignOut,
     TResult Function(String uid)? execIsAdmin,
-    TResult Function(PhoneNumber phoneNumber)? verifyPhoneNumber,
-    TResult Function(
-            String verificationId, String code, PhoneNumber phoneNumber)?
-        sendCodeAndSignIn,
   }) {
     return started?.call();
   }
@@ -218,10 +192,6 @@ class _$_AEStarted implements _AEStarted {
     TResult Function()? execRetrieveUserData,
     TResult Function()? execSignOut,
     TResult Function(String uid)? execIsAdmin,
-    TResult Function(PhoneNumber phoneNumber)? verifyPhoneNumber,
-    TResult Function(
-            String verificationId, String code, PhoneNumber phoneNumber)?
-        sendCodeAndSignIn,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -242,8 +212,6 @@ class _$_AEStarted implements _AEStarted {
         execRetrieveUserData,
     required TResult Function(_AEExecSignOut value) execSignOut,
     required TResult Function(_AEExecIsAdmin value) execIsAdmin,
-    required TResult Function(_AEVerifyPhoneNumber value) verifyPhoneNumber,
-    required TResult Function(_AESendCodeAndSignIn value) sendCodeAndSignIn,
   }) {
     return started(this);
   }
@@ -259,8 +227,6 @@ class _$_AEStarted implements _AEStarted {
     TResult Function(_AEExecRetrieveUserData value)? execRetrieveUserData,
     TResult Function(_AEExecSignOut value)? execSignOut,
     TResult Function(_AEExecIsAdmin value)? execIsAdmin,
-    TResult Function(_AEVerifyPhoneNumber value)? verifyPhoneNumber,
-    TResult Function(_AESendCodeAndSignIn value)? sendCodeAndSignIn,
   }) {
     return started?.call(this);
   }
@@ -276,8 +242,6 @@ class _$_AEStarted implements _AEStarted {
     TResult Function(_AEExecRetrieveUserData value)? execRetrieveUserData,
     TResult Function(_AEExecSignOut value)? execSignOut,
     TResult Function(_AEExecIsAdmin value)? execIsAdmin,
-    TResult Function(_AEVerifyPhoneNumber value)? verifyPhoneNumber,
-    TResult Function(_AESendCodeAndSignIn value)? sendCodeAndSignIn,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -382,10 +346,6 @@ class _$_AEExecLoginWithEmailAndPassword
     required TResult Function() execRetrieveUserData,
     required TResult Function() execSignOut,
     required TResult Function(String uid) execIsAdmin,
-    required TResult Function(PhoneNumber phoneNumber) verifyPhoneNumber,
-    required TResult Function(
-            String verificationId, String code, PhoneNumber phoneNumber)
-        sendCodeAndSignIn,
   }) {
     return execLoginWithEmailAndPassword(email, password);
   }
@@ -402,10 +362,6 @@ class _$_AEExecLoginWithEmailAndPassword
     TResult Function()? execRetrieveUserData,
     TResult Function()? execSignOut,
     TResult Function(String uid)? execIsAdmin,
-    TResult Function(PhoneNumber phoneNumber)? verifyPhoneNumber,
-    TResult Function(
-            String verificationId, String code, PhoneNumber phoneNumber)?
-        sendCodeAndSignIn,
   }) {
     return execLoginWithEmailAndPassword?.call(email, password);
   }
@@ -422,10 +378,6 @@ class _$_AEExecLoginWithEmailAndPassword
     TResult Function()? execRetrieveUserData,
     TResult Function()? execSignOut,
     TResult Function(String uid)? execIsAdmin,
-    TResult Function(PhoneNumber phoneNumber)? verifyPhoneNumber,
-    TResult Function(
-            String verificationId, String code, PhoneNumber phoneNumber)?
-        sendCodeAndSignIn,
     required TResult orElse(),
   }) {
     if (execLoginWithEmailAndPassword != null) {
@@ -446,8 +398,6 @@ class _$_AEExecLoginWithEmailAndPassword
         execRetrieveUserData,
     required TResult Function(_AEExecSignOut value) execSignOut,
     required TResult Function(_AEExecIsAdmin value) execIsAdmin,
-    required TResult Function(_AEVerifyPhoneNumber value) verifyPhoneNumber,
-    required TResult Function(_AESendCodeAndSignIn value) sendCodeAndSignIn,
   }) {
     return execLoginWithEmailAndPassword(this);
   }
@@ -463,8 +413,6 @@ class _$_AEExecLoginWithEmailAndPassword
     TResult Function(_AEExecRetrieveUserData value)? execRetrieveUserData,
     TResult Function(_AEExecSignOut value)? execSignOut,
     TResult Function(_AEExecIsAdmin value)? execIsAdmin,
-    TResult Function(_AEVerifyPhoneNumber value)? verifyPhoneNumber,
-    TResult Function(_AESendCodeAndSignIn value)? sendCodeAndSignIn,
   }) {
     return execLoginWithEmailAndPassword?.call(this);
   }
@@ -480,8 +428,6 @@ class _$_AEExecLoginWithEmailAndPassword
     TResult Function(_AEExecRetrieveUserData value)? execRetrieveUserData,
     TResult Function(_AEExecSignOut value)? execSignOut,
     TResult Function(_AEExecIsAdmin value)? execIsAdmin,
-    TResult Function(_AEVerifyPhoneNumber value)? verifyPhoneNumber,
-    TResult Function(_AESendCodeAndSignIn value)? sendCodeAndSignIn,
     required TResult orElse(),
   }) {
     if (execLoginWithEmailAndPassword != null) {
@@ -617,10 +563,6 @@ class _$_AEExecRegisterWithEmailAndPassword
     required TResult Function() execRetrieveUserData,
     required TResult Function() execSignOut,
     required TResult Function(String uid) execIsAdmin,
-    required TResult Function(PhoneNumber phoneNumber) verifyPhoneNumber,
-    required TResult Function(
-            String verificationId, String code, PhoneNumber phoneNumber)
-        sendCodeAndSignIn,
   }) {
     return execRegisterWithEmailAndPassword(
         email, password, username, userType);
@@ -638,10 +580,6 @@ class _$_AEExecRegisterWithEmailAndPassword
     TResult Function()? execRetrieveUserData,
     TResult Function()? execSignOut,
     TResult Function(String uid)? execIsAdmin,
-    TResult Function(PhoneNumber phoneNumber)? verifyPhoneNumber,
-    TResult Function(
-            String verificationId, String code, PhoneNumber phoneNumber)?
-        sendCodeAndSignIn,
   }) {
     return execRegisterWithEmailAndPassword?.call(
         email, password, username, userType);
@@ -659,10 +597,6 @@ class _$_AEExecRegisterWithEmailAndPassword
     TResult Function()? execRetrieveUserData,
     TResult Function()? execSignOut,
     TResult Function(String uid)? execIsAdmin,
-    TResult Function(PhoneNumber phoneNumber)? verifyPhoneNumber,
-    TResult Function(
-            String verificationId, String code, PhoneNumber phoneNumber)?
-        sendCodeAndSignIn,
     required TResult orElse(),
   }) {
     if (execRegisterWithEmailAndPassword != null) {
@@ -684,8 +618,6 @@ class _$_AEExecRegisterWithEmailAndPassword
         execRetrieveUserData,
     required TResult Function(_AEExecSignOut value) execSignOut,
     required TResult Function(_AEExecIsAdmin value) execIsAdmin,
-    required TResult Function(_AEVerifyPhoneNumber value) verifyPhoneNumber,
-    required TResult Function(_AESendCodeAndSignIn value) sendCodeAndSignIn,
   }) {
     return execRegisterWithEmailAndPassword(this);
   }
@@ -701,8 +633,6 @@ class _$_AEExecRegisterWithEmailAndPassword
     TResult Function(_AEExecRetrieveUserData value)? execRetrieveUserData,
     TResult Function(_AEExecSignOut value)? execSignOut,
     TResult Function(_AEExecIsAdmin value)? execIsAdmin,
-    TResult Function(_AEVerifyPhoneNumber value)? verifyPhoneNumber,
-    TResult Function(_AESendCodeAndSignIn value)? sendCodeAndSignIn,
   }) {
     return execRegisterWithEmailAndPassword?.call(this);
   }
@@ -718,8 +648,6 @@ class _$_AEExecRegisterWithEmailAndPassword
     TResult Function(_AEExecRetrieveUserData value)? execRetrieveUserData,
     TResult Function(_AEExecSignOut value)? execSignOut,
     TResult Function(_AEExecIsAdmin value)? execIsAdmin,
-    TResult Function(_AEVerifyPhoneNumber value)? verifyPhoneNumber,
-    TResult Function(_AESendCodeAndSignIn value)? sendCodeAndSignIn,
     required TResult orElse(),
   }) {
     if (execRegisterWithEmailAndPassword != null) {
@@ -799,10 +727,6 @@ class _$_AEExecRetrieveUserData implements _AEExecRetrieveUserData {
     required TResult Function() execRetrieveUserData,
     required TResult Function() execSignOut,
     required TResult Function(String uid) execIsAdmin,
-    required TResult Function(PhoneNumber phoneNumber) verifyPhoneNumber,
-    required TResult Function(
-            String verificationId, String code, PhoneNumber phoneNumber)
-        sendCodeAndSignIn,
   }) {
     return execRetrieveUserData();
   }
@@ -819,10 +743,6 @@ class _$_AEExecRetrieveUserData implements _AEExecRetrieveUserData {
     TResult Function()? execRetrieveUserData,
     TResult Function()? execSignOut,
     TResult Function(String uid)? execIsAdmin,
-    TResult Function(PhoneNumber phoneNumber)? verifyPhoneNumber,
-    TResult Function(
-            String verificationId, String code, PhoneNumber phoneNumber)?
-        sendCodeAndSignIn,
   }) {
     return execRetrieveUserData?.call();
   }
@@ -839,10 +759,6 @@ class _$_AEExecRetrieveUserData implements _AEExecRetrieveUserData {
     TResult Function()? execRetrieveUserData,
     TResult Function()? execSignOut,
     TResult Function(String uid)? execIsAdmin,
-    TResult Function(PhoneNumber phoneNumber)? verifyPhoneNumber,
-    TResult Function(
-            String verificationId, String code, PhoneNumber phoneNumber)?
-        sendCodeAndSignIn,
     required TResult orElse(),
   }) {
     if (execRetrieveUserData != null) {
@@ -863,8 +779,6 @@ class _$_AEExecRetrieveUserData implements _AEExecRetrieveUserData {
         execRetrieveUserData,
     required TResult Function(_AEExecSignOut value) execSignOut,
     required TResult Function(_AEExecIsAdmin value) execIsAdmin,
-    required TResult Function(_AEVerifyPhoneNumber value) verifyPhoneNumber,
-    required TResult Function(_AESendCodeAndSignIn value) sendCodeAndSignIn,
   }) {
     return execRetrieveUserData(this);
   }
@@ -880,8 +794,6 @@ class _$_AEExecRetrieveUserData implements _AEExecRetrieveUserData {
     TResult Function(_AEExecRetrieveUserData value)? execRetrieveUserData,
     TResult Function(_AEExecSignOut value)? execSignOut,
     TResult Function(_AEExecIsAdmin value)? execIsAdmin,
-    TResult Function(_AEVerifyPhoneNumber value)? verifyPhoneNumber,
-    TResult Function(_AESendCodeAndSignIn value)? sendCodeAndSignIn,
   }) {
     return execRetrieveUserData?.call(this);
   }
@@ -897,8 +809,6 @@ class _$_AEExecRetrieveUserData implements _AEExecRetrieveUserData {
     TResult Function(_AEExecRetrieveUserData value)? execRetrieveUserData,
     TResult Function(_AEExecSignOut value)? execSignOut,
     TResult Function(_AEExecIsAdmin value)? execIsAdmin,
-    TResult Function(_AEVerifyPhoneNumber value)? verifyPhoneNumber,
-    TResult Function(_AESendCodeAndSignIn value)? sendCodeAndSignIn,
     required TResult orElse(),
   }) {
     if (execRetrieveUserData != null) {
@@ -961,10 +871,6 @@ class _$_AEExecSignOut implements _AEExecSignOut {
     required TResult Function() execRetrieveUserData,
     required TResult Function() execSignOut,
     required TResult Function(String uid) execIsAdmin,
-    required TResult Function(PhoneNumber phoneNumber) verifyPhoneNumber,
-    required TResult Function(
-            String verificationId, String code, PhoneNumber phoneNumber)
-        sendCodeAndSignIn,
   }) {
     return execSignOut();
   }
@@ -981,10 +887,6 @@ class _$_AEExecSignOut implements _AEExecSignOut {
     TResult Function()? execRetrieveUserData,
     TResult Function()? execSignOut,
     TResult Function(String uid)? execIsAdmin,
-    TResult Function(PhoneNumber phoneNumber)? verifyPhoneNumber,
-    TResult Function(
-            String verificationId, String code, PhoneNumber phoneNumber)?
-        sendCodeAndSignIn,
   }) {
     return execSignOut?.call();
   }
@@ -1001,10 +903,6 @@ class _$_AEExecSignOut implements _AEExecSignOut {
     TResult Function()? execRetrieveUserData,
     TResult Function()? execSignOut,
     TResult Function(String uid)? execIsAdmin,
-    TResult Function(PhoneNumber phoneNumber)? verifyPhoneNumber,
-    TResult Function(
-            String verificationId, String code, PhoneNumber phoneNumber)?
-        sendCodeAndSignIn,
     required TResult orElse(),
   }) {
     if (execSignOut != null) {
@@ -1025,8 +923,6 @@ class _$_AEExecSignOut implements _AEExecSignOut {
         execRetrieveUserData,
     required TResult Function(_AEExecSignOut value) execSignOut,
     required TResult Function(_AEExecIsAdmin value) execIsAdmin,
-    required TResult Function(_AEVerifyPhoneNumber value) verifyPhoneNumber,
-    required TResult Function(_AESendCodeAndSignIn value) sendCodeAndSignIn,
   }) {
     return execSignOut(this);
   }
@@ -1042,8 +938,6 @@ class _$_AEExecSignOut implements _AEExecSignOut {
     TResult Function(_AEExecRetrieveUserData value)? execRetrieveUserData,
     TResult Function(_AEExecSignOut value)? execSignOut,
     TResult Function(_AEExecIsAdmin value)? execIsAdmin,
-    TResult Function(_AEVerifyPhoneNumber value)? verifyPhoneNumber,
-    TResult Function(_AESendCodeAndSignIn value)? sendCodeAndSignIn,
   }) {
     return execSignOut?.call(this);
   }
@@ -1059,8 +953,6 @@ class _$_AEExecSignOut implements _AEExecSignOut {
     TResult Function(_AEExecRetrieveUserData value)? execRetrieveUserData,
     TResult Function(_AEExecSignOut value)? execSignOut,
     TResult Function(_AEExecIsAdmin value)? execIsAdmin,
-    TResult Function(_AEVerifyPhoneNumber value)? verifyPhoneNumber,
-    TResult Function(_AESendCodeAndSignIn value)? sendCodeAndSignIn,
     required TResult orElse(),
   }) {
     if (execSignOut != null) {
@@ -1147,10 +1039,6 @@ class _$_AEExecIsAdmin implements _AEExecIsAdmin {
     required TResult Function() execRetrieveUserData,
     required TResult Function() execSignOut,
     required TResult Function(String uid) execIsAdmin,
-    required TResult Function(PhoneNumber phoneNumber) verifyPhoneNumber,
-    required TResult Function(
-            String verificationId, String code, PhoneNumber phoneNumber)
-        sendCodeAndSignIn,
   }) {
     return execIsAdmin(uid);
   }
@@ -1167,10 +1055,6 @@ class _$_AEExecIsAdmin implements _AEExecIsAdmin {
     TResult Function()? execRetrieveUserData,
     TResult Function()? execSignOut,
     TResult Function(String uid)? execIsAdmin,
-    TResult Function(PhoneNumber phoneNumber)? verifyPhoneNumber,
-    TResult Function(
-            String verificationId, String code, PhoneNumber phoneNumber)?
-        sendCodeAndSignIn,
   }) {
     return execIsAdmin?.call(uid);
   }
@@ -1187,10 +1071,6 @@ class _$_AEExecIsAdmin implements _AEExecIsAdmin {
     TResult Function()? execRetrieveUserData,
     TResult Function()? execSignOut,
     TResult Function(String uid)? execIsAdmin,
-    TResult Function(PhoneNumber phoneNumber)? verifyPhoneNumber,
-    TResult Function(
-            String verificationId, String code, PhoneNumber phoneNumber)?
-        sendCodeAndSignIn,
     required TResult orElse(),
   }) {
     if (execIsAdmin != null) {
@@ -1211,8 +1091,6 @@ class _$_AEExecIsAdmin implements _AEExecIsAdmin {
         execRetrieveUserData,
     required TResult Function(_AEExecSignOut value) execSignOut,
     required TResult Function(_AEExecIsAdmin value) execIsAdmin,
-    required TResult Function(_AEVerifyPhoneNumber value) verifyPhoneNumber,
-    required TResult Function(_AESendCodeAndSignIn value) sendCodeAndSignIn,
   }) {
     return execIsAdmin(this);
   }
@@ -1228,8 +1106,6 @@ class _$_AEExecIsAdmin implements _AEExecIsAdmin {
     TResult Function(_AEExecRetrieveUserData value)? execRetrieveUserData,
     TResult Function(_AEExecSignOut value)? execSignOut,
     TResult Function(_AEExecIsAdmin value)? execIsAdmin,
-    TResult Function(_AEVerifyPhoneNumber value)? verifyPhoneNumber,
-    TResult Function(_AESendCodeAndSignIn value)? sendCodeAndSignIn,
   }) {
     return execIsAdmin?.call(this);
   }
@@ -1245,8 +1121,6 @@ class _$_AEExecIsAdmin implements _AEExecIsAdmin {
     TResult Function(_AEExecRetrieveUserData value)? execRetrieveUserData,
     TResult Function(_AEExecSignOut value)? execSignOut,
     TResult Function(_AEExecIsAdmin value)? execIsAdmin,
-    TResult Function(_AEVerifyPhoneNumber value)? verifyPhoneNumber,
-    TResult Function(_AESendCodeAndSignIn value)? sendCodeAndSignIn,
     required TResult orElse(),
   }) {
     if (execIsAdmin != null) {
@@ -1262,423 +1136,6 @@ abstract class _AEExecIsAdmin implements AuthEvent {
   String get uid => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$$_AEExecIsAdminCopyWith<_$_AEExecIsAdmin> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$_AEVerifyPhoneNumberCopyWith<$Res> {
-  factory _$$_AEVerifyPhoneNumberCopyWith(_$_AEVerifyPhoneNumber value,
-          $Res Function(_$_AEVerifyPhoneNumber) then) =
-      __$$_AEVerifyPhoneNumberCopyWithImpl<$Res>;
-  $Res call({PhoneNumber phoneNumber});
-}
-
-/// @nodoc
-class __$$_AEVerifyPhoneNumberCopyWithImpl<$Res>
-    extends _$AuthEventCopyWithImpl<$Res>
-    implements _$$_AEVerifyPhoneNumberCopyWith<$Res> {
-  __$$_AEVerifyPhoneNumberCopyWithImpl(_$_AEVerifyPhoneNumber _value,
-      $Res Function(_$_AEVerifyPhoneNumber) _then)
-      : super(_value, (v) => _then(v as _$_AEVerifyPhoneNumber));
-
-  @override
-  _$_AEVerifyPhoneNumber get _value => super._value as _$_AEVerifyPhoneNumber;
-
-  @override
-  $Res call({
-    Object? phoneNumber = freezed,
-  }) {
-    return _then(_$_AEVerifyPhoneNumber(
-      phoneNumber == freezed
-          ? _value.phoneNumber
-          : phoneNumber // ignore: cast_nullable_to_non_nullable
-              as PhoneNumber,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_AEVerifyPhoneNumber implements _AEVerifyPhoneNumber {
-  const _$_AEVerifyPhoneNumber(this.phoneNumber);
-
-  @override
-  final PhoneNumber phoneNumber;
-
-  @override
-  String toString() {
-    return 'AuthEvent.verifyPhoneNumber(phoneNumber: $phoneNumber)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_AEVerifyPhoneNumber &&
-            const DeepCollectionEquality()
-                .equals(other.phoneNumber, phoneNumber));
-  }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(phoneNumber));
-
-  @JsonKey(ignore: true)
-  @override
-  _$$_AEVerifyPhoneNumberCopyWith<_$_AEVerifyPhoneNumber> get copyWith =>
-      __$$_AEVerifyPhoneNumberCopyWithImpl<_$_AEVerifyPhoneNumber>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function(String email, String password)
-        execLoginWithEmailAndPassword,
-    required TResult Function(
-            String email, String password, String username, UserType userType)
-        execRegisterWithEmailAndPassword,
-    required TResult Function() execRetrieveUserData,
-    required TResult Function() execSignOut,
-    required TResult Function(String uid) execIsAdmin,
-    required TResult Function(PhoneNumber phoneNumber) verifyPhoneNumber,
-    required TResult Function(
-            String verificationId, String code, PhoneNumber phoneNumber)
-        sendCodeAndSignIn,
-  }) {
-    return verifyPhoneNumber(phoneNumber);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function(String email, String password)?
-        execLoginWithEmailAndPassword,
-    TResult Function(
-            String email, String password, String username, UserType userType)?
-        execRegisterWithEmailAndPassword,
-    TResult Function()? execRetrieveUserData,
-    TResult Function()? execSignOut,
-    TResult Function(String uid)? execIsAdmin,
-    TResult Function(PhoneNumber phoneNumber)? verifyPhoneNumber,
-    TResult Function(
-            String verificationId, String code, PhoneNumber phoneNumber)?
-        sendCodeAndSignIn,
-  }) {
-    return verifyPhoneNumber?.call(phoneNumber);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function(String email, String password)?
-        execLoginWithEmailAndPassword,
-    TResult Function(
-            String email, String password, String username, UserType userType)?
-        execRegisterWithEmailAndPassword,
-    TResult Function()? execRetrieveUserData,
-    TResult Function()? execSignOut,
-    TResult Function(String uid)? execIsAdmin,
-    TResult Function(PhoneNumber phoneNumber)? verifyPhoneNumber,
-    TResult Function(
-            String verificationId, String code, PhoneNumber phoneNumber)?
-        sendCodeAndSignIn,
-    required TResult orElse(),
-  }) {
-    if (verifyPhoneNumber != null) {
-      return verifyPhoneNumber(phoneNumber);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_AEStarted value) started,
-    required TResult Function(_AEExecLoginWithEmailAndPassword value)
-        execLoginWithEmailAndPassword,
-    required TResult Function(_AEExecRegisterWithEmailAndPassword value)
-        execRegisterWithEmailAndPassword,
-    required TResult Function(_AEExecRetrieveUserData value)
-        execRetrieveUserData,
-    required TResult Function(_AEExecSignOut value) execSignOut,
-    required TResult Function(_AEExecIsAdmin value) execIsAdmin,
-    required TResult Function(_AEVerifyPhoneNumber value) verifyPhoneNumber,
-    required TResult Function(_AESendCodeAndSignIn value) sendCodeAndSignIn,
-  }) {
-    return verifyPhoneNumber(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_AEStarted value)? started,
-    TResult Function(_AEExecLoginWithEmailAndPassword value)?
-        execLoginWithEmailAndPassword,
-    TResult Function(_AEExecRegisterWithEmailAndPassword value)?
-        execRegisterWithEmailAndPassword,
-    TResult Function(_AEExecRetrieveUserData value)? execRetrieveUserData,
-    TResult Function(_AEExecSignOut value)? execSignOut,
-    TResult Function(_AEExecIsAdmin value)? execIsAdmin,
-    TResult Function(_AEVerifyPhoneNumber value)? verifyPhoneNumber,
-    TResult Function(_AESendCodeAndSignIn value)? sendCodeAndSignIn,
-  }) {
-    return verifyPhoneNumber?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AEStarted value)? started,
-    TResult Function(_AEExecLoginWithEmailAndPassword value)?
-        execLoginWithEmailAndPassword,
-    TResult Function(_AEExecRegisterWithEmailAndPassword value)?
-        execRegisterWithEmailAndPassword,
-    TResult Function(_AEExecRetrieveUserData value)? execRetrieveUserData,
-    TResult Function(_AEExecSignOut value)? execSignOut,
-    TResult Function(_AEExecIsAdmin value)? execIsAdmin,
-    TResult Function(_AEVerifyPhoneNumber value)? verifyPhoneNumber,
-    TResult Function(_AESendCodeAndSignIn value)? sendCodeAndSignIn,
-    required TResult orElse(),
-  }) {
-    if (verifyPhoneNumber != null) {
-      return verifyPhoneNumber(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _AEVerifyPhoneNumber implements AuthEvent {
-  const factory _AEVerifyPhoneNumber(final PhoneNumber phoneNumber) =
-      _$_AEVerifyPhoneNumber;
-
-  PhoneNumber get phoneNumber => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  _$$_AEVerifyPhoneNumberCopyWith<_$_AEVerifyPhoneNumber> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$_AESendCodeAndSignInCopyWith<$Res> {
-  factory _$$_AESendCodeAndSignInCopyWith(_$_AESendCodeAndSignIn value,
-          $Res Function(_$_AESendCodeAndSignIn) then) =
-      __$$_AESendCodeAndSignInCopyWithImpl<$Res>;
-  $Res call({String verificationId, String code, PhoneNumber phoneNumber});
-}
-
-/// @nodoc
-class __$$_AESendCodeAndSignInCopyWithImpl<$Res>
-    extends _$AuthEventCopyWithImpl<$Res>
-    implements _$$_AESendCodeAndSignInCopyWith<$Res> {
-  __$$_AESendCodeAndSignInCopyWithImpl(_$_AESendCodeAndSignIn _value,
-      $Res Function(_$_AESendCodeAndSignIn) _then)
-      : super(_value, (v) => _then(v as _$_AESendCodeAndSignIn));
-
-  @override
-  _$_AESendCodeAndSignIn get _value => super._value as _$_AESendCodeAndSignIn;
-
-  @override
-  $Res call({
-    Object? verificationId = freezed,
-    Object? code = freezed,
-    Object? phoneNumber = freezed,
-  }) {
-    return _then(_$_AESendCodeAndSignIn(
-      verificationId: verificationId == freezed
-          ? _value.verificationId
-          : verificationId // ignore: cast_nullable_to_non_nullable
-              as String,
-      code: code == freezed
-          ? _value.code
-          : code // ignore: cast_nullable_to_non_nullable
-              as String,
-      phoneNumber: phoneNumber == freezed
-          ? _value.phoneNumber
-          : phoneNumber // ignore: cast_nullable_to_non_nullable
-              as PhoneNumber,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_AESendCodeAndSignIn implements _AESendCodeAndSignIn {
-  const _$_AESendCodeAndSignIn(
-      {required this.verificationId,
-      required this.code,
-      required this.phoneNumber});
-
-  @override
-  final String verificationId;
-  @override
-  final String code;
-  @override
-  final PhoneNumber phoneNumber;
-
-  @override
-  String toString() {
-    return 'AuthEvent.sendCodeAndSignIn(verificationId: $verificationId, code: $code, phoneNumber: $phoneNumber)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_AESendCodeAndSignIn &&
-            const DeepCollectionEquality()
-                .equals(other.verificationId, verificationId) &&
-            const DeepCollectionEquality().equals(other.code, code) &&
-            const DeepCollectionEquality()
-                .equals(other.phoneNumber, phoneNumber));
-  }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(verificationId),
-      const DeepCollectionEquality().hash(code),
-      const DeepCollectionEquality().hash(phoneNumber));
-
-  @JsonKey(ignore: true)
-  @override
-  _$$_AESendCodeAndSignInCopyWith<_$_AESendCodeAndSignIn> get copyWith =>
-      __$$_AESendCodeAndSignInCopyWithImpl<_$_AESendCodeAndSignIn>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function(String email, String password)
-        execLoginWithEmailAndPassword,
-    required TResult Function(
-            String email, String password, String username, UserType userType)
-        execRegisterWithEmailAndPassword,
-    required TResult Function() execRetrieveUserData,
-    required TResult Function() execSignOut,
-    required TResult Function(String uid) execIsAdmin,
-    required TResult Function(PhoneNumber phoneNumber) verifyPhoneNumber,
-    required TResult Function(
-            String verificationId, String code, PhoneNumber phoneNumber)
-        sendCodeAndSignIn,
-  }) {
-    return sendCodeAndSignIn(verificationId, code, phoneNumber);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function(String email, String password)?
-        execLoginWithEmailAndPassword,
-    TResult Function(
-            String email, String password, String username, UserType userType)?
-        execRegisterWithEmailAndPassword,
-    TResult Function()? execRetrieveUserData,
-    TResult Function()? execSignOut,
-    TResult Function(String uid)? execIsAdmin,
-    TResult Function(PhoneNumber phoneNumber)? verifyPhoneNumber,
-    TResult Function(
-            String verificationId, String code, PhoneNumber phoneNumber)?
-        sendCodeAndSignIn,
-  }) {
-    return sendCodeAndSignIn?.call(verificationId, code, phoneNumber);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function(String email, String password)?
-        execLoginWithEmailAndPassword,
-    TResult Function(
-            String email, String password, String username, UserType userType)?
-        execRegisterWithEmailAndPassword,
-    TResult Function()? execRetrieveUserData,
-    TResult Function()? execSignOut,
-    TResult Function(String uid)? execIsAdmin,
-    TResult Function(PhoneNumber phoneNumber)? verifyPhoneNumber,
-    TResult Function(
-            String verificationId, String code, PhoneNumber phoneNumber)?
-        sendCodeAndSignIn,
-    required TResult orElse(),
-  }) {
-    if (sendCodeAndSignIn != null) {
-      return sendCodeAndSignIn(verificationId, code, phoneNumber);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_AEStarted value) started,
-    required TResult Function(_AEExecLoginWithEmailAndPassword value)
-        execLoginWithEmailAndPassword,
-    required TResult Function(_AEExecRegisterWithEmailAndPassword value)
-        execRegisterWithEmailAndPassword,
-    required TResult Function(_AEExecRetrieveUserData value)
-        execRetrieveUserData,
-    required TResult Function(_AEExecSignOut value) execSignOut,
-    required TResult Function(_AEExecIsAdmin value) execIsAdmin,
-    required TResult Function(_AEVerifyPhoneNumber value) verifyPhoneNumber,
-    required TResult Function(_AESendCodeAndSignIn value) sendCodeAndSignIn,
-  }) {
-    return sendCodeAndSignIn(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_AEStarted value)? started,
-    TResult Function(_AEExecLoginWithEmailAndPassword value)?
-        execLoginWithEmailAndPassword,
-    TResult Function(_AEExecRegisterWithEmailAndPassword value)?
-        execRegisterWithEmailAndPassword,
-    TResult Function(_AEExecRetrieveUserData value)? execRetrieveUserData,
-    TResult Function(_AEExecSignOut value)? execSignOut,
-    TResult Function(_AEExecIsAdmin value)? execIsAdmin,
-    TResult Function(_AEVerifyPhoneNumber value)? verifyPhoneNumber,
-    TResult Function(_AESendCodeAndSignIn value)? sendCodeAndSignIn,
-  }) {
-    return sendCodeAndSignIn?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AEStarted value)? started,
-    TResult Function(_AEExecLoginWithEmailAndPassword value)?
-        execLoginWithEmailAndPassword,
-    TResult Function(_AEExecRegisterWithEmailAndPassword value)?
-        execRegisterWithEmailAndPassword,
-    TResult Function(_AEExecRetrieveUserData value)? execRetrieveUserData,
-    TResult Function(_AEExecSignOut value)? execSignOut,
-    TResult Function(_AEExecIsAdmin value)? execIsAdmin,
-    TResult Function(_AEVerifyPhoneNumber value)? verifyPhoneNumber,
-    TResult Function(_AESendCodeAndSignIn value)? sendCodeAndSignIn,
-    required TResult orElse(),
-  }) {
-    if (sendCodeAndSignIn != null) {
-      return sendCodeAndSignIn(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _AESendCodeAndSignIn implements AuthEvent {
-  const factory _AESendCodeAndSignIn(
-      {required final String verificationId,
-      required final String code,
-      required final PhoneNumber phoneNumber}) = _$_AESendCodeAndSignIn;
-
-  String get verificationId => throw _privateConstructorUsedError;
-  String get code => throw _privateConstructorUsedError;
-  PhoneNumber get phoneNumber => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  _$$_AESendCodeAndSignInCopyWith<_$_AESendCodeAndSignIn> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1714,15 +1171,6 @@ mixin _$AuthState {
     required TResult Function(
             String code, String message, StackTrace stackTrace)
         isAdminError,
-    required TResult Function() verifyPhoneLoading,
-    required TResult Function() verifyPhoneCompleted,
-    required TResult Function(Failure failure) verifyPhoneError,
-    required TResult Function(
-            String verificationId, PhoneNumber phoneNumber, int? resendToken)
-        phoneCodeSent,
-    required TResult Function() phoneCodeLoginComplete,
-    required TResult Function(Failure failure) phoneCodeLoginError,
-    required TResult Function() codeAutoRetrievalTimeout,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -1750,15 +1198,6 @@ mixin _$AuthState {
     TResult Function(bool isAdmin)? isAdminSuccess,
     TResult Function(String code, String message, StackTrace stackTrace)?
         isAdminError,
-    TResult Function()? verifyPhoneLoading,
-    TResult Function()? verifyPhoneCompleted,
-    TResult Function(Failure failure)? verifyPhoneError,
-    TResult Function(
-            String verificationId, PhoneNumber phoneNumber, int? resendToken)?
-        phoneCodeSent,
-    TResult Function()? phoneCodeLoginComplete,
-    TResult Function(Failure failure)? phoneCodeLoginError,
-    TResult Function()? codeAutoRetrievalTimeout,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -1786,15 +1225,6 @@ mixin _$AuthState {
     TResult Function(bool isAdmin)? isAdminSuccess,
     TResult Function(String code, String message, StackTrace stackTrace)?
         isAdminError,
-    TResult Function()? verifyPhoneLoading,
-    TResult Function()? verifyPhoneCompleted,
-    TResult Function(Failure failure)? verifyPhoneError,
-    TResult Function(
-            String verificationId, PhoneNumber phoneNumber, int? resendToken)?
-        phoneCodeSent,
-    TResult Function()? phoneCodeLoginComplete,
-    TResult Function(Failure failure)? phoneCodeLoginError,
-    TResult Function()? codeAutoRetrievalTimeout,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -1821,16 +1251,6 @@ mixin _$AuthState {
     required TResult Function(ASIsAdminLoading value) isAdminLoading,
     required TResult Function(ASIsAdminSuccess value) isAdminSuccess,
     required TResult Function(ASIsAdminError value) isAdminError,
-    required TResult Function(ASVerifyPhoneLoading value) verifyPhoneLoading,
-    required TResult Function(ASVerifyPhoneCompleted value)
-        verifyPhoneCompleted,
-    required TResult Function(ASVerifyPhoneError value) verifyPhoneError,
-    required TResult Function(ASPhoneCodeSent value) phoneCodeSent,
-    required TResult Function(ASPhoneCodeLoginComplete value)
-        phoneCodeLoginComplete,
-    required TResult Function(ASPhoneCodeLoginError value) phoneCodeLoginError,
-    required TResult Function(ASCodeAutoRetrievalTimeout value)
-        codeAutoRetrievalTimeout,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -1853,14 +1273,6 @@ mixin _$AuthState {
     TResult Function(ASIsAdminLoading value)? isAdminLoading,
     TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
     TResult Function(ASIsAdminError value)? isAdminError,
-    TResult Function(ASVerifyPhoneLoading value)? verifyPhoneLoading,
-    TResult Function(ASVerifyPhoneCompleted value)? verifyPhoneCompleted,
-    TResult Function(ASVerifyPhoneError value)? verifyPhoneError,
-    TResult Function(ASPhoneCodeSent value)? phoneCodeSent,
-    TResult Function(ASPhoneCodeLoginComplete value)? phoneCodeLoginComplete,
-    TResult Function(ASPhoneCodeLoginError value)? phoneCodeLoginError,
-    TResult Function(ASCodeAutoRetrievalTimeout value)?
-        codeAutoRetrievalTimeout,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -1883,14 +1295,6 @@ mixin _$AuthState {
     TResult Function(ASIsAdminLoading value)? isAdminLoading,
     TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
     TResult Function(ASIsAdminError value)? isAdminError,
-    TResult Function(ASVerifyPhoneLoading value)? verifyPhoneLoading,
-    TResult Function(ASVerifyPhoneCompleted value)? verifyPhoneCompleted,
-    TResult Function(ASVerifyPhoneError value)? verifyPhoneError,
-    TResult Function(ASPhoneCodeSent value)? phoneCodeSent,
-    TResult Function(ASPhoneCodeLoginComplete value)? phoneCodeLoginComplete,
-    TResult Function(ASPhoneCodeLoginError value)? phoneCodeLoginError,
-    TResult Function(ASCodeAutoRetrievalTimeout value)?
-        codeAutoRetrievalTimeout,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -1979,15 +1383,6 @@ class _$ASInitial implements ASInitial {
     required TResult Function(
             String code, String message, StackTrace stackTrace)
         isAdminError,
-    required TResult Function() verifyPhoneLoading,
-    required TResult Function() verifyPhoneCompleted,
-    required TResult Function(Failure failure) verifyPhoneError,
-    required TResult Function(
-            String verificationId, PhoneNumber phoneNumber, int? resendToken)
-        phoneCodeSent,
-    required TResult Function() phoneCodeLoginComplete,
-    required TResult Function(Failure failure) phoneCodeLoginError,
-    required TResult Function() codeAutoRetrievalTimeout,
   }) {
     return initial();
   }
@@ -2018,15 +1413,6 @@ class _$ASInitial implements ASInitial {
     TResult Function(bool isAdmin)? isAdminSuccess,
     TResult Function(String code, String message, StackTrace stackTrace)?
         isAdminError,
-    TResult Function()? verifyPhoneLoading,
-    TResult Function()? verifyPhoneCompleted,
-    TResult Function(Failure failure)? verifyPhoneError,
-    TResult Function(
-            String verificationId, PhoneNumber phoneNumber, int? resendToken)?
-        phoneCodeSent,
-    TResult Function()? phoneCodeLoginComplete,
-    TResult Function(Failure failure)? phoneCodeLoginError,
-    TResult Function()? codeAutoRetrievalTimeout,
   }) {
     return initial?.call();
   }
@@ -2057,15 +1443,6 @@ class _$ASInitial implements ASInitial {
     TResult Function(bool isAdmin)? isAdminSuccess,
     TResult Function(String code, String message, StackTrace stackTrace)?
         isAdminError,
-    TResult Function()? verifyPhoneLoading,
-    TResult Function()? verifyPhoneCompleted,
-    TResult Function(Failure failure)? verifyPhoneError,
-    TResult Function(
-            String verificationId, PhoneNumber phoneNumber, int? resendToken)?
-        phoneCodeSent,
-    TResult Function()? phoneCodeLoginComplete,
-    TResult Function(Failure failure)? phoneCodeLoginError,
-    TResult Function()? codeAutoRetrievalTimeout,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -2098,16 +1475,6 @@ class _$ASInitial implements ASInitial {
     required TResult Function(ASIsAdminLoading value) isAdminLoading,
     required TResult Function(ASIsAdminSuccess value) isAdminSuccess,
     required TResult Function(ASIsAdminError value) isAdminError,
-    required TResult Function(ASVerifyPhoneLoading value) verifyPhoneLoading,
-    required TResult Function(ASVerifyPhoneCompleted value)
-        verifyPhoneCompleted,
-    required TResult Function(ASVerifyPhoneError value) verifyPhoneError,
-    required TResult Function(ASPhoneCodeSent value) phoneCodeSent,
-    required TResult Function(ASPhoneCodeLoginComplete value)
-        phoneCodeLoginComplete,
-    required TResult Function(ASPhoneCodeLoginError value) phoneCodeLoginError,
-    required TResult Function(ASCodeAutoRetrievalTimeout value)
-        codeAutoRetrievalTimeout,
   }) {
     return initial(this);
   }
@@ -2133,14 +1500,6 @@ class _$ASInitial implements ASInitial {
     TResult Function(ASIsAdminLoading value)? isAdminLoading,
     TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
     TResult Function(ASIsAdminError value)? isAdminError,
-    TResult Function(ASVerifyPhoneLoading value)? verifyPhoneLoading,
-    TResult Function(ASVerifyPhoneCompleted value)? verifyPhoneCompleted,
-    TResult Function(ASVerifyPhoneError value)? verifyPhoneError,
-    TResult Function(ASPhoneCodeSent value)? phoneCodeSent,
-    TResult Function(ASPhoneCodeLoginComplete value)? phoneCodeLoginComplete,
-    TResult Function(ASPhoneCodeLoginError value)? phoneCodeLoginError,
-    TResult Function(ASCodeAutoRetrievalTimeout value)?
-        codeAutoRetrievalTimeout,
   }) {
     return initial?.call(this);
   }
@@ -2166,14 +1525,6 @@ class _$ASInitial implements ASInitial {
     TResult Function(ASIsAdminLoading value)? isAdminLoading,
     TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
     TResult Function(ASIsAdminError value)? isAdminError,
-    TResult Function(ASVerifyPhoneLoading value)? verifyPhoneLoading,
-    TResult Function(ASVerifyPhoneCompleted value)? verifyPhoneCompleted,
-    TResult Function(ASVerifyPhoneError value)? verifyPhoneError,
-    TResult Function(ASPhoneCodeSent value)? phoneCodeSent,
-    TResult Function(ASPhoneCodeLoginComplete value)? phoneCodeLoginComplete,
-    TResult Function(ASPhoneCodeLoginError value)? phoneCodeLoginError,
-    TResult Function(ASCodeAutoRetrievalTimeout value)?
-        codeAutoRetrievalTimeout,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -2253,15 +1604,6 @@ class _$ASIdle implements ASIdle {
     required TResult Function(
             String code, String message, StackTrace stackTrace)
         isAdminError,
-    required TResult Function() verifyPhoneLoading,
-    required TResult Function() verifyPhoneCompleted,
-    required TResult Function(Failure failure) verifyPhoneError,
-    required TResult Function(
-            String verificationId, PhoneNumber phoneNumber, int? resendToken)
-        phoneCodeSent,
-    required TResult Function() phoneCodeLoginComplete,
-    required TResult Function(Failure failure) phoneCodeLoginError,
-    required TResult Function() codeAutoRetrievalTimeout,
   }) {
     return idle();
   }
@@ -2292,15 +1634,6 @@ class _$ASIdle implements ASIdle {
     TResult Function(bool isAdmin)? isAdminSuccess,
     TResult Function(String code, String message, StackTrace stackTrace)?
         isAdminError,
-    TResult Function()? verifyPhoneLoading,
-    TResult Function()? verifyPhoneCompleted,
-    TResult Function(Failure failure)? verifyPhoneError,
-    TResult Function(
-            String verificationId, PhoneNumber phoneNumber, int? resendToken)?
-        phoneCodeSent,
-    TResult Function()? phoneCodeLoginComplete,
-    TResult Function(Failure failure)? phoneCodeLoginError,
-    TResult Function()? codeAutoRetrievalTimeout,
   }) {
     return idle?.call();
   }
@@ -2331,15 +1664,6 @@ class _$ASIdle implements ASIdle {
     TResult Function(bool isAdmin)? isAdminSuccess,
     TResult Function(String code, String message, StackTrace stackTrace)?
         isAdminError,
-    TResult Function()? verifyPhoneLoading,
-    TResult Function()? verifyPhoneCompleted,
-    TResult Function(Failure failure)? verifyPhoneError,
-    TResult Function(
-            String verificationId, PhoneNumber phoneNumber, int? resendToken)?
-        phoneCodeSent,
-    TResult Function()? phoneCodeLoginComplete,
-    TResult Function(Failure failure)? phoneCodeLoginError,
-    TResult Function()? codeAutoRetrievalTimeout,
     required TResult orElse(),
   }) {
     if (idle != null) {
@@ -2372,16 +1696,6 @@ class _$ASIdle implements ASIdle {
     required TResult Function(ASIsAdminLoading value) isAdminLoading,
     required TResult Function(ASIsAdminSuccess value) isAdminSuccess,
     required TResult Function(ASIsAdminError value) isAdminError,
-    required TResult Function(ASVerifyPhoneLoading value) verifyPhoneLoading,
-    required TResult Function(ASVerifyPhoneCompleted value)
-        verifyPhoneCompleted,
-    required TResult Function(ASVerifyPhoneError value) verifyPhoneError,
-    required TResult Function(ASPhoneCodeSent value) phoneCodeSent,
-    required TResult Function(ASPhoneCodeLoginComplete value)
-        phoneCodeLoginComplete,
-    required TResult Function(ASPhoneCodeLoginError value) phoneCodeLoginError,
-    required TResult Function(ASCodeAutoRetrievalTimeout value)
-        codeAutoRetrievalTimeout,
   }) {
     return idle(this);
   }
@@ -2407,14 +1721,6 @@ class _$ASIdle implements ASIdle {
     TResult Function(ASIsAdminLoading value)? isAdminLoading,
     TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
     TResult Function(ASIsAdminError value)? isAdminError,
-    TResult Function(ASVerifyPhoneLoading value)? verifyPhoneLoading,
-    TResult Function(ASVerifyPhoneCompleted value)? verifyPhoneCompleted,
-    TResult Function(ASVerifyPhoneError value)? verifyPhoneError,
-    TResult Function(ASPhoneCodeSent value)? phoneCodeSent,
-    TResult Function(ASPhoneCodeLoginComplete value)? phoneCodeLoginComplete,
-    TResult Function(ASPhoneCodeLoginError value)? phoneCodeLoginError,
-    TResult Function(ASCodeAutoRetrievalTimeout value)?
-        codeAutoRetrievalTimeout,
   }) {
     return idle?.call(this);
   }
@@ -2440,14 +1746,6 @@ class _$ASIdle implements ASIdle {
     TResult Function(ASIsAdminLoading value)? isAdminLoading,
     TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
     TResult Function(ASIsAdminError value)? isAdminError,
-    TResult Function(ASVerifyPhoneLoading value)? verifyPhoneLoading,
-    TResult Function(ASVerifyPhoneCompleted value)? verifyPhoneCompleted,
-    TResult Function(ASVerifyPhoneError value)? verifyPhoneError,
-    TResult Function(ASPhoneCodeSent value)? phoneCodeSent,
-    TResult Function(ASPhoneCodeLoginComplete value)? phoneCodeLoginComplete,
-    TResult Function(ASPhoneCodeLoginError value)? phoneCodeLoginError,
-    TResult Function(ASCodeAutoRetrievalTimeout value)?
-        codeAutoRetrievalTimeout,
     required TResult orElse(),
   }) {
     if (idle != null) {
@@ -2529,15 +1827,6 @@ class _$ASLoading implements ASLoading {
     required TResult Function(
             String code, String message, StackTrace stackTrace)
         isAdminError,
-    required TResult Function() verifyPhoneLoading,
-    required TResult Function() verifyPhoneCompleted,
-    required TResult Function(Failure failure) verifyPhoneError,
-    required TResult Function(
-            String verificationId, PhoneNumber phoneNumber, int? resendToken)
-        phoneCodeSent,
-    required TResult Function() phoneCodeLoginComplete,
-    required TResult Function(Failure failure) phoneCodeLoginError,
-    required TResult Function() codeAutoRetrievalTimeout,
   }) {
     return loading();
   }
@@ -2568,15 +1857,6 @@ class _$ASLoading implements ASLoading {
     TResult Function(bool isAdmin)? isAdminSuccess,
     TResult Function(String code, String message, StackTrace stackTrace)?
         isAdminError,
-    TResult Function()? verifyPhoneLoading,
-    TResult Function()? verifyPhoneCompleted,
-    TResult Function(Failure failure)? verifyPhoneError,
-    TResult Function(
-            String verificationId, PhoneNumber phoneNumber, int? resendToken)?
-        phoneCodeSent,
-    TResult Function()? phoneCodeLoginComplete,
-    TResult Function(Failure failure)? phoneCodeLoginError,
-    TResult Function()? codeAutoRetrievalTimeout,
   }) {
     return loading?.call();
   }
@@ -2607,15 +1887,6 @@ class _$ASLoading implements ASLoading {
     TResult Function(bool isAdmin)? isAdminSuccess,
     TResult Function(String code, String message, StackTrace stackTrace)?
         isAdminError,
-    TResult Function()? verifyPhoneLoading,
-    TResult Function()? verifyPhoneCompleted,
-    TResult Function(Failure failure)? verifyPhoneError,
-    TResult Function(
-            String verificationId, PhoneNumber phoneNumber, int? resendToken)?
-        phoneCodeSent,
-    TResult Function()? phoneCodeLoginComplete,
-    TResult Function(Failure failure)? phoneCodeLoginError,
-    TResult Function()? codeAutoRetrievalTimeout,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -2648,16 +1919,6 @@ class _$ASLoading implements ASLoading {
     required TResult Function(ASIsAdminLoading value) isAdminLoading,
     required TResult Function(ASIsAdminSuccess value) isAdminSuccess,
     required TResult Function(ASIsAdminError value) isAdminError,
-    required TResult Function(ASVerifyPhoneLoading value) verifyPhoneLoading,
-    required TResult Function(ASVerifyPhoneCompleted value)
-        verifyPhoneCompleted,
-    required TResult Function(ASVerifyPhoneError value) verifyPhoneError,
-    required TResult Function(ASPhoneCodeSent value) phoneCodeSent,
-    required TResult Function(ASPhoneCodeLoginComplete value)
-        phoneCodeLoginComplete,
-    required TResult Function(ASPhoneCodeLoginError value) phoneCodeLoginError,
-    required TResult Function(ASCodeAutoRetrievalTimeout value)
-        codeAutoRetrievalTimeout,
   }) {
     return loading(this);
   }
@@ -2683,14 +1944,6 @@ class _$ASLoading implements ASLoading {
     TResult Function(ASIsAdminLoading value)? isAdminLoading,
     TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
     TResult Function(ASIsAdminError value)? isAdminError,
-    TResult Function(ASVerifyPhoneLoading value)? verifyPhoneLoading,
-    TResult Function(ASVerifyPhoneCompleted value)? verifyPhoneCompleted,
-    TResult Function(ASVerifyPhoneError value)? verifyPhoneError,
-    TResult Function(ASPhoneCodeSent value)? phoneCodeSent,
-    TResult Function(ASPhoneCodeLoginComplete value)? phoneCodeLoginComplete,
-    TResult Function(ASPhoneCodeLoginError value)? phoneCodeLoginError,
-    TResult Function(ASCodeAutoRetrievalTimeout value)?
-        codeAutoRetrievalTimeout,
   }) {
     return loading?.call(this);
   }
@@ -2716,14 +1969,6 @@ class _$ASLoading implements ASLoading {
     TResult Function(ASIsAdminLoading value)? isAdminLoading,
     TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
     TResult Function(ASIsAdminError value)? isAdminError,
-    TResult Function(ASVerifyPhoneLoading value)? verifyPhoneLoading,
-    TResult Function(ASVerifyPhoneCompleted value)? verifyPhoneCompleted,
-    TResult Function(ASVerifyPhoneError value)? verifyPhoneError,
-    TResult Function(ASPhoneCodeSent value)? phoneCodeSent,
-    TResult Function(ASPhoneCodeLoginComplete value)? phoneCodeLoginComplete,
-    TResult Function(ASPhoneCodeLoginError value)? phoneCodeLoginError,
-    TResult Function(ASCodeAutoRetrievalTimeout value)?
-        codeAutoRetrievalTimeout,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -2805,15 +2050,6 @@ class _$ASLoginLoading implements ASLoginLoading {
     required TResult Function(
             String code, String message, StackTrace stackTrace)
         isAdminError,
-    required TResult Function() verifyPhoneLoading,
-    required TResult Function() verifyPhoneCompleted,
-    required TResult Function(Failure failure) verifyPhoneError,
-    required TResult Function(
-            String verificationId, PhoneNumber phoneNumber, int? resendToken)
-        phoneCodeSent,
-    required TResult Function() phoneCodeLoginComplete,
-    required TResult Function(Failure failure) phoneCodeLoginError,
-    required TResult Function() codeAutoRetrievalTimeout,
   }) {
     return loginLoading();
   }
@@ -2844,15 +2080,6 @@ class _$ASLoginLoading implements ASLoginLoading {
     TResult Function(bool isAdmin)? isAdminSuccess,
     TResult Function(String code, String message, StackTrace stackTrace)?
         isAdminError,
-    TResult Function()? verifyPhoneLoading,
-    TResult Function()? verifyPhoneCompleted,
-    TResult Function(Failure failure)? verifyPhoneError,
-    TResult Function(
-            String verificationId, PhoneNumber phoneNumber, int? resendToken)?
-        phoneCodeSent,
-    TResult Function()? phoneCodeLoginComplete,
-    TResult Function(Failure failure)? phoneCodeLoginError,
-    TResult Function()? codeAutoRetrievalTimeout,
   }) {
     return loginLoading?.call();
   }
@@ -2883,15 +2110,6 @@ class _$ASLoginLoading implements ASLoginLoading {
     TResult Function(bool isAdmin)? isAdminSuccess,
     TResult Function(String code, String message, StackTrace stackTrace)?
         isAdminError,
-    TResult Function()? verifyPhoneLoading,
-    TResult Function()? verifyPhoneCompleted,
-    TResult Function(Failure failure)? verifyPhoneError,
-    TResult Function(
-            String verificationId, PhoneNumber phoneNumber, int? resendToken)?
-        phoneCodeSent,
-    TResult Function()? phoneCodeLoginComplete,
-    TResult Function(Failure failure)? phoneCodeLoginError,
-    TResult Function()? codeAutoRetrievalTimeout,
     required TResult orElse(),
   }) {
     if (loginLoading != null) {
@@ -2924,16 +2142,6 @@ class _$ASLoginLoading implements ASLoginLoading {
     required TResult Function(ASIsAdminLoading value) isAdminLoading,
     required TResult Function(ASIsAdminSuccess value) isAdminSuccess,
     required TResult Function(ASIsAdminError value) isAdminError,
-    required TResult Function(ASVerifyPhoneLoading value) verifyPhoneLoading,
-    required TResult Function(ASVerifyPhoneCompleted value)
-        verifyPhoneCompleted,
-    required TResult Function(ASVerifyPhoneError value) verifyPhoneError,
-    required TResult Function(ASPhoneCodeSent value) phoneCodeSent,
-    required TResult Function(ASPhoneCodeLoginComplete value)
-        phoneCodeLoginComplete,
-    required TResult Function(ASPhoneCodeLoginError value) phoneCodeLoginError,
-    required TResult Function(ASCodeAutoRetrievalTimeout value)
-        codeAutoRetrievalTimeout,
   }) {
     return loginLoading(this);
   }
@@ -2959,14 +2167,6 @@ class _$ASLoginLoading implements ASLoginLoading {
     TResult Function(ASIsAdminLoading value)? isAdminLoading,
     TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
     TResult Function(ASIsAdminError value)? isAdminError,
-    TResult Function(ASVerifyPhoneLoading value)? verifyPhoneLoading,
-    TResult Function(ASVerifyPhoneCompleted value)? verifyPhoneCompleted,
-    TResult Function(ASVerifyPhoneError value)? verifyPhoneError,
-    TResult Function(ASPhoneCodeSent value)? phoneCodeSent,
-    TResult Function(ASPhoneCodeLoginComplete value)? phoneCodeLoginComplete,
-    TResult Function(ASPhoneCodeLoginError value)? phoneCodeLoginError,
-    TResult Function(ASCodeAutoRetrievalTimeout value)?
-        codeAutoRetrievalTimeout,
   }) {
     return loginLoading?.call(this);
   }
@@ -2992,14 +2192,6 @@ class _$ASLoginLoading implements ASLoginLoading {
     TResult Function(ASIsAdminLoading value)? isAdminLoading,
     TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
     TResult Function(ASIsAdminError value)? isAdminError,
-    TResult Function(ASVerifyPhoneLoading value)? verifyPhoneLoading,
-    TResult Function(ASVerifyPhoneCompleted value)? verifyPhoneCompleted,
-    TResult Function(ASVerifyPhoneError value)? verifyPhoneError,
-    TResult Function(ASPhoneCodeSent value)? phoneCodeSent,
-    TResult Function(ASPhoneCodeLoginComplete value)? phoneCodeLoginComplete,
-    TResult Function(ASPhoneCodeLoginError value)? phoneCodeLoginError,
-    TResult Function(ASCodeAutoRetrievalTimeout value)?
-        codeAutoRetrievalTimeout,
     required TResult orElse(),
   }) {
     if (loginLoading != null) {
@@ -3114,15 +2306,6 @@ class _$ASLoginSuccess implements ASLoginSuccess {
     required TResult Function(
             String code, String message, StackTrace stackTrace)
         isAdminError,
-    required TResult Function() verifyPhoneLoading,
-    required TResult Function() verifyPhoneCompleted,
-    required TResult Function(Failure failure) verifyPhoneError,
-    required TResult Function(
-            String verificationId, PhoneNumber phoneNumber, int? resendToken)
-        phoneCodeSent,
-    required TResult Function() phoneCodeLoginComplete,
-    required TResult Function(Failure failure) phoneCodeLoginError,
-    required TResult Function() codeAutoRetrievalTimeout,
   }) {
     return loginSuccess(user);
   }
@@ -3153,15 +2336,6 @@ class _$ASLoginSuccess implements ASLoginSuccess {
     TResult Function(bool isAdmin)? isAdminSuccess,
     TResult Function(String code, String message, StackTrace stackTrace)?
         isAdminError,
-    TResult Function()? verifyPhoneLoading,
-    TResult Function()? verifyPhoneCompleted,
-    TResult Function(Failure failure)? verifyPhoneError,
-    TResult Function(
-            String verificationId, PhoneNumber phoneNumber, int? resendToken)?
-        phoneCodeSent,
-    TResult Function()? phoneCodeLoginComplete,
-    TResult Function(Failure failure)? phoneCodeLoginError,
-    TResult Function()? codeAutoRetrievalTimeout,
   }) {
     return loginSuccess?.call(user);
   }
@@ -3192,15 +2366,6 @@ class _$ASLoginSuccess implements ASLoginSuccess {
     TResult Function(bool isAdmin)? isAdminSuccess,
     TResult Function(String code, String message, StackTrace stackTrace)?
         isAdminError,
-    TResult Function()? verifyPhoneLoading,
-    TResult Function()? verifyPhoneCompleted,
-    TResult Function(Failure failure)? verifyPhoneError,
-    TResult Function(
-            String verificationId, PhoneNumber phoneNumber, int? resendToken)?
-        phoneCodeSent,
-    TResult Function()? phoneCodeLoginComplete,
-    TResult Function(Failure failure)? phoneCodeLoginError,
-    TResult Function()? codeAutoRetrievalTimeout,
     required TResult orElse(),
   }) {
     if (loginSuccess != null) {
@@ -3233,16 +2398,6 @@ class _$ASLoginSuccess implements ASLoginSuccess {
     required TResult Function(ASIsAdminLoading value) isAdminLoading,
     required TResult Function(ASIsAdminSuccess value) isAdminSuccess,
     required TResult Function(ASIsAdminError value) isAdminError,
-    required TResult Function(ASVerifyPhoneLoading value) verifyPhoneLoading,
-    required TResult Function(ASVerifyPhoneCompleted value)
-        verifyPhoneCompleted,
-    required TResult Function(ASVerifyPhoneError value) verifyPhoneError,
-    required TResult Function(ASPhoneCodeSent value) phoneCodeSent,
-    required TResult Function(ASPhoneCodeLoginComplete value)
-        phoneCodeLoginComplete,
-    required TResult Function(ASPhoneCodeLoginError value) phoneCodeLoginError,
-    required TResult Function(ASCodeAutoRetrievalTimeout value)
-        codeAutoRetrievalTimeout,
   }) {
     return loginSuccess(this);
   }
@@ -3268,14 +2423,6 @@ class _$ASLoginSuccess implements ASLoginSuccess {
     TResult Function(ASIsAdminLoading value)? isAdminLoading,
     TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
     TResult Function(ASIsAdminError value)? isAdminError,
-    TResult Function(ASVerifyPhoneLoading value)? verifyPhoneLoading,
-    TResult Function(ASVerifyPhoneCompleted value)? verifyPhoneCompleted,
-    TResult Function(ASVerifyPhoneError value)? verifyPhoneError,
-    TResult Function(ASPhoneCodeSent value)? phoneCodeSent,
-    TResult Function(ASPhoneCodeLoginComplete value)? phoneCodeLoginComplete,
-    TResult Function(ASPhoneCodeLoginError value)? phoneCodeLoginError,
-    TResult Function(ASCodeAutoRetrievalTimeout value)?
-        codeAutoRetrievalTimeout,
   }) {
     return loginSuccess?.call(this);
   }
@@ -3301,14 +2448,6 @@ class _$ASLoginSuccess implements ASLoginSuccess {
     TResult Function(ASIsAdminLoading value)? isAdminLoading,
     TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
     TResult Function(ASIsAdminError value)? isAdminError,
-    TResult Function(ASVerifyPhoneLoading value)? verifyPhoneLoading,
-    TResult Function(ASVerifyPhoneCompleted value)? verifyPhoneCompleted,
-    TResult Function(ASVerifyPhoneError value)? verifyPhoneError,
-    TResult Function(ASPhoneCodeSent value)? phoneCodeSent,
-    TResult Function(ASPhoneCodeLoginComplete value)? phoneCodeLoginComplete,
-    TResult Function(ASPhoneCodeLoginError value)? phoneCodeLoginError,
-    TResult Function(ASCodeAutoRetrievalTimeout value)?
-        codeAutoRetrievalTimeout,
     required TResult orElse(),
   }) {
     if (loginSuccess != null) {
@@ -3441,15 +2580,6 @@ class _$ASLoginError implements ASLoginError {
     required TResult Function(
             String code, String message, StackTrace stackTrace)
         isAdminError,
-    required TResult Function() verifyPhoneLoading,
-    required TResult Function() verifyPhoneCompleted,
-    required TResult Function(Failure failure) verifyPhoneError,
-    required TResult Function(
-            String verificationId, PhoneNumber phoneNumber, int? resendToken)
-        phoneCodeSent,
-    required TResult Function() phoneCodeLoginComplete,
-    required TResult Function(Failure failure) phoneCodeLoginError,
-    required TResult Function() codeAutoRetrievalTimeout,
   }) {
     return loginError(code, message, stackTrace);
   }
@@ -3480,15 +2610,6 @@ class _$ASLoginError implements ASLoginError {
     TResult Function(bool isAdmin)? isAdminSuccess,
     TResult Function(String code, String message, StackTrace stackTrace)?
         isAdminError,
-    TResult Function()? verifyPhoneLoading,
-    TResult Function()? verifyPhoneCompleted,
-    TResult Function(Failure failure)? verifyPhoneError,
-    TResult Function(
-            String verificationId, PhoneNumber phoneNumber, int? resendToken)?
-        phoneCodeSent,
-    TResult Function()? phoneCodeLoginComplete,
-    TResult Function(Failure failure)? phoneCodeLoginError,
-    TResult Function()? codeAutoRetrievalTimeout,
   }) {
     return loginError?.call(code, message, stackTrace);
   }
@@ -3519,15 +2640,6 @@ class _$ASLoginError implements ASLoginError {
     TResult Function(bool isAdmin)? isAdminSuccess,
     TResult Function(String code, String message, StackTrace stackTrace)?
         isAdminError,
-    TResult Function()? verifyPhoneLoading,
-    TResult Function()? verifyPhoneCompleted,
-    TResult Function(Failure failure)? verifyPhoneError,
-    TResult Function(
-            String verificationId, PhoneNumber phoneNumber, int? resendToken)?
-        phoneCodeSent,
-    TResult Function()? phoneCodeLoginComplete,
-    TResult Function(Failure failure)? phoneCodeLoginError,
-    TResult Function()? codeAutoRetrievalTimeout,
     required TResult orElse(),
   }) {
     if (loginError != null) {
@@ -3560,16 +2672,6 @@ class _$ASLoginError implements ASLoginError {
     required TResult Function(ASIsAdminLoading value) isAdminLoading,
     required TResult Function(ASIsAdminSuccess value) isAdminSuccess,
     required TResult Function(ASIsAdminError value) isAdminError,
-    required TResult Function(ASVerifyPhoneLoading value) verifyPhoneLoading,
-    required TResult Function(ASVerifyPhoneCompleted value)
-        verifyPhoneCompleted,
-    required TResult Function(ASVerifyPhoneError value) verifyPhoneError,
-    required TResult Function(ASPhoneCodeSent value) phoneCodeSent,
-    required TResult Function(ASPhoneCodeLoginComplete value)
-        phoneCodeLoginComplete,
-    required TResult Function(ASPhoneCodeLoginError value) phoneCodeLoginError,
-    required TResult Function(ASCodeAutoRetrievalTimeout value)
-        codeAutoRetrievalTimeout,
   }) {
     return loginError(this);
   }
@@ -3595,14 +2697,6 @@ class _$ASLoginError implements ASLoginError {
     TResult Function(ASIsAdminLoading value)? isAdminLoading,
     TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
     TResult Function(ASIsAdminError value)? isAdminError,
-    TResult Function(ASVerifyPhoneLoading value)? verifyPhoneLoading,
-    TResult Function(ASVerifyPhoneCompleted value)? verifyPhoneCompleted,
-    TResult Function(ASVerifyPhoneError value)? verifyPhoneError,
-    TResult Function(ASPhoneCodeSent value)? phoneCodeSent,
-    TResult Function(ASPhoneCodeLoginComplete value)? phoneCodeLoginComplete,
-    TResult Function(ASPhoneCodeLoginError value)? phoneCodeLoginError,
-    TResult Function(ASCodeAutoRetrievalTimeout value)?
-        codeAutoRetrievalTimeout,
   }) {
     return loginError?.call(this);
   }
@@ -3628,14 +2722,6 @@ class _$ASLoginError implements ASLoginError {
     TResult Function(ASIsAdminLoading value)? isAdminLoading,
     TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
     TResult Function(ASIsAdminError value)? isAdminError,
-    TResult Function(ASVerifyPhoneLoading value)? verifyPhoneLoading,
-    TResult Function(ASVerifyPhoneCompleted value)? verifyPhoneCompleted,
-    TResult Function(ASVerifyPhoneError value)? verifyPhoneError,
-    TResult Function(ASPhoneCodeSent value)? phoneCodeSent,
-    TResult Function(ASPhoneCodeLoginComplete value)? phoneCodeLoginComplete,
-    TResult Function(ASPhoneCodeLoginError value)? phoneCodeLoginError,
-    TResult Function(ASCodeAutoRetrievalTimeout value)?
-        codeAutoRetrievalTimeout,
     required TResult orElse(),
   }) {
     if (loginError != null) {
@@ -3728,15 +2814,6 @@ class _$ASRegisterLoading implements ASRegisterLoading {
     required TResult Function(
             String code, String message, StackTrace stackTrace)
         isAdminError,
-    required TResult Function() verifyPhoneLoading,
-    required TResult Function() verifyPhoneCompleted,
-    required TResult Function(Failure failure) verifyPhoneError,
-    required TResult Function(
-            String verificationId, PhoneNumber phoneNumber, int? resendToken)
-        phoneCodeSent,
-    required TResult Function() phoneCodeLoginComplete,
-    required TResult Function(Failure failure) phoneCodeLoginError,
-    required TResult Function() codeAutoRetrievalTimeout,
   }) {
     return registerLoading();
   }
@@ -3767,15 +2844,6 @@ class _$ASRegisterLoading implements ASRegisterLoading {
     TResult Function(bool isAdmin)? isAdminSuccess,
     TResult Function(String code, String message, StackTrace stackTrace)?
         isAdminError,
-    TResult Function()? verifyPhoneLoading,
-    TResult Function()? verifyPhoneCompleted,
-    TResult Function(Failure failure)? verifyPhoneError,
-    TResult Function(
-            String verificationId, PhoneNumber phoneNumber, int? resendToken)?
-        phoneCodeSent,
-    TResult Function()? phoneCodeLoginComplete,
-    TResult Function(Failure failure)? phoneCodeLoginError,
-    TResult Function()? codeAutoRetrievalTimeout,
   }) {
     return registerLoading?.call();
   }
@@ -3806,15 +2874,6 @@ class _$ASRegisterLoading implements ASRegisterLoading {
     TResult Function(bool isAdmin)? isAdminSuccess,
     TResult Function(String code, String message, StackTrace stackTrace)?
         isAdminError,
-    TResult Function()? verifyPhoneLoading,
-    TResult Function()? verifyPhoneCompleted,
-    TResult Function(Failure failure)? verifyPhoneError,
-    TResult Function(
-            String verificationId, PhoneNumber phoneNumber, int? resendToken)?
-        phoneCodeSent,
-    TResult Function()? phoneCodeLoginComplete,
-    TResult Function(Failure failure)? phoneCodeLoginError,
-    TResult Function()? codeAutoRetrievalTimeout,
     required TResult orElse(),
   }) {
     if (registerLoading != null) {
@@ -3847,16 +2906,6 @@ class _$ASRegisterLoading implements ASRegisterLoading {
     required TResult Function(ASIsAdminLoading value) isAdminLoading,
     required TResult Function(ASIsAdminSuccess value) isAdminSuccess,
     required TResult Function(ASIsAdminError value) isAdminError,
-    required TResult Function(ASVerifyPhoneLoading value) verifyPhoneLoading,
-    required TResult Function(ASVerifyPhoneCompleted value)
-        verifyPhoneCompleted,
-    required TResult Function(ASVerifyPhoneError value) verifyPhoneError,
-    required TResult Function(ASPhoneCodeSent value) phoneCodeSent,
-    required TResult Function(ASPhoneCodeLoginComplete value)
-        phoneCodeLoginComplete,
-    required TResult Function(ASPhoneCodeLoginError value) phoneCodeLoginError,
-    required TResult Function(ASCodeAutoRetrievalTimeout value)
-        codeAutoRetrievalTimeout,
   }) {
     return registerLoading(this);
   }
@@ -3882,14 +2931,6 @@ class _$ASRegisterLoading implements ASRegisterLoading {
     TResult Function(ASIsAdminLoading value)? isAdminLoading,
     TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
     TResult Function(ASIsAdminError value)? isAdminError,
-    TResult Function(ASVerifyPhoneLoading value)? verifyPhoneLoading,
-    TResult Function(ASVerifyPhoneCompleted value)? verifyPhoneCompleted,
-    TResult Function(ASVerifyPhoneError value)? verifyPhoneError,
-    TResult Function(ASPhoneCodeSent value)? phoneCodeSent,
-    TResult Function(ASPhoneCodeLoginComplete value)? phoneCodeLoginComplete,
-    TResult Function(ASPhoneCodeLoginError value)? phoneCodeLoginError,
-    TResult Function(ASCodeAutoRetrievalTimeout value)?
-        codeAutoRetrievalTimeout,
   }) {
     return registerLoading?.call(this);
   }
@@ -3915,14 +2956,6 @@ class _$ASRegisterLoading implements ASRegisterLoading {
     TResult Function(ASIsAdminLoading value)? isAdminLoading,
     TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
     TResult Function(ASIsAdminError value)? isAdminError,
-    TResult Function(ASVerifyPhoneLoading value)? verifyPhoneLoading,
-    TResult Function(ASVerifyPhoneCompleted value)? verifyPhoneCompleted,
-    TResult Function(ASVerifyPhoneError value)? verifyPhoneError,
-    TResult Function(ASPhoneCodeSent value)? phoneCodeSent,
-    TResult Function(ASPhoneCodeLoginComplete value)? phoneCodeLoginComplete,
-    TResult Function(ASPhoneCodeLoginError value)? phoneCodeLoginError,
-    TResult Function(ASCodeAutoRetrievalTimeout value)?
-        codeAutoRetrievalTimeout,
     required TResult orElse(),
   }) {
     if (registerLoading != null) {
@@ -4038,15 +3071,6 @@ class _$ASRegisterSuccess implements ASRegisterSuccess {
     required TResult Function(
             String code, String message, StackTrace stackTrace)
         isAdminError,
-    required TResult Function() verifyPhoneLoading,
-    required TResult Function() verifyPhoneCompleted,
-    required TResult Function(Failure failure) verifyPhoneError,
-    required TResult Function(
-            String verificationId, PhoneNumber phoneNumber, int? resendToken)
-        phoneCodeSent,
-    required TResult Function() phoneCodeLoginComplete,
-    required TResult Function(Failure failure) phoneCodeLoginError,
-    required TResult Function() codeAutoRetrievalTimeout,
   }) {
     return registerSuccess(user);
   }
@@ -4077,15 +3101,6 @@ class _$ASRegisterSuccess implements ASRegisterSuccess {
     TResult Function(bool isAdmin)? isAdminSuccess,
     TResult Function(String code, String message, StackTrace stackTrace)?
         isAdminError,
-    TResult Function()? verifyPhoneLoading,
-    TResult Function()? verifyPhoneCompleted,
-    TResult Function(Failure failure)? verifyPhoneError,
-    TResult Function(
-            String verificationId, PhoneNumber phoneNumber, int? resendToken)?
-        phoneCodeSent,
-    TResult Function()? phoneCodeLoginComplete,
-    TResult Function(Failure failure)? phoneCodeLoginError,
-    TResult Function()? codeAutoRetrievalTimeout,
   }) {
     return registerSuccess?.call(user);
   }
@@ -4116,15 +3131,6 @@ class _$ASRegisterSuccess implements ASRegisterSuccess {
     TResult Function(bool isAdmin)? isAdminSuccess,
     TResult Function(String code, String message, StackTrace stackTrace)?
         isAdminError,
-    TResult Function()? verifyPhoneLoading,
-    TResult Function()? verifyPhoneCompleted,
-    TResult Function(Failure failure)? verifyPhoneError,
-    TResult Function(
-            String verificationId, PhoneNumber phoneNumber, int? resendToken)?
-        phoneCodeSent,
-    TResult Function()? phoneCodeLoginComplete,
-    TResult Function(Failure failure)? phoneCodeLoginError,
-    TResult Function()? codeAutoRetrievalTimeout,
     required TResult orElse(),
   }) {
     if (registerSuccess != null) {
@@ -4157,16 +3163,6 @@ class _$ASRegisterSuccess implements ASRegisterSuccess {
     required TResult Function(ASIsAdminLoading value) isAdminLoading,
     required TResult Function(ASIsAdminSuccess value) isAdminSuccess,
     required TResult Function(ASIsAdminError value) isAdminError,
-    required TResult Function(ASVerifyPhoneLoading value) verifyPhoneLoading,
-    required TResult Function(ASVerifyPhoneCompleted value)
-        verifyPhoneCompleted,
-    required TResult Function(ASVerifyPhoneError value) verifyPhoneError,
-    required TResult Function(ASPhoneCodeSent value) phoneCodeSent,
-    required TResult Function(ASPhoneCodeLoginComplete value)
-        phoneCodeLoginComplete,
-    required TResult Function(ASPhoneCodeLoginError value) phoneCodeLoginError,
-    required TResult Function(ASCodeAutoRetrievalTimeout value)
-        codeAutoRetrievalTimeout,
   }) {
     return registerSuccess(this);
   }
@@ -4192,14 +3188,6 @@ class _$ASRegisterSuccess implements ASRegisterSuccess {
     TResult Function(ASIsAdminLoading value)? isAdminLoading,
     TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
     TResult Function(ASIsAdminError value)? isAdminError,
-    TResult Function(ASVerifyPhoneLoading value)? verifyPhoneLoading,
-    TResult Function(ASVerifyPhoneCompleted value)? verifyPhoneCompleted,
-    TResult Function(ASVerifyPhoneError value)? verifyPhoneError,
-    TResult Function(ASPhoneCodeSent value)? phoneCodeSent,
-    TResult Function(ASPhoneCodeLoginComplete value)? phoneCodeLoginComplete,
-    TResult Function(ASPhoneCodeLoginError value)? phoneCodeLoginError,
-    TResult Function(ASCodeAutoRetrievalTimeout value)?
-        codeAutoRetrievalTimeout,
   }) {
     return registerSuccess?.call(this);
   }
@@ -4225,14 +3213,6 @@ class _$ASRegisterSuccess implements ASRegisterSuccess {
     TResult Function(ASIsAdminLoading value)? isAdminLoading,
     TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
     TResult Function(ASIsAdminError value)? isAdminError,
-    TResult Function(ASVerifyPhoneLoading value)? verifyPhoneLoading,
-    TResult Function(ASVerifyPhoneCompleted value)? verifyPhoneCompleted,
-    TResult Function(ASVerifyPhoneError value)? verifyPhoneError,
-    TResult Function(ASPhoneCodeSent value)? phoneCodeSent,
-    TResult Function(ASPhoneCodeLoginComplete value)? phoneCodeLoginComplete,
-    TResult Function(ASPhoneCodeLoginError value)? phoneCodeLoginError,
-    TResult Function(ASCodeAutoRetrievalTimeout value)?
-        codeAutoRetrievalTimeout,
     required TResult orElse(),
   }) {
     if (registerSuccess != null) {
@@ -4366,15 +3346,6 @@ class _$ASRegisterError implements ASRegisterError {
     required TResult Function(
             String code, String message, StackTrace stackTrace)
         isAdminError,
-    required TResult Function() verifyPhoneLoading,
-    required TResult Function() verifyPhoneCompleted,
-    required TResult Function(Failure failure) verifyPhoneError,
-    required TResult Function(
-            String verificationId, PhoneNumber phoneNumber, int? resendToken)
-        phoneCodeSent,
-    required TResult Function() phoneCodeLoginComplete,
-    required TResult Function(Failure failure) phoneCodeLoginError,
-    required TResult Function() codeAutoRetrievalTimeout,
   }) {
     return registerError(code, message, stackTrace);
   }
@@ -4405,15 +3376,6 @@ class _$ASRegisterError implements ASRegisterError {
     TResult Function(bool isAdmin)? isAdminSuccess,
     TResult Function(String code, String message, StackTrace stackTrace)?
         isAdminError,
-    TResult Function()? verifyPhoneLoading,
-    TResult Function()? verifyPhoneCompleted,
-    TResult Function(Failure failure)? verifyPhoneError,
-    TResult Function(
-            String verificationId, PhoneNumber phoneNumber, int? resendToken)?
-        phoneCodeSent,
-    TResult Function()? phoneCodeLoginComplete,
-    TResult Function(Failure failure)? phoneCodeLoginError,
-    TResult Function()? codeAutoRetrievalTimeout,
   }) {
     return registerError?.call(code, message, stackTrace);
   }
@@ -4444,15 +3406,6 @@ class _$ASRegisterError implements ASRegisterError {
     TResult Function(bool isAdmin)? isAdminSuccess,
     TResult Function(String code, String message, StackTrace stackTrace)?
         isAdminError,
-    TResult Function()? verifyPhoneLoading,
-    TResult Function()? verifyPhoneCompleted,
-    TResult Function(Failure failure)? verifyPhoneError,
-    TResult Function(
-            String verificationId, PhoneNumber phoneNumber, int? resendToken)?
-        phoneCodeSent,
-    TResult Function()? phoneCodeLoginComplete,
-    TResult Function(Failure failure)? phoneCodeLoginError,
-    TResult Function()? codeAutoRetrievalTimeout,
     required TResult orElse(),
   }) {
     if (registerError != null) {
@@ -4485,16 +3438,6 @@ class _$ASRegisterError implements ASRegisterError {
     required TResult Function(ASIsAdminLoading value) isAdminLoading,
     required TResult Function(ASIsAdminSuccess value) isAdminSuccess,
     required TResult Function(ASIsAdminError value) isAdminError,
-    required TResult Function(ASVerifyPhoneLoading value) verifyPhoneLoading,
-    required TResult Function(ASVerifyPhoneCompleted value)
-        verifyPhoneCompleted,
-    required TResult Function(ASVerifyPhoneError value) verifyPhoneError,
-    required TResult Function(ASPhoneCodeSent value) phoneCodeSent,
-    required TResult Function(ASPhoneCodeLoginComplete value)
-        phoneCodeLoginComplete,
-    required TResult Function(ASPhoneCodeLoginError value) phoneCodeLoginError,
-    required TResult Function(ASCodeAutoRetrievalTimeout value)
-        codeAutoRetrievalTimeout,
   }) {
     return registerError(this);
   }
@@ -4520,14 +3463,6 @@ class _$ASRegisterError implements ASRegisterError {
     TResult Function(ASIsAdminLoading value)? isAdminLoading,
     TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
     TResult Function(ASIsAdminError value)? isAdminError,
-    TResult Function(ASVerifyPhoneLoading value)? verifyPhoneLoading,
-    TResult Function(ASVerifyPhoneCompleted value)? verifyPhoneCompleted,
-    TResult Function(ASVerifyPhoneError value)? verifyPhoneError,
-    TResult Function(ASPhoneCodeSent value)? phoneCodeSent,
-    TResult Function(ASPhoneCodeLoginComplete value)? phoneCodeLoginComplete,
-    TResult Function(ASPhoneCodeLoginError value)? phoneCodeLoginError,
-    TResult Function(ASCodeAutoRetrievalTimeout value)?
-        codeAutoRetrievalTimeout,
   }) {
     return registerError?.call(this);
   }
@@ -4553,14 +3488,6 @@ class _$ASRegisterError implements ASRegisterError {
     TResult Function(ASIsAdminLoading value)? isAdminLoading,
     TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
     TResult Function(ASIsAdminError value)? isAdminError,
-    TResult Function(ASVerifyPhoneLoading value)? verifyPhoneLoading,
-    TResult Function(ASVerifyPhoneCompleted value)? verifyPhoneCompleted,
-    TResult Function(ASVerifyPhoneError value)? verifyPhoneError,
-    TResult Function(ASPhoneCodeSent value)? phoneCodeSent,
-    TResult Function(ASPhoneCodeLoginComplete value)? phoneCodeLoginComplete,
-    TResult Function(ASPhoneCodeLoginError value)? phoneCodeLoginError,
-    TResult Function(ASCodeAutoRetrievalTimeout value)?
-        codeAutoRetrievalTimeout,
     required TResult orElse(),
   }) {
     if (registerError != null) {
@@ -4653,15 +3580,6 @@ class _$ASSignOutLoading implements ASSignOutLoading {
     required TResult Function(
             String code, String message, StackTrace stackTrace)
         isAdminError,
-    required TResult Function() verifyPhoneLoading,
-    required TResult Function() verifyPhoneCompleted,
-    required TResult Function(Failure failure) verifyPhoneError,
-    required TResult Function(
-            String verificationId, PhoneNumber phoneNumber, int? resendToken)
-        phoneCodeSent,
-    required TResult Function() phoneCodeLoginComplete,
-    required TResult Function(Failure failure) phoneCodeLoginError,
-    required TResult Function() codeAutoRetrievalTimeout,
   }) {
     return signOutLoading();
   }
@@ -4692,15 +3610,6 @@ class _$ASSignOutLoading implements ASSignOutLoading {
     TResult Function(bool isAdmin)? isAdminSuccess,
     TResult Function(String code, String message, StackTrace stackTrace)?
         isAdminError,
-    TResult Function()? verifyPhoneLoading,
-    TResult Function()? verifyPhoneCompleted,
-    TResult Function(Failure failure)? verifyPhoneError,
-    TResult Function(
-            String verificationId, PhoneNumber phoneNumber, int? resendToken)?
-        phoneCodeSent,
-    TResult Function()? phoneCodeLoginComplete,
-    TResult Function(Failure failure)? phoneCodeLoginError,
-    TResult Function()? codeAutoRetrievalTimeout,
   }) {
     return signOutLoading?.call();
   }
@@ -4731,15 +3640,6 @@ class _$ASSignOutLoading implements ASSignOutLoading {
     TResult Function(bool isAdmin)? isAdminSuccess,
     TResult Function(String code, String message, StackTrace stackTrace)?
         isAdminError,
-    TResult Function()? verifyPhoneLoading,
-    TResult Function()? verifyPhoneCompleted,
-    TResult Function(Failure failure)? verifyPhoneError,
-    TResult Function(
-            String verificationId, PhoneNumber phoneNumber, int? resendToken)?
-        phoneCodeSent,
-    TResult Function()? phoneCodeLoginComplete,
-    TResult Function(Failure failure)? phoneCodeLoginError,
-    TResult Function()? codeAutoRetrievalTimeout,
     required TResult orElse(),
   }) {
     if (signOutLoading != null) {
@@ -4772,16 +3672,6 @@ class _$ASSignOutLoading implements ASSignOutLoading {
     required TResult Function(ASIsAdminLoading value) isAdminLoading,
     required TResult Function(ASIsAdminSuccess value) isAdminSuccess,
     required TResult Function(ASIsAdminError value) isAdminError,
-    required TResult Function(ASVerifyPhoneLoading value) verifyPhoneLoading,
-    required TResult Function(ASVerifyPhoneCompleted value)
-        verifyPhoneCompleted,
-    required TResult Function(ASVerifyPhoneError value) verifyPhoneError,
-    required TResult Function(ASPhoneCodeSent value) phoneCodeSent,
-    required TResult Function(ASPhoneCodeLoginComplete value)
-        phoneCodeLoginComplete,
-    required TResult Function(ASPhoneCodeLoginError value) phoneCodeLoginError,
-    required TResult Function(ASCodeAutoRetrievalTimeout value)
-        codeAutoRetrievalTimeout,
   }) {
     return signOutLoading(this);
   }
@@ -4807,14 +3697,6 @@ class _$ASSignOutLoading implements ASSignOutLoading {
     TResult Function(ASIsAdminLoading value)? isAdminLoading,
     TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
     TResult Function(ASIsAdminError value)? isAdminError,
-    TResult Function(ASVerifyPhoneLoading value)? verifyPhoneLoading,
-    TResult Function(ASVerifyPhoneCompleted value)? verifyPhoneCompleted,
-    TResult Function(ASVerifyPhoneError value)? verifyPhoneError,
-    TResult Function(ASPhoneCodeSent value)? phoneCodeSent,
-    TResult Function(ASPhoneCodeLoginComplete value)? phoneCodeLoginComplete,
-    TResult Function(ASPhoneCodeLoginError value)? phoneCodeLoginError,
-    TResult Function(ASCodeAutoRetrievalTimeout value)?
-        codeAutoRetrievalTimeout,
   }) {
     return signOutLoading?.call(this);
   }
@@ -4840,14 +3722,6 @@ class _$ASSignOutLoading implements ASSignOutLoading {
     TResult Function(ASIsAdminLoading value)? isAdminLoading,
     TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
     TResult Function(ASIsAdminError value)? isAdminError,
-    TResult Function(ASVerifyPhoneLoading value)? verifyPhoneLoading,
-    TResult Function(ASVerifyPhoneCompleted value)? verifyPhoneCompleted,
-    TResult Function(ASVerifyPhoneError value)? verifyPhoneError,
-    TResult Function(ASPhoneCodeSent value)? phoneCodeSent,
-    TResult Function(ASPhoneCodeLoginComplete value)? phoneCodeLoginComplete,
-    TResult Function(ASPhoneCodeLoginError value)? phoneCodeLoginError,
-    TResult Function(ASCodeAutoRetrievalTimeout value)?
-        codeAutoRetrievalTimeout,
     required TResult orElse(),
   }) {
     if (signOutLoading != null) {
@@ -4930,15 +3804,6 @@ class _$ASSignOutSuccess implements ASSignOutSuccess {
     required TResult Function(
             String code, String message, StackTrace stackTrace)
         isAdminError,
-    required TResult Function() verifyPhoneLoading,
-    required TResult Function() verifyPhoneCompleted,
-    required TResult Function(Failure failure) verifyPhoneError,
-    required TResult Function(
-            String verificationId, PhoneNumber phoneNumber, int? resendToken)
-        phoneCodeSent,
-    required TResult Function() phoneCodeLoginComplete,
-    required TResult Function(Failure failure) phoneCodeLoginError,
-    required TResult Function() codeAutoRetrievalTimeout,
   }) {
     return signOutSuccess();
   }
@@ -4969,15 +3834,6 @@ class _$ASSignOutSuccess implements ASSignOutSuccess {
     TResult Function(bool isAdmin)? isAdminSuccess,
     TResult Function(String code, String message, StackTrace stackTrace)?
         isAdminError,
-    TResult Function()? verifyPhoneLoading,
-    TResult Function()? verifyPhoneCompleted,
-    TResult Function(Failure failure)? verifyPhoneError,
-    TResult Function(
-            String verificationId, PhoneNumber phoneNumber, int? resendToken)?
-        phoneCodeSent,
-    TResult Function()? phoneCodeLoginComplete,
-    TResult Function(Failure failure)? phoneCodeLoginError,
-    TResult Function()? codeAutoRetrievalTimeout,
   }) {
     return signOutSuccess?.call();
   }
@@ -5008,15 +3864,6 @@ class _$ASSignOutSuccess implements ASSignOutSuccess {
     TResult Function(bool isAdmin)? isAdminSuccess,
     TResult Function(String code, String message, StackTrace stackTrace)?
         isAdminError,
-    TResult Function()? verifyPhoneLoading,
-    TResult Function()? verifyPhoneCompleted,
-    TResult Function(Failure failure)? verifyPhoneError,
-    TResult Function(
-            String verificationId, PhoneNumber phoneNumber, int? resendToken)?
-        phoneCodeSent,
-    TResult Function()? phoneCodeLoginComplete,
-    TResult Function(Failure failure)? phoneCodeLoginError,
-    TResult Function()? codeAutoRetrievalTimeout,
     required TResult orElse(),
   }) {
     if (signOutSuccess != null) {
@@ -5049,16 +3896,6 @@ class _$ASSignOutSuccess implements ASSignOutSuccess {
     required TResult Function(ASIsAdminLoading value) isAdminLoading,
     required TResult Function(ASIsAdminSuccess value) isAdminSuccess,
     required TResult Function(ASIsAdminError value) isAdminError,
-    required TResult Function(ASVerifyPhoneLoading value) verifyPhoneLoading,
-    required TResult Function(ASVerifyPhoneCompleted value)
-        verifyPhoneCompleted,
-    required TResult Function(ASVerifyPhoneError value) verifyPhoneError,
-    required TResult Function(ASPhoneCodeSent value) phoneCodeSent,
-    required TResult Function(ASPhoneCodeLoginComplete value)
-        phoneCodeLoginComplete,
-    required TResult Function(ASPhoneCodeLoginError value) phoneCodeLoginError,
-    required TResult Function(ASCodeAutoRetrievalTimeout value)
-        codeAutoRetrievalTimeout,
   }) {
     return signOutSuccess(this);
   }
@@ -5084,14 +3921,6 @@ class _$ASSignOutSuccess implements ASSignOutSuccess {
     TResult Function(ASIsAdminLoading value)? isAdminLoading,
     TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
     TResult Function(ASIsAdminError value)? isAdminError,
-    TResult Function(ASVerifyPhoneLoading value)? verifyPhoneLoading,
-    TResult Function(ASVerifyPhoneCompleted value)? verifyPhoneCompleted,
-    TResult Function(ASVerifyPhoneError value)? verifyPhoneError,
-    TResult Function(ASPhoneCodeSent value)? phoneCodeSent,
-    TResult Function(ASPhoneCodeLoginComplete value)? phoneCodeLoginComplete,
-    TResult Function(ASPhoneCodeLoginError value)? phoneCodeLoginError,
-    TResult Function(ASCodeAutoRetrievalTimeout value)?
-        codeAutoRetrievalTimeout,
   }) {
     return signOutSuccess?.call(this);
   }
@@ -5117,14 +3946,6 @@ class _$ASSignOutSuccess implements ASSignOutSuccess {
     TResult Function(ASIsAdminLoading value)? isAdminLoading,
     TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
     TResult Function(ASIsAdminError value)? isAdminError,
-    TResult Function(ASVerifyPhoneLoading value)? verifyPhoneLoading,
-    TResult Function(ASVerifyPhoneCompleted value)? verifyPhoneCompleted,
-    TResult Function(ASVerifyPhoneError value)? verifyPhoneError,
-    TResult Function(ASPhoneCodeSent value)? phoneCodeSent,
-    TResult Function(ASPhoneCodeLoginComplete value)? phoneCodeLoginComplete,
-    TResult Function(ASPhoneCodeLoginError value)? phoneCodeLoginError,
-    TResult Function(ASCodeAutoRetrievalTimeout value)?
-        codeAutoRetrievalTimeout,
     required TResult orElse(),
   }) {
     if (signOutSuccess != null) {
@@ -5251,15 +4072,6 @@ class _$ASSignOutError implements ASSignOutError {
     required TResult Function(
             String code, String message, StackTrace stackTrace)
         isAdminError,
-    required TResult Function() verifyPhoneLoading,
-    required TResult Function() verifyPhoneCompleted,
-    required TResult Function(Failure failure) verifyPhoneError,
-    required TResult Function(
-            String verificationId, PhoneNumber phoneNumber, int? resendToken)
-        phoneCodeSent,
-    required TResult Function() phoneCodeLoginComplete,
-    required TResult Function(Failure failure) phoneCodeLoginError,
-    required TResult Function() codeAutoRetrievalTimeout,
   }) {
     return signOutError(code, message, stackTrace);
   }
@@ -5290,15 +4102,6 @@ class _$ASSignOutError implements ASSignOutError {
     TResult Function(bool isAdmin)? isAdminSuccess,
     TResult Function(String code, String message, StackTrace stackTrace)?
         isAdminError,
-    TResult Function()? verifyPhoneLoading,
-    TResult Function()? verifyPhoneCompleted,
-    TResult Function(Failure failure)? verifyPhoneError,
-    TResult Function(
-            String verificationId, PhoneNumber phoneNumber, int? resendToken)?
-        phoneCodeSent,
-    TResult Function()? phoneCodeLoginComplete,
-    TResult Function(Failure failure)? phoneCodeLoginError,
-    TResult Function()? codeAutoRetrievalTimeout,
   }) {
     return signOutError?.call(code, message, stackTrace);
   }
@@ -5329,15 +4132,6 @@ class _$ASSignOutError implements ASSignOutError {
     TResult Function(bool isAdmin)? isAdminSuccess,
     TResult Function(String code, String message, StackTrace stackTrace)?
         isAdminError,
-    TResult Function()? verifyPhoneLoading,
-    TResult Function()? verifyPhoneCompleted,
-    TResult Function(Failure failure)? verifyPhoneError,
-    TResult Function(
-            String verificationId, PhoneNumber phoneNumber, int? resendToken)?
-        phoneCodeSent,
-    TResult Function()? phoneCodeLoginComplete,
-    TResult Function(Failure failure)? phoneCodeLoginError,
-    TResult Function()? codeAutoRetrievalTimeout,
     required TResult orElse(),
   }) {
     if (signOutError != null) {
@@ -5370,16 +4164,6 @@ class _$ASSignOutError implements ASSignOutError {
     required TResult Function(ASIsAdminLoading value) isAdminLoading,
     required TResult Function(ASIsAdminSuccess value) isAdminSuccess,
     required TResult Function(ASIsAdminError value) isAdminError,
-    required TResult Function(ASVerifyPhoneLoading value) verifyPhoneLoading,
-    required TResult Function(ASVerifyPhoneCompleted value)
-        verifyPhoneCompleted,
-    required TResult Function(ASVerifyPhoneError value) verifyPhoneError,
-    required TResult Function(ASPhoneCodeSent value) phoneCodeSent,
-    required TResult Function(ASPhoneCodeLoginComplete value)
-        phoneCodeLoginComplete,
-    required TResult Function(ASPhoneCodeLoginError value) phoneCodeLoginError,
-    required TResult Function(ASCodeAutoRetrievalTimeout value)
-        codeAutoRetrievalTimeout,
   }) {
     return signOutError(this);
   }
@@ -5405,14 +4189,6 @@ class _$ASSignOutError implements ASSignOutError {
     TResult Function(ASIsAdminLoading value)? isAdminLoading,
     TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
     TResult Function(ASIsAdminError value)? isAdminError,
-    TResult Function(ASVerifyPhoneLoading value)? verifyPhoneLoading,
-    TResult Function(ASVerifyPhoneCompleted value)? verifyPhoneCompleted,
-    TResult Function(ASVerifyPhoneError value)? verifyPhoneError,
-    TResult Function(ASPhoneCodeSent value)? phoneCodeSent,
-    TResult Function(ASPhoneCodeLoginComplete value)? phoneCodeLoginComplete,
-    TResult Function(ASPhoneCodeLoginError value)? phoneCodeLoginError,
-    TResult Function(ASCodeAutoRetrievalTimeout value)?
-        codeAutoRetrievalTimeout,
   }) {
     return signOutError?.call(this);
   }
@@ -5438,14 +4214,6 @@ class _$ASSignOutError implements ASSignOutError {
     TResult Function(ASIsAdminLoading value)? isAdminLoading,
     TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
     TResult Function(ASIsAdminError value)? isAdminError,
-    TResult Function(ASVerifyPhoneLoading value)? verifyPhoneLoading,
-    TResult Function(ASVerifyPhoneCompleted value)? verifyPhoneCompleted,
-    TResult Function(ASVerifyPhoneError value)? verifyPhoneError,
-    TResult Function(ASPhoneCodeSent value)? phoneCodeSent,
-    TResult Function(ASPhoneCodeLoginComplete value)? phoneCodeLoginComplete,
-    TResult Function(ASPhoneCodeLoginError value)? phoneCodeLoginError,
-    TResult Function(ASCodeAutoRetrievalTimeout value)?
-        codeAutoRetrievalTimeout,
     required TResult orElse(),
   }) {
     if (signOutError != null) {
@@ -5541,15 +4309,6 @@ class _$ASRetrieveUserDataLoading implements ASRetrieveUserDataLoading {
     required TResult Function(
             String code, String message, StackTrace stackTrace)
         isAdminError,
-    required TResult Function() verifyPhoneLoading,
-    required TResult Function() verifyPhoneCompleted,
-    required TResult Function(Failure failure) verifyPhoneError,
-    required TResult Function(
-            String verificationId, PhoneNumber phoneNumber, int? resendToken)
-        phoneCodeSent,
-    required TResult Function() phoneCodeLoginComplete,
-    required TResult Function(Failure failure) phoneCodeLoginError,
-    required TResult Function() codeAutoRetrievalTimeout,
   }) {
     return retrieveUserDataLoading();
   }
@@ -5580,15 +4339,6 @@ class _$ASRetrieveUserDataLoading implements ASRetrieveUserDataLoading {
     TResult Function(bool isAdmin)? isAdminSuccess,
     TResult Function(String code, String message, StackTrace stackTrace)?
         isAdminError,
-    TResult Function()? verifyPhoneLoading,
-    TResult Function()? verifyPhoneCompleted,
-    TResult Function(Failure failure)? verifyPhoneError,
-    TResult Function(
-            String verificationId, PhoneNumber phoneNumber, int? resendToken)?
-        phoneCodeSent,
-    TResult Function()? phoneCodeLoginComplete,
-    TResult Function(Failure failure)? phoneCodeLoginError,
-    TResult Function()? codeAutoRetrievalTimeout,
   }) {
     return retrieveUserDataLoading?.call();
   }
@@ -5619,15 +4369,6 @@ class _$ASRetrieveUserDataLoading implements ASRetrieveUserDataLoading {
     TResult Function(bool isAdmin)? isAdminSuccess,
     TResult Function(String code, String message, StackTrace stackTrace)?
         isAdminError,
-    TResult Function()? verifyPhoneLoading,
-    TResult Function()? verifyPhoneCompleted,
-    TResult Function(Failure failure)? verifyPhoneError,
-    TResult Function(
-            String verificationId, PhoneNumber phoneNumber, int? resendToken)?
-        phoneCodeSent,
-    TResult Function()? phoneCodeLoginComplete,
-    TResult Function(Failure failure)? phoneCodeLoginError,
-    TResult Function()? codeAutoRetrievalTimeout,
     required TResult orElse(),
   }) {
     if (retrieveUserDataLoading != null) {
@@ -5660,16 +4401,6 @@ class _$ASRetrieveUserDataLoading implements ASRetrieveUserDataLoading {
     required TResult Function(ASIsAdminLoading value) isAdminLoading,
     required TResult Function(ASIsAdminSuccess value) isAdminSuccess,
     required TResult Function(ASIsAdminError value) isAdminError,
-    required TResult Function(ASVerifyPhoneLoading value) verifyPhoneLoading,
-    required TResult Function(ASVerifyPhoneCompleted value)
-        verifyPhoneCompleted,
-    required TResult Function(ASVerifyPhoneError value) verifyPhoneError,
-    required TResult Function(ASPhoneCodeSent value) phoneCodeSent,
-    required TResult Function(ASPhoneCodeLoginComplete value)
-        phoneCodeLoginComplete,
-    required TResult Function(ASPhoneCodeLoginError value) phoneCodeLoginError,
-    required TResult Function(ASCodeAutoRetrievalTimeout value)
-        codeAutoRetrievalTimeout,
   }) {
     return retrieveUserDataLoading(this);
   }
@@ -5695,14 +4426,6 @@ class _$ASRetrieveUserDataLoading implements ASRetrieveUserDataLoading {
     TResult Function(ASIsAdminLoading value)? isAdminLoading,
     TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
     TResult Function(ASIsAdminError value)? isAdminError,
-    TResult Function(ASVerifyPhoneLoading value)? verifyPhoneLoading,
-    TResult Function(ASVerifyPhoneCompleted value)? verifyPhoneCompleted,
-    TResult Function(ASVerifyPhoneError value)? verifyPhoneError,
-    TResult Function(ASPhoneCodeSent value)? phoneCodeSent,
-    TResult Function(ASPhoneCodeLoginComplete value)? phoneCodeLoginComplete,
-    TResult Function(ASPhoneCodeLoginError value)? phoneCodeLoginError,
-    TResult Function(ASCodeAutoRetrievalTimeout value)?
-        codeAutoRetrievalTimeout,
   }) {
     return retrieveUserDataLoading?.call(this);
   }
@@ -5728,14 +4451,6 @@ class _$ASRetrieveUserDataLoading implements ASRetrieveUserDataLoading {
     TResult Function(ASIsAdminLoading value)? isAdminLoading,
     TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
     TResult Function(ASIsAdminError value)? isAdminError,
-    TResult Function(ASVerifyPhoneLoading value)? verifyPhoneLoading,
-    TResult Function(ASVerifyPhoneCompleted value)? verifyPhoneCompleted,
-    TResult Function(ASVerifyPhoneError value)? verifyPhoneError,
-    TResult Function(ASPhoneCodeSent value)? phoneCodeSent,
-    TResult Function(ASPhoneCodeLoginComplete value)? phoneCodeLoginComplete,
-    TResult Function(ASPhoneCodeLoginError value)? phoneCodeLoginError,
-    TResult Function(ASCodeAutoRetrievalTimeout value)?
-        codeAutoRetrievalTimeout,
     required TResult orElse(),
   }) {
     if (retrieveUserDataLoading != null) {
@@ -5855,15 +4570,6 @@ class _$ASRetrieveUserDataSuccess implements ASRetrieveUserDataSuccess {
     required TResult Function(
             String code, String message, StackTrace stackTrace)
         isAdminError,
-    required TResult Function() verifyPhoneLoading,
-    required TResult Function() verifyPhoneCompleted,
-    required TResult Function(Failure failure) verifyPhoneError,
-    required TResult Function(
-            String verificationId, PhoneNumber phoneNumber, int? resendToken)
-        phoneCodeSent,
-    required TResult Function() phoneCodeLoginComplete,
-    required TResult Function(Failure failure) phoneCodeLoginError,
-    required TResult Function() codeAutoRetrievalTimeout,
   }) {
     return retrieveUserDataSuccess(farmhubUser);
   }
@@ -5894,15 +4600,6 @@ class _$ASRetrieveUserDataSuccess implements ASRetrieveUserDataSuccess {
     TResult Function(bool isAdmin)? isAdminSuccess,
     TResult Function(String code, String message, StackTrace stackTrace)?
         isAdminError,
-    TResult Function()? verifyPhoneLoading,
-    TResult Function()? verifyPhoneCompleted,
-    TResult Function(Failure failure)? verifyPhoneError,
-    TResult Function(
-            String verificationId, PhoneNumber phoneNumber, int? resendToken)?
-        phoneCodeSent,
-    TResult Function()? phoneCodeLoginComplete,
-    TResult Function(Failure failure)? phoneCodeLoginError,
-    TResult Function()? codeAutoRetrievalTimeout,
   }) {
     return retrieveUserDataSuccess?.call(farmhubUser);
   }
@@ -5933,15 +4630,6 @@ class _$ASRetrieveUserDataSuccess implements ASRetrieveUserDataSuccess {
     TResult Function(bool isAdmin)? isAdminSuccess,
     TResult Function(String code, String message, StackTrace stackTrace)?
         isAdminError,
-    TResult Function()? verifyPhoneLoading,
-    TResult Function()? verifyPhoneCompleted,
-    TResult Function(Failure failure)? verifyPhoneError,
-    TResult Function(
-            String verificationId, PhoneNumber phoneNumber, int? resendToken)?
-        phoneCodeSent,
-    TResult Function()? phoneCodeLoginComplete,
-    TResult Function(Failure failure)? phoneCodeLoginError,
-    TResult Function()? codeAutoRetrievalTimeout,
     required TResult orElse(),
   }) {
     if (retrieveUserDataSuccess != null) {
@@ -5974,16 +4662,6 @@ class _$ASRetrieveUserDataSuccess implements ASRetrieveUserDataSuccess {
     required TResult Function(ASIsAdminLoading value) isAdminLoading,
     required TResult Function(ASIsAdminSuccess value) isAdminSuccess,
     required TResult Function(ASIsAdminError value) isAdminError,
-    required TResult Function(ASVerifyPhoneLoading value) verifyPhoneLoading,
-    required TResult Function(ASVerifyPhoneCompleted value)
-        verifyPhoneCompleted,
-    required TResult Function(ASVerifyPhoneError value) verifyPhoneError,
-    required TResult Function(ASPhoneCodeSent value) phoneCodeSent,
-    required TResult Function(ASPhoneCodeLoginComplete value)
-        phoneCodeLoginComplete,
-    required TResult Function(ASPhoneCodeLoginError value) phoneCodeLoginError,
-    required TResult Function(ASCodeAutoRetrievalTimeout value)
-        codeAutoRetrievalTimeout,
   }) {
     return retrieveUserDataSuccess(this);
   }
@@ -6009,14 +4687,6 @@ class _$ASRetrieveUserDataSuccess implements ASRetrieveUserDataSuccess {
     TResult Function(ASIsAdminLoading value)? isAdminLoading,
     TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
     TResult Function(ASIsAdminError value)? isAdminError,
-    TResult Function(ASVerifyPhoneLoading value)? verifyPhoneLoading,
-    TResult Function(ASVerifyPhoneCompleted value)? verifyPhoneCompleted,
-    TResult Function(ASVerifyPhoneError value)? verifyPhoneError,
-    TResult Function(ASPhoneCodeSent value)? phoneCodeSent,
-    TResult Function(ASPhoneCodeLoginComplete value)? phoneCodeLoginComplete,
-    TResult Function(ASPhoneCodeLoginError value)? phoneCodeLoginError,
-    TResult Function(ASCodeAutoRetrievalTimeout value)?
-        codeAutoRetrievalTimeout,
   }) {
     return retrieveUserDataSuccess?.call(this);
   }
@@ -6042,14 +4712,6 @@ class _$ASRetrieveUserDataSuccess implements ASRetrieveUserDataSuccess {
     TResult Function(ASIsAdminLoading value)? isAdminLoading,
     TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
     TResult Function(ASIsAdminError value)? isAdminError,
-    TResult Function(ASVerifyPhoneLoading value)? verifyPhoneLoading,
-    TResult Function(ASVerifyPhoneCompleted value)? verifyPhoneCompleted,
-    TResult Function(ASVerifyPhoneError value)? verifyPhoneError,
-    TResult Function(ASPhoneCodeSent value)? phoneCodeSent,
-    TResult Function(ASPhoneCodeLoginComplete value)? phoneCodeLoginComplete,
-    TResult Function(ASPhoneCodeLoginError value)? phoneCodeLoginError,
-    TResult Function(ASCodeAutoRetrievalTimeout value)?
-        codeAutoRetrievalTimeout,
     required TResult orElse(),
   }) {
     if (retrieveUserDataSuccess != null) {
@@ -6185,15 +4847,6 @@ class _$ASRetrieveUserDataError implements ASRetrieveUserDataError {
     required TResult Function(
             String code, String message, StackTrace stackTrace)
         isAdminError,
-    required TResult Function() verifyPhoneLoading,
-    required TResult Function() verifyPhoneCompleted,
-    required TResult Function(Failure failure) verifyPhoneError,
-    required TResult Function(
-            String verificationId, PhoneNumber phoneNumber, int? resendToken)
-        phoneCodeSent,
-    required TResult Function() phoneCodeLoginComplete,
-    required TResult Function(Failure failure) phoneCodeLoginError,
-    required TResult Function() codeAutoRetrievalTimeout,
   }) {
     return retrieveUserDataError(code, message, stackTrace);
   }
@@ -6224,15 +4877,6 @@ class _$ASRetrieveUserDataError implements ASRetrieveUserDataError {
     TResult Function(bool isAdmin)? isAdminSuccess,
     TResult Function(String code, String message, StackTrace stackTrace)?
         isAdminError,
-    TResult Function()? verifyPhoneLoading,
-    TResult Function()? verifyPhoneCompleted,
-    TResult Function(Failure failure)? verifyPhoneError,
-    TResult Function(
-            String verificationId, PhoneNumber phoneNumber, int? resendToken)?
-        phoneCodeSent,
-    TResult Function()? phoneCodeLoginComplete,
-    TResult Function(Failure failure)? phoneCodeLoginError,
-    TResult Function()? codeAutoRetrievalTimeout,
   }) {
     return retrieveUserDataError?.call(code, message, stackTrace);
   }
@@ -6263,15 +4907,6 @@ class _$ASRetrieveUserDataError implements ASRetrieveUserDataError {
     TResult Function(bool isAdmin)? isAdminSuccess,
     TResult Function(String code, String message, StackTrace stackTrace)?
         isAdminError,
-    TResult Function()? verifyPhoneLoading,
-    TResult Function()? verifyPhoneCompleted,
-    TResult Function(Failure failure)? verifyPhoneError,
-    TResult Function(
-            String verificationId, PhoneNumber phoneNumber, int? resendToken)?
-        phoneCodeSent,
-    TResult Function()? phoneCodeLoginComplete,
-    TResult Function(Failure failure)? phoneCodeLoginError,
-    TResult Function()? codeAutoRetrievalTimeout,
     required TResult orElse(),
   }) {
     if (retrieveUserDataError != null) {
@@ -6304,16 +4939,6 @@ class _$ASRetrieveUserDataError implements ASRetrieveUserDataError {
     required TResult Function(ASIsAdminLoading value) isAdminLoading,
     required TResult Function(ASIsAdminSuccess value) isAdminSuccess,
     required TResult Function(ASIsAdminError value) isAdminError,
-    required TResult Function(ASVerifyPhoneLoading value) verifyPhoneLoading,
-    required TResult Function(ASVerifyPhoneCompleted value)
-        verifyPhoneCompleted,
-    required TResult Function(ASVerifyPhoneError value) verifyPhoneError,
-    required TResult Function(ASPhoneCodeSent value) phoneCodeSent,
-    required TResult Function(ASPhoneCodeLoginComplete value)
-        phoneCodeLoginComplete,
-    required TResult Function(ASPhoneCodeLoginError value) phoneCodeLoginError,
-    required TResult Function(ASCodeAutoRetrievalTimeout value)
-        codeAutoRetrievalTimeout,
   }) {
     return retrieveUserDataError(this);
   }
@@ -6339,14 +4964,6 @@ class _$ASRetrieveUserDataError implements ASRetrieveUserDataError {
     TResult Function(ASIsAdminLoading value)? isAdminLoading,
     TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
     TResult Function(ASIsAdminError value)? isAdminError,
-    TResult Function(ASVerifyPhoneLoading value)? verifyPhoneLoading,
-    TResult Function(ASVerifyPhoneCompleted value)? verifyPhoneCompleted,
-    TResult Function(ASVerifyPhoneError value)? verifyPhoneError,
-    TResult Function(ASPhoneCodeSent value)? phoneCodeSent,
-    TResult Function(ASPhoneCodeLoginComplete value)? phoneCodeLoginComplete,
-    TResult Function(ASPhoneCodeLoginError value)? phoneCodeLoginError,
-    TResult Function(ASCodeAutoRetrievalTimeout value)?
-        codeAutoRetrievalTimeout,
   }) {
     return retrieveUserDataError?.call(this);
   }
@@ -6372,14 +4989,6 @@ class _$ASRetrieveUserDataError implements ASRetrieveUserDataError {
     TResult Function(ASIsAdminLoading value)? isAdminLoading,
     TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
     TResult Function(ASIsAdminError value)? isAdminError,
-    TResult Function(ASVerifyPhoneLoading value)? verifyPhoneLoading,
-    TResult Function(ASVerifyPhoneCompleted value)? verifyPhoneCompleted,
-    TResult Function(ASVerifyPhoneError value)? verifyPhoneError,
-    TResult Function(ASPhoneCodeSent value)? phoneCodeSent,
-    TResult Function(ASPhoneCodeLoginComplete value)? phoneCodeLoginComplete,
-    TResult Function(ASPhoneCodeLoginError value)? phoneCodeLoginError,
-    TResult Function(ASCodeAutoRetrievalTimeout value)?
-        codeAutoRetrievalTimeout,
     required TResult orElse(),
   }) {
     if (retrieveUserDataError != null) {
@@ -6472,15 +5081,6 @@ class _$ASIsAdminLoading implements ASIsAdminLoading {
     required TResult Function(
             String code, String message, StackTrace stackTrace)
         isAdminError,
-    required TResult Function() verifyPhoneLoading,
-    required TResult Function() verifyPhoneCompleted,
-    required TResult Function(Failure failure) verifyPhoneError,
-    required TResult Function(
-            String verificationId, PhoneNumber phoneNumber, int? resendToken)
-        phoneCodeSent,
-    required TResult Function() phoneCodeLoginComplete,
-    required TResult Function(Failure failure) phoneCodeLoginError,
-    required TResult Function() codeAutoRetrievalTimeout,
   }) {
     return isAdminLoading();
   }
@@ -6511,15 +5111,6 @@ class _$ASIsAdminLoading implements ASIsAdminLoading {
     TResult Function(bool isAdmin)? isAdminSuccess,
     TResult Function(String code, String message, StackTrace stackTrace)?
         isAdminError,
-    TResult Function()? verifyPhoneLoading,
-    TResult Function()? verifyPhoneCompleted,
-    TResult Function(Failure failure)? verifyPhoneError,
-    TResult Function(
-            String verificationId, PhoneNumber phoneNumber, int? resendToken)?
-        phoneCodeSent,
-    TResult Function()? phoneCodeLoginComplete,
-    TResult Function(Failure failure)? phoneCodeLoginError,
-    TResult Function()? codeAutoRetrievalTimeout,
   }) {
     return isAdminLoading?.call();
   }
@@ -6550,15 +5141,6 @@ class _$ASIsAdminLoading implements ASIsAdminLoading {
     TResult Function(bool isAdmin)? isAdminSuccess,
     TResult Function(String code, String message, StackTrace stackTrace)?
         isAdminError,
-    TResult Function()? verifyPhoneLoading,
-    TResult Function()? verifyPhoneCompleted,
-    TResult Function(Failure failure)? verifyPhoneError,
-    TResult Function(
-            String verificationId, PhoneNumber phoneNumber, int? resendToken)?
-        phoneCodeSent,
-    TResult Function()? phoneCodeLoginComplete,
-    TResult Function(Failure failure)? phoneCodeLoginError,
-    TResult Function()? codeAutoRetrievalTimeout,
     required TResult orElse(),
   }) {
     if (isAdminLoading != null) {
@@ -6591,16 +5173,6 @@ class _$ASIsAdminLoading implements ASIsAdminLoading {
     required TResult Function(ASIsAdminLoading value) isAdminLoading,
     required TResult Function(ASIsAdminSuccess value) isAdminSuccess,
     required TResult Function(ASIsAdminError value) isAdminError,
-    required TResult Function(ASVerifyPhoneLoading value) verifyPhoneLoading,
-    required TResult Function(ASVerifyPhoneCompleted value)
-        verifyPhoneCompleted,
-    required TResult Function(ASVerifyPhoneError value) verifyPhoneError,
-    required TResult Function(ASPhoneCodeSent value) phoneCodeSent,
-    required TResult Function(ASPhoneCodeLoginComplete value)
-        phoneCodeLoginComplete,
-    required TResult Function(ASPhoneCodeLoginError value) phoneCodeLoginError,
-    required TResult Function(ASCodeAutoRetrievalTimeout value)
-        codeAutoRetrievalTimeout,
   }) {
     return isAdminLoading(this);
   }
@@ -6626,14 +5198,6 @@ class _$ASIsAdminLoading implements ASIsAdminLoading {
     TResult Function(ASIsAdminLoading value)? isAdminLoading,
     TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
     TResult Function(ASIsAdminError value)? isAdminError,
-    TResult Function(ASVerifyPhoneLoading value)? verifyPhoneLoading,
-    TResult Function(ASVerifyPhoneCompleted value)? verifyPhoneCompleted,
-    TResult Function(ASVerifyPhoneError value)? verifyPhoneError,
-    TResult Function(ASPhoneCodeSent value)? phoneCodeSent,
-    TResult Function(ASPhoneCodeLoginComplete value)? phoneCodeLoginComplete,
-    TResult Function(ASPhoneCodeLoginError value)? phoneCodeLoginError,
-    TResult Function(ASCodeAutoRetrievalTimeout value)?
-        codeAutoRetrievalTimeout,
   }) {
     return isAdminLoading?.call(this);
   }
@@ -6659,14 +5223,6 @@ class _$ASIsAdminLoading implements ASIsAdminLoading {
     TResult Function(ASIsAdminLoading value)? isAdminLoading,
     TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
     TResult Function(ASIsAdminError value)? isAdminError,
-    TResult Function(ASVerifyPhoneLoading value)? verifyPhoneLoading,
-    TResult Function(ASVerifyPhoneCompleted value)? verifyPhoneCompleted,
-    TResult Function(ASVerifyPhoneError value)? verifyPhoneError,
-    TResult Function(ASPhoneCodeSent value)? phoneCodeSent,
-    TResult Function(ASPhoneCodeLoginComplete value)? phoneCodeLoginComplete,
-    TResult Function(ASPhoneCodeLoginError value)? phoneCodeLoginError,
-    TResult Function(ASCodeAutoRetrievalTimeout value)?
-        codeAutoRetrievalTimeout,
     required TResult orElse(),
   }) {
     if (isAdminLoading != null) {
@@ -6773,15 +5329,6 @@ class _$ASIsAdminSuccess implements ASIsAdminSuccess {
     required TResult Function(
             String code, String message, StackTrace stackTrace)
         isAdminError,
-    required TResult Function() verifyPhoneLoading,
-    required TResult Function() verifyPhoneCompleted,
-    required TResult Function(Failure failure) verifyPhoneError,
-    required TResult Function(
-            String verificationId, PhoneNumber phoneNumber, int? resendToken)
-        phoneCodeSent,
-    required TResult Function() phoneCodeLoginComplete,
-    required TResult Function(Failure failure) phoneCodeLoginError,
-    required TResult Function() codeAutoRetrievalTimeout,
   }) {
     return isAdminSuccess(isAdmin);
   }
@@ -6812,15 +5359,6 @@ class _$ASIsAdminSuccess implements ASIsAdminSuccess {
     TResult Function(bool isAdmin)? isAdminSuccess,
     TResult Function(String code, String message, StackTrace stackTrace)?
         isAdminError,
-    TResult Function()? verifyPhoneLoading,
-    TResult Function()? verifyPhoneCompleted,
-    TResult Function(Failure failure)? verifyPhoneError,
-    TResult Function(
-            String verificationId, PhoneNumber phoneNumber, int? resendToken)?
-        phoneCodeSent,
-    TResult Function()? phoneCodeLoginComplete,
-    TResult Function(Failure failure)? phoneCodeLoginError,
-    TResult Function()? codeAutoRetrievalTimeout,
   }) {
     return isAdminSuccess?.call(isAdmin);
   }
@@ -6851,15 +5389,6 @@ class _$ASIsAdminSuccess implements ASIsAdminSuccess {
     TResult Function(bool isAdmin)? isAdminSuccess,
     TResult Function(String code, String message, StackTrace stackTrace)?
         isAdminError,
-    TResult Function()? verifyPhoneLoading,
-    TResult Function()? verifyPhoneCompleted,
-    TResult Function(Failure failure)? verifyPhoneError,
-    TResult Function(
-            String verificationId, PhoneNumber phoneNumber, int? resendToken)?
-        phoneCodeSent,
-    TResult Function()? phoneCodeLoginComplete,
-    TResult Function(Failure failure)? phoneCodeLoginError,
-    TResult Function()? codeAutoRetrievalTimeout,
     required TResult orElse(),
   }) {
     if (isAdminSuccess != null) {
@@ -6892,16 +5421,6 @@ class _$ASIsAdminSuccess implements ASIsAdminSuccess {
     required TResult Function(ASIsAdminLoading value) isAdminLoading,
     required TResult Function(ASIsAdminSuccess value) isAdminSuccess,
     required TResult Function(ASIsAdminError value) isAdminError,
-    required TResult Function(ASVerifyPhoneLoading value) verifyPhoneLoading,
-    required TResult Function(ASVerifyPhoneCompleted value)
-        verifyPhoneCompleted,
-    required TResult Function(ASVerifyPhoneError value) verifyPhoneError,
-    required TResult Function(ASPhoneCodeSent value) phoneCodeSent,
-    required TResult Function(ASPhoneCodeLoginComplete value)
-        phoneCodeLoginComplete,
-    required TResult Function(ASPhoneCodeLoginError value) phoneCodeLoginError,
-    required TResult Function(ASCodeAutoRetrievalTimeout value)
-        codeAutoRetrievalTimeout,
   }) {
     return isAdminSuccess(this);
   }
@@ -6927,14 +5446,6 @@ class _$ASIsAdminSuccess implements ASIsAdminSuccess {
     TResult Function(ASIsAdminLoading value)? isAdminLoading,
     TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
     TResult Function(ASIsAdminError value)? isAdminError,
-    TResult Function(ASVerifyPhoneLoading value)? verifyPhoneLoading,
-    TResult Function(ASVerifyPhoneCompleted value)? verifyPhoneCompleted,
-    TResult Function(ASVerifyPhoneError value)? verifyPhoneError,
-    TResult Function(ASPhoneCodeSent value)? phoneCodeSent,
-    TResult Function(ASPhoneCodeLoginComplete value)? phoneCodeLoginComplete,
-    TResult Function(ASPhoneCodeLoginError value)? phoneCodeLoginError,
-    TResult Function(ASCodeAutoRetrievalTimeout value)?
-        codeAutoRetrievalTimeout,
   }) {
     return isAdminSuccess?.call(this);
   }
@@ -6960,14 +5471,6 @@ class _$ASIsAdminSuccess implements ASIsAdminSuccess {
     TResult Function(ASIsAdminLoading value)? isAdminLoading,
     TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
     TResult Function(ASIsAdminError value)? isAdminError,
-    TResult Function(ASVerifyPhoneLoading value)? verifyPhoneLoading,
-    TResult Function(ASVerifyPhoneCompleted value)? verifyPhoneCompleted,
-    TResult Function(ASVerifyPhoneError value)? verifyPhoneError,
-    TResult Function(ASPhoneCodeSent value)? phoneCodeSent,
-    TResult Function(ASPhoneCodeLoginComplete value)? phoneCodeLoginComplete,
-    TResult Function(ASPhoneCodeLoginError value)? phoneCodeLoginError,
-    TResult Function(ASCodeAutoRetrievalTimeout value)?
-        codeAutoRetrievalTimeout,
     required TResult orElse(),
   }) {
     if (isAdminSuccess != null) {
@@ -7100,15 +5603,6 @@ class _$ASIsAdminError implements ASIsAdminError {
     required TResult Function(
             String code, String message, StackTrace stackTrace)
         isAdminError,
-    required TResult Function() verifyPhoneLoading,
-    required TResult Function() verifyPhoneCompleted,
-    required TResult Function(Failure failure) verifyPhoneError,
-    required TResult Function(
-            String verificationId, PhoneNumber phoneNumber, int? resendToken)
-        phoneCodeSent,
-    required TResult Function() phoneCodeLoginComplete,
-    required TResult Function(Failure failure) phoneCodeLoginError,
-    required TResult Function() codeAutoRetrievalTimeout,
   }) {
     return isAdminError(code, message, stackTrace);
   }
@@ -7139,15 +5633,6 @@ class _$ASIsAdminError implements ASIsAdminError {
     TResult Function(bool isAdmin)? isAdminSuccess,
     TResult Function(String code, String message, StackTrace stackTrace)?
         isAdminError,
-    TResult Function()? verifyPhoneLoading,
-    TResult Function()? verifyPhoneCompleted,
-    TResult Function(Failure failure)? verifyPhoneError,
-    TResult Function(
-            String verificationId, PhoneNumber phoneNumber, int? resendToken)?
-        phoneCodeSent,
-    TResult Function()? phoneCodeLoginComplete,
-    TResult Function(Failure failure)? phoneCodeLoginError,
-    TResult Function()? codeAutoRetrievalTimeout,
   }) {
     return isAdminError?.call(code, message, stackTrace);
   }
@@ -7178,15 +5663,6 @@ class _$ASIsAdminError implements ASIsAdminError {
     TResult Function(bool isAdmin)? isAdminSuccess,
     TResult Function(String code, String message, StackTrace stackTrace)?
         isAdminError,
-    TResult Function()? verifyPhoneLoading,
-    TResult Function()? verifyPhoneCompleted,
-    TResult Function(Failure failure)? verifyPhoneError,
-    TResult Function(
-            String verificationId, PhoneNumber phoneNumber, int? resendToken)?
-        phoneCodeSent,
-    TResult Function()? phoneCodeLoginComplete,
-    TResult Function(Failure failure)? phoneCodeLoginError,
-    TResult Function()? codeAutoRetrievalTimeout,
     required TResult orElse(),
   }) {
     if (isAdminError != null) {
@@ -7219,16 +5695,6 @@ class _$ASIsAdminError implements ASIsAdminError {
     required TResult Function(ASIsAdminLoading value) isAdminLoading,
     required TResult Function(ASIsAdminSuccess value) isAdminSuccess,
     required TResult Function(ASIsAdminError value) isAdminError,
-    required TResult Function(ASVerifyPhoneLoading value) verifyPhoneLoading,
-    required TResult Function(ASVerifyPhoneCompleted value)
-        verifyPhoneCompleted,
-    required TResult Function(ASVerifyPhoneError value) verifyPhoneError,
-    required TResult Function(ASPhoneCodeSent value) phoneCodeSent,
-    required TResult Function(ASPhoneCodeLoginComplete value)
-        phoneCodeLoginComplete,
-    required TResult Function(ASPhoneCodeLoginError value) phoneCodeLoginError,
-    required TResult Function(ASCodeAutoRetrievalTimeout value)
-        codeAutoRetrievalTimeout,
   }) {
     return isAdminError(this);
   }
@@ -7254,14 +5720,6 @@ class _$ASIsAdminError implements ASIsAdminError {
     TResult Function(ASIsAdminLoading value)? isAdminLoading,
     TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
     TResult Function(ASIsAdminError value)? isAdminError,
-    TResult Function(ASVerifyPhoneLoading value)? verifyPhoneLoading,
-    TResult Function(ASVerifyPhoneCompleted value)? verifyPhoneCompleted,
-    TResult Function(ASVerifyPhoneError value)? verifyPhoneError,
-    TResult Function(ASPhoneCodeSent value)? phoneCodeSent,
-    TResult Function(ASPhoneCodeLoginComplete value)? phoneCodeLoginComplete,
-    TResult Function(ASPhoneCodeLoginError value)? phoneCodeLoginError,
-    TResult Function(ASCodeAutoRetrievalTimeout value)?
-        codeAutoRetrievalTimeout,
   }) {
     return isAdminError?.call(this);
   }
@@ -7287,14 +5745,6 @@ class _$ASIsAdminError implements ASIsAdminError {
     TResult Function(ASIsAdminLoading value)? isAdminLoading,
     TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
     TResult Function(ASIsAdminError value)? isAdminError,
-    TResult Function(ASVerifyPhoneLoading value)? verifyPhoneLoading,
-    TResult Function(ASVerifyPhoneCompleted value)? verifyPhoneCompleted,
-    TResult Function(ASVerifyPhoneError value)? verifyPhoneError,
-    TResult Function(ASPhoneCodeSent value)? phoneCodeSent,
-    TResult Function(ASPhoneCodeLoginComplete value)? phoneCodeLoginComplete,
-    TResult Function(ASPhoneCodeLoginError value)? phoneCodeLoginError,
-    TResult Function(ASCodeAutoRetrievalTimeout value)?
-        codeAutoRetrievalTimeout,
     required TResult orElse(),
   }) {
     if (isAdminError != null) {
@@ -7316,2071 +5766,4 @@ abstract class ASIsAdminError implements AuthState {
   @JsonKey(ignore: true)
   _$$ASIsAdminErrorCopyWith<_$ASIsAdminError> get copyWith =>
       throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$ASVerifyPhoneLoadingCopyWith<$Res> {
-  factory _$$ASVerifyPhoneLoadingCopyWith(_$ASVerifyPhoneLoading value,
-          $Res Function(_$ASVerifyPhoneLoading) then) =
-      __$$ASVerifyPhoneLoadingCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$ASVerifyPhoneLoadingCopyWithImpl<$Res>
-    extends _$AuthStateCopyWithImpl<$Res>
-    implements _$$ASVerifyPhoneLoadingCopyWith<$Res> {
-  __$$ASVerifyPhoneLoadingCopyWithImpl(_$ASVerifyPhoneLoading _value,
-      $Res Function(_$ASVerifyPhoneLoading) _then)
-      : super(_value, (v) => _then(v as _$ASVerifyPhoneLoading));
-
-  @override
-  _$ASVerifyPhoneLoading get _value => super._value as _$ASVerifyPhoneLoading;
-}
-
-/// @nodoc
-
-class _$ASVerifyPhoneLoading implements ASVerifyPhoneLoading {
-  const _$ASVerifyPhoneLoading();
-
-  @override
-  String toString() {
-    return 'AuthState.verifyPhoneLoading()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$ASVerifyPhoneLoading);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() idle,
-    required TResult Function() loading,
-    required TResult Function() loginLoading,
-    required TResult Function(FarmhubUser user) loginSuccess,
-    required TResult Function(
-            String code, String message, StackTrace stackTrace)
-        loginError,
-    required TResult Function() registerLoading,
-    required TResult Function(FarmhubUser user) registerSuccess,
-    required TResult Function(
-            String code, String message, StackTrace stackTrace)
-        registerError,
-    required TResult Function() signOutLoading,
-    required TResult Function() signOutSuccess,
-    required TResult Function(
-            String code, String message, StackTrace stackTrace)
-        signOutError,
-    required TResult Function() retrieveUserDataLoading,
-    required TResult Function(FarmhubUser farmhubUser) retrieveUserDataSuccess,
-    required TResult Function(
-            String code, String message, StackTrace stackTrace)
-        retrieveUserDataError,
-    required TResult Function() isAdminLoading,
-    required TResult Function(bool isAdmin) isAdminSuccess,
-    required TResult Function(
-            String code, String message, StackTrace stackTrace)
-        isAdminError,
-    required TResult Function() verifyPhoneLoading,
-    required TResult Function() verifyPhoneCompleted,
-    required TResult Function(Failure failure) verifyPhoneError,
-    required TResult Function(
-            String verificationId, PhoneNumber phoneNumber, int? resendToken)
-        phoneCodeSent,
-    required TResult Function() phoneCodeLoginComplete,
-    required TResult Function(Failure failure) phoneCodeLoginError,
-    required TResult Function() codeAutoRetrievalTimeout,
-  }) {
-    return verifyPhoneLoading();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? idle,
-    TResult Function()? loading,
-    TResult Function()? loginLoading,
-    TResult Function(FarmhubUser user)? loginSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        loginError,
-    TResult Function()? registerLoading,
-    TResult Function(FarmhubUser user)? registerSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        registerError,
-    TResult Function()? signOutLoading,
-    TResult Function()? signOutSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        signOutError,
-    TResult Function()? retrieveUserDataLoading,
-    TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        retrieveUserDataError,
-    TResult Function()? isAdminLoading,
-    TResult Function(bool isAdmin)? isAdminSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        isAdminError,
-    TResult Function()? verifyPhoneLoading,
-    TResult Function()? verifyPhoneCompleted,
-    TResult Function(Failure failure)? verifyPhoneError,
-    TResult Function(
-            String verificationId, PhoneNumber phoneNumber, int? resendToken)?
-        phoneCodeSent,
-    TResult Function()? phoneCodeLoginComplete,
-    TResult Function(Failure failure)? phoneCodeLoginError,
-    TResult Function()? codeAutoRetrievalTimeout,
-  }) {
-    return verifyPhoneLoading?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? idle,
-    TResult Function()? loading,
-    TResult Function()? loginLoading,
-    TResult Function(FarmhubUser user)? loginSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        loginError,
-    TResult Function()? registerLoading,
-    TResult Function(FarmhubUser user)? registerSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        registerError,
-    TResult Function()? signOutLoading,
-    TResult Function()? signOutSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        signOutError,
-    TResult Function()? retrieveUserDataLoading,
-    TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        retrieveUserDataError,
-    TResult Function()? isAdminLoading,
-    TResult Function(bool isAdmin)? isAdminSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        isAdminError,
-    TResult Function()? verifyPhoneLoading,
-    TResult Function()? verifyPhoneCompleted,
-    TResult Function(Failure failure)? verifyPhoneError,
-    TResult Function(
-            String verificationId, PhoneNumber phoneNumber, int? resendToken)?
-        phoneCodeSent,
-    TResult Function()? phoneCodeLoginComplete,
-    TResult Function(Failure failure)? phoneCodeLoginError,
-    TResult Function()? codeAutoRetrievalTimeout,
-    required TResult orElse(),
-  }) {
-    if (verifyPhoneLoading != null) {
-      return verifyPhoneLoading();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(ASInitial value) initial,
-    required TResult Function(ASIdle value) idle,
-    required TResult Function(ASLoading value) loading,
-    required TResult Function(ASLoginLoading value) loginLoading,
-    required TResult Function(ASLoginSuccess value) loginSuccess,
-    required TResult Function(ASLoginError value) loginError,
-    required TResult Function(ASRegisterLoading value) registerLoading,
-    required TResult Function(ASRegisterSuccess value) registerSuccess,
-    required TResult Function(ASRegisterError value) registerError,
-    required TResult Function(ASSignOutLoading value) signOutLoading,
-    required TResult Function(ASSignOutSuccess value) signOutSuccess,
-    required TResult Function(ASSignOutError value) signOutError,
-    required TResult Function(ASRetrieveUserDataLoading value)
-        retrieveUserDataLoading,
-    required TResult Function(ASRetrieveUserDataSuccess value)
-        retrieveUserDataSuccess,
-    required TResult Function(ASRetrieveUserDataError value)
-        retrieveUserDataError,
-    required TResult Function(ASIsAdminLoading value) isAdminLoading,
-    required TResult Function(ASIsAdminSuccess value) isAdminSuccess,
-    required TResult Function(ASIsAdminError value) isAdminError,
-    required TResult Function(ASVerifyPhoneLoading value) verifyPhoneLoading,
-    required TResult Function(ASVerifyPhoneCompleted value)
-        verifyPhoneCompleted,
-    required TResult Function(ASVerifyPhoneError value) verifyPhoneError,
-    required TResult Function(ASPhoneCodeSent value) phoneCodeSent,
-    required TResult Function(ASPhoneCodeLoginComplete value)
-        phoneCodeLoginComplete,
-    required TResult Function(ASPhoneCodeLoginError value) phoneCodeLoginError,
-    required TResult Function(ASCodeAutoRetrievalTimeout value)
-        codeAutoRetrievalTimeout,
-  }) {
-    return verifyPhoneLoading(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(ASInitial value)? initial,
-    TResult Function(ASIdle value)? idle,
-    TResult Function(ASLoading value)? loading,
-    TResult Function(ASLoginLoading value)? loginLoading,
-    TResult Function(ASLoginSuccess value)? loginSuccess,
-    TResult Function(ASLoginError value)? loginError,
-    TResult Function(ASRegisterLoading value)? registerLoading,
-    TResult Function(ASRegisterSuccess value)? registerSuccess,
-    TResult Function(ASRegisterError value)? registerError,
-    TResult Function(ASSignOutLoading value)? signOutLoading,
-    TResult Function(ASSignOutSuccess value)? signOutSuccess,
-    TResult Function(ASSignOutError value)? signOutError,
-    TResult Function(ASRetrieveUserDataLoading value)? retrieveUserDataLoading,
-    TResult Function(ASRetrieveUserDataSuccess value)? retrieveUserDataSuccess,
-    TResult Function(ASRetrieveUserDataError value)? retrieveUserDataError,
-    TResult Function(ASIsAdminLoading value)? isAdminLoading,
-    TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
-    TResult Function(ASIsAdminError value)? isAdminError,
-    TResult Function(ASVerifyPhoneLoading value)? verifyPhoneLoading,
-    TResult Function(ASVerifyPhoneCompleted value)? verifyPhoneCompleted,
-    TResult Function(ASVerifyPhoneError value)? verifyPhoneError,
-    TResult Function(ASPhoneCodeSent value)? phoneCodeSent,
-    TResult Function(ASPhoneCodeLoginComplete value)? phoneCodeLoginComplete,
-    TResult Function(ASPhoneCodeLoginError value)? phoneCodeLoginError,
-    TResult Function(ASCodeAutoRetrievalTimeout value)?
-        codeAutoRetrievalTimeout,
-  }) {
-    return verifyPhoneLoading?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(ASInitial value)? initial,
-    TResult Function(ASIdle value)? idle,
-    TResult Function(ASLoading value)? loading,
-    TResult Function(ASLoginLoading value)? loginLoading,
-    TResult Function(ASLoginSuccess value)? loginSuccess,
-    TResult Function(ASLoginError value)? loginError,
-    TResult Function(ASRegisterLoading value)? registerLoading,
-    TResult Function(ASRegisterSuccess value)? registerSuccess,
-    TResult Function(ASRegisterError value)? registerError,
-    TResult Function(ASSignOutLoading value)? signOutLoading,
-    TResult Function(ASSignOutSuccess value)? signOutSuccess,
-    TResult Function(ASSignOutError value)? signOutError,
-    TResult Function(ASRetrieveUserDataLoading value)? retrieveUserDataLoading,
-    TResult Function(ASRetrieveUserDataSuccess value)? retrieveUserDataSuccess,
-    TResult Function(ASRetrieveUserDataError value)? retrieveUserDataError,
-    TResult Function(ASIsAdminLoading value)? isAdminLoading,
-    TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
-    TResult Function(ASIsAdminError value)? isAdminError,
-    TResult Function(ASVerifyPhoneLoading value)? verifyPhoneLoading,
-    TResult Function(ASVerifyPhoneCompleted value)? verifyPhoneCompleted,
-    TResult Function(ASVerifyPhoneError value)? verifyPhoneError,
-    TResult Function(ASPhoneCodeSent value)? phoneCodeSent,
-    TResult Function(ASPhoneCodeLoginComplete value)? phoneCodeLoginComplete,
-    TResult Function(ASPhoneCodeLoginError value)? phoneCodeLoginError,
-    TResult Function(ASCodeAutoRetrievalTimeout value)?
-        codeAutoRetrievalTimeout,
-    required TResult orElse(),
-  }) {
-    if (verifyPhoneLoading != null) {
-      return verifyPhoneLoading(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class ASVerifyPhoneLoading implements AuthState {
-  const factory ASVerifyPhoneLoading() = _$ASVerifyPhoneLoading;
-}
-
-/// @nodoc
-abstract class _$$ASVerifyPhoneCompletedCopyWith<$Res> {
-  factory _$$ASVerifyPhoneCompletedCopyWith(_$ASVerifyPhoneCompleted value,
-          $Res Function(_$ASVerifyPhoneCompleted) then) =
-      __$$ASVerifyPhoneCompletedCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$ASVerifyPhoneCompletedCopyWithImpl<$Res>
-    extends _$AuthStateCopyWithImpl<$Res>
-    implements _$$ASVerifyPhoneCompletedCopyWith<$Res> {
-  __$$ASVerifyPhoneCompletedCopyWithImpl(_$ASVerifyPhoneCompleted _value,
-      $Res Function(_$ASVerifyPhoneCompleted) _then)
-      : super(_value, (v) => _then(v as _$ASVerifyPhoneCompleted));
-
-  @override
-  _$ASVerifyPhoneCompleted get _value =>
-      super._value as _$ASVerifyPhoneCompleted;
-}
-
-/// @nodoc
-
-class _$ASVerifyPhoneCompleted implements ASVerifyPhoneCompleted {
-  const _$ASVerifyPhoneCompleted();
-
-  @override
-  String toString() {
-    return 'AuthState.verifyPhoneCompleted()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$ASVerifyPhoneCompleted);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() idle,
-    required TResult Function() loading,
-    required TResult Function() loginLoading,
-    required TResult Function(FarmhubUser user) loginSuccess,
-    required TResult Function(
-            String code, String message, StackTrace stackTrace)
-        loginError,
-    required TResult Function() registerLoading,
-    required TResult Function(FarmhubUser user) registerSuccess,
-    required TResult Function(
-            String code, String message, StackTrace stackTrace)
-        registerError,
-    required TResult Function() signOutLoading,
-    required TResult Function() signOutSuccess,
-    required TResult Function(
-            String code, String message, StackTrace stackTrace)
-        signOutError,
-    required TResult Function() retrieveUserDataLoading,
-    required TResult Function(FarmhubUser farmhubUser) retrieveUserDataSuccess,
-    required TResult Function(
-            String code, String message, StackTrace stackTrace)
-        retrieveUserDataError,
-    required TResult Function() isAdminLoading,
-    required TResult Function(bool isAdmin) isAdminSuccess,
-    required TResult Function(
-            String code, String message, StackTrace stackTrace)
-        isAdminError,
-    required TResult Function() verifyPhoneLoading,
-    required TResult Function() verifyPhoneCompleted,
-    required TResult Function(Failure failure) verifyPhoneError,
-    required TResult Function(
-            String verificationId, PhoneNumber phoneNumber, int? resendToken)
-        phoneCodeSent,
-    required TResult Function() phoneCodeLoginComplete,
-    required TResult Function(Failure failure) phoneCodeLoginError,
-    required TResult Function() codeAutoRetrievalTimeout,
-  }) {
-    return verifyPhoneCompleted();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? idle,
-    TResult Function()? loading,
-    TResult Function()? loginLoading,
-    TResult Function(FarmhubUser user)? loginSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        loginError,
-    TResult Function()? registerLoading,
-    TResult Function(FarmhubUser user)? registerSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        registerError,
-    TResult Function()? signOutLoading,
-    TResult Function()? signOutSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        signOutError,
-    TResult Function()? retrieveUserDataLoading,
-    TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        retrieveUserDataError,
-    TResult Function()? isAdminLoading,
-    TResult Function(bool isAdmin)? isAdminSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        isAdminError,
-    TResult Function()? verifyPhoneLoading,
-    TResult Function()? verifyPhoneCompleted,
-    TResult Function(Failure failure)? verifyPhoneError,
-    TResult Function(
-            String verificationId, PhoneNumber phoneNumber, int? resendToken)?
-        phoneCodeSent,
-    TResult Function()? phoneCodeLoginComplete,
-    TResult Function(Failure failure)? phoneCodeLoginError,
-    TResult Function()? codeAutoRetrievalTimeout,
-  }) {
-    return verifyPhoneCompleted?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? idle,
-    TResult Function()? loading,
-    TResult Function()? loginLoading,
-    TResult Function(FarmhubUser user)? loginSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        loginError,
-    TResult Function()? registerLoading,
-    TResult Function(FarmhubUser user)? registerSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        registerError,
-    TResult Function()? signOutLoading,
-    TResult Function()? signOutSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        signOutError,
-    TResult Function()? retrieveUserDataLoading,
-    TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        retrieveUserDataError,
-    TResult Function()? isAdminLoading,
-    TResult Function(bool isAdmin)? isAdminSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        isAdminError,
-    TResult Function()? verifyPhoneLoading,
-    TResult Function()? verifyPhoneCompleted,
-    TResult Function(Failure failure)? verifyPhoneError,
-    TResult Function(
-            String verificationId, PhoneNumber phoneNumber, int? resendToken)?
-        phoneCodeSent,
-    TResult Function()? phoneCodeLoginComplete,
-    TResult Function(Failure failure)? phoneCodeLoginError,
-    TResult Function()? codeAutoRetrievalTimeout,
-    required TResult orElse(),
-  }) {
-    if (verifyPhoneCompleted != null) {
-      return verifyPhoneCompleted();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(ASInitial value) initial,
-    required TResult Function(ASIdle value) idle,
-    required TResult Function(ASLoading value) loading,
-    required TResult Function(ASLoginLoading value) loginLoading,
-    required TResult Function(ASLoginSuccess value) loginSuccess,
-    required TResult Function(ASLoginError value) loginError,
-    required TResult Function(ASRegisterLoading value) registerLoading,
-    required TResult Function(ASRegisterSuccess value) registerSuccess,
-    required TResult Function(ASRegisterError value) registerError,
-    required TResult Function(ASSignOutLoading value) signOutLoading,
-    required TResult Function(ASSignOutSuccess value) signOutSuccess,
-    required TResult Function(ASSignOutError value) signOutError,
-    required TResult Function(ASRetrieveUserDataLoading value)
-        retrieveUserDataLoading,
-    required TResult Function(ASRetrieveUserDataSuccess value)
-        retrieveUserDataSuccess,
-    required TResult Function(ASRetrieveUserDataError value)
-        retrieveUserDataError,
-    required TResult Function(ASIsAdminLoading value) isAdminLoading,
-    required TResult Function(ASIsAdminSuccess value) isAdminSuccess,
-    required TResult Function(ASIsAdminError value) isAdminError,
-    required TResult Function(ASVerifyPhoneLoading value) verifyPhoneLoading,
-    required TResult Function(ASVerifyPhoneCompleted value)
-        verifyPhoneCompleted,
-    required TResult Function(ASVerifyPhoneError value) verifyPhoneError,
-    required TResult Function(ASPhoneCodeSent value) phoneCodeSent,
-    required TResult Function(ASPhoneCodeLoginComplete value)
-        phoneCodeLoginComplete,
-    required TResult Function(ASPhoneCodeLoginError value) phoneCodeLoginError,
-    required TResult Function(ASCodeAutoRetrievalTimeout value)
-        codeAutoRetrievalTimeout,
-  }) {
-    return verifyPhoneCompleted(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(ASInitial value)? initial,
-    TResult Function(ASIdle value)? idle,
-    TResult Function(ASLoading value)? loading,
-    TResult Function(ASLoginLoading value)? loginLoading,
-    TResult Function(ASLoginSuccess value)? loginSuccess,
-    TResult Function(ASLoginError value)? loginError,
-    TResult Function(ASRegisterLoading value)? registerLoading,
-    TResult Function(ASRegisterSuccess value)? registerSuccess,
-    TResult Function(ASRegisterError value)? registerError,
-    TResult Function(ASSignOutLoading value)? signOutLoading,
-    TResult Function(ASSignOutSuccess value)? signOutSuccess,
-    TResult Function(ASSignOutError value)? signOutError,
-    TResult Function(ASRetrieveUserDataLoading value)? retrieveUserDataLoading,
-    TResult Function(ASRetrieveUserDataSuccess value)? retrieveUserDataSuccess,
-    TResult Function(ASRetrieveUserDataError value)? retrieveUserDataError,
-    TResult Function(ASIsAdminLoading value)? isAdminLoading,
-    TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
-    TResult Function(ASIsAdminError value)? isAdminError,
-    TResult Function(ASVerifyPhoneLoading value)? verifyPhoneLoading,
-    TResult Function(ASVerifyPhoneCompleted value)? verifyPhoneCompleted,
-    TResult Function(ASVerifyPhoneError value)? verifyPhoneError,
-    TResult Function(ASPhoneCodeSent value)? phoneCodeSent,
-    TResult Function(ASPhoneCodeLoginComplete value)? phoneCodeLoginComplete,
-    TResult Function(ASPhoneCodeLoginError value)? phoneCodeLoginError,
-    TResult Function(ASCodeAutoRetrievalTimeout value)?
-        codeAutoRetrievalTimeout,
-  }) {
-    return verifyPhoneCompleted?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(ASInitial value)? initial,
-    TResult Function(ASIdle value)? idle,
-    TResult Function(ASLoading value)? loading,
-    TResult Function(ASLoginLoading value)? loginLoading,
-    TResult Function(ASLoginSuccess value)? loginSuccess,
-    TResult Function(ASLoginError value)? loginError,
-    TResult Function(ASRegisterLoading value)? registerLoading,
-    TResult Function(ASRegisterSuccess value)? registerSuccess,
-    TResult Function(ASRegisterError value)? registerError,
-    TResult Function(ASSignOutLoading value)? signOutLoading,
-    TResult Function(ASSignOutSuccess value)? signOutSuccess,
-    TResult Function(ASSignOutError value)? signOutError,
-    TResult Function(ASRetrieveUserDataLoading value)? retrieveUserDataLoading,
-    TResult Function(ASRetrieveUserDataSuccess value)? retrieveUserDataSuccess,
-    TResult Function(ASRetrieveUserDataError value)? retrieveUserDataError,
-    TResult Function(ASIsAdminLoading value)? isAdminLoading,
-    TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
-    TResult Function(ASIsAdminError value)? isAdminError,
-    TResult Function(ASVerifyPhoneLoading value)? verifyPhoneLoading,
-    TResult Function(ASVerifyPhoneCompleted value)? verifyPhoneCompleted,
-    TResult Function(ASVerifyPhoneError value)? verifyPhoneError,
-    TResult Function(ASPhoneCodeSent value)? phoneCodeSent,
-    TResult Function(ASPhoneCodeLoginComplete value)? phoneCodeLoginComplete,
-    TResult Function(ASPhoneCodeLoginError value)? phoneCodeLoginError,
-    TResult Function(ASCodeAutoRetrievalTimeout value)?
-        codeAutoRetrievalTimeout,
-    required TResult orElse(),
-  }) {
-    if (verifyPhoneCompleted != null) {
-      return verifyPhoneCompleted(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class ASVerifyPhoneCompleted implements AuthState {
-  const factory ASVerifyPhoneCompleted() = _$ASVerifyPhoneCompleted;
-}
-
-/// @nodoc
-abstract class _$$ASVerifyPhoneErrorCopyWith<$Res> {
-  factory _$$ASVerifyPhoneErrorCopyWith(_$ASVerifyPhoneError value,
-          $Res Function(_$ASVerifyPhoneError) then) =
-      __$$ASVerifyPhoneErrorCopyWithImpl<$Res>;
-  $Res call({Failure failure});
-}
-
-/// @nodoc
-class __$$ASVerifyPhoneErrorCopyWithImpl<$Res>
-    extends _$AuthStateCopyWithImpl<$Res>
-    implements _$$ASVerifyPhoneErrorCopyWith<$Res> {
-  __$$ASVerifyPhoneErrorCopyWithImpl(
-      _$ASVerifyPhoneError _value, $Res Function(_$ASVerifyPhoneError) _then)
-      : super(_value, (v) => _then(v as _$ASVerifyPhoneError));
-
-  @override
-  _$ASVerifyPhoneError get _value => super._value as _$ASVerifyPhoneError;
-
-  @override
-  $Res call({
-    Object? failure = freezed,
-  }) {
-    return _then(_$ASVerifyPhoneError(
-      failure == freezed
-          ? _value.failure
-          : failure // ignore: cast_nullable_to_non_nullable
-              as Failure,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$ASVerifyPhoneError implements ASVerifyPhoneError {
-  const _$ASVerifyPhoneError(this.failure);
-
-  @override
-  final Failure failure;
-
-  @override
-  String toString() {
-    return 'AuthState.verifyPhoneError(failure: $failure)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ASVerifyPhoneError &&
-            const DeepCollectionEquality().equals(other.failure, failure));
-  }
-
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(failure));
-
-  @JsonKey(ignore: true)
-  @override
-  _$$ASVerifyPhoneErrorCopyWith<_$ASVerifyPhoneError> get copyWith =>
-      __$$ASVerifyPhoneErrorCopyWithImpl<_$ASVerifyPhoneError>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() idle,
-    required TResult Function() loading,
-    required TResult Function() loginLoading,
-    required TResult Function(FarmhubUser user) loginSuccess,
-    required TResult Function(
-            String code, String message, StackTrace stackTrace)
-        loginError,
-    required TResult Function() registerLoading,
-    required TResult Function(FarmhubUser user) registerSuccess,
-    required TResult Function(
-            String code, String message, StackTrace stackTrace)
-        registerError,
-    required TResult Function() signOutLoading,
-    required TResult Function() signOutSuccess,
-    required TResult Function(
-            String code, String message, StackTrace stackTrace)
-        signOutError,
-    required TResult Function() retrieveUserDataLoading,
-    required TResult Function(FarmhubUser farmhubUser) retrieveUserDataSuccess,
-    required TResult Function(
-            String code, String message, StackTrace stackTrace)
-        retrieveUserDataError,
-    required TResult Function() isAdminLoading,
-    required TResult Function(bool isAdmin) isAdminSuccess,
-    required TResult Function(
-            String code, String message, StackTrace stackTrace)
-        isAdminError,
-    required TResult Function() verifyPhoneLoading,
-    required TResult Function() verifyPhoneCompleted,
-    required TResult Function(Failure failure) verifyPhoneError,
-    required TResult Function(
-            String verificationId, PhoneNumber phoneNumber, int? resendToken)
-        phoneCodeSent,
-    required TResult Function() phoneCodeLoginComplete,
-    required TResult Function(Failure failure) phoneCodeLoginError,
-    required TResult Function() codeAutoRetrievalTimeout,
-  }) {
-    return verifyPhoneError(failure);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? idle,
-    TResult Function()? loading,
-    TResult Function()? loginLoading,
-    TResult Function(FarmhubUser user)? loginSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        loginError,
-    TResult Function()? registerLoading,
-    TResult Function(FarmhubUser user)? registerSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        registerError,
-    TResult Function()? signOutLoading,
-    TResult Function()? signOutSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        signOutError,
-    TResult Function()? retrieveUserDataLoading,
-    TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        retrieveUserDataError,
-    TResult Function()? isAdminLoading,
-    TResult Function(bool isAdmin)? isAdminSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        isAdminError,
-    TResult Function()? verifyPhoneLoading,
-    TResult Function()? verifyPhoneCompleted,
-    TResult Function(Failure failure)? verifyPhoneError,
-    TResult Function(
-            String verificationId, PhoneNumber phoneNumber, int? resendToken)?
-        phoneCodeSent,
-    TResult Function()? phoneCodeLoginComplete,
-    TResult Function(Failure failure)? phoneCodeLoginError,
-    TResult Function()? codeAutoRetrievalTimeout,
-  }) {
-    return verifyPhoneError?.call(failure);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? idle,
-    TResult Function()? loading,
-    TResult Function()? loginLoading,
-    TResult Function(FarmhubUser user)? loginSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        loginError,
-    TResult Function()? registerLoading,
-    TResult Function(FarmhubUser user)? registerSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        registerError,
-    TResult Function()? signOutLoading,
-    TResult Function()? signOutSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        signOutError,
-    TResult Function()? retrieveUserDataLoading,
-    TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        retrieveUserDataError,
-    TResult Function()? isAdminLoading,
-    TResult Function(bool isAdmin)? isAdminSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        isAdminError,
-    TResult Function()? verifyPhoneLoading,
-    TResult Function()? verifyPhoneCompleted,
-    TResult Function(Failure failure)? verifyPhoneError,
-    TResult Function(
-            String verificationId, PhoneNumber phoneNumber, int? resendToken)?
-        phoneCodeSent,
-    TResult Function()? phoneCodeLoginComplete,
-    TResult Function(Failure failure)? phoneCodeLoginError,
-    TResult Function()? codeAutoRetrievalTimeout,
-    required TResult orElse(),
-  }) {
-    if (verifyPhoneError != null) {
-      return verifyPhoneError(failure);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(ASInitial value) initial,
-    required TResult Function(ASIdle value) idle,
-    required TResult Function(ASLoading value) loading,
-    required TResult Function(ASLoginLoading value) loginLoading,
-    required TResult Function(ASLoginSuccess value) loginSuccess,
-    required TResult Function(ASLoginError value) loginError,
-    required TResult Function(ASRegisterLoading value) registerLoading,
-    required TResult Function(ASRegisterSuccess value) registerSuccess,
-    required TResult Function(ASRegisterError value) registerError,
-    required TResult Function(ASSignOutLoading value) signOutLoading,
-    required TResult Function(ASSignOutSuccess value) signOutSuccess,
-    required TResult Function(ASSignOutError value) signOutError,
-    required TResult Function(ASRetrieveUserDataLoading value)
-        retrieveUserDataLoading,
-    required TResult Function(ASRetrieveUserDataSuccess value)
-        retrieveUserDataSuccess,
-    required TResult Function(ASRetrieveUserDataError value)
-        retrieveUserDataError,
-    required TResult Function(ASIsAdminLoading value) isAdminLoading,
-    required TResult Function(ASIsAdminSuccess value) isAdminSuccess,
-    required TResult Function(ASIsAdminError value) isAdminError,
-    required TResult Function(ASVerifyPhoneLoading value) verifyPhoneLoading,
-    required TResult Function(ASVerifyPhoneCompleted value)
-        verifyPhoneCompleted,
-    required TResult Function(ASVerifyPhoneError value) verifyPhoneError,
-    required TResult Function(ASPhoneCodeSent value) phoneCodeSent,
-    required TResult Function(ASPhoneCodeLoginComplete value)
-        phoneCodeLoginComplete,
-    required TResult Function(ASPhoneCodeLoginError value) phoneCodeLoginError,
-    required TResult Function(ASCodeAutoRetrievalTimeout value)
-        codeAutoRetrievalTimeout,
-  }) {
-    return verifyPhoneError(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(ASInitial value)? initial,
-    TResult Function(ASIdle value)? idle,
-    TResult Function(ASLoading value)? loading,
-    TResult Function(ASLoginLoading value)? loginLoading,
-    TResult Function(ASLoginSuccess value)? loginSuccess,
-    TResult Function(ASLoginError value)? loginError,
-    TResult Function(ASRegisterLoading value)? registerLoading,
-    TResult Function(ASRegisterSuccess value)? registerSuccess,
-    TResult Function(ASRegisterError value)? registerError,
-    TResult Function(ASSignOutLoading value)? signOutLoading,
-    TResult Function(ASSignOutSuccess value)? signOutSuccess,
-    TResult Function(ASSignOutError value)? signOutError,
-    TResult Function(ASRetrieveUserDataLoading value)? retrieveUserDataLoading,
-    TResult Function(ASRetrieveUserDataSuccess value)? retrieveUserDataSuccess,
-    TResult Function(ASRetrieveUserDataError value)? retrieveUserDataError,
-    TResult Function(ASIsAdminLoading value)? isAdminLoading,
-    TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
-    TResult Function(ASIsAdminError value)? isAdminError,
-    TResult Function(ASVerifyPhoneLoading value)? verifyPhoneLoading,
-    TResult Function(ASVerifyPhoneCompleted value)? verifyPhoneCompleted,
-    TResult Function(ASVerifyPhoneError value)? verifyPhoneError,
-    TResult Function(ASPhoneCodeSent value)? phoneCodeSent,
-    TResult Function(ASPhoneCodeLoginComplete value)? phoneCodeLoginComplete,
-    TResult Function(ASPhoneCodeLoginError value)? phoneCodeLoginError,
-    TResult Function(ASCodeAutoRetrievalTimeout value)?
-        codeAutoRetrievalTimeout,
-  }) {
-    return verifyPhoneError?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(ASInitial value)? initial,
-    TResult Function(ASIdle value)? idle,
-    TResult Function(ASLoading value)? loading,
-    TResult Function(ASLoginLoading value)? loginLoading,
-    TResult Function(ASLoginSuccess value)? loginSuccess,
-    TResult Function(ASLoginError value)? loginError,
-    TResult Function(ASRegisterLoading value)? registerLoading,
-    TResult Function(ASRegisterSuccess value)? registerSuccess,
-    TResult Function(ASRegisterError value)? registerError,
-    TResult Function(ASSignOutLoading value)? signOutLoading,
-    TResult Function(ASSignOutSuccess value)? signOutSuccess,
-    TResult Function(ASSignOutError value)? signOutError,
-    TResult Function(ASRetrieveUserDataLoading value)? retrieveUserDataLoading,
-    TResult Function(ASRetrieveUserDataSuccess value)? retrieveUserDataSuccess,
-    TResult Function(ASRetrieveUserDataError value)? retrieveUserDataError,
-    TResult Function(ASIsAdminLoading value)? isAdminLoading,
-    TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
-    TResult Function(ASIsAdminError value)? isAdminError,
-    TResult Function(ASVerifyPhoneLoading value)? verifyPhoneLoading,
-    TResult Function(ASVerifyPhoneCompleted value)? verifyPhoneCompleted,
-    TResult Function(ASVerifyPhoneError value)? verifyPhoneError,
-    TResult Function(ASPhoneCodeSent value)? phoneCodeSent,
-    TResult Function(ASPhoneCodeLoginComplete value)? phoneCodeLoginComplete,
-    TResult Function(ASPhoneCodeLoginError value)? phoneCodeLoginError,
-    TResult Function(ASCodeAutoRetrievalTimeout value)?
-        codeAutoRetrievalTimeout,
-    required TResult orElse(),
-  }) {
-    if (verifyPhoneError != null) {
-      return verifyPhoneError(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class ASVerifyPhoneError implements AuthState {
-  const factory ASVerifyPhoneError(final Failure failure) =
-      _$ASVerifyPhoneError;
-
-  Failure get failure => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  _$$ASVerifyPhoneErrorCopyWith<_$ASVerifyPhoneError> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$ASPhoneCodeSentCopyWith<$Res> {
-  factory _$$ASPhoneCodeSentCopyWith(
-          _$ASPhoneCodeSent value, $Res Function(_$ASPhoneCodeSent) then) =
-      __$$ASPhoneCodeSentCopyWithImpl<$Res>;
-  $Res call({String verificationId, PhoneNumber phoneNumber, int? resendToken});
-}
-
-/// @nodoc
-class __$$ASPhoneCodeSentCopyWithImpl<$Res>
-    extends _$AuthStateCopyWithImpl<$Res>
-    implements _$$ASPhoneCodeSentCopyWith<$Res> {
-  __$$ASPhoneCodeSentCopyWithImpl(
-      _$ASPhoneCodeSent _value, $Res Function(_$ASPhoneCodeSent) _then)
-      : super(_value, (v) => _then(v as _$ASPhoneCodeSent));
-
-  @override
-  _$ASPhoneCodeSent get _value => super._value as _$ASPhoneCodeSent;
-
-  @override
-  $Res call({
-    Object? verificationId = freezed,
-    Object? phoneNumber = freezed,
-    Object? resendToken = freezed,
-  }) {
-    return _then(_$ASPhoneCodeSent(
-      verificationId: verificationId == freezed
-          ? _value.verificationId
-          : verificationId // ignore: cast_nullable_to_non_nullable
-              as String,
-      phoneNumber: phoneNumber == freezed
-          ? _value.phoneNumber
-          : phoneNumber // ignore: cast_nullable_to_non_nullable
-              as PhoneNumber,
-      resendToken: resendToken == freezed
-          ? _value.resendToken
-          : resendToken // ignore: cast_nullable_to_non_nullable
-              as int?,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$ASPhoneCodeSent implements ASPhoneCodeSent {
-  const _$ASPhoneCodeSent(
-      {required this.verificationId,
-      required this.phoneNumber,
-      this.resendToken});
-
-  @override
-  final String verificationId;
-  @override
-  final PhoneNumber phoneNumber;
-  @override
-  final int? resendToken;
-
-  @override
-  String toString() {
-    return 'AuthState.phoneCodeSent(verificationId: $verificationId, phoneNumber: $phoneNumber, resendToken: $resendToken)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ASPhoneCodeSent &&
-            const DeepCollectionEquality()
-                .equals(other.verificationId, verificationId) &&
-            const DeepCollectionEquality()
-                .equals(other.phoneNumber, phoneNumber) &&
-            const DeepCollectionEquality()
-                .equals(other.resendToken, resendToken));
-  }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(verificationId),
-      const DeepCollectionEquality().hash(phoneNumber),
-      const DeepCollectionEquality().hash(resendToken));
-
-  @JsonKey(ignore: true)
-  @override
-  _$$ASPhoneCodeSentCopyWith<_$ASPhoneCodeSent> get copyWith =>
-      __$$ASPhoneCodeSentCopyWithImpl<_$ASPhoneCodeSent>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() idle,
-    required TResult Function() loading,
-    required TResult Function() loginLoading,
-    required TResult Function(FarmhubUser user) loginSuccess,
-    required TResult Function(
-            String code, String message, StackTrace stackTrace)
-        loginError,
-    required TResult Function() registerLoading,
-    required TResult Function(FarmhubUser user) registerSuccess,
-    required TResult Function(
-            String code, String message, StackTrace stackTrace)
-        registerError,
-    required TResult Function() signOutLoading,
-    required TResult Function() signOutSuccess,
-    required TResult Function(
-            String code, String message, StackTrace stackTrace)
-        signOutError,
-    required TResult Function() retrieveUserDataLoading,
-    required TResult Function(FarmhubUser farmhubUser) retrieveUserDataSuccess,
-    required TResult Function(
-            String code, String message, StackTrace stackTrace)
-        retrieveUserDataError,
-    required TResult Function() isAdminLoading,
-    required TResult Function(bool isAdmin) isAdminSuccess,
-    required TResult Function(
-            String code, String message, StackTrace stackTrace)
-        isAdminError,
-    required TResult Function() verifyPhoneLoading,
-    required TResult Function() verifyPhoneCompleted,
-    required TResult Function(Failure failure) verifyPhoneError,
-    required TResult Function(
-            String verificationId, PhoneNumber phoneNumber, int? resendToken)
-        phoneCodeSent,
-    required TResult Function() phoneCodeLoginComplete,
-    required TResult Function(Failure failure) phoneCodeLoginError,
-    required TResult Function() codeAutoRetrievalTimeout,
-  }) {
-    return phoneCodeSent(verificationId, phoneNumber, resendToken);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? idle,
-    TResult Function()? loading,
-    TResult Function()? loginLoading,
-    TResult Function(FarmhubUser user)? loginSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        loginError,
-    TResult Function()? registerLoading,
-    TResult Function(FarmhubUser user)? registerSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        registerError,
-    TResult Function()? signOutLoading,
-    TResult Function()? signOutSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        signOutError,
-    TResult Function()? retrieveUserDataLoading,
-    TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        retrieveUserDataError,
-    TResult Function()? isAdminLoading,
-    TResult Function(bool isAdmin)? isAdminSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        isAdminError,
-    TResult Function()? verifyPhoneLoading,
-    TResult Function()? verifyPhoneCompleted,
-    TResult Function(Failure failure)? verifyPhoneError,
-    TResult Function(
-            String verificationId, PhoneNumber phoneNumber, int? resendToken)?
-        phoneCodeSent,
-    TResult Function()? phoneCodeLoginComplete,
-    TResult Function(Failure failure)? phoneCodeLoginError,
-    TResult Function()? codeAutoRetrievalTimeout,
-  }) {
-    return phoneCodeSent?.call(verificationId, phoneNumber, resendToken);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? idle,
-    TResult Function()? loading,
-    TResult Function()? loginLoading,
-    TResult Function(FarmhubUser user)? loginSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        loginError,
-    TResult Function()? registerLoading,
-    TResult Function(FarmhubUser user)? registerSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        registerError,
-    TResult Function()? signOutLoading,
-    TResult Function()? signOutSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        signOutError,
-    TResult Function()? retrieveUserDataLoading,
-    TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        retrieveUserDataError,
-    TResult Function()? isAdminLoading,
-    TResult Function(bool isAdmin)? isAdminSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        isAdminError,
-    TResult Function()? verifyPhoneLoading,
-    TResult Function()? verifyPhoneCompleted,
-    TResult Function(Failure failure)? verifyPhoneError,
-    TResult Function(
-            String verificationId, PhoneNumber phoneNumber, int? resendToken)?
-        phoneCodeSent,
-    TResult Function()? phoneCodeLoginComplete,
-    TResult Function(Failure failure)? phoneCodeLoginError,
-    TResult Function()? codeAutoRetrievalTimeout,
-    required TResult orElse(),
-  }) {
-    if (phoneCodeSent != null) {
-      return phoneCodeSent(verificationId, phoneNumber, resendToken);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(ASInitial value) initial,
-    required TResult Function(ASIdle value) idle,
-    required TResult Function(ASLoading value) loading,
-    required TResult Function(ASLoginLoading value) loginLoading,
-    required TResult Function(ASLoginSuccess value) loginSuccess,
-    required TResult Function(ASLoginError value) loginError,
-    required TResult Function(ASRegisterLoading value) registerLoading,
-    required TResult Function(ASRegisterSuccess value) registerSuccess,
-    required TResult Function(ASRegisterError value) registerError,
-    required TResult Function(ASSignOutLoading value) signOutLoading,
-    required TResult Function(ASSignOutSuccess value) signOutSuccess,
-    required TResult Function(ASSignOutError value) signOutError,
-    required TResult Function(ASRetrieveUserDataLoading value)
-        retrieveUserDataLoading,
-    required TResult Function(ASRetrieveUserDataSuccess value)
-        retrieveUserDataSuccess,
-    required TResult Function(ASRetrieveUserDataError value)
-        retrieveUserDataError,
-    required TResult Function(ASIsAdminLoading value) isAdminLoading,
-    required TResult Function(ASIsAdminSuccess value) isAdminSuccess,
-    required TResult Function(ASIsAdminError value) isAdminError,
-    required TResult Function(ASVerifyPhoneLoading value) verifyPhoneLoading,
-    required TResult Function(ASVerifyPhoneCompleted value)
-        verifyPhoneCompleted,
-    required TResult Function(ASVerifyPhoneError value) verifyPhoneError,
-    required TResult Function(ASPhoneCodeSent value) phoneCodeSent,
-    required TResult Function(ASPhoneCodeLoginComplete value)
-        phoneCodeLoginComplete,
-    required TResult Function(ASPhoneCodeLoginError value) phoneCodeLoginError,
-    required TResult Function(ASCodeAutoRetrievalTimeout value)
-        codeAutoRetrievalTimeout,
-  }) {
-    return phoneCodeSent(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(ASInitial value)? initial,
-    TResult Function(ASIdle value)? idle,
-    TResult Function(ASLoading value)? loading,
-    TResult Function(ASLoginLoading value)? loginLoading,
-    TResult Function(ASLoginSuccess value)? loginSuccess,
-    TResult Function(ASLoginError value)? loginError,
-    TResult Function(ASRegisterLoading value)? registerLoading,
-    TResult Function(ASRegisterSuccess value)? registerSuccess,
-    TResult Function(ASRegisterError value)? registerError,
-    TResult Function(ASSignOutLoading value)? signOutLoading,
-    TResult Function(ASSignOutSuccess value)? signOutSuccess,
-    TResult Function(ASSignOutError value)? signOutError,
-    TResult Function(ASRetrieveUserDataLoading value)? retrieveUserDataLoading,
-    TResult Function(ASRetrieveUserDataSuccess value)? retrieveUserDataSuccess,
-    TResult Function(ASRetrieveUserDataError value)? retrieveUserDataError,
-    TResult Function(ASIsAdminLoading value)? isAdminLoading,
-    TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
-    TResult Function(ASIsAdminError value)? isAdminError,
-    TResult Function(ASVerifyPhoneLoading value)? verifyPhoneLoading,
-    TResult Function(ASVerifyPhoneCompleted value)? verifyPhoneCompleted,
-    TResult Function(ASVerifyPhoneError value)? verifyPhoneError,
-    TResult Function(ASPhoneCodeSent value)? phoneCodeSent,
-    TResult Function(ASPhoneCodeLoginComplete value)? phoneCodeLoginComplete,
-    TResult Function(ASPhoneCodeLoginError value)? phoneCodeLoginError,
-    TResult Function(ASCodeAutoRetrievalTimeout value)?
-        codeAutoRetrievalTimeout,
-  }) {
-    return phoneCodeSent?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(ASInitial value)? initial,
-    TResult Function(ASIdle value)? idle,
-    TResult Function(ASLoading value)? loading,
-    TResult Function(ASLoginLoading value)? loginLoading,
-    TResult Function(ASLoginSuccess value)? loginSuccess,
-    TResult Function(ASLoginError value)? loginError,
-    TResult Function(ASRegisterLoading value)? registerLoading,
-    TResult Function(ASRegisterSuccess value)? registerSuccess,
-    TResult Function(ASRegisterError value)? registerError,
-    TResult Function(ASSignOutLoading value)? signOutLoading,
-    TResult Function(ASSignOutSuccess value)? signOutSuccess,
-    TResult Function(ASSignOutError value)? signOutError,
-    TResult Function(ASRetrieveUserDataLoading value)? retrieveUserDataLoading,
-    TResult Function(ASRetrieveUserDataSuccess value)? retrieveUserDataSuccess,
-    TResult Function(ASRetrieveUserDataError value)? retrieveUserDataError,
-    TResult Function(ASIsAdminLoading value)? isAdminLoading,
-    TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
-    TResult Function(ASIsAdminError value)? isAdminError,
-    TResult Function(ASVerifyPhoneLoading value)? verifyPhoneLoading,
-    TResult Function(ASVerifyPhoneCompleted value)? verifyPhoneCompleted,
-    TResult Function(ASVerifyPhoneError value)? verifyPhoneError,
-    TResult Function(ASPhoneCodeSent value)? phoneCodeSent,
-    TResult Function(ASPhoneCodeLoginComplete value)? phoneCodeLoginComplete,
-    TResult Function(ASPhoneCodeLoginError value)? phoneCodeLoginError,
-    TResult Function(ASCodeAutoRetrievalTimeout value)?
-        codeAutoRetrievalTimeout,
-    required TResult orElse(),
-  }) {
-    if (phoneCodeSent != null) {
-      return phoneCodeSent(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class ASPhoneCodeSent implements AuthState {
-  const factory ASPhoneCodeSent(
-      {required final String verificationId,
-      required final PhoneNumber phoneNumber,
-      final int? resendToken}) = _$ASPhoneCodeSent;
-
-  String get verificationId => throw _privateConstructorUsedError;
-  PhoneNumber get phoneNumber => throw _privateConstructorUsedError;
-  int? get resendToken => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  _$$ASPhoneCodeSentCopyWith<_$ASPhoneCodeSent> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$ASPhoneCodeLoginCompleteCopyWith<$Res> {
-  factory _$$ASPhoneCodeLoginCompleteCopyWith(_$ASPhoneCodeLoginComplete value,
-          $Res Function(_$ASPhoneCodeLoginComplete) then) =
-      __$$ASPhoneCodeLoginCompleteCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$ASPhoneCodeLoginCompleteCopyWithImpl<$Res>
-    extends _$AuthStateCopyWithImpl<$Res>
-    implements _$$ASPhoneCodeLoginCompleteCopyWith<$Res> {
-  __$$ASPhoneCodeLoginCompleteCopyWithImpl(_$ASPhoneCodeLoginComplete _value,
-      $Res Function(_$ASPhoneCodeLoginComplete) _then)
-      : super(_value, (v) => _then(v as _$ASPhoneCodeLoginComplete));
-
-  @override
-  _$ASPhoneCodeLoginComplete get _value =>
-      super._value as _$ASPhoneCodeLoginComplete;
-}
-
-/// @nodoc
-
-class _$ASPhoneCodeLoginComplete implements ASPhoneCodeLoginComplete {
-  const _$ASPhoneCodeLoginComplete();
-
-  @override
-  String toString() {
-    return 'AuthState.phoneCodeLoginComplete()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ASPhoneCodeLoginComplete);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() idle,
-    required TResult Function() loading,
-    required TResult Function() loginLoading,
-    required TResult Function(FarmhubUser user) loginSuccess,
-    required TResult Function(
-            String code, String message, StackTrace stackTrace)
-        loginError,
-    required TResult Function() registerLoading,
-    required TResult Function(FarmhubUser user) registerSuccess,
-    required TResult Function(
-            String code, String message, StackTrace stackTrace)
-        registerError,
-    required TResult Function() signOutLoading,
-    required TResult Function() signOutSuccess,
-    required TResult Function(
-            String code, String message, StackTrace stackTrace)
-        signOutError,
-    required TResult Function() retrieveUserDataLoading,
-    required TResult Function(FarmhubUser farmhubUser) retrieveUserDataSuccess,
-    required TResult Function(
-            String code, String message, StackTrace stackTrace)
-        retrieveUserDataError,
-    required TResult Function() isAdminLoading,
-    required TResult Function(bool isAdmin) isAdminSuccess,
-    required TResult Function(
-            String code, String message, StackTrace stackTrace)
-        isAdminError,
-    required TResult Function() verifyPhoneLoading,
-    required TResult Function() verifyPhoneCompleted,
-    required TResult Function(Failure failure) verifyPhoneError,
-    required TResult Function(
-            String verificationId, PhoneNumber phoneNumber, int? resendToken)
-        phoneCodeSent,
-    required TResult Function() phoneCodeLoginComplete,
-    required TResult Function(Failure failure) phoneCodeLoginError,
-    required TResult Function() codeAutoRetrievalTimeout,
-  }) {
-    return phoneCodeLoginComplete();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? idle,
-    TResult Function()? loading,
-    TResult Function()? loginLoading,
-    TResult Function(FarmhubUser user)? loginSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        loginError,
-    TResult Function()? registerLoading,
-    TResult Function(FarmhubUser user)? registerSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        registerError,
-    TResult Function()? signOutLoading,
-    TResult Function()? signOutSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        signOutError,
-    TResult Function()? retrieveUserDataLoading,
-    TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        retrieveUserDataError,
-    TResult Function()? isAdminLoading,
-    TResult Function(bool isAdmin)? isAdminSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        isAdminError,
-    TResult Function()? verifyPhoneLoading,
-    TResult Function()? verifyPhoneCompleted,
-    TResult Function(Failure failure)? verifyPhoneError,
-    TResult Function(
-            String verificationId, PhoneNumber phoneNumber, int? resendToken)?
-        phoneCodeSent,
-    TResult Function()? phoneCodeLoginComplete,
-    TResult Function(Failure failure)? phoneCodeLoginError,
-    TResult Function()? codeAutoRetrievalTimeout,
-  }) {
-    return phoneCodeLoginComplete?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? idle,
-    TResult Function()? loading,
-    TResult Function()? loginLoading,
-    TResult Function(FarmhubUser user)? loginSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        loginError,
-    TResult Function()? registerLoading,
-    TResult Function(FarmhubUser user)? registerSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        registerError,
-    TResult Function()? signOutLoading,
-    TResult Function()? signOutSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        signOutError,
-    TResult Function()? retrieveUserDataLoading,
-    TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        retrieveUserDataError,
-    TResult Function()? isAdminLoading,
-    TResult Function(bool isAdmin)? isAdminSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        isAdminError,
-    TResult Function()? verifyPhoneLoading,
-    TResult Function()? verifyPhoneCompleted,
-    TResult Function(Failure failure)? verifyPhoneError,
-    TResult Function(
-            String verificationId, PhoneNumber phoneNumber, int? resendToken)?
-        phoneCodeSent,
-    TResult Function()? phoneCodeLoginComplete,
-    TResult Function(Failure failure)? phoneCodeLoginError,
-    TResult Function()? codeAutoRetrievalTimeout,
-    required TResult orElse(),
-  }) {
-    if (phoneCodeLoginComplete != null) {
-      return phoneCodeLoginComplete();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(ASInitial value) initial,
-    required TResult Function(ASIdle value) idle,
-    required TResult Function(ASLoading value) loading,
-    required TResult Function(ASLoginLoading value) loginLoading,
-    required TResult Function(ASLoginSuccess value) loginSuccess,
-    required TResult Function(ASLoginError value) loginError,
-    required TResult Function(ASRegisterLoading value) registerLoading,
-    required TResult Function(ASRegisterSuccess value) registerSuccess,
-    required TResult Function(ASRegisterError value) registerError,
-    required TResult Function(ASSignOutLoading value) signOutLoading,
-    required TResult Function(ASSignOutSuccess value) signOutSuccess,
-    required TResult Function(ASSignOutError value) signOutError,
-    required TResult Function(ASRetrieveUserDataLoading value)
-        retrieveUserDataLoading,
-    required TResult Function(ASRetrieveUserDataSuccess value)
-        retrieveUserDataSuccess,
-    required TResult Function(ASRetrieveUserDataError value)
-        retrieveUserDataError,
-    required TResult Function(ASIsAdminLoading value) isAdminLoading,
-    required TResult Function(ASIsAdminSuccess value) isAdminSuccess,
-    required TResult Function(ASIsAdminError value) isAdminError,
-    required TResult Function(ASVerifyPhoneLoading value) verifyPhoneLoading,
-    required TResult Function(ASVerifyPhoneCompleted value)
-        verifyPhoneCompleted,
-    required TResult Function(ASVerifyPhoneError value) verifyPhoneError,
-    required TResult Function(ASPhoneCodeSent value) phoneCodeSent,
-    required TResult Function(ASPhoneCodeLoginComplete value)
-        phoneCodeLoginComplete,
-    required TResult Function(ASPhoneCodeLoginError value) phoneCodeLoginError,
-    required TResult Function(ASCodeAutoRetrievalTimeout value)
-        codeAutoRetrievalTimeout,
-  }) {
-    return phoneCodeLoginComplete(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(ASInitial value)? initial,
-    TResult Function(ASIdle value)? idle,
-    TResult Function(ASLoading value)? loading,
-    TResult Function(ASLoginLoading value)? loginLoading,
-    TResult Function(ASLoginSuccess value)? loginSuccess,
-    TResult Function(ASLoginError value)? loginError,
-    TResult Function(ASRegisterLoading value)? registerLoading,
-    TResult Function(ASRegisterSuccess value)? registerSuccess,
-    TResult Function(ASRegisterError value)? registerError,
-    TResult Function(ASSignOutLoading value)? signOutLoading,
-    TResult Function(ASSignOutSuccess value)? signOutSuccess,
-    TResult Function(ASSignOutError value)? signOutError,
-    TResult Function(ASRetrieveUserDataLoading value)? retrieveUserDataLoading,
-    TResult Function(ASRetrieveUserDataSuccess value)? retrieveUserDataSuccess,
-    TResult Function(ASRetrieveUserDataError value)? retrieveUserDataError,
-    TResult Function(ASIsAdminLoading value)? isAdminLoading,
-    TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
-    TResult Function(ASIsAdminError value)? isAdminError,
-    TResult Function(ASVerifyPhoneLoading value)? verifyPhoneLoading,
-    TResult Function(ASVerifyPhoneCompleted value)? verifyPhoneCompleted,
-    TResult Function(ASVerifyPhoneError value)? verifyPhoneError,
-    TResult Function(ASPhoneCodeSent value)? phoneCodeSent,
-    TResult Function(ASPhoneCodeLoginComplete value)? phoneCodeLoginComplete,
-    TResult Function(ASPhoneCodeLoginError value)? phoneCodeLoginError,
-    TResult Function(ASCodeAutoRetrievalTimeout value)?
-        codeAutoRetrievalTimeout,
-  }) {
-    return phoneCodeLoginComplete?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(ASInitial value)? initial,
-    TResult Function(ASIdle value)? idle,
-    TResult Function(ASLoading value)? loading,
-    TResult Function(ASLoginLoading value)? loginLoading,
-    TResult Function(ASLoginSuccess value)? loginSuccess,
-    TResult Function(ASLoginError value)? loginError,
-    TResult Function(ASRegisterLoading value)? registerLoading,
-    TResult Function(ASRegisterSuccess value)? registerSuccess,
-    TResult Function(ASRegisterError value)? registerError,
-    TResult Function(ASSignOutLoading value)? signOutLoading,
-    TResult Function(ASSignOutSuccess value)? signOutSuccess,
-    TResult Function(ASSignOutError value)? signOutError,
-    TResult Function(ASRetrieveUserDataLoading value)? retrieveUserDataLoading,
-    TResult Function(ASRetrieveUserDataSuccess value)? retrieveUserDataSuccess,
-    TResult Function(ASRetrieveUserDataError value)? retrieveUserDataError,
-    TResult Function(ASIsAdminLoading value)? isAdminLoading,
-    TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
-    TResult Function(ASIsAdminError value)? isAdminError,
-    TResult Function(ASVerifyPhoneLoading value)? verifyPhoneLoading,
-    TResult Function(ASVerifyPhoneCompleted value)? verifyPhoneCompleted,
-    TResult Function(ASVerifyPhoneError value)? verifyPhoneError,
-    TResult Function(ASPhoneCodeSent value)? phoneCodeSent,
-    TResult Function(ASPhoneCodeLoginComplete value)? phoneCodeLoginComplete,
-    TResult Function(ASPhoneCodeLoginError value)? phoneCodeLoginError,
-    TResult Function(ASCodeAutoRetrievalTimeout value)?
-        codeAutoRetrievalTimeout,
-    required TResult orElse(),
-  }) {
-    if (phoneCodeLoginComplete != null) {
-      return phoneCodeLoginComplete(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class ASPhoneCodeLoginComplete implements AuthState {
-  const factory ASPhoneCodeLoginComplete() = _$ASPhoneCodeLoginComplete;
-}
-
-/// @nodoc
-abstract class _$$ASPhoneCodeLoginErrorCopyWith<$Res> {
-  factory _$$ASPhoneCodeLoginErrorCopyWith(_$ASPhoneCodeLoginError value,
-          $Res Function(_$ASPhoneCodeLoginError) then) =
-      __$$ASPhoneCodeLoginErrorCopyWithImpl<$Res>;
-  $Res call({Failure failure});
-}
-
-/// @nodoc
-class __$$ASPhoneCodeLoginErrorCopyWithImpl<$Res>
-    extends _$AuthStateCopyWithImpl<$Res>
-    implements _$$ASPhoneCodeLoginErrorCopyWith<$Res> {
-  __$$ASPhoneCodeLoginErrorCopyWithImpl(_$ASPhoneCodeLoginError _value,
-      $Res Function(_$ASPhoneCodeLoginError) _then)
-      : super(_value, (v) => _then(v as _$ASPhoneCodeLoginError));
-
-  @override
-  _$ASPhoneCodeLoginError get _value => super._value as _$ASPhoneCodeLoginError;
-
-  @override
-  $Res call({
-    Object? failure = freezed,
-  }) {
-    return _then(_$ASPhoneCodeLoginError(
-      failure == freezed
-          ? _value.failure
-          : failure // ignore: cast_nullable_to_non_nullable
-              as Failure,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$ASPhoneCodeLoginError implements ASPhoneCodeLoginError {
-  const _$ASPhoneCodeLoginError(this.failure);
-
-  @override
-  final Failure failure;
-
-  @override
-  String toString() {
-    return 'AuthState.phoneCodeLoginError(failure: $failure)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ASPhoneCodeLoginError &&
-            const DeepCollectionEquality().equals(other.failure, failure));
-  }
-
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(failure));
-
-  @JsonKey(ignore: true)
-  @override
-  _$$ASPhoneCodeLoginErrorCopyWith<_$ASPhoneCodeLoginError> get copyWith =>
-      __$$ASPhoneCodeLoginErrorCopyWithImpl<_$ASPhoneCodeLoginError>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() idle,
-    required TResult Function() loading,
-    required TResult Function() loginLoading,
-    required TResult Function(FarmhubUser user) loginSuccess,
-    required TResult Function(
-            String code, String message, StackTrace stackTrace)
-        loginError,
-    required TResult Function() registerLoading,
-    required TResult Function(FarmhubUser user) registerSuccess,
-    required TResult Function(
-            String code, String message, StackTrace stackTrace)
-        registerError,
-    required TResult Function() signOutLoading,
-    required TResult Function() signOutSuccess,
-    required TResult Function(
-            String code, String message, StackTrace stackTrace)
-        signOutError,
-    required TResult Function() retrieveUserDataLoading,
-    required TResult Function(FarmhubUser farmhubUser) retrieveUserDataSuccess,
-    required TResult Function(
-            String code, String message, StackTrace stackTrace)
-        retrieveUserDataError,
-    required TResult Function() isAdminLoading,
-    required TResult Function(bool isAdmin) isAdminSuccess,
-    required TResult Function(
-            String code, String message, StackTrace stackTrace)
-        isAdminError,
-    required TResult Function() verifyPhoneLoading,
-    required TResult Function() verifyPhoneCompleted,
-    required TResult Function(Failure failure) verifyPhoneError,
-    required TResult Function(
-            String verificationId, PhoneNumber phoneNumber, int? resendToken)
-        phoneCodeSent,
-    required TResult Function() phoneCodeLoginComplete,
-    required TResult Function(Failure failure) phoneCodeLoginError,
-    required TResult Function() codeAutoRetrievalTimeout,
-  }) {
-    return phoneCodeLoginError(failure);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? idle,
-    TResult Function()? loading,
-    TResult Function()? loginLoading,
-    TResult Function(FarmhubUser user)? loginSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        loginError,
-    TResult Function()? registerLoading,
-    TResult Function(FarmhubUser user)? registerSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        registerError,
-    TResult Function()? signOutLoading,
-    TResult Function()? signOutSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        signOutError,
-    TResult Function()? retrieveUserDataLoading,
-    TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        retrieveUserDataError,
-    TResult Function()? isAdminLoading,
-    TResult Function(bool isAdmin)? isAdminSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        isAdminError,
-    TResult Function()? verifyPhoneLoading,
-    TResult Function()? verifyPhoneCompleted,
-    TResult Function(Failure failure)? verifyPhoneError,
-    TResult Function(
-            String verificationId, PhoneNumber phoneNumber, int? resendToken)?
-        phoneCodeSent,
-    TResult Function()? phoneCodeLoginComplete,
-    TResult Function(Failure failure)? phoneCodeLoginError,
-    TResult Function()? codeAutoRetrievalTimeout,
-  }) {
-    return phoneCodeLoginError?.call(failure);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? idle,
-    TResult Function()? loading,
-    TResult Function()? loginLoading,
-    TResult Function(FarmhubUser user)? loginSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        loginError,
-    TResult Function()? registerLoading,
-    TResult Function(FarmhubUser user)? registerSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        registerError,
-    TResult Function()? signOutLoading,
-    TResult Function()? signOutSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        signOutError,
-    TResult Function()? retrieveUserDataLoading,
-    TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        retrieveUserDataError,
-    TResult Function()? isAdminLoading,
-    TResult Function(bool isAdmin)? isAdminSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        isAdminError,
-    TResult Function()? verifyPhoneLoading,
-    TResult Function()? verifyPhoneCompleted,
-    TResult Function(Failure failure)? verifyPhoneError,
-    TResult Function(
-            String verificationId, PhoneNumber phoneNumber, int? resendToken)?
-        phoneCodeSent,
-    TResult Function()? phoneCodeLoginComplete,
-    TResult Function(Failure failure)? phoneCodeLoginError,
-    TResult Function()? codeAutoRetrievalTimeout,
-    required TResult orElse(),
-  }) {
-    if (phoneCodeLoginError != null) {
-      return phoneCodeLoginError(failure);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(ASInitial value) initial,
-    required TResult Function(ASIdle value) idle,
-    required TResult Function(ASLoading value) loading,
-    required TResult Function(ASLoginLoading value) loginLoading,
-    required TResult Function(ASLoginSuccess value) loginSuccess,
-    required TResult Function(ASLoginError value) loginError,
-    required TResult Function(ASRegisterLoading value) registerLoading,
-    required TResult Function(ASRegisterSuccess value) registerSuccess,
-    required TResult Function(ASRegisterError value) registerError,
-    required TResult Function(ASSignOutLoading value) signOutLoading,
-    required TResult Function(ASSignOutSuccess value) signOutSuccess,
-    required TResult Function(ASSignOutError value) signOutError,
-    required TResult Function(ASRetrieveUserDataLoading value)
-        retrieveUserDataLoading,
-    required TResult Function(ASRetrieveUserDataSuccess value)
-        retrieveUserDataSuccess,
-    required TResult Function(ASRetrieveUserDataError value)
-        retrieveUserDataError,
-    required TResult Function(ASIsAdminLoading value) isAdminLoading,
-    required TResult Function(ASIsAdminSuccess value) isAdminSuccess,
-    required TResult Function(ASIsAdminError value) isAdminError,
-    required TResult Function(ASVerifyPhoneLoading value) verifyPhoneLoading,
-    required TResult Function(ASVerifyPhoneCompleted value)
-        verifyPhoneCompleted,
-    required TResult Function(ASVerifyPhoneError value) verifyPhoneError,
-    required TResult Function(ASPhoneCodeSent value) phoneCodeSent,
-    required TResult Function(ASPhoneCodeLoginComplete value)
-        phoneCodeLoginComplete,
-    required TResult Function(ASPhoneCodeLoginError value) phoneCodeLoginError,
-    required TResult Function(ASCodeAutoRetrievalTimeout value)
-        codeAutoRetrievalTimeout,
-  }) {
-    return phoneCodeLoginError(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(ASInitial value)? initial,
-    TResult Function(ASIdle value)? idle,
-    TResult Function(ASLoading value)? loading,
-    TResult Function(ASLoginLoading value)? loginLoading,
-    TResult Function(ASLoginSuccess value)? loginSuccess,
-    TResult Function(ASLoginError value)? loginError,
-    TResult Function(ASRegisterLoading value)? registerLoading,
-    TResult Function(ASRegisterSuccess value)? registerSuccess,
-    TResult Function(ASRegisterError value)? registerError,
-    TResult Function(ASSignOutLoading value)? signOutLoading,
-    TResult Function(ASSignOutSuccess value)? signOutSuccess,
-    TResult Function(ASSignOutError value)? signOutError,
-    TResult Function(ASRetrieveUserDataLoading value)? retrieveUserDataLoading,
-    TResult Function(ASRetrieveUserDataSuccess value)? retrieveUserDataSuccess,
-    TResult Function(ASRetrieveUserDataError value)? retrieveUserDataError,
-    TResult Function(ASIsAdminLoading value)? isAdminLoading,
-    TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
-    TResult Function(ASIsAdminError value)? isAdminError,
-    TResult Function(ASVerifyPhoneLoading value)? verifyPhoneLoading,
-    TResult Function(ASVerifyPhoneCompleted value)? verifyPhoneCompleted,
-    TResult Function(ASVerifyPhoneError value)? verifyPhoneError,
-    TResult Function(ASPhoneCodeSent value)? phoneCodeSent,
-    TResult Function(ASPhoneCodeLoginComplete value)? phoneCodeLoginComplete,
-    TResult Function(ASPhoneCodeLoginError value)? phoneCodeLoginError,
-    TResult Function(ASCodeAutoRetrievalTimeout value)?
-        codeAutoRetrievalTimeout,
-  }) {
-    return phoneCodeLoginError?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(ASInitial value)? initial,
-    TResult Function(ASIdle value)? idle,
-    TResult Function(ASLoading value)? loading,
-    TResult Function(ASLoginLoading value)? loginLoading,
-    TResult Function(ASLoginSuccess value)? loginSuccess,
-    TResult Function(ASLoginError value)? loginError,
-    TResult Function(ASRegisterLoading value)? registerLoading,
-    TResult Function(ASRegisterSuccess value)? registerSuccess,
-    TResult Function(ASRegisterError value)? registerError,
-    TResult Function(ASSignOutLoading value)? signOutLoading,
-    TResult Function(ASSignOutSuccess value)? signOutSuccess,
-    TResult Function(ASSignOutError value)? signOutError,
-    TResult Function(ASRetrieveUserDataLoading value)? retrieveUserDataLoading,
-    TResult Function(ASRetrieveUserDataSuccess value)? retrieveUserDataSuccess,
-    TResult Function(ASRetrieveUserDataError value)? retrieveUserDataError,
-    TResult Function(ASIsAdminLoading value)? isAdminLoading,
-    TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
-    TResult Function(ASIsAdminError value)? isAdminError,
-    TResult Function(ASVerifyPhoneLoading value)? verifyPhoneLoading,
-    TResult Function(ASVerifyPhoneCompleted value)? verifyPhoneCompleted,
-    TResult Function(ASVerifyPhoneError value)? verifyPhoneError,
-    TResult Function(ASPhoneCodeSent value)? phoneCodeSent,
-    TResult Function(ASPhoneCodeLoginComplete value)? phoneCodeLoginComplete,
-    TResult Function(ASPhoneCodeLoginError value)? phoneCodeLoginError,
-    TResult Function(ASCodeAutoRetrievalTimeout value)?
-        codeAutoRetrievalTimeout,
-    required TResult orElse(),
-  }) {
-    if (phoneCodeLoginError != null) {
-      return phoneCodeLoginError(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class ASPhoneCodeLoginError implements AuthState {
-  const factory ASPhoneCodeLoginError(final Failure failure) =
-      _$ASPhoneCodeLoginError;
-
-  Failure get failure => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  _$$ASPhoneCodeLoginErrorCopyWith<_$ASPhoneCodeLoginError> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$ASCodeAutoRetrievalTimeoutCopyWith<$Res> {
-  factory _$$ASCodeAutoRetrievalTimeoutCopyWith(
-          _$ASCodeAutoRetrievalTimeout value,
-          $Res Function(_$ASCodeAutoRetrievalTimeout) then) =
-      __$$ASCodeAutoRetrievalTimeoutCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$ASCodeAutoRetrievalTimeoutCopyWithImpl<$Res>
-    extends _$AuthStateCopyWithImpl<$Res>
-    implements _$$ASCodeAutoRetrievalTimeoutCopyWith<$Res> {
-  __$$ASCodeAutoRetrievalTimeoutCopyWithImpl(
-      _$ASCodeAutoRetrievalTimeout _value,
-      $Res Function(_$ASCodeAutoRetrievalTimeout) _then)
-      : super(_value, (v) => _then(v as _$ASCodeAutoRetrievalTimeout));
-
-  @override
-  _$ASCodeAutoRetrievalTimeout get _value =>
-      super._value as _$ASCodeAutoRetrievalTimeout;
-}
-
-/// @nodoc
-
-class _$ASCodeAutoRetrievalTimeout implements ASCodeAutoRetrievalTimeout {
-  const _$ASCodeAutoRetrievalTimeout();
-
-  @override
-  String toString() {
-    return 'AuthState.codeAutoRetrievalTimeout()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ASCodeAutoRetrievalTimeout);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() idle,
-    required TResult Function() loading,
-    required TResult Function() loginLoading,
-    required TResult Function(FarmhubUser user) loginSuccess,
-    required TResult Function(
-            String code, String message, StackTrace stackTrace)
-        loginError,
-    required TResult Function() registerLoading,
-    required TResult Function(FarmhubUser user) registerSuccess,
-    required TResult Function(
-            String code, String message, StackTrace stackTrace)
-        registerError,
-    required TResult Function() signOutLoading,
-    required TResult Function() signOutSuccess,
-    required TResult Function(
-            String code, String message, StackTrace stackTrace)
-        signOutError,
-    required TResult Function() retrieveUserDataLoading,
-    required TResult Function(FarmhubUser farmhubUser) retrieveUserDataSuccess,
-    required TResult Function(
-            String code, String message, StackTrace stackTrace)
-        retrieveUserDataError,
-    required TResult Function() isAdminLoading,
-    required TResult Function(bool isAdmin) isAdminSuccess,
-    required TResult Function(
-            String code, String message, StackTrace stackTrace)
-        isAdminError,
-    required TResult Function() verifyPhoneLoading,
-    required TResult Function() verifyPhoneCompleted,
-    required TResult Function(Failure failure) verifyPhoneError,
-    required TResult Function(
-            String verificationId, PhoneNumber phoneNumber, int? resendToken)
-        phoneCodeSent,
-    required TResult Function() phoneCodeLoginComplete,
-    required TResult Function(Failure failure) phoneCodeLoginError,
-    required TResult Function() codeAutoRetrievalTimeout,
-  }) {
-    return codeAutoRetrievalTimeout();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? idle,
-    TResult Function()? loading,
-    TResult Function()? loginLoading,
-    TResult Function(FarmhubUser user)? loginSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        loginError,
-    TResult Function()? registerLoading,
-    TResult Function(FarmhubUser user)? registerSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        registerError,
-    TResult Function()? signOutLoading,
-    TResult Function()? signOutSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        signOutError,
-    TResult Function()? retrieveUserDataLoading,
-    TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        retrieveUserDataError,
-    TResult Function()? isAdminLoading,
-    TResult Function(bool isAdmin)? isAdminSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        isAdminError,
-    TResult Function()? verifyPhoneLoading,
-    TResult Function()? verifyPhoneCompleted,
-    TResult Function(Failure failure)? verifyPhoneError,
-    TResult Function(
-            String verificationId, PhoneNumber phoneNumber, int? resendToken)?
-        phoneCodeSent,
-    TResult Function()? phoneCodeLoginComplete,
-    TResult Function(Failure failure)? phoneCodeLoginError,
-    TResult Function()? codeAutoRetrievalTimeout,
-  }) {
-    return codeAutoRetrievalTimeout?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? idle,
-    TResult Function()? loading,
-    TResult Function()? loginLoading,
-    TResult Function(FarmhubUser user)? loginSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        loginError,
-    TResult Function()? registerLoading,
-    TResult Function(FarmhubUser user)? registerSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        registerError,
-    TResult Function()? signOutLoading,
-    TResult Function()? signOutSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        signOutError,
-    TResult Function()? retrieveUserDataLoading,
-    TResult Function(FarmhubUser farmhubUser)? retrieveUserDataSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        retrieveUserDataError,
-    TResult Function()? isAdminLoading,
-    TResult Function(bool isAdmin)? isAdminSuccess,
-    TResult Function(String code, String message, StackTrace stackTrace)?
-        isAdminError,
-    TResult Function()? verifyPhoneLoading,
-    TResult Function()? verifyPhoneCompleted,
-    TResult Function(Failure failure)? verifyPhoneError,
-    TResult Function(
-            String verificationId, PhoneNumber phoneNumber, int? resendToken)?
-        phoneCodeSent,
-    TResult Function()? phoneCodeLoginComplete,
-    TResult Function(Failure failure)? phoneCodeLoginError,
-    TResult Function()? codeAutoRetrievalTimeout,
-    required TResult orElse(),
-  }) {
-    if (codeAutoRetrievalTimeout != null) {
-      return codeAutoRetrievalTimeout();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(ASInitial value) initial,
-    required TResult Function(ASIdle value) idle,
-    required TResult Function(ASLoading value) loading,
-    required TResult Function(ASLoginLoading value) loginLoading,
-    required TResult Function(ASLoginSuccess value) loginSuccess,
-    required TResult Function(ASLoginError value) loginError,
-    required TResult Function(ASRegisterLoading value) registerLoading,
-    required TResult Function(ASRegisterSuccess value) registerSuccess,
-    required TResult Function(ASRegisterError value) registerError,
-    required TResult Function(ASSignOutLoading value) signOutLoading,
-    required TResult Function(ASSignOutSuccess value) signOutSuccess,
-    required TResult Function(ASSignOutError value) signOutError,
-    required TResult Function(ASRetrieveUserDataLoading value)
-        retrieveUserDataLoading,
-    required TResult Function(ASRetrieveUserDataSuccess value)
-        retrieveUserDataSuccess,
-    required TResult Function(ASRetrieveUserDataError value)
-        retrieveUserDataError,
-    required TResult Function(ASIsAdminLoading value) isAdminLoading,
-    required TResult Function(ASIsAdminSuccess value) isAdminSuccess,
-    required TResult Function(ASIsAdminError value) isAdminError,
-    required TResult Function(ASVerifyPhoneLoading value) verifyPhoneLoading,
-    required TResult Function(ASVerifyPhoneCompleted value)
-        verifyPhoneCompleted,
-    required TResult Function(ASVerifyPhoneError value) verifyPhoneError,
-    required TResult Function(ASPhoneCodeSent value) phoneCodeSent,
-    required TResult Function(ASPhoneCodeLoginComplete value)
-        phoneCodeLoginComplete,
-    required TResult Function(ASPhoneCodeLoginError value) phoneCodeLoginError,
-    required TResult Function(ASCodeAutoRetrievalTimeout value)
-        codeAutoRetrievalTimeout,
-  }) {
-    return codeAutoRetrievalTimeout(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(ASInitial value)? initial,
-    TResult Function(ASIdle value)? idle,
-    TResult Function(ASLoading value)? loading,
-    TResult Function(ASLoginLoading value)? loginLoading,
-    TResult Function(ASLoginSuccess value)? loginSuccess,
-    TResult Function(ASLoginError value)? loginError,
-    TResult Function(ASRegisterLoading value)? registerLoading,
-    TResult Function(ASRegisterSuccess value)? registerSuccess,
-    TResult Function(ASRegisterError value)? registerError,
-    TResult Function(ASSignOutLoading value)? signOutLoading,
-    TResult Function(ASSignOutSuccess value)? signOutSuccess,
-    TResult Function(ASSignOutError value)? signOutError,
-    TResult Function(ASRetrieveUserDataLoading value)? retrieveUserDataLoading,
-    TResult Function(ASRetrieveUserDataSuccess value)? retrieveUserDataSuccess,
-    TResult Function(ASRetrieveUserDataError value)? retrieveUserDataError,
-    TResult Function(ASIsAdminLoading value)? isAdminLoading,
-    TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
-    TResult Function(ASIsAdminError value)? isAdminError,
-    TResult Function(ASVerifyPhoneLoading value)? verifyPhoneLoading,
-    TResult Function(ASVerifyPhoneCompleted value)? verifyPhoneCompleted,
-    TResult Function(ASVerifyPhoneError value)? verifyPhoneError,
-    TResult Function(ASPhoneCodeSent value)? phoneCodeSent,
-    TResult Function(ASPhoneCodeLoginComplete value)? phoneCodeLoginComplete,
-    TResult Function(ASPhoneCodeLoginError value)? phoneCodeLoginError,
-    TResult Function(ASCodeAutoRetrievalTimeout value)?
-        codeAutoRetrievalTimeout,
-  }) {
-    return codeAutoRetrievalTimeout?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(ASInitial value)? initial,
-    TResult Function(ASIdle value)? idle,
-    TResult Function(ASLoading value)? loading,
-    TResult Function(ASLoginLoading value)? loginLoading,
-    TResult Function(ASLoginSuccess value)? loginSuccess,
-    TResult Function(ASLoginError value)? loginError,
-    TResult Function(ASRegisterLoading value)? registerLoading,
-    TResult Function(ASRegisterSuccess value)? registerSuccess,
-    TResult Function(ASRegisterError value)? registerError,
-    TResult Function(ASSignOutLoading value)? signOutLoading,
-    TResult Function(ASSignOutSuccess value)? signOutSuccess,
-    TResult Function(ASSignOutError value)? signOutError,
-    TResult Function(ASRetrieveUserDataLoading value)? retrieveUserDataLoading,
-    TResult Function(ASRetrieveUserDataSuccess value)? retrieveUserDataSuccess,
-    TResult Function(ASRetrieveUserDataError value)? retrieveUserDataError,
-    TResult Function(ASIsAdminLoading value)? isAdminLoading,
-    TResult Function(ASIsAdminSuccess value)? isAdminSuccess,
-    TResult Function(ASIsAdminError value)? isAdminError,
-    TResult Function(ASVerifyPhoneLoading value)? verifyPhoneLoading,
-    TResult Function(ASVerifyPhoneCompleted value)? verifyPhoneCompleted,
-    TResult Function(ASVerifyPhoneError value)? verifyPhoneError,
-    TResult Function(ASPhoneCodeSent value)? phoneCodeSent,
-    TResult Function(ASPhoneCodeLoginComplete value)? phoneCodeLoginComplete,
-    TResult Function(ASPhoneCodeLoginError value)? phoneCodeLoginError,
-    TResult Function(ASCodeAutoRetrievalTimeout value)?
-        codeAutoRetrievalTimeout,
-    required TResult orElse(),
-  }) {
-    if (codeAutoRetrievalTimeout != null) {
-      return codeAutoRetrievalTimeout(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class ASCodeAutoRetrievalTimeout implements AuthState {
-  const factory ASCodeAutoRetrievalTimeout() = _$ASCodeAutoRetrievalTimeout;
 }

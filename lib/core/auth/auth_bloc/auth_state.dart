@@ -59,17 +59,4 @@ class AuthState with _$AuthState {
     required String message,
     required StackTrace stackTrace,
   }) = ASIsAdminError;
-
-  // PhoneSignIn States
-  const factory AuthState.verifyPhoneLoading() = ASVerifyPhoneLoading;
-  const factory AuthState.verifyPhoneCompleted() = ASVerifyPhoneCompleted;
-  const factory AuthState.verifyPhoneError(Failure failure) = ASVerifyPhoneError;
-  const factory AuthState.phoneCodeSent({
-    required String verificationId,
-    required PhoneNumber phoneNumber,
-    int? resendToken,
-  }) = ASPhoneCodeSent;
-  const factory AuthState.phoneCodeLoginComplete() = ASPhoneCodeLoginComplete;
-  const factory AuthState.phoneCodeLoginError(Failure failure) = ASPhoneCodeLoginError;
-  const factory AuthState.codeAutoRetrievalTimeout() = ASCodeAutoRetrievalTimeout;
 }

@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:farmhub/core/auth/auth_cubit/auth_cubit.dart';
 import 'package:farmhub/presentation/shared_widgets/appbars.dart';
 import 'package:farmhub/presentation/smart_widgets/primary_button_aware/primary_button_aware_cubit.dart';
 import 'package:flutter/material.dart';
@@ -7,7 +8,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:phone_numbers_parser/phone_numbers_parser.dart';
 
-import '../../../core/auth/auth_bloc/auth_bloc.dart';
 import '../../../locator.dart';
 import '../../shared_widgets/buttons.dart';
 import '../../shared_widgets/scroll_physics.dart';
@@ -55,9 +55,8 @@ class _VerifyCodeScreenState extends State<VerifyCodeScreen> {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => AuthBloc(
+          create: (context) => AuthCubit(
             authRepository: locator(),
-            globalAuthCubit: locator(),
             firebaseAuth: locator(),
           ),
         ),
@@ -66,12 +65,14 @@ class _VerifyCodeScreenState extends State<VerifyCodeScreen> {
         )
       ],
       child: Builder(builder: (context) {
-        return BlocListener<AuthBloc, AuthState>(
+        return BlocListener<AuthCubit, AuthState>(
           listener: (context, state) {
-            if (state is ASPhoneCodeLoginComplete) {
+            if (state is AccountCreationSuccess) {
               print("Login Success!");
-            } else if (state is ASPhoneCodeLoginError) {
+            } else if (state is CredentialLoginError) {
               print("ERROR LOGGING IN");
+            } else if (state is AccountCreationError) {
+              print("ERROR CREATING ACCOUNT (credential login success)");
             }
           },
           child: Scaffold(
@@ -162,11 +163,11 @@ class _VerifyCodeScreenState extends State<VerifyCodeScreen> {
                       final valid = formKey.currentState!.validate();
 
                       if (valid) {
-                        context.read<AuthBloc>().add(AuthEvent.sendCodeAndSignIn(
+                        context.read<AuthCubit>().sendCodeFromClientAndSignIn(
                               verificationId: widget.arguments.verificationId,
                               code: textEditingController.value.text,
-                              phoneNumber: widget.arguments.phoneNumber,
-                            ));
+                              // phoneNumber: widget.arguments.phoneNumber,
+                            );
                       }
                     },
                   ),

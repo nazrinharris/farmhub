@@ -4,6 +4,7 @@ import 'package:farmhub/core/util/app_const.dart';
 import 'package:farmhub/features/produce_manager/domain/entities/produce/produce.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:intl/intl.dart';
+import 'package:phone_numbers_parser/phone_numbers_parser.dart';
 
 import '../../../../../features/farm_shop_manager/domain/entities/farm_shop/farm_shop.dart';
 import '../../../../errors/exceptions.dart';
@@ -90,11 +91,12 @@ class FarmhubUser with _$FarmhubUser {
   @JsonSerializable(explicitToJson: true)
   factory FarmhubUser({
     required String uid,
-    required String email,
+    required String? email,
     required String username,
     required String createdAt,
     required List<ProduceFavorite> produceFavoritesList,
     required UserType userType,
+    PhoneNumber? phoneNumber,
   }) = _FarmhubUser;
 
   factory FarmhubUser.fromJson(Map<String, dynamic> json) => _$FarmhubUserFromJson(json);
@@ -149,25 +151,27 @@ class FarmhubUser with _$FarmhubUser {
   @JsonSerializable(explicitToJson: true)
   const factory FarmhubUser.farmer({
     required String uid,
-    required String email,
+    required String? email,
     required String username,
     required String createdAt,
     required List<ProduceFavorite> produceFavoritesList,
     required UserType userType,
     required List<Farm> userFarms,
     required List<Shop> userShops,
+    PhoneNumber? phoneNumber,
   }) = FarmhubUserFarmer;
 
   @JsonSerializable(explicitToJson: true)
   const factory FarmhubUser.business({
     required String uid,
-    required String email,
+    required String? email,
     required String username,
     required String createdAt,
     required List<ProduceFavorite> produceFavoritesList,
     required UserType userType,
     required List<Farm> userFarms,
     required List<Shop> userShops,
+    PhoneNumber? phoneNumber,
   }) = FarmhubUserBusiness;
 
   static FarmhubUserFarmer farmerFromFarmhubUser(FarmhubUser user) {
@@ -180,6 +184,7 @@ class FarmhubUser with _$FarmhubUser {
       userType: user.userType,
       userFarms: [],
       userShops: [],
+      phoneNumber: user.phoneNumber,
     );
   }
 
@@ -193,6 +198,7 @@ class FarmhubUser with _$FarmhubUser {
       userType: user.userType,
       userFarms: [],
       userShops: [],
+      phoneNumber: user.phoneNumber,
     );
   }
 

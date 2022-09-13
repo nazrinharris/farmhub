@@ -43,6 +43,7 @@ class PrimaryButton extends StatelessWidget {
       if (buttonIcon != null) {
         // When child and buttonIcon is specified
         return Row(
+          mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             child!,
@@ -58,6 +59,7 @@ class PrimaryButton extends StatelessWidget {
       /// When content is specified and child is unspecified.
       if (buttonIcon != null) {
         return Row(
+          mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
