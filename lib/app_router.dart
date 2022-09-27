@@ -205,7 +205,12 @@ class AppRouter {
       case '/navigate':
         return CupertinoPageRoute(builder: (_) => const NavigateView());
       case '/playground':
-        return CupertinoPageRoute(builder: (_) => PlaygroundScreen(authLocalDataSource: locator()));
+        return CupertinoPageRoute(
+          builder: (_) => PlaygroundScreen(
+            authLocalDataSource: locator(),
+            authRemote: locator(),
+          ),
+        );
       case '/playground_two':
         return CupertinoPageRoute(builder: (_) => const PlaygroundTwoScreen());
 
@@ -248,6 +253,7 @@ Route settingsRoute = CupertinoPageRoute(builder: (_) => const SettingsScreen())
 Route playgroundRoute = CupertinoPageRoute(
     builder: (_) => PlaygroundScreen(
           authLocalDataSource: locator(),
+          authRemote: locator(),
         ));
 Route playgroundTwoRoute = CupertinoPageRoute(builder: (_) => const PlaygroundTwoScreen());
 

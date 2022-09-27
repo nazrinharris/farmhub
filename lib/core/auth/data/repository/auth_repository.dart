@@ -150,10 +150,10 @@ class AuthRepository implements IAuthRepository {
   }
 
   @override
-  Future<Either<Failure, FarmhubUser>> retrieveUserData() async {
+  Future<Either<Failure, FarmhubUser>> retrieveUserData({String? uid}) async {
     if (await networkInfo.isConnected) {
       try {
-        FarmhubUser user = await authRemoteDataSource.retrieveUserData();
+        FarmhubUser user = await authRemoteDataSource.retrieveUserData(uid: uid);
 
         /// When we retrieve [user], it only retrieves [FarmhubUser], as such, [farmList] and
         /// [shopList] will be empty, here, we will retrieve it.

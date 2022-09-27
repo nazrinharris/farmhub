@@ -30,7 +30,7 @@ abstract class IAuthRepository {
 
   Future<Either<Failure, Unit>> sendPasswordResetEmail(String email);
 
-  Future<Either<Failure, FarmhubUser>> retrieveUserData();
+  Future<Either<Failure, FarmhubUser>> retrieveUserData({String? uid});
 
   Future<Either<Failure, bool>> isAdmin({
     required String uid,

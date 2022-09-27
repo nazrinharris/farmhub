@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:farmhub/core/auth/auth_bloc/auth_bloc.dart';
 import 'package:farmhub/core/auth/data/datasources/auth_local_datasource.dart';
+import 'package:farmhub/core/auth/data/datasources/auth_remote_datasource.dart';
 import 'package:farmhub/core/auth/domain/entities/farmhub_user/farmhub_user.dart';
 import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
 import 'package:farmhub/core/util/printer.dart';
@@ -69,8 +70,13 @@ final farmer = FarmhubUser.farmer(
 
 class PlaygroundScreen extends StatefulWidget {
   final IAuthLocalDataSource authLocalDataSource;
+  final IAuthRemoteDataSource authRemote;
 
-  const PlaygroundScreen({Key? key, required this.authLocalDataSource}) : super(key: key);
+  const PlaygroundScreen({
+    Key? key,
+    required this.authLocalDataSource,
+    required this.authRemote,
+  }) : super(key: key);
 
   @override
   State<PlaygroundScreen> createState() => _PlaygroundScreenState();
@@ -343,6 +349,7 @@ class _PlaygroundScreenState extends State<PlaygroundScreen> {
                   ),
                 ),
                 Container(
+                  padding: EdgeInsets.only(bottom: 14),
                   alignment: Alignment.center,
                   child: PrimaryButton(
                     width: 250,
@@ -351,6 +358,19 @@ class _PlaygroundScreenState extends State<PlaygroundScreen> {
                       final result = await widget.authLocalDataSource.retrieveFarmhubUser();
 
                       print(result);
+                      prettyPrintJson(result.toJson());
+                    },
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.only(bottom: 14),
+                  alignment: Alignment.center,
+                  child: PrimaryButton(
+                    width: 250,
+                    content: "Try retrieve user",
+                    onPressed: () async {
+                      final result = await widget.authRemote.retrieveUserData(uid: "8989");
+
                       prettyPrintJson(result.toJson());
                     },
                   ),

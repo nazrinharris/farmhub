@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:farmhub/core/auth/data/datasources/auth_remote_datasource.dart';
 import 'package:farmhub/core/auth/domain/entities/farmhub_user/farmhub_user.dart';
 import 'package:farmhub/core/auth/domain/i_auth_repository.dart';
 import 'package:farmhub/core/errors/exceptions.dart';
@@ -15,10 +16,12 @@ part 'auth_cubit.freezed.dart';
 class AuthCubit extends Cubit<AuthState> {
   final FirebaseAuth firebaseAuth;
   final IAuthRepository authRepository;
+  final IAuthRemoteDataSource authRemoteDataSource;
 
   AuthCubit({
     required this.firebaseAuth,
     required this.authRepository,
+    required this.authRemoteDataSource,
   }) : super(AuthState.initial());
 
   /// [verifyPhoneAndSendSMS] will essentially verify the phone, as in to check whether it is a valid
@@ -76,8 +79,19 @@ class AuthCubit extends Cubit<AuthState> {
 
     try {
       await firebaseAuth.signInWithCredential(credential).then((userCred) async {
-        await _createAccountFromUserCred(userCred).then(
-          (user) => emit(AuthState.accountCreationSuccess(user)),
+        final uidCheckResult = await authRepository.retrieveUserData(uid: userCred.user!.uid);
+
+        uidCheckResult.fold(
+          (f) async {
+            // Could not find uid in database - create new account
+            await _createAccountFromUserCred(userCred).then(
+              (user) => emit(AuthState.accountCreationSuccess(user)),
+            );
+          },
+          (user) {
+            // Found user, send it to screen
+            emit(AuthState.accountCreationSuccess(user));
+          },
         );
       });
     } on FirebaseAuthException catch (e) {

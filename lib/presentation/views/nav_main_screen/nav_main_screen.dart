@@ -13,7 +13,15 @@ class NavMainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bottomPadding = context.read<GlobalUICubit>().state.props.safeAreaPadding!.bottom;
+    EdgeInsets? safeAreaPadding = context.read<GlobalUICubit>().state.props.safeAreaPadding;
+    double bottomPadding;
+
+    if (safeAreaPadding == null) {
+      print("THIS SHOULD ONLY OCCUR IN DEBUG (I.E WHEN WE NAVIGATE DIRECTLY FROM NAVIGATEVIEW)");
+      bottomPadding = 34;
+    } else {
+      bottomPadding = safeAreaPadding.bottom;
+    }
 
     return Scaffold(
       resizeToAvoidBottomInset: false,

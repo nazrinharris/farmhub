@@ -30,7 +30,7 @@ abstract class IAuthRemoteDataSource {
 
   Future<Unit> chooseUserType(String uid, UserType userType);
 
-  Future<FarmhubUser> retrieveUserData();
+  Future<FarmhubUser> retrieveUserData({String? uid});
 
   Future<FarmhubUser> updateRemoteUser(FarmhubUser newUserData);
 
@@ -141,16 +141,23 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
   }
 
   @override
-  Future<FarmhubUser> retrieveUserData() async {
+  Future<FarmhubUser> retrieveUserData({String? uid}) async {
+    String uidToSearch;
     final user = firebaseAuth.currentUser;
 
     if (user == null) {
       // TODO: Make a proper constant error code.
       throw FirebaseAuthException(code: AUTH_NOT_SIGNED_IN, message: 'User is not signed in.');
     } else {
+      if (uid == null) {
+        uidToSearch = user.uid;
+      } else {
+        uidToSearch = uid;
+      }
+
       final farmhubUserJson = await firebaseFirestore
           .collection(FS_USER)
-          .doc(user.uid)
+          .doc(uidToSearch)
           .get()
           .then((value) => value.data());
 
