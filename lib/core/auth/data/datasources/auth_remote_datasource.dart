@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:farmhub/core/auth/domain/entities/farmhub_user/farmhub_user.dart';
 import 'package:farmhub/core/errors/exceptions.dart';
 import 'package:farmhub/core/util/app_const.dart';
+import 'package:farmhub/core/util/misc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:intl/intl.dart';
@@ -239,8 +240,12 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
     required String uid,
     required String phoneNumber,
   }) async {
-    final generatedRandom = generateWordPairs().take(1).toList();
-    final String tempName = "${generatedRandom[0]} ${generatedRandom[1]}";
+    final random = [];
+
+    generateWordPairs().take(2).forEach((element) {
+      random.add(element);
+    });
+    final String tempName = "${random[0]} ${random[1]}".toTitleCase();
 
     String createdAt = DateFormat('yyyy-MM-dd').format(clock.now());
 
@@ -249,7 +254,7 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
     await firebaseFirestore.collection(FS_USER).doc(uid).set({
       "uid": uid,
       "email": null,
-      "username": "${tempName[0]} ${tempName[1]}",
+      "username": tempName,
       "createdAt": createdAt,
       "produceFavoritesMap": {},
       "phoneNumber": phoneNumber,
@@ -258,9 +263,10 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
 
     final user = FarmhubUser(
       uid: uid,
-      email: "fakeemail",
+      email: null,
       username: tempName,
-      //phoneNumber: PhoneNumber(isoCode: IsoCode.MY, nsn: phoneNumber),
+      //TODO: Change back to MY number
+      phoneNumber: PhoneNumber(isoCode: IsoCode.US, nsn: phoneNumber),
       createdAt: createdAt,
       produceFavoritesList: [],
       userType: UserType.regular,

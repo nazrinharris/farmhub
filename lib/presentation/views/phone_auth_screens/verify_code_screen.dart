@@ -6,11 +6,13 @@ import 'package:farmhub/presentation/smart_widgets/primary_button_aware/primary_
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_styled_toast/flutter_styled_toast.dart';
 import 'package:phone_numbers_parser/phone_numbers_parser.dart';
 
 import '../../../locator.dart';
 import '../../shared_widgets/buttons.dart';
 import '../../shared_widgets/scroll_physics.dart';
+import '../../shared_widgets/toasts.dart';
 import '../../shared_widgets/ui_helpers.dart';
 import '../../smart_widgets/multiple_fields_form/multiple_fields_form_bloc.dart';
 import '../../themes/farmhub_theme.dart';
@@ -69,10 +71,35 @@ class _VerifyCodeScreenState extends State<VerifyCodeScreen> {
           listener: (context, state) {
             if (state is AccountCreationSuccess) {
               print("Login Success!");
+              context.read<PrimaryButtonAwareCubit>().triggerFirstPage();
+              Navigator.of(context).pushNamedAndRemoveUntil('/nav_main', (route) => false);
             } else if (state is CredentialLoginError) {
               print("ERROR LOGGING IN");
+              print(state.failure);
+              showToastWidget(
+                ErrorToast(errorMessage: state.failure.message),
+                context: context,
+                animation: StyledToastAnimation.slideFromTopFade,
+                reverseAnimation: StyledToastAnimation.slideToTopFade,
+                position: StyledToastPosition.top,
+                animDuration: const Duration(milliseconds: 800),
+                curve: Curves.easeOutExpo,
+                reverseCurve: Curves.easeInExpo,
+                duration: const Duration(seconds: 5),
+              );
             } else if (state is AccountCreationError) {
               print("ERROR CREATING ACCOUNT (credential login success)");
+              showToastWidget(
+                ErrorToast(errorMessage: state.failure.message),
+                context: context,
+                animation: StyledToastAnimation.slideFromTopFade,
+                reverseAnimation: StyledToastAnimation.slideToTopFade,
+                position: StyledToastPosition.top,
+                animDuration: const Duration(milliseconds: 800),
+                curve: Curves.easeOutExpo,
+                reverseCurve: Curves.easeInExpo,
+                duration: const Duration(seconds: 5),
+              );
             }
           },
           child: Scaffold(
@@ -158,11 +185,14 @@ class _VerifyCodeScreenState extends State<VerifyCodeScreen> {
                     firstPageButtonIcon: const Icon(Icons.arrow_forward),
                     firstPageContent: "Continue",
                     firstPageOnPressed: () {
-                      print(textEditingController.value);
+                      print(textEditingController.text);
 
                       final valid = formKey.currentState!.validate();
 
                       if (valid) {
+                        context.read<PrimaryButtonAwareCubit>().triggerLoading();
+                        FocusScope.of(context).unfocus();
+
                         context.read<AuthCubit>().sendCodeFromClientAndSignIn(
                               verificationId: widget.arguments.verificationId,
                               code: textEditingController.value.text,

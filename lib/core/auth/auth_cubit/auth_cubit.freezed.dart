@@ -24,6 +24,7 @@ mixin _$AuthState {
             String verificationId, PhoneNumber phoneNumber, int? resendToken)
         SMSCodeSentToClient,
     required TResult Function(Failure failure) phoneVerificationError,
+    required TResult Function() smsCodeInvalid,
     required TResult Function() credentialLoginLoading,
     required TResult Function(Failure failure) credentialLoginError,
     required TResult Function(FarmhubUser user) accountCreationSuccess,
@@ -38,6 +39,7 @@ mixin _$AuthState {
             String verificationId, PhoneNumber phoneNumber, int? resendToken)?
         SMSCodeSentToClient,
     TResult Function(Failure failure)? phoneVerificationError,
+    TResult Function()? smsCodeInvalid,
     TResult Function()? credentialLoginLoading,
     TResult Function(Failure failure)? credentialLoginError,
     TResult Function(FarmhubUser user)? accountCreationSuccess,
@@ -52,6 +54,7 @@ mixin _$AuthState {
             String verificationId, PhoneNumber phoneNumber, int? resendToken)?
         SMSCodeSentToClient,
     TResult Function(Failure failure)? phoneVerificationError,
+    TResult Function()? smsCodeInvalid,
     TResult Function()? credentialLoginLoading,
     TResult Function(Failure failure)? credentialLoginError,
     TResult Function(FarmhubUser user)? accountCreationSuccess,
@@ -67,6 +70,7 @@ mixin _$AuthState {
     required TResult Function(SMSCodeSentToClient value) SMSCodeSentToClient,
     required TResult Function(PhoneVerificationError value)
         phoneVerificationError,
+    required TResult Function(SMSCodeInvalid value) smsCodeInvalid,
     required TResult Function(CredentialLoginLoading value)
         credentialLoginLoading,
     required TResult Function(CredentialLoginError value) credentialLoginError,
@@ -81,6 +85,7 @@ mixin _$AuthState {
     TResult Function(PhoneVerificationLoading value)? phoneVerificationLoading,
     TResult Function(SMSCodeSentToClient value)? SMSCodeSentToClient,
     TResult Function(PhoneVerificationError value)? phoneVerificationError,
+    TResult Function(SMSCodeInvalid value)? smsCodeInvalid,
     TResult Function(CredentialLoginLoading value)? credentialLoginLoading,
     TResult Function(CredentialLoginError value)? credentialLoginError,
     TResult Function(AccountCreationSuccess value)? accountCreationSuccess,
@@ -93,6 +98,7 @@ mixin _$AuthState {
     TResult Function(PhoneVerificationLoading value)? phoneVerificationLoading,
     TResult Function(SMSCodeSentToClient value)? SMSCodeSentToClient,
     TResult Function(PhoneVerificationError value)? phoneVerificationError,
+    TResult Function(SMSCodeInvalid value)? smsCodeInvalid,
     TResult Function(CredentialLoginLoading value)? credentialLoginLoading,
     TResult Function(CredentialLoginError value)? credentialLoginError,
     TResult Function(AccountCreationSuccess value)? accountCreationSuccess,
@@ -162,6 +168,7 @@ class _$_Initial implements _Initial {
             String verificationId, PhoneNumber phoneNumber, int? resendToken)
         SMSCodeSentToClient,
     required TResult Function(Failure failure) phoneVerificationError,
+    required TResult Function() smsCodeInvalid,
     required TResult Function() credentialLoginLoading,
     required TResult Function(Failure failure) credentialLoginError,
     required TResult Function(FarmhubUser user) accountCreationSuccess,
@@ -179,6 +186,7 @@ class _$_Initial implements _Initial {
             String verificationId, PhoneNumber phoneNumber, int? resendToken)?
         SMSCodeSentToClient,
     TResult Function(Failure failure)? phoneVerificationError,
+    TResult Function()? smsCodeInvalid,
     TResult Function()? credentialLoginLoading,
     TResult Function(Failure failure)? credentialLoginError,
     TResult Function(FarmhubUser user)? accountCreationSuccess,
@@ -196,6 +204,7 @@ class _$_Initial implements _Initial {
             String verificationId, PhoneNumber phoneNumber, int? resendToken)?
         SMSCodeSentToClient,
     TResult Function(Failure failure)? phoneVerificationError,
+    TResult Function()? smsCodeInvalid,
     TResult Function()? credentialLoginLoading,
     TResult Function(Failure failure)? credentialLoginError,
     TResult Function(FarmhubUser user)? accountCreationSuccess,
@@ -217,6 +226,7 @@ class _$_Initial implements _Initial {
     required TResult Function(SMSCodeSentToClient value) SMSCodeSentToClient,
     required TResult Function(PhoneVerificationError value)
         phoneVerificationError,
+    required TResult Function(SMSCodeInvalid value) smsCodeInvalid,
     required TResult Function(CredentialLoginLoading value)
         credentialLoginLoading,
     required TResult Function(CredentialLoginError value) credentialLoginError,
@@ -234,6 +244,7 @@ class _$_Initial implements _Initial {
     TResult Function(PhoneVerificationLoading value)? phoneVerificationLoading,
     TResult Function(SMSCodeSentToClient value)? SMSCodeSentToClient,
     TResult Function(PhoneVerificationError value)? phoneVerificationError,
+    TResult Function(SMSCodeInvalid value)? smsCodeInvalid,
     TResult Function(CredentialLoginLoading value)? credentialLoginLoading,
     TResult Function(CredentialLoginError value)? credentialLoginError,
     TResult Function(AccountCreationSuccess value)? accountCreationSuccess,
@@ -249,6 +260,7 @@ class _$_Initial implements _Initial {
     TResult Function(PhoneVerificationLoading value)? phoneVerificationLoading,
     TResult Function(SMSCodeSentToClient value)? SMSCodeSentToClient,
     TResult Function(PhoneVerificationError value)? phoneVerificationError,
+    TResult Function(SMSCodeInvalid value)? smsCodeInvalid,
     TResult Function(CredentialLoginLoading value)? credentialLoginLoading,
     TResult Function(CredentialLoginError value)? credentialLoginError,
     TResult Function(AccountCreationSuccess value)? accountCreationSuccess,
@@ -315,6 +327,7 @@ class _$PhoneVerificationLoading implements PhoneVerificationLoading {
             String verificationId, PhoneNumber phoneNumber, int? resendToken)
         SMSCodeSentToClient,
     required TResult Function(Failure failure) phoneVerificationError,
+    required TResult Function() smsCodeInvalid,
     required TResult Function() credentialLoginLoading,
     required TResult Function(Failure failure) credentialLoginError,
     required TResult Function(FarmhubUser user) accountCreationSuccess,
@@ -332,6 +345,7 @@ class _$PhoneVerificationLoading implements PhoneVerificationLoading {
             String verificationId, PhoneNumber phoneNumber, int? resendToken)?
         SMSCodeSentToClient,
     TResult Function(Failure failure)? phoneVerificationError,
+    TResult Function()? smsCodeInvalid,
     TResult Function()? credentialLoginLoading,
     TResult Function(Failure failure)? credentialLoginError,
     TResult Function(FarmhubUser user)? accountCreationSuccess,
@@ -349,6 +363,7 @@ class _$PhoneVerificationLoading implements PhoneVerificationLoading {
             String verificationId, PhoneNumber phoneNumber, int? resendToken)?
         SMSCodeSentToClient,
     TResult Function(Failure failure)? phoneVerificationError,
+    TResult Function()? smsCodeInvalid,
     TResult Function()? credentialLoginLoading,
     TResult Function(Failure failure)? credentialLoginError,
     TResult Function(FarmhubUser user)? accountCreationSuccess,
@@ -370,6 +385,7 @@ class _$PhoneVerificationLoading implements PhoneVerificationLoading {
     required TResult Function(SMSCodeSentToClient value) SMSCodeSentToClient,
     required TResult Function(PhoneVerificationError value)
         phoneVerificationError,
+    required TResult Function(SMSCodeInvalid value) smsCodeInvalid,
     required TResult Function(CredentialLoginLoading value)
         credentialLoginLoading,
     required TResult Function(CredentialLoginError value) credentialLoginError,
@@ -387,6 +403,7 @@ class _$PhoneVerificationLoading implements PhoneVerificationLoading {
     TResult Function(PhoneVerificationLoading value)? phoneVerificationLoading,
     TResult Function(SMSCodeSentToClient value)? SMSCodeSentToClient,
     TResult Function(PhoneVerificationError value)? phoneVerificationError,
+    TResult Function(SMSCodeInvalid value)? smsCodeInvalid,
     TResult Function(CredentialLoginLoading value)? credentialLoginLoading,
     TResult Function(CredentialLoginError value)? credentialLoginError,
     TResult Function(AccountCreationSuccess value)? accountCreationSuccess,
@@ -402,6 +419,7 @@ class _$PhoneVerificationLoading implements PhoneVerificationLoading {
     TResult Function(PhoneVerificationLoading value)? phoneVerificationLoading,
     TResult Function(SMSCodeSentToClient value)? SMSCodeSentToClient,
     TResult Function(PhoneVerificationError value)? phoneVerificationError,
+    TResult Function(SMSCodeInvalid value)? smsCodeInvalid,
     TResult Function(CredentialLoginLoading value)? credentialLoginLoading,
     TResult Function(CredentialLoginError value)? credentialLoginError,
     TResult Function(AccountCreationSuccess value)? accountCreationSuccess,
@@ -516,6 +534,7 @@ class _$SMSCodeSentToClient implements SMSCodeSentToClient {
             String verificationId, PhoneNumber phoneNumber, int? resendToken)
         SMSCodeSentToClient,
     required TResult Function(Failure failure) phoneVerificationError,
+    required TResult Function() smsCodeInvalid,
     required TResult Function() credentialLoginLoading,
     required TResult Function(Failure failure) credentialLoginError,
     required TResult Function(FarmhubUser user) accountCreationSuccess,
@@ -533,6 +552,7 @@ class _$SMSCodeSentToClient implements SMSCodeSentToClient {
             String verificationId, PhoneNumber phoneNumber, int? resendToken)?
         SMSCodeSentToClient,
     TResult Function(Failure failure)? phoneVerificationError,
+    TResult Function()? smsCodeInvalid,
     TResult Function()? credentialLoginLoading,
     TResult Function(Failure failure)? credentialLoginError,
     TResult Function(FarmhubUser user)? accountCreationSuccess,
@@ -550,6 +570,7 @@ class _$SMSCodeSentToClient implements SMSCodeSentToClient {
             String verificationId, PhoneNumber phoneNumber, int? resendToken)?
         SMSCodeSentToClient,
     TResult Function(Failure failure)? phoneVerificationError,
+    TResult Function()? smsCodeInvalid,
     TResult Function()? credentialLoginLoading,
     TResult Function(Failure failure)? credentialLoginError,
     TResult Function(FarmhubUser user)? accountCreationSuccess,
@@ -571,6 +592,7 @@ class _$SMSCodeSentToClient implements SMSCodeSentToClient {
     required TResult Function(SMSCodeSentToClient value) SMSCodeSentToClient,
     required TResult Function(PhoneVerificationError value)
         phoneVerificationError,
+    required TResult Function(SMSCodeInvalid value) smsCodeInvalid,
     required TResult Function(CredentialLoginLoading value)
         credentialLoginLoading,
     required TResult Function(CredentialLoginError value) credentialLoginError,
@@ -588,6 +610,7 @@ class _$SMSCodeSentToClient implements SMSCodeSentToClient {
     TResult Function(PhoneVerificationLoading value)? phoneVerificationLoading,
     TResult Function(SMSCodeSentToClient value)? SMSCodeSentToClient,
     TResult Function(PhoneVerificationError value)? phoneVerificationError,
+    TResult Function(SMSCodeInvalid value)? smsCodeInvalid,
     TResult Function(CredentialLoginLoading value)? credentialLoginLoading,
     TResult Function(CredentialLoginError value)? credentialLoginError,
     TResult Function(AccountCreationSuccess value)? accountCreationSuccess,
@@ -603,6 +626,7 @@ class _$SMSCodeSentToClient implements SMSCodeSentToClient {
     TResult Function(PhoneVerificationLoading value)? phoneVerificationLoading,
     TResult Function(SMSCodeSentToClient value)? SMSCodeSentToClient,
     TResult Function(PhoneVerificationError value)? phoneVerificationError,
+    TResult Function(SMSCodeInvalid value)? smsCodeInvalid,
     TResult Function(CredentialLoginLoading value)? credentialLoginLoading,
     TResult Function(CredentialLoginError value)? credentialLoginError,
     TResult Function(AccountCreationSuccess value)? accountCreationSuccess,
@@ -703,6 +727,7 @@ class _$PhoneVerificationError implements PhoneVerificationError {
             String verificationId, PhoneNumber phoneNumber, int? resendToken)
         SMSCodeSentToClient,
     required TResult Function(Failure failure) phoneVerificationError,
+    required TResult Function() smsCodeInvalid,
     required TResult Function() credentialLoginLoading,
     required TResult Function(Failure failure) credentialLoginError,
     required TResult Function(FarmhubUser user) accountCreationSuccess,
@@ -720,6 +745,7 @@ class _$PhoneVerificationError implements PhoneVerificationError {
             String verificationId, PhoneNumber phoneNumber, int? resendToken)?
         SMSCodeSentToClient,
     TResult Function(Failure failure)? phoneVerificationError,
+    TResult Function()? smsCodeInvalid,
     TResult Function()? credentialLoginLoading,
     TResult Function(Failure failure)? credentialLoginError,
     TResult Function(FarmhubUser user)? accountCreationSuccess,
@@ -737,6 +763,7 @@ class _$PhoneVerificationError implements PhoneVerificationError {
             String verificationId, PhoneNumber phoneNumber, int? resendToken)?
         SMSCodeSentToClient,
     TResult Function(Failure failure)? phoneVerificationError,
+    TResult Function()? smsCodeInvalid,
     TResult Function()? credentialLoginLoading,
     TResult Function(Failure failure)? credentialLoginError,
     TResult Function(FarmhubUser user)? accountCreationSuccess,
@@ -758,6 +785,7 @@ class _$PhoneVerificationError implements PhoneVerificationError {
     required TResult Function(SMSCodeSentToClient value) SMSCodeSentToClient,
     required TResult Function(PhoneVerificationError value)
         phoneVerificationError,
+    required TResult Function(SMSCodeInvalid value) smsCodeInvalid,
     required TResult Function(CredentialLoginLoading value)
         credentialLoginLoading,
     required TResult Function(CredentialLoginError value) credentialLoginError,
@@ -775,6 +803,7 @@ class _$PhoneVerificationError implements PhoneVerificationError {
     TResult Function(PhoneVerificationLoading value)? phoneVerificationLoading,
     TResult Function(SMSCodeSentToClient value)? SMSCodeSentToClient,
     TResult Function(PhoneVerificationError value)? phoneVerificationError,
+    TResult Function(SMSCodeInvalid value)? smsCodeInvalid,
     TResult Function(CredentialLoginLoading value)? credentialLoginLoading,
     TResult Function(CredentialLoginError value)? credentialLoginError,
     TResult Function(AccountCreationSuccess value)? accountCreationSuccess,
@@ -790,6 +819,7 @@ class _$PhoneVerificationError implements PhoneVerificationError {
     TResult Function(PhoneVerificationLoading value)? phoneVerificationLoading,
     TResult Function(SMSCodeSentToClient value)? SMSCodeSentToClient,
     TResult Function(PhoneVerificationError value)? phoneVerificationError,
+    TResult Function(SMSCodeInvalid value)? smsCodeInvalid,
     TResult Function(CredentialLoginLoading value)? credentialLoginLoading,
     TResult Function(CredentialLoginError value)? credentialLoginError,
     TResult Function(AccountCreationSuccess value)? accountCreationSuccess,
@@ -811,6 +841,162 @@ abstract class PhoneVerificationError implements AuthState {
   @JsonKey(ignore: true)
   _$$PhoneVerificationErrorCopyWith<_$PhoneVerificationError> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SMSCodeInvalidCopyWith<$Res> {
+  factory _$$SMSCodeInvalidCopyWith(
+          _$SMSCodeInvalid value, $Res Function(_$SMSCodeInvalid) then) =
+      __$$SMSCodeInvalidCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$SMSCodeInvalidCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
+    implements _$$SMSCodeInvalidCopyWith<$Res> {
+  __$$SMSCodeInvalidCopyWithImpl(
+      _$SMSCodeInvalid _value, $Res Function(_$SMSCodeInvalid) _then)
+      : super(_value, (v) => _then(v as _$SMSCodeInvalid));
+
+  @override
+  _$SMSCodeInvalid get _value => super._value as _$SMSCodeInvalid;
+}
+
+/// @nodoc
+
+class _$SMSCodeInvalid implements SMSCodeInvalid {
+  const _$SMSCodeInvalid();
+
+  @override
+  String toString() {
+    return 'AuthState.smsCodeInvalid()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$SMSCodeInvalid);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() phoneVerificationLoading,
+    required TResult Function(
+            String verificationId, PhoneNumber phoneNumber, int? resendToken)
+        SMSCodeSentToClient,
+    required TResult Function(Failure failure) phoneVerificationError,
+    required TResult Function() smsCodeInvalid,
+    required TResult Function() credentialLoginLoading,
+    required TResult Function(Failure failure) credentialLoginError,
+    required TResult Function(FarmhubUser user) accountCreationSuccess,
+    required TResult Function(Failure failure) accountCreationError,
+  }) {
+    return smsCodeInvalid();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? phoneVerificationLoading,
+    TResult Function(
+            String verificationId, PhoneNumber phoneNumber, int? resendToken)?
+        SMSCodeSentToClient,
+    TResult Function(Failure failure)? phoneVerificationError,
+    TResult Function()? smsCodeInvalid,
+    TResult Function()? credentialLoginLoading,
+    TResult Function(Failure failure)? credentialLoginError,
+    TResult Function(FarmhubUser user)? accountCreationSuccess,
+    TResult Function(Failure failure)? accountCreationError,
+  }) {
+    return smsCodeInvalid?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? phoneVerificationLoading,
+    TResult Function(
+            String verificationId, PhoneNumber phoneNumber, int? resendToken)?
+        SMSCodeSentToClient,
+    TResult Function(Failure failure)? phoneVerificationError,
+    TResult Function()? smsCodeInvalid,
+    TResult Function()? credentialLoginLoading,
+    TResult Function(Failure failure)? credentialLoginError,
+    TResult Function(FarmhubUser user)? accountCreationSuccess,
+    TResult Function(Failure failure)? accountCreationError,
+    required TResult orElse(),
+  }) {
+    if (smsCodeInvalid != null) {
+      return smsCodeInvalid();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(PhoneVerificationLoading value)
+        phoneVerificationLoading,
+    required TResult Function(SMSCodeSentToClient value) SMSCodeSentToClient,
+    required TResult Function(PhoneVerificationError value)
+        phoneVerificationError,
+    required TResult Function(SMSCodeInvalid value) smsCodeInvalid,
+    required TResult Function(CredentialLoginLoading value)
+        credentialLoginLoading,
+    required TResult Function(CredentialLoginError value) credentialLoginError,
+    required TResult Function(AccountCreationSuccess value)
+        accountCreationSuccess,
+    required TResult Function(AccountCreationError value) accountCreationError,
+  }) {
+    return smsCodeInvalid(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(PhoneVerificationLoading value)? phoneVerificationLoading,
+    TResult Function(SMSCodeSentToClient value)? SMSCodeSentToClient,
+    TResult Function(PhoneVerificationError value)? phoneVerificationError,
+    TResult Function(SMSCodeInvalid value)? smsCodeInvalid,
+    TResult Function(CredentialLoginLoading value)? credentialLoginLoading,
+    TResult Function(CredentialLoginError value)? credentialLoginError,
+    TResult Function(AccountCreationSuccess value)? accountCreationSuccess,
+    TResult Function(AccountCreationError value)? accountCreationError,
+  }) {
+    return smsCodeInvalid?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(PhoneVerificationLoading value)? phoneVerificationLoading,
+    TResult Function(SMSCodeSentToClient value)? SMSCodeSentToClient,
+    TResult Function(PhoneVerificationError value)? phoneVerificationError,
+    TResult Function(SMSCodeInvalid value)? smsCodeInvalid,
+    TResult Function(CredentialLoginLoading value)? credentialLoginLoading,
+    TResult Function(CredentialLoginError value)? credentialLoginError,
+    TResult Function(AccountCreationSuccess value)? accountCreationSuccess,
+    TResult Function(AccountCreationError value)? accountCreationError,
+    required TResult orElse(),
+  }) {
+    if (smsCodeInvalid != null) {
+      return smsCodeInvalid(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SMSCodeInvalid implements AuthState {
+  const factory SMSCodeInvalid() = _$SMSCodeInvalid;
 }
 
 /// @nodoc
@@ -861,6 +1047,7 @@ class _$CredentialLoginLoading implements CredentialLoginLoading {
             String verificationId, PhoneNumber phoneNumber, int? resendToken)
         SMSCodeSentToClient,
     required TResult Function(Failure failure) phoneVerificationError,
+    required TResult Function() smsCodeInvalid,
     required TResult Function() credentialLoginLoading,
     required TResult Function(Failure failure) credentialLoginError,
     required TResult Function(FarmhubUser user) accountCreationSuccess,
@@ -878,6 +1065,7 @@ class _$CredentialLoginLoading implements CredentialLoginLoading {
             String verificationId, PhoneNumber phoneNumber, int? resendToken)?
         SMSCodeSentToClient,
     TResult Function(Failure failure)? phoneVerificationError,
+    TResult Function()? smsCodeInvalid,
     TResult Function()? credentialLoginLoading,
     TResult Function(Failure failure)? credentialLoginError,
     TResult Function(FarmhubUser user)? accountCreationSuccess,
@@ -895,6 +1083,7 @@ class _$CredentialLoginLoading implements CredentialLoginLoading {
             String verificationId, PhoneNumber phoneNumber, int? resendToken)?
         SMSCodeSentToClient,
     TResult Function(Failure failure)? phoneVerificationError,
+    TResult Function()? smsCodeInvalid,
     TResult Function()? credentialLoginLoading,
     TResult Function(Failure failure)? credentialLoginError,
     TResult Function(FarmhubUser user)? accountCreationSuccess,
@@ -916,6 +1105,7 @@ class _$CredentialLoginLoading implements CredentialLoginLoading {
     required TResult Function(SMSCodeSentToClient value) SMSCodeSentToClient,
     required TResult Function(PhoneVerificationError value)
         phoneVerificationError,
+    required TResult Function(SMSCodeInvalid value) smsCodeInvalid,
     required TResult Function(CredentialLoginLoading value)
         credentialLoginLoading,
     required TResult Function(CredentialLoginError value) credentialLoginError,
@@ -933,6 +1123,7 @@ class _$CredentialLoginLoading implements CredentialLoginLoading {
     TResult Function(PhoneVerificationLoading value)? phoneVerificationLoading,
     TResult Function(SMSCodeSentToClient value)? SMSCodeSentToClient,
     TResult Function(PhoneVerificationError value)? phoneVerificationError,
+    TResult Function(SMSCodeInvalid value)? smsCodeInvalid,
     TResult Function(CredentialLoginLoading value)? credentialLoginLoading,
     TResult Function(CredentialLoginError value)? credentialLoginError,
     TResult Function(AccountCreationSuccess value)? accountCreationSuccess,
@@ -948,6 +1139,7 @@ class _$CredentialLoginLoading implements CredentialLoginLoading {
     TResult Function(PhoneVerificationLoading value)? phoneVerificationLoading,
     TResult Function(SMSCodeSentToClient value)? SMSCodeSentToClient,
     TResult Function(PhoneVerificationError value)? phoneVerificationError,
+    TResult Function(SMSCodeInvalid value)? smsCodeInvalid,
     TResult Function(CredentialLoginLoading value)? credentialLoginLoading,
     TResult Function(CredentialLoginError value)? credentialLoginError,
     TResult Function(AccountCreationSuccess value)? accountCreationSuccess,
@@ -1037,6 +1229,7 @@ class _$CredentialLoginError implements CredentialLoginError {
             String verificationId, PhoneNumber phoneNumber, int? resendToken)
         SMSCodeSentToClient,
     required TResult Function(Failure failure) phoneVerificationError,
+    required TResult Function() smsCodeInvalid,
     required TResult Function() credentialLoginLoading,
     required TResult Function(Failure failure) credentialLoginError,
     required TResult Function(FarmhubUser user) accountCreationSuccess,
@@ -1054,6 +1247,7 @@ class _$CredentialLoginError implements CredentialLoginError {
             String verificationId, PhoneNumber phoneNumber, int? resendToken)?
         SMSCodeSentToClient,
     TResult Function(Failure failure)? phoneVerificationError,
+    TResult Function()? smsCodeInvalid,
     TResult Function()? credentialLoginLoading,
     TResult Function(Failure failure)? credentialLoginError,
     TResult Function(FarmhubUser user)? accountCreationSuccess,
@@ -1071,6 +1265,7 @@ class _$CredentialLoginError implements CredentialLoginError {
             String verificationId, PhoneNumber phoneNumber, int? resendToken)?
         SMSCodeSentToClient,
     TResult Function(Failure failure)? phoneVerificationError,
+    TResult Function()? smsCodeInvalid,
     TResult Function()? credentialLoginLoading,
     TResult Function(Failure failure)? credentialLoginError,
     TResult Function(FarmhubUser user)? accountCreationSuccess,
@@ -1092,6 +1287,7 @@ class _$CredentialLoginError implements CredentialLoginError {
     required TResult Function(SMSCodeSentToClient value) SMSCodeSentToClient,
     required TResult Function(PhoneVerificationError value)
         phoneVerificationError,
+    required TResult Function(SMSCodeInvalid value) smsCodeInvalid,
     required TResult Function(CredentialLoginLoading value)
         credentialLoginLoading,
     required TResult Function(CredentialLoginError value) credentialLoginError,
@@ -1109,6 +1305,7 @@ class _$CredentialLoginError implements CredentialLoginError {
     TResult Function(PhoneVerificationLoading value)? phoneVerificationLoading,
     TResult Function(SMSCodeSentToClient value)? SMSCodeSentToClient,
     TResult Function(PhoneVerificationError value)? phoneVerificationError,
+    TResult Function(SMSCodeInvalid value)? smsCodeInvalid,
     TResult Function(CredentialLoginLoading value)? credentialLoginLoading,
     TResult Function(CredentialLoginError value)? credentialLoginError,
     TResult Function(AccountCreationSuccess value)? accountCreationSuccess,
@@ -1124,6 +1321,7 @@ class _$CredentialLoginError implements CredentialLoginError {
     TResult Function(PhoneVerificationLoading value)? phoneVerificationLoading,
     TResult Function(SMSCodeSentToClient value)? SMSCodeSentToClient,
     TResult Function(PhoneVerificationError value)? phoneVerificationError,
+    TResult Function(SMSCodeInvalid value)? smsCodeInvalid,
     TResult Function(CredentialLoginLoading value)? credentialLoginLoading,
     TResult Function(CredentialLoginError value)? credentialLoginError,
     TResult Function(AccountCreationSuccess value)? accountCreationSuccess,
@@ -1229,6 +1427,7 @@ class _$AccountCreationSuccess implements AccountCreationSuccess {
             String verificationId, PhoneNumber phoneNumber, int? resendToken)
         SMSCodeSentToClient,
     required TResult Function(Failure failure) phoneVerificationError,
+    required TResult Function() smsCodeInvalid,
     required TResult Function() credentialLoginLoading,
     required TResult Function(Failure failure) credentialLoginError,
     required TResult Function(FarmhubUser user) accountCreationSuccess,
@@ -1246,6 +1445,7 @@ class _$AccountCreationSuccess implements AccountCreationSuccess {
             String verificationId, PhoneNumber phoneNumber, int? resendToken)?
         SMSCodeSentToClient,
     TResult Function(Failure failure)? phoneVerificationError,
+    TResult Function()? smsCodeInvalid,
     TResult Function()? credentialLoginLoading,
     TResult Function(Failure failure)? credentialLoginError,
     TResult Function(FarmhubUser user)? accountCreationSuccess,
@@ -1263,6 +1463,7 @@ class _$AccountCreationSuccess implements AccountCreationSuccess {
             String verificationId, PhoneNumber phoneNumber, int? resendToken)?
         SMSCodeSentToClient,
     TResult Function(Failure failure)? phoneVerificationError,
+    TResult Function()? smsCodeInvalid,
     TResult Function()? credentialLoginLoading,
     TResult Function(Failure failure)? credentialLoginError,
     TResult Function(FarmhubUser user)? accountCreationSuccess,
@@ -1284,6 +1485,7 @@ class _$AccountCreationSuccess implements AccountCreationSuccess {
     required TResult Function(SMSCodeSentToClient value) SMSCodeSentToClient,
     required TResult Function(PhoneVerificationError value)
         phoneVerificationError,
+    required TResult Function(SMSCodeInvalid value) smsCodeInvalid,
     required TResult Function(CredentialLoginLoading value)
         credentialLoginLoading,
     required TResult Function(CredentialLoginError value) credentialLoginError,
@@ -1301,6 +1503,7 @@ class _$AccountCreationSuccess implements AccountCreationSuccess {
     TResult Function(PhoneVerificationLoading value)? phoneVerificationLoading,
     TResult Function(SMSCodeSentToClient value)? SMSCodeSentToClient,
     TResult Function(PhoneVerificationError value)? phoneVerificationError,
+    TResult Function(SMSCodeInvalid value)? smsCodeInvalid,
     TResult Function(CredentialLoginLoading value)? credentialLoginLoading,
     TResult Function(CredentialLoginError value)? credentialLoginError,
     TResult Function(AccountCreationSuccess value)? accountCreationSuccess,
@@ -1316,6 +1519,7 @@ class _$AccountCreationSuccess implements AccountCreationSuccess {
     TResult Function(PhoneVerificationLoading value)? phoneVerificationLoading,
     TResult Function(SMSCodeSentToClient value)? SMSCodeSentToClient,
     TResult Function(PhoneVerificationError value)? phoneVerificationError,
+    TResult Function(SMSCodeInvalid value)? smsCodeInvalid,
     TResult Function(CredentialLoginLoading value)? credentialLoginLoading,
     TResult Function(CredentialLoginError value)? credentialLoginError,
     TResult Function(AccountCreationSuccess value)? accountCreationSuccess,
@@ -1411,6 +1615,7 @@ class _$AccountCreationError implements AccountCreationError {
             String verificationId, PhoneNumber phoneNumber, int? resendToken)
         SMSCodeSentToClient,
     required TResult Function(Failure failure) phoneVerificationError,
+    required TResult Function() smsCodeInvalid,
     required TResult Function() credentialLoginLoading,
     required TResult Function(Failure failure) credentialLoginError,
     required TResult Function(FarmhubUser user) accountCreationSuccess,
@@ -1428,6 +1633,7 @@ class _$AccountCreationError implements AccountCreationError {
             String verificationId, PhoneNumber phoneNumber, int? resendToken)?
         SMSCodeSentToClient,
     TResult Function(Failure failure)? phoneVerificationError,
+    TResult Function()? smsCodeInvalid,
     TResult Function()? credentialLoginLoading,
     TResult Function(Failure failure)? credentialLoginError,
     TResult Function(FarmhubUser user)? accountCreationSuccess,
@@ -1445,6 +1651,7 @@ class _$AccountCreationError implements AccountCreationError {
             String verificationId, PhoneNumber phoneNumber, int? resendToken)?
         SMSCodeSentToClient,
     TResult Function(Failure failure)? phoneVerificationError,
+    TResult Function()? smsCodeInvalid,
     TResult Function()? credentialLoginLoading,
     TResult Function(Failure failure)? credentialLoginError,
     TResult Function(FarmhubUser user)? accountCreationSuccess,
@@ -1466,6 +1673,7 @@ class _$AccountCreationError implements AccountCreationError {
     required TResult Function(SMSCodeSentToClient value) SMSCodeSentToClient,
     required TResult Function(PhoneVerificationError value)
         phoneVerificationError,
+    required TResult Function(SMSCodeInvalid value) smsCodeInvalid,
     required TResult Function(CredentialLoginLoading value)
         credentialLoginLoading,
     required TResult Function(CredentialLoginError value) credentialLoginError,
@@ -1483,6 +1691,7 @@ class _$AccountCreationError implements AccountCreationError {
     TResult Function(PhoneVerificationLoading value)? phoneVerificationLoading,
     TResult Function(SMSCodeSentToClient value)? SMSCodeSentToClient,
     TResult Function(PhoneVerificationError value)? phoneVerificationError,
+    TResult Function(SMSCodeInvalid value)? smsCodeInvalid,
     TResult Function(CredentialLoginLoading value)? credentialLoginLoading,
     TResult Function(CredentialLoginError value)? credentialLoginError,
     TResult Function(AccountCreationSuccess value)? accountCreationSuccess,
@@ -1498,6 +1707,7 @@ class _$AccountCreationError implements AccountCreationError {
     TResult Function(PhoneVerificationLoading value)? phoneVerificationLoading,
     TResult Function(SMSCodeSentToClient value)? SMSCodeSentToClient,
     TResult Function(PhoneVerificationError value)? phoneVerificationError,
+    TResult Function(SMSCodeInvalid value)? smsCodeInvalid,
     TResult Function(CredentialLoginLoading value)? credentialLoginLoading,
     TResult Function(CredentialLoginError value)? credentialLoginError,
     TResult Function(AccountCreationSuccess value)? accountCreationSuccess,

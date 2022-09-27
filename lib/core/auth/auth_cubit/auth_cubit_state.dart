@@ -16,6 +16,8 @@ class AuthState with _$AuthState {
     Failure failure,
   ) = PhoneVerificationError;
 
+  const factory AuthState.smsCodeInvalid() = SMSCodeInvalid;
+
   const factory AuthState.credentialLoginLoading() = CredentialLoginLoading;
   const factory AuthState.credentialLoginError(Failure failure) = CredentialLoginError;
 

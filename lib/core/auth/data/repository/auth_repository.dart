@@ -335,6 +335,13 @@ class AuthRepository implements IAuthRepository {
             await authRemoteDataSource.createAccountWithPhone(uid: uid, phoneNumber: phoneNumber);
 
         return Right(result);
+      } on AuthException catch (e, stack) {
+        print(e);
+        return Left(AuthFailure(
+          code: e.code,
+          message: e.message,
+          stackTrace: e.stackTrace,
+        ));
       } catch (e, stack) {
         return Left(UnexpectedFailure(
           code: e.toString(),

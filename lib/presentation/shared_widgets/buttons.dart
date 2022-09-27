@@ -75,18 +75,24 @@ class PrimaryButton extends StatelessWidget {
           ],
         );
       } else {
-        return Text(
-          content!,
-          style: const TextStyle(
-            color: Colors.white,
-            fontFamily: "Montserrat",
-            fontWeight: FontWeight.w500,
-          ),
+        return Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              content!,
+              style: const TextStyle(
+                color: Colors.white,
+                fontFamily: "Montserrat",
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+          ],
         );
       }
     } else {
       throw UnimplementedError(
-          "Error in PrimaryButton, It may be because both [content] and [child] is unspecified.");
+          "Error in PrimaryButton, It may  be because both [content] and [child] is unspecified.");
     }
   }
 
@@ -112,15 +118,21 @@ class PrimaryButton extends StatelessWidget {
             ),
           ),
         ),
-        child: Container(
-          height: height ?? 46,
-          padding: EdgeInsets.symmetric(
-            vertical: verticalPadding ?? 14,
-            horizontal: horizontalPadding ?? 34,
-          ),
-          alignment: Alignment.center,
-          width: width,
-          child: _resolveChild(context),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              height: height ?? 46,
+              padding: EdgeInsets.symmetric(
+                vertical: verticalPadding ?? 14,
+                horizontal: horizontalPadding ?? 34,
+              ),
+              alignment: Alignment.center,
+              width: width,
+              child: _resolveChild(context),
+            ),
+          ],
         ),
       ),
     );

@@ -5,6 +5,7 @@ import 'package:farmhub/locator.dart';
 import 'package:farmhub/presentation/global/cubit/global_ui_cubit.dart';
 import 'package:farmhub/presentation/themes/farmhub_theme.dart';
 import 'package:farmhub/presentation/views/debug/navigate_view.dart';
+import 'package:farmhub/presentation/views/start_screen/start_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -122,7 +123,6 @@ class _FarmhubMaterialAppState extends State<FarmhubMaterialApp> {
       title: "Farmhub",
       theme: FarmhubTheme.appThemeData[FarmhubThemeVariants.light],
       onGenerateRoute: widget.appRouter.onGenerateRoute,
-      home: NavigateView(),
     );
   }
 }

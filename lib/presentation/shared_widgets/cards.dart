@@ -68,17 +68,21 @@ class ErrorCard extends StatelessWidget {
         color: Theme.of(context).colorScheme.error.withOpacity(0.15),
       ),
       child: Row(
+        mainAxisSize: MainAxisSize.min,
         children: [
           icon,
           const UIHorizontalSpace14(),
           Flexible(
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   mainContent,
                   style: Theme.of(context).textTheme.bodyText1!.copyWith(
                         color: Theme.of(context).colorScheme.error,
+                        fontWeight: FontWeight.bold,
                       ),
+                  textAlign: TextAlign.start,
                 ),
                 if (subContent != null) const UIVerticalSpace14(),
                 if (subContent != null)
@@ -381,6 +385,6 @@ class PhoneAuthCard extends StatelessWidget {
 
   void resolveOnTap(BuildContext context) {
     FocusScope.of(context).unfocus();
-    Navigator.of(context).pushNamed("/verify_phone_screen");
+    Navigator.of(context).pushNamed("/verify_phone");
   }
 }

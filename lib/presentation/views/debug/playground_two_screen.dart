@@ -9,6 +9,7 @@ import 'package:farmhub/presentation/shared_widgets/ui_helpers.dart';
 import 'package:farmhub/presentation/views/debug/cubit/playground_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:phone_numbers_parser/phone_numbers_parser.dart';
 
 class PlaygroundTwoScreen extends StatelessWidget {
   const PlaygroundTwoScreen({Key? key}) : super(key: key);
@@ -27,14 +28,23 @@ class PlaygroundTwoScreen extends StatelessWidget {
             final FarmhubUser user = context.read<GlobalAuthCubit>().state.farmhubUser!;
 
             return Scaffold(
-              body: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  PrimaryButton(
-                    content: "Send Verification",
-                    onPressed: () {},
-                  ),
-                ],
+              body: Center(
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    PrimaryButton(
+                      buttonIcon: Icon(Icons.print),
+                      content: "Print Number!",
+                      onPressed: () {
+                        final phone = PhoneNumber(isoCode: IsoCode.US, nsn: "7176768765");
+
+                        print(phone);
+                      },
+                    ),
+                  ],
+                ),
               ),
               // body: Column(
               //   mainAxisAlignment: MainAxisAlignment.center,

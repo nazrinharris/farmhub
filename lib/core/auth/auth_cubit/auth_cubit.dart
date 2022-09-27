@@ -9,7 +9,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:phone_numbers_parser/phone_numbers_parser.dart';
 
-part 'auth_state.dart';
+part 'auth_cubit_state.dart';
 part 'auth_cubit.freezed.dart';
 
 class AuthCubit extends Cubit<AuthState> {
@@ -37,6 +37,7 @@ class AuthCubit extends Cubit<AuthState> {
       timeout: const Duration(minutes: 1),
       verificationFailed: (FirebaseAuthException e) async {
         print("Verification Failed!");
+        print(e);
         c.complete(
           AuthState.phoneVerificationError(
             FirebaseAuthFailure(code: e.code, message: e.message, stackTrace: e.stackTrace),
@@ -79,7 +80,17 @@ class AuthCubit extends Cubit<AuthState> {
           (user) => emit(AuthState.accountCreationSuccess(user)),
         );
       });
+    } on FirebaseAuthException catch (e) {
+      print(e.code);
+      AuthState.credentialLoginError(
+        AuthFailure(
+          message: e.message,
+          stackTrace: e.stackTrace,
+          code: e.toString(),
+        ),
+      );
     } catch (e, stack) {
+      print(e.runtimeType);
       emit(
         AuthState.credentialLoginError(
           AuthFailure(
@@ -101,11 +112,14 @@ class AuthCubit extends Cubit<AuthState> {
     );
 
     final toReturn = result.fold(
-      (l) => throw AuthException(
-        code: l.code ?? "Unknown Code",
-        message: "An error occured while creating a new account",
-        stackTrace: StackTrace.current,
-      ),
+      (l) {
+        print(l);
+        throw AuthException(
+          code: l.code ?? "Unknown Code",
+          message: "An error occured while creating a new account",
+          stackTrace: l.stackTrace,
+        );
+      },
       (user) => user,
     );
 

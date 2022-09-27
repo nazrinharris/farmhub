@@ -1,5 +1,6 @@
 import 'package:farmhub/presentation/shared_widgets/appbars.dart';
 import 'package:farmhub/presentation/shared_widgets/buttons.dart';
+import 'package:farmhub/presentation/shared_widgets/cards.dart';
 import 'package:farmhub/presentation/shared_widgets/scroll_physics.dart';
 import 'package:farmhub/presentation/shared_widgets/toasts.dart';
 import 'package:farmhub/presentation/shared_widgets/ui_helpers.dart';
@@ -73,7 +74,7 @@ class _VerifyPhoneScreenState extends State<VerifyPhoneScreen> {
             }
           },
           child: Scaffold(
-            resizeToAvoidBottomInset: false,
+            // resizeToAvoidBottomInset: false,
             extendBody: true,
             extendBodyBehindAppBar: true,
             appBar: DefaultAppBar(
@@ -88,6 +89,17 @@ class _VerifyPhoneScreenState extends State<VerifyPhoneScreen> {
                   physics: DefaultScrollPhysics,
                   children: [
                     const VerifyPhoneScreenHeader(),
+                    const UIVerticalSpace24(),
+                    ErrorCard(
+                      margin: const EdgeInsets.symmetric(horizontal: 14),
+                      icon: Icon(
+                        Icons.nearby_error,
+                        color: Theme.of(context).colorScheme.error,
+                      ),
+                      mainContent: "Debug Mode",
+                      subContent:
+                          "If this banner is here, then the phone number MUST be a US number.",
+                    ),
                     const UICustomVertical(60),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 24),
@@ -103,7 +115,8 @@ class _VerifyPhoneScreenState extends State<VerifyPhoneScreen> {
                               if (value == null || value.isEmpty) {
                                 return "Enter a valid phone number";
                               } else {
-                                final myPhone = PhoneNumber.fromNational(IsoCode.MY, value);
+                                // TODO: Change isocode to MY
+                                final myPhone = PhoneNumber.fromNational(IsoCode.US, value);
 
                                 if (!myPhone.validate()) {
                                   return "Enter a valid phone number";
@@ -115,7 +128,8 @@ class _VerifyPhoneScreenState extends State<VerifyPhoneScreen> {
                           ))
                         ],
                       ),
-                    )
+                    ),
+                    const UICustomVertical(200),
                   ],
                 ),
                 Container(
