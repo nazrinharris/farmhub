@@ -4,6 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:farmhub/core/auth/data/datasources/auth_remote_datasource.dart';
 import 'package:farmhub/core/auth/domain/entities/farmhub_user/farmhub_user.dart';
 import 'package:farmhub/core/auth/domain/i_auth_repository.dart';
+import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
 import 'package:farmhub/core/errors/exceptions.dart';
 import 'package:farmhub/core/errors/failures.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -17,11 +18,13 @@ class AuthCubit extends Cubit<AuthState> {
   final FirebaseAuth firebaseAuth;
   final IAuthRepository authRepository;
   final IAuthRemoteDataSource authRemoteDataSource;
+  final GlobalAuthCubit globalAuthCubit;
 
   AuthCubit({
     required this.firebaseAuth,
     required this.authRepository,
     required this.authRemoteDataSource,
+    required this.globalAuthCubit,
   }) : super(AuthState.initial());
 
   /// [verifyPhoneAndSendSMS] will essentially verify the phone, as in to check whether it is a valid
@@ -85,11 +88,15 @@ class AuthCubit extends Cubit<AuthState> {
           (f) async {
             // Could not find uid in database - create new account
             await _createAccountFromUserCred(userCred).then(
-              (user) => emit(AuthState.accountCreationSuccess(user)),
+              (user) {
+                globalAuthCubit.updateFarmhubUser(user);
+                emit(AuthState.accountCreationSuccess(user));
+              },
             );
           },
           (user) {
             // Found user, send it to screen
+            globalAuthCubit.updateFarmhubUser(user);
             emit(AuthState.accountCreationSuccess(user));
           },
         );

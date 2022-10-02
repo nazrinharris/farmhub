@@ -36,6 +36,7 @@ class _VerifyPhoneScreenState extends State<VerifyPhoneScreen> {
             authRepository: locator(),
             firebaseAuth: locator(),
             authRemoteDataSource: locator(),
+            globalAuthCubit: locator(),
           ),
         ),
         BlocProvider<FirstTwoFieldsFormBloc>(
@@ -100,6 +101,13 @@ class _VerifyPhoneScreenState extends State<VerifyPhoneScreen> {
                       mainContent: "Debug Mode",
                       subContent:
                           "If this banner is here, then the phone number MUST be a US number.",
+                    ),
+                    UIVerticalSpace14(),
+                    const WarningCard(
+                      margin: EdgeInsets.symmetric(horizontal: 14),
+                      icon: Icon(Icons.lock),
+                      mainContent: "We may open your browser to make sure you are not a robot",
+                      subContent: "You just need to wait, and solve the CAPTCHA if requested",
                     ),
                     const UICustomVertical(60),
                     Padding(

@@ -283,10 +283,68 @@ class GreyCard extends StatelessWidget {
 }
 
 class WarningCard extends StatelessWidget {
+  final EdgeInsetsGeometry? margin;
+  final Icon icon;
+  final String mainContent;
+  final String? subContent;
+
+  const WarningCard({
+    Key? key,
+    this.margin,
+    required this.icon,
+    required this.mainContent,
+    this.subContent,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: margin,
+      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(16),
+        color: Theme.of(context).extension<ExtendedColors>()!.warning!.withOpacity(0.4),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          icon,
+          const UIHorizontalSpace14(),
+          Flexible(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  mainContent,
+                  style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                        color: Theme.of(context).extension<ExtendedColors>()!.onWarning!,
+                        fontWeight: FontWeight.bold,
+                      ),
+                  textAlign: TextAlign.start,
+                ),
+                if (subContent != null) const UIVerticalSpace14(),
+                if (subContent != null)
+                  Text(
+                    subContent!,
+                    style: Theme.of(context).textTheme.caption!.copyWith(
+                          color: Theme.of(context).extension<ExtendedColors>()!.onWarning!,
+                          fontSize: 13,
+                        ),
+                  )
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class ProduceWarningCard extends StatelessWidget {
   final Produce produce;
   final EdgeInsetsGeometry? margin;
 
-  const WarningCard(
+  const ProduceWarningCard(
     this.produce, {
     Key? key,
     this.margin,
