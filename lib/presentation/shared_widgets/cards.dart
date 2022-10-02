@@ -284,14 +284,14 @@ class GreyCard extends StatelessWidget {
 
 class WarningCard extends StatelessWidget {
   final EdgeInsetsGeometry? margin;
-  final Icon icon;
+  final Icon? icon;
   final String mainContent;
   final String? subContent;
 
   const WarningCard({
     Key? key,
     this.margin,
-    required this.icon,
+    this.icon,
     required this.mainContent,
     this.subContent,
   }) : super(key: key);
@@ -308,8 +308,8 @@ class WarningCard extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          icon,
-          const UIHorizontalSpace14(),
+          if (icon != null) icon!,
+          if (icon != null) const UIHorizontalSpace14(),
           Flexible(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
