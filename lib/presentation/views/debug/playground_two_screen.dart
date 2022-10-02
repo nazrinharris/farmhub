@@ -36,12 +36,18 @@ class PlaygroundTwoScreen extends StatelessWidget {
                   children: [
                     PrimaryButton(
                       buttonIcon: Icon(Icons.print),
-                      content: "Print Number!",
+                      content: "short",
                       onPressed: () {
                         final phone = PhoneNumber(isoCode: IsoCode.US, nsn: "7176768765");
 
                         print(phone);
                       },
+                    ),
+                    UIVerticalSpace30(),
+                    SecondaryButton(
+                      buttonIcon: Icon(Icons.print),
+                      content: "super flippin long",
+                      onPressed: () {},
                     ),
                   ],
                 ),

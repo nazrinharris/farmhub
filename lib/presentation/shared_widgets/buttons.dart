@@ -309,15 +309,21 @@ class SecondaryButton extends StatelessWidget {
             ),
             side: _resolveBorderSide(context),
             backgroundColor: _resolveBackgroundColor(context)),
-        child: Container(
-          height: height ?? 46,
-          padding: EdgeInsets.symmetric(
-            vertical: verticalPadding ?? 14,
-            horizontal: horizontalPadding ?? 34,
-          ),
-          alignment: Alignment.center,
-          width: width,
-          child: _resolveChild(context),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              height: height ?? 46,
+              padding: EdgeInsets.symmetric(
+                vertical: verticalPadding ?? 14,
+                horizontal: horizontalPadding ?? 34,
+              ),
+              alignment: Alignment.center,
+              width: width,
+              child: _resolveChild(context),
+            ),
+          ],
         ),
       ),
     );
