@@ -201,7 +201,7 @@ class ContentSliver extends StatelessWidget {
                   firstFieldHintText: "What's the new price?",
                   firstFieldInputType: resolveInputType(),
                   validateFirstField: validateCurrentPrice,
-                  secondFieldLabel: "Days from Now",
+                  secondFieldLabel: "Number of days ago",
                   secondFieldHintText: "Must be a number; (0) for today",
                   secondFieldInputType: resolveInputType(),
                   validateSecondField: validateCurrentPrice,
