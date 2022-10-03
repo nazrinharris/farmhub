@@ -354,15 +354,22 @@ class BusinessProfileContent extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 24),
       alignment: Alignment.topLeft,
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.max,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text("Farm"),
           UIVerticalSpace14(),
-          FarmList(farmhubUser.userFarms),
+          Align(
+            alignment: Alignment.center,
+            child: FarmList(farmhubUser.userFarms),
+          ),
           UICustomVertical(64),
           Text("Shop"),
           UIVerticalSpace14(),
-          ShopList(farmhubUser.userShops),
+          Align(
+            alignment: Alignment.center,
+            child: ShopList(farmhubUser.userShops),
+          ),
         ],
       ),
     );
@@ -381,14 +388,21 @@ class FarmerProfileContent extends StatelessWidget {
       alignment: Alignment.topLeft,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.max,
         children: [
           Text("Farm"),
           UIVerticalSpace14(),
-          FarmList(farmhubUser.userFarms),
+          Align(
+            alignment: Alignment.center,
+            child: FarmList(farmhubUser.userFarms),
+          ),
           UICustomVertical(64),
           Text("Shop"),
           UIVerticalSpace14(),
-          ShopList(farmhubUser.userShops),
+          Align(
+            alignment: Alignment.center,
+            child: ShopList(farmhubUser.userShops),
+          ),
         ],
       ),
     );
@@ -405,6 +419,7 @@ class FarmList extends StatelessWidget {
     if (farmList.isEmpty) {
       return Column(
         crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisSize: MainAxisSize.max,
         children: [
           Text(
             "You don't have a farm..",
@@ -525,6 +540,7 @@ class ShopList extends StatelessWidget {
   Widget build(BuildContext context) {
     if (shopList.isEmpty) {
       return Column(
+        mainAxisSize: MainAxisSize.max,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(

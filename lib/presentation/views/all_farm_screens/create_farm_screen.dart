@@ -1,5 +1,6 @@
 import 'package:farmhub/core/util/farmhub_icons.dart';
 import 'package:farmhub/presentation/global/cubit/global_ui_cubit.dart';
+import 'package:farmhub/presentation/shared_widgets/scroll_physics.dart';
 import 'package:farmhub/presentation/smart_widgets/produce_dialogs/app_dialogs.dart';
 import 'package:farmhub/presentation/views/all_farm_screens/cubit/farm_screen_cubit.dart';
 import 'package:flutter/material.dart';
@@ -74,6 +75,7 @@ class _CreateFarmScreenState extends State<CreateFarmScreen> {
                   child: Stack(
                     children: [
                       ListView(
+                        physics: DefaultScrollPhysics,
                         children: [
                           Container(
                             padding: EdgeInsets.symmetric(horizontal: 24),
