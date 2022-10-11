@@ -17,20 +17,22 @@ class GlobalAuthCubit extends Cubit<GlobalAuthState> {
   /// This method updates the [FarmhubUser] inside of this cubit. It does not in any way
   /// update the remote user, for that you should use [updateRemoteUser] from [auth_remote_datasource]
   void updateFarmhubUser(FarmhubUser? farmhubUser) {
-    emit(state.copyWith(farmhubUser: farmhubUser));
+    emit(GlobalAuthState.complete(farmhubUser: farmhubUser));
   }
 
   void updateIsAdmin(bool? isAdmin) {
-    emit(state.copyWith(isAdmin: isAdmin));
+    emit(GlobalAuthState.complete(isAdmin: isAdmin));
   }
 
   Future<void> updateGlobalAuthCubit() async {
     print("Updating Global Auth Cubit");
+    emit(GlobalAuthState.loading());
     final failureOrFarmhubUser = await repository.retrieveUserData();
 
     await failureOrFarmhubUser.fold(
       (f) {
         print("User is not logged in.");
+        emit(GlobalAuthState.notLoggedIn());
         debugPrint(f.toString());
       },
       (farmhubUser) async {
@@ -40,16 +42,16 @@ class GlobalAuthCubit extends Cubit<GlobalAuthState> {
           (f) {
             print("Failed to check if user is admin");
             print(f);
-            emit(state.copyWith(farmhubUser: farmhubUser, isAdmin: null));
+            emit(GlobalAuthState.complete(farmhubUser: farmhubUser, isAdmin: null));
           },
           (isAdmin) {
             if (isAdmin) {
-              emit(state.copyWith(
+              emit(GlobalAuthState.complete(
                 farmhubUser: farmhubUser.copyWith(userType: UserType.admin),
                 isAdmin: isAdmin,
               ));
             } else {
-              emit(state.copyWith(
+              emit(GlobalAuthState.complete(
                 farmhubUser: farmhubUser,
                 isAdmin: isAdmin,
               ));
