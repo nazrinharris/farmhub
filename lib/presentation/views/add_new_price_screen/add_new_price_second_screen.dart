@@ -206,10 +206,11 @@ class ContentSliver extends StatelessWidget {
                   secondFieldInputType: resolveInputType(),
                   validateSecondField: validateCurrentPrice,
                 ),
+                const UIVerticalSpace14(),
                 const WarningCard(
                   mainContent: "What is \"Number of days ago\"?",
                   subContent:
-                      "If you want to put a price for another date. For example, enter '2', for two days ago.",
+                      "If you want to put a price for another date. For example, enter (0) for today.",
                 ),
               ],
             ),

@@ -123,7 +123,7 @@ class _FarmhubMaterialAppState extends State<FarmhubMaterialApp> {
       title: "Farmhub",
       theme: FarmhubTheme.appThemeData[FarmhubThemeVariants.light],
       onGenerateRoute: widget.appRouter.onGenerateRoute,
-      home: NavigateView(),
+      //home: NavigateView(),
     );
   }
 }

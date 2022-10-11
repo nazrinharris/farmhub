@@ -101,16 +101,16 @@ class AddNewPriceScreenBloc extends Bloc<AddNewPriceScreenEvent, AddNewPriceScre
     _ANPEExecAddNewPrice event,
     Emitter<AddNewPriceScreenState> emit,
   ) async {
-    // Indicate Loading
-    emit(AddNewPriceScreenState.pricesLoading(props: state.props));
-    primaryButtonAwareCubit!.triggerLoading();
+    // Check validation
     multipleFieldsFormBloc!.add(enableAlwaysValidation);
     multipleFieldsFormBloc!.add(unfocusAllNodes);
-
-    // Check validation
     bool isValid = multipleFieldsFormBloc!.state.props.formKey.currentState!.validate();
 
     if (isValid) {
+      // Indicate Loading
+      emit(AddNewPriceScreenState.pricesLoading(props: state.props));
+      primaryButtonAwareCubit!.triggerLoading();
+
       // Start Adding Price
       final failureOrProduce = await produceManagerRepository.addNewPrice(
         produceId: event.produce.produceId,
