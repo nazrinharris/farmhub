@@ -17,7 +17,10 @@ class _MainScreenFABState extends State<MainScreenFAB> {
   Widget build(BuildContext context) {
     return BlocBuilder<GlobalAuthCubit, GlobalAuthState>(
       builder: (context, state) {
-        final bool isAdmin = state.isAdmin ?? false;
+        bool isAdmin = false;
+        if (state is GAComplete) {
+          isAdmin = state.isAdmin ?? false;
+        }
 
         return isAdmin ? const AdminFAB() : const SizedBox.shrink();
       },

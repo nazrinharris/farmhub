@@ -11,6 +11,8 @@ import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:ndialog/ndialog.dart';
 
+import '../../../../core/errors/exceptions.dart';
+
 part 'edit_profile_state.dart';
 part 'edit_profile_cubit.freezed.dart';
 
@@ -59,6 +61,7 @@ class EditProfileCubit extends Cubit<EditProfileState> {
       progressDialog.show();
 
       final FarmhubUser farmhubUser = globalAuthCubit.state.farmhubUser!;
+
       final updatedFarmhubUser =
           farmhubUser.copyWith(username: newUsername!, userType: newUserType);
 

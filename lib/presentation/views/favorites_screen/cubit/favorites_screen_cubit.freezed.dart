@@ -17,31 +17,52 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$FavoritesScreenState {
   List<Produce> get produceFavoritesList => throw _privateConstructorUsedError;
+  FarmhubUser? get farmhubUser => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Produce> produceFavoritesList) initial,
-    required TResult Function(List<Produce> produceFavoritesList) loading,
-    required TResult Function(List<Produce> produceFavoritesList) complete,
     required TResult Function(
-            List<Produce> produceFavoritesList, Failure failure)
+            List<Produce> produceFavoritesList, FarmhubUser? farmhubUser)
+        initial,
+    required TResult Function(
+            List<Produce> produceFavoritesList, FarmhubUser? farmhubUser)
+        loading,
+    required TResult Function(
+            List<Produce> produceFavoritesList, FarmhubUser? farmhubUser)
+        complete,
+    required TResult Function(List<Produce> produceFavoritesList,
+            Failure failure, FarmhubUser? farmhubUser)
         error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(List<Produce> produceFavoritesList)? initial,
-    TResult Function(List<Produce> produceFavoritesList)? loading,
-    TResult Function(List<Produce> produceFavoritesList)? complete,
-    TResult Function(List<Produce> produceFavoritesList, Failure failure)?
+    TResult Function(
+            List<Produce> produceFavoritesList, FarmhubUser? farmhubUser)?
+        initial,
+    TResult Function(
+            List<Produce> produceFavoritesList, FarmhubUser? farmhubUser)?
+        loading,
+    TResult Function(
+            List<Produce> produceFavoritesList, FarmhubUser? farmhubUser)?
+        complete,
+    TResult Function(List<Produce> produceFavoritesList, Failure failure,
+            FarmhubUser? farmhubUser)?
         error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Produce> produceFavoritesList)? initial,
-    TResult Function(List<Produce> produceFavoritesList)? loading,
-    TResult Function(List<Produce> produceFavoritesList)? complete,
-    TResult Function(List<Produce> produceFavoritesList, Failure failure)?
+    TResult Function(
+            List<Produce> produceFavoritesList, FarmhubUser? farmhubUser)?
+        initial,
+    TResult Function(
+            List<Produce> produceFavoritesList, FarmhubUser? farmhubUser)?
+        loading,
+    TResult Function(
+            List<Produce> produceFavoritesList, FarmhubUser? farmhubUser)?
+        complete,
+    TResult Function(List<Produce> produceFavoritesList, Failure failure,
+            FarmhubUser? farmhubUser)?
         error,
     required TResult orElse(),
   }) =>
@@ -82,7 +103,9 @@ abstract class $FavoritesScreenStateCopyWith<$Res> {
   factory $FavoritesScreenStateCopyWith(FavoritesScreenState value,
           $Res Function(FavoritesScreenState) then) =
       _$FavoritesScreenStateCopyWithImpl<$Res>;
-  $Res call({List<Produce> produceFavoritesList});
+  $Res call({List<Produce> produceFavoritesList, FarmhubUser? farmhubUser});
+
+  $FarmhubUserCopyWith<$Res>? get farmhubUser;
 }
 
 /// @nodoc
@@ -97,13 +120,29 @@ class _$FavoritesScreenStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? produceFavoritesList = freezed,
+    Object? farmhubUser = freezed,
   }) {
     return _then(_value.copyWith(
       produceFavoritesList: produceFavoritesList == freezed
           ? _value.produceFavoritesList
           : produceFavoritesList // ignore: cast_nullable_to_non_nullable
               as List<Produce>,
+      farmhubUser: farmhubUser == freezed
+          ? _value.farmhubUser
+          : farmhubUser // ignore: cast_nullable_to_non_nullable
+              as FarmhubUser?,
     ));
+  }
+
+  @override
+  $FarmhubUserCopyWith<$Res>? get farmhubUser {
+    if (_value.farmhubUser == null) {
+      return null;
+    }
+
+    return $FarmhubUserCopyWith<$Res>(_value.farmhubUser!, (value) {
+      return _then(_value.copyWith(farmhubUser: value));
+    });
   }
 }
 
@@ -114,7 +153,10 @@ abstract class _$$FSInitialCopyWith<$Res>
           _$FSInitial value, $Res Function(_$FSInitial) then) =
       __$$FSInitialCopyWithImpl<$Res>;
   @override
-  $Res call({List<Produce> produceFavoritesList});
+  $Res call({List<Produce> produceFavoritesList, FarmhubUser? farmhubUser});
+
+  @override
+  $FarmhubUserCopyWith<$Res>? get farmhubUser;
 }
 
 /// @nodoc
@@ -131,12 +173,17 @@ class __$$FSInitialCopyWithImpl<$Res>
   @override
   $Res call({
     Object? produceFavoritesList = freezed,
+    Object? farmhubUser = freezed,
   }) {
     return _then(_$FSInitial(
       produceFavoritesList == freezed
           ? _value._produceFavoritesList
           : produceFavoritesList // ignore: cast_nullable_to_non_nullable
               as List<Produce>,
+      farmhubUser: farmhubUser == freezed
+          ? _value.farmhubUser
+          : farmhubUser // ignore: cast_nullable_to_non_nullable
+              as FarmhubUser?,
     ));
   }
 }
@@ -144,7 +191,8 @@ class __$$FSInitialCopyWithImpl<$Res>
 /// @nodoc
 
 class _$FSInitial implements FSInitial {
-  const _$FSInitial(final List<Produce> produceFavoritesList)
+  const _$FSInitial(final List<Produce> produceFavoritesList,
+      {this.farmhubUser})
       : _produceFavoritesList = produceFavoritesList;
 
   final List<Produce> _produceFavoritesList;
@@ -155,8 +203,11 @@ class _$FSInitial implements FSInitial {
   }
 
   @override
+  final FarmhubUser? farmhubUser;
+
+  @override
   String toString() {
-    return 'FavoritesScreenState.initial(produceFavoritesList: $produceFavoritesList)';
+    return 'FavoritesScreenState.initial(produceFavoritesList: $produceFavoritesList, farmhubUser: $farmhubUser)';
   }
 
   @override
@@ -165,12 +216,16 @@ class _$FSInitial implements FSInitial {
         (other.runtimeType == runtimeType &&
             other is _$FSInitial &&
             const DeepCollectionEquality()
-                .equals(other._produceFavoritesList, _produceFavoritesList));
+                .equals(other._produceFavoritesList, _produceFavoritesList) &&
+            const DeepCollectionEquality()
+                .equals(other.farmhubUser, farmhubUser));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_produceFavoritesList));
+      runtimeType,
+      const DeepCollectionEquality().hash(_produceFavoritesList),
+      const DeepCollectionEquality().hash(farmhubUser));
 
   @JsonKey(ignore: true)
   @override
@@ -180,40 +235,60 @@ class _$FSInitial implements FSInitial {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Produce> produceFavoritesList) initial,
-    required TResult Function(List<Produce> produceFavoritesList) loading,
-    required TResult Function(List<Produce> produceFavoritesList) complete,
     required TResult Function(
-            List<Produce> produceFavoritesList, Failure failure)
+            List<Produce> produceFavoritesList, FarmhubUser? farmhubUser)
+        initial,
+    required TResult Function(
+            List<Produce> produceFavoritesList, FarmhubUser? farmhubUser)
+        loading,
+    required TResult Function(
+            List<Produce> produceFavoritesList, FarmhubUser? farmhubUser)
+        complete,
+    required TResult Function(List<Produce> produceFavoritesList,
+            Failure failure, FarmhubUser? farmhubUser)
         error,
   }) {
-    return initial(produceFavoritesList);
+    return initial(produceFavoritesList, farmhubUser);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(List<Produce> produceFavoritesList)? initial,
-    TResult Function(List<Produce> produceFavoritesList)? loading,
-    TResult Function(List<Produce> produceFavoritesList)? complete,
-    TResult Function(List<Produce> produceFavoritesList, Failure failure)?
+    TResult Function(
+            List<Produce> produceFavoritesList, FarmhubUser? farmhubUser)?
+        initial,
+    TResult Function(
+            List<Produce> produceFavoritesList, FarmhubUser? farmhubUser)?
+        loading,
+    TResult Function(
+            List<Produce> produceFavoritesList, FarmhubUser? farmhubUser)?
+        complete,
+    TResult Function(List<Produce> produceFavoritesList, Failure failure,
+            FarmhubUser? farmhubUser)?
         error,
   }) {
-    return initial?.call(produceFavoritesList);
+    return initial?.call(produceFavoritesList, farmhubUser);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Produce> produceFavoritesList)? initial,
-    TResult Function(List<Produce> produceFavoritesList)? loading,
-    TResult Function(List<Produce> produceFavoritesList)? complete,
-    TResult Function(List<Produce> produceFavoritesList, Failure failure)?
+    TResult Function(
+            List<Produce> produceFavoritesList, FarmhubUser? farmhubUser)?
+        initial,
+    TResult Function(
+            List<Produce> produceFavoritesList, FarmhubUser? farmhubUser)?
+        loading,
+    TResult Function(
+            List<Produce> produceFavoritesList, FarmhubUser? farmhubUser)?
+        complete,
+    TResult Function(List<Produce> produceFavoritesList, Failure failure,
+            FarmhubUser? farmhubUser)?
         error,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial(produceFavoritesList);
+      return initial(produceFavoritesList, farmhubUser);
     }
     return orElse();
   }
@@ -257,11 +332,13 @@ class _$FSInitial implements FSInitial {
 }
 
 abstract class FSInitial implements FavoritesScreenState {
-  const factory FSInitial(final List<Produce> produceFavoritesList) =
-      _$FSInitial;
+  const factory FSInitial(final List<Produce> produceFavoritesList,
+      {final FarmhubUser? farmhubUser}) = _$FSInitial;
 
   @override
   List<Produce> get produceFavoritesList => throw _privateConstructorUsedError;
+  @override
+  FarmhubUser? get farmhubUser => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$FSInitialCopyWith<_$FSInitial> get copyWith =>
@@ -275,7 +352,10 @@ abstract class _$$FSLoadingCopyWith<$Res>
           _$FSLoading value, $Res Function(_$FSLoading) then) =
       __$$FSLoadingCopyWithImpl<$Res>;
   @override
-  $Res call({List<Produce> produceFavoritesList});
+  $Res call({List<Produce> produceFavoritesList, FarmhubUser? farmhubUser});
+
+  @override
+  $FarmhubUserCopyWith<$Res>? get farmhubUser;
 }
 
 /// @nodoc
@@ -292,12 +372,17 @@ class __$$FSLoadingCopyWithImpl<$Res>
   @override
   $Res call({
     Object? produceFavoritesList = freezed,
+    Object? farmhubUser = freezed,
   }) {
     return _then(_$FSLoading(
       produceFavoritesList == freezed
           ? _value._produceFavoritesList
           : produceFavoritesList // ignore: cast_nullable_to_non_nullable
               as List<Produce>,
+      farmhubUser: farmhubUser == freezed
+          ? _value.farmhubUser
+          : farmhubUser // ignore: cast_nullable_to_non_nullable
+              as FarmhubUser?,
     ));
   }
 }
@@ -305,7 +390,8 @@ class __$$FSLoadingCopyWithImpl<$Res>
 /// @nodoc
 
 class _$FSLoading implements FSLoading {
-  const _$FSLoading(final List<Produce> produceFavoritesList)
+  const _$FSLoading(final List<Produce> produceFavoritesList,
+      {this.farmhubUser})
       : _produceFavoritesList = produceFavoritesList;
 
   final List<Produce> _produceFavoritesList;
@@ -316,8 +402,11 @@ class _$FSLoading implements FSLoading {
   }
 
   @override
+  final FarmhubUser? farmhubUser;
+
+  @override
   String toString() {
-    return 'FavoritesScreenState.loading(produceFavoritesList: $produceFavoritesList)';
+    return 'FavoritesScreenState.loading(produceFavoritesList: $produceFavoritesList, farmhubUser: $farmhubUser)';
   }
 
   @override
@@ -326,12 +415,16 @@ class _$FSLoading implements FSLoading {
         (other.runtimeType == runtimeType &&
             other is _$FSLoading &&
             const DeepCollectionEquality()
-                .equals(other._produceFavoritesList, _produceFavoritesList));
+                .equals(other._produceFavoritesList, _produceFavoritesList) &&
+            const DeepCollectionEquality()
+                .equals(other.farmhubUser, farmhubUser));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_produceFavoritesList));
+      runtimeType,
+      const DeepCollectionEquality().hash(_produceFavoritesList),
+      const DeepCollectionEquality().hash(farmhubUser));
 
   @JsonKey(ignore: true)
   @override
@@ -341,40 +434,60 @@ class _$FSLoading implements FSLoading {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Produce> produceFavoritesList) initial,
-    required TResult Function(List<Produce> produceFavoritesList) loading,
-    required TResult Function(List<Produce> produceFavoritesList) complete,
     required TResult Function(
-            List<Produce> produceFavoritesList, Failure failure)
+            List<Produce> produceFavoritesList, FarmhubUser? farmhubUser)
+        initial,
+    required TResult Function(
+            List<Produce> produceFavoritesList, FarmhubUser? farmhubUser)
+        loading,
+    required TResult Function(
+            List<Produce> produceFavoritesList, FarmhubUser? farmhubUser)
+        complete,
+    required TResult Function(List<Produce> produceFavoritesList,
+            Failure failure, FarmhubUser? farmhubUser)
         error,
   }) {
-    return loading(produceFavoritesList);
+    return loading(produceFavoritesList, farmhubUser);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(List<Produce> produceFavoritesList)? initial,
-    TResult Function(List<Produce> produceFavoritesList)? loading,
-    TResult Function(List<Produce> produceFavoritesList)? complete,
-    TResult Function(List<Produce> produceFavoritesList, Failure failure)?
+    TResult Function(
+            List<Produce> produceFavoritesList, FarmhubUser? farmhubUser)?
+        initial,
+    TResult Function(
+            List<Produce> produceFavoritesList, FarmhubUser? farmhubUser)?
+        loading,
+    TResult Function(
+            List<Produce> produceFavoritesList, FarmhubUser? farmhubUser)?
+        complete,
+    TResult Function(List<Produce> produceFavoritesList, Failure failure,
+            FarmhubUser? farmhubUser)?
         error,
   }) {
-    return loading?.call(produceFavoritesList);
+    return loading?.call(produceFavoritesList, farmhubUser);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Produce> produceFavoritesList)? initial,
-    TResult Function(List<Produce> produceFavoritesList)? loading,
-    TResult Function(List<Produce> produceFavoritesList)? complete,
-    TResult Function(List<Produce> produceFavoritesList, Failure failure)?
+    TResult Function(
+            List<Produce> produceFavoritesList, FarmhubUser? farmhubUser)?
+        initial,
+    TResult Function(
+            List<Produce> produceFavoritesList, FarmhubUser? farmhubUser)?
+        loading,
+    TResult Function(
+            List<Produce> produceFavoritesList, FarmhubUser? farmhubUser)?
+        complete,
+    TResult Function(List<Produce> produceFavoritesList, Failure failure,
+            FarmhubUser? farmhubUser)?
         error,
     required TResult orElse(),
   }) {
     if (loading != null) {
-      return loading(produceFavoritesList);
+      return loading(produceFavoritesList, farmhubUser);
     }
     return orElse();
   }
@@ -418,11 +531,13 @@ class _$FSLoading implements FSLoading {
 }
 
 abstract class FSLoading implements FavoritesScreenState {
-  const factory FSLoading(final List<Produce> produceFavoritesList) =
-      _$FSLoading;
+  const factory FSLoading(final List<Produce> produceFavoritesList,
+      {final FarmhubUser? farmhubUser}) = _$FSLoading;
 
   @override
   List<Produce> get produceFavoritesList => throw _privateConstructorUsedError;
+  @override
+  FarmhubUser? get farmhubUser => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$FSLoadingCopyWith<_$FSLoading> get copyWith =>
@@ -436,7 +551,10 @@ abstract class _$$FSCompleteCopyWith<$Res>
           _$FSComplete value, $Res Function(_$FSComplete) then) =
       __$$FSCompleteCopyWithImpl<$Res>;
   @override
-  $Res call({List<Produce> produceFavoritesList});
+  $Res call({List<Produce> produceFavoritesList, FarmhubUser? farmhubUser});
+
+  @override
+  $FarmhubUserCopyWith<$Res>? get farmhubUser;
 }
 
 /// @nodoc
@@ -453,12 +571,17 @@ class __$$FSCompleteCopyWithImpl<$Res>
   @override
   $Res call({
     Object? produceFavoritesList = freezed,
+    Object? farmhubUser = freezed,
   }) {
     return _then(_$FSComplete(
       produceFavoritesList == freezed
           ? _value._produceFavoritesList
           : produceFavoritesList // ignore: cast_nullable_to_non_nullable
               as List<Produce>,
+      farmhubUser: farmhubUser == freezed
+          ? _value.farmhubUser
+          : farmhubUser // ignore: cast_nullable_to_non_nullable
+              as FarmhubUser?,
     ));
   }
 }
@@ -466,7 +589,8 @@ class __$$FSCompleteCopyWithImpl<$Res>
 /// @nodoc
 
 class _$FSComplete implements FSComplete {
-  const _$FSComplete(final List<Produce> produceFavoritesList)
+  const _$FSComplete(final List<Produce> produceFavoritesList,
+      {this.farmhubUser})
       : _produceFavoritesList = produceFavoritesList;
 
   final List<Produce> _produceFavoritesList;
@@ -477,8 +601,11 @@ class _$FSComplete implements FSComplete {
   }
 
   @override
+  final FarmhubUser? farmhubUser;
+
+  @override
   String toString() {
-    return 'FavoritesScreenState.complete(produceFavoritesList: $produceFavoritesList)';
+    return 'FavoritesScreenState.complete(produceFavoritesList: $produceFavoritesList, farmhubUser: $farmhubUser)';
   }
 
   @override
@@ -487,12 +614,16 @@ class _$FSComplete implements FSComplete {
         (other.runtimeType == runtimeType &&
             other is _$FSComplete &&
             const DeepCollectionEquality()
-                .equals(other._produceFavoritesList, _produceFavoritesList));
+                .equals(other._produceFavoritesList, _produceFavoritesList) &&
+            const DeepCollectionEquality()
+                .equals(other.farmhubUser, farmhubUser));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_produceFavoritesList));
+      runtimeType,
+      const DeepCollectionEquality().hash(_produceFavoritesList),
+      const DeepCollectionEquality().hash(farmhubUser));
 
   @JsonKey(ignore: true)
   @override
@@ -502,40 +633,60 @@ class _$FSComplete implements FSComplete {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Produce> produceFavoritesList) initial,
-    required TResult Function(List<Produce> produceFavoritesList) loading,
-    required TResult Function(List<Produce> produceFavoritesList) complete,
     required TResult Function(
-            List<Produce> produceFavoritesList, Failure failure)
+            List<Produce> produceFavoritesList, FarmhubUser? farmhubUser)
+        initial,
+    required TResult Function(
+            List<Produce> produceFavoritesList, FarmhubUser? farmhubUser)
+        loading,
+    required TResult Function(
+            List<Produce> produceFavoritesList, FarmhubUser? farmhubUser)
+        complete,
+    required TResult Function(List<Produce> produceFavoritesList,
+            Failure failure, FarmhubUser? farmhubUser)
         error,
   }) {
-    return complete(produceFavoritesList);
+    return complete(produceFavoritesList, farmhubUser);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(List<Produce> produceFavoritesList)? initial,
-    TResult Function(List<Produce> produceFavoritesList)? loading,
-    TResult Function(List<Produce> produceFavoritesList)? complete,
-    TResult Function(List<Produce> produceFavoritesList, Failure failure)?
+    TResult Function(
+            List<Produce> produceFavoritesList, FarmhubUser? farmhubUser)?
+        initial,
+    TResult Function(
+            List<Produce> produceFavoritesList, FarmhubUser? farmhubUser)?
+        loading,
+    TResult Function(
+            List<Produce> produceFavoritesList, FarmhubUser? farmhubUser)?
+        complete,
+    TResult Function(List<Produce> produceFavoritesList, Failure failure,
+            FarmhubUser? farmhubUser)?
         error,
   }) {
-    return complete?.call(produceFavoritesList);
+    return complete?.call(produceFavoritesList, farmhubUser);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Produce> produceFavoritesList)? initial,
-    TResult Function(List<Produce> produceFavoritesList)? loading,
-    TResult Function(List<Produce> produceFavoritesList)? complete,
-    TResult Function(List<Produce> produceFavoritesList, Failure failure)?
+    TResult Function(
+            List<Produce> produceFavoritesList, FarmhubUser? farmhubUser)?
+        initial,
+    TResult Function(
+            List<Produce> produceFavoritesList, FarmhubUser? farmhubUser)?
+        loading,
+    TResult Function(
+            List<Produce> produceFavoritesList, FarmhubUser? farmhubUser)?
+        complete,
+    TResult Function(List<Produce> produceFavoritesList, Failure failure,
+            FarmhubUser? farmhubUser)?
         error,
     required TResult orElse(),
   }) {
     if (complete != null) {
-      return complete(produceFavoritesList);
+      return complete(produceFavoritesList, farmhubUser);
     }
     return orElse();
   }
@@ -579,11 +730,13 @@ class _$FSComplete implements FSComplete {
 }
 
 abstract class FSComplete implements FavoritesScreenState {
-  const factory FSComplete(final List<Produce> produceFavoritesList) =
-      _$FSComplete;
+  const factory FSComplete(final List<Produce> produceFavoritesList,
+      {final FarmhubUser? farmhubUser}) = _$FSComplete;
 
   @override
   List<Produce> get produceFavoritesList => throw _privateConstructorUsedError;
+  @override
+  FarmhubUser? get farmhubUser => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$FSCompleteCopyWith<_$FSComplete> get copyWith =>
@@ -596,7 +749,13 @@ abstract class _$$FSErrorCopyWith<$Res>
   factory _$$FSErrorCopyWith(_$FSError value, $Res Function(_$FSError) then) =
       __$$FSErrorCopyWithImpl<$Res>;
   @override
-  $Res call({List<Produce> produceFavoritesList, Failure failure});
+  $Res call(
+      {List<Produce> produceFavoritesList,
+      Failure failure,
+      FarmhubUser? farmhubUser});
+
+  @override
+  $FarmhubUserCopyWith<$Res>? get farmhubUser;
 }
 
 /// @nodoc
@@ -613,6 +772,7 @@ class __$$FSErrorCopyWithImpl<$Res>
   $Res call({
     Object? produceFavoritesList = freezed,
     Object? failure = freezed,
+    Object? farmhubUser = freezed,
   }) {
     return _then(_$FSError(
       produceFavoritesList == freezed
@@ -623,6 +783,10 @@ class __$$FSErrorCopyWithImpl<$Res>
           ? _value.failure
           : failure // ignore: cast_nullable_to_non_nullable
               as Failure,
+      farmhubUser: farmhubUser == freezed
+          ? _value.farmhubUser
+          : farmhubUser // ignore: cast_nullable_to_non_nullable
+              as FarmhubUser?,
     ));
   }
 }
@@ -630,7 +794,8 @@ class __$$FSErrorCopyWithImpl<$Res>
 /// @nodoc
 
 class _$FSError implements FSError {
-  const _$FSError(final List<Produce> produceFavoritesList, this.failure)
+  const _$FSError(final List<Produce> produceFavoritesList, this.failure,
+      {this.farmhubUser})
       : _produceFavoritesList = produceFavoritesList;
 
   final List<Produce> _produceFavoritesList;
@@ -642,10 +807,12 @@ class _$FSError implements FSError {
 
   @override
   final Failure failure;
+  @override
+  final FarmhubUser? farmhubUser;
 
   @override
   String toString() {
-    return 'FavoritesScreenState.error(produceFavoritesList: $produceFavoritesList, failure: $failure)';
+    return 'FavoritesScreenState.error(produceFavoritesList: $produceFavoritesList, failure: $failure, farmhubUser: $farmhubUser)';
   }
 
   @override
@@ -655,14 +822,17 @@ class _$FSError implements FSError {
             other is _$FSError &&
             const DeepCollectionEquality()
                 .equals(other._produceFavoritesList, _produceFavoritesList) &&
-            const DeepCollectionEquality().equals(other.failure, failure));
+            const DeepCollectionEquality().equals(other.failure, failure) &&
+            const DeepCollectionEquality()
+                .equals(other.farmhubUser, farmhubUser));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(_produceFavoritesList),
-      const DeepCollectionEquality().hash(failure));
+      const DeepCollectionEquality().hash(failure),
+      const DeepCollectionEquality().hash(farmhubUser));
 
   @JsonKey(ignore: true)
   @override
@@ -672,40 +842,60 @@ class _$FSError implements FSError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Produce> produceFavoritesList) initial,
-    required TResult Function(List<Produce> produceFavoritesList) loading,
-    required TResult Function(List<Produce> produceFavoritesList) complete,
     required TResult Function(
-            List<Produce> produceFavoritesList, Failure failure)
+            List<Produce> produceFavoritesList, FarmhubUser? farmhubUser)
+        initial,
+    required TResult Function(
+            List<Produce> produceFavoritesList, FarmhubUser? farmhubUser)
+        loading,
+    required TResult Function(
+            List<Produce> produceFavoritesList, FarmhubUser? farmhubUser)
+        complete,
+    required TResult Function(List<Produce> produceFavoritesList,
+            Failure failure, FarmhubUser? farmhubUser)
         error,
   }) {
-    return error(produceFavoritesList, failure);
+    return error(produceFavoritesList, failure, farmhubUser);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(List<Produce> produceFavoritesList)? initial,
-    TResult Function(List<Produce> produceFavoritesList)? loading,
-    TResult Function(List<Produce> produceFavoritesList)? complete,
-    TResult Function(List<Produce> produceFavoritesList, Failure failure)?
+    TResult Function(
+            List<Produce> produceFavoritesList, FarmhubUser? farmhubUser)?
+        initial,
+    TResult Function(
+            List<Produce> produceFavoritesList, FarmhubUser? farmhubUser)?
+        loading,
+    TResult Function(
+            List<Produce> produceFavoritesList, FarmhubUser? farmhubUser)?
+        complete,
+    TResult Function(List<Produce> produceFavoritesList, Failure failure,
+            FarmhubUser? farmhubUser)?
         error,
   }) {
-    return error?.call(produceFavoritesList, failure);
+    return error?.call(produceFavoritesList, failure, farmhubUser);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Produce> produceFavoritesList)? initial,
-    TResult Function(List<Produce> produceFavoritesList)? loading,
-    TResult Function(List<Produce> produceFavoritesList)? complete,
-    TResult Function(List<Produce> produceFavoritesList, Failure failure)?
+    TResult Function(
+            List<Produce> produceFavoritesList, FarmhubUser? farmhubUser)?
+        initial,
+    TResult Function(
+            List<Produce> produceFavoritesList, FarmhubUser? farmhubUser)?
+        loading,
+    TResult Function(
+            List<Produce> produceFavoritesList, FarmhubUser? farmhubUser)?
+        complete,
+    TResult Function(List<Produce> produceFavoritesList, Failure failure,
+            FarmhubUser? farmhubUser)?
         error,
     required TResult orElse(),
   }) {
     if (error != null) {
-      return error(produceFavoritesList, failure);
+      return error(produceFavoritesList, failure, farmhubUser);
     }
     return orElse();
   }
@@ -750,12 +940,14 @@ class _$FSError implements FSError {
 
 abstract class FSError implements FavoritesScreenState {
   const factory FSError(
-          final List<Produce> produceFavoritesList, final Failure failure) =
-      _$FSError;
+      final List<Produce> produceFavoritesList, final Failure failure,
+      {final FarmhubUser? farmhubUser}) = _$FSError;
 
   @override
   List<Produce> get produceFavoritesList => throw _privateConstructorUsedError;
   Failure get failure => throw _privateConstructorUsedError;
+  @override
+  FarmhubUser? get farmhubUser => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$FSErrorCopyWith<_$FSError> get copyWith =>

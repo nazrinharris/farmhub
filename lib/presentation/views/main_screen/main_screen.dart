@@ -1,4 +1,6 @@
+import 'package:farmhub/core/auth/domain/entities/farmhub_user/farmhub_user.dart';
 import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
+import 'package:farmhub/core/errors/exceptions.dart';
 import 'package:farmhub/core/network/network_info.dart';
 
 import 'package:farmhub/features/produce_manager/bloc/produce_manager_bloc.dart';
@@ -50,8 +52,6 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
     );
     scrollController = ScrollController();
 
-    context.read<GlobalAuthCubit>().updateGlobalAuthCubit();
-
     mainHeaderController.addListener(() {
       setState(() {});
     });
@@ -76,6 +76,7 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
       child: Builder(builder: (context) {
         return BlocProvider(
           create: (context) => MainScreenBloc(
+            farmhubUser: locator<GlobalAuthCubit>().state.farmhubUser!,
             mainHeaderController: mainHeaderController,
             produceManagerBloc: context.read<ProduceManagerBloc>(),
             produceManagerRepository: locator(),
@@ -120,7 +121,10 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
                         builder: (context, state) {
                           return BlocBuilder<GlobalAuthCubit, GlobalAuthState>(
                             builder: (context, state) {
-                              final bool isAdmin = state.isAdmin ?? false;
+                              bool isAdmin = false;
+                              if (state is GAComplete) {
+                                isAdmin = state.isAdmin ?? false;
+                              }
 
                               return SliverMainScreenHeader(
                                 isAdmin ? adminExtent : extent,
@@ -132,8 +136,10 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
                         },
                       ),
                       const SliverMainScreenErrorCard(),
-                      //const SliverDebugSlot(),
-                      SliverMainScreenListView(scrollController),
+                      SliverMainScreenListView(
+                        scrollController,
+                        context.read<MainScreenBloc>().farmhubUser,
+                      ),
                       const SliverWhiteSpace(200)
                     ],
                   ),
@@ -200,8 +206,10 @@ class _SliverMainScreenErrorCardState extends State<SliverMainScreenErrorCard> {
 
 class SliverMainScreenListView extends StatefulWidget {
   final ScrollController scrollController;
+  final FarmhubUser farmhubUser;
 
-  const SliverMainScreenListView(this.scrollController, {Key? key}) : super(key: key);
+  const SliverMainScreenListView(this.scrollController, this.farmhubUser, {Key? key})
+      : super(key: key);
 
   @override
   State<SliverMainScreenListView> createState() => _SliverMainScreenListViewState();
@@ -239,18 +247,21 @@ class _SliverMainScreenListViewState extends State<SliverMainScreenListView> {
         props: currentState.props,
         isLoading: true,
         isAdmin: isAdmin,
+        farmhubUser: widget.farmhubUser,
       );
     } else if (currentState is MSSPricesCompleted) {
       return SliverProduceList(
         props: currentState.props,
         isLoading: false,
         isAdmin: isAdmin,
+        farmhubUser: widget.farmhubUser,
       );
     } else if (currentState is MSSPricesError) {
       return SliverProduceErrorList(
         props: currentState.props,
         failure: currentState.failure,
         isAdmin: isAdmin,
+        farmhubUser: widget.farmhubUser,
       );
     }
 
@@ -292,11 +303,13 @@ class SliverProduceList extends StatelessWidget {
   final MainScreenProps props;
   final bool isLoading;
   final bool? isAdmin;
+  final FarmhubUser farmhubUser;
 
   const SliverProduceList({
     Key? key,
     required this.props,
     required this.isLoading,
+    required this.farmhubUser,
     this.isAdmin,
   }) : super(key: key);
 
@@ -322,6 +335,7 @@ class SliverProduceList extends StatelessWidget {
                   index,
                   props.produceList[index],
                   chartAnimationDuration: 0,
+                  farmhubUser: farmhubUser,
                 );
               }
             } else {
@@ -329,6 +343,7 @@ class SliverProduceList extends StatelessWidget {
                 index,
                 props.produceList[index],
                 chartAnimationDuration: 0,
+                farmhubUser: farmhubUser,
               );
             }
           } else {
@@ -377,12 +392,14 @@ class SliverProduceErrorList extends StatefulWidget {
   final MainScreenProps props;
   final Failure failure;
   final bool? isAdmin;
+  final FarmhubUser farmhubUser;
 
   const SliverProduceErrorList({
     Key? key,
     required this.props,
     required this.failure,
     this.isAdmin,
+    required this.farmhubUser,
   }) : super(key: key);
 
   @override
@@ -426,6 +443,7 @@ class _SliverProduceErrorListState extends State<SliverProduceErrorList> {
               index,
               widget.props.produceList[index],
               chartAnimationDuration: 0,
+              farmhubUser: widget.farmhubUser,
             );
           }
         },

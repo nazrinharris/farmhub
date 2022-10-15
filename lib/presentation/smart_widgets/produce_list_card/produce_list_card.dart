@@ -1,5 +1,6 @@
 import 'package:farmhub/core/auth/domain/entities/farmhub_user/farmhub_user.dart';
 import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
+import 'package:farmhub/core/errors/exceptions.dart';
 import 'package:farmhub/core/errors/failures.dart';
 import 'package:farmhub/features/produce_manager/data/repository/produce_manager_helpers.dart';
 import 'package:farmhub/presentation/global/cubit/global_ui_cubit.dart';
@@ -24,12 +25,15 @@ import 'cubit/produce_list_card_cubit.dart';
 
 /// [index] is only used to decide if the top border should be rendered or not.
 /// [0] If the top border should be drawn and all other numbers will not draw it.
+///
+/// This widget expects a [FarmhubUser] to exist in [GlobalAuthCubit]
 class ProduceListCard extends StatelessWidget {
   final int index;
   final Produce produce;
   final Function()? onTap;
   final double? chartAnimationDuration;
   final bool? disableLongPress;
+  final FarmhubUser farmhubUser;
 
   const ProduceListCard(
     this.index,
@@ -38,15 +42,15 @@ class ProduceListCard extends StatelessWidget {
     this.onTap,
     this.chartAnimationDuration,
     this.disableLongPress,
+    required this.farmhubUser,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     num currentProducePrice = produce.currentProducePrice["price"];
     currentProducePrice = roundNum(currentProducePrice.toDouble(), 2);
-    final bool? isAdmin = context.read<GlobalAuthCubit>().state.isAdmin;
+    final bool? isAdmin = locator<GlobalAuthCubit>().state.isAdmin;
     final bool disableLongPress = this.disableLongPress ?? false;
-    final FarmhubUser farmhubUser = context.read<GlobalAuthCubit>().state.farmhubUser!;
 
     return Material(
       type: MaterialType.transparency,
@@ -156,7 +160,7 @@ class ProduceListCard extends StatelessWidget {
     bool? isAdmin,
     Produce produce,
   ) {
-    final farmhubUser = context.read<GlobalAuthCubit>().state.farmhubUser!;
+    final farmhubUser = locator<GlobalAuthCubit>().state.farmhubUser!;
     final isProduceFavorite = determineIfInList(
       produce.produceId,
       produceFavoritesToProduceId(farmhubUser.produceFavoritesList),

@@ -13,6 +13,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ndialog/ndialog.dart';
 
+import '../../../core/errors/exceptions.dart';
+
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({Key? key}) : super(key: key);
 
@@ -69,11 +71,13 @@ class SliverSettingsBody extends StatelessWidget {
                   icon: Icon(Icons.password_outlined),
                   isTop: true,
                   onTap: () {
-                    context.read<SettingsCubit>().showResetPasswordDialog(context,
-                        resetPasswordDialog: returnResetPasswordConfirmation(
+                    context.read<SettingsCubit>().showResetPasswordDialog(
                           context,
-                          farmhubUser: context.read<GlobalAuthCubit>().state.farmhubUser,
-                        ));
+                          resetPasswordDialog: returnResetPasswordConfirmation(
+                            context,
+                            farmhubUser: context.read<GlobalAuthCubit>().state.farmhubUser!,
+                          ),
+                        );
                   },
                 ),
                 SettingsListCard(

@@ -20,6 +20,7 @@ import 'package:flutter_styled_toast/flutter_styled_toast.dart';
 import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
+import '../../../core/errors/exceptions.dart';
 import '../../shared_widgets/toasts.dart';
 
 final user = FarmhubUser(
@@ -240,10 +241,8 @@ class _PlaygroundScreenState extends State<PlaygroundScreen> {
                     onPressed: () async {
                       context.read<AuthBloc>().add(AuthEvent.execRetrieveUserData());
 
-                      await Future.delayed(Duration(seconds: 1));
-
                       if (!mounted) return;
-                      await context.read<GlobalAuthCubit>().updateGlobalAuthCubit();
+                      await locator<GlobalAuthCubit>().updateGlobalAuthCubit();
                     },
                   ),
                 ),
@@ -306,7 +305,7 @@ class _PlaygroundScreenState extends State<PlaygroundScreen> {
                     content: "Debug for Farm",
                     onPressed: () {
                       final Farm farm = Farm(
-                        creatorUserId: context.read<GlobalAuthCubit>().state.farmhubUser!.uid,
+                        creatorUserId: locator<GlobalAuthCubit>().state.farmhubUser!.uid,
                         farmId: 'UNKNOWN',
                         farmName: "Fake Farm",
                         address: Address(

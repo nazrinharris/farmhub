@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:farmhub/core/auth/domain/entities/farmhub_user/farmhub_user.dart';
 import 'package:farmhub/locator.dart';
 import 'package:farmhub/presentation/global/cubit/global_ui_cubit.dart';
 import 'package:farmhub/presentation/shared_widgets/scroll_physics.dart';
@@ -155,6 +156,7 @@ class _SliverFavoritesContentState extends State<SliverFavoritesContent> {
             return SliverProduceFavoritesList(
               produceList: state.produceFavoritesList,
               isLoading: false,
+              farmhubUser: state.farmhubUser!,
             );
           }
         } else if (state is FSError) {
@@ -212,13 +214,13 @@ class SliverError extends StatelessWidget {
 class SliverProduceFavoritesList extends StatelessWidget {
   final List<Produce> produceList;
   final bool isLoading;
-  final bool? isAdmin;
+  final FarmhubUser farmhubUser;
 
   const SliverProduceFavoritesList({
     Key? key,
     required this.isLoading,
     required this.produceList,
-    this.isAdmin,
+    required this.farmhubUser,
   }) : super(key: key);
 
   @override
@@ -242,6 +244,7 @@ class SliverProduceFavoritesList extends StatelessWidget {
                 index,
                 produceList[index],
                 chartAnimationDuration: 0,
+                farmhubUser: farmhubUser,
               );
             }
           } else {
@@ -249,6 +252,7 @@ class SliverProduceFavoritesList extends StatelessWidget {
               index,
               produceList[index],
               chartAnimationDuration: 0,
+              farmhubUser: farmhubUser,
             );
           }
         },

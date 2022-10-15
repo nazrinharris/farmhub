@@ -17,6 +17,7 @@ part 'auth_event.dart';
 part 'auth_state.dart';
 part 'auth_bloc.freezed.dart';
 
+//TODO: Deprecate [AuthBloc] in favor of [AuthCubit] and as such, update methods here to over there.
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final IAuthRepository authRepository;
   final GlobalAuthCubit globalAuthCubit;

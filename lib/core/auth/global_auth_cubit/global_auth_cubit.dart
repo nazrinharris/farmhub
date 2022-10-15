@@ -9,6 +9,11 @@ import 'package:logger/logger.dart';
 part 'global_auth_state.dart';
 part 'global_auth_cubit.freezed.dart';
 
+/// [GlobalAuthCubit] simply stores the current [FarmhubUser] and whether it is an admin.
+/// A kind of local widget, so to say.
+///
+/// If there is a need for methods which directly affects the user in the remote database,
+/// consider adding it to the [Auth] feature, following the datasource-repository architecture.
 class GlobalAuthCubit extends Cubit<GlobalAuthState> {
   final IAuthRepository repository;
 
@@ -21,12 +26,16 @@ class GlobalAuthCubit extends Cubit<GlobalAuthState> {
   }
 
   void updateIsAdmin(bool? isAdmin) {
+    print("Update isAdmin called");
     emit(GlobalAuthState.complete(isAdmin: isAdmin));
   }
 
   Future<void> updateGlobalAuthCubit() async {
     print("Updating Global Auth Cubit");
-    emit(GlobalAuthState.loading());
+    emit(GlobalAuthState.loading(
+      farmhubUser: state.farmhubUser,
+      isAdmin: state.isAdmin,
+    ));
     final failureOrFarmhubUser = await repository.retrieveUserData();
 
     await failureOrFarmhubUser.fold(

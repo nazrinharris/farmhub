@@ -10,6 +10,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../app_router.dart';
+import '../../../core/auth/global_auth_cubit/global_auth_cubit.dart';
+import '../../../core/errors/exceptions.dart';
 import '../../../locator.dart';
 import '../../shared_widgets/texts.dart';
 import '../../smart_widgets/custom_search_field.dart';
@@ -148,6 +150,7 @@ class _ProduceListSliverState extends State<ProduceListSliver> {
                     ),
                     disableLongPress: true,
                     chartAnimationDuration: 0,
+                    farmhubUser: locator<GlobalAuthCubit>().state.farmhubUser!,
                   );
                 }
               },
@@ -177,6 +180,7 @@ class _ProduceListSliverState extends State<ProduceListSliver> {
                     ),
                     disableLongPress: true,
                     chartAnimationDuration: 0,
+                    farmhubUser: locator<GlobalAuthCubit>().state.farmhubUser!,
                   );
                 }
               },
@@ -220,6 +224,7 @@ class _ProduceListSliverState extends State<ProduceListSliver> {
                     ),
                     disableLongPress: true,
                     chartAnimationDuration: 0,
+                    farmhubUser: locator<GlobalAuthCubit>().state.farmhubUser!,
                   );
                 }
               },

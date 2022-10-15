@@ -1,4 +1,6 @@
 import 'package:farmhub/app_router.dart';
+import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
+import 'package:farmhub/core/errors/exceptions.dart';
 import 'package:farmhub/core/util/app_const.dart';
 import 'package:farmhub/locator.dart';
 import 'package:farmhub/presentation/shared_widgets/appbars.dart';
@@ -155,7 +157,11 @@ class _SearchProduceListState extends State<SearchProduceList> {
                       child: const CupertinoActivityIndicator(),
                     );
                   } else {
-                    return ProduceListCard(index, state.props.produceList[index]);
+                    return ProduceListCard(
+                      index,
+                      state.props.produceList[index],
+                      farmhubUser: context.read<GlobalAuthCubit>().state.farmhubUser!,
+                    );
                   }
                 },
               ),
@@ -210,7 +216,11 @@ class _SearchProduceListState extends State<SearchProduceList> {
                   if (index == state.props.produceList.length) {
                     return const SizedBox(height: 100);
                   } else {
-                    return ProduceListCard(index, state.props.produceList[index]);
+                    return ProduceListCard(
+                      index,
+                      state.props.produceList[index],
+                      farmhubUser: context.read<GlobalAuthCubit>().state.farmhubUser!,
+                    );
                   }
                 },
               ),
@@ -282,7 +292,11 @@ class _SearchProduceListState extends State<SearchProduceList> {
                         ),
                       );
                     } else {
-                      return ProduceListCard(index, state.props.produceList[index]);
+                      return ProduceListCard(
+                        index,
+                        state.props.produceList[index],
+                        farmhubUser: context.read<GlobalAuthCubit>().state.farmhubUser!,
+                      );
                     }
                   },
                 ),

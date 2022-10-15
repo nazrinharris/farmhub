@@ -1,5 +1,6 @@
 import 'package:farmhub/core/auth/domain/entities/farmhub_user/farmhub_user.dart';
 import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
+import 'package:farmhub/core/errors/exceptions.dart';
 import 'package:farmhub/core/util/farmhub_icons.dart';
 import 'package:farmhub/locator.dart';
 import 'package:farmhub/presentation/shared_widgets/appbars.dart';
@@ -74,6 +75,8 @@ class AccountTypeChooser extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final user = context.read<GlobalAuthCubit>().state.farmhubUser!;
+
     return Container(
       alignment: Alignment.center,
       child: Column(
@@ -84,7 +87,7 @@ class AccountTypeChooser extends StatelessWidget {
             buttonIcon: Icon(FarmhubIcons.farmhub_corn_icon, size: 18),
             onPressed: () async {
               await context.read<UserManagementCubit>().chooseUserType(
-                    uid: context.read<GlobalAuthCubit>().state.farmhubUser!.uid,
+                    uid: user.uid,
                     userType: UserType.farmer,
                     context: context,
                   );
@@ -97,7 +100,7 @@ class AccountTypeChooser extends StatelessWidget {
             buttonIcon: Icon(Icons.store, size: 21),
             onPressed: () async {
               await context.read<UserManagementCubit>().chooseUserType(
-                    uid: context.read<GlobalAuthCubit>().state.farmhubUser!.uid,
+                    uid: user.uid,
                     userType: UserType.business,
                     context: context,
                   );
@@ -110,7 +113,7 @@ class AccountTypeChooser extends StatelessWidget {
             buttonIcon: Icon(Icons.face, size: 21),
             onPressed: () async {
               await context.read<UserManagementCubit>().chooseUserType(
-                    uid: context.read<GlobalAuthCubit>().state.farmhubUser!.uid,
+                    uid: user.uid,
                     userType: UserType.regular,
                     context: context,
                   );

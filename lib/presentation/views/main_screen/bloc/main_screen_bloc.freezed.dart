@@ -1635,6 +1635,7 @@ abstract class MSSPricesError implements MainScreenState {
 mixin _$MainScreenProps {
   bool get isMainHeaderVisible => throw _privateConstructorUsedError;
   List<Produce> get produceList => throw _privateConstructorUsedError;
+  FarmhubUser? get farmhubUser => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $MainScreenPropsCopyWith<MainScreenProps> get copyWith =>
@@ -1646,7 +1647,12 @@ abstract class $MainScreenPropsCopyWith<$Res> {
   factory $MainScreenPropsCopyWith(
           MainScreenProps value, $Res Function(MainScreenProps) then) =
       _$MainScreenPropsCopyWithImpl<$Res>;
-  $Res call({bool isMainHeaderVisible, List<Produce> produceList});
+  $Res call(
+      {bool isMainHeaderVisible,
+      List<Produce> produceList,
+      FarmhubUser? farmhubUser});
+
+  $FarmhubUserCopyWith<$Res>? get farmhubUser;
 }
 
 /// @nodoc
@@ -1662,6 +1668,7 @@ class _$MainScreenPropsCopyWithImpl<$Res>
   $Res call({
     Object? isMainHeaderVisible = freezed,
     Object? produceList = freezed,
+    Object? farmhubUser = freezed,
   }) {
     return _then(_value.copyWith(
       isMainHeaderVisible: isMainHeaderVisible == freezed
@@ -1672,7 +1679,22 @@ class _$MainScreenPropsCopyWithImpl<$Res>
           ? _value.produceList
           : produceList // ignore: cast_nullable_to_non_nullable
               as List<Produce>,
+      farmhubUser: farmhubUser == freezed
+          ? _value.farmhubUser
+          : farmhubUser // ignore: cast_nullable_to_non_nullable
+              as FarmhubUser?,
     ));
+  }
+
+  @override
+  $FarmhubUserCopyWith<$Res>? get farmhubUser {
+    if (_value.farmhubUser == null) {
+      return null;
+    }
+
+    return $FarmhubUserCopyWith<$Res>(_value.farmhubUser!, (value) {
+      return _then(_value.copyWith(farmhubUser: value));
+    });
   }
 }
 
@@ -1683,7 +1705,13 @@ abstract class _$$_MainScreenPropsCopyWith<$Res>
           _$_MainScreenProps value, $Res Function(_$_MainScreenProps) then) =
       __$$_MainScreenPropsCopyWithImpl<$Res>;
   @override
-  $Res call({bool isMainHeaderVisible, List<Produce> produceList});
+  $Res call(
+      {bool isMainHeaderVisible,
+      List<Produce> produceList,
+      FarmhubUser? farmhubUser});
+
+  @override
+  $FarmhubUserCopyWith<$Res>? get farmhubUser;
 }
 
 /// @nodoc
@@ -1701,6 +1729,7 @@ class __$$_MainScreenPropsCopyWithImpl<$Res>
   $Res call({
     Object? isMainHeaderVisible = freezed,
     Object? produceList = freezed,
+    Object? farmhubUser = freezed,
   }) {
     return _then(_$_MainScreenProps(
       isMainHeaderVisible: isMainHeaderVisible == freezed
@@ -1711,6 +1740,10 @@ class __$$_MainScreenPropsCopyWithImpl<$Res>
           ? _value._produceList
           : produceList // ignore: cast_nullable_to_non_nullable
               as List<Produce>,
+      farmhubUser: farmhubUser == freezed
+          ? _value.farmhubUser
+          : farmhubUser // ignore: cast_nullable_to_non_nullable
+              as FarmhubUser?,
     ));
   }
 }
@@ -1720,7 +1753,8 @@ class __$$_MainScreenPropsCopyWithImpl<$Res>
 class _$_MainScreenProps implements _MainScreenProps {
   const _$_MainScreenProps(
       {required this.isMainHeaderVisible,
-      required final List<Produce> produceList})
+      required final List<Produce> produceList,
+      required this.farmhubUser})
       : _produceList = produceList;
 
   @override
@@ -1733,8 +1767,11 @@ class _$_MainScreenProps implements _MainScreenProps {
   }
 
   @override
+  final FarmhubUser? farmhubUser;
+
+  @override
   String toString() {
-    return 'MainScreenProps(isMainHeaderVisible: $isMainHeaderVisible, produceList: $produceList)';
+    return 'MainScreenProps(isMainHeaderVisible: $isMainHeaderVisible, produceList: $produceList, farmhubUser: $farmhubUser)';
   }
 
   @override
@@ -1745,14 +1782,17 @@ class _$_MainScreenProps implements _MainScreenProps {
             const DeepCollectionEquality()
                 .equals(other.isMainHeaderVisible, isMainHeaderVisible) &&
             const DeepCollectionEquality()
-                .equals(other._produceList, _produceList));
+                .equals(other._produceList, _produceList) &&
+            const DeepCollectionEquality()
+                .equals(other.farmhubUser, farmhubUser));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(isMainHeaderVisible),
-      const DeepCollectionEquality().hash(_produceList));
+      const DeepCollectionEquality().hash(_produceList),
+      const DeepCollectionEquality().hash(farmhubUser));
 
   @JsonKey(ignore: true)
   @override
@@ -1763,12 +1803,15 @@ class _$_MainScreenProps implements _MainScreenProps {
 abstract class _MainScreenProps implements MainScreenProps {
   const factory _MainScreenProps(
       {required final bool isMainHeaderVisible,
-      required final List<Produce> produceList}) = _$_MainScreenProps;
+      required final List<Produce> produceList,
+      required final FarmhubUser? farmhubUser}) = _$_MainScreenProps;
 
   @override
   bool get isMainHeaderVisible => throw _privateConstructorUsedError;
   @override
   List<Produce> get produceList => throw _privateConstructorUsedError;
+  @override
+  FarmhubUser? get farmhubUser => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_MainScreenPropsCopyWith<_$_MainScreenProps> get copyWith =>
