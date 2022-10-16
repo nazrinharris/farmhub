@@ -38,7 +38,7 @@ class _AddNewPriceSecondScreenState extends State<AddNewPriceSecondScreen> {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => MultipleFieldsFormBloc(secondFieldValue: "0"),
+          create: (context) => MultipleFieldsFormBloc(),
         ),
         BlocProvider(
           create: (context) => PrimaryButtonAwareCubit(),
