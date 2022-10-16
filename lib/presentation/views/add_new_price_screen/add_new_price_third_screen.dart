@@ -15,8 +15,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
-import '../../shared_widgets/scroll_physics.dart';
-
 class AddNewPriceThirdScreen extends StatelessWidget {
   final AddNewPriceScreenArguments arguments;
 
@@ -57,7 +55,6 @@ class AddNewPriceThirdScreen extends StatelessWidget {
                 child: Stack(
                   children: [
                     ListView(
-                      physics: DefaultScrollPhysics,
                       children: [
                         const UITopPadding(),
                         const UIVerticalSpace30(),

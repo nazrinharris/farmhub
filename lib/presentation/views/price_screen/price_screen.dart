@@ -212,7 +212,7 @@ class _AllPriceListCardState extends State<AllPriceListCard> {
     final date = DateFormat("dd/MM/yyyy").format(dateTimeStamp);
     final time = DateFormat("hh:mm aaa").format(dateTimeStamp);
     final currentPrice = widget.price.allPricesWithDateList[widget.index].price;
-    final bool? isAdmin = locator<GlobalAuthCubit>().state.isAdmin;
+    final bool? isAdmin = context.read<GlobalAuthCubit>().state.isAdmin;
 
     return Material(
       type: MaterialType.transparency,

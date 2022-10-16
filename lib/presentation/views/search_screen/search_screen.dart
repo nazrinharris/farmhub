@@ -160,7 +160,7 @@ class _SearchProduceListState extends State<SearchProduceList> {
                     return ProduceListCard(
                       index,
                       state.props.produceList[index],
-                      farmhubUser: locator<GlobalAuthCubit>().state.farmhubUser!,
+                      farmhubUser: context.read<GlobalAuthCubit>().state.farmhubUser!,
                     );
                   }
                 },
@@ -219,7 +219,7 @@ class _SearchProduceListState extends State<SearchProduceList> {
                     return ProduceListCard(
                       index,
                       state.props.produceList[index],
-                      farmhubUser: locator<GlobalAuthCubit>().state.farmhubUser!,
+                      farmhubUser: context.read<GlobalAuthCubit>().state.farmhubUser!,
                     );
                   }
                 },
@@ -295,7 +295,7 @@ class _SearchProduceListState extends State<SearchProduceList> {
                       return ProduceListCard(
                         index,
                         state.props.produceList[index],
-                        farmhubUser: locator<GlobalAuthCubit>().state.farmhubUser!,
+                        farmhubUser: context.read<GlobalAuthCubit>().state.farmhubUser!,
                       );
                     }
                   },

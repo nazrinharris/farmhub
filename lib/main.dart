@@ -93,11 +93,11 @@ class _FarmhubMaterialAppState extends State<FarmhubMaterialApp> {
         systemStatusBarContrastEnforced: false,
       ));
     } else if (Platform.isAndroid) {
-      SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-        systemNavigationBarColor: FarmhubTheme.appThemeData[FarmhubThemeVariants.light]!
-            .extension<ExtendedColors>()!
-            .onBackgroundPale,
-        // systemNavigationBarColor: Colors.transparent,
+      SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+        // systemNavigationBarColor: FarmhubTheme.appThemeData[FarmhubThemeVariants.light]!
+        //     .extension<ExtendedColors>()!
+        //     .onBackgroundPale,
+        systemNavigationBarColor: Colors.transparent,
         systemNavigationBarDividerColor: Colors.transparent,
         systemNavigationBarIconBrightness: Brightness.dark,
         statusBarColor: Colors.transparent,

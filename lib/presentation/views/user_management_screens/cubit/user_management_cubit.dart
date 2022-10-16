@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../../locator.dart';
 import '../../../smart_widgets/produce_dialogs/app_dialogs.dart';
 
 part 'user_management_state.dart';
@@ -39,7 +38,7 @@ class UserManagementCubit extends Cubit<UserManagementState> {
       },
       (r) {
         print("UserType Change Success");
-        locator<GlobalAuthCubit>().updateGlobalAuthCubit();
+        context.read<GlobalAuthCubit>().updateGlobalAuthCubit();
         Navigator.of(context).pop();
         progress.dismiss();
       },

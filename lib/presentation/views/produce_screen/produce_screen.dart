@@ -64,7 +64,7 @@ class _ProduceScreenState extends State<ProduceScreen> with SingleTickerProvider
 
   @override
   Widget build(BuildContext context) {
-    final FarmhubUser farmhubUser = locator<GlobalAuthCubit>().state.farmhubUser!;
+    final FarmhubUser farmhubUser = context.read<GlobalAuthCubit>().state.farmhubUser!;
     final isProduceFavorite = determineIfInList(
       widget.produceArguments!.produce.produceId,
       produceFavoritesToProduceId(farmhubUser.produceFavoritesList),
@@ -634,7 +634,7 @@ class PriceListCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    GlobalAuthState authCubitState = locator<GlobalAuthCubit>().state;
+    GlobalAuthState authCubitState = context.read<GlobalAuthCubit>().state;
     bool isAdmin = false;
     if (authCubitState is GAComplete) {
       isAdmin = authCubitState.isAdmin ?? false;

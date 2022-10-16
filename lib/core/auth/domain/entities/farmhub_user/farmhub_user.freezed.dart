@@ -347,6 +347,11 @@ class _$_FarmhubUser extends _FarmhubUser {
   final String $type;
 
   @override
+  String toString() {
+    return 'FarmhubUser(uid: $uid, email: $email, username: $username, createdAt: $createdAt, produceFavoritesList: $produceFavoritesList, userType: $userType, phoneNumber: $phoneNumber)';
+  }
+
+  @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
@@ -700,6 +705,11 @@ class _$FarmhubUserFarmer extends FarmhubUserFarmer {
 
   @JsonKey(name: 'runtimeType')
   final String $type;
+
+  @override
+  String toString() {
+    return 'FarmhubUser.farmer(uid: $uid, email: $email, username: $username, createdAt: $createdAt, produceFavoritesList: $produceFavoritesList, userType: $userType, userFarms: $userFarms, userShops: $userShops, phoneNumber: $phoneNumber)';
+  }
 
   @override
   bool operator ==(dynamic other) {
@@ -1063,6 +1073,11 @@ class _$FarmhubUserBusiness extends FarmhubUserBusiness {
 
   @JsonKey(name: 'runtimeType')
   final String $type;
+
+  @override
+  String toString() {
+    return 'FarmhubUser.business(uid: $uid, email: $email, username: $username, createdAt: $createdAt, produceFavoritesList: $produceFavoritesList, userType: $userType, userFarms: $userFarms, userShops: $userShops, phoneNumber: $phoneNumber)';
+  }
 
   @override
   bool operator ==(dynamic other) {

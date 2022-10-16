@@ -21,7 +21,6 @@ class NavMainScreen extends StatelessWidget {
       bottomPadding = 34;
     } else {
       bottomPadding = safeAreaPadding.bottom;
-      print("BottomPadding: $bottomPadding");
     }
 
     return Scaffold(

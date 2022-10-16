@@ -22,7 +22,6 @@ mixin _$MainScreenEvent {
     required TResult Function() getFirstTenProduce,
     required TResult Function() getNextTenProduce,
     required TResult Function() refresh,
-    required TResult Function() updateStateFarmhubUser,
     required TResult Function() toggleMainHeader,
   }) =>
       throw _privateConstructorUsedError;
@@ -32,7 +31,6 @@ mixin _$MainScreenEvent {
     TResult Function()? getFirstTenProduce,
     TResult Function()? getNextTenProduce,
     TResult Function()? refresh,
-    TResult Function()? updateStateFarmhubUser,
     TResult Function()? toggleMainHeader,
   }) =>
       throw _privateConstructorUsedError;
@@ -42,7 +40,6 @@ mixin _$MainScreenEvent {
     TResult Function()? getFirstTenProduce,
     TResult Function()? getNextTenProduce,
     TResult Function()? refresh,
-    TResult Function()? updateStateFarmhubUser,
     TResult Function()? toggleMainHeader,
     required TResult orElse(),
   }) =>
@@ -53,8 +50,6 @@ mixin _$MainScreenEvent {
     required TResult Function(_MSEGetFirstTenProduce value) getFirstTenProduce,
     required TResult Function(_MSEGetNextTenProduce value) getNextTenProduce,
     required TResult Function(_MSERefresh value) refresh,
-    required TResult Function(_MSEUpdateStateFarmhubUser value)
-        updateStateFarmhubUser,
     required TResult Function(_MSEToggleMainHeader value) toggleMainHeader,
   }) =>
       throw _privateConstructorUsedError;
@@ -64,7 +59,6 @@ mixin _$MainScreenEvent {
     TResult Function(_MSEGetFirstTenProduce value)? getFirstTenProduce,
     TResult Function(_MSEGetNextTenProduce value)? getNextTenProduce,
     TResult Function(_MSERefresh value)? refresh,
-    TResult Function(_MSEUpdateStateFarmhubUser value)? updateStateFarmhubUser,
     TResult Function(_MSEToggleMainHeader value)? toggleMainHeader,
   }) =>
       throw _privateConstructorUsedError;
@@ -74,7 +68,6 @@ mixin _$MainScreenEvent {
     TResult Function(_MSEGetFirstTenProduce value)? getFirstTenProduce,
     TResult Function(_MSEGetNextTenProduce value)? getNextTenProduce,
     TResult Function(_MSERefresh value)? refresh,
-    TResult Function(_MSEUpdateStateFarmhubUser value)? updateStateFarmhubUser,
     TResult Function(_MSEToggleMainHeader value)? toggleMainHeader,
     required TResult orElse(),
   }) =>
@@ -143,7 +136,6 @@ class _$_MSEStarted implements _MSEStarted {
     required TResult Function() getFirstTenProduce,
     required TResult Function() getNextTenProduce,
     required TResult Function() refresh,
-    required TResult Function() updateStateFarmhubUser,
     required TResult Function() toggleMainHeader,
   }) {
     return started();
@@ -156,7 +148,6 @@ class _$_MSEStarted implements _MSEStarted {
     TResult Function()? getFirstTenProduce,
     TResult Function()? getNextTenProduce,
     TResult Function()? refresh,
-    TResult Function()? updateStateFarmhubUser,
     TResult Function()? toggleMainHeader,
   }) {
     return started?.call();
@@ -169,7 +160,6 @@ class _$_MSEStarted implements _MSEStarted {
     TResult Function()? getFirstTenProduce,
     TResult Function()? getNextTenProduce,
     TResult Function()? refresh,
-    TResult Function()? updateStateFarmhubUser,
     TResult Function()? toggleMainHeader,
     required TResult orElse(),
   }) {
@@ -186,8 +176,6 @@ class _$_MSEStarted implements _MSEStarted {
     required TResult Function(_MSEGetFirstTenProduce value) getFirstTenProduce,
     required TResult Function(_MSEGetNextTenProduce value) getNextTenProduce,
     required TResult Function(_MSERefresh value) refresh,
-    required TResult Function(_MSEUpdateStateFarmhubUser value)
-        updateStateFarmhubUser,
     required TResult Function(_MSEToggleMainHeader value) toggleMainHeader,
   }) {
     return started(this);
@@ -200,7 +188,6 @@ class _$_MSEStarted implements _MSEStarted {
     TResult Function(_MSEGetFirstTenProduce value)? getFirstTenProduce,
     TResult Function(_MSEGetNextTenProduce value)? getNextTenProduce,
     TResult Function(_MSERefresh value)? refresh,
-    TResult Function(_MSEUpdateStateFarmhubUser value)? updateStateFarmhubUser,
     TResult Function(_MSEToggleMainHeader value)? toggleMainHeader,
   }) {
     return started?.call(this);
@@ -213,7 +200,6 @@ class _$_MSEStarted implements _MSEStarted {
     TResult Function(_MSEGetFirstTenProduce value)? getFirstTenProduce,
     TResult Function(_MSEGetNextTenProduce value)? getNextTenProduce,
     TResult Function(_MSERefresh value)? refresh,
-    TResult Function(_MSEUpdateStateFarmhubUser value)? updateStateFarmhubUser,
     TResult Function(_MSEToggleMainHeader value)? toggleMainHeader,
     required TResult orElse(),
   }) {
@@ -274,7 +260,6 @@ class _$_MSEGetFirstTenProduce implements _MSEGetFirstTenProduce {
     required TResult Function() getFirstTenProduce,
     required TResult Function() getNextTenProduce,
     required TResult Function() refresh,
-    required TResult Function() updateStateFarmhubUser,
     required TResult Function() toggleMainHeader,
   }) {
     return getFirstTenProduce();
@@ -287,7 +272,6 @@ class _$_MSEGetFirstTenProduce implements _MSEGetFirstTenProduce {
     TResult Function()? getFirstTenProduce,
     TResult Function()? getNextTenProduce,
     TResult Function()? refresh,
-    TResult Function()? updateStateFarmhubUser,
     TResult Function()? toggleMainHeader,
   }) {
     return getFirstTenProduce?.call();
@@ -300,7 +284,6 @@ class _$_MSEGetFirstTenProduce implements _MSEGetFirstTenProduce {
     TResult Function()? getFirstTenProduce,
     TResult Function()? getNextTenProduce,
     TResult Function()? refresh,
-    TResult Function()? updateStateFarmhubUser,
     TResult Function()? toggleMainHeader,
     required TResult orElse(),
   }) {
@@ -317,8 +300,6 @@ class _$_MSEGetFirstTenProduce implements _MSEGetFirstTenProduce {
     required TResult Function(_MSEGetFirstTenProduce value) getFirstTenProduce,
     required TResult Function(_MSEGetNextTenProduce value) getNextTenProduce,
     required TResult Function(_MSERefresh value) refresh,
-    required TResult Function(_MSEUpdateStateFarmhubUser value)
-        updateStateFarmhubUser,
     required TResult Function(_MSEToggleMainHeader value) toggleMainHeader,
   }) {
     return getFirstTenProduce(this);
@@ -331,7 +312,6 @@ class _$_MSEGetFirstTenProduce implements _MSEGetFirstTenProduce {
     TResult Function(_MSEGetFirstTenProduce value)? getFirstTenProduce,
     TResult Function(_MSEGetNextTenProduce value)? getNextTenProduce,
     TResult Function(_MSERefresh value)? refresh,
-    TResult Function(_MSEUpdateStateFarmhubUser value)? updateStateFarmhubUser,
     TResult Function(_MSEToggleMainHeader value)? toggleMainHeader,
   }) {
     return getFirstTenProduce?.call(this);
@@ -344,7 +324,6 @@ class _$_MSEGetFirstTenProduce implements _MSEGetFirstTenProduce {
     TResult Function(_MSEGetFirstTenProduce value)? getFirstTenProduce,
     TResult Function(_MSEGetNextTenProduce value)? getNextTenProduce,
     TResult Function(_MSERefresh value)? refresh,
-    TResult Function(_MSEUpdateStateFarmhubUser value)? updateStateFarmhubUser,
     TResult Function(_MSEToggleMainHeader value)? toggleMainHeader,
     required TResult orElse(),
   }) {
@@ -404,7 +383,6 @@ class _$_MSEGetNextTenProduce implements _MSEGetNextTenProduce {
     required TResult Function() getFirstTenProduce,
     required TResult Function() getNextTenProduce,
     required TResult Function() refresh,
-    required TResult Function() updateStateFarmhubUser,
     required TResult Function() toggleMainHeader,
   }) {
     return getNextTenProduce();
@@ -417,7 +395,6 @@ class _$_MSEGetNextTenProduce implements _MSEGetNextTenProduce {
     TResult Function()? getFirstTenProduce,
     TResult Function()? getNextTenProduce,
     TResult Function()? refresh,
-    TResult Function()? updateStateFarmhubUser,
     TResult Function()? toggleMainHeader,
   }) {
     return getNextTenProduce?.call();
@@ -430,7 +407,6 @@ class _$_MSEGetNextTenProduce implements _MSEGetNextTenProduce {
     TResult Function()? getFirstTenProduce,
     TResult Function()? getNextTenProduce,
     TResult Function()? refresh,
-    TResult Function()? updateStateFarmhubUser,
     TResult Function()? toggleMainHeader,
     required TResult orElse(),
   }) {
@@ -447,8 +423,6 @@ class _$_MSEGetNextTenProduce implements _MSEGetNextTenProduce {
     required TResult Function(_MSEGetFirstTenProduce value) getFirstTenProduce,
     required TResult Function(_MSEGetNextTenProduce value) getNextTenProduce,
     required TResult Function(_MSERefresh value) refresh,
-    required TResult Function(_MSEUpdateStateFarmhubUser value)
-        updateStateFarmhubUser,
     required TResult Function(_MSEToggleMainHeader value) toggleMainHeader,
   }) {
     return getNextTenProduce(this);
@@ -461,7 +435,6 @@ class _$_MSEGetNextTenProduce implements _MSEGetNextTenProduce {
     TResult Function(_MSEGetFirstTenProduce value)? getFirstTenProduce,
     TResult Function(_MSEGetNextTenProduce value)? getNextTenProduce,
     TResult Function(_MSERefresh value)? refresh,
-    TResult Function(_MSEUpdateStateFarmhubUser value)? updateStateFarmhubUser,
     TResult Function(_MSEToggleMainHeader value)? toggleMainHeader,
   }) {
     return getNextTenProduce?.call(this);
@@ -474,7 +447,6 @@ class _$_MSEGetNextTenProduce implements _MSEGetNextTenProduce {
     TResult Function(_MSEGetFirstTenProduce value)? getFirstTenProduce,
     TResult Function(_MSEGetNextTenProduce value)? getNextTenProduce,
     TResult Function(_MSERefresh value)? refresh,
-    TResult Function(_MSEUpdateStateFarmhubUser value)? updateStateFarmhubUser,
     TResult Function(_MSEToggleMainHeader value)? toggleMainHeader,
     required TResult orElse(),
   }) {
@@ -534,7 +506,6 @@ class _$_MSERefresh implements _MSERefresh {
     required TResult Function() getFirstTenProduce,
     required TResult Function() getNextTenProduce,
     required TResult Function() refresh,
-    required TResult Function() updateStateFarmhubUser,
     required TResult Function() toggleMainHeader,
   }) {
     return refresh();
@@ -547,7 +518,6 @@ class _$_MSERefresh implements _MSERefresh {
     TResult Function()? getFirstTenProduce,
     TResult Function()? getNextTenProduce,
     TResult Function()? refresh,
-    TResult Function()? updateStateFarmhubUser,
     TResult Function()? toggleMainHeader,
   }) {
     return refresh?.call();
@@ -560,7 +530,6 @@ class _$_MSERefresh implements _MSERefresh {
     TResult Function()? getFirstTenProduce,
     TResult Function()? getNextTenProduce,
     TResult Function()? refresh,
-    TResult Function()? updateStateFarmhubUser,
     TResult Function()? toggleMainHeader,
     required TResult orElse(),
   }) {
@@ -577,8 +546,6 @@ class _$_MSERefresh implements _MSERefresh {
     required TResult Function(_MSEGetFirstTenProduce value) getFirstTenProduce,
     required TResult Function(_MSEGetNextTenProduce value) getNextTenProduce,
     required TResult Function(_MSERefresh value) refresh,
-    required TResult Function(_MSEUpdateStateFarmhubUser value)
-        updateStateFarmhubUser,
     required TResult Function(_MSEToggleMainHeader value) toggleMainHeader,
   }) {
     return refresh(this);
@@ -591,7 +558,6 @@ class _$_MSERefresh implements _MSERefresh {
     TResult Function(_MSEGetFirstTenProduce value)? getFirstTenProduce,
     TResult Function(_MSEGetNextTenProduce value)? getNextTenProduce,
     TResult Function(_MSERefresh value)? refresh,
-    TResult Function(_MSEUpdateStateFarmhubUser value)? updateStateFarmhubUser,
     TResult Function(_MSEToggleMainHeader value)? toggleMainHeader,
   }) {
     return refresh?.call(this);
@@ -604,7 +570,6 @@ class _$_MSERefresh implements _MSERefresh {
     TResult Function(_MSEGetFirstTenProduce value)? getFirstTenProduce,
     TResult Function(_MSEGetNextTenProduce value)? getNextTenProduce,
     TResult Function(_MSERefresh value)? refresh,
-    TResult Function(_MSEUpdateStateFarmhubUser value)? updateStateFarmhubUser,
     TResult Function(_MSEToggleMainHeader value)? toggleMainHeader,
     required TResult orElse(),
   }) {
@@ -617,140 +582,6 @@ class _$_MSERefresh implements _MSERefresh {
 
 abstract class _MSERefresh implements MainScreenEvent {
   const factory _MSERefresh() = _$_MSERefresh;
-}
-
-/// @nodoc
-abstract class _$$_MSEUpdateStateFarmhubUserCopyWith<$Res> {
-  factory _$$_MSEUpdateStateFarmhubUserCopyWith(
-          _$_MSEUpdateStateFarmhubUser value,
-          $Res Function(_$_MSEUpdateStateFarmhubUser) then) =
-      __$$_MSEUpdateStateFarmhubUserCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_MSEUpdateStateFarmhubUserCopyWithImpl<$Res>
-    extends _$MainScreenEventCopyWithImpl<$Res>
-    implements _$$_MSEUpdateStateFarmhubUserCopyWith<$Res> {
-  __$$_MSEUpdateStateFarmhubUserCopyWithImpl(
-      _$_MSEUpdateStateFarmhubUser _value,
-      $Res Function(_$_MSEUpdateStateFarmhubUser) _then)
-      : super(_value, (v) => _then(v as _$_MSEUpdateStateFarmhubUser));
-
-  @override
-  _$_MSEUpdateStateFarmhubUser get _value =>
-      super._value as _$_MSEUpdateStateFarmhubUser;
-}
-
-/// @nodoc
-
-class _$_MSEUpdateStateFarmhubUser implements _MSEUpdateStateFarmhubUser {
-  const _$_MSEUpdateStateFarmhubUser();
-
-  @override
-  String toString() {
-    return 'MainScreenEvent.updateStateFarmhubUser()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_MSEUpdateStateFarmhubUser);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function() getFirstTenProduce,
-    required TResult Function() getNextTenProduce,
-    required TResult Function() refresh,
-    required TResult Function() updateStateFarmhubUser,
-    required TResult Function() toggleMainHeader,
-  }) {
-    return updateStateFarmhubUser();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function()? getFirstTenProduce,
-    TResult Function()? getNextTenProduce,
-    TResult Function()? refresh,
-    TResult Function()? updateStateFarmhubUser,
-    TResult Function()? toggleMainHeader,
-  }) {
-    return updateStateFarmhubUser?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function()? getFirstTenProduce,
-    TResult Function()? getNextTenProduce,
-    TResult Function()? refresh,
-    TResult Function()? updateStateFarmhubUser,
-    TResult Function()? toggleMainHeader,
-    required TResult orElse(),
-  }) {
-    if (updateStateFarmhubUser != null) {
-      return updateStateFarmhubUser();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_MSEStarted value) started,
-    required TResult Function(_MSEGetFirstTenProduce value) getFirstTenProduce,
-    required TResult Function(_MSEGetNextTenProduce value) getNextTenProduce,
-    required TResult Function(_MSERefresh value) refresh,
-    required TResult Function(_MSEUpdateStateFarmhubUser value)
-        updateStateFarmhubUser,
-    required TResult Function(_MSEToggleMainHeader value) toggleMainHeader,
-  }) {
-    return updateStateFarmhubUser(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_MSEStarted value)? started,
-    TResult Function(_MSEGetFirstTenProduce value)? getFirstTenProduce,
-    TResult Function(_MSEGetNextTenProduce value)? getNextTenProduce,
-    TResult Function(_MSERefresh value)? refresh,
-    TResult Function(_MSEUpdateStateFarmhubUser value)? updateStateFarmhubUser,
-    TResult Function(_MSEToggleMainHeader value)? toggleMainHeader,
-  }) {
-    return updateStateFarmhubUser?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_MSEStarted value)? started,
-    TResult Function(_MSEGetFirstTenProduce value)? getFirstTenProduce,
-    TResult Function(_MSEGetNextTenProduce value)? getNextTenProduce,
-    TResult Function(_MSERefresh value)? refresh,
-    TResult Function(_MSEUpdateStateFarmhubUser value)? updateStateFarmhubUser,
-    TResult Function(_MSEToggleMainHeader value)? toggleMainHeader,
-    required TResult orElse(),
-  }) {
-    if (updateStateFarmhubUser != null) {
-      return updateStateFarmhubUser(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _MSEUpdateStateFarmhubUser implements MainScreenEvent {
-  const factory _MSEUpdateStateFarmhubUser() = _$_MSEUpdateStateFarmhubUser;
 }
 
 /// @nodoc
@@ -798,7 +629,6 @@ class _$_MSEToggleMainHeader implements _MSEToggleMainHeader {
     required TResult Function() getFirstTenProduce,
     required TResult Function() getNextTenProduce,
     required TResult Function() refresh,
-    required TResult Function() updateStateFarmhubUser,
     required TResult Function() toggleMainHeader,
   }) {
     return toggleMainHeader();
@@ -811,7 +641,6 @@ class _$_MSEToggleMainHeader implements _MSEToggleMainHeader {
     TResult Function()? getFirstTenProduce,
     TResult Function()? getNextTenProduce,
     TResult Function()? refresh,
-    TResult Function()? updateStateFarmhubUser,
     TResult Function()? toggleMainHeader,
   }) {
     return toggleMainHeader?.call();
@@ -824,7 +653,6 @@ class _$_MSEToggleMainHeader implements _MSEToggleMainHeader {
     TResult Function()? getFirstTenProduce,
     TResult Function()? getNextTenProduce,
     TResult Function()? refresh,
-    TResult Function()? updateStateFarmhubUser,
     TResult Function()? toggleMainHeader,
     required TResult orElse(),
   }) {
@@ -841,8 +669,6 @@ class _$_MSEToggleMainHeader implements _MSEToggleMainHeader {
     required TResult Function(_MSEGetFirstTenProduce value) getFirstTenProduce,
     required TResult Function(_MSEGetNextTenProduce value) getNextTenProduce,
     required TResult Function(_MSERefresh value) refresh,
-    required TResult Function(_MSEUpdateStateFarmhubUser value)
-        updateStateFarmhubUser,
     required TResult Function(_MSEToggleMainHeader value) toggleMainHeader,
   }) {
     return toggleMainHeader(this);
@@ -855,7 +681,6 @@ class _$_MSEToggleMainHeader implements _MSEToggleMainHeader {
     TResult Function(_MSEGetFirstTenProduce value)? getFirstTenProduce,
     TResult Function(_MSEGetNextTenProduce value)? getNextTenProduce,
     TResult Function(_MSERefresh value)? refresh,
-    TResult Function(_MSEUpdateStateFarmhubUser value)? updateStateFarmhubUser,
     TResult Function(_MSEToggleMainHeader value)? toggleMainHeader,
   }) {
     return toggleMainHeader?.call(this);
@@ -868,7 +693,6 @@ class _$_MSEToggleMainHeader implements _MSEToggleMainHeader {
     TResult Function(_MSEGetFirstTenProduce value)? getFirstTenProduce,
     TResult Function(_MSEGetNextTenProduce value)? getNextTenProduce,
     TResult Function(_MSERefresh value)? refresh,
-    TResult Function(_MSEUpdateStateFarmhubUser value)? updateStateFarmhubUser,
     TResult Function(_MSEToggleMainHeader value)? toggleMainHeader,
     required TResult orElse(),
   }) {

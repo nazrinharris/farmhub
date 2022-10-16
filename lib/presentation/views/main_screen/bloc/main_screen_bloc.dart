@@ -4,14 +4,10 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:farmhub/core/auth/domain/entities/farmhub_user/farmhub_user.dart';
-import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
 import 'package:farmhub/features/produce_manager/bloc/produce_manager_bloc.dart';
 import 'package:farmhub/features/produce_manager/domain/i_produce_manager_repository.dart';
-import 'package:farmhub/locator.dart';
-import 'package:farmhub/presentation/global/cubit/global_ui_cubit.dart';
 
 import 'package:flutter/material.dart';
-import 'package:fpdart/fpdart.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../core/errors/failures.dart';
@@ -25,11 +21,13 @@ class MainScreenBloc extends Bloc<MainScreenEvent, MainScreenState> {
   final ProduceManagerBloc produceManagerBloc;
   final IProduceManagerRepository produceManagerRepository;
   final AnimationController mainHeaderController;
+  final FarmhubUser farmhubUser;
 
   MainScreenBloc({
     required this.produceManagerBloc,
     required this.mainHeaderController,
     required this.produceManagerRepository,
+    required this.farmhubUser,
   }) : super(MSSPricesLoading(
             props: MainScreenProps(
           farmhubUser: null,
@@ -41,21 +39,19 @@ class MainScreenBloc extends Bloc<MainScreenEvent, MainScreenState> {
     on<_MSEGetFirstTenProduce>(getFirstTenProduce);
     on<_MSEGetNextTenProduce>(getNextTenProduce);
     on<_MSERefresh>(refresh);
-    on<_MSEUpdateStateFarmhubUser>(updateStateFarmhubUser);
   }
 
   FutureOr<void> started(
     _MSEStarted event,
     Emitter<MainScreenState> emit,
   ) async {
-    print("MainScreenBloc: MSEStarted");
+    print("This is the first event called");
   }
 
   FutureOr<void> toggleMainHeader(
     _MSEToggleMainHeader event,
     Emitter<MainScreenState> emit,
   ) async {
-    print("MainScreenBloc: MSEToggleMainHeader");
     final _isVisible = !state.props.isMainHeaderVisible;
 
     if (state.props.isMainHeaderVisible) {
@@ -79,26 +75,18 @@ class MainScreenBloc extends Bloc<MainScreenEvent, MainScreenState> {
     _MSEGetFirstTenProduce event,
     Emitter<MainScreenState> emit,
   ) async {
-    print("MainScreenBloc: MSEGetFirstTenProduce");
-
+    print("Adding getFirstTenProduce event...");
     emit(MainScreenState.pricesLoading(props: state.props));
 
     final failureOrProduceList = await produceManagerRepository.getFirstTenProduce();
 
     failureOrProduceList.fold(
       (f) {
-        emit(MainScreenState.pricesError(
-          props: state.props.copyWith(farmhubUser: locator<GlobalAuthCubit>().state.farmhubUser),
-          failure: f,
-        ));
+        emit(MainScreenState.pricesError(props: state.props, failure: f));
       },
       (produceList) {
-        emit(MainScreenState.pricesCompleted(
-          props: state.props.copyWith(
-            produceList: produceList,
-            farmhubUser: locator<GlobalAuthCubit>().state.farmhubUser,
-          ),
-        ));
+        emit(
+            MainScreenState.pricesCompleted(props: state.props.copyWith(produceList: produceList)));
       },
     );
   }
@@ -113,7 +101,7 @@ class MainScreenBloc extends Bloc<MainScreenEvent, MainScreenState> {
       if (state.props.produceList.isEmpty) {
         // Do nothing
       } else {
-        print("MainScreenBloc: MSEGetNextTenProduce");
+        print("Adding getNextTenProduce event...");
         emit(MainScreenState.nextPricesLoading(props: state.props));
 
         // Start getting next ten produce
@@ -144,54 +132,20 @@ class MainScreenBloc extends Bloc<MainScreenEvent, MainScreenState> {
     _MSERefresh event,
     Emitter<MainScreenState> emit,
   ) async {
-    print("MainScreenBloc: MSERefresh");
-
+    print("Refresh MainScreen beginning.");
     // Start loading and reset the list
-    emit(
-      MainScreenState.pricesLoading(
-        props: state.props.copyWith(
-          produceList: [],
-          farmhubUser: state.props.farmhubUser,
-        ),
-      ),
-    );
+    emit(MainScreenState.pricesLoading(props: state.props.copyWith(produceList: [])));
 
-    List<dynamic> operations = await Future.wait<dynamic>([
-      locator<GlobalAuthCubit>().updateGlobalAuthCubit(),
-      produceManagerRepository.getFirstTenProduce()
-    ]);
-
-    final failureOrProduceList = operations[1] as Either<Failure, List<Produce>>;
+    final failureOrProduceList = await produceManagerRepository.getFirstTenProduce();
 
     failureOrProduceList.fold(
       (f) {
-        emit(MainScreenState.pricesError(
-          props: state.props.copyWith(
-            farmhubUser: locator<GlobalAuthCubit>().state.farmhubUser,
-          ),
-          failure: f,
-        ));
+        emit(MainScreenState.pricesError(props: state.props, failure: f));
       },
       (produceList) {
-        emit(MainScreenState.pricesCompleted(
-          props: state.props.copyWith(
-            produceList: produceList,
-            farmhubUser: locator<GlobalAuthCubit>().state.farmhubUser,
-          ),
-        ));
+        emit(
+            MainScreenState.pricesCompleted(props: state.props.copyWith(produceList: produceList)));
       },
     );
-  }
-
-  FutureOr<void> updateStateFarmhubUser(
-    _MSEUpdateStateFarmhubUser event,
-    Emitter<MainScreenState> emit,
-  ) async {
-    print("MainScreenBloc: MSEUpdateStateFarmhubUser");
-
-    emit(state.copyWith(
-        props: state.props.copyWith(
-      farmhubUser: locator<GlobalAuthCubit>().state.farmhubUser,
-    )));
   }
 }

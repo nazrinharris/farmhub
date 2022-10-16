@@ -31,7 +31,7 @@ class GlobalAuthCubit extends Cubit<GlobalAuthState> {
   }
 
   Future<void> updateGlobalAuthCubit() async {
-    print("GACubit: GALoading");
+    print("Updating Global Auth Cubit");
     emit(GlobalAuthState.loading(
       farmhubUser: state.farmhubUser,
       isAdmin: state.isAdmin,
@@ -40,7 +40,7 @@ class GlobalAuthCubit extends Cubit<GlobalAuthState> {
 
     await failureOrFarmhubUser.fold(
       (f) {
-        print("GACubit: GANotLoggedIn");
+        print("User is not logged in.");
         emit(GlobalAuthState.notLoggedIn());
         debugPrint(f.toString());
       },
@@ -49,12 +49,11 @@ class GlobalAuthCubit extends Cubit<GlobalAuthState> {
 
         failureOrIsAdmin.fold(
           (f) {
-            print("GACubit: Failed to check if user is admin");
+            print("Failed to check if user is admin");
             print(f);
             emit(GlobalAuthState.complete(farmhubUser: farmhubUser, isAdmin: null));
           },
           (isAdmin) {
-            print("GACubit: GAComplete");
             if (isAdmin) {
               emit(GlobalAuthState.complete(
                 farmhubUser: farmhubUser.copyWith(userType: UserType.admin),
@@ -71,10 +70,4 @@ class GlobalAuthCubit extends Cubit<GlobalAuthState> {
       },
     );
   }
-}
-
-Future<GlobalAuthState> whenGAComplete(Stream<GlobalAuthState> stream) {
-  return stream.firstWhere((state) {
-    return state is GAComplete;
-  });
 }

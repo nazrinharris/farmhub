@@ -193,6 +193,8 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
 
   @override
   Future<FarmhubUser> updateRemoteUser(FarmhubUser newUserData) async {
+    await Future.delayed(Duration(seconds: 1));
+
     await firebaseFirestore
         .collection('users')
         .doc(newUserData.uid)
