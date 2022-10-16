@@ -1,7 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:farmhub/core/auth/domain/i_auth_repository.dart';
 import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
-import 'package:farmhub/core/errors/exceptions.dart';
 import 'package:farmhub/core/util/app_const.dart';
 import 'package:farmhub/core/errors/failures.dart';
 import 'package:farmhub/features/farm_shop_manager/data/repository/farm_shop_manager_repository.dart';
@@ -60,6 +59,8 @@ class ProduceDialogCubit extends Cubit<ProduceDialogState> {
     print("Delete in progress!");
     progressDialog.show();
 
+    await Future.delayed(Duration(seconds: 1));
+
     final failureOrDeleteProduce = await repository.deleteProduce(produce.produceId);
 
     failureOrDeleteProduce.fold(
@@ -111,6 +112,8 @@ class ProduceDialogCubit extends Cubit<ProduceDialogState> {
       // Pop the edit dialog
       Navigator.of(context).pop();
       progressDialog.show();
+
+      await Future.delayed(Duration(seconds: 2));
 
       final failureOrEditProduce = await repository.editProduce(
         produce.produceId,
@@ -292,7 +295,7 @@ class ProduceDialogCubit extends Cubit<ProduceDialogState> {
         );
       }
     } else {
-      // Email is not provided BUT user is logged in
+      // Email is not provided
       email ??= globalAuthCubit.state.farmhubUser!.email;
 
       await sendResetPasswordAndReact(

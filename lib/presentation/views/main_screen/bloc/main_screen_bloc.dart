@@ -1,9 +1,7 @@
-// ignore_for_file: prefer_const_constructors
 // ignore_for_file: avoid_print
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:farmhub/core/auth/domain/entities/farmhub_user/farmhub_user.dart';
 import 'package:farmhub/features/produce_manager/bloc/produce_manager_bloc.dart';
 import 'package:farmhub/features/produce_manager/domain/i_produce_manager_repository.dart';
 
@@ -21,16 +19,13 @@ class MainScreenBloc extends Bloc<MainScreenEvent, MainScreenState> {
   final ProduceManagerBloc produceManagerBloc;
   final IProduceManagerRepository produceManagerRepository;
   final AnimationController mainHeaderController;
-  final FarmhubUser farmhubUser;
 
   MainScreenBloc({
     required this.produceManagerBloc,
     required this.mainHeaderController,
     required this.produceManagerRepository,
-    required this.farmhubUser,
-  }) : super(MSSPricesLoading(
+  }) : super(const MSSPricesLoading(
             props: MainScreenProps(
-          farmhubUser: null,
           isMainHeaderVisible: true,
           produceList: [],
         ))) {
@@ -44,9 +39,7 @@ class MainScreenBloc extends Bloc<MainScreenEvent, MainScreenState> {
   FutureOr<void> started(
     _MSEStarted event,
     Emitter<MainScreenState> emit,
-  ) async {
-    print("This is the first event called");
-  }
+  ) async {}
 
   FutureOr<void> toggleMainHeader(
     _MSEToggleMainHeader event,

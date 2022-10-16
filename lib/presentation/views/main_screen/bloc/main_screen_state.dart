@@ -27,6 +27,5 @@ class MainScreenProps with _$MainScreenProps {
   const factory MainScreenProps({
     required bool isMainHeaderVisible,
     required List<Produce> produceList,
-    required FarmhubUser? farmhubUser,
   }) = _MainScreenProps;
 }

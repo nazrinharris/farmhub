@@ -168,6 +168,8 @@ class AuthRepository implements IAuthRepository {
           );
         }
 
+        print("User Data ->");
+        print(user);
         await authLocalDataSource.storeFarmhubUser(user);
 
         return Right(user);

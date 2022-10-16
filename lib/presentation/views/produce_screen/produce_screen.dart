@@ -103,10 +103,7 @@ class _ProduceScreenState extends State<ProduceScreen> with SingleTickerProvider
           },
           child: BlocBuilder<GlobalAuthCubit, GlobalAuthState>(
             builder: (context, state) {
-              bool isAdmin = false;
-              if (state is GAComplete) {
-                isAdmin = state.isAdmin ?? false;
-              }
+              final bool isAdmin = state.isAdmin ?? false;
 
               return BuildProduceScreen(
                 isAdmin: isAdmin,
@@ -634,11 +631,7 @@ class PriceListCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    GlobalAuthState authCubitState = context.read<GlobalAuthCubit>().state;
-    bool isAdmin = false;
-    if (authCubitState is GAComplete) {
-      isAdmin = authCubitState.isAdmin ?? false;
-    }
+    final bool isAdmin = context.read<GlobalAuthCubit>().state.isAdmin ?? false;
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 14),

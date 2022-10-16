@@ -28,6 +28,8 @@ class SettingsCubit extends Cubit<SettingsState> {
 
     progressDialog.show();
 
+    await Future.delayed(Duration(seconds: 2));
+
     result.fold(
       (f) {
         progressDialog.dismiss();

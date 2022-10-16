@@ -56,12 +56,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
       child: BlocBuilder<GlobalAuthCubit, GlobalAuthState>(
         builder: (context, state) {
           // TODO: Maybe allow for non-registered users!
-          FarmhubUser user;
-          if (state is GAComplete) {
-            user = state.farmhubUser!;
-          } else {
-            user = state.farmhubUser!;
-          }
+          final FarmhubUser user = state.farmhubUser ??
+              FarmhubUser(
+                uid: "xxxxxx",
+                email: "-",
+                username: "Guest",
+                createdAt: "-",
+                produceFavoritesList: [],
+                userType: UserType.regular,
+              );
 
           return BlocListener<GlobalUICubit, GlobalUIState>(
             listener: (context, state) {

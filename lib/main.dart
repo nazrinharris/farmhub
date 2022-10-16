@@ -80,7 +80,7 @@ class _FarmhubMaterialAppState extends State<FarmhubMaterialApp> {
   void initState() {
     super.initState();
 
-    locator<GlobalAuthCubit>().updateGlobalAuthCubit();
+    context.read<GlobalAuthCubit>().updateGlobalAuthCubit();
 
     if (Platform.isIOS) {
       SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(

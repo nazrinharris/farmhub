@@ -8,8 +8,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../core/auth/global_auth_cubit/global_auth_cubit.dart';
-import '../../../core/errors/exceptions.dart';
 import '../../../features/produce_manager/domain/entities/produce/produce.dart';
 import '../../smart_widgets/custom_search_field.dart';
 
@@ -162,7 +160,6 @@ class _SearchProduceListState extends State<SearchProduceList> {
                       index,
                       state.props.produceList[index],
                       disableLongPress: true,
-                      farmhubUser: locator<GlobalAuthCubit>().state.farmhubUser!,
                     );
                   }
                 },
@@ -195,7 +192,6 @@ class _SearchProduceListState extends State<SearchProduceList> {
                         );
                       },
                       disableLongPress: true,
-                      farmhubUser: locator<GlobalAuthCubit>().state.farmhubUser!,
                     );
                   }
                 },
@@ -246,7 +242,6 @@ class _SearchProduceListState extends State<SearchProduceList> {
                         );
                       },
                       disableLongPress: true,
-                      farmhubUser: locator<GlobalAuthCubit>().state.farmhubUser!,
                     );
                   }
                 },

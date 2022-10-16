@@ -11,8 +11,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:phone_numbers_parser/phone_numbers_parser.dart';
 
-import '../../../core/errors/exceptions.dart';
-
 class PlaygroundTwoScreen extends StatelessWidget {
   const PlaygroundTwoScreen({Key? key}) : super(key: key);
 

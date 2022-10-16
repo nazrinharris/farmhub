@@ -220,11 +220,3 @@ class FarmhubUser with _$FarmhubUser {
     }
   }
 }
-
-bool determineIfAdmin(FarmhubUser user) {
-  if (user.userType == UserType.admin) {
-    return true;
-  } else {
-    return false;
-  }
-}
