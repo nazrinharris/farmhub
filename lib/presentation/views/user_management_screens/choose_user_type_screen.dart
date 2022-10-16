@@ -75,7 +75,7 @@ class AccountTypeChooser extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final user = context.read<GlobalAuthCubit>().state.farmhubUser!;
+    final user = locator<GlobalAuthCubit>().state.farmhubUser!;
 
     return Container(
       alignment: Alignment.center,

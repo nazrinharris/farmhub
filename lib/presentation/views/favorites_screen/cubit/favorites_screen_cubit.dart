@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:bloc/bloc.dart';
 import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
 import 'package:farmhub/features/produce_manager/domain/i_produce_manager_repository.dart';
@@ -24,23 +26,28 @@ class FavoritesScreenCubit extends Cubit<FavoritesScreenState> {
   }) : super(const FavoritesScreenState.loading([]));
 
   Future<void> getProduceFavorites() async {
+    print("FavoritesScreenCubit: Loading");
     emit(FavoritesScreenState.loading(state.produceFavoritesList));
 
-    FarmhubUser user = locator<GlobalAuthCubit>().state.farmhubUser!;
-    List<String> produceIdList = [];
-    for (ProduceFavorite favorite in user.produceFavoritesList) {
-      produceIdList.add(favorite.produceId);
-    }
+    await whenGAComplete(locator<GlobalAuthCubit>().stream).then((gaState) async {
+      FarmhubUser user = globalAuthCubit.state.farmhubUser!;
+      List<String> produceIdList = [];
+      for (ProduceFavorite favorite in user.produceFavoritesList) {
+        produceIdList.add(favorite.produceId);
+      }
 
-    final result = await repository.getProduceFavorites(user);
+      final result = await repository.getProduceFavorites(user);
 
-    result.fold(
-      (f) {
-        emit(FavoritesScreenState.error(state.produceFavoritesList, f, farmhubUser: user));
-      },
-      (produceFavoritesList) {
-        emit(FavoritesScreenState.complete(produceFavoritesList, farmhubUser: user));
-      },
-    );
+      result.fold(
+        (f) {
+          print("FavoritesScreenCubit: Error");
+          emit(FavoritesScreenState.error(state.produceFavoritesList, f, farmhubUser: user));
+        },
+        (produceFavoritesList) {
+          print("FavoritesScreenCubit: Complete");
+          emit(FavoritesScreenState.complete(produceFavoritesList, farmhubUser: user));
+        },
+      );
+    });
   }
 }

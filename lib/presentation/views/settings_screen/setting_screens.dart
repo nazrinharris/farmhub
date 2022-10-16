@@ -75,7 +75,7 @@ class SliverSettingsBody extends StatelessWidget {
                           context,
                           resetPasswordDialog: returnResetPasswordConfirmation(
                             context,
-                            farmhubUser: context.read<GlobalAuthCubit>().state.farmhubUser!,
+                            farmhubUser: locator<GlobalAuthCubit>().state.farmhubUser!,
                           ),
                         );
                   },

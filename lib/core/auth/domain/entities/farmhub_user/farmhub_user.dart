@@ -8,6 +8,7 @@ import 'package:phone_numbers_parser/phone_numbers_parser.dart';
 
 import '../../../../../features/farm_shop_manager/domain/entities/farm_shop/farm_shop.dart';
 import '../../../../errors/exceptions.dart';
+import '../../../../util/misc.dart';
 
 part 'farmhub_user.freezed.dart';
 part 'farmhub_user.g.dart';
@@ -218,6 +219,23 @@ class FarmhubUser with _$FarmhubUser {
     } else {
       return farmhubUser;
     }
+  }
+
+  @override
+  String toString() {
+    return """
+
+    FarmhubUser Data
+    ----------------
+    Username: $username
+    UID: $uid
+    Email: $email
+    Phone Number: $phoneNumber
+    Created At: $createdAt
+    UserType: $userType   
+    ----------------
+
+    """;
   }
 }
 

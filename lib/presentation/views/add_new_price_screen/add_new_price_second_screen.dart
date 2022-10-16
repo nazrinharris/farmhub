@@ -1,6 +1,7 @@
 import 'package:farmhub/app_router.dart';
 import 'package:farmhub/locator.dart';
 import 'package:farmhub/presentation/shared_widgets/cards.dart';
+import 'package:farmhub/presentation/shared_widgets/scroll_physics.dart';
 import 'package:farmhub/presentation/smart_widgets/primary_button_aware/primary_button_aware_cubit.dart';
 import 'package:farmhub/presentation/smart_widgets/produce_list_card/produce_list_card.dart';
 import 'package:flutter/foundation.dart';
@@ -95,6 +96,7 @@ class _AddNewPriceSecondScreenState extends State<AddNewPriceSecondScreen> {
                     child: Stack(
                       children: [
                         CustomScrollView(
+                          physics: DefaultScrollPhysics,
                           slivers: [
                             HeaderSliver(widget.arguments.produce),
                             const ContentSliver(),

@@ -11,6 +11,16 @@ void printList(List<dynamic> givenList) {
   }
 }
 
+String listToPrettyString(List<dynamic> givenList) {
+  String prettyString = "";
+
+  for (dynamic object in givenList) {
+    prettyString = "$prettyString ${object.toString()} \n";
+  }
+
+  return prettyString;
+}
+
 extension StringCasingExtension on String {
   String toCapitalized() =>
       length > 0 ? '${this[0].toUpperCase()}${substring(1).toLowerCase()}' : '';

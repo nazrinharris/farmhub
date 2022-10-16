@@ -27,7 +27,7 @@ class PlaygroundTwoScreen extends StatelessWidget {
         return BlocBuilder<PlaygroundCubit, PlaygroundState>(
           builder: (context, state) {
             final IProduceManagerRepository repository = locator();
-            final FarmhubUser user = context.read<GlobalAuthCubit>().state.farmhubUser!;
+            final FarmhubUser user = locator<GlobalAuthCubit>().state.farmhubUser!;
 
             return Scaffold(
               body: Center(

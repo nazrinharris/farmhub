@@ -92,7 +92,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   slivers: [
                     CustomCupertinoSliverRefreshControl(
                       onRefresh: () async {
-                        await context.read<GlobalAuthCubit>().updateGlobalAuthCubit();
+                        await locator<GlobalAuthCubit>().updateGlobalAuthCubit();
                       },
                     ),
                     SliverProfileHeader(user),
