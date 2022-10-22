@@ -8,6 +8,7 @@ import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
 import 'package:farmhub/core/errors/exceptions.dart';
 import 'package:farmhub/core/errors/failures.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:phone_numbers_parser/phone_numbers_parser.dart';
 
@@ -25,7 +26,7 @@ class AuthCubit extends Cubit<AuthState> {
     required this.authRepository,
     required this.authRemoteDataSource,
     required this.globalAuthCubit,
-  }) : super(AuthState.initial());
+  }) : super(const AuthState.initial());
 
   /// [verifyPhoneAndSendSMS] will essentially verify the phone, as in to check whether it is a valid
   /// number or not.
@@ -42,8 +43,8 @@ class AuthCubit extends Cubit<AuthState> {
       phoneNumber: "+1 ${phoneNumber.nsn}",
       timeout: const Duration(minutes: 1),
       verificationFailed: (FirebaseAuthException e) async {
-        print("Verification Failed!");
-        print(e);
+        debugPrint("Verification Failed!");
+        debugPrint(e.toString());
         c.complete(
           AuthState.phoneVerificationError(
             FirebaseAuthFailure(code: e.code, message: e.message, stackTrace: e.stackTrace),
@@ -51,7 +52,7 @@ class AuthCubit extends Cubit<AuthState> {
         );
       },
       codeSent: (String verificationId, int? resendToken) async {
-        print("Code Sent!");
+        debugPrint("Code Sent!");
         c.complete(
           AuthState.SMSCodeSentToClient(
             verificationId: verificationId,
@@ -102,7 +103,7 @@ class AuthCubit extends Cubit<AuthState> {
         );
       });
     } on FirebaseAuthException catch (e) {
-      print(e.code);
+      debugPrint(e.code);
       AuthState.credentialLoginError(
         AuthFailure(
           message: e.message,
@@ -111,7 +112,7 @@ class AuthCubit extends Cubit<AuthState> {
         ),
       );
     } catch (e, stack) {
-      print(e.runtimeType);
+      debugPrint(e.runtimeType.toString());
       emit(
         AuthState.credentialLoginError(
           AuthFailure(
@@ -134,7 +135,7 @@ class AuthCubit extends Cubit<AuthState> {
 
     final toReturn = result.fold(
       (l) {
-        print(l);
+        debugPrint(l.toString());
         throw AuthException(
           code: l.code ?? "Unknown Code",
           message: "An error occured while creating a new account",

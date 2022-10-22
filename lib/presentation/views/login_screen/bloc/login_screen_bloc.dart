@@ -1,6 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-// TODO: Prefix const where needed after debugging
-
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
@@ -61,7 +58,7 @@ class LoginScreenBloc extends Bloc<LoginScreenEvent, LoginScreenState> {
     _LSEContinuePressed event,
     Emitter<LoginScreenState> emit,
   ) async {
-    print("continuePressed Started");
+    debugPrint("continuePressed Started");
 
     void updateInfoTile(InfoTileProps infoTileProps) {
       infoTileBloc.add(InfoTileEvent.triggerStateChange(infoTileProps));
@@ -118,7 +115,7 @@ class LoginScreenBloc extends Bloc<LoginScreenEvent, LoginScreenState> {
             primaryButtonAwareCubit.triggerFirstPage();
             Navigator.of(event.context).pushNamedAndRemoveUntil('/nav_main', (route) => false);
           } else if (state is ASLoginError) {
-            print(state.code);
+            debugPrint(state.code);
             updateInfoTile(InfoTileProps(
               leadingText: 'Uh oh, Something\'s wrong!',
               child: Text(

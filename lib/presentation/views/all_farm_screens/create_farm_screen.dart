@@ -160,7 +160,7 @@ class _CreateFarmScreenState extends State<CreateFarmScreen> {
       context.read<GlobalUICubit>().setShouldRefreshProfile(true);
       Navigator.of(context).pop();
     } else if (state is CreateFarmError) {
-      print(state.failure);
+      debugPrint(state.failure.toString());
       context.read<PrimaryButtonAwareCubit>().triggerFirstPage();
       showErrorDialog(context: context, failure: state.failure);
     }

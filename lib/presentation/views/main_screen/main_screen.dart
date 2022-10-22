@@ -56,8 +56,8 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
       setState(() {});
     });
 
-    extent = Tween<double>(begin: 166.0, end: 68.0).animate(mainHeaderController);
-    adminExtent = Tween<double>(begin: 200.0, end: 68.0).animate(mainHeaderController);
+    extent = Tween<double>(begin: 176.0, end: 68.0).animate(mainHeaderController);
+    adminExtent = Tween<double>(begin: 210.0, end: 68.0).animate(mainHeaderController);
   }
 
   @override
@@ -397,7 +397,7 @@ class _SliverProduceErrorListState extends State<SliverProduceErrorList> {
 
   @override
   Widget build(BuildContext context) {
-    print(widget.failure);
+    debugPrint(widget.failure.toString());
 
     return SliverList(
       delegate: SliverChildBuilderDelegate(

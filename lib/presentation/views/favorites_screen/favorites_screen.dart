@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:farmhub/locator.dart';
 import 'package:farmhub/presentation/global/cubit/global_ui_cubit.dart';
 import 'package:farmhub/presentation/shared_widgets/scroll_physics.dart';
@@ -158,7 +156,7 @@ class _SliverFavoritesContentState extends State<SliverFavoritesContent> {
             );
           }
         } else if (state is FSError) {
-          print(state.failure);
+          debugPrint(state.failure.toString());
           return SliverError(
             failure: state.failure,
           );

@@ -85,7 +85,7 @@ class AppRouter {
       case '/register':
         return CupertinoPageRoute(builder: (_) => const RegisterScreen());
       case '/verify_phone':
-        return CupertinoPageRoute(builder: (_) => VerifyPhoneScreen());
+        return CupertinoPageRoute(builder: (_) => const VerifyPhoneScreen());
       case '/verify_code':
         return CupertinoPageRoute(
             builder: (_) => VerifyCodeScreen(
@@ -283,17 +283,14 @@ Widget slideUpTransitionBuilder(context, animation, secondaryAnimation, child) {
 }
 
 Widget fadeInTransitionBuilder(context, animation, secondaryAnimation, child) {
-  var offsetCurve =
-      animation.status == AnimationStatus.reverse ? Curves.easeInExpo : Curves.easeOutExpo;
-
   var opacityCurve =
       animation.status == AnimationStatus.reverse ? Curves.easeOutQuad : Curves.easeOutExpo;
 
-  final offsetAnimation = Tween<Offset>(begin: const Offset(0, -1), end: Offset.zero)
-      .chain(CurveTween(
-        curve: offsetCurve,
-      ))
-      .animate(animation);
+  // final offsetAnimation = Tween<Offset>(begin: const Offset(0, -1), end: Offset.zero)
+  //     .chain(CurveTween(
+  //       curve: offsetCurve,
+  //     ))
+  //     .animate(animation);
 
   final opacityAnimation =
       Tween<double>(begin: 0, end: 1).chain(CurveTween(curve: opacityCurve)).animate(animation);

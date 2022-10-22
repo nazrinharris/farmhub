@@ -8,10 +8,6 @@ import 'package:farmhub/core/auth/domain/i_auth_repository.dart';
 import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:phone_numbers_parser/phone_numbers_parser.dart';
-import 'dart:io';
-
-import '../../errors/failures.dart';
 
 part 'auth_event.dart';
 part 'auth_state.dart';

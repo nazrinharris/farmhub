@@ -67,7 +67,7 @@ class RegisterScreenBloc extends Bloc<RegisterScreenEvent, RegisterScreenState> 
   ) {
     final isVisible = state.props.isInfoTileVisible;
 
-    print("InfoTile is $isVisible");
+    debugPrint("InfoTile is $isVisible");
 
     if (isVisible) {
       infoTileVisibilityController.playReverse(duration: const Duration(milliseconds: 500));

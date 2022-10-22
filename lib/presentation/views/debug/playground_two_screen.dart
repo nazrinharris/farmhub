@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:farmhub/core/auth/domain/entities/farmhub_user/farmhub_user.dart';
 import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
 import 'package:farmhub/features/produce_manager/domain/i_produce_manager_repository.dart';
@@ -40,7 +38,7 @@ class PlaygroundTwoScreen extends StatelessWidget {
                       onPressed: () {
                         final phone = PhoneNumber(isoCode: IsoCode.US, nsn: "7176768765");
 
-                        print(phone);
+                        debugPrint(phone.toString());
                       },
                     ),
                     UIVerticalSpace30(),

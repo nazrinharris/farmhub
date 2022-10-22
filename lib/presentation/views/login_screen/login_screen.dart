@@ -178,7 +178,7 @@ class _LoginScreenState extends State<LoginScreen> with AnimationMixin {
                                   alignment: Alignment.center,
                                   child: GestureDetector(
                                     onTap: () {
-                                      print("Tapped");
+                                      debugPrint("Tapped");
 
                                       final resetPasswordDialog = returnResetPasswordConfirmation(
                                         context,

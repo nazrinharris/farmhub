@@ -25,12 +25,12 @@ class GlobalAuthCubit extends Cubit<GlobalAuthState> {
   }
 
   Future<void> updateGlobalAuthCubit() async {
-    print("Updating Global Auth Cubit");
+    debugPrint("Updating Global Auth Cubit");
     final failureOrFarmhubUser = await repository.retrieveUserData();
 
     await failureOrFarmhubUser.fold(
       (f) {
-        print("User is not logged in.");
+        debugPrint("User is not logged in.");
         debugPrint(f.toString());
       },
       (farmhubUser) async {
@@ -38,8 +38,8 @@ class GlobalAuthCubit extends Cubit<GlobalAuthState> {
 
         failureOrIsAdmin.fold(
           (f) {
-            print("Failed to check if user is admin");
-            print(f);
+            debugPrint("Failed to check if user is admin");
+            debugPrint(f.toString());
             emit(state.copyWith(farmhubUser: farmhubUser, isAdmin: null));
           },
           (isAdmin) {

@@ -1,4 +1,3 @@
-// ignore_for_file: prefer_const_constructors
 import 'package:farmhub/core/auth/auth_bloc/auth_bloc.dart';
 import 'package:farmhub/core/auth/data/datasources/auth_local_datasource.dart';
 import 'package:farmhub/core/auth/data/datasources/auth_remote_datasource.dart';
@@ -240,8 +239,6 @@ class _PlaygroundScreenState extends State<PlaygroundScreen> {
                     onPressed: () async {
                       context.read<AuthBloc>().add(AuthEvent.execRetrieveUserData());
 
-                      await Future.delayed(Duration(seconds: 1));
-
                       if (!mounted) return;
                       await context.read<GlobalAuthCubit>().updateGlobalAuthCubit();
                     },
@@ -317,7 +314,7 @@ class _PlaygroundScreenState extends State<PlaygroundScreen> {
                             postcode: 254600),
                       );
 
-                      print(farm.toJson());
+                      prettyPrintJson(farm.toJson());
                     },
                   ),
                 ),
@@ -357,7 +354,7 @@ class _PlaygroundScreenState extends State<PlaygroundScreen> {
                     onPressed: () async {
                       final result = await widget.authLocalDataSource.retrieveFarmhubUser();
 
-                      print(result);
+                      debugPrint(result.toString());
                       prettyPrintJson(result.toJson());
                     },
                   ),

@@ -21,7 +21,6 @@ class AuthState with _$AuthState {
   const factory AuthState.credentialLoginLoading() = CredentialLoginLoading;
   const factory AuthState.credentialLoginError(Failure failure) = CredentialLoginError;
 
-  // TODO: Change to more accurate name
   // This state will be emitted when account creation is succesfull OR account retrieval is successfull
   // Account retrieval referring to when the user already exists.
   const factory AuthState.accountCreationSuccess(FarmhubUser user) = AccountCreationSuccess;

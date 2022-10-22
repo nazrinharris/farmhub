@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_declarations
-
 import 'package:farmhub/core/auth/data/repository/auth_repository.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:fpdart/fpdart.dart';

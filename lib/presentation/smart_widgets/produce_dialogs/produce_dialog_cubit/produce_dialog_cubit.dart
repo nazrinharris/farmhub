@@ -56,10 +56,8 @@ class ProduceDialogCubit extends Cubit<ProduceDialogState> {
   }) async {
     // Pop the confirmation dialog
     Navigator.of(context).pop();
-    print("Delete in progress!");
+    debugPrint("Delete in progress!");
     progressDialog.show();
-
-    await Future.delayed(Duration(seconds: 1));
 
     final failureOrDeleteProduce = await repository.deleteProduce(produce.produceId);
 
@@ -91,7 +89,7 @@ class ProduceDialogCubit extends Cubit<ProduceDialogState> {
     required BuildContext context,
     required NAlertDialog editProduceDialog,
   }) async {
-    print("Edit in Progress");
+    debugPrint("Edit in Progress");
     editProduceDialog.show(context, transitionType: DialogTransitionType.Bubble);
   }
 
@@ -112,8 +110,6 @@ class ProduceDialogCubit extends Cubit<ProduceDialogState> {
       // Pop the edit dialog
       Navigator.of(context).pop();
       progressDialog.show();
-
-      await Future.delayed(Duration(seconds: 2));
 
       final failureOrEditProduce = await repository.editProduce(
         produce.produceId,
@@ -285,7 +281,7 @@ class ProduceDialogCubit extends Cubit<ProduceDialogState> {
       formFocusNode!.unfocus();
 
       if (isValid) {
-        print("Sending to $email");
+        debugPrint("Sending to $email");
 
         await sendResetPasswordAndReact(
           context,
@@ -365,7 +361,7 @@ class ProduceDialogCubit extends Cubit<ProduceDialogState> {
 
     result.fold(
       (f) {
-        print(f);
+        debugPrint(f.toString());
         progress.dismiss();
         showErrorDialog(context: context, failure: f);
       },
@@ -391,7 +387,7 @@ class ProduceDialogCubit extends Cubit<ProduceDialogState> {
 
     result.fold(
       (f) {
-        print(f);
+        debugPrint(f.toString());
         progress.dismiss();
         showErrorDialog(context: context, failure: f);
       },

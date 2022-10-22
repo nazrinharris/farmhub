@@ -168,7 +168,7 @@ class _VerifyPhoneScreenState extends State<VerifyPhoneScreen> {
                         final value =
                             context.read<FirstTwoFieldsFormBloc>().state.props.firstFieldValue;
                         myPhone = PhoneNumber.fromNational(IsoCode.MY, value!);
-                        print(myPhone.toString());
+                        debugPrint(myPhone.toString());
 
                         context.read<AuthCubit>().verifyPhoneAndSendSMS(phoneNumber: myPhone);
                       }

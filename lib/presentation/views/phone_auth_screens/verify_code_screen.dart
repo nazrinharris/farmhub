@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:farmhub/core/auth/auth_cubit/auth_cubit.dart';
 import 'package:farmhub/presentation/shared_widgets/appbars.dart';
 import 'package:farmhub/presentation/smart_widgets/primary_button_aware/primary_button_aware_cubit.dart';
@@ -72,12 +70,12 @@ class _VerifyCodeScreenState extends State<VerifyCodeScreen> {
         return BlocListener<AuthCubit, AuthState>(
           listener: (context, state) {
             if (state is AccountCreationSuccess) {
-              print("Login Success!");
+              debugPrint("Login Success!");
               context.read<PrimaryButtonAwareCubit>().triggerFirstPage();
               Navigator.of(context).pushNamedAndRemoveUntil('/nav_main', (route) => false);
             } else if (state is CredentialLoginError) {
-              print("ERROR LOGGING IN");
-              print(state.failure);
+              debugPrint("ERROR LOGGING IN");
+              debugPrint(state.failure.toString());
               showToastWidget(
                 ErrorToast(errorMessage: state.failure.message),
                 context: context,
@@ -90,7 +88,7 @@ class _VerifyCodeScreenState extends State<VerifyCodeScreen> {
                 duration: const Duration(seconds: 5),
               );
             } else if (state is AccountCreationError) {
-              print("ERROR CREATING ACCOUNT (credential login success)");
+              debugPrint("ERROR CREATING ACCOUNT (credential login success)");
               showToastWidget(
                 ErrorToast(errorMessage: state.failure.message),
                 context: context,
@@ -187,7 +185,7 @@ class _VerifyCodeScreenState extends State<VerifyCodeScreen> {
                     firstPageButtonIcon: const Icon(Icons.arrow_forward),
                     firstPageContent: "Continue",
                     firstPageOnPressed: () {
-                      print(textEditingController.text);
+                      debugPrint(textEditingController.text);
 
                       final valid = formKey.currentState!.validate();
 

@@ -1,4 +1,3 @@
-// ignore_for_file: prefer_const_constructors
 import 'package:farmhub/features/produce_manager/bloc/produce_manager_bloc.dart';
 import 'package:farmhub/presentation/shared_widgets/appbars.dart';
 import 'package:farmhub/presentation/shared_widgets/ui_helpers.dart';
@@ -102,7 +101,7 @@ class _ProduceListSliverState extends State<ProduceListSliver> {
     widget.scrollController.addListener(() {
       if (widget.scrollController.offset >= widget.scrollController.position.maxScrollExtent &&
           !widget.scrollController.position.outOfRange) {
-        print("Reached the end of the list!");
+        debugPrint("Reached the end of the list!");
         context.read<AddNewPriceScreenBloc>().add(const AddNewPriceScreenEvent.getNextTenProduce());
       }
     });

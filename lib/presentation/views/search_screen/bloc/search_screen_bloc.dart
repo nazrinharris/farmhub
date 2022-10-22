@@ -62,7 +62,8 @@ class SearchScreenBloc extends Bloc<SearchScreenEvent, SearchScreenState> {
           )));
           int index = 1;
           for (Produce produce in produceList) {
-            print(index.toString() + " " + produce.produceName + "   " + produce.produceId + "\n");
+            debugPrint(
+                index.toString() + " " + produce.produceName + "   " + produce.produceId + "\n");
             index++;
           }
         },
@@ -84,14 +85,15 @@ class SearchScreenBloc extends Bloc<SearchScreenEvent, SearchScreenState> {
     failureOrNewProduceList.fold(
       (f) {
         emit(SearchScreenState.error(props: state.props, failure: f));
-        print(f.code);
+        debugPrint(f.code);
         debugPrintStack(stackTrace: f.stackTrace);
       },
       (produceList) {
         emit(SearchScreenState.completed(state.props.copyWith(produceList: produceList)));
         int index = 1;
         for (Produce produce in produceList) {
-          print(index.toString() + " " + produce.produceName + "   " + produce.produceId + "\n");
+          debugPrint(
+              index.toString() + " " + produce.produceName + "   " + produce.produceId + "\n");
           index++;
         }
       },

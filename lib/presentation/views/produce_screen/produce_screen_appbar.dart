@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:farmhub/app_router.dart';
 import 'package:farmhub/features/produce_manager/domain/entities/produce/produce.dart';
 import 'package:farmhub/locator.dart';

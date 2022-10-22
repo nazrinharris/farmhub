@@ -17,7 +17,8 @@ class NavMainScreen extends StatelessWidget {
     double bottomPadding;
 
     if (safeAreaPadding == null) {
-      print("THIS SHOULD ONLY OCCUR IN DEBUG (I.E WHEN WE NAVIGATE DIRECTLY FROM NAVIGATEVIEW)");
+      debugPrint(
+          "THIS SHOULD ONLY OCCUR IN DEBUG (I.E WHEN WE NAVIGATE DIRECTLY FROM NAVIGATEVIEW)");
       bottomPadding = 34;
     } else {
       bottomPadding = safeAreaPadding.bottom;
@@ -34,7 +35,7 @@ class NavMainScreen extends StatelessWidget {
         ],
         bottomNavigationBar: (index, onTap) {
           return Container(
-            height: bottomPadding + 74,
+            height: bottomPadding + 84,
             decoration: BoxDecoration(
                 color: Theme.of(context).extension<ExtendedColors>()!.onBackgroundPale,
                 borderRadius: const BorderRadius.only(

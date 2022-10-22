@@ -37,7 +37,7 @@ class UserManagementCubit extends Cubit<UserManagementState> {
         progress.dismiss();
       },
       (r) {
-        print("UserType Change Success");
+        debugPrint("UserType Change Success");
         context.read<GlobalAuthCubit>().updateGlobalAuthCubit();
         Navigator.of(context).pop();
         progress.dismiss();

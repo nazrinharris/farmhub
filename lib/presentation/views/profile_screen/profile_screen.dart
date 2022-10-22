@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:farmhub/core/auth/domain/entities/farmhub_user/farmhub_user.dart';
 import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
 import 'package:farmhub/core/network/network_info.dart';
@@ -20,6 +18,7 @@ import 'package:farmhub/presentation/views/profile_screen/profile_screen_cubit/p
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:ndialog/ndialog.dart';
 
 import '../../../features/farm_shop_manager/domain/entities/farm_shop/farm_shop.dart';
@@ -158,12 +157,19 @@ class SliverProfileHeader extends StatelessWidget {
                   Hero(
                     tag: Key("profile_picture"),
                     child: Container(
-                      height: 74,
-                      width: 74,
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(100),
-                        color: Theme.of(context).colorScheme.primary,
+                      height: 104,
+                      width: 104,
+                      child: Stack(
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                              color:
+                                  Theme.of(context).extension<ExtendedColors>()!.onBackgroundPale!,
+                              borderRadius: BorderRadius.circular(16),
+                            ),
+                          ),
+                          SvgPicture.asset("assets/images/svg/flowah-minimal-transparent.svg"),
+                        ],
                       ),
                     ),
                   ),
@@ -248,7 +254,7 @@ class UserTypeCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        print("Yes");
+        debugPrint("Yes");
       },
       child: chooseType(context),
     );

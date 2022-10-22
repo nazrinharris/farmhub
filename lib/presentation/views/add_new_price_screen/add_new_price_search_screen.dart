@@ -111,7 +111,7 @@ class _SearchProduceListState extends State<SearchProduceList> {
     widget.scrollController.addListener(() {
       if (widget.scrollController.offset >= widget.scrollController.position.maxScrollExtent &&
           !widget.scrollController.position.outOfRange) {
-        print("Reached the end of the list!");
+        debugPrint("Reached the end of the list!");
         context.read<SearchScreenBloc>().add(const SearchScreenEvent.getNextTenProduce());
       }
     });

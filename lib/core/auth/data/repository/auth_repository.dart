@@ -3,6 +3,7 @@ import 'package:farmhub/features/farm_shop_manager/data/datasources/farm_shop_ma
 import 'package:farmhub/features/farm_shop_manager/domain/i_farm_shop_manager_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/foundation.dart';
 import 'package:fpdart/fpdart.dart';
 
 import 'package:farmhub/core/auth/data/datasources/auth_local_datasource.dart';
@@ -117,10 +118,10 @@ class AuthRepository implements IAuthRepository {
     try {
       await authRemoteDataSource.signOut();
       await authLocalDataSource.clearStoredFarmhubUser();
-      print("Sign Out Requested");
+      debugPrint("Sign Out Requested");
       return const Right(unit);
     } on FirebaseAuthException catch (e) {
-      print("Sign Out Error Occurred");
+      debugPrint("Sign Out Error Occurred");
       return Left(FirebaseAuthFailure(
         code: e.code,
         message: e.message,
@@ -168,8 +169,8 @@ class AuthRepository implements IAuthRepository {
           );
         }
 
-        print("User Data ->");
-        print(user);
+        debugPrint("User Data ->");
+        debugPrint(user.toString());
         await authLocalDataSource.storeFarmhubUser(user);
 
         return Right(user);
@@ -192,7 +193,7 @@ class AuthRepository implements IAuthRepository {
         ));
       }
     } else {
-      print("Not connected");
+      debugPrint("Not connected");
       // TODO: Retrieval of user information from local storage.
       try {
         final user = await authLocalDataSource.retrieveFarmhubUser();
@@ -213,14 +214,14 @@ class AuthRepository implements IAuthRepository {
 
         return Right(isAdmin);
       } on FirebaseAuthException catch (e) {
-        print('isAdmin Check Error Occurred, ${e.code}, ${e.message}');
+        debugPrint('isAdmin Check Error Occurred, ${e.code}, ${e.message}');
         return Left(FirebaseAuthFailure(
           code: e.code,
           message: e.message,
           stackTrace: e.stackTrace,
         ));
       } on FirebaseException catch (e) {
-        print('isAdmin Check Error Occurred, ${e.code}, ${e.message}');
+        debugPrint('isAdmin Check Error Occurred, ${e.code}, ${e.message}');
         return Left(FirebaseFirestoreFailure(
           code: e.code,
           message: e.message,
@@ -233,7 +234,7 @@ class AuthRepository implements IAuthRepository {
           stackTrace: e.stackTrace,
         ));
       } catch (e, stack) {
-        print('isAdmin Check Error Occurred, $e');
+        debugPrint('isAdmin Check Error Occurred, $e');
         return Left(UnexpectedFailure(
           message: e.toString(),
           stackTrace: stack,
@@ -251,7 +252,17 @@ class AuthRepository implements IAuthRepository {
   @override
   Future<Either<Failure, FarmhubUser>> updateRemoteUser({required FarmhubUser newUserData}) async {
     if (await networkInfo.isConnected) {
+      final staleUser = await authLocalDataSource.retrieveFarmhubUser();
+
       try {
+        if (staleUser.userType == UserType.admin && newUserData.userType != UserType.admin) {
+          throw AuthException(
+            code: "ERROR_CANNOT_CHANGE_USERTYPE",
+            message: "Sorry, but you can't change your user type from admin. Contact support.",
+            stackTrace: StackTrace.current,
+          );
+        }
+
         final user = await authRemoteDataSource.updateRemoteUser(newUserData);
         await authLocalDataSource.storeFarmhubUser(newUserData);
 
@@ -259,6 +270,8 @@ class AuthRepository implements IAuthRepository {
       } on FirebaseAuthException catch (e) {
         return Left(
             FirebaseAuthFailure(code: e.code, message: e.message, stackTrace: e.stackTrace));
+      } on AuthException catch (e, stack) {
+        return Left(AuthFailure(code: e.code, message: e.message, stackTrace: stack));
       } catch (e, stack) {
         return Left(UnexpectedFailure(
           code: e.toString(),
@@ -336,7 +349,7 @@ class AuthRepository implements IAuthRepository {
 
         return Right(result);
       } on AuthException catch (e, stack) {
-        print(e);
+        debugPrint(e.toString());
         return Left(AuthFailure(
           code: e.code,
           message: e.message,

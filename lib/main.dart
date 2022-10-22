@@ -4,8 +4,6 @@ import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
 import 'package:farmhub/locator.dart';
 import 'package:farmhub/presentation/global/cubit/global_ui_cubit.dart';
 import 'package:farmhub/presentation/themes/farmhub_theme.dart';
-import 'package:farmhub/presentation/views/debug/navigate_view.dart';
-import 'package:farmhub/presentation/views/start_screen/start_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -93,11 +91,11 @@ class _FarmhubMaterialAppState extends State<FarmhubMaterialApp> {
         systemStatusBarContrastEnforced: false,
       ));
     } else if (Platform.isAndroid) {
-      SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-        // systemNavigationBarColor: FarmhubTheme.appThemeData[FarmhubThemeVariants.light]!
-        //     .extension<ExtendedColors>()!
-        //     .onBackgroundPale,
-        systemNavigationBarColor: Colors.transparent,
+      SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+        systemNavigationBarColor: FarmhubTheme.appThemeData[FarmhubThemeVariants.light]!
+            .extension<ExtendedColors>()!
+            .onBackgroundPale,
+        // systemNavigationBarColor: Colors.transparent,
         systemNavigationBarDividerColor: Colors.transparent,
         systemNavigationBarIconBrightness: Brightness.dark,
         statusBarColor: Colors.transparent,

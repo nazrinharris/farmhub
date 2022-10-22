@@ -110,6 +110,7 @@ flutter:
   assets:
     - assets/images/svg/farmhub-logo.svg
     - assets/images/svg/farmhub-start-character.svg
+    - assets/images/svg/flowah-minimal-transparent.svg
 
   fonts:
     - family: Montserrat

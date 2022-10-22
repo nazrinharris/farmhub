@@ -61,7 +61,6 @@ class PriceScreen extends StatelessWidget {
                   slivers: [
                     CustomCupertinoSliverRefreshControl(
                       onRefresh: () async {
-                        await Future.delayed(Duration(seconds: 1));
                         await context.read<PriceScreenCubit>().refresh();
                       },
                     ),
@@ -220,7 +219,7 @@ class _AllPriceListCardState extends State<AllPriceListCard> {
         onLongPress: () {
           HapticFeedback.heavyImpact();
           showSubPriceBottomActionSheet(context, isAdmin, date, time, subPriceDate, currentPrice);
-          print(subPriceDate);
+          debugPrint(subPriceDate);
         },
         borderRadius: BorderRadius.circular(16),
         onTap: () {},

@@ -106,7 +106,7 @@ class FarmScreenCubit extends Cubit<FarmScreenState> {
 
       result.fold(
         (f) {
-          print(f);
+          debugPrint(f.toString());
           context.read<PrimaryButtonAwareCubit>().triggerFirstPage();
           showErrorDialog(context: context, failure: f);
         },

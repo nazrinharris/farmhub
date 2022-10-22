@@ -66,8 +66,8 @@ class EditProfileCubit extends Cubit<EditProfileState> {
 
       result.fold(
         (f) {
-          print(f);
-          print(farmhubUser.uid);
+          debugPrint(f.toString());
+          debugPrint(farmhubUser.uid);
           emit(EditProfileState.error(f));
           primaryButtonAwareCubit.triggerFirstPage();
           progressDialog.dismiss();

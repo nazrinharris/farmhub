@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:farmhub/core/auth/auth_bloc/auth_bloc.dart';
 import 'package:farmhub/presentation/shared_widgets/appbars.dart';
 import 'package:farmhub/presentation/shared_widgets/buttons.dart';
@@ -170,7 +168,7 @@ class NavigateView extends StatelessWidget {
               const UIVerticalSpace14(),
               PrimaryButton(
                 onPressed: () {
-                  print(FirebaseAuth.instance.currentUser);
+                  debugPrint(FirebaseAuth.instance.currentUser.toString());
                 },
                 backgroundColor: Colors.teal,
                 width: 200,

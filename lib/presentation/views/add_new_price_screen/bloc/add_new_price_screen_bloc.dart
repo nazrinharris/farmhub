@@ -85,7 +85,8 @@ class AddNewPriceScreenBloc extends Bloc<AddNewPriceScreenEvent, AddNewPriceScre
       (produceList) {
         int index = 1;
         for (Produce produce in produceList) {
-          print(index.toString() + " " + produce.produceName + "   " + produce.produceId + "\n");
+          debugPrint(
+              index.toString() + " " + produce.produceName + "   " + produce.produceId + "\n");
           index++;
         }
 

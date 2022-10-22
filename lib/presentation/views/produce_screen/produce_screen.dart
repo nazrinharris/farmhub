@@ -277,7 +277,7 @@ class _SliverProduceHeaderState extends State<SliverProduceHeader> {
               ),
             );
           } else {
-            print(state);
+            debugPrint(state.toString());
             return Container(
               height: 100,
               alignment: Alignment.center,
@@ -592,7 +592,7 @@ class SliverPricesList extends StatelessWidget {
         child: const CupertinoActivityIndicator(),
       );
     } else if (isError) {
-      print(failure);
+      debugPrint(failure.toString());
 
       return Container(
         padding: const EdgeInsets.only(top: 50, bottom: 150),

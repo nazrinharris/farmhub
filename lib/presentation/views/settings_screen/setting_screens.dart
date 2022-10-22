@@ -1,4 +1,3 @@
-// ignore_for_file: prefer_const_constructors
 import 'package:farmhub/app_router.dart';
 import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
 import 'package:farmhub/locator.dart';

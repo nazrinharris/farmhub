@@ -4,6 +4,7 @@ import 'package:farmhub/core/errors/exceptions.dart';
 import 'package:farmhub/core/util/app_const.dart';
 import 'package:farmhub/core/util/misc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:intl/intl.dart';
 import 'package:clock/clock.dart';
@@ -193,8 +194,6 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
 
   @override
   Future<FarmhubUser> updateRemoteUser(FarmhubUser newUserData) async {
-    await Future.delayed(Duration(seconds: 1));
-
     await firebaseFirestore
         .collection('users')
         .doc(newUserData.uid)
@@ -237,7 +236,7 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
         .collection('users')
         .doc(uid)
         .update(mapToUpdate)
-        .then((value) => print("Change Success!"));
+        .then((value) => debugPrint("Change Success!"));
 
     return unit;
   }

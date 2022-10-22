@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:farmhub/features/produce_manager/domain/entities/price/price.dart';
 import 'package:farmhub/presentation/shared_widgets/cards.dart';
 import 'package:farmhub/presentation/shared_widgets/ui_helpers.dart';
@@ -56,8 +54,8 @@ class LargePriceChart extends StatelessWidget {
   Widget build(BuildContext context) {
     switch (type) {
       case LargePriceChartType.oneW:
-        print("One Week Prices");
-        print(produce.weeklyPrices);
+        debugPrint("One Week Prices");
+        debugPrint(produce.weeklyPrices.toString());
         if (produce.weeklyPrices.length <= 1) {
           return const TwoLinedErrorText(
             firstLineMessage: "There are not enough prices this week",
@@ -66,8 +64,8 @@ class LargePriceChart extends StatelessWidget {
         }
         return LargeOneWeekChart(produce);
       case LargePriceChartType.twoW:
-        print("Two Week Prices");
-        print(twoWeeksPricesList);
+        debugPrint("Two Week Prices");
+        debugPrint(twoWeeksPricesList.toString());
         if (twoWeeksPricesList == null) {
           return const TwoLinedErrorText(
             firstLineMessage: "It seems like there are no prices.",
@@ -84,8 +82,8 @@ class LargePriceChart extends StatelessWidget {
           return LargeTwoWeekChart(produce, twoWeeksPricesList!);
         }
       case LargePriceChartType.oneM:
-        print("One Month Prices");
-        print(oneMonthPricesList);
+        debugPrint("One Month Prices");
+        debugPrint(oneMonthPricesList.toString());
         if (oneMonthPricesList == null) {
           return const TwoLinedErrorText(
             firstLineMessage: "It seems like there are no prices.",

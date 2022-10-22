@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:farmhub/core/auth/domain/entities/farmhub_user/farmhub_user.dart';
 import 'package:farmhub/locator.dart';
 import 'package:farmhub/presentation/smart_widgets/produce_dialogs/app_dialogs.dart';
