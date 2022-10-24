@@ -4,7 +4,6 @@ import 'package:bloc/bloc.dart';
 import 'package:farmhub/core/errors/failures.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../domain/entities/price/price.dart';
 import '../domain/entities/produce/produce.dart';
 import '../domain/i_produce_manager_repository.dart';
 
@@ -16,12 +15,12 @@ class ProduceManagerBloc extends Bloc<ProduceManagerEvent, ProduceManagerState> 
   final IProduceManagerRepository repository;
 
   ProduceManagerBloc({required this.repository}) : super(const PMSInitial()) {
-    on<_PMEExecGetFirstTenProduce>(execGetFirstTenProduce);
-    on<_PMEExecCreateProduce>(execCreateNewProduce);
+    on<PMEExecGetFirstTenProduce>(execGetFirstTenProduce);
+    on<PMEExecCreateProduce>(execCreateNewProduce);
   }
 
   FutureOr<void> execGetFirstTenProduce(
-    _PMEExecGetFirstTenProduce event,
+    PMEExecGetFirstTenProduce event,
     Emitter<ProduceManagerState> emit,
   ) async {
     emit(const ProduceManagerState.getFirstTenProduceLoading());
@@ -38,7 +37,7 @@ class ProduceManagerBloc extends Bloc<ProduceManagerEvent, ProduceManagerState> 
   }
 
   FutureOr<void> execCreateNewProduce(
-    _PMEExecCreateProduce event,
+    PMEExecCreateProduce event,
     Emitter<ProduceManagerState> emit,
   ) async {
     emit(const ProduceManagerState.createNewProduceLoading());

@@ -148,7 +148,10 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
 
     if (user == null) {
       // TODO: Make a proper constant error code.
-      throw FirebaseAuthException(code: AUTH_NOT_SIGNED_IN, message: 'User is not signed in.');
+      throw FirebaseAuthException(
+        code: AUTH_NOT_SIGNED_IN,
+        message: 'User is not signed in.',
+      );
     } else {
       if (uid == null) {
         uidToSearch = user.uid;
@@ -254,8 +257,6 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
     final String tempName = "${random[0]} ${random[1]}".toTitleCase();
 
     String createdAt = DateFormat('yyyy-MM-dd').format(clock.now());
-
-    final splitPhone = phoneNumber.split(" ");
 
     await firebaseFirestore.collection(FS_USER).doc(uid).set({
       "uid": uid,

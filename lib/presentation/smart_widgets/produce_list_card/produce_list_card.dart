@@ -1,15 +1,13 @@
-import 'package:farmhub/core/auth/domain/entities/farmhub_user/farmhub_user.dart';
+// ignore_for_file: prefer_const_constructors
+
 import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
-import 'package:farmhub/core/errors/failures.dart';
 import 'package:farmhub/features/produce_manager/data/repository/produce_manager_helpers.dart';
-import 'package:farmhub/presentation/global/cubit/global_ui_cubit.dart';
 import 'package:farmhub/presentation/shared_widgets/buttons.dart';
 import 'package:farmhub/presentation/themes/farmhub_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
-import 'package:ndialog/ndialog.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 import '../../../app_router.dart';
@@ -46,7 +44,6 @@ class ProduceListCard extends StatelessWidget {
     currentProducePrice = roundNum(currentProducePrice.toDouble(), 2);
     final bool? isAdmin = context.read<GlobalAuthCubit>().state.isAdmin;
     final bool disableLongPress = this.disableLongPress ?? false;
-    final FarmhubUser farmhubUser = context.read<GlobalAuthCubit>().state.farmhubUser!;
 
     return Material(
       type: MaterialType.transparency,

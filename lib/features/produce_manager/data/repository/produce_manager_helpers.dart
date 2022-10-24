@@ -1,15 +1,12 @@
 import 'package:farmhub/core/errors/exceptions.dart';
-import 'package:farmhub/core/util/misc.dart';
 import 'package:farmhub/features/produce_manager/domain/entities/price/price.dart';
 import 'package:intl/intl.dart';
 import 'package:clock/clock.dart';
 
-import '../../../../core/auth/domain/entities/farmhub_user/farmhub_user.dart';
 import '../../domain/entities/produce/produce.dart';
 
 enum RangeType { oneW, twoW, oneM, twoM, sixM, oneY }
 
-// TODO: Solve oneM until oneY to account for different length of months
 const Map<String, int> rangeTypeInDaysMap = {
   "oneW": 7,
   "twoW": 14,
@@ -19,8 +16,8 @@ const Map<String, int> rangeTypeInDaysMap = {
   "oneY": 365,
 };
 
-/// This method converts the given [pricesList] which should be an unsorted list converted from
-/// [aggregatePrices].
+/// This method converts the given [pricesList], which should be an unsorted list converted from
+/// [aggregatePrices], into a sorted list depending on the range given.
 ///
 /// If [rangeType] is not specified, it defaults to [twoW]
 List<PriceSnippet> pricesToRanged(
@@ -89,7 +86,7 @@ List<PriceSnippet> pricesToRanged(
     }
   }
 
-  //?print("Unsorted - $rangeType - Amount: ${rangedPricesList.length}");
+  //?debugPrint("Unsorted - $rangeType - Amount: ${rangedPricesList.length}");
   //?printList(rangedPricesList);
 
   // rangedPricesList.sort((a, b) {
@@ -99,7 +96,7 @@ List<PriceSnippet> pricesToRanged(
   //   return aPriceDate.compareTo(bPriceDate);
   // });
 
-  //?print("Sorted - $rangeType - Amount: ${rangedPricesList.length}");
+  //?debugPrint("Sorted - $rangeType - Amount: ${rangedPricesList.length}");
   //?printList(rangedPricesList);
 
   return List.from(rangedPricesList);

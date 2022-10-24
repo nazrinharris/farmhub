@@ -7,6 +7,7 @@ import 'package:farmhub/core/errors/exceptions.dart';
 import 'package:farmhub/core/util/printer.dart';
 import 'package:farmhub/features/produce_manager/domain/entities/price/price.dart';
 import 'package:farmhub/features/produce_manager/data/repository/produce_manager_helpers.dart';
+import 'package:flutter/foundation.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:intl/intl.dart';
 
@@ -321,7 +322,6 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
 
     final chosenDate = DateFormat("dd-MM-yyyy").format(currentTimeStamp);
     final chosenYear = DateFormat("yyyy").format(currentTimeStamp);
-    num calculatedPrice;
 
     //! Begin updating Price Document and Aggregate Prices
     // Find out if price document of date [chosenDate] exists
@@ -338,7 +338,7 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
       }).toList();
     });
 
-    calculatedPrice = await returnPriceAndUpdatePriceDocAndAggregate(
+    await returnPriceAndUpdatePriceDocAndAggregate(
       firebaseFirestore: firebaseFirestore,
       chosenTimeStamp: currentTimeStamp,
       produceId: produceId,
@@ -412,7 +412,6 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
   Future<void>? debugMethod(String produceId) async {
     num calculatedPrice = 18;
     String chosenDate = "02-05-2022";
-    DateTime currentDate = clock.now();
 
     final Map<String, dynamic> produce =
         await firebaseFirestore.collection('produce').doc(produceId).get().then(
@@ -423,10 +422,10 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
     weeklyPrices.forEach((d, p) => weeklyPricesSnippet.add(PriceSnippet(price: p, priceDate: d)));
     weeklyPricesSnippet.add(PriceSnippet(price: calculatedPrice, priceDate: chosenDate));
 
-    print("Unsorted weeklyPricesSnippet");
-    weeklyPricesSnippet.forEach((element) {
-      print(element);
-    });
+    debugPrint("Unsorted weeklyPricesSnippet");
+    for (PriceSnippet snippet in weeklyPricesSnippet) {
+      debugPrint(snippet.toString());
+    }
 
     weeklyPricesSnippet.sort((a, b) {
       DateTime aPriceDate = DateFormat("dd-MM-yyyy").parse(a.priceDate);
@@ -435,10 +434,10 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
       return aPriceDate.compareTo(bPriceDate);
     });
 
-    print("Sorted weeklyPricesSnippet");
-    weeklyPricesSnippet.forEach((element) {
-      print(element);
-    });
+    debugPrint("Sorted weeklyPricesSnippet");
+    for (PriceSnippet snippet in weeklyPricesSnippet) {
+      debugPrint(snippet.toString());
+    }
 
     // At this point, weeklyPricesSnippet[0] should represent the lower bound and the
     // last entry of weeklyPricesSnippet should represent the upper bounr.
@@ -449,8 +448,8 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
     Duration diff = upperDate.difference(lowerDate);
     bool isOverAWeek = diff.inDays > 7;
 
-    print("From $lowerDate to $upperDate");
-    print("The difference of which is: ${diff.inDays}, that means isOverAWeek = $isOverAWeek");
+    debugPrint("From $lowerDate to $upperDate");
+    debugPrint("The difference of which is: ${diff.inDays}, that means isOverAWeek = $isOverAWeek");
 
     if (isOverAWeek == true) {
       assert(diff.inDays > 8,
@@ -463,7 +462,7 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
     for (PriceSnippet priceSnippet in weeklyPricesSnippet) {
       weeklyPricesSnippetMap[priceSnippet.priceDate] = priceSnippet.price;
     }
-    print(weeklyPricesSnippetMap);
+    debugPrint(weeklyPricesSnippetMap.toString());
 
     await firebaseFirestore.collection('produce').doc(produceId).update({
       "weeklyPrices": weeklyPricesSnippetMap,
@@ -770,10 +769,9 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
         farmhubUser.produceFavoritesList.remove(produceFavoriteToRemove);
       } else {
         throw ProduceManagerException(
-          // TODO: Proper error code.
-          code: "PM-Delete-Favorite-Does-Not-Exist",
+          code: PM_ERR_DELETE_NONEXISTENT_FAVORITE,
           message:
-              "Remove operation of a certain produce from favorites, but it doesn't exist to begin with.",
+              "Removal operation of a certain produce from favorites, but it doesn't exist to begin with.",
           stackTrace: StackTrace.current,
         );
       }
@@ -783,7 +781,7 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
   }
 }
 
-/// This method will update [currentProducePrice], [previousProducePrice] and [aggregatePrices].
+/// This method will update [currentProducePrice], [previousProducePrice] and [weeklyPrices].
 ///
 /// Note that this method assumes [aggregatePrices] is up-to-date. So update aggregate first before
 /// using this method.
@@ -815,7 +813,7 @@ Future<void> updateProducePrices({
   for (PriceSnippet priceSnippet in oneWeekPrices) {
     weeklyPricesSnippetJSON[priceSnippet.priceDate] = priceSnippet.price;
   }
-  print(weeklyPricesSnippetJSON);
+  prettyPrintJson(weeklyPricesSnippetJSON);
 
   // There can be a case where [currentProducePrice] is being updated while [previousProducePrice] has
   // not yet existed.
@@ -938,6 +936,14 @@ Future<void> updateAggregatePrices({
       .update({"prices-map.$chosenDate": newPrice});
 }
 
+/// Note that this is a CONSTRUCTIVE method!
+///
+/// This methods updates the remote [Price] doucment and Aggregate Prices.
+/// If the [chosenPriceDoc] is empty, it will create a new [Price] document in remote.
+///
+/// If the [chosenPriceDoc] is not empty, (the length MUST be one, because there should
+/// only be one [Price] document to represent a specific date), the [newPrice] will
+/// be considered as an addition to the existing prices,
 Future<num> returnPriceAndUpdatePriceDocAndAggregate({
   required FirebaseFirestore firebaseFirestore,
   required DateTime chosenTimeStamp,
@@ -985,8 +991,7 @@ Future<num> returnPriceAndUpdatePriceDocAndAggregate({
   } else {
     // If there are multiple documents, an error is thrown. There should never be multiple.
     throw ProduceManagerException(
-      //TODO: Provide Proper Code
-      code: "ERR",
+      code: PM_ERR_MULTI_PRICE_DOC,
       message:
           "Unexpected structure: There should be only one or no document inside [chosenDatePriceDoc]",
       stackTrace: StackTrace.current,
@@ -996,6 +1001,10 @@ Future<num> returnPriceAndUpdatePriceDocAndAggregate({
 
 /// This method expects [newPrice] to be a whole new sub-price, as in, it cannot be used to "edit"
 /// a price.
+///
+/// Basically, only use this when you want to add a new price to the [subPrice] list and calculate
+/// the new average price. Though this method doesn't update [allPricesMap], but simply returns
+/// the correct average price.
 num calculateNewPriceAverage(Map<String, dynamic> allPricesMap, num newPrice) {
   List<num> allPricesList = [newPrice];
 

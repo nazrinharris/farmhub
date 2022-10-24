@@ -1,3 +1,5 @@
+// ignore_for_file: unused_import
+
 import 'package:farmhub/app_router.dart';
 import 'package:farmhub/core/util/misc.dart';
 import 'package:farmhub/locator.dart';
@@ -45,7 +47,7 @@ class AddNewPriceThirdScreen extends StatelessWidget {
               resizeToAvoidBottomInset: false,
               extendBodyBehindAppBar: true,
               appBar: DefaultAppBar(
-                leadingIcon: Icon(Icons.close),
+                leadingIcon: const Icon(Icons.close),
                 leadingOnPressed: () {
                   popToMainOrProduceAndRefresh(context);
                 },
@@ -81,7 +83,7 @@ class AddNewPriceThirdScreen extends StatelessWidget {
                           ],
                         ),
                         const UIVerticalSpace14(),
-                        UIBorder(),
+                        const UIBorder(),
                         const UIVerticalSpace30(),
                         LargePriceChart(arguments.produce, LargePriceChartType.oneW)
                       ],

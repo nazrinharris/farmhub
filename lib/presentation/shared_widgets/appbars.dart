@@ -1,10 +1,9 @@
-import 'package:farmhub/presentation/shared_widgets/ui_helpers.dart';
 import 'package:flutter/material.dart';
 
-// TODO: Make proper layout for centering the title when there is only a trailing icon.
-// The current workaround is by specifying a dummy leading icon and setting its color to
-// transparent. Also do not specify a method for the leading icon to avoid inkwells
-
+//TODO: Proper layout
+/// Make proper layout for centering the title when there is only a trailing icon.
+/// The current workaround is by specifying a dummy leading icon and setting its color to
+/// transparent. Also do not specify a method for the leading icon to avoid inkwells
 class DefaultAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Icon? leadingIcon;
   final Function()? leadingOnPressed;
@@ -75,14 +74,12 @@ class DefaultAppBar extends StatelessWidget implements PreferredSizeWidget {
     if (trailingIcon != null && secondTrailingIcon == null && secondTrailingChild == null) {
       return IconButton(onPressed: trailingOnPressed, icon: trailingIcon!);
     } else if (trailingIcon != null && secondTrailingIcon != null) {
-      return Container(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            IconButton(onPressed: trailingOnPressed, icon: trailingIcon!),
-            IconButton(onPressed: secondTrailingOnPressed, icon: secondTrailingIcon!),
-          ],
-        ),
+      return Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          IconButton(onPressed: trailingOnPressed, icon: trailingIcon!),
+          IconButton(onPressed: secondTrailingOnPressed, icon: secondTrailingIcon!),
+        ],
       );
     } else if (trailingIcon != null && secondTrailingChild != null) {
       return Row(

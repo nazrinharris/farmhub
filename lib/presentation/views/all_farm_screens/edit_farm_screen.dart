@@ -82,7 +82,7 @@ class _EditFarmScreenState extends State<EditFarmScreen> {
                       physics: DefaultScrollPhysics,
                       children: [
                         Container(
-                          padding: EdgeInsets.symmetric(horizontal: 24),
+                          padding: const EdgeInsets.symmetric(horizontal: 24),
                           alignment: Alignment.centerLeft,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -127,7 +127,7 @@ class _EditFarmScreenState extends State<EditFarmScreen> {
                             thirdFieldHintText: 'Enter your farm\'s state, e.g Selangor',
                             validateThirdField: validateState,
                             fourthFieldLabel: "Postcode",
-                            fourthFieldHintText: "Enter your farm\'s postcode, e.g 43200",
+                            fourthFieldHintText: "Enter your farm's postcode, e.g 43200",
                             validateFourthField: validatePostcode,
                           ),
                         ),
@@ -135,12 +135,12 @@ class _EditFarmScreenState extends State<EditFarmScreen> {
                       ],
                     ),
                     Container(
-                      padding: EdgeInsets.only(bottom: 24),
-                      constraints: BoxConstraints.expand(),
+                      padding: const EdgeInsets.only(bottom: 24),
+                      constraints: const BoxConstraints.expand(),
                       alignment: Alignment.bottomCenter,
                       child: PrimaryButtonAware(
                         firstPageContent: 'Confirm',
-                        firstPageButtonIcon: Icon(
+                        firstPageButtonIcon: const Icon(
                           Icons.done,
                           color: Colors.white,
                         ),

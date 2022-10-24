@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
@@ -29,7 +31,7 @@ class CreateProduceScreenBloc extends Bloc<CreateProduceScreenEvent, CreateProdu
     required this.produceManagerRepository,
     required this.primaryButtonAwareCubit,
     required this.globalUICubit,
-  }) : super(_Initial()) {
+  }) : super(const _Initial()) {
     on<_CPSEExecCreateNewProduce>(execCreateNewProduce);
   }
 

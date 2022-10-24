@@ -67,7 +67,7 @@ class _CreateFarmScreenState extends State<CreateFarmScreen> {
                 resizeToAvoidBottomInset: false,
                 extendBodyBehindAppBar: true,
                 appBar: DefaultAppBar(
-                  leadingIcon: Icon(Icons.close),
+                  leadingIcon: const Icon(Icons.close),
                   leadingOnPressed: () => Navigator.of(context).pop(),
                 ),
                 body: SafeArea(
@@ -78,7 +78,7 @@ class _CreateFarmScreenState extends State<CreateFarmScreen> {
                         physics: DefaultScrollPhysics,
                         children: [
                           Container(
-                            padding: EdgeInsets.symmetric(horizontal: 24),
+                            padding: const EdgeInsets.symmetric(horizontal: 24),
                             alignment: Alignment.centerLeft,
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -112,17 +112,17 @@ class _CreateFarmScreenState extends State<CreateFarmScreen> {
                             padding: const EdgeInsets.symmetric(horizontal: 30),
                             child: MultipleFieldsForm<SecondTwoFieldsFormBloc>(
                               type: MultipleFieldsFormType.fourField,
-                              firstFieldLabel: 'Address Line',
-                              firstFieldHintText: 'Enter your farm\'s address line',
+                              firstFieldLabel: "Address Line",
+                              firstFieldHintText: "Enter your farm's address line",
                               validateFirstField: validateAddress,
-                              secondFieldLabel: 'City',
-                              secondFieldHintText: 'Enter your farm\'s city',
+                              secondFieldLabel: "City",
+                              secondFieldHintText: "Enter your farm's city",
                               validateSecondField: validateCity,
-                              thirdFieldLabel: 'State',
-                              thirdFieldHintText: 'Enter your farm\'s state, e.g Selangor',
+                              thirdFieldLabel: "State",
+                              thirdFieldHintText: "Enter your farm's state, e.g Selangor",
                               validateThirdField: validateState,
                               fourthFieldLabel: "Postcode",
-                              fourthFieldHintText: "Enter your farm\'s postcode, e.g 43200",
+                              fourthFieldHintText: "Enter your farm's postcode, e.g 43200",
                               validateFourthField: validatePostcode,
                             ),
                           ),

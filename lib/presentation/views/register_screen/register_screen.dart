@@ -2,13 +2,11 @@ import 'package:farmhub/locator.dart';
 import 'package:farmhub/presentation/shared_widgets/appbars.dart';
 import 'package:farmhub/presentation/shared_widgets/scroll_physics.dart';
 import 'package:farmhub/presentation/smart_widgets/primary_button_aware/primary_button_aware_cubit.dart';
-import 'package:farmhub/presentation/themes/farmhub_theme.dart';
 import 'package:farmhub/presentation/views/register_screen/bloc/register_screen_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:simple_animations/simple_animations.dart';
 
-import '../../shared_widgets/buttons.dart';
 import '../../shared_widgets/cards.dart';
 import '../../shared_widgets/ui_helpers.dart';
 import '../../smart_widgets/info_tile/bloc/info_tile_bloc.dart';
@@ -142,7 +140,6 @@ class _RegisterScreenState extends State<RegisterScreen> with AnimationMixin {
   }
 }
 
-// TODO: Improvement - Transfer the provision of validation methods from here, to Bloc.
 class RegisterFields extends StatefulWidget {
   const RegisterFields({Key? key}) : super(key: key);
 

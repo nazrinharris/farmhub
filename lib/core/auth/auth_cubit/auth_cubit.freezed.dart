@@ -142,12 +142,18 @@ class __$$_InitialCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Initial implements _Initial {
+class _$_Initial with DiagnosticableTreeMixin implements _Initial {
   const _$_Initial();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AuthState.initial()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'AuthState.initial'));
   }
 
   @override
@@ -300,12 +306,21 @@ class __$$PhoneVerificationLoadingCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$PhoneVerificationLoading implements PhoneVerificationLoading {
+class _$PhoneVerificationLoading
+    with DiagnosticableTreeMixin
+    implements PhoneVerificationLoading {
   const _$PhoneVerificationLoading();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AuthState.phoneVerificationLoading()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+        .add(DiagnosticsProperty('type', 'AuthState.phoneVerificationLoading'));
   }
 
   @override
@@ -481,7 +496,9 @@ class __$$SMSCodeSentToClientCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SMSCodeSentToClient implements SMSCodeSentToClient {
+class _$SMSCodeSentToClient
+    with DiagnosticableTreeMixin
+    implements SMSCodeSentToClient {
   const _$SMSCodeSentToClient(
       {required this.verificationId,
       required this.phoneNumber,
@@ -495,8 +512,18 @@ class _$SMSCodeSentToClient implements SMSCodeSentToClient {
   final int? resendToken;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AuthState.SMSCodeSentToClient(verificationId: $verificationId, phoneNumber: $phoneNumber, resendToken: $resendToken)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'AuthState.SMSCodeSentToClient'))
+      ..add(DiagnosticsProperty('verificationId', verificationId))
+      ..add(DiagnosticsProperty('phoneNumber', phoneNumber))
+      ..add(DiagnosticsProperty('resendToken', resendToken));
   }
 
   @override
@@ -689,15 +716,25 @@ class __$$PhoneVerificationErrorCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$PhoneVerificationError implements PhoneVerificationError {
+class _$PhoneVerificationError
+    with DiagnosticableTreeMixin
+    implements PhoneVerificationError {
   const _$PhoneVerificationError(this.failure);
 
   @override
   final Failure failure;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AuthState.phoneVerificationError(failure: $failure)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'AuthState.phoneVerificationError'))
+      ..add(DiagnosticsProperty('failure', failure));
   }
 
   @override
@@ -863,12 +900,18 @@ class __$$SMSCodeInvalidCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SMSCodeInvalid implements SMSCodeInvalid {
+class _$SMSCodeInvalid with DiagnosticableTreeMixin implements SMSCodeInvalid {
   const _$SMSCodeInvalid();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AuthState.smsCodeInvalid()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'AuthState.smsCodeInvalid'));
   }
 
   @override
@@ -1021,12 +1064,21 @@ class __$$CredentialLoginLoadingCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$CredentialLoginLoading implements CredentialLoginLoading {
+class _$CredentialLoginLoading
+    with DiagnosticableTreeMixin
+    implements CredentialLoginLoading {
   const _$CredentialLoginLoading();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AuthState.credentialLoginLoading()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+        .add(DiagnosticsProperty('type', 'AuthState.credentialLoginLoading'));
   }
 
   @override
@@ -1191,15 +1243,25 @@ class __$$CredentialLoginErrorCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$CredentialLoginError implements CredentialLoginError {
+class _$CredentialLoginError
+    with DiagnosticableTreeMixin
+    implements CredentialLoginError {
   const _$CredentialLoginError(this.failure);
 
   @override
   final Failure failure;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AuthState.credentialLoginError(failure: $failure)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'AuthState.credentialLoginError'))
+      ..add(DiagnosticsProperty('failure', failure));
   }
 
   @override
@@ -1389,15 +1451,25 @@ class __$$AccountCreationSuccessCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AccountCreationSuccess implements AccountCreationSuccess {
+class _$AccountCreationSuccess
+    with DiagnosticableTreeMixin
+    implements AccountCreationSuccess {
   const _$AccountCreationSuccess(this.user);
 
   @override
   final FarmhubUser user;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AuthState.accountCreationSuccess(user: $user)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'AuthState.accountCreationSuccess'))
+      ..add(DiagnosticsProperty('user', user));
   }
 
   @override
@@ -1577,15 +1649,25 @@ class __$$AccountCreationErrorCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AccountCreationError implements AccountCreationError {
+class _$AccountCreationError
+    with DiagnosticableTreeMixin
+    implements AccountCreationError {
   const _$AccountCreationError(this.failure);
 
   @override
   final Failure failure;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AuthState.accountCreationError(failure: $failure)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'AuthState.accountCreationError'))
+      ..add(DiagnosticsProperty('failure', failure));
   }
 
   @override

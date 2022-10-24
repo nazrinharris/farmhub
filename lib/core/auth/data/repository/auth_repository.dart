@@ -1,8 +1,6 @@
 import 'package:farmhub/core/typedefs/typedefs.dart';
 import 'package:farmhub/features/farm_shop_manager/data/datasources/farm_shop_manager_remote_datasource.dart';
-import 'package:farmhub/features/farm_shop_manager/domain/i_farm_shop_manager_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:fpdart/fpdart.dart';
 
@@ -72,8 +70,6 @@ class AuthRepository implements IAuthRepository {
     required String username,
     required UserType userType,
   }) async {
-    // TODO: implement registerWithEmailAndPassword
-    // TODO: tests registerWithEmailAndPassword
     if (await networkInfo.isConnected) {
       try {
         final result = await authRemoteDataSource.registerWithEmailAndPassword(
@@ -113,8 +109,6 @@ class AuthRepository implements IAuthRepository {
 
   @override
   Future<Either<Failure, Unit>> signOut() async {
-    // TODO: implement signOut
-    // TODO: tests signOut
     try {
       await authRemoteDataSource.signOut();
       await authLocalDataSource.clearStoredFarmhubUser();
@@ -138,15 +132,11 @@ class AuthRepository implements IAuthRepository {
 
   @override
   Future<Either<Failure, FarmhubUser>> loginWithGoogleAccount() {
-    // TODO: implement loginWithGoogleAccount
-    // TODO: tests loginWithGoogleAccount
     throw UnimplementedError();
   }
 
   @override
   Future<Either<Failure, FarmhubUser>> registerWithGoogleAccount() {
-    // TODO: implement registerWithGoogleAccount
-    // TODO: tests registerWithGoogleAccount
     throw UnimplementedError();
   }
 
@@ -194,7 +184,6 @@ class AuthRepository implements IAuthRepository {
       }
     } else {
       debugPrint("Not connected");
-      // TODO: Retrieval of user information from local storage.
       try {
         final user = await authLocalDataSource.retrieveFarmhubUser();
 
@@ -207,7 +196,6 @@ class AuthRepository implements IAuthRepository {
 
   @override
   Future<Either<Failure, bool>> isAdmin({required String uid}) async {
-    // TODO: implement isAdmin
     if (await networkInfo.isConnected) {
       try {
         bool isAdmin = await authRemoteDataSource.isAdmin(uid);
@@ -292,8 +280,8 @@ class AuthRepository implements IAuthRepository {
   Future<Either<Failure, Unit>> sendPasswordResetEmail(String email) async {
     if (await networkInfo.isConnected) {
       try {
-        final user = await authRemoteDataSource.sendPasswordResetEmail(email);
-        return Right(unit);
+        await authRemoteDataSource.sendPasswordResetEmail(email);
+        return const Right(unit);
       } on FirebaseAuthException catch (e) {
         return Left(FirebaseAuthFailure(
           code: e.code,
@@ -353,7 +341,7 @@ class AuthRepository implements IAuthRepository {
         return Left(AuthFailure(
           code: e.code,
           message: e.message,
-          stackTrace: e.stackTrace,
+          stackTrace: stack,
         ));
       } catch (e, stack) {
         return Left(UnexpectedFailure(

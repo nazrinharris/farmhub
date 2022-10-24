@@ -153,11 +153,6 @@ class _BuildProduceScreenState extends State<BuildProduceScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final isProduceFavorite = determineIfInList(
-      widget.produce.produceId,
-      produceFavoritesToProduceId(widget.farmhubUser.produceFavoritesList),
-    );
-
     return BlocBuilder<ProduceAggregateCubit, ProduceAggregateState>(
       builder: (context, state) {
         final Produce produce = state.props.produce!;
@@ -323,7 +318,7 @@ class _SliverProducePriceChartState extends State<SliverProducePriceChart> {
         delegate: SliverChildListDelegate([
       Container(
         alignment: Alignment.centerLeft,
-        padding: EdgeInsets.symmetric(vertical: 2),
+        padding: const EdgeInsets.symmetric(vertical: 2),
         margin: const EdgeInsets.symmetric(horizontal: 24),
         decoration: BoxDecoration(
           color: tabBackgroundColor,
@@ -351,7 +346,7 @@ class _SliverProducePriceChartState extends State<SliverProducePriceChart> {
               onTap: (value) {
                 HapticFeedback.lightImpact();
               },
-              padding: EdgeInsets.symmetric(horizontal: 4),
+              padding: const EdgeInsets.symmetric(horizontal: 4),
               physics: DefaultScrollPhysics,
               isScrollable: true,
               controller: context.read<ProduceAggregateCubit>().state.props.tabController,
@@ -494,7 +489,7 @@ class _SliverPricesListHeaderState extends State<SliverPricesListHeader> {
 class SliverPricesListSwitcher extends StatefulWidget {
   final Produce produce;
 
-  SliverPricesListSwitcher(this.produce, {Key? key}) : super(key: key);
+  const SliverPricesListSwitcher(this.produce, {Key? key}) : super(key: key);
 
   @override
   State<SliverPricesListSwitcher> createState() => _SliverPricesListSwitcherState();

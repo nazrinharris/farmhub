@@ -8,7 +8,6 @@ import 'package:farmhub/presentation/shared_widgets/appbars.dart';
 import 'package:farmhub/presentation/shared_widgets/buttons.dart';
 import 'package:farmhub/presentation/shared_widgets/cards.dart';
 import 'package:farmhub/presentation/shared_widgets/scroll_physics.dart';
-import 'package:farmhub/presentation/shared_widgets/texts.dart';
 import 'package:farmhub/presentation/shared_widgets/ui_helpers.dart';
 import 'package:farmhub/presentation/smart_widgets/custom_cupertino_sliver_refresh_control.dart';
 import 'package:farmhub/presentation/smart_widgets/produce_dialogs/app_dialogs.dart';
@@ -54,7 +53,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
       ],
       child: BlocBuilder<GlobalAuthCubit, GlobalAuthState>(
         builder: (context, state) {
-          // TODO: Maybe allow for non-registered users!
           final FarmhubUser user = state.farmhubUser ??
               FarmhubUser(
                 uid: "xxxxxx",
@@ -76,15 +74,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 extendBody: true,
                 extendBodyBehindAppBar: true,
                 appBar: DefaultAppBar(
-                  leadingIcon: Icon(Icons.arrow_back),
+                  leadingIcon: const Icon(Icons.arrow_back),
                   leadingOnPressed: () {
                     Navigator.of(context).pop();
                   },
-                  trailingIcon: Icon(Icons.edit_outlined),
+                  trailingIcon: const Icon(Icons.edit_outlined),
                   trailingOnPressed: () {
                     Navigator.of(context).pushNamed('/edit_profile', arguments: user);
                   },
-                  secondTrailingIcon: Icon(Icons.settings_outlined),
+                  secondTrailingIcon: const Icon(Icons.settings_outlined),
                   secondTrailingOnPressed: () {
                     Navigator.of(context).pushNamed('/settings');
                   },
@@ -120,14 +118,14 @@ class SliverProfileHeader extends StatelessWidget {
     return SliverList(
       delegate: SliverChildListDelegate.fixed(
         [
-          UITopPadding(),
+          const UITopPadding(),
           ErrorNoInternetSwitcher(networkInfo: networkInfo),
-          UIVerticalSpace14(),
+          const UIVerticalSpace14(),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 24),
+                padding: const EdgeInsets.symmetric(horizontal: 24),
                 child: Text(
                   "Hello,",
                   style: Theme.of(context).textTheme.headline1!.copyWith(
@@ -136,7 +134,7 @@ class SliverProfileHeader extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(left: 24, right: 44),
+                padding: const EdgeInsets.only(left: 24, right: 44),
                 child: Text(
                   farmhubUser.username,
                   style: Theme.of(context).textTheme.headline2!.copyWith(
@@ -146,7 +144,7 @@ class SliverProfileHeader extends StatelessWidget {
               ),
             ],
           ),
-          UIVerticalSpace24(),
+          const UIVerticalSpace24(),
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -155,8 +153,8 @@ class SliverProfileHeader extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Hero(
-                    tag: Key("profile_picture"),
-                    child: Container(
+                    tag: const Key("profile_picture"),
+                    child: SizedBox(
                       height: 104,
                       width: 104,
                       child: Stack(
@@ -173,13 +171,13 @@ class SliverProfileHeader extends StatelessWidget {
                       ),
                     ),
                   ),
-                  UIVerticalSpace14(),
+                  const UIVerticalSpace14(),
                   UserTypeCard(userType: farmhubUser.userType),
                 ],
               ),
             ],
           ),
-          UICustomVertical(24),
+          const UICustomVertical(24),
           Column(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -189,27 +187,27 @@ class SliverProfileHeader extends StatelessWidget {
                 "Email",
                 style: Theme.of(context).textTheme.caption!.copyWith(fontSize: 12),
               ),
-              UIVerticalSpace6(),
+              const UIVerticalSpace6(),
               Text(
                 farmhubUser.email ?? "Email not set",
                 style: Theme.of(context).textTheme.bodyText1!.copyWith(fontSize: 14),
                 overflow: TextOverflow.fade,
               ),
-              UIVerticalSpace14(),
+              const UIVerticalSpace14(),
               Text(
                 "Joined at",
                 style: Theme.of(context).textTheme.caption!.copyWith(fontSize: 12),
               ),
-              UIVerticalSpace6(),
+              const UIVerticalSpace6(),
               Text(
                 farmhubUser.createdAt,
                 style: Theme.of(context).textTheme.bodyText1!.copyWith(fontSize: 14),
               ),
             ],
           ),
-          UIVerticalSpace24(),
-          UIBorder(margin: EdgeInsets.symmetric(horizontal: 24), opacity: 0.2),
-          UICustomVertical(24),
+          const UIVerticalSpace24(),
+          const UIBorder(margin: EdgeInsets.symmetric(horizontal: 24), opacity: 0.2),
+          const UICustomVertical(24),
         ],
       ),
     );
@@ -233,12 +231,12 @@ class ErrorNoInternetSwitcher extends StatelessWidget {
           final result = snapshot.data as bool;
 
           if (!result) {
-            return ErrorNoInternetCard(margin: EdgeInsets.all(24));
+            return const ErrorNoInternetCard(margin: EdgeInsets.all(24));
           } else {
-            return UICustomVertical(20);
+            return const UICustomVertical(20);
           }
         } else {
-          return UICustomVertical(20);
+          return const UICustomVertical(20);
         }
       },
     );
@@ -263,7 +261,7 @@ class UserTypeCard extends StatelessWidget {
   Widget chooseType(BuildContext context) {
     if (userType == UserType.regular) {
       return Container(
-        padding: EdgeInsets.symmetric(horizontal: 24, vertical: 14),
+        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
         decoration: BoxDecoration(
           color: Theme.of(context).colorScheme.primaryVariant,
           borderRadius: BorderRadius.circular(14),
@@ -275,7 +273,7 @@ class UserTypeCard extends StatelessWidget {
       );
     } else if (userType == UserType.business) {
       return Container(
-        padding: EdgeInsets.symmetric(horizontal: 24, vertical: 14),
+        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
         decoration: BoxDecoration(
           color: Theme.of(context).extension<ExtendedColors>()!.paleBlue,
           borderRadius: BorderRadius.circular(14),
@@ -284,7 +282,7 @@ class UserTypeCard extends StatelessWidget {
       );
     } else if (userType == UserType.farmer) {
       return Container(
-        padding: EdgeInsets.symmetric(horizontal: 24, vertical: 14),
+        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
         decoration: BoxDecoration(
           color: Theme.of(context).extension<ExtendedColors>()!.paleYellow,
           borderRadius: BorderRadius.circular(14),
@@ -293,7 +291,7 @@ class UserTypeCard extends StatelessWidget {
       );
     } else if (userType == UserType.admin) {
       return Container(
-        padding: EdgeInsets.symmetric(horizontal: 24, vertical: 14),
+        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
         decoration: BoxDecoration(
           color: Theme.of(context).extension<ExtendedColors>()!.palePurple,
           borderRadius: BorderRadius.circular(14),
@@ -301,7 +299,7 @@ class UserTypeCard extends StatelessWidget {
         child: Text("Admin", style: Theme.of(context).textTheme.bodyText1!),
       );
     } else {
-      return SizedBox.shrink();
+      return const SizedBox.shrink();
     }
   }
 }
@@ -316,10 +314,10 @@ class SliverProfileContent extends StatelessWidget {
     return SliverList(
       delegate: SliverChildListDelegate.fixed([
         if (user.userType == UserType.regular || user.userType == UserType.admin)
-          RegularProfileContent(),
+          const RegularProfileContent(),
         if (user.userType == UserType.business) BusinessProfileContent(user as FarmhubUserBusiness),
         if (user.userType == UserType.farmer) FarmerProfileContent(user as FarmhubUserFarmer),
-        UICustomVertical(200),
+        const UICustomVertical(200),
       ]),
     );
   }
@@ -332,7 +330,7 @@ class RegularProfileContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 300,
-      padding: EdgeInsets.symmetric(horizontal: 44, vertical: 44),
+      padding: const EdgeInsets.symmetric(horizontal: 44, vertical: 44),
       alignment: Alignment.center,
       child: Column(
         children: [
@@ -357,21 +355,21 @@ class BusinessProfileContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 24),
+      padding: const EdgeInsets.symmetric(horizontal: 24),
       alignment: Alignment.topLeft,
       child: Column(
         mainAxisSize: MainAxisSize.max,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Text("Farm"),
-          UIVerticalSpace14(),
+          const Text("Farm"),
+          const UIVerticalSpace14(),
           Align(
             alignment: Alignment.center,
             child: FarmList(farmhubUser.userFarms),
           ),
-          UICustomVertical(64),
-          Text("Shop"),
-          UIVerticalSpace14(),
+          const UICustomVertical(64),
+          const Text("Shop"),
+          const UIVerticalSpace14(),
           Align(
             alignment: Alignment.center,
             child: ShopList(farmhubUser.userShops),
@@ -390,21 +388,21 @@ class FarmerProfileContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 24),
+      padding: const EdgeInsets.symmetric(horizontal: 24),
       alignment: Alignment.topLeft,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.max,
         children: [
-          Text("Farm"),
-          UIVerticalSpace14(),
+          const Text("Farm"),
+          const UIVerticalSpace14(),
           Align(
             alignment: Alignment.center,
             child: FarmList(farmhubUser.userFarms),
           ),
-          UICustomVertical(64),
-          Text("Shop"),
-          UIVerticalSpace14(),
+          const UICustomVertical(64),
+          const Text("Shop"),
+          const UIVerticalSpace14(),
           Align(
             alignment: Alignment.center,
             child: ShopList(farmhubUser.userShops),
@@ -431,7 +429,7 @@ class FarmList extends StatelessWidget {
             "You don't have a farm..",
             style: Theme.of(context).textTheme.caption!.copyWith(fontSize: 14),
           ),
-          UIVerticalSpace14(),
+          const UIVerticalSpace14(),
           SecondaryButton(
             content: "Create a Farm",
             onPressed: () {
@@ -469,7 +467,7 @@ class FarmCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
         child: Container(
           width: MediaQuery.of(context).size.width,
-          padding: EdgeInsets.symmetric(horizontal: 14, vertical: 20),
+          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 20),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -477,11 +475,11 @@ class FarmCard extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 4),
+                    const Padding(
+                      padding: EdgeInsets.only(left: 4),
                       child: Icon(FarmhubIcons.farmhub_corn_icon, size: 24),
                     ),
-                    UIVerticalSpace14(),
+                    const UIVerticalSpace14(),
                     Text(
                       farmList[0].farmName,
                       style: Theme.of(context)
@@ -489,7 +487,7 @@ class FarmCard extends StatelessWidget {
                           .bodyText1!
                           .copyWith(fontWeight: FontWeight.bold),
                     ),
-                    UIVerticalSpace6(),
+                    const UIVerticalSpace6(),
                     Text(
                       "${farmList[0].address.addressLine},",
                       style: Theme.of(context).textTheme.bodyText1!.copyWith(
@@ -518,7 +516,7 @@ class FarmCard extends StatelessWidget {
                     onPressed: () {
                       Navigator.of(context).pushNamed("/edit_farm", arguments: farmList[0]);
                     },
-                    icon: Icon(Icons.edit),
+                    icon: const Icon(Icons.edit),
                   ),
                   IconButton(
                       onPressed: () {
@@ -553,7 +551,7 @@ class ShopList extends StatelessWidget {
             "You don't have a shop..",
             style: Theme.of(context).textTheme.caption!.copyWith(fontSize: 14),
           ),
-          UIVerticalSpace14(),
+          const UIVerticalSpace14(),
           SecondaryButton(
             content: "Create a Shop",
             onPressed: () {
@@ -591,7 +589,7 @@ class ShopCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
         child: Container(
           width: MediaQuery.of(context).size.width,
-          padding: EdgeInsets.symmetric(horizontal: 14, vertical: 20),
+          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 20),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -599,11 +597,11 @@ class ShopCard extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 4),
+                    const Padding(
+                      padding: EdgeInsets.only(left: 4),
                       child: Icon(Icons.store, size: 24),
                     ),
-                    UIVerticalSpace14(),
+                    const UIVerticalSpace14(),
                     Text(
                       shopList[0].shopName,
                       style: Theme.of(context)
@@ -611,7 +609,7 @@ class ShopCard extends StatelessWidget {
                           .bodyText1!
                           .copyWith(fontWeight: FontWeight.bold),
                     ),
-                    UIVerticalSpace6(),
+                    const UIVerticalSpace6(),
                     Text(
                       "${shopList[0].address.addressLine},",
                       style: Theme.of(context).textTheme.bodyText1!.copyWith(
@@ -640,7 +638,7 @@ class ShopCard extends StatelessWidget {
                     onPressed: () {
                       Navigator.of(context).pushNamed("/edit_shop", arguments: shopList[0]);
                     },
-                    icon: Icon(Icons.edit),
+                    icon: const Icon(Icons.edit),
                   ),
                   IconButton(
                       onPressed: () {

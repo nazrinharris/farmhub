@@ -1,14 +1,10 @@
-import 'dart:math';
-
 import 'package:bloc/bloc.dart';
-import 'package:clock/clock.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:farmhub/core/errors/failures.dart';
 import 'package:farmhub/features/produce_manager/domain/entities/produce/produce.dart';
 import 'package:farmhub/features/produce_manager/domain/i_produce_manager_repository.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:intl/intl.dart';
 
 import '../../../../features/produce_manager/domain/entities/price/price.dart';
 import '../../../../features/produce_manager/data/repository/produce_manager_helpers.dart';
@@ -23,7 +19,7 @@ class PlaygroundCubit extends Cubit<PlaygroundState> {
   PlaygroundCubit({
     required this.repository,
     required this.firebaseFirestore,
-  }) : super(PlaygroundState.initial());
+  }) : super(const PlaygroundState.initial());
 
   void updateFarmId() async {
     await firebaseFirestore
@@ -109,7 +105,6 @@ class PlaygroundCubit extends Cubit<PlaygroundState> {
       },
       (r) {
         List<PriceSnippet> twoWeeksPricesList = pricesToRanged(r, rangeType: RangeType.twoW);
-        List<PriceSnippet> oneMonthPricesList = pricesToRanged(r, rangeType: RangeType.twoW);
 
         emit(PlaygroundState.getPricesCompleted(r));
         debugPrint("Two Weeks Sorted Prices");

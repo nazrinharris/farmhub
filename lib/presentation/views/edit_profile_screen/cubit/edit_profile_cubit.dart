@@ -27,7 +27,7 @@ class EditProfileCubit extends Cubit<EditProfileState> {
     required this.globalUICubit,
     required this.primaryButtonAwareCubit,
     required this.formBloc,
-  }) : super(EditProfileState.initial());
+  }) : super(const EditProfileState.initial());
 
   Future<void> checkUserTypeChange(
       BuildContext context, UserType newUserType, FarmhubUser user) async {
@@ -54,7 +54,7 @@ class EditProfileCubit extends Cubit<EditProfileState> {
       final progressDialog = returnProgressDialog(context,
           loadingTitle: "Saving changes..", loadingMessage: "It may take a moment, please wait.");
 
-      emit(EditProfileState.loading());
+      emit(const EditProfileState.loading());
       primaryButtonAwareCubit.triggerLoading();
       progressDialog.show();
 

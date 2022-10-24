@@ -15,7 +15,7 @@ final FarmhubUser tFarmhubUser = FarmhubUser(
   userType: UserType.regular,
 );
 
-final InternetConnectionFailure tInternetConnectionFailure = InternetConnectionFailure(
+const InternetConnectionFailure tInternetConnectionFailure = InternetConnectionFailure(
     code: ERROR_NO_INTERNET_CONNECTION,
     message: MESSAGE_NO_INTERNET_CONNECTION,
     stackTrace: StackTrace.empty);

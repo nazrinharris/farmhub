@@ -26,8 +26,6 @@ ColorScheme _farmhubColorSchemeLight = const ColorScheme(
   brightness: Brightness.light,
 );
 
-ColorScheme _lightFarmhubColorScheme = ColorScheme.fromSeed(seedColor: const Color(0xff343A1A));
-
 TextTheme _farmhubTextThemeLight = TextTheme(
   headline1: TextStyle(
     fontSize: 28,

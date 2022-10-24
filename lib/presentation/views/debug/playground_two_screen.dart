@@ -1,6 +1,3 @@
-import 'package:farmhub/core/auth/domain/entities/farmhub_user/farmhub_user.dart';
-import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
-import 'package:farmhub/features/produce_manager/domain/i_produce_manager_repository.dart';
 import 'package:farmhub/locator.dart';
 import 'package:farmhub/presentation/shared_widgets/buttons.dart';
 import 'package:farmhub/presentation/shared_widgets/ui_helpers.dart';
@@ -22,9 +19,6 @@ class PlaygroundTwoScreen extends StatelessWidget {
       child: Builder(builder: (context) {
         return BlocBuilder<PlaygroundCubit, PlaygroundState>(
           builder: (context, state) {
-            final IProduceManagerRepository repository = locator();
-            final FarmhubUser user = context.read<GlobalAuthCubit>().state.farmhubUser!;
-
             return Scaffold(
               body: Center(
                 child: Column(
@@ -33,17 +27,17 @@ class PlaygroundTwoScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     PrimaryButton(
-                      buttonIcon: Icon(Icons.print),
+                      buttonIcon: const Icon(Icons.print),
                       content: "short",
                       onPressed: () {
-                        final phone = PhoneNumber(isoCode: IsoCode.US, nsn: "7176768765");
+                        const phone = PhoneNumber(isoCode: IsoCode.US, nsn: "7176768765");
 
                         debugPrint(phone.toString());
                       },
                     ),
-                    UIVerticalSpace30(),
+                    const UIVerticalSpace30(),
                     SecondaryButton(
-                      buttonIcon: Icon(Icons.print),
+                      buttonIcon: const Icon(Icons.print),
                       content: "super flippin long",
                       onPressed: () {},
                     ),

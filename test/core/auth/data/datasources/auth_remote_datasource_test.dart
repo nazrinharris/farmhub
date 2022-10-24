@@ -1,7 +1,5 @@
 // ignore_for_file: subtype_of_sealed_class
 
-// TODO: Check Mocktail documentation and see how they mock the FirebaseSuite
-
 import 'package:clock/clock.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:farmhub/core/auth/data/datasources/auth_remote_datasource.dart';
@@ -71,6 +69,7 @@ void main() {
           when(() => mockUser.uid).thenReturn(tUid);
         }
 
+        // ignore: unused_element
         void setupNoDocumentQuery() {
           when(() => mockFirebaseFirestore.collection(any()))
               .thenAnswer((_) => mockCollectionReference);

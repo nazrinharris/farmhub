@@ -9,7 +9,7 @@ part 'profile_screen_cubit.freezed.dart';
 class ProfileScreenCubit extends Cubit<ProfileScreenState> {
   final GlobalAuthCubit globalAuthCubit;
 
-  ProfileScreenCubit(this.globalAuthCubit) : super(ProfileScreenState.initial());
+  ProfileScreenCubit(this.globalAuthCubit) : super(const ProfileScreenState.initial());
 
   Future<void> refresh() async {
     await globalAuthCubit.updateGlobalAuthCubit();

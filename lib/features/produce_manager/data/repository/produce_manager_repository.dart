@@ -13,6 +13,7 @@ import 'package:farmhub/features/produce_manager/domain/entities/produce/produce
 import 'package:farmhub/core/typedefs/typedefs.dart';
 import 'package:farmhub/features/produce_manager/data/repository/produce_manager_helpers.dart';
 import 'package:farmhub/features/produce_manager/domain/i_produce_manager_repository.dart';
+import 'package:flutter/foundation.dart';
 import 'package:fpdart/fpdart.dart';
 
 const String ProduceManagerRepositoryCode = "PMR-";
@@ -45,14 +46,14 @@ class ProduceManagerRepository implements IProduceManagerRepository {
       } catch (e, stack) {
         return Left(
           UnexpectedFailure(
-            code: (ProduceManagerRepositoryCode + 'getFirstTenProduce()'),
+            code: ("$ProduceManagerRepositoryCode getFirstTenProduce()"),
             message: e.toString(),
             stackTrace: stack,
           ),
         );
       }
     } else {
-      print("Not connected - getFirstTenProduce()");
+      debugPrint("Not connected - getFirstTenProduce()");
       try {
         final produceList = await localDatasource.retrieveProduceList();
 
@@ -75,7 +76,7 @@ class ProduceManagerRepository implements IProduceManagerRepository {
         return Left(UnexpectedFailure(code: e.toString(), stackTrace: stack));
       }
     } else {
-      print("Not connected - getNextTenProduce()");
+      debugPrint("Not connected - getNextTenProduce()");
       try {
         final produceList = await localDatasource.retrieveProduceList();
 
@@ -537,7 +538,7 @@ class ProduceManagerRepository implements IProduceManagerRepository {
           /// from [userProduceFavoritesIdList] based on [retrievedProduceFavoritesList]
 
           /// Basically, we loop through [userProduceFavoritesIdList] and check it against [retrievedProduceFavoritesList],
-          /// Whenever there is a match, we keep it in [produceIdToStay].
+          /// Whenever there is a match, we keep it in [produceIdToDelete].
           final retrievedProduceIdList = produceToProduceId(retrievedProduceFavoritesList);
 
           List<String> produceIdToDelete = [];
@@ -559,7 +560,6 @@ class ProduceManagerRepository implements IProduceManagerRepository {
           //   print(produceId);
           // }
 
-          //TODO: Actually remove the produce ids from farmhub user and update the remote.
           if (userProduceFavoritesIdList.isEmpty) {
             // Do nothing.
           } else {
@@ -589,7 +589,7 @@ class ProduceManagerRepository implements IProduceManagerRepository {
         return Left(UnexpectedFailure(code: e.toString(), stackTrace: stack));
       }
     } else {
-      print("Not connected - getFirstTenProduce()");
+      debugPrint("Not connected - getFirstTenProduce()");
       try {
         final produceList = await localDatasource.retrieveProduceFavorites();
 

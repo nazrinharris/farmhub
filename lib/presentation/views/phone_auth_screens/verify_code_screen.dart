@@ -8,7 +8,6 @@ import 'package:flutter_styled_toast/flutter_styled_toast.dart';
 import 'package:phone_numbers_parser/phone_numbers_parser.dart';
 
 import '../../../locator.dart';
-import '../../shared_widgets/buttons.dart';
 import '../../shared_widgets/scroll_physics.dart';
 import '../../shared_widgets/toasts.dart';
 import '../../shared_widgets/ui_helpers.dart';
@@ -106,7 +105,7 @@ class _VerifyCodeScreenState extends State<VerifyCodeScreen> {
             extendBody: true,
             extendBodyBehindAppBar: true,
             appBar: DefaultAppBar(
-              leadingIcon: Icon(Icons.arrow_back),
+              leadingIcon: const Icon(Icons.arrow_back),
               leadingOnPressed: () {
                 Navigator.of(context).pop();
               },
@@ -129,7 +128,7 @@ class _VerifyCodeScreenState extends State<VerifyCodeScreen> {
                               key: formKey,
                               child: Column(
                                 children: [
-                                  TextFieldLabelText("Code"),
+                                  const TextFieldLabelText("Code"),
                                   TextFormField(
                                     controller: textEditingController,
                                     focusNode: focusNode,
@@ -232,7 +231,7 @@ class VerifyCodeScreenHeader extends StatelessWidget {
             "Verify Code",
             style: Theme.of(context).textTheme.headline1,
           ),
-          UICustomVertical(4),
+          const UICustomVertical(4),
           Text(
             "Code is sent to: +60$nsn",
             style: Theme.of(context).textTheme.caption!.copyWith(fontSize: 14),

@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_print
+// ignore_for_file: avoid_print, library_private_types_in_public_api
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
@@ -45,7 +45,7 @@ class MainScreenBloc extends Bloc<MainScreenEvent, MainScreenState> {
     _MSEToggleMainHeader event,
     Emitter<MainScreenState> emit,
   ) async {
-    final _isVisible = !state.props.isMainHeaderVisible;
+    final isVisible = !state.props.isMainHeaderVisible;
 
     if (state.props.isMainHeaderVisible) {
       mainHeaderController.animateTo(
@@ -53,14 +53,14 @@ class MainScreenBloc extends Bloc<MainScreenEvent, MainScreenState> {
         duration: const Duration(milliseconds: 250),
         curve: Curves.easeOutExpo,
       );
-      emit(state.copyWith(props: state.props.copyWith(isMainHeaderVisible: _isVisible)));
+      emit(state.copyWith(props: state.props.copyWith(isMainHeaderVisible: isVisible)));
     } else {
       mainHeaderController.animateTo(
         0.0,
         duration: const Duration(milliseconds: 250),
         curve: Curves.easeOutExpo,
       );
-      emit(state.copyWith(props: state.props.copyWith(isMainHeaderVisible: _isVisible)));
+      emit(state.copyWith(props: state.props.copyWith(isMainHeaderVisible: isVisible)));
     }
   }
 
@@ -111,8 +111,7 @@ class MainScreenBloc extends Bloc<MainScreenEvent, MainScreenState> {
         }, (produceList) {
           int index = 1;
           for (Produce produce in produceList) {
-            debugPrint(
-                index.toString() + " " + produce.produceName + "   " + produce.produceId + "\n");
+            debugPrint("$index ${produce.produceName}   ${produce.produceId}\n");
             index++;
           }
           emit(MainScreenState.pricesCompleted(

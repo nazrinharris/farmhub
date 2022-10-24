@@ -17,7 +17,7 @@ class NavigateView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: DefaultAppBar(
+      appBar: const DefaultAppBar(
         title: "Debug Navigation Page",
       ),
       body: Center(
@@ -28,7 +28,7 @@ class NavigateView extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               ErrorCard(
-                margin: EdgeInsets.symmetric(horizontal: 24, vertical: 14),
+                margin: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
                 icon: Icon(Icons.warning, color: Theme.of(context).colorScheme.error),
                 mainContent:
                     "Warning, this is a debug screen, and there is no guarantee of functionality of the app from here on.",
@@ -84,7 +84,7 @@ class NavigateView extends StatelessWidget {
               PrimaryButton(
                 onPressed: () {
                   Navigator.of(context).pushNamed('/verify_code',
-                      arguments: VerifyCodeScreenArguments(
+                      arguments: const VerifyCodeScreenArguments(
                         verificationId: "Verification ID",
                         phoneNumber: PhoneNumber(isoCode: IsoCode.MY, nsn: "182184537"),
                       ));
@@ -146,7 +146,7 @@ class NavigateView extends StatelessWidget {
                 onPressed: () {
                   Navigator.of(context).pushNamed('/playground');
                 },
-                backgroundColor: Color.fromARGB(255, 137, 97, 205),
+                backgroundColor: const Color.fromARGB(255, 137, 97, 205),
                 width: 200,
                 child: Text(
                   'To Playground',
@@ -158,7 +158,7 @@ class NavigateView extends StatelessWidget {
                 onPressed: () {
                   Navigator.of(context).pushNamed('/playground_two');
                 },
-                backgroundColor: Color.fromARGB(255, 239, 162, 243),
+                backgroundColor: const Color.fromARGB(255, 239, 162, 243),
                 width: 200,
                 child: Text(
                   'To Playground2',
@@ -182,7 +182,7 @@ class NavigateView extends StatelessWidget {
               const UIVerticalSpace14(),
               PrimaryButton(
                 onPressed: () {
-                  context.read<AuthBloc>().add(AuthEvent.execSignOut());
+                  context.read<AuthBloc>().add(const AuthEvent.execSignOut());
                 },
                 backgroundColor: Theme.of(context).colorScheme.error,
                 width: 200,
@@ -192,7 +192,7 @@ class NavigateView extends StatelessWidget {
                 ),
               ),
               const UIVerticalSpace14(),
-              UICustomVertical(100),
+              const UICustomVertical(100),
             ],
           ),
         ),

@@ -11,7 +11,7 @@ part 'settings_cubit.freezed.dart';
 class SettingsCubit extends Cubit<SettingsState> {
   final IAuthRepository authRepository;
 
-  SettingsCubit({required this.authRepository}) : super(SettingsState.initial());
+  SettingsCubit({required this.authRepository}) : super(const SettingsState.initial());
 
   void showResetPasswordDialog(BuildContext context, {required NAlertDialog resetPasswordDialog}) {
     resetPasswordDialog.show(context, transitionType: DialogTransitionType.Bubble);
@@ -20,6 +20,7 @@ class SettingsCubit extends Cubit<SettingsState> {
   void signOut(BuildContext context) async {
     final result = await authRepository.signOut();
 
+    // ignore: use_build_context_synchronously
     final progressDialog = returnProgressDialog(
       context,
       loadingTitle: "Logging out...",

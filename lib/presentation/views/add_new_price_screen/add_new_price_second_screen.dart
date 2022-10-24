@@ -227,6 +227,8 @@ class ContentSliver extends StatelessWidget {
       return 'Please enter a valid number: e.g. 12.80';
     } else if (double.tryParse(value)! < 0) {
       return 'A negative price is invalid';
+    } else {
+      return null;
     }
   }
 

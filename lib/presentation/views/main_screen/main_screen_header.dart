@@ -1,4 +1,3 @@
-import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
 import 'package:farmhub/presentation/themes/farmhub_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -150,12 +149,12 @@ class _MainHeaderState extends State<MainHeader> {
               Padding(
                 padding: const EdgeInsets.only(right: 6),
                 child: Hero(
-                  tag: Key("profile_picture"),
+                  tag: const Key("profile_picture"),
                   child: GestureDetector(
                     onTap: () {
                       Navigator.of(context).pushNamed("/profile");
                     },
-                    child: Container(
+                    child: SizedBox(
                       height: 54,
                       width: 54,
                       child: Stack(

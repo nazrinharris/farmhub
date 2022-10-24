@@ -233,7 +233,7 @@ class SecondaryButton extends StatelessWidget {
       if (contentColor == null) {
         return Theme.of(context).colorScheme.primary;
       } else {
-        print("Using $contentColor");
+        debugPrint("Using $contentColor");
         return contentColor;
       }
     } else if (type == SecondaryButtonType.red) {
@@ -242,7 +242,7 @@ class SecondaryButton extends StatelessWidget {
       if (contentColor == null) {
         return Theme.of(context).colorScheme.primary;
       } else {
-        print("Using $contentColor");
+        debugPrint("Using $contentColor");
         return contentColor;
       }
     } else {

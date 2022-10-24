@@ -3,9 +3,7 @@ import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
 import 'package:farmhub/presentation/shared_widgets/appbars.dart';
 import 'package:farmhub/presentation/shared_widgets/ui_helpers.dart';
 import 'package:farmhub/presentation/smart_widgets/custom_cupertino_sliver_refresh_control.dart';
-import 'package:farmhub/presentation/smart_widgets/produce_list_card/produce_list_card.dart';
 import 'package:farmhub/presentation/views/price_screen/cubit/price_screen_cubit.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -26,10 +24,6 @@ class PriceScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final String produceName = arguments.produce.produceName;
-    final num currentPrice = arguments.price.currentPrice;
-    final String priceDate = arguments.price.priceDate.replaceAll(RegExp("-"), "/");
-
     return BlocProvider(
       create: (context) => PriceScreenCubit(
         price: arguments.price,
@@ -40,8 +34,9 @@ class PriceScreen extends StatelessWidget {
         return BlocListener<GlobalUICubit, GlobalUIState>(
           listener: (context, state) async {
             if (state.props.shouldRefreshPrice == true) {
-              await context.read<PriceScreenCubit>().refresh();
-              context.read<GlobalUICubit>().setShouldRefreshPrice(false);
+              await context.read<PriceScreenCubit>().refresh().then((_) {
+                context.read<GlobalUICubit>().setShouldRefreshPrice(false);
+              });
             }
           },
           child: Scaffold(

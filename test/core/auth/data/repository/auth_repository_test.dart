@@ -1,3 +1,5 @@
+// ignore_for_file: unused_local_variable
+
 import 'package:farmhub/core/auth/data/repository/auth_repository.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:fpdart/fpdart.dart';
@@ -114,7 +116,7 @@ void main() {
               password: tPassword,
             );
             // assert
-            expect(result, Left(tFirebaseAuthFailure));
+            expect(result, const Left(tFirebaseAuthFailure));
           },
         );
       });
@@ -146,7 +148,7 @@ void main() {
               password: tPassword,
             );
             // assert
-            expect(result, Left(tInternetConnectionFailure));
+            expect(result, const Left(tInternetConnectionFailure));
           },
         );
       });
@@ -257,7 +259,7 @@ void main() {
               userType: tUserType,
             );
             // assert
-            expect(result, equals(Left(tFirebaseAuthFailure)));
+            expect(result, equals(const Left(tFirebaseAuthFailure)));
           },
         );
       });
@@ -289,7 +291,7 @@ void main() {
               password: tPassword,
             );
             // assert
-            expect(result, Left(tInternetConnectionFailure));
+            expect(result, const Left(tInternetConnectionFailure));
           },
         );
       });

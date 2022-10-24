@@ -4,10 +4,10 @@ part of 'produce_manager_bloc.dart';
 class ProduceManagerEvent with _$ProduceManagerEvent {
   const factory ProduceManagerEvent.started() = _Started;
 
-  const factory ProduceManagerEvent.execGetFirstTenProduce() = _PMEExecGetFirstTenProduce;
+  const factory ProduceManagerEvent.execGetFirstTenProduce() = PMEExecGetFirstTenProduce;
 
   const factory ProduceManagerEvent.execCreateProduce({
     required String produceName,
     required num currentProducePrice,
-  }) = _PMEExecCreateProduce;
+  }) = PMEExecCreateProduce;
 }

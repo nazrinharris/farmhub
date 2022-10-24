@@ -3,7 +3,7 @@ import 'package:farmhub/core/errors/failures.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 //! Firebase Failures
-final FirebaseAuthFailure tFirebaseAuthFailure = FirebaseAuthFailure(
+const FirebaseAuthFailure tFirebaseAuthFailure = FirebaseAuthFailure(
   code: 'CODE',
   message: 'tmessage',
   stackTrace: StackTrace.empty,

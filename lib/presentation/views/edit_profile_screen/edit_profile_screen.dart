@@ -1,7 +1,5 @@
 import 'package:farmhub/core/auth/domain/entities/farmhub_user/farmhub_user.dart';
 import 'package:farmhub/locator.dart';
-import 'package:farmhub/presentation/smart_widgets/produce_dialogs/app_dialogs.dart';
-import 'package:farmhub/presentation/views/debug/playground_screen.dart';
 import 'package:farmhub/presentation/views/edit_profile_screen/cubit/edit_profile_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -57,7 +55,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
               resizeToAvoidBottomInset: false,
               extendBodyBehindAppBar: true,
               appBar: DefaultAppBar(
-                leadingIcon: Icon(Icons.close),
+                leadingIcon: const Icon(Icons.close),
                 leadingOnPressed: () => Navigator.of(context).pop(),
               ),
               body: SafeArea(
@@ -67,7 +65,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     ListView(
                       children: [
                         Container(
-                          padding: EdgeInsets.symmetric(horizontal: 24),
+                          padding: const EdgeInsets.symmetric(horizontal: 24),
                           alignment: Alignment.centerLeft,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -76,7 +74,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                             ],
                           ),
                         ),
-                        UICustomVertical(60),
+                        const UICustomVertical(60),
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 30),
                           child: MultipleFieldsForm<FirstTwoFieldsFormBloc>(
@@ -86,9 +84,9 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                             validateFirstField: validateUsername,
                           ),
                         ),
-                        UIVerticalSpace14(),
+                        const UIVerticalSpace14(),
                         Container(
-                          padding: EdgeInsets.only(left: 30, right: 30, bottom: 14),
+                          padding: const EdgeInsets.only(left: 30, right: 30, bottom: 14),
                           child: Text(
                             "User Type",
                             style: Theme.of(context)
@@ -117,11 +115,11 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                       ],
                     ),
                     Container(
-                      constraints: BoxConstraints.expand(),
+                      constraints: const BoxConstraints.expand(),
                       alignment: Alignment.bottomCenter,
                       child: PrimaryButtonAware(
                         firstPageContent: 'Confirm',
-                        firstPageButtonIcon: Icon(
+                        firstPageButtonIcon: const Icon(
                           Icons.done,
                           color: Colors.white,
                         ),

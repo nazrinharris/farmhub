@@ -53,6 +53,7 @@ class InfoTile extends StatefulWidget {
   }) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _InfoTileState createState() => _InfoTileState();
 }
 
@@ -150,9 +151,9 @@ class _InfoTileState extends State<InfoTile> with AnimationMixin {
                   highlightColor: _resolveHighlightColorForInkWell(),
                   borderRadius: BorderRadius.circular(16.0),
                   onTap: () {
-                    final bool _isAbleToExpand =
+                    final bool isAbleToExpand =
                         context.read<InfoTileBloc>().state.infoTileProps.isAbleToExpand;
-                    if (_isAbleToExpand) {
+                    if (isAbleToExpand) {
                       _handleTap();
                     } else {
                       return;
@@ -180,7 +181,7 @@ class _InfoTileState extends State<InfoTile> with AnimationMixin {
                                     Expanded(
                                       child: Container(
                                         alignment: Alignment.centerLeft,
-                                        padding: EdgeInsets.only(right: 50),
+                                        padding: const EdgeInsets.only(right: 50),
                                         child: Text(
                                           readProps(context).leadingText,
                                           style: Theme.of(context).textTheme.bodyText1!.copyWith(
@@ -280,23 +281,22 @@ class _InfoTileState extends State<InfoTile> with AnimationMixin {
   }
 
   Color _resolveSplashColorForInkWell() {
-    final Color _errorSplashColor =
-        Theme.of(context).colorScheme.onErrorContainer.withOpacity(0.25);
-    final Color _successSplashColor = Theme.of(context).colorScheme.background.withOpacity(0.25);
-    final Color _loadingSplashColor = Theme.of(context).colorScheme.background.withOpacity(0.25);
+    final Color errorSplashColor = Theme.of(context).colorScheme.onErrorContainer.withOpacity(0.25);
+    final Color successSplashColor = Theme.of(context).colorScheme.background.withOpacity(0.25);
+    final Color loadingSplashColor = Theme.of(context).colorScheme.background.withOpacity(0.25);
 
     switch (readProps(context).currentStatus) {
       case InfoTileStatus.loading:
         {
-          return _loadingSplashColor;
+          return loadingSplashColor;
         }
       case InfoTileStatus.success:
         {
-          return _successSplashColor;
+          return successSplashColor;
         }
       case InfoTileStatus.error:
         {
-          return _errorSplashColor;
+          return errorSplashColor;
         }
       default:
         {
@@ -308,23 +308,23 @@ class _InfoTileState extends State<InfoTile> with AnimationMixin {
   }
 
   Color _resolveHighlightColorForInkWell() {
-    final Color _errorHighlightColor =
+    final Color errorHighlightColor =
         Theme.of(context).colorScheme.onErrorContainer.withOpacity(0.15);
-    final Color _successHighlightColor = Theme.of(context).colorScheme.background.withOpacity(0.15);
-    final Color _loadingHighlightColor = Theme.of(context).colorScheme.onPrimary.withOpacity(0.15);
+    final Color successHighlightColor = Theme.of(context).colorScheme.background.withOpacity(0.15);
+    final Color loadingHighlightColor = Theme.of(context).colorScheme.onPrimary.withOpacity(0.15);
 
     switch (readProps(context).currentStatus) {
       case InfoTileStatus.loading:
         {
-          return _loadingHighlightColor;
+          return loadingHighlightColor;
         }
       case InfoTileStatus.success:
         {
-          return _successHighlightColor;
+          return successHighlightColor;
         }
       case InfoTileStatus.error:
         {
-          return _errorHighlightColor;
+          return errorHighlightColor;
         }
       default:
         {
@@ -336,23 +336,23 @@ class _InfoTileState extends State<InfoTile> with AnimationMixin {
   }
 
   Color _resolveShadowColor() {
-    final Color _errorShadowColor = Theme.of(context).colorScheme.error.withOpacity(0.5);
-    final Color _successShadowColor =
+    final Color errorShadowColor = Theme.of(context).colorScheme.error.withOpacity(0.5);
+    final Color successShadowColor =
         Theme.of(context).colorScheme.secondaryVariant.withOpacity(0.5);
-    final Color _loadingShadowColor = Theme.of(context).colorScheme.primary.withOpacity(0.12);
+    final Color loadingShadowColor = Theme.of(context).colorScheme.primary.withOpacity(0.12);
 
     switch (readProps(context).currentStatus) {
       case InfoTileStatus.loading:
         {
-          return _loadingShadowColor;
+          return loadingShadowColor;
         }
       case InfoTileStatus.success:
         {
-          return _successShadowColor;
+          return successShadowColor;
         }
       case InfoTileStatus.error:
         {
-          return _errorShadowColor;
+          return errorShadowColor;
         }
       default:
         {

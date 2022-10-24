@@ -9,7 +9,7 @@ class ErrorToast extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(left: 34, right: 34, top: 14, bottom: 24),
+      padding: const EdgeInsets.only(left: 34, right: 34, top: 14, bottom: 24),
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.errorContainer,
         borderRadius: BorderRadius.circular(16),
@@ -18,7 +18,7 @@ class ErrorToast extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Icon(Icons.error_outline, size: 24, color: Theme.of(context).colorScheme.onError),
-          UIVerticalSpace14(),
+          const UIVerticalSpace14(),
           Text(
             "Uh oh, something went wrong.",
             style: Theme.of(context)

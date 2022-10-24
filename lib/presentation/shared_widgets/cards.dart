@@ -6,8 +6,6 @@ import 'package:farmhub/presentation/shared_widgets/ui_helpers.dart';
 import 'package:farmhub/presentation/themes/farmhub_theme.dart';
 import 'package:flutter/material.dart';
 
-import '../../features/produce_manager/domain/entities/price/price.dart';
-
 Widget determineErrorCard(String errorCode) {
   if (errorCode == ERROR_NO_INTERNET_CONNECTION) {
     return const ErrorNoInternetCard();
@@ -273,7 +271,7 @@ class GreyCard extends StatelessWidget {
           ),
           const UIVerticalSpace14(),
           Text(
-            "RM${price}",
+            "RM$price",
             style: Theme.of(context).textTheme.bodyText2,
           ),
         ],

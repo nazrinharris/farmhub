@@ -93,8 +93,7 @@ class PrimaryButtonAware extends StatelessWidget {
         return ElevatedButton(
           onPressed: _resolveOnPressed(context),
           style: ButtonStyle(
-            backgroundColor:
-                MaterialStateProperty.all(_resolveBackgroundColor(context)),
+            backgroundColor: MaterialStateProperty.all(_resolveBackgroundColor(context)),
             padding: MaterialStateProperty.all(EdgeInsets.zero),
             shape: MaterialStateProperty.all<RoundedRectangleBorder>(
               RoundedRectangleBorder(
@@ -112,8 +111,7 @@ class PrimaryButtonAware extends StatelessWidget {
                 child: isLoading
                     ? _buildLoading(context)
                     : _buildNormalButtonContent(
-                        context.watch<PrimaryButtonAwareCubit>().state,
-                        context),
+                        context.watch<PrimaryButtonAwareCubit>().state, context),
               ),
             ),
           ),
@@ -131,8 +129,7 @@ class PrimaryButtonAware extends StatelessWidget {
   }
 
   Function()? _resolveOnPressed(BuildContext context) {
-    final PrimaryButtonAwareState state =
-        context.read<PrimaryButtonAwareCubit>().state;
+    final PrimaryButtonAwareState state = context.read<PrimaryButtonAwareCubit>().state;
     final PrimaryButtonAwareType currentType = type;
 
     switch (currentType) {
@@ -166,10 +163,10 @@ class PrimaryButtonAware extends StatelessWidget {
         }
         break;
     }
+    return null;
   }
 
-  AnimatedSwitcher _buildNormalButtonContent(
-      PrimaryButtonAwareState state, BuildContext context) {
+  AnimatedSwitcher _buildNormalButtonContent(PrimaryButtonAwareState state, BuildContext context) {
     Widget contentWidget;
 
     if (state == _stateInitialPage) {
@@ -177,10 +174,7 @@ class PrimaryButtonAware extends StatelessWidget {
         context: context,
         child: Text(
           firstPageContent,
-          style: Theme.of(context)
-              .textTheme
-              .bodyText1!
-              .copyWith(color: Colors.white),
+          style: Theme.of(context).textTheme.bodyText1!.copyWith(color: Colors.white),
         ),
         buttonIcon: firstPageButtonIcon,
       );
@@ -189,10 +183,7 @@ class PrimaryButtonAware extends StatelessWidget {
         context: context,
         child: Text(
           secondPageContent!,
-          style: Theme.of(context)
-              .textTheme
-              .bodyText1!
-              .copyWith(color: Colors.white),
+          style: Theme.of(context).textTheme.bodyText1!.copyWith(color: Colors.white),
         ),
         buttonIcon: secondPageButtonIcon,
       );
@@ -201,10 +192,7 @@ class PrimaryButtonAware extends StatelessWidget {
         context: context,
         child: Text(
           thirdPageContent!,
-          style: Theme.of(context)
-              .textTheme
-              .bodyText1!
-              .copyWith(color: Colors.white),
+          style: Theme.of(context).textTheme.bodyText1!.copyWith(color: Colors.white),
         ),
         buttonIcon: thirdPageButtonIcon,
       );

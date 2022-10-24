@@ -37,20 +37,20 @@ mixin _$InfoTileEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_ToggleExpansion value) toggleExpansion,
-    required TResult Function(_TriggerStateChange value) triggerStateChange,
+    required TResult Function(ToggleExpansion value) toggleExpansion,
+    required TResult Function(TriggerStateChange value) triggerStateChange,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_ToggleExpansion value)? toggleExpansion,
-    TResult Function(_TriggerStateChange value)? triggerStateChange,
+    TResult Function(ToggleExpansion value)? toggleExpansion,
+    TResult Function(TriggerStateChange value)? triggerStateChange,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_ToggleExpansion value)? toggleExpansion,
-    TResult Function(_TriggerStateChange value)? triggerStateChange,
+    TResult Function(ToggleExpansion value)? toggleExpansion,
+    TResult Function(TriggerStateChange value)? triggerStateChange,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -74,28 +74,28 @@ class _$InfoTileEventCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$$_ToggleExpansionCopyWith<$Res> {
-  factory _$$_ToggleExpansionCopyWith(
-          _$_ToggleExpansion value, $Res Function(_$_ToggleExpansion) then) =
-      __$$_ToggleExpansionCopyWithImpl<$Res>;
+abstract class _$$ToggleExpansionCopyWith<$Res> {
+  factory _$$ToggleExpansionCopyWith(
+          _$ToggleExpansion value, $Res Function(_$ToggleExpansion) then) =
+      __$$ToggleExpansionCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_ToggleExpansionCopyWithImpl<$Res>
+class __$$ToggleExpansionCopyWithImpl<$Res>
     extends _$InfoTileEventCopyWithImpl<$Res>
-    implements _$$_ToggleExpansionCopyWith<$Res> {
-  __$$_ToggleExpansionCopyWithImpl(
-      _$_ToggleExpansion _value, $Res Function(_$_ToggleExpansion) _then)
-      : super(_value, (v) => _then(v as _$_ToggleExpansion));
+    implements _$$ToggleExpansionCopyWith<$Res> {
+  __$$ToggleExpansionCopyWithImpl(
+      _$ToggleExpansion _value, $Res Function(_$ToggleExpansion) _then)
+      : super(_value, (v) => _then(v as _$ToggleExpansion));
 
   @override
-  _$_ToggleExpansion get _value => super._value as _$_ToggleExpansion;
+  _$ToggleExpansion get _value => super._value as _$ToggleExpansion;
 }
 
 /// @nodoc
 
-class _$_ToggleExpansion implements _ToggleExpansion {
-  const _$_ToggleExpansion();
+class _$ToggleExpansion implements ToggleExpansion {
+  const _$ToggleExpansion();
 
   @override
   String toString() {
@@ -105,7 +105,7 @@ class _$_ToggleExpansion implements _ToggleExpansion {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_ToggleExpansion);
+        (other.runtimeType == runtimeType && other is _$ToggleExpansion);
   }
 
   @override
@@ -145,8 +145,8 @@ class _$_ToggleExpansion implements _ToggleExpansion {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_ToggleExpansion value) toggleExpansion,
-    required TResult Function(_TriggerStateChange value) triggerStateChange,
+    required TResult Function(ToggleExpansion value) toggleExpansion,
+    required TResult Function(TriggerStateChange value) triggerStateChange,
   }) {
     return toggleExpansion(this);
   }
@@ -154,8 +154,8 @@ class _$_ToggleExpansion implements _ToggleExpansion {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_ToggleExpansion value)? toggleExpansion,
-    TResult Function(_TriggerStateChange value)? triggerStateChange,
+    TResult Function(ToggleExpansion value)? toggleExpansion,
+    TResult Function(TriggerStateChange value)? triggerStateChange,
   }) {
     return toggleExpansion?.call(this);
   }
@@ -163,8 +163,8 @@ class _$_ToggleExpansion implements _ToggleExpansion {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_ToggleExpansion value)? toggleExpansion,
-    TResult Function(_TriggerStateChange value)? triggerStateChange,
+    TResult Function(ToggleExpansion value)? toggleExpansion,
+    TResult Function(TriggerStateChange value)? triggerStateChange,
     required TResult orElse(),
   }) {
     if (toggleExpansion != null) {
@@ -174,36 +174,36 @@ class _$_ToggleExpansion implements _ToggleExpansion {
   }
 }
 
-abstract class _ToggleExpansion implements InfoTileEvent {
-  const factory _ToggleExpansion() = _$_ToggleExpansion;
+abstract class ToggleExpansion implements InfoTileEvent {
+  const factory ToggleExpansion() = _$ToggleExpansion;
 }
 
 /// @nodoc
-abstract class _$$_TriggerStateChangeCopyWith<$Res> {
-  factory _$$_TriggerStateChangeCopyWith(_$_TriggerStateChange value,
-          $Res Function(_$_TriggerStateChange) then) =
-      __$$_TriggerStateChangeCopyWithImpl<$Res>;
+abstract class _$$TriggerStateChangeCopyWith<$Res> {
+  factory _$$TriggerStateChangeCopyWith(_$TriggerStateChange value,
+          $Res Function(_$TriggerStateChange) then) =
+      __$$TriggerStateChangeCopyWithImpl<$Res>;
   $Res call({InfoTileProps infoTileProps});
 
   $InfoTilePropsCopyWith<$Res> get infoTileProps;
 }
 
 /// @nodoc
-class __$$_TriggerStateChangeCopyWithImpl<$Res>
+class __$$TriggerStateChangeCopyWithImpl<$Res>
     extends _$InfoTileEventCopyWithImpl<$Res>
-    implements _$$_TriggerStateChangeCopyWith<$Res> {
-  __$$_TriggerStateChangeCopyWithImpl(
-      _$_TriggerStateChange _value, $Res Function(_$_TriggerStateChange) _then)
-      : super(_value, (v) => _then(v as _$_TriggerStateChange));
+    implements _$$TriggerStateChangeCopyWith<$Res> {
+  __$$TriggerStateChangeCopyWithImpl(
+      _$TriggerStateChange _value, $Res Function(_$TriggerStateChange) _then)
+      : super(_value, (v) => _then(v as _$TriggerStateChange));
 
   @override
-  _$_TriggerStateChange get _value => super._value as _$_TriggerStateChange;
+  _$TriggerStateChange get _value => super._value as _$TriggerStateChange;
 
   @override
   $Res call({
     Object? infoTileProps = freezed,
   }) {
-    return _then(_$_TriggerStateChange(
+    return _then(_$TriggerStateChange(
       infoTileProps == freezed
           ? _value.infoTileProps
           : infoTileProps // ignore: cast_nullable_to_non_nullable
@@ -221,8 +221,8 @@ class __$$_TriggerStateChangeCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_TriggerStateChange implements _TriggerStateChange {
-  const _$_TriggerStateChange(this.infoTileProps);
+class _$TriggerStateChange implements TriggerStateChange {
+  const _$TriggerStateChange(this.infoTileProps);
 
   @override
   final InfoTileProps infoTileProps;
@@ -236,7 +236,7 @@ class _$_TriggerStateChange implements _TriggerStateChange {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_TriggerStateChange &&
+            other is _$TriggerStateChange &&
             const DeepCollectionEquality()
                 .equals(other.infoTileProps, infoTileProps));
   }
@@ -247,8 +247,8 @@ class _$_TriggerStateChange implements _TriggerStateChange {
 
   @JsonKey(ignore: true)
   @override
-  _$$_TriggerStateChangeCopyWith<_$_TriggerStateChange> get copyWith =>
-      __$$_TriggerStateChangeCopyWithImpl<_$_TriggerStateChange>(
+  _$$TriggerStateChangeCopyWith<_$TriggerStateChange> get copyWith =>
+      __$$TriggerStateChangeCopyWithImpl<_$TriggerStateChange>(
           this, _$identity);
 
   @override
@@ -285,8 +285,8 @@ class _$_TriggerStateChange implements _TriggerStateChange {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_ToggleExpansion value) toggleExpansion,
-    required TResult Function(_TriggerStateChange value) triggerStateChange,
+    required TResult Function(ToggleExpansion value) toggleExpansion,
+    required TResult Function(TriggerStateChange value) triggerStateChange,
   }) {
     return triggerStateChange(this);
   }
@@ -294,8 +294,8 @@ class _$_TriggerStateChange implements _TriggerStateChange {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_ToggleExpansion value)? toggleExpansion,
-    TResult Function(_TriggerStateChange value)? triggerStateChange,
+    TResult Function(ToggleExpansion value)? toggleExpansion,
+    TResult Function(TriggerStateChange value)? triggerStateChange,
   }) {
     return triggerStateChange?.call(this);
   }
@@ -303,8 +303,8 @@ class _$_TriggerStateChange implements _TriggerStateChange {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_ToggleExpansion value)? toggleExpansion,
-    TResult Function(_TriggerStateChange value)? triggerStateChange,
+    TResult Function(ToggleExpansion value)? toggleExpansion,
+    TResult Function(TriggerStateChange value)? triggerStateChange,
     required TResult orElse(),
   }) {
     if (triggerStateChange != null) {
@@ -314,13 +314,13 @@ class _$_TriggerStateChange implements _TriggerStateChange {
   }
 }
 
-abstract class _TriggerStateChange implements InfoTileEvent {
-  const factory _TriggerStateChange(final InfoTileProps infoTileProps) =
-      _$_TriggerStateChange;
+abstract class TriggerStateChange implements InfoTileEvent {
+  const factory TriggerStateChange(final InfoTileProps infoTileProps) =
+      _$TriggerStateChange;
 
   InfoTileProps get infoTileProps => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$$_TriggerStateChangeCopyWith<_$_TriggerStateChange> get copyWith =>
+  _$$TriggerStateChangeCopyWith<_$TriggerStateChange> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

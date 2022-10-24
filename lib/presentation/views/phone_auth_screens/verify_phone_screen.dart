@@ -1,5 +1,4 @@
 import 'package:farmhub/presentation/shared_widgets/appbars.dart';
-import 'package:farmhub/presentation/shared_widgets/buttons.dart';
 import 'package:farmhub/presentation/shared_widgets/cards.dart';
 import 'package:farmhub/presentation/shared_widgets/scroll_physics.dart';
 import 'package:farmhub/presentation/shared_widgets/toasts.dart';
@@ -63,7 +62,7 @@ class _VerifyPhoneScreenState extends State<VerifyPhoneScreen> {
             } else if (state is PhoneVerificationError) {
               context.read<PrimaryButtonAwareCubit>().triggerFirstPage();
               showToastWidget(
-                ErrorToast(),
+                const ErrorToast(),
                 context: context,
                 animation: StyledToastAnimation.slideFromTopFade,
                 reverseAnimation: StyledToastAnimation.slideToTopFade,
@@ -80,7 +79,7 @@ class _VerifyPhoneScreenState extends State<VerifyPhoneScreen> {
             extendBody: true,
             extendBodyBehindAppBar: true,
             appBar: DefaultAppBar(
-              leadingIcon: Icon(Icons.arrow_back),
+              leadingIcon: const Icon(Icons.arrow_back),
               leadingOnPressed: () {
                 Navigator.of(context).pop();
               },
@@ -102,7 +101,7 @@ class _VerifyPhoneScreenState extends State<VerifyPhoneScreen> {
                       subContent:
                           "If this banner is here, then the phone number MUST be a US number.",
                     ),
-                    UIVerticalSpace14(),
+                    const UIVerticalSpace14(),
                     const WarningCard(
                       margin: EdgeInsets.symmetric(horizontal: 14),
                       icon: Icon(Icons.lock),

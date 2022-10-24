@@ -37,7 +37,7 @@ class CreateProduceScreen extends StatelessWidget {
               resizeToAvoidBottomInset: false,
               extendBodyBehindAppBar: true,
               appBar: DefaultAppBar(
-                leadingIcon: Icon(Icons.close),
+                leadingIcon: const Icon(Icons.close),
                 leadingOnPressed: () => Navigator.of(context).pop(),
               ),
               body: SafeArea(
@@ -47,7 +47,7 @@ class CreateProduceScreen extends StatelessWidget {
                     ListView(
                       children: [
                         Container(
-                          padding: EdgeInsets.symmetric(horizontal: 24),
+                          padding: const EdgeInsets.symmetric(horizontal: 24),
                           alignment: Alignment.centerLeft,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -56,7 +56,7 @@ class CreateProduceScreen extends StatelessWidget {
                             ],
                           ),
                         ),
-                        UICustomVertical(60),
+                        const UICustomVertical(60),
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 30),
                           child: MultipleFieldsForm<FirstTwoFieldsFormBloc>(
@@ -72,12 +72,12 @@ class CreateProduceScreen extends StatelessWidget {
                       ],
                     ),
                     Container(
-                      padding: EdgeInsets.only(bottom: 24),
-                      constraints: BoxConstraints.expand(),
+                      padding: const EdgeInsets.only(bottom: 24),
+                      constraints: const BoxConstraints.expand(),
                       alignment: Alignment.bottomCenter,
                       child: PrimaryButtonAware(
                         firstPageContent: 'Confirm',
-                        firstPageButtonIcon: Icon(
+                        firstPageButtonIcon: const Icon(
                           Icons.done,
                           color: Colors.white,
                         ),
@@ -117,6 +117,8 @@ class CreateProduceScreen extends StatelessWidget {
       return 'Please enter a valid number: e.g. 12.80';
     } else if (double.tryParse(value)! < 0) {
       return 'A negative price is invalid';
+    } else {
+      return null;
     }
   }
 }
