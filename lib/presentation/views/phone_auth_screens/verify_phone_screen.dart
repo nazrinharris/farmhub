@@ -1,3 +1,4 @@
+import 'package:farmhub/core/errors/error_messages.dart';
 import 'package:farmhub/presentation/shared_widgets/appbars.dart';
 import 'package:farmhub/presentation/shared_widgets/cards.dart';
 import 'package:farmhub/presentation/shared_widgets/scroll_physics.dart';
@@ -62,7 +63,7 @@ class _VerifyPhoneScreenState extends State<VerifyPhoneScreen> {
             } else if (state is PhoneVerificationError) {
               context.read<PrimaryButtonAwareCubit>().triggerFirstPage();
               showToastWidget(
-                const ErrorToast(),
+                ErrorToast(errorMessage: messageForFailure(state.failure)),
                 context: context,
                 animation: StyledToastAnimation.slideFromTopFade,
                 reverseAnimation: StyledToastAnimation.slideToTopFade,
@@ -70,7 +71,7 @@ class _VerifyPhoneScreenState extends State<VerifyPhoneScreen> {
                 animDuration: const Duration(milliseconds: 800),
                 curve: Curves.easeOutExpo,
                 reverseCurve: Curves.easeInExpo,
-                duration: const Duration(seconds: 5),
+                duration: const Duration(seconds: 7),
               );
             }
           },
@@ -166,7 +167,7 @@ class _VerifyPhoneScreenState extends State<VerifyPhoneScreen> {
                         context.read<PrimaryButtonAwareCubit>().triggerLoading();
                         final value =
                             context.read<FirstTwoFieldsFormBloc>().state.props.firstFieldValue;
-                        myPhone = PhoneNumber.fromNational(IsoCode.MY, value!);
+                        myPhone = PhoneNumber.fromNational(IsoCode.US, value!);
                         debugPrint(myPhone.toString());
 
                         context.read<AuthCubit>().verifyPhoneAndSendSMS(phoneNumber: myPhone);

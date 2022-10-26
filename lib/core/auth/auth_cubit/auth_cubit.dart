@@ -39,8 +39,7 @@ class AuthCubit extends Cubit<AuthState> {
     Completer<AuthState> c = Completer();
 
     await firebaseAuth.verifyPhoneNumber(
-      // TODO: Change to MY
-      phoneNumber: "+1 ${phoneNumber.nsn}",
+      phoneNumber: "${phoneNumber.countryCode} ${phoneNumber.nsn}",
       timeout: const Duration(minutes: 1),
       verificationFailed: (FirebaseAuthException e) async {
         debugPrint("Verification Failed!");
@@ -103,12 +102,13 @@ class AuthCubit extends Cubit<AuthState> {
         );
       });
     } on FirebaseAuthException catch (e) {
-      debugPrint(e.code);
-      AuthState.credentialLoginError(
-        AuthFailure(
-          message: e.message,
-          stackTrace: e.stackTrace,
-          code: e.toString(),
+      emit(
+        AuthState.credentialLoginError(
+          FirebaseAuthFailure(
+            message: e.message,
+            stackTrace: e.stackTrace,
+            code: e.code,
+          ),
         ),
       );
     } catch (e, stack) {

@@ -1,4 +1,5 @@
 import 'package:farmhub/core/auth/auth_cubit/auth_cubit.dart';
+import 'package:farmhub/core/errors/error_messages.dart';
 import 'package:farmhub/presentation/shared_widgets/appbars.dart';
 import 'package:farmhub/presentation/smart_widgets/primary_button_aware/primary_button_aware_cubit.dart';
 import 'package:flutter/material.dart';
@@ -74,9 +75,8 @@ class _VerifyCodeScreenState extends State<VerifyCodeScreen> {
               Navigator.of(context).pushNamedAndRemoveUntil('/nav_main', (route) => false);
             } else if (state is CredentialLoginError) {
               debugPrint("ERROR LOGGING IN");
-              debugPrint(state.failure.toString());
               showToastWidget(
-                ErrorToast(errorMessage: state.failure.message),
+                ErrorToast(errorMessage: messageForFailure(state.failure)),
                 context: context,
                 animation: StyledToastAnimation.slideFromTopFade,
                 reverseAnimation: StyledToastAnimation.slideToTopFade,
@@ -86,10 +86,11 @@ class _VerifyCodeScreenState extends State<VerifyCodeScreen> {
                 reverseCurve: Curves.easeInExpo,
                 duration: const Duration(seconds: 5),
               );
+              context.read<PrimaryButtonAwareCubit>().triggerFirstPage();
             } else if (state is AccountCreationError) {
               debugPrint("ERROR CREATING ACCOUNT (credential login success)");
               showToastWidget(
-                ErrorToast(errorMessage: state.failure.message),
+                ErrorToast(errorMessage: messageForFailure(state.failure)),
                 context: context,
                 animation: StyledToastAnimation.slideFromTopFade,
                 reverseAnimation: StyledToastAnimation.slideToTopFade,
@@ -99,6 +100,7 @@ class _VerifyCodeScreenState extends State<VerifyCodeScreen> {
                 reverseCurve: Curves.easeInExpo,
                 duration: const Duration(seconds: 5),
               );
+              context.read<PrimaryButtonAwareCubit>().triggerFirstPage();
             }
           },
           child: Scaffold(

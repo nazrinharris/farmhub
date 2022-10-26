@@ -267,7 +267,10 @@ class _PlaygroundScreenState extends State<PlaygroundScreen> {
                     content: "Show Toast",
                     onPressed: () {
                       showToastWidget(
-                        const ErrorToast(),
+                        const ErrorToast(
+                            // errorMessage:
+                            //     "some super long error message okay i admit its not that long lol",
+                            ),
                         context: context,
                         animation: StyledToastAnimation.slideFromTopFade,
                         reverseAnimation: StyledToastAnimation.slideToTopFade,
