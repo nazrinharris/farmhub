@@ -53,6 +53,9 @@ const String FSM_ERR_NOT_FARMER_OR_BUSINESS = 'FSM_ERR_NOT_FARMER_OR_BUSINESS';
 
 /// [Auth]'s [ErrorCodes]
 const String AUTH_NOT_SIGNED_IN = 'AUTH_NOT_SIGNED_IN';
+const String AUTH_NO_EMAIL_FOR_PASSWORD_RESET = 'AUTH_NO_EMAIL_FOR_PASSWORD_RESET';
+const String MSG_AUTH_NO_EMAIL_FOR_PASSWORD_RESET =
+    "Sorry but you can't reset your password because no email is associated with your account";
 
 /// [AuthLocalDatasource]'s [ErrorCodes]
 const String AL_ERR_NO_USER = 'ERR_NO_USER';

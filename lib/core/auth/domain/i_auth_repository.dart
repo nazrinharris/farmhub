@@ -28,7 +28,7 @@ abstract class IAuthRepository {
     required String phoneNumber,
   });
 
-  Future<Either<Failure, Unit>> sendPasswordResetEmail(String email);
+  Future<Either<Failure, Unit>> sendPasswordResetEmail(String? email);
 
   Future<Either<Failure, FarmhubUser>> retrieveUserData({String? uid});
 

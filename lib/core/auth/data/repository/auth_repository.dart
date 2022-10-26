@@ -277,9 +277,16 @@ class AuthRepository implements IAuthRepository {
   }
 
   @override
-  Future<Either<Failure, Unit>> sendPasswordResetEmail(String email) async {
+  Future<Either<Failure, Unit>> sendPasswordResetEmail(String? email) async {
     if (await networkInfo.isConnected) {
       try {
+        if (email == null) {
+          return Left(AuthFailure(
+            code: AUTH_NO_EMAIL_FOR_PASSWORD_RESET,
+            message: MSG_AUTH_NO_EMAIL_FOR_PASSWORD_RESET,
+            stackTrace: StackTrace.current,
+          ));
+        }
         await authRemoteDataSource.sendPasswordResetEmail(email);
         return const Right(unit);
       } on FirebaseAuthException catch (e) {

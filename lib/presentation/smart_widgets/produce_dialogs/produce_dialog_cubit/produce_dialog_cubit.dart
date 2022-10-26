@@ -294,7 +294,7 @@ class ProduceDialogCubit extends Cubit<ProduceDialogState> {
       await sendResetPasswordAndReact(
         context,
         //TODO: If the user doesn't have an email, they shouldn't be allowed to do this
-        email!,
+        email,
         showErrorDialog: showErrorDialog,
         showSuccessDialog: showSuccessDialog,
       );
@@ -303,7 +303,7 @@ class ProduceDialogCubit extends Cubit<ProduceDialogState> {
 
   Future<void> sendResetPasswordAndReact(
     BuildContext context,
-    String email, {
+    String? email, {
     required Function({
       required BuildContext context,
       required String title,
