@@ -430,15 +430,6 @@ class _SliverProducePriceChartState extends State<SliverProducePriceChart> {
   }
 }
 
-class ScrollableLargePriceChart extends StatelessWidget {
-  const ScrollableLargePriceChart({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container();
-  }
-}
-
 class SliverPricesListHeader extends StatefulWidget {
   final Produce produce;
   final ScrollController scrollController;

@@ -626,7 +626,7 @@ class SmallPriceChart extends StatelessWidget {
         borderColor = const Color(0xff79D2DE);
       }
 
-      // Begin process of transtaling weeklyPricesMap
+      // Begin process of translating weeklyPricesMap
       final Map<String, dynamic> weeklyPricesMap = produce.weeklyPrices;
       final List<PriceSnippet> pricesList = [];
 

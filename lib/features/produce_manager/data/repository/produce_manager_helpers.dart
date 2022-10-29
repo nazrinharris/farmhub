@@ -1,4 +1,5 @@
 import 'package:farmhub/core/errors/exceptions.dart';
+import 'package:farmhub/core/util/misc.dart';
 import 'package:farmhub/features/produce_manager/domain/entities/price/price.dart';
 import 'package:intl/intl.dart';
 import 'package:clock/clock.dart';
@@ -162,4 +163,22 @@ bool resolveIsNegative(Produce produce) {
   } else {
     return false;
   }
+}
+
+Map<String, dynamic> filterPricesOlderThanOneWeek(Map<String, dynamic> weeklyPrices) {
+  final Map<String, dynamic> weeklyPricesMap = weeklyPrices;
+  final List<PriceSnippet> pricesList = [];
+
+  weeklyPricesMap.forEach((priceDate, price) {
+    pricesList.add(PriceSnippet(price: price, priceDate: priceDate));
+  });
+
+  final List<PriceSnippet> filteredPrices = pricesToRanged(pricesList, rangeType: RangeType.oneW);
+  Map<String, dynamic> filteredMap = {};
+
+  for (PriceSnippet priceSnippet in filteredPrices) {
+    filteredMap[priceSnippet.priceDate] = priceSnippet.price;
+  }
+
+  return filteredMap;
 }

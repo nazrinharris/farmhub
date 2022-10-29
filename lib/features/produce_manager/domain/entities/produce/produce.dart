@@ -2,6 +2,7 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:farmhub/core/errors/exceptions.dart';
+import 'package:farmhub/features/produce_manager/data/repository/produce_manager_helpers.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'produce.freezed.dart';
@@ -21,8 +22,11 @@ class Produce with _$Produce {
     required DateTime lastUpdateTimeStamp,
   }) = _Produce;
 
-  factory Produce.fromJson(Map<String, dynamic> json) => _$ProduceFromJson(json);
-
+  /// The difference between [fromLocalMap] and [fromMap] is simply that the JSON from local storage
+  /// is a little different than the ones from [Firebase].
+  ///
+  /// More specifically, the [lastUpdateTimeStamp] JSON stored in [Firebase] is of type [Timestamp],
+  /// whilst the one stored in local is of type [DateTime].
   static Produce fromMap(Map<String, dynamic>? map) {
     if (map == null) {
       throw UnexpectedException(
@@ -39,12 +43,17 @@ class Produce with _$Produce {
       produceName: map['produceName'],
       currentProducePrice: map['currentProducePrice'],
       previousProducePrice: map['previousProducePrice'],
-      weeklyPrices: map['weeklyPrices'],
+      weeklyPrices: filterPricesOlderThanOneWeek(map["weeklyPrices"]),
       authorId: map['authorId'],
       lastUpdateTimeStamp: lastUpdateTimeStamp,
     );
   }
 
+  /// The difference between [fromLocalMap] and [fromMap] is simply that the JSON from local storage
+  /// is a little different than the ones from [Firebase].
+  ///
+  /// More specifically, the [lastUpdateTimeStamp] JSON stored in [Firebase] is of type [Timestamp],
+  /// whilst the one stored in local is of type [DateTime].
   static Produce fromLocalMap(Map<String, dynamic>? map) {
     if (map == null) {
       throw UnexpectedException(
