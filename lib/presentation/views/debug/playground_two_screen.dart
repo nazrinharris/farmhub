@@ -30,7 +30,7 @@ class PlaygroundTwoScreen extends StatelessWidget {
                       buttonIcon: const Icon(Icons.print),
                       content: "short",
                       onPressed: () {
-                        const phone = PhoneNumber(isoCode: IsoCode.US, nsn: "7176768765");
+                        const phone = PhoneNumber(isoCode: IsoCode.MY, nsn: "");
 
                         debugPrint(phone.toString());
                       },

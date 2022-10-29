@@ -96,26 +96,26 @@ class SliverSettingsBody extends StatelessWidget {
                   content: "About Farmhub",
                   icon: const Icon(Icons.eco_outlined),
                 ),
-                const SettingsHeader("Debug"),
-                SettingsListCard(
-                  content: "Go to Navigation",
-                  icon: const Icon(Icons.tab_unselected),
-                  isTop: true,
-                  onTap: () {
-                    Navigator.of(context).pop();
-                    Navigator.of(context).pop();
-                    Navigator.of(context).pop();
-                    Navigator.pushNamed(context, "/navigate");
-                  },
-                ),
-                SettingsListCard(
-                  content: "Navigate to Main",
-                  icon: const Icon(Icons.exit_to_app),
-                  isTop: true,
-                  onTap: () {
-                    Navigator.of(context).popUntil((route) => route == navMainRoute);
-                  },
-                ),
+                // const SettingsHeader("Debug"),
+                // SettingsListCard(
+                //   content: "Go to Navigation",
+                //   icon: const Icon(Icons.tab_unselected),
+                //   isTop: true,
+                //   onTap: () {
+                //     Navigator.of(context).pop();
+                //     Navigator.of(context).pop();
+                //     Navigator.of(context).pop();
+                //     Navigator.pushNamed(context, "/navigate");
+                //   },
+                // ),
+                // SettingsListCard(
+                //   content: "Navigate to Main",
+                //   icon: const Icon(Icons.exit_to_app),
+                //   isTop: true,
+                //   onTap: () {
+                //     Navigator.of(context).popUntil((route) => route == navMainRoute);
+                //   },
+                // ),
               ],
             ),
           )

@@ -272,8 +272,7 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
       uid: uid,
       email: null,
       username: tempName,
-      //TODO: Change back to MY number
-      phoneNumber: PhoneNumber(isoCode: IsoCode.US, nsn: phoneNumber),
+      phoneNumber: PhoneNumber(isoCode: IsoCode.MY, nsn: phoneNumber),
       createdAt: createdAt,
       produceFavoritesList: [],
       userType: UserType.regular,

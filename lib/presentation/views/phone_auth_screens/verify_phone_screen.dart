@@ -124,8 +124,7 @@ class _VerifyPhoneScreenState extends State<VerifyPhoneScreen> {
                               if (value == null || value.isEmpty) {
                                 return "Enter a valid phone number";
                               } else {
-                                // TODO: Change isocode to MY
-                                final myPhone = PhoneNumber.fromNational(IsoCode.US, value);
+                                final myPhone = PhoneNumber.fromNational(IsoCode.MY, value);
 
                                 if (!myPhone.validate()) {
                                   return "Enter a valid phone number";
@@ -167,7 +166,7 @@ class _VerifyPhoneScreenState extends State<VerifyPhoneScreen> {
                         context.read<PrimaryButtonAwareCubit>().triggerLoading();
                         final value =
                             context.read<FirstTwoFieldsFormBloc>().state.props.firstFieldValue;
-                        myPhone = PhoneNumber.fromNational(IsoCode.US, value!);
+                        myPhone = PhoneNumber.fromNational(IsoCode.MY, value!);
                         debugPrint(myPhone.toString());
 
                         context.read<AuthCubit>().verifyPhoneAndSendSMS(phoneNumber: myPhone);
