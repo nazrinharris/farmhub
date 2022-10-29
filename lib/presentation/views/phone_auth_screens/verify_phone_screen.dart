@@ -92,17 +92,17 @@ class _VerifyPhoneScreenState extends State<VerifyPhoneScreen> {
                   children: [
                     const VerifyPhoneScreenHeader(),
                     const UIVerticalSpace24(),
-                    ErrorCard(
-                      margin: const EdgeInsets.symmetric(horizontal: 14),
-                      icon: Icon(
-                        Icons.nearby_error,
-                        color: Theme.of(context).colorScheme.error,
-                      ),
-                      mainContent: "Debug Mode",
-                      subContent:
-                          "If this banner is here, then the phone number MUST be a US number.",
-                    ),
-                    const UIVerticalSpace14(),
+                    // ErrorCard(
+                    //   margin: const EdgeInsets.symmetric(horizontal: 14),
+                    //   icon: Icon(
+                    //     Icons.nearby_error,
+                    //     color: Theme.of(context).colorScheme.error,
+                    //   ),
+                    //   mainContent: "Debug Mode",
+                    //   subContent:
+                    //       "If this banner is here, then the phone number MUST be a US number.",
+                    // ),
+                    // const UIVerticalSpace14(),
                     const WarningCard(
                       margin: EdgeInsets.symmetric(horizontal: 14),
                       icon: Icon(Icons.lock),
