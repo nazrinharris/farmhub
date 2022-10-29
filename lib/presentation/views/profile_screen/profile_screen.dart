@@ -461,8 +461,28 @@ class FarmCard extends StatelessWidget {
       borderRadius: BorderRadius.circular(16),
       child: InkWell(
         onTap: () {},
-        onLongPress: () {
+        onLongPress: () async {
           HapticFeedback.heavyImpact();
+          await NDialog(
+            dialogStyle: DialogStyle(
+              titleDivider: true,
+              backgroundColor: Theme.of(context).colorScheme.background,
+            ),
+            title: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 14),
+              child: Text(
+                "Umm, we're sorry.",
+                style: Theme.of(context).textTheme.bodyText2,
+              ),
+            ),
+            content: Padding(
+              padding: const EdgeInsets.only(top: 14, bottom: 24, right: 24),
+              child: Text(
+                "This feature is still being developed!",
+                style: Theme.of(context).textTheme.bodyText1,
+              ),
+            ),
+          ).show(context, transitionType: DialogTransitionType.Bubble);
         },
         borderRadius: BorderRadius.circular(16),
         child: Container(
@@ -583,8 +603,28 @@ class ShopCard extends StatelessWidget {
       borderRadius: BorderRadius.circular(16),
       child: InkWell(
         onTap: () {},
-        onLongPress: () {
+        onLongPress: () async {
           HapticFeedback.heavyImpact();
+          await NDialog(
+            dialogStyle: DialogStyle(
+              titleDivider: true,
+              backgroundColor: Theme.of(context).colorScheme.background,
+            ),
+            title: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 14),
+              child: Text(
+                "Umm, we're sorry.",
+                style: Theme.of(context).textTheme.bodyText2,
+              ),
+            ),
+            content: Padding(
+              padding: const EdgeInsets.only(top: 14, bottom: 24, right: 24),
+              child: Text(
+                "This feature is still being developed!",
+                style: Theme.of(context).textTheme.bodyText1,
+              ),
+            ),
+          ).show(context, transitionType: DialogTransitionType.Bubble);
         },
         borderRadius: BorderRadius.circular(16),
         child: Container(
