@@ -8,8 +8,13 @@ num roundNum(num value, int places) {
 }
 
 void printList(List<dynamic> givenList) {
+  if (givenList.isEmpty) {
+    print("[]");
+    return;
+  }
+
   for (dynamic object in givenList) {
-    debugPrint(object);
+    debugPrint(object.toString());
   }
 }
 

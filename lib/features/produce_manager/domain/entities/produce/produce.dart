@@ -70,7 +70,7 @@ class Produce with _$Produce {
       produceName: map['produceName'],
       currentProducePrice: map['currentProducePrice'],
       previousProducePrice: map['previousProducePrice'],
-      weeklyPrices: map['weeklyPrices'],
+      weeklyPrices: filterPricesOlderThanOneWeek(map["weeklyPrices"]),
       authorId: map['authorId'],
       lastUpdateTimeStamp: lastUpdateTimeStamp,
     );

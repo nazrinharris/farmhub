@@ -1,6 +1,7 @@
 import 'package:farmhub/core/errors/exceptions.dart';
 import 'package:farmhub/core/util/misc.dart';
 import 'package:farmhub/features/produce_manager/domain/entities/price/price.dart';
+import 'package:flutter/foundation.dart';
 import 'package:intl/intl.dart';
 import 'package:clock/clock.dart';
 
@@ -37,6 +38,12 @@ List<PriceSnippet> pricesToRanged(
 
     return aPriceDate.compareTo(bPriceDate);
   });
+
+  // PriceSnippet? recentPrice = pricesList.isEmpty ? null : pricesList.last;
+  // PriceSnippet? oldestPrice = pricesList.isEmpty ? null : pricesList.first;
+
+  // debugPrint("Most Recent Price - $recentPrice");
+  // debugPrint("Most Oldest Price - $oldestPrice");
 
   // // We reverse the list because we want the first index to be the upper bound (latest/newest date)
   // final reversedPricesList = pricesList.reversed.toList();
@@ -83,12 +90,14 @@ List<PriceSnippet> pricesToRanged(
     if (diff.inDays <= range!) {
       rangedPricesList.add(priceSnippet);
     } else {
-      break;
+      continue;
     }
   }
 
-  //?debugPrint("Unsorted - $rangeType - Amount: ${rangedPricesList.length}");
-  //?printList(rangedPricesList);
+  // debugPrint("Unsorted - $rangeType - Amount: ${rangedPricesList.length}");
+  // debugPrint("vvvvv-----------------------------------vvvvv");
+  // printList(rangedPricesList);
+  // debugPrint("^^^^^-----------------------------------^^^^^");
 
   // rangedPricesList.sort((a, b) {
   //   DateTime aPriceDate = DateFormat("dd-MM-yyyy").parse(a.priceDate);
@@ -97,8 +106,11 @@ List<PriceSnippet> pricesToRanged(
   //   return aPriceDate.compareTo(bPriceDate);
   // });
 
-  //?debugPrint("Sorted - $rangeType - Amount: ${rangedPricesList.length}");
-  //?printList(rangedPricesList);
+  // debugPrint("Sorted - $rangeType - Amount: ${rangedPricesList.length}");
+  // debugPrint("vvvvv-----------------------------------vvvvv");
+  // printList(rangedPricesList);
+  // debugPrint("^^^^^-----------------------------------^^^^^");
+  // debugPrint("");
 
   return List.from(rangedPricesList);
 }
@@ -181,4 +193,42 @@ Map<String, dynamic> filterPricesOlderThanOneWeek(Map<String, dynamic> weeklyPri
   }
 
   return filteredMap;
+}
+
+/// [pricesList] should be the unmodified [aggregatePrices] which have been converted
+/// into a list, namely the [pricesList].
+void printWhenWasTheLastPrice(List<PriceSnippet> pricesList) {
+  if (pricesList.isEmpty) {
+    print("Aggregate map given was empty");
+    return;
+  }
+
+  // This will sort it in such a way that the first index will be the lower bound (oldest date)
+  // and the last index will be the upper bound (latest/newest date).
+  pricesList.sort((a, b) {
+    DateTime aPriceDate = DateFormat("dd-MM-yyyy").parse(a.priceDate);
+    DateTime bPriceDate = DateFormat("dd-MM-yyyy").parse(b.priceDate);
+    return aPriceDate.compareTo(bPriceDate);
+  });
+
+  DateTime latestPrice = DateFormat("dd-MM-yyyy").parse(pricesList.last.priceDate);
+  num range = DateTime.now().difference(latestPrice).inDays;
+
+  print("The last price was in ${latestPrice.toIso8601String()} which is $range days ago");
+}
+
+/// Expects a JSON in the format {"dd-MM-yyyy": [double]}, with the double being price
+/// and converts it into [List<PriceSnippet>]
+List<PriceSnippet> aggregateFormatToPricesList(Map<String, dynamic> aggregatePricesMap) {
+  if (aggregatePricesMap.isEmpty) {
+    print("Aggregate map given was empty");
+    return List.empty();
+  }
+
+  final List<PriceSnippet> pricesList = [];
+  aggregatePricesMap["prices-map"].forEach((date, price) {
+    pricesList.add(PriceSnippet(price: price, priceDate: date));
+  });
+
+  return pricesList;
 }

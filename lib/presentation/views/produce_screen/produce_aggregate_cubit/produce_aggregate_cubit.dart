@@ -72,6 +72,8 @@ class ProduceAggregateCubit extends Cubit<ProduceAggregateState> {
         emit(ProduceAggregateState.error(props: state.props, failure: f));
       },
       (pricesList) {
+        printWhenWasTheLastPrice(pricesList);
+
         debugPrint(pricesList.toString());
         final List<PriceSnippet> oneWeekPrices =
             pricesToRanged(pricesList, rangeType: RangeType.oneW);

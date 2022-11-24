@@ -1,3 +1,5 @@
+import 'package:farmhub/core/util/printer.dart';
+import 'package:farmhub/features/produce_manager/data/repository/produce_manager_helpers.dart';
 import 'package:farmhub/features/produce_manager/domain/entities/price/price.dart';
 import 'package:farmhub/presentation/shared_widgets/cards.dart';
 import 'package:farmhub/presentation/shared_widgets/ui_helpers.dart';
@@ -54,7 +56,7 @@ class LargePriceChart extends StatelessWidget {
     switch (type) {
       case LargePriceChartType.oneW:
         debugPrint("One Week Prices");
-        debugPrint(produce.weeklyPrices.toString());
+        prettyPrintJson(produce.weeklyPrices);
         if (produce.weeklyPrices.length <= 1) {
           return const TwoLinedErrorText(
             firstLineMessage: "There are not enough prices this week",
