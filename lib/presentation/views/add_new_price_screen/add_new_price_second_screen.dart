@@ -204,7 +204,7 @@ class ContentSliver extends StatelessWidget {
                   secondFieldLabel: "Number of days ago",
                   secondFieldHintText: "Must be a number; (0) for today",
                   secondFieldInputType: resolveInputType(),
-                  validateSecondField: validateCurrentPrice,
+                  validateSecondField: validateDaysAgo,
                 ),
                 const UIVerticalSpace14(),
                 const WarningCard(
@@ -227,6 +227,20 @@ class ContentSliver extends StatelessWidget {
       return 'Please enter a valid number: e.g. 12.80';
     } else if (double.tryParse(value)! < 0) {
       return 'A negative price is invalid';
+    } else {
+      return null;
+    }
+  }
+
+  String? validateDaysAgo(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Please enter a value';
+    } else if (int.tryParse(value) == null) {
+      return 'Please enter a valid number: e.g 12';
+    } else if (int.tryParse(value)! < 0) {
+      return 'You cannot put a negative number here';
+    } else if (int.tryParse(value)! > 2000) {
+      return 'The number must be less than 2000';
     } else {
       return null;
     }
