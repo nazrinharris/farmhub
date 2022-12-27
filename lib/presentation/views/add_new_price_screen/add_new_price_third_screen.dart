@@ -17,6 +17,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
+import '../../../features/produce_manager/domain/entities/produce/produce.dart';
+
 class AddNewPriceThirdScreen extends StatelessWidget {
   final AddNewPriceScreenArguments arguments;
 
@@ -98,7 +100,7 @@ class AddNewPriceThirdScreen extends StatelessWidget {
                             width: 220,
                             content: 'Add another Price',
                             onPressed: () {
-                              popToAddNewPrice(context);
+                              popToAddNewPrice(context, arguments.produce);
                             },
                           ),
                           const UIVerticalSpace14(),
@@ -196,31 +198,57 @@ class AddNewPriceThirdScreen extends StatelessWidget {
     }
   }
 
-  void popToAddNewPrice(BuildContext context) {
+  void popToAddNewPrice(BuildContext context, Produce produce) {
     switch (arguments.fromRoute) {
       case AddNewPriceFromRoute.fromAddNewPriceScreen:
         Navigator.of(context)
           ..pop()
-          ..pop();
+          ..pop()
+          ..pushNamed(
+            '/add_new_price_second',
+            arguments: AddNewPriceScreenArguments(
+              produce,
+              arguments.fromRoute,
+            ),
+          );
         break;
       case AddNewPriceFromRoute.fromAddNewPriceSearchScreen:
         Navigator.of(context)
           ..pop()
           ..pop()
-          ..pop();
+          ..pop()
+          ..pushNamed(
+            '/add_new_price_second',
+            arguments: AddNewPriceScreenArguments(
+              produce,
+              arguments.fromRoute,
+            ),
+          );
         break;
       case AddNewPriceFromRoute.fromMainBottomSheet:
         Navigator.of(context)
           ..pop()
           ..pop()
           ..pop()
-          ..pushNamed("/add_new_price");
+          ..pushNamed(
+            '/add_new_price_second',
+            arguments: AddNewPriceScreenArguments(
+              produce,
+              arguments.fromRoute,
+            ),
+          );
         break;
       case AddNewPriceFromRoute.fromProduceScreen:
         Navigator.of(context)
           ..pop()
           ..pop()
-          ..pushNamed("/add_new_price");
+          ..pushNamed(
+            '/add_new_price_second',
+            arguments: AddNewPriceScreenArguments(
+              produce,
+              arguments.fromRoute,
+            ),
+          );
         break;
     }
   }

@@ -151,7 +151,7 @@ class CurrentPriceCard extends StatelessWidget {
           ),
           const UIVerticalSpace14(),
           Text(
-            "RM${produce.currentProducePrice["price"]}",
+            "RM${roundNum(produce.currentProducePrice["price"], 2)}",
             style: Theme.of(context).textTheme.bodyText2!.copyWith(
                   color: resolveTextColor(context),
                 ),
