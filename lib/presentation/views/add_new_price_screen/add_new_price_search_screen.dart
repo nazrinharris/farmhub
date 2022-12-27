@@ -159,6 +159,15 @@ class _SearchProduceListState extends State<SearchProduceList> {
                     return ProduceListCard(
                       index,
                       state.props.produceList[index],
+                      onTap: () {
+                        Navigator.of(context).pushNamed(
+                          '/add_new_price_second',
+                          arguments: AddNewPriceScreenArguments(
+                            state.props.produceList[index],
+                            AddNewPriceFromRoute.fromAddNewPriceSearchScreen,
+                          ),
+                        );
+                      },
                       disableLongPress: true,
                     );
                   }

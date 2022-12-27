@@ -53,10 +53,10 @@ class ProduceListCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(18),
           onLongPress: () {
             HapticFeedback.heavyImpact();
-            if (disableLongPress) {
-            } else {
-              showProduceBottomActionSheet(context, isAdmin, produce);
-            }
+
+            if (disableLongPress) return;
+
+            showProduceBottomActionSheet(context, isAdmin, produce);
           },
           onTap: onTap ??
               () {

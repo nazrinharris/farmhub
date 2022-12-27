@@ -103,7 +103,6 @@ class AddNewPriceThirdScreen extends StatelessWidget {
                           ),
                           const UIVerticalSpace14(),
                           SecondaryButton(
-                            width: 180,
                             content: resolveBackToButton(context),
                             onPressed: () {
                               popToMainOrProduceAndRefresh(context);
