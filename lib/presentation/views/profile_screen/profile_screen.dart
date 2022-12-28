@@ -63,6 +63,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 userType: UserType.regular,
               );
 
+          print("FarmhubUser in GlobalAuthCubit currently:");
+          print(state.farmhubUser);
+
           return BlocListener<GlobalUICubit, GlobalUIState>(
             listener: (context, state) {
               if (state.props.shouldRefreshProfile) {
