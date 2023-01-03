@@ -172,14 +172,11 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
 
   @override
   Future<List<PriceSnippet>> getAggregatePrices(String produceId) async {
-    final DateTime todayTimeStamp = clock.now();
-    final int currentYear = todayTimeStamp.year;
-
     final Map<String, dynamic>? aggregatePricesMap = await firebaseFirestore
-        .collection('produce')
+        .collection(FS_GLOBAL_PRODUCE)
         .doc(produceId)
-        .collection('aggregatePrices')
-        .doc('aggregatePrices${currentYear.toString()}')
+        .collection(FS_AGGREGATE_COLLECTION)
+        .doc(FS_AGGREGATE_DOC)
         .get()
         .then((doc) => doc.data());
 
