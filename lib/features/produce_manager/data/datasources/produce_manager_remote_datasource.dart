@@ -213,7 +213,6 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
       // Basic setups
       DateTime currentTimeStamp = clock.now();
       String currentDate = DateFormat("dd-MM-yyyy").format(currentTimeStamp);
-      String currentYear = DateFormat("yyyy").format(currentTimeStamp);
       Map<String, dynamic> weeklyPrices = {currentDate: currentProducePrice};
       List<String> produceNameSearch = returnProduceNameSearch(produceName);
 
@@ -320,7 +319,6 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
     }
 
     final chosenDate = DateFormat("dd-MM-yyyy").format(currentTimeStamp);
-    final chosenYear = DateFormat("yyyy").format(currentTimeStamp);
 
     //! Begin updating Price Document and Aggregate Prices
     // Find out if price document of date [chosenDate] exists
@@ -328,7 +326,7 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
     final chosenDatePriceDoc = await firebaseFirestore
         .collection(FS_GLOBAL_PRODUCE)
         .doc(produceId)
-        .collection('prices')
+        .collection(FS_PRICES_COLLECTION)
         .where('priceDate', isEqualTo: chosenDate)
         .get()
         .then((querySnapshot) {
@@ -350,7 +348,7 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
         .collection(FS_GLOBAL_PRODUCE)
         .doc(produceId)
         .collection(FS_AGGREGATE_COLLECTION)
-        .doc("aggregatePrices$chosenYear")
+        .doc(FS_AGGREGATE_DOC)
         .get()
         .then((value) => value.data()!);
 
@@ -473,7 +471,7 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
     final queryList = await firebaseFirestore
         .collection(FS_GLOBAL_PRODUCE)
         .doc(produceId)
-        .collection('prices')
+        .collection(FS_PRICES_COLLECTION)
         .orderBy("priceDateTimeStamp", descending: true)
         .limit(10)
         .get();
@@ -490,14 +488,14 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
     final lastDocument = await firebaseFirestore
         .collection(FS_GLOBAL_PRODUCE)
         .doc(produceId)
-        .collection('prices')
+        .collection(FS_PRICES_COLLECTION)
         .doc(lastPricesList[lastPricesList.length - 1].priceId)
         .get();
 
     final newQueryList = await firebaseFirestore
         .collection(FS_GLOBAL_PRODUCE)
         .doc(produceId)
-        .collection('prices')
+        .collection(FS_PRICES_COLLECTION)
         .orderBy("priceDateTimeStamp", descending: true)
         .startAfterDocument(lastDocument)
         .limit(10)
@@ -523,7 +521,7 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
     final Price price = await firebaseFirestore
         .collection(FS_GLOBAL_PRODUCE)
         .doc(produceId)
-        .collection('prices')
+        .collection(FS_PRICES_COLLECTION)
         .doc(priceId)
         .get()
         .then((value) => Price.fromMap(value.data()!));
@@ -557,7 +555,7 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
       updatedSubPricesList.add(priceSnippet);
     }
 
-    /// [updatedSubPrice]'s name might be a bit misleading, but here, it means the [Price] object
+    /// [updatedSubPrice]'s name might be a bit misleading, but here, it means the [Price] object previously
     /// supplied, but with an updated [allPricesWithDateList]
     ///
     /// But the [currentPrice] for the [Price] document has not yet been updated, therefore
@@ -570,7 +568,7 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
     await firebaseFirestore
         .collection(FS_GLOBAL_PRODUCE)
         .doc(produceId)
-        .collection('prices')
+        .collection(FS_PRICES_COLLECTION)
         .doc(priceId)
         .update(
           Price.toMap(updatedPrice),
@@ -580,7 +578,7 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
         .collection(FS_GLOBAL_PRODUCE)
         .doc(produceId)
         .collection(FS_AGGREGATE_COLLECTION)
-        .doc('aggregatePrices$chosenYear')
+        .doc(FS_AGGREGATE_DOC)
         .update({
       "prices-map.$formattedAggregatePriceDate": updatedPrice.currentPrice,
     });
@@ -601,7 +599,7 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
     final Price price = await firebaseFirestore
         .collection(FS_GLOBAL_PRODUCE)
         .doc(produceId)
-        .collection('prices')
+        .collection(FS_PRICES_COLLECTION)
         .doc(priceId)
         .get()
         .then((value) => Price.fromMap(value.data()));
@@ -616,7 +614,7 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
     final Price price = await firebaseFirestore
         .collection(FS_GLOBAL_PRODUCE)
         .doc(produceId)
-        .collection('prices')
+        .collection(FS_PRICES_COLLECTION)
         .doc(priceId)
         .get()
         .then((value) => Price.fromMap(value.data()));
@@ -642,7 +640,7 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
           .collection(FS_GLOBAL_PRODUCE)
           .doc(produceId)
           .collection(FS_AGGREGATE_COLLECTION)
-          .doc("aggregatePrices$priceYear")
+          .doc(FS_AGGREGATE_DOC)
           .get()
           .then((value) => PriceSnippet.fromAggregateToList(value.data()!));
       if (allPricesList.length == 1) {
@@ -658,13 +656,13 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
           .collection(FS_GLOBAL_PRODUCE)
           .doc(produceId)
           .collection(FS_AGGREGATE_COLLECTION)
-          .doc('aggregatePrices$priceYear')
+          .doc(FS_AGGREGATE_DOC)
           .update({"prices-map.${price.priceDate}": FieldValue.delete()});
       //! Delete [Price] document
       await firebaseFirestore
           .collection(FS_GLOBAL_PRODUCE)
           .doc(produceId)
-          .collection('prices')
+          .collection(FS_PRICES_COLLECTION)
           .doc(priceId)
           .delete();
       //! Update [Produce]
@@ -675,7 +673,7 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
 
       isPriceDocDeleted = true;
     } else {
-      //? This means that there are at least one [subPrice] left.
+      //? This means that there is at least one [subPrice] left.
       //? steps: Update [Price]'s [currentPrice] and [allPrices], Update [aggregatePrices], Update [Produce]
 
       //! Update [Price]'s [currentPrice] and [allPrices]
@@ -683,7 +681,7 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
       await firebaseFirestore
           .collection(FS_GLOBAL_PRODUCE)
           .doc(produceId)
-          .collection('prices')
+          .collection(FS_PRICES_COLLECTION)
           .doc(priceId)
           .update(
             Price.toMap(updatedPrice),
@@ -693,7 +691,7 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
           .collection(FS_GLOBAL_PRODUCE)
           .doc(produceId)
           .collection(FS_AGGREGATE_COLLECTION)
-          .doc('aggregatePrices$priceYear')
+          .doc(FS_AGGREGATE_DOC)
           .update({"prices-map.${price.priceDate}": updatedPrice.currentPrice});
       //! Update [Produce]
       updateProducePrices(
@@ -789,13 +787,11 @@ Future<void> updateProducePrices({
   required String produceId,
   DateTime? lastUpdateTimeStamp,
 }) async {
-  final String chosenYear = DateFormat("yyyy").format(clock.now());
-
   final Map<String, dynamic> aggregatePricesMap = await firebaseFirestore
       .collection(FS_GLOBAL_PRODUCE)
       .doc(produceId)
       .collection(FS_AGGREGATE_COLLECTION)
-      .doc("aggregatePrices$chosenYear")
+      .doc(FS_AGGREGATE_DOC)
       .get()
       .then((value) => value.data()!);
 
@@ -868,7 +864,11 @@ Future<void> createPriceDocument({
   final chosenDate = DateFormat("dd-MM-yyyy").format(chosenTimeStamp);
   final formattedCurrentTimeStamp = DateFormat("yyyy-MM-dd hh:mm:ss aaa").format(clock.now());
 
-  await firebaseFirestore.collection(FS_GLOBAL_PRODUCE).doc(produceId).collection('prices').add(
+  await firebaseFirestore
+      .collection(FS_GLOBAL_PRODUCE)
+      .doc(produceId)
+      .collection(FS_PRICES_COLLECTION)
+      .add(
     {
       "currentPrice": newPrice,
       "priceDate": chosenDate,
@@ -908,7 +908,7 @@ Future<void> updatePriceDocument({
   await firebaseFirestore
       .collection(FS_GLOBAL_PRODUCE)
       .doc(produceId)
-      .collection('prices')
+      .collection(FS_PRICES_COLLECTION)
       .doc(chosenPriceDoc["priceId"])
       .update({
     "currentPrice": newCurrentPrice,
@@ -925,13 +925,12 @@ Future<void> updateAggregatePrices({
   required DateTime chosenTimeStamp,
 }) async {
   final chosenDate = DateFormat("dd-MM-yyyy").format(chosenTimeStamp);
-  final chosenYear = DateFormat("yyyy").format(chosenTimeStamp);
 
   await firebaseFirestore
       .collection(FS_GLOBAL_PRODUCE)
       .doc(produceId)
       .collection(FS_AGGREGATE_COLLECTION)
-      .doc('aggregatePrices$chosenYear')
+      .doc(FS_AGGREGATE_DOC)
       .update({"prices-map.$chosenDate": newPrice});
 }
 

@@ -34,6 +34,7 @@ const String FS_USER = 'users';
 const String FS_GLOBAL_PRODUCE = 'produce';
 const String FS_AGGREGATE_COLLECTION = 'aggregatePrices';
 const String FS_AGGREGATE_DOC = 'aggregatePrices';
+const String FS_PRICES_COLLECTION = 'prices';
 const String FS_GLOBAL_FARM = 'farms';
 const String FS_GLOBAL_SHOP = 'shops';
 const String FS_USER_FARM = 'userFarms';
