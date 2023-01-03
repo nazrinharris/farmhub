@@ -22,11 +22,9 @@ ColorScheme _farmhubColorSchemeLight = const ColorScheme(
   onSurface: Colors.transparent,
   onBackground: Colors.transparent,
   onError: Color(0xff9B3F3F),
-  errorContainer: Color(0xffFFB4B4),
+  errorContainer: Color(0xffFFDDDD),
   brightness: Brightness.light,
 );
-
-ColorScheme _lightFarmhubColorScheme = ColorScheme.fromSeed(seedColor: const Color(0xff343A1A));
 
 TextTheme _farmhubTextThemeLight = TextTheme(
   headline1: TextStyle(

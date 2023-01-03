@@ -36,6 +36,7 @@ Future<void> main() async {
   // Comment for offline capability
   // Comment for enhancements and touch ups
   // Comment for farm and account types
+  // Comment for phone sign-in backend
 }
 
 class FarmhubApp extends StatelessWidget {
@@ -91,11 +92,11 @@ class _FarmhubMaterialAppState extends State<FarmhubMaterialApp> {
         systemStatusBarContrastEnforced: false,
       ));
     } else if (Platform.isAndroid) {
-      SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-        // systemNavigationBarColor: FarmhubTheme.appThemeData[FarmhubThemeVariants.light]!
-        //     .extension<ExtendedColors>()!
-        //     .onBackgroundPale,
-        systemNavigationBarColor: Colors.transparent,
+      SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+        systemNavigationBarColor: FarmhubTheme.appThemeData[FarmhubThemeVariants.light]!
+            .extension<ExtendedColors>()!
+            .onBackgroundPale,
+        // systemNavigationBarColor: Colors.transparent,
         systemNavigationBarDividerColor: Colors.transparent,
         systemNavigationBarIconBrightness: Brightness.dark,
         statusBarColor: Colors.transparent,
@@ -121,7 +122,7 @@ class _FarmhubMaterialAppState extends State<FarmhubMaterialApp> {
       title: "Farmhub",
       theme: FarmhubTheme.appThemeData[FarmhubThemeVariants.light],
       onGenerateRoute: widget.appRouter.onGenerateRoute,
-      //home: NavigateView(),
+      // home: NavigateView(),
     );
   }
 }

@@ -1,6 +1,7 @@
-import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
+import 'package:farmhub/presentation/themes/farmhub_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
 
 import '../../../app_router.dart';
 import '../../../core/util/dates.dart';
@@ -148,17 +149,28 @@ class _MainHeaderState extends State<MainHeader> {
               Padding(
                 padding: const EdgeInsets.only(right: 6),
                 child: Hero(
-                  tag: Key("profile_picture"),
+                  tag: const Key("profile_picture"),
                   child: GestureDetector(
                     onTap: () {
                       Navigator.of(context).pushNamed("/profile");
                     },
-                    child: Container(
+                    child: SizedBox(
                       height: 54,
                       width: 54,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(100),
-                        color: Theme.of(context).colorScheme.primary,
+                      child: Stack(
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                              color: Theme.of(context)
+                                  .extension<ExtendedColors>()!
+                                  .onBackgroundPale!
+                                  .withGreen(245),
+                              borderRadius: BorderRadius.circular(16),
+                              border: Border.all(color: Colors.black.withOpacity(0.1)),
+                            ),
+                          ),
+                          SvgPicture.asset("assets/images/svg/flowah-minimal-transparent.svg"),
+                        ],
                       ),
                     ),
                   ),

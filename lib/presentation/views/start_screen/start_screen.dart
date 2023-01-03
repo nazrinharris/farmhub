@@ -17,7 +17,7 @@ class StartScreen extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
-          StartScreenBackground(),
+          const StartScreenBackground(),
           StartScreenContent(screen: screen, farmhubLogoPath: farmhubLogoPath),
         ],
       ),
@@ -30,8 +30,6 @@ class StartScreenBackground extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screen = MediaQuery.of(context).size;
-
     return Stack(
       children: [
         Container(

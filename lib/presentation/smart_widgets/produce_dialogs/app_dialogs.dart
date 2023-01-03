@@ -105,7 +105,7 @@ ProgressDialog returnDeleteProduceProgressDialog(BuildContext context) {
       ),
     ),
     defaultLoadingWidget: Container(
-      padding: EdgeInsets.only(left: 14),
+      padding: const EdgeInsets.only(left: 14),
       child: CupertinoActivityIndicator(color: Theme.of(context).colorScheme.error),
     ),
   );
@@ -263,7 +263,7 @@ ProgressDialog returnEditProduceProgressDialog(BuildContext context) {
       ),
     ),
     defaultLoadingWidget: Container(
-      padding: EdgeInsets.only(left: 14),
+      padding: const EdgeInsets.only(left: 14),
       child: CupertinoActivityIndicator(color: Theme.of(context).colorScheme.primary),
     ),
   );
@@ -406,6 +406,8 @@ String? validateCurrentPrice(String? value) {
     return 'Please enter a valid number: e.g. 12.80';
   } else if (double.tryParse(value)! < 0) {
     return 'A negative price is invalid';
+  } else {
+    return null;
   }
 }
 
@@ -636,7 +638,8 @@ NAlertDialog returnResetPasswordConfirmation(
               textAlign: TextAlign.center,
             ),
           ),
-          Padding(
+          Container(
+            alignment: Alignment.center,
             padding: const EdgeInsets.only(top: 14),
             child: Text(
               "Click the link to reset your password.",

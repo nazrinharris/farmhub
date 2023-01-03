@@ -1,5 +1,5 @@
-// ignore_for_file: prefer_const_constructors
-
+import 'package:farmhub/core/util/printer.dart';
+import 'package:farmhub/features/produce_manager/data/repository/produce_manager_helpers.dart';
 import 'package:farmhub/features/produce_manager/domain/entities/price/price.dart';
 import 'package:farmhub/presentation/shared_widgets/cards.dart';
 import 'package:farmhub/presentation/shared_widgets/ui_helpers.dart';
@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'dart:math';
 import 'package:intl/intl.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
-import 'dart:developer';
 
 import '../../features/produce_manager/domain/entities/produce/produce.dart';
 
@@ -56,8 +55,8 @@ class LargePriceChart extends StatelessWidget {
   Widget build(BuildContext context) {
     switch (type) {
       case LargePriceChartType.oneW:
-        print("One Week Prices");
-        print(produce.weeklyPrices);
+        debugPrint("One Week Prices");
+        prettyPrintJson(produce.weeklyPrices);
         if (produce.weeklyPrices.length <= 1) {
           return const TwoLinedErrorText(
             firstLineMessage: "There are not enough prices this week",
@@ -66,8 +65,8 @@ class LargePriceChart extends StatelessWidget {
         }
         return LargeOneWeekChart(produce);
       case LargePriceChartType.twoW:
-        print("Two Week Prices");
-        print(twoWeeksPricesList);
+        debugPrint("Two Week Prices");
+        debugPrint(twoWeeksPricesList.toString());
         if (twoWeeksPricesList == null) {
           return const TwoLinedErrorText(
             firstLineMessage: "It seems like there are no prices.",
@@ -84,8 +83,8 @@ class LargePriceChart extends StatelessWidget {
           return LargeTwoWeekChart(produce, twoWeeksPricesList!);
         }
       case LargePriceChartType.oneM:
-        print("One Month Prices");
-        print(oneMonthPricesList);
+        debugPrint("One Month Prices");
+        debugPrint(oneMonthPricesList.toString());
         if (oneMonthPricesList == null) {
           return const TwoLinedErrorText(
             firstLineMessage: "It seems like there are no prices.",
@@ -145,7 +144,7 @@ class LargePriceChart extends StatelessWidget {
             return TwoLinedErrorText(
               firstLineMessage: "There are not enough prices for the last year",
               secondLineMessage: "",
-              bottomWidget: WarningCard(produce),
+              bottomWidget: ProduceWarningCard(produce),
             );
           }
           return LargeOneYearChart(produce, oneYearPricesList!);
@@ -197,23 +196,23 @@ class _LargeOneWeekChartState extends State<LargeOneWeekChart> {
     if (isNegative) {
       gradient = LinearGradient(
         colors: [
-          Color(0xffEC6666),
+          const Color(0xffEC6666),
           Colors.white.withOpacity(0.1),
         ],
         begin: Alignment.topCenter,
         end: Alignment.bottomCenter,
       );
-      borderColor = Color.fromARGB(255, 220, 79, 79);
+      borderColor = const Color.fromARGB(255, 220, 79, 79);
     } else {
       gradient = LinearGradient(
         colors: [
-          Color(0xff79D2DE),
+          const Color(0xff79D2DE),
           Colors.white.withOpacity(0.1),
         ],
         begin: Alignment.topCenter,
         end: Alignment.bottomCenter,
       );
-      borderColor = Color.fromARGB(255, 85, 189, 202);
+      borderColor = const Color.fromARGB(255, 85, 189, 202);
     }
 
     // Begin process of transtaling weeklyPricesMap
@@ -247,7 +246,7 @@ class _LargeOneWeekChartState extends State<LargeOneWeekChart> {
         series: <CartesianSeries>[
           SplineAreaSeries<PriceSnippet, String>(
             enableTooltip: true,
-            key: ValueKey("large-one-week-chart"),
+            key: const ValueKey("large-one-week-chart"),
             dataSource: pricesList,
             xValueMapper: (priceSnippet, index) {
               DateTime priceDate = DateFormat("dd-MM-yyyy").parse(priceSnippet.priceDate);
@@ -315,23 +314,23 @@ class _LargeTwoWeekChartState extends State<LargeTwoWeekChart> {
     if (isNegative) {
       gradient = LinearGradient(
         colors: [
-          Color(0xffEC6666),
+          const Color(0xffEC6666),
           Colors.white.withOpacity(0.1),
         ],
         begin: Alignment.topCenter,
         end: Alignment.bottomCenter,
       );
-      borderColor = Color.fromARGB(255, 220, 79, 79);
+      borderColor = const Color.fromARGB(255, 220, 79, 79);
     } else {
       gradient = LinearGradient(
         colors: [
-          Color(0xff79D2DE),
+          const Color(0xff79D2DE),
           Colors.white.withOpacity(0.1),
         ],
         begin: Alignment.topCenter,
         end: Alignment.bottomCenter,
       );
-      borderColor = Color.fromARGB(255, 85, 189, 202);
+      borderColor = const Color.fromARGB(255, 85, 189, 202);
     }
 
     final random = Random();
@@ -418,23 +417,23 @@ class _LargeOneMonthChartState extends State<LargeOneMonthChart> {
     if (isNegative) {
       gradient = LinearGradient(
         colors: [
-          Color(0xffEC6666),
+          const Color(0xffEC6666),
           Colors.white.withOpacity(0.1),
         ],
         begin: Alignment.topCenter,
         end: Alignment.bottomCenter,
       );
-      borderColor = Color.fromARGB(255, 220, 79, 79);
+      borderColor = const Color.fromARGB(255, 220, 79, 79);
     } else {
       gradient = LinearGradient(
         colors: [
-          Color(0xff79D2DE),
+          const Color(0xff79D2DE),
           Colors.white.withOpacity(0.1),
         ],
         begin: Alignment.topCenter,
         end: Alignment.bottomCenter,
       );
-      borderColor = Color.fromARGB(255, 85, 189, 202);
+      borderColor = const Color.fromARGB(255, 85, 189, 202);
     }
 
     final random = Random();
@@ -521,23 +520,23 @@ class _LargeTwoMonthChartState extends State<LargeTwoMonthChart> {
     if (isNegative) {
       gradient = LinearGradient(
         colors: [
-          Color(0xffEC6666),
+          const Color(0xffEC6666),
           Colors.white.withOpacity(0.1),
         ],
         begin: Alignment.topCenter,
         end: Alignment.bottomCenter,
       );
-      borderColor = Color.fromARGB(255, 220, 79, 79);
+      borderColor = const Color.fromARGB(255, 220, 79, 79);
     } else {
       gradient = LinearGradient(
         colors: [
-          Color(0xff79D2DE),
+          const Color(0xff79D2DE),
           Colors.white.withOpacity(0.1),
         ],
         begin: Alignment.topCenter,
         end: Alignment.bottomCenter,
       );
-      borderColor = Color.fromARGB(255, 85, 189, 202);
+      borderColor = const Color.fromARGB(255, 85, 189, 202);
     }
 
     final random = Random();
@@ -624,23 +623,23 @@ class _LargeSixMonthChartState extends State<LargeSixMonthChart> {
     if (isNegative) {
       gradient = LinearGradient(
         colors: [
-          Color(0xffEC6666),
+          const Color(0xffEC6666),
           Colors.white.withOpacity(0.1),
         ],
         begin: Alignment.topCenter,
         end: Alignment.bottomCenter,
       );
-      borderColor = Color.fromARGB(255, 220, 79, 79);
+      borderColor = const Color.fromARGB(255, 220, 79, 79);
     } else {
       gradient = LinearGradient(
         colors: [
-          Color(0xff79D2DE),
+          const Color(0xff79D2DE),
           Colors.white.withOpacity(0.1),
         ],
         begin: Alignment.topCenter,
         end: Alignment.bottomCenter,
       );
-      borderColor = Color.fromARGB(255, 85, 189, 202);
+      borderColor = const Color.fromARGB(255, 85, 189, 202);
     }
 
     final random = Random();
@@ -727,23 +726,23 @@ class _LargeOneYearChartState extends State<LargeOneYearChart> {
     if (isNegative) {
       gradient = LinearGradient(
         colors: [
-          Color(0xffEC6666),
+          const Color(0xffEC6666),
           Colors.white.withOpacity(0.1),
         ],
         begin: Alignment.topCenter,
         end: Alignment.bottomCenter,
       );
-      borderColor = Color.fromARGB(255, 220, 79, 79);
+      borderColor = const Color.fromARGB(255, 220, 79, 79);
     } else {
       gradient = LinearGradient(
         colors: [
-          Color(0xff79D2DE),
+          const Color(0xff79D2DE),
           Colors.white.withOpacity(0.1),
         ],
         begin: Alignment.topCenter,
         end: Alignment.bottomCenter,
       );
-      borderColor = Color.fromARGB(255, 85, 189, 202);
+      borderColor = const Color.fromARGB(255, 85, 189, 202);
     }
 
     final random = Random();
@@ -835,13 +834,13 @@ class TwoLinedErrorText extends StatelessWidget {
               color: Theme.of(context).colorScheme.error,
               size: 34,
             ),
-            UIVerticalSpace14(),
+            const UIVerticalSpace14(),
             Text(
               firstLineMessage ?? "Not Implemented",
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.bodyText2!.copyWith(fontSize: 19),
             ),
-            UIVerticalSpace6(),
+            const UIVerticalSpace6(),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 14),
               child: Text(
@@ -850,8 +849,8 @@ class TwoLinedErrorText extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
             ),
-            UIVerticalSpace14(),
-            bottomWidget ?? SizedBox.shrink(),
+            const UIVerticalSpace14(),
+            bottomWidget ?? const SizedBox.shrink(),
           ],
         ),
       ),

@@ -72,7 +72,9 @@ class ProduceAggregateCubit extends Cubit<ProduceAggregateState> {
         emit(ProduceAggregateState.error(props: state.props, failure: f));
       },
       (pricesList) {
-        print(pricesList);
+        printWhenWasTheLastPrice(pricesList);
+
+        debugPrint(pricesList.toString());
         final List<PriceSnippet> oneWeekPrices =
             pricesToRanged(pricesList, rangeType: RangeType.oneW);
         final List<PriceSnippet> twoWeeksPrices =
@@ -106,7 +108,7 @@ class ProduceAggregateCubit extends Cubit<ProduceAggregateState> {
     result.fold(
       (f) {
         showErrorDialog(context: context, failure: f);
-        print(f);
+        debugPrint(f.toString());
       },
       (updatedFarmhubUser) {
         final isFavorite = !state.props.isProduceFavorite;

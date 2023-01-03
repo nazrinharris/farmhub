@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_print
+// ignore_for_file: avoid_print, library_private_types_in_public_api
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
@@ -45,7 +45,7 @@ class MainScreenBloc extends Bloc<MainScreenEvent, MainScreenState> {
     _MSEToggleMainHeader event,
     Emitter<MainScreenState> emit,
   ) async {
-    final _isVisible = !state.props.isMainHeaderVisible;
+    final isVisible = !state.props.isMainHeaderVisible;
 
     if (state.props.isMainHeaderVisible) {
       mainHeaderController.animateTo(
@@ -53,14 +53,14 @@ class MainScreenBloc extends Bloc<MainScreenEvent, MainScreenState> {
         duration: const Duration(milliseconds: 250),
         curve: Curves.easeOutExpo,
       );
-      emit(state.copyWith(props: state.props.copyWith(isMainHeaderVisible: _isVisible)));
+      emit(state.copyWith(props: state.props.copyWith(isMainHeaderVisible: isVisible)));
     } else {
       mainHeaderController.animateTo(
         0.0,
         duration: const Duration(milliseconds: 250),
         curve: Curves.easeOutExpo,
       );
-      emit(state.copyWith(props: state.props.copyWith(isMainHeaderVisible: _isVisible)));
+      emit(state.copyWith(props: state.props.copyWith(isMainHeaderVisible: isVisible)));
     }
   }
 
@@ -68,7 +68,7 @@ class MainScreenBloc extends Bloc<MainScreenEvent, MainScreenState> {
     _MSEGetFirstTenProduce event,
     Emitter<MainScreenState> emit,
   ) async {
-    print("Adding getFirstTenProduce event...");
+    debugPrint("Adding getFirstTenProduce event...");
     emit(MainScreenState.pricesLoading(props: state.props));
 
     final failureOrProduceList = await produceManagerRepository.getFirstTenProduce();
@@ -94,7 +94,7 @@ class MainScreenBloc extends Bloc<MainScreenEvent, MainScreenState> {
       if (state.props.produceList.isEmpty) {
         // Do nothing
       } else {
-        print("Adding getNextTenProduce event...");
+        debugPrint("Adding getNextTenProduce event...");
         emit(MainScreenState.nextPricesLoading(props: state.props));
 
         // Start getting next ten produce
@@ -103,7 +103,7 @@ class MainScreenBloc extends Bloc<MainScreenEvent, MainScreenState> {
 
         // Check if there are more produce
         failureOrNewProduceList.fold((f) {
-          print(f.toString());
+          debugPrint(f.toString());
           emit(MainScreenState.pricesError(
             props: state.props,
             failure: f,
@@ -111,7 +111,7 @@ class MainScreenBloc extends Bloc<MainScreenEvent, MainScreenState> {
         }, (produceList) {
           int index = 1;
           for (Produce produce in produceList) {
-            print(index.toString() + " " + produce.produceName + "   " + produce.produceId + "\n");
+            debugPrint("$index ${produce.produceName}   ${produce.produceId}\n");
             index++;
           }
           emit(MainScreenState.pricesCompleted(
@@ -125,7 +125,7 @@ class MainScreenBloc extends Bloc<MainScreenEvent, MainScreenState> {
     _MSERefresh event,
     Emitter<MainScreenState> emit,
   ) async {
-    print("Refresh MainScreen beginning.");
+    debugPrint("Refresh MainScreen beginning.");
     // Start loading and reset the list
     emit(MainScreenState.pricesLoading(props: state.props.copyWith(produceList: [])));
 

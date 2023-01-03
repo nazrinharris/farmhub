@@ -1,4 +1,3 @@
-// ignore_for_file: prefer_const_constructors
 import 'package:farmhub/features/produce_manager/bloc/produce_manager_bloc.dart';
 import 'package:farmhub/presentation/shared_widgets/appbars.dart';
 import 'package:farmhub/presentation/shared_widgets/ui_helpers.dart';
@@ -55,14 +54,14 @@ class _AddNewPriceScreenState extends State<AddNewPriceScreen> {
                 body: SafeArea(
                   top: false,
                   child: CustomScrollView(
-                    physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+                    physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
                     controller: scrollController,
                     slivers: [
                       CupertinoSliverRefreshControl(
                         onRefresh: () async {},
                       ),
-                      HeaderSliver(),
-                      SliverWhiteSpace(30),
+                      const HeaderSliver(),
+                      const SliverWhiteSpace(30),
                       ProduceListSliver(
                         scrollController: scrollController,
                       ),
@@ -102,7 +101,7 @@ class _ProduceListSliverState extends State<ProduceListSliver> {
     widget.scrollController.addListener(() {
       if (widget.scrollController.offset >= widget.scrollController.position.maxScrollExtent &&
           !widget.scrollController.position.outOfRange) {
-        print("Reached the end of the list!");
+        debugPrint("Reached the end of the list!");
         context.read<AddNewPriceScreenBloc>().add(const AddNewPriceScreenEvent.getNextTenProduce());
       }
     });
@@ -161,7 +160,7 @@ class _ProduceListSliverState extends State<ProduceListSliver> {
             delegate: SliverChildBuilderDelegate(
               (context, index) {
                 if (index == produceList.length) {
-                  return SizedBox(
+                  return const SizedBox(
                     height: 100,
                   );
                 } else {
@@ -199,7 +198,7 @@ class _ProduceListSliverState extends State<ProduceListSliver> {
                           "Uh oh, something went wrong.",
                           style: Theme.of(context).textTheme.bodyText1!.copyWith(color: Colors.red),
                         ),
-                        UIVerticalSpace14(),
+                        const UIVerticalSpace14(),
                         Text(
                           "Scroll to retry",
                           style: Theme.of(context).textTheme.caption,
@@ -229,7 +228,7 @@ class _ProduceListSliverState extends State<ProduceListSliver> {
         } else {
           return SliverList(
               delegate: SliverChildListDelegate([
-            SizedBox.shrink(),
+            const SizedBox.shrink(),
           ]));
         }
       },
@@ -257,11 +256,11 @@ class HeaderSliver extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                UITopPadding(),
+                const UITopPadding(),
                 const Headline1('Add new Price'),
-                UIVerticalSpace14(),
+                const UIVerticalSpace14(),
                 Padding(
-                  padding: EdgeInsets.only(right: 100),
+                  padding: const EdgeInsets.only(right: 100),
                   child: Text(
                     'Choose the desired Produce',
                     style: Theme.of(context).textTheme.bodyText1!.copyWith(

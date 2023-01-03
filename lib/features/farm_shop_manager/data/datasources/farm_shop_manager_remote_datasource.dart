@@ -3,6 +3,7 @@ import 'package:farmhub/core/auth/domain/entities/farmhub_user/farmhub_user.dart
 import 'package:farmhub/core/errors/exceptions.dart';
 import 'package:farmhub/core/util/app_const.dart';
 import 'package:farmhub/features/farm_shop_manager/domain/entities/farm_shop/farm_shop.dart';
+import 'package:flutter/foundation.dart';
 import 'package:fpdart/fpdart.dart';
 
 import '../../domain/entities/address/address.dart';
@@ -45,7 +46,7 @@ class FarmShopManagerRemoteDatasource implements IFarmShopManagerRemoteDatasourc
       address: farmAddress,
     );
 
-    print(farmhubUser.userType);
+    debugPrint(farmhubUser.userType.toString());
     late String newFarmId;
 
     if (farmhubUser.userType == UserType.farmer || farmhubUser.userType == UserType.business) {
@@ -157,7 +158,7 @@ class FarmShopManagerRemoteDatasource implements IFarmShopManagerRemoteDatasourc
 
   @override
   Future<Unit> updateFarm({required FarmhubUser farmhubUser, required Farm farm}) async {
-    print("UID -> ${farmhubUser.uid}");
+    debugPrint("UID -> ${farmhubUser.uid}");
 
     if (farmhubUser.userType == UserType.farmer || farmhubUser.userType == UserType.business) {
       //! Update the [Farm] in the global collection

@@ -14,10 +14,6 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-Produce _$ProduceFromJson(Map<String, dynamic> json) {
-  return _Produce.fromJson(json);
-}
-
 /// @nodoc
 mixin _$Produce {
   String get produceId => throw _privateConstructorUsedError;
@@ -30,7 +26,6 @@ mixin _$Produce {
   Map<String, dynamic> get weeklyPrices => throw _privateConstructorUsedError;
   DateTime get lastUpdateTimeStamp => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $ProduceCopyWith<Produce> get copyWith => throw _privateConstructorUsedError;
 }
@@ -169,7 +164,7 @@ class __$$_ProduceCopyWithImpl<$Res> extends _$ProduceCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
 class _$_Produce extends _Produce {
   _$_Produce(
       {required this.produceId,
@@ -183,9 +178,6 @@ class _$_Produce extends _Produce {
         _previousProducePrice = previousProducePrice,
         _weeklyPrices = weeklyPrices,
         super._();
-
-  factory _$_Produce.fromJson(Map<String, dynamic> json) =>
-      _$$_ProduceFromJson(json);
 
   @override
   final String produceId;
@@ -241,7 +233,6 @@ class _$_Produce extends _Produce {
                 .equals(other.lastUpdateTimeStamp, lastUpdateTimeStamp));
   }
 
-  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -257,11 +248,6 @@ class _$_Produce extends _Produce {
   @override
   _$$_ProduceCopyWith<_$_Produce> get copyWith =>
       __$$_ProduceCopyWithImpl<_$_Produce>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$_ProduceToJson(this);
-  }
 }
 
 abstract class _Produce extends Produce {
@@ -274,8 +260,6 @@ abstract class _Produce extends Produce {
       required final Map<String, dynamic> weeklyPrices,
       required final DateTime lastUpdateTimeStamp}) = _$_Produce;
   _Produce._() : super._();
-
-  factory _Produce.fromJson(Map<String, dynamic> json) = _$_Produce.fromJson;
 
   @override
   String get produceId => throw _privateConstructorUsedError;

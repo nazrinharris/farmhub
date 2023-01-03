@@ -37,7 +37,7 @@ class _AddNewPriceSecondScreenState extends State<AddNewPriceSecondScreen> {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => MultipleFieldsFormBloc(),
+          create: (context) => MultipleFieldsFormBloc(secondFieldValue: "0"),
         ),
         BlocProvider(
           create: (context) => PrimaryButtonAwareCubit(),
@@ -61,8 +61,8 @@ class _AddNewPriceSecondScreenState extends State<AddNewPriceSecondScreen> {
                           message:
                               "Uh oh! An error occured. Code: ${state.failure.code}, Message: ${state.failure.message}"),
                     );
-                    print(state.failure);
-                    print(state.failure.stackTrace);
+                    debugPrint(state.failure.toString());
+                    debugPrint(state.failure.stackTrace.toString());
                   } else if (state is ANPSAddNewPriceSuccess) {
                     showTopSnackBar(
                       context,
@@ -201,10 +201,16 @@ class ContentSliver extends StatelessWidget {
                   firstFieldHintText: "What's the new price?",
                   firstFieldInputType: resolveInputType(),
                   validateFirstField: validateCurrentPrice,
-                  secondFieldLabel: "Days from Now",
+                  secondFieldLabel: "Number of days ago",
                   secondFieldHintText: "Must be a number; (0) for today",
                   secondFieldInputType: resolveInputType(),
-                  validateSecondField: validateCurrentPrice,
+                  validateSecondField: validateDaysAgo,
+                ),
+                const UIVerticalSpace14(),
+                const WarningCard(
+                  mainContent: "What is \"Number of days ago\"?",
+                  subContent:
+                      "If you want to put a price for another date. For example, enter (0) for today.",
                 ),
               ],
             ),
@@ -221,6 +227,22 @@ class ContentSliver extends StatelessWidget {
       return 'Please enter a valid number: e.g. 12.80';
     } else if (double.tryParse(value)! < 0) {
       return 'A negative price is invalid';
+    } else {
+      return null;
+    }
+  }
+
+  String? validateDaysAgo(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Please enter a value';
+    } else if (int.tryParse(value) == null) {
+      return 'Please enter a valid number: e.g 12';
+    } else if (int.tryParse(value)! < 0) {
+      return 'You cannot put a negative number here';
+    } else if (int.tryParse(value)! > 2000) {
+      return 'The number must be less than 2000';
+    } else {
+      return null;
     }
   }
 

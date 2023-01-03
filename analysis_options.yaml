@@ -3,6 +3,7 @@ include: package:flutter_lints/flutter.yaml
 linter:
   rules:
     prefer_const_literals_to_create_immutables: false
+    constant_identifier_names: false
 
 analyzer:
   strong-mode:

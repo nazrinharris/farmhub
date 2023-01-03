@@ -44,23 +44,23 @@ mixin _$ProduceManagerEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_PMEExecGetFirstTenProduce value)
+    required TResult Function(PMEExecGetFirstTenProduce value)
         execGetFirstTenProduce,
-    required TResult Function(_PMEExecCreateProduce value) execCreateProduce,
+    required TResult Function(PMEExecCreateProduce value) execCreateProduce,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_PMEExecGetFirstTenProduce value)? execGetFirstTenProduce,
-    TResult Function(_PMEExecCreateProduce value)? execCreateProduce,
+    TResult Function(PMEExecGetFirstTenProduce value)? execGetFirstTenProduce,
+    TResult Function(PMEExecCreateProduce value)? execCreateProduce,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_PMEExecGetFirstTenProduce value)? execGetFirstTenProduce,
-    TResult Function(_PMEExecCreateProduce value)? execCreateProduce,
+    TResult Function(PMEExecGetFirstTenProduce value)? execGetFirstTenProduce,
+    TResult Function(PMEExecCreateProduce value)? execCreateProduce,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -161,9 +161,9 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_PMEExecGetFirstTenProduce value)
+    required TResult Function(PMEExecGetFirstTenProduce value)
         execGetFirstTenProduce,
-    required TResult Function(_PMEExecCreateProduce value) execCreateProduce,
+    required TResult Function(PMEExecCreateProduce value) execCreateProduce,
   }) {
     return started(this);
   }
@@ -172,8 +172,8 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_PMEExecGetFirstTenProduce value)? execGetFirstTenProduce,
-    TResult Function(_PMEExecCreateProduce value)? execCreateProduce,
+    TResult Function(PMEExecGetFirstTenProduce value)? execGetFirstTenProduce,
+    TResult Function(PMEExecCreateProduce value)? execCreateProduce,
   }) {
     return started?.call(this);
   }
@@ -182,8 +182,8 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_PMEExecGetFirstTenProduce value)? execGetFirstTenProduce,
-    TResult Function(_PMEExecCreateProduce value)? execCreateProduce,
+    TResult Function(PMEExecGetFirstTenProduce value)? execGetFirstTenProduce,
+    TResult Function(PMEExecCreateProduce value)? execCreateProduce,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -198,31 +198,30 @@ abstract class _Started implements ProduceManagerEvent {
 }
 
 /// @nodoc
-abstract class _$$_PMEExecGetFirstTenProduceCopyWith<$Res> {
-  factory _$$_PMEExecGetFirstTenProduceCopyWith(
-          _$_PMEExecGetFirstTenProduce value,
-          $Res Function(_$_PMEExecGetFirstTenProduce) then) =
-      __$$_PMEExecGetFirstTenProduceCopyWithImpl<$Res>;
+abstract class _$$PMEExecGetFirstTenProduceCopyWith<$Res> {
+  factory _$$PMEExecGetFirstTenProduceCopyWith(
+          _$PMEExecGetFirstTenProduce value,
+          $Res Function(_$PMEExecGetFirstTenProduce) then) =
+      __$$PMEExecGetFirstTenProduceCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_PMEExecGetFirstTenProduceCopyWithImpl<$Res>
+class __$$PMEExecGetFirstTenProduceCopyWithImpl<$Res>
     extends _$ProduceManagerEventCopyWithImpl<$Res>
-    implements _$$_PMEExecGetFirstTenProduceCopyWith<$Res> {
-  __$$_PMEExecGetFirstTenProduceCopyWithImpl(
-      _$_PMEExecGetFirstTenProduce _value,
-      $Res Function(_$_PMEExecGetFirstTenProduce) _then)
-      : super(_value, (v) => _then(v as _$_PMEExecGetFirstTenProduce));
+    implements _$$PMEExecGetFirstTenProduceCopyWith<$Res> {
+  __$$PMEExecGetFirstTenProduceCopyWithImpl(_$PMEExecGetFirstTenProduce _value,
+      $Res Function(_$PMEExecGetFirstTenProduce) _then)
+      : super(_value, (v) => _then(v as _$PMEExecGetFirstTenProduce));
 
   @override
-  _$_PMEExecGetFirstTenProduce get _value =>
-      super._value as _$_PMEExecGetFirstTenProduce;
+  _$PMEExecGetFirstTenProduce get _value =>
+      super._value as _$PMEExecGetFirstTenProduce;
 }
 
 /// @nodoc
 
-class _$_PMEExecGetFirstTenProduce implements _PMEExecGetFirstTenProduce {
-  const _$_PMEExecGetFirstTenProduce();
+class _$PMEExecGetFirstTenProduce implements PMEExecGetFirstTenProduce {
+  const _$PMEExecGetFirstTenProduce();
 
   @override
   String toString() {
@@ -233,7 +232,7 @@ class _$_PMEExecGetFirstTenProduce implements _PMEExecGetFirstTenProduce {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PMEExecGetFirstTenProduce);
+            other is _$PMEExecGetFirstTenProduce);
   }
 
   @override
@@ -280,9 +279,9 @@ class _$_PMEExecGetFirstTenProduce implements _PMEExecGetFirstTenProduce {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_PMEExecGetFirstTenProduce value)
+    required TResult Function(PMEExecGetFirstTenProduce value)
         execGetFirstTenProduce,
-    required TResult Function(_PMEExecCreateProduce value) execCreateProduce,
+    required TResult Function(PMEExecCreateProduce value) execCreateProduce,
   }) {
     return execGetFirstTenProduce(this);
   }
@@ -291,8 +290,8 @@ class _$_PMEExecGetFirstTenProduce implements _PMEExecGetFirstTenProduce {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_PMEExecGetFirstTenProduce value)? execGetFirstTenProduce,
-    TResult Function(_PMEExecCreateProduce value)? execCreateProduce,
+    TResult Function(PMEExecGetFirstTenProduce value)? execGetFirstTenProduce,
+    TResult Function(PMEExecCreateProduce value)? execCreateProduce,
   }) {
     return execGetFirstTenProduce?.call(this);
   }
@@ -301,8 +300,8 @@ class _$_PMEExecGetFirstTenProduce implements _PMEExecGetFirstTenProduce {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_PMEExecGetFirstTenProduce value)? execGetFirstTenProduce,
-    TResult Function(_PMEExecCreateProduce value)? execCreateProduce,
+    TResult Function(PMEExecGetFirstTenProduce value)? execGetFirstTenProduce,
+    TResult Function(PMEExecCreateProduce value)? execCreateProduce,
     required TResult orElse(),
   }) {
     if (execGetFirstTenProduce != null) {
@@ -312,35 +311,35 @@ class _$_PMEExecGetFirstTenProduce implements _PMEExecGetFirstTenProduce {
   }
 }
 
-abstract class _PMEExecGetFirstTenProduce implements ProduceManagerEvent {
-  const factory _PMEExecGetFirstTenProduce() = _$_PMEExecGetFirstTenProduce;
+abstract class PMEExecGetFirstTenProduce implements ProduceManagerEvent {
+  const factory PMEExecGetFirstTenProduce() = _$PMEExecGetFirstTenProduce;
 }
 
 /// @nodoc
-abstract class _$$_PMEExecCreateProduceCopyWith<$Res> {
-  factory _$$_PMEExecCreateProduceCopyWith(_$_PMEExecCreateProduce value,
-          $Res Function(_$_PMEExecCreateProduce) then) =
-      __$$_PMEExecCreateProduceCopyWithImpl<$Res>;
+abstract class _$$PMEExecCreateProduceCopyWith<$Res> {
+  factory _$$PMEExecCreateProduceCopyWith(_$PMEExecCreateProduce value,
+          $Res Function(_$PMEExecCreateProduce) then) =
+      __$$PMEExecCreateProduceCopyWithImpl<$Res>;
   $Res call({String produceName, num currentProducePrice});
 }
 
 /// @nodoc
-class __$$_PMEExecCreateProduceCopyWithImpl<$Res>
+class __$$PMEExecCreateProduceCopyWithImpl<$Res>
     extends _$ProduceManagerEventCopyWithImpl<$Res>
-    implements _$$_PMEExecCreateProduceCopyWith<$Res> {
-  __$$_PMEExecCreateProduceCopyWithImpl(_$_PMEExecCreateProduce _value,
-      $Res Function(_$_PMEExecCreateProduce) _then)
-      : super(_value, (v) => _then(v as _$_PMEExecCreateProduce));
+    implements _$$PMEExecCreateProduceCopyWith<$Res> {
+  __$$PMEExecCreateProduceCopyWithImpl(_$PMEExecCreateProduce _value,
+      $Res Function(_$PMEExecCreateProduce) _then)
+      : super(_value, (v) => _then(v as _$PMEExecCreateProduce));
 
   @override
-  _$_PMEExecCreateProduce get _value => super._value as _$_PMEExecCreateProduce;
+  _$PMEExecCreateProduce get _value => super._value as _$PMEExecCreateProduce;
 
   @override
   $Res call({
     Object? produceName = freezed,
     Object? currentProducePrice = freezed,
   }) {
-    return _then(_$_PMEExecCreateProduce(
+    return _then(_$PMEExecCreateProduce(
       produceName: produceName == freezed
           ? _value.produceName
           : produceName // ignore: cast_nullable_to_non_nullable
@@ -355,8 +354,8 @@ class __$$_PMEExecCreateProduceCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_PMEExecCreateProduce implements _PMEExecCreateProduce {
-  const _$_PMEExecCreateProduce(
+class _$PMEExecCreateProduce implements PMEExecCreateProduce {
+  const _$PMEExecCreateProduce(
       {required this.produceName, required this.currentProducePrice});
 
   @override
@@ -373,7 +372,7 @@ class _$_PMEExecCreateProduce implements _PMEExecCreateProduce {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PMEExecCreateProduce &&
+            other is _$PMEExecCreateProduce &&
             const DeepCollectionEquality()
                 .equals(other.produceName, produceName) &&
             const DeepCollectionEquality()
@@ -388,8 +387,8 @@ class _$_PMEExecCreateProduce implements _PMEExecCreateProduce {
 
   @JsonKey(ignore: true)
   @override
-  _$$_PMEExecCreateProduceCopyWith<_$_PMEExecCreateProduce> get copyWith =>
-      __$$_PMEExecCreateProduceCopyWithImpl<_$_PMEExecCreateProduce>(
+  _$$PMEExecCreateProduceCopyWith<_$PMEExecCreateProduce> get copyWith =>
+      __$$PMEExecCreateProduceCopyWithImpl<_$PMEExecCreateProduce>(
           this, _$identity);
 
   @override
@@ -433,9 +432,9 @@ class _$_PMEExecCreateProduce implements _PMEExecCreateProduce {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_PMEExecGetFirstTenProduce value)
+    required TResult Function(PMEExecGetFirstTenProduce value)
         execGetFirstTenProduce,
-    required TResult Function(_PMEExecCreateProduce value) execCreateProduce,
+    required TResult Function(PMEExecCreateProduce value) execCreateProduce,
   }) {
     return execCreateProduce(this);
   }
@@ -444,8 +443,8 @@ class _$_PMEExecCreateProduce implements _PMEExecCreateProduce {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_PMEExecGetFirstTenProduce value)? execGetFirstTenProduce,
-    TResult Function(_PMEExecCreateProduce value)? execCreateProduce,
+    TResult Function(PMEExecGetFirstTenProduce value)? execGetFirstTenProduce,
+    TResult Function(PMEExecCreateProduce value)? execCreateProduce,
   }) {
     return execCreateProduce?.call(this);
   }
@@ -454,8 +453,8 @@ class _$_PMEExecCreateProduce implements _PMEExecCreateProduce {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_PMEExecGetFirstTenProduce value)? execGetFirstTenProduce,
-    TResult Function(_PMEExecCreateProduce value)? execCreateProduce,
+    TResult Function(PMEExecGetFirstTenProduce value)? execGetFirstTenProduce,
+    TResult Function(PMEExecCreateProduce value)? execCreateProduce,
     required TResult orElse(),
   }) {
     if (execCreateProduce != null) {
@@ -465,15 +464,15 @@ class _$_PMEExecCreateProduce implements _PMEExecCreateProduce {
   }
 }
 
-abstract class _PMEExecCreateProduce implements ProduceManagerEvent {
-  const factory _PMEExecCreateProduce(
+abstract class PMEExecCreateProduce implements ProduceManagerEvent {
+  const factory PMEExecCreateProduce(
       {required final String produceName,
-      required final num currentProducePrice}) = _$_PMEExecCreateProduce;
+      required final num currentProducePrice}) = _$PMEExecCreateProduce;
 
   String get produceName => throw _privateConstructorUsedError;
   num get currentProducePrice => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$$_PMEExecCreateProduceCopyWith<_$_PMEExecCreateProduce> get copyWith =>
+  _$$PMEExecCreateProduceCopyWith<_$PMEExecCreateProduce> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

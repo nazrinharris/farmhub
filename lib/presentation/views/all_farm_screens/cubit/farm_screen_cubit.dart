@@ -1,4 +1,3 @@
-import 'package:bloc/bloc.dart';
 import 'package:farmhub/features/farm_shop_manager/domain/entities/address/address.dart';
 import 'package:farmhub/features/farm_shop_manager/domain/i_farm_shop_manager_repository.dart';
 import 'package:farmhub/presentation/smart_widgets/multiple_fields_form/multiple_fields_form_bloc.dart';
@@ -26,7 +25,7 @@ class FarmScreenCubit extends Cubit<FarmScreenState> {
     required this.secondTwoFieldsFormBloc,
     required this.buttonAwareCubit,
     required this.farmShopManagerRepository,
-  }) : super(FarmScreenState.initial());
+  }) : super(const FarmScreenState.initial());
 
   Future<void> createFarm(BuildContext context) async {
     firstTwoFieldsFormBloc.add(enableAlwaysValidation);
@@ -106,7 +105,7 @@ class FarmScreenCubit extends Cubit<FarmScreenState> {
 
       result.fold(
         (f) {
-          print(f);
+          debugPrint(f.toString());
           context.read<PrimaryButtonAwareCubit>().triggerFirstPage();
           showErrorDialog(context: context, failure: f);
         },

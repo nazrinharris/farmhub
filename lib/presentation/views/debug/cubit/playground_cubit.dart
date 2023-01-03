@@ -1,13 +1,10 @@
-import 'dart:math';
-
 import 'package:bloc/bloc.dart';
-import 'package:clock/clock.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:farmhub/core/errors/failures.dart';
 import 'package:farmhub/features/produce_manager/domain/entities/produce/produce.dart';
 import 'package:farmhub/features/produce_manager/domain/i_produce_manager_repository.dart';
+import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:intl/intl.dart';
 
 import '../../../../features/produce_manager/domain/entities/price/price.dart';
 import '../../../../features/produce_manager/data/repository/produce_manager_helpers.dart';
@@ -22,7 +19,7 @@ class PlaygroundCubit extends Cubit<PlaygroundState> {
   PlaygroundCubit({
     required this.repository,
     required this.firebaseFirestore,
-  }) : super(PlaygroundState.initial());
+  }) : super(const PlaygroundState.initial());
 
   void updateFarmId() async {
     await firebaseFirestore
@@ -40,24 +37,24 @@ class PlaygroundCubit extends Cubit<PlaygroundState> {
     required num currentProducePrice,
   }) async {
     return;
-    emit(const PlaygroundState.loading());
+    // emit(const PlaygroundState.loading());
 
-    print("Creating produce...");
+    // print("Creating produce...");
 
-    final failureOrProduce = await repository.createNewProduce(
-      produceName: produceName,
-      currentProducePrice: currentProducePrice,
-    );
+    // final failureOrProduce = await repository.createNewProduce(
+    //   produceName: produceName,
+    //   currentProducePrice: currentProducePrice,
+    // );
 
-    failureOrProduce.fold(
-      (f) {
-        throw Exception("${f.message} with code ${f.code}");
-      },
-      (produce) {
-        print("Produce Creation Complete");
-        emit(PlaygroundState.createCompleted(produce));
-      },
-    );
+    // failureOrProduce.fold(
+    //   (f) {
+    //     throw Exception("${f.message} with code ${f.code}");
+    //   },
+    //   (produce) {
+    //     print("Produce Creation Complete");
+    //     emit(PlaygroundState.createCompleted(produce));
+    //   },
+    // );
   }
 
   void addNewPrice({
@@ -65,32 +62,32 @@ class PlaygroundCubit extends Cubit<PlaygroundState> {
     required num currentPrice,
   }) async {
     return;
-    emit(const PlaygroundState.loading());
+    // emit(const PlaygroundState.loading());
 
-    print("Adding new price to Produce with ID: $produceId");
+    // print("Adding new price to Produce with ID: $produceId");
 
-    final failureOrNewPrice = await repository.addNewPrice(
-      produceId: produceId,
-      currentPrice: currentPrice,
-    );
+    // final failureOrNewPrice = await repository.addNewPrice(
+    //   produceId: produceId,
+    //   currentPrice: currentPrice,
+    // );
 
-    failureOrNewPrice.fold(
-      (f) {
-        emit(PlaygroundState.error(f));
-      },
-      (produce) {},
-    );
+    // failureOrNewPrice.fold(
+    //   (f) {
+    //     emit(PlaygroundState.error(f));
+    //   },
+    //   (produce) {},
+    // );
   }
 
   void debugMethod({
     required String produceId,
   }) async {
     return;
-    emit(const PlaygroundState.loading());
+    // emit(const PlaygroundState.loading());
 
-    print("Adding new price to Produce with ID: $produceId");
+    // print("Adding new price to Produce with ID: $produceId");
 
-    final failureOrNewPrice = await repository.debugMethod(produceId);
+    // final failureOrNewPrice = await repository.debugMethod(produceId);
   }
 
   void getTwoWeeksPrices({
@@ -98,23 +95,22 @@ class PlaygroundCubit extends Cubit<PlaygroundState> {
   }) async {
     emit(const PlaygroundState.loading());
 
-    print("Retrieving prices for Produce with ID: $produceId");
+    debugPrint("Retrieving prices for Produce with ID: $produceId");
 
     final failureOrPricesList = await repository.getAggregatePrices(produceId);
 
     failureOrPricesList.fold(
       (f) {
-        print(f);
+        debugPrint(f.toString());
       },
       (r) {
         List<PriceSnippet> twoWeeksPricesList = pricesToRanged(r, rangeType: RangeType.twoW);
-        List<PriceSnippet> oneMonthPricesList = pricesToRanged(r, rangeType: RangeType.twoW);
 
         emit(PlaygroundState.getPricesCompleted(r));
-        print("Two Weeks Sorted Prices");
+        debugPrint("Two Weeks Sorted Prices");
 
         for (PriceSnippet price in twoWeeksPricesList) {
-          print(price);
+          debugPrint(price.toString());
         }
       },
     );
@@ -125,37 +121,37 @@ class PlaygroundCubit extends Cubit<PlaygroundState> {
     required String produceId,
   }) async {
     return;
-    emit(const PlaygroundState.loading());
+    // emit(const PlaygroundState.loading());
 
-    final List<PriceSnippet> createdPricesList = [];
-    final Random random = Random();
+    // final List<PriceSnippet> createdPricesList = [];
+    // final Random random = Random();
 
-    for (int i = 0; i < pricesAmount; i++) {
-      final String chosenDate = DateFormat("dd-MM-yyyy").format(clock.daysFromNow(i));
-      int randomPrice = random.nextInt(20) + 20;
+    // for (int i = 0; i < pricesAmount; i++) {
+    //   final String chosenDate = DateFormat("dd-MM-yyyy").format(clock.daysFromNow(i));
+    //   int randomPrice = random.nextInt(20) + 20;
 
-      createdPricesList.add(PriceSnippet(price: randomPrice, priceDate: chosenDate));
+    //   createdPricesList.add(PriceSnippet(price: randomPrice, priceDate: chosenDate));
 
-      //! This code will write to the database! Be careful!
-      final failureOrAddPrice = await repository.addNewPrice(
-        produceId: produceId,
-        currentPrice: randomPrice,
-        daysFromNow: i,
-      );
-    }
+    //   //! This code will write to the database! Be careful!
+    //   final failureOrAddPrice = await repository.addNewPrice(
+    //     produceId: produceId,
+    //     currentPrice: randomPrice,
+    //     daysFromNow: i,
+    //   );
+    // }
   }
 
   void retrieveProduce({
     required String produceId,
   }) async {
     return;
-    emit(const PlaygroundState.loading());
+    // emit(const PlaygroundState.loading());
 
-    final produceDoc = await firebaseFirestore.collection('produce').doc(produceId).get();
+    // final produceDoc = await firebaseFirestore.collection('produce').doc(produceId).get();
 
-    final Produce produce = Produce.fromMap(produceDoc.data());
+    // final Produce produce = Produce.fromMap(produceDoc.data());
 
-    print(produce);
+    // print(produce);
   }
 
   void getPrice({
@@ -163,20 +159,20 @@ class PlaygroundCubit extends Cubit<PlaygroundState> {
     required String priceId,
   }) async {
     return;
-    print("Get Price Started");
-    emit(const PlaygroundState.loading());
+    // print("Get Price Started");
+    // emit(const PlaygroundState.loading());
 
-    final priceDoc = await firebaseFirestore
-        .collection('produce')
-        .doc(produceId)
-        .collection('prices')
-        .doc(priceId)
-        .get()
-        .then((doc) => doc.data());
+    // final priceDoc = await firebaseFirestore
+    //     .collection('produce')
+    //     .doc(produceId)
+    //     .collection('prices')
+    //     .doc(priceId)
+    //     .get()
+    //     .then((doc) => doc.data());
 
-    final Price price = Price.fromMap(priceDoc);
+    // final Price price = Price.fromMap(priceDoc);
 
-    print(price);
+    // print(price);
   }
 
   void deletePriceFromAggregate({
@@ -186,11 +182,11 @@ class PlaygroundCubit extends Cubit<PlaygroundState> {
   }) async {
     return;
 
-    await firebaseFirestore
-        .collection('produce')
-        .doc(produceId)
-        .collection('aggregatePrices')
-        .doc('aggregatePrices$chosenYear')
-        .update({"prices-map.$chosenDate": FieldValue.delete()});
+    // await firebaseFirestore
+    //     .collection('produce')
+    //     .doc(produceId)
+    //     .collection('aggregatePrices')
+    //     .doc('aggregatePrices$chosenYear')
+    //     .update({"prices-map.$chosenDate": FieldValue.delete()});
   }
 }

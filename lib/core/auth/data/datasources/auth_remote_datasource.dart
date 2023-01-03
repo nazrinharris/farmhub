@@ -2,10 +2,14 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:farmhub/core/auth/domain/entities/farmhub_user/farmhub_user.dart';
 import 'package:farmhub/core/errors/exceptions.dart';
 import 'package:farmhub/core/util/app_const.dart';
+import 'package:farmhub/core/util/misc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:intl/intl.dart';
 import 'package:clock/clock.dart';
+import 'package:english_words/english_words.dart';
+import 'package:phone_numbers_parser/phone_numbers_parser.dart';
 
 abstract class IAuthRemoteDataSource {
   Future<FarmhubUser> loginWithEmailAndPassword({
@@ -20,13 +24,14 @@ abstract class IAuthRemoteDataSource {
     required UserType userType,
   });
 
+  Future<FarmhubUser> createAccountWithPhone({
+    required String uid,
+    required String phoneNumber,
+  });
+
   Future<Unit> chooseUserType(String uid, UserType userType);
 
-  Future<FarmhubUser> loginWithGoogleAccount();
-
-  Future<FarmhubUser> registerWithGoogleAccount();
-
-  Future<FarmhubUser> retrieveUserData();
+  Future<FarmhubUser> retrieveUserData({String? uid});
 
   Future<FarmhubUser> updateRemoteUser(FarmhubUser newUserData);
 
@@ -119,6 +124,7 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
       createdAt: createdAt,
       produceFavoritesList: [],
       userType: userType,
+      phoneNumber: null,
     );
 
     /// Store account data in Cloud Firestore
@@ -129,34 +135,33 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
       "createdAt": farmhubUser.createdAt,
       "produceFavoritesMap": {},
       "userType": userType.typeAsString,
+      "phoneNumber": null,
     }, null);
 
     return farmhubUser;
   }
 
   @override
-  Future<FarmhubUser> loginWithGoogleAccount() {
-    // TODO: implement loginWithGoogleAccount
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<FarmhubUser> registerWithGoogleAccount() {
-    // TODO: implement registerWithGoogleAccount
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<FarmhubUser> retrieveUserData() async {
+  Future<FarmhubUser> retrieveUserData({String? uid}) async {
+    String uidToSearch;
     final user = firebaseAuth.currentUser;
 
     if (user == null) {
       // TODO: Make a proper constant error code.
-      throw FirebaseAuthException(code: AUTH_NOT_SIGNED_IN, message: 'User is not signed in.');
+      throw FirebaseAuthException(
+        code: AUTH_NOT_SIGNED_IN,
+        message: 'User is not signed in.',
+      );
     } else {
+      if (uid == null) {
+        uidToSearch = user.uid;
+      } else {
+        uidToSearch = uid;
+      }
+
       final farmhubUserJson = await firebaseFirestore
           .collection(FS_USER)
-          .doc(user.uid)
+          .doc(uidToSearch)
           .get()
           .then((value) => value.data());
 
@@ -192,8 +197,6 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
 
   @override
   Future<FarmhubUser> updateRemoteUser(FarmhubUser newUserData) async {
-    await Future.delayed(Duration(seconds: 1));
-
     await firebaseFirestore
         .collection('users')
         .doc(newUserData.uid)
@@ -236,8 +239,45 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
         .collection('users')
         .doc(uid)
         .update(mapToUpdate)
-        .then((value) => print("Change Success!"));
+        .then((value) => debugPrint("Change Success!"));
 
     return unit;
+  }
+
+  @override
+  Future<FarmhubUser> createAccountWithPhone({
+    required String uid,
+    required String phoneNumber,
+  }) async {
+    final random = [];
+
+    generateWordPairs().take(2).forEach((element) {
+      random.add(element);
+    });
+    final String tempName = "${random[0]} ${random[1]}".toTitleCase();
+
+    String createdAt = DateFormat('yyyy-MM-dd').format(clock.now());
+
+    await firebaseFirestore.collection(FS_USER).doc(uid).set({
+      "uid": uid,
+      "email": null,
+      "username": tempName,
+      "createdAt": createdAt,
+      "produceFavoritesMap": {},
+      "phoneNumber": phoneNumber,
+      "userType": UserType.regular.typeAsString,
+    });
+
+    final user = FarmhubUser(
+      uid: uid,
+      email: null,
+      username: tempName,
+      phoneNumber: PhoneNumber(isoCode: IsoCode.MY, nsn: phoneNumber),
+      createdAt: createdAt,
+      produceFavoritesList: [],
+      userType: UserType.regular,
+    );
+
+    return user;
   }
 }

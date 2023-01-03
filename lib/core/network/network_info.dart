@@ -11,6 +11,5 @@ class NetworkInfo implements INetworkInfo {
   });
 
   @override
-  // TODO: implement isConnected
   Future<bool> get isConnected => internet.hasConnection;
 }

@@ -1,11 +1,9 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:farmhub/core/util/app_const.dart';
 import 'package:farmhub/core/errors/failures.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 //! Firebase Failures
-final FirebaseAuthFailure tFirebaseAuthFailure = FirebaseAuthFailure(
+const FirebaseAuthFailure tFirebaseAuthFailure = FirebaseAuthFailure(
   code: 'CODE',
   message: 'tmessage',
   stackTrace: StackTrace.empty,

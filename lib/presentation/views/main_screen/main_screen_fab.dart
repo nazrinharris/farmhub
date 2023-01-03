@@ -6,7 +6,7 @@ import '../../../core/auth/global_auth_cubit/global_auth_cubit.dart';
 import '../../../core/util/farmhub_icons.dart';
 
 class MainScreenFAB extends StatefulWidget {
-  MainScreenFAB({Key? key}) : super(key: key);
+  const MainScreenFAB({Key? key}) : super(key: key);
 
   @override
   State<MainScreenFAB> createState() => _MainScreenFABState();

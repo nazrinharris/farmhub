@@ -15,8 +15,9 @@ import 'package:farmhub/presentation/views/debug/playground_two_screen.dart';
 import 'package:farmhub/presentation/views/edit_profile_screen/edit_profile_screen.dart';
 import 'package:farmhub/presentation/views/favorites_screen/favorites_screen.dart';
 import 'package:farmhub/presentation/views/login_screen/login_screen.dart';
-import 'package:farmhub/presentation/views/main_screen/main_screen.dart';
 import 'package:farmhub/presentation/views/nav_main_screen/nav_main_screen.dart';
+import 'package:farmhub/presentation/views/phone_auth_screens/verify_code_screen.dart';
+import 'package:farmhub/presentation/views/phone_auth_screens/verify_phone_screen.dart';
 import 'package:farmhub/presentation/views/price_screen/price_screen.dart';
 import 'package:farmhub/presentation/views/produce_screen/produce_screen.dart';
 import 'package:farmhub/presentation/views/profile_screen/profile_screen.dart';
@@ -83,6 +84,13 @@ class AppRouter {
         return CupertinoPageRoute(builder: (_) => const LoginScreen());
       case '/register':
         return CupertinoPageRoute(builder: (_) => const RegisterScreen());
+      case '/verify_phone':
+        return CupertinoPageRoute(builder: (_) => const VerifyPhoneScreen());
+      case '/verify_code':
+        return CupertinoPageRoute(
+            builder: (_) => VerifyCodeScreen(
+                  arguments: routeSettings.arguments as VerifyCodeScreenArguments,
+                ));
       case '/choose_user_type':
         return PageRouteBuilder(
           transitionDuration: const Duration(milliseconds: 600),
@@ -197,7 +205,12 @@ class AppRouter {
       case '/navigate':
         return CupertinoPageRoute(builder: (_) => const NavigateView());
       case '/playground':
-        return CupertinoPageRoute(builder: (_) => PlaygroundScreen(authLocalDataSource: locator()));
+        return CupertinoPageRoute(
+          builder: (_) => PlaygroundScreen(
+            authLocalDataSource: locator(),
+            authRemote: locator(),
+          ),
+        );
       case '/playground_two':
         return CupertinoPageRoute(builder: (_) => const PlaygroundTwoScreen());
 
@@ -240,6 +253,7 @@ Route settingsRoute = CupertinoPageRoute(builder: (_) => const SettingsScreen())
 Route playgroundRoute = CupertinoPageRoute(
     builder: (_) => PlaygroundScreen(
           authLocalDataSource: locator(),
+          authRemote: locator(),
         ));
 Route playgroundTwoRoute = CupertinoPageRoute(builder: (_) => const PlaygroundTwoScreen());
 
@@ -269,17 +283,14 @@ Widget slideUpTransitionBuilder(context, animation, secondaryAnimation, child) {
 }
 
 Widget fadeInTransitionBuilder(context, animation, secondaryAnimation, child) {
-  var offsetCurve =
-      animation.status == AnimationStatus.reverse ? Curves.easeInExpo : Curves.easeOutExpo;
-
   var opacityCurve =
       animation.status == AnimationStatus.reverse ? Curves.easeOutQuad : Curves.easeOutExpo;
 
-  final offsetAnimation = Tween<Offset>(begin: const Offset(0, -1), end: Offset.zero)
-      .chain(CurveTween(
-        curve: offsetCurve,
-      ))
-      .animate(animation);
+  // final offsetAnimation = Tween<Offset>(begin: const Offset(0, -1), end: Offset.zero)
+  //     .chain(CurveTween(
+  //       curve: offsetCurve,
+  //     ))
+  //     .animate(animation);
 
   final opacityAnimation =
       Tween<double>(begin: 0, end: 1).chain(CurveTween(curve: opacityCurve)).animate(animation);

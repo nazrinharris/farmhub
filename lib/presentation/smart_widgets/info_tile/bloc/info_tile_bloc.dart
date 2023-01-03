@@ -14,20 +14,20 @@ class InfoTileBloc extends Bloc<InfoTileEvent, InfoTileState> {
   final InfoTileProps infoTileProps;
 
   InfoTileBloc({required this.infoTileProps}) : super(_Loading(infoTileProps)) {
-    on<_ToggleExpansion>(toggleExpansion);
-    on<_TriggerStateChange>(triggerStateChange);
+    on<ToggleExpansion>(toggleExpansion);
+    on<TriggerStateChange>(triggerStateChange);
   }
 
   FutureOr<void> toggleExpansion(
-    _ToggleExpansion event,
+    ToggleExpansion event,
     Emitter<InfoTileState> emit,
   ) {
-    final bool _isExpanded = !state.infoTileProps.isExpanded;
-    emit(state.copyWith.infoTileProps(isExpanded: _isExpanded));
+    final bool isExpanded = !state.infoTileProps.isExpanded;
+    emit(state.copyWith.infoTileProps(isExpanded: isExpanded));
   }
 
   FutureOr<void> triggerStateChange(
-    _TriggerStateChange event,
+    TriggerStateChange event,
     Emitter<InfoTileState> emit,
   ) {
     emit(state.copyWith(infoTileProps: event.infoTileProps));

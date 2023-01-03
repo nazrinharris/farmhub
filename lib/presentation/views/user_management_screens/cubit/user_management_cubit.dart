@@ -1,4 +1,3 @@
-import 'package:bloc/bloc.dart';
 import 'package:farmhub/core/auth/domain/entities/farmhub_user/farmhub_user.dart';
 import 'package:farmhub/core/auth/domain/i_auth_repository.dart';
 import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
@@ -14,7 +13,7 @@ part 'user_management_cubit.freezed.dart';
 class UserManagementCubit extends Cubit<UserManagementState> {
   final IAuthRepository authRepository;
 
-  UserManagementCubit({required this.authRepository}) : super(UserManagementState.initial());
+  UserManagementCubit({required this.authRepository}) : super(const UserManagementState.initial());
 
   Future<void> chooseUserType({
     required String uid,
@@ -37,7 +36,7 @@ class UserManagementCubit extends Cubit<UserManagementState> {
         progress.dismiss();
       },
       (r) {
-        print("UserType Change Success");
+        debugPrint("UserType Change Success");
         context.read<GlobalAuthCubit>().updateGlobalAuthCubit();
         Navigator.of(context).pop();
         progress.dismiss();

@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:farmhub/core/auth/domain/entities/farmhub_user/farmhub_user.dart';
 import 'package:farmhub/core/util/app_const.dart';
 import 'package:farmhub/core/errors/failures.dart';
@@ -17,7 +15,7 @@ final FarmhubUser tFarmhubUser = FarmhubUser(
   userType: UserType.regular,
 );
 
-final InternetConnectionFailure tInternetConnectionFailure = InternetConnectionFailure(
+const InternetConnectionFailure tInternetConnectionFailure = InternetConnectionFailure(
     code: ERROR_NO_INTERNET_CONNECTION,
     message: MESSAGE_NO_INTERNET_CONNECTION,
     stackTrace: StackTrace.empty);

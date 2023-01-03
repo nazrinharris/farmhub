@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:farmhub/locator.dart';
 import 'package:farmhub/presentation/global/cubit/global_ui_cubit.dart';
 import 'package:farmhub/presentation/shared_widgets/scroll_physics.dart';
@@ -47,10 +45,10 @@ class FavoritesScreen extends StatelessWidget {
                       await context.read<FavoritesScreenCubit>().getProduceFavorites();
                     },
                   ),
-                  SliverFavoritesHeader(),
-                  SliverFavoritesErrorCard(),
-                  SliverWhiteSpace(30),
-                  SliverFavoritesContent(),
+                  const SliverFavoritesHeader(),
+                  const SliverFavoritesErrorCard(),
+                  const SliverWhiteSpace(30),
+                  const SliverFavoritesContent(),
                 ],
               )),
         );
@@ -60,7 +58,7 @@ class FavoritesScreen extends StatelessWidget {
 }
 
 class SliverFavoritesErrorCard extends StatefulWidget {
-  SliverFavoritesErrorCard({Key? key}) : super(key: key);
+  const SliverFavoritesErrorCard({Key? key}) : super(key: key);
 
   @override
   State<SliverFavoritesErrorCard> createState() => _SliverFavoritesErrorCardState();
@@ -111,10 +109,10 @@ class SliverFavoritesHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverList(
         delegate: SliverChildListDelegate([
-      UITopPadding(),
-      UICustomVertical(60),
+      const UITopPadding(),
+      const UICustomVertical(60),
       Padding(
-        padding: EdgeInsets.symmetric(horizontal: 24),
+        padding: const EdgeInsets.symmetric(horizontal: 24),
         child: Text(
           "Favorites",
           style: Theme.of(context).textTheme.headline1!.copyWith(fontSize: 38),
@@ -125,7 +123,7 @@ class SliverFavoritesHeader extends StatelessWidget {
 }
 
 class SliverFavoritesContent extends StatefulWidget {
-  SliverFavoritesContent({Key? key}) : super(key: key);
+  const SliverFavoritesContent({Key? key}) : super(key: key);
 
   @override
   State<SliverFavoritesContent> createState() => _SliverFavoritesContentState();
@@ -147,10 +145,10 @@ class _SliverFavoritesContentState extends State<SliverFavoritesContent> {
           throw Exception("This state should have never been thrown");
         } else if (state is FSLoading) {
           // TODO: Consider making a seperate shared widget for this
-          return SliverLoadingIndicator();
+          return const SliverLoadingIndicator();
         } else if (state is FSComplete) {
           if (state.produceFavoritesList.isEmpty) {
-            return SliverEmptyFavorites();
+            return const SliverEmptyFavorites();
           } else {
             return SliverProduceFavoritesList(
               produceList: state.produceFavoritesList,
@@ -158,7 +156,7 @@ class _SliverFavoritesContentState extends State<SliverFavoritesContent> {
             );
           }
         } else if (state is FSError) {
-          print(state.failure);
+          debugPrint(state.failure.toString());
           return SliverError(
             failure: state.failure,
           );
@@ -223,9 +221,6 @@ class SliverProduceFavoritesList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    BorderSide borderSide =
-        BorderSide(color: Theme.of(context).colorScheme.primary.withOpacity(0.24));
-
     return SliverList(
       delegate: SliverChildBuilderDelegate(
         (context, index) {
@@ -270,7 +265,7 @@ class SliverEmptyFavorites extends StatelessWidget {
     return SliverList(
       delegate: SliverChildListDelegate(
         [
-          UICustomVertical(200),
+          const UICustomVertical(200),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -280,10 +275,10 @@ class SliverEmptyFavorites extends StatelessWidget {
                       color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
                     ),
               ),
-              Text("🥲", style: TextStyle(fontSize: 24))
+              const Text("🥲", style: TextStyle(fontSize: 24))
             ],
           ),
-          UIVerticalSpace6(),
+          const UIVerticalSpace6(),
           Align(
             alignment: Alignment.center,
             child: Text(

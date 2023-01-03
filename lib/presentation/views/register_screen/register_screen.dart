@@ -1,12 +1,13 @@
 import 'package:farmhub/locator.dart';
 import 'package:farmhub/presentation/shared_widgets/appbars.dart';
+import 'package:farmhub/presentation/shared_widgets/scroll_physics.dart';
 import 'package:farmhub/presentation/smart_widgets/primary_button_aware/primary_button_aware_cubit.dart';
 import 'package:farmhub/presentation/views/register_screen/bloc/register_screen_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:simple_animations/simple_animations.dart';
 
-import '../../shared_widgets/buttons.dart';
+import '../../shared_widgets/cards.dart';
 import '../../shared_widgets/ui_helpers.dart';
 import '../../smart_widgets/info_tile/bloc/info_tile_bloc.dart';
 import '../../smart_widgets/info_tile/info_tile.dart';
@@ -61,6 +62,7 @@ class _RegisterScreenState extends State<RegisterScreen> with AnimationMixin {
           body: Stack(
             children: [
               ListView(
+                physics: DefaultScrollPhysics,
                 children: [
                   ClipRRect(
                     borderRadius: BorderRadius.circular(16.0),
@@ -81,19 +83,27 @@ class _RegisterScreenState extends State<RegisterScreen> with AnimationMixin {
                     padding: EdgeInsets.symmetric(horizontal: 24),
                     child: RegisterFields(),
                   ),
-                  const UIVerticalSpace24(),
-                  Container(
-                    alignment: Alignment.center,
-                    child: ThirdPartySignUpButton(
-                      content: "Debug",
-                      onPressed: () {
-                        context.read<RegisterScreenBloc>().add(
-                              const RegisterScreenEvent.toggleInfoTileVisibility(),
-                            );
-                      },
-                      width: 100,
+                  const UIVerticalSpace14(),
+                  Align(
+                    child: Text(
+                      "or",
+                      style: Theme.of(context).textTheme.caption!.copyWith(fontSize: 14),
                     ),
                   ),
+                  // Container(
+                  //   alignment: Alignment.center,
+                  //   child: ThirdPartySignUpButton(
+                  //     content: "Debug",
+                  //     onPressed: () {
+                  //       context.read<RegisterScreenBloc>().add(
+                  //             const RegisterScreenEvent.toggleInfoTileVisibility(),
+                  //           );
+                  //     },
+                  //     width: 100,
+                  //   ),
+                  // ),
+                  const UIVerticalSpace30(),
+                  const PhoneAuthCard(type: PhoneAuthCardType.register),
                   const UICustomVertical(160)
                 ],
               ),
@@ -130,7 +140,6 @@ class _RegisterScreenState extends State<RegisterScreen> with AnimationMixin {
   }
 }
 
-// TODO: Improvement - Transfer the provision of validation methods from here, to Bloc.
 class RegisterFields extends StatefulWidget {
   const RegisterFields({Key? key}) : super(key: key);
 
@@ -251,7 +260,7 @@ class _BuildBottomButton extends StatelessWidget {
               context.read<RegisterScreenBloc>().add(RegisterScreenEvent.continuePressed(context));
             },
             firstPageButtonIcon: const Icon(
-              Icons.arrow_right,
+              Icons.arrow_forward,
               color: Colors.white,
               size: 24,
             ),

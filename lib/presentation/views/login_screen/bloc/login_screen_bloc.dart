@@ -1,5 +1,4 @@
-// ignore_for_file: prefer_const_constructors
-// TODO: Prefix const where needed after debugging
+// ignore_for_file: library_private_types_in_public_api
 
 import 'dart:async';
 
@@ -61,7 +60,7 @@ class LoginScreenBloc extends Bloc<LoginScreenEvent, LoginScreenState> {
     _LSEContinuePressed event,
     Emitter<LoginScreenState> emit,
   ) async {
-    print("continuePressed Started");
+    debugPrint("continuePressed Started");
 
     void updateInfoTile(InfoTileProps infoTileProps) {
       infoTileBloc.add(InfoTileEvent.triggerStateChange(infoTileProps));
@@ -70,7 +69,7 @@ class LoginScreenBloc extends Bloc<LoginScreenEvent, LoginScreenState> {
     emit(LoginScreenState.loading(state.props));
 
     // Enable AlwaysValidation for FirstTwoFieldsForm
-    firstTwoFieldsFormBloc.add(MultipleFieldsFormEvent.enableAlwaysValidation());
+    firstTwoFieldsFormBloc.add(const MultipleFieldsFormEvent.enableAlwaysValidation());
 
     // Access Status and check whether form is valid
     final isValid = firstTwoFieldsFormBloc.state.props.formKey.currentState!.validate();
@@ -80,7 +79,7 @@ class LoginScreenBloc extends Bloc<LoginScreenEvent, LoginScreenState> {
       final password = firstTwoFieldsFormBloc.state.props.secondFieldValue!;
 
       // UI Reaction
-      updateInfoTile(InfoTileProps(
+      updateInfoTile(const InfoTileProps(
         leadingText: "Sit tight, logging you in...",
         child: SizedBox.shrink(),
         isAbleToExpand: false,
@@ -106,7 +105,7 @@ class LoginScreenBloc extends Bloc<LoginScreenEvent, LoginScreenState> {
               leadingText: 'Login Success!',
               child: Text(
                 "With the UID: ${state.user.uid}}",
-                style: TextStyle(
+                style: const TextStyle(
                   color: Color(0xff343A1A),
                 ),
               ),
@@ -118,7 +117,7 @@ class LoginScreenBloc extends Bloc<LoginScreenEvent, LoginScreenState> {
             primaryButtonAwareCubit.triggerFirstPage();
             Navigator.of(event.context).pushNamedAndRemoveUntil('/nav_main', (route) => false);
           } else if (state is ASLoginError) {
-            print(state.code);
+            debugPrint(state.code);
             updateInfoTile(InfoTileProps(
               leadingText: 'Uh oh, Something\'s wrong!',
               child: Text(

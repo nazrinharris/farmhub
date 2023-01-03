@@ -10,8 +10,6 @@ import 'package:farmhub/presentation/views/user_management_screens/cubit/user_ma
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../register_screen/bloc/register_screen_bloc.dart';
-
 class ChooseUserTypeScreen extends StatelessWidget {
   const ChooseUserTypeScreen({Key? key}) : super(key: key);
 
@@ -23,7 +21,7 @@ class ChooseUserTypeScreen extends StatelessWidget {
         extendBodyBehindAppBar: true,
         extendBody: true,
         appBar: DefaultAppBar(
-          leadingIcon: Icon(Icons.close),
+          leadingIcon: const Icon(Icons.close),
           leadingOnPressed: () {
             Navigator.of(context).pop();
           },
@@ -81,7 +79,7 @@ class AccountTypeChooser extends StatelessWidget {
         children: [
           PrimaryButton(
             content: "Farmer",
-            buttonIcon: Icon(FarmhubIcons.farmhub_corn_icon, size: 18),
+            buttonIcon: const Icon(FarmhubIcons.farmhub_corn_icon, size: 18),
             onPressed: () async {
               await context.read<UserManagementCubit>().chooseUserType(
                     uid: context.read<GlobalAuthCubit>().state.farmhubUser!.uid,
@@ -94,7 +92,7 @@ class AccountTypeChooser extends StatelessWidget {
           const UIVerticalSpace14(),
           PrimaryButton(
             content: "Business",
-            buttonIcon: Icon(Icons.store, size: 21),
+            buttonIcon: const Icon(Icons.store, size: 21),
             onPressed: () async {
               await context.read<UserManagementCubit>().chooseUserType(
                     uid: context.read<GlobalAuthCubit>().state.farmhubUser!.uid,
@@ -107,7 +105,7 @@ class AccountTypeChooser extends StatelessWidget {
           const UIVerticalSpace14(),
           PrimaryButton(
             content: "Regular",
-            buttonIcon: Icon(Icons.face, size: 21),
+            buttonIcon: const Icon(Icons.face, size: 21),
             onPressed: () async {
               await context.read<UserManagementCubit>().chooseUserType(
                     uid: context.read<GlobalAuthCubit>().state.farmhubUser!.uid,

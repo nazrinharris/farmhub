@@ -1,10 +1,11 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:farmhub/presentation/smart_widgets/multiple_fields_form/multiple_fields_form_bloc.dart';
 import 'package:farmhub/presentation/smart_widgets/primary_button_aware/primary_button_aware_cubit.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../core/errors/failures.dart';
@@ -85,7 +86,9 @@ class AddNewPriceScreenBloc extends Bloc<AddNewPriceScreenEvent, AddNewPriceScre
       (produceList) {
         int index = 1;
         for (Produce produce in produceList) {
-          print(index.toString() + " " + produce.produceName + "   " + produce.produceId + "\n");
+          debugPrint(
+              // ignore: prefer_interpolation_to_compose_strings
+              index.toString() + " " + produce.produceName + "   " + produce.produceId + "\n");
           index++;
         }
 
@@ -101,16 +104,16 @@ class AddNewPriceScreenBloc extends Bloc<AddNewPriceScreenEvent, AddNewPriceScre
     _ANPEExecAddNewPrice event,
     Emitter<AddNewPriceScreenState> emit,
   ) async {
-    // Indicate Loading
-    emit(AddNewPriceScreenState.pricesLoading(props: state.props));
-    primaryButtonAwareCubit!.triggerLoading();
+    // Check validation
     multipleFieldsFormBloc!.add(enableAlwaysValidation);
     multipleFieldsFormBloc!.add(unfocusAllNodes);
-
-    // Check validation
     bool isValid = multipleFieldsFormBloc!.state.props.formKey.currentState!.validate();
 
     if (isValid) {
+      // Indicate Loading
+      emit(AddNewPriceScreenState.pricesLoading(props: state.props));
+      primaryButtonAwareCubit!.triggerLoading();
+
       // Start Adding Price
       final failureOrProduce = await produceManagerRepository.addNewPrice(
         produceId: event.produce.produceId,

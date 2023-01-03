@@ -5,25 +5,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cfb63b75-d493-4462-b837-27c0aa9e581d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/lib/presentation/views/phone_auth_screens/verify_code_screen.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/presentation/views/phone_auth_screens/verify_phone_screen.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/farmhub.iml" beforeDir="false" afterPath="$PROJECT_DIR$/farmhub.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/core/auth/data/datasources/auth_remote_datasource.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/auth/data/datasources/auth_remote_datasource.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/app_router.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app_router.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/core/auth/auth_bloc/auth_bloc.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/auth/auth_bloc/auth_bloc.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/core/auth/auth_bloc/auth_bloc.freezed.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/auth/auth_bloc/auth_bloc.freezed.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/core/auth/auth_bloc/auth_event.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/auth/auth_bloc/auth_event.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/core/auth/auth_bloc/auth_state.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/auth/auth_bloc/auth_state.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/locator.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/locator.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/shared_widgets/cards.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/shared_widgets/cards.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/views/debug/playground_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/views/debug/playground_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/views/login_screen/login_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/views/login_screen/login_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/views/register_screen/register_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/views/register_screen/register_screen.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[/Users/nazrinharris/.android/avd/Pixel_4_XL_API_32.avd]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[5940bd1d]" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="2Bax07jfhPXlYBgLOvGi2tRG9By" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1" />
     <panes>
@@ -37,6 +47,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="dart.analysis.tool.window.force.activate" value="true" />
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -59,5 +70,19 @@
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
     </layout>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>

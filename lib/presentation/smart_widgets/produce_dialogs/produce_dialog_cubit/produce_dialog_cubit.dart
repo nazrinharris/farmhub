@@ -3,13 +3,10 @@ import 'package:farmhub/core/auth/domain/i_auth_repository.dart';
 import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
 import 'package:farmhub/core/util/app_const.dart';
 import 'package:farmhub/core/errors/failures.dart';
-import 'package:farmhub/features/farm_shop_manager/data/repository/farm_shop_manager_repository.dart';
 import 'package:farmhub/features/farm_shop_manager/domain/entities/farm_shop/farm_shop.dart';
 import 'package:farmhub/features/produce_manager/domain/entities/produce/produce.dart';
 import 'package:farmhub/features/produce_manager/domain/i_produce_manager_repository.dart';
 import 'package:farmhub/presentation/global/cubit/global_ui_cubit.dart';
-import 'package:farmhub/presentation/shared_widgets/buttons.dart';
-import 'package:farmhub/presentation/shared_widgets/ui_helpers.dart';
 import 'package:farmhub/presentation/smart_widgets/produce_dialogs/app_dialogs.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -56,10 +53,8 @@ class ProduceDialogCubit extends Cubit<ProduceDialogState> {
   }) async {
     // Pop the confirmation dialog
     Navigator.of(context).pop();
-    print("Delete in progress!");
+    debugPrint("Delete in progress!");
     progressDialog.show();
-
-    await Future.delayed(Duration(seconds: 1));
 
     final failureOrDeleteProduce = await repository.deleteProduce(produce.produceId);
 
@@ -91,7 +86,7 @@ class ProduceDialogCubit extends Cubit<ProduceDialogState> {
     required BuildContext context,
     required NAlertDialog editProduceDialog,
   }) async {
-    print("Edit in Progress");
+    debugPrint("Edit in Progress");
     editProduceDialog.show(context, transitionType: DialogTransitionType.Bubble);
   }
 
@@ -112,8 +107,6 @@ class ProduceDialogCubit extends Cubit<ProduceDialogState> {
       // Pop the edit dialog
       Navigator.of(context).pop();
       progressDialog.show();
-
-      await Future.delayed(Duration(seconds: 2));
 
       final failureOrEditProduce = await repository.editProduce(
         produce.produceId,
@@ -285,7 +278,7 @@ class ProduceDialogCubit extends Cubit<ProduceDialogState> {
       formFocusNode!.unfocus();
 
       if (isValid) {
-        print("Sending to $email");
+        debugPrint("Sending to $email");
 
         await sendResetPasswordAndReact(
           context,
@@ -300,6 +293,7 @@ class ProduceDialogCubit extends Cubit<ProduceDialogState> {
 
       await sendResetPasswordAndReact(
         context,
+        //TODO: If the user doesn't have an email, they shouldn't be allowed to do this
         email,
         showErrorDialog: showErrorDialog,
         showSuccessDialog: showSuccessDialog,
@@ -309,7 +303,7 @@ class ProduceDialogCubit extends Cubit<ProduceDialogState> {
 
   Future<void> sendResetPasswordAndReact(
     BuildContext context,
-    String email, {
+    String? email, {
     required Function({
       required BuildContext context,
       required String title,
@@ -364,7 +358,7 @@ class ProduceDialogCubit extends Cubit<ProduceDialogState> {
 
     result.fold(
       (f) {
-        print(f);
+        debugPrint(f.toString());
         progress.dismiss();
         showErrorDialog(context: context, failure: f);
       },
@@ -390,7 +384,7 @@ class ProduceDialogCubit extends Cubit<ProduceDialogState> {
 
     result.fold(
       (f) {
-        print(f);
+        debugPrint(f.toString());
         progress.dismiss();
         showErrorDialog(context: context, failure: f);
       },

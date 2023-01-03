@@ -1,3 +1,5 @@
+// ignore_for_file: unused_import
+
 import 'package:farmhub/app_router.dart';
 import 'package:farmhub/core/util/misc.dart';
 import 'package:farmhub/locator.dart';
@@ -14,6 +16,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
+
+import '../../../features/produce_manager/domain/entities/produce/produce.dart';
 
 class AddNewPriceThirdScreen extends StatelessWidget {
   final AddNewPriceScreenArguments arguments;
@@ -45,7 +49,7 @@ class AddNewPriceThirdScreen extends StatelessWidget {
               resizeToAvoidBottomInset: false,
               extendBodyBehindAppBar: true,
               appBar: DefaultAppBar(
-                leadingIcon: Icon(Icons.close),
+                leadingIcon: const Icon(Icons.close),
                 leadingOnPressed: () {
                   popToMainOrProduceAndRefresh(context);
                 },
@@ -81,7 +85,7 @@ class AddNewPriceThirdScreen extends StatelessWidget {
                           ],
                         ),
                         const UIVerticalSpace14(),
-                        UIBorder(),
+                        const UIBorder(),
                         const UIVerticalSpace30(),
                         LargePriceChart(arguments.produce, LargePriceChartType.oneW)
                       ],
@@ -96,12 +100,11 @@ class AddNewPriceThirdScreen extends StatelessWidget {
                             width: 220,
                             content: 'Add another Price',
                             onPressed: () {
-                              popToAddNewPrice(context);
+                              popToAddNewPrice(context, arguments.produce);
                             },
                           ),
                           const UIVerticalSpace14(),
                           SecondaryButton(
-                            width: 180,
                             content: resolveBackToButton(context),
                             onPressed: () {
                               popToMainOrProduceAndRefresh(context);
@@ -195,31 +198,57 @@ class AddNewPriceThirdScreen extends StatelessWidget {
     }
   }
 
-  void popToAddNewPrice(BuildContext context) {
+  void popToAddNewPrice(BuildContext context, Produce produce) {
     switch (arguments.fromRoute) {
       case AddNewPriceFromRoute.fromAddNewPriceScreen:
         Navigator.of(context)
           ..pop()
-          ..pop();
+          ..pop()
+          ..pushNamed(
+            '/add_new_price_second',
+            arguments: AddNewPriceScreenArguments(
+              produce,
+              arguments.fromRoute,
+            ),
+          );
         break;
       case AddNewPriceFromRoute.fromAddNewPriceSearchScreen:
         Navigator.of(context)
           ..pop()
           ..pop()
-          ..pop();
+          ..pop()
+          ..pushNamed(
+            '/add_new_price_second',
+            arguments: AddNewPriceScreenArguments(
+              produce,
+              arguments.fromRoute,
+            ),
+          );
         break;
       case AddNewPriceFromRoute.fromMainBottomSheet:
         Navigator.of(context)
           ..pop()
           ..pop()
           ..pop()
-          ..pushNamed("/add_new_price");
+          ..pushNamed(
+            '/add_new_price_second',
+            arguments: AddNewPriceScreenArguments(
+              produce,
+              arguments.fromRoute,
+            ),
+          );
         break;
       case AddNewPriceFromRoute.fromProduceScreen:
         Navigator.of(context)
           ..pop()
           ..pop()
-          ..pushNamed("/add_new_price");
+          ..pushNamed(
+            '/add_new_price_second',
+            arguments: AddNewPriceScreenArguments(
+              produce,
+              arguments.fromRoute,
+            ),
+          );
         break;
     }
   }

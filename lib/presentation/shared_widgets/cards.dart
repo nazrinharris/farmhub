@@ -6,8 +6,6 @@ import 'package:farmhub/presentation/shared_widgets/ui_helpers.dart';
 import 'package:farmhub/presentation/themes/farmhub_theme.dart';
 import 'package:flutter/material.dart';
 
-import '../../features/produce_manager/domain/entities/price/price.dart';
-
 Widget determineErrorCard(String errorCode) {
   if (errorCode == ERROR_NO_INTERNET_CONNECTION) {
     return const ErrorNoInternetCard();
@@ -68,17 +66,21 @@ class ErrorCard extends StatelessWidget {
         color: Theme.of(context).colorScheme.error.withOpacity(0.15),
       ),
       child: Row(
+        mainAxisSize: MainAxisSize.min,
         children: [
           icon,
           const UIHorizontalSpace14(),
           Flexible(
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   mainContent,
                   style: Theme.of(context).textTheme.bodyText1!.copyWith(
                         color: Theme.of(context).colorScheme.error,
+                        fontWeight: FontWeight.bold,
                       ),
+                  textAlign: TextAlign.start,
                 ),
                 if (subContent != null) const UIVerticalSpace14(),
                 if (subContent != null)
@@ -149,7 +151,7 @@ class CurrentPriceCard extends StatelessWidget {
           ),
           const UIVerticalSpace14(),
           Text(
-            "RM${produce.currentProducePrice["price"]}",
+            "RM${roundNum(produce.currentProducePrice["price"], 2)}",
             style: Theme.of(context).textTheme.bodyText2!.copyWith(
                   color: resolveTextColor(context),
                 ),
@@ -269,7 +271,7 @@ class GreyCard extends StatelessWidget {
           ),
           const UIVerticalSpace14(),
           Text(
-            "RM${price}",
+            "RM$price",
             style: Theme.of(context).textTheme.bodyText2,
           ),
         ],
@@ -279,10 +281,68 @@ class GreyCard extends StatelessWidget {
 }
 
 class WarningCard extends StatelessWidget {
+  final EdgeInsetsGeometry? margin;
+  final Icon? icon;
+  final String mainContent;
+  final String? subContent;
+
+  const WarningCard({
+    Key? key,
+    this.margin,
+    this.icon,
+    required this.mainContent,
+    this.subContent,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: margin,
+      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(16),
+        color: Theme.of(context).extension<ExtendedColors>()!.warning!.withOpacity(0.4),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          if (icon != null) icon!,
+          if (icon != null) const UIHorizontalSpace14(),
+          Flexible(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  mainContent,
+                  style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                        color: Theme.of(context).extension<ExtendedColors>()!.onWarning!,
+                        fontWeight: FontWeight.bold,
+                      ),
+                  textAlign: TextAlign.start,
+                ),
+                if (subContent != null) const UIVerticalSpace14(),
+                if (subContent != null)
+                  Text(
+                    subContent!,
+                    style: Theme.of(context).textTheme.caption!.copyWith(
+                          color: Theme.of(context).extension<ExtendedColors>()!.onWarning!,
+                          fontSize: 13,
+                        ),
+                  )
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class ProduceWarningCard extends StatelessWidget {
   final Produce produce;
   final EdgeInsetsGeometry? margin;
 
-  const WarningCard(
+  const ProduceWarningCard(
     this.produce, {
     Key? key,
     this.margin,
@@ -308,5 +368,79 @@ class WarningCard extends StatelessWidget {
         textAlign: TextAlign.center,
       ),
     );
+  }
+}
+
+enum PhoneAuthCardType { login, register }
+
+class PhoneAuthCard extends StatelessWidget {
+  final EdgeInsetsGeometry? margin;
+  final PhoneAuthCardType type;
+
+  const PhoneAuthCard({
+    this.margin,
+    required this.type,
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: margin ?? const EdgeInsets.symmetric(horizontal: 14),
+      child: Material(
+        elevation: 7,
+        shadowColor: Theme.of(context).colorScheme.primary.withOpacity(0.18),
+        borderRadius: BorderRadius.circular(16),
+        color: Theme.of(context).extension<ExtendedColors>()!.onBackgroundPale,
+        child: InkWell(
+          borderRadius: BorderRadius.circular(16),
+          onTap: () {
+            resolveOnTap(context);
+          },
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const Icon(Icons.phone),
+                    const UIHorizontalSpace14(),
+                    Flexible(
+                      child: Column(
+                        children: [
+                          Text(
+                            returnText(),
+                            style: Theme.of(context).textTheme.bodyText1,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                const Icon(Icons.arrow_right_alt),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  String returnText() {
+    if (type == PhoneAuthCardType.login) {
+      return "Login with Phone Number";
+    } else if (type == PhoneAuthCardType.register) {
+      return "Register with Phone Number";
+    } else {
+      return "Error";
+    }
+  }
+
+  void resolveOnTap(BuildContext context) {
+    FocusScope.of(context).unfocus();
+    Navigator.of(context).pushNamed("/verify_phone");
   }
 }

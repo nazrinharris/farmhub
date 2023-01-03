@@ -111,7 +111,7 @@ class _SearchProduceListState extends State<SearchProduceList> {
     widget.scrollController.addListener(() {
       if (widget.scrollController.offset >= widget.scrollController.position.maxScrollExtent &&
           !widget.scrollController.position.outOfRange) {
-        print("Reached the end of the list!");
+        debugPrint("Reached the end of the list!");
         context.read<SearchScreenBloc>().add(const SearchScreenEvent.getNextTenProduce());
       }
     });
@@ -159,6 +159,15 @@ class _SearchProduceListState extends State<SearchProduceList> {
                     return ProduceListCard(
                       index,
                       state.props.produceList[index],
+                      onTap: () {
+                        Navigator.of(context).pushNamed(
+                          '/add_new_price_second',
+                          arguments: AddNewPriceScreenArguments(
+                            state.props.produceList[index],
+                            AddNewPriceFromRoute.fromAddNewPriceSearchScreen,
+                          ),
+                        );
+                      },
                       disableLongPress: true,
                     );
                   }
@@ -220,7 +229,7 @@ class _SearchProduceListState extends State<SearchProduceList> {
                             style:
                                 Theme.of(context).textTheme.bodyText1!.copyWith(color: Colors.red),
                           ),
-                          UIVerticalSpace14(),
+                          const UIVerticalSpace14(),
                           Text(
                             "Scroll to retry",
                             style: Theme.of(context).textTheme.caption,

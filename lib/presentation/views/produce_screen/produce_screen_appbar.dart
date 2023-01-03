@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:farmhub/app_router.dart';
 import 'package:farmhub/features/produce_manager/domain/entities/produce/produce.dart';
 import 'package:farmhub/locator.dart';
@@ -74,9 +72,9 @@ class ProduceScreenAppBar extends StatelessWidget implements PreferredSizeWidget
               value: 0,
               child: Row(
                 children: [
-                  Icon(Icons.edit, size: 20),
+                  const Icon(Icons.edit, size: 20),
                   Padding(
-                    padding: EdgeInsets.only(left: 14),
+                    padding: const EdgeInsets.only(left: 14),
                     child: Text("Edit Produce", style: Theme.of(context).textTheme.bodyText1),
                   ),
                 ],
@@ -92,7 +90,7 @@ class ProduceScreenAppBar extends StatelessWidget implements PreferredSizeWidget
                     color: Theme.of(context).colorScheme.primary,
                   ),
                   Padding(
-                    padding: EdgeInsets.only(left: 14),
+                    padding: const EdgeInsets.only(left: 14),
                     child: Text(
                       "Add Price",
                       style: Theme.of(context).textTheme.bodyText1!.copyWith(
@@ -113,7 +111,7 @@ class ProduceScreenAppBar extends StatelessWidget implements PreferredSizeWidget
                     color: Theme.of(context).colorScheme.error,
                   ),
                   Padding(
-                    padding: EdgeInsets.only(left: 14),
+                    padding: const EdgeInsets.only(left: 14),
                     child: Text(
                       "Delete Produce",
                       style: Theme.of(context).textTheme.bodyText1!.copyWith(

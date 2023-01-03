@@ -32,41 +32,45 @@ FarmhubUser _$FarmhubUserFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$FarmhubUser {
   String get uid => throw _privateConstructorUsedError;
-  String get email => throw _privateConstructorUsedError;
+  String? get email => throw _privateConstructorUsedError;
   String get username => throw _privateConstructorUsedError;
   String get createdAt => throw _privateConstructorUsedError;
   List<ProduceFavorite> get produceFavoritesList =>
       throw _privateConstructorUsedError;
   UserType get userType => throw _privateConstructorUsedError;
+  PhoneNumber? get phoneNumber => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(
             String uid,
-            String email,
+            String? email,
             String username,
             String createdAt,
             List<ProduceFavorite> produceFavoritesList,
-            UserType userType)
+            UserType userType,
+            PhoneNumber? phoneNumber)
         $default, {
     required TResult Function(
             String uid,
-            String email,
+            String? email,
             String username,
             String createdAt,
             List<ProduceFavorite> produceFavoritesList,
             UserType userType,
             List<Farm> userFarms,
-            List<Shop> userShops)
+            List<Shop> userShops,
+            PhoneNumber? phoneNumber)
         farmer,
     required TResult Function(
             String uid,
-            String email,
+            String? email,
             String username,
             String createdAt,
             List<ProduceFavorite> produceFavoritesList,
             UserType userType,
             List<Farm> userFarms,
-            List<Shop> userShops)
+            List<Shop> userShops,
+            PhoneNumber? phoneNumber)
         business,
   }) =>
       throw _privateConstructorUsedError;
@@ -74,31 +78,34 @@ mixin _$FarmhubUser {
   TResult? whenOrNull<TResult extends Object?>(
     TResult Function(
             String uid,
-            String email,
+            String? email,
             String username,
             String createdAt,
             List<ProduceFavorite> produceFavoritesList,
-            UserType userType)?
+            UserType userType,
+            PhoneNumber? phoneNumber)?
         $default, {
     TResult Function(
             String uid,
-            String email,
+            String? email,
             String username,
             String createdAt,
             List<ProduceFavorite> produceFavoritesList,
             UserType userType,
             List<Farm> userFarms,
-            List<Shop> userShops)?
+            List<Shop> userShops,
+            PhoneNumber? phoneNumber)?
         farmer,
     TResult Function(
             String uid,
-            String email,
+            String? email,
             String username,
             String createdAt,
             List<ProduceFavorite> produceFavoritesList,
             UserType userType,
             List<Farm> userFarms,
-            List<Shop> userShops)?
+            List<Shop> userShops,
+            PhoneNumber? phoneNumber)?
         business,
   }) =>
       throw _privateConstructorUsedError;
@@ -106,31 +113,34 @@ mixin _$FarmhubUser {
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(
             String uid,
-            String email,
+            String? email,
             String username,
             String createdAt,
             List<ProduceFavorite> produceFavoritesList,
-            UserType userType)?
+            UserType userType,
+            PhoneNumber? phoneNumber)?
         $default, {
     TResult Function(
             String uid,
-            String email,
+            String? email,
             String username,
             String createdAt,
             List<ProduceFavorite> produceFavoritesList,
             UserType userType,
             List<Farm> userFarms,
-            List<Shop> userShops)?
+            List<Shop> userShops,
+            PhoneNumber? phoneNumber)?
         farmer,
     TResult Function(
             String uid,
-            String email,
+            String? email,
             String username,
             String createdAt,
             List<ProduceFavorite> produceFavoritesList,
             UserType userType,
             List<Farm> userFarms,
-            List<Shop> userShops)?
+            List<Shop> userShops,
+            PhoneNumber? phoneNumber)?
         business,
     required TResult orElse(),
   }) =>
@@ -170,11 +180,12 @@ abstract class $FarmhubUserCopyWith<$Res> {
       _$FarmhubUserCopyWithImpl<$Res>;
   $Res call(
       {String uid,
-      String email,
+      String? email,
       String username,
       String createdAt,
       List<ProduceFavorite> produceFavoritesList,
-      UserType userType});
+      UserType userType,
+      PhoneNumber? phoneNumber});
 }
 
 /// @nodoc
@@ -193,6 +204,7 @@ class _$FarmhubUserCopyWithImpl<$Res> implements $FarmhubUserCopyWith<$Res> {
     Object? createdAt = freezed,
     Object? produceFavoritesList = freezed,
     Object? userType = freezed,
+    Object? phoneNumber = freezed,
   }) {
     return _then(_value.copyWith(
       uid: uid == freezed
@@ -202,7 +214,7 @@ class _$FarmhubUserCopyWithImpl<$Res> implements $FarmhubUserCopyWith<$Res> {
       email: email == freezed
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       username: username == freezed
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
@@ -219,6 +231,10 @@ class _$FarmhubUserCopyWithImpl<$Res> implements $FarmhubUserCopyWith<$Res> {
           ? _value.userType
           : userType // ignore: cast_nullable_to_non_nullable
               as UserType,
+      phoneNumber: phoneNumber == freezed
+          ? _value.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
+              as PhoneNumber?,
     ));
   }
 }
@@ -232,11 +248,12 @@ abstract class _$$_FarmhubUserCopyWith<$Res>
   @override
   $Res call(
       {String uid,
-      String email,
+      String? email,
       String username,
       String createdAt,
       List<ProduceFavorite> produceFavoritesList,
-      UserType userType});
+      UserType userType,
+      PhoneNumber? phoneNumber});
 }
 
 /// @nodoc
@@ -257,6 +274,7 @@ class __$$_FarmhubUserCopyWithImpl<$Res> extends _$FarmhubUserCopyWithImpl<$Res>
     Object? createdAt = freezed,
     Object? produceFavoritesList = freezed,
     Object? userType = freezed,
+    Object? phoneNumber = freezed,
   }) {
     return _then(_$_FarmhubUser(
       uid: uid == freezed
@@ -266,7 +284,7 @@ class __$$_FarmhubUserCopyWithImpl<$Res> extends _$FarmhubUserCopyWithImpl<$Res>
       email: email == freezed
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       username: username == freezed
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
@@ -283,6 +301,10 @@ class __$$_FarmhubUserCopyWithImpl<$Res> extends _$FarmhubUserCopyWithImpl<$Res>
           ? _value.userType
           : userType // ignore: cast_nullable_to_non_nullable
               as UserType,
+      phoneNumber: phoneNumber == freezed
+          ? _value.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
+              as PhoneNumber?,
     ));
   }
 }
@@ -298,6 +320,7 @@ class _$_FarmhubUser extends _FarmhubUser {
       required this.createdAt,
       required this.produceFavoritesList,
       required this.userType,
+      this.phoneNumber,
       final String? $type})
       : $type = $type ?? 'default',
         super._();
@@ -308,7 +331,7 @@ class _$_FarmhubUser extends _FarmhubUser {
   @override
   final String uid;
   @override
-  final String email;
+  final String? email;
   @override
   final String username;
   @override
@@ -317,13 +340,15 @@ class _$_FarmhubUser extends _FarmhubUser {
   final List<ProduceFavorite> produceFavoritesList;
   @override
   final UserType userType;
+  @override
+  final PhoneNumber? phoneNumber;
 
   @JsonKey(name: 'runtimeType')
   final String $type;
 
   @override
   String toString() {
-    return 'FarmhubUser(uid: $uid, email: $email, username: $username, createdAt: $createdAt, produceFavoritesList: $produceFavoritesList, userType: $userType)';
+    return 'FarmhubUser(uid: $uid, email: $email, username: $username, createdAt: $createdAt, produceFavoritesList: $produceFavoritesList, userType: $userType, phoneNumber: $phoneNumber)';
   }
 
   @override
@@ -337,7 +362,9 @@ class _$_FarmhubUser extends _FarmhubUser {
             const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
             const DeepCollectionEquality()
                 .equals(other.produceFavoritesList, produceFavoritesList) &&
-            const DeepCollectionEquality().equals(other.userType, userType));
+            const DeepCollectionEquality().equals(other.userType, userType) &&
+            const DeepCollectionEquality()
+                .equals(other.phoneNumber, phoneNumber));
   }
 
   @JsonKey(ignore: true)
@@ -349,7 +376,8 @@ class _$_FarmhubUser extends _FarmhubUser {
       const DeepCollectionEquality().hash(username),
       const DeepCollectionEquality().hash(createdAt),
       const DeepCollectionEquality().hash(produceFavoritesList),
-      const DeepCollectionEquality().hash(userType));
+      const DeepCollectionEquality().hash(userType),
+      const DeepCollectionEquality().hash(phoneNumber));
 
   @JsonKey(ignore: true)
   @override
@@ -361,35 +389,38 @@ class _$_FarmhubUser extends _FarmhubUser {
   TResult when<TResult extends Object?>(
     TResult Function(
             String uid,
-            String email,
+            String? email,
             String username,
             String createdAt,
             List<ProduceFavorite> produceFavoritesList,
-            UserType userType)
+            UserType userType,
+            PhoneNumber? phoneNumber)
         $default, {
     required TResult Function(
             String uid,
-            String email,
+            String? email,
             String username,
             String createdAt,
             List<ProduceFavorite> produceFavoritesList,
             UserType userType,
             List<Farm> userFarms,
-            List<Shop> userShops)
+            List<Shop> userShops,
+            PhoneNumber? phoneNumber)
         farmer,
     required TResult Function(
             String uid,
-            String email,
+            String? email,
             String username,
             String createdAt,
             List<ProduceFavorite> produceFavoritesList,
             UserType userType,
             List<Farm> userFarms,
-            List<Shop> userShops)
+            List<Shop> userShops,
+            PhoneNumber? phoneNumber)
         business,
   }) {
-    return $default(
-        uid, email, username, createdAt, produceFavoritesList, userType);
+    return $default(uid, email, username, createdAt, produceFavoritesList,
+        userType, phoneNumber);
   }
 
   @override
@@ -397,35 +428,38 @@ class _$_FarmhubUser extends _FarmhubUser {
   TResult? whenOrNull<TResult extends Object?>(
     TResult Function(
             String uid,
-            String email,
+            String? email,
             String username,
             String createdAt,
             List<ProduceFavorite> produceFavoritesList,
-            UserType userType)?
+            UserType userType,
+            PhoneNumber? phoneNumber)?
         $default, {
     TResult Function(
             String uid,
-            String email,
+            String? email,
             String username,
             String createdAt,
             List<ProduceFavorite> produceFavoritesList,
             UserType userType,
             List<Farm> userFarms,
-            List<Shop> userShops)?
+            List<Shop> userShops,
+            PhoneNumber? phoneNumber)?
         farmer,
     TResult Function(
             String uid,
-            String email,
+            String? email,
             String username,
             String createdAt,
             List<ProduceFavorite> produceFavoritesList,
             UserType userType,
             List<Farm> userFarms,
-            List<Shop> userShops)?
+            List<Shop> userShops,
+            PhoneNumber? phoneNumber)?
         business,
   }) {
-    return $default?.call(
-        uid, email, username, createdAt, produceFavoritesList, userType);
+    return $default?.call(uid, email, username, createdAt, produceFavoritesList,
+        userType, phoneNumber);
   }
 
   @override
@@ -433,37 +467,40 @@ class _$_FarmhubUser extends _FarmhubUser {
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(
             String uid,
-            String email,
+            String? email,
             String username,
             String createdAt,
             List<ProduceFavorite> produceFavoritesList,
-            UserType userType)?
+            UserType userType,
+            PhoneNumber? phoneNumber)?
         $default, {
     TResult Function(
             String uid,
-            String email,
+            String? email,
             String username,
             String createdAt,
             List<ProduceFavorite> produceFavoritesList,
             UserType userType,
             List<Farm> userFarms,
-            List<Shop> userShops)?
+            List<Shop> userShops,
+            PhoneNumber? phoneNumber)?
         farmer,
     TResult Function(
             String uid,
-            String email,
+            String? email,
             String username,
             String createdAt,
             List<ProduceFavorite> produceFavoritesList,
             UserType userType,
             List<Farm> userFarms,
-            List<Shop> userShops)?
+            List<Shop> userShops,
+            PhoneNumber? phoneNumber)?
         business,
     required TResult orElse(),
   }) {
     if ($default != null) {
-      return $default(
-          uid, email, username, createdAt, produceFavoritesList, userType);
+      return $default(uid, email, username, createdAt, produceFavoritesList,
+          userType, phoneNumber);
     }
     return orElse();
   }
@@ -511,11 +548,12 @@ class _$_FarmhubUser extends _FarmhubUser {
 abstract class _FarmhubUser extends FarmhubUser {
   factory _FarmhubUser(
       {required final String uid,
-      required final String email,
+      required final String? email,
       required final String username,
       required final String createdAt,
       required final List<ProduceFavorite> produceFavoritesList,
-      required final UserType userType}) = _$_FarmhubUser;
+      required final UserType userType,
+      final PhoneNumber? phoneNumber}) = _$_FarmhubUser;
   _FarmhubUser._() : super._();
 
   factory _FarmhubUser.fromJson(Map<String, dynamic> json) =
@@ -524,7 +562,7 @@ abstract class _FarmhubUser extends FarmhubUser {
   @override
   String get uid => throw _privateConstructorUsedError;
   @override
-  String get email => throw _privateConstructorUsedError;
+  String? get email => throw _privateConstructorUsedError;
   @override
   String get username => throw _privateConstructorUsedError;
   @override
@@ -534,6 +572,8 @@ abstract class _FarmhubUser extends FarmhubUser {
       throw _privateConstructorUsedError;
   @override
   UserType get userType => throw _privateConstructorUsedError;
+  @override
+  PhoneNumber? get phoneNumber => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_FarmhubUserCopyWith<_$_FarmhubUser> get copyWith =>
@@ -549,13 +589,14 @@ abstract class _$$FarmhubUserFarmerCopyWith<$Res>
   @override
   $Res call(
       {String uid,
-      String email,
+      String? email,
       String username,
       String createdAt,
       List<ProduceFavorite> produceFavoritesList,
       UserType userType,
       List<Farm> userFarms,
-      List<Shop> userShops});
+      List<Shop> userShops,
+      PhoneNumber? phoneNumber});
 }
 
 /// @nodoc
@@ -579,6 +620,7 @@ class __$$FarmhubUserFarmerCopyWithImpl<$Res>
     Object? userType = freezed,
     Object? userFarms = freezed,
     Object? userShops = freezed,
+    Object? phoneNumber = freezed,
   }) {
     return _then(_$FarmhubUserFarmer(
       uid: uid == freezed
@@ -588,7 +630,7 @@ class __$$FarmhubUserFarmerCopyWithImpl<$Res>
       email: email == freezed
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       username: username == freezed
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
@@ -613,6 +655,10 @@ class __$$FarmhubUserFarmerCopyWithImpl<$Res>
           ? _value.userShops
           : userShops // ignore: cast_nullable_to_non_nullable
               as List<Shop>,
+      phoneNumber: phoneNumber == freezed
+          ? _value.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
+              as PhoneNumber?,
     ));
   }
 }
@@ -630,6 +676,7 @@ class _$FarmhubUserFarmer extends FarmhubUserFarmer {
       required this.userType,
       required this.userFarms,
       required this.userShops,
+      this.phoneNumber,
       final String? $type})
       : $type = $type ?? 'farmer',
         super._();
@@ -640,7 +687,7 @@ class _$FarmhubUserFarmer extends FarmhubUserFarmer {
   @override
   final String uid;
   @override
-  final String email;
+  final String? email;
   @override
   final String username;
   @override
@@ -653,13 +700,15 @@ class _$FarmhubUserFarmer extends FarmhubUserFarmer {
   final List<Farm> userFarms;
   @override
   final List<Shop> userShops;
+  @override
+  final PhoneNumber? phoneNumber;
 
   @JsonKey(name: 'runtimeType')
   final String $type;
 
   @override
   String toString() {
-    return 'FarmhubUser.farmer(uid: $uid, email: $email, username: $username, createdAt: $createdAt, produceFavoritesList: $produceFavoritesList, userType: $userType, userFarms: $userFarms, userShops: $userShops)';
+    return 'FarmhubUser.farmer(uid: $uid, email: $email, username: $username, createdAt: $createdAt, produceFavoritesList: $produceFavoritesList, userType: $userType, userFarms: $userFarms, userShops: $userShops, phoneNumber: $phoneNumber)';
   }
 
   @override
@@ -675,7 +724,9 @@ class _$FarmhubUserFarmer extends FarmhubUserFarmer {
                 .equals(other.produceFavoritesList, produceFavoritesList) &&
             const DeepCollectionEquality().equals(other.userType, userType) &&
             const DeepCollectionEquality().equals(other.userFarms, userFarms) &&
-            const DeepCollectionEquality().equals(other.userShops, userShops));
+            const DeepCollectionEquality().equals(other.userShops, userShops) &&
+            const DeepCollectionEquality()
+                .equals(other.phoneNumber, phoneNumber));
   }
 
   @JsonKey(ignore: true)
@@ -689,7 +740,8 @@ class _$FarmhubUserFarmer extends FarmhubUserFarmer {
       const DeepCollectionEquality().hash(produceFavoritesList),
       const DeepCollectionEquality().hash(userType),
       const DeepCollectionEquality().hash(userFarms),
-      const DeepCollectionEquality().hash(userShops));
+      const DeepCollectionEquality().hash(userShops),
+      const DeepCollectionEquality().hash(phoneNumber));
 
   @JsonKey(ignore: true)
   @override
@@ -701,35 +753,38 @@ class _$FarmhubUserFarmer extends FarmhubUserFarmer {
   TResult when<TResult extends Object?>(
     TResult Function(
             String uid,
-            String email,
+            String? email,
             String username,
             String createdAt,
             List<ProduceFavorite> produceFavoritesList,
-            UserType userType)
+            UserType userType,
+            PhoneNumber? phoneNumber)
         $default, {
     required TResult Function(
             String uid,
-            String email,
+            String? email,
             String username,
             String createdAt,
             List<ProduceFavorite> produceFavoritesList,
             UserType userType,
             List<Farm> userFarms,
-            List<Shop> userShops)
+            List<Shop> userShops,
+            PhoneNumber? phoneNumber)
         farmer,
     required TResult Function(
             String uid,
-            String email,
+            String? email,
             String username,
             String createdAt,
             List<ProduceFavorite> produceFavoritesList,
             UserType userType,
             List<Farm> userFarms,
-            List<Shop> userShops)
+            List<Shop> userShops,
+            PhoneNumber? phoneNumber)
         business,
   }) {
     return farmer(uid, email, username, createdAt, produceFavoritesList,
-        userType, userFarms, userShops);
+        userType, userFarms, userShops, phoneNumber);
   }
 
   @override
@@ -737,35 +792,38 @@ class _$FarmhubUserFarmer extends FarmhubUserFarmer {
   TResult? whenOrNull<TResult extends Object?>(
     TResult Function(
             String uid,
-            String email,
+            String? email,
             String username,
             String createdAt,
             List<ProduceFavorite> produceFavoritesList,
-            UserType userType)?
+            UserType userType,
+            PhoneNumber? phoneNumber)?
         $default, {
     TResult Function(
             String uid,
-            String email,
+            String? email,
             String username,
             String createdAt,
             List<ProduceFavorite> produceFavoritesList,
             UserType userType,
             List<Farm> userFarms,
-            List<Shop> userShops)?
+            List<Shop> userShops,
+            PhoneNumber? phoneNumber)?
         farmer,
     TResult Function(
             String uid,
-            String email,
+            String? email,
             String username,
             String createdAt,
             List<ProduceFavorite> produceFavoritesList,
             UserType userType,
             List<Farm> userFarms,
-            List<Shop> userShops)?
+            List<Shop> userShops,
+            PhoneNumber? phoneNumber)?
         business,
   }) {
     return farmer?.call(uid, email, username, createdAt, produceFavoritesList,
-        userType, userFarms, userShops);
+        userType, userFarms, userShops, phoneNumber);
   }
 
   @override
@@ -773,37 +831,40 @@ class _$FarmhubUserFarmer extends FarmhubUserFarmer {
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(
             String uid,
-            String email,
+            String? email,
             String username,
             String createdAt,
             List<ProduceFavorite> produceFavoritesList,
-            UserType userType)?
+            UserType userType,
+            PhoneNumber? phoneNumber)?
         $default, {
     TResult Function(
             String uid,
-            String email,
+            String? email,
             String username,
             String createdAt,
             List<ProduceFavorite> produceFavoritesList,
             UserType userType,
             List<Farm> userFarms,
-            List<Shop> userShops)?
+            List<Shop> userShops,
+            PhoneNumber? phoneNumber)?
         farmer,
     TResult Function(
             String uid,
-            String email,
+            String? email,
             String username,
             String createdAt,
             List<ProduceFavorite> produceFavoritesList,
             UserType userType,
             List<Farm> userFarms,
-            List<Shop> userShops)?
+            List<Shop> userShops,
+            PhoneNumber? phoneNumber)?
         business,
     required TResult orElse(),
   }) {
     if (farmer != null) {
       return farmer(uid, email, username, createdAt, produceFavoritesList,
-          userType, userFarms, userShops);
+          userType, userFarms, userShops, phoneNumber);
     }
     return orElse();
   }
@@ -851,13 +912,14 @@ class _$FarmhubUserFarmer extends FarmhubUserFarmer {
 abstract class FarmhubUserFarmer extends FarmhubUser {
   const factory FarmhubUserFarmer(
       {required final String uid,
-      required final String email,
+      required final String? email,
       required final String username,
       required final String createdAt,
       required final List<ProduceFavorite> produceFavoritesList,
       required final UserType userType,
       required final List<Farm> userFarms,
-      required final List<Shop> userShops}) = _$FarmhubUserFarmer;
+      required final List<Shop> userShops,
+      final PhoneNumber? phoneNumber}) = _$FarmhubUserFarmer;
   const FarmhubUserFarmer._() : super._();
 
   factory FarmhubUserFarmer.fromJson(Map<String, dynamic> json) =
@@ -866,7 +928,7 @@ abstract class FarmhubUserFarmer extends FarmhubUser {
   @override
   String get uid => throw _privateConstructorUsedError;
   @override
-  String get email => throw _privateConstructorUsedError;
+  String? get email => throw _privateConstructorUsedError;
   @override
   String get username => throw _privateConstructorUsedError;
   @override
@@ -878,6 +940,8 @@ abstract class FarmhubUserFarmer extends FarmhubUser {
   UserType get userType => throw _privateConstructorUsedError;
   List<Farm> get userFarms => throw _privateConstructorUsedError;
   List<Shop> get userShops => throw _privateConstructorUsedError;
+  @override
+  PhoneNumber? get phoneNumber => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$FarmhubUserFarmerCopyWith<_$FarmhubUserFarmer> get copyWith =>
@@ -893,13 +957,14 @@ abstract class _$$FarmhubUserBusinessCopyWith<$Res>
   @override
   $Res call(
       {String uid,
-      String email,
+      String? email,
       String username,
       String createdAt,
       List<ProduceFavorite> produceFavoritesList,
       UserType userType,
       List<Farm> userFarms,
-      List<Shop> userShops});
+      List<Shop> userShops,
+      PhoneNumber? phoneNumber});
 }
 
 /// @nodoc
@@ -923,6 +988,7 @@ class __$$FarmhubUserBusinessCopyWithImpl<$Res>
     Object? userType = freezed,
     Object? userFarms = freezed,
     Object? userShops = freezed,
+    Object? phoneNumber = freezed,
   }) {
     return _then(_$FarmhubUserBusiness(
       uid: uid == freezed
@@ -932,7 +998,7 @@ class __$$FarmhubUserBusinessCopyWithImpl<$Res>
       email: email == freezed
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       username: username == freezed
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
@@ -957,6 +1023,10 @@ class __$$FarmhubUserBusinessCopyWithImpl<$Res>
           ? _value.userShops
           : userShops // ignore: cast_nullable_to_non_nullable
               as List<Shop>,
+      phoneNumber: phoneNumber == freezed
+          ? _value.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
+              as PhoneNumber?,
     ));
   }
 }
@@ -974,6 +1044,7 @@ class _$FarmhubUserBusiness extends FarmhubUserBusiness {
       required this.userType,
       required this.userFarms,
       required this.userShops,
+      this.phoneNumber,
       final String? $type})
       : $type = $type ?? 'business',
         super._();
@@ -984,7 +1055,7 @@ class _$FarmhubUserBusiness extends FarmhubUserBusiness {
   @override
   final String uid;
   @override
-  final String email;
+  final String? email;
   @override
   final String username;
   @override
@@ -997,13 +1068,15 @@ class _$FarmhubUserBusiness extends FarmhubUserBusiness {
   final List<Farm> userFarms;
   @override
   final List<Shop> userShops;
+  @override
+  final PhoneNumber? phoneNumber;
 
   @JsonKey(name: 'runtimeType')
   final String $type;
 
   @override
   String toString() {
-    return 'FarmhubUser.business(uid: $uid, email: $email, username: $username, createdAt: $createdAt, produceFavoritesList: $produceFavoritesList, userType: $userType, userFarms: $userFarms, userShops: $userShops)';
+    return 'FarmhubUser.business(uid: $uid, email: $email, username: $username, createdAt: $createdAt, produceFavoritesList: $produceFavoritesList, userType: $userType, userFarms: $userFarms, userShops: $userShops, phoneNumber: $phoneNumber)';
   }
 
   @override
@@ -1019,7 +1092,9 @@ class _$FarmhubUserBusiness extends FarmhubUserBusiness {
                 .equals(other.produceFavoritesList, produceFavoritesList) &&
             const DeepCollectionEquality().equals(other.userType, userType) &&
             const DeepCollectionEquality().equals(other.userFarms, userFarms) &&
-            const DeepCollectionEquality().equals(other.userShops, userShops));
+            const DeepCollectionEquality().equals(other.userShops, userShops) &&
+            const DeepCollectionEquality()
+                .equals(other.phoneNumber, phoneNumber));
   }
 
   @JsonKey(ignore: true)
@@ -1033,7 +1108,8 @@ class _$FarmhubUserBusiness extends FarmhubUserBusiness {
       const DeepCollectionEquality().hash(produceFavoritesList),
       const DeepCollectionEquality().hash(userType),
       const DeepCollectionEquality().hash(userFarms),
-      const DeepCollectionEquality().hash(userShops));
+      const DeepCollectionEquality().hash(userShops),
+      const DeepCollectionEquality().hash(phoneNumber));
 
   @JsonKey(ignore: true)
   @override
@@ -1046,35 +1122,38 @@ class _$FarmhubUserBusiness extends FarmhubUserBusiness {
   TResult when<TResult extends Object?>(
     TResult Function(
             String uid,
-            String email,
+            String? email,
             String username,
             String createdAt,
             List<ProduceFavorite> produceFavoritesList,
-            UserType userType)
+            UserType userType,
+            PhoneNumber? phoneNumber)
         $default, {
     required TResult Function(
             String uid,
-            String email,
+            String? email,
             String username,
             String createdAt,
             List<ProduceFavorite> produceFavoritesList,
             UserType userType,
             List<Farm> userFarms,
-            List<Shop> userShops)
+            List<Shop> userShops,
+            PhoneNumber? phoneNumber)
         farmer,
     required TResult Function(
             String uid,
-            String email,
+            String? email,
             String username,
             String createdAt,
             List<ProduceFavorite> produceFavoritesList,
             UserType userType,
             List<Farm> userFarms,
-            List<Shop> userShops)
+            List<Shop> userShops,
+            PhoneNumber? phoneNumber)
         business,
   }) {
     return business(uid, email, username, createdAt, produceFavoritesList,
-        userType, userFarms, userShops);
+        userType, userFarms, userShops, phoneNumber);
   }
 
   @override
@@ -1082,35 +1161,38 @@ class _$FarmhubUserBusiness extends FarmhubUserBusiness {
   TResult? whenOrNull<TResult extends Object?>(
     TResult Function(
             String uid,
-            String email,
+            String? email,
             String username,
             String createdAt,
             List<ProduceFavorite> produceFavoritesList,
-            UserType userType)?
+            UserType userType,
+            PhoneNumber? phoneNumber)?
         $default, {
     TResult Function(
             String uid,
-            String email,
+            String? email,
             String username,
             String createdAt,
             List<ProduceFavorite> produceFavoritesList,
             UserType userType,
             List<Farm> userFarms,
-            List<Shop> userShops)?
+            List<Shop> userShops,
+            PhoneNumber? phoneNumber)?
         farmer,
     TResult Function(
             String uid,
-            String email,
+            String? email,
             String username,
             String createdAt,
             List<ProduceFavorite> produceFavoritesList,
             UserType userType,
             List<Farm> userFarms,
-            List<Shop> userShops)?
+            List<Shop> userShops,
+            PhoneNumber? phoneNumber)?
         business,
   }) {
     return business?.call(uid, email, username, createdAt, produceFavoritesList,
-        userType, userFarms, userShops);
+        userType, userFarms, userShops, phoneNumber);
   }
 
   @override
@@ -1118,37 +1200,40 @@ class _$FarmhubUserBusiness extends FarmhubUserBusiness {
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(
             String uid,
-            String email,
+            String? email,
             String username,
             String createdAt,
             List<ProduceFavorite> produceFavoritesList,
-            UserType userType)?
+            UserType userType,
+            PhoneNumber? phoneNumber)?
         $default, {
     TResult Function(
             String uid,
-            String email,
+            String? email,
             String username,
             String createdAt,
             List<ProduceFavorite> produceFavoritesList,
             UserType userType,
             List<Farm> userFarms,
-            List<Shop> userShops)?
+            List<Shop> userShops,
+            PhoneNumber? phoneNumber)?
         farmer,
     TResult Function(
             String uid,
-            String email,
+            String? email,
             String username,
             String createdAt,
             List<ProduceFavorite> produceFavoritesList,
             UserType userType,
             List<Farm> userFarms,
-            List<Shop> userShops)?
+            List<Shop> userShops,
+            PhoneNumber? phoneNumber)?
         business,
     required TResult orElse(),
   }) {
     if (business != null) {
       return business(uid, email, username, createdAt, produceFavoritesList,
-          userType, userFarms, userShops);
+          userType, userFarms, userShops, phoneNumber);
     }
     return orElse();
   }
@@ -1196,13 +1281,14 @@ class _$FarmhubUserBusiness extends FarmhubUserBusiness {
 abstract class FarmhubUserBusiness extends FarmhubUser {
   const factory FarmhubUserBusiness(
       {required final String uid,
-      required final String email,
+      required final String? email,
       required final String username,
       required final String createdAt,
       required final List<ProduceFavorite> produceFavoritesList,
       required final UserType userType,
       required final List<Farm> userFarms,
-      required final List<Shop> userShops}) = _$FarmhubUserBusiness;
+      required final List<Shop> userShops,
+      final PhoneNumber? phoneNumber}) = _$FarmhubUserBusiness;
   const FarmhubUserBusiness._() : super._();
 
   factory FarmhubUserBusiness.fromJson(Map<String, dynamic> json) =
@@ -1211,7 +1297,7 @@ abstract class FarmhubUserBusiness extends FarmhubUser {
   @override
   String get uid => throw _privateConstructorUsedError;
   @override
-  String get email => throw _privateConstructorUsedError;
+  String? get email => throw _privateConstructorUsedError;
   @override
   String get username => throw _privateConstructorUsedError;
   @override
@@ -1223,6 +1309,8 @@ abstract class FarmhubUserBusiness extends FarmhubUser {
   UserType get userType => throw _privateConstructorUsedError;
   List<Farm> get userFarms => throw _privateConstructorUsedError;
   List<Shop> get userShops => throw _privateConstructorUsedError;
+  @override
+  PhoneNumber? get phoneNumber => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$FarmhubUserBusinessCopyWith<_$FarmhubUserBusiness> get copyWith =>

@@ -56,8 +56,8 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
       setState(() {});
     });
 
-    extent = Tween<double>(begin: 166.0, end: 68.0).animate(mainHeaderController);
-    adminExtent = Tween<double>(begin: 200.0, end: 68.0).animate(mainHeaderController);
+    extent = Tween<double>(begin: 176.0, end: 68.0).animate(mainHeaderController);
+    adminExtent = Tween<double>(begin: 210.0, end: 68.0).animate(mainHeaderController);
   }
 
   @override
@@ -93,7 +93,7 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
                 resizeToAvoidBottomInset: false,
                 extendBodyBehindAppBar: true,
                 extendBody: true,
-                floatingActionButton: MainScreenFAB(),
+                floatingActionButton: const MainScreenFAB(),
                 body: SafeArea(
                   child: CustomScrollView(
                     controller: scrollController,
@@ -255,11 +255,8 @@ class _SliverMainScreenListViewState extends State<SliverMainScreenListView> {
     }
 
     return SliverList(
-        delegate: SliverChildListDelegate([
-      Container(
-        child: Text('Uh oh, some weird state is thrown here. In ProduceList!'),
-      )
-    ]));
+        delegate: SliverChildListDelegate(
+            [const Text('Uh oh, some weird state is thrown here. In ProduceList!')]));
   }
 }
 
@@ -270,7 +267,6 @@ class SliverLoadingIndicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
 
     return SliverList(
@@ -302,9 +298,6 @@ class SliverProduceList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    BorderSide borderSide =
-        BorderSide(color: Theme.of(context).colorScheme.primary.withOpacity(0.24));
-
     return SliverList(
       delegate: SliverChildBuilderDelegate(
         (context, index) {
@@ -397,7 +390,7 @@ class _SliverProduceErrorListState extends State<SliverProduceErrorList> {
 
   @override
   Widget build(BuildContext context) {
-    print(widget.failure);
+    debugPrint(widget.failure.toString());
 
     return SliverList(
       delegate: SliverChildBuilderDelegate(

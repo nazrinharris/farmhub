@@ -1,7 +1,6 @@
-import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
 import 'package:farmhub/locator.dart';
 import 'package:farmhub/presentation/shared_widgets/appbars.dart';
-import 'package:farmhub/presentation/shared_widgets/buttons.dart';
+import 'package:farmhub/presentation/shared_widgets/cards.dart';
 import 'package:farmhub/presentation/shared_widgets/ui_helpers.dart';
 import 'package:farmhub/presentation/smart_widgets/info_tile/bloc/info_tile_bloc.dart';
 import 'package:farmhub/presentation/smart_widgets/info_tile/info_tile.dart';
@@ -108,7 +107,7 @@ class _LoginScreenState extends State<LoginScreen> with AnimationMixin {
                       left: false,
                       right: false,
                       top: false,
-                      child: Container(
+                      child: SizedBox(
                         //padding: const EdgeInsets.symmetric(horizontal: 24),
                         height: screen.height,
                         width: screen.width,
@@ -152,32 +151,32 @@ class _LoginScreenState extends State<LoginScreen> with AnimationMixin {
                                 const Padding(
                                     padding: EdgeInsets.symmetric(horizontal: 30),
                                     child: LoginFields()),
-                                const UIVerticalSpace24(),
-                                Container(
-                                  alignment: Alignment.center,
-                                  child: ThirdPartySignUpButton(
-                                    content: "Debug",
-                                    onPressed: () {
-                                      final user =
-                                          context.read<GlobalAuthCubit>().state.farmhubUser;
+                                // const UIVerticalSpace24(),
+                                // Container(
+                                //   alignment: Alignment.center,
+                                //   child: ThirdPartySignUpButton(
+                                //     content: "Debug",
+                                //     onPressed: () {
+                                //       final user =
+                                //           context.read<GlobalAuthCubit>().state.farmhubUser;
 
-                                      print("User Data -> $user");
+                                //       print("User Data -> $user");
 
-                                      context
-                                          .read<LoginScreenBloc>()
-                                          .add(const LoginScreenEvent.toggleInfoTileVisibility());
+                                //       context
+                                //           .read<LoginScreenBloc>()
+                                //           .add(const LoginScreenEvent.toggleInfoTileVisibility());
 
-                                      Navigator.of(context).pushNamed("/navigate");
-                                    },
-                                    width: 100,
-                                  ),
-                                ),
+                                //       Navigator.of(context).pushNamed("/navigate");
+                                //     },
+                                //     width: 100,
+                                //   ),
+                                // ),
                                 const UIVerticalSpace24(),
                                 Container(
                                   alignment: Alignment.center,
                                   child: GestureDetector(
                                     onTap: () {
-                                      print("Tapped");
+                                      debugPrint("Tapped");
 
                                       final resetPasswordDialog = returnResetPasswordConfirmation(
                                         context,
@@ -199,6 +198,16 @@ class _LoginScreenState extends State<LoginScreen> with AnimationMixin {
                                     ),
                                   ),
                                 ),
+                                const UIVerticalSpace30(),
+                                Align(
+                                  child: Text(
+                                    "or",
+                                    style:
+                                        Theme.of(context).textTheme.caption!.copyWith(fontSize: 14),
+                                  ),
+                                ),
+                                const UIVerticalSpace30(),
+                                const PhoneAuthCard(type: PhoneAuthCardType.login),
                               ],
                             ),
                             SizedBox(

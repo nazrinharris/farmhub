@@ -1,4 +1,3 @@
-// ignore_for_file: prefer_const_constructors
 import 'package:farmhub/app_router.dart';
 import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
 import 'package:farmhub/locator.dart';
@@ -39,7 +38,7 @@ class SettingsScreen extends StatelessWidget {
             },
             trailingIcon: const Icon(Icons.error, color: Colors.transparent),
           ),
-          body: CustomScrollView(
+          body: const CustomScrollView(
             physics: DefaultScrollPhysics,
             slivers: [
               SliverSettingsBody(),
@@ -60,13 +59,13 @@ class SliverSettingsBody extends StatelessWidget {
       delegate: SliverChildListDelegate(
         [
           Padding(
-            padding: EdgeInsets.only(left: 14, right: 14),
+            padding: const EdgeInsets.only(left: 14, right: 14),
             child: Column(
               children: [
-                SettingsHeader("Account"),
+                const SettingsHeader("Account"),
                 SettingsListCard(
                   content: "Change Password",
-                  icon: Icon(Icons.password_outlined),
+                  icon: const Icon(Icons.password_outlined),
                   isTop: true,
                   onTap: () {
                     context.read<SettingsCubit>().showResetPasswordDialog(context,
@@ -78,7 +77,7 @@ class SliverSettingsBody extends StatelessWidget {
                 ),
                 SettingsListCard(
                   content: "Sign out",
-                  icon: Icon(Icons.logout_outlined),
+                  icon: const Icon(Icons.logout_outlined),
                   onTap: () {
                     final dialog = returnSignOutConfirmationDialog(context, () {
                       context.read<SettingsCubit>().signOut(context);
@@ -87,36 +86,36 @@ class SliverSettingsBody extends StatelessWidget {
                     dialog.show(context, transitionType: DialogTransitionType.Bubble);
                   },
                 ),
-                SettingsHeader("Others"),
+                const SettingsHeader("Others"),
                 SettingsListCard(
                   content: "Terms and Conditions",
-                  icon: Icon(Icons.policy_outlined),
+                  icon: const Icon(Icons.policy_outlined),
                   isTop: true,
                 ),
                 SettingsListCard(
                   content: "About Farmhub",
-                  icon: Icon(Icons.eco_outlined),
+                  icon: const Icon(Icons.eco_outlined),
                 ),
-                SettingsHeader("Debug"),
-                SettingsListCard(
-                  content: "Go to Navigation",
-                  icon: Icon(Icons.tab_unselected),
-                  isTop: true,
-                  onTap: () {
-                    Navigator.of(context).pop();
-                    Navigator.of(context).pop();
-                    Navigator.of(context).pop();
-                    Navigator.pushNamed(context, "/navigate");
-                  },
-                ),
-                SettingsListCard(
-                  content: "Navigate to Main",
-                  icon: Icon(Icons.exit_to_app),
-                  isTop: true,
-                  onTap: () {
-                    Navigator.of(context).popUntil((route) => route == navMainRoute);
-                  },
-                ),
+                // const SettingsHeader("Debug"),
+                // SettingsListCard(
+                //   content: "Go to Navigation",
+                //   icon: const Icon(Icons.tab_unselected),
+                //   isTop: true,
+                //   onTap: () {
+                //     Navigator.of(context).pop();
+                //     Navigator.of(context).pop();
+                //     Navigator.of(context).pop();
+                //     Navigator.pushNamed(context, "/navigate");
+                //   },
+                // ),
+                // SettingsListCard(
+                //   content: "Navigate to Main",
+                //   icon: const Icon(Icons.exit_to_app),
+                //   isTop: true,
+                //   onTap: () {
+                //     Navigator.of(context).popUntil((route) => route == navMainRoute);
+                //   },
+                // ),
               ],
             ),
           )
@@ -128,6 +127,7 @@ class SliverSettingsBody extends StatelessWidget {
 
 /// [index] is only used to decide if the top border should be rendered or not.
 /// [0] If the top border should be drawn and all other numbers will not draw it.
+// ignore: must_be_immutable
 class SettingsListCard extends StatelessWidget {
   final String content;
   final Function()? onTap;
@@ -165,7 +165,7 @@ class SettingsListCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 icon,
-                UIHorizontalSpace14(),
+                const UIHorizontalSpace14(),
                 Text(content, style: Theme.of(context).textTheme.bodyText1),
               ],
             )),

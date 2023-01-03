@@ -1,4 +1,3 @@
-import 'package:farmhub/core/util/farmhub_icons.dart';
 import 'package:farmhub/features/farm_shop_manager/domain/entities/farm_shop/farm_shop.dart';
 import 'package:farmhub/locator.dart';
 import 'package:farmhub/presentation/views/all_shop_screens/cubit/shop_screen_cubit.dart';
@@ -69,7 +68,7 @@ class _EditShopScreenState extends State<EditShopScreen> {
               resizeToAvoidBottomInset: false,
               extendBodyBehindAppBar: true,
               appBar: DefaultAppBar(
-                leadingIcon: Icon(Icons.close),
+                leadingIcon: const Icon(Icons.close),
                 leadingOnPressed: () => Navigator.of(context).pop(),
               ),
               body: SafeArea(
@@ -80,7 +79,7 @@ class _EditShopScreenState extends State<EditShopScreen> {
                       physics: DefaultScrollPhysics,
                       children: [
                         Container(
-                          padding: EdgeInsets.symmetric(horizontal: 24),
+                          padding: const EdgeInsets.symmetric(horizontal: 24),
                           alignment: Alignment.centerLeft,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,

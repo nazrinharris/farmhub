@@ -1,6 +1,6 @@
-// ignore_for_file: prefer_const_constructors
 import 'package:farmhub/core/auth/auth_bloc/auth_bloc.dart';
 import 'package:farmhub/core/auth/data/datasources/auth_local_datasource.dart';
+import 'package:farmhub/core/auth/data/datasources/auth_remote_datasource.dart';
 import 'package:farmhub/core/auth/domain/entities/farmhub_user/farmhub_user.dart';
 import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
 import 'package:farmhub/core/util/printer.dart';
@@ -15,8 +15,11 @@ import 'package:farmhub/presentation/views/debug/cubit/playground_cubit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_styled_toast/flutter_styled_toast.dart';
 import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
+
+import '../../shared_widgets/toasts.dart';
 
 final user = FarmhubUser(
   uid: "uid",
@@ -27,7 +30,7 @@ final user = FarmhubUser(
   userType: UserType.regular,
 );
 
-final farmToEdit = Farm(
+const farmToEdit = Farm(
   creatorUserId: "BXF8kvBSTZAGjnSgT8iSE1Lh8lA5",
   farmId: "Gso3a0knrXkZBbDNjtLM",
   farmName: "Rockmelon Selayang",
@@ -39,7 +42,7 @@ final farmToEdit = Farm(
       postcode: 254600),
 );
 
-final shop = Shop(
+const shop = Shop(
   creatorUserId: "BXF8kvBSTZAGjnSgT8iSE1Lh8lA5",
   shopId: "8FxdKadY0TACebcJxPsb",
   shopName: "Shopping Endeavor",
@@ -66,8 +69,13 @@ final farmer = FarmhubUser.farmer(
 
 class PlaygroundScreen extends StatefulWidget {
   final IAuthLocalDataSource authLocalDataSource;
+  final IAuthRemoteDataSource authRemote;
 
-  const PlaygroundScreen({Key? key, required this.authLocalDataSource}) : super(key: key);
+  const PlaygroundScreen({
+    Key? key,
+    required this.authLocalDataSource,
+    required this.authRemote,
+  }) : super(key: key);
 
   @override
   State<PlaygroundScreen> createState() => _PlaygroundScreenState();
@@ -76,20 +84,15 @@ class PlaygroundScreen extends StatefulWidget {
 class _PlaygroundScreenState extends State<PlaygroundScreen> {
   @override
   Widget build(BuildContext context) {
-    final LinearGradient gradient = LinearGradient(
-      colors: [
-        Color(0xff79D2DE),
-        Color(0xffFFF4F4),
-      ],
-      begin: Alignment.topCenter,
-      end: Alignment.bottomCenter,
-    );
-
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => ProduceManagerBloc(repository: locator())),
         BlocProvider(
-            create: (context) => AuthBloc(authRepository: locator(), globalAuthCubit: locator())),
+            create: (context) => AuthBloc(
+                  authRepository: locator(),
+                  globalAuthCubit: locator(),
+                  firebaseAuth: locator(),
+                )),
         BlocProvider(
             create: (context) => PlaygroundCubit(
                   repository: locator(),
@@ -101,9 +104,9 @@ class _PlaygroundScreenState extends State<PlaygroundScreen> {
           body: Center(
             child: ListView(
               children: [
-                UIVerticalSpace14(),
-                UIBorder(),
-                UIVerticalSpace14(),
+                const UIVerticalSpace14(),
+                const UIBorder(),
+                const UIVerticalSpace14(),
                 Container(
                   alignment: Alignment.center,
                   child: PrimaryButton(
@@ -114,7 +117,7 @@ class _PlaygroundScreenState extends State<PlaygroundScreen> {
                     },
                   ),
                 ),
-                UIVerticalSpace14(),
+                const UIVerticalSpace14(),
                 Container(
                   alignment: Alignment.center,
                   child: PrimaryButton(
@@ -125,7 +128,7 @@ class _PlaygroundScreenState extends State<PlaygroundScreen> {
                     },
                   ),
                 ),
-                UIVerticalSpace14(),
+                const UIVerticalSpace14(),
                 Container(
                   alignment: Alignment.center,
                   child: SecondaryButton(
@@ -136,7 +139,7 @@ class _PlaygroundScreenState extends State<PlaygroundScreen> {
                     },
                   ),
                 ),
-                UIVerticalSpace14(),
+                const UIVerticalSpace14(),
                 Container(
                   alignment: Alignment.center,
                   child: SecondaryButton(
@@ -147,7 +150,7 @@ class _PlaygroundScreenState extends State<PlaygroundScreen> {
                     },
                   ),
                 ),
-                UIVerticalSpace14(),
+                const UIVerticalSpace14(),
                 Container(
                   alignment: Alignment.center,
                   child: PrimaryButton(
@@ -158,54 +161,51 @@ class _PlaygroundScreenState extends State<PlaygroundScreen> {
                     },
                   ),
                 ),
-                UIVerticalSpace30(),
-                UIBorder(),
-                UIVerticalSpace30(),
-                Container(
-                  child: BlocBuilder<ProduceManagerBloc, ProduceManagerState>(
-                      builder: (context, state) {
-                    if (state is PMSInitial) {
-                      return Text("Nothin really.");
-                    } else if (state is PMSGetFirstTenProduceLoading) {
-                      return CupertinoActivityIndicator();
-                    } else if (state is PMSGetFirstTenProduceSuccess) {
-                      return Column(
-                        children: [
-                          // Container(
-                          //   height: 200,
-                          //   width: 200,
-                          //   child: SfCartesianChart(
-                          //     plotAreaBorderColor: Colors.transparent,
-                          //     primaryXAxis: NumericAxis(
-                          //       isVisible: false,
-                          //     ),
-                          //     primaryYAxis: NumericAxis(
-                          //       isVisible: false,
-                          //     ),
-                          //     series: <CartesianSeries>[
-                          //       SplineAreaSeries<num, num>(
-                          //         animationDuration: 1000,
-                          //         dataSource: state.produceList[0].weeklyPrices,
-                          //         xValueMapper: (num price, index) => index,
-                          //         yValueMapper: (num price, index) => price,
-                          //         borderWidth: 3,
-                          //         borderColor: Color(0xff79D2DE),
-                          //         gradient: gradient,
-                          //       ),
-                          //     ],
-                          //   ),
-                          // ),
-                          Text(state.produceList.toString()),
-                        ],
-                      );
-                    } else if (state is PMSGetFirstTenProduceError) {
-                      return Text('ERROR! Code: ${state.code}, Message: ${state.message}');
-                    } else {
-                      return Text('Unknown State: ');
-                    }
-                  }),
-                ),
-                UIVerticalSpace30(),
+                const UIVerticalSpace30(),
+                const UIBorder(),
+                const UIVerticalSpace30(),
+                BlocBuilder<ProduceManagerBloc, ProduceManagerState>(builder: (context, state) {
+                  if (state is PMSInitial) {
+                    return const Text("Nothin really.");
+                  } else if (state is PMSGetFirstTenProduceLoading) {
+                    return const CupertinoActivityIndicator();
+                  } else if (state is PMSGetFirstTenProduceSuccess) {
+                    return Column(
+                      children: [
+                        // Container(
+                        //   height: 200,
+                        //   width: 200,
+                        //   child: SfCartesianChart(
+                        //     plotAreaBorderColor: Colors.transparent,
+                        //     primaryXAxis: NumericAxis(
+                        //       isVisible: false,
+                        //     ),
+                        //     primaryYAxis: NumericAxis(
+                        //       isVisible: false,
+                        //     ),
+                        //     series: <CartesianSeries>[
+                        //       SplineAreaSeries<num, num>(
+                        //         animationDuration: 1000,
+                        //         dataSource: state.produceList[0].weeklyPrices,
+                        //         xValueMapper: (num price, index) => index,
+                        //         yValueMapper: (num price, index) => price,
+                        //         borderWidth: 3,
+                        //         borderColor: Color(0xff79D2DE),
+                        //         gradient: gradient,
+                        //       ),
+                        //     ],
+                        //   ),
+                        // ),
+                        Text(state.produceList.toString()),
+                      ],
+                    );
+                  } else if (state is PMSGetFirstTenProduceError) {
+                    return Text('ERROR! Code: ${state.code}, Message: ${state.message}');
+                  } else {
+                    return const Text('Unknown State: ');
+                  }
+                }),
+                const UIVerticalSpace30(),
                 Container(
                   alignment: Alignment.center,
                   child: PrimaryButton(
@@ -214,43 +214,39 @@ class _PlaygroundScreenState extends State<PlaygroundScreen> {
                     onPressed: () {
                       context
                           .read<ProduceManagerBloc>()
-                          .add(ProduceManagerEvent.execGetFirstTenProduce());
+                          .add(const ProduceManagerEvent.execGetFirstTenProduce());
                     },
                   ),
                 ),
                 Container(
-                  padding: EdgeInsets.only(top: 14, bottom: 14),
+                  padding: const EdgeInsets.only(top: 14, bottom: 14),
                   alignment: Alignment.center,
                   child: PrimaryButton(
                     width: 270,
                     content: "Retrieve and Update User",
                     onPressed: () async {
-                      context.read<AuthBloc>().add(AuthEvent.execRetrieveUserData());
-
-                      await Future.delayed(Duration(seconds: 1));
+                      context.read<AuthBloc>().add(const AuthEvent.execRetrieveUserData());
 
                       if (!mounted) return;
                       await context.read<GlobalAuthCubit>().updateGlobalAuthCubit();
                     },
                   ),
                 ),
+                BlocBuilder<AuthBloc, AuthState>(builder: (context, state) {
+                  if (state is ASInitial) {
+                    return const Text('Nothing really.');
+                  } else if (state is ASRetrieveUserDataLoading) {
+                    return const CupertinoActivityIndicator();
+                  } else if (state is ASRetrieveUserDataSuccess) {
+                    return Text(state.farmhubUser.toString());
+                  } else if (state is ASRetrieveUserDataError) {
+                    return Text('ERROR! Code: ${state.code}, Message: ${state.message}');
+                  } else {
+                    return Text("Unexpected State by AuthBloc! - $state");
+                  }
+                }),
                 Container(
-                  child: BlocBuilder<AuthBloc, AuthState>(builder: (context, state) {
-                    if (state is ASInitial) {
-                      return Text('Nothing really.');
-                    } else if (state is ASRetrieveUserDataLoading) {
-                      return CupertinoActivityIndicator();
-                    } else if (state is ASRetrieveUserDataSuccess) {
-                      return Text(state.farmhubUser.toString());
-                    } else if (state is ASRetrieveUserDataError) {
-                      return Text('ERROR! Code: ${state.code}, Message: ${state.message}');
-                    } else {
-                      return Text("Unexpected State by AuthBloc! - $state");
-                    }
-                  }),
-                ),
-                Container(
-                  padding: EdgeInsets.only(top: 14, bottom: 14),
+                  padding: const EdgeInsets.only(top: 14, bottom: 14),
                   alignment: Alignment.center,
                   child: PrimaryButton(
                     width: 250,
@@ -258,14 +254,38 @@ class _PlaygroundScreenState extends State<PlaygroundScreen> {
                     onPressed: () {
                       showTopSnackBar(
                         context,
-                        CustomSnackBar.info(message: "Test!"),
+                        const CustomSnackBar.info(message: "Test!"),
                       );
                     },
                   ),
                 ),
-                UIBorder(),
                 Container(
-                  padding: EdgeInsets.only(top: 14, bottom: 14),
+                  padding: const EdgeInsets.only(bottom: 14),
+                  alignment: Alignment.center,
+                  child: PrimaryButton(
+                    width: 200,
+                    content: "Show Toast",
+                    onPressed: () {
+                      showToastWidget(
+                        const ErrorToast(
+                            // errorMessage:
+                            //     "some super long error message okay i admit its not that long lol",
+                            ),
+                        context: context,
+                        animation: StyledToastAnimation.slideFromTopFade,
+                        reverseAnimation: StyledToastAnimation.slideToTopFade,
+                        position: StyledToastPosition.top,
+                        animDuration: const Duration(milliseconds: 800),
+                        curve: Curves.easeOutExpo,
+                        reverseCurve: Curves.easeInExpo,
+                        duration: const Duration(seconds: 5),
+                      );
+                    },
+                  ),
+                ),
+                const UIBorder(),
+                Container(
+                  padding: const EdgeInsets.only(top: 14, bottom: 14),
                   alignment: Alignment.center,
                   child: PrimaryButton(
                     width: 250,
@@ -275,7 +295,7 @@ class _PlaygroundScreenState extends State<PlaygroundScreen> {
                         creatorUserId: context.read<GlobalAuthCubit>().state.farmhubUser!.uid,
                         farmId: 'UNKNOWN',
                         farmName: "Fake Farm",
-                        address: Address(
+                        address: const Address(
                             rawAddress: "rawAddress",
                             addressLine: "1st Mayhingway Street",
                             city: "Gumalia",
@@ -283,28 +303,28 @@ class _PlaygroundScreenState extends State<PlaygroundScreen> {
                             postcode: 254600),
                       );
 
-                      print(farm.toJson());
+                      prettyPrintJson(farm.toJson());
                     },
                   ),
                 ),
                 Container(
-                  padding: EdgeInsets.only(bottom: 14),
+                  padding: const EdgeInsets.only(bottom: 14),
                   alignment: Alignment.center,
                   child: PrimaryButton(
                     width: 250,
                     content: "Debug FarmhubUser",
                     onPressed: () {
-                      final userFarmFromJson = Shop.fromJson((farmer.toJson())["shopList"][0]);
+                      final userShopFromJson = Shop.fromJson((farmer.toJson())["shopList"][0]);
 
                       prettyPrintJson(farmer.toJson());
-                      print(userFarmFromJson);
+                      debugPrint(userShopFromJson.toString());
                     },
                   ),
                 ),
-                UIVerticalSpace14(),
-                UIBorder(),
+                const UIVerticalSpace14(),
+                const UIBorder(),
                 Container(
-                  padding: EdgeInsets.only(top: 14, bottom: 14),
+                  padding: const EdgeInsets.only(top: 14, bottom: 14),
                   alignment: Alignment.center,
                   child: PrimaryButton(
                     width: 250,
@@ -315,6 +335,7 @@ class _PlaygroundScreenState extends State<PlaygroundScreen> {
                   ),
                 ),
                 Container(
+                  padding: const EdgeInsets.only(bottom: 14),
                   alignment: Alignment.center,
                   child: PrimaryButton(
                     width: 250,
@@ -322,12 +343,25 @@ class _PlaygroundScreenState extends State<PlaygroundScreen> {
                     onPressed: () async {
                       final result = await widget.authLocalDataSource.retrieveFarmhubUser();
 
-                      print(result);
+                      debugPrint(result.toString());
                       prettyPrintJson(result.toJson());
                     },
                   ),
                 ),
-                UICustomVertical(200),
+                Container(
+                  padding: const EdgeInsets.only(bottom: 14),
+                  alignment: Alignment.center,
+                  child: PrimaryButton(
+                    width: 250,
+                    content: "Try retrieve user",
+                    onPressed: () async {
+                      final result = await widget.authRemote.retrieveUserData(uid: "8989");
+
+                      prettyPrintJson(result.toJson());
+                    },
+                  ),
+                ),
+                const UICustomVertical(200),
               ],
             ),
           ),

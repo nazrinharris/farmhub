@@ -1,15 +1,14 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:farmhub/core/auth/auth_bloc/auth_bloc.dart';
-import 'package:farmhub/core/auth/data/repository/auth_repository.dart';
 import 'package:farmhub/core/auth/domain/entities/farmhub_user/farmhub_user.dart';
 import 'package:farmhub/presentation/smart_widgets/info_tile/bloc/info_tile_bloc.dart';
 import 'package:farmhub/presentation/smart_widgets/info_tile/info_tile.dart';
 import 'package:farmhub/presentation/smart_widgets/primary_button_aware/primary_button_aware_cubit.dart';
-import 'package:farmhub/presentation/smart_widgets/produce_dialogs/app_dialogs.dart';
 
-import 'package:flutter/animation.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:simple_animations/simple_animations.dart';
@@ -67,7 +66,7 @@ class RegisterScreenBloc extends Bloc<RegisterScreenEvent, RegisterScreenState> 
   ) {
     final isVisible = state.props.isInfoTileVisible;
 
-    print("InfoTile is $isVisible");
+    debugPrint("InfoTile is $isVisible");
 
     if (isVisible) {
       infoTileVisibilityController.playReverse(duration: const Duration(milliseconds: 500));
