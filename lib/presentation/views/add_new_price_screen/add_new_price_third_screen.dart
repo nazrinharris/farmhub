@@ -14,8 +14,6 @@ import 'package:farmhub/presentation/views/add_new_price_screen/bloc/add_new_pri
 import 'package:farmhub/presentation/smart_widgets/large_price_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:top_snackbar_flutter/custom_snack_bar.dart';
-import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
 import '../../../features/produce_manager/domain/entities/produce/produce.dart';
 

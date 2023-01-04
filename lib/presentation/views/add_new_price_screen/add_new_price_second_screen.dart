@@ -6,16 +6,17 @@ import 'package:farmhub/presentation/smart_widgets/produce_list_card/produce_lis
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:top_snackbar_flutter/custom_snack_bar.dart';
+import 'package:flutter_styled_toast/flutter_styled_toast.dart';
 
+import '../../../core/errors/error_messages.dart';
 import '../../../core/util/misc.dart';
 import '../../../features/produce_manager/domain/entities/produce/produce.dart';
 import '../../shared_widgets/appbars.dart';
 import '../../shared_widgets/texts.dart';
+import '../../shared_widgets/toasts.dart';
 import '../../shared_widgets/ui_helpers.dart';
 import '../../smart_widgets/multiple_fields_form/multiple_fields_form_bloc.dart';
 import 'bloc/add_new_price_screen_bloc.dart';
-import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
 class AddNewPriceSecondScreen extends StatefulWidget {
   final AddNewPriceScreenArguments arguments;
@@ -55,22 +56,36 @@ class _AddNewPriceSecondScreenState extends State<AddNewPriceSecondScreen> {
               return BlocListener<AddNewPriceScreenBloc, AddNewPriceScreenState>(
                 listener: (context, state) {
                   if (state is ANPSAddNewPriceError) {
-                    showTopSnackBar(
-                      context,
-                      CustomSnackBar.error(
-                          message:
-                              "Uh oh! An error occured. Code: ${state.failure.code}, Message: ${state.failure.message}"),
+                    showToastWidget(
+                      ErrorToast(errorMessage: messageForFailure(state.failure)),
+                      context: context,
+                      animation: StyledToastAnimation.slideFromTopFade,
+                      reverseAnimation: StyledToastAnimation.slideToTopFade,
+                      position: StyledToastPosition.top,
+                      animDuration: const Duration(milliseconds: 800),
+                      curve: Curves.easeOutExpo,
+                      reverseCurve: Curves.easeInExpo,
+                      duration: const Duration(seconds: 7),
                     );
                     debugPrint(state.failure.toString());
                     debugPrint(state.failure.stackTrace.toString());
                   } else if (state is ANPSAddNewPriceSuccess) {
-                    showTopSnackBar(
-                      context,
-                      CustomSnackBar.success(
-                        message:
+                    showToastWidget(
+                      SuccessToast(
+                        title: "Success!",
+                        content:
                             "Price of RM${context.read<MultipleFieldsFormBloc>().state.props.firstFieldValue} is succesfully added to ${state.produce.produceName}",
                       ),
+                      context: context,
+                      animation: StyledToastAnimation.slideFromTopFade,
+                      reverseAnimation: StyledToastAnimation.slideToTopFade,
+                      position: StyledToastPosition.top,
+                      animDuration: const Duration(milliseconds: 800),
+                      curve: Curves.easeOutExpo,
+                      reverseCurve: Curves.easeInExpo,
+                      duration: const Duration(seconds: 2),
                     );
+
                     Navigator.of(context).pushNamed(
                       '/add_new_price_third',
                       arguments: AddNewPriceScreenArguments(
