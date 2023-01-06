@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "402773896503",
+    "firebase_url": "https://farmhub-23c2b-default-rtdb.asia-southeast1.firebasedatabase.app",
     "project_id": "farmhub-23c2b",
     "storage_bucket": "farmhub-23c2b.appspot.com"
   },
@@ -13,6 +14,22 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "402773896503-7j0onr3hd7sv97mfq843ugbculjvcpvq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.farmhub.app",
+            "certificate_hash": "8b14178c22b581be1d7ef08e1579958ffdc6b6ca"
+          }
+        },
+        {
+          "client_id": "402773896503-9jrp79tfl955nfttlo5ulntucvscb7gh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.farmhub.app",
+            "certificate_hash": "1ea836945cf5bf5811535757ae9d23bdc179a508"
+          }
+        },
         {
           "client_id": "402773896503-86e0dofo2tra0sik81n3fdt8jpdb7253.apps.googleusercontent.com",
           "client_type": 3
