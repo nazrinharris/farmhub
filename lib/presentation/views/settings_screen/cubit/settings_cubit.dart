@@ -4,6 +4,7 @@ import 'package:farmhub/presentation/smart_widgets/produce_dialogs/app_dialogs.d
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:ndialog/ndialog.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 
 part 'settings_state.dart';
 part 'settings_cubit.freezed.dart';
@@ -39,5 +40,13 @@ class SettingsCubit extends Cubit<SettingsState> {
         Navigator.of(context).pushNamedAndRemoveUntil('/start', (route) => false);
       },
     );
+  }
+
+  void retrieveAppVersion() async {
+    PackageInfo packageInfo = await PackageInfo.fromPlatform();
+
+    print(packageInfo);
+
+    emit(state.copyWith(appVersion: packageInfo.version));
   }
 }

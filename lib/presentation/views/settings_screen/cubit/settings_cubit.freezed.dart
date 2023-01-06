@@ -16,19 +16,20 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$SettingsState {
+  String? get appVersion => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function(String? appVersion) initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function(String? appVersion)? initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function(String? appVersion)? initial,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -48,6 +49,10 @@ mixin _$SettingsState {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $SettingsStateCopyWith<SettingsState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -55,6 +60,7 @@ abstract class $SettingsStateCopyWith<$Res> {
   factory $SettingsStateCopyWith(
           SettingsState value, $Res Function(SettingsState) then) =
       _$SettingsStateCopyWithImpl<$Res>;
+  $Res call({String? appVersion});
 }
 
 /// @nodoc
@@ -65,13 +71,28 @@ class _$SettingsStateCopyWithImpl<$Res>
   final SettingsState _value;
   // ignore: unused_field
   final $Res Function(SettingsState) _then;
+
+  @override
+  $Res call({
+    Object? appVersion = freezed,
+  }) {
+    return _then(_value.copyWith(
+      appVersion: appVersion == freezed
+          ? _value.appVersion
+          : appVersion // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
 }
 
 /// @nodoc
-abstract class _$$_InitialCopyWith<$Res> {
+abstract class _$$_InitialCopyWith<$Res>
+    implements $SettingsStateCopyWith<$Res> {
   factory _$$_InitialCopyWith(
           _$_Initial value, $Res Function(_$_Initial) then) =
       __$$_InitialCopyWithImpl<$Res>;
+  @override
+  $Res call({String? appVersion});
 }
 
 /// @nodoc
@@ -82,51 +103,75 @@ class __$$_InitialCopyWithImpl<$Res> extends _$SettingsStateCopyWithImpl<$Res>
 
   @override
   _$_Initial get _value => super._value as _$_Initial;
+
+  @override
+  $Res call({
+    Object? appVersion = freezed,
+  }) {
+    return _then(_$_Initial(
+      appVersion: appVersion == freezed
+          ? _value.appVersion
+          : appVersion // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_Initial implements _Initial {
-  const _$_Initial();
+  const _$_Initial({this.appVersion});
+
+  @override
+  final String? appVersion;
 
   @override
   String toString() {
-    return 'SettingsState.initial()';
+    return 'SettingsState.initial(appVersion: $appVersion)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Initial);
+        (other.runtimeType == runtimeType &&
+            other is _$_Initial &&
+            const DeepCollectionEquality()
+                .equals(other.appVersion, appVersion));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(appVersion));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_InitialCopyWith<_$_Initial> get copyWith =>
+      __$$_InitialCopyWithImpl<_$_Initial>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function(String? appVersion) initial,
   }) {
-    return initial();
+    return initial(appVersion);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function(String? appVersion)? initial,
   }) {
-    return initial?.call();
+    return initial?.call(appVersion);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function(String? appVersion)? initial,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial();
+      return initial(appVersion);
     }
     return orElse();
   }
@@ -161,5 +206,12 @@ class _$_Initial implements _Initial {
 }
 
 abstract class _Initial implements SettingsState {
-  const factory _Initial() = _$_Initial;
+  const factory _Initial({final String? appVersion}) = _$_Initial;
+
+  @override
+  String? get appVersion => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(ignore: true)
+  _$$_InitialCopyWith<_$_Initial> get copyWith =>
+      throw _privateConstructorUsedError;
 }

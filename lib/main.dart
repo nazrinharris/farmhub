@@ -37,6 +37,7 @@ Future<void> main() async {
   // Comment for enhancements and touch ups
   // Comment for farm and account types
   // Comment for phone sign-in backend
+  // Comment for aggregate prices fix
 }
 
 class FarmhubApp extends StatelessWidget {

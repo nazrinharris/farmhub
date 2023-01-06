@@ -1,4 +1,3 @@
-import 'package:farmhub/app_router.dart';
 import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
 import 'package:farmhub/locator.dart';
 import 'package:farmhub/presentation/shared_widgets/appbars.dart';
@@ -11,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ndialog/ndialog.dart';
+import 'package:yaml/yaml.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({Key? key}) : super(key: key);
@@ -50,8 +50,20 @@ class SettingsScreen extends StatelessWidget {
   }
 }
 
-class SliverSettingsBody extends StatelessWidget {
+class SliverSettingsBody extends StatefulWidget {
   const SliverSettingsBody({Key? key}) : super(key: key);
+
+  @override
+  State<SliverSettingsBody> createState() => _SliverSettingsBodyState();
+}
+
+class _SliverSettingsBodyState extends State<SliverSettingsBody> {
+  @override
+  void initState() {
+    super.initState();
+
+    context.read<SettingsCubit>().retrieveAppVersion();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -116,6 +128,16 @@ class SliverSettingsBody extends StatelessWidget {
                 //     Navigator.of(context).popUntil((route) => route == navMainRoute);
                 //   },
                 // ),
+                const UIVerticalSpace30(),
+                BlocBuilder<SettingsCubit, SettingsState>(
+                  builder: (context, state) {
+                    // TODO: Maybe this would be fixed if updated to Flutter 3, no basis, pure speculation. So as of now app version has to be changed manually
+                    return Text(
+                      "Farmhub Version 0.3.0",
+                      style: Theme.of(context).textTheme.caption,
+                    );
+                  },
+                )
               ],
             ),
           )
