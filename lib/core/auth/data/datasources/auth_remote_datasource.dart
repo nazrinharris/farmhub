@@ -6,6 +6,7 @@ import 'package:farmhub/core/util/misc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:fpdart/fpdart.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:intl/intl.dart';
 import 'package:clock/clock.dart';
 import 'package:english_words/english_words.dart';
@@ -28,6 +29,14 @@ abstract class IAuthRemoteDataSource {
     required String uid,
     required String phoneNumber,
   });
+
+  Future<FarmhubUser> registerWithCredentials({
+    required String uid,
+    required String email,
+    required String displayName,
+  });
+
+  Future<GoogleSignInAccount> signInWithGoogle();
 
   Future<Unit> chooseUserType(String uid, UserType userType);
 
@@ -249,12 +258,7 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
     required String uid,
     required String phoneNumber,
   }) async {
-    final random = [];
-
-    generateWordPairs().take(2).forEach((element) {
-      random.add(element);
-    });
-    final String tempName = "${random[0]} ${random[1]}".toTitleCase();
+    final String tempName = generateRandomName();
 
     String createdAt = DateFormat('yyyy-MM-dd').format(clock.now());
 
@@ -279,5 +283,52 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
     );
 
     return user;
+  }
+
+  @override
+  Future<FarmhubUser> registerWithCredentials({
+    required String uid,
+    required String email,
+    required String displayName,
+  }) async {
+    String createdAt = DateFormat('yyyy-MM-dd').format(clock.now());
+
+    await firebaseFirestore.collection(FS_USER).doc(uid).set({
+      "uid": uid,
+      "email": email,
+      "username": displayName,
+      "createdAt": createdAt,
+      "produceFavoritesMap": {},
+      "phoneNumber": null,
+      "userType": UserType.regular.typeAsString,
+    });
+
+    final user = FarmhubUser(
+      uid: uid,
+      email: email,
+      username: displayName,
+      createdAt: createdAt,
+      produceFavoritesList: [],
+      userType: UserType.regular,
+    );
+
+    return user;
+  }
+
+  @override
+  Future<GoogleSignInAccount> signInWithGoogle() async {
+    GoogleSignIn googleSignIn = GoogleSignIn.standard(scopes: <String>['email']);
+
+    GoogleSignInAccount? googleSignInAccount = await googleSignIn.signIn();
+
+    if (googleSignInAccount == null) {
+      throw AuthException(
+        code: AUTH_GOOGLE_SIGN_IN_ABORTED,
+        message: MSG_AUTH_GOOGLE_SIGN_IN_ABORTED,
+        stackTrace: StackTrace.current,
+      );
+    }
+
+    return googleSignInAccount;
   }
 }

@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:english_words/english_words.dart';
 import 'package:flutter/foundation.dart';
 
 num roundNum(num value, int places) {
@@ -16,6 +17,17 @@ void printList(List<dynamic> givenList) {
   for (dynamic object in givenList) {
     debugPrint(object.toString());
   }
+}
+
+String generateRandomName() {
+  final random = [];
+
+  generateWordPairs().take(2).forEach((element) {
+    random.add(element);
+  });
+  final String tempName = "${random[0]} ${random[1]}".toTitleCase();
+
+  return tempName;
 }
 
 extension StringCasingExtension on String {

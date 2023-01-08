@@ -1,4 +1,5 @@
 import 'package:farmhub/core/typedefs/typedefs.dart';
+import 'package:farmhub/core/util/misc.dart';
 import 'package:farmhub/features/farm_shop_manager/data/datasources/farm_shop_manager_remote_datasource.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
@@ -128,16 +129,6 @@ class AuthRepository implements IAuthRepository {
         stackTrace: stack,
       ));
     }
-  }
-
-  @override
-  Future<Either<Failure, FarmhubUser>> loginWithGoogleAccount() {
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<Either<Failure, FarmhubUser>> registerWithGoogleAccount() {
-    throw UnimplementedError();
   }
 
   @override
@@ -355,6 +346,87 @@ class AuthRepository implements IAuthRepository {
           code: e.toString(),
           stackTrace: stack,
         ));
+      }
+    } else {
+      return Left(InternetConnectionFailure(
+        code: ERROR_NO_INTERNET_CONNECTION,
+        message: MESSAGE_NO_INTERNET_CONNECTION,
+        stackTrace: StackTrace.current,
+      ));
+    }
+  }
+
+  /// General steps:
+  /// 1. Check if user exists.
+  /// 2. If no, create new account. If yes, retrieve the user and return it.
+  @override
+  Future<Either<Failure, FarmhubUser>> registerWithCredentials({
+    required String uid,
+    required String email,
+    required String displayName,
+  }) async {
+    if (await networkInfo.isConnected) {
+      try {
+        final result = await authRemoteDataSource.registerWithCredentials(
+          uid: uid,
+          email: email,
+          displayName: displayName,
+        );
+
+        return Right(result);
+      } on AuthException catch (e, stack) {
+        debugPrint(e.toString());
+        return Left(AuthFailure(
+          code: e.code,
+          message: e.message,
+          stackTrace: stack,
+        ));
+      } catch (e, stack) {
+        return Left(
+          UnexpectedFailure(
+            message: "An unexpected error occured while creating account with credentials",
+            code: e.toString(),
+            stackTrace: stack,
+          ),
+        );
+      }
+    } else {
+      return Left(InternetConnectionFailure(
+        code: ERROR_NO_INTERNET_CONNECTION,
+        message: MESSAGE_NO_INTERNET_CONNECTION,
+        stackTrace: StackTrace.current,
+      ));
+    }
+  }
+
+  @override
+  FutureEither<FarmhubUser> signInWithGoogle() async {
+    if (await networkInfo.isConnected) {
+      try {
+        final googleSignInResult = await authRemoteDataSource.signInWithGoogle();
+
+        final result = await authRemoteDataSource.registerWithCredentials(
+          uid: googleSignInResult.id,
+          email: googleSignInResult.email,
+          displayName: googleSignInResult.displayName ?? generateRandomName(),
+        );
+
+        return Right(result);
+      } on AuthException catch (e, stack) {
+        debugPrint(e.toString());
+        return Left(AuthFailure(
+          code: e.code,
+          message: e.message,
+          stackTrace: stack,
+        ));
+      } catch (e, stack) {
+        return Left(
+          UnexpectedFailure(
+            message: "An unexpected error occured while signing in with Google.",
+            code: e.toString(),
+            stackTrace: stack,
+          ),
+        );
       }
     } else {
       return Left(InternetConnectionFailure(
