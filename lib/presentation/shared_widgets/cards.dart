@@ -6,6 +6,9 @@ import 'package:farmhub/presentation/shared_widgets/ui_helpers.dart';
 import 'package:farmhub/presentation/themes/farmhub_theme.dart';
 import 'package:flutter/material.dart';
 
+import '../../core/auth/auth_cubit/auth_cubit.dart';
+import '../../locator.dart';
+
 Widget determineErrorCard(String errorCode) {
   if (errorCode == ERROR_NO_INTERNET_CONNECTION) {
     return const ErrorNoInternetCard();
@@ -442,5 +445,67 @@ class PhoneAuthCard extends StatelessWidget {
   void resolveOnTap(BuildContext context) {
     FocusScope.of(context).unfocus();
     Navigator.of(context).pushNamed("/verify_phone");
+  }
+}
+
+class GoogleAuthCard extends StatelessWidget {
+  final EdgeInsetsGeometry? margin;
+  final AuthCubit authCubit;
+
+  const GoogleAuthCard({
+    this.margin,
+    required this.authCubit,
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: margin ?? const EdgeInsets.symmetric(horizontal: 14),
+      child: Material(
+        elevation: 7,
+        shadowColor: Theme.of(context).colorScheme.primary.withOpacity(0.18),
+        borderRadius: BorderRadius.circular(16),
+        color: Theme.of(context).extension<ExtendedColors>()!.white,
+        child: InkWell(
+          borderRadius: BorderRadius.circular(16),
+          onTap: () {
+            resolveOnTap(context, authCubit);
+          },
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const Icon(Icons.html),
+                    const UIHorizontalSpace14(),
+                    Flexible(
+                      child: Column(
+                        children: [
+                          Text(
+                            "Sign in with Google",
+                            style: Theme.of(context).textTheme.bodyText1,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                const Icon(Icons.arrow_right_alt),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  void resolveOnTap(BuildContext context, AuthCubit authCubit) async {
+    FocusScope.of(context).unfocus();
+    await authCubit.signInWithGoogle();
   }
 }

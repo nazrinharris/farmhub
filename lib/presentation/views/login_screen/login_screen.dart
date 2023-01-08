@@ -11,9 +11,13 @@ import 'package:farmhub/presentation/smart_widgets/produce_dialogs/produce_dialo
 import 'package:farmhub/presentation/views/login_screen/bloc/login_screen_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_styled_toast/flutter_styled_toast.dart';
 import 'package:ndialog/ndialog.dart';
 import 'package:simple_animations/simple_animations.dart';
 
+import '../../../core/auth/auth_cubit/auth_cubit.dart';
+import '../../../core/errors/error_messages.dart';
+import '../../shared_widgets/toasts.dart';
 import '../../smart_widgets/multiple_fields_form/multiple_fields_form_bloc.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -75,7 +79,15 @@ class _LoginScreenState extends State<LoginScreen> with AnimationMixin {
             locator(),
             authRepository: locator(),
           ),
-        )
+        ),
+        BlocProvider(
+          create: (context) => AuthCubit(
+            firebaseAuth: locator(),
+            authRepository: locator(),
+            authRemoteDataSource: locator(),
+            globalAuthCubit: locator(),
+          ),
+        ),
       ],
       child: Builder(
           builder: (context) => MultiBlocProvider(
@@ -94,134 +106,165 @@ class _LoginScreenState extends State<LoginScreen> with AnimationMixin {
                   )
                 ],
                 child: Builder(builder: (context) {
-                  return Scaffold(
-                    extendBodyBehindAppBar: true,
-                    resizeToAvoidBottomInset: false,
-                    appBar: DefaultAppBar(
-                      leadingIcon: const Icon(Icons.arrow_back),
-                      leadingOnPressed: () {
-                        Navigator.of(context).pop();
-                      },
-                    ),
-                    body: SafeArea(
-                      left: false,
-                      right: false,
-                      top: false,
-                      child: SizedBox(
-                        //padding: const EdgeInsets.symmetric(horizontal: 24),
-                        height: screen.height,
-                        width: screen.width,
-                        child: Stack(
-                          children: [
-                            ListView(
-                              physics: const AlwaysScrollableScrollPhysics(
-                                  parent: BouncingScrollPhysics()),
-                              children: [
-                                const UITopPadding(),
-                                ClipRRect(
-                                  borderRadius: BorderRadius.circular(16.0),
-                                  child: Align(
-                                    heightFactor: _infoTileHeightFactor.value,
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(bottom: 24),
-                                      child: Opacity(
-                                        opacity: _infoTileOpacity.value,
-                                        child: const InfoTile(),
+                  return BlocListener<AuthCubit, AuthState>(
+                    listener: (context, state) {
+                      if (state is AccountCreationSuccess) {
+                        debugPrint("Login Success!");
+                        Navigator.of(context)
+                            .pushNamedAndRemoveUntil('/nav_main', (route) => false);
+                      } else if (state is CredentialLoginError) {
+                        debugPrint("ERROR LOGGING IN");
+                        debugPrint(state.failure.toString());
+                        showToastWidget(
+                          ErrorToast(errorMessage: messageForFailure(state.failure)),
+                          context: context,
+                          animation: StyledToastAnimation.slideFromTopFade,
+                          reverseAnimation: StyledToastAnimation.slideToTopFade,
+                          position: StyledToastPosition.top,
+                          animDuration: const Duration(milliseconds: 800),
+                          curve: Curves.easeOutExpo,
+                          reverseCurve: Curves.easeInExpo,
+                          duration: const Duration(seconds: 5),
+                        );
+                      }
+                    },
+                    child: Scaffold(
+                      extendBodyBehindAppBar: true,
+                      resizeToAvoidBottomInset: false,
+                      appBar: DefaultAppBar(
+                        leadingIcon: const Icon(Icons.arrow_back),
+                        leadingOnPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                      ),
+                      body: SafeArea(
+                        left: false,
+                        right: false,
+                        top: false,
+                        child: SizedBox(
+                          //padding: const EdgeInsets.symmetric(horizontal: 24),
+                          height: screen.height,
+                          width: screen.width,
+                          child: Stack(
+                            children: [
+                              ListView(
+                                physics: const AlwaysScrollableScrollPhysics(
+                                    parent: BouncingScrollPhysics()),
+                                children: [
+                                  const UITopPadding(),
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.circular(16.0),
+                                    child: Align(
+                                      heightFactor: _infoTileHeightFactor.value,
+                                      child: Padding(
+                                        padding: const EdgeInsets.only(bottom: 24),
+                                        child: Opacity(
+                                          opacity: _infoTileOpacity.value,
+                                          child: const InfoTile(),
+                                        ),
                                       ),
                                     ),
                                   ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(horizontal: 24),
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        "Login",
-                                        style: Theme.of(context).textTheme.headline1,
-                                      ),
-                                      Text(
-                                        "Welcome back!",
-                                        style: Theme.of(context).textTheme.headline2,
-                                      ),
-                                    ],
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(horizontal: 24),
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          "Login",
+                                          style: Theme.of(context).textTheme.headline1,
+                                        ),
+                                        Text(
+                                          "Welcome back!",
+                                          style: Theme.of(context).textTheme.headline2,
+                                        ),
+                                      ],
+                                    ),
                                   ),
-                                ),
-                                const UICustomVertical(60),
-                                const Padding(
-                                    padding: EdgeInsets.symmetric(horizontal: 30),
-                                    child: LoginFields()),
-                                // const UIVerticalSpace24(),
-                                // Container(
-                                //   alignment: Alignment.center,
-                                //   child: ThirdPartySignUpButton(
-                                //     content: "Debug",
-                                //     onPressed: () {
-                                //       final user =
-                                //           context.read<GlobalAuthCubit>().state.farmhubUser;
+                                  const UICustomVertical(60),
+                                  const Padding(
+                                      padding: EdgeInsets.symmetric(horizontal: 30),
+                                      child: LoginFields()),
+                                  // const UIVerticalSpace24(),
+                                  // Container(
+                                  //   alignment: Alignment.center,
+                                  //   child: ThirdPartySignUpButton(
+                                  //     content: "Debug",
+                                  //     onPressed: () {
+                                  //       final user =
+                                  //           context.read<GlobalAuthCubit>().state.farmhubUser;
 
-                                //       print("User Data -> $user");
+                                  //       print("User Data -> $user");
 
-                                //       context
-                                //           .read<LoginScreenBloc>()
-                                //           .add(const LoginScreenEvent.toggleInfoTileVisibility());
+                                  //       context
+                                  //           .read<LoginScreenBloc>()
+                                  //           .add(const LoginScreenEvent.toggleInfoTileVisibility());
 
-                                //       Navigator.of(context).pushNamed("/navigate");
-                                //     },
-                                //     width: 100,
-                                //   ),
-                                // ),
-                                const UIVerticalSpace24(),
-                                Container(
-                                  alignment: Alignment.center,
-                                  child: GestureDetector(
-                                    onTap: () {
-                                      debugPrint("Tapped");
+                                  //       Navigator.of(context).pushNamed("/navigate");
+                                  //     },
+                                  //     width: 100,
+                                  //   ),
+                                  // ),
+                                  const UIVerticalSpace24(),
+                                  Container(
+                                    alignment: Alignment.center,
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        debugPrint("Tapped");
 
-                                      final resetPasswordDialog = returnResetPasswordConfirmation(
-                                        context,
-                                        requireEmail: true,
-                                        formKey: GlobalKey<FormState>(),
-                                        formFocusNode: FocusNode(),
-                                        textEditingController: TextEditingController(),
-                                      );
+                                        final resetPasswordDialog = returnResetPasswordConfirmation(
+                                          context,
+                                          requireEmail: true,
+                                          formKey: GlobalKey<FormState>(),
+                                          formFocusNode: FocusNode(),
+                                          textEditingController: TextEditingController(),
+                                        );
 
-                                      resetPasswordDialog.show(context,
-                                          transitionType: DialogTransitionType.Bubble);
-                                    },
+                                        resetPasswordDialog.show(context,
+                                            transitionType: DialogTransitionType.Bubble);
+                                      },
+                                      child: Text(
+                                        "Forgot Password? Click here.",
+                                        style: Theme.of(context).textTheme.caption!.copyWith(
+                                              fontSize: 14,
+                                              decoration: TextDecoration.underline,
+                                            ),
+                                      ),
+                                    ),
+                                  ),
+                                  const UIVerticalSpace30(),
+                                  Align(
                                     child: Text(
-                                      "Forgot Password? Click here.",
-                                      style: Theme.of(context).textTheme.caption!.copyWith(
-                                            fontSize: 14,
-                                            decoration: TextDecoration.underline,
-                                          ),
+                                      "or",
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .caption!
+                                          .copyWith(fontSize: 14),
                                     ),
                                   ),
-                                ),
-                                const UIVerticalSpace30(),
-                                Align(
-                                  child: Text(
-                                    "or",
-                                    style:
-                                        Theme.of(context).textTheme.caption!.copyWith(fontSize: 14),
+                                  const UIVerticalSpace30(),
+                                  const PhoneAuthCard(type: PhoneAuthCardType.login),
+                                  const UIVerticalSpace14(),
+                                  GoogleAuthCard(
+                                    authCubit: context.read<AuthCubit>(),
                                   ),
-                                ),
-                                const UIVerticalSpace30(),
-                                const PhoneAuthCard(type: PhoneAuthCardType.login),
-                              ],
-                            ),
-                            SizedBox(
-                              height: screen.height,
-                              width: screen.width,
-                              child: Align(
-                                alignment: Alignment.bottomCenter,
-                                child: Padding(
-                                  padding: EdgeInsets.symmetric(horizontal: (0.058 * screen.width)),
-                                  child: const _BuildBottomButton(),
+                                  const UICustomVertical(200),
+                                ],
+                              ),
+                              SizedBox(
+                                height: screen.height,
+                                width: screen.width,
+                                child: Align(
+                                  alignment: Alignment.bottomCenter,
+                                  child: Padding(
+                                    padding:
+                                        EdgeInsets.symmetric(horizontal: (0.058 * screen.width)),
+                                    child: const _BuildBottomButton(),
+                                  ),
                                 ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     ),

@@ -132,6 +132,9 @@ class AuthCubit extends Cubit<AuthState> {
   }
 
   Future<void> signInWithGoogle() async {
+    // Make sure any residue of the previous user has been removed.
+    await authRepository.signOut();
+
     final googleSignInResult = await authRepository.signInWithGoogle();
 
     googleSignInResult.fold(

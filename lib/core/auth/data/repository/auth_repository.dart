@@ -403,15 +403,26 @@ class AuthRepository implements IAuthRepository {
   FutureEither<FarmhubUser> signInWithGoogle() async {
     if (await networkInfo.isConnected) {
       try {
+        FarmhubUser? resultingUser;
         final googleSignInResult = await authRemoteDataSource.signInWithGoogle();
 
-        final result = await authRemoteDataSource.registerWithCredentials(
-          uid: googleSignInResult.id,
-          email: googleSignInResult.email,
-          displayName: googleSignInResult.displayName ?? generateRandomName(),
+        // Start checking for existence of account
+        final uidCheckResult = await retrieveUserData(uid: googleSignInResult.id);
+
+        uidCheckResult.fold(
+          (f) async {
+            resultingUser = await authRemoteDataSource.registerWithCredentials(
+              uid: googleSignInResult.id,
+              email: googleSignInResult.email,
+              displayName: googleSignInResult.displayName ?? generateRandomName(),
+            );
+          },
+          (user) {
+            resultingUser = user;
+          },
         );
 
-        return Right(result);
+        return Right(resultingUser!);
       } on AuthException catch (e, stack) {
         debugPrint(e.toString());
         return Left(AuthFailure(
