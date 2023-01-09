@@ -32,11 +32,11 @@ abstract class IAuthRemoteDataSource {
 
   Future<FarmhubUser> registerWithCredentials({
     required String uid,
-    required String email,
+    required String? email,
     required String displayName,
   });
 
-  Future<GoogleSignInAccount> signInWithGoogle();
+  Future<UserCredential> signInWithGoogle();
 
   Future<Unit> chooseUserType(String uid, UserType userType);
 
@@ -288,7 +288,7 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
   @override
   Future<FarmhubUser> registerWithCredentials({
     required String uid,
-    required String email,
+    required String? email,
     required String displayName,
   }) async {
     String createdAt = DateFormat('yyyy-MM-dd').format(clock.now());
@@ -312,11 +312,14 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
       userType: UserType.regular,
     );
 
+    debugPrint("AuthRemoteDatasource - registerWithCredentials()");
+    debugPrint(user.toString());
+
     return user;
   }
 
   @override
-  Future<GoogleSignInAccount> signInWithGoogle() async {
+  Future<UserCredential> signInWithGoogle() async {
     GoogleSignIn googleSignIn = GoogleSignIn.standard(scopes: <String>['email']);
 
     GoogleSignInAccount? googleSignInAccount = await googleSignIn.signIn();
@@ -329,6 +332,16 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
       );
     }
 
-    return googleSignInAccount;
+    final GoogleSignInAuthentication googleSignInAuthentication =
+        await googleSignInAccount.authentication;
+
+    final AuthCredential credential = GoogleAuthProvider.credential(
+      accessToken: googleSignInAuthentication.accessToken,
+      idToken: googleSignInAuthentication.idToken,
+    );
+
+    final UserCredential userCredential = await firebaseAuth.signInWithCredential(credential);
+
+    return userCredential;
   }
 }

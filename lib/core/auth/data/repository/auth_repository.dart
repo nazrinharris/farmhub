@@ -2,6 +2,7 @@ import 'package:farmhub/core/typedefs/typedefs.dart';
 import 'package:farmhub/core/util/misc.dart';
 import 'package:farmhub/features/farm_shop_manager/data/datasources/farm_shop_manager_remote_datasource.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:fpdart/fpdart.dart';
 
@@ -404,17 +405,17 @@ class AuthRepository implements IAuthRepository {
     if (await networkInfo.isConnected) {
       try {
         FarmhubUser? resultingUser;
-        final googleSignInResult = await authRemoteDataSource.signInWithGoogle();
+        final userCredential = await authRemoteDataSource.signInWithGoogle();
 
         // Start checking for existence of account
-        final uidCheckResult = await retrieveUserData(uid: googleSignInResult.id);
+        final uidCheckResult = await retrieveUserData(uid: userCredential.user!.uid);
 
         uidCheckResult.fold(
           (f) async {
             resultingUser = await authRemoteDataSource.registerWithCredentials(
-              uid: googleSignInResult.id,
-              email: googleSignInResult.email,
-              displayName: googleSignInResult.displayName ?? generateRandomName(),
+              uid: userCredential.user!.uid,
+              email: userCredential.user!.email,
+              displayName: userCredential.user!.displayName ?? generateRandomName(),
             );
           },
           (user) {
@@ -430,6 +431,15 @@ class AuthRepository implements IAuthRepository {
           message: e.message,
           stackTrace: stack,
         ));
+      } on FirebaseAuthException catch (e) {
+        debugPrint(e.toString());
+        return Left(
+          FirebaseAuthFailure(
+            stackTrace: e.stackTrace,
+            message: e.message,
+            code: e.code,
+          ),
+        );
       } catch (e, stack) {
         return Left(
           UnexpectedFailure(

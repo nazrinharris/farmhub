@@ -86,7 +86,7 @@ class ProduceListCard extends StatelessWidget {
                         children: [
                           Text(
                             produce.produceName,
-                            maxLines: 3,
+                            // maxLines: 3,
                             overflow: TextOverflow.fade,
                             style: Theme.of(context).textTheme.bodyText1!.copyWith(fontSize: 17),
                           ),

@@ -5,6 +5,7 @@ import 'package:farmhub/features/produce_manager/data/repository/produce_manager
 import 'package:farmhub/presentation/shared_widgets/ui_helpers.dart';
 import 'package:farmhub/presentation/themes/farmhub_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:ionicons/ionicons.dart';
 
 import '../../core/auth/auth_cubit/auth_cubit.dart';
 import '../../locator.dart';
@@ -451,10 +452,12 @@ class PhoneAuthCard extends StatelessWidget {
 class GoogleAuthCard extends StatelessWidget {
   final EdgeInsetsGeometry? margin;
   final AuthCubit authCubit;
+  final String? content;
 
   const GoogleAuthCard({
     this.margin,
     required this.authCubit,
+    this.content,
     Key? key,
   }) : super(key: key);
 
@@ -481,13 +484,13 @@ class GoogleAuthCard extends StatelessWidget {
                 Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    const Icon(Icons.html),
+                    const Icon(Ionicons.logo_google),
                     const UIHorizontalSpace14(),
                     Flexible(
                       child: Column(
                         children: [
                           Text(
-                            "Sign in with Google",
+                            content ?? "Sign in with Google",
                             style: Theme.of(context).textTheme.bodyText1,
                           ),
                         ],

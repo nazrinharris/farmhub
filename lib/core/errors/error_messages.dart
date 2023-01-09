@@ -24,6 +24,10 @@ String messageForFailure(Failure f) {
         return "You have entered the wrong verification code, try again.";
       case "too-many-requests":
         return "This device seems to have unusual activity, please try again later.";
+      case "account-exists-with-different-credential":
+        return "This account has already been associated with another login method, please try again.";
+      case "invalid-credential":
+        return "Uh oh, we had a problem accessing credentials, please try again.";
       default:
         return f.message ?? "Something wrong happened.";
     }
