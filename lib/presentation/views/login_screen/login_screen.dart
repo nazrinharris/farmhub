@@ -111,7 +111,7 @@ class _LoginScreenState extends State<LoginScreen> with AnimationMixin {
                       if (state is ThirdPartyAccountCreationSuccess) {
                         debugPrint("Login Success!");
 
-                        // True means that the user created is new.
+                        // True means that the a new user account was created..
                         if (state.result.second == true) {
                           Navigator.of(context)
                               .pushNamedAndRemoveUntil('/nav_main', (route) => false);
