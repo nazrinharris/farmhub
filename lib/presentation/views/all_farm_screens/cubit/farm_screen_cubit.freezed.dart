@@ -466,7 +466,7 @@ class _$CreateFarmSuccess implements CreateFarmSuccess {
 abstract class CreateFarmSuccess implements FarmScreenState {
   const factory CreateFarmSuccess(final Farm farm) = _$CreateFarmSuccess;
 
-  Farm get farm => throw _privateConstructorUsedError;
+  Farm get farm;
   @JsonKey(ignore: true)
   _$$CreateFarmSuccessCopyWith<_$CreateFarmSuccess> get copyWith =>
       throw _privateConstructorUsedError;
@@ -612,7 +612,7 @@ class _$CreateFarmError implements CreateFarmError {
 abstract class CreateFarmError implements FarmScreenState {
   const factory CreateFarmError(final Failure failure) = _$CreateFarmError;
 
-  Failure get failure => throw _privateConstructorUsedError;
+  Failure get failure;
   @JsonKey(ignore: true)
   _$$CreateFarmErrorCopyWith<_$CreateFarmError> get copyWith =>
       throw _privateConstructorUsedError;

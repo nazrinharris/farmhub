@@ -300,7 +300,7 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
       "createdAt": createdAt,
       "produceFavoritesMap": {},
       "phoneNumber": null,
-      "userType": UserType.regular.typeAsString,
+      "userType": null,
     });
 
     final user = FarmhubUser(

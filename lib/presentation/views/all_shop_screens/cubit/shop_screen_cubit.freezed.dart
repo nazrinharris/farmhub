@@ -466,7 +466,7 @@ class _$CreateShopSuccess implements CreateShopSuccess {
 abstract class CreateShopSuccess implements ShopScreenState {
   const factory CreateShopSuccess(final Shop shop) = _$CreateShopSuccess;
 
-  Shop get shop => throw _privateConstructorUsedError;
+  Shop get shop;
   @JsonKey(ignore: true)
   _$$CreateShopSuccessCopyWith<_$CreateShopSuccess> get copyWith =>
       throw _privateConstructorUsedError;
@@ -612,7 +612,7 @@ class _$CreateShopError implements CreateShopError {
 abstract class CreateShopError implements ShopScreenState {
   const factory CreateShopError(final Failure failure) = _$CreateShopError;
 
-  Failure get failure => throw _privateConstructorUsedError;
+  Failure get failure;
   @JsonKey(ignore: true)
   _$$CreateShopErrorCopyWith<_$CreateShopError> get copyWith =>
       throw _privateConstructorUsedError;

@@ -25,4 +25,7 @@ class AuthState with _$AuthState {
   // Account retrieval referring to when the user already exists.
   const factory AuthState.accountCreationSuccess(FarmhubUser user) = AccountCreationSuccess;
   const factory AuthState.accountCreationError(Failure failure) = AccountCreationError;
+
+  const factory AuthState.thirdPartyAccountCreationSuccess(Tuple2<FarmhubUser, bool> result) =
+      ThirdPartyAccountCreationSuccess;
 }

@@ -219,18 +219,17 @@ abstract class _Price implements Price {
       required final List<PriceSnippet> allPricesWithDateList}) = _$_Price;
 
   @override
-  num get currentPrice => throw _privateConstructorUsedError;
+  num get currentPrice;
   @override
-  String get priceDate => throw _privateConstructorUsedError;
+  String get priceDate;
   @override
-  DateTime get priceDateTimeStamp => throw _privateConstructorUsedError;
+  DateTime get priceDateTimeStamp;
   @override
-  bool get isAverage => throw _privateConstructorUsedError;
+  bool get isAverage;
   @override
-  String get priceId => throw _privateConstructorUsedError;
+  String get priceId;
   @override
-  List<PriceSnippet> get allPricesWithDateList =>
-      throw _privateConstructorUsedError;
+  List<PriceSnippet> get allPricesWithDateList;
   @override
   @JsonKey(ignore: true)
   _$$_PriceCopyWith<_$_Price> get copyWith =>
@@ -362,9 +361,9 @@ abstract class _PriceSnippet implements PriceSnippet {
       required final String priceDate}) = _$_PriceSnippet;
 
   @override
-  num get price => throw _privateConstructorUsedError;
+  num get price;
   @override
-  String get priceDate => throw _privateConstructorUsedError;
+  String get priceDate;
   @override
   @JsonKey(ignore: true)
   _$$_PriceSnippetCopyWith<_$_PriceSnippet> get copyWith =>

@@ -139,9 +139,9 @@ class AuthCubit extends Cubit<AuthState> {
 
     googleSignInResult.fold(
       (f) => emit(AuthState.credentialLoginError(f)),
-      (user) {
-        globalAuthCubit.updateFarmhubUser(user);
-        emit(AuthState.accountCreationSuccess(user));
+      (tupleUser) {
+        globalAuthCubit.updateFarmhubUser(tupleUser.first);
+        emit(AuthState.thirdPartyAccountCreationSuccess(tupleUser));
       },
     );
   }

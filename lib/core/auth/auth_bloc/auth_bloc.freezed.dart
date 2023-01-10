@@ -442,8 +442,8 @@ abstract class _AEExecLoginWithEmailAndPassword implements AuthEvent {
       {required final String email,
       required final String password}) = _$_AEExecLoginWithEmailAndPassword;
 
-  String get email => throw _privateConstructorUsedError;
-  String get password => throw _privateConstructorUsedError;
+  String get email;
+  String get password;
   @JsonKey(ignore: true)
   _$$_AEExecLoginWithEmailAndPasswordCopyWith<
           _$_AEExecLoginWithEmailAndPassword>
@@ -665,10 +665,10 @@ abstract class _AEExecRegisterWithEmailAndPassword implements AuthEvent {
           required final UserType userType}) =
       _$_AEExecRegisterWithEmailAndPassword;
 
-  String get email => throw _privateConstructorUsedError;
-  String get password => throw _privateConstructorUsedError;
-  String get username => throw _privateConstructorUsedError;
-  UserType get userType => throw _privateConstructorUsedError;
+  String get email;
+  String get password;
+  String get username;
+  UserType get userType;
   @JsonKey(ignore: true)
   _$$_AEExecRegisterWithEmailAndPasswordCopyWith<
           _$_AEExecRegisterWithEmailAndPassword>
@@ -1133,7 +1133,7 @@ class _$_AEExecIsAdmin implements _AEExecIsAdmin {
 abstract class _AEExecIsAdmin implements AuthEvent {
   const factory _AEExecIsAdmin(final String uid) = _$_AEExecIsAdmin;
 
-  String get uid => throw _privateConstructorUsedError;
+  String get uid;
   @JsonKey(ignore: true)
   _$$_AEExecIsAdminCopyWith<_$_AEExecIsAdmin> get copyWith =>
       throw _privateConstructorUsedError;
@@ -2461,7 +2461,7 @@ abstract class ASLoginSuccess implements AuthState {
   const factory ASLoginSuccess({required final FarmhubUser user}) =
       _$ASLoginSuccess;
 
-  FarmhubUser get user => throw _privateConstructorUsedError;
+  FarmhubUser get user;
   @JsonKey(ignore: true)
   _$$ASLoginSuccessCopyWith<_$ASLoginSuccess> get copyWith =>
       throw _privateConstructorUsedError;
@@ -2737,9 +2737,9 @@ abstract class ASLoginError implements AuthState {
       required final String message,
       required final StackTrace stackTrace}) = _$ASLoginError;
 
-  String get code => throw _privateConstructorUsedError;
-  String get message => throw _privateConstructorUsedError;
-  StackTrace get stackTrace => throw _privateConstructorUsedError;
+  String get code;
+  String get message;
+  StackTrace get stackTrace;
   @JsonKey(ignore: true)
   _$$ASLoginErrorCopyWith<_$ASLoginError> get copyWith =>
       throw _privateConstructorUsedError;
@@ -3226,7 +3226,7 @@ abstract class ASRegisterSuccess implements AuthState {
   const factory ASRegisterSuccess({required final FarmhubUser user}) =
       _$ASRegisterSuccess;
 
-  FarmhubUser get user => throw _privateConstructorUsedError;
+  FarmhubUser get user;
   @JsonKey(ignore: true)
   _$$ASRegisterSuccessCopyWith<_$ASRegisterSuccess> get copyWith =>
       throw _privateConstructorUsedError;
@@ -3503,9 +3503,9 @@ abstract class ASRegisterError implements AuthState {
       required final String message,
       required final StackTrace stackTrace}) = _$ASRegisterError;
 
-  String get code => throw _privateConstructorUsedError;
-  String get message => throw _privateConstructorUsedError;
-  StackTrace get stackTrace => throw _privateConstructorUsedError;
+  String get code;
+  String get message;
+  StackTrace get stackTrace;
   @JsonKey(ignore: true)
   _$$ASRegisterErrorCopyWith<_$ASRegisterError> get copyWith =>
       throw _privateConstructorUsedError;
@@ -4229,9 +4229,9 @@ abstract class ASSignOutError implements AuthState {
       required final String message,
       required final StackTrace stackTrace}) = _$ASSignOutError;
 
-  String get code => throw _privateConstructorUsedError;
-  String get message => throw _privateConstructorUsedError;
-  StackTrace get stackTrace => throw _privateConstructorUsedError;
+  String get code;
+  String get message;
+  StackTrace get stackTrace;
   @JsonKey(ignore: true)
   _$$ASSignOutErrorCopyWith<_$ASSignOutError> get copyWith =>
       throw _privateConstructorUsedError;
@@ -4725,7 +4725,7 @@ abstract class ASRetrieveUserDataSuccess implements AuthState {
   const factory ASRetrieveUserDataSuccess(
       {required final FarmhubUser farmhubUser}) = _$ASRetrieveUserDataSuccess;
 
-  FarmhubUser get farmhubUser => throw _privateConstructorUsedError;
+  FarmhubUser get farmhubUser;
   @JsonKey(ignore: true)
   _$$ASRetrieveUserDataSuccessCopyWith<_$ASRetrieveUserDataSuccess>
       get copyWith => throw _privateConstructorUsedError;
@@ -5004,9 +5004,9 @@ abstract class ASRetrieveUserDataError implements AuthState {
       required final String message,
       required final StackTrace stackTrace}) = _$ASRetrieveUserDataError;
 
-  String get code => throw _privateConstructorUsedError;
-  String get message => throw _privateConstructorUsedError;
-  StackTrace get stackTrace => throw _privateConstructorUsedError;
+  String get code;
+  String get message;
+  StackTrace get stackTrace;
   @JsonKey(ignore: true)
   _$$ASRetrieveUserDataErrorCopyWith<_$ASRetrieveUserDataError> get copyWith =>
       throw _privateConstructorUsedError;
@@ -5484,7 +5484,7 @@ abstract class ASIsAdminSuccess implements AuthState {
   const factory ASIsAdminSuccess({required final bool isAdmin}) =
       _$ASIsAdminSuccess;
 
-  bool get isAdmin => throw _privateConstructorUsedError;
+  bool get isAdmin;
   @JsonKey(ignore: true)
   _$$ASIsAdminSuccessCopyWith<_$ASIsAdminSuccess> get copyWith =>
       throw _privateConstructorUsedError;
@@ -5760,9 +5760,9 @@ abstract class ASIsAdminError implements AuthState {
       required final String message,
       required final StackTrace stackTrace}) = _$ASIsAdminError;
 
-  String get code => throw _privateConstructorUsedError;
-  String get message => throw _privateConstructorUsedError;
-  StackTrace get stackTrace => throw _privateConstructorUsedError;
+  String get code;
+  String get message;
+  StackTrace get stackTrace;
   @JsonKey(ignore: true)
   _$$ASIsAdminErrorCopyWith<_$ASIsAdminError> get copyWith =>
       throw _privateConstructorUsedError;

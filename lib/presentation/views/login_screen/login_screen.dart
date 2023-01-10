@@ -108,10 +108,18 @@ class _LoginScreenState extends State<LoginScreen> with AnimationMixin {
                 child: Builder(builder: (context) {
                   return BlocListener<AuthCubit, AuthState>(
                     listener: (context, state) {
-                      if (state is AccountCreationSuccess) {
+                      if (state is ThirdPartyAccountCreationSuccess) {
                         debugPrint("Login Success!");
-                        Navigator.of(context)
-                            .pushNamedAndRemoveUntil('/nav_main', (route) => false);
+
+                        // True means that the user created is new.
+                        if (state.result.second == true) {
+                          Navigator.of(context)
+                              .pushNamedAndRemoveUntil('/nav_main', (route) => false);
+                          Navigator.of(context).pushNamed("/choose_user_type");
+                        } else {
+                          Navigator.of(context)
+                              .pushNamedAndRemoveUntil('/nav_main', (route) => false);
+                        }
                       } else if (state is CredentialLoginError) {
                         debugPrint("ERROR LOGGING IN");
                         debugPrint(state.failure.toString());

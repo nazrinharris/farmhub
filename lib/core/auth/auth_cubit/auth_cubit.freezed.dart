@@ -29,6 +29,8 @@ mixin _$AuthState {
     required TResult Function(Failure failure) credentialLoginError,
     required TResult Function(FarmhubUser user) accountCreationSuccess,
     required TResult Function(Failure failure) accountCreationError,
+    required TResult Function(Tuple2<FarmhubUser, bool> result)
+        thirdPartyAccountCreationSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -44,6 +46,8 @@ mixin _$AuthState {
     TResult Function(Failure failure)? credentialLoginError,
     TResult Function(FarmhubUser user)? accountCreationSuccess,
     TResult Function(Failure failure)? accountCreationError,
+    TResult Function(Tuple2<FarmhubUser, bool> result)?
+        thirdPartyAccountCreationSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -59,6 +63,8 @@ mixin _$AuthState {
     TResult Function(Failure failure)? credentialLoginError,
     TResult Function(FarmhubUser user)? accountCreationSuccess,
     TResult Function(Failure failure)? accountCreationError,
+    TResult Function(Tuple2<FarmhubUser, bool> result)?
+        thirdPartyAccountCreationSuccess,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -77,6 +83,8 @@ mixin _$AuthState {
     required TResult Function(AccountCreationSuccess value)
         accountCreationSuccess,
     required TResult Function(AccountCreationError value) accountCreationError,
+    required TResult Function(ThirdPartyAccountCreationSuccess value)
+        thirdPartyAccountCreationSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -90,6 +98,8 @@ mixin _$AuthState {
     TResult Function(CredentialLoginError value)? credentialLoginError,
     TResult Function(AccountCreationSuccess value)? accountCreationSuccess,
     TResult Function(AccountCreationError value)? accountCreationError,
+    TResult Function(ThirdPartyAccountCreationSuccess value)?
+        thirdPartyAccountCreationSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -103,6 +113,8 @@ mixin _$AuthState {
     TResult Function(CredentialLoginError value)? credentialLoginError,
     TResult Function(AccountCreationSuccess value)? accountCreationSuccess,
     TResult Function(AccountCreationError value)? accountCreationError,
+    TResult Function(ThirdPartyAccountCreationSuccess value)?
+        thirdPartyAccountCreationSuccess,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -142,18 +154,12 @@ class __$$_InitialCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Initial with DiagnosticableTreeMixin implements _Initial {
+class _$_Initial implements _Initial {
   const _$_Initial();
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'AuthState.initial()';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty('type', 'AuthState.initial'));
   }
 
   @override
@@ -179,6 +185,8 @@ class _$_Initial with DiagnosticableTreeMixin implements _Initial {
     required TResult Function(Failure failure) credentialLoginError,
     required TResult Function(FarmhubUser user) accountCreationSuccess,
     required TResult Function(Failure failure) accountCreationError,
+    required TResult Function(Tuple2<FarmhubUser, bool> result)
+        thirdPartyAccountCreationSuccess,
   }) {
     return initial();
   }
@@ -197,6 +205,8 @@ class _$_Initial with DiagnosticableTreeMixin implements _Initial {
     TResult Function(Failure failure)? credentialLoginError,
     TResult Function(FarmhubUser user)? accountCreationSuccess,
     TResult Function(Failure failure)? accountCreationError,
+    TResult Function(Tuple2<FarmhubUser, bool> result)?
+        thirdPartyAccountCreationSuccess,
   }) {
     return initial?.call();
   }
@@ -215,6 +225,8 @@ class _$_Initial with DiagnosticableTreeMixin implements _Initial {
     TResult Function(Failure failure)? credentialLoginError,
     TResult Function(FarmhubUser user)? accountCreationSuccess,
     TResult Function(Failure failure)? accountCreationError,
+    TResult Function(Tuple2<FarmhubUser, bool> result)?
+        thirdPartyAccountCreationSuccess,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -239,6 +251,8 @@ class _$_Initial with DiagnosticableTreeMixin implements _Initial {
     required TResult Function(AccountCreationSuccess value)
         accountCreationSuccess,
     required TResult Function(AccountCreationError value) accountCreationError,
+    required TResult Function(ThirdPartyAccountCreationSuccess value)
+        thirdPartyAccountCreationSuccess,
   }) {
     return initial(this);
   }
@@ -255,6 +269,8 @@ class _$_Initial with DiagnosticableTreeMixin implements _Initial {
     TResult Function(CredentialLoginError value)? credentialLoginError,
     TResult Function(AccountCreationSuccess value)? accountCreationSuccess,
     TResult Function(AccountCreationError value)? accountCreationError,
+    TResult Function(ThirdPartyAccountCreationSuccess value)?
+        thirdPartyAccountCreationSuccess,
   }) {
     return initial?.call(this);
   }
@@ -271,6 +287,8 @@ class _$_Initial with DiagnosticableTreeMixin implements _Initial {
     TResult Function(CredentialLoginError value)? credentialLoginError,
     TResult Function(AccountCreationSuccess value)? accountCreationSuccess,
     TResult Function(AccountCreationError value)? accountCreationError,
+    TResult Function(ThirdPartyAccountCreationSuccess value)?
+        thirdPartyAccountCreationSuccess,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -306,21 +324,12 @@ class __$$PhoneVerificationLoadingCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$PhoneVerificationLoading
-    with DiagnosticableTreeMixin
-    implements PhoneVerificationLoading {
+class _$PhoneVerificationLoading implements PhoneVerificationLoading {
   const _$PhoneVerificationLoading();
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'AuthState.phoneVerificationLoading()';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-        .add(DiagnosticsProperty('type', 'AuthState.phoneVerificationLoading'));
   }
 
   @override
@@ -347,6 +356,8 @@ class _$PhoneVerificationLoading
     required TResult Function(Failure failure) credentialLoginError,
     required TResult Function(FarmhubUser user) accountCreationSuccess,
     required TResult Function(Failure failure) accountCreationError,
+    required TResult Function(Tuple2<FarmhubUser, bool> result)
+        thirdPartyAccountCreationSuccess,
   }) {
     return phoneVerificationLoading();
   }
@@ -365,6 +376,8 @@ class _$PhoneVerificationLoading
     TResult Function(Failure failure)? credentialLoginError,
     TResult Function(FarmhubUser user)? accountCreationSuccess,
     TResult Function(Failure failure)? accountCreationError,
+    TResult Function(Tuple2<FarmhubUser, bool> result)?
+        thirdPartyAccountCreationSuccess,
   }) {
     return phoneVerificationLoading?.call();
   }
@@ -383,6 +396,8 @@ class _$PhoneVerificationLoading
     TResult Function(Failure failure)? credentialLoginError,
     TResult Function(FarmhubUser user)? accountCreationSuccess,
     TResult Function(Failure failure)? accountCreationError,
+    TResult Function(Tuple2<FarmhubUser, bool> result)?
+        thirdPartyAccountCreationSuccess,
     required TResult orElse(),
   }) {
     if (phoneVerificationLoading != null) {
@@ -407,6 +422,8 @@ class _$PhoneVerificationLoading
     required TResult Function(AccountCreationSuccess value)
         accountCreationSuccess,
     required TResult Function(AccountCreationError value) accountCreationError,
+    required TResult Function(ThirdPartyAccountCreationSuccess value)
+        thirdPartyAccountCreationSuccess,
   }) {
     return phoneVerificationLoading(this);
   }
@@ -423,6 +440,8 @@ class _$PhoneVerificationLoading
     TResult Function(CredentialLoginError value)? credentialLoginError,
     TResult Function(AccountCreationSuccess value)? accountCreationSuccess,
     TResult Function(AccountCreationError value)? accountCreationError,
+    TResult Function(ThirdPartyAccountCreationSuccess value)?
+        thirdPartyAccountCreationSuccess,
   }) {
     return phoneVerificationLoading?.call(this);
   }
@@ -439,6 +458,8 @@ class _$PhoneVerificationLoading
     TResult Function(CredentialLoginError value)? credentialLoginError,
     TResult Function(AccountCreationSuccess value)? accountCreationSuccess,
     TResult Function(AccountCreationError value)? accountCreationError,
+    TResult Function(ThirdPartyAccountCreationSuccess value)?
+        thirdPartyAccountCreationSuccess,
     required TResult orElse(),
   }) {
     if (phoneVerificationLoading != null) {
@@ -496,9 +517,7 @@ class __$$SMSCodeSentToClientCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SMSCodeSentToClient
-    with DiagnosticableTreeMixin
-    implements SMSCodeSentToClient {
+class _$SMSCodeSentToClient implements SMSCodeSentToClient {
   const _$SMSCodeSentToClient(
       {required this.verificationId,
       required this.phoneNumber,
@@ -512,18 +531,8 @@ class _$SMSCodeSentToClient
   final int? resendToken;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'AuthState.SMSCodeSentToClient(verificationId: $verificationId, phoneNumber: $phoneNumber, resendToken: $resendToken)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'AuthState.SMSCodeSentToClient'))
-      ..add(DiagnosticsProperty('verificationId', verificationId))
-      ..add(DiagnosticsProperty('phoneNumber', phoneNumber))
-      ..add(DiagnosticsProperty('resendToken', resendToken));
   }
 
   @override
@@ -566,6 +575,8 @@ class _$SMSCodeSentToClient
     required TResult Function(Failure failure) credentialLoginError,
     required TResult Function(FarmhubUser user) accountCreationSuccess,
     required TResult Function(Failure failure) accountCreationError,
+    required TResult Function(Tuple2<FarmhubUser, bool> result)
+        thirdPartyAccountCreationSuccess,
   }) {
     return SMSCodeSentToClient(verificationId, phoneNumber, resendToken);
   }
@@ -584,6 +595,8 @@ class _$SMSCodeSentToClient
     TResult Function(Failure failure)? credentialLoginError,
     TResult Function(FarmhubUser user)? accountCreationSuccess,
     TResult Function(Failure failure)? accountCreationError,
+    TResult Function(Tuple2<FarmhubUser, bool> result)?
+        thirdPartyAccountCreationSuccess,
   }) {
     return SMSCodeSentToClient?.call(verificationId, phoneNumber, resendToken);
   }
@@ -602,6 +615,8 @@ class _$SMSCodeSentToClient
     TResult Function(Failure failure)? credentialLoginError,
     TResult Function(FarmhubUser user)? accountCreationSuccess,
     TResult Function(Failure failure)? accountCreationError,
+    TResult Function(Tuple2<FarmhubUser, bool> result)?
+        thirdPartyAccountCreationSuccess,
     required TResult orElse(),
   }) {
     if (SMSCodeSentToClient != null) {
@@ -626,6 +641,8 @@ class _$SMSCodeSentToClient
     required TResult Function(AccountCreationSuccess value)
         accountCreationSuccess,
     required TResult Function(AccountCreationError value) accountCreationError,
+    required TResult Function(ThirdPartyAccountCreationSuccess value)
+        thirdPartyAccountCreationSuccess,
   }) {
     return SMSCodeSentToClient(this);
   }
@@ -642,6 +659,8 @@ class _$SMSCodeSentToClient
     TResult Function(CredentialLoginError value)? credentialLoginError,
     TResult Function(AccountCreationSuccess value)? accountCreationSuccess,
     TResult Function(AccountCreationError value)? accountCreationError,
+    TResult Function(ThirdPartyAccountCreationSuccess value)?
+        thirdPartyAccountCreationSuccess,
   }) {
     return SMSCodeSentToClient?.call(this);
   }
@@ -658,6 +677,8 @@ class _$SMSCodeSentToClient
     TResult Function(CredentialLoginError value)? credentialLoginError,
     TResult Function(AccountCreationSuccess value)? accountCreationSuccess,
     TResult Function(AccountCreationError value)? accountCreationError,
+    TResult Function(ThirdPartyAccountCreationSuccess value)?
+        thirdPartyAccountCreationSuccess,
     required TResult orElse(),
   }) {
     if (SMSCodeSentToClient != null) {
@@ -673,9 +694,9 @@ abstract class SMSCodeSentToClient implements AuthState {
       required final PhoneNumber phoneNumber,
       final int? resendToken}) = _$SMSCodeSentToClient;
 
-  String get verificationId => throw _privateConstructorUsedError;
-  PhoneNumber get phoneNumber => throw _privateConstructorUsedError;
-  int? get resendToken => throw _privateConstructorUsedError;
+  String get verificationId;
+  PhoneNumber get phoneNumber;
+  int? get resendToken;
   @JsonKey(ignore: true)
   _$$SMSCodeSentToClientCopyWith<_$SMSCodeSentToClient> get copyWith =>
       throw _privateConstructorUsedError;
@@ -716,25 +737,15 @@ class __$$PhoneVerificationErrorCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$PhoneVerificationError
-    with DiagnosticableTreeMixin
-    implements PhoneVerificationError {
+class _$PhoneVerificationError implements PhoneVerificationError {
   const _$PhoneVerificationError(this.failure);
 
   @override
   final Failure failure;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'AuthState.phoneVerificationError(failure: $failure)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'AuthState.phoneVerificationError'))
-      ..add(DiagnosticsProperty('failure', failure));
   }
 
   @override
@@ -769,6 +780,8 @@ class _$PhoneVerificationError
     required TResult Function(Failure failure) credentialLoginError,
     required TResult Function(FarmhubUser user) accountCreationSuccess,
     required TResult Function(Failure failure) accountCreationError,
+    required TResult Function(Tuple2<FarmhubUser, bool> result)
+        thirdPartyAccountCreationSuccess,
   }) {
     return phoneVerificationError(failure);
   }
@@ -787,6 +800,8 @@ class _$PhoneVerificationError
     TResult Function(Failure failure)? credentialLoginError,
     TResult Function(FarmhubUser user)? accountCreationSuccess,
     TResult Function(Failure failure)? accountCreationError,
+    TResult Function(Tuple2<FarmhubUser, bool> result)?
+        thirdPartyAccountCreationSuccess,
   }) {
     return phoneVerificationError?.call(failure);
   }
@@ -805,6 +820,8 @@ class _$PhoneVerificationError
     TResult Function(Failure failure)? credentialLoginError,
     TResult Function(FarmhubUser user)? accountCreationSuccess,
     TResult Function(Failure failure)? accountCreationError,
+    TResult Function(Tuple2<FarmhubUser, bool> result)?
+        thirdPartyAccountCreationSuccess,
     required TResult orElse(),
   }) {
     if (phoneVerificationError != null) {
@@ -829,6 +846,8 @@ class _$PhoneVerificationError
     required TResult Function(AccountCreationSuccess value)
         accountCreationSuccess,
     required TResult Function(AccountCreationError value) accountCreationError,
+    required TResult Function(ThirdPartyAccountCreationSuccess value)
+        thirdPartyAccountCreationSuccess,
   }) {
     return phoneVerificationError(this);
   }
@@ -845,6 +864,8 @@ class _$PhoneVerificationError
     TResult Function(CredentialLoginError value)? credentialLoginError,
     TResult Function(AccountCreationSuccess value)? accountCreationSuccess,
     TResult Function(AccountCreationError value)? accountCreationError,
+    TResult Function(ThirdPartyAccountCreationSuccess value)?
+        thirdPartyAccountCreationSuccess,
   }) {
     return phoneVerificationError?.call(this);
   }
@@ -861,6 +882,8 @@ class _$PhoneVerificationError
     TResult Function(CredentialLoginError value)? credentialLoginError,
     TResult Function(AccountCreationSuccess value)? accountCreationSuccess,
     TResult Function(AccountCreationError value)? accountCreationError,
+    TResult Function(ThirdPartyAccountCreationSuccess value)?
+        thirdPartyAccountCreationSuccess,
     required TResult orElse(),
   }) {
     if (phoneVerificationError != null) {
@@ -874,7 +897,7 @@ abstract class PhoneVerificationError implements AuthState {
   const factory PhoneVerificationError(final Failure failure) =
       _$PhoneVerificationError;
 
-  Failure get failure => throw _privateConstructorUsedError;
+  Failure get failure;
   @JsonKey(ignore: true)
   _$$PhoneVerificationErrorCopyWith<_$PhoneVerificationError> get copyWith =>
       throw _privateConstructorUsedError;
@@ -900,18 +923,12 @@ class __$$SMSCodeInvalidCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SMSCodeInvalid with DiagnosticableTreeMixin implements SMSCodeInvalid {
+class _$SMSCodeInvalid implements SMSCodeInvalid {
   const _$SMSCodeInvalid();
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'AuthState.smsCodeInvalid()';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty('type', 'AuthState.smsCodeInvalid'));
   }
 
   @override
@@ -937,6 +954,8 @@ class _$SMSCodeInvalid with DiagnosticableTreeMixin implements SMSCodeInvalid {
     required TResult Function(Failure failure) credentialLoginError,
     required TResult Function(FarmhubUser user) accountCreationSuccess,
     required TResult Function(Failure failure) accountCreationError,
+    required TResult Function(Tuple2<FarmhubUser, bool> result)
+        thirdPartyAccountCreationSuccess,
   }) {
     return smsCodeInvalid();
   }
@@ -955,6 +974,8 @@ class _$SMSCodeInvalid with DiagnosticableTreeMixin implements SMSCodeInvalid {
     TResult Function(Failure failure)? credentialLoginError,
     TResult Function(FarmhubUser user)? accountCreationSuccess,
     TResult Function(Failure failure)? accountCreationError,
+    TResult Function(Tuple2<FarmhubUser, bool> result)?
+        thirdPartyAccountCreationSuccess,
   }) {
     return smsCodeInvalid?.call();
   }
@@ -973,6 +994,8 @@ class _$SMSCodeInvalid with DiagnosticableTreeMixin implements SMSCodeInvalid {
     TResult Function(Failure failure)? credentialLoginError,
     TResult Function(FarmhubUser user)? accountCreationSuccess,
     TResult Function(Failure failure)? accountCreationError,
+    TResult Function(Tuple2<FarmhubUser, bool> result)?
+        thirdPartyAccountCreationSuccess,
     required TResult orElse(),
   }) {
     if (smsCodeInvalid != null) {
@@ -997,6 +1020,8 @@ class _$SMSCodeInvalid with DiagnosticableTreeMixin implements SMSCodeInvalid {
     required TResult Function(AccountCreationSuccess value)
         accountCreationSuccess,
     required TResult Function(AccountCreationError value) accountCreationError,
+    required TResult Function(ThirdPartyAccountCreationSuccess value)
+        thirdPartyAccountCreationSuccess,
   }) {
     return smsCodeInvalid(this);
   }
@@ -1013,6 +1038,8 @@ class _$SMSCodeInvalid with DiagnosticableTreeMixin implements SMSCodeInvalid {
     TResult Function(CredentialLoginError value)? credentialLoginError,
     TResult Function(AccountCreationSuccess value)? accountCreationSuccess,
     TResult Function(AccountCreationError value)? accountCreationError,
+    TResult Function(ThirdPartyAccountCreationSuccess value)?
+        thirdPartyAccountCreationSuccess,
   }) {
     return smsCodeInvalid?.call(this);
   }
@@ -1029,6 +1056,8 @@ class _$SMSCodeInvalid with DiagnosticableTreeMixin implements SMSCodeInvalid {
     TResult Function(CredentialLoginError value)? credentialLoginError,
     TResult Function(AccountCreationSuccess value)? accountCreationSuccess,
     TResult Function(AccountCreationError value)? accountCreationError,
+    TResult Function(ThirdPartyAccountCreationSuccess value)?
+        thirdPartyAccountCreationSuccess,
     required TResult orElse(),
   }) {
     if (smsCodeInvalid != null) {
@@ -1064,21 +1093,12 @@ class __$$CredentialLoginLoadingCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$CredentialLoginLoading
-    with DiagnosticableTreeMixin
-    implements CredentialLoginLoading {
+class _$CredentialLoginLoading implements CredentialLoginLoading {
   const _$CredentialLoginLoading();
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'AuthState.credentialLoginLoading()';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-        .add(DiagnosticsProperty('type', 'AuthState.credentialLoginLoading'));
   }
 
   @override
@@ -1104,6 +1124,8 @@ class _$CredentialLoginLoading
     required TResult Function(Failure failure) credentialLoginError,
     required TResult Function(FarmhubUser user) accountCreationSuccess,
     required TResult Function(Failure failure) accountCreationError,
+    required TResult Function(Tuple2<FarmhubUser, bool> result)
+        thirdPartyAccountCreationSuccess,
   }) {
     return credentialLoginLoading();
   }
@@ -1122,6 +1144,8 @@ class _$CredentialLoginLoading
     TResult Function(Failure failure)? credentialLoginError,
     TResult Function(FarmhubUser user)? accountCreationSuccess,
     TResult Function(Failure failure)? accountCreationError,
+    TResult Function(Tuple2<FarmhubUser, bool> result)?
+        thirdPartyAccountCreationSuccess,
   }) {
     return credentialLoginLoading?.call();
   }
@@ -1140,6 +1164,8 @@ class _$CredentialLoginLoading
     TResult Function(Failure failure)? credentialLoginError,
     TResult Function(FarmhubUser user)? accountCreationSuccess,
     TResult Function(Failure failure)? accountCreationError,
+    TResult Function(Tuple2<FarmhubUser, bool> result)?
+        thirdPartyAccountCreationSuccess,
     required TResult orElse(),
   }) {
     if (credentialLoginLoading != null) {
@@ -1164,6 +1190,8 @@ class _$CredentialLoginLoading
     required TResult Function(AccountCreationSuccess value)
         accountCreationSuccess,
     required TResult Function(AccountCreationError value) accountCreationError,
+    required TResult Function(ThirdPartyAccountCreationSuccess value)
+        thirdPartyAccountCreationSuccess,
   }) {
     return credentialLoginLoading(this);
   }
@@ -1180,6 +1208,8 @@ class _$CredentialLoginLoading
     TResult Function(CredentialLoginError value)? credentialLoginError,
     TResult Function(AccountCreationSuccess value)? accountCreationSuccess,
     TResult Function(AccountCreationError value)? accountCreationError,
+    TResult Function(ThirdPartyAccountCreationSuccess value)?
+        thirdPartyAccountCreationSuccess,
   }) {
     return credentialLoginLoading?.call(this);
   }
@@ -1196,6 +1226,8 @@ class _$CredentialLoginLoading
     TResult Function(CredentialLoginError value)? credentialLoginError,
     TResult Function(AccountCreationSuccess value)? accountCreationSuccess,
     TResult Function(AccountCreationError value)? accountCreationError,
+    TResult Function(ThirdPartyAccountCreationSuccess value)?
+        thirdPartyAccountCreationSuccess,
     required TResult orElse(),
   }) {
     if (credentialLoginLoading != null) {
@@ -1243,25 +1275,15 @@ class __$$CredentialLoginErrorCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$CredentialLoginError
-    with DiagnosticableTreeMixin
-    implements CredentialLoginError {
+class _$CredentialLoginError implements CredentialLoginError {
   const _$CredentialLoginError(this.failure);
 
   @override
   final Failure failure;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'AuthState.credentialLoginError(failure: $failure)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'AuthState.credentialLoginError'))
-      ..add(DiagnosticsProperty('failure', failure));
   }
 
   @override
@@ -1296,6 +1318,8 @@ class _$CredentialLoginError
     required TResult Function(Failure failure) credentialLoginError,
     required TResult Function(FarmhubUser user) accountCreationSuccess,
     required TResult Function(Failure failure) accountCreationError,
+    required TResult Function(Tuple2<FarmhubUser, bool> result)
+        thirdPartyAccountCreationSuccess,
   }) {
     return credentialLoginError(failure);
   }
@@ -1314,6 +1338,8 @@ class _$CredentialLoginError
     TResult Function(Failure failure)? credentialLoginError,
     TResult Function(FarmhubUser user)? accountCreationSuccess,
     TResult Function(Failure failure)? accountCreationError,
+    TResult Function(Tuple2<FarmhubUser, bool> result)?
+        thirdPartyAccountCreationSuccess,
   }) {
     return credentialLoginError?.call(failure);
   }
@@ -1332,6 +1358,8 @@ class _$CredentialLoginError
     TResult Function(Failure failure)? credentialLoginError,
     TResult Function(FarmhubUser user)? accountCreationSuccess,
     TResult Function(Failure failure)? accountCreationError,
+    TResult Function(Tuple2<FarmhubUser, bool> result)?
+        thirdPartyAccountCreationSuccess,
     required TResult orElse(),
   }) {
     if (credentialLoginError != null) {
@@ -1356,6 +1384,8 @@ class _$CredentialLoginError
     required TResult Function(AccountCreationSuccess value)
         accountCreationSuccess,
     required TResult Function(AccountCreationError value) accountCreationError,
+    required TResult Function(ThirdPartyAccountCreationSuccess value)
+        thirdPartyAccountCreationSuccess,
   }) {
     return credentialLoginError(this);
   }
@@ -1372,6 +1402,8 @@ class _$CredentialLoginError
     TResult Function(CredentialLoginError value)? credentialLoginError,
     TResult Function(AccountCreationSuccess value)? accountCreationSuccess,
     TResult Function(AccountCreationError value)? accountCreationError,
+    TResult Function(ThirdPartyAccountCreationSuccess value)?
+        thirdPartyAccountCreationSuccess,
   }) {
     return credentialLoginError?.call(this);
   }
@@ -1388,6 +1420,8 @@ class _$CredentialLoginError
     TResult Function(CredentialLoginError value)? credentialLoginError,
     TResult Function(AccountCreationSuccess value)? accountCreationSuccess,
     TResult Function(AccountCreationError value)? accountCreationError,
+    TResult Function(ThirdPartyAccountCreationSuccess value)?
+        thirdPartyAccountCreationSuccess,
     required TResult orElse(),
   }) {
     if (credentialLoginError != null) {
@@ -1401,7 +1435,7 @@ abstract class CredentialLoginError implements AuthState {
   const factory CredentialLoginError(final Failure failure) =
       _$CredentialLoginError;
 
-  Failure get failure => throw _privateConstructorUsedError;
+  Failure get failure;
   @JsonKey(ignore: true)
   _$$CredentialLoginErrorCopyWith<_$CredentialLoginError> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1451,25 +1485,15 @@ class __$$AccountCreationSuccessCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AccountCreationSuccess
-    with DiagnosticableTreeMixin
-    implements AccountCreationSuccess {
+class _$AccountCreationSuccess implements AccountCreationSuccess {
   const _$AccountCreationSuccess(this.user);
 
   @override
   final FarmhubUser user;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'AuthState.accountCreationSuccess(user: $user)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'AuthState.accountCreationSuccess'))
-      ..add(DiagnosticsProperty('user', user));
   }
 
   @override
@@ -1504,6 +1528,8 @@ class _$AccountCreationSuccess
     required TResult Function(Failure failure) credentialLoginError,
     required TResult Function(FarmhubUser user) accountCreationSuccess,
     required TResult Function(Failure failure) accountCreationError,
+    required TResult Function(Tuple2<FarmhubUser, bool> result)
+        thirdPartyAccountCreationSuccess,
   }) {
     return accountCreationSuccess(user);
   }
@@ -1522,6 +1548,8 @@ class _$AccountCreationSuccess
     TResult Function(Failure failure)? credentialLoginError,
     TResult Function(FarmhubUser user)? accountCreationSuccess,
     TResult Function(Failure failure)? accountCreationError,
+    TResult Function(Tuple2<FarmhubUser, bool> result)?
+        thirdPartyAccountCreationSuccess,
   }) {
     return accountCreationSuccess?.call(user);
   }
@@ -1540,6 +1568,8 @@ class _$AccountCreationSuccess
     TResult Function(Failure failure)? credentialLoginError,
     TResult Function(FarmhubUser user)? accountCreationSuccess,
     TResult Function(Failure failure)? accountCreationError,
+    TResult Function(Tuple2<FarmhubUser, bool> result)?
+        thirdPartyAccountCreationSuccess,
     required TResult orElse(),
   }) {
     if (accountCreationSuccess != null) {
@@ -1564,6 +1594,8 @@ class _$AccountCreationSuccess
     required TResult Function(AccountCreationSuccess value)
         accountCreationSuccess,
     required TResult Function(AccountCreationError value) accountCreationError,
+    required TResult Function(ThirdPartyAccountCreationSuccess value)
+        thirdPartyAccountCreationSuccess,
   }) {
     return accountCreationSuccess(this);
   }
@@ -1580,6 +1612,8 @@ class _$AccountCreationSuccess
     TResult Function(CredentialLoginError value)? credentialLoginError,
     TResult Function(AccountCreationSuccess value)? accountCreationSuccess,
     TResult Function(AccountCreationError value)? accountCreationError,
+    TResult Function(ThirdPartyAccountCreationSuccess value)?
+        thirdPartyAccountCreationSuccess,
   }) {
     return accountCreationSuccess?.call(this);
   }
@@ -1596,6 +1630,8 @@ class _$AccountCreationSuccess
     TResult Function(CredentialLoginError value)? credentialLoginError,
     TResult Function(AccountCreationSuccess value)? accountCreationSuccess,
     TResult Function(AccountCreationError value)? accountCreationError,
+    TResult Function(ThirdPartyAccountCreationSuccess value)?
+        thirdPartyAccountCreationSuccess,
     required TResult orElse(),
   }) {
     if (accountCreationSuccess != null) {
@@ -1609,7 +1645,7 @@ abstract class AccountCreationSuccess implements AuthState {
   const factory AccountCreationSuccess(final FarmhubUser user) =
       _$AccountCreationSuccess;
 
-  FarmhubUser get user => throw _privateConstructorUsedError;
+  FarmhubUser get user;
   @JsonKey(ignore: true)
   _$$AccountCreationSuccessCopyWith<_$AccountCreationSuccess> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1649,25 +1685,15 @@ class __$$AccountCreationErrorCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AccountCreationError
-    with DiagnosticableTreeMixin
-    implements AccountCreationError {
+class _$AccountCreationError implements AccountCreationError {
   const _$AccountCreationError(this.failure);
 
   @override
   final Failure failure;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'AuthState.accountCreationError(failure: $failure)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'AuthState.accountCreationError'))
-      ..add(DiagnosticsProperty('failure', failure));
   }
 
   @override
@@ -1702,6 +1728,8 @@ class _$AccountCreationError
     required TResult Function(Failure failure) credentialLoginError,
     required TResult Function(FarmhubUser user) accountCreationSuccess,
     required TResult Function(Failure failure) accountCreationError,
+    required TResult Function(Tuple2<FarmhubUser, bool> result)
+        thirdPartyAccountCreationSuccess,
   }) {
     return accountCreationError(failure);
   }
@@ -1720,6 +1748,8 @@ class _$AccountCreationError
     TResult Function(Failure failure)? credentialLoginError,
     TResult Function(FarmhubUser user)? accountCreationSuccess,
     TResult Function(Failure failure)? accountCreationError,
+    TResult Function(Tuple2<FarmhubUser, bool> result)?
+        thirdPartyAccountCreationSuccess,
   }) {
     return accountCreationError?.call(failure);
   }
@@ -1738,6 +1768,8 @@ class _$AccountCreationError
     TResult Function(Failure failure)? credentialLoginError,
     TResult Function(FarmhubUser user)? accountCreationSuccess,
     TResult Function(Failure failure)? accountCreationError,
+    TResult Function(Tuple2<FarmhubUser, bool> result)?
+        thirdPartyAccountCreationSuccess,
     required TResult orElse(),
   }) {
     if (accountCreationError != null) {
@@ -1762,6 +1794,8 @@ class _$AccountCreationError
     required TResult Function(AccountCreationSuccess value)
         accountCreationSuccess,
     required TResult Function(AccountCreationError value) accountCreationError,
+    required TResult Function(ThirdPartyAccountCreationSuccess value)
+        thirdPartyAccountCreationSuccess,
   }) {
     return accountCreationError(this);
   }
@@ -1778,6 +1812,8 @@ class _$AccountCreationError
     TResult Function(CredentialLoginError value)? credentialLoginError,
     TResult Function(AccountCreationSuccess value)? accountCreationSuccess,
     TResult Function(AccountCreationError value)? accountCreationError,
+    TResult Function(ThirdPartyAccountCreationSuccess value)?
+        thirdPartyAccountCreationSuccess,
   }) {
     return accountCreationError?.call(this);
   }
@@ -1794,6 +1830,8 @@ class _$AccountCreationError
     TResult Function(CredentialLoginError value)? credentialLoginError,
     TResult Function(AccountCreationSuccess value)? accountCreationSuccess,
     TResult Function(AccountCreationError value)? accountCreationError,
+    TResult Function(ThirdPartyAccountCreationSuccess value)?
+        thirdPartyAccountCreationSuccess,
     required TResult orElse(),
   }) {
     if (accountCreationError != null) {
@@ -1807,8 +1845,215 @@ abstract class AccountCreationError implements AuthState {
   const factory AccountCreationError(final Failure failure) =
       _$AccountCreationError;
 
-  Failure get failure => throw _privateConstructorUsedError;
+  Failure get failure;
   @JsonKey(ignore: true)
   _$$AccountCreationErrorCopyWith<_$AccountCreationError> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ThirdPartyAccountCreationSuccessCopyWith<$Res> {
+  factory _$$ThirdPartyAccountCreationSuccessCopyWith(
+          _$ThirdPartyAccountCreationSuccess value,
+          $Res Function(_$ThirdPartyAccountCreationSuccess) then) =
+      __$$ThirdPartyAccountCreationSuccessCopyWithImpl<$Res>;
+  $Res call({Tuple2<FarmhubUser, bool> result});
+}
+
+/// @nodoc
+class __$$ThirdPartyAccountCreationSuccessCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res>
+    implements _$$ThirdPartyAccountCreationSuccessCopyWith<$Res> {
+  __$$ThirdPartyAccountCreationSuccessCopyWithImpl(
+      _$ThirdPartyAccountCreationSuccess _value,
+      $Res Function(_$ThirdPartyAccountCreationSuccess) _then)
+      : super(_value, (v) => _then(v as _$ThirdPartyAccountCreationSuccess));
+
+  @override
+  _$ThirdPartyAccountCreationSuccess get _value =>
+      super._value as _$ThirdPartyAccountCreationSuccess;
+
+  @override
+  $Res call({
+    Object? result = freezed,
+  }) {
+    return _then(_$ThirdPartyAccountCreationSuccess(
+      result == freezed
+          ? _value.result
+          : result // ignore: cast_nullable_to_non_nullable
+              as Tuple2<FarmhubUser, bool>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ThirdPartyAccountCreationSuccess
+    implements ThirdPartyAccountCreationSuccess {
+  const _$ThirdPartyAccountCreationSuccess(this.result);
+
+  @override
+  final Tuple2<FarmhubUser, bool> result;
+
+  @override
+  String toString() {
+    return 'AuthState.thirdPartyAccountCreationSuccess(result: $result)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ThirdPartyAccountCreationSuccess &&
+            const DeepCollectionEquality().equals(other.result, result));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(result));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$ThirdPartyAccountCreationSuccessCopyWith<
+          _$ThirdPartyAccountCreationSuccess>
+      get copyWith => __$$ThirdPartyAccountCreationSuccessCopyWithImpl<
+          _$ThirdPartyAccountCreationSuccess>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() phoneVerificationLoading,
+    required TResult Function(
+            String verificationId, PhoneNumber phoneNumber, int? resendToken)
+        SMSCodeSentToClient,
+    required TResult Function(Failure failure) phoneVerificationError,
+    required TResult Function() smsCodeInvalid,
+    required TResult Function() credentialLoginLoading,
+    required TResult Function(Failure failure) credentialLoginError,
+    required TResult Function(FarmhubUser user) accountCreationSuccess,
+    required TResult Function(Failure failure) accountCreationError,
+    required TResult Function(Tuple2<FarmhubUser, bool> result)
+        thirdPartyAccountCreationSuccess,
+  }) {
+    return thirdPartyAccountCreationSuccess(result);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? phoneVerificationLoading,
+    TResult Function(
+            String verificationId, PhoneNumber phoneNumber, int? resendToken)?
+        SMSCodeSentToClient,
+    TResult Function(Failure failure)? phoneVerificationError,
+    TResult Function()? smsCodeInvalid,
+    TResult Function()? credentialLoginLoading,
+    TResult Function(Failure failure)? credentialLoginError,
+    TResult Function(FarmhubUser user)? accountCreationSuccess,
+    TResult Function(Failure failure)? accountCreationError,
+    TResult Function(Tuple2<FarmhubUser, bool> result)?
+        thirdPartyAccountCreationSuccess,
+  }) {
+    return thirdPartyAccountCreationSuccess?.call(result);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? phoneVerificationLoading,
+    TResult Function(
+            String verificationId, PhoneNumber phoneNumber, int? resendToken)?
+        SMSCodeSentToClient,
+    TResult Function(Failure failure)? phoneVerificationError,
+    TResult Function()? smsCodeInvalid,
+    TResult Function()? credentialLoginLoading,
+    TResult Function(Failure failure)? credentialLoginError,
+    TResult Function(FarmhubUser user)? accountCreationSuccess,
+    TResult Function(Failure failure)? accountCreationError,
+    TResult Function(Tuple2<FarmhubUser, bool> result)?
+        thirdPartyAccountCreationSuccess,
+    required TResult orElse(),
+  }) {
+    if (thirdPartyAccountCreationSuccess != null) {
+      return thirdPartyAccountCreationSuccess(result);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(PhoneVerificationLoading value)
+        phoneVerificationLoading,
+    required TResult Function(SMSCodeSentToClient value) SMSCodeSentToClient,
+    required TResult Function(PhoneVerificationError value)
+        phoneVerificationError,
+    required TResult Function(SMSCodeInvalid value) smsCodeInvalid,
+    required TResult Function(CredentialLoginLoading value)
+        credentialLoginLoading,
+    required TResult Function(CredentialLoginError value) credentialLoginError,
+    required TResult Function(AccountCreationSuccess value)
+        accountCreationSuccess,
+    required TResult Function(AccountCreationError value) accountCreationError,
+    required TResult Function(ThirdPartyAccountCreationSuccess value)
+        thirdPartyAccountCreationSuccess,
+  }) {
+    return thirdPartyAccountCreationSuccess(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(PhoneVerificationLoading value)? phoneVerificationLoading,
+    TResult Function(SMSCodeSentToClient value)? SMSCodeSentToClient,
+    TResult Function(PhoneVerificationError value)? phoneVerificationError,
+    TResult Function(SMSCodeInvalid value)? smsCodeInvalid,
+    TResult Function(CredentialLoginLoading value)? credentialLoginLoading,
+    TResult Function(CredentialLoginError value)? credentialLoginError,
+    TResult Function(AccountCreationSuccess value)? accountCreationSuccess,
+    TResult Function(AccountCreationError value)? accountCreationError,
+    TResult Function(ThirdPartyAccountCreationSuccess value)?
+        thirdPartyAccountCreationSuccess,
+  }) {
+    return thirdPartyAccountCreationSuccess?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(PhoneVerificationLoading value)? phoneVerificationLoading,
+    TResult Function(SMSCodeSentToClient value)? SMSCodeSentToClient,
+    TResult Function(PhoneVerificationError value)? phoneVerificationError,
+    TResult Function(SMSCodeInvalid value)? smsCodeInvalid,
+    TResult Function(CredentialLoginLoading value)? credentialLoginLoading,
+    TResult Function(CredentialLoginError value)? credentialLoginError,
+    TResult Function(AccountCreationSuccess value)? accountCreationSuccess,
+    TResult Function(AccountCreationError value)? accountCreationError,
+    TResult Function(ThirdPartyAccountCreationSuccess value)?
+        thirdPartyAccountCreationSuccess,
+    required TResult orElse(),
+  }) {
+    if (thirdPartyAccountCreationSuccess != null) {
+      return thirdPartyAccountCreationSuccess(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ThirdPartyAccountCreationSuccess implements AuthState {
+  const factory ThirdPartyAccountCreationSuccess(
+          final Tuple2<FarmhubUser, bool> result) =
+      _$ThirdPartyAccountCreationSuccess;
+
+  Tuple2<FarmhubUser, bool> get result;
+  @JsonKey(ignore: true)
+  _$$ThirdPartyAccountCreationSuccessCopyWith<
+          _$ThirdPartyAccountCreationSuccess>
+      get copyWith => throw _privateConstructorUsedError;
 }

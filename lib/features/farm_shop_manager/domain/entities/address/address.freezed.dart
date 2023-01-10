@@ -201,7 +201,9 @@ class _$_Address implements _Address {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AddressToJson(this);
+    return _$$_AddressToJson(
+      this,
+    );
   }
 }
 
@@ -216,15 +218,15 @@ abstract class _Address implements Address {
   factory _Address.fromJson(Map<String, dynamic> json) = _$_Address.fromJson;
 
   @override
-  String get rawAddress => throw _privateConstructorUsedError;
+  String get rawAddress;
   @override
-  String get addressLine => throw _privateConstructorUsedError;
+  String get addressLine;
   @override
-  String get city => throw _privateConstructorUsedError;
+  String get city;
   @override
-  String get state => throw _privateConstructorUsedError;
+  String get state;
   @override
-  int get postcode => throw _privateConstructorUsedError;
+  int get postcode;
   @override
   @JsonKey(ignore: true)
   _$$_AddressCopyWith<_$_Address> get copyWith =>

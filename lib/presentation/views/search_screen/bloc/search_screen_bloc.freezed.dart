@@ -342,7 +342,7 @@ class _$_SSEOnChanged implements _SSEOnChanged {
 abstract class _SSEOnChanged implements SearchScreenEvent {
   const factory _SSEOnChanged({required final String query}) = _$_SSEOnChanged;
 
-  String get query => throw _privateConstructorUsedError;
+  String get query;
   @JsonKey(ignore: true)
   _$$_SSEOnChangedCopyWith<_$_SSEOnChanged> get copyWith =>
       throw _privateConstructorUsedError;
@@ -489,7 +489,7 @@ abstract class _SSEOnSubmitted implements SearchScreenEvent {
   const factory _SSEOnSubmitted({required final String query}) =
       _$_SSEOnSubmitted;
 
-  String get query => throw _privateConstructorUsedError;
+  String get query;
   @JsonKey(ignore: true)
   _$$_SSEOnSubmittedCopyWith<_$_SSEOnSubmitted> get copyWith =>
       throw _privateConstructorUsedError;
@@ -870,7 +870,7 @@ abstract class SSSInitial implements SearchScreenState {
   const factory SSSInitial(final SearchScreenProps props) = _$SSSInitial;
 
   @override
-  SearchScreenProps get props => throw _privateConstructorUsedError;
+  SearchScreenProps get props;
   @override
   @JsonKey(ignore: true)
   _$$SSSInitialCopyWith<_$SSSInitial> get copyWith =>
@@ -1030,7 +1030,7 @@ abstract class SSSLoading implements SearchScreenState {
   const factory SSSLoading(final SearchScreenProps props) = _$SSSLoading;
 
   @override
-  SearchScreenProps get props => throw _privateConstructorUsedError;
+  SearchScreenProps get props;
   @override
   @JsonKey(ignore: true)
   _$$SSSLoadingCopyWith<_$SSSLoading> get copyWith =>
@@ -1194,7 +1194,7 @@ abstract class SSSLoadingNextTenProduce implements SearchScreenState {
       _$SSSLoadingNextTenProduce;
 
   @override
-  SearchScreenProps get props => throw _privateConstructorUsedError;
+  SearchScreenProps get props;
   @override
   @JsonKey(ignore: true)
   _$$SSSLoadingNextTenProduceCopyWith<_$SSSLoadingNextTenProduce>
@@ -1354,7 +1354,7 @@ abstract class SSSCompleted implements SearchScreenState {
   const factory SSSCompleted(final SearchScreenProps props) = _$SSSCompleted;
 
   @override
-  SearchScreenProps get props => throw _privateConstructorUsedError;
+  SearchScreenProps get props;
   @override
   @JsonKey(ignore: true)
   _$$SSSCompletedCopyWith<_$SSSCompleted> get copyWith =>
@@ -1525,8 +1525,8 @@ abstract class SSSError implements SearchScreenState {
       required final Failure failure}) = _$SSSError;
 
   @override
-  SearchScreenProps get props => throw _privateConstructorUsedError;
-  Failure get failure => throw _privateConstructorUsedError;
+  SearchScreenProps get props;
+  Failure get failure;
   @override
   @JsonKey(ignore: true)
   _$$SSSErrorCopyWith<_$SSSError> get copyWith =>
@@ -1667,9 +1667,9 @@ abstract class _SearchScreenProps implements SearchScreenProps {
       required final List<Produce> produceList}) = _$_SearchScreenProps;
 
   @override
-  String get query => throw _privateConstructorUsedError;
+  String get query;
   @override
-  List<Produce> get produceList => throw _privateConstructorUsedError;
+  List<Produce> get produceList;
   @override
   @JsonKey(ignore: true)
   _$$_SearchScreenPropsCopyWith<_$_SearchScreenProps> get copyWith =>

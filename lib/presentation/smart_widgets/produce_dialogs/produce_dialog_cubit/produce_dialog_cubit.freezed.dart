@@ -728,7 +728,7 @@ class _$DeleteError implements DeleteError {
 abstract class DeleteError implements ProduceDialogState {
   const factory DeleteError(final Failure failure) = _$DeleteError;
 
-  Failure get failure => throw _privateConstructorUsedError;
+  Failure get failure;
   @JsonKey(ignore: true)
   _$$DeleteErrorCopyWith<_$DeleteError> get copyWith =>
       throw _privateConstructorUsedError;

@@ -360,6 +360,10 @@ class AuthRepository implements IAuthRepository {
   /// General steps:
   /// 1. Check if user exists.
   /// 2. If no, create new account. If yes, retrieve the user and return it.
+  ///
+  /// Note: This method does not currently check if the user exists, but this should be done similarly
+  /// in [signInWithGoogle]
+  // TODO: This method currently does not check if the user exists.
   @override
   Future<Either<Failure, FarmhubUser>> registerWithCredentials({
     required String uid,
@@ -401,29 +405,34 @@ class AuthRepository implements IAuthRepository {
   }
 
   @override
-  FutureEither<FarmhubUser> signInWithGoogle() async {
+  FutureEither<Tuple2<FarmhubUser, bool>> signInWithGoogle() async {
     if (await networkInfo.isConnected) {
       try {
         FarmhubUser? resultingUser;
+        bool? isNewAccount;
         final userCredential = await authRemoteDataSource.signInWithGoogle();
 
         // Start checking for existence of account
         final uidCheckResult = await retrieveUserData(uid: userCredential.user!.uid);
 
-        uidCheckResult.fold(
+        final Tuple2<FarmhubUser, bool> toReturn = await uidCheckResult.fold(
           (f) async {
             resultingUser = await authRemoteDataSource.registerWithCredentials(
               uid: userCredential.user!.uid,
               email: userCredential.user!.email,
               displayName: userCredential.user!.displayName ?? generateRandomName(),
             );
+            isNewAccount = true;
+            return Tuple2(resultingUser!, isNewAccount!);
           },
           (user) {
             resultingUser = user;
+            isNewAccount = false;
+            return Tuple2(resultingUser!, isNewAccount!);
           },
         );
 
-        return Right(resultingUser!);
+        return Right(toReturn);
       } on AuthException catch (e, stack) {
         debugPrint(e.toString());
         return Left(AuthFailure(

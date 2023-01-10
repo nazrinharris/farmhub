@@ -25,6 +25,7 @@ class GlobalAuthCubit extends Cubit<GlobalAuthState> {
     emit(state.copyWith(isAdmin: isAdmin));
   }
 
+  /// This method will attempt to sync the [FarmhubUser] in the cubit by retrieving it again.
   Future<void> updateGlobalAuthCubit() async {
     debugPrint("Updating Global Auth Cubit");
     final failureOrFarmhubUser = await repository.retrieveUserData();

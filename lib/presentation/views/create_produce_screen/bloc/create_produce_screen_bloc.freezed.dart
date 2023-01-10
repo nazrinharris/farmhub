@@ -94,19 +94,12 @@ class __$$_StartedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Started with DiagnosticableTreeMixin implements _Started {
+class _$_Started implements _Started {
   const _$_Started();
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'CreateProduceScreenEvent.started()';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-        .add(DiagnosticsProperty('type', 'CreateProduceScreenEvent.started'));
   }
 
   @override
@@ -222,26 +215,15 @@ class __$$_CPSEExecCreateNewProduceCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_CPSEExecCreateNewProduce
-    with DiagnosticableTreeMixin
-    implements _CPSEExecCreateNewProduce {
+class _$_CPSEExecCreateNewProduce implements _CPSEExecCreateNewProduce {
   const _$_CPSEExecCreateNewProduce(this.context);
 
   @override
   final BuildContext context;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'CreateProduceScreenEvent.execCreateNewProduce(context: $context)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty(
-          'type', 'CreateProduceScreenEvent.execCreateNewProduce'))
-      ..add(DiagnosticsProperty('context', context));
   }
 
   @override
@@ -330,7 +312,7 @@ abstract class _CPSEExecCreateNewProduce implements CreateProduceScreenEvent {
   const factory _CPSEExecCreateNewProduce(final BuildContext context) =
       _$_CPSEExecCreateNewProduce;
 
-  BuildContext get context => throw _privateConstructorUsedError;
+  BuildContext get context;
   @JsonKey(ignore: true)
   _$$_CPSEExecCreateNewProduceCopyWith<_$_CPSEExecCreateNewProduce>
       get copyWith => throw _privateConstructorUsedError;
@@ -435,19 +417,12 @@ class __$$_InitialCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Initial with DiagnosticableTreeMixin implements _Initial {
+class _$_Initial implements _Initial {
   const _$_Initial();
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'CreateProduceScreenState.initial()';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-        .add(DiagnosticsProperty('type', 'CreateProduceScreenState.initial'));
   }
 
   @override
@@ -570,21 +545,12 @@ class __$$_CPSSCreateNewProduceLoadingCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_CPSSCreateNewProduceLoading
-    with DiagnosticableTreeMixin
-    implements _CPSSCreateNewProduceLoading {
+class _$_CPSSCreateNewProduceLoading implements _CPSSCreateNewProduceLoading {
   const _$_CPSSCreateNewProduceLoading();
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'CreateProduceScreenState.createNewProduceLoading()';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty(
-        'type', 'CreateProduceScreenState.createNewProduceLoading'));
   }
 
   @override
@@ -731,26 +697,15 @@ class __$$_CPSSCreateNewProduceSuccessCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_CPSSCreateNewProduceSuccess
-    with DiagnosticableTreeMixin
-    implements _CPSSCreateNewProduceSuccess {
+class _$_CPSSCreateNewProduceSuccess implements _CPSSCreateNewProduceSuccess {
   const _$_CPSSCreateNewProduceSuccess({required this.produce});
 
   @override
   final Produce produce;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'CreateProduceScreenState.createNewProduceSuccess(produce: $produce)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty(
-          'type', 'CreateProduceScreenState.createNewProduceSuccess'))
-      ..add(DiagnosticsProperty('produce', produce));
   }
 
   @override
@@ -859,7 +814,7 @@ abstract class _CPSSCreateNewProduceSuccess
   const factory _CPSSCreateNewProduceSuccess({required final Produce produce}) =
       _$_CPSSCreateNewProduceSuccess;
 
-  Produce get produce => throw _privateConstructorUsedError;
+  Produce get produce;
   @JsonKey(ignore: true)
   _$$_CPSSCreateNewProduceSuccessCopyWith<_$_CPSSCreateNewProduceSuccess>
       get copyWith => throw _privateConstructorUsedError;
@@ -907,9 +862,7 @@ class __$$_CPSSCreateNewProduceErrorCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_CPSSCreateNewProduceError
-    with DiagnosticableTreeMixin
-    implements _CPSSCreateNewProduceError {
+class _$_CPSSCreateNewProduceError implements _CPSSCreateNewProduceError {
   const _$_CPSSCreateNewProduceError(
       {required this.code, required this.message});
 
@@ -919,18 +872,8 @@ class _$_CPSSCreateNewProduceError
   final String message;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'CreateProduceScreenState.createNewProduceError(code: $code, message: $message)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty(
-          'type', 'CreateProduceScreenState.createNewProduceError'))
-      ..add(DiagnosticsProperty('code', code))
-      ..add(DiagnosticsProperty('message', message));
   }
 
   @override
@@ -1042,8 +985,8 @@ abstract class _CPSSCreateNewProduceError implements CreateProduceScreenState {
       {required final String code,
       required final String message}) = _$_CPSSCreateNewProduceError;
 
-  String get code => throw _privateConstructorUsedError;
-  String get message => throw _privateConstructorUsedError;
+  String get code;
+  String get message;
   @JsonKey(ignore: true)
   _$$_CPSSCreateNewProduceErrorCopyWith<_$_CPSSCreateNewProduceError>
       get copyWith => throw _privateConstructorUsedError;

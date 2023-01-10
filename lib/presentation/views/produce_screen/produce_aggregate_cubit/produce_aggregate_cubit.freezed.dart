@@ -261,7 +261,7 @@ abstract class PASInitial implements ProduceAggregateState {
       _$PASInitial;
 
   @override
-  ProduceAggregateProps get props => throw _privateConstructorUsedError;
+  ProduceAggregateProps get props;
   @override
   @JsonKey(ignore: true)
   _$$PASInitialCopyWith<_$PASInitial> get copyWith =>
@@ -416,7 +416,7 @@ abstract class PASLoading implements ProduceAggregateState {
       _$PASLoading;
 
   @override
-  ProduceAggregateProps get props => throw _privateConstructorUsedError;
+  ProduceAggregateProps get props;
   @override
   @JsonKey(ignore: true)
   _$$PASLoadingCopyWith<_$PASLoading> get copyWith =>
@@ -571,7 +571,7 @@ abstract class PASCompleted implements ProduceAggregateState {
       _$PASCompleted;
 
   @override
-  ProduceAggregateProps get props => throw _privateConstructorUsedError;
+  ProduceAggregateProps get props;
   @override
   @JsonKey(ignore: true)
   _$$PASCompletedCopyWith<_$PASCompleted> get copyWith =>
@@ -736,8 +736,8 @@ abstract class PASError implements ProduceAggregateState {
       required final Failure failure}) = _$PASError;
 
   @override
-  ProduceAggregateProps get props => throw _privateConstructorUsedError;
-  Failure get failure => throw _privateConstructorUsedError;
+  ProduceAggregateProps get props;
+  Failure get failure;
   @override
   @JsonKey(ignore: true)
   _$$PASErrorCopyWith<_$PASError> get copyWith =>
@@ -1137,33 +1137,27 @@ abstract class _ProduceAggregateProps implements ProduceAggregateProps {
       final List<PriceSnippet>? oneYearPricesList}) = _$_ProduceAggregateProps;
 
   @override
-  TabController get tabController => throw _privateConstructorUsedError;
+  TabController get tabController;
   @override
-  int get index => throw _privateConstructorUsedError;
+  int get index;
   @override
-  Produce? get produce => throw _privateConstructorUsedError;
+  Produce? get produce;
   @override
-  FarmhubUser get farmhubUser => throw _privateConstructorUsedError;
+  FarmhubUser get farmhubUser;
   @override
-  bool get isProduceFavorite => throw _privateConstructorUsedError;
+  bool get isProduceFavorite;
   @override
-  List<PriceSnippet>? get oneWeekPricesList =>
-      throw _privateConstructorUsedError;
+  List<PriceSnippet>? get oneWeekPricesList;
   @override
-  List<PriceSnippet>? get twoWeeksPricesList =>
-      throw _privateConstructorUsedError;
+  List<PriceSnippet>? get twoWeeksPricesList;
   @override
-  List<PriceSnippet>? get oneMonthPricesList =>
-      throw _privateConstructorUsedError;
+  List<PriceSnippet>? get oneMonthPricesList;
   @override
-  List<PriceSnippet>? get twoMonthPricesList =>
-      throw _privateConstructorUsedError;
+  List<PriceSnippet>? get twoMonthPricesList;
   @override
-  List<PriceSnippet>? get sixMonthPricesList =>
-      throw _privateConstructorUsedError;
+  List<PriceSnippet>? get sixMonthPricesList;
   @override
-  List<PriceSnippet>? get oneYearPricesList =>
-      throw _privateConstructorUsedError;
+  List<PriceSnippet>? get oneYearPricesList;
   @override
   @JsonKey(ignore: true)
   _$$_ProduceAggregatePropsCopyWith<_$_ProduceAggregateProps> get copyWith =>

@@ -576,7 +576,7 @@ class _$EditProfileError implements EditProfileError {
 abstract class EditProfileError implements EditProfileState {
   const factory EditProfileError(final Failure failure) = _$EditProfileError;
 
-  Failure get failure => throw _privateConstructorUsedError;
+  Failure get failure;
   @JsonKey(ignore: true)
   _$$EditProfileErrorCopyWith<_$EditProfileError> get copyWith =>
       throw _privateConstructorUsedError;

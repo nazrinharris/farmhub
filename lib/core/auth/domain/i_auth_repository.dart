@@ -31,7 +31,7 @@ abstract class IAuthRepository {
     required String phoneNumber,
   });
 
-  FutureEither<FarmhubUser> signInWithGoogle();
+  FutureEither<Tuple2<FarmhubUser, bool>> signInWithGoogle();
 
   Future<Either<Failure, Unit>> sendPasswordResetEmail(String? email);
 

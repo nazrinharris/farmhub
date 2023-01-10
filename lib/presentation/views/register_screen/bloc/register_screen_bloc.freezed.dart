@@ -460,7 +460,7 @@ abstract class _RSEContinuePressed implements RegisterScreenEvent {
   const factory _RSEContinuePressed(final BuildContext context) =
       _$_RSEContinuePressed;
 
-  BuildContext get context => throw _privateConstructorUsedError;
+  BuildContext get context;
   @JsonKey(ignore: true)
   _$$_RSEContinuePressedCopyWith<_$_RSEContinuePressed> get copyWith =>
       throw _privateConstructorUsedError;
@@ -815,7 +815,7 @@ abstract class _RSSInitial implements RegisterScreenState {
   const factory _RSSInitial(final RegisterScreenProps props) = _$_RSSInitial;
 
   @override
-  RegisterScreenProps get props => throw _privateConstructorUsedError;
+  RegisterScreenProps get props;
   @override
   @JsonKey(ignore: true)
   _$$_RSSInitialCopyWith<_$_RSSInitial> get copyWith =>
@@ -962,7 +962,7 @@ abstract class _RSSLoading implements RegisterScreenState {
   const factory _RSSLoading(final RegisterScreenProps props) = _$_RSSLoading;
 
   @override
-  RegisterScreenProps get props => throw _privateConstructorUsedError;
+  RegisterScreenProps get props;
   @override
   @JsonKey(ignore: true)
   _$$_RSSLoadingCopyWith<_$_RSSLoading> get copyWith =>
@@ -1108,7 +1108,7 @@ abstract class _RSSIdle implements RegisterScreenState {
   const factory _RSSIdle(final RegisterScreenProps props) = _$_RSSIdle;
 
   @override
-  RegisterScreenProps get props => throw _privateConstructorUsedError;
+  RegisterScreenProps get props;
   @override
   @JsonKey(ignore: true)
   _$$_RSSIdleCopyWith<_$_RSSIdle> get copyWith =>
@@ -1226,7 +1226,7 @@ abstract class _RegisterScreenProps implements RegisterScreenProps {
       _$_RegisterScreenProps;
 
   @override
-  bool get isInfoTileVisible => throw _privateConstructorUsedError;
+  bool get isInfoTileVisible;
   @override
   @JsonKey(ignore: true)
   _$$_RegisterScreenPropsCopyWith<_$_RegisterScreenProps> get copyWith =>

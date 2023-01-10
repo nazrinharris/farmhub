@@ -966,7 +966,7 @@ abstract class MSSInitial implements MainScreenState {
       _$MSSInitial;
 
   @override
-  MainScreenProps get props => throw _privateConstructorUsedError;
+  MainScreenProps get props;
   @override
   @JsonKey(ignore: true)
   _$$MSSInitialCopyWith<_$MSSInitial> get copyWith =>
@@ -1127,7 +1127,7 @@ abstract class MSSPricesLoading implements MainScreenState {
       _$MSSPricesLoading;
 
   @override
-  MainScreenProps get props => throw _privateConstructorUsedError;
+  MainScreenProps get props;
   @override
   @JsonKey(ignore: true)
   _$$MSSPricesLoadingCopyWith<_$MSSPricesLoading> get copyWith =>
@@ -1289,7 +1289,7 @@ abstract class MSSNextPricesLoading implements MainScreenState {
       _$MSSNextPricesLoading;
 
   @override
-  MainScreenProps get props => throw _privateConstructorUsedError;
+  MainScreenProps get props;
   @override
   @JsonKey(ignore: true)
   _$$MSSNextPricesLoadingCopyWith<_$MSSNextPricesLoading> get copyWith =>
@@ -1451,7 +1451,7 @@ abstract class MSSPricesCompleted implements MainScreenState {
       _$MSSPricesCompleted;
 
   @override
-  MainScreenProps get props => throw _privateConstructorUsedError;
+  MainScreenProps get props;
   @override
   @JsonKey(ignore: true)
   _$$MSSPricesCompletedCopyWith<_$MSSPricesCompleted> get copyWith =>
@@ -1623,8 +1623,8 @@ abstract class MSSPricesError implements MainScreenState {
       required final Failure failure}) = _$MSSPricesError;
 
   @override
-  MainScreenProps get props => throw _privateConstructorUsedError;
-  Failure get failure => throw _privateConstructorUsedError;
+  MainScreenProps get props;
+  Failure get failure;
   @override
   @JsonKey(ignore: true)
   _$$MSSPricesErrorCopyWith<_$MSSPricesError> get copyWith =>
@@ -1766,9 +1766,9 @@ abstract class _MainScreenProps implements MainScreenProps {
       required final List<Produce> produceList}) = _$_MainScreenProps;
 
   @override
-  bool get isMainHeaderVisible => throw _privateConstructorUsedError;
+  bool get isMainHeaderVisible;
   @override
-  List<Produce> get produceList => throw _privateConstructorUsedError;
+  List<Produce> get produceList;
   @override
   @JsonKey(ignore: true)
   _$$_MainScreenPropsCopyWith<_$_MainScreenProps> get copyWith =>
