@@ -139,7 +139,6 @@ class _SliverSettingsBodyState extends State<SliverSettingsBody> {
                 const UIVerticalSpace30(),
                 BlocBuilder<SettingsCubit, SettingsState>(
                   builder: (context, state) {
-                    // TODO: Maybe this would be fixed if updated to Flutter 3, no basis, pure speculation. So as of now app version has to be changed manually
                     return Text(
                       "Farmhub Version ${context.read<SettingsCubit>().state.appVersion}",
                       style: Theme.of(context).textTheme.caption,

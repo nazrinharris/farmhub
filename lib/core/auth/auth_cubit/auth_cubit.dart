@@ -146,6 +146,21 @@ class AuthCubit extends Cubit<AuthState> {
     );
   }
 
+  Future<void> signInWithApple() async {
+    // Make sure any residue of the previous user has been removed.
+    await authRepository.signOut();
+
+    final appleSignInResultCredentials = await authRepository.signInWithApple();
+
+    appleSignInResultCredentials.fold(
+      (f) => emit(AuthState.credentialLoginError(f)),
+      (tupleUser) {
+        globalAuthCubit.updateFarmhubUser(tupleUser.first);
+        emit(AuthState.thirdPartyAccountCreationSuccess(tupleUser));
+      },
+    );
+  }
+
   /// Creates an account in [CloudFirestore] with the given [UserCredential], its name will be
   /// auto-generated if the type is [FromAccount.phone]
   Future<FarmhubUser> _createAccountFromUserCred(

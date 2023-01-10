@@ -256,6 +256,10 @@ class _LoginScreenState extends State<LoginScreen> with AnimationMixin {
                                   GoogleAuthCard(
                                     authCubit: context.read<AuthCubit>(),
                                   ),
+                                  const UIVerticalSpace14(),
+                                  AppleAuthCard(
+                                    authCubit: context.read<AuthCubit>(),
+                                  ),
                                   const UICustomVertical(200),
                                 ],
                               ),

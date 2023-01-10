@@ -32,6 +32,7 @@ abstract class IAuthRepository {
   });
 
   FutureEither<Tuple2<FarmhubUser, bool>> signInWithGoogle();
+  FutureEither<Tuple2<FarmhubUser, bool>> signInWithApple();
 
   Future<Either<Failure, Unit>> sendPasswordResetEmail(String? email);
 

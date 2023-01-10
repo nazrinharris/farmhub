@@ -466,4 +466,67 @@ class AuthRepository implements IAuthRepository {
       ));
     }
   }
+
+  @override
+  FutureEither<Tuple2<FarmhubUser, bool>> signInWithApple() async {
+    if (await networkInfo.isConnected) {
+      try {
+        FarmhubUser? resultingUser;
+        bool? isNewAccount;
+        final userCredential = await authRemoteDataSource.signInWithApple();
+
+        // Start checking for existence of account
+        final uidCheckResult = await retrieveUserData(uid: userCredential.user!.uid);
+
+        final Tuple2<FarmhubUser, bool> toReturn = await uidCheckResult.fold(
+          (f) async {
+            resultingUser = await authRemoteDataSource.registerWithCredentials(
+              uid: userCredential.user!.uid,
+              email: userCredential.user!.email,
+              displayName: userCredential.user!.displayName ?? generateRandomName(),
+            );
+            isNewAccount = true;
+            return Tuple2(resultingUser!, isNewAccount!);
+          },
+          (user) {
+            resultingUser = user;
+            isNewAccount = false;
+            return Tuple2(resultingUser!, isNewAccount!);
+          },
+        );
+
+        return Right(toReturn);
+      } on AuthException catch (e, stack) {
+        debugPrint(e.toString());
+        return Left(AuthFailure(
+          code: e.code,
+          message: e.message,
+          stackTrace: stack,
+        ));
+      } on FirebaseAuthException catch (e) {
+        debugPrint(e.toString());
+        return Left(
+          FirebaseAuthFailure(
+            stackTrace: e.stackTrace,
+            message: e.message,
+            code: e.code,
+          ),
+        );
+      } catch (e, stack) {
+        return Left(
+          UnexpectedFailure(
+            message: "An unexpected error occured while signing in with Apple.",
+            code: e.toString(),
+            stackTrace: stack,
+          ),
+        );
+      }
+    } else {
+      return Left(InternetConnectionFailure(
+        code: ERROR_NO_INTERNET_CONNECTION,
+        message: MESSAGE_NO_INTERNET_CONNECTION,
+        stackTrace: StackTrace.current,
+      ));
+    }
+  }
 }

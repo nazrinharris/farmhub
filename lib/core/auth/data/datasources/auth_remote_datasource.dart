@@ -11,6 +11,9 @@ import 'package:intl/intl.dart';
 import 'package:clock/clock.dart';
 import 'package:english_words/english_words.dart';
 import 'package:phone_numbers_parser/phone_numbers_parser.dart';
+import 'package:sign_in_with_apple/sign_in_with_apple.dart';
+
+import '../../../util/secure.dart' as secure;
 
 abstract class IAuthRemoteDataSource {
   Future<FarmhubUser> loginWithEmailAndPassword({
@@ -37,6 +40,7 @@ abstract class IAuthRemoteDataSource {
   });
 
   Future<UserCredential> signInWithGoogle();
+  Future<UserCredential> signInWithApple();
 
   Future<Unit> chooseUserType(String uid, UserType userType);
 
@@ -343,5 +347,34 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
     final UserCredential userCredential = await firebaseAuth.signInWithCredential(credential);
 
     return userCredential;
+  }
+
+  @override
+  Future<UserCredential> signInWithApple() async {
+    // To prevent replay attacks with the credential returned from Apple, we
+    // include a nonce in the credential request. When signing in with
+    // Firebase, the nonce in the id token returned by Apple, is expected to
+    // match the sha256 hash of `rawNonce`.
+    final rawNonce = secure.generateNonce();
+    final nonce = secure.sha256ofString(rawNonce);
+
+    // Request credential for the currently signed in Apple account.
+    final appleCredential = await SignInWithApple.getAppleIDCredential(
+      scopes: [
+        AppleIDAuthorizationScopes.email,
+        AppleIDAuthorizationScopes.fullName,
+      ],
+      nonce: nonce,
+    );
+
+    // Create an `OAuthCredential` from the credential returned by Apple.
+    final oauthCredential = OAuthProvider("apple.com").credential(
+      idToken: appleCredential.identityToken,
+      rawNonce: rawNonce,
+    );
+
+    // Sign in the user with Firebase. If the nonce we generated earlier does
+    // not match the nonce in `appleCredential.identityToken`, sign in will fail.
+    return await FirebaseAuth.instance.signInWithCredential(oauthCredential);
   }
 }
