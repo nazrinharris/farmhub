@@ -1,3 +1,4 @@
+import 'package:farmhub/core/util/app_const.dart';
 import 'package:farmhub/locator.dart';
 import 'package:farmhub/presentation/shared_widgets/appbars.dart';
 import 'package:farmhub/presentation/shared_widgets/cards.dart';
@@ -14,6 +15,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_styled_toast/flutter_styled_toast.dart';
 import 'package:ndialog/ndialog.dart';
 import 'package:simple_animations/simple_animations.dart';
+import 'dart:io';
 
 import '../../../core/auth/auth_cubit/auth_cubit.dart';
 import '../../../core/errors/error_messages.dart';
@@ -123,6 +125,12 @@ class _LoginScreenState extends State<LoginScreen> with AnimationMixin {
                       } else if (state is CredentialLoginError) {
                         debugPrint("ERROR LOGGING IN");
                         debugPrint(state.failure.toString());
+
+                        if (state.failure.code == "AuthorizationErrorCode.canceled" ||
+                            state.failure.code == AUTH_GOOGLE_SIGN_IN_ABORTED) {
+                          return;
+                        }
+
                         showToastWidget(
                           ErrorToast(errorMessage: messageForFailure(state.failure)),
                           context: context,
@@ -256,10 +264,11 @@ class _LoginScreenState extends State<LoginScreen> with AnimationMixin {
                                   GoogleAuthCard(
                                     authCubit: context.read<AuthCubit>(),
                                   ),
-                                  const UIVerticalSpace14(),
-                                  AppleAuthCard(
-                                    authCubit: context.read<AuthCubit>(),
-                                  ),
+                                  if (Platform.isIOS) const UIVerticalSpace14(),
+                                  if (Platform.isIOS)
+                                    AppleAuthCard(
+                                      authCubit: context.read<AuthCubit>(),
+                                    ),
                                   const UICustomVertical(200),
                                 ],
                               ),

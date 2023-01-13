@@ -13,6 +13,7 @@ import 'package:farmhub/core/auth/domain/i_auth_repository.dart';
 import 'package:farmhub/core/util/app_const.dart';
 import 'package:farmhub/core/errors/failures.dart';
 import 'package:farmhub/core/network/network_info.dart';
+import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
 import '../../../errors/exceptions.dart';
 
@@ -510,6 +511,15 @@ class AuthRepository implements IAuthRepository {
             stackTrace: e.stackTrace,
             message: e.message,
             code: e.code,
+          ),
+        );
+      } on SignInWithAppleAuthorizationException catch (e, stack) {
+        debugPrint(e.toString());
+        return Left(
+          AuthFailure(
+            stackTrace: stack,
+            message: e.message,
+            code: e.code.toString(),
           ),
         );
       } catch (e, stack) {

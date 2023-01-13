@@ -33,5 +33,14 @@ String messageForFailure(Failure f) {
     }
   }
 
+  if (f is AuthFailure) {
+    switch (f.code) {
+      case "AuthorizationErrorCode.canceled":
+        return "You have cancelled authentication with Apple";
+      default:
+        return f.message ?? "Something wrong happened.";
+    }
+  }
+
   return f.message ?? "Something wrong happened.";
 }

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:farmhub/locator.dart';
 import 'package:farmhub/presentation/shared_widgets/appbars.dart';
 import 'package:farmhub/presentation/shared_widgets/scroll_physics.dart';
@@ -10,6 +12,7 @@ import 'package:simple_animations/simple_animations.dart';
 
 import '../../../core/auth/auth_cubit/auth_cubit.dart';
 import '../../../core/errors/error_messages.dart';
+import '../../../core/util/app_const.dart';
 import '../../shared_widgets/cards.dart';
 import '../../shared_widgets/toasts.dart';
 import '../../shared_widgets/ui_helpers.dart';
@@ -68,6 +71,14 @@ class _RegisterScreenState extends State<RegisterScreen> with AnimationMixin {
             } else if (state is CredentialLoginError) {
               debugPrint("ERROR LOGGING IN");
               debugPrint(state.failure.toString());
+
+              // If user cancels from Google or Apple sign in, an error will be thrown, but
+              // we will ignore that and NOT show a toast.
+              if (state.failure.code == "AuthorizationErrorCode.canceled" ||
+                  state.failure.code == AUTH_GOOGLE_SIGN_IN_ABORTED) {
+                return;
+              }
+
               showToastWidget(
                 ErrorToast(errorMessage: messageForFailure(state.failure)),
                 context: context,
@@ -140,6 +151,12 @@ class _RegisterScreenState extends State<RegisterScreen> with AnimationMixin {
                       authCubit: context.read<AuthCubit>(),
                       content: "Register with Google",
                     ),
+                    if (Platform.isIOS) const UIVerticalSpace14(),
+                    if (Platform.isIOS)
+                      AppleAuthCard(
+                        authCubit: context.read<AuthCubit>(),
+                        content: "Register with Apple",
+                      ),
                     const UICustomVertical(160)
                   ],
                 ),
