@@ -318,7 +318,7 @@ abstract class TriggerStateChange implements InfoTileEvent {
   const factory TriggerStateChange(final InfoTileProps infoTileProps) =
       _$TriggerStateChange;
 
-  InfoTileProps get infoTileProps => throw _privateConstructorUsedError;
+  InfoTileProps get infoTileProps;
   @JsonKey(ignore: true)
   _$$TriggerStateChangeCopyWith<_$TriggerStateChange> get copyWith =>
       throw _privateConstructorUsedError;
@@ -604,7 +604,7 @@ abstract class _Invisible implements InfoTileState {
   const factory _Invisible(final InfoTileProps infoTileProps) = _$_Invisible;
 
   @override
-  InfoTileProps get infoTileProps => throw _privateConstructorUsedError;
+  InfoTileProps get infoTileProps;
   @override
   @JsonKey(ignore: true)
   _$$_InvisibleCopyWith<_$_Invisible> get copyWith =>
@@ -774,7 +774,7 @@ abstract class _Loading implements InfoTileState {
   const factory _Loading(final InfoTileProps infoTileProps) = _$_Loading;
 
   @override
-  InfoTileProps get infoTileProps => throw _privateConstructorUsedError;
+  InfoTileProps get infoTileProps;
   @override
   @JsonKey(ignore: true)
   _$$_LoadingCopyWith<_$_Loading> get copyWith =>
@@ -947,7 +947,7 @@ abstract class _LoadingExpanded implements InfoTileState {
       _$_LoadingExpanded;
 
   @override
-  InfoTileProps get infoTileProps => throw _privateConstructorUsedError;
+  InfoTileProps get infoTileProps;
   @override
   @JsonKey(ignore: true)
   _$$_LoadingExpandedCopyWith<_$_LoadingExpanded> get copyWith =>
@@ -1117,7 +1117,7 @@ abstract class _Success implements InfoTileState {
   const factory _Success(final InfoTileProps infoTileProps) = _$_Success;
 
   @override
-  InfoTileProps get infoTileProps => throw _privateConstructorUsedError;
+  InfoTileProps get infoTileProps;
   @override
   @JsonKey(ignore: true)
   _$$_SuccessCopyWith<_$_Success> get copyWith =>
@@ -1290,7 +1290,7 @@ abstract class _SuccessExpanded implements InfoTileState {
       _$_SuccessExpanded;
 
   @override
-  InfoTileProps get infoTileProps => throw _privateConstructorUsedError;
+  InfoTileProps get infoTileProps;
   @override
   @JsonKey(ignore: true)
   _$$_SuccessExpandedCopyWith<_$_SuccessExpanded> get copyWith =>
@@ -1460,7 +1460,7 @@ abstract class _Failure implements InfoTileState {
   const factory _Failure(final InfoTileProps infoTileProps) = _$_Failure;
 
   @override
-  InfoTileProps get infoTileProps => throw _privateConstructorUsedError;
+  InfoTileProps get infoTileProps;
   @override
   @JsonKey(ignore: true)
   _$$_FailureCopyWith<_$_Failure> get copyWith =>
@@ -1633,7 +1633,7 @@ abstract class _FailureExpanded implements InfoTileState {
       _$_FailureExpanded;
 
   @override
-  InfoTileProps get infoTileProps => throw _privateConstructorUsedError;
+  InfoTileProps get infoTileProps;
   @override
   @JsonKey(ignore: true)
   _$$_FailureExpandedCopyWith<_$_FailureExpanded> get copyWith =>
@@ -1854,18 +1854,17 @@ abstract class _InfoTileProps implements InfoTileProps {
       final AnimationController? animationController}) = _$_InfoTileProps;
 
   @override
-  String get leadingText => throw _privateConstructorUsedError;
+  String get leadingText;
   @override
-  Widget get child => throw _privateConstructorUsedError;
+  Widget get child;
   @override
-  bool get isAbleToExpand => throw _privateConstructorUsedError;
+  bool get isAbleToExpand;
   @override
-  bool get isExpanded => throw _privateConstructorUsedError;
+  bool get isExpanded;
   @override
-  InfoTileStatus get currentStatus => throw _privateConstructorUsedError;
+  InfoTileStatus get currentStatus;
   @override
-  AnimationController? get animationController =>
-      throw _privateConstructorUsedError;
+  AnimationController? get animationController;
   @override
   @JsonKey(ignore: true)
   _$$_InfoTilePropsCopyWith<_$_InfoTileProps> get copyWith =>

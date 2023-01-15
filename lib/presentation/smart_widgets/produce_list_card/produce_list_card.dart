@@ -86,7 +86,7 @@ class ProduceListCard extends StatelessWidget {
                         children: [
                           Text(
                             produce.produceName,
-                            maxLines: 3,
+                            // maxLines: 3,
                             overflow: TextOverflow.fade,
                             style: Theme.of(context).textTheme.bodyText1!.copyWith(fontSize: 17),
                           ),
@@ -256,12 +256,18 @@ class _BuildUserModalBottomSheetState extends State<BuildUserModalBottomSheet> {
           Container(
             padding: EdgeInsets.only(top: 24),
             alignment: Alignment.center,
-            child: Row(
+            child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(widget.produce.produceName),
-                UIHorizontalSpace14(),
-                ChangeBox(widget.produce),
+                const UIVerticalSpace14(),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    UIHorizontalSpace14(),
+                    ChangeBox(widget.produce),
+                  ],
+                ),
               ],
             ),
           ),

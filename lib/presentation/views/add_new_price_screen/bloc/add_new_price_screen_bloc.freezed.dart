@@ -106,19 +106,12 @@ class __$$_ANPEStartedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ANPEStarted with DiagnosticableTreeMixin implements _ANPEStarted {
+class _$_ANPEStarted implements _ANPEStarted {
   const _$_ANPEStarted();
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'AddNewPriceScreenEvent.started()';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-        .add(DiagnosticsProperty('type', 'AddNewPriceScreenEvent.started'));
   }
 
   @override
@@ -231,21 +224,12 @@ class __$$_ANPEGetFirstTenProduceCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ANPEGetFirstTenProduce
-    with DiagnosticableTreeMixin
-    implements _ANPEGetFirstTenProduce {
+class _$_ANPEGetFirstTenProduce implements _ANPEGetFirstTenProduce {
   const _$_ANPEGetFirstTenProduce();
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'AddNewPriceScreenEvent.getFirstTenProduce()';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty(
-        'type', 'AddNewPriceScreenEvent.getFirstTenProduce'));
   }
 
   @override
@@ -359,21 +343,12 @@ class __$$_ANPEGetNextTenProduceCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ANPEGetNextTenProduce
-    with DiagnosticableTreeMixin
-    implements _ANPEGetNextTenProduce {
+class _$_ANPEGetNextTenProduce implements _ANPEGetNextTenProduce {
   const _$_ANPEGetNextTenProduce();
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'AddNewPriceScreenEvent.getNextTenProduce()';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty(
-        'type', 'AddNewPriceScreenEvent.getNextTenProduce'));
   }
 
   @override
@@ -507,26 +482,15 @@ class __$$_ANPEExecAddNewPriceCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ANPEExecAddNewPrice
-    with DiagnosticableTreeMixin
-    implements _ANPEExecAddNewPrice {
+class _$_ANPEExecAddNewPrice implements _ANPEExecAddNewPrice {
   const _$_ANPEExecAddNewPrice({required this.produce});
 
   @override
   final Produce produce;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'AddNewPriceScreenEvent.execAddNewPrice(produce: $produce)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(
-          DiagnosticsProperty('type', 'AddNewPriceScreenEvent.execAddNewPrice'))
-      ..add(DiagnosticsProperty('produce', produce));
   }
 
   @override
@@ -626,7 +590,7 @@ abstract class _ANPEExecAddNewPrice implements AddNewPriceScreenEvent {
   const factory _ANPEExecAddNewPrice({required final Produce produce}) =
       _$_ANPEExecAddNewPrice;
 
-  Produce get produce => throw _privateConstructorUsedError;
+  Produce get produce;
   @JsonKey(ignore: true)
   _$$_ANPEExecAddNewPriceCopyWith<_$_ANPEExecAddNewPrice> get copyWith =>
       throw _privateConstructorUsedError;
@@ -799,23 +763,15 @@ class __$$ANPSInitialCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ANPSInitial with DiagnosticableTreeMixin implements ANPSInitial {
+class _$ANPSInitial implements ANPSInitial {
   const _$ANPSInitial({required this.props});
 
   @override
   final AddNewPriceScreenProps props;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'AddNewPriceScreenState.initial(props: $props)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'AddNewPriceScreenState.initial'))
-      ..add(DiagnosticsProperty('props', props));
   }
 
   @override
@@ -945,7 +901,7 @@ abstract class ANPSInitial implements AddNewPriceScreenState {
       _$ANPSInitial;
 
   @override
-  AddNewPriceScreenProps get props => throw _privateConstructorUsedError;
+  AddNewPriceScreenProps get props;
   @override
   @JsonKey(ignore: true)
   _$$ANPSInitialCopyWith<_$ANPSInitial> get copyWith =>
@@ -991,25 +947,15 @@ class __$$ANPSPricesLoadingCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ANPSPricesLoading
-    with DiagnosticableTreeMixin
-    implements ANPSPricesLoading {
+class _$ANPSPricesLoading implements ANPSPricesLoading {
   const _$ANPSPricesLoading({required this.props});
 
   @override
   final AddNewPriceScreenProps props;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'AddNewPriceScreenState.pricesLoading(props: $props)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'AddNewPriceScreenState.pricesLoading'))
-      ..add(DiagnosticsProperty('props', props));
   }
 
   @override
@@ -1139,7 +1085,7 @@ abstract class ANPSPricesLoading implements AddNewPriceScreenState {
       {required final AddNewPriceScreenProps props}) = _$ANPSPricesLoading;
 
   @override
-  AddNewPriceScreenProps get props => throw _privateConstructorUsedError;
+  AddNewPriceScreenProps get props;
   @override
   @JsonKey(ignore: true)
   _$$ANPSPricesLoadingCopyWith<_$ANPSPricesLoading> get copyWith =>
@@ -1185,26 +1131,15 @@ class __$$ANPSNextPricesLoadingCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ANPSNextPricesLoading
-    with DiagnosticableTreeMixin
-    implements ANPSNextPricesLoading {
+class _$ANPSNextPricesLoading implements ANPSNextPricesLoading {
   const _$ANPSNextPricesLoading({required this.props});
 
   @override
   final AddNewPriceScreenProps props;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'AddNewPriceScreenState.nextPricesLoading(props: $props)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty(
-          'type', 'AddNewPriceScreenState.nextPricesLoading'))
-      ..add(DiagnosticsProperty('props', props));
   }
 
   @override
@@ -1335,7 +1270,7 @@ abstract class ANPSNextPricesLoading implements AddNewPriceScreenState {
       {required final AddNewPriceScreenProps props}) = _$ANPSNextPricesLoading;
 
   @override
-  AddNewPriceScreenProps get props => throw _privateConstructorUsedError;
+  AddNewPriceScreenProps get props;
   @override
   @JsonKey(ignore: true)
   _$$ANPSNextPricesLoadingCopyWith<_$ANPSNextPricesLoading> get copyWith =>
@@ -1381,26 +1316,15 @@ class __$$ANPSPricesCompletedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ANPSPricesCompleted
-    with DiagnosticableTreeMixin
-    implements ANPSPricesCompleted {
+class _$ANPSPricesCompleted implements ANPSPricesCompleted {
   const _$ANPSPricesCompleted({required this.props});
 
   @override
   final AddNewPriceScreenProps props;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'AddNewPriceScreenState.pricesCompleted(props: $props)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(
-          DiagnosticsProperty('type', 'AddNewPriceScreenState.pricesCompleted'))
-      ..add(DiagnosticsProperty('props', props));
   }
 
   @override
@@ -1531,7 +1455,7 @@ abstract class ANPSPricesCompleted implements AddNewPriceScreenState {
       {required final AddNewPriceScreenProps props}) = _$ANPSPricesCompleted;
 
   @override
-  AddNewPriceScreenProps get props => throw _privateConstructorUsedError;
+  AddNewPriceScreenProps get props;
   @override
   @JsonKey(ignore: true)
   _$$ANPSPricesCompletedCopyWith<_$ANPSPricesCompleted> get copyWith =>
@@ -1596,9 +1520,7 @@ class __$$ANPSPricesErrorCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ANPSPricesError
-    with DiagnosticableTreeMixin
-    implements ANPSPricesError {
+class _$ANPSPricesError implements ANPSPricesError {
   const _$ANPSPricesError(
       {required this.message,
       required this.code,
@@ -1615,19 +1537,8 @@ class _$ANPSPricesError
   final AddNewPriceScreenProps props;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'AddNewPriceScreenState.pricesError(message: $message, code: $code, stackTrace: $stackTrace, props: $props)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'AddNewPriceScreenState.pricesError'))
-      ..add(DiagnosticsProperty('message', message))
-      ..add(DiagnosticsProperty('code', code))
-      ..add(DiagnosticsProperty('stackTrace', stackTrace))
-      ..add(DiagnosticsProperty('props', props));
   }
 
   @override
@@ -1767,11 +1678,11 @@ abstract class ANPSPricesError implements AddNewPriceScreenState {
       required final StackTrace stackTrace,
       required final AddNewPriceScreenProps props}) = _$ANPSPricesError;
 
-  String get message => throw _privateConstructorUsedError;
-  String get code => throw _privateConstructorUsedError;
-  StackTrace get stackTrace => throw _privateConstructorUsedError;
+  String get message;
+  String get code;
+  StackTrace get stackTrace;
   @override
-  AddNewPriceScreenProps get props => throw _privateConstructorUsedError;
+  AddNewPriceScreenProps get props;
   @override
   @JsonKey(ignore: true)
   _$$ANPSPricesErrorCopyWith<_$ANPSPricesError> get copyWith =>
@@ -1831,9 +1742,7 @@ class __$$ANPSAddNewPriceSuccessCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ANPSAddNewPriceSuccess
-    with DiagnosticableTreeMixin
-    implements ANPSAddNewPriceSuccess {
+class _$ANPSAddNewPriceSuccess implements ANPSAddNewPriceSuccess {
   const _$ANPSAddNewPriceSuccess({required this.produce, required this.props});
 
   @override
@@ -1842,18 +1751,8 @@ class _$ANPSAddNewPriceSuccess
   final AddNewPriceScreenProps props;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'AddNewPriceScreenState.addNewPriceSuccess(produce: $produce, props: $props)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty(
-          'type', 'AddNewPriceScreenState.addNewPriceSuccess'))
-      ..add(DiagnosticsProperty('produce', produce))
-      ..add(DiagnosticsProperty('props', props));
   }
 
   @override
@@ -1987,9 +1886,9 @@ abstract class ANPSAddNewPriceSuccess implements AddNewPriceScreenState {
       {required final Produce produce,
       required final AddNewPriceScreenProps props}) = _$ANPSAddNewPriceSuccess;
 
-  Produce get produce => throw _privateConstructorUsedError;
+  Produce get produce;
   @override
-  AddNewPriceScreenProps get props => throw _privateConstructorUsedError;
+  AddNewPriceScreenProps get props;
   @override
   @JsonKey(ignore: true)
   _$$ANPSAddNewPriceSuccessCopyWith<_$ANPSAddNewPriceSuccess> get copyWith =>
@@ -2040,9 +1939,7 @@ class __$$ANPSAddNewPriceErrorCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ANPSAddNewPriceError
-    with DiagnosticableTreeMixin
-    implements ANPSAddNewPriceError {
+class _$ANPSAddNewPriceError implements ANPSAddNewPriceError {
   const _$ANPSAddNewPriceError({required this.props, required this.failure});
 
   @override
@@ -2051,18 +1948,8 @@ class _$ANPSAddNewPriceError
   final Failure failure;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'AddNewPriceScreenState.addNewPriceError(props: $props, failure: $failure)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty(
-          'type', 'AddNewPriceScreenState.addNewPriceError'))
-      ..add(DiagnosticsProperty('props', props))
-      ..add(DiagnosticsProperty('failure', failure));
   }
 
   @override
@@ -2197,8 +2084,8 @@ abstract class ANPSAddNewPriceError implements AddNewPriceScreenState {
       required final Failure failure}) = _$ANPSAddNewPriceError;
 
   @override
-  AddNewPriceScreenProps get props => throw _privateConstructorUsedError;
-  Failure get failure => throw _privateConstructorUsedError;
+  AddNewPriceScreenProps get props;
+  Failure get failure;
   @override
   @JsonKey(ignore: true)
   _$$ANPSAddNewPriceErrorCopyWith<_$ANPSAddNewPriceError> get copyWith =>
@@ -2281,9 +2168,7 @@ class __$$_AddNewPriceScreenPropsCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_AddNewPriceScreenProps
-    with DiagnosticableTreeMixin
-    implements _AddNewPriceScreenProps {
+class _$_AddNewPriceScreenProps implements _AddNewPriceScreenProps {
   const _$_AddNewPriceScreenProps({required final List<Produce> produceList})
       : _produceList = produceList;
 
@@ -2295,16 +2180,8 @@ class _$_AddNewPriceScreenProps
   }
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'AddNewPriceScreenProps(produceList: $produceList)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'AddNewPriceScreenProps'))
-      ..add(DiagnosticsProperty('produceList', produceList));
   }
 
   @override
@@ -2332,7 +2209,7 @@ abstract class _AddNewPriceScreenProps implements AddNewPriceScreenProps {
       {required final List<Produce> produceList}) = _$_AddNewPriceScreenProps;
 
   @override
-  List<Produce> get produceList => throw _privateConstructorUsedError;
+  List<Produce> get produceList;
   @override
   @JsonKey(ignore: true)
   _$$_AddNewPriceScreenPropsCopyWith<_$_AddNewPriceScreenProps> get copyWith =>

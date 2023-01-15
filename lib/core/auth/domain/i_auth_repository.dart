@@ -20,13 +20,19 @@ abstract class IAuthRepository {
     required UserType userType,
   });
 
-  Future<Either<Failure, FarmhubUser>> loginWithGoogleAccount();
-  Future<Either<Failure, FarmhubUser>> registerWithGoogleAccount();
+  Future<Either<Failure, FarmhubUser>> registerWithCredentials({
+    required String uid,
+    required String email,
+    required String displayName,
+  });
 
   FutureEither<FarmhubUser> createAccountWithPhone({
     required String uid,
     required String phoneNumber,
   });
+
+  FutureEither<Tuple2<FarmhubUser, bool>> signInWithGoogle();
+  FutureEither<Tuple2<FarmhubUser, bool>> signInWithApple();
 
   Future<Either<Failure, Unit>> sendPasswordResetEmail(String? email);
 

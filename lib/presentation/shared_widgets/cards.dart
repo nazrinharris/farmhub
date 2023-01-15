@@ -5,6 +5,10 @@ import 'package:farmhub/features/produce_manager/data/repository/produce_manager
 import 'package:farmhub/presentation/shared_widgets/ui_helpers.dart';
 import 'package:farmhub/presentation/themes/farmhub_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:ionicons/ionicons.dart';
+
+import '../../core/auth/auth_cubit/auth_cubit.dart';
+import '../../locator.dart';
 
 Widget determineErrorCard(String errorCode) {
   if (errorCode == ERROR_NO_INTERNET_CONNECTION) {
@@ -442,5 +446,136 @@ class PhoneAuthCard extends StatelessWidget {
   void resolveOnTap(BuildContext context) {
     FocusScope.of(context).unfocus();
     Navigator.of(context).pushNamed("/verify_phone");
+  }
+}
+
+class GoogleAuthCard extends StatelessWidget {
+  final EdgeInsetsGeometry? margin;
+  final AuthCubit authCubit;
+  final String? content;
+
+  const GoogleAuthCard({
+    this.margin,
+    required this.authCubit,
+    this.content,
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: margin ?? const EdgeInsets.symmetric(horizontal: 14),
+      child: Material(
+        elevation: 7,
+        shadowColor: Theme.of(context).colorScheme.primary.withOpacity(0.18),
+        borderRadius: BorderRadius.circular(16),
+        color: Theme.of(context).extension<ExtendedColors>()!.white,
+        child: InkWell(
+          borderRadius: BorderRadius.circular(16),
+          onTap: () {
+            resolveOnTap(context, authCubit);
+          },
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const Icon(Ionicons.logo_google),
+                    const UIHorizontalSpace14(),
+                    Flexible(
+                      child: Column(
+                        children: [
+                          Text(
+                            content ?? "Sign in with Google",
+                            style: Theme.of(context).textTheme.bodyText1,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                const Icon(Icons.arrow_right_alt),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  void resolveOnTap(BuildContext context, AuthCubit authCubit) async {
+    FocusScope.of(context).unfocus();
+    await authCubit.signInWithGoogle();
+  }
+}
+
+class AppleAuthCard extends StatelessWidget {
+  final EdgeInsetsGeometry? margin;
+  final AuthCubit authCubit;
+  final String? content;
+
+  const AppleAuthCard({
+    this.margin,
+    required this.authCubit,
+    this.content,
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: margin ?? const EdgeInsets.symmetric(horizontal: 14),
+      child: Material(
+        elevation: 7,
+        shadowColor: Theme.of(context).colorScheme.primary.withOpacity(0.18),
+        borderRadius: BorderRadius.circular(16),
+        color: Colors.black.withOpacity(0.85),
+        child: InkWell(
+          borderRadius: BorderRadius.circular(16),
+          onTap: () {
+            resolveOnTap(context, authCubit);
+          },
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const Icon(Ionicons.logo_apple, color: Colors.white),
+                    const UIHorizontalSpace14(),
+                    Flexible(
+                      child: Column(
+                        children: [
+                          Text(
+                            content ?? "Sign in with Apple",
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyText1!
+                                .copyWith(color: Colors.white),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                const Icon(Icons.arrow_right_alt, color: Colors.white),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  void resolveOnTap(BuildContext context, AuthCubit authCubit) async {
+    FocusScope.of(context).unfocus();
+    await authCubit.signInWithApple();
   }
 }

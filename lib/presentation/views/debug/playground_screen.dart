@@ -1,4 +1,4 @@
-import 'package:farmhub/core/auth/auth_bloc/auth_bloc.dart';
+import 'package:farmhub/core/auth/auth_cubit/auth_cubit.dart';
 import 'package:farmhub/core/auth/data/datasources/auth_local_datasource.dart';
 import 'package:farmhub/core/auth/data/datasources/auth_remote_datasource.dart';
 import 'package:farmhub/core/auth/domain/entities/farmhub_user/farmhub_user.dart';
@@ -16,6 +16,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_styled_toast/flutter_styled_toast.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 import '../../shared_widgets/toasts.dart';
 
@@ -85,23 +86,55 @@ class _PlaygroundScreenState extends State<PlaygroundScreen> {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => ProduceManagerBloc(repository: locator())),
-        BlocProvider(
-            create: (context) => AuthBloc(
-                  authRepository: locator(),
-                  globalAuthCubit: locator(),
-                  firebaseAuth: locator(),
-                )),
+        // BlocProvider(
+        //     create: (context) => AuthBloc(
+        //           authRepository: locator(),
+        //           globalAuthCubit: locator(),
+        //           firebaseAuth: locator(),
+        //         )),
         BlocProvider(
             create: (context) => PlaygroundCubit(
                   repository: locator(),
                   firebaseFirestore: locator(),
-                ))
+                )),
+        BlocProvider(
+          create: (context) => AuthCubit(
+            firebaseAuth: locator(),
+            authRepository: locator(),
+            authRemoteDataSource: locator(),
+            globalAuthCubit: locator(),
+          ),
+        )
       ],
       child: Builder(builder: (context) {
         return Scaffold(
           body: Center(
             child: ListView(
               children: [
+                const UIVerticalSpace14(),
+                const UIBorder(),
+                const UIVerticalSpace14(),
+                Container(
+                  alignment: Alignment.center,
+                  child: SecondaryButton(
+                    content: "Back",
+                    onPressed: () => Navigator.of(context).pop(),
+                    type: SecondaryButtonType.red,
+                  ),
+                ),
+                const UIVerticalSpace14(),
+                const UIBorder(),
+                const UIVerticalSpace14(),
+                Container(
+                  alignment: Alignment.center,
+                  child: SecondaryButton(
+                    content: "Sign in with Google",
+                    onPressed: () {
+                      context.read<AuthCubit>().signInWithGoogle();
+                    },
+                    type: SecondaryButtonType.filled,
+                  ),
+                ),
                 const UIVerticalSpace14(),
                 const UIBorder(),
                 const UIVerticalSpace14(),
@@ -216,33 +249,33 @@ class _PlaygroundScreenState extends State<PlaygroundScreen> {
                     },
                   ),
                 ),
-                Container(
-                  padding: const EdgeInsets.only(top: 14, bottom: 14),
-                  alignment: Alignment.center,
-                  child: PrimaryButton(
-                    width: 270,
-                    content: "Retrieve and Update User",
-                    onPressed: () async {
-                      context.read<AuthBloc>().add(const AuthEvent.execRetrieveUserData());
+                // Container(
+                //   padding: const EdgeInsets.only(top: 14, bottom: 14),
+                //   alignment: Alignment.center,
+                //   child: PrimaryButton(
+                //     width: 270,
+                //     content: "Retrieve and Update User",
+                //     onPressed: () async {
+                //       context.read<AuthBloc>().add(const AuthEvent.execRetrieveUserData());
 
-                      if (!mounted) return;
-                      await context.read<GlobalAuthCubit>().updateGlobalAuthCubit();
-                    },
-                  ),
-                ),
-                BlocBuilder<AuthBloc, AuthState>(builder: (context, state) {
-                  if (state is ASInitial) {
-                    return const Text('Nothing really.');
-                  } else if (state is ASRetrieveUserDataLoading) {
-                    return const CupertinoActivityIndicator();
-                  } else if (state is ASRetrieveUserDataSuccess) {
-                    return Text(state.farmhubUser.toString());
-                  } else if (state is ASRetrieveUserDataError) {
-                    return Text('ERROR! Code: ${state.code}, Message: ${state.message}');
-                  } else {
-                    return Text("Unexpected State by AuthBloc! - $state");
-                  }
-                }),
+                //       if (!mounted) return;
+                //       await context.read<GlobalAuthCubit>().updateGlobalAuthCubit();
+                //     },
+                //   ),
+                // ),
+                // BlocBuilder<AuthBloc, AuthState>(builder: (context, state) {
+                //   if (state is ASInitial) {
+                //     return const Text('Nothing really.');
+                //   } else if (state is ASRetrieveUserDataLoading) {
+                //     return const CupertinoActivityIndicator();
+                //   } else if (state is ASRetrieveUserDataSuccess) {
+                //     return Text(state.farmhubUser.toString());
+                //   } else if (state is ASRetrieveUserDataError) {
+                //     return Text('ERROR! Code: ${state.code}, Message: ${state.message}');
+                //   } else {
+                //     return Text("Unexpected State by AuthBloc! - $state");
+                //   }
+                // }),
                 Container(
                   padding: const EdgeInsets.only(top: 14, bottom: 14),
                   alignment: Alignment.center,

@@ -259,7 +259,7 @@ abstract class PriceInitial implements PriceScreenState {
       _$PriceInitial;
 
   @override
-  PriceScreenProps get props => throw _privateConstructorUsedError;
+  PriceScreenProps get props;
   @override
   @JsonKey(ignore: true)
   _$$PriceInitialCopyWith<_$PriceInitial> get copyWith =>
@@ -413,7 +413,7 @@ abstract class PriceLoading implements PriceScreenState {
       _$PriceLoading;
 
   @override
-  PriceScreenProps get props => throw _privateConstructorUsedError;
+  PriceScreenProps get props;
   @override
   @JsonKey(ignore: true)
   _$$PriceLoadingCopyWith<_$PriceLoading> get copyWith =>
@@ -567,7 +567,7 @@ abstract class PriceCompleted implements PriceScreenState {
       _$PriceCompleted;
 
   @override
-  PriceScreenProps get props => throw _privateConstructorUsedError;
+  PriceScreenProps get props;
   @override
   @JsonKey(ignore: true)
   _$$PriceCompletedCopyWith<_$PriceCompleted> get copyWith =>
@@ -732,8 +732,8 @@ abstract class PriceError implements PriceScreenState {
       required final Failure failure}) = _$PriceError;
 
   @override
-  PriceScreenProps get props => throw _privateConstructorUsedError;
-  Failure get failure => throw _privateConstructorUsedError;
+  PriceScreenProps get props;
+  Failure get failure;
   @override
   @JsonKey(ignore: true)
   _$$PriceErrorCopyWith<_$PriceError> get copyWith =>
@@ -861,7 +861,7 @@ abstract class _PriceScreenProps implements PriceScreenProps {
       _$_PriceScreenProps;
 
   @override
-  Price get price => throw _privateConstructorUsedError;
+  Price get price;
   @override
   @JsonKey(ignore: true)
   _$$_PriceScreenPropsCopyWith<_$_PriceScreenProps> get copyWith =>

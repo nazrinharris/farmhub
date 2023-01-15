@@ -209,7 +209,7 @@ abstract class _Initial implements SettingsState {
   const factory _Initial({final String? appVersion}) = _$_Initial;
 
   @override
-  String? get appVersion => throw _privateConstructorUsedError;
+  String? get appVersion;
   @override
   @JsonKey(ignore: true)
   _$$_InitialCopyWith<_$_Initial> get copyWith =>

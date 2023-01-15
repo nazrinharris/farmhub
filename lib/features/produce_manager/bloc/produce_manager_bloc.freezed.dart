@@ -469,8 +469,8 @@ abstract class PMEExecCreateProduce implements ProduceManagerEvent {
       {required final String produceName,
       required final num currentProducePrice}) = _$PMEExecCreateProduce;
 
-  String get produceName => throw _privateConstructorUsedError;
-  num get currentProducePrice => throw _privateConstructorUsedError;
+  String get produceName;
+  num get currentProducePrice;
   @JsonKey(ignore: true)
   _$$PMEExecCreateProduceCopyWith<_$PMEExecCreateProduce> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1070,7 +1070,7 @@ abstract class PMSGetFirstTenProduceSuccess implements ProduceManagerState {
           {required final List<Produce> produceList}) =
       _$PMSGetFirstTenProduceSuccess;
 
-  List<Produce> get produceList => throw _privateConstructorUsedError;
+  List<Produce> get produceList;
   @JsonKey(ignore: true)
   _$$PMSGetFirstTenProduceSuccessCopyWith<_$PMSGetFirstTenProduceSuccess>
       get copyWith => throw _privateConstructorUsedError;
@@ -1277,9 +1277,9 @@ abstract class PMSGetFirstTenProduceError implements ProduceManagerState {
       required final String message,
       required final StackTrace stackTrace}) = _$PMSGetFirstTenProduceError;
 
-  String get code => throw _privateConstructorUsedError;
-  String get message => throw _privateConstructorUsedError;
-  StackTrace get stackTrace => throw _privateConstructorUsedError;
+  String get code;
+  String get message;
+  StackTrace get stackTrace;
   @JsonKey(ignore: true)
   _$$PMSGetFirstTenProduceErrorCopyWith<_$PMSGetFirstTenProduceError>
       get copyWith => throw _privateConstructorUsedError;
@@ -1626,7 +1626,7 @@ abstract class PMSCreateNewProduceSuccess implements ProduceManagerState {
   const factory PMSCreateNewProduceSuccess({required final Produce produce}) =
       _$PMSCreateNewProduceSuccess;
 
-  Produce get produce => throw _privateConstructorUsedError;
+  Produce get produce;
   @JsonKey(ignore: true)
   _$$PMSCreateNewProduceSuccessCopyWith<_$PMSCreateNewProduceSuccess>
       get copyWith => throw _privateConstructorUsedError;
@@ -1809,7 +1809,7 @@ abstract class PMSCreateNewProduceError implements ProduceManagerState {
   const factory PMSCreateNewProduceError({required final Failure failure}) =
       _$PMSCreateNewProduceError;
 
-  Failure get failure => throw _privateConstructorUsedError;
+  Failure get failure;
   @JsonKey(ignore: true)
   _$$PMSCreateNewProduceErrorCopyWith<_$PMSCreateNewProduceError>
       get copyWith => throw _privateConstructorUsedError;

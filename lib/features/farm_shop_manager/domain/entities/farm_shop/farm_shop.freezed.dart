@@ -186,7 +186,9 @@ class _$_Farm implements _Farm {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_FarmToJson(this);
+    return _$$_FarmToJson(
+      this,
+    );
   }
 }
 
@@ -200,13 +202,13 @@ abstract class _Farm implements Farm {
   factory _Farm.fromJson(Map<String, dynamic> json) = _$_Farm.fromJson;
 
   @override
-  String get creatorUserId => throw _privateConstructorUsedError;
+  String get creatorUserId;
   @override
-  String get farmId => throw _privateConstructorUsedError;
+  String get farmId;
   @override
-  String get farmName => throw _privateConstructorUsedError;
+  String get farmName;
   @override
-  Address get address => throw _privateConstructorUsedError;
+  Address get address;
   @override
   @JsonKey(ignore: true)
   _$$_FarmCopyWith<_$_Farm> get copyWith => throw _privateConstructorUsedError;
@@ -384,7 +386,9 @@ class _$_Shop implements _Shop {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ShopToJson(this);
+    return _$$_ShopToJson(
+      this,
+    );
   }
 }
 
@@ -398,13 +402,13 @@ abstract class _Shop implements Shop {
   factory _Shop.fromJson(Map<String, dynamic> json) = _$_Shop.fromJson;
 
   @override
-  String get creatorUserId => throw _privateConstructorUsedError;
+  String get creatorUserId;
   @override
-  String get shopId => throw _privateConstructorUsedError;
+  String get shopId;
   @override
-  String get shopName => throw _privateConstructorUsedError;
+  String get shopName;
   @override
-  Address get address => throw _privateConstructorUsedError;
+  Address get address;
   @override
   @JsonKey(ignore: true)
   _$$_ShopCopyWith<_$_Shop> get copyWith => throw _privateConstructorUsedError;

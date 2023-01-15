@@ -6,10 +6,14 @@ import 'package:farmhub/core/util/misc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:fpdart/fpdart.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:intl/intl.dart';
 import 'package:clock/clock.dart';
 import 'package:english_words/english_words.dart';
 import 'package:phone_numbers_parser/phone_numbers_parser.dart';
+import 'package:sign_in_with_apple/sign_in_with_apple.dart';
+
+import '../../../util/secure.dart' as secure;
 
 abstract class IAuthRemoteDataSource {
   Future<FarmhubUser> loginWithEmailAndPassword({
@@ -28,6 +32,15 @@ abstract class IAuthRemoteDataSource {
     required String uid,
     required String phoneNumber,
   });
+
+  Future<FarmhubUser> registerWithCredentials({
+    required String uid,
+    required String? email,
+    required String displayName,
+  });
+
+  Future<UserCredential> signInWithGoogle();
+  Future<UserCredential> signInWithApple();
 
   Future<Unit> chooseUserType(String uid, UserType userType);
 
@@ -249,12 +262,7 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
     required String uid,
     required String phoneNumber,
   }) async {
-    final random = [];
-
-    generateWordPairs().take(2).forEach((element) {
-      random.add(element);
-    });
-    final String tempName = "${random[0]} ${random[1]}".toTitleCase();
+    final String tempName = generateRandomName();
 
     String createdAt = DateFormat('yyyy-MM-dd').format(clock.now());
 
@@ -279,5 +287,94 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
     );
 
     return user;
+  }
+
+  @override
+  Future<FarmhubUser> registerWithCredentials({
+    required String uid,
+    required String? email,
+    required String displayName,
+  }) async {
+    String createdAt = DateFormat('yyyy-MM-dd').format(clock.now());
+
+    await firebaseFirestore.collection(FS_USER).doc(uid).set({
+      "uid": uid,
+      "email": email,
+      "username": displayName,
+      "createdAt": createdAt,
+      "produceFavoritesMap": {},
+      "phoneNumber": null,
+      "userType": null,
+    });
+
+    final user = FarmhubUser(
+      uid: uid,
+      email: email,
+      username: displayName,
+      createdAt: createdAt,
+      produceFavoritesList: [],
+      userType: UserType.regular,
+    );
+
+    debugPrint("AuthRemoteDatasource - registerWithCredentials()");
+    debugPrint(user.toString());
+
+    return user;
+  }
+
+  @override
+  Future<UserCredential> signInWithGoogle() async {
+    GoogleSignIn googleSignIn = GoogleSignIn.standard(scopes: <String>['email']);
+
+    GoogleSignInAccount? googleSignInAccount = await googleSignIn.signIn();
+
+    if (googleSignInAccount == null) {
+      throw AuthException(
+        code: AUTH_GOOGLE_SIGN_IN_ABORTED,
+        message: MSG_AUTH_GOOGLE_SIGN_IN_ABORTED,
+        stackTrace: StackTrace.current,
+      );
+    }
+
+    final GoogleSignInAuthentication googleSignInAuthentication =
+        await googleSignInAccount.authentication;
+
+    final AuthCredential credential = GoogleAuthProvider.credential(
+      accessToken: googleSignInAuthentication.accessToken,
+      idToken: googleSignInAuthentication.idToken,
+    );
+
+    final UserCredential userCredential = await firebaseAuth.signInWithCredential(credential);
+
+    return userCredential;
+  }
+
+  @override
+  Future<UserCredential> signInWithApple() async {
+    // To prevent replay attacks with the credential returned from Apple, we
+    // include a nonce in the credential request. When signing in with
+    // Firebase, the nonce in the id token returned by Apple, is expected to
+    // match the sha256 hash of `rawNonce`.
+    final rawNonce = secure.generateNonce();
+    final nonce = secure.sha256ofString(rawNonce);
+
+    // Request credential for the currently signed in Apple account.
+    final appleCredential = await SignInWithApple.getAppleIDCredential(
+      scopes: [
+        AppleIDAuthorizationScopes.email,
+        AppleIDAuthorizationScopes.fullName,
+      ],
+      nonce: nonce,
+    );
+
+    // Create an `OAuthCredential` from the credential returned by Apple.
+    final oauthCredential = OAuthProvider("apple.com").credential(
+      idToken: appleCredential.identityToken,
+      rawNonce: rawNonce,
+    );
+
+    // Sign in the user with Firebase. If the nonce we generated earlier does
+    // not match the nonce in `appleCredential.identityToken`, sign in will fail.
+    return await FirebaseAuth.instance.signInWithCredential(oauthCredential);
   }
 }

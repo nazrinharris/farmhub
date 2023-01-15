@@ -955,7 +955,7 @@ abstract class _MultipleFieldsFormFirstFieldValueChanged
           {required final String input}) =
       _$_MultipleFieldsFormFirstFieldValueChanged;
 
-  String get input => throw _privateConstructorUsedError;
+  String get input;
   @JsonKey(ignore: true)
   _$$_MultipleFieldsFormFirstFieldValueChangedCopyWith<
           _$_MultipleFieldsFormFirstFieldValueChanged>
@@ -1378,7 +1378,7 @@ abstract class _MultipleFieldsFormSecondFieldValueChanged
           {required final String input}) =
       _$_MultipleFieldsFormSecondFieldValueChanged;
 
-  String get input => throw _privateConstructorUsedError;
+  String get input;
   @JsonKey(ignore: true)
   _$$_MultipleFieldsFormSecondFieldValueChangedCopyWith<
           _$_MultipleFieldsFormSecondFieldValueChanged>
@@ -1800,7 +1800,7 @@ abstract class _MultipleFieldsFormThirdFieldValueChanged
           {required final String input}) =
       _$_MultipleFieldsFormThirdFieldValueChanged;
 
-  String get input => throw _privateConstructorUsedError;
+  String get input;
   @JsonKey(ignore: true)
   _$$_MultipleFieldsFormThirdFieldValueChangedCopyWith<
           _$_MultipleFieldsFormThirdFieldValueChanged>
@@ -2223,7 +2223,7 @@ abstract class _MultipleFieldsFormFourthFieldValueChanged
           {required final String input}) =
       _$_MultipleFieldsFormFourthFieldValueChanged;
 
-  String get input => throw _privateConstructorUsedError;
+  String get input;
   @JsonKey(ignore: true)
   _$$_MultipleFieldsFormFourthFieldValueChangedCopyWith<
           _$_MultipleFieldsFormFourthFieldValueChanged>
@@ -2650,7 +2650,7 @@ abstract class _FormInitial implements MultipleFieldsFormState {
       _$_FormInitial;
 
   @override
-  MultipleFieldsFormProps get props => throw _privateConstructorUsedError;
+  MultipleFieldsFormProps get props;
   @override
   @JsonKey(ignore: true)
   _$$_FormInitialCopyWith<_$_FormInitial> get copyWith =>
@@ -2797,7 +2797,7 @@ abstract class _FormValidationSuccess implements MultipleFieldsFormState {
       _$_FormValidationSuccess;
 
   @override
-  MultipleFieldsFormProps get props => throw _privateConstructorUsedError;
+  MultipleFieldsFormProps get props;
   @override
   @JsonKey(ignore: true)
   _$$_FormValidationSuccessCopyWith<_$_FormValidationSuccess> get copyWith =>
@@ -3167,35 +3167,31 @@ abstract class _MultipleFieldsFormProps implements MultipleFieldsFormProps {
       _$_MultipleFieldsFormProps;
 
   @override
-  AutovalidateMode get autovalidateModeFirstField =>
-      throw _privateConstructorUsedError;
+  AutovalidateMode get autovalidateModeFirstField;
   @override
-  AutovalidateMode get autovalidateModeSecondField =>
-      throw _privateConstructorUsedError;
+  AutovalidateMode get autovalidateModeSecondField;
   @override
-  AutovalidateMode get autovalidateModeThirdField =>
-      throw _privateConstructorUsedError;
+  AutovalidateMode get autovalidateModeThirdField;
   @override
-  AutovalidateMode get autovalidateModeFourthField =>
-      throw _privateConstructorUsedError;
+  AutovalidateMode get autovalidateModeFourthField;
   @override
-  FocusNode get firstFieldFocusNode => throw _privateConstructorUsedError;
+  FocusNode get firstFieldFocusNode;
   @override
-  FocusNode get secondFieldFocusNode => throw _privateConstructorUsedError;
+  FocusNode get secondFieldFocusNode;
   @override
-  FocusNode get thirdFieldFocusNode => throw _privateConstructorUsedError;
+  FocusNode get thirdFieldFocusNode;
   @override
-  FocusNode get fourthFieldFocusNode => throw _privateConstructorUsedError;
+  FocusNode get fourthFieldFocusNode;
   @override
-  String? get firstFieldValue => throw _privateConstructorUsedError;
+  String? get firstFieldValue;
   @override
-  String? get secondFieldValue => throw _privateConstructorUsedError;
+  String? get secondFieldValue;
   @override
-  String? get thirdFieldValue => throw _privateConstructorUsedError;
+  String? get thirdFieldValue;
   @override
-  String? get fourthFieldValue => throw _privateConstructorUsedError;
+  String? get fourthFieldValue;
   @override
-  GlobalKey<FormState> get formKey => throw _privateConstructorUsedError;
+  GlobalKey<FormState> get formKey;
   @override
   @JsonKey(ignore: true)
   _$$_MultipleFieldsFormPropsCopyWith<_$_MultipleFieldsFormProps>

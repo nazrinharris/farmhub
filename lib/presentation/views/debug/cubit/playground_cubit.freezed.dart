@@ -123,18 +123,12 @@ class __$$InitialCopyWithImpl<$Res> extends _$PlaygroundStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$Initial with DiagnosticableTreeMixin implements Initial {
+class _$Initial implements Initial {
   const _$Initial();
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'PlaygroundState.initial()';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty('type', 'PlaygroundState.initial'));
   }
 
   @override
@@ -263,18 +257,12 @@ class __$$LoadingCopyWithImpl<$Res> extends _$PlaygroundStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$Loading with DiagnosticableTreeMixin implements Loading {
+class _$Loading implements Loading {
   const _$Loading();
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'PlaygroundState.loading()';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty('type', 'PlaygroundState.loading'));
   }
 
   @override
@@ -428,25 +416,15 @@ class __$$CreateCompletedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$CreateCompleted
-    with DiagnosticableTreeMixin
-    implements CreateCompleted {
+class _$CreateCompleted implements CreateCompleted {
   const _$CreateCompleted(this.produce);
 
   @override
   final Produce produce;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'PlaygroundState.createCompleted(produce: $produce)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'PlaygroundState.createCompleted'))
-      ..add(DiagnosticsProperty('produce', produce));
   }
 
   @override
@@ -564,7 +542,7 @@ class _$CreateCompleted
 abstract class CreateCompleted implements PlaygroundState {
   const factory CreateCompleted(final Produce produce) = _$CreateCompleted;
 
-  Produce get produce => throw _privateConstructorUsedError;
+  Produce get produce;
   @JsonKey(ignore: true)
   _$$CreateCompletedCopyWith<_$CreateCompleted> get copyWith =>
       throw _privateConstructorUsedError;
@@ -613,25 +591,15 @@ class __$$AddPriceCompletedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AddPriceCompleted
-    with DiagnosticableTreeMixin
-    implements AddPriceCompleted {
+class _$AddPriceCompleted implements AddPriceCompleted {
   const _$AddPriceCompleted(this.produce);
 
   @override
   final Produce produce;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'PlaygroundState.addPriceCompleted(produce: $produce)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'PlaygroundState.addPriceCompleted'))
-      ..add(DiagnosticsProperty('produce', produce));
   }
 
   @override
@@ -749,7 +717,7 @@ class _$AddPriceCompleted
 abstract class AddPriceCompleted implements PlaygroundState {
   const factory AddPriceCompleted(final Produce produce) = _$AddPriceCompleted;
 
-  Produce get produce => throw _privateConstructorUsedError;
+  Produce get produce;
   @JsonKey(ignore: true)
   _$$AddPriceCompletedCopyWith<_$AddPriceCompleted> get copyWith =>
       throw _privateConstructorUsedError;
@@ -789,9 +757,7 @@ class __$$GetPricesCompletedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$GetPricesCompleted
-    with DiagnosticableTreeMixin
-    implements GetPricesCompleted {
+class _$GetPricesCompleted implements GetPricesCompleted {
   const _$GetPricesCompleted(final List<PriceSnippet> pricesList)
       : _pricesList = pricesList;
 
@@ -803,16 +769,8 @@ class _$GetPricesCompleted
   }
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'PlaygroundState.getPricesCompleted(pricesList: $pricesList)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'PlaygroundState.getPricesCompleted'))
-      ..add(DiagnosticsProperty('pricesList', pricesList));
   }
 
   @override
@@ -933,7 +891,7 @@ abstract class GetPricesCompleted implements PlaygroundState {
   const factory GetPricesCompleted(final List<PriceSnippet> pricesList) =
       _$GetPricesCompleted;
 
-  List<PriceSnippet> get pricesList => throw _privateConstructorUsedError;
+  List<PriceSnippet> get pricesList;
   @JsonKey(ignore: true)
   _$$GetPricesCompletedCopyWith<_$GetPricesCompleted> get copyWith =>
       throw _privateConstructorUsedError;
@@ -973,9 +931,7 @@ class __$$CreatePricesCompletedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$CreatePricesCompleted
-    with DiagnosticableTreeMixin
-    implements CreatePricesCompleted {
+class _$CreatePricesCompleted implements CreatePricesCompleted {
   const _$CreatePricesCompleted(final List<PriceSnippet> pricesList)
       : _pricesList = pricesList;
 
@@ -987,17 +943,8 @@ class _$CreatePricesCompleted
   }
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'PlaygroundState.createPricesCompleted(pricesList: $pricesList)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(
-          DiagnosticsProperty('type', 'PlaygroundState.createPricesCompleted'))
-      ..add(DiagnosticsProperty('pricesList', pricesList));
   }
 
   @override
@@ -1118,7 +1065,7 @@ abstract class CreatePricesCompleted implements PlaygroundState {
   const factory CreatePricesCompleted(final List<PriceSnippet> pricesList) =
       _$CreatePricesCompleted;
 
-  List<PriceSnippet> get pricesList => throw _privateConstructorUsedError;
+  List<PriceSnippet> get pricesList;
   @JsonKey(ignore: true)
   _$$CreatePricesCompletedCopyWith<_$CreatePricesCompleted> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1155,23 +1102,15 @@ class __$$ErrorCopyWithImpl<$Res> extends _$PlaygroundStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$Error with DiagnosticableTreeMixin implements Error {
+class _$Error implements Error {
   const _$Error(this.failure);
 
   @override
   final Failure failure;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'PlaygroundState.error(failure: $failure)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'PlaygroundState.error'))
-      ..add(DiagnosticsProperty('failure', failure));
   }
 
   @override
@@ -1289,7 +1228,7 @@ class _$Error with DiagnosticableTreeMixin implements Error {
 abstract class Error implements PlaygroundState {
   const factory Error(final Failure failure) = _$Error;
 
-  Failure get failure => throw _privateConstructorUsedError;
+  Failure get failure;
   @JsonKey(ignore: true)
   _$$ErrorCopyWith<_$Error> get copyWith => throw _privateConstructorUsedError;
 }
