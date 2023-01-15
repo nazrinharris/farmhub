@@ -24,6 +24,10 @@ mixin _$ProduceAggregateState {
     required TResult Function(ProduceAggregateProps props) completed,
     required TResult Function(ProduceAggregateProps props, Failure failure)
         error,
+    required TResult Function(ProduceAggregateProps props)
+        addToFavoritesLoading,
+    required TResult Function(ProduceAggregateProps props)
+        removeFromFavoritesLoading,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -32,6 +36,8 @@ mixin _$ProduceAggregateState {
     TResult Function(ProduceAggregateProps props)? loading,
     TResult Function(ProduceAggregateProps props)? completed,
     TResult Function(ProduceAggregateProps props, Failure failure)? error,
+    TResult Function(ProduceAggregateProps props)? addToFavoritesLoading,
+    TResult Function(ProduceAggregateProps props)? removeFromFavoritesLoading,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -40,6 +46,8 @@ mixin _$ProduceAggregateState {
     TResult Function(ProduceAggregateProps props)? loading,
     TResult Function(ProduceAggregateProps props)? completed,
     TResult Function(ProduceAggregateProps props, Failure failure)? error,
+    TResult Function(ProduceAggregateProps props)? addToFavoritesLoading,
+    TResult Function(ProduceAggregateProps props)? removeFromFavoritesLoading,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -49,6 +57,10 @@ mixin _$ProduceAggregateState {
     required TResult Function(PASLoading value) loading,
     required TResult Function(PASCompleted value) completed,
     required TResult Function(PASError value) error,
+    required TResult Function(PASAddToFavoritesLoading value)
+        addToFavoritesLoading,
+    required TResult Function(PASRemoveFromFavoritesLoading value)
+        removeFromFavoritesLoading,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,6 +69,9 @@ mixin _$ProduceAggregateState {
     TResult Function(PASLoading value)? loading,
     TResult Function(PASCompleted value)? completed,
     TResult Function(PASError value)? error,
+    TResult Function(PASAddToFavoritesLoading value)? addToFavoritesLoading,
+    TResult Function(PASRemoveFromFavoritesLoading value)?
+        removeFromFavoritesLoading,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -65,6 +80,9 @@ mixin _$ProduceAggregateState {
     TResult Function(PASLoading value)? loading,
     TResult Function(PASCompleted value)? completed,
     TResult Function(PASError value)? error,
+    TResult Function(PASAddToFavoritesLoading value)? addToFavoritesLoading,
+    TResult Function(PASRemoveFromFavoritesLoading value)?
+        removeFromFavoritesLoading,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -188,6 +206,10 @@ class _$PASInitial implements PASInitial {
     required TResult Function(ProduceAggregateProps props) completed,
     required TResult Function(ProduceAggregateProps props, Failure failure)
         error,
+    required TResult Function(ProduceAggregateProps props)
+        addToFavoritesLoading,
+    required TResult Function(ProduceAggregateProps props)
+        removeFromFavoritesLoading,
   }) {
     return initial(props);
   }
@@ -199,6 +221,8 @@ class _$PASInitial implements PASInitial {
     TResult Function(ProduceAggregateProps props)? loading,
     TResult Function(ProduceAggregateProps props)? completed,
     TResult Function(ProduceAggregateProps props, Failure failure)? error,
+    TResult Function(ProduceAggregateProps props)? addToFavoritesLoading,
+    TResult Function(ProduceAggregateProps props)? removeFromFavoritesLoading,
   }) {
     return initial?.call(props);
   }
@@ -210,6 +234,8 @@ class _$PASInitial implements PASInitial {
     TResult Function(ProduceAggregateProps props)? loading,
     TResult Function(ProduceAggregateProps props)? completed,
     TResult Function(ProduceAggregateProps props, Failure failure)? error,
+    TResult Function(ProduceAggregateProps props)? addToFavoritesLoading,
+    TResult Function(ProduceAggregateProps props)? removeFromFavoritesLoading,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -225,6 +251,10 @@ class _$PASInitial implements PASInitial {
     required TResult Function(PASLoading value) loading,
     required TResult Function(PASCompleted value) completed,
     required TResult Function(PASError value) error,
+    required TResult Function(PASAddToFavoritesLoading value)
+        addToFavoritesLoading,
+    required TResult Function(PASRemoveFromFavoritesLoading value)
+        removeFromFavoritesLoading,
   }) {
     return initial(this);
   }
@@ -236,6 +266,9 @@ class _$PASInitial implements PASInitial {
     TResult Function(PASLoading value)? loading,
     TResult Function(PASCompleted value)? completed,
     TResult Function(PASError value)? error,
+    TResult Function(PASAddToFavoritesLoading value)? addToFavoritesLoading,
+    TResult Function(PASRemoveFromFavoritesLoading value)?
+        removeFromFavoritesLoading,
   }) {
     return initial?.call(this);
   }
@@ -247,6 +280,9 @@ class _$PASInitial implements PASInitial {
     TResult Function(PASLoading value)? loading,
     TResult Function(PASCompleted value)? completed,
     TResult Function(PASError value)? error,
+    TResult Function(PASAddToFavoritesLoading value)? addToFavoritesLoading,
+    TResult Function(PASRemoveFromFavoritesLoading value)?
+        removeFromFavoritesLoading,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -261,7 +297,7 @@ abstract class PASInitial implements ProduceAggregateState {
       _$PASInitial;
 
   @override
-  ProduceAggregateProps get props => throw _privateConstructorUsedError;
+  ProduceAggregateProps get props;
   @override
   @JsonKey(ignore: true)
   _$$PASInitialCopyWith<_$PASInitial> get copyWith =>
@@ -343,6 +379,10 @@ class _$PASLoading implements PASLoading {
     required TResult Function(ProduceAggregateProps props) completed,
     required TResult Function(ProduceAggregateProps props, Failure failure)
         error,
+    required TResult Function(ProduceAggregateProps props)
+        addToFavoritesLoading,
+    required TResult Function(ProduceAggregateProps props)
+        removeFromFavoritesLoading,
   }) {
     return loading(props);
   }
@@ -354,6 +394,8 @@ class _$PASLoading implements PASLoading {
     TResult Function(ProduceAggregateProps props)? loading,
     TResult Function(ProduceAggregateProps props)? completed,
     TResult Function(ProduceAggregateProps props, Failure failure)? error,
+    TResult Function(ProduceAggregateProps props)? addToFavoritesLoading,
+    TResult Function(ProduceAggregateProps props)? removeFromFavoritesLoading,
   }) {
     return loading?.call(props);
   }
@@ -365,6 +407,8 @@ class _$PASLoading implements PASLoading {
     TResult Function(ProduceAggregateProps props)? loading,
     TResult Function(ProduceAggregateProps props)? completed,
     TResult Function(ProduceAggregateProps props, Failure failure)? error,
+    TResult Function(ProduceAggregateProps props)? addToFavoritesLoading,
+    TResult Function(ProduceAggregateProps props)? removeFromFavoritesLoading,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -380,6 +424,10 @@ class _$PASLoading implements PASLoading {
     required TResult Function(PASLoading value) loading,
     required TResult Function(PASCompleted value) completed,
     required TResult Function(PASError value) error,
+    required TResult Function(PASAddToFavoritesLoading value)
+        addToFavoritesLoading,
+    required TResult Function(PASRemoveFromFavoritesLoading value)
+        removeFromFavoritesLoading,
   }) {
     return loading(this);
   }
@@ -391,6 +439,9 @@ class _$PASLoading implements PASLoading {
     TResult Function(PASLoading value)? loading,
     TResult Function(PASCompleted value)? completed,
     TResult Function(PASError value)? error,
+    TResult Function(PASAddToFavoritesLoading value)? addToFavoritesLoading,
+    TResult Function(PASRemoveFromFavoritesLoading value)?
+        removeFromFavoritesLoading,
   }) {
     return loading?.call(this);
   }
@@ -402,6 +453,9 @@ class _$PASLoading implements PASLoading {
     TResult Function(PASLoading value)? loading,
     TResult Function(PASCompleted value)? completed,
     TResult Function(PASError value)? error,
+    TResult Function(PASAddToFavoritesLoading value)? addToFavoritesLoading,
+    TResult Function(PASRemoveFromFavoritesLoading value)?
+        removeFromFavoritesLoading,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -416,7 +470,7 @@ abstract class PASLoading implements ProduceAggregateState {
       _$PASLoading;
 
   @override
-  ProduceAggregateProps get props => throw _privateConstructorUsedError;
+  ProduceAggregateProps get props;
   @override
   @JsonKey(ignore: true)
   _$$PASLoadingCopyWith<_$PASLoading> get copyWith =>
@@ -498,6 +552,10 @@ class _$PASCompleted implements PASCompleted {
     required TResult Function(ProduceAggregateProps props) completed,
     required TResult Function(ProduceAggregateProps props, Failure failure)
         error,
+    required TResult Function(ProduceAggregateProps props)
+        addToFavoritesLoading,
+    required TResult Function(ProduceAggregateProps props)
+        removeFromFavoritesLoading,
   }) {
     return completed(props);
   }
@@ -509,6 +567,8 @@ class _$PASCompleted implements PASCompleted {
     TResult Function(ProduceAggregateProps props)? loading,
     TResult Function(ProduceAggregateProps props)? completed,
     TResult Function(ProduceAggregateProps props, Failure failure)? error,
+    TResult Function(ProduceAggregateProps props)? addToFavoritesLoading,
+    TResult Function(ProduceAggregateProps props)? removeFromFavoritesLoading,
   }) {
     return completed?.call(props);
   }
@@ -520,6 +580,8 @@ class _$PASCompleted implements PASCompleted {
     TResult Function(ProduceAggregateProps props)? loading,
     TResult Function(ProduceAggregateProps props)? completed,
     TResult Function(ProduceAggregateProps props, Failure failure)? error,
+    TResult Function(ProduceAggregateProps props)? addToFavoritesLoading,
+    TResult Function(ProduceAggregateProps props)? removeFromFavoritesLoading,
     required TResult orElse(),
   }) {
     if (completed != null) {
@@ -535,6 +597,10 @@ class _$PASCompleted implements PASCompleted {
     required TResult Function(PASLoading value) loading,
     required TResult Function(PASCompleted value) completed,
     required TResult Function(PASError value) error,
+    required TResult Function(PASAddToFavoritesLoading value)
+        addToFavoritesLoading,
+    required TResult Function(PASRemoveFromFavoritesLoading value)
+        removeFromFavoritesLoading,
   }) {
     return completed(this);
   }
@@ -546,6 +612,9 @@ class _$PASCompleted implements PASCompleted {
     TResult Function(PASLoading value)? loading,
     TResult Function(PASCompleted value)? completed,
     TResult Function(PASError value)? error,
+    TResult Function(PASAddToFavoritesLoading value)? addToFavoritesLoading,
+    TResult Function(PASRemoveFromFavoritesLoading value)?
+        removeFromFavoritesLoading,
   }) {
     return completed?.call(this);
   }
@@ -557,6 +626,9 @@ class _$PASCompleted implements PASCompleted {
     TResult Function(PASLoading value)? loading,
     TResult Function(PASCompleted value)? completed,
     TResult Function(PASError value)? error,
+    TResult Function(PASAddToFavoritesLoading value)? addToFavoritesLoading,
+    TResult Function(PASRemoveFromFavoritesLoading value)?
+        removeFromFavoritesLoading,
     required TResult orElse(),
   }) {
     if (completed != null) {
@@ -571,7 +643,7 @@ abstract class PASCompleted implements ProduceAggregateState {
       _$PASCompleted;
 
   @override
-  ProduceAggregateProps get props => throw _privateConstructorUsedError;
+  ProduceAggregateProps get props;
   @override
   @JsonKey(ignore: true)
   _$$PASCompletedCopyWith<_$PASCompleted> get copyWith =>
@@ -662,6 +734,10 @@ class _$PASError implements PASError {
     required TResult Function(ProduceAggregateProps props) completed,
     required TResult Function(ProduceAggregateProps props, Failure failure)
         error,
+    required TResult Function(ProduceAggregateProps props)
+        addToFavoritesLoading,
+    required TResult Function(ProduceAggregateProps props)
+        removeFromFavoritesLoading,
   }) {
     return error(props, failure);
   }
@@ -673,6 +749,8 @@ class _$PASError implements PASError {
     TResult Function(ProduceAggregateProps props)? loading,
     TResult Function(ProduceAggregateProps props)? completed,
     TResult Function(ProduceAggregateProps props, Failure failure)? error,
+    TResult Function(ProduceAggregateProps props)? addToFavoritesLoading,
+    TResult Function(ProduceAggregateProps props)? removeFromFavoritesLoading,
   }) {
     return error?.call(props, failure);
   }
@@ -684,6 +762,8 @@ class _$PASError implements PASError {
     TResult Function(ProduceAggregateProps props)? loading,
     TResult Function(ProduceAggregateProps props)? completed,
     TResult Function(ProduceAggregateProps props, Failure failure)? error,
+    TResult Function(ProduceAggregateProps props)? addToFavoritesLoading,
+    TResult Function(ProduceAggregateProps props)? removeFromFavoritesLoading,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -699,6 +779,10 @@ class _$PASError implements PASError {
     required TResult Function(PASLoading value) loading,
     required TResult Function(PASCompleted value) completed,
     required TResult Function(PASError value) error,
+    required TResult Function(PASAddToFavoritesLoading value)
+        addToFavoritesLoading,
+    required TResult Function(PASRemoveFromFavoritesLoading value)
+        removeFromFavoritesLoading,
   }) {
     return error(this);
   }
@@ -710,6 +794,9 @@ class _$PASError implements PASError {
     TResult Function(PASLoading value)? loading,
     TResult Function(PASCompleted value)? completed,
     TResult Function(PASError value)? error,
+    TResult Function(PASAddToFavoritesLoading value)? addToFavoritesLoading,
+    TResult Function(PASRemoveFromFavoritesLoading value)?
+        removeFromFavoritesLoading,
   }) {
     return error?.call(this);
   }
@@ -721,6 +808,9 @@ class _$PASError implements PASError {
     TResult Function(PASLoading value)? loading,
     TResult Function(PASCompleted value)? completed,
     TResult Function(PASError value)? error,
+    TResult Function(PASAddToFavoritesLoading value)? addToFavoritesLoading,
+    TResult Function(PASRemoveFromFavoritesLoading value)?
+        removeFromFavoritesLoading,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -736,12 +826,367 @@ abstract class PASError implements ProduceAggregateState {
       required final Failure failure}) = _$PASError;
 
   @override
-  ProduceAggregateProps get props => throw _privateConstructorUsedError;
-  Failure get failure => throw _privateConstructorUsedError;
+  ProduceAggregateProps get props;
+  Failure get failure;
   @override
   @JsonKey(ignore: true)
   _$$PASErrorCopyWith<_$PASError> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$PASAddToFavoritesLoadingCopyWith<$Res>
+    implements $ProduceAggregateStateCopyWith<$Res> {
+  factory _$$PASAddToFavoritesLoadingCopyWith(_$PASAddToFavoritesLoading value,
+          $Res Function(_$PASAddToFavoritesLoading) then) =
+      __$$PASAddToFavoritesLoadingCopyWithImpl<$Res>;
+  @override
+  $Res call({ProduceAggregateProps props});
+
+  @override
+  $ProduceAggregatePropsCopyWith<$Res> get props;
+}
+
+/// @nodoc
+class __$$PASAddToFavoritesLoadingCopyWithImpl<$Res>
+    extends _$ProduceAggregateStateCopyWithImpl<$Res>
+    implements _$$PASAddToFavoritesLoadingCopyWith<$Res> {
+  __$$PASAddToFavoritesLoadingCopyWithImpl(_$PASAddToFavoritesLoading _value,
+      $Res Function(_$PASAddToFavoritesLoading) _then)
+      : super(_value, (v) => _then(v as _$PASAddToFavoritesLoading));
+
+  @override
+  _$PASAddToFavoritesLoading get _value =>
+      super._value as _$PASAddToFavoritesLoading;
+
+  @override
+  $Res call({
+    Object? props = freezed,
+  }) {
+    return _then(_$PASAddToFavoritesLoading(
+      props: props == freezed
+          ? _value.props
+          : props // ignore: cast_nullable_to_non_nullable
+              as ProduceAggregateProps,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$PASAddToFavoritesLoading implements PASAddToFavoritesLoading {
+  const _$PASAddToFavoritesLoading({required this.props});
+
+  @override
+  final ProduceAggregateProps props;
+
+  @override
+  String toString() {
+    return 'ProduceAggregateState.addToFavoritesLoading(props: $props)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PASAddToFavoritesLoading &&
+            const DeepCollectionEquality().equals(other.props, props));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(props));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$PASAddToFavoritesLoadingCopyWith<_$PASAddToFavoritesLoading>
+      get copyWith =>
+          __$$PASAddToFavoritesLoadingCopyWithImpl<_$PASAddToFavoritesLoading>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(ProduceAggregateProps props) initial,
+    required TResult Function(ProduceAggregateProps props) loading,
+    required TResult Function(ProduceAggregateProps props) completed,
+    required TResult Function(ProduceAggregateProps props, Failure failure)
+        error,
+    required TResult Function(ProduceAggregateProps props)
+        addToFavoritesLoading,
+    required TResult Function(ProduceAggregateProps props)
+        removeFromFavoritesLoading,
+  }) {
+    return addToFavoritesLoading(props);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(ProduceAggregateProps props)? initial,
+    TResult Function(ProduceAggregateProps props)? loading,
+    TResult Function(ProduceAggregateProps props)? completed,
+    TResult Function(ProduceAggregateProps props, Failure failure)? error,
+    TResult Function(ProduceAggregateProps props)? addToFavoritesLoading,
+    TResult Function(ProduceAggregateProps props)? removeFromFavoritesLoading,
+  }) {
+    return addToFavoritesLoading?.call(props);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(ProduceAggregateProps props)? initial,
+    TResult Function(ProduceAggregateProps props)? loading,
+    TResult Function(ProduceAggregateProps props)? completed,
+    TResult Function(ProduceAggregateProps props, Failure failure)? error,
+    TResult Function(ProduceAggregateProps props)? addToFavoritesLoading,
+    TResult Function(ProduceAggregateProps props)? removeFromFavoritesLoading,
+    required TResult orElse(),
+  }) {
+    if (addToFavoritesLoading != null) {
+      return addToFavoritesLoading(props);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(PASInitial value) initial,
+    required TResult Function(PASLoading value) loading,
+    required TResult Function(PASCompleted value) completed,
+    required TResult Function(PASError value) error,
+    required TResult Function(PASAddToFavoritesLoading value)
+        addToFavoritesLoading,
+    required TResult Function(PASRemoveFromFavoritesLoading value)
+        removeFromFavoritesLoading,
+  }) {
+    return addToFavoritesLoading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(PASInitial value)? initial,
+    TResult Function(PASLoading value)? loading,
+    TResult Function(PASCompleted value)? completed,
+    TResult Function(PASError value)? error,
+    TResult Function(PASAddToFavoritesLoading value)? addToFavoritesLoading,
+    TResult Function(PASRemoveFromFavoritesLoading value)?
+        removeFromFavoritesLoading,
+  }) {
+    return addToFavoritesLoading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(PASInitial value)? initial,
+    TResult Function(PASLoading value)? loading,
+    TResult Function(PASCompleted value)? completed,
+    TResult Function(PASError value)? error,
+    TResult Function(PASAddToFavoritesLoading value)? addToFavoritesLoading,
+    TResult Function(PASRemoveFromFavoritesLoading value)?
+        removeFromFavoritesLoading,
+    required TResult orElse(),
+  }) {
+    if (addToFavoritesLoading != null) {
+      return addToFavoritesLoading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class PASAddToFavoritesLoading implements ProduceAggregateState {
+  const factory PASAddToFavoritesLoading(
+          {required final ProduceAggregateProps props}) =
+      _$PASAddToFavoritesLoading;
+
+  @override
+  ProduceAggregateProps get props;
+  @override
+  @JsonKey(ignore: true)
+  _$$PASAddToFavoritesLoadingCopyWith<_$PASAddToFavoritesLoading>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$PASRemoveFromFavoritesLoadingCopyWith<$Res>
+    implements $ProduceAggregateStateCopyWith<$Res> {
+  factory _$$PASRemoveFromFavoritesLoadingCopyWith(
+          _$PASRemoveFromFavoritesLoading value,
+          $Res Function(_$PASRemoveFromFavoritesLoading) then) =
+      __$$PASRemoveFromFavoritesLoadingCopyWithImpl<$Res>;
+  @override
+  $Res call({ProduceAggregateProps props});
+
+  @override
+  $ProduceAggregatePropsCopyWith<$Res> get props;
+}
+
+/// @nodoc
+class __$$PASRemoveFromFavoritesLoadingCopyWithImpl<$Res>
+    extends _$ProduceAggregateStateCopyWithImpl<$Res>
+    implements _$$PASRemoveFromFavoritesLoadingCopyWith<$Res> {
+  __$$PASRemoveFromFavoritesLoadingCopyWithImpl(
+      _$PASRemoveFromFavoritesLoading _value,
+      $Res Function(_$PASRemoveFromFavoritesLoading) _then)
+      : super(_value, (v) => _then(v as _$PASRemoveFromFavoritesLoading));
+
+  @override
+  _$PASRemoveFromFavoritesLoading get _value =>
+      super._value as _$PASRemoveFromFavoritesLoading;
+
+  @override
+  $Res call({
+    Object? props = freezed,
+  }) {
+    return _then(_$PASRemoveFromFavoritesLoading(
+      props: props == freezed
+          ? _value.props
+          : props // ignore: cast_nullable_to_non_nullable
+              as ProduceAggregateProps,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$PASRemoveFromFavoritesLoading implements PASRemoveFromFavoritesLoading {
+  const _$PASRemoveFromFavoritesLoading({required this.props});
+
+  @override
+  final ProduceAggregateProps props;
+
+  @override
+  String toString() {
+    return 'ProduceAggregateState.removeFromFavoritesLoading(props: $props)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PASRemoveFromFavoritesLoading &&
+            const DeepCollectionEquality().equals(other.props, props));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(props));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$PASRemoveFromFavoritesLoadingCopyWith<_$PASRemoveFromFavoritesLoading>
+      get copyWith => __$$PASRemoveFromFavoritesLoadingCopyWithImpl<
+          _$PASRemoveFromFavoritesLoading>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(ProduceAggregateProps props) initial,
+    required TResult Function(ProduceAggregateProps props) loading,
+    required TResult Function(ProduceAggregateProps props) completed,
+    required TResult Function(ProduceAggregateProps props, Failure failure)
+        error,
+    required TResult Function(ProduceAggregateProps props)
+        addToFavoritesLoading,
+    required TResult Function(ProduceAggregateProps props)
+        removeFromFavoritesLoading,
+  }) {
+    return removeFromFavoritesLoading(props);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(ProduceAggregateProps props)? initial,
+    TResult Function(ProduceAggregateProps props)? loading,
+    TResult Function(ProduceAggregateProps props)? completed,
+    TResult Function(ProduceAggregateProps props, Failure failure)? error,
+    TResult Function(ProduceAggregateProps props)? addToFavoritesLoading,
+    TResult Function(ProduceAggregateProps props)? removeFromFavoritesLoading,
+  }) {
+    return removeFromFavoritesLoading?.call(props);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(ProduceAggregateProps props)? initial,
+    TResult Function(ProduceAggregateProps props)? loading,
+    TResult Function(ProduceAggregateProps props)? completed,
+    TResult Function(ProduceAggregateProps props, Failure failure)? error,
+    TResult Function(ProduceAggregateProps props)? addToFavoritesLoading,
+    TResult Function(ProduceAggregateProps props)? removeFromFavoritesLoading,
+    required TResult orElse(),
+  }) {
+    if (removeFromFavoritesLoading != null) {
+      return removeFromFavoritesLoading(props);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(PASInitial value) initial,
+    required TResult Function(PASLoading value) loading,
+    required TResult Function(PASCompleted value) completed,
+    required TResult Function(PASError value) error,
+    required TResult Function(PASAddToFavoritesLoading value)
+        addToFavoritesLoading,
+    required TResult Function(PASRemoveFromFavoritesLoading value)
+        removeFromFavoritesLoading,
+  }) {
+    return removeFromFavoritesLoading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(PASInitial value)? initial,
+    TResult Function(PASLoading value)? loading,
+    TResult Function(PASCompleted value)? completed,
+    TResult Function(PASError value)? error,
+    TResult Function(PASAddToFavoritesLoading value)? addToFavoritesLoading,
+    TResult Function(PASRemoveFromFavoritesLoading value)?
+        removeFromFavoritesLoading,
+  }) {
+    return removeFromFavoritesLoading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(PASInitial value)? initial,
+    TResult Function(PASLoading value)? loading,
+    TResult Function(PASCompleted value)? completed,
+    TResult Function(PASError value)? error,
+    TResult Function(PASAddToFavoritesLoading value)? addToFavoritesLoading,
+    TResult Function(PASRemoveFromFavoritesLoading value)?
+        removeFromFavoritesLoading,
+    required TResult orElse(),
+  }) {
+    if (removeFromFavoritesLoading != null) {
+      return removeFromFavoritesLoading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class PASRemoveFromFavoritesLoading implements ProduceAggregateState {
+  const factory PASRemoveFromFavoritesLoading(
+          {required final ProduceAggregateProps props}) =
+      _$PASRemoveFromFavoritesLoading;
+
+  @override
+  ProduceAggregateProps get props;
+  @override
+  @JsonKey(ignore: true)
+  _$$PASRemoveFromFavoritesLoadingCopyWith<_$PASRemoveFromFavoritesLoading>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1137,33 +1582,27 @@ abstract class _ProduceAggregateProps implements ProduceAggregateProps {
       final List<PriceSnippet>? oneYearPricesList}) = _$_ProduceAggregateProps;
 
   @override
-  TabController get tabController => throw _privateConstructorUsedError;
+  TabController get tabController;
   @override
-  int get index => throw _privateConstructorUsedError;
+  int get index;
   @override
-  Produce? get produce => throw _privateConstructorUsedError;
+  Produce? get produce;
   @override
-  FarmhubUser get farmhubUser => throw _privateConstructorUsedError;
+  FarmhubUser get farmhubUser;
   @override
-  bool get isProduceFavorite => throw _privateConstructorUsedError;
+  bool get isProduceFavorite;
   @override
-  List<PriceSnippet>? get oneWeekPricesList =>
-      throw _privateConstructorUsedError;
+  List<PriceSnippet>? get oneWeekPricesList;
   @override
-  List<PriceSnippet>? get twoWeeksPricesList =>
-      throw _privateConstructorUsedError;
+  List<PriceSnippet>? get twoWeeksPricesList;
   @override
-  List<PriceSnippet>? get oneMonthPricesList =>
-      throw _privateConstructorUsedError;
+  List<PriceSnippet>? get oneMonthPricesList;
   @override
-  List<PriceSnippet>? get twoMonthPricesList =>
-      throw _privateConstructorUsedError;
+  List<PriceSnippet>? get twoMonthPricesList;
   @override
-  List<PriceSnippet>? get sixMonthPricesList =>
-      throw _privateConstructorUsedError;
+  List<PriceSnippet>? get sixMonthPricesList;
   @override
-  List<PriceSnippet>? get oneYearPricesList =>
-      throw _privateConstructorUsedError;
+  List<PriceSnippet>? get oneYearPricesList;
   @override
   @JsonKey(ignore: true)
   _$$_ProduceAggregatePropsCopyWith<_$_ProduceAggregateProps> get copyWith =>

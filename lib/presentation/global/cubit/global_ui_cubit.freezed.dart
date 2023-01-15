@@ -234,7 +234,7 @@ abstract class GInitial implements GlobalUIState {
   const factory GInitial(final GlobalUIProps props) = _$GInitial;
 
   @override
-  GlobalUIProps get props => throw _privateConstructorUsedError;
+  GlobalUIProps get props;
   @override
   @JsonKey(ignore: true)
   _$$GInitialCopyWith<_$GInitial> get copyWith =>
@@ -380,7 +380,7 @@ abstract class GShouldRefreshMainChanged implements GlobalUIState {
       _$GShouldRefreshMainChanged;
 
   @override
-  GlobalUIProps get props => throw _privateConstructorUsedError;
+  GlobalUIProps get props;
   @override
   @JsonKey(ignore: true)
   _$$GShouldRefreshMainChangedCopyWith<_$GShouldRefreshMainChanged>
@@ -601,17 +601,17 @@ abstract class _GlobalUIProps implements GlobalUIProps {
       final EdgeInsets? safeAreaPadding}) = _$_GlobalUIProps;
 
   @override
-  bool get shouldRefreshMain => throw _privateConstructorUsedError;
+  bool get shouldRefreshMain;
   @override
-  bool get shouldRefreshProduce => throw _privateConstructorUsedError;
+  bool get shouldRefreshProduce;
   @override
-  bool get shouldRefreshPrice => throw _privateConstructorUsedError;
+  bool get shouldRefreshPrice;
   @override
-  bool get shouldRefreshFavorites => throw _privateConstructorUsedError;
+  bool get shouldRefreshFavorites;
   @override
-  bool get shouldRefreshProfile => throw _privateConstructorUsedError;
+  bool get shouldRefreshProfile;
   @override
-  EdgeInsets? get safeAreaPadding => throw _privateConstructorUsedError;
+  EdgeInsets? get safeAreaPadding;
   @override
   @JsonKey(ignore: true)
   _$$_GlobalUIPropsCopyWith<_$_GlobalUIProps> get copyWith =>

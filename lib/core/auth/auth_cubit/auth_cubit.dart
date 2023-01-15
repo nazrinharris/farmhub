@@ -7,13 +7,19 @@ import 'package:farmhub/core/auth/domain/i_auth_repository.dart';
 import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
 import 'package:farmhub/core/errors/exceptions.dart';
 import 'package:farmhub/core/errors/failures.dart';
+import 'package:farmhub/core/util/app_const.dart';
+import 'package:farmhub/presentation/views/debug/playground_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
+import 'package:fpdart/fpdart.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:phone_numbers_parser/phone_numbers_parser.dart';
 
 part 'auth_cubit_state.dart';
 part 'auth_cubit.freezed.dart';
+
+enum FromAccount { phone, google, apple }
 
 class AuthCubit extends Cubit<AuthState> {
   final FirebaseAuth firebaseAuth;
@@ -87,7 +93,7 @@ class AuthCubit extends Cubit<AuthState> {
         uidCheckResult.fold(
           (f) async {
             // Could not find uid in database - create new account
-            await _createAccountFromUserCred(userCred).then(
+            await _createAccountFromUserCred(userCred, FromAccount.phone).then(
               (user) {
                 globalAuthCubit.updateFarmhubUser(user);
                 emit(AuthState.accountCreationSuccess(user));
@@ -125,15 +131,58 @@ class AuthCubit extends Cubit<AuthState> {
     }
   }
 
-  /// Creates an account in [CloudFirestore] with the given [UserCredential], its name will be
-  /// auto-generated.
-  Future<FarmhubUser> _createAccountFromUserCred(UserCredential userCred) async {
-    final result = await authRepository.createAccountWithPhone(
-      uid: userCred.user!.uid,
-      phoneNumber: userCred.user!.phoneNumber!,
-    );
+  Future<void> signInWithGoogle() async {
+    // Make sure any residue of the previous user has been removed.
+    await authRepository.signOut();
 
-    final toReturn = result.fold(
+    final googleSignInResult = await authRepository.signInWithGoogle();
+
+    googleSignInResult.fold(
+      (f) => emit(AuthState.credentialLoginError(f)),
+      (tupleUser) {
+        globalAuthCubit.updateFarmhubUser(tupleUser.first);
+        emit(AuthState.thirdPartyAccountCreationSuccess(tupleUser));
+      },
+    );
+  }
+
+  Future<void> signInWithApple() async {
+    // Make sure any residue of the previous user has been removed.
+    await authRepository.signOut();
+
+    final appleSignInResultCredentials = await authRepository.signInWithApple();
+
+    appleSignInResultCredentials.fold(
+      (f) => emit(AuthState.credentialLoginError(f)),
+      (tupleUser) {
+        globalAuthCubit.updateFarmhubUser(tupleUser.first);
+        emit(AuthState.thirdPartyAccountCreationSuccess(tupleUser));
+      },
+    );
+  }
+
+  /// Creates an account in [CloudFirestore] with the given [UserCredential], its name will be
+  /// auto-generated if the type is [FromAccount.phone]
+  Future<FarmhubUser> _createAccountFromUserCred(
+      UserCredential userCred, FromAccount fromAccount) async {
+    Either<Failure, FarmhubUser>? result;
+
+    if (fromAccount == FromAccount.phone) {
+      result = await authRepository.createAccountWithPhone(
+        uid: userCred.user!.uid,
+        phoneNumber: userCred.user!.phoneNumber!,
+      );
+    }
+
+    if (fromAccount == FromAccount.google) {
+      result = await authRepository.registerWithCredentials(
+        uid: userCred.user!.uid,
+        email: userCred.user!.email!,
+        displayName: userCred.user!.displayName!,
+      );
+    }
+
+    final toReturn = result!.fold(
       (l) {
         debugPrint(l.toString());
         throw AuthException(

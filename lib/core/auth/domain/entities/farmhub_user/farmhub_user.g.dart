@@ -30,7 +30,7 @@ Map<String, dynamic> _$$_FarmhubUserToJson(_$_FarmhubUser instance) =>
       'createdAt': instance.createdAt,
       'produceFavoritesList':
           instance.produceFavoritesList.map((e) => e.toJson()).toList(),
-      'userType': _$UserTypeEnumMap[instance.userType],
+      'userType': _$UserTypeEnumMap[instance.userType]!,
       'phoneNumber': instance.phoneNumber?.toJson(),
       'runtimeType': instance.$type,
     };
@@ -72,7 +72,7 @@ Map<String, dynamic> _$$FarmhubUserFarmerToJson(_$FarmhubUserFarmer instance) =>
       'createdAt': instance.createdAt,
       'produceFavoritesList':
           instance.produceFavoritesList.map((e) => e.toJson()).toList(),
-      'userType': _$UserTypeEnumMap[instance.userType],
+      'userType': _$UserTypeEnumMap[instance.userType]!,
       'userFarms': instance.userFarms.map((e) => e.toJson()).toList(),
       'userShops': instance.userShops.map((e) => e.toJson()).toList(),
       'phoneNumber': instance.phoneNumber?.toJson(),
@@ -111,7 +111,7 @@ Map<String, dynamic> _$$FarmhubUserBusinessToJson(
       'createdAt': instance.createdAt,
       'produceFavoritesList':
           instance.produceFavoritesList.map((e) => e.toJson()).toList(),
-      'userType': _$UserTypeEnumMap[instance.userType],
+      'userType': _$UserTypeEnumMap[instance.userType]!,
       'userFarms': instance.userFarms.map((e) => e.toJson()).toList(),
       'userShops': instance.userShops.map((e) => e.toJson()).toList(),
       'phoneNumber': instance.phoneNumber?.toJson(),

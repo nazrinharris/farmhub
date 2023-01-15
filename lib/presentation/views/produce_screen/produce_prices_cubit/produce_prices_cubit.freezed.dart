@@ -285,7 +285,7 @@ abstract class PPSInitial implements ProducePricesState {
   const factory PPSInitial(final List<Price> pricesList) = _$PPSInitial;
 
   @override
-  List<Price> get pricesList => throw _privateConstructorUsedError;
+  List<Price> get pricesList;
   @override
   @JsonKey(ignore: true)
   _$$PPSInitialCopyWith<_$PPSInitial> get copyWith =>
@@ -462,7 +462,7 @@ abstract class PPSFirstTenPricesLoading implements ProducePricesState {
       _$PPSFirstTenPricesLoading;
 
   @override
-  List<Price> get pricesList => throw _privateConstructorUsedError;
+  List<Price> get pricesList;
   @override
   @JsonKey(ignore: true)
   _$$PPSFirstTenPricesLoadingCopyWith<_$PPSFirstTenPricesLoading>
@@ -640,7 +640,7 @@ abstract class PPSFirstTenPricesCompleted implements ProducePricesState {
       _$PPSFirstTenPricesCompleted;
 
   @override
-  List<Price> get pricesList => throw _privateConstructorUsedError;
+  List<Price> get pricesList;
   @override
   @JsonKey(ignore: true)
   _$$PPSFirstTenPricesCompletedCopyWith<_$PPSFirstTenPricesCompleted>
@@ -816,7 +816,7 @@ abstract class PPSNextTenPricesLoading implements ProducePricesState {
       _$PPSNextTenPricesLoading;
 
   @override
-  List<Price> get pricesList => throw _privateConstructorUsedError;
+  List<Price> get pricesList;
   @override
   @JsonKey(ignore: true)
   _$$PPSNextTenPricesLoadingCopyWith<_$PPSNextTenPricesLoading> get copyWith =>
@@ -993,7 +993,7 @@ abstract class PPSNextTenPricesCompleted implements ProducePricesState {
       _$PPSNextTenPricesCompleted;
 
   @override
-  List<Price> get pricesList => throw _privateConstructorUsedError;
+  List<Price> get pricesList;
   @override
   @JsonKey(ignore: true)
   _$$PPSNextTenPricesCompletedCopyWith<_$PPSNextTenPricesCompleted>
@@ -1178,8 +1178,8 @@ abstract class PPSPricesError implements ProducePricesState {
       final List<Price> pricesList, final Failure failure) = _$PPSPricesError;
 
   @override
-  List<Price> get pricesList => throw _privateConstructorUsedError;
-  Failure get failure => throw _privateConstructorUsedError;
+  List<Price> get pricesList;
+  Failure get failure;
   @override
   @JsonKey(ignore: true)
   _$$PPSPricesErrorCopyWith<_$PPSPricesError> get copyWith =>

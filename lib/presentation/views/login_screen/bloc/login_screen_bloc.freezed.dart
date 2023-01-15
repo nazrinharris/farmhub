@@ -460,7 +460,7 @@ abstract class _LSEContinuePressed implements LoginScreenEvent {
   const factory _LSEContinuePressed(final BuildContext context) =
       _$_LSEContinuePressed;
 
-  BuildContext get context => throw _privateConstructorUsedError;
+  BuildContext get context;
   @JsonKey(ignore: true)
   _$$_LSEContinuePressedCopyWith<_$_LSEContinuePressed> get copyWith =>
       throw _privateConstructorUsedError;
@@ -815,7 +815,7 @@ abstract class _LSSInitial implements LoginScreenState {
   const factory _LSSInitial(final LoginScreenProps props) = _$_LSSInitial;
 
   @override
-  LoginScreenProps get props => throw _privateConstructorUsedError;
+  LoginScreenProps get props;
   @override
   @JsonKey(ignore: true)
   _$$_LSSInitialCopyWith<_$_LSSInitial> get copyWith =>
@@ -962,7 +962,7 @@ abstract class _LSSLoading implements LoginScreenState {
   const factory _LSSLoading(final LoginScreenProps props) = _$_LSSLoading;
 
   @override
-  LoginScreenProps get props => throw _privateConstructorUsedError;
+  LoginScreenProps get props;
   @override
   @JsonKey(ignore: true)
   _$$_LSSLoadingCopyWith<_$_LSSLoading> get copyWith =>
@@ -1108,7 +1108,7 @@ abstract class _LSSIdle implements LoginScreenState {
   const factory _LSSIdle(final LoginScreenProps props) = _$_LSSIdle;
 
   @override
-  LoginScreenProps get props => throw _privateConstructorUsedError;
+  LoginScreenProps get props;
   @override
   @JsonKey(ignore: true)
   _$$_LSSIdleCopyWith<_$_LSSIdle> get copyWith =>
@@ -1225,7 +1225,7 @@ abstract class _LoginScreenProps implements LoginScreenProps {
       _$_LoginScreenProps;
 
   @override
-  bool get isInfoTileVisible => throw _privateConstructorUsedError;
+  bool get isInfoTileVisible;
   @override
   @JsonKey(ignore: true)
   _$$_LoginScreenPropsCopyWith<_$_LoginScreenProps> get copyWith =>

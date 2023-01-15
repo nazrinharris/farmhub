@@ -261,7 +261,7 @@ abstract class FSInitial implements FavoritesScreenState {
       _$FSInitial;
 
   @override
-  List<Produce> get produceFavoritesList => throw _privateConstructorUsedError;
+  List<Produce> get produceFavoritesList;
   @override
   @JsonKey(ignore: true)
   _$$FSInitialCopyWith<_$FSInitial> get copyWith =>
@@ -422,7 +422,7 @@ abstract class FSLoading implements FavoritesScreenState {
       _$FSLoading;
 
   @override
-  List<Produce> get produceFavoritesList => throw _privateConstructorUsedError;
+  List<Produce> get produceFavoritesList;
   @override
   @JsonKey(ignore: true)
   _$$FSLoadingCopyWith<_$FSLoading> get copyWith =>
@@ -583,7 +583,7 @@ abstract class FSComplete implements FavoritesScreenState {
       _$FSComplete;
 
   @override
-  List<Produce> get produceFavoritesList => throw _privateConstructorUsedError;
+  List<Produce> get produceFavoritesList;
   @override
   @JsonKey(ignore: true)
   _$$FSCompleteCopyWith<_$FSComplete> get copyWith =>
@@ -754,8 +754,8 @@ abstract class FSError implements FavoritesScreenState {
       _$FSError;
 
   @override
-  List<Produce> get produceFavoritesList => throw _privateConstructorUsedError;
-  Failure get failure => throw _privateConstructorUsedError;
+  List<Produce> get produceFavoritesList;
+  Failure get failure;
   @override
   @JsonKey(ignore: true)
   _$$FSErrorCopyWith<_$FSError> get copyWith =>

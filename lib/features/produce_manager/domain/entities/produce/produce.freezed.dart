@@ -262,21 +262,19 @@ abstract class _Produce extends Produce {
   _Produce._() : super._();
 
   @override
-  String get produceId => throw _privateConstructorUsedError;
+  String get produceId;
   @override
-  String get produceName => throw _privateConstructorUsedError;
+  String get produceName;
   @override
-  String get authorId => throw _privateConstructorUsedError;
+  String get authorId;
   @override
-  Map<String, dynamic> get currentProducePrice =>
-      throw _privateConstructorUsedError;
+  Map<String, dynamic> get currentProducePrice;
   @override
-  Map<String, dynamic> get previousProducePrice =>
-      throw _privateConstructorUsedError;
+  Map<String, dynamic> get previousProducePrice;
   @override
-  Map<String, dynamic> get weeklyPrices => throw _privateConstructorUsedError;
+  Map<String, dynamic> get weeklyPrices;
   @override
-  DateTime get lastUpdateTimeStamp => throw _privateConstructorUsedError;
+  DateTime get lastUpdateTimeStamp;
   @override
   @JsonKey(ignore: true)
   _$$_ProduceCopyWith<_$_Produce> get copyWith =>
@@ -414,7 +412,9 @@ class _$_ProduceFavorite implements _ProduceFavorite {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ProduceFavoriteToJson(this);
+    return _$$_ProduceFavoriteToJson(
+      this,
+    );
   }
 }
 
@@ -427,9 +427,9 @@ abstract class _ProduceFavorite implements ProduceFavorite {
       _$_ProduceFavorite.fromJson;
 
   @override
-  String get produceId => throw _privateConstructorUsedError;
+  String get produceId;
   @override
-  DateTime get dateAdded => throw _privateConstructorUsedError;
+  DateTime get dateAdded;
   @override
   @JsonKey(ignore: true)
   _$$_ProduceFavoriteCopyWith<_$_ProduceFavorite> get copyWith =>

@@ -103,6 +103,12 @@ class ProduceAggregateCubit extends Cubit<ProduceAggregateState> {
   }
 
   Future<void> addToFavorites(BuildContext context) async {
+    if (state is PASAddToFavoritesLoading) {
+      return;
+    }
+
+    emit(ProduceAggregateState.addToFavoritesLoading(props: state.props));
+
     final result = await repository.addToFavorites(farmhubUser, produce.produceId);
 
     result.fold(
@@ -115,7 +121,7 @@ class ProduceAggregateCubit extends Cubit<ProduceAggregateState> {
 
         globalUICubit.setShouldRefreshFavorites(true);
         emit(
-          state.copyWith(
+          ProduceAggregateState.completed(
             props: state.props.copyWith(
               farmhubUser: updatedFarmhubUser,
               isProduceFavorite: isFavorite,
@@ -127,6 +133,12 @@ class ProduceAggregateCubit extends Cubit<ProduceAggregateState> {
   }
 
   Future<void> removeFromFavorites(BuildContext context) async {
+    if (state is PASRemoveFromFavoritesLoading) {
+      return;
+    }
+
+    emit(ProduceAggregateState.removeFromFavoritesLoading(props: state.props));
+
     final result = await repository.removeFromFavorites(farmhubUser, produce.produceId);
 
     result.fold(
@@ -138,7 +150,7 @@ class ProduceAggregateCubit extends Cubit<ProduceAggregateState> {
 
         globalUICubit.setShouldRefreshFavorites(true);
         emit(
-          state.copyWith(
+          ProduceAggregateState.completed(
             props: state.props.copyWith(
               farmhubUser: updatedFarmhubUser,
               isProduceFavorite: isFavorite,

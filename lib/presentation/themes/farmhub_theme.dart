@@ -105,6 +105,7 @@ class FarmhubTheme {
           paleBlue: const Color(0xffB7D0FE),
           palePurple: const Color(0xffDDBAFF),
           evenPalerPurple: const Color(0xffEDF3FF),
+          white: Colors.white,
         )
       },
     ),
@@ -121,6 +122,7 @@ class ExtendedColors extends ThemeExtension<ExtendedColors> {
     required this.paleBlue,
     required this.palePurple,
     required this.evenPalerPurple,
+    required this.white,
   });
 
   final Color? warning;
@@ -131,6 +133,7 @@ class ExtendedColors extends ThemeExtension<ExtendedColors> {
   final Color? paleBlue;
   final Color? palePurple;
   final Color? evenPalerPurple;
+  final Color? white;
 
   @override
   ThemeExtension<ExtendedColors> copyWith({
@@ -142,6 +145,7 @@ class ExtendedColors extends ThemeExtension<ExtendedColors> {
     Color? paleBlue,
     Color? palePurple,
     Color? evenPalerPurple,
+    Color? white,
   }) {
     return ExtendedColors(
       warning: warning ?? this.warning,
@@ -152,6 +156,7 @@ class ExtendedColors extends ThemeExtension<ExtendedColors> {
       paleBlue: paleBlue ?? this.paleBlue,
       palePurple: palePurple ?? this.palePurple,
       evenPalerPurple: evenPalerPurple ?? this.evenPalerPurple,
+      white: white ?? this.white,
     );
   }
 
@@ -170,6 +175,7 @@ class ExtendedColors extends ThemeExtension<ExtendedColors> {
       paleYellow: Color.lerp(paleYellow, other.paleYellow, t),
       palePurple: Color.lerp(palePurple, other.palePurple, t),
       evenPalerPurple: Color.lerp(evenPalerPurple, other.evenPalerPurple, t),
+      white: Color.lerp(white, other.white, t),
     );
   }
 }

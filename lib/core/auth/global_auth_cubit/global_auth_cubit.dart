@@ -7,6 +7,9 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'global_auth_state.dart';
 part 'global_auth_cubit.freezed.dart';
 
+/// The difference between [GlobalAuthCubit] and [AuthCubit] is that [GlobalAuthCubit] simply stores authentication information
+/// such as the current [FarmhubUser] and the value of [isAdmin], actual authentication operations should be done through [AuthCubit],
+/// [AuthRepository], and [AuthDatasources]
 class GlobalAuthCubit extends Cubit<GlobalAuthState> {
   final IAuthRepository repository;
 
@@ -22,6 +25,7 @@ class GlobalAuthCubit extends Cubit<GlobalAuthState> {
     emit(state.copyWith(isAdmin: isAdmin));
   }
 
+  /// This method will attempt to sync the [FarmhubUser] in the cubit by retrieving it again.
   Future<void> updateGlobalAuthCubit() async {
     debugPrint("Updating Global Auth Cubit");
     final failureOrFarmhubUser = await repository.retrieveUserData();

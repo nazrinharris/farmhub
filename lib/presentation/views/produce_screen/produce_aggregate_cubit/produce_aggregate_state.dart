@@ -16,6 +16,12 @@ class ProduceAggregateState with _$ProduceAggregateState {
     required ProduceAggregateProps props,
     required Failure failure,
   }) = PASError;
+  const factory ProduceAggregateState.addToFavoritesLoading({
+    required ProduceAggregateProps props,
+  }) = PASAddToFavoritesLoading;
+  const factory ProduceAggregateState.removeFromFavoritesLoading({
+    required ProduceAggregateProps props,
+  }) = PASRemoveFromFavoritesLoading;
 }
 
 @freezed

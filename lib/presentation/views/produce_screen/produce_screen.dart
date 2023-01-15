@@ -218,7 +218,10 @@ class _SliverProduceHeaderState extends State<SliverProduceHeader> {
         delegate: SliverChildListDelegate([
       BlocBuilder<ProduceAggregateCubit, ProduceAggregateState>(
         builder: (context, state) {
-          if (state is PASCompleted || state is PASLoading) {
+          if (state is PASCompleted ||
+              state is PASLoading ||
+              state is PASAddToFavoritesLoading ||
+              state is PASRemoveFromFavoritesLoading) {
             final Produce produce = state.props.produce!;
 
             num currentProducePrice = produce.currentProducePrice["price"];
@@ -378,7 +381,9 @@ class _SliverProducePriceChartState extends State<SliverProducePriceChart> {
               alignment: Alignment.center,
               child: const CupertinoActivityIndicator(),
             );
-          } else if (state is PASCompleted) {
+          } else if (state is PASCompleted ||
+              state is PASAddToFavoritesLoading ||
+              state is PASRemoveFromFavoritesLoading) {
             return LargePriceChart(
               widget.produce,
               determineChartType(state.props.index),

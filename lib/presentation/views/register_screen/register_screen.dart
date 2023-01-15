@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:farmhub/locator.dart';
 import 'package:farmhub/presentation/shared_widgets/appbars.dart';
 import 'package:farmhub/presentation/shared_widgets/scroll_physics.dart';
@@ -5,9 +7,14 @@ import 'package:farmhub/presentation/smart_widgets/primary_button_aware/primary_
 import 'package:farmhub/presentation/views/register_screen/bloc/register_screen_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_styled_toast/flutter_styled_toast.dart';
 import 'package:simple_animations/simple_animations.dart';
 
+import '../../../core/auth/auth_cubit/auth_cubit.dart';
+import '../../../core/errors/error_messages.dart';
+import '../../../core/util/app_const.dart';
 import '../../shared_widgets/cards.dart';
+import '../../shared_widgets/toasts.dart';
 import '../../shared_widgets/ui_helpers.dart';
 import '../../smart_widgets/info_tile/bloc/info_tile_bloc.dart';
 import '../../smart_widgets/info_tile/info_tile.dart';
@@ -50,71 +57,118 @@ class _RegisterScreenState extends State<RegisterScreen> with AnimationMixin {
       infoTileVisibilityController: _infoTileVisibilityController,
       initialInfoTileBloc: initialInfoTileBloc,
       child: Builder(builder: (context) {
-        return Scaffold(
-          resizeToAvoidBottomInset: true,
-          extendBodyBehindAppBar: true,
-          appBar: DefaultAppBar(
-            leadingIcon: const Icon(Icons.arrow_back),
-            leadingOnPressed: () {
-              Navigator.of(context).pop();
-            },
-          ),
-          body: Stack(
-            children: [
-              ListView(
-                physics: DefaultScrollPhysics,
-                children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(16.0),
-                    child: Align(
-                      heightFactor: _infoTileHeightFactor.value,
-                      child: Padding(
-                        padding: const EdgeInsets.only(bottom: 24),
-                        child: Opacity(
-                          opacity: _infoTileOpacity.value,
-                          child: const InfoTile(),
+        return BlocListener<AuthCubit, AuthState>(
+          listener: (context, state) {
+            if (state is ThirdPartyAccountCreationSuccess) {
+              debugPrint("Login Success!");
+              // True means that the a new user account was created..
+              if (state.result.second == true) {
+                Navigator.of(context).pushNamedAndRemoveUntil('/nav_main', (route) => false);
+                Navigator.of(context).pushNamed("/choose_user_type");
+              } else {
+                Navigator.of(context).pushNamedAndRemoveUntil('/nav_main', (route) => false);
+              }
+            } else if (state is CredentialLoginError) {
+              debugPrint("ERROR LOGGING IN");
+              debugPrint(state.failure.toString());
+
+              // If user cancels from Google or Apple sign in, an error will be thrown, but
+              // we will ignore that and NOT show a toast.
+              if (state.failure.code == "AuthorizationErrorCode.canceled" ||
+                  state.failure.code == AUTH_GOOGLE_SIGN_IN_ABORTED) {
+                return;
+              }
+
+              showToastWidget(
+                ErrorToast(errorMessage: messageForFailure(state.failure)),
+                context: context,
+                animation: StyledToastAnimation.slideFromTopFade,
+                reverseAnimation: StyledToastAnimation.slideToTopFade,
+                position: StyledToastPosition.top,
+                animDuration: const Duration(milliseconds: 800),
+                curve: Curves.easeOutExpo,
+                reverseCurve: Curves.easeInExpo,
+                duration: const Duration(seconds: 5),
+              );
+            }
+          },
+          child: Scaffold(
+            resizeToAvoidBottomInset: true,
+            extendBodyBehindAppBar: true,
+            appBar: DefaultAppBar(
+              leadingIcon: const Icon(Icons.arrow_back),
+              leadingOnPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            body: Stack(
+              children: [
+                ListView(
+                  physics: DefaultScrollPhysics,
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(16.0),
+                      child: Align(
+                        heightFactor: _infoTileHeightFactor.value,
+                        child: Padding(
+                          padding: const EdgeInsets.only(bottom: 24),
+                          child: Opacity(
+                            opacity: _infoTileOpacity.value,
+                            child: const InfoTile(),
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                  const RegisterScreenTitle(),
-                  const UICustomVertical(60),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 24),
-                    child: RegisterFields(),
-                  ),
-                  const UIVerticalSpace14(),
-                  Align(
-                    child: Text(
-                      "or",
-                      style: Theme.of(context).textTheme.caption!.copyWith(fontSize: 14),
+                    const RegisterScreenTitle(),
+                    const UICustomVertical(60),
+                    const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 24),
+                      child: RegisterFields(),
                     ),
-                  ),
-                  // Container(
-                  //   alignment: Alignment.center,
-                  //   child: ThirdPartySignUpButton(
-                  //     content: "Debug",
-                  //     onPressed: () {
-                  //       context.read<RegisterScreenBloc>().add(
-                  //             const RegisterScreenEvent.toggleInfoTileVisibility(),
-                  //           );
-                  //     },
-                  //     width: 100,
-                  //   ),
-                  // ),
-                  const UIVerticalSpace30(),
-                  const PhoneAuthCard(type: PhoneAuthCardType.register),
-                  const UICustomVertical(160)
-                ],
-              ),
-              Container(
-                width: screen.width,
-                height: screen.height,
-                padding: const EdgeInsets.symmetric(horizontal: 14),
-                alignment: Alignment.bottomCenter,
-                child: const _BuildBottomButton(),
-              )
-            ],
+                    const UIVerticalSpace14(),
+                    Align(
+                      child: Text(
+                        "or",
+                        style: Theme.of(context).textTheme.caption!.copyWith(fontSize: 14),
+                      ),
+                    ),
+                    // Container(
+                    //   alignment: Alignment.center,
+                    //   child: ThirdPartySignUpButton(
+                    //     content: "Debug",
+                    //     onPressed: () {
+                    //       context.read<RegisterScreenBloc>().add(
+                    //             const RegisterScreenEvent.toggleInfoTileVisibility(),
+                    //           );
+                    //     },
+                    //     width: 100,
+                    //   ),
+                    // ),
+                    const UIVerticalSpace30(),
+                    const PhoneAuthCard(type: PhoneAuthCardType.register),
+                    const UIVerticalSpace14(),
+                    GoogleAuthCard(
+                      authCubit: context.read<AuthCubit>(),
+                      content: "Register with Google",
+                    ),
+                    if (Platform.isIOS) const UIVerticalSpace14(),
+                    if (Platform.isIOS)
+                      AppleAuthCard(
+                        authCubit: context.read<AuthCubit>(),
+                        content: "Register with Apple",
+                      ),
+                    const UICustomVertical(160)
+                  ],
+                ),
+                Container(
+                  width: screen.width,
+                  height: screen.height,
+                  padding: const EdgeInsets.symmetric(horizontal: 14),
+                  alignment: Alignment.bottomCenter,
+                  child: const _BuildBottomButton(),
+                )
+              ],
+            ),
           ),
         );
       }),
@@ -302,7 +356,14 @@ class RegisterScreenBlocProviders extends StatelessWidget {
         ),
         BlocProvider<PrimaryButtonAwareCubit>(
           create: (context) => PrimaryButtonAwareCubit(),
-        )
+        ),
+        BlocProvider<AuthCubit>(
+            create: (context) => AuthCubit(
+                  firebaseAuth: locator(),
+                  authRepository: locator(),
+                  authRemoteDataSource: locator(),
+                  globalAuthCubit: locator(),
+                )),
       ],
       child: Builder(
         builder: (context) => MultiBlocProvider(

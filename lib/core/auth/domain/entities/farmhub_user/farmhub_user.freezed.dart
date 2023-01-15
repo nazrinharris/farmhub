@@ -541,7 +541,9 @@ class _$_FarmhubUser extends _FarmhubUser {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_FarmhubUserToJson(this);
+    return _$$_FarmhubUserToJson(
+      this,
+    );
   }
 }
 
@@ -560,20 +562,19 @@ abstract class _FarmhubUser extends FarmhubUser {
       _$_FarmhubUser.fromJson;
 
   @override
-  String get uid => throw _privateConstructorUsedError;
+  String get uid;
   @override
-  String? get email => throw _privateConstructorUsedError;
+  String? get email;
   @override
-  String get username => throw _privateConstructorUsedError;
+  String get username;
   @override
-  String get createdAt => throw _privateConstructorUsedError;
+  String get createdAt;
   @override
-  List<ProduceFavorite> get produceFavoritesList =>
-      throw _privateConstructorUsedError;
+  List<ProduceFavorite> get produceFavoritesList;
   @override
-  UserType get userType => throw _privateConstructorUsedError;
+  UserType get userType;
   @override
-  PhoneNumber? get phoneNumber => throw _privateConstructorUsedError;
+  PhoneNumber? get phoneNumber;
   @override
   @JsonKey(ignore: true)
   _$$_FarmhubUserCopyWith<_$_FarmhubUser> get copyWith =>
@@ -905,7 +906,9 @@ class _$FarmhubUserFarmer extends FarmhubUserFarmer {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$FarmhubUserFarmerToJson(this);
+    return _$$FarmhubUserFarmerToJson(
+      this,
+    );
   }
 }
 
@@ -926,22 +929,21 @@ abstract class FarmhubUserFarmer extends FarmhubUser {
       _$FarmhubUserFarmer.fromJson;
 
   @override
-  String get uid => throw _privateConstructorUsedError;
+  String get uid;
   @override
-  String? get email => throw _privateConstructorUsedError;
+  String? get email;
   @override
-  String get username => throw _privateConstructorUsedError;
+  String get username;
   @override
-  String get createdAt => throw _privateConstructorUsedError;
+  String get createdAt;
   @override
-  List<ProduceFavorite> get produceFavoritesList =>
-      throw _privateConstructorUsedError;
+  List<ProduceFavorite> get produceFavoritesList;
   @override
-  UserType get userType => throw _privateConstructorUsedError;
-  List<Farm> get userFarms => throw _privateConstructorUsedError;
-  List<Shop> get userShops => throw _privateConstructorUsedError;
+  UserType get userType;
+  List<Farm> get userFarms;
+  List<Shop> get userShops;
   @override
-  PhoneNumber? get phoneNumber => throw _privateConstructorUsedError;
+  PhoneNumber? get phoneNumber;
   @override
   @JsonKey(ignore: true)
   _$$FarmhubUserFarmerCopyWith<_$FarmhubUserFarmer> get copyWith =>
@@ -1274,7 +1276,9 @@ class _$FarmhubUserBusiness extends FarmhubUserBusiness {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$FarmhubUserBusinessToJson(this);
+    return _$$FarmhubUserBusinessToJson(
+      this,
+    );
   }
 }
 
@@ -1295,22 +1299,21 @@ abstract class FarmhubUserBusiness extends FarmhubUser {
       _$FarmhubUserBusiness.fromJson;
 
   @override
-  String get uid => throw _privateConstructorUsedError;
+  String get uid;
   @override
-  String? get email => throw _privateConstructorUsedError;
+  String? get email;
   @override
-  String get username => throw _privateConstructorUsedError;
+  String get username;
   @override
-  String get createdAt => throw _privateConstructorUsedError;
+  String get createdAt;
   @override
-  List<ProduceFavorite> get produceFavoritesList =>
-      throw _privateConstructorUsedError;
+  List<ProduceFavorite> get produceFavoritesList;
   @override
-  UserType get userType => throw _privateConstructorUsedError;
-  List<Farm> get userFarms => throw _privateConstructorUsedError;
-  List<Shop> get userShops => throw _privateConstructorUsedError;
+  UserType get userType;
+  List<Farm> get userFarms;
+  List<Shop> get userShops;
   @override
-  PhoneNumber? get phoneNumber => throw _privateConstructorUsedError;
+  PhoneNumber? get phoneNumber;
   @override
   @JsonKey(ignore: true)
   _$$FarmhubUserBusinessCopyWith<_$FarmhubUserBusiness> get copyWith =>

@@ -242,9 +242,9 @@ abstract class _Initial implements GlobalAuthState {
       {final FarmhubUser? farmhubUser, final bool? isAdmin}) = _$_Initial;
 
   @override
-  FarmhubUser? get farmhubUser => throw _privateConstructorUsedError;
+  FarmhubUser? get farmhubUser;
   @override
-  bool? get isAdmin => throw _privateConstructorUsedError;
+  bool? get isAdmin;
   @override
   @JsonKey(ignore: true)
   _$$_InitialCopyWith<_$_Initial> get copyWith =>

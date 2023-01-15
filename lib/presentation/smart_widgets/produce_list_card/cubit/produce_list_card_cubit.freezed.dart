@@ -269,7 +269,7 @@ abstract class PLCInitial implements ProduceListCardState {
       _$PLCInitial;
 
   @override
-  ProduceListCardProps get props => throw _privateConstructorUsedError;
+  ProduceListCardProps get props;
   @override
   @JsonKey(ignore: true)
   _$$PLCInitialCopyWith<_$PLCInitial> get copyWith =>
@@ -428,7 +428,7 @@ abstract class PLCLoading implements ProduceListCardState {
       _$PLCLoading;
 
   @override
-  ProduceListCardProps get props => throw _privateConstructorUsedError;
+  ProduceListCardProps get props;
   @override
   @JsonKey(ignore: true)
   _$$PLCLoadingCopyWith<_$PLCLoading> get copyWith =>
@@ -589,7 +589,7 @@ abstract class PLCAddToFavoritesButton implements ProduceListCardState {
       {required final ProduceListCardProps props}) = _$PLCAddToFavoritesButton;
 
   @override
-  ProduceListCardProps get props => throw _privateConstructorUsedError;
+  ProduceListCardProps get props;
   @override
   @JsonKey(ignore: true)
   _$$PLCAddToFavoritesButtonCopyWith<_$PLCAddToFavoritesButton> get copyWith =>
@@ -753,7 +753,7 @@ abstract class PLCRemoveFromFavoritesButton implements ProduceListCardState {
       _$PLCRemoveFromFavoritesButton;
 
   @override
-  ProduceListCardProps get props => throw _privateConstructorUsedError;
+  ProduceListCardProps get props;
   @override
   @JsonKey(ignore: true)
   _$$PLCRemoveFromFavoritesButtonCopyWith<_$PLCRemoveFromFavoritesButton>
@@ -911,9 +911,9 @@ abstract class _ProduceListCardProps implements ProduceListCardProps {
       required final Produce produce}) = _$_ProduceListCardProps;
 
   @override
-  FarmhubUser get farmhubUser => throw _privateConstructorUsedError;
+  FarmhubUser get farmhubUser;
   @override
-  Produce get produce => throw _privateConstructorUsedError;
+  Produce get produce;
   @override
   @JsonKey(ignore: true)
   _$$_ProduceListCardPropsCopyWith<_$_ProduceListCardProps> get copyWith =>

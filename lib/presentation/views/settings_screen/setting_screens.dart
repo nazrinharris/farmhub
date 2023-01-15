@@ -12,6 +12,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ndialog/ndialog.dart';
 import 'package:yaml/yaml.dart';
 
+import '../../../app_router.dart';
+
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({Key? key}) : super(key: key);
 
@@ -108,32 +110,37 @@ class _SliverSettingsBodyState extends State<SliverSettingsBody> {
                   content: "About Farmhub",
                   icon: const Icon(Icons.eco_outlined),
                 ),
-                // const SettingsHeader("Debug"),
-                // SettingsListCard(
-                //   content: "Go to Navigation",
-                //   icon: const Icon(Icons.tab_unselected),
-                //   isTop: true,
-                //   onTap: () {
-                //     Navigator.of(context).pop();
-                //     Navigator.of(context).pop();
-                //     Navigator.of(context).pop();
-                //     Navigator.pushNamed(context, "/navigate");
-                //   },
-                // ),
-                // SettingsListCard(
-                //   content: "Navigate to Main",
-                //   icon: const Icon(Icons.exit_to_app),
-                //   isTop: true,
-                //   onTap: () {
-                //     Navigator.of(context).popUntil((route) => route == navMainRoute);
-                //   },
-                // ),
+                const SettingsHeader("Debug"),
+                SettingsListCard(
+                  content: "Go to Navigation",
+                  icon: const Icon(Icons.tab_unselected),
+                  isTop: true,
+                  onTap: () {
+                    Navigator.of(context).pop();
+                    Navigator.of(context).pop();
+                    Navigator.of(context).pop();
+                    Navigator.pushNamed(context, "/navigate");
+                  },
+                ),
+                SettingsListCard(
+                  content: "Navigate to Main",
+                  icon: const Icon(Icons.exit_to_app),
+                  onTap: () {
+                    Navigator.of(context).popUntil((route) => route == navMainRoute);
+                  },
+                ),
+                SettingsListCard(
+                  content: "Navigate to Playground",
+                  icon: const Icon(Icons.adb),
+                  onTap: () {
+                    Navigator.pushNamed(context, "/playground");
+                  },
+                ),
                 const UIVerticalSpace30(),
                 BlocBuilder<SettingsCubit, SettingsState>(
                   builder: (context, state) {
-                    // TODO: Maybe this would be fixed if updated to Flutter 3, no basis, pure speculation. So as of now app version has to be changed manually
                     return Text(
-                      "Farmhub Version 0.3.0",
+                      "Farmhub Version ${context.read<SettingsCubit>().state.appVersion}",
                       style: Theme.of(context).textTheme.caption,
                     );
                   },
