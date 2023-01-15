@@ -256,12 +256,18 @@ class _BuildUserModalBottomSheetState extends State<BuildUserModalBottomSheet> {
           Container(
             padding: EdgeInsets.only(top: 24),
             alignment: Alignment.center,
-            child: Row(
+            child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(widget.produce.produceName),
-                UIHorizontalSpace14(),
-                ChangeBox(widget.produce),
+                const UIVerticalSpace14(),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    UIHorizontalSpace14(),
+                    ChangeBox(widget.produce),
+                  ],
+                ),
               ],
             ),
           ),
