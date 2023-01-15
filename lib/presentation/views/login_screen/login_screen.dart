@@ -126,6 +126,8 @@ class _LoginScreenState extends State<LoginScreen> with AnimationMixin {
                         debugPrint("ERROR LOGGING IN");
                         debugPrint(state.failure.toString());
 
+                        // If user cancels from Google or Apple sign in, an error will be thrown, but
+                        // we will ignore that and NOT show a toast.
                         if (state.failure.code == "AuthorizationErrorCode.canceled" ||
                             state.failure.code == AUTH_GOOGLE_SIGN_IN_ABORTED) {
                           return;

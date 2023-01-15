@@ -123,6 +123,8 @@ class _VerifyPhoneScreenState extends State<VerifyPhoneScreen> {
                             validateFirstField: (value) {
                               if (value == null || value.isEmpty) {
                                 return "Enter a valid phone number";
+                              } else if (num.tryParse(value) == null) {
+                                return "Only numbers, symbols like + and . should not be used";
                               } else {
                                 final myPhone = PhoneNumber.parse(value, callerCountry: IsoCode.MY);
 

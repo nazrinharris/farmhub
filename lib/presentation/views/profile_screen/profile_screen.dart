@@ -394,7 +394,7 @@ class FarmerProfileContent extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 24),
       alignment: Alignment.topLeft,
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisSize: MainAxisSize.max,
         children: [
           const Text("Farm"),
