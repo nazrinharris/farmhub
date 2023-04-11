@@ -5,28 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cfb63b75-d493-4462-b837-27c0aa9e581d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/presentation/views/phone_auth_screens/verify_code_screen.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/presentation/views/phone_auth_screens/verify_phone_screen.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/app_router.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app_router.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/core/auth/auth_bloc/auth_bloc.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/auth/auth_bloc/auth_bloc.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/core/auth/auth_bloc/auth_bloc.freezed.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/auth/auth_bloc/auth_bloc.freezed.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/core/auth/auth_bloc/auth_event.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/auth/auth_bloc/auth_event.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/core/auth/auth_bloc/auth_state.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/auth/auth_bloc/auth_state.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/locator.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/locator.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/presentation/shared_widgets/cards.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/shared_widgets/cards.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/presentation/views/debug/playground_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/views/debug/playground_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/presentation/views/login_screen/login_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/views/login_screen/login_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/presentation/views/register_screen/register_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/views/register_screen/register_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/farmhub.iml" beforeDir="false" afterPath="$PROJECT_DIR$/farmhub.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Podfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Podfile.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[5940bd1d]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[/Users/nazrinharris/.android/avd/Pixel_4_XL_API_32.avd]" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -51,7 +42,7 @@
     <property name="dart.analysis.tool.window.force.activate" value="true" />
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.tools" />
+    <property name="settings.editor.selected.configurable" value="terminal" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -64,6 +55,12 @@
       <updated>1657157772102</updated>
     </task>
     <servers />
+  </component>
+  <component name="TerminalProjectNonSharedOptionsProvider">
+    <envs>
+      <env key="LANG" value="en_US.UTF-8" />
+      <env key=" PATH" value="/usr/local/bin:$PATH " />
+    </envs>
   </component>
   <component name="ToolWindowManager">
     <editor active="true" />
@@ -81,6 +78,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
