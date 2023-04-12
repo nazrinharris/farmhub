@@ -1,15 +1,15 @@
 # This is a generated file; do not edit or check into version control.
-cloud_firestore=/Users/nazrinharris/.pub-cache/hosted/pub.dev/cloud_firestore-4.3.1/
-cloud_firestore_web=/Users/nazrinharris/.pub-cache/hosted/pub.dev/cloud_firestore_web-3.2.1/
-firebase_auth=/Users/nazrinharris/.pub-cache/hosted/pub.dev/firebase_auth-4.2.5/
-firebase_auth_web=/Users/nazrinharris/.pub-cache/hosted/pub.dev/firebase_auth_web-5.2.4/
-firebase_core=/Users/nazrinharris/.pub-cache/hosted/pub.dev/firebase_core-2.4.1/
-firebase_core_web=/Users/nazrinharris/.pub-cache/hosted/pub.dev/firebase_core_web-2.1.0/
+cloud_firestore=/Users/nazrinharris/.pub-cache/hosted/pub.dev/cloud_firestore-4.5.0/
+cloud_firestore_web=/Users/nazrinharris/.pub-cache/hosted/pub.dev/cloud_firestore_web-3.4.0/
+firebase_auth=/Users/nazrinharris/.pub-cache/hosted/pub.dev/firebase_auth-4.4.0/
+firebase_auth_web=/Users/nazrinharris/.pub-cache/hosted/pub.dev/firebase_auth_web-5.3.0/
+firebase_core=/Users/nazrinharris/.pub-cache/hosted/pub.dev/firebase_core-2.9.0/
+firebase_core_web=/Users/nazrinharris/.pub-cache/hosted/pub.dev/firebase_core_web-2.3.0/
 flutter_native_splash=/Users/nazrinharris/.pub-cache/hosted/pub.dev/flutter_native_splash-2.2.16/
-google_sign_in=/Users/nazrinharris/.pub-cache/hosted/pub.dev/google_sign_in-5.4.2/
+google_sign_in=/Users/nazrinharris/.pub-cache/hosted/pub.dev/google_sign_in-6.1.0/
 google_sign_in_android=/Users/nazrinharris/.pub-cache/hosted/pub.dev/google_sign_in_android-6.1.4/
 google_sign_in_ios=/Users/nazrinharris/.pub-cache/hosted/pub.dev/google_sign_in_ios-5.5.1/
-google_sign_in_web=/Users/nazrinharris/.pub-cache/hosted/pub.dev/google_sign_in_web-0.10.2/
+google_sign_in_web=/Users/nazrinharris/.pub-cache/hosted/pub.dev/google_sign_in_web-0.12.0/
 package_info_plus=/Users/nazrinharris/.pub-cache/hosted/pub.dev/package_info_plus-3.0.2/
 path_provider=/Users/nazrinharris/.pub-cache/hosted/pub.dev/path_provider-2.0.11/
 path_provider_android=/Users/nazrinharris/.pub-cache/hosted/pub.dev/path_provider_android-2.0.22/

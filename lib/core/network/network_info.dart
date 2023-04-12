@@ -1,11 +1,11 @@
-import 'package:internet_connection_checker/internet_connection_checker.dart';
+import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
 
 abstract class INetworkInfo {
   Future<bool> get isConnected;
 }
 
 class NetworkInfo implements INetworkInfo {
-  final InternetConnectionChecker internet;
+  final InternetConnectionCheckerPlus internet;
   NetworkInfo({
     required this.internet,
   });

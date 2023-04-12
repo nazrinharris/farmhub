@@ -10,6 +10,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
+import 'firebase_options.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'dart:io';
 
@@ -20,7 +21,18 @@ const bool USE_EMULATOR = false;
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  await Firebase.initializeApp();
+  try {
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
+  } on FirebaseException catch (e) {
+    if (e.code != 'duplicate-app') {
+      print(e.code);
+      rethrow;
+    }
+    // If the exception is a duplicate-app error, ignore it
+    print('Firebase App [DEFAULT] already exists, skipping initialization');
+  }
 
   setupLocator();
 

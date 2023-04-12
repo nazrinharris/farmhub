@@ -21,7 +21,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get_it/get_it.dart';
 // ignore: depend_on_referenced_packages
 import 'package:hive/hive.dart';
-import 'package:internet_connection_checker/internet_connection_checker.dart';
+import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
 
 final GetIt locator = GetIt.instance;
 
@@ -101,7 +101,7 @@ void setupLocator() {
   locator.registerSingleton<FirebaseFirestore>(FirebaseFirestore.instance);
 
   //* Internet Connection Checker
-  locator.registerSingleton(InternetConnectionChecker());
+  locator.registerSingleton(InternetConnectionCheckerPlus());
 
   //* Hive
   locator.registerSingleton<HiveInterface>(Hive);
