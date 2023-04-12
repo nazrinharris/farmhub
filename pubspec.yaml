@@ -15,10 +15,10 @@ dependencies:
   auto_route: ^5.0.4
 
   # Firebase Suite
-  cloud_firestore: ^4.3.1
-  firebase_auth: ^4.2.5
-  firebase_core: ^2.4.1
-  google_sign_in: ^5.3.3
+  cloud_firestore: ^4.5.0
+  firebase_auth: ^4.4.0
+  firebase_core: ^2.9.0
+  google_sign_in: ^6.1.0
 
   # Other auth
   sign_in_with_apple: ^4.3.0
@@ -40,7 +40,7 @@ dependencies:
   shared_preferences: ^2.0.15
 
   # Data and Internet
-  internet_connection_checker: ^1.0.0+1
+  internet_connection_checker_plus: ^1.0.1
   json_annotation: ^4.5.0
 
   # Render
