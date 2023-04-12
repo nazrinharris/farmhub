@@ -8,6 +8,7 @@ import 'package:farmhub/core/errors/failures.dart';
 import 'package:farmhub/core/network/network_info.dart';
 import 'package:farmhub/features/produce_manager/data/datasources/produce_manager_local_datasource.dart';
 import 'package:farmhub/features/produce_manager/data/datasources/produce_manager_remote_datasource.dart';
+import 'package:farmhub/features/produce_manager/data/datasources/produce_prices_remote_datasource.dart';
 import 'package:farmhub/features/produce_manager/domain/entities/price/price.dart';
 import 'package:farmhub/features/produce_manager/domain/entities/produce/produce.dart';
 import 'package:farmhub/core/typedefs/typedefs.dart';
@@ -21,6 +22,7 @@ const String ProduceManagerRepositoryCode = "PMR-";
 class ProduceManagerRepository implements IProduceManagerRepository {
   final INetworkInfo networkInfo;
   final IProduceManagerRemoteDatasource remoteDatasource;
+  final IProducePricesRemoteDatasource pricesRemoteDatasource;
   final IProduceManagerLocalDatasource localDatasource;
   final IAuthRepository authRepository;
   final GlobalAuthCubit globalAuthCubit;
@@ -31,6 +33,7 @@ class ProduceManagerRepository implements IProduceManagerRepository {
     required this.localDatasource,
     required this.authRepository,
     required this.globalAuthCubit,
+    required this.pricesRemoteDatasource,
   });
 
   @override
@@ -209,7 +212,7 @@ class ProduceManagerRepository implements IProduceManagerRepository {
   }) async {
     if (await networkInfo.isConnected) {
       try {
-        final result = await remoteDatasource.addNewPrice(
+        final result = await pricesRemoteDatasource.addNewPrice(
           produceId: produceId,
           currentPrice: currentPrice,
           daysFromNow: daysFromNow,
@@ -326,7 +329,7 @@ class ProduceManagerRepository implements IProduceManagerRepository {
   FutureEither<List<PriceSnippet>> getAggregatePrices(String produceId) async {
     if (await networkInfo.isConnected) {
       try {
-        final result = await remoteDatasource.getAggregatePrices(produceId);
+        final result = await pricesRemoteDatasource.getAggregatePrices(produceId);
 
         return Right(result);
       } catch (e, stack) {
@@ -345,7 +348,7 @@ class ProduceManagerRepository implements IProduceManagerRepository {
   FutureEither<List<Price>> getFirstTenPrices(String produceId) async {
     if (await networkInfo.isConnected) {
       try {
-        final result = await remoteDatasource.getFirstTenPrices(produceId);
+        final result = await pricesRemoteDatasource.getFirstTenPrices(produceId);
 
         return Right(result);
       } catch (e, stack) {
@@ -364,7 +367,7 @@ class ProduceManagerRepository implements IProduceManagerRepository {
   FutureEither<List<Price>> getNextTenPrices(List<Price> lastPriceList, String produceId) async {
     if (await networkInfo.isConnected) {
       try {
-        final result = await remoteDatasource.getNextTenPrices(lastPriceList, produceId);
+        final result = await pricesRemoteDatasource.getNextTenPrices(lastPriceList, produceId);
 
         return Right(result);
       } catch (e, stack) {
@@ -388,7 +391,7 @@ class ProduceManagerRepository implements IProduceManagerRepository {
   ) async {
     if (await networkInfo.isConnected) {
       try {
-        final result = await remoteDatasource.editSubPrice(
+        final result = await pricesRemoteDatasource.editSubPrice(
           produceId,
           priceId,
           newPrice,
@@ -412,7 +415,7 @@ class ProduceManagerRepository implements IProduceManagerRepository {
   FutureEither<Price> getPrice(String produceId, String priceId) async {
     if (await networkInfo.isConnected) {
       try {
-        final result = await remoteDatasource.getPrice(produceId, priceId);
+        final result = await pricesRemoteDatasource.getPrice(produceId, priceId);
 
         return Right(result);
       } catch (e, stack) {
@@ -433,7 +436,7 @@ class ProduceManagerRepository implements IProduceManagerRepository {
     if (await networkInfo.isConnected) {
       try {
         final isPriceDocDeleted =
-            await remoteDatasource.deleteSubPrice(produceId, priceId, subPriceDate);
+            await pricesRemoteDatasource.deleteSubPrice(produceId, priceId, subPriceDate);
         return Right(isPriceDocDeleted);
       } on ProduceManagerException catch (e) {
         return Left(

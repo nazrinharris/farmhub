@@ -13,6 +13,7 @@ import 'package:farmhub/features/farm_shop_manager/domain/i_farm_shop_manager_re
 import 'package:farmhub/features/produce_manager/bloc/produce_manager_bloc.dart';
 import 'package:farmhub/features/produce_manager/data/datasources/produce_manager_local_datasource.dart';
 import 'package:farmhub/features/produce_manager/data/datasources/produce_manager_remote_datasource.dart';
+import 'package:farmhub/features/produce_manager/data/datasources/produce_prices_remote_datasource.dart';
 import 'package:farmhub/features/produce_manager/data/repository/produce_manager_repository.dart';
 import 'package:farmhub/features/produce_manager/domain/i_produce_manager_repository.dart';
 import 'package:farmhub/presentation/global/cubit/global_ui_cubit.dart';
@@ -63,12 +64,16 @@ void setupLocator() {
         localDatasource: locator(),
         authRepository: locator(),
         globalAuthCubit: locator(),
+        pricesRemoteDatasource: locator(),
       ));
   // Datasources
   locator.registerLazySingleton<IProduceManagerRemoteDatasource>(
       () => ProduceManagerRemoteDatasource(firebaseFirestore: locator()));
   locator
       .registerLazySingleton<IProduceManagerLocalDatasource>(() => ProduceManagerLocalDatasource());
+  locator.registerLazySingleton<IProducePricesRemoteDatasource>(() => ProducePricesRemoteDatasource(
+        firebaseFirestore: locator(),
+      ));
 
   //* FarmShopManager
   // Repository
