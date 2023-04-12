@@ -192,17 +192,107 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
     }
   }
 
+  // @override
+  // Future<Produce> createNewProduce({
+  //   required String produceName,
+  //   required num currentProducePrice,
+  //   required String authorId,
+  // }) async {
+  //   //! Check if a Produce of the same name already exists.
+  //   final result = await firebaseFirestore
+  //       .collection(FS_GLOBAL_PRODUCE)
+  //       .where("produceName", isEqualTo: produceName)
+  //       .get();
+  //   if (result.docs.isNotEmpty) {
+  //     throw ProduceManagerException(
+  //       code: PM_ERR_SAME_PRODUCE_NAME,
+  //       message: "Sorry, there is already a produce with this name, try using another name.",
+  //       stackTrace: StackTrace.current,
+  //     );
+  //   } else {
+  //     // Basic setups
+  //     DateTime currentTimeStamp = clock.now();
+  //     String currentDate = DateFormat("dd-MM-yyyy").format(currentTimeStamp);
+  //     Map<String, dynamic> weeklyPrices = {currentDate: currentProducePrice};
+  //     List<String> produceNameSearch = returnProduceNameSearch(produceName);
+
+  //     // Create produce and store in Firestore
+  //     final String resultingId = await firebaseFirestore.collection(FS_GLOBAL_PRODUCE).add({
+  //       "currentProducePrice": {
+  //         "price": currentProducePrice,
+  //         "priceDate": currentDate,
+  //       },
+  //       "previousProducePrice": {
+  //         "price": null,
+  //         "priceDate": null,
+  //       },
+  //       "produceId": "not-yet-updated",
+  //       "produceName": produceName,
+  //       "produceNameSearch": produceNameSearch,
+  //       "weeklyPrices": weeklyPrices,
+  //       "lastUpdateTimeStamp": currentTimeStamp,
+  //       "isDeleted": false,
+  //       "authorId": authorId,
+  //     }).then((doc) async {
+  //       doc.update({
+  //         "produceId": doc.id,
+  //       });
+
+  //       // Create Prices Sub-Collection and Price Document
+  //       await createPriceDocument(
+  //         firebaseFirestore: firebaseFirestore,
+  //         produceId: doc.id,
+  //         newPrice: currentProducePrice,
+  //         chosenTimeStamp: currentTimeStamp,
+  //       );
+
+  //       // Create Aggregate Prices
+  //       await firebaseFirestore
+  //           .collection(FS_GLOBAL_PRODUCE)
+  //           .doc(doc.id)
+  //           .collection(FS_AGGREGATE_COLLECTION)
+  //           .doc(FS_AGGREGATE_DOC)
+  //           .set({
+  //         "prices-map": {
+  //           currentDate: currentProducePrice,
+  //         }
+  //       });
+
+  //       return doc.id;
+  //     });
+
+  //     // Create [Produce] to return to caller.
+  //     final produce = Produce(
+  //       produceId: resultingId,
+  //       produceName: produceName,
+  //       currentProducePrice: {
+  //         "price": currentProducePrice,
+  //         "updateDate": clock.now().toString(),
+  //       },
+  //       previousProducePrice: {
+  //         "price": null,
+  //         "updateDate": null,
+  //       },
+  //       weeklyPrices: weeklyPrices,
+  //       authorId: authorId,
+  //       lastUpdateTimeStamp: currentTimeStamp,
+  //     );
+
+  //     return produce;
+  //   }
+  // }
+
   @override
   Future<Produce> createNewProduce({
     required String produceName,
     required num currentProducePrice,
     required String authorId,
   }) async {
-    //! Check if a Produce of the same name already exists.
     final result = await firebaseFirestore
         .collection(FS_GLOBAL_PRODUCE)
         .where("produceName", isEqualTo: produceName)
         .get();
+
     if (result.docs.isNotEmpty) {
       throw ProduceManagerException(
         code: PM_ERR_SAME_PRODUCE_NAME,
@@ -210,75 +300,72 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
         stackTrace: StackTrace.current,
       );
     } else {
-      // Basic setups
       DateTime currentTimeStamp = clock.now();
       String currentDate = DateFormat("dd-MM-yyyy").format(currentTimeStamp);
       Map<String, dynamic> weeklyPrices = {currentDate: currentProducePrice};
       List<String> produceNameSearch = returnProduceNameSearch(produceName);
 
-      // Create produce and store in Firestore
-      final String resultingId = await firebaseFirestore.collection(FS_GLOBAL_PRODUCE).add({
-        "currentProducePrice": {
-          "price": currentProducePrice,
-          "priceDate": currentDate,
-        },
-        "previousProducePrice": {
-          "price": null,
-          "priceDate": null,
-        },
-        "produceId": "not-yet-updated",
-        "produceName": produceName,
-        "produceNameSearch": produceNameSearch,
-        "weeklyPrices": weeklyPrices,
-        "lastUpdateTimeStamp": currentTimeStamp,
-        "isDeleted": false,
-        "authorId": authorId,
-      }).then((doc) async {
-        doc.update({
-          "produceId": doc.id,
+      // Start a transaction
+      return firebaseFirestore.runTransaction((transaction) async {
+        // Create the new produce document
+        DocumentReference produceDocRef = firebaseFirestore.collection(FS_GLOBAL_PRODUCE).doc();
+
+        transaction.set(produceDocRef, {
+          "currentProducePrice": {
+            "price": currentProducePrice,
+            "priceDate": currentDate,
+          },
+          "previousProducePrice": {
+            "price": null,
+            "priceDate": null,
+          },
+          "produceId": produceDocRef.id,
+          "produceName": produceName,
+          "produceNameSearch": produceNameSearch,
+          "weeklyPrices": weeklyPrices,
+          "lastUpdateTimeStamp": currentTimeStamp,
+          "isDeleted": false,
+          "authorId": authorId,
         });
 
-        // Create Prices Sub-Collection and Price Document
-        await createPriceDocument(
+        // Create the price document in the Prices sub-collection
+        await createPriceDocumentTransaction(
+          transaction: transaction,
           firebaseFirestore: firebaseFirestore,
-          produceId: doc.id,
+          produceId: produceDocRef.id,
           newPrice: currentProducePrice,
           chosenTimeStamp: currentTimeStamp,
         );
 
-        // Create Aggregate Prices
-        await firebaseFirestore
-            .collection(FS_GLOBAL_PRODUCE)
-            .doc(doc.id)
-            .collection(FS_AGGREGATE_COLLECTION)
-            .doc(FS_AGGREGATE_DOC)
-            .set({
+        // Create the aggregate prices document
+        DocumentReference aggregateDocRef =
+            produceDocRef.collection(FS_AGGREGATE_COLLECTION).doc(FS_AGGREGATE_DOC);
+
+        transaction.set(aggregateDocRef, {
           "prices-map": {
             currentDate: currentProducePrice,
-          }
+          },
         });
 
-        return doc.id;
+        print(transaction);
+
+        // Return the created Produce object
+        return Produce(
+          produceId: produceDocRef.id,
+          produceName: produceName,
+          currentProducePrice: {
+            "price": currentProducePrice,
+            "updateDate": clock.now().toString(),
+          },
+          previousProducePrice: {
+            "price": null,
+            "updateDate": null,
+          },
+          weeklyPrices: weeklyPrices,
+          authorId: authorId,
+          lastUpdateTimeStamp: currentTimeStamp,
+        );
       });
-
-      // Create [Produce] to return to caller.
-      final produce = Produce(
-        produceId: resultingId,
-        produceName: produceName,
-        currentProducePrice: {
-          "price": currentProducePrice,
-          "updateDate": clock.now().toString(),
-        },
-        previousProducePrice: {
-          "price": null,
-          "updateDate": null,
-        },
-        weeklyPrices: weeklyPrices,
-        authorId: authorId,
-        lastUpdateTimeStamp: currentTimeStamp,
-      );
-
-      return produce;
     }
   }
 
@@ -877,6 +964,32 @@ Future<void> createPriceDocument({
       "allPricesMap": {formattedCurrentTimeStamp: newPrice}
     },
   ).then((doc) => doc.update({"priceId": doc.id}));
+}
+
+Future<void> createPriceDocumentTransaction({
+  required Transaction transaction,
+  required FirebaseFirestore firebaseFirestore,
+  required String produceId,
+  required num newPrice,
+  required DateTime chosenTimeStamp,
+}) async {
+  DocumentReference priceDocRef = firebaseFirestore
+      .collection(FS_GLOBAL_PRODUCE)
+      .doc(produceId)
+      .collection(FS_PRICES_COLLECTION)
+      .doc();
+
+  final chosenDate = DateFormat("dd-MM-yyyy").format(chosenTimeStamp);
+  final formattedCurrentTimeStamp = DateFormat("yyyy-MM-dd hh:mm:ss aaa").format(clock.now());
+
+  transaction.set(priceDocRef, {
+    "currentPrice": newPrice,
+    "priceDate": chosenDate,
+    "priceDateTimeStamp": chosenTimeStamp,
+    "isAverage": false,
+    "allPricesMap": {formattedCurrentTimeStamp: newPrice},
+    "priceId": priceDocRef.id,
+  });
 }
 
 /// These [chosenTimeStamp] and [subPriceDate] must not both be specified. Only one.
