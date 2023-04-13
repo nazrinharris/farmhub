@@ -14,14 +14,15 @@ abstract class IProducePricesRemoteDatasource {
   /// This method will return a list of [PriceSnippet] which is unsorted. Use
   /// helper methods from [helpers.dart] to filter and sort it.
   Future<List<PriceSnippet>> getAggregatePrices(String produceId);
+  Future<List<Price>> getFirstTenPrices(String produceId);
+  Future<List<Price>> getNextTenPrices(List<Price> lastPricesList, String produceId);
+
+  Future<Price> getPrice(String produceId, String priceId);
   Future<Produce> addNewPrice({
     required String produceId,
     required num currentPrice,
     num? daysFromNow,
   });
-  Future<List<Price>> getFirstTenPrices(String produceId);
-  Future<List<Price>> getNextTenPrices(List<Price> lastPricesList, String produceId);
-  Future<Price> getPrice(String produceId, String priceId);
   Future<Price> editSubPrice(String produceId, String priceId, num newPrice, String subPriceDate);
   Future<bool> deleteSubPrice(String produceId, String priceId, String subPriceDate);
 }
