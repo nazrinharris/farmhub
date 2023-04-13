@@ -273,25 +273,36 @@ class ProducePricesRemoteDatasource implements IProducePricesRemoteDatasource {
   Future<Price> editSubPrice(
       String produceId, String priceId, num newPrice, String subPriceDate) async {
     return await firebaseFirestore.runTransaction<Price>((transaction) async {
-      final priceSnapshot = await transaction.get(
-        firebaseFirestore
-            .collection(FS_GLOBAL_PRODUCE)
-            .doc(produceId)
-            .collection(FS_PRICES_COLLECTION)
-            .doc(priceId),
-      );
-      final Price price = Price.fromMap(priceSnapshot.data()!);
+      final Price price = await transaction
+          .get(
+            firebaseFirestore
+                .collection(FS_GLOBAL_PRODUCE)
+                .doc(produceId)
+                .collection(FS_PRICES_COLLECTION)
+                .doc(priceId),
+          )
+          .then((snap) => Price.fromMap(snap.data()!));
 
-      final produceSnapshot = await transaction.get(
-        firebaseFirestore.collection(FS_GLOBAL_PRODUCE).doc(produceId),
-      );
-      final Produce produce = Produce.fromMap(produceSnapshot.data()!);
+      final Produce produce = await transaction
+          .get(
+            firebaseFirestore.collection(FS_GLOBAL_PRODUCE).doc(produceId),
+          )
+          .then((snap) => Produce.fromMap(snap.data()!));
+
+      final Map<String, dynamic>? aggregatePricesMap = await transaction
+          .get(
+            firebaseFirestore
+                .collection(FS_GLOBAL_PRODUCE)
+                .doc(produceId)
+                .collection(FS_AGGREGATE_COLLECTION)
+                .doc(FS_AGGREGATE_DOC),
+          )
+          .then((snap) => snap.data());
 
       /// [priceDateTimeStamp] refers to the date associated with the price, NOT when it was updated.
       final priceDateTimeStamp = price.priceDateTimeStamp;
-      final chosenYear = DateFormat("yyyy").format(priceDateTimeStamp);
 
-      /// [formattedAggregatePriceDate] refers to the date of THIS price which will be kept in [aggregatePrices]
+      /// [formattedAggregatePriceDate] refers to the date associated with the price, NOT when it was updated, which will be kept in [aggregatePrices]
       final formattedAggregatePriceDate = DateFormat("dd-MM-yyyy").format(priceDateTimeStamp);
 
       /// [subPricesList] refers to the prices associated with this [Price] object
@@ -336,6 +347,7 @@ class ProducePricesRemoteDatasource implements IProducePricesRemoteDatasource {
             .doc(FS_AGGREGATE_DOC),
         {"prices-map.$formattedAggregatePriceDate": updatedPrice.currentPrice},
       );
+      aggregatePricesMap!["prices-map"][formattedAggregatePriceDate] = updatedPrice.currentPrice;
 
       // This uses the retrieved produce last updated time stamp because realistically, we want
       // [lastUpdateTimeStamp] to be like "last price added".
@@ -344,8 +356,7 @@ class ProducePricesRemoteDatasource implements IProducePricesRemoteDatasource {
         firebaseFirestore: firebaseFirestore,
         produceId: produceId,
         lastUpdateTimeStamp: produce.lastUpdateTimeStamp,
-        // TODO: Pass in aggregatePricesMap
-        aggregatePricesMap: {},
+        aggregatePricesMap: aggregatePricesMap,
       );
 
       return updatedPrice;
