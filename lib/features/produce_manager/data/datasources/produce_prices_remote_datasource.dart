@@ -1,5 +1,6 @@
 import 'package:clock/clock.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:fpdart/fpdart.dart';
 import 'package:intl/intl.dart';
 
 import '../../../../core/errors/exceptions.dart';
@@ -30,9 +31,16 @@ class ProducePricesRemoteDatasource implements IProducePricesRemoteDatasource {
 
   ProducePricesRemoteDatasource({required this.firebaseFirestore});
 
+  /// There are two possible cases:
+  ///
+  /// 1. Adding a Price to a date that already has a price.
+  /// 2. Adding a Price to a date that does not have a price.
   @override
-  Future<Produce> addNewPrice(
-      {required String produceId, required num currentPrice, num? daysFromNow}) async {
+  Future<Produce> addNewPrice({
+    required String produceId,
+    required num currentPrice,
+    num? daysFromNow,
+  }) async {
     DateTime currentTimeStamp;
     if (daysFromNow == null) {
       currentTimeStamp = clock.now();
@@ -42,265 +50,298 @@ class ProducePricesRemoteDatasource implements IProducePricesRemoteDatasource {
 
     final chosenDate = DateFormat("dd-MM-yyyy").format(currentTimeStamp);
 
-    //! Begin updating Price Document and Aggregate Prices
-    // Find out if price document of date [chosenDate] exists
-    // If it exists, there should one in the list, if not, it should be empty.
-    final chosenDatePriceDoc = await firebaseFirestore
-        .collection(FS_GLOBAL_PRODUCE)
-        .doc(produceId)
-        .collection(FS_PRICES_COLLECTION)
-        .where('priceDate', isEqualTo: chosenDate)
-        .get()
-        .then((querySnapshot) {
-      return querySnapshot.docs.map((doc) {
-        return doc.data();
-      }).toList();
-    });
+    // Run transaction
+    return await firebaseFirestore.runTransaction(
+      (transaction) async {
+        //! Retrieve all the required data.
+        // Get the price document of the chosen date. If it exists, there should one in the list, if not, it should be empty.
+        final chosenDatePriceDoc = await firebaseFirestore
+            .collection(FS_GLOBAL_PRODUCE)
+            .doc(produceId)
+            .collection(FS_PRICES_COLLECTION)
+            .where('priceDate', isEqualTo: chosenDate)
+            .get()
+            .then((querySnapshot) {
+          return querySnapshot.docs.map((doc) {
+            return doc.data();
+          }).toList();
+        });
+        // Get the aggregate prices document.
+        final aggregatePricesDoc = await firebaseFirestore
+            .collection(FS_GLOBAL_PRODUCE)
+            .doc(produceId)
+            .collection(FS_AGGREGATE_COLLECTION)
+            .doc(FS_AGGREGATE_DOC)
+            .get()
+            .then((doc) {
+          return doc.data();
+        });
 
-    await returnPriceAndUpdatePriceDocAndAggregate(
-      firebaseFirestore: firebaseFirestore,
-      chosenTimeStamp: currentTimeStamp,
-      produceId: produceId,
-      newPrice: currentPrice,
-      chosenPriceDoc: chosenDatePriceDoc,
-    );
-
-    //! Begin Updating Produce Document
-    final Map<String, dynamic> aggregatePricesMap = await firebaseFirestore
-        .collection(FS_GLOBAL_PRODUCE)
-        .doc(produceId)
-        .collection(FS_AGGREGATE_COLLECTION)
-        .doc(FS_AGGREGATE_DOC)
-        .get()
-        .then((value) => value.data()!);
-
-    final List<PriceSnippet> pricesList = [];
-    aggregatePricesMap["prices-map"].forEach((date, price) {
-      pricesList.add(PriceSnippet(price: price, priceDate: date));
-    });
-
-    final oneWeekPrices = pricesToRanged(pricesList, rangeType: RangeType.oneW);
-    final oneYearPrices = pricesToRanged(pricesList, rangeType: RangeType.oneY);
-
-    // At this point, [weeklyPricesSnippet] should have been fully updated. Convert it to map and update
-    Map<String, dynamic> weeklyPricesSnippetJSON = {};
-    for (PriceSnippet priceSnippet in oneWeekPrices) {
-      weeklyPricesSnippetJSON[priceSnippet.priceDate] = priceSnippet.price;
-    }
-    prettyPrintJson(weeklyPricesSnippetJSON);
-
-    await firebaseFirestore.collection(FS_GLOBAL_PRODUCE).doc(produceId).update({
-      "weeklyPrices": weeklyPricesSnippetJSON,
-    });
-
-    // There can be a case where [currentProducePrice] is being updated while [previousProducePrice] has
-    // not yet existed.
-    Map<String, dynamic> currentProducePrice = {
-      "price": oneYearPrices[oneYearPrices.length - 1].price,
-      "priceDate": oneYearPrices[oneYearPrices.length - 1].priceDate,
-    };
-    Map<String, dynamic> previousProducePrice = {};
-    if (oneYearPrices.length == 1) {
-      previousProducePrice = {
-        "price": null,
-        "priceDate": null,
-      };
-    } else {
-      previousProducePrice = {
-        "price": oneYearPrices[oneYearPrices.length - 2].price,
-        "priceDate": oneYearPrices[oneYearPrices.length - 2].priceDate,
-      };
-    }
-
-    //! Start updating [currentProducePrice] and [previousProducePrice] based on [weeklyPrices]
-    await firebaseFirestore.collection(FS_GLOBAL_PRODUCE).doc(produceId).update({
-      "currentProducePrice": currentProducePrice,
-      "previousProducePrice": previousProducePrice,
-      "lastUpdateTimeStamp": currentTimeStamp,
-    });
-
-    // Retrieve updated produce
-    final produce = await firebaseFirestore.collection(FS_GLOBAL_PRODUCE).doc(produceId).get().then(
-          (snapshot) => Produce.fromMap(snapshot.data()),
+        //! Update the prices.
+        final Tuple2<Price, Map<String, dynamic>> updatedPrices =
+            await _returnPriceAndUpdatePricesTransaction(
+          transaction: transaction,
+          firebaseFirestore: firebaseFirestore,
+          chosenTimeStamp: currentTimeStamp,
+          produceId: produceId,
+          newPrice: currentPrice,
+          chosenPriceDoc: chosenDatePriceDoc,
+          aggregatePricesMap: aggregatePricesDoc!,
         );
 
-    return produce;
+        //! Begin Updating Produce Document
+        final List<PriceSnippet> pricesList = [];
+        updatedPrices.mapSecond((aggregatePricesMap) {
+          aggregatePricesMap["prices-map"].forEach((date, price) {
+            pricesList.add(PriceSnippet(price: price, priceDate: date));
+          });
+        });
+
+        final oneWeekPrices = pricesToRanged(pricesList, rangeType: RangeType.oneW);
+        final oneYearPrices = pricesToRanged(pricesList, rangeType: RangeType.oneY);
+
+        // At this point, [weeklyPricesSnippet] should have been fully updated. Convert it to map and update
+        Map<String, dynamic> weeklyPricesSnippetJSON = {};
+        for (PriceSnippet priceSnippet in oneWeekPrices) {
+          weeklyPricesSnippetJSON[priceSnippet.priceDate] = priceSnippet.price;
+        }
+        prettyPrintJson(weeklyPricesSnippetJSON);
+
+        transaction.update(
+          firebaseFirestore.collection(FS_GLOBAL_PRODUCE).doc(produceId),
+          {"weeklyPrices": weeklyPricesSnippetJSON},
+        );
+
+        // There can be a case where [currentProducePrice] is being updated while [previousProducePrice] has
+        // not yet existed.
+        Map<String, dynamic> currentProducePrice = {
+          "price": oneYearPrices[oneYearPrices.length - 1].price,
+          "priceDate": oneYearPrices[oneYearPrices.length - 1].priceDate,
+        };
+        Map<String, dynamic> previousProducePrice = {};
+        if (oneYearPrices.length == 1) {
+          previousProducePrice = {
+            "price": null,
+            "priceDate": null,
+          };
+        } else {
+          previousProducePrice = {
+            "price": oneYearPrices[oneYearPrices.length - 2].price,
+            "priceDate": oneYearPrices[oneYearPrices.length - 2].priceDate,
+          };
+        }
+
+        //! Start updating [currentProducePrice] and [previousProducePrice] based on [weeklyPrices]
+        transaction.update(
+          firebaseFirestore.collection(FS_GLOBAL_PRODUCE).doc(produceId),
+          {
+            "currentProducePrice": currentProducePrice,
+            "previousProducePrice": previousProducePrice,
+            "lastUpdateTimeStamp": currentTimeStamp,
+          },
+        );
+      },
+    ).then((_) async {
+      // Retrieve updated produce
+      final updatedProduceSnapshot =
+          await firebaseFirestore.collection(FS_GLOBAL_PRODUCE).doc(produceId).get();
+
+      // Convert snapshot data to Produce object
+      final updatedProduce = Produce.fromMap(updatedProduceSnapshot.data());
+
+      return updatedProduce;
+    });
   }
 
   @override
   Future<bool> deleteSubPrice(String produceId, String priceId, String subPriceDate) async {
     bool isPriceDocDeleted = false;
 
-    final Price price = await firebaseFirestore
-        .collection(FS_GLOBAL_PRODUCE)
-        .doc(produceId)
-        .collection(FS_PRICES_COLLECTION)
-        .doc(priceId)
-        .get()
-        .then((value) => Price.fromMap(value.data()));
-    final priceYear = DateFormat("yyyy").format(price.priceDateTimeStamp);
+    return await firebaseFirestore.runTransaction<bool>((transaction) async {
+      final priceSnapshot = await transaction.get(
+        firebaseFirestore
+            .collection(FS_GLOBAL_PRODUCE)
+            .doc(produceId)
+            .collection(FS_PRICES_COLLECTION)
+            .doc(priceId),
+      );
+      final Price price = Price.fromMap(priceSnapshot.data());
 
-    List<PriceSnippet> subPricesList = price.allPricesWithDateList;
-    List<PriceSnippet> updatedSubPricesList = [];
+      List<PriceSnippet> subPricesList = price.allPricesWithDateList;
+      List<PriceSnippet> updatedSubPricesList = [];
 
-    for (PriceSnippet priceSnippet in subPricesList) {
-      if (priceSnippet.priceDate == subPriceDate) {
-        // Do nothing, we technically "remove"
-        continue;
+      for (PriceSnippet priceSnippet in subPricesList) {
+        if (priceSnippet.priceDate == subPriceDate) {
+          // Do nothing, we technically "remove"
+          continue;
+        }
+        updatedSubPricesList.add(priceSnippet);
       }
-      updatedSubPricesList.add(priceSnippet);
-    }
 
-    if (updatedSubPricesList.isEmpty) {
-      //? This means that the last [subPrice] was deleted and thus, the [Price] doc needs to be deleted.
-      //? Three major steps: Update [aggregatePrices], Delete [Price] document, Update [Produce]
-      //! Check if there is only one [Price] left, if yes, throw Exception.
-      // Note that this checks if it is the last price of that year.
-      final allPricesList = await firebaseFirestore
-          .collection(FS_GLOBAL_PRODUCE)
-          .doc(produceId)
-          .collection(FS_AGGREGATE_COLLECTION)
-          .doc(FS_AGGREGATE_DOC)
-          .get()
-          .then((value) => PriceSnippet.fromAggregateToList(value.data()!));
-      if (allPricesList.length == 1) {
-        throw ProduceManagerException(
-          code: PM_ERR_LAST_PRICE,
-          message: "This is the last price of the Produce, so it cannot be deleted.",
-          stackTrace: StackTrace.current,
+      if (updatedSubPricesList.isEmpty) {
+        //? This means that the last [subPrice] was deleted and thus, the [Price] doc needs to be deleted.
+        //? Three major steps: Update [aggregatePrices], Delete [Price] document, Update [Produce]
+        //! Check if there is only one [Price] left, if yes, throw Exception.
+        // Note that this checks if it is the last price of that year.
+        final allPricesList = await firebaseFirestore
+            .collection(FS_GLOBAL_PRODUCE)
+            .doc(produceId)
+            .collection(FS_AGGREGATE_COLLECTION)
+            .doc(FS_AGGREGATE_DOC)
+            .get()
+            .then((value) => PriceSnippet.fromAggregateToList(value.data()!));
+        if (allPricesList.length == 1) {
+          throw ProduceManagerException(
+            code: PM_ERR_LAST_PRICE,
+            message: "This is the last price of the Produce, so it cannot be deleted.",
+            stackTrace: StackTrace.current,
+          );
+        }
+
+        //! Delete [Price] from [aggregatePrices]
+        transaction.update(
+          firebaseFirestore
+              .collection(FS_GLOBAL_PRODUCE)
+              .doc(produceId)
+              .collection(FS_AGGREGATE_COLLECTION)
+              .doc(FS_AGGREGATE_DOC),
+          {"prices-map.${price.priceDate}": FieldValue.delete()},
+        );
+        //! Delete [Price] document
+        transaction.delete(
+          firebaseFirestore
+              .collection(FS_GLOBAL_PRODUCE)
+              .doc(produceId)
+              .collection(FS_PRICES_COLLECTION)
+              .doc(priceId),
+        );
+        //! Update [Produce]
+        await updateProducePricesTransaction(
+            transaction: transaction,
+            firebaseFirestore: firebaseFirestore,
+            produceId: produceId,
+            // TODO: Pass in aggregatePricesMap
+            aggregatePricesMap: {});
+
+        isPriceDocDeleted = true;
+      } else {
+        //? This means that there is at least one [subPrice] left.
+        //? steps: Update [Price]'s [currentPrice] and [allPrices], Update [aggregatePrices], Update [Produce]
+
+        //! Update [Price]'s [currentPrice] and [allPrices]
+        final updatedPrice = _deleteSubPriceAndUpdatePrice(price, subPriceDate);
+        transaction.update(
+          firebaseFirestore
+              .collection(FS_GLOBAL_PRODUCE)
+              .doc(produceId)
+              .collection(FS_PRICES_COLLECTION)
+              .doc(priceId),
+          Price.toMap(updatedPrice),
+        );
+        //! Update [aggregatePrices]
+        transaction.update(
+          firebaseFirestore
+              .collection(FS_GLOBAL_PRODUCE)
+              .doc(produceId)
+              .collection(FS_AGGREGATE_COLLECTION)
+              .doc(FS_AGGREGATE_DOC),
+          {"prices-map.${price.priceDate}": updatedPrice.currentPrice},
+        );
+        //! Update [Produce]
+        await updateProducePricesTransaction(
+          transaction: transaction,
+          firebaseFirestore: firebaseFirestore,
+          produceId: produceId,
+          // TODO: Pass in aggregatePricesMap
+          aggregatePricesMap: {},
         );
       }
 
-      //! Delete [Price] from [aggregatePrices]
-      await firebaseFirestore
-          .collection(FS_GLOBAL_PRODUCE)
-          .doc(produceId)
-          .collection(FS_AGGREGATE_COLLECTION)
-          .doc(FS_AGGREGATE_DOC)
-          .update({"prices-map.${price.priceDate}": FieldValue.delete()});
-      //! Delete [Price] document
-      await firebaseFirestore
-          .collection(FS_GLOBAL_PRODUCE)
-          .doc(produceId)
-          .collection(FS_PRICES_COLLECTION)
-          .doc(priceId)
-          .delete();
-      //! Update [Produce]
-      updateProducePrices(
-        firebaseFirestore: firebaseFirestore,
-        produceId: produceId,
-      );
-
-      isPriceDocDeleted = true;
-    } else {
-      //? This means that there is at least one [subPrice] left.
-      //? steps: Update [Price]'s [currentPrice] and [allPrices], Update [aggregatePrices], Update [Produce]
-
-      //! Update [Price]'s [currentPrice] and [allPrices]
-      final updatedPrice = _deleteSubPriceAndUpdatePrice(price, subPriceDate);
-      await firebaseFirestore
-          .collection(FS_GLOBAL_PRODUCE)
-          .doc(produceId)
-          .collection(FS_PRICES_COLLECTION)
-          .doc(priceId)
-          .update(
-            Price.toMap(updatedPrice),
-          );
-      //! Update [aggregatePrices]
-      await firebaseFirestore
-          .collection(FS_GLOBAL_PRODUCE)
-          .doc(produceId)
-          .collection(FS_AGGREGATE_COLLECTION)
-          .doc(FS_AGGREGATE_DOC)
-          .update({"prices-map.${price.priceDate}": updatedPrice.currentPrice});
-      //! Update [Produce]
-      updateProducePrices(
-        firebaseFirestore: firebaseFirestore,
-        produceId: produceId,
-      );
-    }
-
-    return isPriceDocDeleted;
+      return isPriceDocDeleted;
+    });
   }
 
   @override
   Future<Price> editSubPrice(
       String produceId, String priceId, num newPrice, String subPriceDate) async {
-    /// Retrieve the [Price] document and return a [Price] object
-    final Price price = await firebaseFirestore
-        .collection(FS_GLOBAL_PRODUCE)
-        .doc(produceId)
-        .collection(FS_PRICES_COLLECTION)
-        .doc(priceId)
-        .get()
-        .then((value) => Price.fromMap(value.data()!));
+    return await firebaseFirestore.runTransaction<Price>((transaction) async {
+      final priceSnapshot = await transaction.get(
+        firebaseFirestore
+            .collection(FS_GLOBAL_PRODUCE)
+            .doc(produceId)
+            .collection(FS_PRICES_COLLECTION)
+            .doc(priceId),
+      );
+      final Price price = Price.fromMap(priceSnapshot.data()!);
 
-    /// Retrieve the [Produce] document and return a [Produce] object
-    final Produce produce = await firebaseFirestore
-        .collection(FS_GLOBAL_PRODUCE)
-        .doc(produceId)
-        .get()
-        .then((value) => Produce.fromMap(value.data()!));
+      final produceSnapshot = await transaction.get(
+        firebaseFirestore.collection(FS_GLOBAL_PRODUCE).doc(produceId),
+      );
+      final Produce produce = Produce.fromMap(produceSnapshot.data()!);
 
-    /// [priceDateTimeStamp] refers to the date associated with the price, NOT when it was updated.
-    final priceDateTimeStamp = price.priceDateTimeStamp;
-    final chosenYear = DateFormat("yyyy").format(priceDateTimeStamp);
+      /// [priceDateTimeStamp] refers to the date associated with the price, NOT when it was updated.
+      final priceDateTimeStamp = price.priceDateTimeStamp;
+      final chosenYear = DateFormat("yyyy").format(priceDateTimeStamp);
 
-    /// [formattedAggregatePriceDate] refers to the date of THIS price which will be kept in [aggregatePrices]
-    final formattedAggregatePriceDate = DateFormat("dd-MM-yyyy").format(priceDateTimeStamp);
+      /// [formattedAggregatePriceDate] refers to the date of THIS price which will be kept in [aggregatePrices]
+      final formattedAggregatePriceDate = DateFormat("dd-MM-yyyy").format(priceDateTimeStamp);
 
-    /// [subPricesList] refers to the prices associated with this [Price] object
-    List<PriceSnippet> subPricesList = price.allPricesWithDateList;
-    List<PriceSnippet> updatedSubPricesList = [];
+      /// [subPricesList] refers to the prices associated with this [Price] object
+      List<PriceSnippet> subPricesList = price.allPricesWithDateList;
+      List<PriceSnippet> updatedSubPricesList = [];
 
-    /// Loop through [subPricesList] to find the date of the [subPrice] to edit, when it is found,
-    /// it is added to the [updatedSubPricesList]
-    for (PriceSnippet priceSnippet in subPricesList) {
-      if (priceSnippet.priceDate == subPriceDate) {
-        final newPriceSnippet = priceSnippet.copyWith(price: newPrice);
-        updatedSubPricesList.add(newPriceSnippet);
-        continue;
+      /// Loop through [subPricesList] to find the date of the [subPrice] to edit, when it is found,
+      /// it is added to the [updatedSubPricesList]
+      for (PriceSnippet priceSnippet in subPricesList) {
+        if (priceSnippet.priceDate == subPriceDate) {
+          final newPriceSnippet = priceSnippet.copyWith(price: newPrice);
+          updatedSubPricesList.add(newPriceSnippet);
+          continue;
+        }
+        updatedSubPricesList.add(priceSnippet);
       }
-      updatedSubPricesList.add(priceSnippet);
-    }
 
-    /// [updatedSubPrice]'s name might be a bit misleading, but here, it means the [Price] object previously
-    /// supplied, but with an updated [allPricesWithDateList]
-    ///
-    /// But the [currentPrice] for the [Price] document has not yet been updated, therefore
-    /// updateCurrentPrice() is called.
-    final Price updatedSubPrice = price.copyWith(allPricesWithDateList: updatedSubPricesList);
-    final Price updatedPrice = updateCurrentPrice(updatedSubPrice);
+      /// [updatedSubPrice]'s name might be a bit misleading, but here, it means the [Price] object previously
+      /// supplied, but with an updated [allPricesWithDateList]
+      ///
+      /// But the [currentPrice] for the [Price] document has not yet been updated, therefore
+      /// updateCurrentPrice() is called.
+      final Price updatedSubPrice = price.copyWith(allPricesWithDateList: updatedSubPricesList);
+      final Price updatedPrice = updateCurrentPrice(updatedSubPrice);
 
-    // At this point, [updatedPrice] should be the most recent.
-    // Update Price Document
-    await firebaseFirestore
-        .collection(FS_GLOBAL_PRODUCE)
-        .doc(produceId)
-        .collection(FS_PRICES_COLLECTION)
-        .doc(priceId)
-        .update(
-          Price.toMap(updatedPrice),
-        );
-    // Update Aggregate Price
-    await firebaseFirestore
-        .collection(FS_GLOBAL_PRODUCE)
-        .doc(produceId)
-        .collection(FS_AGGREGATE_COLLECTION)
-        .doc(FS_AGGREGATE_DOC)
-        .update({
-      "prices-map.$formattedAggregatePriceDate": updatedPrice.currentPrice,
+      // At this point, [updatedPrice] should be the most recent.
+      // Update Price Document
+      transaction.update(
+        firebaseFirestore
+            .collection(FS_GLOBAL_PRODUCE)
+            .doc(produceId)
+            .collection(FS_PRICES_COLLECTION)
+            .doc(priceId),
+        Price.toMap(updatedPrice),
+      );
+      // Update Aggregate Price
+      transaction.update(
+        firebaseFirestore
+            .collection(FS_GLOBAL_PRODUCE)
+            .doc(produceId)
+            .collection(FS_AGGREGATE_COLLECTION)
+            .doc(FS_AGGREGATE_DOC),
+        {"prices-map.$formattedAggregatePriceDate": updatedPrice.currentPrice},
+      );
+
+      // This uses the retrieved produce last updated time stamp because realistically, we want
+      // [lastUpdateTimeStamp] to be like "last price added".
+      await updateProducePricesTransaction(
+        transaction: transaction,
+        firebaseFirestore: firebaseFirestore,
+        produceId: produceId,
+        lastUpdateTimeStamp: produce.lastUpdateTimeStamp,
+        // TODO: Pass in aggregatePricesMap
+        aggregatePricesMap: {},
+      );
+
+      return updatedPrice;
     });
-
-    // This uses the retrieved produce last updated time stamp because realistically, we want
-    // [lastUpdateTimeStamp] to be like "last price added".
-    await updateProducePrices(
-      firebaseFirestore: firebaseFirestore,
-      produceId: produceId,
-      lastUpdateTimeStamp: produce.lastUpdateTimeStamp,
-    );
-
-    return updatedPrice;
   }
 
   @override
@@ -385,56 +426,73 @@ class ProducePricesRemoteDatasource implements IProducePricesRemoteDatasource {
 
 /// Note that this is a CONSTRUCTIVE method!
 ///
-/// This methods updates the remote [Price] doucment and Aggregate Prices.
+/// This methods updates the remote [Price] doucment and [AggregatePrices].
 /// If the [chosenPriceDoc] is empty, it will create a new [Price] document in remote.
 ///
 /// If the [chosenPriceDoc] is not empty, (the length MUST be one, because there should
 /// only be one [Price] document to represent a specific date), the [newPrice] will
 /// be considered as an addition to the existing prices,
-Future<num> returnPriceAndUpdatePriceDocAndAggregate({
+///
+/// The [newPrice] will be added to the [chosenPriceDoc] and the average will be calculated.
+/// The average will be the new [currentPrice] for the [Price] document.
+///
+/// It should return a [Price] object with the updated [currentPrice] and [allPricesWithDateList] as well as the new [aggregatePricesMap]
+///
+Future<Tuple2<Price, Map<String, dynamic>>> _returnPriceAndUpdatePricesTransaction({
   required FirebaseFirestore firebaseFirestore,
+  required Transaction transaction,
+  required DateTime chosenTimeStamp,
+  required String produceId,
+  required num newPrice,
+  required List<Map<String, dynamic>?> chosenPriceDoc,
+  required Map<String, dynamic> aggregatePricesMap,
+}) async {
+  final Price price = await _createOrUpdatePriceDocumentTransaction(
+    firebaseFirestore: firebaseFirestore,
+    transaction: transaction,
+    chosenTimeStamp: chosenTimeStamp,
+    produceId: produceId,
+    newPrice: newPrice,
+    chosenPriceDoc: chosenPriceDoc,
+  );
+
+  final newAggregatePricesMap = await _updateAggregatePricesTransaction(
+    transaction: transaction,
+    firebaseFirestore: firebaseFirestore,
+    produceId: produceId,
+    newPrice: price.currentPrice,
+    chosenTimeStamp: chosenTimeStamp,
+    allPricesMap: aggregatePricesMap,
+  );
+
+  return Tuple2(price, newAggregatePricesMap);
+}
+
+Future<Price> _createOrUpdatePriceDocumentTransaction({
+  required FirebaseFirestore firebaseFirestore,
+  required Transaction transaction,
   required DateTime chosenTimeStamp,
   required String produceId,
   required num newPrice,
   required List<Map<String, dynamic>?> chosenPriceDoc,
 }) async {
   if (chosenPriceDoc.isEmpty) {
-    // This means the price for the chosen date does not exist.
-    await createPriceDocument(
+    return await createPriceDocumentTransaction(
+      transaction: transaction,
       firebaseFirestore: firebaseFirestore,
       produceId: produceId,
       newPrice: newPrice,
       chosenTimeStamp: chosenTimeStamp,
     );
-
-    await updateAggregatePrices(
-      firebaseFirestore: firebaseFirestore,
-      produceId: produceId,
-      newPrice: newPrice,
-      chosenTimeStamp: chosenTimeStamp,
-    );
-
-    return newPrice;
   } else if (chosenPriceDoc.length == 1) {
-    // This means the price for the chosen date indeed exists.
-    num calculatedPrice = calculateNewPriceAverage(chosenPriceDoc[0]!["allPricesMap"], newPrice);
-
-    await updatePriceDocument(
+    return await _updatePriceDocumentTransaction(
+      transaction: transaction,
       firebaseFirestore: firebaseFirestore,
       produceId: produceId,
       newPrice: newPrice,
       chosenTimeStamp: chosenTimeStamp,
       chosenPriceDoc: chosenPriceDoc[0]!,
     );
-
-    await updateAggregatePrices(
-      firebaseFirestore: firebaseFirestore,
-      produceId: produceId,
-      newPrice: calculatedPrice,
-      chosenTimeStamp: chosenTimeStamp,
-    );
-
-    return calculatedPrice;
   } else {
     // If there are multiple documents, an error is thrown. There should never be multiple.
     throw ProduceManagerException(
@@ -446,22 +504,111 @@ Future<num> returnPriceAndUpdatePriceDocAndAggregate({
   }
 }
 
-/// This method will update [currentProducePrice], [previousProducePrice] and [weeklyPrices].
-///
-/// Note that this method assumes [aggregatePrices] is up-to-date. So update aggregate first before
-/// using this method.
-Future<void> updateProducePrices({
+Future<Price> createPriceDocumentTransaction({
+  required Transaction transaction,
   required FirebaseFirestore firebaseFirestore,
   required String produceId,
-  DateTime? lastUpdateTimeStamp,
+  required num newPrice,
+  required DateTime chosenTimeStamp,
 }) async {
-  final Map<String, dynamic> aggregatePricesMap = await firebaseFirestore
+  DocumentReference priceDocRef = firebaseFirestore
       .collection(FS_GLOBAL_PRODUCE)
       .doc(produceId)
-      .collection(FS_AGGREGATE_COLLECTION)
-      .doc(FS_AGGREGATE_DOC)
-      .get()
-      .then((value) => value.data()!);
+      .collection(FS_PRICES_COLLECTION)
+      .doc();
+
+  final chosenDate = DateFormat("dd-MM-yyyy").format(chosenTimeStamp);
+  final formattedCurrentTimeStamp = DateFormat("yyyy-MM-dd hh:mm:ss aaa").format(clock.now());
+
+  Price price = Price(
+    currentPrice: newPrice,
+    priceDate: chosenDate,
+    priceDateTimeStamp: chosenTimeStamp,
+    isAverage: false,
+    allPricesWithDateList: [PriceSnippet(price: newPrice, priceDate: formattedCurrentTimeStamp)],
+    priceId: priceDocRef.id,
+  );
+
+  transaction.set(priceDocRef, Price.toMap(price));
+
+  return price;
+}
+
+/// These [chosenTimeStamp] and [subPriceDate] must not both be specified. Only one.
+///
+/// Both of those variables are referring to a specific [subPrice]
+///
+/// The returned [Price] should have the new [Price.currentPrice] and [Price.allPricesMap].
+Future<Price> _updatePriceDocumentTransaction({
+  required Transaction transaction,
+  required FirebaseFirestore firebaseFirestore,
+  required String produceId,
+  required num newPrice,
+  required Map<String, dynamic> chosenPriceDoc,
+  DateTime? chosenTimeStamp,
+  String? subPriceDate,
+}) async {
+  String formattedCurrentTimeStamp;
+
+  if (chosenTimeStamp != null) {
+    formattedCurrentTimeStamp = DateFormat("yyyy-MM-dd hh:mm:ss aaa").format(chosenTimeStamp);
+  } else if (subPriceDate != null) {
+    formattedCurrentTimeStamp = subPriceDate;
+  } else if (subPriceDate != null && chosenTimeStamp != null) {
+    throw Exception();
+  } else {
+    throw Exception();
+  }
+
+  num newCurrentPrice = _calculateNewPriceAverage(chosenPriceDoc["allPricesMap"], newPrice);
+
+  Price price = Price.fromMap(chosenPriceDoc);
+  Price updatedPrice = price.copyWith(
+    currentPrice: newCurrentPrice,
+    isAverage: true,
+    allPricesWithDateList: [
+      ...price.allPricesWithDateList,
+      PriceSnippet(price: newPrice, priceDate: formattedCurrentTimeStamp),
+    ],
+  );
+
+  transaction.update(
+    firebaseFirestore
+        .collection(FS_GLOBAL_PRODUCE)
+        .doc(produceId)
+        .collection(FS_PRICES_COLLECTION)
+        .doc(chosenPriceDoc["priceId"]),
+    Price.toMap(updatedPrice),
+    // {
+    //   "currentPrice": newCurrentPrice,
+    //   "isAverage": true,
+    //   "allPricesMap.$formattedCurrentTimeStamp": newPrice,
+    // },
+  );
+
+  return updatedPrice;
+}
+
+/// This method will update [currentProducePrice], [previousProducePrice] and [weeklyPrices].
+/// It will also update the [lastUpdateTimeStamp] if the [chosenTimeStamp] is the latest.
+///
+/// Ensure that [aggregatePricesMap] is the latest data before calling this method!
+///
+/// This is a Transaction method, so reads should be done before calling this method.
+Future<void> updateProducePricesTransaction({
+  required Transaction transaction,
+  required FirebaseFirestore firebaseFirestore,
+  required String produceId,
+  required Map<String, dynamic> aggregatePricesMap,
+  DateTime? lastUpdateTimeStamp,
+}) async {
+  // final Map<String, dynamic> aggregatePricesMap = await firebaseFirestore
+  //     .collection(FS_GLOBAL_PRODUCE)
+  //     .doc(produceId)
+  //     .collection(FS_AGGREGATE_COLLECTION)
+  //     .doc(FS_AGGREGATE_DOC)
+  //     .get()
+  //     .then((value) => value.data()!);
 
   final List<PriceSnippet> pricesList = [];
   aggregatePricesMap["prices-map"].forEach((date, price) {
@@ -520,112 +667,35 @@ Future<void> updateProducePrices({
   }
 
   //! Start updating [currentProducePrice] and [previousProducePrice]
-  await firebaseFirestore.collection(FS_GLOBAL_PRODUCE).doc(produceId).update(mapUsed);
-}
-
-Future<void> createPriceDocument({
-  required FirebaseFirestore firebaseFirestore,
-  required String produceId,
-  required num newPrice,
-  required DateTime chosenTimeStamp,
-}) async {
-  final chosenDate = DateFormat("dd-MM-yyyy").format(chosenTimeStamp);
-  final formattedCurrentTimeStamp = DateFormat("yyyy-MM-dd hh:mm:ss aaa").format(clock.now());
-
-  await firebaseFirestore
-      .collection(FS_GLOBAL_PRODUCE)
-      .doc(produceId)
-      .collection(FS_PRICES_COLLECTION)
-      .add(
-    {
-      "currentPrice": newPrice,
-      "priceDate": chosenDate,
-      "priceDateTimeStamp": chosenTimeStamp,
-      "isAverage": false,
-      "allPricesMap": {formattedCurrentTimeStamp: newPrice}
-    },
-  ).then((doc) => doc.update({"priceId": doc.id}));
-}
-
-Future<void> createPriceDocumentTransaction({
-  required Transaction transaction,
-  required FirebaseFirestore firebaseFirestore,
-  required String produceId,
-  required num newPrice,
-  required DateTime chosenTimeStamp,
-}) async {
-  DocumentReference priceDocRef = firebaseFirestore
-      .collection(FS_GLOBAL_PRODUCE)
-      .doc(produceId)
-      .collection(FS_PRICES_COLLECTION)
-      .doc();
-
-  final chosenDate = DateFormat("dd-MM-yyyy").format(chosenTimeStamp);
-  final formattedCurrentTimeStamp = DateFormat("yyyy-MM-dd hh:mm:ss aaa").format(clock.now());
-
-  transaction.set(priceDocRef, {
-    "currentPrice": newPrice,
-    "priceDate": chosenDate,
-    "priceDateTimeStamp": chosenTimeStamp,
-    "isAverage": false,
-    "allPricesMap": {formattedCurrentTimeStamp: newPrice},
-    "priceId": priceDocRef.id,
-  });
-}
-
-/// These [chosenTimeStamp] and [subPriceDate] must not both be specified. Only one.
-///
-/// Both of those variables are referring to a specific [subPrice]
-Future<void> updatePriceDocument({
-  required FirebaseFirestore firebaseFirestore,
-  required String produceId,
-  required num newPrice,
-  required Map<String, dynamic> chosenPriceDoc,
-  // Refers to a specific [subPrice]
-  DateTime? chosenTimeStamp,
-  String? subPriceDate,
-}) async {
-  String formattedCurrentTimeStamp;
-
-  if (chosenTimeStamp != null) {
-    formattedCurrentTimeStamp = DateFormat("yyyy-MM-dd hh:mm:ss aaa").format(chosenTimeStamp);
-  } else if (subPriceDate != null) {
-    formattedCurrentTimeStamp = subPriceDate;
-  } else if (subPriceDate != null && chosenTimeStamp != null) {
-    throw Exception();
-  } else {
-    throw Exception();
-  }
-
-  num newCurrentPrice = calculateNewPriceAverage(chosenPriceDoc["allPricesMap"], newPrice);
-
-  await firebaseFirestore
-      .collection(FS_GLOBAL_PRODUCE)
-      .doc(produceId)
-      .collection(FS_PRICES_COLLECTION)
-      .doc(chosenPriceDoc["priceId"])
-      .update({
-    "currentPrice": newCurrentPrice,
-    "isAverage": true,
-    "allPricesMap.$formattedCurrentTimeStamp": newPrice,
-  });
+  transaction.update(
+    firebaseFirestore.collection(FS_GLOBAL_PRODUCE).doc(produceId),
+    mapUsed,
+  );
 }
 
 /// The [newPrice] field must be the calculated average of [allPricesMap].
-Future<void> updateAggregatePrices({
+Future<Map<String, dynamic>> _updateAggregatePricesTransaction({
   required FirebaseFirestore firebaseFirestore,
+  required Transaction transaction,
   required String produceId,
   required num newPrice,
   required DateTime chosenTimeStamp,
+  required Map<String, dynamic> allPricesMap,
 }) async {
-  final chosenDate = DateFormat("dd-MM-yyyy").format(chosenTimeStamp);
-
-  await firebaseFirestore
+  final aggregateDocRef = firebaseFirestore
       .collection(FS_GLOBAL_PRODUCE)
       .doc(produceId)
       .collection(FS_AGGREGATE_COLLECTION)
-      .doc(FS_AGGREGATE_DOC)
-      .update({"prices-map.$chosenDate": newPrice});
+      .doc(FS_AGGREGATE_DOC);
+
+  final chosenDate = DateFormat("dd-MM-yyyy").format(chosenTimeStamp);
+
+  // Update the [allPricesMap] with the new price
+  allPricesMap["prices-map"][chosenDate] = newPrice;
+
+  transaction.update(aggregateDocRef, {"prices-map.$chosenDate": newPrice});
+
+  return allPricesMap;
 }
 
 /// This method expects [newPrice] to be a whole new sub-price, as in, it cannot be used to "edit"
@@ -634,7 +704,7 @@ Future<void> updateAggregatePrices({
 /// Basically, only use this when you want to add a new price to the [subPrice] list and calculate
 /// the new average price. Though this method doesn't update [allPricesMap], but simply returns
 /// the correct average price.
-num calculateNewPriceAverage(Map<String, dynamic> allPricesMap, num newPrice) {
+num _calculateNewPriceAverage(Map<String, dynamic> allPricesMap, num newPrice) {
   List<num> allPricesList = [newPrice];
 
   allPricesMap.forEach((date, price) {
@@ -654,7 +724,7 @@ num calculateNewPriceAverage(Map<String, dynamic> allPricesMap, num newPrice) {
 
 /// This method will update the [newPrice] associated with [chosenSubPriceDate] and return
 /// an updated [Price].
-Price editSubPrice(Price price, num newPrice, String chosenSubPriceDate) {
+Price _editSubPrice(Price price, num newPrice, String chosenSubPriceDate) {
   List<PriceSnippet> subPricesList = price.allPricesWithDateList;
   List<PriceSnippet> updatedSubPricesList = [];
 
