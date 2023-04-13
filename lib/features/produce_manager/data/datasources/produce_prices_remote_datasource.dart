@@ -158,14 +158,25 @@ class ProducePricesRemoteDatasource implements IProducePricesRemoteDatasource {
     bool isPriceDocDeleted = false;
 
     return await firebaseFirestore.runTransaction<bool>((transaction) async {
-      final priceSnapshot = await transaction.get(
-        firebaseFirestore
-            .collection(FS_GLOBAL_PRODUCE)
-            .doc(produceId)
-            .collection(FS_PRICES_COLLECTION)
-            .doc(priceId),
-      );
-      final Price price = Price.fromMap(priceSnapshot.data());
+      final Price price = await transaction
+          .get(
+            firebaseFirestore
+                .collection(FS_GLOBAL_PRODUCE)
+                .doc(produceId)
+                .collection(FS_PRICES_COLLECTION)
+                .doc(priceId),
+          )
+          .then((snap) => Price.fromMap(snap.data()));
+
+      final Map<String, dynamic>? aggregatePricesMap = await transaction
+          .get(
+            firebaseFirestore
+                .collection(FS_GLOBAL_PRODUCE)
+                .doc(produceId)
+                .collection(FS_AGGREGATE_COLLECTION)
+                .doc(FS_AGGREGATE_DOC),
+          )
+          .then((snap) => snap.data());
 
       List<PriceSnippet> subPricesList = price.allPricesWithDateList;
       List<PriceSnippet> updatedSubPricesList = [];
@@ -182,14 +193,7 @@ class ProducePricesRemoteDatasource implements IProducePricesRemoteDatasource {
         //? This means that the last [subPrice] was deleted and thus, the [Price] doc needs to be deleted.
         //? Three major steps: Update [aggregatePrices], Delete [Price] document, Update [Produce]
         //! Check if there is only one [Price] left, if yes, throw Exception.
-        // Note that this checks if it is the last price of that year.
-        final allPricesList = await firebaseFirestore
-            .collection(FS_GLOBAL_PRODUCE)
-            .doc(produceId)
-            .collection(FS_AGGREGATE_COLLECTION)
-            .doc(FS_AGGREGATE_DOC)
-            .get()
-            .then((value) => PriceSnippet.fromAggregateToList(value.data()!));
+        final allPricesList = PriceSnippet.fromAggregateToList(aggregatePricesMap!);
         if (allPricesList.length == 1) {
           throw ProduceManagerException(
             code: PM_ERR_LAST_PRICE,
@@ -207,6 +211,8 @@ class ProducePricesRemoteDatasource implements IProducePricesRemoteDatasource {
               .doc(FS_AGGREGATE_DOC),
           {"prices-map.${price.priceDate}": FieldValue.delete()},
         );
+        aggregatePricesMap["prices-map"].remove(price.priceDate);
+
         //! Delete [Price] document
         transaction.delete(
           firebaseFirestore
@@ -215,13 +221,14 @@ class ProducePricesRemoteDatasource implements IProducePricesRemoteDatasource {
               .collection(FS_PRICES_COLLECTION)
               .doc(priceId),
         );
+
         //! Update [Produce]
         await updateProducePricesTransaction(
-            transaction: transaction,
-            firebaseFirestore: firebaseFirestore,
-            produceId: produceId,
-            // TODO: Pass in aggregatePricesMap
-            aggregatePricesMap: {});
+          transaction: transaction,
+          firebaseFirestore: firebaseFirestore,
+          produceId: produceId,
+          aggregatePricesMap: aggregatePricesMap,
+        );
 
         isPriceDocDeleted = true;
       } else {
@@ -247,13 +254,14 @@ class ProducePricesRemoteDatasource implements IProducePricesRemoteDatasource {
               .doc(FS_AGGREGATE_DOC),
           {"prices-map.${price.priceDate}": updatedPrice.currentPrice},
         );
+        aggregatePricesMap!["prices-map"][price.priceDate] = updatedPrice.currentPrice;
+
         //! Update [Produce]
         await updateProducePricesTransaction(
           transaction: transaction,
           firebaseFirestore: firebaseFirestore,
           produceId: produceId,
-          // TODO: Pass in aggregatePricesMap
-          aggregatePricesMap: {},
+          aggregatePricesMap: aggregatePricesMap,
         );
       }
 
