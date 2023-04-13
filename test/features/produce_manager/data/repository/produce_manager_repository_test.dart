@@ -4,6 +4,7 @@ import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
 import 'package:farmhub/core/network/network_info.dart';
 import 'package:farmhub/features/produce_manager/data/datasources/produce_manager_local_datasource.dart';
 import 'package:farmhub/features/produce_manager/data/datasources/produce_manager_remote_datasource.dart';
+import 'package:farmhub/features/produce_manager/data/datasources/produce_prices_remote_datasource.dart';
 import 'package:farmhub/features/produce_manager/data/repository/produce_manager_repository.dart';
 import 'package:farmhub/features/produce_manager/domain/entities/produce/produce.dart';
 import 'package:fpdart/fpdart.dart';
@@ -13,6 +14,8 @@ import 'package:flutter_test/flutter_test.dart';
 class MockProduceManagerRemoteDatasource extends Mock implements IProduceManagerRemoteDatasource {}
 
 class MockProduceManagerLocalDatasource extends Mock implements IProduceManagerLocalDatasource {}
+
+class MockProducePricesRemoteDatasource extends Mock implements IProducePricesRemoteDatasource {}
 
 class MockAuthRepository extends Mock implements IAuthRepository {}
 
@@ -30,6 +33,7 @@ void main() {
   late MockAuthRepository mockAuthRepository;
   late MockNetworkInfo mockNetworkInfo;
   late MockGlobalAuthCubit mockGlobalAuthCubit;
+  late MockProducePricesRemoteDatasource mockProducePricesRemoteDatasource;
 
   setUp(() {
     mockRemoteDatasource = MockProduceManagerRemoteDatasource();
@@ -37,6 +41,7 @@ void main() {
     mockNetworkInfo = MockNetworkInfo();
     mockAuthRepository = MockAuthRepository();
     mockGlobalAuthCubit = MockGlobalAuthCubit();
+    mockProducePricesRemoteDatasource = MockProducePricesRemoteDatasource();
 
     repository = ProduceManagerRepository(
       localDatasource: mockLocalDatasource,
@@ -44,6 +49,7 @@ void main() {
       remoteDatasource: mockRemoteDatasource,
       authRepository: mockAuthRepository,
       globalAuthCubit: mockGlobalAuthCubit,
+      pricesRemoteDatasource: mockProducePricesRemoteDatasource,
     );
 
     registerFallbackValue(FakeProduce());
