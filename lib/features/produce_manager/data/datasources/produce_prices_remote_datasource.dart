@@ -32,10 +32,24 @@ class ProducePricesRemoteDatasource implements IProducePricesRemoteDatasource {
 
   ProducePricesRemoteDatasource({required this.firebaseFirestore});
 
+  /// This function updates the price of a produce and updates the produce document with the new price
+  /// and related information.
+  ///
+  /// Args:
+  ///   produceId (String): A required String parameter representing the ID of the produce being updated.
+  ///   currentPrice (num): The current price of the produce that needs to be added/updated.
+  ///   daysFromNow (num): An optional parameter of type num that represents the number of days from the
+  /// current date. If provided, the current timestamp will be set to the specified number of days ago.
+  /// If not provided, the current timestamp will be set to the current date and time.
+  ///
+  /// Returns:
+  ///   The function `addNewPrice` returns a `Future` of type `Produce`.
+  ///
   /// There are two possible cases:
   ///
   /// 1. Adding a Price to a date that already has a price.
   /// 2. Adding a Price to a date that does not have a price.
+  ///
   @override
   Future<Produce> addNewPrice({
     required String produceId,
@@ -237,7 +251,7 @@ class ProducePricesRemoteDatasource implements IProducePricesRemoteDatasource {
         //? steps: Update [Price]'s [currentPrice] and [allPrices], Update [aggregatePrices], Update [Produce]
 
         //! Update [Price]'s [currentPrice] and [allPrices]
-        final updatedPrice = _deleteSubPriceAndUpdatePrice(price, subPriceDate);
+        final updatedPrice = deleteSubPriceAndUpdatePrice(price, subPriceDate);
         transaction.update(
           firebaseFirestore
               .collection(FS_GLOBAL_PRODUCE)
@@ -476,7 +490,7 @@ Future<Tuple2<Price, Map<String, dynamic>>> _returnPriceAndUpdatePricesTransacti
     chosenPriceDoc: chosenPriceDoc,
   );
 
-  final newAggregatePricesMap = await _updateAggregatePricesTransaction(
+  final newAggregatePricesMap = await updateAggregatePricesTransaction(
     transaction: transaction,
     firebaseFirestore: firebaseFirestore,
     produceId: produceId,
@@ -505,7 +519,7 @@ Future<Price> _createOrUpdatePriceDocumentTransaction({
       chosenTimeStamp: chosenTimeStamp,
     );
   } else if (chosenPriceDoc.length == 1) {
-    return await _updatePriceDocumentTransaction(
+    return await updatePriceDocumentTransaction(
       transaction: transaction,
       firebaseFirestore: firebaseFirestore,
       produceId: produceId,
@@ -559,7 +573,7 @@ Future<Price> createPriceDocumentTransaction({
 /// Both of those variables are referring to a specific [subPrice]
 ///
 /// The returned [Price] should have the new [Price.currentPrice] and [Price.allPricesMap].
-Future<Price> _updatePriceDocumentTransaction({
+Future<Price> updatePriceDocumentTransaction({
   required Transaction transaction,
   required FirebaseFirestore firebaseFirestore,
   required String produceId,
@@ -580,7 +594,7 @@ Future<Price> _updatePriceDocumentTransaction({
     throw Exception();
   }
 
-  num newCurrentPrice = _calculateNewPriceAverage(chosenPriceDoc["allPricesMap"], newPrice);
+  num newCurrentPrice = calculateNewPriceAverage(chosenPriceDoc["allPricesMap"], newPrice);
 
   Price price = Price.fromMap(chosenPriceDoc);
   Price updatedPrice = price.copyWith(
@@ -694,7 +708,7 @@ Future<void> updateProducePricesTransaction({
 }
 
 /// The [newPrice] field must be the calculated average of [allPricesMap].
-Future<Map<String, dynamic>> _updateAggregatePricesTransaction({
+Future<Map<String, dynamic>> updateAggregatePricesTransaction({
   required FirebaseFirestore firebaseFirestore,
   required Transaction transaction,
   required String produceId,
@@ -724,7 +738,7 @@ Future<Map<String, dynamic>> _updateAggregatePricesTransaction({
 /// Basically, only use this when you want to add a new price to the [subPrice] list and calculate
 /// the new average price. Though this method doesn't update [allPricesMap], but simply returns
 /// the correct average price.
-num _calculateNewPriceAverage(Map<String, dynamic> allPricesMap, num newPrice) {
+num calculateNewPriceAverage(Map<String, dynamic> allPricesMap, num newPrice) {
   List<num> allPricesList = [newPrice];
 
   allPricesMap.forEach((date, price) {
@@ -763,7 +777,7 @@ Price _editSubPrice(Price price, num newPrice, String chosenSubPriceDate) {
 }
 
 /// This method will remove the [chosenSubPriceDate] and return an updated [Price]
-Price _deleteSubPriceAndUpdatePrice(Price price, String chosenSubPriceDate) {
+Price deleteSubPriceAndUpdatePrice(Price price, String chosenSubPriceDate) {
   List<PriceSnippet> subPricesList = price.allPricesWithDateList;
   List<PriceSnippet> updatedSubPricesList = [];
   bool isAverage = price.isAverage;

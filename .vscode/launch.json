@@ -1,0 +1,46 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+    {
+        "name": "Docker .NET Attach (Preview)",
+        "type": "docker",
+        "request": "attach",
+        "platform": "netCore",
+        "sourceFileMap": {
+            "/src": "${workspaceFolder}"
+        }
+    },
+        {
+            "name": "farmhub",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "farmhub (profile mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "farmhub (release mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "Integration Test: Run Test",
+            "program": "/Users/nazrinharris/Development/FlutterProjects/farmhub/integration_test/produce_prices_remote_datasource_test.dart",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "Run all tests",
+            "type": "dart",
+            "request": "launch",
+            "program": "test/"
+        }
+    ]
+}
