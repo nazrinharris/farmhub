@@ -10,6 +10,7 @@ google_sign_in=/Users/nazrinharris/.pub-cache/hosted/pub.dev/google_sign_in-6.1.
 google_sign_in_android=/Users/nazrinharris/.pub-cache/hosted/pub.dev/google_sign_in_android-6.1.4/
 google_sign_in_ios=/Users/nazrinharris/.pub-cache/hosted/pub.dev/google_sign_in_ios-5.5.1/
 google_sign_in_web=/Users/nazrinharris/.pub-cache/hosted/pub.dev/google_sign_in_web-0.12.0/
+integration_test=/Users/Source/flutter/packages/integration_test/
 package_info_plus=/Users/nazrinharris/.pub-cache/hosted/pub.dev/package_info_plus-3.0.2/
 path_provider=/Users/nazrinharris/.pub-cache/hosted/pub.dev/path_provider-2.0.11/
 path_provider_android=/Users/nazrinharris/.pub-cache/hosted/pub.dev/path_provider_android-2.0.22/

@@ -1,0 +1,19 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "produce",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "produceNameSearch",
+          "arrayConfig": "CONTAINS"
+        },
+        {
+          "fieldPath": "isDeleted",
+          "order": "ASCENDING"
+        }
+      ]
+    }
+  ],
+  "fieldOverrides": []
+}

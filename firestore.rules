@@ -1,0 +1,56 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isAdmin() {
+      return exists(/databases/$(database)/documents/admins/$(request.auth.uid));
+    }
+
+    match /produce/{produceId} {
+    	allow read: if true;
+      allow create: if isAdmin();
+      allow update: if isAdmin();
+    }
+    
+    match /farms/{farmId} {
+    	allow read: if true;
+      allow create: if true;
+    }
+    
+    match /produce/{produceId}/aggregatePrices/{aggregatePricesId} {
+    	allow read: if true;
+      allow create: if isAdmin();
+      allow update: if isAdmin();
+    }
+    
+    match /produce/{produceId}/prices/{priceId}{
+    	allow read: if true;
+      allow create: if isAdmin();
+      allow update: if isAdmin();
+      allow delete: if isAdmin();
+    }
+    
+    match /admins/{userId} {
+    	allow read: if true;
+    }
+    
+    match /farms/{farmId} {
+    	allow read: if true;
+      allow create: if request.auth.uid == request.resource.data.creatorUserId;
+    	allow update: if request.auth.uid == request.resource.data.creatorUserId;
+      allow delete: if request.auth.uid == resource.data.creatorUserId;
+    }
+    
+    match /shops/{shopId} {
+    	allow read: if true;
+      allow create: if request.auth.uid == request.resource.data.creatorUserId;
+    	allow update: if request.auth.uid == request.resource.data.creatorUserId;
+      allow delete: if request.auth.uid == resource.data.creatorUserId;
+    }
+    
+    match /users/{userId} {
+    	allow read: if true;
+      allow create: if true;
+      allow write: if request.auth.uid == userId;
+    }
+  }
+}

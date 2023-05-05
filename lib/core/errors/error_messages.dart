@@ -1,5 +1,4 @@
 import 'package:farmhub/core/errors/failures.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
 /// This method takes in a [Failure] and returns a more beautiful error message. This is not an exhaustive list and
 /// more may be added manually
