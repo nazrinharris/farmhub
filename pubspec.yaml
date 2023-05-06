@@ -15,10 +15,11 @@ dependencies:
   auto_route: ^5.0.4
 
   # Firebase Suite
-  cloud_firestore: ^4.5.0
-  firebase_auth: ^4.4.0
-  firebase_core: ^2.9.0
+  cloud_firestore: ^4.6.0
+  firebase_auth: ^4.5.0
+  firebase_core: ^2.11.0
   google_sign_in: ^6.1.0
+  cloud_functions: ^4.2.0
 
   # Other auth
   sign_in_with_apple: ^4.3.0
