@@ -54,8 +54,6 @@ abstract class IAuthRemoteDataSource {
   Future<Unit> sendPasswordResetEmail(String email);
 
   Future<Unit> signOut();
-
-  Future<Unit> _updateAppVersion();
 }
 
 class AuthRemoteDataSource implements IAuthRemoteDataSource {
@@ -76,6 +74,15 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
           password: password,
         )
         .then((user) => user.user!.uid);
+
+    try {
+      await _updateAppVersion();
+    } on FirebaseFunctionsException catch (e) {
+      // Sign the user out and rethrow the error
+      await signOut();
+      rethrow;
+    }
+
     final FarmhubUser farmhubUser = await firebaseFirestore
         .collection(FS_USER)
         .doc(resultUid)
@@ -94,8 +101,6 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
         );
       }
     });
-
-    await _updateAppVersion();
 
     return farmhubUser;
   }
@@ -156,7 +161,13 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
       "phoneNumber": null,
     }, null);
 
-    await _updateAppVersion();
+    try {
+      await _updateAppVersion();
+    } on FirebaseFunctionsException catch (e) {
+      // Sign the user out and rethrow the error
+      await signOut();
+      rethrow;
+    }
 
     return farmhubUser;
   }
@@ -295,8 +306,13 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
       userType: UserType.regular,
     );
 
-    await _updateAppVersion();
-
+    try {
+      await _updateAppVersion();
+    } on FirebaseFunctionsException catch (e) {
+      // Sign the user out and rethrow the error
+      await signOut();
+      rethrow;
+    }
     return user;
   }
 
@@ -330,7 +346,13 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
     debugPrint("AuthRemoteDatasource - registerWithCredentials()");
     debugPrint(user.toString());
 
-    await _updateAppVersion();
+    try {
+      await _updateAppVersion();
+    } on FirebaseFunctionsException catch (e) {
+      // Sign the user out and rethrow the error
+      await signOut();
+      rethrow;
+    }
 
     return user;
   }
@@ -359,7 +381,13 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
 
     final UserCredential userCredential = await firebaseAuth.signInWithCredential(credential);
 
-    await _updateAppVersion();
+    try {
+      await _updateAppVersion();
+    } on FirebaseFunctionsException catch (e) {
+      // Sign the user out and rethrow the error
+      await signOut();
+      rethrow;
+    }
 
     return userCredential;
   }
@@ -392,12 +420,17 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
     // not match the nonce in `appleCredential.identityToken`, sign in will fail.
     final userCred = await FirebaseAuth.instance.signInWithCredential(oauthCredential);
 
-    await _updateAppVersion();
+    try {
+      await _updateAppVersion();
+    } on FirebaseFunctionsException catch (e) {
+      // Sign the user out and rethrow the error
+      await signOut();
+      rethrow;
+    }
 
     return userCred;
   }
 
-  @override
   Future<Unit> _updateAppVersion() async {
     // Call the setAppVersion Cloud Function after the user authenticates.
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
