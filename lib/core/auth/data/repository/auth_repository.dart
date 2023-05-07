@@ -1,3 +1,4 @@
+import 'package:cloud_functions/cloud_functions.dart';
 import 'package:farmhub/core/typedefs/typedefs.dart';
 import 'package:farmhub/core/util/misc.dart';
 import 'package:farmhub/features/farm_shop_manager/data/datasources/farm_shop_manager_remote_datasource.dart';
@@ -16,6 +17,7 @@ import 'package:farmhub/core/network/network_info.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
 import '../../../errors/exceptions.dart';
+import '../../../util/printer.dart';
 
 class AuthRepository implements IAuthRepository {
   final IAuthRemoteDataSource authRemoteDataSource;
@@ -45,6 +47,14 @@ class AuthRepository implements IAuthRepository {
 
         return Right(user);
       } on FirebaseAuthException catch (e, stack) {
+        return Left(FirebaseAuthFailure(
+          code: e.code,
+          message: e.message,
+          stackTrace: stack,
+        ));
+      } on FirebaseFunctionsException catch (e, stack) {
+        print(e);
+
         return Left(FirebaseAuthFailure(
           code: e.code,
           message: e.message,
@@ -88,6 +98,12 @@ class AuthRepository implements IAuthRepository {
           code: e.code,
           message: e.message,
           stackTrace: e.stackTrace,
+        ));
+      } on FirebaseFunctionsException catch (e, stack) {
+        return Left(FirebaseAuthFailure(
+          code: e.code,
+          message: e.message,
+          stackTrace: stack,
         ));
       } on AuthException catch (e) {
         return Left(AuthFailure(
@@ -152,8 +168,7 @@ class AuthRepository implements IAuthRepository {
           );
         }
 
-        debugPrint("User Data ->");
-        debugPrint(user.toString());
+        debugPrintUserData("User Retrieved", user);
         await authLocalDataSource.storeFarmhubUser(user);
 
         return Right(user);
@@ -310,6 +325,12 @@ class AuthRepository implements IAuthRepository {
       try {
         await authRemoteDataSource.chooseUserType(uid, userType);
         return const Right(unit);
+      } on FirebaseFunctionsException catch (e, stack) {
+        return Left(FirebaseAuthFailure(
+          code: e.code,
+          message: e.message,
+          stackTrace: stack,
+        ));
       } catch (e, stack) {
         return Left(UnexpectedFailure(
           code: e.toString(),
@@ -339,6 +360,12 @@ class AuthRepository implements IAuthRepository {
       } on AuthException catch (e, stack) {
         debugPrint(e.toString());
         return Left(AuthFailure(
+          code: e.code,
+          message: e.message,
+          stackTrace: stack,
+        ));
+      } on FirebaseFunctionsException catch (e, stack) {
+        return Left(FirebaseAuthFailure(
           code: e.code,
           message: e.message,
           stackTrace: stack,
@@ -383,6 +410,12 @@ class AuthRepository implements IAuthRepository {
       } on AuthException catch (e, stack) {
         debugPrint(e.toString());
         return Left(AuthFailure(
+          code: e.code,
+          message: e.message,
+          stackTrace: stack,
+        ));
+      } on FirebaseFunctionsException catch (e, stack) {
+        return Left(FirebaseAuthFailure(
           code: e.code,
           message: e.message,
           stackTrace: stack,
@@ -450,6 +483,12 @@ class AuthRepository implements IAuthRepository {
             code: e.code,
           ),
         );
+      } on FirebaseFunctionsException catch (e, stack) {
+        return Left(FirebaseAuthFailure(
+          code: e.code,
+          message: e.message,
+          stackTrace: stack,
+        ));
       } catch (e, stack) {
         return Left(
           UnexpectedFailure(
@@ -522,6 +561,12 @@ class AuthRepository implements IAuthRepository {
             code: e.code.toString(),
           ),
         );
+      } on FirebaseFunctionsException catch (e, stack) {
+        return Left(FirebaseAuthFailure(
+          code: e.code,
+          message: e.message,
+          stackTrace: stack,
+        ));
       } catch (e, stack) {
         return Left(
           UnexpectedFailure(

@@ -131,9 +131,16 @@ class _SliverSettingsBodyState extends State<SliverSettingsBody> {
                 ),
                 SettingsListCard(
                   content: "Navigate to Playground",
-                  icon: const Icon(Icons.adb),
+                  icon: const Icon(Icons.slideshow),
                   onTap: () {
                     Navigator.pushNamed(context, "/playground");
+                  },
+                ),
+                SettingsListCard(
+                  content: "Debug Print App Meta",
+                  icon: const Icon(Icons.display_settings),
+                  onTap: () {
+                    context.read<SettingsCubit>().debugPrintMeta();
                   },
                 ),
                 const UIVerticalSpace30(),

@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:farmhub/core/auth/domain/i_auth_repository.dart';
 import 'package:farmhub/presentation/smart_widgets/produce_dialogs/app_dialogs.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:ndialog/ndialog.dart';
@@ -44,9 +45,17 @@ class SettingsCubit extends Cubit<SettingsState> {
 
   void retrieveAppVersion() async {
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
-
-    print(packageInfo);
-
     emit(state.copyWith(appVersion: packageInfo.version));
+  }
+
+  void debugPrintMeta() async {
+    PackageInfo packageInfo = await PackageInfo.fromPlatform();
+    final idTokenResult = await FirebaseAuth.instance.currentUser!.getIdTokenResult();
+    dynamic appVersionClaim = idTokenResult.claims?['appVersion'];
+
+    debugPrint('''
+    App Version: ${packageInfo.version}
+    App Version Claim: $appVersionClaim
+      ''');
   }
 }

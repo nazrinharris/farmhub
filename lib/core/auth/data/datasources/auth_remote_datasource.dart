@@ -9,9 +9,10 @@ import 'package:fpdart/fpdart.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:intl/intl.dart';
 import 'package:clock/clock.dart';
-import 'package:english_words/english_words.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:phone_numbers_parser/phone_numbers_parser.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
+import 'package:cloud_functions/cloud_functions.dart';
 
 import '../../../util/secure.dart' as secure;
 
@@ -73,6 +74,15 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
           password: password,
         )
         .then((user) => user.user!.uid);
+
+    try {
+      await _updateAppVersion();
+    } on FirebaseFunctionsException catch (e) {
+      // Sign the user out and rethrow the error
+      await signOut();
+      rethrow;
+    }
+
     final FarmhubUser farmhubUser = await firebaseFirestore
         .collection(FS_USER)
         .doc(resultUid)
@@ -150,6 +160,14 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
       "userType": userType.typeAsString,
       "phoneNumber": null,
     }, null);
+
+    try {
+      await _updateAppVersion();
+    } on FirebaseFunctionsException catch (e) {
+      // Sign the user out and rethrow the error
+      await signOut();
+      rethrow;
+    }
 
     return farmhubUser;
   }
@@ -254,6 +272,8 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
         .update(mapToUpdate)
         .then((value) => debugPrint("Change Success!"));
 
+    await _updateAppVersion();
+
     return unit;
   }
 
@@ -286,6 +306,13 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
       userType: UserType.regular,
     );
 
+    try {
+      await _updateAppVersion();
+    } on FirebaseFunctionsException catch (e) {
+      // Sign the user out and rethrow the error
+      await signOut();
+      rethrow;
+    }
     return user;
   }
 
@@ -319,6 +346,14 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
     debugPrint("AuthRemoteDatasource - registerWithCredentials()");
     debugPrint(user.toString());
 
+    try {
+      await _updateAppVersion();
+    } on FirebaseFunctionsException catch (e) {
+      // Sign the user out and rethrow the error
+      await signOut();
+      rethrow;
+    }
+
     return user;
   }
 
@@ -345,6 +380,14 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
     );
 
     final UserCredential userCredential = await firebaseAuth.signInWithCredential(credential);
+
+    try {
+      await _updateAppVersion();
+    } on FirebaseFunctionsException catch (e) {
+      // Sign the user out and rethrow the error
+      await signOut();
+      rethrow;
+    }
 
     return userCredential;
   }
@@ -375,6 +418,39 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
 
     // Sign in the user with Firebase. If the nonce we generated earlier does
     // not match the nonce in `appleCredential.identityToken`, sign in will fail.
-    return await FirebaseAuth.instance.signInWithCredential(oauthCredential);
+    final userCred = await FirebaseAuth.instance.signInWithCredential(oauthCredential);
+
+    try {
+      await _updateAppVersion();
+    } on FirebaseFunctionsException catch (e) {
+      // Sign the user out and rethrow the error
+      await signOut();
+      rethrow;
+    }
+
+    return userCred;
+  }
+
+  Future<Unit> _updateAppVersion() async {
+    // Call the setAppVersion Cloud Function after the user authenticates.
+    PackageInfo packageInfo = await PackageInfo.fromPlatform();
+    final FirebaseFunctions functions = FirebaseFunctions.instanceFor(region: 'asia-southeast1');
+    final HttpsCallable callable = functions.httpsCallable('setAppVersion');
+    await callable.call(<String, dynamic>{
+      'appVersion': packageInfo.version,
+
+      /// Uncomment for testing for if version is lower than 0.3.1
+      //'appVersion': "0.3.0",
+    }).then((_) async {
+      final idTokenResult = await FirebaseAuth.instance.currentUser!.getIdTokenResult();
+      dynamic appVersionClaim = idTokenResult.claims?['appVersion'];
+      if (appVersionClaim != null) {
+        print('The appVersion custom claim is present: $appVersionClaim');
+      } else {
+        print('The appVersion custom claim is not present.');
+      }
+    });
+
+    return unit;
   }
 }
