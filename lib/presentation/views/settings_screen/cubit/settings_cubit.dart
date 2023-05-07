@@ -45,9 +45,6 @@ class SettingsCubit extends Cubit<SettingsState> {
 
   void retrieveAppVersion() async {
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
-
-    print(packageInfo);
-
     emit(state.copyWith(appVersion: packageInfo.version));
   }
 

@@ -2,6 +2,7 @@ import 'package:farmhub/core/auth/domain/entities/farmhub_user/farmhub_user.dart
 import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
 import 'package:farmhub/core/network/network_info.dart';
 import 'package:farmhub/core/util/farmhub_icons.dart';
+import 'package:farmhub/core/util/printer.dart';
 import 'package:farmhub/locator.dart';
 import 'package:farmhub/presentation/global/cubit/global_ui_cubit.dart';
 import 'package:farmhub/presentation/shared_widgets/appbars.dart';
@@ -63,8 +64,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 userType: UserType.regular,
               );
 
-          print("FarmhubUser in GlobalAuthCubit currently:");
-          print(state.farmhubUser);
+          debugPrintUserData("FarmhubUser in GlobalAuthCubit:", user);
 
           return BlocListener<GlobalUICubit, GlobalUIState>(
             listener: (context, state) {

@@ -17,6 +17,7 @@ import 'package:farmhub/core/network/network_info.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
 import '../../../errors/exceptions.dart';
+import '../../../util/printer.dart';
 
 class AuthRepository implements IAuthRepository {
   final IAuthRemoteDataSource authRemoteDataSource;
@@ -167,8 +168,7 @@ class AuthRepository implements IAuthRepository {
           );
         }
 
-        debugPrint("User Data ->");
-        debugPrint(user.toString());
+        debugPrintUserData("User Retrieved", user);
         await authLocalDataSource.storeFarmhubUser(user);
 
         return Right(user);
