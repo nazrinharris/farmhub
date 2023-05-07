@@ -31,6 +31,9 @@ mixin _$AuthState {
     required TResult Function(Failure failure) accountCreationError,
     required TResult Function(Tuple2<FarmhubUser, bool> result)
         thirdPartyAccountCreationSuccess,
+    required TResult Function() remoteConfigLoading,
+    required TResult Function(Failure failure) remoteConfigError,
+    required TResult Function() remoteConfigSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -48,6 +51,9 @@ mixin _$AuthState {
     TResult Function(Failure failure)? accountCreationError,
     TResult Function(Tuple2<FarmhubUser, bool> result)?
         thirdPartyAccountCreationSuccess,
+    TResult Function()? remoteConfigLoading,
+    TResult Function(Failure failure)? remoteConfigError,
+    TResult Function()? remoteConfigSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -65,6 +71,9 @@ mixin _$AuthState {
     TResult Function(Failure failure)? accountCreationError,
     TResult Function(Tuple2<FarmhubUser, bool> result)?
         thirdPartyAccountCreationSuccess,
+    TResult Function()? remoteConfigLoading,
+    TResult Function(Failure failure)? remoteConfigError,
+    TResult Function()? remoteConfigSuccess,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -85,6 +94,9 @@ mixin _$AuthState {
     required TResult Function(AccountCreationError value) accountCreationError,
     required TResult Function(ThirdPartyAccountCreationSuccess value)
         thirdPartyAccountCreationSuccess,
+    required TResult Function(RemoteConfigLoading value) remoteConfigLoading,
+    required TResult Function(RemoteConfigError value) remoteConfigError,
+    required TResult Function(RemoteConfigSuccess value) remoteConfigSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -100,6 +112,9 @@ mixin _$AuthState {
     TResult Function(AccountCreationError value)? accountCreationError,
     TResult Function(ThirdPartyAccountCreationSuccess value)?
         thirdPartyAccountCreationSuccess,
+    TResult Function(RemoteConfigLoading value)? remoteConfigLoading,
+    TResult Function(RemoteConfigError value)? remoteConfigError,
+    TResult Function(RemoteConfigSuccess value)? remoteConfigSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -115,6 +130,9 @@ mixin _$AuthState {
     TResult Function(AccountCreationError value)? accountCreationError,
     TResult Function(ThirdPartyAccountCreationSuccess value)?
         thirdPartyAccountCreationSuccess,
+    TResult Function(RemoteConfigLoading value)? remoteConfigLoading,
+    TResult Function(RemoteConfigError value)? remoteConfigError,
+    TResult Function(RemoteConfigSuccess value)? remoteConfigSuccess,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -187,6 +205,9 @@ class _$_Initial implements _Initial {
     required TResult Function(Failure failure) accountCreationError,
     required TResult Function(Tuple2<FarmhubUser, bool> result)
         thirdPartyAccountCreationSuccess,
+    required TResult Function() remoteConfigLoading,
+    required TResult Function(Failure failure) remoteConfigError,
+    required TResult Function() remoteConfigSuccess,
   }) {
     return initial();
   }
@@ -207,6 +228,9 @@ class _$_Initial implements _Initial {
     TResult Function(Failure failure)? accountCreationError,
     TResult Function(Tuple2<FarmhubUser, bool> result)?
         thirdPartyAccountCreationSuccess,
+    TResult Function()? remoteConfigLoading,
+    TResult Function(Failure failure)? remoteConfigError,
+    TResult Function()? remoteConfigSuccess,
   }) {
     return initial?.call();
   }
@@ -227,6 +251,9 @@ class _$_Initial implements _Initial {
     TResult Function(Failure failure)? accountCreationError,
     TResult Function(Tuple2<FarmhubUser, bool> result)?
         thirdPartyAccountCreationSuccess,
+    TResult Function()? remoteConfigLoading,
+    TResult Function(Failure failure)? remoteConfigError,
+    TResult Function()? remoteConfigSuccess,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -253,6 +280,9 @@ class _$_Initial implements _Initial {
     required TResult Function(AccountCreationError value) accountCreationError,
     required TResult Function(ThirdPartyAccountCreationSuccess value)
         thirdPartyAccountCreationSuccess,
+    required TResult Function(RemoteConfigLoading value) remoteConfigLoading,
+    required TResult Function(RemoteConfigError value) remoteConfigError,
+    required TResult Function(RemoteConfigSuccess value) remoteConfigSuccess,
   }) {
     return initial(this);
   }
@@ -271,6 +301,9 @@ class _$_Initial implements _Initial {
     TResult Function(AccountCreationError value)? accountCreationError,
     TResult Function(ThirdPartyAccountCreationSuccess value)?
         thirdPartyAccountCreationSuccess,
+    TResult Function(RemoteConfigLoading value)? remoteConfigLoading,
+    TResult Function(RemoteConfigError value)? remoteConfigError,
+    TResult Function(RemoteConfigSuccess value)? remoteConfigSuccess,
   }) {
     return initial?.call(this);
   }
@@ -289,6 +322,9 @@ class _$_Initial implements _Initial {
     TResult Function(AccountCreationError value)? accountCreationError,
     TResult Function(ThirdPartyAccountCreationSuccess value)?
         thirdPartyAccountCreationSuccess,
+    TResult Function(RemoteConfigLoading value)? remoteConfigLoading,
+    TResult Function(RemoteConfigError value)? remoteConfigError,
+    TResult Function(RemoteConfigSuccess value)? remoteConfigSuccess,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -358,6 +394,9 @@ class _$PhoneVerificationLoading implements PhoneVerificationLoading {
     required TResult Function(Failure failure) accountCreationError,
     required TResult Function(Tuple2<FarmhubUser, bool> result)
         thirdPartyAccountCreationSuccess,
+    required TResult Function() remoteConfigLoading,
+    required TResult Function(Failure failure) remoteConfigError,
+    required TResult Function() remoteConfigSuccess,
   }) {
     return phoneVerificationLoading();
   }
@@ -378,6 +417,9 @@ class _$PhoneVerificationLoading implements PhoneVerificationLoading {
     TResult Function(Failure failure)? accountCreationError,
     TResult Function(Tuple2<FarmhubUser, bool> result)?
         thirdPartyAccountCreationSuccess,
+    TResult Function()? remoteConfigLoading,
+    TResult Function(Failure failure)? remoteConfigError,
+    TResult Function()? remoteConfigSuccess,
   }) {
     return phoneVerificationLoading?.call();
   }
@@ -398,6 +440,9 @@ class _$PhoneVerificationLoading implements PhoneVerificationLoading {
     TResult Function(Failure failure)? accountCreationError,
     TResult Function(Tuple2<FarmhubUser, bool> result)?
         thirdPartyAccountCreationSuccess,
+    TResult Function()? remoteConfigLoading,
+    TResult Function(Failure failure)? remoteConfigError,
+    TResult Function()? remoteConfigSuccess,
     required TResult orElse(),
   }) {
     if (phoneVerificationLoading != null) {
@@ -424,6 +469,9 @@ class _$PhoneVerificationLoading implements PhoneVerificationLoading {
     required TResult Function(AccountCreationError value) accountCreationError,
     required TResult Function(ThirdPartyAccountCreationSuccess value)
         thirdPartyAccountCreationSuccess,
+    required TResult Function(RemoteConfigLoading value) remoteConfigLoading,
+    required TResult Function(RemoteConfigError value) remoteConfigError,
+    required TResult Function(RemoteConfigSuccess value) remoteConfigSuccess,
   }) {
     return phoneVerificationLoading(this);
   }
@@ -442,6 +490,9 @@ class _$PhoneVerificationLoading implements PhoneVerificationLoading {
     TResult Function(AccountCreationError value)? accountCreationError,
     TResult Function(ThirdPartyAccountCreationSuccess value)?
         thirdPartyAccountCreationSuccess,
+    TResult Function(RemoteConfigLoading value)? remoteConfigLoading,
+    TResult Function(RemoteConfigError value)? remoteConfigError,
+    TResult Function(RemoteConfigSuccess value)? remoteConfigSuccess,
   }) {
     return phoneVerificationLoading?.call(this);
   }
@@ -460,6 +511,9 @@ class _$PhoneVerificationLoading implements PhoneVerificationLoading {
     TResult Function(AccountCreationError value)? accountCreationError,
     TResult Function(ThirdPartyAccountCreationSuccess value)?
         thirdPartyAccountCreationSuccess,
+    TResult Function(RemoteConfigLoading value)? remoteConfigLoading,
+    TResult Function(RemoteConfigError value)? remoteConfigError,
+    TResult Function(RemoteConfigSuccess value)? remoteConfigSuccess,
     required TResult orElse(),
   }) {
     if (phoneVerificationLoading != null) {
@@ -577,6 +631,9 @@ class _$SMSCodeSentToClient implements SMSCodeSentToClient {
     required TResult Function(Failure failure) accountCreationError,
     required TResult Function(Tuple2<FarmhubUser, bool> result)
         thirdPartyAccountCreationSuccess,
+    required TResult Function() remoteConfigLoading,
+    required TResult Function(Failure failure) remoteConfigError,
+    required TResult Function() remoteConfigSuccess,
   }) {
     return SMSCodeSentToClient(verificationId, phoneNumber, resendToken);
   }
@@ -597,6 +654,9 @@ class _$SMSCodeSentToClient implements SMSCodeSentToClient {
     TResult Function(Failure failure)? accountCreationError,
     TResult Function(Tuple2<FarmhubUser, bool> result)?
         thirdPartyAccountCreationSuccess,
+    TResult Function()? remoteConfigLoading,
+    TResult Function(Failure failure)? remoteConfigError,
+    TResult Function()? remoteConfigSuccess,
   }) {
     return SMSCodeSentToClient?.call(verificationId, phoneNumber, resendToken);
   }
@@ -617,6 +677,9 @@ class _$SMSCodeSentToClient implements SMSCodeSentToClient {
     TResult Function(Failure failure)? accountCreationError,
     TResult Function(Tuple2<FarmhubUser, bool> result)?
         thirdPartyAccountCreationSuccess,
+    TResult Function()? remoteConfigLoading,
+    TResult Function(Failure failure)? remoteConfigError,
+    TResult Function()? remoteConfigSuccess,
     required TResult orElse(),
   }) {
     if (SMSCodeSentToClient != null) {
@@ -643,6 +706,9 @@ class _$SMSCodeSentToClient implements SMSCodeSentToClient {
     required TResult Function(AccountCreationError value) accountCreationError,
     required TResult Function(ThirdPartyAccountCreationSuccess value)
         thirdPartyAccountCreationSuccess,
+    required TResult Function(RemoteConfigLoading value) remoteConfigLoading,
+    required TResult Function(RemoteConfigError value) remoteConfigError,
+    required TResult Function(RemoteConfigSuccess value) remoteConfigSuccess,
   }) {
     return SMSCodeSentToClient(this);
   }
@@ -661,6 +727,9 @@ class _$SMSCodeSentToClient implements SMSCodeSentToClient {
     TResult Function(AccountCreationError value)? accountCreationError,
     TResult Function(ThirdPartyAccountCreationSuccess value)?
         thirdPartyAccountCreationSuccess,
+    TResult Function(RemoteConfigLoading value)? remoteConfigLoading,
+    TResult Function(RemoteConfigError value)? remoteConfigError,
+    TResult Function(RemoteConfigSuccess value)? remoteConfigSuccess,
   }) {
     return SMSCodeSentToClient?.call(this);
   }
@@ -679,6 +748,9 @@ class _$SMSCodeSentToClient implements SMSCodeSentToClient {
     TResult Function(AccountCreationError value)? accountCreationError,
     TResult Function(ThirdPartyAccountCreationSuccess value)?
         thirdPartyAccountCreationSuccess,
+    TResult Function(RemoteConfigLoading value)? remoteConfigLoading,
+    TResult Function(RemoteConfigError value)? remoteConfigError,
+    TResult Function(RemoteConfigSuccess value)? remoteConfigSuccess,
     required TResult orElse(),
   }) {
     if (SMSCodeSentToClient != null) {
@@ -782,6 +854,9 @@ class _$PhoneVerificationError implements PhoneVerificationError {
     required TResult Function(Failure failure) accountCreationError,
     required TResult Function(Tuple2<FarmhubUser, bool> result)
         thirdPartyAccountCreationSuccess,
+    required TResult Function() remoteConfigLoading,
+    required TResult Function(Failure failure) remoteConfigError,
+    required TResult Function() remoteConfigSuccess,
   }) {
     return phoneVerificationError(failure);
   }
@@ -802,6 +877,9 @@ class _$PhoneVerificationError implements PhoneVerificationError {
     TResult Function(Failure failure)? accountCreationError,
     TResult Function(Tuple2<FarmhubUser, bool> result)?
         thirdPartyAccountCreationSuccess,
+    TResult Function()? remoteConfigLoading,
+    TResult Function(Failure failure)? remoteConfigError,
+    TResult Function()? remoteConfigSuccess,
   }) {
     return phoneVerificationError?.call(failure);
   }
@@ -822,6 +900,9 @@ class _$PhoneVerificationError implements PhoneVerificationError {
     TResult Function(Failure failure)? accountCreationError,
     TResult Function(Tuple2<FarmhubUser, bool> result)?
         thirdPartyAccountCreationSuccess,
+    TResult Function()? remoteConfigLoading,
+    TResult Function(Failure failure)? remoteConfigError,
+    TResult Function()? remoteConfigSuccess,
     required TResult orElse(),
   }) {
     if (phoneVerificationError != null) {
@@ -848,6 +929,9 @@ class _$PhoneVerificationError implements PhoneVerificationError {
     required TResult Function(AccountCreationError value) accountCreationError,
     required TResult Function(ThirdPartyAccountCreationSuccess value)
         thirdPartyAccountCreationSuccess,
+    required TResult Function(RemoteConfigLoading value) remoteConfigLoading,
+    required TResult Function(RemoteConfigError value) remoteConfigError,
+    required TResult Function(RemoteConfigSuccess value) remoteConfigSuccess,
   }) {
     return phoneVerificationError(this);
   }
@@ -866,6 +950,9 @@ class _$PhoneVerificationError implements PhoneVerificationError {
     TResult Function(AccountCreationError value)? accountCreationError,
     TResult Function(ThirdPartyAccountCreationSuccess value)?
         thirdPartyAccountCreationSuccess,
+    TResult Function(RemoteConfigLoading value)? remoteConfigLoading,
+    TResult Function(RemoteConfigError value)? remoteConfigError,
+    TResult Function(RemoteConfigSuccess value)? remoteConfigSuccess,
   }) {
     return phoneVerificationError?.call(this);
   }
@@ -884,6 +971,9 @@ class _$PhoneVerificationError implements PhoneVerificationError {
     TResult Function(AccountCreationError value)? accountCreationError,
     TResult Function(ThirdPartyAccountCreationSuccess value)?
         thirdPartyAccountCreationSuccess,
+    TResult Function(RemoteConfigLoading value)? remoteConfigLoading,
+    TResult Function(RemoteConfigError value)? remoteConfigError,
+    TResult Function(RemoteConfigSuccess value)? remoteConfigSuccess,
     required TResult orElse(),
   }) {
     if (phoneVerificationError != null) {
@@ -956,6 +1046,9 @@ class _$SMSCodeInvalid implements SMSCodeInvalid {
     required TResult Function(Failure failure) accountCreationError,
     required TResult Function(Tuple2<FarmhubUser, bool> result)
         thirdPartyAccountCreationSuccess,
+    required TResult Function() remoteConfigLoading,
+    required TResult Function(Failure failure) remoteConfigError,
+    required TResult Function() remoteConfigSuccess,
   }) {
     return smsCodeInvalid();
   }
@@ -976,6 +1069,9 @@ class _$SMSCodeInvalid implements SMSCodeInvalid {
     TResult Function(Failure failure)? accountCreationError,
     TResult Function(Tuple2<FarmhubUser, bool> result)?
         thirdPartyAccountCreationSuccess,
+    TResult Function()? remoteConfigLoading,
+    TResult Function(Failure failure)? remoteConfigError,
+    TResult Function()? remoteConfigSuccess,
   }) {
     return smsCodeInvalid?.call();
   }
@@ -996,6 +1092,9 @@ class _$SMSCodeInvalid implements SMSCodeInvalid {
     TResult Function(Failure failure)? accountCreationError,
     TResult Function(Tuple2<FarmhubUser, bool> result)?
         thirdPartyAccountCreationSuccess,
+    TResult Function()? remoteConfigLoading,
+    TResult Function(Failure failure)? remoteConfigError,
+    TResult Function()? remoteConfigSuccess,
     required TResult orElse(),
   }) {
     if (smsCodeInvalid != null) {
@@ -1022,6 +1121,9 @@ class _$SMSCodeInvalid implements SMSCodeInvalid {
     required TResult Function(AccountCreationError value) accountCreationError,
     required TResult Function(ThirdPartyAccountCreationSuccess value)
         thirdPartyAccountCreationSuccess,
+    required TResult Function(RemoteConfigLoading value) remoteConfigLoading,
+    required TResult Function(RemoteConfigError value) remoteConfigError,
+    required TResult Function(RemoteConfigSuccess value) remoteConfigSuccess,
   }) {
     return smsCodeInvalid(this);
   }
@@ -1040,6 +1142,9 @@ class _$SMSCodeInvalid implements SMSCodeInvalid {
     TResult Function(AccountCreationError value)? accountCreationError,
     TResult Function(ThirdPartyAccountCreationSuccess value)?
         thirdPartyAccountCreationSuccess,
+    TResult Function(RemoteConfigLoading value)? remoteConfigLoading,
+    TResult Function(RemoteConfigError value)? remoteConfigError,
+    TResult Function(RemoteConfigSuccess value)? remoteConfigSuccess,
   }) {
     return smsCodeInvalid?.call(this);
   }
@@ -1058,6 +1163,9 @@ class _$SMSCodeInvalid implements SMSCodeInvalid {
     TResult Function(AccountCreationError value)? accountCreationError,
     TResult Function(ThirdPartyAccountCreationSuccess value)?
         thirdPartyAccountCreationSuccess,
+    TResult Function(RemoteConfigLoading value)? remoteConfigLoading,
+    TResult Function(RemoteConfigError value)? remoteConfigError,
+    TResult Function(RemoteConfigSuccess value)? remoteConfigSuccess,
     required TResult orElse(),
   }) {
     if (smsCodeInvalid != null) {
@@ -1126,6 +1234,9 @@ class _$CredentialLoginLoading implements CredentialLoginLoading {
     required TResult Function(Failure failure) accountCreationError,
     required TResult Function(Tuple2<FarmhubUser, bool> result)
         thirdPartyAccountCreationSuccess,
+    required TResult Function() remoteConfigLoading,
+    required TResult Function(Failure failure) remoteConfigError,
+    required TResult Function() remoteConfigSuccess,
   }) {
     return credentialLoginLoading();
   }
@@ -1146,6 +1257,9 @@ class _$CredentialLoginLoading implements CredentialLoginLoading {
     TResult Function(Failure failure)? accountCreationError,
     TResult Function(Tuple2<FarmhubUser, bool> result)?
         thirdPartyAccountCreationSuccess,
+    TResult Function()? remoteConfigLoading,
+    TResult Function(Failure failure)? remoteConfigError,
+    TResult Function()? remoteConfigSuccess,
   }) {
     return credentialLoginLoading?.call();
   }
@@ -1166,6 +1280,9 @@ class _$CredentialLoginLoading implements CredentialLoginLoading {
     TResult Function(Failure failure)? accountCreationError,
     TResult Function(Tuple2<FarmhubUser, bool> result)?
         thirdPartyAccountCreationSuccess,
+    TResult Function()? remoteConfigLoading,
+    TResult Function(Failure failure)? remoteConfigError,
+    TResult Function()? remoteConfigSuccess,
     required TResult orElse(),
   }) {
     if (credentialLoginLoading != null) {
@@ -1192,6 +1309,9 @@ class _$CredentialLoginLoading implements CredentialLoginLoading {
     required TResult Function(AccountCreationError value) accountCreationError,
     required TResult Function(ThirdPartyAccountCreationSuccess value)
         thirdPartyAccountCreationSuccess,
+    required TResult Function(RemoteConfigLoading value) remoteConfigLoading,
+    required TResult Function(RemoteConfigError value) remoteConfigError,
+    required TResult Function(RemoteConfigSuccess value) remoteConfigSuccess,
   }) {
     return credentialLoginLoading(this);
   }
@@ -1210,6 +1330,9 @@ class _$CredentialLoginLoading implements CredentialLoginLoading {
     TResult Function(AccountCreationError value)? accountCreationError,
     TResult Function(ThirdPartyAccountCreationSuccess value)?
         thirdPartyAccountCreationSuccess,
+    TResult Function(RemoteConfigLoading value)? remoteConfigLoading,
+    TResult Function(RemoteConfigError value)? remoteConfigError,
+    TResult Function(RemoteConfigSuccess value)? remoteConfigSuccess,
   }) {
     return credentialLoginLoading?.call(this);
   }
@@ -1228,6 +1351,9 @@ class _$CredentialLoginLoading implements CredentialLoginLoading {
     TResult Function(AccountCreationError value)? accountCreationError,
     TResult Function(ThirdPartyAccountCreationSuccess value)?
         thirdPartyAccountCreationSuccess,
+    TResult Function(RemoteConfigLoading value)? remoteConfigLoading,
+    TResult Function(RemoteConfigError value)? remoteConfigError,
+    TResult Function(RemoteConfigSuccess value)? remoteConfigSuccess,
     required TResult orElse(),
   }) {
     if (credentialLoginLoading != null) {
@@ -1320,6 +1446,9 @@ class _$CredentialLoginError implements CredentialLoginError {
     required TResult Function(Failure failure) accountCreationError,
     required TResult Function(Tuple2<FarmhubUser, bool> result)
         thirdPartyAccountCreationSuccess,
+    required TResult Function() remoteConfigLoading,
+    required TResult Function(Failure failure) remoteConfigError,
+    required TResult Function() remoteConfigSuccess,
   }) {
     return credentialLoginError(failure);
   }
@@ -1340,6 +1469,9 @@ class _$CredentialLoginError implements CredentialLoginError {
     TResult Function(Failure failure)? accountCreationError,
     TResult Function(Tuple2<FarmhubUser, bool> result)?
         thirdPartyAccountCreationSuccess,
+    TResult Function()? remoteConfigLoading,
+    TResult Function(Failure failure)? remoteConfigError,
+    TResult Function()? remoteConfigSuccess,
   }) {
     return credentialLoginError?.call(failure);
   }
@@ -1360,6 +1492,9 @@ class _$CredentialLoginError implements CredentialLoginError {
     TResult Function(Failure failure)? accountCreationError,
     TResult Function(Tuple2<FarmhubUser, bool> result)?
         thirdPartyAccountCreationSuccess,
+    TResult Function()? remoteConfigLoading,
+    TResult Function(Failure failure)? remoteConfigError,
+    TResult Function()? remoteConfigSuccess,
     required TResult orElse(),
   }) {
     if (credentialLoginError != null) {
@@ -1386,6 +1521,9 @@ class _$CredentialLoginError implements CredentialLoginError {
     required TResult Function(AccountCreationError value) accountCreationError,
     required TResult Function(ThirdPartyAccountCreationSuccess value)
         thirdPartyAccountCreationSuccess,
+    required TResult Function(RemoteConfigLoading value) remoteConfigLoading,
+    required TResult Function(RemoteConfigError value) remoteConfigError,
+    required TResult Function(RemoteConfigSuccess value) remoteConfigSuccess,
   }) {
     return credentialLoginError(this);
   }
@@ -1404,6 +1542,9 @@ class _$CredentialLoginError implements CredentialLoginError {
     TResult Function(AccountCreationError value)? accountCreationError,
     TResult Function(ThirdPartyAccountCreationSuccess value)?
         thirdPartyAccountCreationSuccess,
+    TResult Function(RemoteConfigLoading value)? remoteConfigLoading,
+    TResult Function(RemoteConfigError value)? remoteConfigError,
+    TResult Function(RemoteConfigSuccess value)? remoteConfigSuccess,
   }) {
     return credentialLoginError?.call(this);
   }
@@ -1422,6 +1563,9 @@ class _$CredentialLoginError implements CredentialLoginError {
     TResult Function(AccountCreationError value)? accountCreationError,
     TResult Function(ThirdPartyAccountCreationSuccess value)?
         thirdPartyAccountCreationSuccess,
+    TResult Function(RemoteConfigLoading value)? remoteConfigLoading,
+    TResult Function(RemoteConfigError value)? remoteConfigError,
+    TResult Function(RemoteConfigSuccess value)? remoteConfigSuccess,
     required TResult orElse(),
   }) {
     if (credentialLoginError != null) {
@@ -1530,6 +1674,9 @@ class _$AccountCreationSuccess implements AccountCreationSuccess {
     required TResult Function(Failure failure) accountCreationError,
     required TResult Function(Tuple2<FarmhubUser, bool> result)
         thirdPartyAccountCreationSuccess,
+    required TResult Function() remoteConfigLoading,
+    required TResult Function(Failure failure) remoteConfigError,
+    required TResult Function() remoteConfigSuccess,
   }) {
     return accountCreationSuccess(user);
   }
@@ -1550,6 +1697,9 @@ class _$AccountCreationSuccess implements AccountCreationSuccess {
     TResult Function(Failure failure)? accountCreationError,
     TResult Function(Tuple2<FarmhubUser, bool> result)?
         thirdPartyAccountCreationSuccess,
+    TResult Function()? remoteConfigLoading,
+    TResult Function(Failure failure)? remoteConfigError,
+    TResult Function()? remoteConfigSuccess,
   }) {
     return accountCreationSuccess?.call(user);
   }
@@ -1570,6 +1720,9 @@ class _$AccountCreationSuccess implements AccountCreationSuccess {
     TResult Function(Failure failure)? accountCreationError,
     TResult Function(Tuple2<FarmhubUser, bool> result)?
         thirdPartyAccountCreationSuccess,
+    TResult Function()? remoteConfigLoading,
+    TResult Function(Failure failure)? remoteConfigError,
+    TResult Function()? remoteConfigSuccess,
     required TResult orElse(),
   }) {
     if (accountCreationSuccess != null) {
@@ -1596,6 +1749,9 @@ class _$AccountCreationSuccess implements AccountCreationSuccess {
     required TResult Function(AccountCreationError value) accountCreationError,
     required TResult Function(ThirdPartyAccountCreationSuccess value)
         thirdPartyAccountCreationSuccess,
+    required TResult Function(RemoteConfigLoading value) remoteConfigLoading,
+    required TResult Function(RemoteConfigError value) remoteConfigError,
+    required TResult Function(RemoteConfigSuccess value) remoteConfigSuccess,
   }) {
     return accountCreationSuccess(this);
   }
@@ -1614,6 +1770,9 @@ class _$AccountCreationSuccess implements AccountCreationSuccess {
     TResult Function(AccountCreationError value)? accountCreationError,
     TResult Function(ThirdPartyAccountCreationSuccess value)?
         thirdPartyAccountCreationSuccess,
+    TResult Function(RemoteConfigLoading value)? remoteConfigLoading,
+    TResult Function(RemoteConfigError value)? remoteConfigError,
+    TResult Function(RemoteConfigSuccess value)? remoteConfigSuccess,
   }) {
     return accountCreationSuccess?.call(this);
   }
@@ -1632,6 +1791,9 @@ class _$AccountCreationSuccess implements AccountCreationSuccess {
     TResult Function(AccountCreationError value)? accountCreationError,
     TResult Function(ThirdPartyAccountCreationSuccess value)?
         thirdPartyAccountCreationSuccess,
+    TResult Function(RemoteConfigLoading value)? remoteConfigLoading,
+    TResult Function(RemoteConfigError value)? remoteConfigError,
+    TResult Function(RemoteConfigSuccess value)? remoteConfigSuccess,
     required TResult orElse(),
   }) {
     if (accountCreationSuccess != null) {
@@ -1730,6 +1892,9 @@ class _$AccountCreationError implements AccountCreationError {
     required TResult Function(Failure failure) accountCreationError,
     required TResult Function(Tuple2<FarmhubUser, bool> result)
         thirdPartyAccountCreationSuccess,
+    required TResult Function() remoteConfigLoading,
+    required TResult Function(Failure failure) remoteConfigError,
+    required TResult Function() remoteConfigSuccess,
   }) {
     return accountCreationError(failure);
   }
@@ -1750,6 +1915,9 @@ class _$AccountCreationError implements AccountCreationError {
     TResult Function(Failure failure)? accountCreationError,
     TResult Function(Tuple2<FarmhubUser, bool> result)?
         thirdPartyAccountCreationSuccess,
+    TResult Function()? remoteConfigLoading,
+    TResult Function(Failure failure)? remoteConfigError,
+    TResult Function()? remoteConfigSuccess,
   }) {
     return accountCreationError?.call(failure);
   }
@@ -1770,6 +1938,9 @@ class _$AccountCreationError implements AccountCreationError {
     TResult Function(Failure failure)? accountCreationError,
     TResult Function(Tuple2<FarmhubUser, bool> result)?
         thirdPartyAccountCreationSuccess,
+    TResult Function()? remoteConfigLoading,
+    TResult Function(Failure failure)? remoteConfigError,
+    TResult Function()? remoteConfigSuccess,
     required TResult orElse(),
   }) {
     if (accountCreationError != null) {
@@ -1796,6 +1967,9 @@ class _$AccountCreationError implements AccountCreationError {
     required TResult Function(AccountCreationError value) accountCreationError,
     required TResult Function(ThirdPartyAccountCreationSuccess value)
         thirdPartyAccountCreationSuccess,
+    required TResult Function(RemoteConfigLoading value) remoteConfigLoading,
+    required TResult Function(RemoteConfigError value) remoteConfigError,
+    required TResult Function(RemoteConfigSuccess value) remoteConfigSuccess,
   }) {
     return accountCreationError(this);
   }
@@ -1814,6 +1988,9 @@ class _$AccountCreationError implements AccountCreationError {
     TResult Function(AccountCreationError value)? accountCreationError,
     TResult Function(ThirdPartyAccountCreationSuccess value)?
         thirdPartyAccountCreationSuccess,
+    TResult Function(RemoteConfigLoading value)? remoteConfigLoading,
+    TResult Function(RemoteConfigError value)? remoteConfigError,
+    TResult Function(RemoteConfigSuccess value)? remoteConfigSuccess,
   }) {
     return accountCreationError?.call(this);
   }
@@ -1832,6 +2009,9 @@ class _$AccountCreationError implements AccountCreationError {
     TResult Function(AccountCreationError value)? accountCreationError,
     TResult Function(ThirdPartyAccountCreationSuccess value)?
         thirdPartyAccountCreationSuccess,
+    TResult Function(RemoteConfigLoading value)? remoteConfigLoading,
+    TResult Function(RemoteConfigError value)? remoteConfigError,
+    TResult Function(RemoteConfigSuccess value)? remoteConfigSuccess,
     required TResult orElse(),
   }) {
     if (accountCreationError != null) {
@@ -1935,6 +2115,9 @@ class _$ThirdPartyAccountCreationSuccess
     required TResult Function(Failure failure) accountCreationError,
     required TResult Function(Tuple2<FarmhubUser, bool> result)
         thirdPartyAccountCreationSuccess,
+    required TResult Function() remoteConfigLoading,
+    required TResult Function(Failure failure) remoteConfigError,
+    required TResult Function() remoteConfigSuccess,
   }) {
     return thirdPartyAccountCreationSuccess(result);
   }
@@ -1955,6 +2138,9 @@ class _$ThirdPartyAccountCreationSuccess
     TResult Function(Failure failure)? accountCreationError,
     TResult Function(Tuple2<FarmhubUser, bool> result)?
         thirdPartyAccountCreationSuccess,
+    TResult Function()? remoteConfigLoading,
+    TResult Function(Failure failure)? remoteConfigError,
+    TResult Function()? remoteConfigSuccess,
   }) {
     return thirdPartyAccountCreationSuccess?.call(result);
   }
@@ -1975,6 +2161,9 @@ class _$ThirdPartyAccountCreationSuccess
     TResult Function(Failure failure)? accountCreationError,
     TResult Function(Tuple2<FarmhubUser, bool> result)?
         thirdPartyAccountCreationSuccess,
+    TResult Function()? remoteConfigLoading,
+    TResult Function(Failure failure)? remoteConfigError,
+    TResult Function()? remoteConfigSuccess,
     required TResult orElse(),
   }) {
     if (thirdPartyAccountCreationSuccess != null) {
@@ -2001,6 +2190,9 @@ class _$ThirdPartyAccountCreationSuccess
     required TResult Function(AccountCreationError value) accountCreationError,
     required TResult Function(ThirdPartyAccountCreationSuccess value)
         thirdPartyAccountCreationSuccess,
+    required TResult Function(RemoteConfigLoading value) remoteConfigLoading,
+    required TResult Function(RemoteConfigError value) remoteConfigError,
+    required TResult Function(RemoteConfigSuccess value) remoteConfigSuccess,
   }) {
     return thirdPartyAccountCreationSuccess(this);
   }
@@ -2019,6 +2211,9 @@ class _$ThirdPartyAccountCreationSuccess
     TResult Function(AccountCreationError value)? accountCreationError,
     TResult Function(ThirdPartyAccountCreationSuccess value)?
         thirdPartyAccountCreationSuccess,
+    TResult Function(RemoteConfigLoading value)? remoteConfigLoading,
+    TResult Function(RemoteConfigError value)? remoteConfigError,
+    TResult Function(RemoteConfigSuccess value)? remoteConfigSuccess,
   }) {
     return thirdPartyAccountCreationSuccess?.call(this);
   }
@@ -2037,6 +2232,9 @@ class _$ThirdPartyAccountCreationSuccess
     TResult Function(AccountCreationError value)? accountCreationError,
     TResult Function(ThirdPartyAccountCreationSuccess value)?
         thirdPartyAccountCreationSuccess,
+    TResult Function(RemoteConfigLoading value)? remoteConfigLoading,
+    TResult Function(RemoteConfigError value)? remoteConfigError,
+    TResult Function(RemoteConfigSuccess value)? remoteConfigSuccess,
     required TResult orElse(),
   }) {
     if (thirdPartyAccountCreationSuccess != null) {
@@ -2056,4 +2254,594 @@ abstract class ThirdPartyAccountCreationSuccess implements AuthState {
   _$$ThirdPartyAccountCreationSuccessCopyWith<
           _$ThirdPartyAccountCreationSuccess>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$RemoteConfigLoadingCopyWith<$Res> {
+  factory _$$RemoteConfigLoadingCopyWith(_$RemoteConfigLoading value,
+          $Res Function(_$RemoteConfigLoading) then) =
+      __$$RemoteConfigLoadingCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$RemoteConfigLoadingCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res>
+    implements _$$RemoteConfigLoadingCopyWith<$Res> {
+  __$$RemoteConfigLoadingCopyWithImpl(
+      _$RemoteConfigLoading _value, $Res Function(_$RemoteConfigLoading) _then)
+      : super(_value, (v) => _then(v as _$RemoteConfigLoading));
+
+  @override
+  _$RemoteConfigLoading get _value => super._value as _$RemoteConfigLoading;
+}
+
+/// @nodoc
+
+class _$RemoteConfigLoading implements RemoteConfigLoading {
+  const _$RemoteConfigLoading();
+
+  @override
+  String toString() {
+    return 'AuthState.remoteConfigLoading()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$RemoteConfigLoading);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() phoneVerificationLoading,
+    required TResult Function(
+            String verificationId, PhoneNumber phoneNumber, int? resendToken)
+        SMSCodeSentToClient,
+    required TResult Function(Failure failure) phoneVerificationError,
+    required TResult Function() smsCodeInvalid,
+    required TResult Function() credentialLoginLoading,
+    required TResult Function(Failure failure) credentialLoginError,
+    required TResult Function(FarmhubUser user) accountCreationSuccess,
+    required TResult Function(Failure failure) accountCreationError,
+    required TResult Function(Tuple2<FarmhubUser, bool> result)
+        thirdPartyAccountCreationSuccess,
+    required TResult Function() remoteConfigLoading,
+    required TResult Function(Failure failure) remoteConfigError,
+    required TResult Function() remoteConfigSuccess,
+  }) {
+    return remoteConfigLoading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? phoneVerificationLoading,
+    TResult Function(
+            String verificationId, PhoneNumber phoneNumber, int? resendToken)?
+        SMSCodeSentToClient,
+    TResult Function(Failure failure)? phoneVerificationError,
+    TResult Function()? smsCodeInvalid,
+    TResult Function()? credentialLoginLoading,
+    TResult Function(Failure failure)? credentialLoginError,
+    TResult Function(FarmhubUser user)? accountCreationSuccess,
+    TResult Function(Failure failure)? accountCreationError,
+    TResult Function(Tuple2<FarmhubUser, bool> result)?
+        thirdPartyAccountCreationSuccess,
+    TResult Function()? remoteConfigLoading,
+    TResult Function(Failure failure)? remoteConfigError,
+    TResult Function()? remoteConfigSuccess,
+  }) {
+    return remoteConfigLoading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? phoneVerificationLoading,
+    TResult Function(
+            String verificationId, PhoneNumber phoneNumber, int? resendToken)?
+        SMSCodeSentToClient,
+    TResult Function(Failure failure)? phoneVerificationError,
+    TResult Function()? smsCodeInvalid,
+    TResult Function()? credentialLoginLoading,
+    TResult Function(Failure failure)? credentialLoginError,
+    TResult Function(FarmhubUser user)? accountCreationSuccess,
+    TResult Function(Failure failure)? accountCreationError,
+    TResult Function(Tuple2<FarmhubUser, bool> result)?
+        thirdPartyAccountCreationSuccess,
+    TResult Function()? remoteConfigLoading,
+    TResult Function(Failure failure)? remoteConfigError,
+    TResult Function()? remoteConfigSuccess,
+    required TResult orElse(),
+  }) {
+    if (remoteConfigLoading != null) {
+      return remoteConfigLoading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(PhoneVerificationLoading value)
+        phoneVerificationLoading,
+    required TResult Function(SMSCodeSentToClient value) SMSCodeSentToClient,
+    required TResult Function(PhoneVerificationError value)
+        phoneVerificationError,
+    required TResult Function(SMSCodeInvalid value) smsCodeInvalid,
+    required TResult Function(CredentialLoginLoading value)
+        credentialLoginLoading,
+    required TResult Function(CredentialLoginError value) credentialLoginError,
+    required TResult Function(AccountCreationSuccess value)
+        accountCreationSuccess,
+    required TResult Function(AccountCreationError value) accountCreationError,
+    required TResult Function(ThirdPartyAccountCreationSuccess value)
+        thirdPartyAccountCreationSuccess,
+    required TResult Function(RemoteConfigLoading value) remoteConfigLoading,
+    required TResult Function(RemoteConfigError value) remoteConfigError,
+    required TResult Function(RemoteConfigSuccess value) remoteConfigSuccess,
+  }) {
+    return remoteConfigLoading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(PhoneVerificationLoading value)? phoneVerificationLoading,
+    TResult Function(SMSCodeSentToClient value)? SMSCodeSentToClient,
+    TResult Function(PhoneVerificationError value)? phoneVerificationError,
+    TResult Function(SMSCodeInvalid value)? smsCodeInvalid,
+    TResult Function(CredentialLoginLoading value)? credentialLoginLoading,
+    TResult Function(CredentialLoginError value)? credentialLoginError,
+    TResult Function(AccountCreationSuccess value)? accountCreationSuccess,
+    TResult Function(AccountCreationError value)? accountCreationError,
+    TResult Function(ThirdPartyAccountCreationSuccess value)?
+        thirdPartyAccountCreationSuccess,
+    TResult Function(RemoteConfigLoading value)? remoteConfigLoading,
+    TResult Function(RemoteConfigError value)? remoteConfigError,
+    TResult Function(RemoteConfigSuccess value)? remoteConfigSuccess,
+  }) {
+    return remoteConfigLoading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(PhoneVerificationLoading value)? phoneVerificationLoading,
+    TResult Function(SMSCodeSentToClient value)? SMSCodeSentToClient,
+    TResult Function(PhoneVerificationError value)? phoneVerificationError,
+    TResult Function(SMSCodeInvalid value)? smsCodeInvalid,
+    TResult Function(CredentialLoginLoading value)? credentialLoginLoading,
+    TResult Function(CredentialLoginError value)? credentialLoginError,
+    TResult Function(AccountCreationSuccess value)? accountCreationSuccess,
+    TResult Function(AccountCreationError value)? accountCreationError,
+    TResult Function(ThirdPartyAccountCreationSuccess value)?
+        thirdPartyAccountCreationSuccess,
+    TResult Function(RemoteConfigLoading value)? remoteConfigLoading,
+    TResult Function(RemoteConfigError value)? remoteConfigError,
+    TResult Function(RemoteConfigSuccess value)? remoteConfigSuccess,
+    required TResult orElse(),
+  }) {
+    if (remoteConfigLoading != null) {
+      return remoteConfigLoading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class RemoteConfigLoading implements AuthState {
+  const factory RemoteConfigLoading() = _$RemoteConfigLoading;
+}
+
+/// @nodoc
+abstract class _$$RemoteConfigErrorCopyWith<$Res> {
+  factory _$$RemoteConfigErrorCopyWith(
+          _$RemoteConfigError value, $Res Function(_$RemoteConfigError) then) =
+      __$$RemoteConfigErrorCopyWithImpl<$Res>;
+  $Res call({Failure failure});
+}
+
+/// @nodoc
+class __$$RemoteConfigErrorCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res>
+    implements _$$RemoteConfigErrorCopyWith<$Res> {
+  __$$RemoteConfigErrorCopyWithImpl(
+      _$RemoteConfigError _value, $Res Function(_$RemoteConfigError) _then)
+      : super(_value, (v) => _then(v as _$RemoteConfigError));
+
+  @override
+  _$RemoteConfigError get _value => super._value as _$RemoteConfigError;
+
+  @override
+  $Res call({
+    Object? failure = freezed,
+  }) {
+    return _then(_$RemoteConfigError(
+      failure == freezed
+          ? _value.failure
+          : failure // ignore: cast_nullable_to_non_nullable
+              as Failure,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$RemoteConfigError implements RemoteConfigError {
+  const _$RemoteConfigError(this.failure);
+
+  @override
+  final Failure failure;
+
+  @override
+  String toString() {
+    return 'AuthState.remoteConfigError(failure: $failure)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$RemoteConfigError &&
+            const DeepCollectionEquality().equals(other.failure, failure));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(failure));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$RemoteConfigErrorCopyWith<_$RemoteConfigError> get copyWith =>
+      __$$RemoteConfigErrorCopyWithImpl<_$RemoteConfigError>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() phoneVerificationLoading,
+    required TResult Function(
+            String verificationId, PhoneNumber phoneNumber, int? resendToken)
+        SMSCodeSentToClient,
+    required TResult Function(Failure failure) phoneVerificationError,
+    required TResult Function() smsCodeInvalid,
+    required TResult Function() credentialLoginLoading,
+    required TResult Function(Failure failure) credentialLoginError,
+    required TResult Function(FarmhubUser user) accountCreationSuccess,
+    required TResult Function(Failure failure) accountCreationError,
+    required TResult Function(Tuple2<FarmhubUser, bool> result)
+        thirdPartyAccountCreationSuccess,
+    required TResult Function() remoteConfigLoading,
+    required TResult Function(Failure failure) remoteConfigError,
+    required TResult Function() remoteConfigSuccess,
+  }) {
+    return remoteConfigError(failure);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? phoneVerificationLoading,
+    TResult Function(
+            String verificationId, PhoneNumber phoneNumber, int? resendToken)?
+        SMSCodeSentToClient,
+    TResult Function(Failure failure)? phoneVerificationError,
+    TResult Function()? smsCodeInvalid,
+    TResult Function()? credentialLoginLoading,
+    TResult Function(Failure failure)? credentialLoginError,
+    TResult Function(FarmhubUser user)? accountCreationSuccess,
+    TResult Function(Failure failure)? accountCreationError,
+    TResult Function(Tuple2<FarmhubUser, bool> result)?
+        thirdPartyAccountCreationSuccess,
+    TResult Function()? remoteConfigLoading,
+    TResult Function(Failure failure)? remoteConfigError,
+    TResult Function()? remoteConfigSuccess,
+  }) {
+    return remoteConfigError?.call(failure);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? phoneVerificationLoading,
+    TResult Function(
+            String verificationId, PhoneNumber phoneNumber, int? resendToken)?
+        SMSCodeSentToClient,
+    TResult Function(Failure failure)? phoneVerificationError,
+    TResult Function()? smsCodeInvalid,
+    TResult Function()? credentialLoginLoading,
+    TResult Function(Failure failure)? credentialLoginError,
+    TResult Function(FarmhubUser user)? accountCreationSuccess,
+    TResult Function(Failure failure)? accountCreationError,
+    TResult Function(Tuple2<FarmhubUser, bool> result)?
+        thirdPartyAccountCreationSuccess,
+    TResult Function()? remoteConfigLoading,
+    TResult Function(Failure failure)? remoteConfigError,
+    TResult Function()? remoteConfigSuccess,
+    required TResult orElse(),
+  }) {
+    if (remoteConfigError != null) {
+      return remoteConfigError(failure);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(PhoneVerificationLoading value)
+        phoneVerificationLoading,
+    required TResult Function(SMSCodeSentToClient value) SMSCodeSentToClient,
+    required TResult Function(PhoneVerificationError value)
+        phoneVerificationError,
+    required TResult Function(SMSCodeInvalid value) smsCodeInvalid,
+    required TResult Function(CredentialLoginLoading value)
+        credentialLoginLoading,
+    required TResult Function(CredentialLoginError value) credentialLoginError,
+    required TResult Function(AccountCreationSuccess value)
+        accountCreationSuccess,
+    required TResult Function(AccountCreationError value) accountCreationError,
+    required TResult Function(ThirdPartyAccountCreationSuccess value)
+        thirdPartyAccountCreationSuccess,
+    required TResult Function(RemoteConfigLoading value) remoteConfigLoading,
+    required TResult Function(RemoteConfigError value) remoteConfigError,
+    required TResult Function(RemoteConfigSuccess value) remoteConfigSuccess,
+  }) {
+    return remoteConfigError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(PhoneVerificationLoading value)? phoneVerificationLoading,
+    TResult Function(SMSCodeSentToClient value)? SMSCodeSentToClient,
+    TResult Function(PhoneVerificationError value)? phoneVerificationError,
+    TResult Function(SMSCodeInvalid value)? smsCodeInvalid,
+    TResult Function(CredentialLoginLoading value)? credentialLoginLoading,
+    TResult Function(CredentialLoginError value)? credentialLoginError,
+    TResult Function(AccountCreationSuccess value)? accountCreationSuccess,
+    TResult Function(AccountCreationError value)? accountCreationError,
+    TResult Function(ThirdPartyAccountCreationSuccess value)?
+        thirdPartyAccountCreationSuccess,
+    TResult Function(RemoteConfigLoading value)? remoteConfigLoading,
+    TResult Function(RemoteConfigError value)? remoteConfigError,
+    TResult Function(RemoteConfigSuccess value)? remoteConfigSuccess,
+  }) {
+    return remoteConfigError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(PhoneVerificationLoading value)? phoneVerificationLoading,
+    TResult Function(SMSCodeSentToClient value)? SMSCodeSentToClient,
+    TResult Function(PhoneVerificationError value)? phoneVerificationError,
+    TResult Function(SMSCodeInvalid value)? smsCodeInvalid,
+    TResult Function(CredentialLoginLoading value)? credentialLoginLoading,
+    TResult Function(CredentialLoginError value)? credentialLoginError,
+    TResult Function(AccountCreationSuccess value)? accountCreationSuccess,
+    TResult Function(AccountCreationError value)? accountCreationError,
+    TResult Function(ThirdPartyAccountCreationSuccess value)?
+        thirdPartyAccountCreationSuccess,
+    TResult Function(RemoteConfigLoading value)? remoteConfigLoading,
+    TResult Function(RemoteConfigError value)? remoteConfigError,
+    TResult Function(RemoteConfigSuccess value)? remoteConfigSuccess,
+    required TResult orElse(),
+  }) {
+    if (remoteConfigError != null) {
+      return remoteConfigError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class RemoteConfigError implements AuthState {
+  const factory RemoteConfigError(final Failure failure) = _$RemoteConfigError;
+
+  Failure get failure;
+  @JsonKey(ignore: true)
+  _$$RemoteConfigErrorCopyWith<_$RemoteConfigError> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$RemoteConfigSuccessCopyWith<$Res> {
+  factory _$$RemoteConfigSuccessCopyWith(_$RemoteConfigSuccess value,
+          $Res Function(_$RemoteConfigSuccess) then) =
+      __$$RemoteConfigSuccessCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$RemoteConfigSuccessCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res>
+    implements _$$RemoteConfigSuccessCopyWith<$Res> {
+  __$$RemoteConfigSuccessCopyWithImpl(
+      _$RemoteConfigSuccess _value, $Res Function(_$RemoteConfigSuccess) _then)
+      : super(_value, (v) => _then(v as _$RemoteConfigSuccess));
+
+  @override
+  _$RemoteConfigSuccess get _value => super._value as _$RemoteConfigSuccess;
+}
+
+/// @nodoc
+
+class _$RemoteConfigSuccess implements RemoteConfigSuccess {
+  const _$RemoteConfigSuccess();
+
+  @override
+  String toString() {
+    return 'AuthState.remoteConfigSuccess()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$RemoteConfigSuccess);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() phoneVerificationLoading,
+    required TResult Function(
+            String verificationId, PhoneNumber phoneNumber, int? resendToken)
+        SMSCodeSentToClient,
+    required TResult Function(Failure failure) phoneVerificationError,
+    required TResult Function() smsCodeInvalid,
+    required TResult Function() credentialLoginLoading,
+    required TResult Function(Failure failure) credentialLoginError,
+    required TResult Function(FarmhubUser user) accountCreationSuccess,
+    required TResult Function(Failure failure) accountCreationError,
+    required TResult Function(Tuple2<FarmhubUser, bool> result)
+        thirdPartyAccountCreationSuccess,
+    required TResult Function() remoteConfigLoading,
+    required TResult Function(Failure failure) remoteConfigError,
+    required TResult Function() remoteConfigSuccess,
+  }) {
+    return remoteConfigSuccess();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? phoneVerificationLoading,
+    TResult Function(
+            String verificationId, PhoneNumber phoneNumber, int? resendToken)?
+        SMSCodeSentToClient,
+    TResult Function(Failure failure)? phoneVerificationError,
+    TResult Function()? smsCodeInvalid,
+    TResult Function()? credentialLoginLoading,
+    TResult Function(Failure failure)? credentialLoginError,
+    TResult Function(FarmhubUser user)? accountCreationSuccess,
+    TResult Function(Failure failure)? accountCreationError,
+    TResult Function(Tuple2<FarmhubUser, bool> result)?
+        thirdPartyAccountCreationSuccess,
+    TResult Function()? remoteConfigLoading,
+    TResult Function(Failure failure)? remoteConfigError,
+    TResult Function()? remoteConfigSuccess,
+  }) {
+    return remoteConfigSuccess?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? phoneVerificationLoading,
+    TResult Function(
+            String verificationId, PhoneNumber phoneNumber, int? resendToken)?
+        SMSCodeSentToClient,
+    TResult Function(Failure failure)? phoneVerificationError,
+    TResult Function()? smsCodeInvalid,
+    TResult Function()? credentialLoginLoading,
+    TResult Function(Failure failure)? credentialLoginError,
+    TResult Function(FarmhubUser user)? accountCreationSuccess,
+    TResult Function(Failure failure)? accountCreationError,
+    TResult Function(Tuple2<FarmhubUser, bool> result)?
+        thirdPartyAccountCreationSuccess,
+    TResult Function()? remoteConfigLoading,
+    TResult Function(Failure failure)? remoteConfigError,
+    TResult Function()? remoteConfigSuccess,
+    required TResult orElse(),
+  }) {
+    if (remoteConfigSuccess != null) {
+      return remoteConfigSuccess();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(PhoneVerificationLoading value)
+        phoneVerificationLoading,
+    required TResult Function(SMSCodeSentToClient value) SMSCodeSentToClient,
+    required TResult Function(PhoneVerificationError value)
+        phoneVerificationError,
+    required TResult Function(SMSCodeInvalid value) smsCodeInvalid,
+    required TResult Function(CredentialLoginLoading value)
+        credentialLoginLoading,
+    required TResult Function(CredentialLoginError value) credentialLoginError,
+    required TResult Function(AccountCreationSuccess value)
+        accountCreationSuccess,
+    required TResult Function(AccountCreationError value) accountCreationError,
+    required TResult Function(ThirdPartyAccountCreationSuccess value)
+        thirdPartyAccountCreationSuccess,
+    required TResult Function(RemoteConfigLoading value) remoteConfigLoading,
+    required TResult Function(RemoteConfigError value) remoteConfigError,
+    required TResult Function(RemoteConfigSuccess value) remoteConfigSuccess,
+  }) {
+    return remoteConfigSuccess(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(PhoneVerificationLoading value)? phoneVerificationLoading,
+    TResult Function(SMSCodeSentToClient value)? SMSCodeSentToClient,
+    TResult Function(PhoneVerificationError value)? phoneVerificationError,
+    TResult Function(SMSCodeInvalid value)? smsCodeInvalid,
+    TResult Function(CredentialLoginLoading value)? credentialLoginLoading,
+    TResult Function(CredentialLoginError value)? credentialLoginError,
+    TResult Function(AccountCreationSuccess value)? accountCreationSuccess,
+    TResult Function(AccountCreationError value)? accountCreationError,
+    TResult Function(ThirdPartyAccountCreationSuccess value)?
+        thirdPartyAccountCreationSuccess,
+    TResult Function(RemoteConfigLoading value)? remoteConfigLoading,
+    TResult Function(RemoteConfigError value)? remoteConfigError,
+    TResult Function(RemoteConfigSuccess value)? remoteConfigSuccess,
+  }) {
+    return remoteConfigSuccess?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(PhoneVerificationLoading value)? phoneVerificationLoading,
+    TResult Function(SMSCodeSentToClient value)? SMSCodeSentToClient,
+    TResult Function(PhoneVerificationError value)? phoneVerificationError,
+    TResult Function(SMSCodeInvalid value)? smsCodeInvalid,
+    TResult Function(CredentialLoginLoading value)? credentialLoginLoading,
+    TResult Function(CredentialLoginError value)? credentialLoginError,
+    TResult Function(AccountCreationSuccess value)? accountCreationSuccess,
+    TResult Function(AccountCreationError value)? accountCreationError,
+    TResult Function(ThirdPartyAccountCreationSuccess value)?
+        thirdPartyAccountCreationSuccess,
+    TResult Function(RemoteConfigLoading value)? remoteConfigLoading,
+    TResult Function(RemoteConfigError value)? remoteConfigError,
+    TResult Function(RemoteConfigSuccess value)? remoteConfigSuccess,
+    required TResult orElse(),
+  }) {
+    if (remoteConfigSuccess != null) {
+      return remoteConfigSuccess(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class RemoteConfigSuccess implements AuthState {
+  const factory RemoteConfigSuccess() = _$RemoteConfigSuccess;
 }

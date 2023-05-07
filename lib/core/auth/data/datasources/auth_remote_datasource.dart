@@ -15,6 +15,7 @@ import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 
 import '../../../util/secure.dart' as secure;
+import '../../domain/entities/farmhub_config.dart';
 
 abstract class IAuthRemoteDataSource {
   Future<FarmhubUser> loginWithEmailAndPassword({
@@ -54,6 +55,8 @@ abstract class IAuthRemoteDataSource {
   Future<Unit> sendPasswordResetEmail(String email);
 
   Future<Unit> signOut();
+
+  Future<FarmhubConfig> getFarmhubConfig();
 }
 
 class AuthRemoteDataSource implements IAuthRemoteDataSource {
@@ -452,5 +455,11 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
     });
 
     return unit;
+  }
+
+  @override
+  Future<FarmhubConfig> getFarmhubConfig() {
+    // TODO: implement getFarmhubConfig
+    throw UnimplementedError();
   }
 }

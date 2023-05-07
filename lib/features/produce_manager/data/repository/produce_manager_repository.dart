@@ -1,21 +1,23 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/foundation.dart';
+import 'package:fpdart/fpdart.dart';
+
 import 'package:farmhub/core/auth/domain/entities/farmhub_user/farmhub_user.dart';
-import 'package:farmhub/core/auth/domain/i_auth_repository.dart';
 import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
-import 'package:farmhub/core/util/app_const.dart';
 import 'package:farmhub/core/errors/exceptions.dart';
 import 'package:farmhub/core/errors/failures.dart';
 import 'package:farmhub/core/network/network_info.dart';
+import 'package:farmhub/core/typedefs/typedefs.dart';
+import 'package:farmhub/core/util/app_const.dart';
 import 'package:farmhub/features/produce_manager/data/datasources/produce_manager_local_datasource.dart';
 import 'package:farmhub/features/produce_manager/data/datasources/produce_manager_remote_datasource.dart';
 import 'package:farmhub/features/produce_manager/data/datasources/produce_prices_remote_datasource.dart';
+import 'package:farmhub/features/produce_manager/data/repository/produce_manager_helpers.dart';
 import 'package:farmhub/features/produce_manager/domain/entities/price/price.dart';
 import 'package:farmhub/features/produce_manager/domain/entities/produce/produce.dart';
-import 'package:farmhub/core/typedefs/typedefs.dart';
-import 'package:farmhub/features/produce_manager/data/repository/produce_manager_helpers.dart';
 import 'package:farmhub/features/produce_manager/domain/i_produce_manager_repository.dart';
-import 'package:flutter/foundation.dart';
-import 'package:fpdart/fpdart.dart';
+
+import '../../../../core/auth/data/repository/auth_repository.dart';
 
 const String ProduceManagerRepositoryCode = "PMR-";
 

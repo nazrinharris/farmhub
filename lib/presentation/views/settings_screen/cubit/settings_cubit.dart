@@ -1,11 +1,13 @@
 import 'package:bloc/bloc.dart';
-import 'package:farmhub/core/auth/domain/i_auth_repository.dart';
+
 import 'package:farmhub/presentation/smart_widgets/produce_dialogs/app_dialogs.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:ndialog/ndialog.dart';
 import 'package:package_info_plus/package_info_plus.dart';
+
+import '../../../../core/auth/data/repository/auth_repository.dart';
 
 part 'settings_state.dart';
 part 'settings_cubit.freezed.dart';

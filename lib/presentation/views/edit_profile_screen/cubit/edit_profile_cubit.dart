@@ -1,18 +1,20 @@
 import 'package:bloc/bloc.dart';
+import 'package:flutter/widgets.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:ndialog/ndialog.dart';
+
 import 'package:farmhub/core/auth/domain/entities/farmhub_user/farmhub_user.dart';
-import 'package:farmhub/core/auth/domain/i_auth_repository.dart';
 import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
 import 'package:farmhub/core/errors/failures.dart';
 import 'package:farmhub/presentation/global/cubit/global_ui_cubit.dart';
 import 'package:farmhub/presentation/smart_widgets/multiple_fields_form/multiple_fields_form_bloc.dart';
 import 'package:farmhub/presentation/smart_widgets/primary_button_aware/primary_button_aware_cubit.dart';
 import 'package:farmhub/presentation/smart_widgets/produce_dialogs/app_dialogs.dart';
-import 'package:flutter/widgets.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:ndialog/ndialog.dart';
 
-part 'edit_profile_state.dart';
+import '../../../../core/auth/data/repository/auth_repository.dart';
+
 part 'edit_profile_cubit.freezed.dart';
+part 'edit_profile_state.dart';
 
 class EditProfileCubit extends Cubit<EditProfileState> {
   final GlobalAuthCubit globalAuthCubit;

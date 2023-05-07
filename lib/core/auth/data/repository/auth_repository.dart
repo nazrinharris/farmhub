@@ -1,4 +1,5 @@
 import 'package:cloud_functions/cloud_functions.dart';
+import 'package:farmhub/core/auth/domain/entities/farmhub_config.dart';
 import 'package:farmhub/core/typedefs/typedefs.dart';
 import 'package:farmhub/core/util/misc.dart';
 import 'package:farmhub/features/farm_shop_manager/data/datasources/farm_shop_manager_remote_datasource.dart';
@@ -10,7 +11,6 @@ import 'package:fpdart/fpdart.dart';
 import 'package:farmhub/core/auth/data/datasources/auth_local_datasource.dart';
 import 'package:farmhub/core/auth/data/datasources/auth_remote_datasource.dart';
 import 'package:farmhub/core/auth/domain/entities/farmhub_user/farmhub_user.dart';
-import 'package:farmhub/core/auth/domain/i_auth_repository.dart';
 import 'package:farmhub/core/util/app_const.dart';
 import 'package:farmhub/core/errors/failures.dart';
 import 'package:farmhub/core/network/network_info.dart';
@@ -18,6 +18,57 @@ import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
 import '../../../errors/exceptions.dart';
 import '../../../util/printer.dart';
+
+import 'package:farmhub/core/errors/failures.dart';
+import 'package:farmhub/core/typedefs/typedefs.dart';
+import 'package:fpdart/fpdart.dart';
+
+abstract class IAuthRepository {
+  // Login and Sign Out
+  Future<Either<Failure, FarmhubUser>> loginWithEmailAndPassword({
+    required String email,
+    required String password,
+  });
+  Future<Either<Failure, Unit>> signOut();
+
+  // Registration
+  Future<Either<Failure, FarmhubUser>> registerWithEmailAndPassword({
+    required String email,
+    required String password,
+    required String username,
+    required UserType userType,
+  });
+
+  Future<Either<Failure, FarmhubUser>> registerWithCredentials({
+    required String uid,
+    required String email,
+    required String displayName,
+  });
+
+  FutureEither<FarmhubUser> createAccountWithPhone({
+    required String uid,
+    required String phoneNumber,
+  });
+
+  FutureEither<Tuple2<FarmhubUser, bool>> signInWithGoogle();
+  FutureEither<Tuple2<FarmhubUser, bool>> signInWithApple();
+
+  Future<Either<Failure, Unit>> sendPasswordResetEmail(String? email);
+
+  Future<Either<Failure, FarmhubUser>> retrieveUserData({String? uid});
+
+  Future<Either<Failure, bool>> isAdmin({
+    required String uid,
+  });
+
+  FutureEither<Unit> chooseUserType(String uid, UserType userType);
+
+  Future<Either<Failure, FarmhubUser>> updateRemoteUser({
+    required FarmhubUser newUserData,
+  });
+
+  FutureEither<FarmhubConfig> getFarmhubConfig();
+}
 
 class AuthRepository implements IAuthRepository {
   final IAuthRemoteDataSource authRemoteDataSource;
@@ -583,5 +634,11 @@ class AuthRepository implements IAuthRepository {
         stackTrace: StackTrace.current,
       ));
     }
+  }
+
+  @override
+  FutureEither<FarmhubConfig> getFarmhubConfig() {
+    // TODO: implement getFarmhubConfig
+    throw UnimplementedError();
   }
 }
