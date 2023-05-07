@@ -54,6 +54,7 @@ Future<void> main() async {
   // Comment for updating to transactions
   // Comment for firebase integration tests
   // Comment for firestore restrictions
+  // Comment for firebase remote configs
 }
 
 class FarmhubApp extends StatelessWidget {
