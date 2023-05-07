@@ -637,8 +637,40 @@ class AuthRepository implements IAuthRepository {
   }
 
   @override
-  FutureEither<FarmhubConfig> getFarmhubConfig() {
-    // TODO: implement getFarmhubConfig
-    throw UnimplementedError();
+  FutureEither<FarmhubConfig> getFarmhubConfig() async {
+    if (await networkInfo.isConnected) {
+      try {
+        final result = await authRemoteDataSource.getFarmhubConfig();
+
+        return Right(result);
+      } on AuthException catch (e, stack) {
+        debugPrint(e.toString());
+        return Left(AuthFailure(
+          code: e.code,
+          message: e.message,
+          stackTrace: stack,
+        ));
+      } on FirebaseException catch (e, stack) {
+        return Left(FirebaseAuthFailure(
+          code: e.code,
+          message: e.message,
+          stackTrace: stack,
+        ));
+      } catch (e, stack) {
+        return Left(
+          UnexpectedFailure(
+            message: "An unexpected error occured while getting farmhub config",
+            code: e.toString(),
+            stackTrace: stack,
+          ),
+        );
+      }
+    } else {
+      return Left(InternetConnectionFailure(
+        code: ERROR_NO_INTERNET_CONNECTION,
+        message: MESSAGE_NO_INTERNET_CONNECTION,
+        stackTrace: StackTrace.current,
+      ));
+    }
   }
 }

@@ -13,6 +13,8 @@ import 'package:package_info_plus/package_info_plus.dart';
 import 'package:phone_numbers_parser/phone_numbers_parser.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 import 'package:cloud_functions/cloud_functions.dart';
+import 'package:firebase_remote_config/firebase_remote_config.dart';
+import 'package:flutter/foundation.dart';
 
 import '../../../util/secure.dart' as secure;
 import '../../domain/entities/farmhub_config.dart';
@@ -458,8 +460,28 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
   }
 
   @override
-  Future<FarmhubConfig> getFarmhubConfig() {
-    // TODO: implement getFarmhubConfig
-    throw UnimplementedError();
+  Future<FarmhubConfig> getFarmhubConfig() async {
+    late String minimumAppVersion;
+    late String latestAppVersion;
+
+    final FirebaseRemoteConfig remoteConfig = FirebaseRemoteConfig.instance;
+    Duration fetchInterval = kReleaseMode ? const Duration(hours: 12) : const Duration(seconds: 60);
+
+    await remoteConfig.setConfigSettings(RemoteConfigSettings(
+      fetchTimeout: const Duration(seconds: 60),
+      minimumFetchInterval: fetchInterval,
+    ));
+
+    await remoteConfig.setDefaults(<String, dynamic>{
+      // TODO: App should fetch from local storage rather than hardcode. So everytime config is fetched, it will update the local storage.
+      'minimum_app_version': '0.3.1',
+      'latest_app_version': '0.3.1',
+    });
+    await remoteConfig.fetchAndActivate().then((_) {
+      minimumAppVersion = remoteConfig.getString('minimum_app_version');
+      latestAppVersion = remoteConfig.getString('latest_app_version');
+    });
+
+    return FarmhubConfig(minimumAppVersion: minimumAppVersion, latestAppVersion: latestAppVersion);
   }
 }

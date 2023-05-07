@@ -1,4 +1,7 @@
 import 'package:bloc/bloc.dart';
+import 'package:farmhub/core/auth/auth_cubit/auth_cubit.dart';
+import 'package:farmhub/core/auth/domain/entities/farmhub_config.dart';
+import 'package:farmhub/locator.dart';
 
 import 'package:farmhub/presentation/smart_widgets/produce_dialogs/app_dialogs.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -14,8 +17,10 @@ part 'settings_cubit.freezed.dart';
 
 class SettingsCubit extends Cubit<SettingsState> {
   final IAuthRepository authRepository;
+  final AuthCubit authCubit;
 
-  SettingsCubit({required this.authRepository}) : super(const SettingsState.initial());
+  SettingsCubit({required this.authRepository, required this.authCubit})
+      : super(const SettingsState.initial());
 
   void showResetPasswordDialog(BuildContext context, {required NAlertDialog resetPasswordDialog}) {
     resetPasswordDialog.show(context, transitionType: DialogTransitionType.Bubble);
@@ -51,6 +56,8 @@ class SettingsCubit extends Cubit<SettingsState> {
   }
 
   void debugPrintMeta() async {
+    FarmhubConfig farmhubConfig = await authCubit.getFarmhubConfig();
+
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
     final idTokenResult = await FirebaseAuth.instance.currentUser!.getIdTokenResult();
     dynamic appVersionClaim = idTokenResult.claims?['appVersion'];
@@ -58,6 +65,9 @@ class SettingsCubit extends Cubit<SettingsState> {
     debugPrint('''
     App Version: ${packageInfo.version}
     App Version Claim: $appVersionClaim
+    ---- Farmhub Config ----
+    Minimum App Version: ${farmhubConfig.minimumAppVersion}
+    Latest App Version: ${farmhubConfig.latestAppVersion}
       ''');
   }
 }

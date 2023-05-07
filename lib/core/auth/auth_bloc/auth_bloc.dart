@@ -4,10 +4,12 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:farmhub/core/auth/domain/entities/farmhub_user/farmhub_user.dart';
-import 'package:farmhub/core/auth/domain/i_auth_repository.dart';
+
 import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+
+import '../data/repository/auth_repository.dart';
 
 part 'auth_event.dart';
 part 'auth_state.dart';
