@@ -441,15 +441,15 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
 
       /// Uncomment for testing for if version is lower than 0.3.1
       //'appVersion': "0.3.0",
+    }).then((_) async {
+      final idTokenResult = await FirebaseAuth.instance.currentUser!.getIdTokenResult();
+      dynamic appVersionClaim = idTokenResult.claims?['appVersion'];
+      if (appVersionClaim != null) {
+        print('The appVersion custom claim is present: $appVersionClaim');
+      } else {
+        print('The appVersion custom claim is not present.');
+      }
     });
-
-    final idTokenResult = await FirebaseAuth.instance.currentUser!.getIdTokenResult();
-    dynamic appVersionClaim = idTokenResult.claims?['appVersion'];
-    if (appVersionClaim != null) {
-      print('The appVersion custom claim is present: $appVersionClaim');
-    } else {
-      print('The appVersion custom claim is not present.');
-    }
 
     return unit;
   }

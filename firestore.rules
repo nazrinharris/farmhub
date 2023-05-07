@@ -4,29 +4,34 @@ service cloud.firestore {
     function isAdmin() {
       return exists(/databases/$(database)/documents/admins/$(request.auth.uid));
     }
+    
+    function isAppVersionAllowed() {
+      let minimum_app_version = "0.3.1";
+    	return request.auth.token.appVersion >= minimum_app_version;
+    }
 
     match /produce/{produceId} {
     	allow read: if true;
-      allow create: if isAdmin();
-      allow update: if isAdmin();
+      allow create: if isAdmin() && isAppVersionAllowed();
+      allow update: if isAdmin() && isAppVersionAllowed();
     }
     
     match /farms/{farmId} {
     	allow read: if true;
-      allow create: if true;
+      allow create: if true && isAppVersionAllowed();
     }
     
     match /produce/{produceId}/aggregatePrices/{aggregatePricesId} {
     	allow read: if true;
-      allow create: if isAdmin();
-      allow update: if isAdmin();
+      allow create: if isAdmin() && isAppVersionAllowed();
+      allow update: if isAdmin() && isAppVersionAllowed();
     }
     
     match /produce/{produceId}/prices/{priceId}{
     	allow read: if true;
-      allow create: if isAdmin();
-      allow update: if isAdmin();
-      allow delete: if isAdmin();
+      allow create: if isAdmin() && isAppVersionAllowed();
+      allow update: if isAdmin() && isAppVersionAllowed();
+      allow delete: if isAdmin() && isAppVersionAllowed();
     }
     
     match /admins/{userId} {
@@ -35,16 +40,16 @@ service cloud.firestore {
     
     match /farms/{farmId} {
     	allow read: if true;
-      allow create: if request.auth.uid == request.resource.data.creatorUserId;
-    	allow update: if request.auth.uid == request.resource.data.creatorUserId;
-      allow delete: if request.auth.uid == resource.data.creatorUserId;
+      allow create: if request.auth.uid == request.resource.data.creatorUserId && isAppVersionAllowed();
+    	allow update: if request.auth.uid == request.resource.data.creatorUserId && isAppVersionAllowed();
+      allow delete: if request.auth.uid == resource.data.creatorUserId && isAppVersionAllowed();
     }
     
     match /shops/{shopId} {
     	allow read: if true;
-      allow create: if request.auth.uid == request.resource.data.creatorUserId;
-    	allow update: if request.auth.uid == request.resource.data.creatorUserId;
-      allow delete: if request.auth.uid == resource.data.creatorUserId;
+      allow create: if request.auth.uid == request.resource.data.creatorUserId && isAppVersionAllowed();
+    	allow update: if request.auth.uid == request.resource.data.creatorUserId && isAppVersionAllowed();
+      allow delete: if request.auth.uid == resource.data.creatorUserId && isAppVersionAllowed();
     }
     
     match /users/{userId} {
