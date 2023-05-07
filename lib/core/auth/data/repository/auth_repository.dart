@@ -52,6 +52,8 @@ class AuthRepository implements IAuthRepository {
           stackTrace: stack,
         ));
       } on FirebaseFunctionsException catch (e, stack) {
+        print(e);
+
         return Left(FirebaseAuthFailure(
           code: e.code,
           message: e.message,

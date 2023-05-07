@@ -434,10 +434,22 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
   Future<Unit> _updateAppVersion() async {
     // Call the setAppVersion Cloud Function after the user authenticates.
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
-    final HttpsCallable callable = FirebaseFunctions.instance.httpsCallable('setAppVersion');
+    final FirebaseFunctions functions = FirebaseFunctions.instanceFor(region: 'asia-southeast1');
+    final HttpsCallable callable = functions.httpsCallable('setAppVersion');
     await callable.call(<String, dynamic>{
       'appVersion': packageInfo.version,
+
+      /// Uncomment for testing for if version is lower than 0.3.1
+      //'appVersion': "0.3.0",
     });
+
+    final idTokenResult = await FirebaseAuth.instance.currentUser!.getIdTokenResult();
+    dynamic appVersionClaim = idTokenResult.claims?['appVersion'];
+    if (appVersionClaim != null) {
+      print('The appVersion custom claim is present: $appVersionClaim');
+    } else {
+      print('The appVersion custom claim is not present.');
+    }
 
     return unit;
   }
