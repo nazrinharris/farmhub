@@ -20,6 +20,7 @@ dependencies:
   firebase_core: ^2.11.0
   google_sign_in: ^6.1.0
   cloud_functions: ^4.2.0
+  firebase_remote_config: ^4.1.0
 
   # Other auth
   sign_in_with_apple: ^4.3.0
