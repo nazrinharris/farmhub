@@ -329,7 +329,6 @@ class AuthRepository implements IAuthRepository {
         // Check the user's app version
         bool isAllowed = await AppVersionHelper.isAppVersionAllowed();
         if (!isAllowed) {
-          await signOut();
           return Left(AuthFailure(
             code: ERR_APP_VERSION_NOT_SUPPORTED,
             message: MESSAGE_APP_VERSION_NOT_SUPPORTED,
@@ -418,7 +417,6 @@ class AuthRepository implements IAuthRepository {
         // Check the user's app version
         bool isAllowed = await AppVersionHelper.isAppVersionAllowed();
         if (!isAllowed) {
-          await signOut();
           return Left(AuthFailure(
             code: ERR_APP_VERSION_NOT_SUPPORTED,
             message: MESSAGE_APP_VERSION_NOT_SUPPORTED,
