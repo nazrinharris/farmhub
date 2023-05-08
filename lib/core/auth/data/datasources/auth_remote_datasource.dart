@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:farmhub/core/app_version_helper/app_version_helper.dart';
 import 'package:farmhub/core/auth/domain/entities/farmhub_user/farmhub_user.dart';
 import 'package:farmhub/core/errors/exceptions.dart';
 import 'package:farmhub/core/util/app_const.dart';
@@ -436,6 +437,13 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
     return userCred;
   }
 
+  /// Updates the app version in the user's custom claims.
+  ///
+  /// This method should be called after the user authenticates.
+  /// It updates the `appVersion` custom claim in the user's authentication token
+  /// by calling the `setAppVersion` Cloud Function.
+  ///
+  /// Returns a [Unit] value.
   Future<Unit> _updateAppVersion() async {
     // Call the setAppVersion Cloud Function after the user authenticates.
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
@@ -459,6 +467,17 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
     return unit;
   }
 
+  /// Fetches the app configuration from Firebase Remote Config.
+  ///
+  /// This method retrieves the `minimum_app_version` and `latest_app_version`
+  /// values from Firebase Remote Config. It sets the configuration settings
+  /// with different fetch intervals depending on the app's release mode
+  /// (12 hours for production and 60 seconds for development).
+  ///
+  /// The default values for `minimum_app_version` and `latest_app_version`
+  /// are set to '0.3.1'. TODO: Fetch from local storage instead of hardcoding.
+  ///
+  /// Returns a [FarmhubConfig] object containing the minimum and latest app versions.
   @override
   Future<FarmhubConfig> getFarmhubConfig() async {
     late String minimumAppVersion;

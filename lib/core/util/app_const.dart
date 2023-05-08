@@ -9,6 +9,7 @@ const String ERROR_USER_NOT_FOUND = 'ERROR_USER_NOT_FOUND';
 const String ERROR_UNKNOWN_OCCURED = 'ERROR_UNKNOWN_OCCURED';
 const String ERROR_EMAIL_ALREADY_USED = 'ERROR_EMAIL_ALREADY_USED';
 const String ERR_USERNAME_UNAVAILABLE = 'ERR_USERNAME_UNAVAILABLE';
+const String ERR_APP_VERSION_NOT_SUPPORTED = 'ERR_APP_VERSION_NOT_SUPPORTED';
 
 /// Local App [ErrorMessages]
 ///
@@ -18,6 +19,8 @@ const String MESSAGE_NO_INTERNET_CONNECTION =
 const String MESSAGE_NOT_SAME_PASSWORD = 'Sorry, the passwords you entered are not the same';
 const String MESSAGE_USER_NOT_FOUND = 'Sorry, you are not logged in';
 const String MESSAGE_EMAIL_ALREADY_IN_USE = 'Sorry, this email is already in use';
+const String MESSAGE_APP_VERSION_NOT_SUPPORTED =
+    'Sorry, your app version is not outdated, please update your app';
 
 /// Firebase [PluginCodes]
 /// These codes are meant to give context to the exception, because [FirebaseException] is used

@@ -16,6 +16,7 @@ import 'package:farmhub/core/errors/failures.dart';
 import 'package:farmhub/core/network/network_info.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
+import '../../../app_version_helper/app_version_helper.dart';
 import '../../../errors/exceptions.dart';
 import '../../../util/printer.dart';
 
@@ -111,12 +112,15 @@ class AuthRepository implements IAuthRepository {
           message: e.message,
           stackTrace: stack,
         ));
-      } catch (e, stack) {
-        return Left(UnexpectedFailure(
-          code: e.toString(),
-          message: "An unexpected error occured",
+      } on AuthException catch (e, stack) {
+        return Left(AuthFailure(
+          code: e.code,
+          message: e.message,
           stackTrace: stack,
         ));
+      } catch (e, stack) {
+        return Left(UnexpectedFailure(
+            code: e.toString(), message: "An unexpected error occured", stackTrace: stack));
       }
     } else {
       return Left(InternetConnectionFailure(
@@ -136,6 +140,17 @@ class AuthRepository implements IAuthRepository {
   }) async {
     if (await networkInfo.isConnected) {
       try {
+        // Check the user's app version
+        bool isAllowed = await AppVersionHelper.isAppVersionAllowed();
+        if (!isAllowed) {
+          await signOut();
+          return Left(AuthFailure(
+            code: ERR_APP_VERSION_NOT_SUPPORTED,
+            message: MESSAGE_APP_VERSION_NOT_SUPPORTED,
+            stackTrace: StackTrace.current,
+          ));
+        }
+
         final result = await authRemoteDataSource.registerWithEmailAndPassword(
           email: email,
           password: password,
@@ -163,10 +178,7 @@ class AuthRepository implements IAuthRepository {
           stackTrace: e.stackTrace,
         ));
       } catch (e, stack) {
-        return Left(UnexpectedFailure(
-          message: e.toString(),
-          stackTrace: stack,
-        ));
+        return Left(UnexpectedFailure(message: e.toString(), stackTrace: stack));
       }
     } else {
       return Left(InternetConnectionFailure(
@@ -190,6 +202,12 @@ class AuthRepository implements IAuthRepository {
         code: e.code,
         message: e.message,
         stackTrace: StackTrace.current,
+      ));
+    } on AuthException catch (e, stack) {
+      return Left(AuthFailure(
+        code: e.code,
+        message: e.message,
+        stackTrace: stack,
       ));
     } catch (e, stack) {
       return Left(UnexpectedFailure(
@@ -223,6 +241,12 @@ class AuthRepository implements IAuthRepository {
         await authLocalDataSource.storeFarmhubUser(user);
 
         return Right(user);
+      } on AuthException catch (e, stack) {
+        return Left(AuthFailure(
+          code: e.code,
+          message: e.message,
+          stackTrace: stack,
+        ));
       } on FirebaseAuthException catch (e) {
         return Left(FirebaseAuthFailure(
           code: e.code,
@@ -348,6 +372,12 @@ class AuthRepository implements IAuthRepository {
         }
         await authRemoteDataSource.sendPasswordResetEmail(email);
         return const Right(unit);
+      } on AuthException catch (e, stack) {
+        return Left(AuthFailure(
+          code: e.code,
+          message: e.message,
+          stackTrace: stack,
+        ));
       } on FirebaseAuthException catch (e) {
         return Left(FirebaseAuthFailure(
           code: e.code,
@@ -376,6 +406,12 @@ class AuthRepository implements IAuthRepository {
       try {
         await authRemoteDataSource.chooseUserType(uid, userType);
         return const Right(unit);
+      } on AuthException catch (e, stack) {
+        return Left(AuthFailure(
+          code: e.code,
+          message: e.message,
+          stackTrace: stack,
+        ));
       } on FirebaseFunctionsException catch (e, stack) {
         return Left(FirebaseAuthFailure(
           code: e.code,
