@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:farmhub/core/app_version_helper/app_version_helper.dart';
 import 'package:farmhub/core/auth/domain/entities/farmhub_user/farmhub_user.dart';
 import 'package:farmhub/core/errors/exceptions.dart';
 import 'package:farmhub/core/util/app_const.dart';
@@ -13,8 +14,11 @@ import 'package:package_info_plus/package_info_plus.dart';
 import 'package:phone_numbers_parser/phone_numbers_parser.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 import 'package:cloud_functions/cloud_functions.dart';
+import 'package:firebase_remote_config/firebase_remote_config.dart';
+import 'package:flutter/foundation.dart';
 
 import '../../../util/secure.dart' as secure;
+import '../../domain/entities/farmhub_config.dart';
 
 abstract class IAuthRemoteDataSource {
   Future<FarmhubUser> loginWithEmailAndPassword({
@@ -54,6 +58,8 @@ abstract class IAuthRemoteDataSource {
   Future<Unit> sendPasswordResetEmail(String email);
 
   Future<Unit> signOut();
+
+  Future<FarmhubConfig> getFarmhubConfig();
 }
 
 class AuthRemoteDataSource implements IAuthRemoteDataSource {
@@ -431,6 +437,13 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
     return userCred;
   }
 
+  /// Updates the app version in the user's custom claims.
+  ///
+  /// This method should be called after the user authenticates.
+  /// It updates the `appVersion` custom claim in the user's authentication token
+  /// by calling the `setAppVersion` Cloud Function.
+  ///
+  /// Returns a [Unit] value.
   Future<Unit> _updateAppVersion() async {
     // Call the setAppVersion Cloud Function after the user authenticates.
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
@@ -452,5 +465,42 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
     });
 
     return unit;
+  }
+
+  /// Fetches the app configuration from Firebase Remote Config.
+  ///
+  /// This method retrieves the `minimum_app_version` and `latest_app_version`
+  /// values from Firebase Remote Config. It sets the configuration settings
+  /// with different fetch intervals depending on the app's release mode
+  /// (12 hours for production and 60 seconds for development).
+  ///
+  /// The default values for `minimum_app_version` and `latest_app_version`
+  /// are set to '0.3.1'. TODO: Fetch from local storage instead of hardcoding.
+  ///
+  /// Returns a [FarmhubConfig] object containing the minimum and latest app versions.
+  @override
+  Future<FarmhubConfig> getFarmhubConfig() async {
+    late String minimumAppVersion;
+    late String latestAppVersion;
+
+    final FirebaseRemoteConfig remoteConfig = FirebaseRemoteConfig.instance;
+    Duration fetchInterval = kReleaseMode ? const Duration(hours: 12) : const Duration(seconds: 60);
+
+    await remoteConfig.setConfigSettings(RemoteConfigSettings(
+      fetchTimeout: const Duration(seconds: 60),
+      minimumFetchInterval: fetchInterval,
+    ));
+
+    await remoteConfig.setDefaults(<String, dynamic>{
+      // TODO: App should fetch from local storage rather than hardcode. So everytime config is fetched, it will update the local storage.
+      'minimum_app_version': '0.3.1',
+      'latest_app_version': '0.3.1',
+    });
+    await remoteConfig.fetchAndActivate().then((_) {
+      minimumAppVersion = remoteConfig.getString('minimum_app_version');
+      latestAppVersion = remoteConfig.getString('latest_app_version');
+    });
+
+    return FarmhubConfig(minimumAppVersion: minimumAppVersion, latestAppVersion: latestAppVersion);
   }
 }

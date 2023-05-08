@@ -1,3 +1,4 @@
+import 'package:farmhub/core/auth/auth_cubit/auth_cubit.dart';
 import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
 import 'package:farmhub/locator.dart';
 import 'package:farmhub/presentation/shared_widgets/appbars.dart';
@@ -21,7 +22,15 @@ class SettingsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => SettingsCubit(authRepository: locator())),
+        BlocProvider(
+            create: (context) => SettingsCubit(
+                authRepository: locator(),
+                authCubit: AuthCubit(
+                  firebaseAuth: locator(),
+                  authRepository: locator(),
+                  authRemoteDataSource: locator(),
+                  globalAuthCubit: locator(),
+                ))),
         BlocProvider(
             create: (context) => ProduceDialogCubit(
                   locator(),

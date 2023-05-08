@@ -1,23 +1,24 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:farmhub/core/auth/data/datasources/auth_remote_datasource.dart';
-import 'package:farmhub/core/auth/domain/entities/farmhub_user/farmhub_user.dart';
-import 'package:farmhub/core/auth/domain/i_auth_repository.dart';
-import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
-import 'package:farmhub/core/errors/exceptions.dart';
-import 'package:farmhub/core/errors/failures.dart';
-import 'package:farmhub/core/util/app_const.dart';
-import 'package:farmhub/presentation/views/debug/playground_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:phone_numbers_parser/phone_numbers_parser.dart';
 
-part 'auth_cubit_state.dart';
+import 'package:farmhub/core/auth/data/datasources/auth_remote_datasource.dart';
+import 'package:farmhub/core/auth/domain/entities/farmhub_config.dart';
+import 'package:farmhub/core/auth/domain/entities/farmhub_user/farmhub_user.dart';
+
+import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
+import 'package:farmhub/core/errors/exceptions.dart';
+import 'package:farmhub/core/errors/failures.dart';
+
+import '../data/repository/auth_repository.dart';
+
 part 'auth_cubit.freezed.dart';
+part 'auth_cubit_state.dart';
 
 enum FromAccount { phone, google, apple }
 
@@ -195,5 +196,21 @@ class AuthCubit extends Cubit<AuthState> {
     );
 
     return toReturn;
+  }
+
+  Future<FarmhubConfig> getFarmhubConfig() async {
+    final result = await authRepository.getFarmhubConfig();
+
+    return result.fold(
+      (l) {
+        debugPrint(l.toString());
+        throw AuthException(
+          code: l.code ?? "Unknown Code",
+          message: "An error occured while fetching farmhub config",
+          stackTrace: l.stackTrace,
+        );
+      },
+      (r) => r,
+    );
   }
 }

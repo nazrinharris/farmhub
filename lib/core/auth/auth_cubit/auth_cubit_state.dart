@@ -28,4 +28,8 @@ class AuthState with _$AuthState {
 
   const factory AuthState.thirdPartyAccountCreationSuccess(Tuple2<FarmhubUser, bool> result) =
       ThirdPartyAccountCreationSuccess;
+
+  const factory AuthState.remoteConfigLoading() = RemoteConfigLoading;
+  const factory AuthState.remoteConfigError(Failure failure) = RemoteConfigError;
+  const factory AuthState.remoteConfigSuccess() = RemoteConfigSuccess;
 }

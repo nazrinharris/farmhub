@@ -1,5 +1,9 @@
 import 'package:clock/clock.dart';
-import 'package:farmhub/core/auth/domain/i_auth_repository.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:fpdart/fpdart.dart';
+import 'package:mocktail/mocktail.dart';
+
+import 'package:farmhub/core/auth/data/repository/auth_repository.dart';
 import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
 import 'package:farmhub/core/network/network_info.dart';
 import 'package:farmhub/features/produce_manager/data/datasources/produce_manager_local_datasource.dart';
@@ -7,9 +11,6 @@ import 'package:farmhub/features/produce_manager/data/datasources/produce_manage
 import 'package:farmhub/features/produce_manager/data/datasources/produce_prices_remote_datasource.dart';
 import 'package:farmhub/features/produce_manager/data/repository/produce_manager_repository.dart';
 import 'package:farmhub/features/produce_manager/domain/entities/produce/produce.dart';
-import 'package:fpdart/fpdart.dart';
-import 'package:mocktail/mocktail.dart';
-import 'package:flutter_test/flutter_test.dart';
 
 class MockProduceManagerRemoteDatasource extends Mock implements IProduceManagerRemoteDatasource {}
 

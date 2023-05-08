@@ -1,21 +1,24 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/foundation.dart';
+import 'package:fpdart/fpdart.dart';
+
 import 'package:farmhub/core/auth/domain/entities/farmhub_user/farmhub_user.dart';
-import 'package:farmhub/core/auth/domain/i_auth_repository.dart';
 import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
-import 'package:farmhub/core/util/app_const.dart';
 import 'package:farmhub/core/errors/exceptions.dart';
 import 'package:farmhub/core/errors/failures.dart';
 import 'package:farmhub/core/network/network_info.dart';
+import 'package:farmhub/core/typedefs/typedefs.dart';
+import 'package:farmhub/core/util/app_const.dart';
 import 'package:farmhub/features/produce_manager/data/datasources/produce_manager_local_datasource.dart';
 import 'package:farmhub/features/produce_manager/data/datasources/produce_manager_remote_datasource.dart';
 import 'package:farmhub/features/produce_manager/data/datasources/produce_prices_remote_datasource.dart';
+import 'package:farmhub/features/produce_manager/data/repository/produce_manager_helpers.dart';
 import 'package:farmhub/features/produce_manager/domain/entities/price/price.dart';
 import 'package:farmhub/features/produce_manager/domain/entities/produce/produce.dart';
-import 'package:farmhub/core/typedefs/typedefs.dart';
-import 'package:farmhub/features/produce_manager/data/repository/produce_manager_helpers.dart';
 import 'package:farmhub/features/produce_manager/domain/i_produce_manager_repository.dart';
-import 'package:flutter/foundation.dart';
-import 'package:fpdart/fpdart.dart';
+
+import '../../../../core/app_version_helper/app_version_helper.dart';
+import '../../../../core/auth/data/repository/auth_repository.dart';
 
 const String ProduceManagerRepositoryCode = "PMR-";
 
@@ -117,6 +120,16 @@ class ProduceManagerRepository implements IProduceManagerRepository {
     // Check if user is connected to the internet.
     if (await networkInfo.isConnected) {
       try {
+        // Check the user's app version
+        bool isAllowed = await AppVersionHelper.isAppVersionAllowed();
+        if (!isAllowed) {
+          return Left(AuthFailure(
+            code: ERR_APP_VERSION_NOT_SUPPORTED,
+            message: MESSAGE_APP_VERSION_NOT_SUPPORTED,
+            stackTrace: StackTrace.current,
+          ));
+        }
+
         // Check if user is signed in.
         final failureOrUserData =
             await authRepository.retrieveUserData().then((result) => result.fold(
@@ -212,6 +225,16 @@ class ProduceManagerRepository implements IProduceManagerRepository {
   }) async {
     if (await networkInfo.isConnected) {
       try {
+        // Check the user's app version
+        bool isAllowed = await AppVersionHelper.isAppVersionAllowed();
+        if (!isAllowed) {
+          return Left(AuthFailure(
+            code: ERR_APP_VERSION_NOT_SUPPORTED,
+            message: MESSAGE_APP_VERSION_NOT_SUPPORTED,
+            stackTrace: StackTrace.current,
+          ));
+        }
+
         final result = await pricesRemoteDatasource.addNewPrice(
           produceId: produceId,
           currentPrice: currentPrice,
@@ -256,6 +279,16 @@ class ProduceManagerRepository implements IProduceManagerRepository {
   FutureEither<Unit> editProduce(String produceId, String newProduceName) async {
     if (await networkInfo.isConnected) {
       try {
+        // Check the user's app version
+        bool isAllowed = await AppVersionHelper.isAppVersionAllowed();
+        if (!isAllowed) {
+          return Left(AuthFailure(
+            code: ERR_APP_VERSION_NOT_SUPPORTED,
+            message: MESSAGE_APP_VERSION_NOT_SUPPORTED,
+            stackTrace: StackTrace.current,
+          ));
+        }
+
         await remoteDatasource.editProduce(produceId, newProduceName);
 
         return const Right(unit);
@@ -275,6 +308,16 @@ class ProduceManagerRepository implements IProduceManagerRepository {
   FutureEither<Unit> deleteProduce(String produceId) async {
     if (await networkInfo.isConnected) {
       try {
+        // Check the user's app version
+        bool isAllowed = await AppVersionHelper.isAppVersionAllowed();
+        if (!isAllowed) {
+          return Left(AuthFailure(
+            code: ERR_APP_VERSION_NOT_SUPPORTED,
+            message: MESSAGE_APP_VERSION_NOT_SUPPORTED,
+            stackTrace: StackTrace.current,
+          ));
+        }
+
         await remoteDatasource.deleteProduce(produceId);
 
         return const Right(unit);
@@ -391,6 +434,16 @@ class ProduceManagerRepository implements IProduceManagerRepository {
   ) async {
     if (await networkInfo.isConnected) {
       try {
+        // Check the user's app version
+        bool isAllowed = await AppVersionHelper.isAppVersionAllowed();
+        if (!isAllowed) {
+          return Left(AuthFailure(
+            code: ERR_APP_VERSION_NOT_SUPPORTED,
+            message: MESSAGE_APP_VERSION_NOT_SUPPORTED,
+            stackTrace: StackTrace.current,
+          ));
+        }
+
         final result = await pricesRemoteDatasource.editSubPrice(
           produceId,
           priceId,
@@ -435,6 +488,16 @@ class ProduceManagerRepository implements IProduceManagerRepository {
       {required String produceId, required String priceId, required String subPriceDate}) async {
     if (await networkInfo.isConnected) {
       try {
+        // Check the user's app version
+        bool isAllowed = await AppVersionHelper.isAppVersionAllowed();
+        if (!isAllowed) {
+          return Left(AuthFailure(
+            code: ERR_APP_VERSION_NOT_SUPPORTED,
+            message: MESSAGE_APP_VERSION_NOT_SUPPORTED,
+            stackTrace: StackTrace.current,
+          ));
+        }
+
         final isPriceDocDeleted =
             await pricesRemoteDatasource.deleteSubPrice(produceId, priceId, subPriceDate);
         return Right(isPriceDocDeleted);
@@ -478,6 +541,16 @@ class ProduceManagerRepository implements IProduceManagerRepository {
   FutureEither<FarmhubUser> addToFavorites(FarmhubUser farmhubUser, String produceId) async {
     if (await networkInfo.isConnected) {
       try {
+        // Check the user's app version
+        bool isAllowed = await AppVersionHelper.isAppVersionAllowed();
+        if (!isAllowed) {
+          return Left(AuthFailure(
+            code: ERR_APP_VERSION_NOT_SUPPORTED,
+            message: MESSAGE_APP_VERSION_NOT_SUPPORTED,
+            stackTrace: StackTrace.current,
+          ));
+        }
+
         final updatedFarmhubUser = await remoteDatasource.addToFavorites(farmhubUser, produceId);
         globalAuthCubit.updateFarmhubUser(updatedFarmhubUser);
 
@@ -501,6 +574,16 @@ class ProduceManagerRepository implements IProduceManagerRepository {
   FutureEither<FarmhubUser> removeFromFavorites(FarmhubUser farmhubUser, String produceId) async {
     if (await networkInfo.isConnected) {
       try {
+        // Check the user's app version
+        bool isAllowed = await AppVersionHelper.isAppVersionAllowed();
+        if (!isAllowed) {
+          return Left(AuthFailure(
+            code: ERR_APP_VERSION_NOT_SUPPORTED,
+            message: MESSAGE_APP_VERSION_NOT_SUPPORTED,
+            stackTrace: StackTrace.current,
+          ));
+        }
+
         final updatedFarmhubUser =
             await remoteDatasource.removeFromFavorites(farmhubUser, produceId);
         globalAuthCubit.updateFarmhubUser(updatedFarmhubUser);
