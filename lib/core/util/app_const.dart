@@ -20,7 +20,7 @@ const String MESSAGE_NOT_SAME_PASSWORD = 'Sorry, the passwords you entered are n
 const String MESSAGE_USER_NOT_FOUND = 'Sorry, you are not logged in';
 const String MESSAGE_EMAIL_ALREADY_IN_USE = 'Sorry, this email is already in use';
 const String MESSAGE_APP_VERSION_NOT_SUPPORTED =
-    'Sorry, your app version is not outdated, please update your app';
+    'Sorry, your app version is outdated, please update your app';
 
 /// Firebase [PluginCodes]
 /// These codes are meant to give context to the exception, because [FirebaseException] is used

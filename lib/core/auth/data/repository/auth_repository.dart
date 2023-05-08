@@ -326,6 +326,17 @@ class AuthRepository implements IAuthRepository {
       final staleUser = await authLocalDataSource.retrieveFarmhubUser();
 
       try {
+        // Check the user's app version
+        bool isAllowed = await AppVersionHelper.isAppVersionAllowed();
+        if (!isAllowed) {
+          await signOut();
+          return Left(AuthFailure(
+            code: ERR_APP_VERSION_NOT_SUPPORTED,
+            message: MESSAGE_APP_VERSION_NOT_SUPPORTED,
+            stackTrace: StackTrace.current,
+          ));
+        }
+
         if (staleUser.userType == UserType.admin && newUserData.userType != UserType.admin) {
           throw AuthException(
             code: "ERROR_CANNOT_CHANGE_USERTYPE",
@@ -404,6 +415,17 @@ class AuthRepository implements IAuthRepository {
   FutureEither<Unit> chooseUserType(String uid, UserType userType) async {
     if (await networkInfo.isConnected) {
       try {
+        // Check the user's app version
+        bool isAllowed = await AppVersionHelper.isAppVersionAllowed();
+        if (!isAllowed) {
+          await signOut();
+          return Left(AuthFailure(
+            code: ERR_APP_VERSION_NOT_SUPPORTED,
+            message: MESSAGE_APP_VERSION_NOT_SUPPORTED,
+            stackTrace: StackTrace.current,
+          ));
+        }
+
         await authRemoteDataSource.chooseUserType(uid, userType);
         return const Right(unit);
       } on AuthException catch (e, stack) {
@@ -440,6 +462,17 @@ class AuthRepository implements IAuthRepository {
   }) async {
     if (await networkInfo.isConnected) {
       try {
+        // Check the user's app version
+        bool isAllowed = await AppVersionHelper.isAppVersionAllowed();
+        if (!isAllowed) {
+          await signOut();
+          return Left(AuthFailure(
+            code: ERR_APP_VERSION_NOT_SUPPORTED,
+            message: MESSAGE_APP_VERSION_NOT_SUPPORTED,
+            stackTrace: StackTrace.current,
+          ));
+        }
+
         final result =
             await authRemoteDataSource.createAccountWithPhone(uid: uid, phoneNumber: phoneNumber);
 
@@ -487,6 +520,17 @@ class AuthRepository implements IAuthRepository {
   }) async {
     if (await networkInfo.isConnected) {
       try {
+        // Check the user's app version
+        bool isAllowed = await AppVersionHelper.isAppVersionAllowed();
+        if (!isAllowed) {
+          await signOut();
+          return Left(AuthFailure(
+            code: ERR_APP_VERSION_NOT_SUPPORTED,
+            message: MESSAGE_APP_VERSION_NOT_SUPPORTED,
+            stackTrace: StackTrace.current,
+          ));
+        }
+
         final result = await authRemoteDataSource.registerWithCredentials(
           uid: uid,
           email: email,
