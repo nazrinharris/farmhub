@@ -180,7 +180,7 @@ class ProduceManagerRepository implements IProduceManagerRepository {
         // Check the user's app version
         bool isAllowed = await AppVersionHelper.isAppVersionAllowed();
         if (!isAllowed) {
-          return Left(AuthFailure(
+          return Left(ProduceManagerFailure(
             code: ERR_APP_VERSION_NOT_SUPPORTED,
             message: MESSAGE_APP_VERSION_NOT_SUPPORTED,
             stackTrace: StackTrace.current,
@@ -285,7 +285,7 @@ class ProduceManagerRepository implements IProduceManagerRepository {
         // Check the user's app version
         bool isAllowed = await AppVersionHelper.isAppVersionAllowed();
         if (!isAllowed) {
-          return Left(AuthFailure(
+          return Left(ProduceManagerFailure(
             code: ERR_APP_VERSION_NOT_SUPPORTED,
             message: MESSAGE_APP_VERSION_NOT_SUPPORTED,
             stackTrace: StackTrace.current,
@@ -352,7 +352,7 @@ class ProduceManagerRepository implements IProduceManagerRepository {
         // // Check the user's app version
         // bool isAllowed = await AppVersionHelper.isAppVersionAllowed();
         // if (!isAllowed) {
-        //   return Left(AuthFailure(
+        //   return Left(ProduceManagerFailure(
         //     code: ERR_APP_VERSION_NOT_SUPPORTED,
         //     message: MESSAGE_APP_VERSION_NOT_SUPPORTED,
         //     stackTrace: StackTrace.current,
@@ -533,7 +533,7 @@ class ProduceManagerRepository implements IProduceManagerRepository {
         // Check the user's app version
         bool isAllowed = await AppVersionHelper.isAppVersionAllowed();
         if (!isAllowed) {
-          return Left(AuthFailure(
+          return Left(ProduceManagerFailure(
             code: ERR_APP_VERSION_NOT_SUPPORTED,
             message: MESSAGE_APP_VERSION_NOT_SUPPORTED,
             stackTrace: StackTrace.current,
@@ -599,7 +599,7 @@ class ProduceManagerRepository implements IProduceManagerRepository {
         // Check the user's app version
         bool isAllowed = await AppVersionHelper.isAppVersionAllowed();
         if (!isAllowed) {
-          return Left(AuthFailure(
+          return Left(ProduceManagerFailure(
             code: ERR_APP_VERSION_NOT_SUPPORTED,
             message: MESSAGE_APP_VERSION_NOT_SUPPORTED,
             stackTrace: StackTrace.current,
@@ -664,7 +664,7 @@ class ProduceManagerRepository implements IProduceManagerRepository {
         // Check the user's app version
         bool isAllowed = await AppVersionHelper.isAppVersionAllowed();
         if (!isAllowed) {
-          return Left(AuthFailure(
+          return Left(ProduceManagerFailure(
             code: ERR_APP_VERSION_NOT_SUPPORTED,
             message: MESSAGE_APP_VERSION_NOT_SUPPORTED,
             stackTrace: StackTrace.current,
@@ -703,7 +703,7 @@ class ProduceManagerRepository implements IProduceManagerRepository {
         // Check the user's app version
         bool isAllowed = await AppVersionHelper.isAppVersionAllowed();
         if (!isAllowed) {
-          return Left(AuthFailure(
+          return Left(ProduceManagerFailure(
             code: ERR_APP_VERSION_NOT_SUPPORTED,
             message: MESSAGE_APP_VERSION_NOT_SUPPORTED,
             stackTrace: StackTrace.current,
