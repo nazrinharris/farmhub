@@ -4,10 +4,10 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:farmhub/core/errors/failures.dart';
-import 'package:farmhub/features/produce_manager/domain/i_produce_manager_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../../../features/produce_manager/data/repository/produce_manager_repository.dart';
 import '../../../../features/produce_manager/domain/entities/produce/produce.dart';
 
 part 'search_screen_event.dart';

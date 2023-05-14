@@ -2,10 +2,10 @@ import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:farmhub/core/errors/failures.dart';
 import 'package:farmhub/features/produce_manager/domain/entities/produce/produce.dart';
-import 'package:farmhub/features/produce_manager/domain/i_produce_manager_repository.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../../../features/produce_manager/data/repository/produce_manager_repository.dart';
 import '../../../../features/produce_manager/domain/entities/price/price.dart';
 import '../../../../features/produce_manager/data/repository/produce_manager_helpers.dart';
 

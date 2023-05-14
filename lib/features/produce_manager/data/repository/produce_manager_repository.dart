@@ -15,12 +15,51 @@ import 'package:farmhub/features/produce_manager/data/datasources/produce_prices
 import 'package:farmhub/features/produce_manager/data/repository/produce_manager_helpers.dart';
 import 'package:farmhub/features/produce_manager/domain/entities/price/price.dart';
 import 'package:farmhub/features/produce_manager/domain/entities/produce/produce.dart';
-import 'package:farmhub/features/produce_manager/domain/i_produce_manager_repository.dart';
 
 import '../../../../core/app_version_helper/app_version_helper.dart';
 import '../../../../core/auth/data/repository/auth_repository.dart';
 
 const String ProduceManagerRepositoryCode = "PMR-";
+
+abstract class IProduceManagerRepository {
+  FutureEither<Produce> getProduce({required String pid});
+  FutureEither<List<Produce>> getFirstTenProduce();
+  FutureEither<List<Produce>> getNextTenProduce(List<Produce> lastProduceList);
+  FutureEither<List<Produce>> searchProduce(String query);
+  FutureEither<List<Produce>> getNextTenSearchProduce(List<Produce> lastProduceList, String query);
+  FutureEither<List<Produce>> getProduceFavorites(FarmhubUser farmhubUser);
+
+  FutureEither<List<Produce>> getProduceAsList(List<String> produceIdList);
+  FutureEither<FarmhubUser> addToFavorites(FarmhubUser farmhubUser, String produceId);
+  FutureEither<FarmhubUser> removeFromFavorites(FarmhubUser farmhubUser, String produceId);
+
+  FutureEither<Price> getPrice(String produceId, String priceId);
+  FutureEither<Price> editSubPrice(
+      String produceId, String priceId, num newPrice, String subPriceDate);
+  FutureEither<List<PriceSnippet>> getAggregatePrices(String produceId);
+  FutureEither<List<Price>> getFirstTenPrices(String produceId);
+  FutureEither<List<Price>> getNextTenPrices(List<Price> lastPriceList, String produceId);
+  FutureEither<bool> deleteSubPrice({
+    required String produceId,
+    required String priceId,
+    required String subPriceDate,
+  });
+
+  FutureEither<Produce> createNewProduce({
+    required String produceName,
+    required num currentProducePrice,
+  });
+  FutureEither<Unit> editProduce(String produceId, String newProduceName);
+  FutureEither<Unit> deleteProduce(String produceId);
+
+  FutureEither<Produce> addNewPrice({
+    required String produceId,
+    required num currentPrice,
+    num? daysFromNow,
+  });
+
+  FutureEither<void>? debugMethod(String produceId);
+}
 
 class ProduceManagerRepository implements IProduceManagerRepository {
   final INetworkInfo networkInfo;
@@ -279,15 +318,16 @@ class ProduceManagerRepository implements IProduceManagerRepository {
   FutureEither<Unit> editProduce(String produceId, String newProduceName) async {
     if (await networkInfo.isConnected) {
       try {
-        // Check the user's app version
-        bool isAllowed = await AppVersionHelper.isAppVersionAllowed();
-        if (!isAllowed) {
-          return Left(AuthFailure(
-            code: ERR_APP_VERSION_NOT_SUPPORTED,
-            message: MESSAGE_APP_VERSION_NOT_SUPPORTED,
-            stackTrace: StackTrace.current,
-          ));
-        }
+        // TODO: Remove comment, this is added for testing
+        // // Check the user's app version
+        // bool isAllowed = await AppVersionHelper.isAppVersionAllowed();
+        // if (!isAllowed) {
+        //   return Left(AuthFailure(
+        //     code: ERR_APP_VERSION_NOT_SUPPORTED,
+        //     message: MESSAGE_APP_VERSION_NOT_SUPPORTED,
+        //     stackTrace: StackTrace.current,
+        //   ));
+        // }
 
         await remoteDatasource.editProduce(produceId, newProduceName);
 
@@ -308,16 +348,6 @@ class ProduceManagerRepository implements IProduceManagerRepository {
   FutureEither<Unit> deleteProduce(String produceId) async {
     if (await networkInfo.isConnected) {
       try {
-        // Check the user's app version
-        bool isAllowed = await AppVersionHelper.isAppVersionAllowed();
-        if (!isAllowed) {
-          return Left(AuthFailure(
-            code: ERR_APP_VERSION_NOT_SUPPORTED,
-            message: MESSAGE_APP_VERSION_NOT_SUPPORTED,
-            stackTrace: StackTrace.current,
-          ));
-        }
-
         await remoteDatasource.deleteProduce(produceId);
 
         return const Right(unit);

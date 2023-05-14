@@ -1,11 +1,11 @@
 import 'package:bloc/bloc.dart';
 import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
-import 'package:farmhub/features/produce_manager/domain/i_produce_manager_repository.dart';
 import 'package:farmhub/presentation/global/cubit/global_ui_cubit.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../core/auth/domain/entities/farmhub_user/farmhub_user.dart';
 import '../../../../core/errors/failures.dart';
+import '../../../../features/produce_manager/data/repository/produce_manager_repository.dart';
 import '../../../../features/produce_manager/domain/entities/produce/produce.dart';
 
 part 'favorites_screen_state.dart';

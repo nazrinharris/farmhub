@@ -9,8 +9,8 @@ import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../core/errors/failures.dart';
+import '../../../../features/produce_manager/data/repository/produce_manager_repository.dart';
 import '../../../../features/produce_manager/domain/entities/produce/produce.dart';
-import '../../../../features/produce_manager/domain/i_produce_manager_repository.dart';
 
 part 'add_new_price_screen_event.dart';
 part 'add_new_price_screen_state.dart';

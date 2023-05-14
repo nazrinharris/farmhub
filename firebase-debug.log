@@ -1,0 +1,145 @@
+[debug] [2023-05-13T23:30:35.859Z] ----------------------------------------------------------------------
+[debug] [2023-05-13T23:30:35.860Z] Command:       /usr/local/bin/node /usr/local/bin/firebase emulators:start
+[debug] [2023-05-13T23:30:35.861Z] CLI Version:   11.26.0
+[debug] [2023-05-13T23:30:35.861Z] Platform:      darwin
+[debug] [2023-05-13T23:30:35.861Z] Node Version:  v16.16.0
+[debug] [2023-05-13T23:30:35.861Z] Time:          Sat May 13 2023 19:30:35 GMT-0400 (Eastern Daylight Time)
+[debug] [2023-05-13T23:30:35.861Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-05-13T23:30:35.863Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2023-05-13T23:30:35.904Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-05-13T23:30:35.905Z] > authorizing via signed-in user (totallyofficialharris@gmail.com)
+[debug] [2023-05-13T23:30:36.006Z] openjdk version "17.0.1" 2021-10-19
+
+[debug] [2023-05-13T23:30:36.007Z] OpenJDK Runtime Environment Temurin-17.0.1+12 (build 17.0.1+12)
+OpenJDK 64-Bit Server VM Temurin-17.0.1+12 (build 17.0.1+12, mixed mode)
+
+[debug] [2023-05-13T23:30:36.009Z] Parsed Java major version: 17
+[info] i  emulators: Starting emulators: auth, functions, firestore, storage {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: auth, functions, firestore, storage"}}
+[debug] [2023-05-13T23:30:36.903Z] [logging] Logging Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-05-13T23:30:36.903Z] [auth] Authentication Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-05-13T23:30:36.903Z] [firestore] Firestore Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-05-13T23:30:36.903Z] [firestore.websocket] websocket server for firestore only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-05-13T23:30:36.903Z] [storage] Storage Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-05-13T23:30:36.903Z] assigned listening specs for emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"auth":[{"address":"127.0.0.1","family":"IPv4","port":9099}],"firestore":[{"address":"127.0.0.1","family":"IPv4","port":8080}],"firestore.websocket":[{"address":"127.0.0.1","family":"IPv4","port":9150}],"storage":[{"address":"127.0.0.1","family":"IPv4","port":9199}]},"metadata":{"message":"assigned listening specs for emulators"}}
+[debug] [2023-05-13T23:30:36.908Z] [hub] writing locator at /var/folders/zs/k86zrqdd0ns6zjc852fjg7vh0000gn/T/hub-farmhub-23c2b.json
+[debug] [2023-05-13T23:30:37.168Z] [functions] Functions Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-05-13T23:30:37.168Z] [eventarc] Eventarc Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-05-13T23:30:37.168Z] late-assigned ports for functions and eventarc emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"auth":[{"address":"127.0.0.1","family":"IPv4","port":9099}],"firestore":[{"address":"127.0.0.1","family":"IPv4","port":8080}],"firestore.websocket":[{"address":"127.0.0.1","family":"IPv4","port":9150}],"storage":[{"address":"127.0.0.1","family":"IPv4","port":9199}],"functions":[{"address":"127.0.0.1","family":"IPv4","port":5001}],"eventarc":[{"address":"127.0.0.1","family":"IPv4","port":9299}]},"metadata":{"message":"late-assigned ports for functions and eventarc emulators"}}
+[warn] ⚠  functions: The following emulators are not running, calls to these services from the Functions emulator will affect production: database, hosting, pubsub {"metadata":{"emulator":{"name":"functions"},"message":"The following emulators are not running, calls to these services from the Functions emulator will affect production: \u001b[1mdatabase, hosting, pubsub\u001b[22m"}}
+[debug] [2023-05-13T23:30:37.170Z] defaultcredentials: writing to file /Users/nazrinharris/.config/firebase/totallyofficialharris_gmail_com_application_default_credentials.json
+[debug] [2023-05-13T23:30:37.173Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
+[debug] [2023-05-13T23:30:37.174Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
+[debug] [2023-05-13T23:30:37.186Z] Setting GAC to /Users/nazrinharris/.config/firebase/totallyofficialharris_gmail_com_application_default_credentials.json {"metadata":{"emulator":{"name":"functions"},"message":"Setting GAC to /Users/nazrinharris/.config/firebase/totallyofficialharris_gmail_com_application_default_credentials.json"}}
+[debug] [2023-05-13T23:30:37.186Z] > refreshing access token with scopes: []
+[debug] [2023-05-13T23:30:37.187Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2023-05-13T23:30:37.187Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-05-13T23:30:37.450Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2023-05-13T23:30:37.450Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-05-13T23:30:37.465Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/farmhub-23c2b/adminSdkConfig [none]
+[debug] [2023-05-13T23:30:38.189Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/farmhub-23c2b/adminSdkConfig 200
+[debug] [2023-05-13T23:30:38.190Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/farmhub-23c2b/adminSdkConfig {"projectId":"farmhub-23c2b","databaseURL":"https://farmhub-23c2b-default-rtdb.asia-southeast1.firebasedatabase.app","storageBucket":"farmhub-23c2b.appspot.com","locationId":"asia-southeast1"}
+[debug] [2023-05-13T23:30:38.211Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"firestore"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2023-05-13T23:30:38.211Z] Ignoring unsupported arg: single_project_mode_error {"metadata":{"emulator":{"name":"firestore"},"message":"Ignoring unsupported arg: single_project_mode_error"}}
+[debug] [2023-05-13T23:30:38.211Z] Starting Firestore Emulator with command {"binary":"java","args":["-Dgoogle.cloud_firestore.debug_log_level=FINE","-Duser.language=en","-jar","/Users/nazrinharris/.cache/firebase/emulators/cloud-firestore-emulator-v1.16.2.jar","--host","127.0.0.1","--port",8080,"--websocket_port",9150,"--project_id","farmhub-23c2b","--rules","/Users/nazrinharris/Development/FlutterProjects/farmhub/firestore.rules","--single_project_mode",true,"--functions_emulator","127.0.0.1:5001"],"optionalArgs":["port","webchannel_port","host","rules","websocket_port","functions_emulator","seed_from_export","project_id","single_project_mode"],"joinArgs":false} {"metadata":{"emulator":{"name":"firestore"},"message":"Starting Firestore Emulator with command {\"binary\":\"java\",\"args\":[\"-Dgoogle.cloud_firestore.debug_log_level=FINE\",\"-Duser.language=en\",\"-jar\",\"/Users/nazrinharris/.cache/firebase/emulators/cloud-firestore-emulator-v1.16.2.jar\",\"--host\",\"127.0.0.1\",\"--port\",8080,\"--websocket_port\",9150,\"--project_id\",\"farmhub-23c2b\",\"--rules\",\"/Users/nazrinharris/Development/FlutterProjects/farmhub/firestore.rules\",\"--single_project_mode\",true,\"--functions_emulator\",\"127.0.0.1:5001\"],\"optionalArgs\":[\"port\",\"webchannel_port\",\"host\",\"rules\",\"websocket_port\",\"functions_emulator\",\"seed_from_export\",\"project_id\",\"single_project_mode\"],\"joinArgs\":false}"}}
+[info] i  firestore: Firestore Emulator logging to firestore-debug.log {"metadata":{"emulator":{"name":"firestore"},"message":"Firestore Emulator logging to \u001b[1mfirestore-debug.log\u001b[22m"}}
+[debug] [2023-05-13T23:30:38.860Z] May 13, 2023 7:30:38 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketServer start
+INFO: Started WebSocket server on ws://127.0.0.1:9150
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 13, 2023 7:30:38 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketServer start\nINFO: Started WebSocket server on ws://127.0.0.1:9150\n"}}
+[debug] [2023-05-13T23:30:38.875Z] API endpoint: http:// {"metadata":{"emulator":{"name":"firestore"},"message":"API endpoint: http://"}}
+[debug] [2023-05-13T23:30:38.876Z] 127.0.0.1:8080
+If you are using a library that supports the FIRESTORE_EMULATOR_HOST environment variable, run:
+
+   export FIRESTORE_EMULATOR_HOST=127.0.0.1:8080
+
+Dev App Server is now running.
+
+ {"metadata":{"emulator":{"name":"firestore"},"message":"127.0.0.1:8080\nIf you are using a library that supports the FIRESTORE_EMULATOR_HOST environment variable, run:\n\n   export FIRESTORE_EMULATOR_HOST=127.0.0.1:8080\n\nDev App Server is now running.\n\n"}}
+[info] ✔  firestore: Firestore Emulator UI websocket is running on 9150. {"metadata":{"emulator":{"name":"firestore"},"message":"Firestore Emulator UI websocket is running on 9150."}}
+[debug] [2023-05-13T23:30:41.987Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"storage"},"message":"Ignoring unsupported arg: port"}}
+[debug] [2023-05-13T23:30:42.442Z] Temp file directory for storage emulator: /var/folders/zs/k86zrqdd0ns6zjc852fjg7vh0000gn/T/firebase/storage/blobs {"metadata":{"emulator":{"name":"storage"},"message":"Temp file directory for storage emulator: /var/folders/zs/k86zrqdd0ns6zjc852fjg7vh0000gn/T/firebase/storage/blobs"}}
+[debug] [2023-05-13T23:30:42.448Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2023-05-13T23:30:42.448Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: port"}}
+[debug] [2023-05-13T23:30:42.448Z] Starting Emulator UI with command {"binary":"node","args":["/Users/nazrinharris/.cache/firebase/emulators/ui-v1.11.5/server/server.js"],"optionalArgs":[],"joinArgs":false} {"metadata":{"emulator":{"name":"ui"},"message":"Starting Emulator UI with command {\"binary\":\"node\",\"args\":[\"/Users/nazrinharris/.cache/firebase/emulators/ui-v1.11.5/server/server.js\"],\"optionalArgs\":[],\"joinArgs\":false}"}}
+[info] i  ui: Emulator UI logging to ui-debug.log {"metadata":{"emulator":{"name":"ui"},"message":"Emulator UI logging to \u001b[1mui-debug.log\u001b[22m"}}
+[debug] [2023-05-13T23:30:42.516Z] Web / API server started at 127.0.0.1:4000
+ {"metadata":{"emulator":{"name":"ui"},"message":"Web / API server started at 127.0.0.1:4000\n"}}
+[debug] [2023-05-13T23:30:42.516Z] Web / API server started at ::1:4000
+ {"metadata":{"emulator":{"name":"ui"},"message":"Web / API server started at ::1:4000\n"}}
+[info] i  functions: Watching "/Users/nazrinharris/Development/FlutterProjects/farmhub/functions" for Cloud Functions... {"metadata":{"emulator":{"name":"functions"},"message":"Watching \"/Users/nazrinharris/Development/FlutterProjects/farmhub/functions\" for Cloud Functions..."}}
+[debug] [2023-05-13T23:30:42.711Z] Validating nodejs source
+[warn] ⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory. 
+[debug] [2023-05-13T23:30:43.422Z] > [functions] package.json contents: {
+  "name": "functions",
+  "scripts": {
+    "lint": "eslint --ext .js,.ts .",
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "serve": "npm run build && firebase emulators:start --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "firebase-admin": "^11.5.0",
+    "firebase-functions": "^4.2.0"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.12.0",
+    "@typescript-eslint/parser": "^5.12.0",
+    "eslint": "^8.9.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-import": "^2.25.4",
+    "firebase-functions-test": "^3.0.0",
+    "typescript": "^4.9.0"
+  },
+  "private": true
+}
+[debug] [2023-05-13T23:30:43.422Z] Building nodejs source
+[debug] [2023-05-13T23:30:43.423Z] Failed to find version of module node: reached end of search path /Users/nazrinharris/Development/FlutterProjects/farmhub/functions/node_modules
+[info] ✔  functions: Using node@16 from host. 
+[debug] [2023-05-13T23:30:43.424Z] Could not find functions.yaml. Must use http discovery
+[debug] [2023-05-13T23:30:43.428Z] Found firebase-functions binary at '/Users/nazrinharris/Development/FlutterProjects/farmhub/functions/node_modules/.bin/firebase-functions'
+[debug] [2023-05-13T23:30:43.569Z] Serving at port 8678
+
+[debug] [2023-05-13T23:30:43.727Z] Got response from /__/functions.yaml {"endpoints":{"setAppVersion":{"platform":"gcfv1","labels":{},"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"serviceAccountEmail":null,"vpc":null,"region":["asia-southeast1"],"callableTrigger":{},"entryPoint":"setAppVersion"}},"specVersion":"v1alpha1","requiredAPIs":[]}
+[debug] [2023-05-13T23:30:43.731Z] shutdown requested via /__/quitquitquit
+
+[info] ✔  functions: Loaded functions definitions from source: setAppVersion. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: setAppVersion."}}
+[info] ✔  functions[asia-southeast1-setAppVersion]: http function initialized (http://127.0.0.1:5001/farmhub-23c2b/asia-southeast1/setAppVersion). {"metadata":{"emulator":{"name":"functions"},"message":"\u001b[1mhttp\u001b[22m function initialized (http://127.0.0.1:5001/farmhub-23c2b/asia-southeast1/setAppVersion)."}}
+[info] 
+┌─────────────────────────────────────────────────────────────┐
+│ ✔  All emulators ready! It is now safe to connect your app. │
+│ i  View Emulator UI at http://127.0.0.1:4000/               │
+└─────────────────────────────────────────────────────────────┘
+
+┌────────────────┬────────────────┬─────────────────────────────────┐
+│ Emulator       │ Host:Port      │ View in Emulator UI             │
+├────────────────┼────────────────┼─────────────────────────────────┤
+│ Authentication │ 127.0.0.1:9099 │ http://127.0.0.1:4000/auth      │
+├────────────────┼────────────────┼─────────────────────────────────┤
+│ Functions      │ 127.0.0.1:5001 │ http://127.0.0.1:4000/functions │
+├────────────────┼────────────────┼─────────────────────────────────┤
+│ Firestore      │ 127.0.0.1:8080 │ http://127.0.0.1:4000/firestore │
+├────────────────┼────────────────┼─────────────────────────────────┤
+│ Storage        │ 127.0.0.1:9199 │ http://127.0.0.1:4000/storage   │
+└────────────────┴────────────────┴─────────────────────────────────┘
+  Emulator Hub running at 127.0.0.1:4400
+  Other reserved ports: 4500, 9150
+
+Issues? Report them at https://github.com/firebase/firebase-tools/issues and attach the *-debug.log files.
+ 
+[debug] [2023-05-13T23:30:58.937Z] May 13, 2023 7:30:58 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler initChannel
+INFO: Connected to new websocket client
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 13, 2023 7:30:58 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler initChannel\nINFO: Connected to new websocket client\n"}}
+[debug] [2023-05-13T23:31:01.337Z] May 13, 2023 7:31:01 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 13, 2023 7:31:01 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2023-05-13T23:31:01.423Z] May 13, 2023 7:31:01 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 13, 2023 7:31:01 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected HTTP/2 connection.\n"}}
