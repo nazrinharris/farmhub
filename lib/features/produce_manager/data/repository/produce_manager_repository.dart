@@ -88,6 +88,12 @@ class ProduceManagerRepository implements IProduceManagerRepository {
         await localDatasource.storeProduceList(firstTenProduce);
 
         return Right(firstTenProduce);
+      } on FirebaseException catch (e, stack) {
+        return Left(FirebaseFirestoreFailure(
+          message: e.message,
+          code: e.code,
+          stackTrace: stack,
+        ));
       } catch (e, stack) {
         return Left(
           UnexpectedFailure(
@@ -117,6 +123,12 @@ class ProduceManagerRepository implements IProduceManagerRepository {
         await localDatasource.storeProduceList(newProduceList);
 
         return Right(newProduceList);
+      } on FirebaseException catch (e, stack) {
+        return Left(FirebaseFirestoreFailure(
+          message: e.message,
+          code: e.code,
+          stackTrace: stack,
+        ));
       } catch (e, stack) {
         return Left(UnexpectedFailure(code: e.toString(), stackTrace: stack));
       }
@@ -139,6 +151,12 @@ class ProduceManagerRepository implements IProduceManagerRepository {
         final produce = await remoteDatasource.getProduce(pid);
 
         return Right(produce);
+      } on FirebaseException catch (e, stack) {
+        return Left(FirebaseFirestoreFailure(
+          message: e.message,
+          code: e.code,
+          stackTrace: stack,
+        ));
       } catch (e, stack) {
         return Left(UnexpectedFailure(code: e.toString(), stackTrace: stack));
       }
@@ -281,6 +299,12 @@ class ProduceManagerRepository implements IProduceManagerRepository {
         );
 
         return Right(result);
+      } on FirebaseException catch (e, stack) {
+        return Left(FirebaseFirestoreFailure(
+          message: e.message,
+          code: e.code,
+          stackTrace: stack,
+        ));
       } catch (e, stack) {
         return Left(UnexpectedFailure(
           code: e.toString(),
@@ -302,6 +326,12 @@ class ProduceManagerRepository implements IProduceManagerRepository {
       try {
         final result = await remoteDatasource.searchProduce(query: query);
         return Right(result);
+      } on FirebaseException catch (e, stack) {
+        return Left(FirebaseFirestoreFailure(
+          message: e.message,
+          code: e.code,
+          stackTrace: stack,
+        ));
       } catch (e, stack) {
         return Left(UnexpectedFailure(code: e.toString(), stackTrace: stack));
       }
@@ -332,6 +362,12 @@ class ProduceManagerRepository implements IProduceManagerRepository {
         await remoteDatasource.editProduce(produceId, newProduceName);
 
         return const Right(unit);
+      } on FirebaseException catch (e, stack) {
+        return Left(FirebaseFirestoreFailure(
+          message: e.message,
+          code: e.code,
+          stackTrace: stack,
+        ));
       } catch (e, stack) {
         return Left(UnexpectedFailure(code: e.toString(), stackTrace: stack));
       }
@@ -351,6 +387,12 @@ class ProduceManagerRepository implements IProduceManagerRepository {
         await remoteDatasource.deleteProduce(produceId);
 
         return const Right(unit);
+      } on FirebaseException catch (e, stack) {
+        return Left(FirebaseFirestoreFailure(
+          message: e.message,
+          code: e.code,
+          stackTrace: stack,
+        ));
       } catch (e, stack) {
         return Left(UnexpectedFailure(code: e.toString(), stackTrace: stack));
       }
@@ -379,6 +421,12 @@ class ProduceManagerRepository implements IProduceManagerRepository {
         return Left(
           ProduceManagerFailure(code: e.code, message: e.message, stackTrace: e.stackTrace),
         );
+      } on FirebaseException catch (e, stack) {
+        return Left(FirebaseFirestoreFailure(
+          message: e.message,
+          code: e.code,
+          stackTrace: stack,
+        ));
       } catch (e, stack) {
         return Left(UnexpectedFailure(code: e.toString(), stackTrace: stack));
       }
@@ -405,6 +453,12 @@ class ProduceManagerRepository implements IProduceManagerRepository {
         final result = await pricesRemoteDatasource.getAggregatePrices(produceId);
 
         return Right(result);
+      } on FirebaseException catch (e, stack) {
+        return Left(FirebaseFirestoreFailure(
+          message: e.message,
+          code: e.code,
+          stackTrace: stack,
+        ));
       } catch (e, stack) {
         return Left(UnexpectedFailure(code: e.toString(), stackTrace: stack));
       }
@@ -424,6 +478,12 @@ class ProduceManagerRepository implements IProduceManagerRepository {
         final result = await pricesRemoteDatasource.getFirstTenPrices(produceId);
 
         return Right(result);
+      } on FirebaseException catch (e, stack) {
+        return Left(FirebaseFirestoreFailure(
+          message: e.message,
+          code: e.code,
+          stackTrace: stack,
+        ));
       } catch (e, stack) {
         return Left(UnexpectedFailure(code: e.toString(), stackTrace: stack));
       }
@@ -443,6 +503,12 @@ class ProduceManagerRepository implements IProduceManagerRepository {
         final result = await pricesRemoteDatasource.getNextTenPrices(lastPriceList, produceId);
 
         return Right(result);
+      } on FirebaseException catch (e, stack) {
+        return Left(FirebaseFirestoreFailure(
+          message: e.message,
+          code: e.code,
+          stackTrace: stack,
+        ));
       } catch (e, stack) {
         return Left(UnexpectedFailure(code: e.toString(), stackTrace: stack));
       }
@@ -482,6 +548,12 @@ class ProduceManagerRepository implements IProduceManagerRepository {
         );
 
         return Right(result);
+      } on FirebaseException catch (e, stack) {
+        return Left(FirebaseFirestoreFailure(
+          message: e.message,
+          code: e.code,
+          stackTrace: stack,
+        ));
       } catch (e, stack) {
         return Left(UnexpectedFailure(code: e.toString(), stackTrace: stack));
       }
@@ -501,6 +573,12 @@ class ProduceManagerRepository implements IProduceManagerRepository {
         final result = await pricesRemoteDatasource.getPrice(produceId, priceId);
 
         return Right(result);
+      } on FirebaseException catch (e, stack) {
+        return Left(FirebaseFirestoreFailure(
+          message: e.message,
+          code: e.code,
+          stackTrace: stack,
+        ));
       } catch (e, stack) {
         return Left(UnexpectedFailure(code: e.toString(), stackTrace: stack));
       }
@@ -534,6 +612,12 @@ class ProduceManagerRepository implements IProduceManagerRepository {
       } on ProduceManagerException catch (e) {
         return Left(
             ProduceManagerFailure(code: e.code, message: e.message, stackTrace: e.stackTrace));
+      } on FirebaseException catch (e, stack) {
+        return Left(FirebaseFirestoreFailure(
+          message: e.message,
+          code: e.code,
+          stackTrace: stack,
+        ));
       } catch (e, stack) {
         return Left(UnexpectedFailure(code: e.toString(), stackTrace: stack));
       }
@@ -555,6 +639,12 @@ class ProduceManagerRepository implements IProduceManagerRepository {
       } on ProduceManagerException catch (e) {
         return Left(
             ProduceManagerFailure(code: e.code, message: e.message, stackTrace: e.stackTrace));
+      } on FirebaseException catch (e, stack) {
+        return Left(FirebaseFirestoreFailure(
+          message: e.message,
+          code: e.code,
+          stackTrace: stack,
+        ));
       } catch (e, stack) {
         return Left(UnexpectedFailure(code: e.toString(), stackTrace: stack));
       }
@@ -588,6 +678,12 @@ class ProduceManagerRepository implements IProduceManagerRepository {
       } on ProduceManagerException catch (e) {
         return Left(
             ProduceManagerFailure(code: e.code, message: e.message, stackTrace: e.stackTrace));
+      } on FirebaseException catch (e, stack) {
+        return Left(FirebaseFirestoreFailure(
+          message: e.message,
+          code: e.code,
+          stackTrace: stack,
+        ));
       } catch (e, stack) {
         return Left(UnexpectedFailure(code: e.toString(), stackTrace: stack));
       }
@@ -624,6 +720,12 @@ class ProduceManagerRepository implements IProduceManagerRepository {
           code: e.code,
           message: e.message,
           stackTrace: e.stackTrace,
+        ));
+      } on FirebaseException catch (e, stack) {
+        return Left(FirebaseFirestoreFailure(
+          message: e.message,
+          code: e.code,
+          stackTrace: stack,
         ));
       } catch (e, stack) {
         return Left(UnexpectedFailure(code: e.toString(), stackTrace: stack));
@@ -700,6 +802,12 @@ class ProduceManagerRepository implements IProduceManagerRepository {
           code: e.code,
           message: e.message,
           stackTrace: e.stackTrace,
+        ));
+      } on FirebaseException catch (e, stack) {
+        return Left(FirebaseFirestoreFailure(
+          message: e.message,
+          code: e.code,
+          stackTrace: stack,
         ));
       } catch (e, stack) {
         return Left(UnexpectedFailure(code: e.toString(), stackTrace: stack));
