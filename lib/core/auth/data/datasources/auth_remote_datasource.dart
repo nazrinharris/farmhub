@@ -448,13 +448,13 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
   /// Returns a [Unit] value.
   @override
   Future<Unit> updateAppVersionClaim() async {
-    FirebaseFunctions.instance.useFunctionsEmulator('localhost', 5001);
+    await FirebaseAuth.instance.currentUser!.reload();
 
     // Call the setAppVersion Cloud Function after the user authenticates.
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
 
     int appVersion = AppVersionHelper.convertSemanticVersion(packageInfo.version);
-    int testAppVersion = AppVersionHelper.convertSemanticVersion('0.3.2');
+    int testAppVersion = AppVersionHelper.convertSemanticVersion('2.3.2');
 
     final FirebaseFunctions functions = FirebaseFunctions.instanceFor(region: 'asia-southeast1');
     final HttpsCallable callable = functions.httpsCallable('setAppVersion');
@@ -463,10 +463,10 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
       /// Then relogin to get the new token with the new version. It seems like calling this function
       /// independently won't update the token.
 
-      // "appVersion" : appVersion,
-      "appVersion": testAppVersion,
+      "appVersion": appVersion,
+      // "appVersion": testAppVersion,
     }).then((_) async {
-      final idTokenResult = await FirebaseAuth.instance.currentUser!.getIdTokenResult();
+      final idTokenResult = await FirebaseAuth.instance.currentUser!.getIdTokenResult(true);
       dynamic appVersionClaim = idTokenResult.claims?['appVersion'];
       if (appVersionClaim != null) {
         print('The appVersion custom claim is present: $appVersionClaim');

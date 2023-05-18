@@ -78,14 +78,5 @@ class SettingsCubit extends Cubit<SettingsState> {
 
   void updateAppVersion() async {
     await authRemoteDataSource.updateAppVersionClaim();
-
-    final idTokenResult = await FirebaseAuth.instance.currentUser!.getIdTokenResult();
-    dynamic appVersionClaim = idTokenResult.claims?['appVersion'];
-
-    debugPrint(
-      '''
-      App Version Claim Refreshed : $appVersionClaim
-      ''',
-    );
   }
 }
