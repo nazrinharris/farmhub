@@ -6,8 +6,7 @@ service cloud.firestore {
     }
     
     function isAppVersionAllowed() {
-      let minimum_app_version = "0.3.1";
-    	return request.auth.token.appVersion >= minimum_app_version;
+      return true;
     }
 
     match /produce/{produceId} {

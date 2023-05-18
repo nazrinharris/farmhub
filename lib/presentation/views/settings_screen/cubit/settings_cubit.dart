@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:farmhub/core/auth/auth_cubit/auth_cubit.dart';
+import 'package:farmhub/core/auth/data/datasources/auth_remote_datasource.dart';
 import 'package:farmhub/core/auth/domain/entities/farmhub_config.dart';
 import 'package:farmhub/locator.dart';
 
@@ -18,8 +19,10 @@ part 'settings_cubit.freezed.dart';
 class SettingsCubit extends Cubit<SettingsState> {
   final IAuthRepository authRepository;
   final AuthCubit authCubit;
+  final IAuthRemoteDataSource authRemoteDataSource;
 
-  SettingsCubit({required this.authRepository, required this.authCubit})
+  SettingsCubit(
+      {required this.authRepository, required this.authCubit, required this.authRemoteDataSource})
       : super(const SettingsState.initial());
 
   void showResetPasswordDialog(BuildContext context, {required NAlertDialog resetPasswordDialog}) {
@@ -62,12 +65,27 @@ class SettingsCubit extends Cubit<SettingsState> {
     final idTokenResult = await FirebaseAuth.instance.currentUser!.getIdTokenResult();
     dynamic appVersionClaim = idTokenResult.claims?['appVersion'];
 
+    /// RemoteConfig is only used for client-side version restriction. Remote version restriction depends on
+    /// the app version claim (Custom Claims)
     debugPrint('''
-    App Version: ${packageInfo.version}
-    App Version Claim: $appVersionClaim
+    App Version (PackageInfo): ${packageInfo.version}
+    App Version (Custom Claims): $appVersionClaim
     ---- Farmhub Config ----
-    Minimum App Version: ${farmhubConfig.minimumAppVersion}
-    Latest App Version: ${farmhubConfig.latestAppVersion}
+    Minimum App Version (RemoteConfig): ${farmhubConfig.minimumAppVersion}
+    Latest App Version (RemoteConfig): ${farmhubConfig.latestAppVersion}
       ''');
+  }
+
+  void updateAppVersion() async {
+    await authRemoteDataSource.updateAppVersionClaim();
+
+    final idTokenResult = await FirebaseAuth.instance.currentUser!.getIdTokenResult();
+    dynamic appVersionClaim = idTokenResult.claims?['appVersion'];
+
+    debugPrint(
+      '''
+      App Version Claim Refreshed : $appVersionClaim
+      ''',
+    );
   }
 }

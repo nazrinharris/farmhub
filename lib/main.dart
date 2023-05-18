@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_functions/cloud_functions.dart';
 import 'package:farmhub/app_router.dart';
 import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
 import 'package:farmhub/locator.dart';
@@ -16,7 +17,11 @@ import 'dart:io';
 
 import 'core/auth/auth_bloc/auth_bloc.dart';
 
-const bool USE_EMULATOR = false;
+/// Uses Local Emulator Firebase Services
+const bool USE_EMULATOR = true;
+
+/// Bypasses the minimum app version check in [AppVersionHelper]
+const bool bypassVersionRestriction = true;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -157,4 +162,5 @@ Future<void> _connectToEmulator() async {
 
   await FirebaseAuth.instance.useAuthEmulator(host, 9099);
   FirebaseFirestore.instance.useFirestoreEmulator(host, 8080);
+  FirebaseFunctions.instanceFor(region: 'asia-southeast1').useFunctionsEmulator(host, 5001);
 }
