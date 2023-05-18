@@ -1,3 +1,4 @@
+import 'package:farmhub/core/app_version_helper/app_version_helper.dart';
 import 'package:farmhub/core/auth/auth_cubit/auth_cubit.dart';
 import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
 import 'package:farmhub/locator.dart';
@@ -25,6 +26,7 @@ class SettingsScreen extends StatelessWidget {
         BlocProvider(
             create: (context) => SettingsCubit(
                 authRepository: locator(),
+                authRemoteDataSource: locator(),
                 authCubit: AuthCubit(
                   firebaseAuth: locator(),
                   authRepository: locator(),
@@ -152,6 +154,21 @@ class _SliverSettingsBodyState extends State<SliverSettingsBody> {
                     context.read<SettingsCubit>().debugPrintMeta();
                   },
                 ),
+                SettingsListCard(
+                  content: "Refresh App Version Meta",
+                  icon: const Icon(Icons.update),
+                  onTap: () {
+                    context.read<SettingsCubit>().updateAppVersion();
+                  },
+                ),
+                SettingsListCard(
+                  content: "Print Semantic to Integer Versioning",
+                  icon: const Icon(Icons.vpn_key_rounded),
+                  onTap: () {
+                    String version = "0.4.0";
+                    print("${AppVersionHelper.convertSemanticVersion(version)}");
+                  },
+                ),
                 const UIVerticalSpace30(),
                 BlocBuilder<SettingsCubit, SettingsState>(
                   builder: (context, state) {
@@ -211,7 +228,7 @@ class SettingsListCard extends StatelessWidget {
               children: [
                 icon,
                 const UIHorizontalSpace14(),
-                Text(content, style: Theme.of(context).textTheme.bodyText1),
+                Flexible(child: Text(content, style: Theme.of(context).textTheme.bodyText1)),
               ],
             )),
       ),

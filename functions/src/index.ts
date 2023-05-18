@@ -2,6 +2,8 @@ import * as functions from "firebase-functions";
 import * as admin from "firebase-admin";
 admin.initializeApp();
 
+
+
 export const setAppVersion = functions
   .region("asia-southeast1")
   .https.onCall(async (data, context) => {

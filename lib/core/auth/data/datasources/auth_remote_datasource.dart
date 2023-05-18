@@ -4,6 +4,7 @@ import 'package:farmhub/core/auth/domain/entities/farmhub_user/farmhub_user.dart
 import 'package:farmhub/core/errors/exceptions.dart';
 import 'package:farmhub/core/util/app_const.dart';
 import 'package:farmhub/core/util/misc.dart';
+import 'package:farmhub/main.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:fpdart/fpdart.dart';
@@ -60,6 +61,7 @@ abstract class IAuthRemoteDataSource {
   Future<Unit> signOut();
 
   Future<FarmhubConfig> getFarmhubConfig();
+  Future<Unit> updateAppVersionClaim();
 }
 
 class AuthRemoteDataSource implements IAuthRemoteDataSource {
@@ -82,7 +84,7 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
         .then((user) => user.user!.uid);
 
     try {
-      await _updateAppVersion();
+      await updateAppVersionClaim();
     } on FirebaseFunctionsException catch (e) {
       // Sign the user out and rethrow the error
       await signOut();
@@ -168,7 +170,7 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
     }, null);
 
     try {
-      await _updateAppVersion();
+      await updateAppVersionClaim();
     } on FirebaseFunctionsException catch (e) {
       // Sign the user out and rethrow the error
       await signOut();
@@ -278,7 +280,7 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
         .update(mapToUpdate)
         .then((value) => debugPrint("Change Success!"));
 
-    await _updateAppVersion();
+    await updateAppVersionClaim();
 
     return unit;
   }
@@ -313,7 +315,7 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
     );
 
     try {
-      await _updateAppVersion();
+      await updateAppVersionClaim();
     } on FirebaseFunctionsException catch (e) {
       // Sign the user out and rethrow the error
       await signOut();
@@ -353,7 +355,7 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
     debugPrint(user.toString());
 
     try {
-      await _updateAppVersion();
+      await updateAppVersionClaim();
     } on FirebaseFunctionsException catch (e) {
       // Sign the user out and rethrow the error
       await signOut();
@@ -388,7 +390,7 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
     final UserCredential userCredential = await firebaseAuth.signInWithCredential(credential);
 
     try {
-      await _updateAppVersion();
+      await updateAppVersionClaim();
     } on FirebaseFunctionsException catch (e) {
       // Sign the user out and rethrow the error
       await signOut();
@@ -427,7 +429,7 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
     final userCred = await FirebaseAuth.instance.signInWithCredential(oauthCredential);
 
     try {
-      await _updateAppVersion();
+      await updateAppVersionClaim();
     } on FirebaseFunctionsException catch (e) {
       // Sign the user out and rethrow the error
       await signOut();
@@ -444,18 +446,27 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
   /// by calling the `setAppVersion` Cloud Function.
   ///
   /// Returns a [Unit] value.
-  Future<Unit> _updateAppVersion() async {
+  @override
+  Future<Unit> updateAppVersionClaim() async {
+    await FirebaseAuth.instance.currentUser!.reload();
+
     // Call the setAppVersion Cloud Function after the user authenticates.
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
+
+    int appVersion = AppVersionHelper.convertSemanticVersion(packageInfo.version);
+    int testAppVersion = AppVersionHelper.convertSemanticVersion('2.3.2');
+
     final FirebaseFunctions functions = FirebaseFunctions.instanceFor(region: 'asia-southeast1');
     final HttpsCallable callable = functions.httpsCallable('setAppVersion');
     await callable.call(<String, dynamic>{
-      'appVersion': packageInfo.version,
+      /// Use [appVersion] for prod, and [testAppVersion] for testing.
+      /// Then relogin to get the new token with the new version. It seems like calling this function
+      /// independently won't update the token.
 
-      /// Uncomment for testing for if version is lower than 0.3.1
-      //'appVersion': "0.3.0",
+      "appVersion": appVersion,
+      // "appVersion": testAppVersion,
     }).then((_) async {
-      final idTokenResult = await FirebaseAuth.instance.currentUser!.getIdTokenResult();
+      final idTokenResult = await FirebaseAuth.instance.currentUser!.getIdTokenResult(true);
       dynamic appVersionClaim = idTokenResult.claims?['appVersion'];
       if (appVersionClaim != null) {
         print('The appVersion custom claim is present: $appVersionClaim');
@@ -492,7 +503,7 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
     ));
 
     await remoteConfig.setDefaults(<String, dynamic>{
-      // TODO: App should fetch from local storage rather than hardcode. So everytime config is fetched, it will update the local storage.
+      // TODO: App should fetch defaults from local storage rather than hardcode. So everytime config is fetched, it will update the local storage.
       'minimum_app_version': '0.3.1',
       'latest_app_version': '0.3.1',
     });

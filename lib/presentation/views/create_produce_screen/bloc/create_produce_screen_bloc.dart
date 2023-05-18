@@ -12,8 +12,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../../../features/produce_manager/data/repository/produce_manager_repository.dart';
 import '../../../../features/produce_manager/domain/entities/produce/produce.dart';
-import '../../../../features/produce_manager/domain/i_produce_manager_repository.dart';
 import '../../../smart_widgets/multiple_fields_form/multiple_fields_form_bloc.dart';
 
 part 'create_produce_screen_event.dart';

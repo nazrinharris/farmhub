@@ -4,8 +4,8 @@ import 'package:bloc/bloc.dart';
 import 'package:farmhub/core/errors/failures.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../data/repository/produce_manager_repository.dart';
 import '../domain/entities/produce/produce.dart';
-import '../domain/i_produce_manager_repository.dart';
 
 part 'produce_manager_event.dart';
 part 'produce_manager_state.dart';
