@@ -20,12 +20,14 @@ class AppVersionHelper {
     // Get the app's current version
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
     String currentAppVersion = packageInfo.version;
+    int currentAppVersionInt = convertSemanticVersion(currentAppVersion);
 
     // Get the minimum app version from Remote Config
     String minimumAppVersion = remoteConfig.getString('minimum_app_version');
+    int minimumAppVersionInt = convertSemanticVersion(minimumAppVersion);
 
     // Compare the current app version with the minimum app version
-    return currentAppVersion.compareTo(minimumAppVersion) >= 0;
+    return currentAppVersionInt >= minimumAppVersionInt;
   }
 
   static int convertSemanticVersion(String version) {

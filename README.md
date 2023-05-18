@@ -10,6 +10,11 @@
 
 
 ## App Versioning
+> CAUTION OR REMEMBER OR WHATEVER!!
+>
+> Maximum app version is `999.999.999`, for each segment (major, minor and patch), maximum digits are `999`.
+
+
 This app uses semantic versioning as its main version representation. But due to the limitations of Firestore Security Rules, semantic comparisons are (at least as far as I have tried) impossible, if not almost. This is due to the lack of debug capabilities as well as limited string manipulation methods. I don't expect this to change anytime soon, since Firestore Security Rules are meant for simpler comparisons, or so I have been told. Another workaround is to use Cloud Functions but that approach seems like we need to move all our methods into Cloud Functions, which will mess with Transactions. And so the solution is the use of integer versioning, where we convert semantic to integer using weights, like so:
 ```dart
 int integerVersion = major * 10000 + minor * 1000 + patch;
