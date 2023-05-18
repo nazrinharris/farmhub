@@ -1,3 +1,4 @@
+import 'package:farmhub/core/app_version_helper/app_version_helper.dart';
 import 'package:farmhub/core/auth/auth_cubit/auth_cubit.dart';
 import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
 import 'package:farmhub/locator.dart';
@@ -158,6 +159,14 @@ class _SliverSettingsBodyState extends State<SliverSettingsBody> {
                   icon: const Icon(Icons.update),
                   onTap: () {
                     context.read<SettingsCubit>().updateAppVersion();
+                  },
+                ),
+                SettingsListCard(
+                  content: "Print Semantic to Integer Versioning",
+                  icon: const Icon(Icons.vpn_key_rounded),
+                  onTap: () {
+                    String version = "0.4.0";
+                    print("${AppVersionHelper.convertSemanticVersion(version)}");
                   },
                 ),
                 const UIVerticalSpace30(),

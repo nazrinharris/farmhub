@@ -42,7 +42,7 @@ class AppVersionHelper {
       throw const FormatException("Each part of the version must be between 0 and 999");
     }
 
-    int integerVersion = major * 10000 + minor * 100 + patch;
+    int integerVersion = major * 10000 + minor * 1000 + patch;
     return integerVersion;
   }
 }

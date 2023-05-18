@@ -453,15 +453,18 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
     // Call the setAppVersion Cloud Function after the user authenticates.
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
 
+    int appVersion = AppVersionHelper.convertSemanticVersion(packageInfo.version);
+    int testAppVersion = AppVersionHelper.convertSemanticVersion('0.3.2');
+
     final FirebaseFunctions functions = FirebaseFunctions.instanceFor(region: 'asia-southeast1');
     final HttpsCallable callable = functions.httpsCallable('setAppVersion');
     await callable.call(<String, dynamic>{
-      /// If testing version change, comment out the line below and uncomment the line below it.
+      /// Use [appVersion] for prod, and [testAppVersion] for testing.
       /// Then relogin to get the new token with the new version. It seems like calling this function
       /// independently won't update the token.
 
-      // 'appVersion': packageInfo.version,
-      "appVersion": "0.4.1",
+      // "appVersion" : appVersion,
+      "appVersion": testAppVersion,
     }).then((_) async {
       final idTokenResult = await FirebaseAuth.instance.currentUser!.getIdTokenResult();
       dynamic appVersionClaim = idTokenResult.claims?['appVersion'];

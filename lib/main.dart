@@ -18,10 +18,10 @@ import 'dart:io';
 import 'core/auth/auth_bloc/auth_bloc.dart';
 
 /// Uses Local Emulator Firebase Services
-const bool USE_EMULATOR = true;
+const bool USE_EMULATOR = false;
 
 /// Bypasses the minimum app version check in [AppVersionHelper]
-const bool bypassVersionRestriction = true;
+const bool bypassVersionRestriction = false;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
