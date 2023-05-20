@@ -217,6 +217,8 @@ Local App Version: ${globalAuthCubitConfig?.localAppVersion}
 Minimum App Version: ${storedConfig.minimumAppVersion}
 Latest App Version: ${storedConfig.latestAppVersion}
 Local App Version: ${storedConfig.localAppVersion}
+------------------- Package Info -------------------
+Version: ${await AppVersionHelper.getAppVersion()}
             ''');
           },
         ),

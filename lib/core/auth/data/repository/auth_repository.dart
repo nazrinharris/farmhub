@@ -69,6 +69,7 @@ abstract class IAuthRepository {
   });
 
   FutureEither<FarmhubConfig> getFarmhubConfig();
+  FutureEither<FarmhubConfig> getLocalFarmhubConfig();
 }
 
 class AuthRepository implements IAuthRepository {
@@ -721,11 +722,11 @@ class AuthRepository implements IAuthRepository {
         final result = await authRemoteDataSource.getFarmhubConfig();
         final String currentAppVersion = await AppVersionHelper.getAppVersion();
 
-        await authLocalDataSource.storeFarmhubConfig(result.copyWith(
-          localAppVersion: currentAppVersion,
-        ));
+        final newConfig = result.copyWith(localAppVersion: currentAppVersion);
 
-        return Right(result);
+        await authLocalDataSource.storeFarmhubConfig(newConfig);
+
+        return Right(newConfig);
       } on AuthException catch (e, stack) {
         debugPrint(e.toString());
         return Left(AuthFailure(
@@ -754,6 +755,23 @@ class AuthRepository implements IAuthRepository {
         message: MESSAGE_NO_INTERNET_CONNECTION,
         stackTrace: StackTrace.current,
       ));
+    }
+  }
+
+  @override
+  FutureEither<FarmhubConfig> getLocalFarmhubConfig() async {
+    try {
+      final result = await authLocalDataSource.retrieveFarmhubConfig();
+
+      return Right(result);
+    } catch (e, stack) {
+      return Left(
+        UnexpectedFailure(
+          message: "An unexpected error occured while getting local farmhub config",
+          code: e.toString(),
+          stackTrace: stack,
+        ),
+      );
     }
   }
 }

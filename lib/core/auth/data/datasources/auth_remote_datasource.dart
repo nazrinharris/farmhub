@@ -460,8 +460,6 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
     final HttpsCallable callable = functions.httpsCallable('setAppVersion');
     await callable.call(<String, dynamic>{
       /// Use [appVersion] for prod, and [testAppVersion] for testing.
-      /// Then relogin to get the new token with the new version. It seems like calling this function
-      /// independently won't update the token.
 
       "appVersion": appVersion,
       // "appVersion": testAppVersion,

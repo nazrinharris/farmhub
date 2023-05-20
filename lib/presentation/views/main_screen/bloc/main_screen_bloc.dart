@@ -2,6 +2,7 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:farmhub/core/app_version_helper/app_version_helper.dart';
 import 'package:farmhub/features/produce_manager/bloc/produce_manager_bloc.dart';
 
 import 'package:flutter/material.dart';
@@ -70,6 +71,9 @@ class MainScreenBloc extends Bloc<MainScreenEvent, MainScreenState> {
   ) async {
     debugPrint("Adding getFirstTenProduce event...");
     emit(MainScreenState.pricesLoading(props: state.props));
+    debugPrint("Refreshing app version...");
+    final res = await AppVersionHelper.refreshAppVersion();
+    if (res) debugPrint("App version refreshed.");
 
     final failureOrProduceList = await produceManagerRepository.getFirstTenProduce();
 
@@ -128,6 +132,9 @@ class MainScreenBloc extends Bloc<MainScreenEvent, MainScreenState> {
     debugPrint("Refresh MainScreen beginning.");
     // Start loading and reset the list
     emit(MainScreenState.pricesLoading(props: state.props.copyWith(produceList: [])));
+
+    debugPrint("Refreshing app version...");
+    AppVersionHelper.refreshAppVersion();
 
     final failureOrProduceList = await produceManagerRepository.getFirstTenProduce();
 
