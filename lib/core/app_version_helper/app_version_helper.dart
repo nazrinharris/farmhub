@@ -6,7 +6,7 @@ import '../../main.dart';
 /// If you are looking for where the app gets the minimum app version from, look at [getFarmhubConfig()]
 /// in [AuthRemoteDatasource] in [auth_remote_data_source.dart].
 ///
-/// If you are looking to manipulate user's app version, look at [_updateAppVersion()] in [AuthRemoteDatasource].
+/// If you are looking to manipulate user's app version, look at [updateAppVersionClaim()] in [AuthRemoteDatasource].
 class AppVersionHelper {
   static Future<bool> isAppVersionAllowed() async {
     if (bypassVersionRestriction) {
@@ -19,15 +19,13 @@ class AppVersionHelper {
 
     // Get the app's current version
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
-    String currentAppVersion = packageInfo.version;
-    int currentAppVersionInt = convertSemanticVersion(currentAppVersion);
+    int currentAppVersion = convertSemanticVersion(packageInfo.version);
 
     // Get the minimum app version from Remote Config
-    String minimumAppVersion = remoteConfig.getString('minimum_app_version');
-    int minimumAppVersionInt = convertSemanticVersion(minimumAppVersion);
+    int minimumAppVersion = convertSemanticVersion(remoteConfig.getString('minimum_app_version'));
 
     // Compare the current app version with the minimum app version
-    return currentAppVersionInt >= minimumAppVersionInt;
+    return currentAppVersion >= minimumAppVersion;
   }
 
   static int convertSemanticVersion(String version) {
@@ -46,5 +44,11 @@ class AppVersionHelper {
 
     int integerVersion = major * 10000 + minor * 1000 + patch;
     return integerVersion;
+  }
+
+  static Future<String> getAppVersion() async {
+    PackageInfo packageInfo = await PackageInfo.fromPlatform();
+
+    return packageInfo.version;
   }
 }

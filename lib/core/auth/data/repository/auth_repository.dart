@@ -719,6 +719,11 @@ class AuthRepository implements IAuthRepository {
     if (await networkInfo.isConnected) {
       try {
         final result = await authRemoteDataSource.getFarmhubConfig();
+        final String currentAppVersion = await AppVersionHelper.getAppVersion();
+
+        await authLocalDataSource.storeFarmhubConfig(result.copyWith(
+          localAppVersion: currentAppVersion,
+        ));
 
         return Right(result);
       } on AuthException catch (e, stack) {

@@ -69,6 +69,7 @@ const String MSG_AUTH_GOOGLE_SIGN_IN_ABORTED =
 
 /// [AuthLocalDatasource]'s [ErrorCodes]
 const String AL_ERR_NO_USER = 'ERR_NO_USER';
+const String AL_NO_FARMHUB_CONFIG = 'AL_NO_FARMHUB_CONFIG';
 
 /// [FarmhubUser] error codes
 const String FU_ERR_STR_TYPE = "FU_ERR_STR_TYPE";

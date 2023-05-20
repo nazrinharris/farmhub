@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:farmhub/core/auth/domain/entities/farmhub_config.dart';
 import 'package:farmhub/core/auth/domain/entities/farmhub_user/farmhub_user.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -24,6 +25,10 @@ class GlobalAuthCubit extends Cubit<GlobalAuthState> {
 
   void updateIsAdmin(bool? isAdmin) {
     emit(state.copyWith(isAdmin: isAdmin));
+  }
+
+  void setFarmhubConfig(FarmhubConfig farmhubConfig) {
+    emit(state.copyWith(farmhubConfig: farmhubConfig));
   }
 
   /// This method will attempt to sync the [FarmhubUser] in the cubit by retrieving it again.

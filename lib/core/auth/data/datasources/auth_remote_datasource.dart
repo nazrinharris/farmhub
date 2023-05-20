@@ -503,9 +503,8 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
     ));
 
     await remoteConfig.setDefaults(<String, dynamic>{
-      // TODO: App should fetch defaults from local storage rather than hardcode. So everytime config is fetched, it will update the local storage.
-      'minimum_app_version': '0.3.1',
-      'latest_app_version': '0.3.1',
+      'minimum_app_version': '0.1.0',
+      'latest_app_version': '0.1.0',
     });
     await remoteConfig.fetchAndActivate().then((_) {
       minimumAppVersion = remoteConfig.getString('minimum_app_version');

@@ -17,20 +17,27 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$GlobalAuthState {
   FarmhubUser? get farmhubUser => throw _privateConstructorUsedError;
+  FarmhubConfig? get farmhubConfig => throw _privateConstructorUsedError;
   bool? get isAdmin => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(FarmhubUser? farmhubUser, bool? isAdmin) initial,
+    required TResult Function(FarmhubUser? farmhubUser,
+            FarmhubConfig? farmhubConfig, bool? isAdmin)
+        initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(FarmhubUser? farmhubUser, bool? isAdmin)? initial,
+    TResult Function(FarmhubUser? farmhubUser, FarmhubConfig? farmhubConfig,
+            bool? isAdmin)?
+        initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(FarmhubUser? farmhubUser, bool? isAdmin)? initial,
+    TResult Function(FarmhubUser? farmhubUser, FarmhubConfig? farmhubConfig,
+            bool? isAdmin)?
+        initial,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -61,7 +68,8 @@ abstract class $GlobalAuthStateCopyWith<$Res> {
   factory $GlobalAuthStateCopyWith(
           GlobalAuthState value, $Res Function(GlobalAuthState) then) =
       _$GlobalAuthStateCopyWithImpl<$Res>;
-  $Res call({FarmhubUser? farmhubUser, bool? isAdmin});
+  $Res call(
+      {FarmhubUser? farmhubUser, FarmhubConfig? farmhubConfig, bool? isAdmin});
 
   $FarmhubUserCopyWith<$Res>? get farmhubUser;
 }
@@ -78,6 +86,7 @@ class _$GlobalAuthStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? farmhubUser = freezed,
+    Object? farmhubConfig = freezed,
     Object? isAdmin = freezed,
   }) {
     return _then(_value.copyWith(
@@ -85,6 +94,10 @@ class _$GlobalAuthStateCopyWithImpl<$Res>
           ? _value.farmhubUser
           : farmhubUser // ignore: cast_nullable_to_non_nullable
               as FarmhubUser?,
+      farmhubConfig: farmhubConfig == freezed
+          ? _value.farmhubConfig
+          : farmhubConfig // ignore: cast_nullable_to_non_nullable
+              as FarmhubConfig?,
       isAdmin: isAdmin == freezed
           ? _value.isAdmin
           : isAdmin // ignore: cast_nullable_to_non_nullable
@@ -111,7 +124,8 @@ abstract class _$$_InitialCopyWith<$Res>
           _$_Initial value, $Res Function(_$_Initial) then) =
       __$$_InitialCopyWithImpl<$Res>;
   @override
-  $Res call({FarmhubUser? farmhubUser, bool? isAdmin});
+  $Res call(
+      {FarmhubUser? farmhubUser, FarmhubConfig? farmhubConfig, bool? isAdmin});
 
   @override
   $FarmhubUserCopyWith<$Res>? get farmhubUser;
@@ -129,6 +143,7 @@ class __$$_InitialCopyWithImpl<$Res> extends _$GlobalAuthStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? farmhubUser = freezed,
+    Object? farmhubConfig = freezed,
     Object? isAdmin = freezed,
   }) {
     return _then(_$_Initial(
@@ -136,6 +151,10 @@ class __$$_InitialCopyWithImpl<$Res> extends _$GlobalAuthStateCopyWithImpl<$Res>
           ? _value.farmhubUser
           : farmhubUser // ignore: cast_nullable_to_non_nullable
               as FarmhubUser?,
+      farmhubConfig: farmhubConfig == freezed
+          ? _value.farmhubConfig
+          : farmhubConfig // ignore: cast_nullable_to_non_nullable
+              as FarmhubConfig?,
       isAdmin: isAdmin == freezed
           ? _value.isAdmin
           : isAdmin // ignore: cast_nullable_to_non_nullable
@@ -147,16 +166,18 @@ class __$$_InitialCopyWithImpl<$Res> extends _$GlobalAuthStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Initial implements _Initial {
-  const _$_Initial({this.farmhubUser, this.isAdmin});
+  const _$_Initial({this.farmhubUser, this.farmhubConfig, this.isAdmin});
 
   @override
   final FarmhubUser? farmhubUser;
+  @override
+  final FarmhubConfig? farmhubConfig;
   @override
   final bool? isAdmin;
 
   @override
   String toString() {
-    return 'GlobalAuthState.initial(farmhubUser: $farmhubUser, isAdmin: $isAdmin)';
+    return 'GlobalAuthState.initial(farmhubUser: $farmhubUser, farmhubConfig: $farmhubConfig, isAdmin: $isAdmin)';
   }
 
   @override
@@ -166,6 +187,8 @@ class _$_Initial implements _Initial {
             other is _$_Initial &&
             const DeepCollectionEquality()
                 .equals(other.farmhubUser, farmhubUser) &&
+            const DeepCollectionEquality()
+                .equals(other.farmhubConfig, farmhubConfig) &&
             const DeepCollectionEquality().equals(other.isAdmin, isAdmin));
   }
 
@@ -173,6 +196,7 @@ class _$_Initial implements _Initial {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(farmhubUser),
+      const DeepCollectionEquality().hash(farmhubConfig),
       const DeepCollectionEquality().hash(isAdmin));
 
   @JsonKey(ignore: true)
@@ -183,27 +207,33 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(FarmhubUser? farmhubUser, bool? isAdmin) initial,
+    required TResult Function(FarmhubUser? farmhubUser,
+            FarmhubConfig? farmhubConfig, bool? isAdmin)
+        initial,
   }) {
-    return initial(farmhubUser, isAdmin);
+    return initial(farmhubUser, farmhubConfig, isAdmin);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(FarmhubUser? farmhubUser, bool? isAdmin)? initial,
+    TResult Function(FarmhubUser? farmhubUser, FarmhubConfig? farmhubConfig,
+            bool? isAdmin)?
+        initial,
   }) {
-    return initial?.call(farmhubUser, isAdmin);
+    return initial?.call(farmhubUser, farmhubConfig, isAdmin);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(FarmhubUser? farmhubUser, bool? isAdmin)? initial,
+    TResult Function(FarmhubUser? farmhubUser, FarmhubConfig? farmhubConfig,
+            bool? isAdmin)?
+        initial,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial(farmhubUser, isAdmin);
+      return initial(farmhubUser, farmhubConfig, isAdmin);
     }
     return orElse();
   }
@@ -239,10 +269,14 @@ class _$_Initial implements _Initial {
 
 abstract class _Initial implements GlobalAuthState {
   const factory _Initial(
-      {final FarmhubUser? farmhubUser, final bool? isAdmin}) = _$_Initial;
+      {final FarmhubUser? farmhubUser,
+      final FarmhubConfig? farmhubConfig,
+      final bool? isAdmin}) = _$_Initial;
 
   @override
   FarmhubUser? get farmhubUser;
+  @override
+  FarmhubConfig? get farmhubConfig;
   @override
   bool? get isAdmin;
   @override

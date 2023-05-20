@@ -23,7 +23,7 @@ import 'package:farmhub/presentation/views/produce_screen/produce_screen.dart';
 import 'package:farmhub/presentation/views/profile_screen/profile_screen.dart';
 import 'package:farmhub/presentation/views/register_screen/register_screen.dart';
 import 'package:farmhub/presentation/views/search_screen/search_screen.dart';
-import 'package:farmhub/presentation/views/settings_screen/setting_screens.dart';
+import 'package:farmhub/presentation/views/settings_screen/settings_screen.dart';
 import 'package:farmhub/presentation/views/splash_screen/splash_screen.dart';
 import 'package:farmhub/presentation/views/start_screen/start_screen.dart';
 import 'package:farmhub/presentation/views/user_management_screens/choose_user_type_screen.dart';

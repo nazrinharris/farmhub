@@ -65,7 +65,7 @@ class SettingsCubit extends Cubit<SettingsState> {
     final idTokenResult = await FirebaseAuth.instance.currentUser!.getIdTokenResult();
     dynamic appVersionClaim = idTokenResult.claims?['appVersion'];
 
-    /// RemoteConfig is only used for client-side version restriction. Remote version restriction depends on
+    /// RemoteConfig is only used for client-side version restriction. Server-side version restriction depends on
     /// the app version claim (Custom Claims)
     debugPrint('''
     App Version (PackageInfo): ${packageInfo.version}

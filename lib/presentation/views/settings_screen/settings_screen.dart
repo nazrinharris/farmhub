@@ -1,5 +1,6 @@
 import 'package:farmhub/core/app_version_helper/app_version_helper.dart';
 import 'package:farmhub/core/auth/auth_cubit/auth_cubit.dart';
+import 'package:farmhub/core/auth/data/datasources/auth_local_datasource.dart';
 import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
 import 'package:farmhub/locator.dart';
 import 'package:farmhub/presentation/shared_widgets/appbars.dart';
@@ -8,6 +9,7 @@ import 'package:farmhub/presentation/shared_widgets/ui_helpers.dart';
 import 'package:farmhub/presentation/smart_widgets/produce_dialogs/app_dialogs.dart';
 import 'package:farmhub/presentation/smart_widgets/produce_dialogs/produce_dialog_cubit/produce_dialog_cubit.dart';
 import 'package:farmhub/presentation/views/settings_screen/cubit/settings_cubit.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -15,6 +17,7 @@ import 'package:ndialog/ndialog.dart';
 import 'package:yaml/yaml.dart';
 
 import '../../../app_router.dart';
+import '../../../core/auth/domain/entities/farmhub_config.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({Key? key}) : super(key: key);
@@ -121,54 +124,7 @@ class _SliverSettingsBodyState extends State<SliverSettingsBody> {
                   content: "About Farmhub",
                   icon: const Icon(Icons.eco_outlined),
                 ),
-                const SettingsHeader("Debug"),
-                SettingsListCard(
-                  content: "Go to Navigation",
-                  icon: const Icon(Icons.tab_unselected),
-                  isTop: true,
-                  onTap: () {
-                    Navigator.of(context).pop();
-                    Navigator.of(context).pop();
-                    Navigator.of(context).pop();
-                    Navigator.pushNamed(context, "/navigate");
-                  },
-                ),
-                SettingsListCard(
-                  content: "Navigate to Main",
-                  icon: const Icon(Icons.exit_to_app),
-                  onTap: () {
-                    Navigator.of(context).popUntil((route) => route == navMainRoute);
-                  },
-                ),
-                SettingsListCard(
-                  content: "Navigate to Playground",
-                  icon: const Icon(Icons.slideshow),
-                  onTap: () {
-                    Navigator.pushNamed(context, "/playground");
-                  },
-                ),
-                SettingsListCard(
-                  content: "Debug Print App Meta",
-                  icon: const Icon(Icons.display_settings),
-                  onTap: () {
-                    context.read<SettingsCubit>().debugPrintMeta();
-                  },
-                ),
-                SettingsListCard(
-                  content: "Refresh App Version Meta",
-                  icon: const Icon(Icons.update),
-                  onTap: () {
-                    context.read<SettingsCubit>().updateAppVersion();
-                  },
-                ),
-                SettingsListCard(
-                  content: "Print Semantic to Integer Versioning",
-                  icon: const Icon(Icons.vpn_key_rounded),
-                  onTap: () {
-                    String version = "0.4.0";
-                    print("${AppVersionHelper.convertSemanticVersion(version)}");
-                  },
-                ),
+                if (kDebugMode) const DebugSettingsList(),
                 const UIVerticalSpace30(),
                 BlocBuilder<SettingsCubit, SettingsState>(
                   builder: (context, state) {
@@ -177,12 +133,94 @@ class _SliverSettingsBodyState extends State<SliverSettingsBody> {
                       style: Theme.of(context).textTheme.caption,
                     );
                   },
-                )
+                ),
+                const UICustomVertical(400),
               ],
             ),
           )
         ],
       ),
+    );
+  }
+}
+
+class DebugSettingsList extends StatelessWidget {
+  const DebugSettingsList({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        const SettingsHeader("Debug"),
+        SettingsListCard(
+          content: "Go to Navigation",
+          icon: const Icon(Icons.tab_unselected),
+          isTop: true,
+          onTap: () {
+            Navigator.of(context).pop();
+            Navigator.of(context).pop();
+            Navigator.of(context).pop();
+            Navigator.pushNamed(context, "/navigate");
+          },
+        ),
+        SettingsListCard(
+          content: "Navigate to Main",
+          icon: const Icon(Icons.exit_to_app),
+          onTap: () {
+            Navigator.of(context).popUntil((route) => route == navMainRoute);
+          },
+        ),
+        SettingsListCard(
+          content: "Navigate to Playground",
+          icon: const Icon(Icons.slideshow),
+          onTap: () {
+            Navigator.pushNamed(context, "/playground");
+          },
+        ),
+        SettingsListCard(
+          content: "Debug Print App Meta",
+          icon: const Icon(Icons.display_settings),
+          onTap: () {
+            context.read<SettingsCubit>().debugPrintMeta();
+          },
+        ),
+        SettingsListCard(
+          content: "Refresh App Version Meta",
+          icon: const Icon(Icons.update),
+          onTap: () {
+            context.read<SettingsCubit>().updateAppVersion();
+          },
+        ),
+        SettingsListCard(
+          content: "Print Semantic to Integer Versioning",
+          icon: const Icon(Icons.vpn_key_rounded),
+          onTap: () {
+            String version = "0.4.0";
+            print("${AppVersionHelper.convertSemanticVersion(version)}");
+          },
+        ),
+        SettingsListCard(
+          content: "Print Global Config and Stored Config",
+          icon: const Icon(Icons.sd_card),
+          onTap: () async {
+            FarmhubConfig? globalAuthCubitConfig =
+                context.read<GlobalAuthCubit>().state.farmhubConfig;
+            FarmhubConfig? storedConfig =
+                await locator<IAuthLocalDataSource>().retrieveFarmhubConfig();
+
+            debugPrint('''
+------------------- Global Config -------------------
+Minimum App Version: ${globalAuthCubitConfig?.minimumAppVersion}
+Latest App Version: ${globalAuthCubitConfig?.latestAppVersion}
+Local App Version: ${globalAuthCubitConfig?.localAppVersion}
+------------------- Stored Config -------------------
+Minimum App Version: ${storedConfig.minimumAppVersion}
+Latest App Version: ${storedConfig.latestAppVersion}
+Local App Version: ${storedConfig.localAppVersion}
+            ''');
+          },
+        ),
+      ],
     );
   }
 }
