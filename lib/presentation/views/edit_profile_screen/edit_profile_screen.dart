@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:farmhub/core/auth/domain/entities/farmhub_user/farmhub_user.dart';
 import 'package:farmhub/locator.dart';
 import 'package:farmhub/presentation/views/edit_profile_screen/cubit/edit_profile_cubit.dart';

@@ -1,10 +1,6 @@
-import 'package:farmhub/core/auth/data/datasources/auth_local_datasource.dart';
-import 'package:farmhub/core/auth/data/datasources/auth_remote_datasource.dart';
-import 'package:farmhub/core/auth/data/repository/auth_repository.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
-import '../../locator.dart';
 import '../../main.dart';
 
 /// If you are looking for where the app gets the minimum app version from, look at [getFarmhubConfig()]
@@ -55,5 +51,4 @@ class AppVersionHelper {
 
     return packageInfo.version;
   }
-
 }

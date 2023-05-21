@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:farmhub/app_router.dart';
 import 'package:farmhub/locator.dart';
 import 'package:farmhub/presentation/shared_widgets/cards.dart';

@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, deprecated_member_use
 
 import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
 import 'package:farmhub/features/produce_manager/data/repository/produce_manager_helpers.dart';
@@ -504,41 +504,41 @@ class ChangeBox extends StatelessWidget {
     }
   }
 
-  Container _buildChangeBox(BuildContext context, bool? isNegative, num? priceChange) {
-    if (isNegative != null) {
-      return Container(
-        alignment: Alignment.center,
-        padding: const EdgeInsets.only(bottom: 2),
-        decoration: BoxDecoration(
-          color: _resolveBackgroundColor(context, isNegative),
-          borderRadius: BorderRadius.circular(6),
-        ),
-        child: Text(
-          _resolveString(priceChange!, isNegative),
-          style: Theme.of(context).textTheme.bodyText2!.copyWith(
-                fontSize: 14,
-                color: _resolveTextColor(context, isNegative),
-              ),
-        ),
-      );
-    } else {
-      return Container(
-        alignment: Alignment.center,
-        padding: const EdgeInsets.only(bottom: 2),
-        decoration: BoxDecoration(
-          color: Colors.grey.withOpacity(0.2),
-          borderRadius: BorderRadius.circular(6),
-        ),
-        child: Text(
-          "RM-.--",
-          style: Theme.of(context).textTheme.bodyText2!.copyWith(
-                fontSize: 14,
-                color: Theme.of(context).colorScheme.primary,
-              ),
-        ),
-      );
-    }
-  }
+  // Container _buildChangeBox(BuildContext context, bool? isNegative, num? priceChange) {
+  //   if (isNegative != null) {
+  //     return Container(
+  //       alignment: Alignment.center,
+  //       padding: const EdgeInsets.only(bottom: 2),
+  //       decoration: BoxDecoration(
+  //         color: _resolveBackgroundColor(context, isNegative),
+  //         borderRadius: BorderRadius.circular(6),
+  //       ),
+  //       child: Text(
+  //         _resolveString(priceChange!, isNegative),
+  //         style: Theme.of(context).textTheme.bodyText2!.copyWith(
+  //               fontSize: 14,
+  //               color: _resolveTextColor(context, isNegative),
+  //             ),
+  //       ),
+  //     );
+  //   } else {
+  //     return Container(
+  //       alignment: Alignment.center,
+  //       padding: const EdgeInsets.only(bottom: 2),
+  //       decoration: BoxDecoration(
+  //         color: Colors.grey.withOpacity(0.2),
+  //         borderRadius: BorderRadius.circular(6),
+  //       ),
+  //       child: Text(
+  //         "RM-.--",
+  //         style: Theme.of(context).textTheme.bodyText2!.copyWith(
+  //               fontSize: 14,
+  //               color: Theme.of(context).colorScheme.primary,
+  //             ),
+  //       ),
+  //     );
+  //   }
+  // }
 
   String _resolveString(num priceChange, bool isNegative) {
     if (isNegative) {

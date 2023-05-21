@@ -5,7 +5,7 @@ class FarmhubConfig extends Equatable {
   final String? latestAppVersion;
   final String? localAppVersion;
 
-  FarmhubConfig({
+  const FarmhubConfig({
     this.minimumAppVersion,
     this.latestAppVersion,
     this.localAppVersion,

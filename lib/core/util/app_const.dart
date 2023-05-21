@@ -34,6 +34,7 @@ const String UNSPECIFIED_PLUGIN = 'UNSPECIFIED_PLUGIN';
 ///
 /// Do not change.
 const String FS_USER = 'users';
+const String FS_ADMIN = 'admins';
 const String FS_GLOBAL_PRODUCE = 'produce';
 const String FS_AGGREGATE_COLLECTION = 'aggregatePrices';
 const String FS_AGGREGATE_DOC = 'aggregatePrices';

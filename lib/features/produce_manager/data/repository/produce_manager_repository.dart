@@ -348,16 +348,15 @@ class ProduceManagerRepository implements IProduceManagerRepository {
   FutureEither<Unit> editProduce(String produceId, String newProduceName) async {
     if (await networkInfo.isConnected) {
       try {
-        // TODO: Remove comment, this is added for testing
-        // // Check the user's app version
-        // bool isAllowed = await AppVersionHelper.isAppVersionAllowed();
-        // if (!isAllowed) {
-        //   return Left(ProduceManagerFailure(
-        //     code: ERR_APP_VERSION_NOT_SUPPORTED,
-        //     message: MESSAGE_APP_VERSION_NOT_SUPPORTED,
-        //     stackTrace: StackTrace.current,
-        //   ));
-        // }
+        // Check the user's app version
+        bool isAllowed = await AppVersionHelper.isAppVersionAllowed();
+        if (!isAllowed) {
+          return Left(ProduceManagerFailure(
+            code: ERR_APP_VERSION_NOT_SUPPORTED,
+            message: MESSAGE_APP_VERSION_NOT_SUPPORTED,
+            stackTrace: StackTrace.current,
+          ));
+        }
 
         await remoteDatasource.editProduce(produceId, newProduceName);
 

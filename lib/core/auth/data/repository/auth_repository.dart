@@ -1,10 +1,8 @@
 import 'package:cloud_functions/cloud_functions.dart';
-import 'package:farmhub/core/auth/domain/entities/farmhub_config.dart';
 import 'package:farmhub/core/typedefs/typedefs.dart';
 import 'package:farmhub/core/util/misc.dart';
 import 'package:farmhub/features/farm_shop_manager/data/datasources/farm_shop_manager_remote_datasource.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:fpdart/fpdart.dart';
 
@@ -19,10 +17,6 @@ import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 import '../../../app_version/app_version_helper.dart';
 import '../../../errors/exceptions.dart';
 import '../../../util/printer.dart';
-
-import 'package:farmhub/core/errors/failures.dart';
-import 'package:farmhub/core/typedefs/typedefs.dart';
-import 'package:fpdart/fpdart.dart';
 
 abstract class IAuthRepository {
   // Login and Sign Out
@@ -67,8 +61,6 @@ abstract class IAuthRepository {
   Future<Either<Failure, FarmhubUser>> updateRemoteUser({
     required FarmhubUser newUserData,
   });
-
-
 }
 
 class AuthRepository implements IAuthRepository {
@@ -105,7 +97,7 @@ class AuthRepository implements IAuthRepository {
           stackTrace: stack,
         ));
       } on FirebaseFunctionsException catch (e, stack) {
-        print(e);
+        debugPrint(e.toString());
 
         return Left(FirebaseAuthFailure(
           code: e.code,
@@ -713,8 +705,4 @@ class AuthRepository implements IAuthRepository {
       ));
     }
   }
-
-  
-
-  
 }

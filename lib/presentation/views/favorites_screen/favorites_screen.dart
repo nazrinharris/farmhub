@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:farmhub/locator.dart';
 import 'package:farmhub/presentation/global/cubit/global_ui_cubit.dart';
 import 'package:farmhub/presentation/shared_widgets/scroll_physics.dart';

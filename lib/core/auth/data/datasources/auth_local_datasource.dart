@@ -5,8 +5,6 @@ import 'package:fpdart/fpdart.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
 
-import '../../domain/entities/farmhub_config.dart';
-
 abstract class IAuthLocalDataSource {
   Future<Unit> storeFarmhubUser(FarmhubUser farmhubUser);
   Future<FarmhubUser> retrieveFarmhubUser();
@@ -52,8 +50,4 @@ class AuthLocalDataSource implements IAuthLocalDataSource {
 
     return unit;
   }
-
-
-
-
 }

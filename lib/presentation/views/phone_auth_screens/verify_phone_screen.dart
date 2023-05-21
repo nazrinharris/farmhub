@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:farmhub/core/errors/error_messages.dart';
 import 'package:farmhub/presentation/shared_widgets/appbars.dart';
 import 'package:farmhub/presentation/shared_widgets/cards.dart';
@@ -37,7 +39,8 @@ class _VerifyPhoneScreenState extends State<VerifyPhoneScreen> {
             firebaseAuth: locator(),
             authRemoteDataSource: locator(),
             globalAuthCubit: locator(),
-        appVersionRepository: locator(),),
+            appVersionRepository: locator(),
+          ),
         ),
         BlocProvider<FirstTwoFieldsFormBloc>(
           create: (context) => MultipleFieldsFormBloc(),

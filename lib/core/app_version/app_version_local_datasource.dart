@@ -25,7 +25,7 @@ class AppVersionLocalDatasource implements IAppVersionLocalDatasource {
       currentConfig = FarmhubConfig.fromJson(jsonDecode(jsonString));
     } else {
       // Otherwise, initialize with default values.
-      currentConfig = FarmhubConfig(
+      currentConfig = const FarmhubConfig(
         minimumAppVersion: '',
         latestAppVersion: '',
         localAppVersion: '',
@@ -64,5 +64,4 @@ class AppVersionLocalDatasource implements IAppVersionLocalDatasource {
       );
     }
   }
-
 }

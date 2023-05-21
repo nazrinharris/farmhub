@@ -42,24 +42,22 @@ class AppVersionRemoteDatasource implements IAppVersionRemoteDatasource {
       final idTokenResult = await FirebaseAuth.instance.currentUser!.getIdTokenResult(true);
       dynamic appVersionClaim = idTokenResult.claims?['appVersion'];
       if (appVersionClaim != null) {
-        print('The appVersion custom claim is present: $appVersionClaim');
+        debugPrint('The appVersion custom claim is present: $appVersionClaim');
       } else {
-        print('The appVersion custom claim is not present.');
+        debugPrint('The appVersion custom claim is not present.');
       }
     });
 
     return unit;
   }
 
-    /// Fetches the app configuration from Firebase Remote Config.
+  /// Fetches the app configuration from Firebase Remote Config.
   ///
   /// This method retrieves the `minimum_app_version` and `latest_app_version`
   /// values from Firebase Remote Config. It sets the configuration settings
   /// with different fetch intervals depending on the app's release mode
   /// (12 hours for production and 60 seconds for development).
   ///
-  /// The default values for `minimum_app_version` and `latest_app_version`
-  /// are set to '0.3.1'. TODO: Fetch from local storage instead of hardcoding.
   ///
   /// Returns a [FarmhubConfig] object containing the minimum and latest app versions.
   @override

@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:farmhub/features/farm_shop_manager/domain/entities/farm_shop/farm_shop.dart';
 import 'package:farmhub/locator.dart';
 import 'package:farmhub/presentation/views/all_shop_screens/cubit/shop_screen_cubit.dart';

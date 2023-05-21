@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:farmhub/presentation/shared_widgets/buttons.dart';
 import 'package:farmhub/presentation/shared_widgets/texts.dart';
 import 'package:farmhub/presentation/shared_widgets/ui_helpers.dart';

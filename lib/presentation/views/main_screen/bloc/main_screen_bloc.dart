@@ -2,7 +2,6 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:farmhub/core/app_version/app_version_helper.dart';
 import 'package:farmhub/core/app_version/app_version_repository.dart';
 import 'package:farmhub/features/produce_manager/bloc/produce_manager_bloc.dart';
 import 'package:farmhub/presentation/views/main_screen/toast_cubit/toast_cubit.dart';

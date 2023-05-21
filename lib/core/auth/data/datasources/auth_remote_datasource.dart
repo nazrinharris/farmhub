@@ -4,23 +4,18 @@ import 'package:farmhub/core/auth/domain/entities/farmhub_user/farmhub_user.dart
 import 'package:farmhub/core/errors/exceptions.dart';
 import 'package:farmhub/core/util/app_const.dart';
 import 'package:farmhub/core/util/misc.dart';
-import 'package:farmhub/main.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:intl/intl.dart';
 import 'package:clock/clock.dart';
-import 'package:package_info_plus/package_info_plus.dart';
 import 'package:phone_numbers_parser/phone_numbers_parser.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 import 'package:cloud_functions/cloud_functions.dart';
-import 'package:firebase_remote_config/firebase_remote_config.dart';
-import 'package:flutter/foundation.dart';
 
 import '../../../../locator.dart';
 import '../../../util/secure.dart' as secure;
-import '../../domain/entities/farmhub_config.dart';
 
 abstract class IAuthRemoteDataSource {
   Future<FarmhubUser> loginWithEmailAndPassword({
@@ -83,7 +78,7 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
 
     try {
       await locator<IAppVersionRemoteDatasource>().updateAppVersionClaim();
-    } on FirebaseFunctionsException catch (e) {
+    } on FirebaseFunctionsException {
       // Sign the user out and rethrow the error
       await signOut();
       rethrow;
@@ -169,7 +164,7 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
 
     try {
       await locator<IAppVersionRemoteDatasource>().updateAppVersionClaim();
-    } on FirebaseFunctionsException catch (e) {
+    } on FirebaseFunctionsException {
       // Sign the user out and rethrow the error
       await signOut();
       rethrow;
@@ -184,7 +179,6 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
     final user = firebaseAuth.currentUser;
 
     if (user == null) {
-      // TODO: Make a proper constant error code.
       throw FirebaseAuthException(
         code: AUTH_NOT_SIGNED_IN,
         message: 'User is not signed in.',
@@ -222,8 +216,7 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
 
   @override
   Future<bool> isAdmin(String uid) async {
-    //TODO: Make proper constant collectionPath
-    final result = await firebaseFirestore.collection('admins').doc(uid).get();
+    final result = await firebaseFirestore.collection(FS_ADMIN).doc(uid).get();
 
     if (result.data() == null) {
       return false;
@@ -314,7 +307,7 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
 
     try {
       await locator<IAppVersionRemoteDatasource>().updateAppVersionClaim();
-    } on FirebaseFunctionsException catch (e) {
+    } on FirebaseFunctionsException {
       // Sign the user out and rethrow the error
       await signOut();
       rethrow;
@@ -354,7 +347,7 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
 
     try {
       await locator<IAppVersionRemoteDatasource>().updateAppVersionClaim();
-    } on FirebaseFunctionsException catch (e) {
+    } on FirebaseFunctionsException {
       // Sign the user out and rethrow the error
       await signOut();
       rethrow;
@@ -389,7 +382,7 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
 
     try {
       await locator<IAppVersionRemoteDatasource>().updateAppVersionClaim();
-    } on FirebaseFunctionsException catch (e) {
+    } on FirebaseFunctionsException {
       // Sign the user out and rethrow the error
       await signOut();
       rethrow;
@@ -428,7 +421,7 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
 
     try {
       await locator<IAppVersionRemoteDatasource>().updateAppVersionClaim();
-    } on FirebaseFunctionsException catch (e) {
+    } on FirebaseFunctionsException {
       // Sign the user out and rethrow the error
       await signOut();
       rethrow;
@@ -436,8 +429,4 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
 
     return userCred;
   }
-
-
-
-
 }

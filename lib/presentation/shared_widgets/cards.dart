@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:farmhub/core/util/app_const.dart';
 import 'package:farmhub/core/util/misc.dart';
 import 'package:farmhub/features/produce_manager/domain/entities/produce/produce.dart';
@@ -8,7 +10,6 @@ import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
 
 import '../../core/auth/auth_cubit/auth_cubit.dart';
-import '../../locator.dart';
 
 Widget determineErrorCard(String errorCode) {
   if (errorCode == ERROR_NO_INTERNET_CONNECTION) {

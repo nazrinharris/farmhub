@@ -1,6 +1,7 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:farmhub/core/app_version/app_version_local_datasource.dart';
 import 'package:farmhub/core/auth/auth_cubit/auth_cubit.dart';
-import 'package:farmhub/core/auth/data/datasources/auth_local_datasource.dart';
 import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
 import 'package:farmhub/locator.dart';
 import 'package:farmhub/presentation/shared_widgets/appbars.dart';
@@ -14,7 +15,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ndialog/ndialog.dart';
-import 'package:yaml/yaml.dart';
 
 import '../../../app_router.dart';
 import '../../../core/app_version/app_version_helper.dart';
@@ -198,7 +198,7 @@ class DebugSettingsList extends StatelessWidget {
           icon: const Icon(Icons.vpn_key_rounded),
           onTap: () {
             String version = "0.4.0";
-            print("${AppVersionHelper.convertSemanticVersion(version)}");
+            debugPrint("${AppVersionHelper.convertSemanticVersion(version)}");
           },
         ),
         SettingsListCard(

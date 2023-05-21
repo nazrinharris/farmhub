@@ -4,10 +4,8 @@ import 'package:clock/clock.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:farmhub/core/util/app_const.dart';
 import 'package:farmhub/core/errors/exceptions.dart';
-import 'package:farmhub/core/util/printer.dart';
 import 'package:farmhub/features/produce_manager/data/datasources/produce_prices_remote_datasource.dart';
 import 'package:farmhub/features/produce_manager/domain/entities/price/price.dart';
-import 'package:farmhub/features/produce_manager/data/repository/produce_manager_helpers.dart';
 import 'package:flutter/foundation.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:intl/intl.dart';
@@ -155,27 +153,27 @@ class ProduceManagerRemoteDatasource implements IProduceManagerRemoteDatasource 
     }
   }
 
-  @override
-  Future<List<PriceSnippet>> getAggregatePrices(String produceId) async {
-    final Map<String, dynamic>? aggregatePricesMap = await firebaseFirestore
-        .collection(FS_GLOBAL_PRODUCE)
-        .doc(produceId)
-        .collection(FS_AGGREGATE_COLLECTION)
-        .doc(FS_AGGREGATE_DOC)
-        .get()
-        .then((doc) => doc.data());
+  // @override
+  // Future<List<PriceSnippet>> getAggregatePrices(String produceId) async {
+  //   final Map<String, dynamic>? aggregatePricesMap = await firebaseFirestore
+  //       .collection(FS_GLOBAL_PRODUCE)
+  //       .doc(produceId)
+  //       .collection(FS_AGGREGATE_COLLECTION)
+  //       .doc(FS_AGGREGATE_DOC)
+  //       .get()
+  //       .then((doc) => doc.data());
 
-    if (aggregatePricesMap == null) {
-      return [];
-    } else {
-      final List<PriceSnippet> pricesList = [];
-      aggregatePricesMap["prices-map"].forEach((date, price) {
-        pricesList.add(PriceSnippet(price: price, priceDate: date));
-      });
+  //   if (aggregatePricesMap == null) {
+  //     return [];
+  //   } else {
+  //     final List<PriceSnippet> pricesList = [];
+  //     aggregatePricesMap["prices-map"].forEach((date, price) {
+  //       pricesList.add(PriceSnippet(price: price, priceDate: date));
+  //     });
 
-      return pricesList;
-    }
-  }
+  //     return pricesList;
+  //   }
+  // }
 
   @override
   Future<Produce> createNewProduce({

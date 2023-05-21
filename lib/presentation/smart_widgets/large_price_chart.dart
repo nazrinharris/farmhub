@@ -1,5 +1,6 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:farmhub/core/util/printer.dart';
-import 'package:farmhub/features/produce_manager/data/repository/produce_manager_helpers.dart';
 import 'package:farmhub/features/produce_manager/domain/entities/price/price.dart';
 import 'package:farmhub/presentation/shared_widgets/cards.dart';
 import 'package:farmhub/presentation/shared_widgets/ui_helpers.dart';
@@ -229,9 +230,6 @@ class _LargeOneWeekChartState extends State<LargeOneWeekChart> {
 
       return aPriceDate.compareTo(bPriceDate);
     });
-
-    final month = DateFormat('LLLL')
-        .format(DateFormat("dd-MM-yyyy").parse(widget.produce.currentProducePrice["priceDate"]));
 
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 12),

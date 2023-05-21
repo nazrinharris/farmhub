@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:farmhub/core/auth/auth_cubit/auth_cubit.dart';
 import 'package:farmhub/core/errors/error_messages.dart';
 import 'package:farmhub/presentation/shared_widgets/appbars.dart';

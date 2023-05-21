@@ -1,5 +1,6 @@
 import 'package:farmhub/core/errors/exceptions.dart';
 import 'package:farmhub/features/produce_manager/domain/entities/price/price.dart';
+import 'package:flutter/foundation.dart';
 import 'package:intl/intl.dart';
 import 'package:clock/clock.dart';
 
@@ -197,7 +198,7 @@ Map<String, dynamic> filterPricesOlderThanOneWeek(Map<String, dynamic> weeklyPri
 /// into a list, namely the [pricesList].
 void printWhenWasTheLastPrice(List<PriceSnippet> pricesList) {
   if (pricesList.isEmpty) {
-    print("Aggregate map given was empty");
+    debugPrint("Aggregate map given was empty");
     return;
   }
 
@@ -212,14 +213,14 @@ void printWhenWasTheLastPrice(List<PriceSnippet> pricesList) {
   DateTime latestPrice = DateFormat("dd-MM-yyyy").parse(pricesList.last.priceDate);
   num range = DateTime.now().difference(latestPrice).inDays;
 
-  print("The last price was in ${latestPrice.toIso8601String()} which is $range days ago");
+  debugPrint("The last price was in ${latestPrice.toIso8601String()} which is $range days ago");
 }
 
 /// Expects a JSON in the format {"dd-MM-yyyy": [double]}, with the double being price
 /// and converts it into [List<PriceSnippet>]
 List<PriceSnippet> aggregateFormatToPricesList(Map<String, dynamic> aggregatePricesMap) {
   if (aggregatePricesMap.isEmpty) {
-    print("Aggregate map given was empty");
+    debugPrint("Aggregate map given was empty");
     return List.empty();
   }
 

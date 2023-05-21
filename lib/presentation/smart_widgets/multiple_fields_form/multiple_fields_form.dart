@@ -1,3 +1,5 @@
+// ignore_for_file: no_leading_underscores_for_local_identifiers, deprecated_member_use
+
 part of 'multiple_fields_form_bloc.dart';
 
 enum MultipleFieldsFormType { oneField, twoField, threeField, fourField }

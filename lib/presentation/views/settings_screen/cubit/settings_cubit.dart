@@ -1,9 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:farmhub/core/auth/auth_cubit/auth_cubit.dart';
-import 'package:farmhub/core/auth/data/datasources/auth_remote_datasource.dart';
 import 'package:farmhub/core/auth/domain/entities/farmhub_config.dart';
-import 'package:farmhub/locator.dart';
-
 import 'package:farmhub/presentation/smart_widgets/produce_dialogs/app_dialogs.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';

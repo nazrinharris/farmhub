@@ -16,7 +16,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_styled_toast/flutter_styled_toast.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 
 import '../../shared_widgets/toasts.dart';
 
