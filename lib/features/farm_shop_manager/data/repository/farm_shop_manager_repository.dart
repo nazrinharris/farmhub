@@ -8,7 +8,7 @@ import 'package:farmhub/core/typedefs/typedefs.dart';
 import 'package:farmhub/features/farm_shop_manager/domain/i_farm_shop_manager_repository.dart';
 import 'package:fpdart/fpdart.dart';
 
-import '../../../../core/app_version_helper/app_version_helper.dart';
+import '../../../../core/app_version/app_version_helper.dart';
 import '../../../../core/auth/data/repository/auth_repository.dart';
 import '../../../../core/errors/exceptions.dart';
 import '../../../../core/errors/failures.dart';

@@ -9,14 +9,18 @@ import 'package:farmhub/presentation/shared_widgets/cards.dart';
 import 'package:farmhub/presentation/views/main_screen/bloc/main_screen_bloc.dart';
 import 'package:farmhub/presentation/views/main_screen/main_screen_fab.dart';
 import 'package:farmhub/presentation/views/main_screen/main_screen_header.dart';
+import 'package:farmhub/presentation/views/main_screen/toast_cubit/toast_cubit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_styled_toast/flutter_styled_toast.dart';
 
+import '../../../core/errors/error_messages.dart';
 import '../../../core/errors/failures.dart';
 import '../../../features/produce_manager/domain/entities/produce/produce.dart';
 import '../../../locator.dart';
 import '../../shared_widgets/scroll_physics.dart';
+import '../../shared_widgets/toasts.dart';
 import '../../shared_widgets/ui_helpers.dart';
 import '../../smart_widgets/produce_list_card/produce_list_card.dart';
 
@@ -72,13 +76,16 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
         BlocProvider(
           create: (context) => ProduceManagerBloc(repository: locator()),
         ),
+        BlocProvider(create: (context) => ToastCubit())
       ],
       child: Builder(builder: (context) {
         return BlocProvider(
           create: (context) => MainScreenBloc(
             mainHeaderController: mainHeaderController,
-            produceManagerBloc: context.read<ProduceManagerBloc>(),
             produceManagerRepository: locator(),
+            appVersionRepository: locator(),
+            produceManagerBloc: context.read<ProduceManagerBloc>(),
+            toastCubit: context.read<ToastCubit>(),
           ),
           child: Builder(
             builder: (context) => BlocListener<GlobalUICubit, GlobalUIState>(
@@ -89,53 +96,70 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
                   setState(() {});
                 }
               },
-              child: Scaffold(
-                resizeToAvoidBottomInset: false,
-                extendBodyBehindAppBar: true,
-                extendBody: true,
-                floatingActionButton: const MainScreenFAB(),
-                body: SafeArea(
-                  child: CustomScrollView(
-                    controller: scrollController,
-                    physics: DefaultScrollPhysics,
-                    slivers: [
-                      CupertinoSliverRefreshControl(
-                        onRefresh: () async {
-                          setState(() {});
-                          context.read<GlobalAuthCubit>().updateGlobalAuthCubit();
-                          context.read<MainScreenBloc>().add(const MainScreenEvent.refresh());
+              child: BlocListener<ToastCubit, ToastState>(
+                listener: (context, state) {
+                  if (state is Show) {
+                    showToastWidget(
+                      ErrorToast(errorMessage: state.message),
+                      context: context,
+                      animation: StyledToastAnimation.slideFromTopFade,
+                      reverseAnimation: StyledToastAnimation.slideToTopFade,
+                      position: StyledToastPosition.top,
+                      animDuration: const Duration(milliseconds: 800),
+                      curve: Curves.easeOutExpo,
+                      reverseCurve: Curves.easeInExpo,
+                      duration: const Duration(seconds: 7),
+                    );
+                  }
+                },
+                child: Scaffold(
+                  resizeToAvoidBottomInset: false,
+                  extendBodyBehindAppBar: true,
+                  extendBody: true,
+                  floatingActionButton: const MainScreenFAB(),
+                  body: SafeArea(
+                    child: CustomScrollView(
+                      controller: scrollController,
+                      physics: DefaultScrollPhysics,
+                      slivers: [
+                        CupertinoSliverRefreshControl(
+                          onRefresh: () async {
+                            setState(() {});
+                            context.read<GlobalAuthCubit>().updateGlobalAuthCubit();
+                            context.read<MainScreenBloc>().add(const MainScreenEvent.refresh());
 
-                          await context.read<MainScreenBloc>().stream.firstWhere((state) {
-                            if (state is MSSPricesCompleted) {
-                              return true;
-                            } else if (state is MSSPricesError) {
-                              return true;
-                            } else {
-                              return false;
-                            }
-                          });
-                        },
-                      ),
-                      BlocBuilder<MainScreenBloc, MainScreenState>(
-                        builder: (context, state) {
-                          return BlocBuilder<GlobalAuthCubit, GlobalAuthState>(
-                            builder: (context, state) {
-                              final bool isAdmin = state.isAdmin ?? false;
+                            await context.read<MainScreenBloc>().stream.firstWhere((state) {
+                              if (state is MSSPricesCompleted) {
+                                return true;
+                              } else if (state is MSSPricesError) {
+                                return true;
+                              } else {
+                                return false;
+                              }
+                            });
+                          },
+                        ),
+                        BlocBuilder<MainScreenBloc, MainScreenState>(
+                          builder: (context, state) {
+                            return BlocBuilder<GlobalAuthCubit, GlobalAuthState>(
+                              builder: (context, state) {
+                                final bool isAdmin = state.isAdmin ?? false;
 
-                              return SliverMainScreenHeader(
-                                isAdmin ? adminExtent : extent,
-                                mainScreenFocusNode,
-                                isAdmin,
-                              );
-                            },
-                          );
-                        },
-                      ),
-                      const SliverMainScreenErrorCard(),
-                      //const SliverDebugSlot(),
-                      SliverMainScreenListView(scrollController),
-                      const SliverWhiteSpace(200)
-                    ],
+                                return SliverMainScreenHeader(
+                                  isAdmin ? adminExtent : extent,
+                                  mainScreenFocusNode,
+                                  isAdmin,
+                                );
+                              },
+                            );
+                          },
+                        ),
+                        const SliverMainScreenErrorCard(),
+                        //const SliverDebugSlot(),
+                        SliverMainScreenListView(scrollController),
+                        const SliverWhiteSpace(200)
+                      ],
+                    ),
                   ),
                 ),
               ),

@@ -1,3 +1,4 @@
+import 'package:farmhub/core/app_version/app_version_repository.dart';
 import 'package:farmhub/core/auth/data/repository/auth_repository.dart';
 import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
 import 'package:farmhub/locator.dart';
@@ -29,9 +30,9 @@ class _SplashScreenState extends State<SplashScreen> {
         final user = context.read<GlobalAuthCubit>().state.farmhubUser;
         final PackageInfo packageInfo = await PackageInfo.fromPlatform();
 
-        IAuthRepository authRepository = locator();
+        IAppVersionRepository appVersionRepository = locator();
 
-        await authRepository.getFarmhubConfig().then((res) {
+        await appVersionRepository.getFarmhubConfig().then((res) {
           res.fold(
             (f) => showToastWidget(
               ErrorToast(errorMessage: messageForFailure(f)),

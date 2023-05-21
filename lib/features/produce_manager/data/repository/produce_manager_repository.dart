@@ -16,7 +16,7 @@ import 'package:farmhub/features/produce_manager/data/repository/produce_manager
 import 'package:farmhub/features/produce_manager/domain/entities/price/price.dart';
 import 'package:farmhub/features/produce_manager/domain/entities/produce/produce.dart';
 
-import '../../../../core/app_version_helper/app_version_helper.dart';
+import '../../../../core/app_version/app_version_helper.dart';
 import '../../../../core/auth/data/repository/auth_repository.dart';
 
 const String ProduceManagerRepositoryCode = "PMR-";

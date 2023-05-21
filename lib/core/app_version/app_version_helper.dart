@@ -56,20 +56,4 @@ class AppVersionHelper {
     return packageInfo.version;
   }
 
-  /// This method will update the app version claim in the user's custom claims.
-  ///
-  /// Returns true if user's custom claims are updated, false otherwise.
-  static Future<bool> refreshAppVersion() async {
-    final resLocalFarmhubConfig = await locator<IAuthLocalDataSource>().retrieveFarmhubConfig();
-
-    final localAppVersion = resLocalFarmhubConfig.localAppVersion;
-    final appVersion = await PackageInfo.fromPlatform().then((value) => value.version);
-
-    if (localAppVersion != appVersion) {
-      locator<IAuthRemoteDataSource>().updateAppVersionClaim();
-      return true;
-    }
-
-    return false;
-  }
 }

@@ -1,4 +1,4 @@
-import 'package:farmhub/core/app_version_helper/app_version_helper.dart';
+import 'package:farmhub/core/app_version/app_version_local_datasource.dart';
 import 'package:farmhub/core/auth/auth_cubit/auth_cubit.dart';
 import 'package:farmhub/core/auth/data/datasources/auth_local_datasource.dart';
 import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
@@ -17,6 +17,7 @@ import 'package:ndialog/ndialog.dart';
 import 'package:yaml/yaml.dart';
 
 import '../../../app_router.dart';
+import '../../../core/app_version/app_version_helper.dart';
 import '../../../core/auth/domain/entities/farmhub_config.dart';
 
 class SettingsScreen extends StatelessWidget {
@@ -29,12 +30,13 @@ class SettingsScreen extends StatelessWidget {
         BlocProvider(
             create: (context) => SettingsCubit(
                 authRepository: locator(),
-                authRemoteDataSource: locator(),
+                appVersionRemoteDatasource: locator(),
                 authCubit: AuthCubit(
                   firebaseAuth: locator(),
                   authRepository: locator(),
                   authRemoteDataSource: locator(),
                   globalAuthCubit: locator(),
+                  appVersionRepository: locator(),
                 ))),
         BlocProvider(
             create: (context) => ProduceDialogCubit(
@@ -134,7 +136,7 @@ class _SliverSettingsBodyState extends State<SliverSettingsBody> {
                     );
                   },
                 ),
-                const UICustomVertical(400),
+                const UICustomVertical(100),
               ],
             ),
           )
@@ -206,7 +208,7 @@ class DebugSettingsList extends StatelessWidget {
             FarmhubConfig? globalAuthCubitConfig =
                 context.read<GlobalAuthCubit>().state.farmhubConfig;
             FarmhubConfig? storedConfig =
-                await locator<IAuthLocalDataSource>().retrieveFarmhubConfig();
+                await locator<IAppVersionLocalDatasource>().retrieveFarmhubConfig();
 
             debugPrint('''
 ------------------- Global Config -------------------

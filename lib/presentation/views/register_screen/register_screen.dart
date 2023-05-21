@@ -363,6 +363,7 @@ class RegisterScreenBlocProviders extends StatelessWidget {
                   authRepository: locator(),
                   authRemoteDataSource: locator(),
                   globalAuthCubit: locator(),
+                  appVersionRepository: locator(),
                 )),
       ],
       child: Builder(

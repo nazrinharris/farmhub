@@ -1,4 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:farmhub/core/app_version/app_version_local_datasource.dart';
+import 'package:farmhub/core/app_version/app_version_repository.dart';
 import 'package:farmhub/core/auth/auth_bloc/auth_bloc.dart';
 import 'package:farmhub/core/auth/data/datasources/auth_local_datasource.dart';
 import 'package:farmhub/core/auth/data/datasources/auth_remote_datasource.dart';
@@ -21,6 +23,8 @@ import 'package:get_it/get_it.dart';
 // ignore: depend_on_referenced_packages
 import 'package:hive/hive.dart';
 import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
+
+import 'core/app_version/app_version_remote_datasource.dart';
 
 final GetIt locator = GetIt.instance;
 
@@ -50,6 +54,19 @@ void setupLocator() {
 
   //* Network Info
   locator.registerLazySingleton<INetworkInfo>(() => NetworkInfo(internet: locator()));
+
+  //* App Version
+  // Repository
+  locator.registerLazySingleton<IAppVersionRepository>(
+    () => AppVersionRepository(
+      networkInfo: locator(),
+      appVersionRemoteDatasource: locator(),
+      appVersionLocalDatasource: locator(),
+    ),
+  );
+  // Datasources
+  locator.registerLazySingleton<IAppVersionRemoteDatasource>(() => AppVersionRemoteDatasource());
+  locator.registerLazySingleton<IAppVersionLocalDatasource>(() => AppVersionLocalDatasource());
 
   //! Features
   //* Produce Manager

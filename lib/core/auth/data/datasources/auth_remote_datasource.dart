@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:farmhub/core/app_version_helper/app_version_helper.dart';
+import 'package:farmhub/core/app_version/app_version_remote_datasource.dart';
 import 'package:farmhub/core/auth/domain/entities/farmhub_user/farmhub_user.dart';
 import 'package:farmhub/core/errors/exceptions.dart';
 import 'package:farmhub/core/util/app_const.dart';
@@ -18,6 +18,7 @@ import 'package:cloud_functions/cloud_functions.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/foundation.dart';
 
+import '../../../../locator.dart';
 import '../../../util/secure.dart' as secure;
 import '../../domain/entities/farmhub_config.dart';
 
@@ -59,9 +60,6 @@ abstract class IAuthRemoteDataSource {
   Future<Unit> sendPasswordResetEmail(String email);
 
   Future<Unit> signOut();
-
-  Future<FarmhubConfig> getFarmhubConfig();
-  Future<Unit> updateAppVersionClaim();
 }
 
 class AuthRemoteDataSource implements IAuthRemoteDataSource {
@@ -84,7 +82,7 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
         .then((user) => user.user!.uid);
 
     try {
-      await updateAppVersionClaim();
+      await locator<IAppVersionRemoteDatasource>().updateAppVersionClaim();
     } on FirebaseFunctionsException catch (e) {
       // Sign the user out and rethrow the error
       await signOut();
@@ -170,7 +168,7 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
     }, null);
 
     try {
-      await updateAppVersionClaim();
+      await locator<IAppVersionRemoteDatasource>().updateAppVersionClaim();
     } on FirebaseFunctionsException catch (e) {
       // Sign the user out and rethrow the error
       await signOut();
@@ -280,7 +278,7 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
         .update(mapToUpdate)
         .then((value) => debugPrint("Change Success!"));
 
-    await updateAppVersionClaim();
+    await locator<IAppVersionRemoteDatasource>().updateAppVersionClaim();
 
     return unit;
   }
@@ -315,7 +313,7 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
     );
 
     try {
-      await updateAppVersionClaim();
+      await locator<IAppVersionRemoteDatasource>().updateAppVersionClaim();
     } on FirebaseFunctionsException catch (e) {
       // Sign the user out and rethrow the error
       await signOut();
@@ -355,7 +353,7 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
     debugPrint(user.toString());
 
     try {
-      await updateAppVersionClaim();
+      await locator<IAppVersionRemoteDatasource>().updateAppVersionClaim();
     } on FirebaseFunctionsException catch (e) {
       // Sign the user out and rethrow the error
       await signOut();
@@ -390,7 +388,7 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
     final UserCredential userCredential = await firebaseAuth.signInWithCredential(credential);
 
     try {
-      await updateAppVersionClaim();
+      await locator<IAppVersionRemoteDatasource>().updateAppVersionClaim();
     } on FirebaseFunctionsException catch (e) {
       // Sign the user out and rethrow the error
       await signOut();
@@ -429,7 +427,7 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
     final userCred = await FirebaseAuth.instance.signInWithCredential(oauthCredential);
 
     try {
-      await updateAppVersionClaim();
+      await locator<IAppVersionRemoteDatasource>().updateAppVersionClaim();
     } on FirebaseFunctionsException catch (e) {
       // Sign the user out and rethrow the error
       await signOut();
@@ -439,76 +437,7 @@ class AuthRemoteDataSource implements IAuthRemoteDataSource {
     return userCred;
   }
 
-  /// Updates the app version in the user's custom claims.
-  ///
-  /// This method should be called after the user authenticates.
-  /// It updates the `appVersion` custom claim in the user's authentication token
-  /// by calling the `setAppVersion` Cloud Function.
-  ///
-  /// Returns a [Unit] value.
-  @override
-  Future<Unit> updateAppVersionClaim() async {
-    await FirebaseAuth.instance.currentUser!.reload();
 
-    // Call the setAppVersion Cloud Function after the user authenticates.
-    PackageInfo packageInfo = await PackageInfo.fromPlatform();
 
-    int appVersion = AppVersionHelper.convertSemanticVersion(packageInfo.version);
-    int testAppVersion = AppVersionHelper.convertSemanticVersion('2.3.2');
 
-    final FirebaseFunctions functions = FirebaseFunctions.instanceFor(region: 'asia-southeast1');
-    final HttpsCallable callable = functions.httpsCallable('setAppVersion');
-    await callable.call(<String, dynamic>{
-      /// Use [appVersion] for prod, and [testAppVersion] for testing.
-
-      "appVersion": appVersion,
-      // "appVersion": testAppVersion,
-    }).then((_) async {
-      final idTokenResult = await FirebaseAuth.instance.currentUser!.getIdTokenResult(true);
-      dynamic appVersionClaim = idTokenResult.claims?['appVersion'];
-      if (appVersionClaim != null) {
-        print('The appVersion custom claim is present: $appVersionClaim');
-      } else {
-        print('The appVersion custom claim is not present.');
-      }
-    });
-
-    return unit;
-  }
-
-  /// Fetches the app configuration from Firebase Remote Config.
-  ///
-  /// This method retrieves the `minimum_app_version` and `latest_app_version`
-  /// values from Firebase Remote Config. It sets the configuration settings
-  /// with different fetch intervals depending on the app's release mode
-  /// (12 hours for production and 60 seconds for development).
-  ///
-  /// The default values for `minimum_app_version` and `latest_app_version`
-  /// are set to '0.3.1'. TODO: Fetch from local storage instead of hardcoding.
-  ///
-  /// Returns a [FarmhubConfig] object containing the minimum and latest app versions.
-  @override
-  Future<FarmhubConfig> getFarmhubConfig() async {
-    late String minimumAppVersion;
-    late String latestAppVersion;
-
-    final FirebaseRemoteConfig remoteConfig = FirebaseRemoteConfig.instance;
-    Duration fetchInterval = kReleaseMode ? const Duration(hours: 12) : const Duration(seconds: 60);
-
-    await remoteConfig.setConfigSettings(RemoteConfigSettings(
-      fetchTimeout: const Duration(seconds: 60),
-      minimumFetchInterval: fetchInterval,
-    ));
-
-    await remoteConfig.setDefaults(<String, dynamic>{
-      'minimum_app_version': '0.1.0',
-      'latest_app_version': '0.1.0',
-    });
-    await remoteConfig.fetchAndActivate().then((_) {
-      minimumAppVersion = remoteConfig.getString('minimum_app_version');
-      latestAppVersion = remoteConfig.getString('latest_app_version');
-    });
-
-    return FarmhubConfig(minimumAppVersion: minimumAppVersion, latestAppVersion: latestAppVersion);
-  }
 }

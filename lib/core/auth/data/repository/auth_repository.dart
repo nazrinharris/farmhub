@@ -16,7 +16,7 @@ import 'package:farmhub/core/errors/failures.dart';
 import 'package:farmhub/core/network/network_info.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
-import '../../../app_version_helper/app_version_helper.dart';
+import '../../../app_version/app_version_helper.dart';
 import '../../../errors/exceptions.dart';
 import '../../../util/printer.dart';
 
@@ -68,8 +68,7 @@ abstract class IAuthRepository {
     required FarmhubUser newUserData,
   });
 
-  FutureEither<FarmhubConfig> getFarmhubConfig();
-  FutureEither<FarmhubConfig> getLocalFarmhubConfig();
+
 }
 
 class AuthRepository implements IAuthRepository {
@@ -715,63 +714,7 @@ class AuthRepository implements IAuthRepository {
     }
   }
 
-  @override
-  FutureEither<FarmhubConfig> getFarmhubConfig() async {
-    if (await networkInfo.isConnected) {
-      try {
-        final result = await authRemoteDataSource.getFarmhubConfig();
-        final String currentAppVersion = await AppVersionHelper.getAppVersion();
+  
 
-        final newConfig = result.copyWith(localAppVersion: currentAppVersion);
-
-        await authLocalDataSource.storeFarmhubConfig(newConfig);
-
-        return Right(newConfig);
-      } on AuthException catch (e, stack) {
-        debugPrint(e.toString());
-        return Left(AuthFailure(
-          code: e.code,
-          message: e.message,
-          stackTrace: stack,
-        ));
-      } on FirebaseException catch (e, stack) {
-        return Left(FirebaseAuthFailure(
-          code: e.code,
-          message: e.message,
-          stackTrace: stack,
-        ));
-      } catch (e, stack) {
-        return Left(
-          UnexpectedFailure(
-            message: "An unexpected error occured while getting farmhub config",
-            code: e.toString(),
-            stackTrace: stack,
-          ),
-        );
-      }
-    } else {
-      return Left(InternetConnectionFailure(
-        code: ERROR_NO_INTERNET_CONNECTION,
-        message: MESSAGE_NO_INTERNET_CONNECTION,
-        stackTrace: StackTrace.current,
-      ));
-    }
-  }
-
-  @override
-  FutureEither<FarmhubConfig> getLocalFarmhubConfig() async {
-    try {
-      final result = await authLocalDataSource.retrieveFarmhubConfig();
-
-      return Right(result);
-    } catch (e, stack) {
-      return Left(
-        UnexpectedFailure(
-          message: "An unexpected error occured while getting local farmhub config",
-          code: e.toString(),
-          stackTrace: stack,
-        ),
-      );
-    }
-  }
+  
 }

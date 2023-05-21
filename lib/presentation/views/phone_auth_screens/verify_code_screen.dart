@@ -60,6 +60,7 @@ class _VerifyCodeScreenState extends State<VerifyCodeScreen> {
             firebaseAuth: locator(),
             authRemoteDataSource: locator(),
             globalAuthCubit: locator(),
+            appVersionRepository: locator(),
           ),
         ),
         BlocProvider(

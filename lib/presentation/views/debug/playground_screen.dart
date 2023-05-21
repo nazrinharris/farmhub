@@ -103,6 +103,7 @@ class _PlaygroundScreenState extends State<PlaygroundScreen> {
             authRepository: locator(),
             authRemoteDataSource: locator(),
             globalAuthCubit: locator(),
+            appVersionRepository: locator(),
           ),
         )
       ],

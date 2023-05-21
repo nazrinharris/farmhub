@@ -37,7 +37,7 @@ class _VerifyPhoneScreenState extends State<VerifyPhoneScreen> {
             firebaseAuth: locator(),
             authRemoteDataSource: locator(),
             globalAuthCubit: locator(),
-          ),
+        appVersionRepository: locator(),),
         ),
         BlocProvider<FirstTwoFieldsFormBloc>(
           create: (context) => MultipleFieldsFormBloc(),

@@ -11,6 +11,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:ndialog/ndialog.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
+import '../../../../core/app_version/app_version_remote_datasource.dart';
 import '../../../../core/auth/data/repository/auth_repository.dart';
 
 part 'settings_state.dart';
@@ -19,10 +20,12 @@ part 'settings_cubit.freezed.dart';
 class SettingsCubit extends Cubit<SettingsState> {
   final IAuthRepository authRepository;
   final AuthCubit authCubit;
-  final IAuthRemoteDataSource authRemoteDataSource;
+  final IAppVersionRemoteDatasource appVersionRemoteDatasource;
 
   SettingsCubit(
-      {required this.authRepository, required this.authCubit, required this.authRemoteDataSource})
+      {required this.authRepository,
+      required this.authCubit,
+      required this.appVersionRemoteDatasource})
       : super(const SettingsState.initial());
 
   void showResetPasswordDialog(BuildContext context, {required NAlertDialog resetPasswordDialog}) {
@@ -77,6 +80,6 @@ class SettingsCubit extends Cubit<SettingsState> {
   }
 
   void updateAppVersion() async {
-    await authRemoteDataSource.updateAppVersionClaim();
+    await appVersionRemoteDatasource.updateAppVersionClaim();
   }
 }

@@ -88,6 +88,7 @@ class _LoginScreenState extends State<LoginScreen> with AnimationMixin {
             authRepository: locator(),
             authRemoteDataSource: locator(),
             globalAuthCubit: locator(),
+            appVersionRepository: locator(),
           ),
         ),
       ],
