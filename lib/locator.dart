@@ -41,6 +41,7 @@ void setupLocator() {
   // Repository
   locator.registerLazySingleton<IAuthRepository>(() => AuthRepository(
         networkInfo: locator(),
+        appVersionRepository: locator(),
         authRemoteDataSource: locator(),
         authLocalDataSource: locator(),
         farmShopManagerRemoteDatasource: locator(),
@@ -75,6 +76,7 @@ void setupLocator() {
   // Repository
   locator.registerLazySingleton<IProduceManagerRepository>(() => ProduceManagerRepository(
         networkInfo: locator(),
+        appVersionRepository: locator(),
         remoteDatasource: locator(),
         localDatasource: locator(),
         authRepository: locator(),
@@ -94,6 +96,7 @@ void setupLocator() {
   // Repository
   locator.registerLazySingleton<IFarmShopManagerRepository>(() => FarmShopManagerRepository(
         networkInfo: locator(),
+        appVersionRepository: locator(),
         remoteDatasource: locator(),
         localDatasource: locator(),
         authRepository: locator(),

@@ -12,6 +12,8 @@ import 'package:farmhub/features/produce_manager/data/datasources/produce_prices
 import 'package:farmhub/features/produce_manager/data/repository/produce_manager_repository.dart';
 import 'package:farmhub/features/produce_manager/domain/entities/produce/produce.dart';
 
+import '../../../../presets/mockings.dart';
+
 class MockProduceManagerRemoteDatasource extends Mock implements IProduceManagerRemoteDatasource {}
 
 class MockProduceManagerLocalDatasource extends Mock implements IProduceManagerLocalDatasource {}
@@ -35,6 +37,7 @@ void main() {
   late MockNetworkInfo mockNetworkInfo;
   late MockGlobalAuthCubit mockGlobalAuthCubit;
   late MockProducePricesRemoteDatasource mockProducePricesRemoteDatasource;
+  late MockAppVersionRepository mockAppVersionRepository;
 
   setUp(() {
     mockRemoteDatasource = MockProduceManagerRemoteDatasource();
@@ -43,10 +46,12 @@ void main() {
     mockAuthRepository = MockAuthRepository();
     mockGlobalAuthCubit = MockGlobalAuthCubit();
     mockProducePricesRemoteDatasource = MockProducePricesRemoteDatasource();
+    mockAppVersionRepository = MockAppVersionRepository();
 
     repository = ProduceManagerRepository(
       localDatasource: mockLocalDatasource,
       networkInfo: mockNetworkInfo,
+      appVersionRepository: mockAppVersionRepository,
       remoteDatasource: mockRemoteDatasource,
       authRepository: mockAuthRepository,
       globalAuthCubit: mockGlobalAuthCubit,

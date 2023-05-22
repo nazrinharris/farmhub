@@ -16,6 +16,8 @@ import 'dart:io';
 
 import 'core/auth/auth_bloc/auth_bloc.dart';
 
+// TODO: A lot of [ignore_deprecated_member_use] are used in multiple files, mostly due to themes, fix it.
+
 /// Uses Local Emulator Firebase Services
 const bool USE_EMULATOR = false;
 

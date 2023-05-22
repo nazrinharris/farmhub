@@ -1,33 +1,7 @@
-import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
-import '../../main.dart';
-
-/// If you are looking for where the app gets the minimum app version from, look at [getFarmhubConfig()]
-/// in [AuthRemoteDatasource] in [auth_remote_data_source.dart].
-///
-/// If you are looking to manipulate user's app version, look at [updateAppVersionClaim()] in [AuthRemoteDatasource].
+/// If you are looking for where the app gets the minimum app version from, look at [AppVersionRepository].
 class AppVersionHelper {
-  static Future<bool> isAppVersionAllowed() async {
-    if (bypassVersionRestriction) {
-      return true;
-    }
-
-    // Fetch and activate Remote Config values
-    final FirebaseRemoteConfig remoteConfig = FirebaseRemoteConfig.instance;
-    await remoteConfig.fetchAndActivate();
-
-    // Get the app's current version
-    PackageInfo packageInfo = await PackageInfo.fromPlatform();
-    int currentAppVersion = convertSemanticVersion(packageInfo.version);
-
-    // Get the minimum app version from Remote Config
-    int minimumAppVersion = convertSemanticVersion(remoteConfig.getString('minimum_app_version'));
-
-    // Compare the current app version with the minimum app version
-    return currentAppVersion >= minimumAppVersion;
-  }
-
   static int convertSemanticVersion(String version) {
     List<String> versionParts = version.split(".");
     if (versionParts.length != 3) {

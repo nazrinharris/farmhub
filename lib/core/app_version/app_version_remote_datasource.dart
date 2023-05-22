@@ -10,6 +10,7 @@ import 'app_version_helper.dart';
 
 abstract class IAppVersionRemoteDatasource {
   Future<Unit> updateAppVersionClaim();
+  Future<FarmhubConfig> configureAndGetFarmhubConfig();
   Future<FarmhubConfig> getFarmhubConfig();
 }
 
@@ -18,7 +19,7 @@ class AppVersionRemoteDatasource implements IAppVersionRemoteDatasource {
   ///
   /// This method should be called after the user authenticates.
   /// It updates the `appVersion` custom claim in the user's authentication token
-  /// by calling the `setAppVersion` Cloud Function.
+  /// by calling the `setAppVersion`  Cloud Function.
   ///
   /// Returns a [Unit] value.
   @override
@@ -60,8 +61,10 @@ class AppVersionRemoteDatasource implements IAppVersionRemoteDatasource {
   ///
   ///
   /// Returns a [FarmhubConfig] object containing the minimum and latest app versions.
+  ///
+  /// Differs slightly from [getFarmhubConfig], use it for quickly retrieving the config
   @override
-  Future<FarmhubConfig> getFarmhubConfig() async {
+  Future<FarmhubConfig> configureAndGetFarmhubConfig() async {
     late String minimumAppVersion;
     late String latestAppVersion;
 
@@ -81,6 +84,20 @@ class AppVersionRemoteDatasource implements IAppVersionRemoteDatasource {
       minimumAppVersion = remoteConfig.getString('minimum_app_version');
       latestAppVersion = remoteConfig.getString('latest_app_version');
     });
+
+    return FarmhubConfig(minimumAppVersion: minimumAppVersion, latestAppVersion: latestAppVersion);
+  }
+
+  /// Fetches the app configuration from Firebase Remote Config.
+  ///
+  /// Use [configureAndGetFarmhubConfig] if first setup or configuration of FirebaseRemoteConfig is needed.
+  @override
+  Future<FarmhubConfig> getFarmhubConfig() async {
+    final FirebaseRemoteConfig remoteConfig = FirebaseRemoteConfig.instance;
+    await remoteConfig.fetchAndActivate();
+
+    String minimumAppVersion = remoteConfig.getString('minimum_app_version');
+    String latestAppVersion = remoteConfig.getString('latest_app_version');
 
     return FarmhubConfig(minimumAppVersion: minimumAppVersion, latestAppVersion: latestAppVersion);
   }

@@ -15,6 +15,7 @@ import 'package:farmhub/core/network/network_info.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
 import '../../../app_version/app_version_helper.dart';
+import '../../../app_version/app_version_repository.dart';
 import '../../../errors/exceptions.dart';
 import '../../../util/printer.dart';
 
@@ -66,6 +67,7 @@ abstract class IAuthRepository {
 class AuthRepository implements IAuthRepository {
   final IAuthRemoteDataSource authRemoteDataSource;
   final IAuthLocalDataSource authLocalDataSource;
+  final IAppVersionRepository appVersionRepository;
   final IFarmShopManagerRemoteDatasource farmShopManagerRemoteDatasource;
   final INetworkInfo networkInfo;
 
@@ -73,6 +75,7 @@ class AuthRepository implements IAuthRepository {
     required this.networkInfo,
     required this.authRemoteDataSource,
     required this.authLocalDataSource,
+    required this.appVersionRepository,
     required this.farmShopManagerRemoteDatasource,
   });
 
@@ -132,16 +135,17 @@ class AuthRepository implements IAuthRepository {
   }) async {
     if (await networkInfo.isConnected) {
       try {
-        // Check the user's app version
-        bool isAllowed = await AppVersionHelper.isAppVersionAllowed();
-        if (!isAllowed) {
-          await signOut();
-          return Left(AuthFailure(
-            code: ERR_APP_VERSION_NOT_SUPPORTED,
-            message: MESSAGE_APP_VERSION_NOT_SUPPORTED,
-            stackTrace: StackTrace.current,
-          ));
-        }
+        final isAllowed = await appVersionRepository.isAppVersionAllowed();
+        isAllowed.fold((f) => Left(f), (isAllowed) async {
+          if (!isAllowed) {
+            await signOut();
+            return Left(AppVersionFailure(
+              code: ERR_APP_VERSION_NOT_SUPPORTED,
+              message: MESSAGE_APP_VERSION_NOT_SUPPORTED,
+              stackTrace: StackTrace.current,
+            ));
+          }
+        });
 
         final result = await authRemoteDataSource.registerWithEmailAndPassword(
           email: email,
@@ -318,15 +322,17 @@ class AuthRepository implements IAuthRepository {
       final staleUser = await authLocalDataSource.retrieveFarmhubUser();
 
       try {
-        // Check the user's app version
-        bool isAllowed = await AppVersionHelper.isAppVersionAllowed();
-        if (!isAllowed) {
-          return Left(AuthFailure(
-            code: ERR_APP_VERSION_NOT_SUPPORTED,
-            message: MESSAGE_APP_VERSION_NOT_SUPPORTED,
-            stackTrace: StackTrace.current,
-          ));
-        }
+        final isAllowed = await appVersionRepository.isAppVersionAllowed();
+        isAllowed.fold((f) => Left(f), (isAllowed) async {
+          if (!isAllowed) {
+            await signOut();
+            return Left(AppVersionFailure(
+              code: ERR_APP_VERSION_NOT_SUPPORTED,
+              message: MESSAGE_APP_VERSION_NOT_SUPPORTED,
+              stackTrace: StackTrace.current,
+            ));
+          }
+        });
 
         if (staleUser.userType == UserType.admin && newUserData.userType != UserType.admin) {
           throw AuthException(
@@ -406,15 +412,17 @@ class AuthRepository implements IAuthRepository {
   FutureEither<Unit> chooseUserType(String uid, UserType userType) async {
     if (await networkInfo.isConnected) {
       try {
-        // Check the user's app version
-        bool isAllowed = await AppVersionHelper.isAppVersionAllowed();
-        if (!isAllowed) {
-          return Left(AuthFailure(
-            code: ERR_APP_VERSION_NOT_SUPPORTED,
-            message: MESSAGE_APP_VERSION_NOT_SUPPORTED,
-            stackTrace: StackTrace.current,
-          ));
-        }
+        final isAllowed = await appVersionRepository.isAppVersionAllowed();
+        isAllowed.fold((f) => Left(f), (isAllowed) async {
+          if (!isAllowed) {
+            await signOut();
+            return Left(AppVersionFailure(
+              code: ERR_APP_VERSION_NOT_SUPPORTED,
+              message: MESSAGE_APP_VERSION_NOT_SUPPORTED,
+              stackTrace: StackTrace.current,
+            ));
+          }
+        });
 
         await authRemoteDataSource.chooseUserType(uid, userType);
         return const Right(unit);
@@ -452,16 +460,17 @@ class AuthRepository implements IAuthRepository {
   }) async {
     if (await networkInfo.isConnected) {
       try {
-        // Check the user's app version
-        bool isAllowed = await AppVersionHelper.isAppVersionAllowed();
-        if (!isAllowed) {
-          await signOut();
-          return Left(AuthFailure(
-            code: ERR_APP_VERSION_NOT_SUPPORTED,
-            message: MESSAGE_APP_VERSION_NOT_SUPPORTED,
-            stackTrace: StackTrace.current,
-          ));
-        }
+        final isAllowed = await appVersionRepository.isAppVersionAllowed();
+        isAllowed.fold((f) => Left(f), (isAllowed) async {
+          if (!isAllowed) {
+            await signOut();
+            return Left(AppVersionFailure(
+              code: ERR_APP_VERSION_NOT_SUPPORTED,
+              message: MESSAGE_APP_VERSION_NOT_SUPPORTED,
+              stackTrace: StackTrace.current,
+            ));
+          }
+        });
 
         final result =
             await authRemoteDataSource.createAccountWithPhone(uid: uid, phoneNumber: phoneNumber);
@@ -510,16 +519,17 @@ class AuthRepository implements IAuthRepository {
   }) async {
     if (await networkInfo.isConnected) {
       try {
-        // Check the user's app version
-        bool isAllowed = await AppVersionHelper.isAppVersionAllowed();
-        if (!isAllowed) {
-          await signOut();
-          return Left(AuthFailure(
-            code: ERR_APP_VERSION_NOT_SUPPORTED,
-            message: MESSAGE_APP_VERSION_NOT_SUPPORTED,
-            stackTrace: StackTrace.current,
-          ));
-        }
+        final isAllowed = await appVersionRepository.isAppVersionAllowed();
+        isAllowed.fold((f) => Left(f), (isAllowed) async {
+          if (!isAllowed) {
+            await signOut();
+            return Left(AppVersionFailure(
+              code: ERR_APP_VERSION_NOT_SUPPORTED,
+              message: MESSAGE_APP_VERSION_NOT_SUPPORTED,
+              stackTrace: StackTrace.current,
+            ));
+          }
+        });
 
         final result = await authRemoteDataSource.registerWithCredentials(
           uid: uid,

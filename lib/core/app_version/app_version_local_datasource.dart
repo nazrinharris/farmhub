@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:fpdart/fpdart.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../auth/domain/entities/farmhub_config.dart';
@@ -49,14 +50,11 @@ class AppVersionLocalDatasource implements IAppVersionLocalDatasource {
   @override
   Future<FarmhubConfig> retrieveFarmhubConfig() async {
     final prefs = await SharedPreferences.getInstance();
-    final jsonString = prefs.getString("farmhubConfig");
+    final localConfig = prefs.getString("farmhubConfig");
 
-    // Check if a configuration exists in shared preferences
-    if (jsonString != null) {
-      // If a configuration exists, parse it from JSON and return
-      return FarmhubConfig.fromJson(jsonDecode(jsonString));
+    if (localConfig != null) {
+      return FarmhubConfig.fromJson(jsonDecode(localConfig));
     } else {
-      // If no configuration exists, return null
       throw AuthLocalDatasourceException(
         code: AL_NO_FARMHUB_CONFIG,
         message: "No configuration is stored in this device",

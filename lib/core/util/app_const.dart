@@ -72,5 +72,10 @@ const String MSG_AUTH_GOOGLE_SIGN_IN_ABORTED =
 const String AL_ERR_NO_USER = 'ERR_NO_USER';
 const String AL_NO_FARMHUB_CONFIG = 'AL_NO_FARMHUB_CONFIG';
 
+/// [AppVersion]'s [ErrorCodes] and messages
+const String AV_ERR_NO_LOCAL_VERSION = 'AV_ERR_NO_LOCAL_VERSION';
+const String AV_MSG_NO_LOCAL_VERSION =
+    'No local app version was ever stored, this should never happen.'; // This should never happen
+
 /// [FarmhubUser] error codes
 const String FU_ERR_STR_TYPE = "FU_ERR_STR_TYPE";
