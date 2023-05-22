@@ -227,7 +227,6 @@ class AddNewPriceThirdScreen extends StatelessWidget {
         Navigator.of(context)
           ..pop()
           ..pop()
-          ..pop()
           ..pushNamed(
             '/add_new_price_second',
             arguments: AddNewPriceScreenArguments(

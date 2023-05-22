@@ -138,6 +138,7 @@ class AppVersionRepository implements IAppVersionRepository {
       int minimumAppVersion =
           AppVersionHelper.convertSemanticVersion(remoteConfig.minimumAppVersion!);
 
+
       return Right(currentAppVersion >= minimumAppVersion);
     } catch (e, stack) {
       return Left(
