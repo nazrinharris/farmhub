@@ -68,6 +68,8 @@ class ProducePricesRemoteDatasource implements IProducePricesRemoteDatasource {
     // Run transaction
     return await firebaseFirestore.runTransaction(
       (transaction) async {
+
+        
         //! Retrieve all the required data.
         // Get the price document of the chosen date. If it exists, there should one in the list, if not, it should be empty.
         final chosenDatePriceDoc = await firebaseFirestore
@@ -173,6 +175,7 @@ class ProducePricesRemoteDatasource implements IProducePricesRemoteDatasource {
     bool isPriceDocDeleted = false;
 
     return await firebaseFirestore.runTransaction<bool>((transaction) async {
+
       final Price price = await transaction
           .get(
             firebaseFirestore
@@ -288,6 +291,7 @@ class ProducePricesRemoteDatasource implements IProducePricesRemoteDatasource {
   Future<Price> editSubPrice(
       String produceId, String priceId, num newPrice, String subPriceDate) async {
     return await firebaseFirestore.runTransaction<Price>((transaction) async {
+
       final Price price = await transaction
           .get(
             firebaseFirestore
