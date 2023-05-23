@@ -72,3 +72,15 @@ class AuthLocalDatasourceException implements Exception {
     required this.stackTrace,
   });
 }
+
+class AppVersionException implements Exception {
+  final String code;
+  final String message;
+  final StackTrace? stackTrace;
+
+  AppVersionException({
+    required this.code,
+    required this.message,
+    required this.stackTrace,
+  });
+}

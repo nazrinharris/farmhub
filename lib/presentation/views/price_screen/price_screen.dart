@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:farmhub/app_router.dart';
 import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
 import 'package:farmhub/presentation/shared_widgets/appbars.dart';
@@ -337,7 +339,7 @@ class _AllPriceListCardState extends State<AllPriceListCard> {
                               );
                         },
                         content: "Edit Price",
-                        buttonIcon: Icon(Icons.edit, size: 20),
+                        buttonIcon: const Icon(Icons.edit, size: 20),
                       ),
                     ),
                     Padding(
@@ -358,7 +360,7 @@ class _AllPriceListCardState extends State<AllPriceListCard> {
                               );
                         },
                         content: "Delete Price",
-                        buttonIcon: Icon(Icons.delete, size: 20),
+                        buttonIcon: const Icon(Icons.delete, size: 20),
                       ),
                     ),
                   ],

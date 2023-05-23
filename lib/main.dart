@@ -5,7 +5,6 @@ import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
 import 'package:farmhub/locator.dart';
 import 'package:farmhub/presentation/global/cubit/global_ui_cubit.dart';
 import 'package:farmhub/presentation/themes/farmhub_theme.dart';
-import 'package:farmhub/presentation/views/debug/navigate_view.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -16,6 +15,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'dart:io';
 
 import 'core/auth/auth_bloc/auth_bloc.dart';
+
+// TODO: A lot of [ignore_deprecated_member_use] are used in multiple files, mostly due to themes, fix it.
 
 /// Uses Local Emulator Firebase Services
 const bool USE_EMULATOR = false;
@@ -32,11 +33,11 @@ Future<void> main() async {
     );
   } on FirebaseException catch (e) {
     if (e.code != 'duplicate-app') {
-      print(e.code);
+      debugPrint(e.code);
       rethrow;
     }
     // If the exception is a duplicate-app error, ignore it
-    print('Firebase App [DEFAULT] already exists, skipping initialization');
+    debugPrint('Firebase App [DEFAULT] already exists, skipping initialization');
   }
 
   setupLocator();
@@ -61,6 +62,7 @@ Future<void> main() async {
   // Comment for firestore restrictions
   // Comment for firebase remote configs
   // Comment for fixing version checker
+  // Comment for local versioning
 }
 
 class FarmhubApp extends StatelessWidget {

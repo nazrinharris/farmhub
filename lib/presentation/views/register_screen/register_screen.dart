@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'dart:io';
 
 import 'package:farmhub/locator.dart';
@@ -363,6 +365,7 @@ class RegisterScreenBlocProviders extends StatelessWidget {
                   authRepository: locator(),
                   authRemoteDataSource: locator(),
                   globalAuthCubit: locator(),
+                  appVersionRepository: locator(),
                 )),
       ],
       child: Builder(

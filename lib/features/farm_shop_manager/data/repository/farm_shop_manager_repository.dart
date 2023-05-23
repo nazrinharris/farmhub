@@ -1,3 +1,4 @@
+import 'package:farmhub/core/app_version/app_version_repository.dart';
 import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
 import 'package:farmhub/core/network/network_info.dart';
 import 'package:farmhub/features/farm_shop_manager/data/datasources/farm_shop_manager_local_datasource.dart';
@@ -8,7 +9,7 @@ import 'package:farmhub/core/typedefs/typedefs.dart';
 import 'package:farmhub/features/farm_shop_manager/domain/i_farm_shop_manager_repository.dart';
 import 'package:fpdart/fpdart.dart';
 
-import '../../../../core/app_version_helper/app_version_helper.dart';
+import '../../../../core/app_version/app_version_helper.dart';
 import '../../../../core/auth/data/repository/auth_repository.dart';
 import '../../../../core/errors/exceptions.dart';
 import '../../../../core/errors/failures.dart';
@@ -16,6 +17,7 @@ import '../../../../core/util/app_const.dart';
 
 class FarmShopManagerRepository implements IFarmShopManagerRepository {
   final INetworkInfo networkInfo;
+  final IAppVersionRepository appVersionRepository;
   final IFarmShopManagerRemoteDatasource remoteDatasource;
   final IFarmShopManagerLocalDatasource localDatasource;
   final IAuthRepository authRepository;
@@ -23,6 +25,7 @@ class FarmShopManagerRepository implements IFarmShopManagerRepository {
 
   FarmShopManagerRepository({
     required this.networkInfo,
+    required this.appVersionRepository,
     required this.remoteDatasource,
     required this.localDatasource,
     required this.authRepository,
@@ -33,15 +36,16 @@ class FarmShopManagerRepository implements IFarmShopManagerRepository {
   FutureEither<Farm> createFarm({required String farmName, required Address farmAddress}) async {
     if (await networkInfo.isConnected) {
       try {
-        // Check the user's app version
-        bool isAllowed = await AppVersionHelper.isAppVersionAllowed();
-        if (!isAllowed) {
-          return Left(AuthFailure(
+        final isAllowed = await appVersionRepository.isAppVersionAllowed();
+        isAllowed.fold((f) => Left(f), (isAllowed) async {
+          if (!isAllowed) {
+            return Left(AuthFailure(
             code: ERR_APP_VERSION_NOT_SUPPORTED,
             message: MESSAGE_APP_VERSION_NOT_SUPPORTED,
             stackTrace: StackTrace.current,
           ));
-        }
+          }
+        });
 
         final user = globalAuthCubit.state.farmhubUser!;
 
@@ -78,15 +82,16 @@ class FarmShopManagerRepository implements IFarmShopManagerRepository {
   FutureEither<Shop> createShop({required String shopName, required Address shopAddress}) async {
     if (await networkInfo.isConnected) {
       try {
-        // Check the user's app version
-        bool isAllowed = await AppVersionHelper.isAppVersionAllowed();
-        if (!isAllowed) {
-          return Left(AuthFailure(
+        final isAllowed = await appVersionRepository.isAppVersionAllowed();
+        isAllowed.fold((f) => Left(f), (isAllowed) async {
+          if (!isAllowed) {
+            return Left(AuthFailure(
             code: ERR_APP_VERSION_NOT_SUPPORTED,
             message: MESSAGE_APP_VERSION_NOT_SUPPORTED,
             stackTrace: StackTrace.current,
           ));
-        }
+          }
+        });
 
         final user = globalAuthCubit.state.farmhubUser!;
 
@@ -117,15 +122,16 @@ class FarmShopManagerRepository implements IFarmShopManagerRepository {
   FutureEither<Unit> deleteFarm({required String farmId}) async {
     if (await networkInfo.isConnected) {
       try {
-        // Check the user's app version
-        bool isAllowed = await AppVersionHelper.isAppVersionAllowed();
-        if (!isAllowed) {
-          return Left(AuthFailure(
+        final isAllowed = await appVersionRepository.isAppVersionAllowed();
+        isAllowed.fold((f) => Left(f), (isAllowed) async {
+          if (!isAllowed) {
+            return Left(AuthFailure(
             code: ERR_APP_VERSION_NOT_SUPPORTED,
             message: MESSAGE_APP_VERSION_NOT_SUPPORTED,
             stackTrace: StackTrace.current,
           ));
-        }
+          }
+        });
 
         final user = globalAuthCubit.state.farmhubUser!;
 
@@ -152,15 +158,16 @@ class FarmShopManagerRepository implements IFarmShopManagerRepository {
   FutureEither<Unit> deleteShop({required String shopId}) async {
     if (await networkInfo.isConnected) {
       try {
-        // Check the user's app version
-        bool isAllowed = await AppVersionHelper.isAppVersionAllowed();
-        if (!isAllowed) {
-          return Left(AuthFailure(
+        final isAllowed = await appVersionRepository.isAppVersionAllowed();
+        isAllowed.fold((f) => Left(f), (isAllowed) async {
+          if (!isAllowed) {
+            return Left(AuthFailure(
             code: ERR_APP_VERSION_NOT_SUPPORTED,
             message: MESSAGE_APP_VERSION_NOT_SUPPORTED,
             stackTrace: StackTrace.current,
           ));
-        }
+          }
+        });
 
         final user = globalAuthCubit.state.farmhubUser!;
 
@@ -187,15 +194,16 @@ class FarmShopManagerRepository implements IFarmShopManagerRepository {
   FutureEither<Unit> updateFarm({required Farm farm}) async {
     if (await networkInfo.isConnected) {
       try {
-        // Check the user's app version
-        bool isAllowed = await AppVersionHelper.isAppVersionAllowed();
-        if (!isAllowed) {
-          return Left(AuthFailure(
+        final isAllowed = await appVersionRepository.isAppVersionAllowed();
+        isAllowed.fold((f) => Left(f), (isAllowed) async {
+          if (!isAllowed) {
+            return Left(AuthFailure(
             code: ERR_APP_VERSION_NOT_SUPPORTED,
             message: MESSAGE_APP_VERSION_NOT_SUPPORTED,
             stackTrace: StackTrace.current,
           ));
-        }
+          }
+        });
 
         final user = globalAuthCubit.state.farmhubUser!;
 
@@ -222,15 +230,16 @@ class FarmShopManagerRepository implements IFarmShopManagerRepository {
   FutureEither<Unit> updateShop({required Shop shop}) async {
     if (await networkInfo.isConnected) {
       try {
-        // Check the user's app version
-        bool isAllowed = await AppVersionHelper.isAppVersionAllowed();
-        if (!isAllowed) {
-          return Left(AuthFailure(
+        final isAllowed = await appVersionRepository.isAppVersionAllowed();
+        isAllowed.fold((f) => Left(f), (isAllowed) async {
+          if (!isAllowed) {
+            return Left(AuthFailure(
             code: ERR_APP_VERSION_NOT_SUPPORTED,
             message: MESSAGE_APP_VERSION_NOT_SUPPORTED,
             stackTrace: StackTrace.current,
           ));
-        }
+          }
+        });
 
         final user = globalAuthCubit.state.farmhubUser!;
 

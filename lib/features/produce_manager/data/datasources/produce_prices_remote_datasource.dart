@@ -68,6 +68,8 @@ class ProducePricesRemoteDatasource implements IProducePricesRemoteDatasource {
     // Run transaction
     return await firebaseFirestore.runTransaction(
       (transaction) async {
+
+        
         //! Retrieve all the required data.
         // Get the price document of the chosen date. If it exists, there should one in the list, if not, it should be empty.
         final chosenDatePriceDoc = await firebaseFirestore
@@ -173,6 +175,7 @@ class ProducePricesRemoteDatasource implements IProducePricesRemoteDatasource {
     bool isPriceDocDeleted = false;
 
     return await firebaseFirestore.runTransaction<bool>((transaction) async {
+
       final Price price = await transaction
           .get(
             firebaseFirestore
@@ -288,6 +291,7 @@ class ProducePricesRemoteDatasource implements IProducePricesRemoteDatasource {
   Future<Price> editSubPrice(
       String produceId, String priceId, num newPrice, String subPriceDate) async {
     return await firebaseFirestore.runTransaction<Price>((transaction) async {
+
       final Price price = await transaction
           .get(
             firebaseFirestore
@@ -756,25 +760,25 @@ num calculateNewPriceAverage(Map<String, dynamic> allPricesMap, num newPrice) {
   return newCurrentPrice;
 }
 
-/// This method will update the [newPrice] associated with [chosenSubPriceDate] and return
-/// an updated [Price].
-Price _editSubPrice(Price price, num newPrice, String chosenSubPriceDate) {
-  List<PriceSnippet> subPricesList = price.allPricesWithDateList;
-  List<PriceSnippet> updatedSubPricesList = [];
+// /// This method will update the [newPrice] associated with [chosenSubPriceDate] and return
+// /// an updated [Price].
+// Price _editSubPrice(Price price, num newPrice, String chosenSubPriceDate) {
+//   List<PriceSnippet> subPricesList = price.allPricesWithDateList;
+//   List<PriceSnippet> updatedSubPricesList = [];
 
-  for (PriceSnippet priceSnippet in subPricesList) {
-    if (priceSnippet.priceDate == chosenSubPriceDate) {
-      final newPriceSnippet = priceSnippet.copyWith(price: newPrice);
-      updatedSubPricesList.add(newPriceSnippet);
-      continue;
-    }
-    updatedSubPricesList.add(priceSnippet);
-  }
+//   for (PriceSnippet priceSnippet in subPricesList) {
+//     if (priceSnippet.priceDate == chosenSubPriceDate) {
+//       final newPriceSnippet = priceSnippet.copyWith(price: newPrice);
+//       updatedSubPricesList.add(newPriceSnippet);
+//       continue;
+//     }
+//     updatedSubPricesList.add(priceSnippet);
+//   }
 
-  final updatedPrice = price.copyWith(allPricesWithDateList: updatedSubPricesList);
+//   final updatedPrice = price.copyWith(allPricesWithDateList: updatedSubPricesList);
 
-  return updatedPrice;
-}
+//   return updatedPrice;
+// }
 
 /// This method will remove the [chosenSubPriceDate] and return an updated [Price]
 Price deleteSubPriceAndUpdatePrice(Price price, String chosenSubPriceDate) {

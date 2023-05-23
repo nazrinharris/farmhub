@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 part of 'primary_button_aware_cubit.dart';
 
 enum PrimaryButtonAwareType { onePage, twoPage, threePage }

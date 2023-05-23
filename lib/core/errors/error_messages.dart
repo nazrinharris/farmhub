@@ -1,4 +1,5 @@
 import 'package:farmhub/core/errors/failures.dart';
+import 'package:flutter/foundation.dart';
 
 /// This method takes in a [Failure] and returns a more beautiful error message. This is not an exhaustive list and
 /// more may be added manually
@@ -9,9 +10,9 @@ import 'package:farmhub/core/errors/failures.dart';
 /// it will return the original message instead, if the original message is null,
 /// it will return "We're not sure what happened", or along the lines of that sentence.
 String messageForFailure(Failure f) {
-  print("Code is: ${f.code}");
-  print("Message is: ${f.message}");
-  print("Failure type: ${f.runtimeType}");
+  debugPrint("Code is: ${f.code}");
+  debugPrint("Message is: ${f.message}");
+  debugPrint("Failure type: ${f.runtimeType}");
 
   if (f is UnexpectedFailure) {
     return f.message ?? f.code ?? "We're not sure what happened.";

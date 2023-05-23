@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:farmhub/core/util/app_const.dart';
 import 'package:farmhub/locator.dart';
 import 'package:farmhub/presentation/shared_widgets/appbars.dart';
@@ -88,6 +90,7 @@ class _LoginScreenState extends State<LoginScreen> with AnimationMixin {
             authRepository: locator(),
             authRemoteDataSource: locator(),
             globalAuthCubit: locator(),
+            appVersionRepository: locator(),
           ),
         ),
       ],

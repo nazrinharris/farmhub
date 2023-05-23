@@ -10,7 +10,7 @@ num roundNum(num value, int places) {
 
 void printList(List<dynamic> givenList) {
   if (givenList.isEmpty) {
-    print("[]");
+    debugPrint("[]");
     return;
   }
 

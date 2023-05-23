@@ -16,6 +16,8 @@ void main() {
   late MockNetworkInfo mockNetworkInfo;
   late MockFarmShopManagerRepository mockFarmShopManagerRepository;
   late MockFarmShopManagerRemoteDatasource mockFarmShopManagerRemoteDatasource;
+  late MockAppVersionRepository mockAppVersionRepository;
+
 
   setUp(() {
     mockAuthRemoteDataSource = MockAuthRemoteDataSource();
@@ -23,9 +25,11 @@ void main() {
     mockFarmShopManagerRepository = MockFarmShopManagerRepository();
     mockFarmShopManagerRemoteDatasource = MockFarmShopManagerRemoteDatasource();
     mockNetworkInfo = MockNetworkInfo();
+    mockAppVersionRepository = MockAppVersionRepository();
 
     authRepository = AuthRepository(
       networkInfo: mockNetworkInfo,
+      appVersionRepository: mockAppVersionRepository,
       authRemoteDataSource: mockAuthRemoteDataSource,
       authLocalDataSource: mockAuthLocalDataSource,
       farmShopManagerRemoteDatasource: mockFarmShopManagerRemoteDatasource,

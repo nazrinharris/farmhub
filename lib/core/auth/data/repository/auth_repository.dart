@@ -1,10 +1,8 @@
 import 'package:cloud_functions/cloud_functions.dart';
-import 'package:farmhub/core/auth/domain/entities/farmhub_config.dart';
 import 'package:farmhub/core/typedefs/typedefs.dart';
 import 'package:farmhub/core/util/misc.dart';
 import 'package:farmhub/features/farm_shop_manager/data/datasources/farm_shop_manager_remote_datasource.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:fpdart/fpdart.dart';
 
@@ -16,13 +14,10 @@ import 'package:farmhub/core/errors/failures.dart';
 import 'package:farmhub/core/network/network_info.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
-import '../../../app_version_helper/app_version_helper.dart';
+import '../../../app_version/app_version_helper.dart';
+import '../../../app_version/app_version_repository.dart';
 import '../../../errors/exceptions.dart';
 import '../../../util/printer.dart';
-
-import 'package:farmhub/core/errors/failures.dart';
-import 'package:farmhub/core/typedefs/typedefs.dart';
-import 'package:fpdart/fpdart.dart';
 
 abstract class IAuthRepository {
   // Login and Sign Out
@@ -67,13 +62,12 @@ abstract class IAuthRepository {
   Future<Either<Failure, FarmhubUser>> updateRemoteUser({
     required FarmhubUser newUserData,
   });
-
-  FutureEither<FarmhubConfig> getFarmhubConfig();
 }
 
 class AuthRepository implements IAuthRepository {
   final IAuthRemoteDataSource authRemoteDataSource;
   final IAuthLocalDataSource authLocalDataSource;
+  final IAppVersionRepository appVersionRepository;
   final IFarmShopManagerRemoteDatasource farmShopManagerRemoteDatasource;
   final INetworkInfo networkInfo;
 
@@ -81,6 +75,7 @@ class AuthRepository implements IAuthRepository {
     required this.networkInfo,
     required this.authRemoteDataSource,
     required this.authLocalDataSource,
+    required this.appVersionRepository,
     required this.farmShopManagerRemoteDatasource,
   });
 
@@ -105,7 +100,7 @@ class AuthRepository implements IAuthRepository {
           stackTrace: stack,
         ));
       } on FirebaseFunctionsException catch (e, stack) {
-        print(e);
+        debugPrint(e.toString());
 
         return Left(FirebaseAuthFailure(
           code: e.code,
@@ -140,16 +135,17 @@ class AuthRepository implements IAuthRepository {
   }) async {
     if (await networkInfo.isConnected) {
       try {
-        // Check the user's app version
-        bool isAllowed = await AppVersionHelper.isAppVersionAllowed();
-        if (!isAllowed) {
-          await signOut();
-          return Left(AuthFailure(
-            code: ERR_APP_VERSION_NOT_SUPPORTED,
-            message: MESSAGE_APP_VERSION_NOT_SUPPORTED,
-            stackTrace: StackTrace.current,
-          ));
-        }
+        final isAllowed = await appVersionRepository.isAppVersionAllowed();
+        isAllowed.fold((f) => Left(f), (isAllowed) async {
+          if (!isAllowed) {
+            await signOut();
+            return Left(AppVersionFailure(
+              code: ERR_APP_VERSION_NOT_SUPPORTED,
+              message: MESSAGE_APP_VERSION_NOT_SUPPORTED,
+              stackTrace: StackTrace.current,
+            ));
+          }
+        });
 
         final result = await authRemoteDataSource.registerWithEmailAndPassword(
           email: email,
@@ -326,15 +322,17 @@ class AuthRepository implements IAuthRepository {
       final staleUser = await authLocalDataSource.retrieveFarmhubUser();
 
       try {
-        // Check the user's app version
-        bool isAllowed = await AppVersionHelper.isAppVersionAllowed();
-        if (!isAllowed) {
-          return Left(AuthFailure(
-            code: ERR_APP_VERSION_NOT_SUPPORTED,
-            message: MESSAGE_APP_VERSION_NOT_SUPPORTED,
-            stackTrace: StackTrace.current,
-          ));
-        }
+        final isAllowed = await appVersionRepository.isAppVersionAllowed();
+        isAllowed.fold((f) => Left(f), (isAllowed) async {
+          if (!isAllowed) {
+            await signOut();
+            return Left(AppVersionFailure(
+              code: ERR_APP_VERSION_NOT_SUPPORTED,
+              message: MESSAGE_APP_VERSION_NOT_SUPPORTED,
+              stackTrace: StackTrace.current,
+            ));
+          }
+        });
 
         if (staleUser.userType == UserType.admin && newUserData.userType != UserType.admin) {
           throw AuthException(
@@ -414,15 +412,17 @@ class AuthRepository implements IAuthRepository {
   FutureEither<Unit> chooseUserType(String uid, UserType userType) async {
     if (await networkInfo.isConnected) {
       try {
-        // Check the user's app version
-        bool isAllowed = await AppVersionHelper.isAppVersionAllowed();
-        if (!isAllowed) {
-          return Left(AuthFailure(
-            code: ERR_APP_VERSION_NOT_SUPPORTED,
-            message: MESSAGE_APP_VERSION_NOT_SUPPORTED,
-            stackTrace: StackTrace.current,
-          ));
-        }
+        final isAllowed = await appVersionRepository.isAppVersionAllowed();
+        isAllowed.fold((f) => Left(f), (isAllowed) async {
+          if (!isAllowed) {
+            await signOut();
+            return Left(AppVersionFailure(
+              code: ERR_APP_VERSION_NOT_SUPPORTED,
+              message: MESSAGE_APP_VERSION_NOT_SUPPORTED,
+              stackTrace: StackTrace.current,
+            ));
+          }
+        });
 
         await authRemoteDataSource.chooseUserType(uid, userType);
         return const Right(unit);
@@ -460,16 +460,17 @@ class AuthRepository implements IAuthRepository {
   }) async {
     if (await networkInfo.isConnected) {
       try {
-        // Check the user's app version
-        bool isAllowed = await AppVersionHelper.isAppVersionAllowed();
-        if (!isAllowed) {
-          await signOut();
-          return Left(AuthFailure(
-            code: ERR_APP_VERSION_NOT_SUPPORTED,
-            message: MESSAGE_APP_VERSION_NOT_SUPPORTED,
-            stackTrace: StackTrace.current,
-          ));
-        }
+        final isAllowed = await appVersionRepository.isAppVersionAllowed();
+        isAllowed.fold((f) => Left(f), (isAllowed) async {
+          if (!isAllowed) {
+            await signOut();
+            return Left(AppVersionFailure(
+              code: ERR_APP_VERSION_NOT_SUPPORTED,
+              message: MESSAGE_APP_VERSION_NOT_SUPPORTED,
+              stackTrace: StackTrace.current,
+            ));
+          }
+        });
 
         final result =
             await authRemoteDataSource.createAccountWithPhone(uid: uid, phoneNumber: phoneNumber);
@@ -506,10 +507,6 @@ class AuthRepository implements IAuthRepository {
   /// General steps:
   /// 1. Check if user exists.
   /// 2. If no, create new account. If yes, retrieve the user and return it.
-  ///
-  /// Note: This method does not currently check if the user exists, but this should be done similarly
-  /// in [signInWithGoogle]
-  // TODO: This method currently does not check if the user exists.
   @override
   Future<Either<Failure, FarmhubUser>> registerWithCredentials({
     required String uid,
@@ -518,24 +515,52 @@ class AuthRepository implements IAuthRepository {
   }) async {
     if (await networkInfo.isConnected) {
       try {
-        // Check the user's app version
-        bool isAllowed = await AppVersionHelper.isAppVersionAllowed();
-        if (!isAllowed) {
-          await signOut();
-          return Left(AuthFailure(
-            code: ERR_APP_VERSION_NOT_SUPPORTED,
-            message: MESSAGE_APP_VERSION_NOT_SUPPORTED,
-            stackTrace: StackTrace.current,
-          ));
-        }
+        FarmhubUser? resultingUser;
+        bool? isNewAccount;
 
-        final result = await authRemoteDataSource.registerWithCredentials(
-          uid: uid,
-          email: email,
-          displayName: displayName,
+        final isAllowed = await appVersionRepository.isAppVersionAllowed();
+        isAllowed.fold((f) => Left(f), (isAllowed) async {
+          if (!isAllowed) {
+            await signOut();
+            return Left(AppVersionFailure(
+              code: ERR_APP_VERSION_NOT_SUPPORTED,
+              message: MESSAGE_APP_VERSION_NOT_SUPPORTED,
+              stackTrace: StackTrace.current,
+            ));
+          }
+        });
+
+        // Start checking for existence of account
+        final uidCheckResult = await retrieveUserData(uid: uid);
+
+        final Tuple2<FarmhubUser, bool> toReturn = await uidCheckResult.fold(
+          (f) async {
+            resultingUser = await authRemoteDataSource.registerWithCredentials(
+              uid: uid,
+              email: email,
+              displayName: displayName,
+            );
+            isNewAccount = true;
+            return Tuple2(resultingUser!, isNewAccount!);
+          },
+          (user) {
+            resultingUser = user;
+            isNewAccount = false;
+            return Tuple2(resultingUser!, isNewAccount!);
+          },
         );
 
-        return Right(result);
+        if (toReturn.second == false) {
+          return Left(
+            AuthFailure(
+              code: AUTH_USER_ALREADY_EXISTS,
+              message: MSG_AUTH_USER_ALREADY_EXISTS,
+              stackTrace: StackTrace.current,
+            ),
+          );
+        }
+
+        return Right(toReturn.first);
       } on AuthException catch (e, stack) {
         debugPrint(e.toString());
         return Left(AuthFailure(
@@ -700,44 +725,6 @@ class AuthRepository implements IAuthRepository {
         return Left(
           UnexpectedFailure(
             message: "An unexpected error occured while signing in with Apple.",
-            code: e.toString(),
-            stackTrace: stack,
-          ),
-        );
-      }
-    } else {
-      return Left(InternetConnectionFailure(
-        code: ERROR_NO_INTERNET_CONNECTION,
-        message: MESSAGE_NO_INTERNET_CONNECTION,
-        stackTrace: StackTrace.current,
-      ));
-    }
-  }
-
-  @override
-  FutureEither<FarmhubConfig> getFarmhubConfig() async {
-    if (await networkInfo.isConnected) {
-      try {
-        final result = await authRemoteDataSource.getFarmhubConfig();
-
-        return Right(result);
-      } on AuthException catch (e, stack) {
-        debugPrint(e.toString());
-        return Left(AuthFailure(
-          code: e.code,
-          message: e.message,
-          stackTrace: stack,
-        ));
-      } on FirebaseException catch (e, stack) {
-        return Left(FirebaseAuthFailure(
-          code: e.code,
-          message: e.message,
-          stackTrace: stack,
-        ));
-      } catch (e, stack) {
-        return Left(
-          UnexpectedFailure(
-            message: "An unexpected error occured while getting farmhub config",
             code: e.toString(),
             stackTrace: stack,
           ),

@@ -1,5 +1,6 @@
 // ignore_for_file: subtype_of_sealed_class
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:farmhub/core/app_version/app_version_repository.dart';
 import 'package:farmhub/core/auth/data/datasources/auth_local_datasource.dart';
 import 'package:farmhub/core/auth/data/datasources/auth_remote_datasource.dart';
 import 'package:farmhub/core/auth/domain/entities/farmhub_user/farmhub_user.dart';
@@ -45,5 +46,7 @@ class MockFarmShopManagerRepository extends Mock implements IFarmShopManagerRepo
 
 class MockFarmShopManagerRemoteDatasource extends Mock implements IFarmShopManagerRemoteDatasource {
 }
+
+class MockAppVersionRepository extends Mock implements IAppVersionRepository {}
 
 class FakeFarmhubUser extends Fake implements FarmhubUser {}

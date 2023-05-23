@@ -2,7 +2,9 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:farmhub/core/app_version/app_version_repository.dart';
 import 'package:farmhub/features/produce_manager/bloc/produce_manager_bloc.dart';
+import 'package:farmhub/presentation/views/main_screen/toast_cubit/toast_cubit.dart';
 
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -18,12 +20,16 @@ part 'main_screen_bloc.freezed.dart';
 class MainScreenBloc extends Bloc<MainScreenEvent, MainScreenState> {
   final ProduceManagerBloc produceManagerBloc;
   final IProduceManagerRepository produceManagerRepository;
+  final IAppVersionRepository appVersionRepository;
   final AnimationController mainHeaderController;
+  final ToastCubit toastCubit;
 
   MainScreenBloc({
     required this.produceManagerBloc,
     required this.mainHeaderController,
     required this.produceManagerRepository,
+    required this.appVersionRepository,
+    required this.toastCubit,
   }) : super(const MSSPricesLoading(
             props: MainScreenProps(
           isMainHeaderVisible: true,
@@ -70,6 +76,15 @@ class MainScreenBloc extends Bloc<MainScreenEvent, MainScreenState> {
   ) async {
     debugPrint("Adding getFirstTenProduce event...");
     emit(MainScreenState.pricesLoading(props: state.props));
+
+    debugPrint("Refreshing app version...");
+    final result = await appVersionRepository.refreshAppVersion();
+    result.fold((f) {
+      // Show toast for error
+      toastCubit.showToast(f.message ?? "We're not sure what happened.");
+    }, (res) {
+      if (res) debugPrint("App version refreshed.");
+    });
 
     final failureOrProduceList = await produceManagerRepository.getFirstTenProduce();
 
@@ -128,6 +143,15 @@ class MainScreenBloc extends Bloc<MainScreenEvent, MainScreenState> {
     debugPrint("Refresh MainScreen beginning.");
     // Start loading and reset the list
     emit(MainScreenState.pricesLoading(props: state.props.copyWith(produceList: [])));
+
+    debugPrint("Refreshing app version...");
+    final result = await appVersionRepository.refreshAppVersion();
+    result.fold((f) {
+      // Show toast for error
+      toastCubit.showToast(f.message ?? "We're not sure what happened.");
+    }, (res) {
+      if (res) debugPrint("App version refreshed.");
+    });
 
     final failureOrProduceList = await produceManagerRepository.getFirstTenProduce();
 

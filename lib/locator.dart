@@ -1,4 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:farmhub/core/app_version/app_version_local_datasource.dart';
+import 'package:farmhub/core/app_version/app_version_repository.dart';
 import 'package:farmhub/core/auth/auth_bloc/auth_bloc.dart';
 import 'package:farmhub/core/auth/data/datasources/auth_local_datasource.dart';
 import 'package:farmhub/core/auth/data/datasources/auth_remote_datasource.dart';
@@ -22,6 +24,8 @@ import 'package:get_it/get_it.dart';
 import 'package:hive/hive.dart';
 import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
 
+import 'core/app_version/app_version_remote_datasource.dart';
+
 final GetIt locator = GetIt.instance;
 
 void setupLocator() {
@@ -37,6 +41,7 @@ void setupLocator() {
   // Repository
   locator.registerLazySingleton<IAuthRepository>(() => AuthRepository(
         networkInfo: locator(),
+        appVersionRepository: locator(),
         authRemoteDataSource: locator(),
         authLocalDataSource: locator(),
         farmShopManagerRemoteDatasource: locator(),
@@ -51,6 +56,19 @@ void setupLocator() {
   //* Network Info
   locator.registerLazySingleton<INetworkInfo>(() => NetworkInfo(internet: locator()));
 
+  //* App Version
+  // Repository
+  locator.registerLazySingleton<IAppVersionRepository>(
+    () => AppVersionRepository(
+      networkInfo: locator(),
+      appVersionRemoteDatasource: locator(),
+      appVersionLocalDatasource: locator(),
+    ),
+  );
+  // Datasources
+  locator.registerLazySingleton<IAppVersionRemoteDatasource>(() => AppVersionRemoteDatasource());
+  locator.registerLazySingleton<IAppVersionLocalDatasource>(() => AppVersionLocalDatasource());
+
   //! Features
   //* Produce Manager
   // Blocs
@@ -58,6 +76,7 @@ void setupLocator() {
   // Repository
   locator.registerLazySingleton<IProduceManagerRepository>(() => ProduceManagerRepository(
         networkInfo: locator(),
+        appVersionRepository: locator(),
         remoteDatasource: locator(),
         localDatasource: locator(),
         authRepository: locator(),
@@ -77,6 +96,7 @@ void setupLocator() {
   // Repository
   locator.registerLazySingleton<IFarmShopManagerRepository>(() => FarmShopManagerRepository(
         networkInfo: locator(),
+        appVersionRepository: locator(),
         remoteDatasource: locator(),
         localDatasource: locator(),
         authRepository: locator(),

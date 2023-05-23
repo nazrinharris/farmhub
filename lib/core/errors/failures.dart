@@ -84,6 +84,18 @@ class AuthFailure extends Failure {
         );
 }
 
+class AppVersionFailure extends Failure {
+  const AppVersionFailure({
+    String? code,
+    String? message,
+    required StackTrace? stackTrace,
+  }) : super(
+          code: code,
+          message: message,
+          stackTrace: stackTrace,
+        );
+}
+
 //! Feature Failures
 class ProduceManagerFailure extends Failure {
   const ProduceManagerFailure({

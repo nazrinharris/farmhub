@@ -1,4 +1,4 @@
-// ignore_for_file: unused_element
+// ignore_for_file: unused_element, invalid_annotation_target
 
 import 'package:farmhub/core/util/app_const.dart';
 import 'package:farmhub/features/produce_manager/domain/entities/produce/produce.dart';

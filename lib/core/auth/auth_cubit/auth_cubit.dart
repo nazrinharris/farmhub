@@ -15,6 +15,7 @@ import 'package:farmhub/core/auth/global_auth_cubit/global_auth_cubit.dart';
 import 'package:farmhub/core/errors/exceptions.dart';
 import 'package:farmhub/core/errors/failures.dart';
 
+import '../../app_version/app_version_repository.dart';
 import '../data/repository/auth_repository.dart';
 
 part 'auth_cubit.freezed.dart';
@@ -25,6 +26,7 @@ enum FromAccount { phone, google, apple }
 class AuthCubit extends Cubit<AuthState> {
   final FirebaseAuth firebaseAuth;
   final IAuthRepository authRepository;
+  final IAppVersionRepository appVersionRepository;
   final IAuthRemoteDataSource authRemoteDataSource;
   final GlobalAuthCubit globalAuthCubit;
 
@@ -33,6 +35,7 @@ class AuthCubit extends Cubit<AuthState> {
     required this.authRepository,
     required this.authRemoteDataSource,
     required this.globalAuthCubit,
+    required this.appVersionRepository,
   }) : super(const AuthState.initial());
 
   /// [verifyPhoneAndSendSMS] will essentially verify the phone, as in to check whether it is a valid
@@ -199,7 +202,7 @@ class AuthCubit extends Cubit<AuthState> {
   }
 
   Future<FarmhubConfig> getFarmhubConfig() async {
-    final result = await authRepository.getFarmhubConfig();
+    final result = await appVersionRepository.getFarmhubConfig();
 
     return result.fold(
       (l) {

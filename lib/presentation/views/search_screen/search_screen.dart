@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:farmhub/app_router.dart';
 import 'package:farmhub/core/util/app_const.dart';
 import 'package:farmhub/locator.dart';

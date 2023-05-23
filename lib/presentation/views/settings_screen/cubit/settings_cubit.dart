@@ -1,9 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:farmhub/core/auth/auth_cubit/auth_cubit.dart';
-import 'package:farmhub/core/auth/data/datasources/auth_remote_datasource.dart';
 import 'package:farmhub/core/auth/domain/entities/farmhub_config.dart';
-import 'package:farmhub/locator.dart';
-
 import 'package:farmhub/presentation/smart_widgets/produce_dialogs/app_dialogs.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +8,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:ndialog/ndialog.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
+import '../../../../core/app_version/app_version_remote_datasource.dart';
 import '../../../../core/auth/data/repository/auth_repository.dart';
 
 part 'settings_state.dart';
@@ -19,10 +17,12 @@ part 'settings_cubit.freezed.dart';
 class SettingsCubit extends Cubit<SettingsState> {
   final IAuthRepository authRepository;
   final AuthCubit authCubit;
-  final IAuthRemoteDataSource authRemoteDataSource;
+  final IAppVersionRemoteDatasource appVersionRemoteDatasource;
 
   SettingsCubit(
-      {required this.authRepository, required this.authCubit, required this.authRemoteDataSource})
+      {required this.authRepository,
+      required this.authCubit,
+      required this.appVersionRemoteDatasource})
       : super(const SettingsState.initial());
 
   void showResetPasswordDialog(BuildContext context, {required NAlertDialog resetPasswordDialog}) {
@@ -65,7 +65,7 @@ class SettingsCubit extends Cubit<SettingsState> {
     final idTokenResult = await FirebaseAuth.instance.currentUser!.getIdTokenResult();
     dynamic appVersionClaim = idTokenResult.claims?['appVersion'];
 
-    /// RemoteConfig is only used for client-side version restriction. Remote version restriction depends on
+    /// RemoteConfig is only used for client-side version restriction. Server-side version restriction depends on
     /// the app version claim (Custom Claims)
     debugPrint('''
     App Version (PackageInfo): ${packageInfo.version}
@@ -77,6 +77,6 @@ class SettingsCubit extends Cubit<SettingsState> {
   }
 
   void updateAppVersion() async {
-    await authRemoteDataSource.updateAppVersionClaim();
+    await appVersionRemoteDatasource.updateAppVersionClaim();
   }
 }
