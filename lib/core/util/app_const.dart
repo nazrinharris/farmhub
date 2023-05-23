@@ -67,6 +67,9 @@ const String MSG_AUTH_NO_EMAIL_FOR_PASSWORD_RESET =
 const String AUTH_GOOGLE_SIGN_IN_ABORTED = 'AUTH_GOOGLE_SIGN_IN_ABORTED';
 const String MSG_AUTH_GOOGLE_SIGN_IN_ABORTED =
     'It seems like you have cancelled the Google sign in, please try again.';
+const String AUTH_USER_ALREADY_EXISTS = 'AUTH_USER_ALREADY_EXISTS';
+const String MSG_AUTH_USER_ALREADY_EXISTS =
+    'Sorry, this email is already in use, please try again.';
 
 /// [AuthLocalDatasource]'s [ErrorCodes]
 const String AL_ERR_NO_USER = 'ERR_NO_USER';
