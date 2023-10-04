@@ -192,7 +192,7 @@ class CurrentPriceCard extends StatelessWidget {
     if (isNegative) {
       return Theme.of(context).colorScheme.error.withOpacity(0.15);
     } else {
-      return Theme.of(context).colorScheme.secondaryVariant.withOpacity(0.15);
+      return Theme.of(context).colorScheme.secondaryContainer.withOpacity(0.15);
     }
   }
 }

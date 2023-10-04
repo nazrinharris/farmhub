@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:fpdart/fpdart.dart';
-import 'package:package_info_plus/package_info_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../auth/domain/entities/farmhub_config.dart';

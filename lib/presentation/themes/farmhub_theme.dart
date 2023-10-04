@@ -12,10 +12,10 @@ enum FarmhubThemeVariants {
 /// in design, the color is not used. Refer to the Farmhub Design System.
 ColorScheme _farmhubColorSchemeLight = const ColorScheme(
   primary: Color(0xff343A1A),
-  primaryVariant: Color(0xff808E60),
+  primaryContainer: Color(0xff808E60),
   onPrimary: Color(0xffF2FFF6),
   secondary: Color(0xffC5FFD7),
-  secondaryVariant: Color(0xff5EF38C),
+  secondaryContainer: Color(0xff5EF38C),
   surface: Colors.transparent,
   background: Color(0xffF2FFF6),
   error: Color(0xffE15C5C),
@@ -38,14 +38,14 @@ TextTheme _farmhubTextThemeLight = TextTheme(
   headline2: TextStyle(
     fontSize: 28,
     fontFamily: 'Montserrat',
-    color: _farmhubColorSchemeLight.primaryVariant,
+    color: _farmhubColorSchemeLight.primaryContainer,
     fontWeight: FontWeight.w800,
   ),
   headline3: TextStyle(
     fontSize: 23,
     fontFamily: 'Montserrat',
     // TODO: Temporary Solution
-    color: _farmhubColorSchemeLight.primaryVariant.withOpacity(0.65),
+    color: _farmhubColorSchemeLight.primaryContainer.withOpacity(0.65),
     fontWeight: FontWeight.w800,
   ),
   headline4: TextStyle(

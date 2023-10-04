@@ -14,7 +14,6 @@ import 'package:farmhub/core/errors/failures.dart';
 import 'package:farmhub/core/network/network_info.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
-import '../../../app_version/app_version_helper.dart';
 import '../../../app_version/app_version_repository.dart';
 import '../../../errors/exceptions.dart';
 import '../../../util/printer.dart';
@@ -46,8 +45,8 @@ abstract class IAuthRepository {
     required String phoneNumber,
   });
 
-  FutureEither<Tuple2<FarmhubUser, bool>> signInWithGoogle();
-  FutureEither<Tuple2<FarmhubUser, bool>> signInWithApple();
+  FutureEither<(FarmhubUser, bool)> signInWithGoogle();
+  FutureEither<(FarmhubUser, bool)> signInWithApple();
 
   Future<Either<Failure, Unit>> sendPasswordResetEmail(String? email);
 
@@ -533,7 +532,7 @@ class AuthRepository implements IAuthRepository {
         // Start checking for existence of account
         final uidCheckResult = await retrieveUserData(uid: uid);
 
-        final Tuple2<FarmhubUser, bool> toReturn = await uidCheckResult.fold(
+        final (FarmhubUser, bool) toReturn = await uidCheckResult.fold(
           (f) async {
             resultingUser = await authRemoteDataSource.registerWithCredentials(
               uid: uid,
@@ -541,16 +540,16 @@ class AuthRepository implements IAuthRepository {
               displayName: displayName,
             );
             isNewAccount = true;
-            return Tuple2(resultingUser!, isNewAccount!);
+            return (resultingUser!, isNewAccount!);
           },
           (user) {
             resultingUser = user;
             isNewAccount = false;
-            return Tuple2(resultingUser!, isNewAccount!);
+            return (resultingUser!, isNewAccount!);
           },
         );
 
-        if (toReturn.second == false) {
+        if (toReturn.$2 == false) {
           return Left(
             AuthFailure(
               code: AUTH_USER_ALREADY_EXISTS,
@@ -560,7 +559,7 @@ class AuthRepository implements IAuthRepository {
           );
         }
 
-        return Right(toReturn.first);
+        return Right(toReturn.$1);
       } on AuthException catch (e, stack) {
         debugPrint(e.toString());
         return Left(AuthFailure(
@@ -593,7 +592,7 @@ class AuthRepository implements IAuthRepository {
   }
 
   @override
-  FutureEither<Tuple2<FarmhubUser, bool>> signInWithGoogle() async {
+  FutureEither<(FarmhubUser, bool)> signInWithGoogle() async {
     if (await networkInfo.isConnected) {
       try {
         FarmhubUser? resultingUser;
@@ -603,7 +602,7 @@ class AuthRepository implements IAuthRepository {
         // Start checking for existence of account
         final uidCheckResult = await retrieveUserData(uid: userCredential.user!.uid);
 
-        final Tuple2<FarmhubUser, bool> toReturn = await uidCheckResult.fold(
+        final (FarmhubUser, bool) toReturn = await uidCheckResult.fold(
           (f) async {
             resultingUser = await authRemoteDataSource.registerWithCredentials(
               uid: userCredential.user!.uid,
@@ -611,12 +610,12 @@ class AuthRepository implements IAuthRepository {
               displayName: userCredential.user!.displayName ?? generateRandomName(),
             );
             isNewAccount = true;
-            return Tuple2(resultingUser!, isNewAccount!);
+            return (resultingUser!, isNewAccount!);
           },
           (user) {
             resultingUser = user;
             isNewAccount = false;
-            return Tuple2(resultingUser!, isNewAccount!);
+            return (resultingUser!, isNewAccount!);
           },
         );
 
@@ -662,7 +661,7 @@ class AuthRepository implements IAuthRepository {
   }
 
   @override
-  FutureEither<Tuple2<FarmhubUser, bool>> signInWithApple() async {
+  FutureEither<(FarmhubUser, bool)> signInWithApple() async {
     if (await networkInfo.isConnected) {
       try {
         FarmhubUser? resultingUser;
@@ -672,7 +671,7 @@ class AuthRepository implements IAuthRepository {
         // Start checking for existence of account
         final uidCheckResult = await retrieveUserData(uid: userCredential.user!.uid);
 
-        final Tuple2<FarmhubUser, bool> toReturn = await uidCheckResult.fold(
+        final (FarmhubUser, bool) toReturn = await uidCheckResult.fold(
           (f) async {
             resultingUser = await authRemoteDataSource.registerWithCredentials(
               uid: userCredential.user!.uid,
@@ -680,12 +679,12 @@ class AuthRepository implements IAuthRepository {
               displayName: userCredential.user!.displayName ?? generateRandomName(),
             );
             isNewAccount = true;
-            return Tuple2(resultingUser!, isNewAccount!);
+            return (resultingUser!, isNewAccount!);
           },
           (user) {
             resultingUser = user;
             isNewAccount = false;
-            return Tuple2(resultingUser!, isNewAccount!);
+            return (resultingUser!, isNewAccount!);
           },
         );
 

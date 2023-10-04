@@ -30,7 +30,7 @@ class AppVersionRemoteDatasource implements IAppVersionRemoteDatasource {
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
 
     int appVersion = AppVersionHelper.convertSemanticVersion(packageInfo.version);
-    int testAppVersion = AppVersionHelper.convertSemanticVersion('2.3.2');
+    // int testAppVersion = AppVersionHelper.convertSemanticVersion('2.3.2');
 
     final FirebaseFunctions functions = FirebaseFunctions.instanceFor(region: 'asia-southeast1');
     final HttpsCallable callable = functions.httpsCallable('setAppVersion');

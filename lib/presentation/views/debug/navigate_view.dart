@@ -1,5 +1,3 @@
-// ignore_for_file: deprecated_member_use
-
 import 'package:farmhub/core/auth/auth_bloc/auth_bloc.dart';
 import 'package:farmhub/presentation/shared_widgets/appbars.dart';
 import 'package:farmhub/presentation/shared_widgets/buttons.dart';
@@ -113,7 +111,7 @@ class NavigateView extends StatelessWidget {
                 onPressed: () {
                   Navigator.of(context).pushNamed('/main');
                 },
-                backgroundColor: Theme.of(context).colorScheme.primaryVariant,
+                backgroundColor: Theme.of(context).colorScheme.primaryContainer,
                 width: 200,
                 child: Text(
                   'To Main',
@@ -125,7 +123,7 @@ class NavigateView extends StatelessWidget {
                 onPressed: () {
                   Navigator.of(context).pushNamed('/nav_main');
                 },
-                backgroundColor: Theme.of(context).colorScheme.primaryVariant,
+                backgroundColor: Theme.of(context).colorScheme.primaryContainer,
                 width: 200,
                 child: Text(
                   'To Nav Main',

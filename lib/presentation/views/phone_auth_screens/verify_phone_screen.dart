@@ -210,7 +210,7 @@ class VerifyPhoneScreenHeader extends StatelessWidget {
           Text(
             "Enter a phone number, we'll send a code to it",
             style: Theme.of(context).textTheme.bodyText2!.copyWith(
-                  color: Theme.of(context).colorScheme.primaryVariant,
+                  color: Theme.of(context).colorScheme.primaryContainer,
                 ),
           ),
         ],

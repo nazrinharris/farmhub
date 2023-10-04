@@ -245,7 +245,7 @@ class VerifyCodeScreenHeader extends StatelessWidget {
           Text(
             "Enter the code sent through SMS",
             style: Theme.of(context).textTheme.bodyText2!.copyWith(
-                  color: Theme.of(context).colorScheme.primaryVariant,
+                  color: Theme.of(context).colorScheme.primaryContainer,
                 ),
           ),
         ],

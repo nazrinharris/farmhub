@@ -1,7 +1,7 @@
 import 'package:clock/clock.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:fpdart/fpdart.dart';
-import 'package:intl/intl.dart';
+
+import 'package:intl/intl.dart' show DateFormat;
 
 import '../../../../core/errors/exceptions.dart';
 import '../../../../core/util/app_const.dart';
@@ -68,8 +68,6 @@ class ProducePricesRemoteDatasource implements IProducePricesRemoteDatasource {
     // Run transaction
     return await firebaseFirestore.runTransaction(
       (transaction) async {
-
-        
         //! Retrieve all the required data.
         // Get the price document of the chosen date. If it exists, there should one in the list, if not, it should be empty.
         final chosenDatePriceDoc = await firebaseFirestore
@@ -95,7 +93,7 @@ class ProducePricesRemoteDatasource implements IProducePricesRemoteDatasource {
         });
 
         //! Update the prices.
-        final Tuple2<Price, Map<String, dynamic>> updatedPrices =
+        final (Price, Map<String, dynamic>) updatedPrices =
             await _returnPriceAndUpdatePricesTransaction(
           transaction: transaction,
           firebaseFirestore: firebaseFirestore,
@@ -108,10 +106,8 @@ class ProducePricesRemoteDatasource implements IProducePricesRemoteDatasource {
 
         //! Begin Updating Produce Document
         final List<PriceSnippet> pricesList = [];
-        updatedPrices.mapSecond((aggregatePricesMap) {
-          aggregatePricesMap["prices-map"].forEach((date, price) {
-            pricesList.add(PriceSnippet(price: price, priceDate: date));
-          });
+        updatedPrices.$2["prices-map"].forEach((date, price) {
+          pricesList.add(PriceSnippet(price: price, priceDate: date));
         });
 
         final oneWeekPrices = pricesToRanged(pricesList, rangeType: RangeType.oneW);
@@ -175,7 +171,6 @@ class ProducePricesRemoteDatasource implements IProducePricesRemoteDatasource {
     bool isPriceDocDeleted = false;
 
     return await firebaseFirestore.runTransaction<bool>((transaction) async {
-
       final Price price = await transaction
           .get(
             firebaseFirestore
@@ -291,7 +286,6 @@ class ProducePricesRemoteDatasource implements IProducePricesRemoteDatasource {
   Future<Price> editSubPrice(
       String produceId, String priceId, num newPrice, String subPriceDate) async {
     return await firebaseFirestore.runTransaction<Price>((transaction) async {
-
       final Price price = await transaction
           .get(
             firebaseFirestore
@@ -476,7 +470,7 @@ class ProducePricesRemoteDatasource implements IProducePricesRemoteDatasource {
 ///
 /// It should return a [Price] object with the updated [currentPrice] and [allPricesWithDateList] as well as the new [aggregatePricesMap]
 ///
-Future<Tuple2<Price, Map<String, dynamic>>> _returnPriceAndUpdatePricesTransaction({
+Future<(Price, Map<String, dynamic>)> _returnPriceAndUpdatePricesTransaction({
   required FirebaseFirestore firebaseFirestore,
   required Transaction transaction,
   required DateTime chosenTimeStamp,
@@ -503,7 +497,7 @@ Future<Tuple2<Price, Map<String, dynamic>>> _returnPriceAndUpdatePricesTransacti
     allPricesMap: aggregatePricesMap,
   );
 
-  return Tuple2(price, newAggregatePricesMap);
+  return (price, newAggregatePricesMap);
 }
 
 Future<Price> _createOrUpdatePriceDocumentTransaction({

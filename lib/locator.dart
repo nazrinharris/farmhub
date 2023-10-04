@@ -124,7 +124,7 @@ void setupLocator() {
   locator.registerSingleton<FirebaseFirestore>(FirebaseFirestore.instance);
 
   //* Internet Connection Checker
-  locator.registerSingleton(InternetConnectionCheckerPlus());
+  locator.registerSingleton(InternetConnection());
 
   //* Hive
   locator.registerSingleton<HiveInterface>(Hive);

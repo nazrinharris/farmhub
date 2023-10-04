@@ -16,7 +16,6 @@ import 'package:farmhub/features/produce_manager/data/repository/produce_manager
 import 'package:farmhub/features/produce_manager/domain/entities/price/price.dart';
 import 'package:farmhub/features/produce_manager/domain/entities/produce/produce.dart';
 
-import '../../../../core/app_version/app_version_helper.dart';
 import '../../../../core/app_version/app_version_repository.dart';
 import '../../../../core/auth/data/repository/auth_repository.dart';
 
@@ -184,10 +183,10 @@ class ProduceManagerRepository implements IProduceManagerRepository {
         isAllowed.fold((f) => Left(f), (isAllowed) async {
           if (!isAllowed) {
             return Left(ProduceManagerFailure(
-            code: ERR_APP_VERSION_NOT_SUPPORTED,
-            message: MESSAGE_APP_VERSION_NOT_SUPPORTED,
-            stackTrace: StackTrace.current,
-          ));
+              code: ERR_APP_VERSION_NOT_SUPPORTED,
+              message: MESSAGE_APP_VERSION_NOT_SUPPORTED,
+              stackTrace: StackTrace.current,
+            ));
           }
         });
 
@@ -290,10 +289,10 @@ class ProduceManagerRepository implements IProduceManagerRepository {
         isAllowed.fold((f) => Left(f), (isAllowed) async {
           if (!isAllowed) {
             return Left(ProduceManagerFailure(
-            code: ERR_APP_VERSION_NOT_SUPPORTED,
-            message: MESSAGE_APP_VERSION_NOT_SUPPORTED,
-            stackTrace: StackTrace.current,
-          ));
+              code: ERR_APP_VERSION_NOT_SUPPORTED,
+              message: MESSAGE_APP_VERSION_NOT_SUPPORTED,
+              stackTrace: StackTrace.current,
+            ));
           }
         });
 
@@ -357,10 +356,10 @@ class ProduceManagerRepository implements IProduceManagerRepository {
         isAllowed.fold((f) => Left(f), (isAllowed) async {
           if (!isAllowed) {
             return Left(ProduceManagerFailure(
-            code: ERR_APP_VERSION_NOT_SUPPORTED,
-            message: MESSAGE_APP_VERSION_NOT_SUPPORTED,
-            stackTrace: StackTrace.current,
-          ));
+              code: ERR_APP_VERSION_NOT_SUPPORTED,
+              message: MESSAGE_APP_VERSION_NOT_SUPPORTED,
+              stackTrace: StackTrace.current,
+            ));
           }
         });
 
@@ -539,10 +538,10 @@ class ProduceManagerRepository implements IProduceManagerRepository {
         isAllowed.fold((f) => Left(f), (isAllowed) async {
           if (!isAllowed) {
             return Left(ProduceManagerFailure(
-            code: ERR_APP_VERSION_NOT_SUPPORTED,
-            message: MESSAGE_APP_VERSION_NOT_SUPPORTED,
-            stackTrace: StackTrace.current,
-          ));
+              code: ERR_APP_VERSION_NOT_SUPPORTED,
+              message: MESSAGE_APP_VERSION_NOT_SUPPORTED,
+              stackTrace: StackTrace.current,
+            ));
           }
         });
 
@@ -606,10 +605,10 @@ class ProduceManagerRepository implements IProduceManagerRepository {
         isAllowed.fold((f) => Left(f), (isAllowed) async {
           if (!isAllowed) {
             return Left(ProduceManagerFailure(
-            code: ERR_APP_VERSION_NOT_SUPPORTED,
-            message: MESSAGE_APP_VERSION_NOT_SUPPORTED,
-            stackTrace: StackTrace.current,
-          ));
+              code: ERR_APP_VERSION_NOT_SUPPORTED,
+              message: MESSAGE_APP_VERSION_NOT_SUPPORTED,
+              stackTrace: StackTrace.current,
+            ));
           }
         });
 
@@ -672,10 +671,10 @@ class ProduceManagerRepository implements IProduceManagerRepository {
         isAllowed.fold((f) => Left(f), (isAllowed) async {
           if (!isAllowed) {
             return Left(ProduceManagerFailure(
-            code: ERR_APP_VERSION_NOT_SUPPORTED,
-            message: MESSAGE_APP_VERSION_NOT_SUPPORTED,
-            stackTrace: StackTrace.current,
-          ));
+              code: ERR_APP_VERSION_NOT_SUPPORTED,
+              message: MESSAGE_APP_VERSION_NOT_SUPPORTED,
+              stackTrace: StackTrace.current,
+            ));
           }
         });
 
@@ -712,10 +711,10 @@ class ProduceManagerRepository implements IProduceManagerRepository {
         isAllowed.fold((f) => Left(f), (isAllowed) async {
           if (!isAllowed) {
             return Left(ProduceManagerFailure(
-            code: ERR_APP_VERSION_NOT_SUPPORTED,
-            message: MESSAGE_APP_VERSION_NOT_SUPPORTED,
-            stackTrace: StackTrace.current,
-          ));
+              code: ERR_APP_VERSION_NOT_SUPPORTED,
+              message: MESSAGE_APP_VERSION_NOT_SUPPORTED,
+              stackTrace: StackTrace.current,
+            ));
           }
         });
 

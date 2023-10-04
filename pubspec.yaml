@@ -5,57 +5,57 @@ version: 0.4.0
 publish_to: "none"
 
 environment:
-  sdk: ">=2.15.1 <3.0.0"
+  sdk: ">=3.0.0 <4.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
 
   # Navigation
-  auto_route: ^5.0.4
+  auto_route: ^7.8.3
 
   # Firebase Suite
-  cloud_firestore: ^4.6.0
-  firebase_auth: ^4.5.0
-  firebase_core: ^2.11.0
-  google_sign_in: ^6.1.0
-  cloud_functions: ^4.2.0
-  firebase_remote_config: ^4.1.0
+  cloud_firestore: ^4.9.3
+  firebase_auth: ^4.10.1
+  firebase_core: ^2.17.0
+  google_sign_in: ^6.1.5
+  cloud_functions: ^4.4.2
+  firebase_remote_config: ^4.2.7
 
   # Other auth
-  sign_in_with_apple: ^4.3.0
+  sign_in_with_apple: ^5.0.0
 
   # Functional Programming
-  fpdart: ^0.4.0
+  fpdart: ^1.1.0
 
   # Value Equality
-  equatable: ^2.0.3
-  freezed_annotation:
+  equatable: ^2.0.5
+  freezed_annotation: ^2.4.1
 
   # Business Logic and Dependency Injection
-  flutter_bloc: ^8.0.1
-  bloc: ^8.0.3
-  hydrated_bloc: ^9.0.0
-  get_it: ^7.2.0
+  flutter_bloc: ^8.1.3
+  bloc: ^8.1.2
+  hydrated_bloc: ^9.1.2
+  get_it: ^7.6.4
 
   # Local Storage
   shared_preferences: ^2.0.15
 
   # Data and Internet
-  internet_connection_checker_plus: ^1.0.1
+  internet_connection_checker_plus: ^2.0.0
   json_annotation: ^4.5.0
 
   # Render
-  flutter_svg: ^1.1.1+1
+  flutter_svg: ^2.0.7
   simple_animations: ^5.0.0+3
   bottom_nav_layout: ^3.0.9
   google_nav_bar: ^5.0.6
-  syncfusion_flutter_charts: ^20.2.36
+  syncfusion_flutter_charts: ^23.1.38
   sprung: ^3.0.0
   tab_indicator_styler: ^2.0.0
-  dropdown_button2: ^1.6.3
+  dropdown_button2: ^2.3.9
   ndialog: ^4.1.1+1
-  flutter_speed_dial: ^6.0.0
+  flutter_speed_dial: ^7.0.0
   toggle_switch: ^2.0.1
   flutter_styled_toast: ^2.1.3
   ionicons: ^0.2.1
@@ -63,16 +63,16 @@ dependencies:
   # Misc
   lint: ^2.0.1
   path_provider: ^2.0.11
-  intl: ^0.17.0
   clock: ^1.1.0
-  phone_numbers_parser: ^7.0.0+1
+  phone_numbers_parser: ^8.0.0
   english_words: ^4.0.0
-  package_info_plus: ^3.0.2
+  package_info_plus: ^4.1.0
   crypto: ^3.0.2
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
+  intl: ^0.18.1
 
 dev_dependencies:
   integration_test:
@@ -82,17 +82,17 @@ dev_dependencies:
 
   # Code Generation
   build_runner: ^2.1.11
-  auto_route_generator: ^5.0.2
+  auto_route_generator: ^7.3.1
   json_serializable: ^6.2.0
   freezed: ^2.0.3+1
 
   # Mocking and Testing
-  mocktail: ^0.3.0
+  mocktail: ^1.0.1
   bloc_test: ^9.0.3
 
   flutter_lints: ^2.0.1
-  logger: ^1.1.0
-  flutter_launcher_icons: ^0.11.0
+  logger: ^2.0.2+1
+  flutter_launcher_icons: ^0.13.1
   flutter_native_splash: ^2.2.5
 
 flutter_icons:

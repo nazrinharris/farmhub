@@ -144,7 +144,7 @@ class AuthCubit extends Cubit<AuthState> {
     googleSignInResult.fold(
       (f) => emit(AuthState.credentialLoginError(f)),
       (tupleUser) {
-        globalAuthCubit.updateFarmhubUser(tupleUser.first);
+        globalAuthCubit.updateFarmhubUser(tupleUser.$1);
         emit(AuthState.thirdPartyAccountCreationSuccess(tupleUser));
       },
     );
@@ -159,7 +159,7 @@ class AuthCubit extends Cubit<AuthState> {
     appleSignInResultCredentials.fold(
       (f) => emit(AuthState.credentialLoginError(f)),
       (tupleUser) {
-        globalAuthCubit.updateFarmhubUser(tupleUser.first);
+        globalAuthCubit.updateFarmhubUser(tupleUser.$1);
         emit(AuthState.thirdPartyAccountCreationSuccess(tupleUser));
       },
     );

@@ -244,7 +244,7 @@ class _InfoTileState extends State<InfoTile> with AnimationMixin {
         }
       case InfoTileStatus.success:
         {
-          return Theme.of(context).colorScheme.secondaryVariant;
+          return Theme.of(context).colorScheme.secondaryContainer;
         }
       case InfoTileStatus.error:
         {
@@ -340,7 +340,7 @@ class _InfoTileState extends State<InfoTile> with AnimationMixin {
   Color _resolveShadowColor() {
     final Color errorShadowColor = Theme.of(context).colorScheme.error.withOpacity(0.5);
     final Color successShadowColor =
-        Theme.of(context).colorScheme.secondaryVariant.withOpacity(0.5);
+        Theme.of(context).colorScheme.secondaryContainer.withOpacity(0.5);
     final Color loadingShadowColor = Theme.of(context).colorScheme.primary.withOpacity(0.12);
 
     switch (readProps(context).currentStatus) {
@@ -370,7 +370,7 @@ class _InfoTileState extends State<InfoTile> with AnimationMixin {
       switch (readProps(context).currentStatus) {
         case InfoTileStatus.loading:
           {
-            return Theme.of(context).colorScheme.primaryVariant;
+            return Theme.of(context).colorScheme.primaryContainer;
           }
         case InfoTileStatus.success:
           {

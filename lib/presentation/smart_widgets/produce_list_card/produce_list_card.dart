@@ -565,7 +565,7 @@ class ChangeBox extends StatelessWidget {
     if (isNegative) {
       return Theme.of(context).colorScheme.error;
     } else {
-      return Theme.of(context).colorScheme.secondaryVariant;
+      return Theme.of(context).colorScheme.secondaryContainer;
     }
   }
 

@@ -5,11 +5,11 @@ abstract class INetworkInfo {
 }
 
 class NetworkInfo implements INetworkInfo {
-  final InternetConnectionCheckerPlus internet;
+  final InternetConnection internet;
   NetworkInfo({
     required this.internet,
   });
 
   @override
-  Future<bool> get isConnected => internet.hasConnection;
+  Future<bool> get isConnected => internet.hasInternetAccess;
 }
